@@ -397,7 +397,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Registreren" id="oTc-2J-asV">
                         <barButtonItem key="leftBarButtonItem" title="Vorige" id="EcQ-L9-UkB"/>
-                        <barButtonItem key="rightBarButtonItem" title="Volgende" id="JVX-Y2-WOM"/>
+                        <barButtonItem key="rightBarButtonItem" title="Voltooien" id="JVX-Y2-WOM"/>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QzQ-bg-lim" userLabel="First Responder" sceneMemberID="firstResponder"/>
