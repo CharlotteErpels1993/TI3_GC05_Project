@@ -8,8 +8,7 @@ public class MyParseApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-
-        Parse.initialize(this, "G7iR0ji0Kc1fc2PUwhXi9Gj8HmaqK52Qmhk2ffHy", "gJJgkWD5UxMA80iqZkaUHTy8pc9UwJfdv3alDk9Q");
+        Parse.initialize(this, "a3jgklEb2rHZYcgqDezLfqSP6i1C2u4eVV8R03YS", "3ZguW3kx5J6PuieccT7ypJ5ZvYhwX08ESKL8cDNX");
 
         //Parse.enableLocalDatastore(this);
         ParseObject testObject = new ParseObject("TestObject");
