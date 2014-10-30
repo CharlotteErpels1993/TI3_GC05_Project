@@ -1,10 +1,4 @@
-//
-//  AppDelegate.swift
-//  GC05_iOS
-//
-//  Created by Charlotte Erpels on 29/10/14.
-//  Copyright (c) 2014 GC05. All rights reserved.
-//
+
 
 import UIKit
 
@@ -15,13 +9,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        // dit in de plaats van hieronder in de functie?
+        Parse.setApplicationId("a3jgklEb2rHZYcgqDezLfqSP6i1C2u4eVV8R03YS", clientKey: "3ZguW3kx5J6PuieccT7ypJ5ZvYhwX08ESKL8cDNX")
+        
         return true
     }
     
-    func applicationDidFinishLaunching(application: UIApplication) {
+    /*func applicationDidFinishLaunching(application: UIApplication) {
         Parse.setApplicationId("a3jgklEb2rHZYcgqDezLfqSP6i1C2u4eVV8R03YS", clientKey: "3ZguW3kx5J6PuieccT7ypJ5ZvYhwX08ESKL8cDNX")
-    }
+    }*/
     
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
