@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Joetz</string>
+
+    <!-- Strings related to login -->
+    <string name="action_sign_in">Inloggen</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Wachtwoord</string>
+    <string name="prompt_Return">Ga terug</string>
+    <string name="error_invalid_email">Dit email-adres is niet geldig</string>
+    <string name="error_invalid_password">Het wachtwoord is te kort.</string>
+    <string name="error_incorrect_password">Het wachtwoord is incorrect.</string>
+    <string name="error_field_required">Verplicht in te vullen.</string>
+
+
+    <!-- Strings related to Main screen -->
+    <string name="title_activity_main_screen">Home</string>
+    <string name="title_activity_Login">Inloggen</string>
+    <string name="title_activity_Register">Registreren</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_inschrijven">InschrijvenActivity</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_activiteit_detail">activiteit_detail</string>
+    <string name="title_activity_activiteit_overzicht">activiteit_overzicht</string>
+    <string name="title_activity_profiel_detail">profiel_detail</string>
+    <string name="title_activity_profiel_edit">profiel_edit</string>
+    <string name="updatingReport" >U bent ingelogd</string>
+    <string name="confirm_registry">Email is niet gevonden. Wilt u een nieuwe gebruiker aanmaken?</string>
+    <string name="nee">nee</string>
+    <string name="ja">ja</string>
+
+
+</resources>

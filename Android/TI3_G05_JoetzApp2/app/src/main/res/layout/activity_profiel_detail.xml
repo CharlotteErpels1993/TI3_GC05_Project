@@ -1,0 +1,118 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.hogent.ti3g05.ti3_g05_joetzapp.profiel_detail">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="200sp"
+        android:layout_height="200sp"
+        android:id="@+id/imgAfbeelding" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="John Smith"
+        android:id="@+id/txtVolledigeNaam"
+        android:textSize="30dp"
+        android:layout_below="@+id/imgAfbeelding"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Email:"
+        android:id="@+id/lblEmail"
+        android:layout_below="@+id/txtVolledigeNaam"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="john.smith@hogent.be"
+        android:id="@+id/txtEmail"
+        android:layout_toEndOf="@+id/lblEmail"
+        android:layout_alignTop="@+id/lblEmail" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="hobby's:"
+        android:textStyle="bold"
+        android:id="@+id/lblHobbys"
+        android:layout_below="@+id/lblEmail"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="zwemmen, lezen en wandelen"
+        android:id="@+id/txtHobbys"
+        android:layout_alignTop="@+id/lblHobbys"
+        android:layout_toEndOf="@+id/lblHobbys" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Ingeschreven reizen:"
+        android:id="@+id/lblIngeschrevenReizen"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/lblHobbys"
+        android:layout_alignParentStart="true"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Zomerkamp Oostende"
+        android:id="@+id/txtIngeschrevenReizen"
+        android:layout_toEndOf="@+id/lblIngeschrevenReizen"
+        android:layout_below="@+id/lblIngeschrevenReizen"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Geboorte datum:"
+        android:id="@+id/lblGeboorteDatum"
+        android:layout_below="@+id/txtIngeschrevenReizen"
+        android:layout_alignParentStart="true"
+        android:layout_toEndOf="@+id/lblIngeschrevenReizen"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="31/12/1980"
+        android:id="@+id/txtGeboorteDatum"
+        android:layout_toEndOf="@+id/lblGeboorteDatum"
+        android:layout_alignTop="@+id/lblGeboorteDatum" />
+
+        </RelativeLayout>
+
+    </ScrollView>
+</RelativeLayout>
