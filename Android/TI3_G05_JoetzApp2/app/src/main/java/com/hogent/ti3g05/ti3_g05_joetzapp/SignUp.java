@@ -165,7 +165,7 @@ public class SignUp extends Activity{
 		user.signUpInBackground(new SignUpCallback() {
 		  public void done(ParseException e) {
 		    if (e == null) {
-		      signUpMsg("Aacount aangemaakt.");
+		      signUpMsg("Account aangemaakt.");
 		      Intent in = new Intent(getApplicationContext(),MainScreen.class);
 		      startActivity(in);
 		    } else {
