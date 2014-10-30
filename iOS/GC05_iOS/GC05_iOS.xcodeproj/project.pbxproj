@@ -23,8 +23,9 @@
 		0FA80B361A01359F008DB343 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FA80B351A01359F008DB343 /* Security.framework */; };
 		0FA80B381A0135A8008DB343 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FA80B371A0135A8008DB343 /* StoreKit.framework */; };
 		0FA80B3A1A0135B1008DB343 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FA80B391A0135B1008DB343 /* SystemConfiguration.framework */; settings = {ATTRIBUTES = (Required, ); }; };
-		0FA80B3C1A0135BD008DB343 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FA80B3B1A0135BD008DB343 /* Parse.framework */; };
-		0FA80B411A0137D9008DB343 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FA80B401A0137D9008DB343 /* Bolts.framework */; };
+		1B10A3B31A0255AB008E225F /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B10A3B21A0255AB008E225F /* Parse.framework */; };
+		1B10A3B51A0255B0008E225F /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B10A3B41A0255B0008E225F /* Bolts.framework */; };
+		1B10A3B71A0255BA008E225F /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B10A3B61A0255BA008E225F /* ParseFacebookUtils.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,9 +59,10 @@
 		0FA80B351A01359F008DB343 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		0FA80B371A0135A8008DB343 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		0FA80B391A0135B1008DB343 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		0FA80B3B1A0135BD008DB343 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "../../../Downloads/parse-library-1/Parse.framework"; sourceTree = "<group>"; };
 		0FA80B3D1A0135FF008DB343 /* GC05_iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GC05_iOS-Bridging-Header.h"; sourceTree = "<group>"; };
-		0FA80B401A0137D9008DB343 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "../../../Downloads/parse-library-1/Bolts.framework"; sourceTree = "<group>"; };
+		1B10A3B21A0255AB008E225F /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "../../../../Downloads/parse-library-1.4.2/Parse.framework"; sourceTree = "<group>"; };
+		1B10A3B41A0255B0008E225F /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "../../../../Downloads/parse-library-1.4.2/Bolts.framework"; sourceTree = "<group>"; };
+		1B10A3B61A0255BA008E225F /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseFacebookUtils.framework; path = "../../../../Downloads/parse-library-1.4.2/ParseFacebookUtils.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,8 +80,9 @@
 				0FA80B2C1A01353E008DB343 /* CoreGraphics.framework in Frameworks */,
 				0FA80B2A1A013533008DB343 /* CFNetwork.framework in Frameworks */,
 				0FA80B281A01352B008DB343 /* AudioToolbox.framework in Frameworks */,
-				0FA80B3C1A0135BD008DB343 /* Parse.framework in Frameworks */,
-				0FA80B411A0137D9008DB343 /* Bolts.framework in Frameworks */,
+				1B10A3B31A0255AB008E225F /* Parse.framework in Frameworks */,
+				1B10A3B71A0255BA008E225F /* ParseFacebookUtils.framework in Frameworks */,
+				1B10A3B51A0255B0008E225F /* Bolts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,8 +99,9 @@
 		0FA80AF91A01350E008DB343 = {
 			isa = PBXGroup;
 			children = (
-				0FA80B401A0137D9008DB343 /* Bolts.framework */,
-				0FA80B3B1A0135BD008DB343 /* Parse.framework */,
+				1B10A3B61A0255BA008E225F /* ParseFacebookUtils.framework */,
+				1B10A3B41A0255B0008E225F /* Bolts.framework */,
+				1B10A3B21A0255AB008E225F /* Parse.framework */,
 				0FA80B391A0135B1008DB343 /* SystemConfiguration.framework */,
 				0FA80B371A0135A8008DB343 /* StoreKit.framework */,
 				0FA80B351A01359F008DB343 /* Security.framework */,
@@ -392,6 +396,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/charlotteerpels/Downloads/parse-library-1",
+					"/Volumes/HDD/Downloads/parse-library-1.4.2",
 				);
 				INFOPLIST_FILE = GC05_iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -409,6 +414,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/charlotteerpels/Downloads/parse-library-1",
+					"/Volumes/HDD/Downloads/parse-library-1.4.2",
 				);
 				INFOPLIST_FILE = GC05_iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -470,6 +476,7 @@
 				0FA80B231A01350E008DB343 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0FA80B241A01350E008DB343 /* Build configuration list for PBXNativeTarget "GC05_iOSTests" */ = {
 			isa = XCConfigurationList;
@@ -478,6 +485,7 @@
 				0FA80B261A01350E008DB343 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
