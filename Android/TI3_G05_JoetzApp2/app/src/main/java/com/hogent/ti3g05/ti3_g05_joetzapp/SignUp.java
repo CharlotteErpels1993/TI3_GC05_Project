@@ -14,16 +14,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
-public class SignUp extends Activity implements OnClickListener{
-	private EditText mUserNameEditText;
+public class SignUp extends Activity{
+
 	private EditText mEmailEditText; 
 	private EditText mPasswordEditText;
 	private EditText mConfirmPasswordEditText;
 	private Button mCreateAccountButton;
+    private Button terugKerenButton;
 
 	private String mEmail;
 	private String mPassword;
@@ -36,8 +38,10 @@ public class SignUp extends Activity implements OnClickListener{
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
-		super.onCreate(savedInstanceState);
+        // TODO Auto-generated method stub
+        super.onCreate(savedInstanceState);
+        Parse.initialize(this, "G7iR0ji0Kc1fc2PUwhXi9Gj8HmaqK52Qmhk2ffHy", "gJJgkWD5UxMA80iqZkaUHTy8pc9UwJfdv3alDk9Q");
+
 		setContentView(R.layout.activity_signup);
 
 		// creating connection detector class instance
@@ -49,36 +53,50 @@ public class SignUp extends Activity implements OnClickListener{
 		mConfirmPasswordEditText = (EditText) findViewById(R.id.etPasswordConfirm);
 
 		mCreateAccountButton = (Button) findViewById(R.id.btnCreateAccount);
-		mCreateAccountButton.setOnClickListener(this);
+		mCreateAccountButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                    // TODO Auto-generated method stub
+                    switch (view.getId()) {
+                        case R.id.btnCreateAccount:
+                            // get Internet status
+                            isInternetPresent = cd.isConnectingToInternet();
+                            // check for Internet status
+                            if (isInternetPresent) {
+                                // Internet Connection is Present
+                                // make HTTP requests
+                                createAccount();
+                            } else {
+                                // Internet connection is not present
+                                // Ask user to connect to Internet
+                                showAlertDialog(getApplicationContext(), "No Internet Connection",
+                                        "You don't have internet connection.", false);
+                            }
+
+
+                            break;
+
+                        default:
+                            break;
+
+                }
+            }
+        });
+
+        terugKerenButton = (Button) findViewById(R.id.btnBack);
+
+        terugKerenButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent1 = new Intent(SignUp.this, MainScreen.class);
+                startActivity(intent1);
+            }
+        });
 
 	}
 
-	@Override
-	public void onClick(View v) {
-		// TODO Auto-generated method stub
-		switch (v.getId()) {
-		case R.id.btnCreateAccount:
-			// get Internet status
-			isInternetPresent = cd.isConnectingToInternet();
-			// check for Internet status
-			if (isInternetPresent) {
-				// Internet Connection is Present
-				// make HTTP requests
-				createAccount();
-			} else {
-				// Internet connection is not present
-				// Ask user to connect to Internet
-				showAlertDialog(getApplicationContext(), "No Internet Connection",
-						"You don't have internet connection.", false);
-			}
 
-			
-			break;
-
-		default:
-			break;
-		}
-	}
 
 	private void createAccount(){
 		clearErrors();
@@ -139,7 +157,7 @@ public class SignUp extends Activity implements OnClickListener{
 
 	private void signUp(String mEmail, String mPassword) {
 		// TODO Auto-generated method stub
-		Toast.makeText(getApplicationContext(), mUsername + " - " + mEmail, Toast.LENGTH_SHORT).show();
+		Toast.makeText(getApplicationContext(), mEmail, Toast.LENGTH_SHORT).show();
 		ParseUser user = new ParseUser();
 		user.setPassword(mPassword);
 		user.setEmail(mEmail);
@@ -166,7 +184,6 @@ public class SignUp extends Activity implements OnClickListener{
 
 	private void clearErrors(){ 
 		mEmailEditText.setError(null);
-		mUserNameEditText.setError(null);
 		mPasswordEditText.setError(null);
 		mConfirmPasswordEditText.setError(null);
 	}

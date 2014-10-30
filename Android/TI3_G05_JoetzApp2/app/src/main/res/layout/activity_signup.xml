@@ -41,4 +41,13 @@
         android:layout_marginTop="25dp"
         android:text="@string/createAccount" />
 
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@id/btnCreateAccount"
+        android:layout_below="@id/btnCreateAccount"
+        android:layout_marginTop="25dp"
+        android:text="@string/back" />
+
 </RelativeLayout>
