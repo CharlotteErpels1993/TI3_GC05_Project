@@ -1,4 +1,4 @@
-package com.hogent.ti3g05.ti3_g05_joetzapp;
+/*package com.hogent.ti3g05.ti3_g05_joetzapp;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -39,19 +39,19 @@ import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Gebruiker;
  * A login screen that offers login via email/password.
 
  */
-public class LoginActivity extends Activity implements LoaderCallbacks<Cursor>{
+/*public class LoginActivity extends Activity implements LoaderCallbacks<Cursor>{
 
     /**
      * A dummy authentication store containing known user names and passwords.
      * TODO: remove after connecting to a real authentication system.
      */
-    private static final String[] DUMMY_CREDENTIALS = new String[]{
+   /* private static final String[] DUMMY_CREDENTIALS = new String[]{
             "foo@example.com:hello", "bar@example.com:world"
     };
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
      */
-    private UserLoginTask mAuthTask = null;
+   /* private UserLoginTask mAuthTask = null;
 
     // UI references.
     private AutoCompleteTextView mEmailView;
@@ -62,7 +62,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor>{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        //setContentView(R.layout.activity_login);
 
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
@@ -113,7 +113,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor>{
      * If there are form errors (invalid email, missing fields, etc.), the
      * errors are presented and no actual login attempt is made.
      */
-    public void attemptLogin() {
+    /*public void attemptLogin() {
         if (mAuthTask != null) {
             return;
         }
@@ -176,7 +176,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor>{
     /**
      * Shows the progress UI and hides the login form.
      */
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
+   /* @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
     public void showProgress(final boolean show) {
         // On Honeycomb MR2 we have the ViewPropertyAnimator APIs, which allow
         // for very easy animations. If available, use these APIs to fade-in
@@ -258,7 +258,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor>{
      * Represents an asynchronous login/registration task used to authenticate
      * the user.
      */
-    public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
+   /* public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
 
         private final String mEmail;
         private final String mPassword;
@@ -359,4 +359,4 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor>{
 }
 
 
-
+*/

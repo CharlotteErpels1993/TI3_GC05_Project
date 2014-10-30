@@ -22,7 +22,7 @@ public class MainScreen extends Activity {
         inlogButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent1 = new Intent(MainScreen.this, LoginActivity.class);
+                Intent intent1 = new Intent(MainScreen.this, Login.class);
                 startActivity(intent1);
             }
         });
@@ -31,7 +31,7 @@ public class MainScreen extends Activity {
             @Override
             public void onClick(View view) {
                 //Moet naar registreer activity
-                Intent intent2 = new Intent(MainScreen.this, LoginActivity.class);
+                Intent intent2 = new Intent(MainScreen.this, SignUp.class);
                 startActivity(intent2);
             }
         });

@@ -21,7 +21,7 @@ public class activiteit_overzicht extends Activity {
         uitloggenButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent1 = new Intent(activiteit_overzicht.this, LoginActivity.class);
+                Intent intent1 = new Intent(activiteit_overzicht.this, Login.class);
                 startActivity(intent1);
             }
         });
