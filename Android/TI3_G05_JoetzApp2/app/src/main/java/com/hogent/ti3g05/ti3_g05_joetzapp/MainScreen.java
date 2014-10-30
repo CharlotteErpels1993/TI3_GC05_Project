@@ -8,8 +8,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.parse.Parse;
+
 
 public class MainScreen extends Activity {
+
+    public void onCreateParse() {
+        Parse.initialize(this, "G7iR0ji0Kc1fc2PUwhXi9Gj8HmaqK52Qmhk2ffHy", "gJJgkWD5UxMA80iqZkaUHTy8pc9UwJfdv3alDk9Q"); }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

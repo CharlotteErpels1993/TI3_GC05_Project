@@ -25,6 +25,6 @@ public class ConnectionDetector {
 					  }
 
 		  }
-		  return false;
+		  return true;
 	}
 }

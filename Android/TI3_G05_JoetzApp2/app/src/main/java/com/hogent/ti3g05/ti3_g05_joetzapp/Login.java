@@ -75,8 +75,7 @@ public class Login extends Activity{
 				} else {
 					// Internet connection is not present
 					// Ask user to connect to Internet
-					showAlertDialog(Login.this, "No Internet Connection",
-							"You don't have internet connection.", false);
+                    Toast.makeText(getApplicationContext(), "Geen internetconnectie", Toast.LENGTH_SHORT).show();
 				}
 
 			}
@@ -106,9 +105,9 @@ public class Login extends Activity{
 
 	}
 
-	public void onCreateParse() { 
-		Parse.initialize(this, "Your App ID", "Your Client ID"); 
-	}
+	public void onCreateParse() {
+        Parse.initialize(this, "G7iR0ji0Kc1fc2PUwhXi9Gj8HmaqK52Qmhk2ffHy", "gJJgkWD5UxMA80iqZkaUHTy8pc9UwJfdv3alDk9Q"); }
+
 
 
 	@Override
@@ -199,8 +198,7 @@ public class Login extends Activity{
 	}
 	protected void loginUnSuccessful() {
 		// TODO Auto-generated method stub
-		Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT).show();
-		showAlertDialog(Login.this,"Login", "Username or Password is invalid.", false);
+		Toast.makeText(getApplicationContext(), "Email of wachtwoord is ongeldig", Toast.LENGTH_SHORT).show();
 	}
 
 	private void clearErrors(){

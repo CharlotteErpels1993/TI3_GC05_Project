@@ -40,7 +40,6 @@ public class SignUp extends Activity{
 	protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
-        Parse.initialize(this, "G7iR0ji0Kc1fc2PUwhXi9Gj8HmaqK52Qmhk2ffHy", "gJJgkWD5UxMA80iqZkaUHTy8pc9UwJfdv3alDk9Q");
 
 		setContentView(R.layout.activity_signup);
 
@@ -63,16 +62,16 @@ public class SignUp extends Activity{
                             // get Internet status
                             isInternetPresent = cd.isConnectingToInternet();
                             // check for Internet status
+                            // Internet connection is not present
+// Ask user to connect to Internet
                             if (isInternetPresent) {
                                 // Internet Connection is Present
                                 // make HTTP requests
                                 createAccount();
-                            } else {
-                                // Internet connection is not present
-                                // Ask user to connect to Internet
-                                showAlertDialog(getApplicationContext(), "No Internet Connection",
-                                        "You don't have internet connection.", false);
-                            }
+                            } else
+                                Toast.makeText(getApplicationContext(), "Fout bij registreren", Toast.LENGTH_SHORT).show();
+                                //showAlertDialog(getApplicationContext(), "No Internet Connection",
+                                        //"You don't have internet connection.", false);
 
 
                             break;
@@ -148,30 +147,31 @@ public class SignUp extends Activity{
 		} else {
 			// Show a progress spinner, and kick off a background task to
 			// perform the user login attempt.
-			Toast.makeText(getApplicationContext(), "signUp", Toast.LENGTH_SHORT).show();
-			signUp(mEmail, mPassword);
+			Toast.makeText(getApplicationContext(), "Registreren", Toast.LENGTH_SHORT).show();
+			signUp(mEmail,mEmail, mPassword);
 
 		}
 
 	}
 
-	private void signUp(String mEmail, String mPassword) {
+	private void signUp(String username,String mEmail, String mPassword) {
 		// TODO Auto-generated method stub
 		Toast.makeText(getApplicationContext(), mEmail, Toast.LENGTH_SHORT).show();
 		ParseUser user = new ParseUser();
+        user.setUsername(username);
 		user.setPassword(mPassword);
 		user.setEmail(mEmail);
 		 
 		user.signUpInBackground(new SignUpCallback() {
 		  public void done(ParseException e) {
 		    if (e == null) {
-		      signUpMsg("Account Created Successfully");
+		      signUpMsg("Aacount aangemaakt.");
 		      Intent in = new Intent(getApplicationContext(),MainScreen.class);
 		      startActivity(in);
 		    } else {
 		      // Sign up didn't succeed. Look at the ParseException
 		      // to figure out what went wrong
-		    	signUpMsg("Account already taken.");
+		    	signUpMsg("Account bestaat al.");
 		    }
 		  }
 		});
