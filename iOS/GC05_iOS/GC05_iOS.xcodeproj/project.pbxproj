@@ -8,10 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0FA80B081A01350E008DB343 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA80B071A01350E008DB343 /* AppDelegate.swift */; };
-		0FA80B0A1A01350E008DB343 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA80B091A01350E008DB343 /* ViewController.swift */; };
 		0FA80B0D1A01350E008DB343 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FA80B0B1A01350E008DB343 /* Main.storyboard */; };
 		0FA80B0F1A01350E008DB343 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0FA80B0E1A01350E008DB343 /* Images.xcassets */; };
-		0FA80B121A01350E008DB343 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FA80B101A01350E008DB343 /* LaunchScreen.xib */; };
 		0FA80B1E1A01350E008DB343 /* GC05_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA80B1D1A01350E008DB343 /* GC05_iOSTests.swift */; };
 		0FA80B281A01352B008DB343 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FA80B271A01352B008DB343 /* AudioToolbox.framework */; };
 		0FA80B2A1A013533008DB343 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FA80B291A013533008DB343 /* CFNetwork.framework */; };
@@ -26,6 +24,8 @@
 		1B10A3B31A0255AB008E225F /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B10A3B21A0255AB008E225F /* Parse.framework */; };
 		1B10A3B51A0255B0008E225F /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B10A3B41A0255B0008E225F /* Bolts.framework */; };
 		1B10A3B71A0255BA008E225F /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B10A3B61A0255BA008E225F /* ParseFacebookUtils.framework */; };
+		1B10A3BA1A02615F008E225F /* CategorieenTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B10A3B91A02615F008E225F /* CategorieenTableViewController.swift */; };
+		1B10A3BD1A02622C008E225F /* VakantiesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B10A3BC1A02622C008E225F /* VakantiesTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,10 +42,8 @@
 		0FA80B021A01350E008DB343 /* GC05_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GC05_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FA80B061A01350E008DB343 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0FA80B071A01350E008DB343 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0FA80B091A01350E008DB343 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0FA80B0C1A01350E008DB343 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0FA80B0E1A01350E008DB343 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		0FA80B111A01350E008DB343 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		0FA80B171A01350E008DB343 /* GC05_iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GC05_iOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FA80B1C1A01350E008DB343 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0FA80B1D1A01350E008DB343 /* GC05_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GC05_iOSTests.swift; sourceTree = "<group>"; };
@@ -63,6 +61,8 @@
 		1B10A3B21A0255AB008E225F /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "../../../../Downloads/parse-library-1.4.2/Parse.framework"; sourceTree = "<group>"; };
 		1B10A3B41A0255B0008E225F /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "../../../../Downloads/parse-library-1.4.2/Bolts.framework"; sourceTree = "<group>"; };
 		1B10A3B61A0255BA008E225F /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseFacebookUtils.framework; path = "../../../../Downloads/parse-library-1.4.2/ParseFacebookUtils.framework"; sourceTree = "<group>"; };
+		1B10A3B91A02615F008E225F /* CategorieenTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategorieenTableViewController.swift; sourceTree = "<group>"; };
+		1B10A3BC1A02622C008E225F /* VakantiesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VakantiesTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,11 +131,10 @@
 		0FA80B041A01350E008DB343 /* GC05_iOS */ = {
 			isa = PBXGroup;
 			children = (
+				1B10A3BB1A02620A008E225F /* Controllers */,
 				0FA80B071A01350E008DB343 /* AppDelegate.swift */,
-				0FA80B091A01350E008DB343 /* ViewController.swift */,
 				0FA80B0B1A01350E008DB343 /* Main.storyboard */,
 				0FA80B0E1A01350E008DB343 /* Images.xcassets */,
-				0FA80B101A01350E008DB343 /* LaunchScreen.xib */,
 				0FA80B051A01350E008DB343 /* Supporting Files */,
 			);
 			path = GC05_iOS;
@@ -164,6 +163,15 @@
 				0FA80B1C1A01350E008DB343 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1B10A3BB1A02620A008E225F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1B10A3B91A02615F008E225F /* CategorieenTableViewController.swift */,
+				1B10A3BC1A02622C008E225F /* VakantiesTableViewController.swift */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -247,7 +255,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0FA80B0D1A01350E008DB343 /* Main.storyboard in Resources */,
-				0FA80B121A01350E008DB343 /* LaunchScreen.xib in Resources */,
 				0FA80B0F1A01350E008DB343 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -266,8 +273,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0FA80B0A1A01350E008DB343 /* ViewController.swift in Sources */,
+				1B10A3BA1A02615F008E225F /* CategorieenTableViewController.swift in Sources */,
 				0FA80B081A01350E008DB343 /* AppDelegate.swift in Sources */,
+				1B10A3BD1A02622C008E225F /* VakantiesTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,14 +304,6 @@
 				0FA80B0C1A01350E008DB343 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		0FA80B101A01350E008DB343 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0FA80B111A01350E008DB343 /* Base */,
-			);
-			name = LaunchScreen.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
