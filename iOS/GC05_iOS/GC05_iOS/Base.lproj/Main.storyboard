@@ -109,7 +109,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Vakantie1" textLabel="5ze-dr-G2t" detailTextLabel="STt-eq-uWm" style="IBUITableViewCellStyleValue1" id="GXM-Cj-tf4">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="vakantieCell" textLabel="5ze-dr-G2t" detailTextLabel="STt-eq-uWm" style="IBUITableViewCellStyleValue1" id="GXM-Cj-tf4">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GXM-Cj-tf4" id="HDt-3R-9WH">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -131,64 +131,6 @@
                                 <connections>
                                     <segue destination="q35-qh-mtC" kind="show" trigger="accessoryAction" id="oBG-Mb-jRd"/>
                                 </connections>
-                            </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="bDQ-bP-fUN" detailTextLabel="75Q-bI-Gw6" style="IBUITableViewCellStyleValue1" id="5eu-bU-PLf">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5eu-bU-PLf" id="9N8-Sf-dc3">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="VakantieNaam" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bDQ-bP-fUN">
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Meer informatie" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="75Q-bI-Gw6">
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="D1k-zw-N0W" detailTextLabel="z9m-Wf-WkH" style="IBUITableViewCellStyleValue1" id="C8X-QI-2RV">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="C8X-QI-2RV" id="9Q4-fj-5fB">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="VakantieNaam" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="D1k-zw-N0W">
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Meer informatie" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="z9m-Wf-WkH">
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KBs-hL-gzT">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KBs-hL-gzT" id="OGx-vt-ZDa">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="hjU-y2-SiZ">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hjU-y2-SiZ" id="Zx1-dt-u7m">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="oVO-pa-eUP">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oVO-pa-eUP" id="9kG-Tg-msn">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -218,13 +160,6 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GwE-Mt-Y7W" id="dTc-9b-H7l">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kxP-43-geB">
-                                                    <rect key="frame" x="429" y="10" width="150" height="100"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="100" id="Ngv-PJ-qHf"/>
-                                                        <constraint firstAttribute="width" constant="150" id="joZ-mV-YbW"/>
-                                                    </constraints>
-                                                </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="u8f-60-AfE">
                                                     <rect key="frame" x="22" y="11" width="150" height="100"/>
                                                     <constraints>
@@ -237,6 +172,13 @@
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="150" id="IcZ-8k-pHF"/>
                                                         <constraint firstAttribute="height" constant="100" id="pBq-45-K3y"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kxP-43-geB">
+                                                    <rect key="frame" x="429" y="10" width="150" height="100"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="100" id="Ngv-PJ-qHf"/>
+                                                        <constraint firstAttribute="width" constant="150" id="joZ-mV-YbW"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
@@ -405,6 +347,19 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Titel vakantie" id="EyU-Xm-7Wp"/>
+                    <connections>
+                        <outlet property="aankomstdatumLabel" destination="jZG-yo-KzI" id="c07-Pt-rDC"/>
+                        <outlet property="aantalDagenNachtenLabel" destination="jKE-X1-m7i" id="dJw-U6-MFA"/>
+                        <outlet property="afbeelding1" destination="u8f-60-AfE" id="l6c-nb-ODx"/>
+                        <outlet property="afbeelding2" destination="iAv-P8-xBj" id="ODK-OQ-iJw"/>
+                        <outlet property="afbeelding3" destination="kxP-43-geB" id="xzh-7A-Fjg"/>
+                        <outlet property="beschrijvingLabel" destination="c4b-zC-cDK" id="hCM-jf-ZqH"/>
+                        <outlet property="doelgroepLabel" destination="XGa-82-UAp" id="uh5-uh-2gN"/>
+                        <outlet property="inbegrepenPrijsLabel" destination="aGO-yv-kHP" id="yuS-Qh-qpN"/>
+                        <outlet property="locatieLabel" destination="gQQ-Ww-DKf" id="dGr-wM-aHH"/>
+                        <outlet property="maxAantalDeelnemersLabel" destination="YGY-Ah-WIL" id="0tK-jF-eHR"/>
+                        <outlet property="vertrekdatumLabel" destination="taw-Bm-ocr" id="kjw-wE-atA"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Ye-Cv-YaG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -543,18 +498,6 @@
                                 <state key="normal" title="Registreren">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="fyb-xH-x0i" kind="show" id="nAI-BP-BA5"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GnE-q7-jzk">
-                                <rect key="frame" x="201" y="298" width="132" height="30"/>
-                                <state key="normal" title="Nieuw wachtwoord">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="CoC-zI-mSL" kind="show" id="abr-co-9nc"/>
-                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Wachtwoord vergeten?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O8Y-SI-EU0">
                                 <rect key="frame" x="13" y="302" width="177.5" height="20.5"/>
@@ -562,6 +505,15 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GnE-q7-jzk">
+                                <rect key="frame" x="201" y="298" width="132" height="30"/>
+                                <state key="normal" title="Nieuw wachtwoord">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="CoC-zI-mSL" kind="show" id="60h-2V-Fzk"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -604,7 +556,7 @@
             </objects>
             <point key="canvasLocation" x="-76" y="1885"/>
         </scene>
-        <!--View Controller-->
+        <!--Wachtwoord vergeten-->
         <scene sceneID="WfJ-MF-jh6">
             <objects>
                 <viewController id="CoC-zI-mSL" sceneMemberID="viewController">
@@ -633,9 +585,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="zTh-Op-9fe" kind="popoverPresentation" popoverAnchorView="Ygf-4H-7Bi" id="ALZ-MT-y8l">
-                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                    </segue>
+                                    <segue destination="zTh-Op-9fe" kind="show" id="JTz-oJ-ABg"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -650,12 +600,13 @@
                             <constraint firstAttribute="trailingMargin" secondItem="VoK-Ur-kLA" secondAttribute="trailing" constant="12" id="xQ9-Kf-cRy"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Wachtwoord vergeten" id="2Ha-qn-9LR"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="91n-zZ-7sd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="613" y="1885"/>
         </scene>
-        <!--View Controller-->
+        <!--Wachtwoord vergeten-->
         <scene sceneID="c6A-85-GXb">
             <objects>
                 <viewController id="zTh-Op-9fe" sceneMemberID="viewController">
@@ -690,9 +641,6 @@
                                 <state key="normal" title="Ga terug">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="QSw-na-ve9" kind="show" id="GPJ-yS-zAc"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -731,6 +679,7 @@
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" title="Wachtwoord vergeten" id="aVl-CL-caF"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zle-uu-kzH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1120,9 +1069,7 @@
                     <navigationItem key="navigationItem" title="Registreren" id="Sfz-uU-Y3L">
                         <barButtonItem key="rightBarButtonItem" title="Voltooi" id="TgS-Sz-GiH">
                             <connections>
-                                <segue destination="69z-Tv-Va1" kind="popoverPresentation" popoverAnchorBarButtonItem="TgS-Sz-GiH" id="dlr-fg-KLR">
-                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                </segue>
+                                <segue destination="69z-Tv-Va1" kind="show" id="mEb-V8-ubm"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1131,7 +1078,7 @@
             </objects>
             <point key="canvasLocation" x="2140" y="1036"/>
         </scene>
-        <!--Registratie Succesvol View Controller-->
+        <!--Registratie voltooid-->
         <scene sceneID="W6m-of-VF8">
             <objects>
                 <viewController id="69z-Tv-Va1" customClass="RegistratieSuccesvolViewController" customModule="GC05_iOS" customModuleProvider="target" sceneMemberID="viewController">
@@ -1155,7 +1102,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="QSw-na-ve9" kind="show" id="PYL-So-2C0"/>
+                                    <segue destination="QSw-na-ve9" kind="show" id="PvD-Wb-dOi"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1181,7 +1128,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="vbh-wi-0lX"/>
+                    <navigationItem key="navigationItem" title="Registratie voltooid" id="vbh-wi-0lX"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0km-KM-IRT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1190,6 +1137,5 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="a4u-ur-Dbv"/>
-        <segue reference="tVC-BF-hWu"/>
     </inferredMetricsTieBreakers>
 </document>
