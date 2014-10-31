@@ -28,6 +28,7 @@ public class Login extends Activity{
 	Button btn_LoginIn = null;
 	Button btn_SignUp = null;
 	Button btn_ForgetPass = null;
+    Button btn_back = null;
 	private EditText mUserNameEditText;
 	private EditText mPasswordEditText;
 
@@ -55,6 +56,7 @@ public class Login extends Activity{
 		btn_LoginIn = (Button) findViewById(R.id.btn_login);
 		btn_SignUp = (Button) findViewById(R.id.btn_signup);
         btn_ForgetPass = (Button) findViewById(R.id.btn_ForgetPass);
+        btn_back = (Button) findViewById(R.id.btn_return);
 		mUserNameEditText = (EditText) findViewById(R.id.username);
 		mPasswordEditText = (EditText) findViewById(R.id.password);
 
@@ -98,6 +100,16 @@ public class Login extends Activity{
                 // TODO Auto-generated method stub
                 Intent in =  new Intent(Login.this,ForgetParsePassword.class);
                 startActivity(in);
+            }
+        });
+
+        btn_back = (Button) findViewById(R.id.btn_back);
+
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent1 = new Intent(Login.this, MainScreen.class);
+                startActivity(intent1);
             }
         });
 

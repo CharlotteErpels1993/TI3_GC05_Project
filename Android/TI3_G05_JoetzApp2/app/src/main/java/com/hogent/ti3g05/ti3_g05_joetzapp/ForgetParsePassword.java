@@ -5,6 +5,7 @@ import com.parse.ParseUser;
 import com.parse.RequestPasswordResetCallback;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 public class ForgetParsePassword extends Activity{
 	EditText et_forgetpassword = null;
 	Button btn_submitforgetpassword = null;
+    Button btn_back = null;
 	String password = null;
 	
 	
@@ -27,6 +29,15 @@ public class ForgetParsePassword extends Activity{
 		
 		et_forgetpassword = (EditText) findViewById(R.id.et_forgetpassword);
 		btn_submitforgetpassword = (Button) findViewById(R.id.btn_submitforgetpassword);
+        btn_back = (Button) findViewById(R.id.btn_back);
+
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent1 = new Intent(ForgetParsePassword.this, Login.class);
+                startActivity(intent1);
+            }
+        });
 		
 		btn_submitforgetpassword.setOnClickListener(new OnClickListener() {
 			
