@@ -8,74 +8,37 @@
         <!--Vakanties-->
         <scene sceneID="RQL-0y-cO4">
             <objects>
-                <tableViewController id="xj6-b1-6XR" customClass="CategorieenTableViewController" customModule="GC05_iOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="xxD-Ib-aLY">
+                <tableViewController id="xj6-b1-6XR" customClass="VakantiesTableViewController" customModule="GC05_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="112" sectionHeaderHeight="22" sectionFooterHeight="22" id="xxD-Ib-aLY">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Groep1" textLabel="oRs-Wh-1eS" detailTextLabel="5Ty-xf-qBE" style="IBUITableViewCellStyleValue1" id="u8I-xk-xAt">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Vakantie" rowHeight="112" id="u8I-xk-xAt">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="u8I-xk-xAt" id="P3a-47-5bl">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Van 3 tot 5 jaar" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="oRs-Wh-1eS">
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="VakantieNaam" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SRB-Ve-8pV">
+                                            <rect key="frame" x="8" y="8" width="111" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Bekijk vakanties" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5Ty-xf-qBE">
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ik wil deze vakantie!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SHQ-5H-NmG">
+                                            <rect key="frame" x="413" y="45" width="154" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nnu-HO-lDP">
+                                            <rect key="frame" x="8" y="45" width="284" height="56"/>
+                                        </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="4dx-PD-dPC" kind="show" trigger="accessoryAction" id="zmX-zI-Hwf"/>
+                                    <segue destination="q35-qh-mtC" kind="show" id="laN-Ih-sVW"/>
                                 </connections>
-                            </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Groep2" textLabel="F0V-2X-bsc" detailTextLabel="AZ6-yK-L62" style="IBUITableViewCellStyleValue1" id="VjG-sR-2d7">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VjG-sR-2d7" id="BHN-kq-L3f">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Van 6 tot 12 jaar" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="F0V-2X-bsc">
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Bekijk vakanties" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="AZ6-yK-L62">
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Groep3" textLabel="B9Y-uM-HAy" detailTextLabel="QYZ-61-SLt" style="IBUITableViewCellStyleValue1" id="vab-UH-Pe6">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vab-UH-Pe6" id="6a4-vF-Oe6">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Van 12 tot 16 jaar" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="B9Y-uM-HAy">
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Bekijk vakanties" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QYZ-61-SLt">
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -84,11 +47,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Vakanties" id="jTS-Lj-o5t">
-                        <barButtonItem key="leftBarButtonItem" title="Registreren" id="Mu4-vE-WSA">
-                            <connections>
-                                <segue destination="fyb-xH-x0i" kind="show" id="vPe-35-zYk"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Inloggen" id="o5m-2M-MAb">
                             <connections>
                                 <segue destination="QSw-na-ve9" kind="show" id="Wu8-dP-1NV"/>
@@ -98,51 +56,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FgJ-yq-mEZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="659" y="336"/>
-        </scene>
-        <!--Vakanties-->
-        <scene sceneID="Qbi-CH-WPz">
-            <objects>
-                <tableViewController id="4dx-PD-dPC" customClass="VakantiesTableViewController" customModule="GC05_iOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="k5l-vj-eME">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="vakantieCell" textLabel="5ze-dr-G2t" detailTextLabel="STt-eq-uWm" style="IBUITableViewCellStyleValue1" id="GXM-Cj-tf4">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GXM-Cj-tf4" id="HDt-3R-9WH">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="VakantieNaam" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5ze-dr-G2t">
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Meer informatie" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="STt-eq-uWm">
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="q35-qh-mtC" kind="show" trigger="accessoryAction" id="oBG-Mb-jRd"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="4dx-PD-dPC" id="BiB-zv-2EY"/>
-                            <outlet property="delegate" destination="4dx-PD-dPC" id="1Js-ut-1gM"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Vakanties" id="VA9-kp-1MJ"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UNp-hs-OLV" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1343" y="333"/>
+            <point key="canvasLocation" x="701" y="336"/>
         </scene>
         <!--Titel vakantie-->
         <scene sceneID="Rwh-qy-srh">
@@ -363,7 +277,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Ye-Cv-YaG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2051" y="336"/>
+            <point key="canvasLocation" x="1384" y="336"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cC5-ea-HfQ">
@@ -460,25 +374,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wachtwoord:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vgN-OB-IWF">
-                                <rect key="frame" x="16" y="209" width="102" height="21"/>
+                                <rect key="frame" x="16" y="209" width="101.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nog niet geregistreerd?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="95n-5k-qvj">
-                                <rect key="frame" x="13" y="330" width="180" height="21"/>
+                                <rect key="frame" x="13" y="343" width="180" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="E-mail:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4pR-QD-gU1">
-                                <rect key="frame" x="16" y="135" width="54" height="21"/>
+                                <rect key="frame" x="16" y="135" width="53.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Geef uw gegevens in:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d94-IW-Wd6">
-                                <rect key="frame" x="16" y="100" width="166" height="21"/>
+                                <rect key="frame" x="16" y="100" width="165.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -489,13 +403,33 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wachtwoord vergeten?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O8Y-SI-EU0">
-                                <rect key="frame" x="13" y="302" width="178" height="21"/>
+                                <rect key="frame" x="13" y="315" width="177.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Ve-MB-6Yz">
+                                <rect key="frame" x="201" y="338" width="79" height="30"/>
+                                <state key="normal" title="Registreren">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="fyb-xH-x0i" kind="show" id="Mbx-DM-uw9"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IeG-wh-GGy">
+                                <rect key="frame" x="16" y="165" width="563" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hZK-bN-dtd">
+                                <rect key="frame" x="277" y="275" width="59" height="30"/>
+                                <state key="normal" title="Inloggen">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GnE-q7-jzk">
-                                <rect key="frame" x="200" y="298" width="132" height="30"/>
+                                <rect key="frame" x="201" y="311" width="132" height="30"/>
                                 <state key="normal" title="Nieuw wachtwoord">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -503,17 +437,6 @@
                                     <segue destination="CoC-zI-mSL" kind="show" id="dhz-kz-rF9"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Ve-MB-6Yz">
-                                <rect key="frame" x="201" y="326" width="79" height="30"/>
-                                <state key="normal" title="Registreren">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IeG-wh-GGy">
-                                <rect key="frame" x="16" y="165" width="563" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -531,14 +454,15 @@
                             <constraint firstItem="H0a-36-oYG" firstAttribute="leading" secondItem="omj-uN-gDv" secondAttribute="leadingMargin" id="F0v-wy-C4S"/>
                             <constraint firstItem="95n-5k-qvj" firstAttribute="leading" secondItem="omj-uN-gDv" secondAttribute="leadingMargin" constant="-3" id="Hfz-sL-Rp7"/>
                             <constraint firstItem="vgN-OB-IWF" firstAttribute="leading" secondItem="omj-uN-gDv" secondAttribute="leadingMargin" id="JT4-ep-5ua"/>
-                            <constraint firstItem="GnE-q7-jzk" firstAttribute="top" secondItem="H0a-36-oYG" secondAttribute="bottom" constant="31" id="Jbm-HS-6em"/>
+                            <constraint firstItem="GnE-q7-jzk" firstAttribute="top" secondItem="H0a-36-oYG" secondAttribute="bottom" constant="44" id="Jbm-HS-6em"/>
                             <constraint firstItem="vgN-OB-IWF" firstAttribute="leading" secondItem="omj-uN-gDv" secondAttribute="leadingMargin" id="Jfp-am-A1x"/>
                             <constraint firstItem="O8Y-SI-EU0" firstAttribute="leading" secondItem="omj-uN-gDv" secondAttribute="leadingMargin" constant="-3" id="JjN-s1-ayz"/>
                             <constraint firstItem="O8Y-SI-EU0" firstAttribute="top" secondItem="H0a-36-oYG" secondAttribute="bottom" constant="33" id="LTL-yZ-nUt"/>
                             <constraint firstItem="O8Y-SI-EU0" firstAttribute="leading" secondItem="omj-uN-gDv" secondAttribute="leadingMargin" constant="-3" id="M0l-5g-TbJ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="H0a-36-oYG" secondAttribute="trailing" constant="5" id="Nvm-e2-MTA"/>
                             <constraint firstItem="H0a-36-oYG" firstAttribute="leading" secondItem="omj-uN-gDv" secondAttribute="leadingMargin" id="Qfw-4W-WEJ"/>
-                            <constraint firstItem="O8Y-SI-EU0" firstAttribute="top" secondItem="H0a-36-oYG" secondAttribute="bottom" constant="35" id="ae6-GF-6Ke"/>
+                            <constraint firstAttribute="centerX" secondItem="hZK-bN-dtd" secondAttribute="centerX" constant="-6.5" id="Smb-xy-ew6"/>
+                            <constraint firstItem="O8Y-SI-EU0" firstAttribute="top" secondItem="H0a-36-oYG" secondAttribute="bottom" constant="48" id="ae6-GF-6Ke"/>
                             <constraint firstAttribute="trailingMargin" secondItem="IeG-wh-GGy" secondAttribute="trailing" constant="5" id="bcW-sZ-9jA"/>
                             <constraint firstItem="4pR-QD-gU1" firstAttribute="top" secondItem="d94-IW-Wd6" secondAttribute="bottom" constant="16" id="c9k-5L-XdF"/>
                             <constraint firstItem="GnE-q7-jzk" firstAttribute="top" secondItem="5QS-Qa-34g" secondAttribute="bottom" constant="278" id="euR-hv-bKE"/>
@@ -547,8 +471,9 @@
                             <constraint firstItem="d94-IW-Wd6" firstAttribute="top" secondItem="5QS-Qa-34g" secondAttribute="bottom" constant="36" id="iua-GL-P10"/>
                             <constraint firstItem="GnE-q7-jzk" firstAttribute="leading" secondItem="O8Y-SI-EU0" secondAttribute="trailing" constant="10.5" id="mgy-3k-c9n"/>
                             <constraint firstItem="IeG-wh-GGy" firstAttribute="top" secondItem="4pR-QD-gU1" secondAttribute="bottom" constant="9" id="mzi-ap-e6R"/>
-                            <constraint firstItem="9Ve-MB-6Yz" firstAttribute="top" secondItem="GnE-q7-jzk" secondAttribute="bottom" constant="-2" id="oc3-ed-Ng4"/>
+                            <constraint firstItem="9Ve-MB-6Yz" firstAttribute="top" secondItem="GnE-q7-jzk" secondAttribute="bottom" constant="-3" id="oc3-ed-Ng4"/>
                             <constraint firstItem="4pR-QD-gU1" firstAttribute="leading" secondItem="omj-uN-gDv" secondAttribute="leadingMargin" id="s5Y-uY-rkp"/>
+                            <constraint firstItem="hZK-bN-dtd" firstAttribute="top" secondItem="H0a-36-oYG" secondAttribute="bottom" constant="8" id="s7e-i0-4xA"/>
                             <constraint firstAttribute="trailingMargin" secondItem="H0a-36-oYG" secondAttribute="trailing" constant="5" id="sL2-AN-6vW"/>
                             <constraint firstItem="d94-IW-Wd6" firstAttribute="top" secondItem="5QS-Qa-34g" secondAttribute="bottom" constant="80" id="se5-5w-dcu"/>
                             <constraint firstItem="4pR-QD-gU1" firstAttribute="leading" secondItem="omj-uN-gDv" secondAttribute="leadingMargin" id="upa-uJ-icg"/>
@@ -604,19 +529,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Vul uw email adres in:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sYB-Vw-WfL">
-                                <rect key="frame" x="36" y="111" width="167" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vul uw email adres in:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sYB-Vw-WfL">
+                                <rect key="frame" x="36" y="155" width="166.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VoK-Ur-kLA">
-                                <rect key="frame" x="31" y="146" width="541" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VoK-Ur-kLA">
+                                <rect key="frame" x="31" y="190" width="541" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ygf-4H-7Bi">
-                                <rect key="frame" x="31" y="197" width="194" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ygf-4H-7Bi">
+                                <rect key="frame" x="31" y="241.5" width="194" height="30"/>
                                 <state key="normal" title="Stel wachtwoord opnieuw in">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -655,25 +580,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Er is een mail verstuurd." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eTC-bJ-1Fs">
-                                <rect key="frame" x="208" y="232" width="185" height="21"/>
+                                <rect key="frame" x="208" y="232" width="184.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Volg de stappen om uw wachtwoord" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9AP-bJ-lcA">
-                                <rect key="frame" x="160" y="260" width="280" height="21"/>
+                                <rect key="frame" x="160" y="260" width="280" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="opnieuw in te stellen." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mvx-8V-9En">
-                                <rect key="frame" x="219" y="289" width="162" height="21"/>
+                                <rect key="frame" x="219" y="289" width="162" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rAR-ya-agS">
-                                <rect key="frame" x="270" y="311" width="60" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rAR-ya-agS">
+                                <rect key="frame" x="270" y="310" width="60" height="30"/>
                                 <state key="normal" title="Ga terug">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -1137,9 +1062,6 @@
                                 <state key="normal" title="Inloggen">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="QSw-na-ve9" kind="show" id="6xn-h8-q85"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1171,7 +1093,4 @@
             <point key="canvasLocation" x="2830" y="1036"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="6xn-h8-q85"/>
-    </inferredMetricsTieBreakers>
 </document>
