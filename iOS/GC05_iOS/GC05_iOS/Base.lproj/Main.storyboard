@@ -86,12 +86,12 @@
                     <navigationItem key="navigationItem" title="Vakanties" id="jTS-Lj-o5t">
                         <barButtonItem key="leftBarButtonItem" title="Registreren" id="Mu4-vE-WSA">
                             <connections>
-                                <segue destination="fyb-xH-x0i" kind="show" id="tVC-BF-hWu"/>
+                                <segue destination="fyb-xH-x0i" kind="show" id="vPe-35-zYk"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Inloggen" id="o5m-2M-MAb">
                             <connections>
-                                <segue destination="QSw-na-ve9" kind="show" id="a4u-ur-Dbv"/>
+                                <segue destination="QSw-na-ve9" kind="show" id="Wu8-dP-1NV"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -493,12 +493,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eEl-1A-XYC">
-                                <rect key="frame" x="201" y="326" width="79" height="30"/>
-                                <state key="normal" title="Registreren">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Wachtwoord vergeten?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O8Y-SI-EU0">
                                 <rect key="frame" x="13" y="302" width="177.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -511,14 +505,19 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="CoC-zI-mSL" kind="show" id="60h-2V-Fzk"/>
+                                    <segue destination="CoC-zI-mSL" kind="show" id="dhz-kz-rF9"/>
                                 </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Ve-MB-6Yz">
+                                <rect key="frame" x="201" y="326" width="79" height="30"/>
+                                <state key="normal" title="Registreren">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="H0a-36-oYG" firstAttribute="top" secondItem="vgN-OB-IWF" secondAttribute="bottom" constant="8.5" id="3r2-tf-Xop"/>
-                            <constraint firstItem="eEl-1A-XYC" firstAttribute="leading" secondItem="95n-5k-qvj" secondAttribute="trailing" constant="8" id="6dL-Cl-yqT"/>
                             <constraint firstItem="GnE-q7-jzk" firstAttribute="top" secondItem="H0a-36-oYG" secondAttribute="bottom" constant="29" id="AjT-jy-NaQ"/>
                             <constraint firstItem="d94-IW-Wd6" firstAttribute="leading" secondItem="omj-uN-gDv" secondAttribute="leadingMargin" id="D2j-Yz-70z"/>
                             <constraint firstItem="O8Y-SI-EU0" firstAttribute="leading" secondItem="omj-uN-gDv" secondAttribute="leadingMargin" constant="-3" id="Eqg-jr-dxv"/>
@@ -526,13 +525,9 @@
                             <constraint firstItem="vgN-OB-IWF" firstAttribute="leading" secondItem="omj-uN-gDv" secondAttribute="leadingMargin" id="Jfp-am-A1x"/>
                             <constraint firstItem="O8Y-SI-EU0" firstAttribute="leading" secondItem="omj-uN-gDv" secondAttribute="leadingMargin" constant="-3" id="JjN-s1-ayz"/>
                             <constraint firstItem="O8Y-SI-EU0" firstAttribute="top" secondItem="H0a-36-oYG" secondAttribute="bottom" constant="33" id="LTL-yZ-nUt"/>
-                            <constraint firstItem="eEl-1A-XYC" firstAttribute="top" secondItem="GnE-q7-jzk" secondAttribute="bottom" constant="-2" id="LoQ-tJ-ylF"/>
                             <constraint firstAttribute="trailingMargin" secondItem="H0a-36-oYG" secondAttribute="trailing" constant="5" id="Nvm-e2-MTA"/>
-                            <constraint firstItem="eEl-1A-XYC" firstAttribute="leading" secondItem="95n-5k-qvj" secondAttribute="trailing" constant="8" id="QNd-x9-ptN"/>
-                            <constraint firstItem="eEl-1A-XYC" firstAttribute="top" secondItem="H0a-36-oYG" secondAttribute="bottom" constant="57" id="bqq-sS-OL6"/>
                             <constraint firstItem="4pR-QD-gU1" firstAttribute="top" secondItem="d94-IW-Wd6" secondAttribute="bottom" constant="16" id="c9k-5L-XdF"/>
                             <constraint firstItem="GnE-q7-jzk" firstAttribute="top" secondItem="5QS-Qa-34g" secondAttribute="bottom" constant="278" id="euR-hv-bKE"/>
-                            <constraint firstItem="eEl-1A-XYC" firstAttribute="top" secondItem="GnE-q7-jzk" secondAttribute="bottom" constant="-2" id="ftL-h1-R1L"/>
                             <constraint firstItem="95n-5k-qvj" firstAttribute="top" secondItem="O8Y-SI-EU0" secondAttribute="bottom" constant="8" id="gqV-A3-g4o"/>
                             <constraint firstItem="95n-5k-qvj" firstAttribute="leading" secondItem="omj-uN-gDv" secondAttribute="leadingMargin" constant="-3" id="hme-B9-WLy"/>
                             <constraint firstItem="GnE-q7-jzk" firstAttribute="leading" secondItem="O8Y-SI-EU0" secondAttribute="trailing" constant="10.5" id="mgy-3k-c9n"/>
@@ -546,7 +541,6 @@
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="AjT-jy-NaQ"/>
-                                <exclude reference="bqq-sS-OL6"/>
                             </mask>
                         </variation>
                     </view>
@@ -585,7 +579,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="zTh-Op-9fe" kind="show" id="JTz-oJ-ABg"/>
+                                    <segue destination="zTh-Op-9fe" kind="show" id="kWb-f4-yJG"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1069,7 +1063,7 @@
                     <navigationItem key="navigationItem" title="Registreren" id="Sfz-uU-Y3L">
                         <barButtonItem key="rightBarButtonItem" title="Voltooi" id="TgS-Sz-GiH">
                             <connections>
-                                <segue destination="69z-Tv-Va1" kind="show" id="mEb-V8-ubm"/>
+                                <segue destination="69z-Tv-Va1" kind="show" id="qbT-aP-08U"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1102,7 +1096,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="QSw-na-ve9" kind="show" id="PvD-Wb-dOi"/>
+                                    <segue destination="QSw-na-ve9" kind="show" id="6xn-h8-q85"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1136,6 +1130,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="a4u-ur-Dbv"/>
+        <segue reference="6xn-h8-q85"/>
     </inferredMetricsTieBreakers>
 </document>
