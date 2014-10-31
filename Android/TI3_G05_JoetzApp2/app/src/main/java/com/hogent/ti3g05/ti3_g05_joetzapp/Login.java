@@ -172,11 +172,15 @@ public class Login extends Activity{
 		}
 
 		// Check for a valid email address.
-		if (TextUtils.isEmpty(username)) {
-			mUserNameEditText.setError(getString(R.string.error_field_required));
-			focusView = mUserNameEditText;
-			cancel = true;
-		}
+        if (TextUtils.isEmpty(username)) {
+            mUserNameEditText.setError(getString(R.string.error_field_required));
+            focusView = mUserNameEditText;
+            cancel = true;
+        } else if (!username.contains("@")) {
+            mUserNameEditText.setError(getString(R.string.error_invalid_email));
+            focusView = mUserNameEditText;
+            cancel = true;
+        }
 
 		if (cancel) {
 			// There was an error; don't attempt login and focus the first
