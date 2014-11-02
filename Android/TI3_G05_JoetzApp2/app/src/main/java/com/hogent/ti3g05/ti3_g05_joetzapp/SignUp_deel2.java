@@ -36,7 +36,7 @@ public class SignUp_deel2 extends Activity{
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_signup_deel3);
+        setContentView(R.layout.activity_signup_deel2);
 
         /*ImageView img= (ImageView) findViewById(R.id.imageViewBondMoyson);
         img.setImageResource(R.drawable.bondmoyson);*/
@@ -47,7 +47,7 @@ public class SignUp_deel2 extends Activity{
 
         aansluitingsnummer = (EditText) findViewById(R.id.aansluitingsnummer);
 
-        volgendeButton = (Button) findViewById(R.id.btn_volgendeDeel3);
+        volgendeButton = (Button) findViewById(R.id.btn_volgendedeel3);
 
         terugGaanButton = (Button) findViewById(R.id.btn_terugNaarDeel1);
 
@@ -122,7 +122,9 @@ public class SignUp_deel2 extends Activity{
 
         //Hier moet het aansluitingsnummer doormiddelvan parse naar de db
 
-        user.signUpInBackground(new SignUpCallback() {
+        Intent intent = new Intent(SignUp_deel2.this, SignUp_deel3.class);
+        startActivity(intent);
+        /*user.signUpInBackground(new SignUpCallback() {
             public void done(ParseException e) {
                 if (e == null) {
                 //+ opslaan naar db!!
@@ -137,7 +139,7 @@ public class SignUp_deel2 extends Activity{
                     signUpMsg("Aansluitingsnummer verkeerd");
                 }
             }
-        });
+        });*/
     }
 
     protected void signUpMsg(String msg) {

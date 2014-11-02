@@ -12,11 +12,8 @@ import android.widget.RadioGroup;
 
 public class SignUp_deel1 extends Activity{
 
-    private boolean keuze;
     private RadioGroup rg = null;
-    private Button keerTerugBtn;
     private Button terugButton;
-    private Button volgendeButton;
 
 
     // flag for Internet connection status
