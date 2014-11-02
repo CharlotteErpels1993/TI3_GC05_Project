@@ -1,31 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/LoginFormContainer" >
 
-
-    <TextView
-        android:layout_width="fill_parent"
+    <EditText
+        android:id="@+id/etEmail"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Bent u lid van Bond Moyson?"
-        android:id="@+id/textViewLid"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"/>
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:hint="@string/emailHint"
+        android:inputType="textEmailAddress" />
 
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etEmail"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:hint="@string/passwordHint"
+        android:inputType="textPassword"
+        android:maxLength="10" />
+
+    <EditText
+        android:id="@+id/etPasswordConfirm"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etPassword"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:hint="@string/confirmPasswordHint"
+        android:inputType="textPassword" />
 
     <Button
+        android:id="@+id/btnCreateAccount"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/volgende"
-        android:id="@+id/btn_volgende"
-        android:layout_below="@id/radioButtonNee"
-        android:layout_alignParentStart="true" />
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/back"
-        android:id="@+id/btn_terugGaan"
-        android:layout_below="@id/btn_volgende"
-        android:layout_alignParentStart="true" />
+        android:layout_below="@id/etPasswordConfirm"
+        android:layout_marginTop="25dp"
+        android:text="@string/createAccount" />
 
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnCreateAccount"
+        android:text="@string/back" />
 
 </RelativeLayout>

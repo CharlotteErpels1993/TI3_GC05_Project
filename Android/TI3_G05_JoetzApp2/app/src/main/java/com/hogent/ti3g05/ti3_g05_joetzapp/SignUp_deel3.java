@@ -2,9 +2,6 @@ package com.hogent.ti3g05.ti3_g05_joetzapp;
 
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -14,12 +11,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
-public class SignUp extends Activity{
+public class SignUp_deel3 extends Activity{
 
 	private EditText mEmailEditText; 
 	private EditText mPasswordEditText;
@@ -41,7 +37,7 @@ public class SignUp extends Activity{
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
 
-		setContentView(R.layout.activity_signup);
+		setContentView(R.layout.activity_signup_deel3);
 
 		// creating connection detector class instance
 				cd = new ConnectionDetector(getApplicationContext());
@@ -52,7 +48,7 @@ public class SignUp extends Activity{
 		mConfirmPasswordEditText = (EditText) findViewById(R.id.etPasswordConfirm);
 
 		mCreateAccountButton = (Button) findViewById(R.id.btnCreateAccount);
-		mCreateAccountButton.setOnClickListener(new View.OnClickListener() {
+		mCreateAccountButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -85,10 +81,10 @@ public class SignUp extends Activity{
 
         terugKerenButton = (Button) findViewById(R.id.btnBack);
 
-        terugKerenButton.setOnClickListener(new View.OnClickListener() {
+        terugKerenButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent1 = new Intent(SignUp.this, MainScreen.class);
+                Intent intent1 = new Intent(SignUp_deel3.this, MainScreen.class);
                 startActivity(intent1);
             }
         });

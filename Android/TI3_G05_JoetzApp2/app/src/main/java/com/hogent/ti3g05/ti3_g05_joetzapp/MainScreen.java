@@ -36,7 +36,7 @@ public class MainScreen extends Activity {
             @Override
             public void onClick(View view) {
                 //Moet naar registreer activity
-                Intent intent2 = new Intent(MainScreen.this, SignUp.class);
+                Intent intent2 = new Intent(MainScreen.this, SignUp_deel3.class);
                 startActivity(intent2);
             }
         });

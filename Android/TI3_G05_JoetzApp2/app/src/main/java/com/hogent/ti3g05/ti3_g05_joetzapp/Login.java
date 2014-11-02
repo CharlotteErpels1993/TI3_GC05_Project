@@ -102,7 +102,7 @@ public class Login extends Activity{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent in =  new Intent(Login.this,SignUp.class);
+				Intent in =  new Intent(Login.this,SignUp_deel3.class);
 				startActivity(in);
 			}
 		});

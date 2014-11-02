@@ -52,6 +52,8 @@
     <string name="menu_forgot_password">Wachtwoord vergeten</string>
     <string name="volgende">Volgende</string>
     <string name="aansluitingsnummer">Voer je aansluitingsnummer in.</string>
+    <string name="bondMoyson">Bent u lid van Bond Moyson?</string>
+    <string name="aanlsuitingsnummerhint">Geef uw aansluitingsnummer in</string>
 
 
 </resources>

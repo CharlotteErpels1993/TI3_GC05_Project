@@ -6,42 +6,39 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Bent u lid van Bond Moyson?"
+        android:text="@string/bondMoyson"
         android:id="@+id/textViewLid"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"/>
 
-    <RadioButton
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/textViewLid">
+
+  <RadioButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/ja"
         android:id="@+id/radioButtonJa"
-        android:layout_alignParentStart="true"
-        android:layout_below="@id/textViewLid"
-        android:layout_marginTop="20dp"
           />
 
     <RadioButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/nee"
-        android:id="@+id/radioButtonNee"
-        android:layout_below="@id/radioButtonJa"
-        android:layout_alignParentStart="true" />
+        android:id="@+id/radioButtonNee" />
+    </RadioGroup>
 
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/volgende"
-        android:id="@+id/btn_volgende"
-        android:layout_below="@id/radioButtonNee"
-        android:layout_alignParentStart="true" />
+
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/back"
         android:id="@+id/btn_terugGaan"
-        android:layout_below="@id/btn_volgende"
+        android:layout_below="@id/radioGroup"
         android:layout_alignParentStart="true" />
 
 

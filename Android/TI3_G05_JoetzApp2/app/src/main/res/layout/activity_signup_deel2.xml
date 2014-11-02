@@ -2,30 +2,39 @@
     style="@style/LoginFormContainer" >
 
 
-    <TextView
+    <!--<TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/aansluitingsnummer"
         android:id="@+id/textViewAansluitingsnummer"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"/>
+        android:layout_alignParentStart="true"/> -->
 
-    <!-- Hier moet de afbeelding van de sticker van bond moyson, in code? :/-->
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imageViewBondMoyson"
-        android:layout_below="@id/textViewAansluitingsnummer"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
         android:layout_alignParentStart="true" />
+
+    <EditText
+        android:id="@+id/aansluitingsnummer"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageViewBondMoyson"
+        android:hint="@string/aanlsuitingsnummerhint"
+        android:inputType="textEmailAddress" />
+
 
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/volgende"
         android:id="@+id/btn_volgendeDeel3"
-        android:layout_below="@id/imageViewBondMoyson"
+        android:layout_below="@id/aansluitingsnummer"
         android:layout_alignParentStart="true" />
     <Button
         android:layout_width="fill_parent"
