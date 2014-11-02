@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.parse.ParseException;
+import com.parse.ParseObject;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
@@ -150,18 +151,46 @@ public class SignUp_deel3 extends Activity{
 
 	}
 
-	private void signUp(String username,String mEmail, String mPassword) {
-		// TODO Auto-generated method stub
-		Toast.makeText(getApplicationContext(), mEmail, Toast.LENGTH_SHORT).show();
-		ParseUser user = new ParseUser();
+    private void signUp(String username,String mEmail, String mPassword) {
+        //Toast.makeText(getApplicationContext(), mEmail, Toast.LENGTH_SHORT).show();
+
+		/*ParseUser user = new ParseUser();
         user.setUsername(username);
 		user.setPassword(mPassword);
-		user.setEmail(mEmail);
-		 
-		user.signUpInBackground(new SignUpCallback() {
+		user.setEmail(mEmail);*/
+        ParseObject user = new ParseObject("Ouder");
+        user.put("username", username);
+        user.put("email", mEmail);
+        user.put("wachtwoord", mPassword);
+        user.saveInBackground();
+        //TODO: data uit vorige schermen ophalen en erin steken.
+        //TODO: controleren of er al een account bestaat met dit Emailadres
+
+        //hieronder is code om data ophalen.
+        /*ParseQuery<ParseObject> query = ParseQuery.getQuery("Ouder");
+        query.whereEqualTo("Email", mEmail);
+        query.findInBackground(new FindCallback<ParseObject>() {
+           public void done(List<ParseObject> objects, ParseException e) {
+               if (e == null) {
+                   // object will be your game score
+                   signUpMsg("Email: " + objects.get(0).getString("Email"));
+                   signUpMsg("Wachtwoord: " + objects.get(0).getString("Wachtwoord"));
+
+               } else {
+                   // something went wrong
+                   signUpMsg("Er is een fout gebeurd tijdens de registratie. Gelieve opnieuw te proberen.");
+               }
+           }
+       });*/
+
+
+        signUpMsg("Account aangemaakt.");
+        Intent in = new Intent(getApplicationContext(),MainScreen.class);
+        startActivity(in);
+        /*user.signUpInBackground(new SignUpCallback() {
 		  public void done(ParseException e) {
 		    if (e == null) {
-		      signUpMsg("Account aangemaakt.");
+		      signUpMsg("Eigen account aangemaakt.");
 		      Intent in = new Intent(getApplicationContext(),MainScreen.class);
 		      startActivity(in);
 		    } else {
@@ -170,11 +199,10 @@ public class SignUp_deel3 extends Activity{
 		    	signUpMsg("Account bestaat al.");
 		    }
 		  }
-		});
-	}
+		});*/
+    }
 
 	protected void signUpMsg(String msg) {
-		// TODO Auto-generated method stub
 		Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();	
 	}
 
