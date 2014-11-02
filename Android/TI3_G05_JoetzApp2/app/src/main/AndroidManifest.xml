@@ -18,13 +18,13 @@
             android:name=".MainScreen"
             android:label="@string/title_activity_main_screen" >
 
-
-        </activity>
-        <!--<intent-filter>
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
+            </intent-filter>
+
+        </activity>
         <application
             android:allowBackup="true"
             android:name=".MyParseApplication"
@@ -44,11 +44,6 @@
         <activity
             android:name=".activiteit_overzicht"
             android:label="@string/title_activity_activiteit_overzicht" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".profiel_detail"
