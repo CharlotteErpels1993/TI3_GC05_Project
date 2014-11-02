@@ -16,11 +16,16 @@ public class Vakantie extends Activiteit{
     //inbegrepenPrijs ook berekend veld?
     private String doelGroep;
     private int maxAantalDeelnemers;
+    private String naamVakantie;
 
     public Vakantie(){
         super();
 
     }
+
+    public String getNaamVakantie() {return naamVakantie;}
+
+    public void setNaamVakantie(String naamVakantie) { this.naamVakantie = naamVakantie;}
 
     public Date getVertrekDatum() {
         return vertrekDatum;

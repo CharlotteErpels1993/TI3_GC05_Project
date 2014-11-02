@@ -1,49 +1,98 @@
 package com.hogent.ti3g05.ti3_g05_joetzapp;
 
+import java.util.ArrayList;
+import java.util.List;
 import android.app.Activity;
-import android.content.Intent;
+import android.app.ProgressDialog;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
+import android.util.Log;
+import android.widget.ListView;
 
+import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vakantie;
+import com.parse.Parse;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
 
 public class activiteit_overzicht extends Activity {
+    // Declare Variables
+    ListView listview;
+    List<ParseObject> ob;
+    ProgressDialog mProgressDialog;
+    ListViewAdapter adapter;
+    private List<Vakantie> vakanties = null;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_activiteit_overzicht);
 
-        Button uitloggenButton = (Button) findViewById(R.id.MainScreen_btnUitloggen);
-
-        uitloggenButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent1 = new Intent(activiteit_overzicht.this, Login.class);
-                startActivity(intent1);
-            }
-        });
+        Parse.initialize(this, "G7iR0ji0Kc1fc2PUwhXi9Gj8HmaqK52Qmhk2ffHy", "gJJgkWD5UxMA80iqZkaUHTy8pc9UwJfdv3alDk9Q");
+        // Get the view from listview_main.xml
+        setContentView(R.layout.activiteit_overzichtnieuw);
+        // Execute RemoteDataTask AsyncTask
+        new RemoteDataTask().execute();
     }
 
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.activiteit_overzicht, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
+    // RemoteDataTask AsyncTask
+    private class RemoteDataTask extends AsyncTask<Void, Void, Void> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            // Create a progressdialog
+            mProgressDialog = new ProgressDialog(activiteit_overzicht.this);
+            // Set progressdialog title
+            mProgressDialog.setTitle("Ophalen van vakanties.");
+            // Set progressdialog message
+            mProgressDialog.setMessage("Aan het laden...");
+            mProgressDialog.setIndeterminate(false);
+            // Show progressdialog
+            mProgressDialog.show();
         }
-        return super.onOptionsItemSelected(item);
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            // Create the array
+            vakanties = new ArrayList<Vakantie>();
+            try {
+                // Locate the class table named "Country" in Parse.com
+                ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(
+                        "Vakantie");
+                // Locate the column named "ranknum" in Parse.com and order list
+                // by ascending
+                query.orderByAscending("vertrekdatum");
+                ob = query.find();
+                for (ParseObject vakantie : ob) {
+                    // Locate images in flag column
+                   // ParseFile image = (ParseFile) vakantie.get("flag");
+
+                    Vakantie map = new Vakantie();
+                    map.setNaamVakantie((String) vakantie.get("titel"));
+                    map.setLocatie((String) vakantie.get("locatie"));
+                    map.setVertrekDatum((java.util.Date) vakantie.get("vertrekdatum"));
+                    map.setTerugkeerDatum((java.util.Date) vakantie.get("terugkeerdatum"));
+                    map.setKorteBeschrijving((String) vakantie.get("korteBeschrijving"));
+
+                    //map.setFlag(image.getUrl());
+                    vakanties.add(map);
+                }
+            } catch (ParseException e) {
+                Log.e("Error", e.getMessage());
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+            // Locate the listview in listview_main.xml
+            listview = (ListView) findViewById(R.id.listview);
+            // Pass the results into ListViewAdapter.java
+            adapter = new ListViewAdapter(activiteit_overzicht.this, vakanties);
+            // Binds the Adapter to the ListView
+            listview.setAdapter(adapter);
+            // Close the progressdialog
+            mProgressDialog.dismiss();
+        }
     }
 }

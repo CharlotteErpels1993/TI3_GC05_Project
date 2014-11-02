@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name=".MyParseApplication"
@@ -17,12 +18,13 @@
             android:name=".MainScreen"
             android:label="@string/title_activity_main_screen" >
 
-            <intent-filter>
+
+        </activity>
+        <!--<intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            </intent-filter>-->
         <application
             android:allowBackup="true"
             android:name=".MyParseApplication"
@@ -42,6 +44,11 @@
         <activity
             android:name=".activiteit_overzicht"
             android:label="@string/title_activity_activiteit_overzicht" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".profiel_detail"
@@ -57,6 +64,7 @@
         <activity android:name=".SignUp_deel3" android:screenOrientation="portrait"></activity>
         <activity android:name=".Login" android:screenOrientation="portrait"></activity>
         <activity android:name=".ForgetParsePassword" android:screenOrientation="portrait"></activity>
+
 
 
     </application>
