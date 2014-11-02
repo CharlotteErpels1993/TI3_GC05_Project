@@ -37,7 +37,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="q35-qh-mtC" kind="show" id="laN-Ih-sVW"/>
+                                    <segue destination="q35-qh-mtC" kind="show" identifier="toonVakantie" id="laN-Ih-sVW"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -47,17 +47,21 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Vakanties" id="jTS-Lj-o5t">
-                        <barButtonItem key="leftBarButtonItem" title="Registreren" id="woV-Ka-uJj"/>
+                        <barButtonItem key="leftBarButtonItem" title="Registreren" id="2vV-hj-JAV">
+                            <connections>
+                                <segue destination="fyb-xH-x0i" kind="show" identifier="registreren" id="maQ-E0-ytO"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Inloggen" id="o5m-2M-MAb">
                             <connections>
-                                <segue destination="QSw-na-ve9" kind="show" id="Wu8-dP-1NV"/>
+                                <segue destination="QSw-na-ve9" kind="show" identifier="inloggen" id="Wu8-dP-1NV"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FgJ-yq-mEZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="701" y="336"/>
+            <point key="canvasLocation" x="631" y="336"/>
         </scene>
         <!--Titel vakantie-->
         <scene sceneID="Rwh-qy-srh">
@@ -354,7 +358,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Volgende" id="w17-Kj-bON">
                             <connections>
                                 <action selector="registrerenVolgende:" destination="fyb-xH-x0i" id="Q7x-tD-PJc"/>
-                                <segue destination="4e3-wh-pw2" kind="show" id="BCc-Op-CII"/>
+                                <segue destination="4e3-wh-pw2" kind="show" identifier="volgende" id="BCc-Op-CII"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -515,6 +519,8 @@
                     <navigationItem key="navigationItem" title="Inloggen" id="oE9-F4-VPK"/>
                     <connections>
                         <outlet property="emailTextField" destination="IeG-wh-GGy" id="haj-cQ-mjc"/>
+                        <outlet property="txtEmail" destination="IeG-wh-GGy" id="EvF-G6-1EP"/>
+                        <outlet property="txtWachtwoord" destination="H0a-36-oYG" id="mJK-3c-t4k"/>
                         <outlet property="wachtwoordTextField" destination="H0a-36-oYG" id="gI4-Gy-gpf"/>
                     </connections>
                 </viewController>
@@ -1120,4 +1126,7 @@
             <point key="canvasLocation" x="2830" y="1036"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Mbx-DM-uw9"/>
+    </inferredMetricsTieBreakers>
 </document>

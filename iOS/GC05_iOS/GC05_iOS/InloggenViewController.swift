@@ -1,12 +1,12 @@
 import UIKit
 
-class InloggenViewController: UIViewController {
+class InloggenViewController : UIViewController
+{
+    @IBOutlet weak var txtEmail: UITextField!
+    @IBOutlet weak var txtWachtwoord: UITextField!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
+    var gebruikers: [Gebruiker] = []
     
-
     
     
     
