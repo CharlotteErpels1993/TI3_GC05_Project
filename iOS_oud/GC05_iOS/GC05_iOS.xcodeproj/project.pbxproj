@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0FA7B7EB1A03A77E00923C81 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FA7B7EA1A03A77E00923C81 /* Bolts.framework */; };
+		0FA7B7ED1A03A78D00923C81 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FA7B7EC1A03A78D00923C81 /* Parse.framework */; };
+		0FA7B7EF1A03A78F00923C81 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FA7B7EE1A03A78F00923C81 /* ParseFacebookUtils.framework */; };
+		0FA7B7F21A03AA7C00923C81 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA7B7F11A03AA7C00923C81 /* JSON.swift */; };
 		0FA80B081A01350E008DB343 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA80B071A01350E008DB343 /* AppDelegate.swift */; };
 		0FA80B0D1A01350E008DB343 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FA80B0B1A01350E008DB343 /* Main.storyboard */; };
 		0FA80B0F1A01350E008DB343 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0FA80B0E1A01350E008DB343 /* Images.xcassets */; };
@@ -19,11 +23,15 @@
 		0FA80B321A01358B008DB343 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FA80B311A01358B008DB343 /* MobileCoreServices.framework */; };
 		0FA80B341A013595008DB343 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FA80B331A013595008DB343 /* QuartzCore.framework */; };
 		0FA80B361A01359F008DB343 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FA80B351A01359F008DB343 /* Security.framework */; };
-		0FA80B381A0135A8008DB343 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FA80B371A0135A8008DB343 /* StoreKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		0FA80B381A0135A8008DB343 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FA80B371A0135A8008DB343 /* StoreKit.framework */; };
 		0FA80B3A1A0135B1008DB343 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FA80B391A0135B1008DB343 /* SystemConfiguration.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+<<<<<<< Updated upstream
 		1B10A3B31A0255AB008E225F /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B10A3B21A0255AB008E225F /* Parse.framework */; };
 		1B10A3B51A0255B0008E225F /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B10A3B41A0255B0008E225F /* Bolts.framework */; };
 		1B10A3B71A0255BA008E225F /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B10A3B61A0255BA008E225F /* ParseFacebookUtils.framework */; };
+=======
+		1B10A3BA1A02615F008E225F /* CategorieenTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B10A3B91A02615F008E225F /* CategorieenTableViewController.swift */; };
+>>>>>>> Stashed changes
 		1B10A3BD1A02622C008E225F /* VakantiesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B10A3BC1A02622C008E225F /* VakantiesTableViewController.swift */; };
 		1B1792851A0272D300C4F82B /* VakantieDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1792841A0272D300C4F82B /* VakantieDetailsTableViewController.swift */; };
 		1B4D784B1A0277F100E823E2 /* Registreren1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4D784A1A0277F100E823E2 /* Registreren1ViewController.swift */; };
@@ -43,7 +51,6 @@
 		1BDDB9531A02D8770007623D /* Deelnemer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDDB9521A02D8770007623D /* Deelnemer.swift */; };
 		1BDDB9551A02D87F0007623D /* ContactpersoonNood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDDB9541A02D87F0007623D /* ContactpersoonNood.swift */; };
 		1BDDB9571A02DD1E0007623D /* Gebruiker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDDB9561A02DD1E0007623D /* Gebruiker.swift */; };
-		1BFC33401A066A87009CA8EB /* VakantieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFC333F1A066A87009CA8EB /* VakantieCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +64,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0FA7B7EA1A03A77E00923C81 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "../../../parse-library-1/Bolts.framework"; sourceTree = "<group>"; };
+		0FA7B7EC1A03A78D00923C81 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "../../../parse-library-1/Parse.framework"; sourceTree = "<group>"; };
+		0FA7B7EE1A03A78F00923C81 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseFacebookUtils.framework; path = "../../../parse-library-1/ParseFacebookUtils.framework"; sourceTree = "<group>"; };
+		0FA7B7F11A03AA7C00923C81 /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		0FA80B021A01350E008DB343 /* GC05_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GC05_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FA80B061A01350E008DB343 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0FA80B071A01350E008DB343 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -76,9 +87,13 @@
 		0FA80B371A0135A8008DB343 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		0FA80B391A0135B1008DB343 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		0FA80B3D1A0135FF008DB343 /* GC05_iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GC05_iOS-Bridging-Header.h"; sourceTree = "<group>"; };
+<<<<<<< Updated upstream
 		1B10A3B21A0255AB008E225F /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "../../../../Downloads/parse-library-1.4.2/Parse.framework"; sourceTree = "<group>"; };
 		1B10A3B41A0255B0008E225F /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "../../../../Downloads/parse-library-1.4.2/Bolts.framework"; sourceTree = "<group>"; };
 		1B10A3B61A0255BA008E225F /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseFacebookUtils.framework; path = "../../../../Downloads/parse-library-1.4.2/ParseFacebookUtils.framework"; sourceTree = "<group>"; };
+=======
+		1B10A3B91A02615F008E225F /* CategorieenTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategorieenTableViewController.swift; sourceTree = "<group>"; };
+>>>>>>> Stashed changes
 		1B10A3BC1A02622C008E225F /* VakantiesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VakantiesTableViewController.swift; sourceTree = "<group>"; };
 		1B1792841A0272D300C4F82B /* VakantieDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VakantieDetailsTableViewController.swift; sourceTree = "<group>"; };
 		1B4D784A1A0277F100E823E2 /* Registreren1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Registreren1ViewController.swift; sourceTree = "<group>"; };
@@ -98,7 +113,6 @@
 		1BDDB9521A02D8770007623D /* Deelnemer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deelnemer.swift; sourceTree = "<group>"; };
 		1BDDB9541A02D87F0007623D /* ContactpersoonNood.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactpersoonNood.swift; sourceTree = "<group>"; };
 		1BDDB9561A02DD1E0007623D /* Gebruiker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gebruiker.swift; sourceTree = "<group>"; };
-		1BFC333F1A066A87009CA8EB /* VakantieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VakantieCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,9 +120,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1B10A3B51A0255B0008E225F /* Bolts.framework in Frameworks */,
-				1B10A3B31A0255AB008E225F /* Parse.framework in Frameworks */,
-				1B10A3B71A0255BA008E225F /* ParseFacebookUtils.framework in Frameworks */,
+				0FA7B7EF1A03A78F00923C81 /* ParseFacebookUtils.framework in Frameworks */,
+				0FA7B7ED1A03A78D00923C81 /* Parse.framework in Frameworks */,
+				0FA7B7EB1A03A77E00923C81 /* Bolts.framework in Frameworks */,
 				0FA80B3A1A0135B1008DB343 /* SystemConfiguration.framework in Frameworks */,
 				0FA80B381A0135A8008DB343 /* StoreKit.framework in Frameworks */,
 				0FA80B361A01359F008DB343 /* Security.framework in Frameworks */,
@@ -132,12 +146,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0FA7B7F01A03A9C400923C81 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				0FA7B7F11A03AA7C00923C81 /* JSON.swift */,
+			);
+			name = Service;
+			sourceTree = "<group>";
+		};
 		0FA80AF91A01350E008DB343 = {
 			isa = PBXGroup;
 			children = (
-				1B10A3B61A0255BA008E225F /* ParseFacebookUtils.framework */,
-				1B10A3B41A0255B0008E225F /* Bolts.framework */,
-				1B10A3B21A0255AB008E225F /* Parse.framework */,
+				0FA7B7EE1A03A78F00923C81 /* ParseFacebookUtils.framework */,
+				0FA7B7EC1A03A78D00923C81 /* Parse.framework */,
+				0FA7B7EA1A03A77E00923C81 /* Bolts.framework */,
 				0FA80B391A0135B1008DB343 /* SystemConfiguration.framework */,
 				0FA80B371A0135A8008DB343 /* StoreKit.framework */,
 				0FA80B351A01359F008DB343 /* Security.framework */,
@@ -167,13 +189,13 @@
 		0FA80B041A01350E008DB343 /* GC05_iOS */ = {
 			isa = PBXGroup;
 			children = (
+				0FA7B7F01A03A9C400923C81 /* Service */,
 				1BDDB9411A02D0E30007623D /* Domein */,
 				1B10A3BB1A02620A008E225F /* Controllers */,
 				0FA80B071A01350E008DB343 /* AppDelegate.swift */,
 				0FA80B0B1A01350E008DB343 /* Main.storyboard */,
 				0FA80B0E1A01350E008DB343 /* Images.xcassets */,
 				0FA80B051A01350E008DB343 /* Supporting Files */,
-				1BFC333F1A066A87009CA8EB /* VakantieCell.swift */,
 			);
 			path = GC05_iOS;
 			sourceTree = "<group>";
@@ -336,9 +358,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				1BDDB9531A02D8770007623D /* Deelnemer.swift in Sources */,
+				0FA7B7F21A03AA7C00923C81 /* JSON.swift in Sources */,
 				1B4D784D1A027B1A00E823E2 /* Registratie2ViewController.swift in Sources */,
 				1B4D78531A028A8B00E823E2 /* RegistratieSuccesvolViewController.swift in Sources */,
-				1BFC33401A066A87009CA8EB /* VakantieCell.swift in Sources */,
 				1BDDB94B1A02D8380007623D /* InschrijvenVakantie.swift in Sources */,
 				1B67995F1A03B7F600434027 /* InloggenViewController.swift in Sources */,
 				1BDDB94F1A02D8630007623D /* Ouder.swift in Sources */,
@@ -477,6 +499,7 @@
 					"$(inherited)",
 					"/Users/charlotteerpels/Downloads/parse-library-1",
 					"/Volumes/HDD/Downloads/parse-library-1.4.2",
+					"/Users/charlotteerpels/parse-library-1",
 				);
 				INFOPLIST_FILE = GC05_iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -495,6 +518,7 @@
 					"$(inherited)",
 					"/Users/charlotteerpels/Downloads/parse-library-1",
 					"/Volumes/HDD/Downloads/parse-library-1.4.2",
+					"/Users/charlotteerpels/parse-library-1",
 				);
 				INFOPLIST_FILE = GC05_iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

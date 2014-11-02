@@ -1,11 +1,13 @@
+import UIKit
+
 class InloggenViewController: UIViewController {
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var wachtwoordTextField: UITextField!
     
     override func viewDidLoad() {
-        
+        super.viewDidLoad()
     }
     
-    @IBAction func gaTerugNaarInloggen(segue: UIStoryboard) {}
+
+    
+    
     
 }
