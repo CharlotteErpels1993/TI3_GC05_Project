@@ -1,20 +1,21 @@
-class Vakantie: Activiteit {
+import Foundation
+
+class Vakantie: Activiteit
+{
+    var beginDatum: Date
+    var terugkeerDatum: Date
+    var aantalDagenNachten: String
+    var vervoerwijze: String
+    var formule: String
+    var basisprijs: Double
+    var bondMoysonLedenPrijs: Double
+    var sterPrijs: Double
+    var kortingen: String // TYPE?
+    var inbegrepenPrijs: String
+    var doelgroep: String // TYPE?
+    var maxAantalDeelnemers: Int
     
-    // ID? 
-    let beginDatum: datum
-    let terugkeerDatum: datum
-    let aantalDagenNachten: String
-    let vervoerwijze: String
-    let formule: String
-    let basisprijs: Double
-    let bondMoysonLedenPrijs: Double
-    let sterPrijs: Double
-    let kortingen: String // TYPE?
-    let inbegrepenPrijs: String
-    let doelgroep: String // TYPE?
-    let maxAantalDeelnemers: Int
-    
-    init(beginDatum: datum, terugkeerDatum: datum, aantalDagenNachten: String, vervoerwijze: String, formule: String, basisprijs: Double, bondMoysonLedenPrijs: Double, sterPrijs: Double, kortingen: String, inbegrepenPrijs: String, doelgroep: String, maxAantalDeelnemers: Int, titel: String, locatie: String, korteBeschrijving: String) {
+    init(id: String, titel: String, locatie: String, korteBeschrijving: String, beginDatum: Date, terugkeerDatum: Date, aantalDagenNachten: String, vervoerwijze: String, formule: String, basisprijs: Double, bondMoysonLedenPrijs: Double, sterPrijs: Double, kortingen: String, inbegrepenPrijs: String, doelgroep: String, maxAantalDeelnemers: Int) {
 
         self.beginDatum = beginDatum
         self.terugkeerDatum = terugkeerDatum
@@ -29,7 +30,7 @@ class Vakantie: Activiteit {
         self.doelgroep = doelgroep
         self.maxAantalDeelnemers = maxAantalDeelnemers
         
-        super.init(titel: titel, locatie: locatie,korteBeschrijving: korteBeschrijving)
+        super.init(id: id, titel: titel, locatie: locatie, korteBeschrijving: korteBeschrijving)
     }
     
 }

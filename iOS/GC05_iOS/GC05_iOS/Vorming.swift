@@ -1,14 +1,15 @@
-class Vorming: Activiteit {
+import Foundation
+
+class Vorming: Activiteit
+{
+    var periodes: String // TYPE?
+    var prijs: Double
+    var criteriaDeelnemers: String
+    var websiteLocatie: String
+    var tips: String
+    var betalingWijze: String
     
-    // ID?
-    let periodes: String // TYPE?
-    let prijs: Double
-    let criteriaDeelnemers: String
-    let websiteLocatie: String
-    let tips: String
-    let betalingWijze: String
-    
-    init(periodes: String, prijs: Double, criteriaDeelnemers: String, websiteLocatie: String, tips: String, betalingWijze: String, titel: String, locatie: String, korteBeschrijving: String) {
+    init(id: String, titel: String, locatie: String, korteBeschrijving: String, periodes: String, prijs: Double, criteriaDeelnemers: String, websiteLocatie: String, tips: String, betalingWijze: String) {
         
         self.periodes = periodes
         self.prijs = prijs
@@ -17,7 +18,7 @@ class Vorming: Activiteit {
         self.tips = tips
         self.betalingWijze = betalingWijze
         
-        super.init(titel: titel, locatie: locatie,korteBeschrijving: korteBeschrijving)
+        super.init(id: id, titel: titel, locatie: locatie,korteBeschrijving: korteBeschrijving)
     }
     
 }

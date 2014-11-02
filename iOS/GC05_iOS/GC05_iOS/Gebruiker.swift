@@ -1,19 +1,24 @@
-class Gebruiker {
-    let email: String
-    let wachtwoord: String
-    let voornaam: String
-    let naam: String
-    let straat: String
-    let nummer: Int
-    let bus: String
-    let gemeente: String
-    let postcode: Int
-    let telefoon: String
-    let gsm: String
-    let aansluitingsNr: Int
-    let codeGerechtigde: Int
+import Foundation
+
+class Gebruiker
+{
+    var id: String
+    var email: String
+    var wachtwoord: String
+    var voornaam: String
+    var naam: String
+    var straat: String
+    var nummer: Int
+    var bus: String
+    var gemeente: String
+    var postcode: Int
+    var telefoon: String
+    var gsm: String
+    var aansluitingsNr: Int
+    var codeGerechtigde: Int
     
-    init(email: String, wachtwoord: String, voornaam: String, naam: String, straat: String, nummer: Int, bus: String, gemeente: String, postcode: Int, telefoon: String, gsm: String, aansluitingsNr: Int, codeGerechtigde: Int) {
+    init(id: String, email: String, wachtwoord: String, voornaam: String, naam: String, straat: String, nummer: Int, bus: String, gemeente: String, postcode: Int, telefoon: String, gsm: String, aansluitingsNr: Int, codeGerechtigde: Int) {
+        self.id = id
         self.email = email
         self.wachtwoord = wachtwoord
         self.voornaam = voornaam
