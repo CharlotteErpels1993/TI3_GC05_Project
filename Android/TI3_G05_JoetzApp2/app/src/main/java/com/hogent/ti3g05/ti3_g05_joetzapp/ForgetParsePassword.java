@@ -29,7 +29,7 @@ public class ForgetParsePassword extends Activity{
 		
 		et_forgetpassword = (EditText) findViewById(R.id.et_forgetpassword);
 		btn_submitforgetpassword = (Button) findViewById(R.id.btn_submitforgetpassword);
-        /*btn_back = (Button) findViewById(R.id.btn_back);
+        btn_back = (Button) findViewById(R.id.btn_back);
 
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,7 +37,7 @@ public class ForgetParsePassword extends Activity{
                 Intent intent1 = new Intent(ForgetParsePassword.this, Login.class);
                 startActivity(intent1);
             }
-        });*/
+        });
 		
 		btn_submitforgetpassword.setOnClickListener(new OnClickListener() {
 			

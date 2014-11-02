@@ -30,7 +30,7 @@ public class Login extends Activity{
 	Button btn_LoginIn = null;
 	Button btn_SignUp = null;
 	Button btn_ForgetPass = null;
-    //Button btn_Return = null;
+    Button btn_Return = null;
 	private EditText mUserNameEditText;
 	private EditText mPasswordEditText;
    /* public final Pattern EMAIL_ADDRESS_PATTERN = Pattern.compile(
@@ -70,7 +70,7 @@ public class Login extends Activity{
 		btn_LoginIn = (Button) findViewById(R.id.btn_login);
 		btn_SignUp = (Button) findViewById(R.id.btn_signup);
         btn_ForgetPass = (Button) findViewById(R.id.btn_ForgetPass);
-//        btn_Return = (Button) findViewById(R.id.btn_return);
+        btn_Return = (Button) findViewById(R.id.btn_return);
 		mUserNameEditText = (EditText) findViewById(R.id.username);
 		mPasswordEditText = (EditText) findViewById(R.id.password);
 
@@ -117,15 +117,13 @@ public class Login extends Activity{
             }
         });
 
-       /* btn_Return = (Button) findViewById(R.id.btn_return);
-
         btn_Return.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Login.this, MainScreen.class);
                 startActivity(intent);
             }
-        });¨*/
+        });
 
 
 
