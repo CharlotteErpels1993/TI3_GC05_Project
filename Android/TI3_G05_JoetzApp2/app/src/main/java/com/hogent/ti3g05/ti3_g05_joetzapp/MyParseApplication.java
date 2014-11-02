@@ -11,9 +11,10 @@ public class MyParseApplication extends Application {
         Parse.initialize(this, "a3jgklEb2rHZYcgqDezLfqSP6i1C2u4eVV8R03YS", "3ZguW3kx5J6PuieccT7ypJ5ZvYhwX08ESKL8cDNX");
 
         //Parse.enableLocalDatastore(this);
-        ParseObject testObject = new ParseObject("TestObject");
-        testObject.put("foo", "bar");
-        testObject.saveInBackground();
+
+        //ParseObject testObject = new ParseObject("TestObject");
+        //testObject.put("foo", "bar");
+        //testObject.saveInBackground();
     }
 
 
