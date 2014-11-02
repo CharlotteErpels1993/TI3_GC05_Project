@@ -21,9 +21,10 @@
 		0FA80B361A01359F008DB343 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FA80B351A01359F008DB343 /* Security.framework */; };
 		0FA80B381A0135A8008DB343 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FA80B371A0135A8008DB343 /* StoreKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		0FA80B3A1A0135B1008DB343 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FA80B391A0135B1008DB343 /* SystemConfiguration.framework */; settings = {ATTRIBUTES = (Required, ); }; };
-		1B10A3B31A0255AB008E225F /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B10A3B21A0255AB008E225F /* Parse.framework */; };
-		1B10A3B51A0255B0008E225F /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B10A3B41A0255B0008E225F /* Bolts.framework */; };
-		1B10A3B71A0255BA008E225F /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B10A3B61A0255BA008E225F /* ParseFacebookUtils.framework */; };
+		0FBEA1EE1A068008005FF0D2 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FBEA1ED1A068008005FF0D2 /* Bolts.framework */; };
+		0FBEA1F01A06800C005FF0D2 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FBEA1EF1A06800C005FF0D2 /* Parse.framework */; };
+		0FBEA1F21A068010005FF0D2 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FBEA1F11A068010005FF0D2 /* ParseFacebookUtils.framework */; };
+		0FBEA1F41A0684FD005FF0D2 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBEA1F31A0684FD005FF0D2 /* Date.swift */; };
 		1B10A3BD1A02622C008E225F /* VakantiesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B10A3BC1A02622C008E225F /* VakantiesTableViewController.swift */; };
 		1B1792851A0272D300C4F82B /* VakantieDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1792841A0272D300C4F82B /* VakantieDetailsTableViewController.swift */; };
 		1B4D784B1A0277F100E823E2 /* Registreren1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4D784A1A0277F100E823E2 /* Registreren1ViewController.swift */; };
@@ -35,8 +36,8 @@
 		1BDDB9431A02D0FB0007623D /* Vakantie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDDB9421A02D0FB0007623D /* Vakantie.swift */; };
 		1BDDB9451A02D3440007623D /* Activiteit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDDB9441A02D3440007623D /* Activiteit.swift */; };
 		1BDDB9471A02D8240007623D /* Vorming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDDB9461A02D8240007623D /* Vorming.swift */; };
-		1BDDB9491A02D82D0007623D /* InschrijvenVorming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDDB9481A02D82D0007623D /* InschrijvenVorming.swift */; };
-		1BDDB94B1A02D8380007623D /* InschrijvenVakantie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDDB94A1A02D8380007623D /* InschrijvenVakantie.swift */; };
+		1BDDB9491A02D82D0007623D /* InschrijvingVorming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDDB9481A02D82D0007623D /* InschrijvingVorming.swift */; };
+		1BDDB94B1A02D8380007623D /* InschrijvingVakantie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDDB94A1A02D8380007623D /* InschrijvingVakantie.swift */; };
 		1BDDB94D1A02D84B0007623D /* Monitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDDB94C1A02D84B0007623D /* Monitor.swift */; };
 		1BDDB94F1A02D8630007623D /* Ouder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDDB94E1A02D8630007623D /* Ouder.swift */; };
 		1BDDB9511A02D86F0007623D /* Voorkeur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDDB9501A02D86F0007623D /* Voorkeur.swift */; };
@@ -76,9 +77,10 @@
 		0FA80B371A0135A8008DB343 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		0FA80B391A0135B1008DB343 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		0FA80B3D1A0135FF008DB343 /* GC05_iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GC05_iOS-Bridging-Header.h"; sourceTree = "<group>"; };
-		1B10A3B21A0255AB008E225F /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "../../../../Downloads/parse-library-1.4.2/Parse.framework"; sourceTree = "<group>"; };
-		1B10A3B41A0255B0008E225F /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "../../../../Downloads/parse-library-1.4.2/Bolts.framework"; sourceTree = "<group>"; };
-		1B10A3B61A0255BA008E225F /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseFacebookUtils.framework; path = "../../../../Downloads/parse-library-1.4.2/ParseFacebookUtils.framework"; sourceTree = "<group>"; };
+		0FBEA1ED1A068008005FF0D2 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "../../../Downloads/parse-library-1/Bolts.framework"; sourceTree = "<group>"; };
+		0FBEA1EF1A06800C005FF0D2 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "../../../Downloads/parse-library-1/Parse.framework"; sourceTree = "<group>"; };
+		0FBEA1F11A068010005FF0D2 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseFacebookUtils.framework; path = "../../../Downloads/parse-library-1/ParseFacebookUtils.framework"; sourceTree = "<group>"; };
+		0FBEA1F31A0684FD005FF0D2 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		1B10A3BC1A02622C008E225F /* VakantiesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VakantiesTableViewController.swift; sourceTree = "<group>"; };
 		1B1792841A0272D300C4F82B /* VakantieDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VakantieDetailsTableViewController.swift; sourceTree = "<group>"; };
 		1B4D784A1A0277F100E823E2 /* Registreren1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Registreren1ViewController.swift; sourceTree = "<group>"; };
@@ -90,8 +92,8 @@
 		1BDDB9421A02D0FB0007623D /* Vakantie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vakantie.swift; sourceTree = "<group>"; };
 		1BDDB9441A02D3440007623D /* Activiteit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Activiteit.swift; sourceTree = "<group>"; };
 		1BDDB9461A02D8240007623D /* Vorming.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vorming.swift; sourceTree = "<group>"; };
-		1BDDB9481A02D82D0007623D /* InschrijvenVorming.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InschrijvenVorming.swift; sourceTree = "<group>"; };
-		1BDDB94A1A02D8380007623D /* InschrijvenVakantie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InschrijvenVakantie.swift; sourceTree = "<group>"; };
+		1BDDB9481A02D82D0007623D /* InschrijvingVorming.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InschrijvingVorming.swift; sourceTree = "<group>"; };
+		1BDDB94A1A02D8380007623D /* InschrijvingVakantie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InschrijvingVakantie.swift; sourceTree = "<group>"; };
 		1BDDB94C1A02D84B0007623D /* Monitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Monitor.swift; sourceTree = "<group>"; };
 		1BDDB94E1A02D8630007623D /* Ouder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ouder.swift; sourceTree = "<group>"; };
 		1BDDB9501A02D86F0007623D /* Voorkeur.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Voorkeur.swift; sourceTree = "<group>"; };
@@ -106,9 +108,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1B10A3B51A0255B0008E225F /* Bolts.framework in Frameworks */,
-				1B10A3B31A0255AB008E225F /* Parse.framework in Frameworks */,
-				1B10A3B71A0255BA008E225F /* ParseFacebookUtils.framework in Frameworks */,
+				0FBEA1EE1A068008005FF0D2 /* Bolts.framework in Frameworks */,
+				0FBEA1F01A06800C005FF0D2 /* Parse.framework in Frameworks */,
+				0FBEA1F21A068010005FF0D2 /* ParseFacebookUtils.framework in Frameworks */,
 				0FA80B3A1A0135B1008DB343 /* SystemConfiguration.framework in Frameworks */,
 				0FA80B381A0135A8008DB343 /* StoreKit.framework in Frameworks */,
 				0FA80B361A01359F008DB343 /* Security.framework in Frameworks */,
@@ -135,9 +137,9 @@
 		0FA80AF91A01350E008DB343 = {
 			isa = PBXGroup;
 			children = (
-				1B10A3B61A0255BA008E225F /* ParseFacebookUtils.framework */,
-				1B10A3B41A0255B0008E225F /* Bolts.framework */,
-				1B10A3B21A0255AB008E225F /* Parse.framework */,
+				0FBEA1F11A068010005FF0D2 /* ParseFacebookUtils.framework */,
+				0FBEA1EF1A06800C005FF0D2 /* Parse.framework */,
+				0FBEA1ED1A068008005FF0D2 /* Bolts.framework */,
 				0FA80B391A0135B1008DB343 /* SystemConfiguration.framework */,
 				0FA80B371A0135A8008DB343 /* StoreKit.framework */,
 				0FA80B351A01359F008DB343 /* Security.framework */,
@@ -167,7 +169,7 @@
 		0FA80B041A01350E008DB343 /* GC05_iOS */ = {
 			isa = PBXGroup;
 			children = (
-				1BDDB9411A02D0E30007623D /* Domein */,
+				1BDDB9411A02D0E30007623D /* Model */,
 				1B10A3BB1A02620A008E225F /* Controllers */,
 				0FA80B071A01350E008DB343 /* AppDelegate.swift */,
 				0FA80B0B1A01350E008DB343 /* Main.storyboard */,
@@ -218,14 +220,15 @@
 			name = Controllers;
 			sourceTree = "<group>";
 		};
-		1BDDB9411A02D0E30007623D /* Domein */ = {
+		1BDDB9411A02D0E30007623D /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				1BDDB9421A02D0FB0007623D /* Vakantie.swift */,
+				0FBEA1F31A0684FD005FF0D2 /* Date.swift */,
 				1BDDB9441A02D3440007623D /* Activiteit.swift */,
 				1BDDB9461A02D8240007623D /* Vorming.swift */,
-				1BDDB9481A02D82D0007623D /* InschrijvenVorming.swift */,
-				1BDDB94A1A02D8380007623D /* InschrijvenVakantie.swift */,
+				1BDDB9481A02D82D0007623D /* InschrijvingVorming.swift */,
+				1BDDB94A1A02D8380007623D /* InschrijvingVakantie.swift */,
 				1BDDB94C1A02D84B0007623D /* Monitor.swift */,
 				1BDDB94E1A02D8630007623D /* Ouder.swift */,
 				1BDDB9501A02D86F0007623D /* Voorkeur.swift */,
@@ -233,7 +236,7 @@
 				1BDDB9541A02D87F0007623D /* ContactpersoonNood.swift */,
 				1BDDB9561A02DD1E0007623D /* Gebruiker.swift */,
 			);
-			name = Domein;
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -339,7 +342,7 @@
 				1B4D784D1A027B1A00E823E2 /* Registratie2ViewController.swift in Sources */,
 				1B4D78531A028A8B00E823E2 /* RegistratieSuccesvolViewController.swift in Sources */,
 				1BFC33401A066A87009CA8EB /* VakantieCell.swift in Sources */,
-				1BDDB94B1A02D8380007623D /* InschrijvenVakantie.swift in Sources */,
+				1BDDB94B1A02D8380007623D /* InschrijvingVakantie.swift in Sources */,
 				1B67995F1A03B7F600434027 /* InloggenViewController.swift in Sources */,
 				1BDDB94F1A02D8630007623D /* Ouder.swift in Sources */,
 				1B4D78511A02897500E823E2 /* Registratie4ViewController.swift in Sources */,
@@ -351,9 +354,10 @@
 				1BDDB9511A02D86F0007623D /* Voorkeur.swift in Sources */,
 				1B10A3BD1A02622C008E225F /* VakantiesTableViewController.swift in Sources */,
 				1BDDB9571A02DD1E0007623D /* Gebruiker.swift in Sources */,
-				1BDDB9491A02D82D0007623D /* InschrijvenVorming.swift in Sources */,
+				1BDDB9491A02D82D0007623D /* InschrijvingVorming.swift in Sources */,
 				1BDDB9431A02D0FB0007623D /* Vakantie.swift in Sources */,
 				1BDDB9451A02D3440007623D /* Activiteit.swift in Sources */,
+				0FBEA1F41A0684FD005FF0D2 /* Date.swift in Sources */,
 				1B1792851A0272D300C4F82B /* VakantieDetailsTableViewController.swift in Sources */,
 				1B4D784B1A0277F100E823E2 /* Registreren1ViewController.swift in Sources */,
 			);
