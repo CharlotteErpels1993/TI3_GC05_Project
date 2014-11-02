@@ -1,6 +1,7 @@
 package com.hogent.ti3g05.ti3_g05_joetzapp;
 
 import java.util.Locale;
+import java.util.regex.Pattern;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -9,6 +10,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -28,15 +30,27 @@ public class Login extends Activity{
 	Button btn_LoginIn = null;
 	Button btn_SignUp = null;
 	Button btn_ForgetPass = null;
-    Button btn_back = null;
+    //Button btn_Return = null;
 	private EditText mUserNameEditText;
 	private EditText mPasswordEditText;
+   /* public final Pattern EMAIL_ADDRESS_PATTERN = Pattern.compile(
+            "[a-zA-Z0-9+._%-+]{1,256}" +
+                    "@" +
+                    "[a-zA-Z0-9][a-zA-Z0-9-]{0,64}" +
+                    "(" +
+                    "." +
+                    "[a-zA-Z0-9][a-zA-Z0-9-]{0,25}" +
+                    ")+"
+    );*/
 
 	// flag for Internet connection status
 	Boolean isInternetPresent = false;
 	// Connection detector class
 	ConnectionDetector cd;
 
+   /* private boolean checkEmail(String email) {
+        return EMAIL_ADDRESS_PATTERN.matcher(email).matches();
+    }*/
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +70,7 @@ public class Login extends Activity{
 		btn_LoginIn = (Button) findViewById(R.id.btn_login);
 		btn_SignUp = (Button) findViewById(R.id.btn_signup);
         btn_ForgetPass = (Button) findViewById(R.id.btn_ForgetPass);
-        btn_back = (Button) findViewById(R.id.btn_return);
+//        btn_Return = (Button) findViewById(R.id.btn_return);
 		mUserNameEditText = (EditText) findViewById(R.id.username);
 		mPasswordEditText = (EditText) findViewById(R.id.password);
 
@@ -103,15 +117,15 @@ public class Login extends Activity{
             }
         });
 
-        btn_back = (Button) findViewById(R.id.btn_back);
+       /* btn_Return = (Button) findViewById(R.id.btn_return);
 
-        btn_back.setOnClickListener(new View.OnClickListener() {
+        btn_Return.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent1 = new Intent(Login.this, MainScreen.class);
-                startActivity(intent1);
+                Intent intent = new Intent(Login.this, MainScreen.class);
+                startActivity(intent);
             }
-        });
+        });¨*/
 
 
 
@@ -157,8 +171,11 @@ public class Login extends Activity{
 		String username = mUserNameEditText.getText().toString();
 		String password = mPasswordEditText.getText().toString();
 
+
+
 		boolean cancel = false;
 		View focusView = null;
+
 
 		// Check for a valid password.
 		if (TextUtils.isEmpty(password)) {
@@ -181,6 +198,15 @@ public class Login extends Activity{
             focusView = mUserNameEditText;
             cancel = true;
         }
+
+       /* if(!checkEmail(username))
+        {
+            mUserNameEditText.setError(getString(R.string.error_invalid_email));
+            focusView = mUserNameEditText;
+            cancel = true;
+        }*/
+
+
 
 		if (cancel) {
 			// There was an error; don't attempt login and focus the first
