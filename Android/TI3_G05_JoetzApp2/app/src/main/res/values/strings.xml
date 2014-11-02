@@ -46,9 +46,11 @@
     <string name="title_activity_profiel_edit">profiel_edit</string>
     <string name="updatingReport" >U bent ingelogd</string>
     <string name="confirm_registry">Email is niet gevonden. Wilt u een nieuwe gebruiker aanmaken?</string>
-    <string name="nee">nee</string>
-    <string name="ja">ja</string>
+
+    <string name="nee">Nee</string>
+    <string name="ja">Ja</string>
     <string name="menu_forgot_password">Wachtwoord vergeten</string>
+    <string name="volgende">Volgende</string>
 
 
 </resources>
