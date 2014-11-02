@@ -6,26 +6,35 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Bent u lid van Bond Moyson?"
-        android:id="@+id/textViewLid"
+        android:text="@string/aansluitingsnummer"
+        android:id="@+id/textViewAansluitingsnummer"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"/>
 
+    <!-- Hier moet de afbeelding van de sticker van bond moyson, in code? :/-->
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageViewBondMoyson"
+        android:layout_below="@id/textViewAansluitingsnummer"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/volgende"
-        android:id="@+id/btn_volgende"
-        android:layout_below="@id/radioButtonNee"
+        android:id="@+id/btn_volgendeDeel3"
+        android:layout_below="@id/imageViewBondMoyson"
         android:layout_alignParentStart="true" />
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/back"
-        android:id="@+id/btn_terugGaan"
-        android:layout_below="@id/btn_volgende"
+        android:id="@+id/btn_terugNaarDeel1"
+        android:layout_below="@id/btn_volgendeDeel3"
         android:layout_alignParentStart="true" />
+
 
 
 </RelativeLayout>

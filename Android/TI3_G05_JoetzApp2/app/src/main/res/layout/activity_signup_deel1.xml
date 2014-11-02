@@ -36,6 +36,13 @@
         android:id="@+id/btn_volgende"
         android:layout_below="@id/radioButtonNee"
         android:layout_alignParentStart="true" />
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/back"
+        android:id="@+id/btn_terugGaan"
+        android:layout_below="@id/btn_volgende"
+        android:layout_alignParentStart="true" />
 
 
 </RelativeLayout>

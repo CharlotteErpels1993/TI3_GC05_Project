@@ -51,6 +51,7 @@
     <string name="ja">Ja</string>
     <string name="menu_forgot_password">Wachtwoord vergeten</string>
     <string name="volgende">Volgende</string>
+    <string name="aansluitingsnummer">Voer je aansluitingsnummer in.</string>
 
 
 </resources>
