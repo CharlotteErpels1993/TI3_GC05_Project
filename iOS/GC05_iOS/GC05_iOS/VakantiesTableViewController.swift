@@ -1,3 +1,5 @@
+import UIKit
+
 class VakantiesTableViewController: UITableViewController {
     var vakanties: [Vakantie] = []
     
@@ -6,9 +8,16 @@ class VakantiesTableViewController: UITableViewController {
     //}
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let vakantieDetailsController = segue.destinationViewController as VakantieDetailsTableViewController
-        let selectedVakantie = vakanties[tableView.indexPathForSelectedRow()!.row]
-        vakantieDetailsController.vakantie = selectedVakantie
+        if segue.identifier == "toonVakantie" {
+            let vakantieDetailsController = segue.destinationViewController as VakantieDetailsTableViewController
+            let selectedVakantie = vakanties[tableView.indexPathForSelectedRow()!.row]
+            vakantieDetailsController.vakantie = selectedVakantie
+        } else if segue.identifier == "registreren" {
+            let registreren1ViewController = segue.destinationViewController as Registreren1ViewController
+        } else if segue.identifier == "inloggen" {
+            let inloggenViewController = segue.destinationViewController as InloggenViewController
+        }
+        
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
