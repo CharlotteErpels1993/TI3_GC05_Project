@@ -1,4 +1,5 @@
 class Gebruiker {
+    let id: String
     let email: String
     let wachtwoord: String
     let voornaam: String
@@ -12,8 +13,9 @@ class Gebruiker {
     let gsm: String
     let aansluitingsNr: Int
     let codeGerechtigde: Int
-    
-    init(email: String, wachtwoord: String, voornaam: String, naam: String, straat: String, nummer: Int, bus: String, gemeente: String, postcode: Int, telefoon: String, gsm: String, aansluitingsNr: Int, codeGerechtigde: Int) {
+        
+    init(id: String, email: String, wachtwoord: String, voornaam: String, naam: String, straat: String, nummer: Int, bus: String, gemeente: String, postcode: Int, telefoon: String, gsm: String, aansluitingsNr: Int, codeGerechtigde: Int) {
+        self.id = id
         self.email = email
         self.wachtwoord = wachtwoord
         self.voornaam = voornaam
