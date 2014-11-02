@@ -9,7 +9,7 @@ class Registratie2ViewController: UIViewController
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     {
-        if segue.identifier == "confirm" {
+        if segue.identifier == "volgende" {
             let registratie3ViewController = segue.destinationViewController as Registratie3ViewController
             
             //nog nakijken op lege velden!!! en dan view 'reloaden'?
@@ -19,9 +19,9 @@ class Registratie2ViewController: UIViewController
             registratie3ViewController.rijksregisterNr = txtRijksregisternummer.text
             
             if txtAansluitingsnummerTweedeOuder.text.isEmpty {
-                registratie3ViewController.aansluitingsNrTweedeouder = nil
+                registratie3ViewController.aansluitingsNrTweedeOuder = nil
             } else {
-                registratie3ViewController.aansluitingsNrTweedeouder = txtAansluitingsnummerTweedeOuder.text.toInt()
+                registratie3ViewController.aansluitingsNrTweedeOuder = txtAansluitingsnummerTweedeOuder.text.toInt()
             }
         }
     }

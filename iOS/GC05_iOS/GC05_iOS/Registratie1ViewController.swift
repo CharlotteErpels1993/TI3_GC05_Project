@@ -1,6 +1,6 @@
 import UIKit
 
-class Registreren1ViewController: UIViewController
+class Registratie1ViewController: UIViewController
 {
     @IBOutlet weak var lidSocialistischeMutualiteitSwitch: UISwitch!
  

@@ -13,7 +13,7 @@ class VakantiesTableViewController: UITableViewController {
             let selectedVakantie = vakanties[tableView.indexPathForSelectedRow()!.row]
             vakantieDetailsController.vakantie = selectedVakantie
         } else if segue.identifier == "registreren" {
-            let registreren1ViewController = segue.destinationViewController as Registreren1ViewController
+            let registratie1ViewController = segue.destinationViewController as Registratie1ViewController
         } else if segue.identifier == "inloggen" {
             let inloggenViewController = segue.destinationViewController as InloggenViewController
         }

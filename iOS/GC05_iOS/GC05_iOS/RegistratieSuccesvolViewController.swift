@@ -2,7 +2,7 @@ import UIKit
 
 class RegistratieSuccesvolViewController: UIViewController
 {
-    var gebruiker: Gebruiker?
+    var gebruiker: Gebruiker!
     var aansluitingsNrTweedeOuder: Int?
     
     private func gebruikerWegschrijvenNaarDatabase(gebruiker: Gebruiker) {

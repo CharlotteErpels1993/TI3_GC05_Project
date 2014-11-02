@@ -303,7 +303,7 @@
         <!--Registreren-->
         <scene sceneID="EhX-Bi-hdO">
             <objects>
-                <viewController id="fyb-xH-x0i" customClass="Registreren1ViewController" customModule="GC05_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="fyb-xH-x0i" customClass="Registratie1ViewController" customModule="GC05_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5IY-zh-MZg"/>
                         <viewControllerLayoutGuide type="bottom" id="h54-IA-4ZC"/>
@@ -771,7 +771,7 @@
                     <navigationItem key="navigationItem" title="Registreren" id="7JT-Z5-K2s">
                         <barButtonItem key="rightBarButtonItem" title="Volgende" id="SlY-mW-jkd">
                             <connections>
-                                <segue destination="y0D-Ac-bEH" kind="show" id="iw3-Pn-bUR"/>
+                                <segue destination="y0D-Ac-bEH" kind="show" identifier="volgende" id="iw3-Pn-bUR"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -952,7 +952,7 @@
                     <navigationItem key="navigationItem" title="Registreren" id="suI-Ue-v3o">
                         <barButtonItem key="rightBarButtonItem" title="Volgende" id="L9b-bD-fFu">
                             <connections>
-                                <segue destination="w0S-HA-suc" kind="show" id="H9B-i3-Yhv"/>
+                                <segue destination="w0S-HA-suc" kind="show" identifier="volgende" id="H9B-i3-Yhv"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -970,7 +970,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DsR-tm-lD1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1483" y="1036"/>
+            <point key="canvasLocation" x="1483" y="1044"/>
         </scene>
         <!--Registreren-->
         <scene sceneID="dth-mh-NbC">
@@ -1058,7 +1058,7 @@
                     <navigationItem key="navigationItem" title="Registreren" id="Sfz-uU-Y3L">
                         <barButtonItem key="rightBarButtonItem" title="Voltooi" id="TgS-Sz-GiH">
                             <connections>
-                                <segue destination="69z-Tv-Va1" kind="show" id="qbT-aP-08U"/>
+                                <segue destination="69z-Tv-Va1" kind="show" identifier="voltooiRegistratie" id="qbT-aP-08U"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1070,7 +1070,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ca8-jE-Hjf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2140" y="1036"/>
+            <point key="canvasLocation" x="2145" y="1044"/>
         </scene>
         <!--Registratie voltooid-->
         <scene sceneID="W6m-of-VF8">
@@ -1123,10 +1123,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0km-KM-IRT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2830" y="1036"/>
+            <point key="canvasLocation" x="2830" y="1044"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Mbx-DM-uw9"/>
+        <segue reference="maQ-E0-ytO"/>
     </inferredMetricsTieBreakers>
 </document>
