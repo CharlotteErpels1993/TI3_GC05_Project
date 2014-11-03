@@ -39,11 +39,11 @@ public class SignUp_deel3 extends Activity{
 	private String voornaam;
 	private String naam;
 	private String straat;
-    private String huisnr;
+    private int huisnr;
     private String bus;
     private String gemeente;
-    private String postcode;
-    private String rijksregnr;
+    private int postcode;
+    private int rijksregnr;
     private String telefoon;
     private String gsm;
 
@@ -122,12 +122,12 @@ public class SignUp_deel3 extends Activity{
 		// Store values at the time of the login attempt.
 		voornaam = voornaamText.getText().toString().toLowerCase();
 		naam = naamText.getText().toString().toLowerCase();
-		rijksregnr = rijksregnrText.getText().toString();
+		rijksregnr = Integer.parseInt(rijksregnrText.getText().toString());
         straat = straatText.getText().toString();
-        huisnr = huisnrText.getText().toString();
+        huisnr = Integer.parseInt( huisnrText.getText().toString());
         bus = busText.getText().toString();
         gemeente = gemeenteText.getText().toString();
-        postcode = postcodeText.getText().toString();
+        postcode = Integer.parseInt( postcodeText.getText().toString());
         telefoon = telefoonText.getText().toString();
         gsm = gsmText.getText().toString();
 
@@ -142,24 +142,24 @@ public class SignUp_deel3 extends Activity{
 			focusView = naamText;
 			cancel = true;
 		}
-
+/*  ToDo controle of rijksregisternr niet leeg is en cijfers zijn
 		if (TextUtils.isEmpty(rijksregnr)) {
             rijksregnrText.setError(getString(R.string.error_field_required));
             focusView = rijksregnrText;
             cancel = true;
-        }
+        }*/
 
         if (TextUtils.isEmpty(straat)) {
             straatText.setError(getString(R.string.error_field_required));
             focusView = straatText;
             cancel = true;
         }
-
+        /*  ToDo controle of rijksregisternr niet leeg is en cijfers zijn
         if (TextUtils.isEmpty(huisnr)) {
             huisnrText.setError(getString(R.string.error_field_required));
             focusView = huisnrText;
             cancel = true;
-        }
+        }*/
 
         if (TextUtils.isEmpty(bus)) {
             busText.setError(getString(R.string.error_field_required));
@@ -171,7 +171,7 @@ public class SignUp_deel3 extends Activity{
             focusView = gemeenteText;
             cancel = true;
         }
-
+        /*  ToDo controle of rijksregisternr niet leeg is en cijfers zijn
         if (TextUtils.isEmpty(postcode)) {
             postcodeText.setError(getString(R.string.error_field_required));
             focusView = postcodeText;
@@ -180,7 +180,7 @@ public class SignUp_deel3 extends Activity{
             postcodeText.setError(getString(R.string.error_incorrect_postcode));
             focusView = postcodeText;
             cancel = true;
-        }
+        }*/
 
         //Controle op telefoon? Dit moet getal zijn en moet een bepaalde lengte hebben
 
@@ -210,7 +210,7 @@ public class SignUp_deel3 extends Activity{
 
 	}
 
-    private void opslaan(String voornaam,String naam, String rijksregnr, String straat, String huisnr, String gemeente, String postcode, String telefoon, String gsm, String bus) {
+    private void opslaan(String voornaam,String naam, int rijksregnr, String straat, int huisnr, String gemeente, int postcode, String telefoon, String gsm, String bus) {
         //Toast.makeText(getApplicationContext(), mEmail, Toast.LENGTH_SHORT).show();
 /*
         ParseObject gebruiker = new ParseObject("Ouder");

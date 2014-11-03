@@ -9,7 +9,7 @@ public class Gebruiker { //abstract?
     private String wachtwoord;
 
     private String voornaam, naam;
-    private int huisnummer;
+    private int huisnummer, rijksregisternummer;
     private String bus, straat, gemeente;
     private int postcode;
     private String telefoonnr, gsmnr;
