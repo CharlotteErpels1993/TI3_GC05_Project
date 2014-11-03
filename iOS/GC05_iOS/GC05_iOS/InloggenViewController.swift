@@ -9,6 +9,10 @@ class InloggenViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    @IBAction func gaTerugNaarInloggen(segue: UIStoryboard) {
+        
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         var email = txtEmail.text
