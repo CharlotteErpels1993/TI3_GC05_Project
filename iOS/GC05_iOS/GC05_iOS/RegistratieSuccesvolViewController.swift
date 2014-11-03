@@ -49,8 +49,6 @@ class RegistratieSuccesvolViewController: UIViewController
             ouder["aansluitingsNrTweedeOuder"] = aansluitingsNrTweedeOuder
             
             ouder.save()
-            
-            // test
         }
     }
     
