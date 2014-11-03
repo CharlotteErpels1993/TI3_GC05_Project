@@ -23,4 +23,6 @@ class Monitor: Gebruiker
         self.lidNr = lidNr
         super.init(id: id, rijksregisterNr: rijksregisterNr, email: email, wachtwoord: wachtwoord, voornaam: voornaam, naam: naam, straat: straat, nummer: nummer, bus: bus, gemeente: gemeente, postcode: postcode, telefoon: telefoon, gsm: gsm, aansluitingsNr: aansluitingsNr, codeGerechtigde: codeGerechtigde)
     }
+    
+    //init()
 }
