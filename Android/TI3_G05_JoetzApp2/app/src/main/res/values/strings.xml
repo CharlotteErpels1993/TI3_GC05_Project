@@ -54,6 +54,7 @@
     <string name="aansluitingsnummer">Voer je aansluitingsnummer in.</string>
     <string name="bondMoyson">Bent u lid van Bond Moyson?</string>
     <string name="aanlsuitingsnummerhint">Geef uw aansluitingsnummer in</string>
+    <string name="filterhint">typ hier om te filteren</string>
 
 
 </resources>

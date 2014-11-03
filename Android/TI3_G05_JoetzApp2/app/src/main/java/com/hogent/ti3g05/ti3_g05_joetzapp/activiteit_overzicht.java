@@ -6,7 +6,9 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vakantie;
@@ -15,13 +17,14 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
-public class activiteit_overzicht extends Activity {
-    // Declare Variables
-    ListView listview;
-    List<ParseObject> ob;
-    ProgressDialog mProgressDialog;
-    ListViewAdapter adapter;
+public class activiteit_overzicht extends Activity implements TextWatcher {
+
+   private ListView listview;
+   private List<ParseObject> ob;
+   private ProgressDialog mProgressDialog;
+   private ListViewAdapter adapter;
     private List<Vakantie> vakanties = null;
+    private EditText filtertext;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -32,6 +35,9 @@ public class activiteit_overzicht extends Activity {
         setContentView(R.layout.activiteit_overzichtnieuw);
         // Execute RemoteDataTask AsyncTask
         new RemoteDataTask().execute();
+
+        filtertext=(EditText)findViewById(R.id.filtertext);
+        filtertext.addTextChangedListener(this);
     }
 
     // RemoteDataTask AsyncTask
