@@ -4,7 +4,7 @@ class Registratie3ViewController: UIViewController
 {
     var aansluitingsNr: Int?
     var codeGerechtigde: Int?
-    var rijksregisterNr: String!
+    var rijksregisterNr: String?
     var aansluitingsNrTweedeOuder: Int?
     
     @IBOutlet weak var txtVoornaam: UITextField!
