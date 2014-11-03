@@ -120,7 +120,7 @@ public class SignUp_deel2 extends Activity{
         // TODO Auto-generated method stub
         ParseUser user = new ParseUser();
 
-        //Hier moet het aansluitingsnummer doormiddelvan parse naar de db
+        //Hier moet het aansluitingsnummer doormiddelvan parse naar de db of opslaan in een tijde
 
         Intent intent = new Intent(SignUp_deel2.this, SignUp_deel3.class);
         startActivity(intent);

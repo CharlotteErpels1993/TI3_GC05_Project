@@ -57,6 +57,7 @@
         <activity android:name=".SignUp_deel1" android:screenOrientation="portrait"></activity>
         <activity android:name=".SignUp_deel2" android:screenOrientation="portrait"></activity>
         <activity android:name=".SignUp_deel3" android:screenOrientation="portrait"></activity>
+        <activity android:name=".SignUp_deel4" android:screenOrientation="portrait"></activity>
         <activity android:name=".Login" android:screenOrientation="portrait"></activity>
         <activity android:name=".ForgetParsePassword" android:screenOrientation="portrait"></activity>
 

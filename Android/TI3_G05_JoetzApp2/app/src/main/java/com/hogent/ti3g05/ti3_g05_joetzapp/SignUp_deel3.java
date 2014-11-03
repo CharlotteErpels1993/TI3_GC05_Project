@@ -81,7 +81,7 @@ public class SignUp_deel3 extends Activity{
             @Override
             public void onClick(View view) {
 
-                    // TODO Data naar db sturen of eventueel een objectje gebruiken om date doorheen de views op te slaan en door te geven, zie activiteit bekijken!
+                    // TODO Data naar db sturen of eventueel een objectje gebruiken om data doorheen de views op te slaan en door te geven, zie activiteit bekijken!
                     /*
                             // get Internet status
                             isInternetPresent = cd.isConnectingToInternet();
