@@ -32,7 +32,7 @@ class RegistratieSuccesvolViewController: UIViewController
             
             var ouder = PFObject(className: "Ouder2")
             
-            /*ouder.setValue(gebruiker.rijksregisterNr, forKey: "rijksregisterNr")
+            ouder.setValue(gebruiker.rijksregisterNr, forKey: "rijksregisterNr")
             ouder.setValue(gebruiker.email, forKey: "email")
             ouder.setValue(gebruiker.wachtwoord, forKey: "wachtwoord")
             ouder.setValue(gebruiker.voornaam, forKey: "voornaam")
@@ -46,9 +46,9 @@ class RegistratieSuccesvolViewController: UIViewController
             ouder.setValue(gebruiker.gsm, forKey: "gsm")
             ouder.setValue(gebruiker.aansluitingsNr, forKey: "aansluitingsNr")
             ouder.setValue(gebruiker.codeGerechtigde, forKey: "codeGerechtigde")
-            ouder.setValue(aansluitingsNrTweedeOuder, forKey: "aansluitingsNrTweedeOuder")*/
+            ouder.setValue(aansluitingsNrTweedeOuder, forKey: "aansluitingsNrTweedeOuder")
             
-            ouder.addObject(gebruiker.rijksregisterNr, forKey: "rijksregisterNr")
+            /*ouder.addObject(gebruiker.rijksregisterNr, forKey: "rijksregisterNr")
             ouder.addObject(gebruiker.email, forKey: "email")
             ouder.addObject(gebruiker.wachtwoord, forKey: "wachtwoord")
             ouder.addObject(gebruiker.voornaam, forKey: "voornaam")
@@ -62,7 +62,7 @@ class RegistratieSuccesvolViewController: UIViewController
             ouder.addObject(gebruiker.gsm, forKey: "gsm")
             ouder.addObject(gebruiker.aansluitingsNr, forKey: "aansluitingsNr")
             ouder.addObject(gebruiker.codeGerechtigde, forKey: "codeGerechtigde")
-            ouder.addObject(aansluitingsNrTweedeOuder, forKey: "aansluitingsNrTweedeOuder")
+            ouder.addObject(aansluitingsNrTweedeOuder, forKey: "aansluitingsNrTweedeOuder")*/
             
             ouder.save()
             
