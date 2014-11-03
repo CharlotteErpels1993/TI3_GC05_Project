@@ -25,10 +25,19 @@
         android:hint="@string/famnaamHint" />
 
     <EditText
-        android:id="@+id/Straat"
+        android:id="@+id/RijksRegNr"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/Naam"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:hint="@string/rijksregnr" />
+
+    <EditText
+        android:id="@+id/Straat"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/RijksRegNr"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp"
         android:hint="@string/straatHint" />
