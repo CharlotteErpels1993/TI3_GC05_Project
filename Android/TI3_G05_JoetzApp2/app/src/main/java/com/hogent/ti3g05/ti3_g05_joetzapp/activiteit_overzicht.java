@@ -2,10 +2,13 @@ package com.hogent.ti3g05.ti3_g05_joetzapp;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.widget.EditText;
@@ -17,7 +20,7 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
-public class activiteit_overzicht extends Activity implements TextWatcher {
+public class activiteit_overzicht extends Activity {
 
    private ListView listview;
    private List<ParseObject> ob;
@@ -35,9 +38,6 @@ public class activiteit_overzicht extends Activity implements TextWatcher {
         setContentView(R.layout.activiteit_overzichtnieuw);
         // Execute RemoteDataTask AsyncTask
         new RemoteDataTask().execute();
-
-        filtertext=(EditText)findViewById(R.id.filtertext);
-        filtertext.addTextChangedListener(this);
     }
 
     // RemoteDataTask AsyncTask
@@ -99,6 +99,25 @@ public class activiteit_overzicht extends Activity implements TextWatcher {
             listview.setAdapter(adapter);
             // Close the progressdialog
             mProgressDialog.dismiss();
+
+            filtertext.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
+
+
+                }
+
+                @Override
+                public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
+
+                }
+
+                @Override
+                public void afterTextChanged(Editable editable) {
+                     String text = filtertext.getText().toString().toLowerCase(Locale.getDefault());
+                    adapter.filter(text);
+                }
+            });
         }
     }
 }

@@ -2,6 +2,8 @@ package com.hogent.ti3g05.ti3_g05_joetzapp;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -92,6 +94,22 @@ public class ListViewAdapter extends BaseAdapter {
             }
         });
         return view;
+    }
+
+    public void filter(String text) {
+        text =text.toLowerCase(Locale.getDefault());
+        vakanties.clear();
+        if(text.length()==0)
+        {
+            vakanties.addAll(arraylist);
+        } else {
+            for(Vakantie v: arraylist) {
+                if(v.getLocatie().toLowerCase(Locale.getDefault()).contains(text)) {
+                    vakanties.add(v);
+                }
+            }
+        }
+        notifyDataSetChanged();
     }
 
 }
