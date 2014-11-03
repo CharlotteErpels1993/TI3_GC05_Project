@@ -11,25 +11,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
-import com.parse.ParseUser;
-import com.parse.SignUpCallback;
 
 import java.util.List;
 
-public class SignUp_deel3 extends Activity{
+public class SignUp_deel4 extends Activity{
 
-	private EditText voornaamText;
-	private EditText naamText;
-	private EditText straatText;
-    private EditText huisnrText;
-    private EditText gemeenteText;
-    private EditText postcodeText;
-    private EditText busText;
-
+	private EditText mEmailEditText; 
+	private EditText mPasswordEditText;
+	private EditText mConfirmPasswordEditText;
 	private Button mCreateAccountButton;
     private Button terugKerenButton;
 
@@ -78,7 +70,7 @@ public class SignUp_deel3 extends Activity{
                                 // make HTTP requests
                                 createAccount();
                             } else
-                                signUpMsg("Fout bij registreren");
+                                Toast.makeText(getApplicationContext(), "Fout bij registreren", Toast.LENGTH_SHORT).show();
                                 //showAlertDialog(getApplicationContext(), "No Internet Connection",
                                         //"You don't have internet connection.", false);
 
@@ -97,7 +89,7 @@ public class SignUp_deel3 extends Activity{
         terugKerenButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent1 = new Intent(SignUp_deel3.this, MainScreen.class);
+                Intent intent1 = new Intent(SignUp_deel4.this, MainScreen.class);
                 startActivity(intent1);
             }
         });
@@ -113,7 +105,7 @@ public class SignUp_deel3 extends Activity{
 		//declaratie van focusView & cancel is private gedeclareerd.
 
 		// Store values at the time of the login attempt.
-		mEmail = mEmailEditText.getText().toString().toLowerCase();
+		mEmail = mEmailEditText.getText().toString();
 		mPassword = mPasswordEditText.getText().toString();
 		mConfirmPassword = mConfirmPasswordEditText.getText().toString();
 
@@ -182,27 +174,17 @@ public class SignUp_deel3 extends Activity{
     private void signUp(String username,String mEmail, String mPassword) {
         //Toast.makeText(getApplicationContext(), mEmail, Toast.LENGTH_SHORT).show();
 
-        ParseObject gebruiker = new ParseObject("Ouder");
-        gebruiker.put("username", username);
-        gebruiker.put("email", mEmail);
-        gebruiker.put("wachtwoord", mPassword);
-        gebruiker.saveInBackground();
-        //TODO: data uit vorige schermen ophalen en erin steken.
-
-		ParseUser user = new ParseUser();
+		/*ParseUser user = new ParseUser();
         user.setUsername(username);
 		user.setPassword(mPassword);
-		user.setEmail(mEmail);
-        user.signUpInBackground(new SignUpCallback() {
-        @Override
-		public void done(ParseException e) {
-            if (e != null) {
-                    // Sign up didn't succeed. Look at the ParseException
-                    // to figure out what went wrong
-                    signUpMsg(e.getMessage());
-                }
-            }
-		});
+		user.setEmail(mEmail);*/
+        ParseObject user = new ParseObject("Ouder");
+        user.put("username", username);
+        user.put("email", mEmail);
+        user.put("wachtwoord", mPassword);
+        user.saveInBackground();
+        //TODO: data uit vorige schermen ophalen en erin steken.
+        //TODO: controleren of er al een account bestaat met dit Emailadres
 
         //hieronder is code om data ophalen.
         /*ParseQuery<ParseObject> query = ParseQuery.getQuery("Ouder");
@@ -225,7 +207,19 @@ public class SignUp_deel3 extends Activity{
         signUpMsg("Account aangemaakt.");
         Intent in = new Intent(getApplicationContext(),MainScreen.class);
         startActivity(in);
-
+        /*user.signUpInBackground(new SignUpCallback() {
+		  public void done(ParseException e) {
+		    if (e == null) {
+		      signUpMsg("Eigen account aangemaakt.");
+		      Intent in = new Intent(getApplicationContext(),MainScreen.class);
+		      startActivity(in);
+		    } else {
+		      // Sign up didn't succeed. Look at the ParseException
+		      // to figure out what went wrong
+		    	signUpMsg("Account bestaat al.");
+		    }
+		  }
+		});*/
     }
 
 	protected void signUpMsg(String msg) {
