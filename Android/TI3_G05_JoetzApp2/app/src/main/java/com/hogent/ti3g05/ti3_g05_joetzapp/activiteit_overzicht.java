@@ -102,19 +102,14 @@ public class activiteit_overzicht extends Activity {
 
             filtertext.addTextChangedListener(new TextWatcher() {
                 @Override
-                public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-
-
-                }
+                public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {                }
 
                 @Override
-                public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-
-                }
+                public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {                }
 
                 @Override
                 public void afterTextChanged(Editable editable) {
-                     String text = filtertext.getText().toString().toLowerCase(Locale.getDefault());
+                    String text = filtertext.getText().toString().toLowerCase(Locale.getDefault());
                     adapter.filter(text);
                 }
             });

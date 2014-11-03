@@ -45,7 +45,7 @@ public class SignUp_deel3 extends Activity{
     private String postcode;
     private String rijksregnr;
     private String telefoon;
-    private String gdm;
+    private String gsm;
 
     private boolean cancel = false;
     private View focusView = null;
@@ -57,27 +57,32 @@ public class SignUp_deel3 extends Activity{
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-        // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
 
-		setContentView(R.layout.activity_signup_deel4);
+		setContentView(R.layout.activity_signup_deel3);
 
 		// creating connection detector class instance
 				cd = new ConnectionDetector(getApplicationContext());
 
 		
-		mEmailEditText = (EditText) findViewById(R.id.etEmail);
-		mPasswordEditText = (EditText) findViewById(R.id.etPassword);
-		mConfirmPasswordEditText = (EditText) findViewById(R.id.etPasswordConfirm);
+		voornaamText = (EditText) findViewById(R.id.Voornaam);
+		naamText = (EditText) findViewById(R.id.Naam);
+        rijksregnrText = (EditText) findViewById(R.id.RijksRegNr);
+		straatText = (EditText) findViewById(R.id.Straat);
+        huisnrText = (EditText) findViewById(R.id.Huisnr);
+        gemeenteText = (EditText) findViewById(R.id.Gemeente);
+        postcodeText = (EditText) findViewById(R.id.Postcode);
+        telefoonText = (EditText) findViewById(R.id.Telefoon);
+        gsmText = (EditText) findViewById(R.id.Gsm);
+        busText = (EditText) findViewById(R.id.Bus);
 
-		mCreateAccountButton = (Button) findViewById(R.id.btnCreateAccount);
-		mCreateAccountButton.setOnClickListener(new OnClickListener() {
+		volgendeButton = (Button) findViewById(R.id.btnNaarDeel4);
+		volgendeButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                    // TODO Auto-generated method stub
-                    switch (view.getId()) {
-                        case R.id.btnCreateAccount:
+                    // TODO Data naar db sturen of eventueel een objectje gebruiken om data doorheen de views op te slaan en door te geven, zie activiteit bekijken!
+                    /*
                             // get Internet status
                             isInternetPresent = cd.isConnectingToInternet();
                             // check for Internet status
@@ -87,18 +92,10 @@ public class SignUp_deel3 extends Activity{
                                 // Internet Connection is Present
                                 // make HTTP requests
                                 createAccount();
-                            } else
-                                signUpMsg("Fout bij registreren");
-                                //showAlertDialog(getApplicationContext(), "No Internet Connection",
-                                        //"You don't have internet connection.", false);
+                            }*/
 
-
-                            break;
-
-                        default:
-                            break;
-
-                }
+                Intent intent = new Intent(SignUp_deel3.this, SignUp_deel4.class);
+                startActivity(intent);
             }
         });
 
@@ -116,62 +113,86 @@ public class SignUp_deel3 extends Activity{
 
 
 
-	private void createAccount(){
+	private void opslaagGeg(){
 		clearErrors();
         cancel = false;
 
 		//declaratie van focusView & cancel is private gedeclareerd.
 
 		// Store values at the time of the login attempt.
-		mEmail = mEmailEditText.getText().toString().toLowerCase();
-		mPassword = mPasswordEditText.getText().toString();
-		mConfirmPassword = mConfirmPasswordEditText.getText().toString();
+		voornaam = voornaamText.getText().toString().toLowerCase();
+		naam = naamText.getText().toString().toLowerCase();
+		rijksregnr = rijksregnrText.getText().toString();
+        straat = straatText.getText().toString();
+        huisnr = huisnrText.getText().toString();
+        bus = busText.getText().toString();
+        gemeente = gemeenteText.getText().toString();
+        postcode = postcodeText.getText().toString();
+        telefoon = telefoonText.getText().toString();
+        gsm = gsmText.getText().toString();
 
-		// Check for a valid confirm password.
-		if (TextUtils.isEmpty(mConfirmPassword)) {
-			mConfirmPasswordEditText.setError(getString(R.string.error_field_required));
-			focusView = mConfirmPasswordEditText;
-			cancel = true;
-		} else if (mPassword != null && !mConfirmPassword.equals(mPassword)) {
-			mPasswordEditText.setError(getString(R.string.error_invalid_confirm_password));
-			focusView = mPasswordEditText;
-			cancel = true;
-		}
-		// Check for a valid password.
-		if (TextUtils.isEmpty(mPassword)) {
-			mPasswordEditText.setError(getString(R.string.error_field_required));
-			focusView = mPasswordEditText;
-			cancel = true;
-		} else if (mPassword.length() < 4) {
-			mPasswordEditText.setError(getString(R.string.error_invalid_password));
-			focusView = mPasswordEditText;
-			cancel = true;
-		}
-
-		// Check for a valid email address.
-		if (TextUtils.isEmpty(mEmail)) {
-			mEmailEditText.setError(getString(R.string.error_field_required));
-			focusView = mEmailEditText;
-			cancel = true;
-		} else if (!mEmail.contains("@")) {
-			mEmailEditText.setError(getString(R.string.error_invalid_email));
-			focusView = mEmailEditText;
-			cancel = true;
-		}
-
-        //check if email adress is already used.
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("Ouder");
-        query.whereEqualTo("email", mEmail);
-        try{
-            List<ParseObject> lijstObjecten = query.find();
-            if (lijstObjecten.size() > 0){
-                mEmailEditText.setError("Dit e-mail adres is reeds in gebruik.");
-                focusView = mEmailEditText;
-                cancel = true;
-            }
+        if (TextUtils.isEmpty(voornaam)) {
+            voornaamText.setError(getString(R.string.error_field_required));
+            focusView = voornaamText;
+            cancel = true;
         }
-        catch(ParseException e){
-            signUpMsg("Er is iets fout gelopen. Onze excuses voor het ongemak.");
+
+		if (TextUtils.isEmpty(naam)) {
+			naamText.setError(getString(R.string.error_field_required));
+			focusView = naamText;
+			cancel = true;
+		}
+
+		if (TextUtils.isEmpty(rijksregnr)) {
+            rijksregnrText.setError(getString(R.string.error_field_required));
+            focusView = rijksregnrText;
+            cancel = true;
+        }
+
+        if (TextUtils.isEmpty(straat)) {
+            straatText.setError(getString(R.string.error_field_required));
+            focusView = straatText;
+            cancel = true;
+        }
+
+        if (TextUtils.isEmpty(huisnr)) {
+            huisnrText.setError(getString(R.string.error_field_required));
+            focusView = huisnrText;
+            cancel = true;
+        }
+
+        if (TextUtils.isEmpty(bus)) {
+            busText.setError(getString(R.string.error_field_required));
+            focusView = busText;
+            cancel = true;
+        }
+        if (TextUtils.isEmpty(gemeente)) {
+            gemeenteText.setError(getString(R.string.error_field_required));
+            focusView = gemeenteText;
+            cancel = true;
+        }
+
+        if (TextUtils.isEmpty(postcode)) {
+            postcodeText.setError(getString(R.string.error_field_required));
+            focusView = postcodeText;
+            cancel = true;
+        } else if(postcode.length()>4||postcode.length()<4) {
+            postcodeText.setError(getString(R.string.error_incorrect_postcode));
+            focusView = postcodeText;
+            cancel = true;
+        }
+
+        //Controle op telefoon? Dit moet getal zijn en moet een bepaalde lengte hebben
+
+        /*if (TextUtils.isEmpty(telefoon)) {
+            telefoonText.setError(getString(R.string.error_field_required));
+            focusView = telefoonText;
+            cancel = true;
+        }*/
+
+        if (TextUtils.isEmpty(gsm)) {
+            gsmText.setError(getString(R.string.error_field_required));
+            focusView = gsmText;
             cancel = true;
         }
 
@@ -182,16 +203,16 @@ public class SignUp_deel3 extends Activity{
 		} else {
 			// Show a progress spinner, and kick off a background task to
 			// perform the user login attempt.
-			Toast.makeText(getApplicationContext(), "Registreren", Toast.LENGTH_SHORT).show();
-			signUp(mEmail,mEmail, mPassword);
+            opslaan(voornaam ,naam, rijksregnr, straat, huisnr, gemeente, postcode, telefoon, gsm, bus);
+			Toast.makeText(getApplicationContext(), "Opgeslagen", Toast.LENGTH_SHORT).show();
 
 		}
 
 	}
 
-    private void signUp(String username,String mEmail, String mPassword) {
+    private void opslaan(String voornaam,String naam, String rijksregnr, String straat, String huisnr, String gemeente, String postcode, String telefoon, String gsm, String bus) {
         //Toast.makeText(getApplicationContext(), mEmail, Toast.LENGTH_SHORT).show();
-
+/*
         ParseObject gebruiker = new ParseObject("Ouder");
         gebruiker.put("username", username);
         gebruiker.put("email", mEmail);
@@ -231,9 +252,7 @@ public class SignUp_deel3 extends Activity{
            }
        });*/
 
-
-        signUpMsg("Account aangemaakt.");
-        Intent in = new Intent(getApplicationContext(),MainScreen.class);
+        Intent in = new Intent(getApplicationContext(),SignUp_deel4.class);
         startActivity(in);
 
     }
@@ -243,9 +262,17 @@ public class SignUp_deel3 extends Activity{
 	}
 
 	private void clearErrors(){ 
-		mEmailEditText.setError(null);
-		mPasswordEditText.setError(null);
-		mConfirmPasswordEditText.setError(null);
+		voornaamText.setError(null);
+		naamText.setError(null);
+		rijksregnrText.setError(null);
+        straatText.setError(null);
+        huisnrText.setError(null);
+        gemeenteText.setError(null);
+        postcodeText.setError(null);
+        busText.setError(null);
+        telefoonText.setError(null);
+        gsmText.setError(null);
+
 	}
 
 

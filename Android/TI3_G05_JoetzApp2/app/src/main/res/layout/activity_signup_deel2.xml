@@ -34,15 +34,6 @@
         android:adjustViewBounds="true"
         />
 
-    <EditText
-        android:id="@+id/rijksregnr"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/imageViewBondMoyson"
-        android:hint="@string/rijksregnr"
-        android:inputType="textEmailAddress"
-        android:layout_marginTop="20dp"
-        />
 
 
 
@@ -51,7 +42,7 @@
         android:layout_height="wrap_content"
         android:text="@string/volgende"
         android:id="@+id/btn_volgendedeel3"
-        android:layout_below="@id/rijksregnr"
+        android:layout_below="@id/imageViewBondMoyson"
         android:layout_alignParentStart="true" />
     <Button
         android:layout_width="fill_parent"
