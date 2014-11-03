@@ -1,18 +1,10 @@
 package com.hogent.ti3g05.ti3_g05_joetzapp;
 
-import java.util.Locale;
-import java.util.regex.Pattern;
-
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Patterns;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -20,10 +12,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.parse.LogInCallback;
-import com.parse.Parse;
-import com.parse.ParseAnalytics;
 import com.parse.ParseException;
-import com.parse.ParseObject;
 import com.parse.ParseUser;
 
 public class Login extends Activity{
@@ -56,56 +45,55 @@ public class Login extends Activity{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_login);
 
-		//Calling ParseAnalytics to see Analytics of our app
-		ParseAnalytics.trackAppOpened(getIntent());
-		
-		// creating connection detector class instance
-		cd = new ConnectionDetector(getApplicationContext());
+        //Calling ParseAnalytics to see Analytics of our app
+        //ParseAnalytics.trackAppOpened(getIntent());
 
-		btn_LoginIn = (Button) findViewById(R.id.btn_login);
-		btn_SignUp = (Button) findViewById(R.id.btn_signup);
+        // creating connection detector class instance
+        cd = new ConnectionDetector(getApplicationContext());
+
+        btn_LoginIn = (Button) findViewById(R.id.btn_login);
+        btn_SignUp = (Button) findViewById(R.id.btn_signup);
         btn_ForgetPass = (Button) findViewById(R.id.btn_ForgetPass);
         btn_Return = (Button) findViewById(R.id.btn_return);
-		mUserNameEditText = (EditText) findViewById(R.id.username);
-		mPasswordEditText = (EditText) findViewById(R.id.password);
+        mUserNameEditText = (EditText) findViewById(R.id.username);
+        mPasswordEditText = (EditText) findViewById(R.id.password);
 
+        btn_LoginIn.setOnClickListener(new OnClickListener() {
 
-		btn_LoginIn.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				// get Internet status
-				isInternetPresent = cd.isConnectingToInternet();
-				// check for Internet status
-				if (isInternetPresent) {
-					// Internet Connection is Present
-					// make HTTP requests
-					attemptLogin();
-				} else {
-					// Internet connection is not present
-					// Ask user to connect to Internet
+            @Override
+            public void onClick(View v) {
+                // get Internet status
+                isInternetPresent = cd.isConnectingToInternet();
+                // check for Internet status
+                if (isInternetPresent) {
+                    // Internet Connection is Present
+                    // make HTTP requests
+                    attemptLogin();
+                } else {
+                    // Internet connection is not present
+                    // Ask user to connect to Internet
                     Toast.makeText(getApplicationContext(), "Geen internetconnectie", Toast.LENGTH_SHORT).show();
-				}
+                }
 
-			}
-		});
+            }
+        });
 
-		btn_SignUp.setOnClickListener(new OnClickListener() {
+        btn_SignUp.setOnClickListener(new OnClickListener() {
 
-			@Override
-			public void onClick(View v) {
-				Intent in =  new Intent(Login.this,SignUp_deel1.class);
-				startActivity(in);
-			}
-		});
+            @Override
+            public void onClick(View v) {
+                Intent in = new Intent(Login.this, SignUp_deel1.class);
+                startActivity(in);
+            }
+        });
 
         btn_ForgetPass.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                Intent in =  new Intent(Login.this,ForgetParsePassword.class);
+                Intent in = new Intent(Login.this, ForgetParsePassword.class);
                 startActivity(in);
             }
         });
@@ -120,32 +108,6 @@ public class Login extends Activity{
 
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		super.onCreateOptionsMenu(menu);
-		//getMenuInflater().inflate(R.menu.activity_login, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.menu_forgot_password:
-                forgotPassword();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
-
-
-    private void forgotPassword(){
-		/*
-		FragmentManager fm = getSupportFragmentManager();
-	     ForgotPasswordDialogFragment forgotPasswordDialog = new ForgotPasswordDialogFragment();
-	     forgotPasswordDialog.show(fm, null);
-		 */
-    }
 
 	public void attemptLogin() {
 		clearErrors();
@@ -162,10 +124,6 @@ public class Login extends Activity{
 		if (TextUtils.isEmpty(password)) {
 			mPasswordEditText.setError(getString(R.string.error_field_required));
 			focusView = mPasswordEditText;
-			cancel = true;
-		} else if (password.length() < 4) {
-			mPasswordEditText.setError(getString(R.string.error_invalid_password));
-			focusView =mPasswordEditText;
 			cancel = true;
 		}
 
@@ -187,40 +145,38 @@ public class Login extends Activity{
             cancel = true;
         }*/
 
-
-
 		if (cancel) {
 			// There was an error; don't attempt login and focus the first
 			// form field with an error.
 			focusView.requestFocus();
 		} else {
 			// perform the user login attempt.
-			login(username.toLowerCase(Locale.getDefault()), password);
+			login(username.toLowerCase(), password);
 		}
 	}
 
 	private void login(String lowerCase, String password) {
-		// TODO Auto-generated method stub
-		ParseUser.logInInBackground(lowerCase, password, new LogInCallback() {
-			@Override
-			public void done(ParseUser user, ParseException e) {
-				// TODO Auto-generated method stub
-				if(e == null)
-					loginSuccessful();
-				else
-					loginUnSuccessful();
-			}
-		});
-
+        ParseUser.logInInBackground(lowerCase, password, new LogInCallback() {
+            @Override
+            public void done(ParseUser user, ParseException e) {
+                // TODO Auto-generated method stub
+                if(e == null){
+                    loginSuccessful();
+                }
+                else{
+                    loginUnSuccessful();
+                }
+            }
+        });
 	}
 
 	protected void loginSuccessful() {
-		// TODO Auto-generated method stub
+        Toast.makeText(getApplicationContext(), "U bent succesvol ingelogd", Toast.LENGTH_SHORT).show();
+
 		Intent in =  new Intent(Login.this,MainScreen.class);
 		startActivity(in);
 	}
 	protected void loginUnSuccessful() {
-		// TODO Auto-generated method stub
 		Toast.makeText(getApplicationContext(), "Email of wachtwoord is ongeldig", Toast.LENGTH_SHORT).show();
 	}
 
@@ -229,30 +185,18 @@ public class Login extends Activity{
 		mPasswordEditText.setError(null);
 	}
 
-	@SuppressWarnings("deprecation")
-	public void showAlertDialog(Context context, String title, String message, Boolean status) {
-		AlertDialog alertDialog = new AlertDialog.Builder(context).create();
+   /* private boolean bestaatDezeEmailReeds(String email){
+        try{
+            ParseQuery<ParseUser> query = ParseUser.getQuery();
+            query.whereEqualTo("email", email);
+            List<ParseUser> lijstUsers = query.find();
 
-		// Setting Dialog Title
-		alertDialog.setTitle(title);
+            return (lijstUsers.size() > 0);
+        }
+        catch(ParseException pe){
+            Toast.makeText(getApplicationContext(),"Er is iets fout gelopen. Onze excuses voor het ongemak.", Toast.LENGTH_SHORT);
+        }
 
-		// Setting Dialog Message
-		alertDialog.setMessage(message);
-
-		// Setting alert dialog icon
-		alertDialog.setIcon(R.drawable.fail);
-
-		// Setting OK Button
-		alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog, int which) {
-			}
-		});
-
-		// Showing Alert Message
-		alertDialog.show();
-	}
-
-
-
+    }*/
 
 }
