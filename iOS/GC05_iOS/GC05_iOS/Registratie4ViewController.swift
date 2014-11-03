@@ -38,6 +38,7 @@ class Registratie4ViewController: UIViewController
         }
     }
     
+    //alternatief verloop nog toevoegen in lastenboek!!!! (UC Registreren)
     func controleerGekendeEmail(email: String) -> Bool {
         var monitors: [PFObject] = []
         var ouders: [PFObject] = []
@@ -56,29 +57,5 @@ class Registratie4ViewController: UIViewController
         } else {
             return false
         }
-        
-    
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }

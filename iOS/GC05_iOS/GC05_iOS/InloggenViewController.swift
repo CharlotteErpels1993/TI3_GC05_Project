@@ -6,7 +6,28 @@ class InloggenViewController: UIViewController {
     var queryMonitor = PFQuery(className: "Monitor")
     
     override func viewDidLoad() {
+<<<<<<< HEAD
+        test()
+    }
+    func test() {
+        var alert = UIAlertController(title: "Fout", message: "U hebt niet alle velden ingevuld!", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
+    if segue.identifier == "inloggen" {
+    
+    
+    
+    /*if (txtEmail != nil && txtWachtwoord != nil) {
+    for gebruiker in gebruikers {
+    if(gebruiker.email == txtEmail.text && gebruiker.wachtwoord == txtWachtwoord) {
+    // ga naar het overzichtpagina van de gebruiker (monitor of ouder?)
+    }
+=======
         super.viewDidLoad()
+>>>>>>> FETCH_HEAD
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -50,4 +71,11 @@ class InloggenViewController: UIViewController {
         }
       }
     }
+<<<<<<< HEAD
+    }
+    
+    
+    
+=======
+>>>>>>> FETCH_HEAD
 }
