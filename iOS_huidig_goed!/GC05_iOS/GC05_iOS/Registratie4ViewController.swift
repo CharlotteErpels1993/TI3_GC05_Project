@@ -31,7 +31,7 @@ class Registratie4ViewController: UIViewController
         if segue.identifier == "voltooiRegistratie" {
             let registratieSuccesvolViewController = segue.destinationViewController as RegistratieSuccesvolViewController
             
-            registratieSuccesvolViewController.gebruiker = Gebruiker(rijksregisterNr: rijksregisterNr!, email: txtEmail.text, wachtwoord: txtWachtwoord.text, voornaam: voornaam!, naam: naam!, straat: straat!, nummer: nummer!, bus: bus!, gemeente: gemeente!, postcode: postcode!, telefoon: telefoon!, gsm: gsm!, aansluitingsNr: aansluitingsNr!, codeGerechtigde: codeGerechtigde!, aansluitingsNrTweedeOuder: aansluitingsNrTweedeOuder!)
+            registratieSuccesvolViewController.gebruiker = Ouder(rijksregisterNr: rijksregisterNr!, email: txtEmail.text, wachtwoord: txtWachtwoord.text, voornaam: voornaam!, naam: naam!, straat: straat!, nummer: nummer!, bus: bus!, gemeente: gemeente!, postcode: postcode!, telefoon: telefoon!, gsm: gsm!, aansluitingsNr: aansluitingsNr!, codeGerechtigde: codeGerechtigde!, aansluitingsNrTweedeOuder: aansluitingsNrTweedeOuder!)
             
             //registratieSuccesvolViewController.aansluitingsNrTweedeOuder = aansluitingsNrTweedeOuder
             
