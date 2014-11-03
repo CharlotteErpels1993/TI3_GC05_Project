@@ -11,10 +11,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
+
+import java.util.List;
 
 public class SignUp_deel3 extends Activity{
 
@@ -28,10 +32,13 @@ public class SignUp_deel3 extends Activity{
 	private String mPassword;
 	private String mConfirmPassword;
 
+    private boolean cancel = false;
+    private View focusView = null;
+
 	// flag for Internet connection status
-		Boolean isInternetPresent = false;
-		// Connection detector class
-		ConnectionDetector cd;
+    Boolean isInternetPresent = false;
+    // Connection detector class
+    ConnectionDetector cd;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -96,9 +103,9 @@ public class SignUp_deel3 extends Activity{
 
 	private void createAccount(){
 		clearErrors();
+        cancel = false;
 
-		boolean cancel = false;
-		View focusView = null;
+		//declaratie van focusView & cancel is private gedeclareerd.
 
 		// Store values at the time of the login attempt.
 		mEmail = mEmailEditText.getText().toString();
@@ -137,6 +144,22 @@ public class SignUp_deel3 extends Activity{
 			cancel = true;
 		}
 
+        //check if email adress is already used.
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Ouder");
+        query.whereEqualTo("email", mEmail);
+        try{
+            List<ParseObject> lijstObjecten = query.find();
+            if (lijstObjecten.size() > 0){
+                mEmailEditText.setError("Dit e-mail adres is reeds in gebruik.");
+                focusView = mEmailEditText;
+                cancel = true;
+            }
+        }
+        catch(ParseException e){
+            signUpMsg("Er is iets fout gelopen. Onze excuses voor het ongemak.");
+            cancel = true;
+        }
+
 		if (cancel) {
 			// There was an error; don't attempt login and focus the first
 			// form field with an error.
@@ -144,7 +167,7 @@ public class SignUp_deel3 extends Activity{
 		} else {
 			// Show a progress spinner, and kick off a background task to
 			// perform the user login attempt.
-			Toast.makeText(getApplicationContext(), "Registreren", Toast.LENGTH_SHORT).show();
+			//Toast.makeText(getApplicationContext(), "Registreren", Toast.LENGTH_SHORT).show();
 			signUp(mEmail,mEmail, mPassword);
 
 		}
