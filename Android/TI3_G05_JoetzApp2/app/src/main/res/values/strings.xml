@@ -65,6 +65,7 @@
     <string name="postcodeHint">Postcode</string>
     <string name="telefoonHint">Telefoon</string>
     <string name="gsmHint">Gsmnummer</string>
+    <string name="error_incorrect_postcode">Postcode is niet geldig.</string>
 
 
 </resources>
