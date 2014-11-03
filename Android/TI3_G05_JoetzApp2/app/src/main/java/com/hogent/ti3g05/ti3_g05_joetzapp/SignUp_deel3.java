@@ -73,7 +73,7 @@ public class SignUp_deel3 extends Activity{
                                 // make HTTP requests
                                 createAccount();
                             } else
-                                Toast.makeText(getApplicationContext(), "Fout bij registreren", Toast.LENGTH_SHORT).show();
+                                signUpMsg("Fout bij registreren");
                                 //showAlertDialog(getApplicationContext(), "No Internet Connection",
                                         //"You don't have internet connection.", false);
 
@@ -108,7 +108,7 @@ public class SignUp_deel3 extends Activity{
 		//declaratie van focusView & cancel is private gedeclareerd.
 
 		// Store values at the time of the login attempt.
-		mEmail = mEmailEditText.getText().toString();
+		mEmail = mEmailEditText.getText().toString().toLowerCase();
 		mPassword = mPasswordEditText.getText().toString();
 		mConfirmPassword = mConfirmPasswordEditText.getText().toString();
 
@@ -177,17 +177,27 @@ public class SignUp_deel3 extends Activity{
     private void signUp(String username,String mEmail, String mPassword) {
         //Toast.makeText(getApplicationContext(), mEmail, Toast.LENGTH_SHORT).show();
 
-		/*ParseUser user = new ParseUser();
+        ParseObject gebruiker = new ParseObject("Ouder");
+        gebruiker.put("username", username);
+        gebruiker.put("email", mEmail);
+        gebruiker.put("wachtwoord", mPassword);
+        gebruiker.saveInBackground();
+        //TODO: data uit vorige schermen ophalen en erin steken.
+
+		ParseUser user = new ParseUser();
         user.setUsername(username);
 		user.setPassword(mPassword);
-		user.setEmail(mEmail);*/
-        ParseObject user = new ParseObject("Ouder");
-        user.put("username", username);
-        user.put("email", mEmail);
-        user.put("wachtwoord", mPassword);
-        user.saveInBackground();
-        //TODO: data uit vorige schermen ophalen en erin steken.
-        //TODO: controleren of er al een account bestaat met dit Emailadres
+		user.setEmail(mEmail);
+        user.signUpInBackground(new SignUpCallback() {
+        @Override
+		public void done(ParseException e) {
+            if (e != null) {
+                    // Sign up didn't succeed. Look at the ParseException
+                    // to figure out what went wrong
+                    signUpMsg(e.getMessage());
+                }
+            }
+		});
 
         //hieronder is code om data ophalen.
         /*ParseQuery<ParseObject> query = ParseQuery.getQuery("Ouder");
@@ -210,19 +220,7 @@ public class SignUp_deel3 extends Activity{
         signUpMsg("Account aangemaakt.");
         Intent in = new Intent(getApplicationContext(),MainScreen.class);
         startActivity(in);
-        /*user.signUpInBackground(new SignUpCallback() {
-		  public void done(ParseException e) {
-		    if (e == null) {
-		      signUpMsg("Eigen account aangemaakt.");
-		      Intent in = new Intent(getApplicationContext(),MainScreen.class);
-		      startActivity(in);
-		    } else {
-		      // Sign up didn't succeed. Look at the ParseException
-		      // to figure out what went wrong
-		    	signUpMsg("Account bestaat al.");
-		    }
-		  }
-		});*/
+
     }
 
 	protected void signUpMsg(String msg) {
