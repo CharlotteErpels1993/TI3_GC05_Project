@@ -113,7 +113,7 @@ public class SignUp_deel3 extends Activity{
 
 
 
-	private void createAccount(){
+	private void opslaagGeg(){
 		clearErrors();
         cancel = false;
 
@@ -203,13 +203,14 @@ public class SignUp_deel3 extends Activity{
 		} else {
 			// Show a progress spinner, and kick off a background task to
 			// perform the user login attempt.
+            opslaan(voornaam ,naam, rijksregnr, straat, huisnr, gemeente, postcode, telefoon, gsm, bus);
 			Toast.makeText(getApplicationContext(), "Opgeslagen", Toast.LENGTH_SHORT).show();
 
 		}
 
 	}
 
-    private void opslaan(String username,String mEmail, String mPassword) {
+    private void opslaan(String voornaam,String naam, String rijksregnr, String straat, String huisnr, String gemeente, String postcode, String telefoon, String gsm, String bus) {
         //Toast.makeText(getApplicationContext(), mEmail, Toast.LENGTH_SHORT).show();
 /*
         ParseObject gebruiker = new ParseObject("Ouder");
