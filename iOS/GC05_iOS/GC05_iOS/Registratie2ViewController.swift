@@ -26,6 +26,25 @@ class Registratie2ViewController: UIViewController
         }
     }
     
+    func controleRijksregisternummer(rijksregisternummer: String) -> Bool {
+        var length : Int = countElements(rijksregisternummer)
+        var eerste9CijfersString: String = rijksregisternummer.substringWithRange(Range<String.Index>(start: rijksregisternummer.startIndex, end: advance(rijksregisternummer.endIndex, -2)))
+        
+        var eerste9CijfersInt: Int = eerste9CijfersString.toInt()!
+        var restNaDeling97: Int = eerste9CijfersInt % 97
+        var controleGetal: Int = 97 - restNaDeling97
+        var laatste2CijfersString: String = rijksregisternummer.substringWithRange(Range<String.Index>(start: advance(rijksregisternummer.startIndex, 10), end: rijksregisternummer.endIndex))
+        var laatste2CijfersInt: Int = laatste2CijfersString.toInt()!
+        
+        if length > 11 || length < 11 {
+            return false
+        } else if laatste2CijfersInt != controleGetal {
+            return false
+        } else {
+            return true
+        }
+    }
+    
     
     
 }

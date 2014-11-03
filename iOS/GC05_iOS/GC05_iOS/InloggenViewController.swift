@@ -17,7 +17,7 @@ class InloggenViewController : UIViewController
         self.presentViewController(alert, animated: true, completion: nil)
     }
     
-    /*override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
     if segue.identifier == "inloggen" {
     
     
@@ -36,7 +36,7 @@ class InloggenViewController : UIViewController
     //}
     
     }
-    }*/
+    }
     
     
     
