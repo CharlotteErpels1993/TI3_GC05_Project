@@ -5,6 +5,11 @@ class RegistratieSuccesvolViewController: UIViewController
     var gebruiker: Gebruiker!
     var aansluitingsNrTweedeOuder: Int?
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        gebruikerWegschrijvenNaarDatabase(gebruiker)
+    }
+    
     private func gebruikerWegschrijvenNaarDatabase(gebruiker: Gebruiker) {
         if aansluitingsNrTweedeOuder == nil {
             var monitor = PFObject(className: "Monitor")
@@ -30,9 +35,9 @@ class RegistratieSuccesvolViewController: UIViewController
             //probleem: wat als ouder geen aansluitingsNrTweedeOuder heeft?
             //hoe maken we dan het onderscheid tussen een monitor en een ouder?
             
-            var ouder = PFObject(className: "Ouder2")
+            var ouder = PFObject(className: "Ouder")
             
-            /*ouder.setValue(gebruiker.rijksregisterNr, forKey: "rijksregisterNr")
+            ouder.setValue(gebruiker.rijksregisterNr, forKey: "rijksregisterNr")
             ouder.setValue(gebruiker.email, forKey: "email")
             ouder.setValue(gebruiker.wachtwoord, forKey: "wachtwoord")
             ouder.setValue(gebruiker.voornaam, forKey: "voornaam")
@@ -46,31 +51,9 @@ class RegistratieSuccesvolViewController: UIViewController
             ouder.setValue(gebruiker.gsm, forKey: "gsm")
             ouder.setValue(gebruiker.aansluitingsNr, forKey: "aansluitingsNr")
             ouder.setValue(gebruiker.codeGerechtigde, forKey: "codeGerechtigde")
-            ouder.setValue(aansluitingsNrTweedeOuder, forKey: "aansluitingsNrTweedeOuder")*/
-            
-            ouder.addObject(gebruiker.rijksregisterNr, forKey: "rijksregisterNr")
-            ouder.addObject(gebruiker.email, forKey: "email")
-            ouder.addObject(gebruiker.wachtwoord, forKey: "wachtwoord")
-            ouder.addObject(gebruiker.voornaam, forKey: "voornaam")
-            ouder.addObject(gebruiker.naam, forKey: "naam")
-            ouder.addObject(gebruiker.straat, forKey: "straat")
-            ouder.addObject(gebruiker.nummer, forKey: "nummer")
-            ouder.addObject(gebruiker.rijksregisterNr, forKey: "rijksregisterNr")
-            ouder.addObject(gebruiker.bus, forKey: "bus")
-            ouder.addObject(gebruiker.postcode, forKey: "postcode")
-            ouder.addObject(gebruiker.telefoon, forKey: "telefoon")
-            ouder.addObject(gebruiker.gsm, forKey: "gsm")
-            ouder.addObject(gebruiker.aansluitingsNr, forKey: "aansluitingsNr")
-            ouder.addObject(gebruiker.codeGerechtigde, forKey: "codeGerechtigde")
-            ouder.addObject(aansluitingsNrTweedeOuder, forKey: "aansluitingsNrTweedeOuder")
+            ouder.setValue(aansluitingsNrTweedeOuder, forKey: "aansluitingsNrTweedeOuder")
             
             ouder.save()
-            
-            
         }
     }
-    
-    
-    
-    
 }
