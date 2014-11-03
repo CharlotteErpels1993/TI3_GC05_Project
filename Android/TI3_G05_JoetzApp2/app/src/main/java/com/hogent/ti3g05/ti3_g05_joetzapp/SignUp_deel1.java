@@ -23,7 +23,6 @@ public class SignUp_deel1 extends Activity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_signup_deel1);

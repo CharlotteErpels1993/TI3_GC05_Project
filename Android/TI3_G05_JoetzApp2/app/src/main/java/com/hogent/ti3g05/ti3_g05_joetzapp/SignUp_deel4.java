@@ -39,7 +39,7 @@ public class SignUp_deel4 extends Activity{
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-        // TODO Auto-generated method stub
+
         super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.activity_signup_deel4);
@@ -57,9 +57,7 @@ public class SignUp_deel4 extends Activity{
             @Override
             public void onClick(View view) {
 
-                    // TODO Auto-generated method stub
-                    switch (view.getId()) {
-                        case R.id.btnCreateAccount:
+
                             // get Internet status
                             isInternetPresent = cd.isConnectingToInternet();
                             // check for Internet status
@@ -75,12 +73,9 @@ public class SignUp_deel4 extends Activity{
                                         //"You don't have internet connection.", false);
 
 
-                            break;
 
-                        default:
-                            break;
 
-                }
+
             }
         });
 

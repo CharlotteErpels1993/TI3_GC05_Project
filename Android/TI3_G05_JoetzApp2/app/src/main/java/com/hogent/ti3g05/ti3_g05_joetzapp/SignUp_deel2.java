@@ -33,13 +33,10 @@ public class SignUp_deel2 extends Activity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_signup_deel2);
 
-        /*ImageView img= (ImageView) findViewById(R.id.imageViewBondMoyson);
-        img.setImageResource(R.drawable.bondmoyson);*/
 
         // creating connection detector class instance
         cd = new ConnectionDetector(getApplicationContext());
@@ -117,7 +114,7 @@ public class SignUp_deel2 extends Activity{
     }
 
     private void opslaan(String aansluitingsnummerString) {
-        // TODO Auto-generated method stub
+        // TODO aansluitingsnummer opslaan
         ParseUser user = new ParseUser();
 
         //Hier moet het aansluitingsnummer doormiddelvan parse naar de db of opslaan in een tijde
@@ -143,7 +140,6 @@ public class SignUp_deel2 extends Activity{
     }
 
     protected void signUpMsg(String msg) {
-        // TODO Auto-generated method stub
         Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
     }
 

@@ -23,7 +23,6 @@ public class ForgetParsePassword extends Activity{
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.forgetpassword);
 		
@@ -43,7 +42,6 @@ public class ForgetParsePassword extends Activity{
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 				
 				password = et_forgetpassword.getText().toString();
 				checkEmailID();
@@ -55,7 +53,6 @@ public class ForgetParsePassword extends Activity{
 	}
 	
 	protected void checkEmailID() {
-		// TODO Auto-generated method stub
 		if (TextUtils.isEmpty(password)) {
 			et_forgetpassword.setError(getString(R.string.error_field_required));
 		} else if (!password.contains("@")) {

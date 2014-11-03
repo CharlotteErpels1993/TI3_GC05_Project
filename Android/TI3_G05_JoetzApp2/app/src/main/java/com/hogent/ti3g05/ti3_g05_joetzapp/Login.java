@@ -159,7 +159,6 @@ public class Login extends Activity{
         ParseUser.logInInBackground(lowerCase, password, new LogInCallback() {
             @Override
             public void done(ParseUser user, ParseException e) {
-                // TODO Auto-generated method stub
                 if(e == null){
                     loginSuccessful();
                 }

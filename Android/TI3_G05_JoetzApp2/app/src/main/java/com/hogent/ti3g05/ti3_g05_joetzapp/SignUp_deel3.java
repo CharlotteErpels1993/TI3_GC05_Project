@@ -154,7 +154,7 @@ public class SignUp_deel3 extends Activity{
             focusView = straatText;
             cancel = true;
         }
-        /*  ToDo controle of rijksregisternr niet leeg is en cijfers zijn
+        /*  ToDo controle of huisnr niet leeg is en cijfers zijn
         if (TextUtils.isEmpty(huisnr)) {
             huisnrText.setError(getString(R.string.error_field_required));
             focusView = huisnrText;
@@ -171,7 +171,7 @@ public class SignUp_deel3 extends Activity{
             focusView = gemeenteText;
             cancel = true;
         }
-        /*  ToDo controle of rijksregisternr niet leeg is en cijfers zijn
+        /*  ToDo controle of postcode niet leeg is en cijfers zijn
         if (TextUtils.isEmpty(postcode)) {
             postcodeText.setError(getString(R.string.error_field_required));
             focusView = postcodeText;
