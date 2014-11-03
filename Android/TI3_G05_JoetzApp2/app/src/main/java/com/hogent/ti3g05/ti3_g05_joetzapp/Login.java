@@ -56,11 +56,8 @@ public class Login extends Activity{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-        Parse.initialize(this, "G7iR0ji0Kc1fc2PUwhXi9Gj8HmaqK52Qmhk2ffHy", "gJJgkWD5UxMA80iqZkaUHTy8pc9UwJfdv3alDk9Q");
 		setContentView(R.layout.activity_login);
 
-		//Initializing Parse SDK
-		onCreateParse();
 		//Calling ParseAnalytics to see Analytics of our app
 		ParseAnalytics.trackAppOpened(getIntent());
 		
@@ -79,8 +76,6 @@ public class Login extends Activity{
 
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
-
 				// get Internet status
 				isInternetPresent = cd.isConnectingToInternet();
 				// check for Internet status
@@ -101,8 +96,7 @@ public class Login extends Activity{
 
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Intent in =  new Intent(Login.this,SignUp_deel3.class);
+				Intent in =  new Intent(Login.this,SignUp_deel1.class);
 				startActivity(in);
 			}
 		});
@@ -111,7 +105,6 @@ public class Login extends Activity{
 
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
                 Intent in =  new Intent(Login.this,ForgetParsePassword.class);
                 startActivity(in);
             }
@@ -125,14 +118,7 @@ public class Login extends Activity{
             }
         });
 
-
-
 	}
-
-	public void onCreateParse() {
-        Parse.initialize(this, "G7iR0ji0Kc1fc2PUwhXi9Gj8HmaqK52Qmhk2ffHy", "gJJgkWD5UxMA80iqZkaUHTy8pc9UwJfdv3alDk9Q"); }
-
-
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -162,14 +148,11 @@ public class Login extends Activity{
     }
 
 	public void attemptLogin() {
-
 		clearErrors();
 
 		// Store values at the time of the login attempt.
 		String username = mUserNameEditText.getText().toString();
 		String password = mPasswordEditText.getText().toString();
-
-
 
 		boolean cancel = false;
 		View focusView = null;
