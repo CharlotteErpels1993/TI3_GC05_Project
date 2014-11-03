@@ -14,6 +14,8 @@ import android.widget.Toast;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
+import com.parse.SignUpCallback;
 
 import java.util.List;
 
@@ -58,22 +60,19 @@ public class SignUp_deel4 extends Activity{
             public void onClick(View view) {
 
 
-                            // get Internet status
-                            isInternetPresent = cd.isConnectingToInternet();
-                            // check for Internet status
-                            // Internet connection is not present
-// Ask user to connect to Internet
-                            if (isInternetPresent) {
-                                // Internet Connection is Present
-                                // make HTTP requests
-                                createAccount();
-                            } else
-                                Toast.makeText(getApplicationContext(), "Fout bij registreren", Toast.LENGTH_SHORT).show();
-                                //showAlertDialog(getApplicationContext(), "No Internet Connection",
-                                        //"You don't have internet connection.", false);
-
-
-
+                // get Internet status
+                isInternetPresent = cd.isConnectingToInternet();
+                // check for Internet status
+                // Internet connection is not present
+                // Ask user to connect to Internet
+                if (isInternetPresent) {
+                    // Internet Connection is Present
+                    // make HTTP requests
+                    createAccount();
+                } else
+                    Toast.makeText(getApplicationContext(), "Fout bij registreren", Toast.LENGTH_SHORT).show();
+                //showAlertDialog(getApplicationContext(), "No Internet Connection",
+                //"You don't have internet connection.", false);
 
 
             }
@@ -88,9 +87,7 @@ public class SignUp_deel4 extends Activity{
                 startActivity(intent1);
             }
         });
-
 	}
-
 
 
 	private void createAccount(){
@@ -166,20 +163,34 @@ public class SignUp_deel4 extends Activity{
 
 	}
 
-    private void signUp(String username,String mEmail, String mPassword) {
+    private void signUp(String username, String mEmail, String mPassword) {
         //Toast.makeText(getApplicationContext(), mEmail, Toast.LENGTH_SHORT).show();
 
-		/*ParseUser user = new ParseUser();
-        user.setUsername(username);
-		user.setPassword(mPassword);
-		user.setEmail(mEmail);*/
-        ParseObject user = new ParseObject("Ouder");
-        user.put("username", username);
-        user.put("email", mEmail);
-        user.put("wachtwoord", mPassword);
-        user.saveInBackground();
+        ParseObject gebruiker = new ParseObject("Ouder");
+        gebruiker.put("username", username);
+        gebruiker.put("email", mEmail);
+        gebruiker.put("wachtwoord", mPassword);
+        gebruiker.saveInBackground();
         //TODO: data uit vorige schermen ophalen en erin steken.
-        //TODO: controleren of er al een account bestaat met dit Emailadres
+
+        ParseUser user = new ParseUser();
+        user.setUsername(username);
+        user.setPassword(mPassword);
+        user.setEmail(mEmail);
+        user.signUpInBackground(new SignUpCallback() {
+            @Override
+            public void done(ParseException e) {
+                if (e != null) {
+                    // Sign up didn't succeed. Look at the ParseException
+                    // to figure out what went wrong
+                    signUpMsg(e.getMessage());
+                }
+            }
+        });
+
+        signUpMsg("Account aangemaakt.");
+        Intent in = new Intent(getApplicationContext(), MainScreen.class);
+        startActivity(in);
 
         //hieronder is code om data ophalen.
         /*ParseQuery<ParseObject> query = ParseQuery.getQuery("Ouder");
@@ -190,31 +201,12 @@ public class SignUp_deel4 extends Activity{
                    // object will be your game score
                    signUpMsg("Email: " + objects.get(0).getString("Email"));
                    signUpMsg("Wachtwoord: " + objects.get(0).getString("Wachtwoord"));
-
                } else {
                    // something went wrong
                    signUpMsg("Er is een fout gebeurd tijdens de registratie. Gelieve opnieuw te proberen.");
                }
            }
        });*/
-
-
-        signUpMsg("Account aangemaakt.");
-        Intent in = new Intent(getApplicationContext(),MainScreen.class);
-        startActivity(in);
-        /*user.signUpInBackground(new SignUpCallback() {
-		  public void done(ParseException e) {
-		    if (e == null) {
-		      signUpMsg("Eigen account aangemaakt.");
-		      Intent in = new Intent(getApplicationContext(),MainScreen.class);
-		      startActivity(in);
-		    } else {
-		      // Sign up didn't succeed. Look at the ParseException
-		      // to figure out what went wrong
-		    	signUpMsg("Account bestaat al.");
-		    }
-		  }
-		});*/
     }
 
 	protected void signUpMsg(String msg) {
