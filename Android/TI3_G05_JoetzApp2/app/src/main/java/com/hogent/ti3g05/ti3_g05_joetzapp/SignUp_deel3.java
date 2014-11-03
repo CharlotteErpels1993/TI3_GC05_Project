@@ -29,13 +29,23 @@ public class SignUp_deel3 extends Activity{
     private EditText gemeenteText;
     private EditText postcodeText;
     private EditText busText;
+    private EditText rijksregnrText;
+    private EditText telefoonText;
+    private EditText gsmText;
 
-	private Button mCreateAccountButton;
+	private Button volgendeButton;
     private Button terugKerenButton;
 
-	private String mEmail;
-	private String mPassword;
-	private String mConfirmPassword;
+	private String voornaam;
+	private String naam;
+	private String straat;
+    private String huisnr;
+    private String bus;
+    private String gemeente;
+    private String postcode;
+    private String rijksregnr;
+    private String telefoon;
+    private String gdm;
 
     private boolean cancel = false;
     private View focusView = null;
