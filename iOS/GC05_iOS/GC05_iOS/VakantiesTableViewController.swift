@@ -14,8 +14,8 @@ class VakantiesTableViewController: UITableViewController {
             vakantieDetailsController.vakantie = selectedVakantie
         } else if segue.identifier == "registreren" {
             let registratie1ViewController = segue.destinationViewController as Registratie1ViewController
-        } else if segue.identifier == "inloggen" {
-            let inloggenViewController = segue.destinationViewController as InloggenViewController
+        } else /*if segue.identifier == "inloggen"*/ {
+            let inloggenViewController = segue.destinationViewController as InloggingViewController
         }
         
     }

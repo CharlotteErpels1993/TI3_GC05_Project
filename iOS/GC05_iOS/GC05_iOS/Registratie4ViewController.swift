@@ -37,4 +37,48 @@ class Registratie4ViewController: UIViewController
             
         }
     }
+    
+    func controleerGekendeEmail(email: String) -> Bool {
+        var monitors: [PFObject] = []
+        var ouders: [PFObject] = []
+        
+        var queryMonitor = PFQuery(className: "Monitor")
+        var queryOuder = PFQuery(className: "Ouder")
+        
+        queryMonitor.whereKey("email", containsString: email)
+        queryOuder.whereKey("email", containsString: email)
+        
+        var aantalMonitorsMetEmail: Int = queryMonitor.countObjects()
+        var aantalOudersMetEmail: Int = queryOuder.countObjects()
+    
+        if aantalMonitorsMetEmail > 0 || aantalOudersMetEmail > 0 {
+            return true
+        } else {
+            return false
+        }
+        
+    
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

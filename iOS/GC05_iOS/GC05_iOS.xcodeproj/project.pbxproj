@@ -22,7 +22,6 @@
 		0FA80B381A0135A8008DB343 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FA80B371A0135A8008DB343 /* StoreKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		0FA80B3A1A0135B1008DB343 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FA80B391A0135B1008DB343 /* SystemConfiguration.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		0FBEA1F41A0684FD005FF0D2 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBEA1F31A0684FD005FF0D2 /* Date.swift */; };
-		0FD5C1841A06A35A00416E9F /* InloggenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD5C1831A06A35A00416E9F /* InloggenViewController.swift */; };
 		1B10A3BD1A02622C008E225F /* VakantiesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B10A3BC1A02622C008E225F /* VakantiesTableViewController.swift */; };
 		1B1792851A0272D300C4F82B /* VakantieDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1792841A0272D300C4F82B /* VakantieDetailsTableViewController.swift */; };
 		1B419D7A1A0767C6002438BB /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B419D771A0767C6002438BB /* Bolts.framework */; };
@@ -78,7 +77,6 @@
 		0FA80B391A0135B1008DB343 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		0FA80B3D1A0135FF008DB343 /* GC05_iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GC05_iOS-Bridging-Header.h"; sourceTree = "<group>"; };
 		0FBEA1F31A0684FD005FF0D2 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
-		0FD5C1831A06A35A00416E9F /* InloggenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InloggenViewController.swift; sourceTree = "<group>"; };
 		1B10A3BC1A02622C008E225F /* VakantiesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VakantiesTableViewController.swift; sourceTree = "<group>"; };
 		1B1792841A0272D300C4F82B /* VakantieDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VakantieDetailsTableViewController.swift; sourceTree = "<group>"; };
 		1B419D771A0767C6002438BB /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "../parse-library-1.4.2/Bolts.framework"; sourceTree = "<group>"; };
@@ -208,7 +206,6 @@
 		1B10A3BB1A02620A008E225F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				0FD5C1831A06A35A00416E9F /* InloggenViewController.swift */,
 				1B10A3BC1A02622C008E225F /* VakantiesTableViewController.swift */,
 				1B1792841A0272D300C4F82B /* VakantieDetailsTableViewController.swift */,
 				1B4D784A1A0277F100E823E2 /* Registratie1ViewController.swift */,
@@ -353,7 +350,6 @@
 				1BDDB9511A02D86F0007623D /* Voorkeur.swift in Sources */,
 				1B10A3BD1A02622C008E225F /* VakantiesTableViewController.swift in Sources */,
 				1BDDB9571A02DD1E0007623D /* Gebruiker.swift in Sources */,
-				0FD5C1841A06A35A00416E9F /* InloggenViewController.swift in Sources */,
 				1BDDB9491A02D82D0007623D /* InschrijvingVorming.swift in Sources */,
 				1BDDB9431A02D0FB0007623D /* Vakantie.swift in Sources */,
 				1BDDB9451A02D3440007623D /* Activiteit.swift in Sources */,
