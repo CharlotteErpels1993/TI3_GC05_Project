@@ -13,11 +13,11 @@ class Registratie1ViewController: UIViewController
                 
             } else {
                 //performSegueWithIdentifier("volgende2", sender: self)
-                //let registratie3ViewController = segue.destinationViewController as Registratie3ViewController
-                let secondViewController =  segue
-as Registratie3ViewController
+                let registratie3ViewController = segue.destinationViewController as Registratie3ViewController
+               // let secondViewController =  segue
+//as Registratie3ViewController
 
-                self.navigationController.pushViewController(secondViewController, animated: true)
+               // self.navigationController.pushViewController(secondViewController, animated: true)
             }
         }
     }
