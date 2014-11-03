@@ -8,9 +8,16 @@ class Registratie1ViewController: UIViewController
         if segue.identifier == "volgende" {
             
             if lidSocialistischeMutualiteitSwitch.on {
+                //performSegueWithIdentifier("volgende2", sender: self)
                 let registratie2ViewController = segue.destinationViewController as Registratie2ViewController
+                
             } else {
-                let registratie3ViewController = segue.destinationViewController as Registratie3ViewController
+                //performSegueWithIdentifier("volgende2", sender: self)
+                //let registratie3ViewController = segue.destinationViewController as Registratie3ViewController
+                let secondViewController =  segue
+as Registratie3ViewController
+
+                self.navigationController.pushViewController(secondViewController, animated: true)
             }
         }
     }

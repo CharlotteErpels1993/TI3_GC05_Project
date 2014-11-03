@@ -2,7 +2,7 @@ import UIKit
 
 class RegistratieSuccesvolViewController: UIViewController
 {
-    var gebruiker: Gebruiker!
+    var gebruiker: Ouder!
     var aansluitingsNrTweedeOuder: Int?
     
     override func viewDidLoad() {
@@ -11,7 +11,7 @@ class RegistratieSuccesvolViewController: UIViewController
     }
     
     private func gebruikerWegschrijvenNaarDatabase(gebruiker: Gebruiker) {
-        if aansluitingsNrTweedeOuder == nil {
+        /*if aansluitingsNrTweedeOuder == nil {
             var monitor = PFObject(className: "Monitor")
             
             monitor.setValue(gebruiker.rijksregisterNr, forKey: "rijksregisterNr")
@@ -31,7 +31,7 @@ class RegistratieSuccesvolViewController: UIViewController
             
             monitor.save()
             
-        } else {
+        } else {*/
             //probleem: wat als ouder geen aansluitingsNrTweedeOuder heeft?
             //hoe maken we dan het onderscheid tussen een monitor en een ouder?
             
@@ -54,6 +54,6 @@ class RegistratieSuccesvolViewController: UIViewController
             ouder.setValue(aansluitingsNrTweedeOuder, forKey: "aansluitingsNrTweedeOuder")
             
             ouder.save()
-        }
+        //}
     }
 }
