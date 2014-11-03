@@ -55,6 +55,16 @@
     <string name="bondMoyson">Bent u lid van Bond Moyson?</string>
     <string name="aanlsuitingsnummerhint">Geef uw aansluitingsnummer in</string>
     <string name="filterhint">typ hier om te filteren</string>
+    <string name="rijksregnr">Geef uw rijksregisternummer in</string>
+    <string name="naamHint">Voornaam</string>
+    <string name="famnaamHint">Naam</string>
+    <string name="straatHint">Straat</string>
+    <string name="huisnrHint">Huisnummer</string>
+    <string name="BusHint">Bus</string>
+    <string name="gemeenteHint">Gemeente</string>
+    <string name="postcodeHint">Postcode</string>
+    <string name="telefoonHint">Telefoon</string>
+    <string name="gsmHint">Gsmnummer</string>
 
 
 </resources>

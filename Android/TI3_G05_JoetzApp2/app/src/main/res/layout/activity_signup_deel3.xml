@@ -1,50 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/LoginFormContainer" >
 
     <EditText
-        android:id="@+id/etEmail"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
-        android:hint="@string/emailHint"
-        android:inputType="textEmailAddress" />
-
-    <EditText
-        android:id="@+id/etPassword"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/etEmail"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
-        android:hint="@string/passwordHint"
-        android:inputType="textPassword"
-        android:maxLength="10" />
-
-    <EditText
-        android:id="@+id/etPasswordConfirm"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/etPassword"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
-        android:hint="@string/confirmPasswordHint"
-        android:inputType="textPassword" />
-
-    <Button
-        android:id="@+id/btnCreateAccount"
+        android:id="@+id/Voornaam"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/etPasswordConfirm"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp"
-        android:text="@string/createAccount" />
+        android:hint="@string/naamHint" />
 
-    <Button
-        android:id="@+id/btnBack"
+    <EditText
+        android:id="@+id/Naam"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/btnCreateAccount"
+        android:layout_below="@id/Voornaam"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:hint="@string/famnaamHint" />
+
+    <EditText
+        android:id="@+id/Straat"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Naam"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:hint="@string/straatHint" />
+
+    <EditText
+        android:id="@+id/Huisnr"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Straat"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:hint="@string/huisnrHint" />
+
+    <EditText
+        android:id="@+id/Bus"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Huisnr"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:hint="@string/BusHint" />
+
+    <EditText
+        android:id="@+id/Gemeente"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Bus"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:hint="@string/gemeenteHint" />
+
+    <EditText
+        android:id="@+id/Postcode"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Gemeente"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:hint="@string/postcodeHint" />
+
+    <EditText
+        android:id="@+id/Telefoon"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Postcode"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:hint="@string/telefoonHint" />
+
+    <EditText
+        android:id="@+id/Gsm"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Telefoon"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:hint="@string/gsmHint" />
+
+
+
+    <Button
+        android:id="@+id/btnNaarDeel4"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Gsm"
+        android:layout_marginTop="25dp"
+        android:text="@string/volgende" />
+
+    <Button
+        android:id="@+id/btnNaarDeel1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnNaarDeel4"
         android:text="@string/back" />
 
 </RelativeLayout>
+    </ScrollView>

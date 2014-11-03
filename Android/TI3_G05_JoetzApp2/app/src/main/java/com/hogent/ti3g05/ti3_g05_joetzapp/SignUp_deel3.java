@@ -11,10 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.parse.ParseException;
 import com.parse.ParseObject;
-import com.parse.ParseUser;
-import com.parse.SignUpCallback;
 
 public class SignUp_deel3 extends Activity{
 
@@ -38,7 +35,7 @@ public class SignUp_deel3 extends Activity{
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
 
-		setContentView(R.layout.activity_signup_deel3);
+		setContentView(R.layout.activity_signup_deel4);
 
 		// creating connection detector class instance
 				cd = new ConnectionDetector(getApplicationContext());
