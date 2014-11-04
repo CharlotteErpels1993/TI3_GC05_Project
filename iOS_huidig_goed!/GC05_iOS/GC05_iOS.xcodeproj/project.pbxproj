@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F2A819A1A091F7100F67A3B /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2A81991A091F7100F67A3B /* Regex.swift */; };
 		0FA80B081A01350E008DB343 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA80B071A01350E008DB343 /* AppDelegate.swift */; };
 		0FA80B0D1A01350E008DB343 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FA80B0B1A01350E008DB343 /* Main.storyboard */; };
 		0FA80B0F1A01350E008DB343 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0FA80B0E1A01350E008DB343 /* Images.xcassets */; };
@@ -60,6 +61,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F2A81991A091F7100F67A3B /* Regex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
 		0FA80B021A01350E008DB343 /* GC05_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GC05_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FA80B061A01350E008DB343 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0FA80B071A01350E008DB343 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 				0FA80B0E1A01350E008DB343 /* Images.xcassets */,
 				0FA80B051A01350E008DB343 /* Supporting Files */,
 				1BFC333F1A066A87009CA8EB /* VakantieCell.swift */,
+				0F2A81991A091F7100F67A3B /* Regex.swift */,
 			);
 			path = GC05_iOS;
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 				1B39CF751A078474008DEC49 /* OverzichtOuderViewController.swift in Sources */,
 				1BDDB9451A02D3440007623D /* Activiteit.swift in Sources */,
 				1B39CF771A0795D9008DEC49 /* OverzichtMonitorViewController.swift in Sources */,
+				0F2A819A1A091F7100F67A3B /* Regex.swift in Sources */,
 				0FBEA1F41A0684FD005FF0D2 /* Date.swift in Sources */,
 				1B1792851A0272D300C4F82B /* VakantieDetailsTableViewController.swift in Sources */,
 				1B4D784B1A0277F100E823E2 /* Registratie1ViewController.swift in Sources */,

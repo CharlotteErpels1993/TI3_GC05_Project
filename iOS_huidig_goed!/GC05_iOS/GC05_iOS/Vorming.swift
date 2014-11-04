@@ -3,7 +3,13 @@ import Foundation
 class Vorming: Activiteit
 {
     var periodes: String // TYPE?
-    var prijs: Double
+    
+    var prijs: Double {
+        willSet {
+            assert(checkPrijsValid(newValue), "Prijs moet een geldig bedrag zijn!")
+        }
+    }
+    
     var criteriaDeelnemers: String
     var websiteLocatie: String
     var tips: String
@@ -19,6 +25,13 @@ class Vorming: Activiteit
         self.betalingWijze = betalingWijze
         
         super.init(id: id, titel: titel, locatie: locatie,korteBeschrijving: korteBeschrijving)
+    }
+    
+    private func checkPrijsValid(p: Double) -> Bool {
+        if p <= 0.0 {
+            return false
+        }
+        return false
     }
     
 }

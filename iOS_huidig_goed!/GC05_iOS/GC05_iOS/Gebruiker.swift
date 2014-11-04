@@ -3,20 +3,62 @@ import Foundation
 class Gebruiker
 {
     var id: String?
-    var rijksregisterNr: String
-    var email: String
+
+    var rijksregisterNr: String {
+        willSet {
+            assert(checkValidRijksregisterNummer(newValue), "Rijksregisternummer moet geldig zijn!")
+        }
+    }
+    
+    var email: String {
+        willSet {
+            assert(checkValidEmail(newValue), "E-mail moet een geldig e-mailadres zijn!")
+        }
+    }
+
     var wachtwoord: String
     var voornaam: String
     var naam: String
     var straat: String
-    var nummer: Int
+    
+    var nummer: Int {
+        willSet {
+            assert(checkValidNummer(newValue), "Huisnummer moet een geldig nummer zijn!")
+        }
+    }
+    
     var bus: String
     var gemeente: String
-    var postcode: Int
-    var telefoon: String
-    var gsm: String
-    var aansluitingsNr: Int
-    var codeGerechtigde: Int
+    
+    var postcode: Int {
+        willSet {
+            assert(checkValidPostcode(newValue), "Postcode moet geldig zijn!")
+        }
+    }
+    
+    var telefoon: String {
+        willSet {
+            assert(checkValidTelefoon(newValue), "Telefoon moet een geldig telefoonnummer zijn!")
+        }
+    }
+
+    var gsm: String {
+        willSet {
+            assert(checkValidGsm(newValue), "Gsm moet een geldig gsmnummer zijn!")
+        }
+    }
+    
+    var aansluitingsNr: Int {
+        willSet {
+            assert(checkValidAansluitingsNr(newValue), "Aansluitingsnummer moet geldig zijn!")
+        }
+    }
+    
+    var codeGerechtigde: Int {
+        willSet {
+            assert(checkValidCodeGerechtigde(newValue), "Code gerechtigde moet geldig zijn!")
+        }
+    }
     
     init(gebruiker: PFObject) {
         self.id = gebruiker.objectId
@@ -52,8 +94,6 @@ class Gebruiker
         self.aansluitingsNr = aansluitingsNr
         self.codeGerechtigde = codeGerechtigde
     }
-
-    
     
     init(id: String, rijksregisterNr: String, email: String, wachtwoord: String, voornaam: String, naam: String, straat: String, nummer: Int, bus: String, gemeente: String, postcode: Int, telefoon: String, gsm: String, aansluitingsNr: Int, codeGerechtigde: Int) {
         self.id = id
@@ -93,7 +133,74 @@ class Gebruiker
     }
     
     
+    private func checkValidRijksregisterNummer(rrn: String) -> Bool {
+        var length : Int = countElements(rrn)
+        var eerste9CijfersString: String = rrn.substringWithRange(Range<String.Index>(start: rrn.startIndex, end: advance(rrn.endIndex, -2)))
+        
+        var eerste9CijfersInt: Int = eerste9CijfersString.toInt()!
+        var restNaDeling97: Int = eerste9CijfersInt % 97
+        var controleGetal: Int = 97 - restNaDeling97
+        var laatste2CijfersString: String = rrn.substringWithRange(Range<String.Index>(start: advance(rrn, 10), end: rrn))
+        var laatste2CijfersInt: Int = laatste2CijfersString.toInt()!
+        
+        if length > 11 || length < 11 {
+            return false
+        } else if laatste2CijfersInt != controleGetal {
+            return false
+        } else {
+            return true
+        }
+    }
     
+    private func checkValidEmail(email: String) -> Bool {
+        if countElements(email) == 0 {
+            return false
+        } else if Regex("[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}").test(email) {
+            return true
+        }
+    }
+    
+    private func checkValidNummer(nr: Int) -> Bool {
+        if nr <= 0 {
+            return false
+        }
+        return true
+    }
+    
+    private func checkValidPostcode(pc: Int) -> Bool {
+        if pc < 1000 || pc > 9992 {
+            return false
+        }
+        return true
+    }
+    
+    private func checkValidTelefoon(tel: String) -> Bool {
+        if countElements(tel) == 9 {
+            return true
+        }
+        return false
+    }
+    
+    private func checkValidGsm(gsm: String) -> Bool {
+        if countElements(gsm) == 10 {
+            return true
+        }
+        return false
+    }
+    
+    func checkValidAansluitingsNr(aansluitingsNr: Int) -> Bool {
+        if countElements(aansluitingsNr) == 10 {
+            return true
+        }
+        return false
+    }
+    
+    private func checkValidCodeGerechtigde(codeGerechtigde: Int) -> Bool {
+        if countElements(codeGerechtigde) == 6 {
+            return true
+        }
+        return false
+    }
     
     
     
