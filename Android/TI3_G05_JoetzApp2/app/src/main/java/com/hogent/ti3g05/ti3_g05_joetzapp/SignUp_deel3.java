@@ -99,7 +99,7 @@ public class SignUp_deel3 extends Activity{
             }
         });
 
-        terugKerenButton = (Button) findViewById(R.id.btnBack);
+        terugKerenButton = (Button) findViewById(R.id.btnNaarDeel1);
 
         terugKerenButton.setOnClickListener(new OnClickListener() {
             @Override

@@ -54,12 +54,12 @@
             android:label="@string/title_activity_profiel_edit" >
         </activity>
 
-        <activity android:name=".SignUp_deel1" android:screenOrientation="portrait"></activity>
-        <activity android:name=".SignUp_deel2" android:screenOrientation="portrait"></activity>
-        <activity android:name=".SignUp_deel3" android:screenOrientation="portrait"></activity>
-        <activity android:name=".SignUp_deel4" android:screenOrientation="portrait"></activity>
-        <activity android:name=".Login" android:screenOrientation="portrait"></activity>
-        <activity android:name=".ForgetParsePassword" android:screenOrientation="portrait"></activity>
+        <activity android:name=".SignUp_deel1" ></activity>
+        <activity android:name=".SignUp_deel2"></activity>
+        <activity android:name=".SignUp_deel3"></activity>
+        <activity android:name=".SignUp_deel4"></activity>
+        <activity android:name=".Login"></activity>
+        <activity android:name=".ForgetParsePassword"></activity>
 
 
 
