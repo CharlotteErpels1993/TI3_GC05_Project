@@ -7,9 +7,9 @@ class Registratie1ViewController: UIViewController
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let registratie2ViewController = segue.destinationViewController as Registratie2ViewController
         if lidSocialistischeMutualiteitSwitch.on {
-            registratie2ViewController.switchLidIsOn = true
+            registratie2ViewController.gebruikerIsLid = true
         } else {
-            registratie2ViewController.switchLidIsOn = false
+            registratie2ViewController.gebruikerIsLid = false
         }
         /*if segue.identifier == "volgende" {
             

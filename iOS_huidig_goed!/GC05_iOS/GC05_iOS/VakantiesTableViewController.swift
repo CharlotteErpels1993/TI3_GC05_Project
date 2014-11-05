@@ -5,7 +5,7 @@ class VakantiesTableViewController: UITableViewController {
     
     var query = PFQuery(className: "Vakantie")
     
-    override func viewDidLoad() {
+   /* override func viewDidLoad() {
         super.viewDidLoad()
         
         query.findObjectsInBackgroundWithBlock {
@@ -17,7 +17,7 @@ class VakantiesTableViewController: UITableViewController {
                 }
             }
         }
-    }
+    }*/
     
     
     

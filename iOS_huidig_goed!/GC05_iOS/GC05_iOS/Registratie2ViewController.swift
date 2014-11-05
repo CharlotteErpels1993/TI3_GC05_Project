@@ -13,25 +13,25 @@ class Registratie2ViewController: UIViewController
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        if !gebruikerIsLid {
-            performSegueWithIdentifier("volgende", sender: self)
+        if gebruikerIsLid == false {
+            performSegueWithIdentifier("volgende3", sender: self)
         }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     {
-        if segue.identifier == "volgende" {
+        //if segue.identifier == "volgende2" {
             let registratie3ViewController = segue.destinationViewController as Registratie3ViewController
             
             //nog nakijken op lege velden!!! en dan view 'reloaden'?
-            ouder.aansluitingsNr = txtAansluitingsnummer.text.toInt()
-            ouder.codeGerechtigde = txtCodeGerechtigde.text.toInt()
+            ouder.aansluitingsNr = txtAansluitingsnummer.text.toInt()!
+            ouder.codeGerechtigde = txtCodeGerechtigde.text.toInt()!
             ouder.rijksregisterNr = txtRijksregisternummer.text
             
             if txtAansluitingsnummerTweedeOuder.text.isEmpty {
-                ouder.aansluitingsNrTweedeOuder = nil
+                ouder.aansluitingsNrTweedeOuder = 0
             } else {
-                ouder.aansluitingsNrTweedeOuder = txtAansluitingsnummerTweedeOuder.text.toInt()
+                ouder.aansluitingsNrTweedeOuder = txtAansluitingsnummerTweedeOuder.text.toInt()!
             }
             
             //ouder-object doorgeven aan volgende viewController
@@ -48,7 +48,7 @@ class Registratie2ViewController: UIViewController
             } else {
                 registratie3ViewController.aansluitingsNrTweedeOuder = txtAansluitingsnummerTweedeOuder.text.toInt()
             }*/
-        }
+      //  }
     }
     
     /*func controleRijksregisternummer(rijksregisternummer: String) -> Bool {
