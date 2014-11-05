@@ -1,4 +1,4 @@
-package com.hogent.ti3g05.ti3_g05_joetzapp.Fragments;
+package com.hogent.ti3g05.ti3_g05_joetzapp.Frags;
 
 /**
  * Created by Gebruiker on 5/11/2014.

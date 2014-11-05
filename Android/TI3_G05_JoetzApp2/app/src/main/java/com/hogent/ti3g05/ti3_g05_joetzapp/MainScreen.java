@@ -1,4 +1,4 @@
-package com.hogent.ti3g05.ti3_g05_joetzapp.Fragments;
+package com.hogent.ti3g05.ti3_g05_joetzapp;
 
 import android.app.Fragment;
 import android.content.Intent;

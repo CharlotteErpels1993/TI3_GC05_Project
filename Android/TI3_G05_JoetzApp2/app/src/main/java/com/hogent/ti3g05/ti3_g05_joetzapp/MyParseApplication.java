@@ -1,4 +1,4 @@
-package com.hogent.ti3g05.ti3_g05_joetzapp.Services;
+package com.hogent.ti3g05.ti3_g05_joetzapp;
 
 import android.app.Application;
 import com.parse.Parse;
