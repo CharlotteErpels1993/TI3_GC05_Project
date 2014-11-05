@@ -2,20 +2,16 @@ package com.hogent.ti3g05.ti3_g05_joetzapp;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.widget.EditText;
 import android.widget.ListView;
 
-import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vakantie;
-import com.parse.Parse;
+import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vakanties;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
@@ -26,14 +22,13 @@ public class activiteit_overzicht extends Activity {
    private List<ParseObject> ob;
    private ProgressDialog mProgressDialog;
    private ListViewAdapter adapter;
-    private List<Vakantie> vakanties = null;
+    private List<Vakanties> vakanties = null;
     private EditText filtertext;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Parse.initialize(this, "G7iR0ji0Kc1fc2PUwhXi9Gj8HmaqK52Qmhk2ffHy", "gJJgkWD5UxMA80iqZkaUHTy8pc9UwJfdv3alDk9Q");
         // Get the view from listview_main.xml
         setContentView(R.layout.activiteit_overzichtnieuw);
         // Execute RemoteDataTask AsyncTask
@@ -59,12 +54,12 @@ public class activiteit_overzicht extends Activity {
         @Override
         protected Void doInBackground(Void... params) {
             // Create the array
-            vakanties = new ArrayList<Vakantie>();
+            vakanties = new ArrayList<Vakanties>();
             try {
-                // Locate the class table named "Country" in Parse.com
+                // Locate the class table named "vakantie" in Parse.com
                 ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(
                         "Vakantie");
-                // Locate the column named "ranknum" in Parse.com and order list
+                // Locate the column named "vertrekdatum" in Parse.com and order list
                 // by ascending
                 query.orderByAscending("vertrekdatum");
                 ob = query.find();
@@ -72,7 +67,7 @@ public class activiteit_overzicht extends Activity {
                     // Locate images in flag column
                    // ParseFile image = (ParseFile) vakantie.get("flag");
 
-                    Vakantie map = new Vakantie();
+                    Vakanties map = new Vakanties();
                     map.setNaamVakantie((String) vakantie.get("titel"));
                     map.setLocatie((String) vakantie.get("locatie"));
                     map.setVertrekDatum((java.util.Date) vakantie.get("vertrekdatum"));

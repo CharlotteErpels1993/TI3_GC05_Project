@@ -7,7 +7,7 @@ import java.util.Date;
 /**
  * Created by Gilles De Vylder on 29/10/2014.
  */
-public class Vakantie extends Activiteit{
+public class Vakanties extends Activiteit{
     private Date vertrekDatum, terugkeerDatum;
     //aantalDagenNachten is een berekend veld. Wel/niet erin?
     private String vervoerswijze, formule;
@@ -18,7 +18,7 @@ public class Vakantie extends Activiteit{
     private int maxAantalDeelnemers;
     private String naamVakantie;
 
-    public Vakantie(){
+    public Vakanties(){
         super();
 
     }

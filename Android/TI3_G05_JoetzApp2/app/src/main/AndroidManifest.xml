@@ -17,18 +17,13 @@
         <activity
             android:name=".MainScreen"
             android:label="@string/title_activity_main_screen" >
-            </activity>
 
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
 
+        </activity>
 
         <activity
             android:name=".probeerselactivoornav" >
-
 
         </activity>
         <activity
@@ -42,6 +37,12 @@
         <activity
             android:name=".activiteit_overzicht"
             android:label="@string/title_activity_activiteit_overzicht" >
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
         </activity>
         <activity
