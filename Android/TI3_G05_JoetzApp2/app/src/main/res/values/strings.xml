@@ -9,7 +9,6 @@
     <string name="orText">of</string>
     <string name="createAccount">Registreer</string>
     <string name="emailHint">Email</string>
-
     <string name="passwordHint">wachtwoord</string>
     <string name="confirmPasswordHint">bevestig wachtwoord</string>
     <string name="title_activity_launcher">LauncherActivity</string>
@@ -21,15 +20,18 @@
     <string name="back">Terug</string>
     <!-- Strings related to login -->
 
+
     <!-- Strings related to login -->
-    <!--<string name="action_sign_in">Inloggen</string>
+    <!--
+    <string name="action_sign_in">Inloggen</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Wachtwoord</string>
     <string name="prompt_Return">Ga terug</string>
     <string name="error_invalid_email">Dit email-adres is niet geldig</string>
     <string name="error_invalid_password">Het wachtwoord is te kort.</string>
     <string name="error_incorrect_password">Het wachtwoord is incorrect.</string>
-    <string name="error_field_required">Verplicht in te vullen.</string>-->
+    <string name="error_field_required">Verplicht in te vullen.</string>
+    -->
 
 
     <!-- Strings related to Main screen -->
@@ -44,9 +46,8 @@
     <string name="title_activity_activiteit_overzicht">activiteit_overzicht</string>
     <string name="title_activity_profiel_detail">profiel_detail</string>
     <string name="title_activity_profiel_edit">profiel_edit</string>
-    <string name="updatingReport" >U bent ingelogd</string>
+    <string name="updatingReport">U bent ingelogd</string>
     <string name="confirm_registry">Email is niet gevonden. Wilt u een nieuwe gebruiker aanmaken?</string>
-
     <string name="nee">Nee</string>
     <string name="ja">Ja</string>
     <string name="menu_forgot_password">Wachtwoord vergeten</string>
@@ -67,20 +68,17 @@
     <string name="gsmHint">Gsmnummer</string>
     <string name="error_incorrect_postcode">Postcode is niet geldig.</string>
 
+    <string-array name="items">
+        <item>Item 1</item>
+        <item>Item 2</item>
+        <item>Item 3</item>
+        <item>Item 4</item>
+        <item>Item 5</item>
+        <item>Item 6</item>
+    </string-array>
 
-
-
-
-        <string-array name="items">
-            <item>Item 1</item>
-            <item>Item 2</item>
-            <item>Item 3</item>
-            <item>Item 4</item>
-            <item>Item 5</item>
-            <item>Item 6</item>
-        </string-array>
-
-        <string name="drawer_open">Open navigation drawer</string>
-        <string name="drawer_close">Close navigation drawer</string>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="title_activity_tester_list_item">TesterListItem</string>
 
 </resources>

@@ -8,6 +8,7 @@ import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 
@@ -18,10 +19,10 @@ import com.parse.ParseQuery;
 
 public class activiteit_overzicht extends Activity {
 
-   private ListView listview;
-   private List<ParseObject> ob;
-   private ProgressDialog mProgressDialog;
-   private ListViewAdapter adapter;
+    private ListView listview;
+    private List<ParseObject> ob;
+    private ProgressDialog mProgressDialog;
+    private ListViewAdapter adapter;
     private List<Vakantie> vakanties = null;
     private EditText filtertext;
 
@@ -89,9 +90,11 @@ public class activiteit_overzicht extends Activity {
             // Locate the listview in listview_main.xml
             listview = (ListView) findViewById(R.id.listview);
             // Pass the results into ListViewAdapter.java
-            adapter = new ListViewAdapter(activiteit_overzicht.this, vakanties);
+            //adapter = new ListViewAdapter(activiteit_overzicht.this, vakanties);
+            //ArrayAdapter<Profile> profileAdapter = new ArrayAdapter<Profile>(context, resource, profiles)
+            ArrayAdapter<Vakantie> vakantieAdapter = new ArrayAdapter<Vakantie>(activiteit_overzicht.this, R.layout.activity_tester_list_item , vakanties);
             // Binds the Adapter to the ListView
-            listview.setAdapter(adapter);
+            listview.setAdapter(vakantieAdapter);
             // Close the progressdialog
             mProgressDialog.dismiss();
 

@@ -2,11 +2,9 @@ package com.hogent.ti3g05.ti3_g05_joetzapp.domein;
 
 import android.text.method.DateTimeKeyListener;
 
+import java.util.Calendar;
 import java.util.Date;
 
-/**
- * Created by Gilles De Vylder on 29/10/2014.
- */
 public class Vakantie extends Activiteit{
     private Date vertrekDatum, terugkeerDatum;
     //aantalDagenNachten is een berekend veld. Wel/niet erin?
@@ -21,6 +19,17 @@ public class Vakantie extends Activiteit{
     public Vakantie(){
         super();
 
+    }
+
+    public String toString(){
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(getVertrekDatum());
+        String objvertrekDatum = cal.get(Calendar.DAY_OF_MONTH) + "/" + cal.get(Calendar.MONTH) + "/" + cal.get(Calendar.YEAR);
+        cal.setTime(getTerugkeerDatum());
+        String objterugkeerDatum = cal.get(Calendar.DAY_OF_MONTH) + "/" + cal.get(Calendar.MONTH) + "/" + cal.get(Calendar.YEAR);
+        return getNaamVakantie() + " - " + getLocatie() + "\n" +
+                objvertrekDatum +
+                " - " + objterugkeerDatum;
     }
 
     public String getNaamVakantie() {return naamVakantie;}

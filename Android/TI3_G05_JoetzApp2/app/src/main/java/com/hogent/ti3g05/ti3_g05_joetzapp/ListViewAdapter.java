@@ -95,7 +95,7 @@ public class ListViewAdapter extends BaseAdapter {
         return view;
     }
 
-    public void filter(String text) {
+   /* public void filter(String text) {
         text =text.toLowerCase(Locale.getDefault());
         vakanties.clear();
         if(text.length()==0)
@@ -109,6 +109,6 @@ public class ListViewAdapter extends BaseAdapter {
             }
         }
         notifyDataSetChanged();
-    }
+    }*/
 
 }
