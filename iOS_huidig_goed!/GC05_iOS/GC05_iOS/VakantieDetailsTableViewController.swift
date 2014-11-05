@@ -1,3 +1,5 @@
+import UIKit
+
 class VakantieDetailsTableViewController: UITableViewController {
     
     @IBOutlet weak var afbeelding1: UIImageView!

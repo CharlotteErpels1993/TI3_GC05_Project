@@ -1,0 +1,56 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="com.hogent.ti3g05.ti3_g05_joetzapp.LoginToolBars">
+
+
+    <LinearLayout
+        android:id="@+id/layoutMetUitlogKnop"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        >
+
+        <TextView
+            android:id="@+id/txtLoguitVolledigeNaam"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
+        <Button
+            android:id="@+id/btnUitloggen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Uitloggen"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"/>
+        </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutMetInlogKnop"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:visibility="gone">
+        <Button
+            android:id="@+id/btnRegisteren"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_activity_Register"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"/>
+        <Button
+            android:id="@+id/btnInloggen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_activity_Login"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"/>
+
+
+        </LinearLayout>
+</RelativeLayout>
