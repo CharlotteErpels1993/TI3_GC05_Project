@@ -13,22 +13,22 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vakanties;
+import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vakantie;
 
 public class ListViewAdapter extends BaseAdapter {
 
     Context context;
     LayoutInflater inflater;
     //ImageLoader imageLoader;
-    private List<Vakanties> vakanties = null;
-    private ArrayList<Vakanties> arraylist;
+    private List<Vakantie> vakanties = null;
+    private ArrayList<Vakantie> arraylist;
 
     public ListViewAdapter(Context context,
-                           List<Vakanties> vakanties) {
+                           List<Vakantie> vakanties) {
         this.context = context;
         this.vakanties = vakanties;
         inflater = LayoutInflater.from(context);
-        this.arraylist = new ArrayList<Vakanties>();
+        this.arraylist = new ArrayList<Vakantie>();
         this.arraylist.addAll(vakanties);
         //imageLoader = new ImageLoader(context);
     }
@@ -102,7 +102,7 @@ public class ListViewAdapter extends BaseAdapter {
         {
             vakanties.addAll(arraylist);
         } else {
-            for(Vakanties v: arraylist) {
+            for(Vakantie v: arraylist) {
                 if(v.getLocatie().toLowerCase(Locale.getDefault()).contains(text)) {
                     vakanties.add(v);
                 }

@@ -11,7 +11,7 @@ import android.util.Log;
 import android.widget.EditText;
 import android.widget.ListView;
 
-import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vakanties;
+import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vakantie;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
@@ -22,7 +22,7 @@ public class activiteit_overzicht extends Activity {
    private List<ParseObject> ob;
    private ProgressDialog mProgressDialog;
    private ListViewAdapter adapter;
-    private List<Vakanties> vakanties = null;
+    private List<Vakantie> vakanties = null;
     private EditText filtertext;
 
     @Override
@@ -54,7 +54,7 @@ public class activiteit_overzicht extends Activity {
         @Override
         protected Void doInBackground(Void... params) {
             // Create the array
-            vakanties = new ArrayList<Vakanties>();
+            vakanties = new ArrayList<Vakantie>();
             try {
                 // Locate the class table named "vakantie" in Parse.com
                 ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(
@@ -67,7 +67,7 @@ public class activiteit_overzicht extends Activity {
                     // Locate images in flag column
                    // ParseFile image = (ParseFile) vakantie.get("flag");
 
-                    Vakanties map = new Vakanties();
+                    Vakantie map = new Vakantie();
                     map.setNaamVakantie((String) vakantie.get("titel"));
                     map.setLocatie((String) vakantie.get("locatie"));
                     map.setVertrekDatum((java.util.Date) vakantie.get("vertrekdatum"));
