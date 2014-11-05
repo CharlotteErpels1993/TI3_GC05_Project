@@ -2,7 +2,7 @@ import UIKit
 
 class Registratie4ViewController: UIViewController
 {
-    var aansluitingsNr: Int?
+    /*var aansluitingsNr: Int?
     var codeGerechtigde: Int?
     var rijksregisterNr: String!
     var aansluitingsNrTweedeOuder: Int?
@@ -14,7 +14,7 @@ class Registratie4ViewController: UIViewController
     var gemeente: String!
     var postcode: Int?
     var telefoon: String!
-    var gsm: String!
+    var gsm: String!*/
     
     @IBOutlet weak var txtEmail: UITextField!
     @IBOutlet weak var txtWachtwoord: UITextField!

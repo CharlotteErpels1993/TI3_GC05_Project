@@ -4,60 +4,64 @@ class Gebruiker
 {
     var id: String?
 
-    var rijksregisterNr: String {
+    var rijksregisterNr: String? /*{
         willSet {
-            assert(checkValidRijksregisterNummer(newValue), "Rijksregisternummer moet geldig zijn!")
+            assert(checkValidRijksregisterNummer(newValue!), "Rijksregisternummer moet geldig zijn!")
         }
-    }
+    }*/
     
-    var email: String {
+    var email: String? /*{
         willSet {
-            assert(checkValidEmail(newValue), "E-mail moet een geldig e-mailadres zijn!")
+            assert(checkValidEmail(newValue!), "E-mail moet een geldig e-mailadres zijn!")
         }
-    }
+    }*/
 
-    var wachtwoord: String
-    var voornaam: String
-    var naam: String
-    var straat: String
+    var wachtwoord: String?
+    var voornaam: String?
+    var naam: String?
+    var straat: String?
     
-    var nummer: Int {
+    var nummer: Int? /*{
         willSet {
-            assert(checkValidNummer(newValue), "Huisnummer moet een geldig nummer zijn!")
+            assert(checkValidNummer(newValue!), "Huisnummer moet een geldig nummer zijn!")
         }
-    }
+    }*/
     
-    var bus: String
-    var gemeente: String
+    var bus: String?
+    var gemeente: String?
     
-    var postcode: Int {
+    var postcode: Int? /*{
         willSet {
-            assert(checkValidPostcode(newValue), "Postcode moet geldig zijn!")
+            assert(checkValidPostcode(newValue!), "Postcode moet geldig zijn!")
         }
-    }
+    }*/
     
-    var telefoon: String {
+    var telefoon: String? /*{
         willSet {
-            assert(checkValidTelefoon(newValue), "Telefoon moet een geldig telefoonnummer zijn!")
+            assert(checkValidTelefoon(newValue!), "Telefoon moet een geldig telefoonnummer zijn!")
         }
-    }
+    }*/
 
-    var gsm: String {
+    var gsm: String? /*{
         willSet {
-            assert(checkValidGsm(newValue), "Gsm moet een geldig gsmnummer zijn!")
+            assert(checkValidGsm(newValue!), "Gsm moet een geldig gsmnummer zijn!")
         }
-    }
+    }*/
     
-    var aansluitingsNr: Int {
+    var aansluitingsNr: Int? /*{
         willSet {
-            assert(checkValidAansluitingsNr(newValue), "Aansluitingsnummer moet geldig zijn!")
+            assert(checkValidAansluitingsNr(newValue!), "Aansluitingsnummer moet geldig zijn!")
         }
-    }
+    }*/
     
-    var codeGerechtigde: Int {
+    var codeGerechtigde: Int? /*{
         willSet {
-            assert(checkValidCodeGerechtigde(newValue), "Code gerechtigde moet geldig zijn!")
+            assert(checkValidCodeGerechtigde(newValue!), "Code gerechtigde moet geldig zijn!")
         }
+    }*/
+    
+    init(id: String) {
+        self.id = id
     }
     
     init(gebruiker: PFObject) {

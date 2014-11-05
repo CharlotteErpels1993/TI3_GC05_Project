@@ -2,11 +2,15 @@ import Foundation
 
 class Ouder: Gebruiker
 {
-    var aansluitingsNrTweedeOuder: Int /*{
+    var aansluitingsNrTweedeOuder: Int? /*{
         willSet {
             assert(super.checkValidAansluitingsNr(newValue), "Aansluitingsnummer van de tweede ouder moet geldig zijn!")
         }
     }*/
+    
+    override init(id: String) {
+        super.init(id: id)
+    }
     
     init(ouder: PFObject) {
         self.aansluitingsNrTweedeOuder = ouder["aansluitingsNrTweedeOuder"] as Int

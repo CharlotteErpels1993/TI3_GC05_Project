@@ -327,20 +327,87 @@
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m7p-Dv-81d">
                                 <rect key="frame" x="16" y="157" width="51" height="31"/>
+                                <connections>
+                                    <action selector="switched:" destination="fyb-xH-x0i" eventType="valueChanged" id="nYn-y5-G4g"/>
+                                </connections>
                             </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aansluitingsnummer:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MfE-6E-2Xb">
+                                <rect key="frame" x="16" y="211" width="161" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ffo-9X-igg">
+                                <rect key="frame" x="16" y="240" width="568" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Code gerechtigde:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Av-pM-lTQ">
+                                <rect key="frame" x="16" y="281" width="142" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m1W-MR-gUq">
+                                <rect key="frame" x="16" y="310" width="568" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rijksregisternummer:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K80-KY-GXh">
+                                <rect key="frame" x="16" y="351" width="163" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="o7V-bX-HUj">
+                                <rect key="frame" x="16" y="380" width="568" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aansluitingsnummer tweede ouder (indien van toepassing):" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ARF-UY-Xdf">
+                                <rect key="frame" x="16" y="421" width="452" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gBr-1o-c4l">
+                                <rect key="frame" x="16" y="450" width="568" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="gBr-1o-c4l" firstAttribute="trailing" secondItem="OaM-e4-sMk" secondAttribute="trailingMargin" id="31l-do-r3Y"/>
                             <constraint firstItem="WHu-JB-DDt" firstAttribute="top" secondItem="5IY-zh-MZg" secondAttribute="bottom" constant="8" id="5jw-xK-JOt"/>
                             <constraint firstItem="WHu-JB-DDt" firstAttribute="top" secondItem="5IY-zh-MZg" secondAttribute="bottom" constant="8" id="8cM-0i-5aJ"/>
                             <constraint firstItem="Fsh-T0-4Sa" firstAttribute="top" secondItem="5IY-zh-MZg" secondAttribute="bottom" constant="57" id="9UQ-g6-mwe"/>
+                            <constraint firstItem="Ffo-9X-igg" firstAttribute="top" secondItem="MfE-6E-2Xb" secondAttribute="bottom" constant="8" id="B6C-Dd-ruz"/>
+                            <constraint firstItem="m1W-MR-gUq" firstAttribute="leading" secondItem="OaM-e4-sMk" secondAttribute="leadingMargin" id="H63-W5-232"/>
+                            <constraint firstItem="m1W-MR-gUq" firstAttribute="top" secondItem="8Av-pM-lTQ" secondAttribute="bottom" constant="8" id="HGj-Pd-WjI"/>
+                            <constraint firstItem="o7V-bX-HUj" firstAttribute="trailing" secondItem="OaM-e4-sMk" secondAttribute="trailingMargin" id="JFw-Jd-qOT"/>
                             <constraint firstItem="WHu-JB-DDt" firstAttribute="leading" secondItem="OaM-e4-sMk" secondAttribute="leadingMargin" constant="263" id="LqX-Fv-JNN"/>
+                            <constraint firstItem="ARF-UY-Xdf" firstAttribute="leading" secondItem="OaM-e4-sMk" secondAttribute="leadingMargin" id="M59-Sr-uhZ"/>
+                            <constraint firstItem="Ffo-9X-igg" firstAttribute="leading" secondItem="OaM-e4-sMk" secondAttribute="leadingMargin" id="SIB-YR-eIg"/>
+                            <constraint firstItem="8Av-pM-lTQ" firstAttribute="leading" secondItem="OaM-e4-sMk" secondAttribute="leadingMargin" id="SLL-h9-0bG"/>
+                            <constraint firstItem="o7V-bX-HUj" firstAttribute="leading" secondItem="OaM-e4-sMk" secondAttribute="leadingMargin" id="STD-Yd-ff6"/>
                             <constraint firstItem="Fsh-T0-4Sa" firstAttribute="top" secondItem="5IY-zh-MZg" secondAttribute="bottom" constant="8" id="VcU-CX-vSB"/>
+                            <constraint firstItem="8Av-pM-lTQ" firstAttribute="top" secondItem="Ffo-9X-igg" secondAttribute="bottom" constant="11" id="X8s-rc-52a"/>
                             <constraint firstItem="m7p-Dv-81d" firstAttribute="top" secondItem="Fsh-T0-4Sa" secondAttribute="bottom" constant="15" id="dNP-OM-j5t"/>
                             <constraint firstItem="m7p-Dv-81d" firstAttribute="leading" secondItem="OaM-e4-sMk" secondAttribute="leadingMargin" id="ewi-Pq-9DE"/>
+                            <constraint firstItem="gBr-1o-c4l" firstAttribute="leading" secondItem="OaM-e4-sMk" secondAttribute="leadingMargin" id="gcM-fk-Kac"/>
                             <constraint firstItem="Fsh-T0-4Sa" firstAttribute="leading" secondItem="OaM-e4-sMk" secondAttribute="leadingMargin" id="its-u2-PDD"/>
                             <constraint firstItem="m7p-Dv-81d" firstAttribute="leading" secondItem="OaM-e4-sMk" secondAttribute="leadingMargin" id="ixS-bJ-XXV"/>
+                            <constraint firstItem="ARF-UY-Xdf" firstAttribute="top" secondItem="o7V-bX-HUj" secondAttribute="bottom" constant="11" id="kXv-xc-RrY"/>
                             <constraint firstItem="m7p-Dv-81d" firstAttribute="top" secondItem="Fsh-T0-4Sa" secondAttribute="bottom" constant="8" id="m4b-gB-lnJ"/>
+                            <constraint firstItem="gBr-1o-c4l" firstAttribute="top" secondItem="ARF-UY-Xdf" secondAttribute="bottom" constant="8" id="mlq-6a-9J4"/>
+                            <constraint firstItem="K80-KY-GXh" firstAttribute="top" secondItem="m1W-MR-gUq" secondAttribute="bottom" constant="11" id="o5T-ft-jnJ"/>
+                            <constraint firstItem="MfE-6E-2Xb" firstAttribute="top" secondItem="m7p-Dv-81d" secondAttribute="bottom" constant="23" id="oeo-SW-ujl"/>
+                            <constraint firstItem="MfE-6E-2Xb" firstAttribute="leading" secondItem="OaM-e4-sMk" secondAttribute="leadingMargin" id="pfT-mC-hI5"/>
+                            <constraint firstItem="K80-KY-GXh" firstAttribute="leading" secondItem="OaM-e4-sMk" secondAttribute="leadingMargin" id="qna-3a-A6t"/>
+                            <constraint firstItem="m1W-MR-gUq" firstAttribute="trailing" secondItem="OaM-e4-sMk" secondAttribute="trailingMargin" id="r6A-3s-Fw0"/>
+                            <constraint firstItem="o7V-bX-HUj" firstAttribute="top" secondItem="K80-KY-GXh" secondAttribute="bottom" constant="8" id="vVM-da-DcP"/>
+                            <constraint firstItem="Ffo-9X-igg" firstAttribute="trailing" secondItem="OaM-e4-sMk" secondAttribute="trailingMargin" id="wlr-Gv-WN4"/>
                             <constraint firstAttribute="centerX" secondItem="WHu-JB-DDt" secondAttribute="centerX" constant="-4.5" id="xtU-Uq-tgp"/>
                             <constraint firstItem="Fsh-T0-4Sa" firstAttribute="leading" secondItem="OaM-e4-sMk" secondAttribute="leadingMargin" id="yVB-JH-oyO"/>
                         </constraints>
@@ -358,12 +425,20 @@
                         <barButtonItem key="rightBarButtonItem" title="Volgende" id="w17-Kj-bON">
                             <connections>
                                 <action selector="registrerenVolgende:" destination="fyb-xH-x0i" id="Q7x-tD-PJc"/>
-                                <segue destination="4e3-wh-pw2" kind="show" identifier="volgende1" id="BCc-Op-CII"/>
+                                <segue destination="y0D-Ac-bEH" kind="show" identifier="volgende" id="w9N-f5-ObP"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="lidSocialistischeMutualiteitSwitch" destination="m7p-Dv-81d" id="Dq2-tL-pAP"/>
+                        <outlet property="isLid" destination="m7p-Dv-81d" id="c1g-r4-jDp"/>
+                        <outlet property="lblAansluitingsNr" destination="MfE-6E-2Xb" id="TP2-zY-Exv"/>
+                        <outlet property="lblAansluitingsNrTweedeOuder" destination="ARF-UY-Xdf" id="xyu-dg-6zn"/>
+                        <outlet property="lblCodeGerechtigde" destination="8Av-pM-lTQ" id="KC3-r5-qvX"/>
+                        <outlet property="lblRijksregisterNr" destination="K80-KY-GXh" id="nWF-1C-cq5"/>
+                        <outlet property="txtAansluitingsNr" destination="Ffo-9X-igg" id="rWc-Ff-v4V"/>
+                        <outlet property="txtAansluitingsNrTweedeOuder" destination="gBr-1o-c4l" id="RdY-Cf-JCQ"/>
+                        <outlet property="txtCodeGerechtigde" destination="m1W-MR-gUq" id="50F-en-5KK"/>
+                        <outlet property="txtRijksregisterNr" destination="o7V-bX-HUj" id="Udv-WV-ySq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B8n-Og-JfT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -686,7 +761,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stap 2" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t3F-Vg-qrX">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Stap 2" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t3F-Vg-qrX">
                                 <rect key="frame" x="273" y="72" width="55" height="21"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -737,7 +812,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vul de volgende gegevens in:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f9h-n4-W6y">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Vul de volgende gegevens in:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f9h-n4-W6y">
                                 <rect key="frame" x="16" y="117" width="224" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -786,11 +861,7 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Registreren" id="7JT-Z5-K2s">
-                        <barButtonItem key="rightBarButtonItem" title="Volgende" id="SlY-mW-jkd">
-                            <connections>
-                                <segue destination="y0D-Ac-bEH" kind="show" identifier="volgende2" id="iw3-Pn-bUR"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Volgende" id="SlY-mW-jkd"/>
                     </navigationItem>
                     <connections>
                         <outlet property="txtAansluitingsnummer" destination="svy-OM-E9e" id="3d0-F4-qch"/>
@@ -801,7 +872,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hFA-Rh-2n9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="812" y="1044"/>
+            <point key="canvasLocation" x="822" y="1344"/>
         </scene>
         <!--Registreren-->
         <scene sceneID="vTF-1M-xK9">
@@ -969,7 +1040,7 @@
                     <navigationItem key="navigationItem" title="Registreren" id="suI-Ue-v3o">
                         <barButtonItem key="rightBarButtonItem" title="Volgende" id="L9b-bD-fFu">
                             <connections>
-                                <segue destination="w0S-HA-suc" kind="show" identifier="volgende3" id="H9B-i3-Yhv"/>
+                                <segue destination="w0S-HA-suc" kind="show" identifier="volgende" id="H9B-i3-Yhv"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -987,7 +1058,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DsR-tm-lD1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1483" y="1044"/>
+            <point key="canvasLocation" x="1246" y="1052"/>
         </scene>
         <!--Registreren-->
         <scene sceneID="dth-mh-NbC">
@@ -1013,18 +1084,18 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Wachtwoord:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KVD-77-46V">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wachtwoord:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KVD-77-46V">
                                 <rect key="frame" x="16" y="235" width="102" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zbz-TI-f1b">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zbz-TI-f1b">
                                 <rect key="frame" x="16" y="197" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Bevestig wachtwoord:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yWf-vl-Uis">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bevestig wachtwoord:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yWf-vl-Uis">
                                 <rect key="frame" x="16" y="307" width="171" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -1064,8 +1135,8 @@
                             <constraint firstItem="eoq-1C-h6g" firstAttribute="trailing" secondItem="MaB-Lm-Qic" secondAttribute="trailingMargin" id="XiT-CU-yIq"/>
                             <constraint firstItem="FCg-oS-h5O" firstAttribute="leading" secondItem="MaB-Lm-Qic" secondAttribute="leadingMargin" constant="263" id="aZQ-Ja-SV5"/>
                             <constraint firstItem="yWf-vl-Uis" firstAttribute="leading" secondItem="MaB-Lm-Qic" secondAttribute="leadingMargin" id="czd-H2-Brh"/>
-                            <constraint firstItem="zbz-TI-f1b" firstAttribute="top" secondItem="6nT-CA-MLe" secondAttribute="bottom" constant="8" id="f9l-L0-m39"/>
                             <constraint firstItem="yWf-vl-Uis" firstAttribute="top" secondItem="XDv-uS-Fzx" secondAttribute="bottom" constant="13" id="ga5-zb-hJ9"/>
+                            <constraint firstItem="zbz-TI-f1b" firstAttribute="top" secondItem="6nT-CA-MLe" secondAttribute="bottom" constant="7" id="gnw-zA-IjE"/>
                             <constraint firstItem="KVD-77-46V" firstAttribute="top" secondItem="zbz-TI-f1b" secondAttribute="bottom" constant="8" id="kIZ-rY-Evu"/>
                             <constraint firstItem="zbz-TI-f1b" firstAttribute="trailing" secondItem="MaB-Lm-Qic" secondAttribute="trailingMargin" id="lHE-Rs-8v7"/>
                             <constraint firstAttribute="centerX" secondItem="FCg-oS-h5O" secondAttribute="centerX" constant="-4.5" id="r9W-Yx-RuY"/>
@@ -1087,7 +1158,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ca8-jE-Hjf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2145" y="1044"/>
+            <point key="canvasLocation" x="1963" y="1052"/>
         </scene>
         <!--Registratie voltooid-->
         <scene sceneID="W6m-of-VF8">
@@ -1140,7 +1211,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0km-KM-IRT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2830" y="1044"/>
+            <point key="canvasLocation" x="2829" y="1052"/>
         </scene>
     </scenes>
 </document>

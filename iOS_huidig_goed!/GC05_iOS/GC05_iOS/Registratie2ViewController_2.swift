@@ -18,10 +18,12 @@ class Registratie2ViewController: UIViewController
         }
     }
     
+    
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     {
-        //if segue.identifier == "volgende2" {
-            let registratie3ViewController = segue.destinationViewController as Registratie3ViewController
+        if segue.identifier == "volgende3" {
+         let registratie3ViewController = segue.destinationViewController as Registratie3ViewController
             
             //nog nakijken op lege velden!!! en dan view 'reloaden'?
             ouder.aansluitingsNr = txtAansluitingsnummer.text.toInt()!
@@ -36,7 +38,7 @@ class Registratie2ViewController: UIViewController
             
             //ouder-object doorgeven aan volgende viewController
             registratie3ViewController.ouder = self.ouder
-            
+             //segue.perform()
             
             
             /*registratie3ViewController.aansluitingsNr = txtAansluitingsnummer.text.toInt()
@@ -48,7 +50,7 @@ class Registratie2ViewController: UIViewController
             } else {
                 registratie3ViewController.aansluitingsNrTweedeOuder = txtAansluitingsnummerTweedeOuder.text.toInt()
             }*/
-      //  }
+       }
     }
     
     /*func controleRijksregisternummer(rijksregisternummer: String) -> Bool {

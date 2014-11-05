@@ -29,14 +29,14 @@ class Registratie3ViewController: UIViewController
             ouder.voornaam = txtVoornaam.text
             ouder.naam = txtNaam.text
             ouder.straat = txtStraat.text
-            //ouder.nummer = txtNummer.text.toInt()
+            ouder.nummer = txtNummer.text.toInt()
             ouder.bus = txtBus.text
             ouder.gemeente = txtGemeente.text
-            // ouder.postcode = txtPostcode.text.toInt()
+            ouder.postcode = txtPostcode.text.toInt()
             ouder.telefoon = txtTelefoon.text
             ouder.gsm = txtGsm.text
             
-            registratie4ViewController.ouder = self.ouder
+            registratie4ViewController.ouder = ouder
             
             
             
