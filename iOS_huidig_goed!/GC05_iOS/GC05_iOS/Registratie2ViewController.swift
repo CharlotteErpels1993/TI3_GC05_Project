@@ -7,6 +7,16 @@ class Registratie2ViewController: UIViewController
     @IBOutlet weak var txtRijksregisternummer: UITextField!
     @IBOutlet weak var txtAansluitingsnummerTweedeOuder: UITextField!
     
+    var switchLidIsOn: Bool!
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if !switchLidIsOn {
+            performSegueWithIdentifier("volgende", sender: self)
+        }
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     {
         if segue.identifier == "volgende" {

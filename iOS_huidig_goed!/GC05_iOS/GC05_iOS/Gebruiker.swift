@@ -140,7 +140,10 @@ class Gebruiker
         var eerste9CijfersInt: Int = eerste9CijfersString.toInt()!
         var restNaDeling97: Int = eerste9CijfersInt % 97
         var controleGetal: Int = 97 - restNaDeling97
-        var laatste2CijfersString: String = rrn.substringWithRange(Range<String.Index>(start: advance(rrn, 10), end: rrn))
+        
+        var laatste2CijfersString: String = rrn.substringWithRange(Range<String.Index>(start: advance(rrn.startIndex, 10), end: rrn.endIndex))
+
+        
         var laatste2CijfersInt: Int = laatste2CijfersString.toInt()!
         
         if length > 11 || length < 11 {
@@ -158,6 +161,7 @@ class Gebruiker
         } else if Regex("[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}").test(email) {
             return true
         }
+        return false
     }
     
     private func checkValidNummer(nr: Int) -> Bool {
@@ -189,33 +193,20 @@ class Gebruiker
     }
     
     func checkValidAansluitingsNr(aansluitingsNr: Int) -> Bool {
-        if countElements(aansluitingsNr) == 10 {
+        var aansluitingsNrString: String = String(aansluitingsNr)
+        
+        if countElements(aansluitingsNrString) == 10 {
             return true
         }
         return false
     }
     
     private func checkValidCodeGerechtigde(codeGerechtigde: Int) -> Bool {
-        if countElements(codeGerechtigde) == 6 {
+        var codeGerechtigdeString: String = String(codeGerechtigde)
+        
+        if countElements(codeGerechtigdeString) == 6 {
             return true
         }
         return false
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }
