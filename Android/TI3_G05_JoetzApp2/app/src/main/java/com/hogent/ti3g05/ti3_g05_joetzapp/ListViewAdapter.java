@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vakantie;
@@ -25,12 +24,12 @@ public class ListViewAdapter extends BaseAdapter {
     private ArrayList<Vakantie> arraylist;
 
     public ListViewAdapter(Context context,
-                           List<Vakantie> worldpopulationlist) {
+                           List<Vakantie> vakanties) {
         this.context = context;
-        this.vakanties = worldpopulationlist;
+        this.vakanties = vakanties;
         inflater = LayoutInflater.from(context);
         this.arraylist = new ArrayList<Vakantie>();
-        this.arraylist.addAll(worldpopulationlist);
+        this.arraylist.addAll(vakanties);
         //imageLoader = new ImageLoader(context);
     }
 
