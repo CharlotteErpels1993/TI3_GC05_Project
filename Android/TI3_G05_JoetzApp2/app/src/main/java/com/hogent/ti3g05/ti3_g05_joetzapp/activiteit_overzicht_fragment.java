@@ -1,13 +1,14 @@
 package com.hogent.ti3g05.ti3_g05_joetzapp;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.app.Activity;
+import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -18,7 +19,10 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
-public class activiteit_overzicht_fragment extends Activity {
+import java.util.ArrayList;
+import java.util.List;
+
+public class activiteit_overzicht_fragment extends Fragment {
 
     private ListView listview;
     private List<ParseObject> ob;
@@ -26,15 +30,17 @@ public class activiteit_overzicht_fragment extends Activity {
     private ListViewAdapter adapter;
     private List<Vakantie> vakanties = null;
     private EditText filtertext;
+    private View rootView;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Get the view from listview_main.xml
-        setContentView(R.layout.activiteit_overzichtnieuw);
-        // Execute RemoteDataTask AsyncTask
+        rootView = inflater.inflate(R.layout.activity_main_screen, container, false);
+
         new RemoteDataTask().execute();
+
+        return rootView;
     }
 
     // RemoteDataTask AsyncTask
@@ -43,7 +49,7 @@ public class activiteit_overzicht_fragment extends Activity {
         protected void onPreExecute() {
             super.onPreExecute();
             // Create a progressdialog
-            mProgressDialog = new ProgressDialog(activiteit_overzicht_fragment.this);
+            mProgressDialog = new ProgressDialog(getActivity());
             // Set progressdialog title
             mProgressDialog.setTitle("Ophalen van vakanties.");
             // Set progressdialog message
@@ -89,11 +95,11 @@ public class activiteit_overzicht_fragment extends Activity {
         @Override
         protected void onPostExecute(Void result) {
             // Locate the listview in listview_main.xml
-            listview = (ListView) findViewById(R.id.listview);
+            listview = (ListView) rootView.findViewById(R.id.listview);
             // Pass the results into ListViewAdapter.java
             //adapter = new ListViewAdapter(activiteit_overzicht.this, vakanties);
             //ArrayAdapter<Profile> profileAdapter = new ArrayAdapter<Profile>(context, resource, profiles)
-            ArrayAdapter<Vakantie> vakantieAdapter = new ArrayAdapter<Vakantie>(activiteit_overzicht_fragment.this, R.layout.activity_tester_list_item , vakanties);
+            ArrayAdapter<Vakantie> vakantieAdapter = new ArrayAdapter<Vakantie>(getView().getContext(),R.layout.activity_tester_list_item , vakanties);
             // Binds the Adapter to the ListView
             listview.setAdapter(vakantieAdapter);
             // Close the progressdialog

@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
@@ -18,8 +19,6 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.hogent.ti3g05.ti3_g05_joetzapp.Fragments.MainScreen;
-import com.hogent.ti3g05.ti3_g05_joetzapp.Fragments.activiteit_overzicht;
 
 public class navBarMainScreen extends Activity {
 
@@ -144,16 +143,19 @@ public class navBarMainScreen extends Activity {
 
         switch (position) {
             case 0:
-                fragment = new activiteit_overzicht();
+                //fragment = new activiteit_overzicht_fragment();
+                Intent intent = new Intent(navBarMainScreen.this, com.hogent.ti3g05.ti3_g05_joetzapp.activiteit_overzicht.class
+                );
+                startActivity(intent);
                 break;
             case 1:
                 fragment = new MainScreen();
                 break;
             case 2:
-                fragment = new activiteit_overzicht();
+                fragment = new MainScreen();
                 break;
             case 3:
-                fragment = new activiteit_overzicht();
+                fragment = new MainScreen();
                 break;
 
             default:

@@ -11,18 +11,18 @@
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
-        android:name=".Services.MyParseApplication"
+        android:name=".MyParseApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@android:style/Theme.DeviceDefault"
         android:debuggable="true">
 
-        <activity
-            android:name=".Fragments.MainScreen"
+       <!-- <activity
+            android:name=".MainScreen"
             android:label="@string/title_activity_main_screen" >
         </activity>
-
+-->
         <activity
             android:name=".navBarMainScreen" >
             <intent-filter>
@@ -59,12 +59,12 @@
             android:label="@string/title_activity_profiel_edit" >
         </activity>
 
-        <activity android:name=".SignUp_deel1" ></activity>
-        <activity android:name=".SignUp_deel2"></activity>
-        <activity android:name=".SignUp_deel3"></activity>
-        <activity android:name=".SignUp_deel4"></activity>
-        <activity android:name=".Login"></activity>
-        <activity android:name=".ForgetParsePassword"></activity>
+        <activity android:name=".SignUpLogin.SignUp_deel1" ></activity>
+        <activity android:name=".SignUpLogin.SignUp_deel2"></activity>
+        <activity android:name=".SignUpLogin.SignUp_deel3"></activity>
+        <activity android:name=".SignUpLogin.SignUp_deel4"></activity>
+        <activity android:name=".SignUpLogin.Login"></activity>
+        <activity android:name=".SignUpLogin.ForgetParsePassword"></activity>
 
 
 

@@ -1,4 +1,4 @@
-package com.hogent.ti3g05.ti3_g05_joetzapp.Frags;
+package com.hogent.ti3g05.ti3_g05_joetzapp;
 
 /**
  * Created by Gebruiker on 5/11/2014.
@@ -19,8 +19,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-
-import com.hogent.ti3g05.ti3_g05_joetzapp.R;
 
 public class FragmentNavigationDrawer extends DrawerLayout {
     private ActionBarDrawerToggle drawerToggle;

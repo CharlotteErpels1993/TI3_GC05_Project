@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ListViewAdapter;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vakantie;
 import com.parse.ParseException;
 import com.parse.ParseObject;
