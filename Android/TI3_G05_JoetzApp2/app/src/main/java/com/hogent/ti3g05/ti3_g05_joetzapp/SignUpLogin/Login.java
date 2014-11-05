@@ -1,16 +1,19 @@
-package com.hogent.ti3g05.ti3_g05_joetzapp;
+package com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
+import com.hogent.ti3g05.ti3_g05_joetzapp.Fragments.MainScreen;
+import com.hogent.ti3g05.ti3_g05_joetzapp.R;
+import com.hogent.ti3g05.ti3_g05_joetzapp.navBarMainScreen;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
@@ -101,7 +104,7 @@ public class Login extends Activity{
         btn_Return.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Login.this, MainScreen.class);
+                Intent intent = new Intent(Login.this, navBarMainScreen.class);
                 startActivity(intent);
             }
         });

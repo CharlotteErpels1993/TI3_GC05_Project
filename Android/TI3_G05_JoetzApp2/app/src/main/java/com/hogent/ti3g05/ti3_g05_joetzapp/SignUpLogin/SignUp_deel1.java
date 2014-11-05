@@ -1,4 +1,4 @@
-package com.hogent.ti3g05.ti3_g05_joetzapp;
+package com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin;
 
 
 import android.app.Activity;
@@ -9,6 +9,10 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+
+import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
+import com.hogent.ti3g05.ti3_g05_joetzapp.R;
+import com.hogent.ti3g05.ti3_g05_joetzapp.navBarMainScreen;
 
 public class SignUp_deel1 extends Activity{
 
@@ -61,7 +65,7 @@ public class SignUp_deel1 extends Activity{
         terugButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent1 = new Intent(SignUp_deel1.this, MainScreen.class);
+                Intent intent1 = new Intent(SignUp_deel1.this, navBarMainScreen.class);
                 startActivity(intent1);
 
 

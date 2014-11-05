@@ -1,5 +1,6 @@
-package com.hogent.ti3g05.ti3_g05_joetzapp;
+package com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin;
 
+import com.hogent.ti3g05.ti3_g05_joetzapp.R;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.RequestPasswordResetCallback;

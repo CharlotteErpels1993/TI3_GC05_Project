@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
-        android:name=".MyParseApplication"
+        android:name=".Services.MyParseApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
@@ -15,16 +15,17 @@
         android:debuggable="true">
 
         <activity
-            android:name=".MainScreen"
+            android:name=".Fragments.MainScreen"
             android:label="@string/title_activity_main_screen" >
-
-
-
         </activity>
 
         <activity
-            android:name=".probeerselactivoornav" >
+            android:name=".navBarMainScreen" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".InschrijvenActivity"
@@ -35,14 +36,10 @@
             android:label="@string/title_activity_activiteit_detail" >
         </activity>
         <activity
-            android:name=".activiteit_overzicht"
+            android:name=".Fragments.activiteit_overzicht"
             android:label="@string/title_activity_activiteit_overzicht" >
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
         </activity>
         <activity
@@ -54,12 +51,12 @@
             android:label="@string/title_activity_profiel_edit" >
         </activity>
 
-        <activity android:name=".SignUp_deel1" ></activity>
-        <activity android:name=".SignUp_deel2"></activity>
-        <activity android:name=".SignUp_deel3"></activity>
-        <activity android:name=".SignUp_deel4"></activity>
-        <activity android:name=".Login"></activity>
-        <activity android:name=".ForgetParsePassword"></activity>
+        <activity android:name=".SignUpLogin.SignUp_deel1" ></activity>
+        <activity android:name=".SignUpLogin.SignUp_deel2"></activity>
+        <activity android:name=".SignUpLogin.SignUp_deel3"></activity>
+        <activity android:name=".SignUpLogin.SignUp_deel4"></activity>
+        <activity android:name=".SignUpLogin.Login"></activity>
+        <activity android:name=".SignUpLogin.ForgetParsePassword"></activity>
 
 
 

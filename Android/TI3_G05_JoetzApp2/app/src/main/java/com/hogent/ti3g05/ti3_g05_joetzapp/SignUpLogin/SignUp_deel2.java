@@ -1,4 +1,4 @@
-package com.hogent.ti3g05.ti3_g05_joetzapp;
+package com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin;
 
 
 import android.app.Activity;
@@ -12,9 +12,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.parse.ParseException;
+import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
+import com.hogent.ti3g05.ti3_g05_joetzapp.R;
 import com.parse.ParseUser;
-import com.parse.SignUpCallback;
 
 public class SignUp_deel2 extends Activity{
 

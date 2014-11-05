@@ -72,12 +72,10 @@
 
 
         <string-array name="items">
-            <item>Item 1</item>
-            <item>Item 2</item>
-            <item>Item 3</item>
-            <item>Item 4</item>
-            <item>Item 5</item>
-            <item>Item 6</item>
+            <item>Vakanties</item>
+            <item>Profielen</item>
+            <item>Vormingen</item>
+            <item>about</item>
         </string-array>
 
         <string name="drawer_open">Open navigation drawer</string>

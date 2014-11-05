@@ -1,4 +1,4 @@
-package com.hogent.ti3g05.ti3_g05_joetzapp;
+package com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin;
 
 import android.app.Activity;
 import android.net.Uri;
@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.hogent.ti3g05.ti3_g05_joetzapp.R;
 import com.parse.ParseUser;
 
 

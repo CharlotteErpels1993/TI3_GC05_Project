@@ -1,4 +1,4 @@
-package com.hogent.ti3g05.ti3_g05_joetzapp;
+package com.hogent.ti3g05.ti3_g05_joetzapp.Services;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.hogent.ti3g05.ti3_g05_joetzapp.R;
+import com.hogent.ti3g05.ti3_g05_joetzapp.activiteit_detail;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vakantie;
 
 public class ListViewAdapter extends BaseAdapter {
