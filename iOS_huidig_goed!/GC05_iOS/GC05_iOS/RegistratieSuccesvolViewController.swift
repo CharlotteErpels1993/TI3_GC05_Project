@@ -2,38 +2,33 @@ import UIKit
 
 class RegistratieSuccesvolViewController: UIViewController
 {
-    var gebruiker: Ouder!
-    //var aansluitingsNrTweedeOuder: Int?
+    var ouder: Ouder!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        gebruikerWegschrijvenNaarDatabase(gebruiker)
+        parseOuderToDatabase(ouder)
     }
     
-    private func gebruikerWegschrijvenNaarDatabase(gebruiker: Ouder) {
+    private func parseOuderToDatabase(ouder: Ouder) {
         
-            //probleem: wat als ouder geen aansluitingsNrTweedeOuder heeft?
-            //hoe maken we dan het onderscheid tussen een monitor en een ouder?
-            
-            var ouder = PFObject(className: "Ouder")
-            
-            ouder.setValue(gebruiker.rijksregisterNr, forKey: "rijksregisterNr")
-            ouder.setValue(gebruiker.email, forKey: "email")
-            ouder.setValue(gebruiker.wachtwoord, forKey: "wachtwoord")
-            ouder.setValue(gebruiker.voornaam, forKey: "voornaam")
-            ouder.setValue(gebruiker.naam, forKey: "naam")
-            ouder.setValue(gebruiker.straat, forKey: "straat")
-            ouder.setValue(gebruiker.nummer, forKey: "nummer")
-            ouder.setValue(gebruiker.rijksregisterNr, forKey: "rijksregisterNr")
-            ouder.setValue(gebruiker.bus, forKey: "bus")
-            ouder.setValue(gebruiker.postcode, forKey: "postcode")
-            ouder.setValue(gebruiker.telefoon, forKey: "telefoon")
-            ouder.setValue(gebruiker.gsm, forKey: "gsm")
-            ouder.setValue(gebruiker.aansluitingsNr, forKey: "aansluitingsNr")
-            ouder.setValue(gebruiker.codeGerechtigde, forKey: "codeGerechtigde")
-            ouder.setValue(gebruiker.aansluitingsNrTweedeOuder, forKey: "aansluitingsNrTweedeOuder")
-            
-            ouder.save()
+        var ouderJSON = PFObject(className: "Ouder")
         
+        ouderJSON.setValue(ouder.rijksregisterNr, forKey: "rijksregisterNr")
+        ouderJSON.setValue(ouder.email, forKey: "email")
+        ouderJSON.setValue(ouder.wachtwoord, forKey: "wachtwoord")
+        ouderJSON.setValue(ouder.voornaam, forKey: "voornaam")
+        ouderJSON.setValue(ouder.naam, forKey: "naam")
+        ouderJSON.setValue(ouder.straat, forKey: "straat")
+        ouderJSON.setValue(ouder.nummer, forKey: "nummer")
+        ouderJSON.setValue(ouder.rijksregisterNr, forKey: "rijksregisterNr")
+        ouderJSON.setValue(ouder.bus, forKey: "bus")
+        ouderJSON.setValue(ouder.postcode, forKey: "postcode")
+        ouderJSON.setValue(ouder.telefoon, forKey: "telefoon")
+        ouderJSON.setValue(ouder.gsm, forKey: "gsm")
+        ouderJSON.setValue(ouder.aansluitingsNr, forKey: "aansluitingsNr")
+        ouderJSON.setValue(ouder.codeGerechtigde, forKey: "codeGerechtigde")
+        ouderJSON.setValue(ouder.aansluitingsNrTweedeOuder, forKey: "aansluitingsNrTweedeOuder")
+        
+        ouderJSON.save()
     }
 }

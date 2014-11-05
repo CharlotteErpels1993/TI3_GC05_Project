@@ -7,12 +7,13 @@ class Registratie2ViewController: UIViewController
     @IBOutlet weak var txtRijksregisternummer: UITextField!
     @IBOutlet weak var txtAansluitingsnummerTweedeOuder: UITextField!
     
-    var switchLidIsOn: Bool!
+    var gebruikerIsLid: Bool!
+    var ouder: Ouder!
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        if !switchLidIsOn {
+        if !gebruikerIsLid {
             performSegueWithIdentifier("volgende", sender: self)
         }
     }
@@ -23,8 +24,22 @@ class Registratie2ViewController: UIViewController
             let registratie3ViewController = segue.destinationViewController as Registratie3ViewController
             
             //nog nakijken op lege velden!!! en dan view 'reloaden'?
+            ouder.aansluitingsNr = txtAansluitingsnummer.text.toInt()
+            ouder.codeGerechtigde = txtCodeGerechtigde.text.toInt()
+            ouder.rijksregisterNr = txtRijksregisternummer.text
             
-            registratie3ViewController.aansluitingsNr = txtAansluitingsnummer.text.toInt()
+            if txtAansluitingsnummerTweedeOuder.text.isEmpty {
+                ouder.aansluitingsNrTweedeOuder = nil
+            } else {
+                ouder.aansluitingsNrTweedeOuder = txtAansluitingsnummerTweedeOuder.text.toInt()
+            }
+            
+            //ouder-object doorgeven aan volgende viewController
+            registratie3ViewController.ouder = self.ouder
+            
+            
+            
+            /*registratie3ViewController.aansluitingsNr = txtAansluitingsnummer.text.toInt()
             registratie3ViewController.codeGerechtigde = txtCodeGerechtigde.text.toInt()
             registratie3ViewController.rijksregisterNr = txtRijksregisternummer.text
             
@@ -32,11 +47,11 @@ class Registratie2ViewController: UIViewController
                 registratie3ViewController.aansluitingsNrTweedeOuder = nil
             } else {
                 registratie3ViewController.aansluitingsNrTweedeOuder = txtAansluitingsnummerTweedeOuder.text.toInt()
-            }
+            }*/
         }
     }
     
-    func controleRijksregisternummer(rijksregisternummer: String) -> Bool {
+    /*func controleRijksregisternummer(rijksregisternummer: String) -> Bool {
         var length : Int = countElements(rijksregisternummer)
         var eerste9CijfersString: String = rijksregisternummer.substringWithRange(Range<String.Index>(start: rijksregisternummer.startIndex, end: advance(rijksregisternummer.endIndex, -2)))
         
@@ -53,8 +68,5 @@ class Registratie2ViewController: UIViewController
         } else {
             return true
         }
-    }
-    
-    
-    
+    }*/
 }

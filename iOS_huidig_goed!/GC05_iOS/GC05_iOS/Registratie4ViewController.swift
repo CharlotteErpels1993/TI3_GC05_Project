@@ -20,6 +20,8 @@ class Registratie4ViewController: UIViewController
     @IBOutlet weak var txtWachtwoord: UITextField!
     @IBOutlet weak var txtBevestigWachtwoord: UITextField!
     
+    var ouder: Ouder!
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     {
         //hoe weten we, als de gebruiker geen lid is van de socialistische mutualiteit
@@ -31,7 +33,14 @@ class Registratie4ViewController: UIViewController
         if segue.identifier == "voltooiRegistratie" {
             let registratieSuccesvolViewController = segue.destinationViewController as RegistratieSuccesvolViewController
             
-            registratieSuccesvolViewController.gebruiker = Ouder(rijksregisterNr: rijksregisterNr!, email: txtEmail.text, wachtwoord: txtWachtwoord.text, voornaam: voornaam!, naam: naam!, straat: straat!, nummer: nummer!, bus: bus!, gemeente: gemeente!, postcode: postcode!, telefoon: telefoon!, gsm: gsm!, aansluitingsNr: aansluitingsNr!, codeGerechtigde: codeGerechtigde!, aansluitingsNrTweedeOuder: aansluitingsNrTweedeOuder!)
+            //nog controleren op wachtwoord en bevestig wachtwoord, dan view reloaden?
+            //wachtwoord encrypteren!!!!!
+            ouder.email = txtEmail.text
+            ouder.wachtwoord = txtWachtwoord.text
+            
+            registratieSuccesvolViewController.ouder = self.ouder
+            
+            /*registratieSuccesvolViewController.gebruiker = Ouder(rijksregisterNr: rijksregisterNr!, email: txtEmail.text, wachtwoord: txtWachtwoord.text, voornaam: voornaam!, naam: naam!, straat: straat!, nummer: nummer!, bus: bus!, gemeente: gemeente!, postcode: postcode!, telefoon: telefoon!, gsm: gsm!, aansluitingsNr: aansluitingsNr!, codeGerechtigde: codeGerechtigde!, aansluitingsNrTweedeOuder: aansluitingsNrTweedeOuder!)*/
             
             //registratieSuccesvolViewController.aansluitingsNrTweedeOuder = aansluitingsNrTweedeOuder
             
