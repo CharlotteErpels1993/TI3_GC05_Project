@@ -2,6 +2,8 @@ import Foundation
 
 class Vakantie: Activiteit
 {
+    
+    var test: String? //testtt!
     var beginDatum: Date
     var terugkeerDatum: Date
     var aantalDagenNachten: String
@@ -19,14 +21,21 @@ class Vakantie: Activiteit
             assert(checkPrijsValid(newValue), "Bond Moyson ledenprijs moet een geldige prijs zijn!")
         }
     }
-
-    var sterPrijs: Double {
+    
+    var sterPrijs1ouder: Double {
         willSet {
             assert(checkPrijsValid(newValue), "Sterprijs moet een geldige prijs zijn!")
         }
     }
-
-    var kortingen: String // TYPE?
+    
+    var sterPrijs2ouders: Double {
+        willSet {
+            assert(checkPrijsValid(newValue), "Sterprijs moet een geldige prijs zijn!")
+        }
+    }
+    
+    // sterprijs2
+    
     var inbegrepenPrijs: String
     var doelgroep: String // TYPE?
     
@@ -35,9 +44,30 @@ class Vakantie: Activiteit
             assert(checkMaxAantalDeelnemersValid(newValue), "Maximum aantal deelnemers moet positief zijn!")
         }
     }
-
-    init(id: String, titel: String, locatie: String, korteBeschrijving: String, beginDatum: Date, terugkeerDatum: Date, aantalDagenNachten: String, vervoerwijze: String, formule: String, basisprijs: Double, bondMoysonLedenPrijs: Double, sterPrijs: Double, kortingen: String, inbegrepenPrijs: String, doelgroep: String, maxAantalDeelnemers: Int) {
-
+    
+    
+    init(vakantie: PFObject) {
+        //super.init(activiteit: vakantie)
+        self.beginDatum = vakantie["vertrekdatum"] as Date
+        self.terugkeerDatum = vakantie["terugkeerdatum"] as Date
+        self.aantalDagenNachten = vakantie["aantalDagenNachten"] as String
+        self.vervoerwijze = vakantie["vervoerwijze"] as String
+        self.formule = vakantie["formule"] as String
+        self.basisprijs = vakantie["basisPrijs"] as Double
+        self.bondMoysonLedenPrijs = vakantie["bondMoysonLedenPrijs"] as Double
+        self.sterPrijs1ouder = vakantie["sterPrijs1ouder"] as Double
+        self.sterPrijs2ouders = vakantie["sterPrijs2ouders"] as Double
+        self.inbegrepenPrijs = vakantie["inbegrepenPrijs"] as String
+        self.doelgroep = vakantie["doelgroep"] as String
+        self.maxAantalDeelnemers = vakantie["maxAantalDeelnemers"] as Int
+        
+        super.init(activiteit: vakantie)
+        
+    }
+    
+    
+    init(id: String, titel: String, locatie: String, korteBeschrijving: String, beginDatum: Date, terugkeerDatum: Date, aantalDagenNachten: String, vervoerwijze: String, formule: String, basisprijs: Double, bondMoysonLedenPrijs: Double, sterPrijs1: Double, sterPrijs2: Double, kortingen: String, inbegrepenPrijs: String, doelgroep: String, maxAantalDeelnemers: Int) {
+        
         self.beginDatum = beginDatum
         self.terugkeerDatum = terugkeerDatum
         self.aantalDagenNachten = aantalDagenNachten
@@ -45,8 +75,8 @@ class Vakantie: Activiteit
         self.formule = formule
         self.basisprijs = basisprijs
         self.bondMoysonLedenPrijs = bondMoysonLedenPrijs
-        self.sterPrijs = sterPrijs
-        self.kortingen = kortingen
+        self.sterPrijs1ouder = sterPrijs1
+        self.sterPrijs2ouders = sterPrijs2
         self.inbegrepenPrijs = inbegrepenPrijs
         self.doelgroep = doelgroep
         self.maxAantalDeelnemers = maxAantalDeelnemers
@@ -67,4 +97,6 @@ class Vakantie: Activiteit
         }
         return true
     }
+    
+    // blablablabal
 }
