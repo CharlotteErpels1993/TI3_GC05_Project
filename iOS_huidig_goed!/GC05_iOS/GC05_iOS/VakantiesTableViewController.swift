@@ -1,7 +1,6 @@
 import UIKit
 
 class VakantiesTableViewController: UITableViewController {
-    //var vakanties: NSMutableArray = NSMutableArray()
     var vakanties: [Vakantie] = []
     
     override func viewDidLoad() {
@@ -10,43 +9,19 @@ class VakantiesTableViewController: UITableViewController {
     }
     
     func zoekVakanties() {
-        //vakanties.removeAllObjects()
+        vakanties.removeAll()
         var query = PFQuery(className: "Vakantie")
         query.findObjectsInBackgroundWithBlock({(NSArray objects, NSError error) in
             if(error == nil) {
                 if let PFObjects = objects as? [PFObject!] {
                     for object in PFObjects {
                         var vakantie = Vakantie(vakantie: object)
-                        //self.vakanties.append(vakantie)
-                        //print(vakantie)
-                        
+                        self.vakanties.append(vakantie)
                     }
                 }
                 self.tableView.reloadData()
-                
-                
-                
-                /*for object in objects {
-                    var PFvakantie: AnyObject = object
-                    
-                    print(vakantie)
-                    /*var object2 = Vakantie(vakantie: object.getFirstObject())
-                    //self.vakanties.addObject(object2)
-                    self.vakanties.append(object2)
-                    println(object2)*/
-                }*/
-                
             }
         })
-        /*query.findObjectsInBackgroundWithBlock {
-            (objects: [AnyObject]!, error: NSError!) -> Void in
-            if error == nil {
-                for object : PFObject! in objects as [PFObject] {
-                    var vakantie = Vakantie(vakantie: object)
-                    self.vakanties.append(vakantie)
-                }
-            }
-        }*/
     }
     
     
@@ -72,20 +47,15 @@ class VakantiesTableViewController: UITableViewController {
         return vakanties.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("vakantieCell", forIndexPath: indexPath) as VakantieCell
-        let vakantie = vakanties[indexPath.row]
-        cell.vakantieNaamLabel.text = vakantie.titel
-        return cell
-    }
     
-    /*override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("vakantieCell", forIndexPath: indexPath) as VakantieCell
         
         let vakantie = vakanties[indexPath.row]
-        cell.vakantieNaamLabel.text = vakantie.titel
         cell.gaVerderLabel.text = "Ik wil deze reis!"
+        cell.vakantieNaamLabel.text = vakantie.titel
+        println(cell.gaVerderLabel)
         // TO DO cell.doelgroepImage = vakantie.doelgroep
         return cell
-    }*/
+    }
 }
