@@ -10,8 +10,7 @@
         android:id="@+id/afbeelding"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
+        android:layout_alignParentEnd="true"
         android:background="#000000"
         android:padding="1dp"
         android:src="@drawable/vakantieftoplaceholder"/>
@@ -29,7 +28,7 @@
         android:id="@+id/locatie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/naam"/>
+        android:layout_below="@id/naam"/>
 
 
    <!-- <TextView
@@ -54,8 +53,7 @@
         android:id="@+id/prijs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/locatie"
-        android:layout_alignParentRight="true"/>
+        android:layout_below="@id/locatie"/>
 
 
 </RelativeLayout>
