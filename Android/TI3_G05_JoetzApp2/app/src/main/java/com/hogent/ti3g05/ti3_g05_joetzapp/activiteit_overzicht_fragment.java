@@ -27,10 +27,11 @@ public class activiteit_overzicht_fragment extends Fragment {
     private ListView listview;
     private List<ParseObject> ob;
     private ProgressDialog mProgressDialog;
-    private ListViewAdapter adapter;
+   // private ListViewAdapter adapter;
     private List<Vakantie> vakanties = null;
     private EditText filtertext;
     private View rootView;
+    private ListViewAdapter adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -100,7 +101,7 @@ public class activiteit_overzicht_fragment extends Fragment {
             //adapter = new ListViewAdapter(activiteit_overzicht.this, vakanties);
             //ArrayAdapter<Profile> profileAdapter = new ArrayAdapter<Profile>(context, resource, profiles)
            //ArrayAdapter vakantieAdapter = new ArrayAdapter(getActivity(),android.R.layout.activity_list_item, vakanties );
-            ListViewAdapter adapter = new ListViewAdapter(activiteit_overzicht_fragment.this, vakanties);
+            ListViewAdapter adapter = new ListViewAdapter(getActivity(), vakanties);
      //       ListViewAdapter adapter = new ListViewAdapter(getActivity(), (ArrayList<Vakantie>) vakanties);
             // Binds the Adapter to the ListView
             //listview.setAdapter(vakantieAdapter);
