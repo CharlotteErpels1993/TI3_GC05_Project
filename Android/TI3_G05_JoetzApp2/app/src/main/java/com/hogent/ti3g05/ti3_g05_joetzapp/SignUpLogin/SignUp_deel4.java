@@ -173,6 +173,41 @@ public class SignUp_deel4 extends Activity{
         gebruiker.put("username", username);
         gebruiker.put("email", mEmail);
         gebruiker.put("wachtwoord", mPassword);
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            //String lidBondMoyson = extras.getString("lidVanBondMoyson");
+            String aansluitingsnr = extras.getString("aansluitingsnr");
+            String voornaam = extras.getString("voornaam");
+            String naam = extras.getString("naam");
+            String straat = extras.getString("straat");
+            String huisnr = extras.getString("huisnr");
+            String bus = extras.getString("bus");
+            String gemeente = extras.getString("gemeente");
+            String postcode = extras.getString("postcode");
+            String rijksregnr = extras.getString("rijksregnr");
+            String telefoon = extras.getString("telefoon");
+            String gsm = extras.getString("gsm");
+
+            try{
+                //gebruiker.put("wachtwoord", lidBondMoyson);
+                gebruiker.put("aansluitingsNr", Integer.parseInt(aansluitingsnr));
+                gebruiker.put("voornaam", voornaam);
+                gebruiker.put("naam", naam);
+                gebruiker.put("straat", straat);
+                gebruiker.put("nummer", Integer.parseInt(huisnr));
+                gebruiker.put("bus", bus);
+                gebruiker.put("gemeente", gemeente);
+                gebruiker.put("postcode", Integer.parseInt(postcode));
+                gebruiker.put("rijksregisterNr", rijksregnr);
+                gebruiker.put("telefoon", telefoon);
+                gebruiker.put("gsm", gsm);
+            }
+            catch (NumberFormatException nfe){
+                Toast.makeText(getApplicationContext(), nfe.getMessage(), Toast.LENGTH_SHORT);
+            }
+        }
+
         gebruiker.saveInBackground();
         //TODO: data uit vorige schermen ophalen en erin steken.
 
