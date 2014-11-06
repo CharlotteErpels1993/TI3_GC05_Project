@@ -99,7 +99,7 @@ public class activiteit_overzicht_fragment extends Fragment {
             // Pass the results into ListViewAdapter.java
             //adapter = new ListViewAdapter(activiteit_overzicht.this, vakanties);
             //ArrayAdapter<Profile> profileAdapter = new ArrayAdapter<Profile>(context, resource, profiles)
-            ArrayAdapter<Vakantie> vakantieAdapter = new ArrayAdapter<Vakantie>(getView().getContext(),R.layout.activity_tester_list_item , vakanties);
+            ArrayAdapter<Vakantie> vakantieAdapter = ArrayAdapter.createFromResource(getActivity(), vakanties,android.R.layout.activity_list_item );
             // Binds the Adapter to the ListView
             listview.setAdapter(vakantieAdapter);
             // Close the progressdialog
