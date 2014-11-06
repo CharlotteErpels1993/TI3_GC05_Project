@@ -47,6 +47,8 @@
 		1BDDB9531A02D8770007623D /* Deelnemer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDDB9521A02D8770007623D /* Deelnemer.swift */; };
 		1BDDB9551A02D87F0007623D /* ContactpersoonNood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDDB9541A02D87F0007623D /* ContactpersoonNood.swift */; };
 		1BDDB9571A02DD1E0007623D /* Gebruiker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDDB9561A02DD1E0007623D /* Gebruiker.swift */; };
+		1BFB1E591A0C0A6400E7B53F /* NieuwWachtwoordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFB1E581A0C0A6400E7B53F /* NieuwWachtwoordViewController.swift */; };
+		1BFB1E5B1A0C0D5E00E7B53F /* SuccesvolNieuwWachtwoordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFB1E5A1A0C0D5E00E7B53F /* SuccesvolNieuwWachtwoordViewController.swift */; };
 		1BFC33401A066A87009CA8EB /* VakantieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFC333F1A066A87009CA8EB /* VakantieCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -62,7 +64,7 @@
 
 /* Begin PBXFileReference section */
 		0F2A81991A091F7100F67A3B /* Regex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
-		0FA80B021A01350E008DB343 /* GC05_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GC05_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0FA80B021A01350E008DB343 /* JOETZ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JOETZ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FA80B061A01350E008DB343 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0FA80B071A01350E008DB343 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0FA80B0C1A01350E008DB343 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -106,6 +108,8 @@
 		1BDDB9521A02D8770007623D /* Deelnemer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deelnemer.swift; sourceTree = "<group>"; };
 		1BDDB9541A02D87F0007623D /* ContactpersoonNood.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactpersoonNood.swift; sourceTree = "<group>"; };
 		1BDDB9561A02DD1E0007623D /* Gebruiker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gebruiker.swift; sourceTree = "<group>"; };
+		1BFB1E581A0C0A6400E7B53F /* NieuwWachtwoordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NieuwWachtwoordViewController.swift; sourceTree = "<group>"; };
+		1BFB1E5A1A0C0D5E00E7B53F /* SuccesvolNieuwWachtwoordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuccesvolNieuwWachtwoordViewController.swift; sourceTree = "<group>"; };
 		1BFC333F1A066A87009CA8EB /* VakantieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VakantieCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -166,7 +170,7 @@
 		0FA80B031A01350E008DB343 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0FA80B021A01350E008DB343 /* GC05_iOS.app */,
+				0FA80B021A01350E008DB343 /* JOETZ.app */,
 				0FA80B171A01350E008DB343 /* GC05_iOSTests.xctest */,
 			);
 			name = Products;
@@ -225,6 +229,8 @@
 				1B39CF721A077C8F008DEC49 /* InloggenViewController.swift */,
 				1B39CF741A078474008DEC49 /* OverzichtOuderViewController.swift */,
 				1B39CF761A0795D9008DEC49 /* OverzichtMonitorViewController.swift */,
+				1BFB1E581A0C0A6400E7B53F /* NieuwWachtwoordViewController.swift */,
+				1BFB1E5A1A0C0D5E00E7B53F /* SuccesvolNieuwWachtwoordViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -265,7 +271,7 @@
 			);
 			name = JOETZ;
 			productName = GC05_iOS;
-			productReference = 0FA80B021A01350E008DB343 /* GC05_iOS.app */;
+			productReference = 0FA80B021A01350E008DB343 /* JOETZ.app */;
 			productType = "com.apple.product-type.application";
 		};
 		0FA80B161A01350E008DB343 /* GC05_iOSTests */ = {
@@ -359,6 +365,7 @@
 				1BDDB9551A02D87F0007623D /* ContactpersoonNood.swift in Sources */,
 				1B4D784F1A02893700E823E2 /* Registratie3ViewController.swift in Sources */,
 				1BDDB9471A02D8240007623D /* Vorming.swift in Sources */,
+				1BFB1E591A0C0A6400E7B53F /* NieuwWachtwoordViewController.swift in Sources */,
 				1BDDB9511A02D86F0007623D /* Voorkeur.swift in Sources */,
 				1B10A3BD1A02622C008E225F /* VakantiesTableViewController.swift in Sources */,
 				1BDDB9571A02DD1E0007623D /* Gebruiker.swift in Sources */,
@@ -367,6 +374,7 @@
 				1BDDB9431A02D0FB0007623D /* Vakantie.swift in Sources */,
 				1B39CF751A078474008DEC49 /* OverzichtOuderViewController.swift in Sources */,
 				1BDDB9451A02D3440007623D /* Activiteit.swift in Sources */,
+				1BFB1E5B1A0C0D5E00E7B53F /* SuccesvolNieuwWachtwoordViewController.swift in Sources */,
 				1B39CF771A0795D9008DEC49 /* OverzichtMonitorViewController.swift in Sources */,
 				0F2A819A1A091F7100F67A3B /* Regex.swift in Sources */,
 				0FBEA1F41A0684FD005FF0D2 /* Date.swift in Sources */,
