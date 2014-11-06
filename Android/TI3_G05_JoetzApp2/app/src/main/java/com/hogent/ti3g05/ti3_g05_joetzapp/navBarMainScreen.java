@@ -60,10 +60,12 @@ public class navBarMainScreen extends Activity {
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
         mDrawerList = (ListView) findViewById(R.id.drawer_list);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+        getActionBar().setHomeButtonEnabled(true);
 
         // Getting reference to the ActionBarDrawerToggle
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
-                R.drawable.icoon, R.string.drawer_open,
+                R.drawable.ic_drawer, R.string.drawer_open,
                 R.string.drawer_close) {
 
             /** Called when drawer is closed */
