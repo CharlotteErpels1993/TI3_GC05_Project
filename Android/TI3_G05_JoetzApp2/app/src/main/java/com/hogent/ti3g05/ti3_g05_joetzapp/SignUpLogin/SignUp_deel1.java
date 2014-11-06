@@ -43,7 +43,8 @@ public class SignUp_deel1 extends Activity{
         rb1.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentJa = new Intent(SignUp_deel1.this, SignUp_deel2.class);
+                Intent intentJa = new Intent(getApplicationContext(), SignUp_deel2.class);
+                intentJa.putExtra("lidVanBondMoyson", "true");
                 startActivity(intentJa);
 
 
@@ -54,7 +55,8 @@ public class SignUp_deel1 extends Activity{
         rb2.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentNee = new Intent(SignUp_deel1.this, SignUp_deel3.class);
+                Intent intentNee = new Intent(getApplicationContext(), SignUp_deel3.class);
+                intentNee.putExtra("lidVanBondMoyson", "false");
                 startActivity(intentNee);
             }
         });

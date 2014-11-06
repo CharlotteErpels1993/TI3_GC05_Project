@@ -114,12 +114,15 @@ public class SignUp_deel2 extends Activity{
     }
 
     private void opslaan(String aansluitingsnummerString) {
-        // TODO aansluitingsnummer opslaan
-        ParseUser user = new ParseUser();
+        Intent intent = new Intent(getApplicationContext(), SignUp_deel3.class);
 
-        //Hier moet het aansluitingsnummer doormiddelvan parse naar de db of opslaan in een tijde
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            String value = extras.getString("lidVanBondMoyson");
+            intent.putExtra("lidVanBondMoyson", value);
+        }
+        intent.putExtra("aansluitingsnr", aansluitingsnummerString);
 
-        Intent intent = new Intent(SignUp_deel2.this, SignUp_deel3.class);
         startActivity(intent);
         /*user.signUpInBackground(new SignUpCallback() {
             public void done(ParseException e) {

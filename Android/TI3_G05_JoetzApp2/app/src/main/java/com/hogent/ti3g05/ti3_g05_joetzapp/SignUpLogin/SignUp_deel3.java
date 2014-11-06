@@ -57,8 +57,7 @@ public class SignUp_deel3 extends Activity{
 		setContentView(R.layout.activity_signup_deel3);
 
 		// creating connection detector class instance
-				cd = new ConnectionDetector(getApplicationContext());
-
+		cd = new ConnectionDetector(getApplicationContext());
 		
 		voornaamText = (EditText) findViewById(R.id.Voornaam);
 		naamText = (EditText) findViewById(R.id.Naam);
@@ -211,47 +210,29 @@ public class SignUp_deel3 extends Activity{
 
     private void opslaan(String voornaam,String naam, int rijksregnr, String straat, int huisnr, String gemeente, int postcode, String telefoon, String gsm, String bus) {
         //Toast.makeText(getApplicationContext(), mEmail, Toast.LENGTH_SHORT).show();
-/*
-        ParseObject gebruiker = new ParseObject("Ouder");
-        gebruiker.put("username", username);
-        gebruiker.put("email", mEmail);
-        gebruiker.put("wachtwoord", mPassword);
-        gebruiker.saveInBackground();
-        //TODO: data uit vorige schermen ophalen en erin steken.
-
-		ParseUser user = new ParseUser();
-        user.setUsername(username);
-		user.setPassword(mPassword);
-		user.setEmail(mEmail);
-        user.signUpInBackground(new SignUpCallback() {
-        @Override
-		public void done(ParseException e) {
-            if (e != null) {
-                    // Sign up didn't succeed. Look at the ParseException
-                    // to figure out what went wrong
-                    signUpMsg(e.getMessage());
-                }
-            }
-		});
-
-        //hieronder is code om data ophalen.
-        /*ParseQuery<ParseObject> query = ParseQuery.getQuery("Ouder");
-        query.whereEqualTo("Email", mEmail);
-        query.findInBackground(new FindCallback<ParseObject>() {
-           public void done(List<ParseObject> objects, ParseException e) {
-               if (e == null) {
-                   // object will be your game score
-                   signUpMsg("Email: " + objects.get(0).getString("Email"));
-                   signUpMsg("Wachtwoord: " + objects.get(0).getString("Wachtwoord"));
-
-               } else {
-                   // something went wrong
-                   signUpMsg("Er is een fout gebeurd tijdens de registratie. Gelieve opnieuw te proberen.");
-               }
-           }
-       });*/
 
         Intent in = new Intent(getApplicationContext(),SignUp_deel4.class);
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            String lidBM = extras.getString("lidVanBondMoyson");
+            String BMnr = extras.getString("aansluitingsnr");
+            in.putExtra("lidVanBondMoyson", lidBM);
+            in.putExtra("aansluitingsnr", BMnr);
+
+        }
+
+        in.putExtra("voornaam", voornaam);
+        in.putExtra("naam", naam);
+        in.putExtra("straat", straat);
+        in.putExtra("huisnr", Integer.toString(huisnr));
+        in.putExtra("bus", bus);
+        in.putExtra("gemeente", gemeente);
+        in.putExtra("postcode", Integer.toString(postcode));
+        in.putExtra("rijksregnr", Integer.toString(rijksregnr));
+        in.putExtra("telefoon",telefoon);
+        in.putExtra("gsm",gsm);
+
         startActivity(in);
 
     }
