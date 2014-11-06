@@ -25,7 +25,7 @@ import com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.SignUp_deel1;
 
 public class navBarMainScreen extends Activity {
 
-    private Fragment fragment = new activiteit_overzicht_fragment();
+    private Fragment fragment = new MainScreen();
 
     // Within which the entire activity is enclosed
     private DrawerLayout mDrawerLayout;
