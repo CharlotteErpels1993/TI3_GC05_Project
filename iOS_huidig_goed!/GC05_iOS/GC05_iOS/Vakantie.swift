@@ -3,9 +3,8 @@ import Foundation
 class Vakantie: Activiteit
 {
     
-    var test: String? //testtt!
-    var beginDatum: Date
-    var terugkeerDatum: Date
+    var beginDatum: Date?
+    var terugkeerDatum: Date?
     var aantalDagenNachten: String
     var vervoerwijze: String
     var formule: String
@@ -48,8 +47,8 @@ class Vakantie: Activiteit
     
     init(vakantie: PFObject) {
         //super.init(activiteit: vakantie)
-        self.beginDatum = vakantie["vertrekdatum"] as Date
-        self.terugkeerDatum = vakantie["terugkeerdatum"] as Date
+        //self.beginDatum = vakantie["vertrekdatum"] as Date
+        //self.terugkeerDatum = vakantie["terugkeerdatum"] as Date
         self.aantalDagenNachten = vakantie["aantalDagenNachten"] as String
         self.vervoerwijze = vakantie["vervoerwijze"] as String
         self.formule = vakantie["formule"] as String

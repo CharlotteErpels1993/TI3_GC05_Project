@@ -1,23 +1,53 @@
 import UIKit
 
 class VakantiesTableViewController: UITableViewController {
+    //var vakanties: NSMutableArray = NSMutableArray()
     var vakanties: [Vakantie] = []
     
-    var query = PFQuery(className: "Vakantie")
-    
-   /* override func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
-        
-        query.findObjectsInBackgroundWithBlock {
+        zoekVakanties()
+    }
+    
+    func zoekVakanties() {
+        //vakanties.removeAllObjects()
+        var query = PFQuery(className: "Vakantie")
+        query.findObjectsInBackgroundWithBlock({(NSArray objects, NSError error) in
+            if(error == nil) {
+                if let PFObjects = objects as? [PFObject!] {
+                    for object in PFObjects {
+                        var vakantie = Vakantie(vakantie: object)
+                        self.vakanties.append(vakantie)
+                        //print(vakantie)
+                        
+                    }
+                }
+                self.tableView.reloadData()
+                
+                
+                
+                /*for object in objects {
+                    var PFvakantie: AnyObject = object
+                    
+                    print(vakantie)
+                    /*var object2 = Vakantie(vakantie: object.getFirstObject())
+                    //self.vakanties.addObject(object2)
+                    self.vakanties.append(object2)
+                    println(object2)*/
+                }*/
+                
+            }
+        })
+        /*query.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]!, error: NSError!) -> Void in
             if error == nil {
-                for object in objects {
-                    var vakantie = Vakantie(vakantie: object as PFObject)
+                for object : PFObject! in objects as [PFObject] {
+                    var vakantie = Vakantie(vakantie: object)
                     self.vakanties.append(vakantie)
                 }
             }
-        }
-    }*/
+        }*/
+    }
     
     
     
@@ -43,11 +73,19 @@ class VakantiesTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("vakantieCell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("vakantieCell", forIndexPath: indexPath) as VakantieCell
         let vakantie = vakanties[indexPath.row]
-        //cell.vakantieNaamTxt.Text = vakantie.titel
-        //cell.gaVerderTxt.text = "Ik wil op reis!"
-        //cell.doelgroepImageView = vakantie.doelgroep
+        cell.vakantieNaamLabel.text = vakantie.titel
         return cell
     }
+    
+    /*override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("vakantieCell", forIndexPath: indexPath) as VakantieCell
+        
+        let vakantie = vakanties[indexPath.row]
+        cell.vakantieNaamLabel.text = vakantie.titel
+        cell.gaVerderLabel.text = "Ik wil deze reis!"
+        // TO DO cell.doelgroepImage = vakantie.doelgroep
+        return cell
+    }*/
 }
