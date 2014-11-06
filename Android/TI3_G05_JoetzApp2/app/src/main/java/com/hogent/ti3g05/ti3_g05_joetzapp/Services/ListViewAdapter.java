@@ -135,7 +135,7 @@ public class ListViewAdapter extends ArrayAdapter<Vakantie> implements Filterabl
         {
             for (Vakantie wp : arraylist)
             {
-                if (wp.getNaamVakantie().toLowerCase(Locale.getDefault()).contains(charText))
+                if (wp.getLocatie().toLowerCase(Locale.getDefault()).contains(charText))
                 {
                     vakanties.add(wp);
                 }

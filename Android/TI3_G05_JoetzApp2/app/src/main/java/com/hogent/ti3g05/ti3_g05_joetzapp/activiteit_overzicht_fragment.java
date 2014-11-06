@@ -30,7 +30,6 @@ public class activiteit_overzicht_fragment extends Fragment {
     private ProgressDialog mProgressDialog;
    // private ListViewAdapter adapter;
     private List<Vakantie> vakanties = null;
-    private EditText filtertext;
     private View rootView;
     private ListViewAdapter adapter;
 
@@ -41,7 +40,7 @@ public class activiteit_overzicht_fragment extends Fragment {
         rootView = inflater.inflate(R.layout.activity_main_screen, container, false);
 
         new RemoteDataTask().execute();
-
+        listview = (ListView) rootView.findViewById(R.id.listView);
         return rootView;
     }
 
@@ -97,18 +96,17 @@ public class activiteit_overzicht_fragment extends Fragment {
         @Override
         protected void onPostExecute(Void result) {
             // Locate the listview in listview_main.xml
-            listview = (ListView) rootView.findViewById(R.id.listView);
             // Pass the results into ListViewAdapter.java
             //adapter = new ListViewAdapter(activiteit_overzicht.this, vakanties);
             //ArrayAdapter<Profile> profileAdapter = new ArrayAdapter<Profile>(context, resource, profiles)
            //ArrayAdapter vakantieAdapter = new ArrayAdapter(getActivity(),android.R.layout.activity_list_item, vakanties );
-            if(null != getActivity()) {
+
             //    ListViewAdapter adapter = new ListViewAdapter(rootView, vakanties);
 
-     //       ListViewAdapter adapter = new ListViewAdapter(getActivity(), (ArrayList<Vakantie>) vakanties);
+            ListViewAdapter adapter = new ListViewAdapter(getActivity(), vakanties);
             // Binds the Adapter to the ListView
             listview.setAdapter(adapter);
-            }
+
             // Close the progressdialog
             mProgressDialog.dismiss();
 
