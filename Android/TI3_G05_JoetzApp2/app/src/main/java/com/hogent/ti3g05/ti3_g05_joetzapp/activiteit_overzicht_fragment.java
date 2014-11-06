@@ -2,6 +2,7 @@ package com.hogent.ti3g05.ti3_g05_joetzapp;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.app.ListFragment;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -96,15 +97,18 @@ public class activiteit_overzicht_fragment extends Fragment {
         @Override
         protected void onPostExecute(Void result) {
             // Locate the listview in listview_main.xml
-            listview = (ListView) rootView.findViewById(R.id.listview);
+            listview = (ListView) rootView.findViewById(R.id.listView);
             // Pass the results into ListViewAdapter.java
             //adapter = new ListViewAdapter(activiteit_overzicht.this, vakanties);
             //ArrayAdapter<Profile> profileAdapter = new ArrayAdapter<Profile>(context, resource, profiles)
            //ArrayAdapter vakantieAdapter = new ArrayAdapter(getActivity(),android.R.layout.activity_list_item, vakanties );
-            ListViewAdapter adapter = new ListViewAdapter(getActivity(), vakanties);
+            if(null != getActivity()) {
+            //    ListViewAdapter adapter = new ListViewAdapter(rootView, vakanties);
+
      //       ListViewAdapter adapter = new ListViewAdapter(getActivity(), (ArrayList<Vakantie>) vakanties);
             // Binds the Adapter to the ListView
-            //listview.setAdapter(vakantieAdapter);
+            listview.setAdapter(adapter);
+            }
             // Close the progressdialog
             mProgressDialog.dismiss();
 

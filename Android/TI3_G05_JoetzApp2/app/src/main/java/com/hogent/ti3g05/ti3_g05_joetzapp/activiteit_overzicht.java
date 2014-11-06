@@ -2,12 +2,15 @@ package com.hogent.ti3g05.ti3_g05_joetzapp;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -39,6 +42,7 @@ public class activiteit_overzicht extends Activity {
         // Get the view from listview_main.xml
         setContentView(R.layout.activiteit_overzichtnieuw);
         // Execute RemoteDataTask AsyncTask
+        filtertext = (EditText) findViewById(R.id.filtertext);
         new RemoteDataTask().execute();
     }
 
@@ -94,19 +98,19 @@ public class activiteit_overzicht extends Activity {
         @Override
         protected void onPostExecute(Void result) {
             // Locate the listview in listview_main.xml
-            listview = (ListView) findViewById(R.id.listview);
+            listview = (ListView) findViewById(R.id.listView);
             // Pass the results into ListViewAdapter.java
             //adapter = new ListViewAdapter(activiteit_overzicht.this, vakanties);
             //ArrayAdapter<Profile> profileAdapter = new ArrayAdapter<Profile>(context, resource, profiles)
             //ArrayAdapter<Vakantie> vakantieAdapter = new ArrayAdapter<Vakantie>(activiteit_overzicht.this, R.layout.listview_item , vakanties);
 
-            ListViewAdapter adapter = new ListViewAdapter(activiteit_overzicht.this, vakanties);
+            adapter = new ListViewAdapter(activiteit_overzicht.this, vakanties);
             // Binds the Adapter to the ListView
             listview.setAdapter(adapter);
             // Close the progressdialog
             mProgressDialog.dismiss();
 
-          /*  filtertext.addTextChangedListener(new TextWatcher() {
+            filtertext.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {                }
 
@@ -117,8 +121,8 @@ public class activiteit_overzicht extends Activity {
                 public void afterTextChanged(Editable editable) {
                     String text = filtertext.getText().toString().toLowerCase(Locale.getDefault());
                     adapter.filter(text);
-                }*/
-          //  });
+                }
+            });
         }
     }
 

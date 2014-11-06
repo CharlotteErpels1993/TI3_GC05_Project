@@ -6,12 +6,15 @@ import java.util.Locale;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -24,7 +27,7 @@ import com.parse.ParseUser;
 
 import org.w3c.dom.Text;
 
-public class ListViewAdapter extends ArrayAdapter<Vakantie> {
+public class ListViewAdapter extends ArrayAdapter<Vakantie> implements Filterable {
 
     Context context;
     LayoutInflater inflater;
@@ -121,20 +124,25 @@ public class ListViewAdapter extends ArrayAdapter<Vakantie> {
         return view;
     }
 
-   /* public void filter(String text) {
-        text =text.toLowerCase(Locale.getDefault());
+
+    public void filter(String charText) {
+        charText = charText.toLowerCase(Locale.getDefault());
         vakanties.clear();
-        if(text.length()==0)
-        {
+        if (charText.length() == 0) {
             vakanties.addAll(arraylist);
-        } else {
-            for(Vakantie v: arraylist) {
-                if(v.getLocatie().toLowerCase(Locale.getDefault()).contains(text)) {
-                    vakanties.add(v);
+        }
+        else
+        {
+            for (Vakantie wp : arraylist)
+            {
+                if (wp.getNaamVakantie().toLowerCase(Locale.getDefault()).contains(charText))
+                {
+                    vakanties.add(wp);
                 }
             }
         }
         notifyDataSetChanged();
-    }*/
+    }
+
 
 }
