@@ -249,24 +249,6 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Doelgroep" id="krq-1C-BNR">
-                                <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="XGa-82-UAp" style="IBUITableViewCellStyleDefault" id="dIR-aj-xdC">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dIR-aj-xdC" id="REE-rh-rE1">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Geboortejaren doelgroep" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XGa-82-UAp">
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
                             <tableViewSection headerTitle="Maximum aantal deelnemers" id="aY9-VA-l76">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="YGY-Ah-WIL" style="IBUITableViewCellStyleDefault" id="EUf-qZ-Fsz">
@@ -299,7 +281,6 @@
                         <outlet property="afbeelding2" destination="iAv-P8-xBj" id="ODK-OQ-iJw"/>
                         <outlet property="afbeelding3" destination="kxP-43-geB" id="xzh-7A-Fjg"/>
                         <outlet property="beschrijvingLabel" destination="c4b-zC-cDK" id="hCM-jf-ZqH"/>
-                        <outlet property="doelgroepLabel" destination="XGa-82-UAp" id="uh5-uh-2gN"/>
                         <outlet property="inbegrepenPrijsLabel" destination="aGO-yv-kHP" id="yuS-Qh-qpN"/>
                         <outlet property="locatieLabel" destination="gQQ-Ww-DKf" id="dGr-wM-aHH"/>
                         <outlet property="maxAantalDeelnemersLabel" destination="YGY-Ah-WIL" id="0tK-jF-eHR"/>

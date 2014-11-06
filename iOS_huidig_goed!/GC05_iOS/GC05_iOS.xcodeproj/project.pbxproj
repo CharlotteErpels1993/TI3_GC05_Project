@@ -251,9 +251,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		0FA80B011A01350E008DB343 /* GC05_iOS */ = {
+		0FA80B011A01350E008DB343 /* JOETZ */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0FA80B211A01350E008DB343 /* Build configuration list for PBXNativeTarget "GC05_iOS" */;
+			buildConfigurationList = 0FA80B211A01350E008DB343 /* Build configuration list for PBXNativeTarget "JOETZ" */;
 			buildPhases = (
 				0FA80AFE1A01350E008DB343 /* Sources */,
 				0FA80AFF1A01350E008DB343 /* Frameworks */,
@@ -263,7 +263,7 @@
 			);
 			dependencies = (
 			);
-			name = GC05_iOS;
+			name = JOETZ;
 			productName = GC05_iOS;
 			productReference = 0FA80B021A01350E008DB343 /* GC05_iOS.app */;
 			productType = "com.apple.product-type.application";
@@ -317,7 +317,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0FA80B011A01350E008DB343 /* GC05_iOS */,
+				0FA80B011A01350E008DB343 /* JOETZ */,
 				0FA80B161A01350E008DB343 /* GC05_iOSTests */,
 			);
 		};
@@ -388,7 +388,7 @@
 /* Begin PBXTargetDependency section */
 		0FA80B191A01350E008DB343 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 0FA80B011A01350E008DB343 /* GC05_iOS */;
+			target = 0FA80B011A01350E008DB343 /* JOETZ */;
 			targetProxy = 0FA80B181A01350E008DB343 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -573,7 +573,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0FA80B211A01350E008DB343 /* Build configuration list for PBXNativeTarget "GC05_iOS" */ = {
+		0FA80B211A01350E008DB343 /* Build configuration list for PBXNativeTarget "JOETZ" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0FA80B221A01350E008DB343 /* Debug */,

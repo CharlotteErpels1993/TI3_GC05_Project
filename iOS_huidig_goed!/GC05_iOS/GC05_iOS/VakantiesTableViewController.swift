@@ -35,6 +35,10 @@ class VakantiesTableViewController: UITableViewController {
             let registratie1ViewController = segue.destinationViewController as Registratie1ViewController
         } else if segue.identifier == "inloggen" {
             let inloggenViewController = segue.destinationViewController as InloggenViewController
+        } else if segue.identifier == "toonVakantie" {
+            let vakantieDetailsController = segue.destinationViewController as VakantieDetailsTableViewController
+            let selectedVakantie = vakanties[tableView.indexPathForSelectedRow()!.row]
+            vakantieDetailsController.vakantie = selectedVakantie
         }
         
     }
@@ -54,7 +58,6 @@ class VakantiesTableViewController: UITableViewController {
         let vakantie = vakanties[indexPath.row]
         cell.gaVerderLabel.text = "Ik wil deze reis!"
         cell.vakantieNaamLabel.text = vakantie.titel
-        println(cell.gaVerderLabel)
         // TO DO cell.doelgroepImage = vakantie.doelgroep
         return cell
     }

@@ -12,29 +12,21 @@ class VakantieDetailsTableViewController: UITableViewController {
     @IBOutlet weak var aantalDagenNachtenLabel: UILabel!
     @IBOutlet weak var locatieLabel: UILabel!
     @IBOutlet weak var inbegrepenPrijsLabel: UILabel!
-    @IBOutlet weak var doelgroepLabel: UILabel!
     @IBOutlet weak var maxAantalDeelnemersLabel: UILabel!
     
     var vakantie: Vakantie!
     
     override func viewDidLoad() {
+        // TO DO afbeelding1
+        // TO DO afbeelding2
+        // TO DO afbeelding3
         navigationItem.title = vakantie.titel
         beschrijvingLabel.text = vakantie.korteBeschrijving
-        
-        // TO DO date -> String
-        
-        //vertrekdatumLabel.text = vakantie.beginDatum
-        // aankomstdatumLabel.text = vakantie.terugkeerDatum
-        
-        aantalDagenNachtenLabel.text = vakantie.aantalDagenNachten
+        vertrekdatumLabel.text = String("Vertrekdatum: \(vakantie.beginDatum)")
+        aankomstdatumLabel.text = String("Terugkeerdatum: \(vakantie.terugkeerDatum)")
+        aantalDagenNachtenLabel.text = "Aantal dagen/nachten: \(vakantie.aantalDagenNachten)"
         locatieLabel.text = vakantie.locatie
         inbegrepenPrijsLabel.text = vakantie.inbegrepenPrijs
-        doelgroepLabel.text = vakantie.doelgroep
-        
-        // TO DO int -> String
-        // maxAantalDeelnemersLabel.text = vakantie.maxAantalDeelnemers.
-        
-        
+        maxAantalDeelnemersLabel.text = String(vakantie.maxAantalDeelnemers)
     }
-    
 }
