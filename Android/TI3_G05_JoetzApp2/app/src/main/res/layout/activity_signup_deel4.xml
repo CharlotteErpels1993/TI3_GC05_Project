@@ -1,19 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/LoginFormContainer" >
+    style="@style/LoginFormContainer"
+    android:background="@color/Wit"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
 
     <EditText
         android:id="@+id/etEmail"
-        android:layout_width="250dp"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp"
         android:hint="@string/emailHint"
+android:textColorHint="@color/Rood"
+        android:textColor="@color/Rood"
         android:inputType="textEmailAddress" />
 
     <EditText
         android:id="@+id/etPassword"
-        android:layout_width="250dp"
+        android:layout_width="fill_parent"
+
+        android:textColorHint="@color/Rood"
+        android:textColor="@color/Rood"
         android:layout_height="wrap_content"
         android:layout_below="@id/etEmail"
         android:layout_centerHorizontal="true"
@@ -24,8 +32,12 @@
 
     <EditText
         android:id="@+id/etPasswordConfirm"
-        android:layout_width="250dp"
+
+        android:textColor="@color/Rood"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+
+        android:textColorHint="@color/Rood"
         android:layout_below="@id/etPassword"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp"

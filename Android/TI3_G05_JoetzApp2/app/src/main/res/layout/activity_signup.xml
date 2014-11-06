@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/LoginFormContainer" >
+    style="@style/LoginFormContainer"
+    android:background="@color/Wit"
+    android:layout_height="fill_parent">
 
     <EditText
         android:id="@+id/etEmail"
+
+        android:textColorHint="@color/Rood"
+        android:textColor="@color/Rood"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -13,6 +18,9 @@
 
     <EditText
         android:id="@+id/etPassword"
+
+        android:textColorHint="@color/Rood"
+        android:textColor="@color/Rood"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/etEmail"
@@ -24,6 +32,9 @@
 
     <EditText
         android:id="@+id/etPasswordConfirm"
+
+        android:textColorHint="@color/Rood"
+        android:textColor="@color/Rood"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/etPassword"

@@ -1,5 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/LoginFormContainer" >
+    style="@style/LoginFormContainer"
+    android:background="@color/Wit"
+    android:layout_height="fill_parent">
 
 
     <TextView
@@ -7,12 +9,14 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/bondMoyson"
+        android:textColor="@color/Rood"
         android:id="@+id/textViewLid"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"/>
 
     <RadioGroup
         android:id="@+id/radioGroup"
+
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -22,13 +26,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/ja"
+      android:textColor="@color/Rood"
         android:id="@+id/radioButtonJa"
+
           />
 
     <RadioButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/nee"
+        android:textColor="@color/Rood"
         android:id="@+id/radioButtonNee" />
     </RadioGroup>
 
@@ -37,6 +44,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/back"
+
         android:id="@+id/btn_terugGaan"
         android:layout_below="@id/radioGroup"
         android:layout_alignParentStart="true" />

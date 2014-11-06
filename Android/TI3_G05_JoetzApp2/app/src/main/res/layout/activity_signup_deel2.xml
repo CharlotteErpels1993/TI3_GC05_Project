@@ -1,5 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/LoginFormContainer" >
+    style="@style/LoginFormContainer"
+    android:background="@color/Wit"
+    android:layout_height="fill_parent">
 
 
     <!--<TextView
@@ -16,11 +18,14 @@
 -->
     <EditText
         android:id="@+id/aansluitingsnummer"
+
+        android:textColorHint="@color/Rood"
+        android:textColor="@color/Rood"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
 
         android:hint="@string/aanlsuitingsnummerhint"
-        android:inputType="textEmailAddress"
+        android:inputType="text"
         />
     <!--android:layout_below="@id/imageViewBondMoyson"-->
 
