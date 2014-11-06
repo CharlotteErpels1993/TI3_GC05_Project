@@ -13,7 +13,7 @@ class InloggenViewController: UIViewController
         super.viewDidLoad()
     }
     
-    @IBAction func gaTerugNaarInloggen(segue: UIStoryboard) {
+    @IBAction func unwindFromAdd(segue: UIStoryboard) {
         
     }
 
@@ -44,14 +44,16 @@ class InloggenViewController: UIViewController
                 alert.addAction(UIAlertAction(title: "Ga terug", style: UIAlertActionStyle.Default, handler: nil))
                 self.presentViewController(alert, animated: true, completion: nil)
             }
+        } else if segue.identifier == "nieuwWachtwoord" {
+            let nieuwWachtwoordController = segue.destinationViewController as NieuwWachtwoordViewController
             
         } else {
             //fout pop-up tonen
             var alert = UIAlertController(title: "Fout", message: "U hebt niet alle velden ingevuld!", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Ga terug", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
-        }
         
+        }
     }
     
     private func veldenZijnIngevuld(email: String, wachtwoord: String) -> Bool {
@@ -81,108 +83,4 @@ class InloggenViewController: UIViewController
             return false
         }
     }
-    
-    
-    /* if !email.isEmpty && !wachtwoord.isEmpty {
-    
-    // OUDER
-    queryOuder.findObjectsInBackgroundWithBlock { (objects: [AnyObject]!, error: NSError!) -> Void in
-    if error == nil {
-    for object in objects {
-    // USER LOGIN? - OUDER
-    let overzichtOuderViewController = segue.destinationViewController as OverzichtOuderViewController
-    
-    }
-    }
-    }
-    
-    // MONITOR
-    queryMonitor.findObjectsInBackgroundWithBlock { (objects: [AnyObject]!, error: NSError!) -> Void in
-    if error == nil {
-    for object in objects {
-    // USER LOGIN ? - MONITOR
-    let overzichtMonitorViewController = segue.destinationViewController as OverzichtMonitorViewController
-    
-    }
-    }
-    }
-    } else {
-    var alert = UIAlertController(title: "Fout", message: "U hebt niet alle velden ingevuld!", preferredStyle: UIAlertControllerStyle.Alert)
-    alert.addAction(UIAlertAction(title: "Ga terug", style: UIAlertActionStyle.Default, handler: nil))
-    self.presentViewController(alert, animated: true, completion: nil)
-    }*/
-    
-    
-    
-    
-    
-    /*var monitorPF: PFObject
-    var ouderPF: PFObject*/
-    
-    /*queryMonitor.whereKey("email", containsString: email)
-    queryMonitor.whereKey("wachtwoord", containsString: wachtwoord)
-    queryOuder.whereKey("email", containsString: email)
-    queryOuder.whereKey("wachtwoord", containsString: wachtwoord)*/
-    
-    /*if queryMonitor.countObjects() > 0 {
-    monitorPF = queryMonitor.getFirstObject()
-    monitor = Monitor(monitor: monitorPF)
-    } else if queryOuder.countObjects() > 0 {
-    ouderPF = queryOuder.getFirstObject()
-    ouder = Ouder(ouder: ouderPF)
-    } else {
-    //er zijn geen gebruikers met deze combinatie email/wachtwoord
-    }*/
-    
-    
-    /*queryOuder.findObjectsInBackgroundWithBlock {
-    (objects: [AnyObject]!, error: NSError!) -> Void in
-    if error == nil {
-    //er zijn ouder(s) met dat email adres
-    ouder = objects.first as Ouder
-    }
-    }
-    
-    queryMonitor.findObjectsInBackgroundWithBlock {
-    (objects: [AnyObject]!, error: NSError!) -> Void in
-    if error == nil {
-    //er zijn monitor(s) met dat email adres
-    monitor = objects.first as Monitor
-    }
-    }*/
-    
-    
-    
-    /*if segue.identifier == "overzicht" {
-    if !email.isEmpty && !wachtwoord.isEmpty {
-    
-    // OUDER
-    queryOuder.findObjectsInBackgroundWithBlock { (objects: [AnyObject]!, error: NSError!) -> Void in
-    if error == nil {
-    for object in objects {
-    // USER LOGIN? - OUDER
-    let overzichtOuderViewController = segue.destinationViewController as OverzichtOuderViewController
-    
-    }
-    }
-    }
-    
-    // MONITOR
-    queryMonitor.findObjectsInBackgroundWithBlock { (objects: [AnyObject]!, error: NSError!) -> Void in
-    if error == nil {
-    for object in objects {
-    // USER LOGIN ? - MONITOR
-    let overzichtMonitorViewController = segue.destinationViewController as OverzichtMonitorViewController
-    
-    }
-    }
-    }
-    } else {
-    var alert = UIAlertController(title: "Fout", message: "U hebt niet alle velden ingevuld!", preferredStyle: UIAlertControllerStyle.Alert)
-    alert.addAction(UIAlertAction(title: "Ga terug", style: UIAlertActionStyle.Default, handler: nil))
-    self.presentViewController(alert, animated: true, completion: nil)
-    }
-    }*/
-
-    
 }
