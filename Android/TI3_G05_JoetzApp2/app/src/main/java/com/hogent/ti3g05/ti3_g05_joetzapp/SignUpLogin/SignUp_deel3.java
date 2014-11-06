@@ -88,9 +88,13 @@ public class SignUp_deel3 extends Activity{
                                 // make HTTP requests
                                 createAccount();
                             }*/
+                //opslaagGeg();
 
-                Intent intent = new Intent(SignUp_deel3.this, SignUp_deel4.class);
-                startActivity(intent);
+                Intent in = new Intent(getApplicationContext(),SignUp_deel4.class);
+                startActivity(in);
+
+
+
             }
         });
 
