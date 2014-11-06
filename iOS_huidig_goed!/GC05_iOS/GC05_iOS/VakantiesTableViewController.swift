@@ -17,7 +17,7 @@ class VakantiesTableViewController: UITableViewController {
                 if let PFObjects = objects as? [PFObject!] {
                     for object in PFObjects {
                         var vakantie = Vakantie(vakantie: object)
-                        self.vakanties.append(vakantie)
+                        //self.vakanties.append(vakantie)
                         //print(vakantie)
                         
                     }
