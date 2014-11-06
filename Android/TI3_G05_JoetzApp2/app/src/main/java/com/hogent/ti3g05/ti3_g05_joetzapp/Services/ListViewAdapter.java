@@ -10,14 +10,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.R;
 import com.hogent.ti3g05.ti3_g05_joetzapp.activiteit_detail;
+import com.hogent.ti3g05.ti3_g05_joetzapp.activiteit_overzicht_fragment;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vakantie;
 
-public class ListViewAdapter extends BaseAdapter {
+public class ListViewAdapter extends ArrayAdapter<Vakantie> {
 
     Context context;
     LayoutInflater inflater;
@@ -25,8 +27,14 @@ public class ListViewAdapter extends BaseAdapter {
     private List<Vakantie> vakanties = null;
     private ArrayList<Vakantie> arraylist;
 
+
+    public ListViewAdapter(Context context, int resource) {
+        super(context, resource);
+    }
+
     public ListViewAdapter(Context context,
                            List<Vakantie> vakanties) {
+        super(context, R.layout.listview_item);
         this.context = context;
         this.vakanties = vakanties;
         inflater = LayoutInflater.from(context);
@@ -34,6 +42,8 @@ public class ListViewAdapter extends BaseAdapter {
         this.arraylist.addAll(vakanties);
         //imageLoader = new ImageLoader(context);
     }
+
+
 
     public class ViewHolder {
         TextView naamVakantie;
@@ -48,10 +58,10 @@ public class ListViewAdapter extends BaseAdapter {
         return vakanties.size();
     }
 
-    @Override
+   /* @Override
     public Object getItem(int position) {
         return vakanties.get(position);
-    }
+    }*/
 
     @Override
     public long getItemId(int position) {
@@ -65,8 +75,8 @@ public class ListViewAdapter extends BaseAdapter {
             view = inflater.inflate(R.layout.listview_item, null);
             holder.naamVakantie = (TextView) view.findViewById(R.id.naam);
             holder.locatie = (TextView) view.findViewById(R.id.locatie);
-            holder.vertrekdatum = (TextView) view.findViewById(R.id.vertrekdatum);
-            holder.terugdatum = (TextView) view.findViewById(R.id.terugdatum);
+            //holder.vertrekdatum = (TextView) view.findViewById(R.id.vertrekdatum);
+            //holder.terugdatum = (TextView) view.findViewById(R.id.terugdatum);
            // holder.flag = (ImageView) view.findViewById(R.id.flag);
             view.setTag(holder);
         } else {
@@ -74,8 +84,8 @@ public class ListViewAdapter extends BaseAdapter {
         }
         holder.naamVakantie.setText(vakanties.get(position).getNaamVakantie());
         holder.locatie.setText(vakanties.get(position).getLocatie());
-        holder.vertrekdatum.setText((CharSequence) vakanties.get(position).getVertrekDatum());
-        holder.terugdatum.setText((CharSequence) vakanties.get(position).getTerugkeerDatum());
+//        holder.vertrekdatum.setText((CharSequence) vakanties.get(position).getVertrekDatum());
+  //      holder.terugdatum.setText((CharSequence) vakanties.get(position).getTerugkeerDatum());
        // imageLoader.DisplayImage(vakanties.get(position).getFlag(),
               //  holder.flag);
         view.setOnClickListener(new OnClickListener() {
@@ -87,10 +97,10 @@ public class ListViewAdapter extends BaseAdapter {
                         (vakanties.get(position).getNaamVakantie()));
                 intent.putExtra("locatie",
                         (vakanties.get(position).getLocatie()));
-                intent.putExtra("vertrekdatum",
-                        (vakanties.get(position).getVertrekDatum()));
-                intent.putExtra("terugdatum",
-                        (vakanties.get(position).getTerugkeerDatum()));
+              //  intent.putExtra("vertrekdatum",
+                  //      (vakanties.get(position).getVertrekDatum()));
+               // intent.putExtra("terugdatum",
+                 //       (vakanties.get(position).getTerugkeerDatum()));
                 context.startActivity(intent);
             }
         });

@@ -93,9 +93,11 @@ public class activiteit_overzicht extends Activity {
             // Pass the results into ListViewAdapter.java
             //adapter = new ListViewAdapter(activiteit_overzicht.this, vakanties);
             //ArrayAdapter<Profile> profileAdapter = new ArrayAdapter<Profile>(context, resource, profiles)
-            ArrayAdapter<Vakantie> vakantieAdapter = new ArrayAdapter<Vakantie>(activiteit_overzicht.this, R.layout.activity_tester_list_item , vakanties);
+            //ArrayAdapter<Vakantie> vakantieAdapter = new ArrayAdapter<Vakantie>(activiteit_overzicht.this, R.layout.listview_item , vakanties);
+
+            ListViewAdapter adapter = new ListViewAdapter(activiteit_overzicht.this, vakanties);
             // Binds the Adapter to the ListView
-            listview.setAdapter(vakantieAdapter);
+            listview.setAdapter(adapter);
             // Close the progressdialog
             mProgressDialog.dismiss();
 

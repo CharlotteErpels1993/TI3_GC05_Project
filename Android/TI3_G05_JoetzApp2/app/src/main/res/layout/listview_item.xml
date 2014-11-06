@@ -3,10 +3,25 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
 
+<TextView
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" />
+    <ImageView
+        android:id="@+id/afbeelding"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="#000000"
+        android:padding="1dp"
+        android:src="@drawable/vakantieftoplaceholder"/>
+
+
    <TextView
         android:id="@+id/naam"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+       android:layout_below="@id/afbeelding"
          />
 
 
@@ -14,10 +29,10 @@
         android:id="@+id/locatie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/naam"/>
+        android:layout_alignRight="@+id/naam"/>
 
 
-    <TextView
+   <!-- <TextView
         android:id="@+id/vertrekdatum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -34,13 +49,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/terugdatum"/>
-
-    <!--<ImageView
-        android:id="@+id/afbeelding"
+-->
+    <TextView
+        android:id="@+id/prijs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:background="#000000"
-        android:padding="1dp" />-->
+        android:layout_below="@id/locatie"
+        android:layout_alignParentRight="true"/>
+
 
 </RelativeLayout>
