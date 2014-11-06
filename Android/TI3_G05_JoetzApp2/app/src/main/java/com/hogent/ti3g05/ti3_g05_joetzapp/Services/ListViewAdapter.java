@@ -12,18 +12,23 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.hogent.ti3g05.ti3_g05_joetzapp.ImageLoader;
 import com.hogent.ti3g05.ti3_g05_joetzapp.R;
 import com.hogent.ti3g05.ti3_g05_joetzapp.activiteit_detail;
 import com.hogent.ti3g05.ti3_g05_joetzapp.activiteit_overzicht_fragment;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vakantie;
+import com.parse.ParseUser;
+
+import org.w3c.dom.Text;
 
 public class ListViewAdapter extends ArrayAdapter<Vakantie> {
 
     Context context;
     LayoutInflater inflater;
-    //ImageLoader imageLoader;
+    ImageLoader imageLoader;
     private List<Vakantie> vakanties = null;
     private ArrayList<Vakantie> arraylist;
 
@@ -40,8 +45,9 @@ public class ListViewAdapter extends ArrayAdapter<Vakantie> {
         inflater = LayoutInflater.from(context);
         this.arraylist = new ArrayList<Vakantie>();
         this.arraylist.addAll(vakanties);
-        //imageLoader = new ImageLoader(context);
+        imageLoader = new ImageLoader(context);
     }
+
 
 
 
@@ -50,7 +56,8 @@ public class ListViewAdapter extends ArrayAdapter<Vakantie> {
         TextView locatie;
         TextView vertrekdatum;
         TextView terugdatum;
-       // ImageView flag;
+        TextView prijs;
+        ImageView vakantiefto;
     }
 
     @Override
@@ -75,19 +82,23 @@ public class ListViewAdapter extends ArrayAdapter<Vakantie> {
             view = inflater.inflate(R.layout.listview_item, null);
             holder.naamVakantie = (TextView) view.findViewById(R.id.naam);
             holder.locatie = (TextView) view.findViewById(R.id.locatie);
-            //holder.vertrekdatum = (TextView) view.findViewById(R.id.vertrekdatum);
-            //holder.terugdatum = (TextView) view.findViewById(R.id.terugdatum);
-           // holder.flag = (ImageView) view.findViewById(R.id.flag);
+            holder.vertrekdatum = (TextView) view.findViewById(R.id.vertrek);
+            holder.terugdatum = (TextView) view.findViewById(R.id.terug);
+            holder.vakantiefto = (ImageView) view.findViewById(R.id.afbeelding);
+            holder.prijs = (TextView) view.findViewById(R.id.prijs);
             view.setTag(holder);
         } else {
             holder = (ViewHolder) view.getTag();
         }
         holder.naamVakantie.setText(vakanties.get(position).getNaamVakantie());
         holder.locatie.setText(vakanties.get(position).getLocatie());
+        if(ParseUser.getCurrentUser() != null)
+        {
+            holder.prijs.setText((int) vakanties.get(position).getBasisprijs());
+        }
 //        holder.vertrekdatum.setText((CharSequence) vakanties.get(position).getVertrekDatum());
   //      holder.terugdatum.setText((CharSequence) vakanties.get(position).getTerugkeerDatum());
-       // imageLoader.DisplayImage(vakanties.get(position).getFlag(),
-              //  holder.flag);
+        //imageLoader.DisplayImage(vakanties.get(position).getFoto(),  holder.vakantiefto); als er dan effectief fotos in de db komen
         view.setOnClickListener(new OnClickListener() {
 
             @Override
@@ -97,10 +108,13 @@ public class ListViewAdapter extends ArrayAdapter<Vakantie> {
                         (vakanties.get(position).getNaamVakantie()));
                 intent.putExtra("locatie",
                         (vakanties.get(position).getLocatie()));
-              //  intent.putExtra("vertrekdatum",
-                  //      (vakanties.get(position).getVertrekDatum()));
-               // intent.putExtra("terugdatum",
-                 //       (vakanties.get(position).getTerugkeerDatum()));
+                  intent.putExtra("vertrekdatum",
+                      (vakanties.get(position).getVertrekDatum()));
+                 intent.putExtra("terugdatum",
+                       (vakanties.get(position).getTerugkeerDatum()));
+                intent.putExtra("prijs", vakanties.get(position).getBasisprijs());
+                //intent.putExtra("afbeelding", vakanties.get(position).getFoto()); voor als afbeelding in db komt
+
                 context.startActivity(intent);
             }
         });

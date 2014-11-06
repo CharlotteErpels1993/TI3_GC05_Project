@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +28,9 @@ public class MainScreen extends Fragment {
 
 
 
-        Button inlogButton = (Button) rootView.findViewById(R.id.MainScreen_btnInloggen);
+
+
+      /*  Button inlogButton = (Button) rootView.findViewById(R.id.MainScreen_btnInloggen);
 
         inlogButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,23 +48,14 @@ public class MainScreen extends Fragment {
                 Intent intent2 = new Intent(getActivity(), SignUp_deel1.class);
                 startActivity(intent2);
             }
-        });
+        });*/
 
         return rootView;
     }
 
 
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
+
+
 
 }

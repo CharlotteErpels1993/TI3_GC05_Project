@@ -1,4 +1,4 @@
-/*package com.hogent.ti3g05.ti3_g05_joetzapp;
+package com.hogent.ti3g05.ti3_g05_joetzapp;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -21,6 +21,10 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.widget.ImageView;
 
+import com.hogent.ti3g05.ti3_g05_joetzapp.Services.FileCache;
+import com.hogent.ti3g05.ti3_g05_joetzapp.Services.MemoryCache;
+import com.hogent.ti3g05.ti3_g05_joetzapp.Services.Utils;
+
 public class ImageLoader {
 
     MemoryCache memoryCache = new MemoryCache();
@@ -36,7 +40,7 @@ public class ImageLoader {
         executorService = Executors.newFixedThreadPool(5);
     }
 
-    final int stub_id = R.drawable.temp_img;
+    final int stub_id = R.drawable.vakantieftoplaceholder;
 
     public void DisplayImage(String url, ImageView imageView) {
         imageViews.put(imageView, url);
@@ -189,4 +193,4 @@ public class ImageLoader {
         fileCache.clear();
     }
 
-}*/
+}

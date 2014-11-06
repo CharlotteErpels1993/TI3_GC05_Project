@@ -1,5 +1,6 @@
 package com.hogent.ti3g05.ti3_g05_joetzapp.domein;
 
+import android.media.Image;
 import android.text.method.DateTimeKeyListener;
 
 import java.util.Calendar;
@@ -15,6 +16,7 @@ public class Vakantie extends Activiteit{
     private String doelGroep;
     private int maxAantalDeelnemers;
     private String naamVakantie;
+    private Image foto ;
 
     public Vakantie(){
         super();
@@ -115,4 +117,8 @@ public class Vakantie extends Activiteit{
     public void setMaxAantalDeelnemers(int maxAantalDeelnemers) {
         this.maxAantalDeelnemers = maxAantalDeelnemers;
     }
+    public Image getFoto(){   return foto; }
+
+    public void setFoto(Image fto) {this.foto=fto;}
+
 }

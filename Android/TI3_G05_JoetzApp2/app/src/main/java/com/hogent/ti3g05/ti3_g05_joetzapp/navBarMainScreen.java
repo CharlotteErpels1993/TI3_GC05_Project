@@ -19,10 +19,13 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.Login;
+import com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.SignUp_deel1;
+
 
 public class navBarMainScreen extends Activity {
 
-    private Fragment fragment = new MainScreen();
+    private Fragment fragment = new activiteit_overzicht_fragment();
 
     // Within which the entire activity is enclosed
     private DrawerLayout mDrawerLayout;
@@ -190,6 +193,18 @@ public class navBarMainScreen extends Activity {
         if (mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
+            // Handle action bar item clicks here. The action bar will
+            // automatically handle clicks on the Home/Up button, so long
+            // as you specify a parent activity in AndroidManifest.xml.
+            int id = item.getItemId();
+            if (id == R.id.inloggen) {
+                Intent intent1 = new Intent(this, Login.class);
+                startActivity(intent1);
+            }
+            if(id == R.id.regisreren){
+                Intent intent1 = new Intent(this, SignUp_deel1.class);
+                startActivity(intent1);
+            }
         return super.onOptionsItemSelected(item);
     }
 
@@ -199,7 +214,7 @@ public class navBarMainScreen extends Activity {
         // If the drawer is open, hide action items related to the content view
         boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
 
-        menu.findItem(R.id.action_settings).setVisible(!drawerOpen);
+        menu.findItem(R.id.inloggen).setVisible(!drawerOpen);
         return super.onPrepareOptionsMenu(menu);
     }
 
