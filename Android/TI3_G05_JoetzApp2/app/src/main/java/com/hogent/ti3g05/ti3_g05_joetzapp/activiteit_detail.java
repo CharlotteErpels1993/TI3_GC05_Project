@@ -3,6 +3,8 @@ package com.hogent.ti3g05.ti3_g05_joetzapp;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -40,7 +42,7 @@ public class activiteit_detail extends Activity {
         afbeelding3 = i.getStringExtra("afbeelding3");
 
         formule = i.getStringExtra("formule");
-         maxDeeln =i.getStringExtra("maxAantalDeelnemers");
+         maxDeeln = i.getStringExtra("maxAantalDeelnemers");
          periode = i.getStringExtra("periode");
          vervoer = i.getStringExtra("vervoer");
          prijs = i.getStringExtra("prijs");
@@ -63,6 +65,35 @@ public class activiteit_detail extends Activity {
         ImageView afbeelding2im = (ImageView) findViewById(R.id.afbeelding2);
 
         ImageView afbeelding3im = (ImageView) findViewById(R.id.afbeelding3);
+
+        afbeelding1im.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent1 = new Intent(activiteit_detail.this, afbeeldingUItvergroot.class);
+
+                intent1.putExtra("afbeelding",afbeelding1);
+                startActivity(intent1);
+            }
+        });
+        afbeelding2im.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent1 = new Intent(activiteit_detail.this, afbeeldingUItvergroot.class);
+
+                intent1.putExtra("afbeelding",afbeelding2);
+                startActivity(intent1);
+            }
+        });
+
+        afbeelding3im.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent1 = new Intent(activiteit_detail.this, afbeeldingUItvergroot.class);
+
+                intent1.putExtra("afbeelding",afbeelding3);
+                startActivity(intent1);
+            }
+        });
 
 
 

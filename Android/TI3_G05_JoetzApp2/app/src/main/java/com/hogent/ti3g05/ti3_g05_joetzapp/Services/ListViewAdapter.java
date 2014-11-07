@@ -118,7 +118,7 @@ public class ListViewAdapter extends ArrayAdapter<Vakantie> implements Filterabl
                       (vakanties.get(position).getVertrekDatum()));
                  intent.putExtra("terugdatum",
                        (vakanties.get(position).getTerugkeerDatum()));
-                intent.putExtra("prijs", vakanties.get(position).getPrijsStr());
+                intent.putExtra("prijs", vakanties.get(position).getBasisprijs());
                 intent.putExtra("afbeelding1", vakanties.get(position).getFoto1());
                 intent.putExtra("afbeelding2", vakanties.get(position).getFoto2());
                 intent.putExtra("afbeelding3", vakanties.get(position).getFoto3());

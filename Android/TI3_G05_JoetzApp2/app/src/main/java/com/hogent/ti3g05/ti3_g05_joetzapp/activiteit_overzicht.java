@@ -83,13 +83,13 @@ public class activiteit_overzicht extends Activity {
                     ParseFile image3 = (ParseFile) vakantie.get("vakAfbeelding3");
 
                     Vakantie map = new Vakantie();
-
+                    //String prijs = vakantie.get("basisPrijs").toString();
                     map.setNaamVakantie((String) vakantie.get("titel"));
                     map.setLocatie((String) vakantie.get("locatie"));
                     map.setKorteBeschrijving((String) vakantie.get("korteBeschrijving"));
                     map.setDoelGroep((String) vakantie.get("doelgroep"));
                     map.setKorteBeschrijving((String) vakantie.get("korteBeschrijving"));
-                    map.setBasisprijs((Number) vakantie.get("basisPrijs"));
+                    map.setBasisprijs((Number)vakantie.get("basisPrijs") );
                     map.setPeriode((String) vakantie.get("aantalDagenNachten"));
                     map.setMaxDeeln((Number) vakantie.get("maxAantalDeelnemers"));
                     map.setFormule((String) vakantie.get("formule"));

@@ -29,7 +29,7 @@ public class Vakantie extends Activiteit{
 
     }
 
-    public String toString(){
+    /*public String toString(){
         Calendar cal = Calendar.getInstance();
         cal.setTime(getVertrekDatum());
         String objvertrekDatum = cal.get(Calendar.DAY_OF_MONTH) + "/" + cal.get(Calendar.MONTH) + "/" + cal.get(Calendar.YEAR);
@@ -38,7 +38,7 @@ public class Vakantie extends Activiteit{
         return getNaamVakantie() + " - " + getLocatie() + "\n" +
                 objvertrekDatum +
                 " - " + objterugkeerDatum;
-    }
+    }*/
 
     public String getPeriode() {return periode;}
     public void setPeriode(String periode){this.periode=periode;}
@@ -94,7 +94,7 @@ public class Vakantie extends Activiteit{
         return bondMoysonLedenPrijs;
     }
 
-    public void setBondMoysonLedenPrijs(double bondMoysonLedenPrijs) {
+    public void setBondMoysonLedenPrijs(Number bondMoysonLedenPrijs) {
         this.bondMoysonLedenPrijs = bondMoysonLedenPrijs;
     }
 
@@ -102,7 +102,7 @@ public class Vakantie extends Activiteit{
         return sterPrijs;
     }
 
-    public void setSterPrijs(double sterPrijs) {
+    public void setSterPrijs(Number sterPrijs) {
         this.sterPrijs = sterPrijs;
     }
 
