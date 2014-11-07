@@ -11,6 +11,12 @@ public class activiteit_detail extends Activity {
     String locatie;
     String vertrekdatum;
     String terugdatum;
+    String formule;
+    String maxDeeln;
+    String periode;
+    String vervoer;
+    String prijs;
+    String beschrijving;
     ImageLoader imageLoader = new ImageLoader(this);
     String afbeelding1;
     String doelgro;
@@ -33,13 +39,25 @@ public class activiteit_detail extends Activity {
 
         afbeelding3 = i.getStringExtra("afbeelding3");
 
+        formule = i.getStringExtra("formule");
+         maxDeeln =i.getStringExtra("maxAantalDeelnemers");
+         periode = i.getStringExtra("periode");
+         vervoer = i.getStringExtra("vervoer");
+         prijs = i.getStringExtra("prijs");
+        beschrijving = i.getStringExtra("beschrijving");
+
         setTitle(naam);
 
-        TextView txtNaam = (TextView) findViewById(R.id.naam);
-        TextView txtLocatie = (TextView) findViewById(R.id.loc);
-        TextView txtVertrekdatum = (TextView) findViewById(R.id.vertrek);
-        TextView txtTerugdatum = (TextView) findViewById(R.id.terug);
-        TextView txtDoelgr = (TextView) findViewById(R.id.doelgr);
+        TextView txtNaam = (TextView) findViewById(R.id.titel);
+        TextView txtLocatie = (TextView) findViewById(R.id.locatiev);
+        TextView txtDoelgr = (TextView) findViewById(R.id.doelgroepv);
+
+        TextView txtformule = (TextView)findViewById(R.id.formule);
+        TextView txtmaxDeeln = (TextView)findViewById(R.id.maxDeelnemers);
+        TextView txtPeriode = (TextView)findViewById(R.id.periode);
+        TextView txtVervoer = (TextView)findViewById(R.id.vervoer);
+        TextView txtPrijs = (TextView)findViewById(R.id.prijs);
+        TextView txtBeschrijving = (TextView)findViewById(R.id.beschrijving);
 
         ImageView afbeelding1im = (ImageView) findViewById(R.id.afbeelding1);
         ImageView afbeelding2im = (ImageView) findViewById(R.id.afbeelding2);
@@ -47,13 +65,16 @@ public class activiteit_detail extends Activity {
         ImageView afbeelding3im = (ImageView) findViewById(R.id.afbeelding3);
 
 
-        //ImageView imgflag = (ImageView) findViewById(R.id.flag);
 
         txtNaam.setText(naam);
         txtLocatie.setText(locatie);
-        txtVertrekdatum.setText(vertrekdatum);
-        txtTerugdatum.setText(terugdatum);
         txtDoelgr.setText(doelgro);
+        txtformule.setText(formule);
+        //txtmaxDeeln.setText(maxDeeln.toString());
+        txtPeriode.setText(periode);
+        txtVervoer.setText(vervoer);
+        //txtPrijs.setText(prijs.toString());
+        txtBeschrijving.setText(beschrijving);
 
         // Capture position and set results to the ImageView
         // Passes flag images URL into ImageLoader.class

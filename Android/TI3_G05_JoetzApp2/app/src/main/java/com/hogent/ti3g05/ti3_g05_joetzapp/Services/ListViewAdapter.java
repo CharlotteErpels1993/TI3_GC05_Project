@@ -89,7 +89,7 @@ public class ListViewAdapter extends ArrayAdapter<Vakantie> implements Filterabl
             holder.vertrekdatum = (TextView) view.findViewById(R.id.vertrekdatum);
             holder.terugdatum = (TextView) view.findViewById(R.id.terugdatum);
             holder.vakantiefto = (ImageView) view.findViewById(R.id.afbeelding);
-          //  holder.prijs = (TextView) view.findViewById(R.id.prijs);
+            holder.prijs = (TextView) view.findViewById(R.id.prijs);
             holder.doelgroep = (TextView) view.findViewById(R.id.doelgroep);
             view.setTag(holder);
         } else {
@@ -101,8 +101,8 @@ public class ListViewAdapter extends ArrayAdapter<Vakantie> implements Filterabl
         {
             holder.prijs.setText((int) vakanties.get(position).getBasisprijs());
         }*/
-        holder.vertrekdatum.setText(( vakanties.get(position).getVertrekDatum().toString()));
-        holder.terugdatum.setText(( vakanties.get(position).getTerugkeerDatum().toString()));
+        //holder.vertrekdatum.setText(( vakanties.get(position).getVertrekDatum().toString()));
+        //holder.terugdatum.setText(( vakanties.get(position).getTerugkeerDatum().toString()));
         holder.doelgroep.setText(vakanties.get(position).getDoelGroep());
         imageLoader.DisplayImage(vakanties.get(position).getFoto1(),  holder.vakantiefto);
         view.setOnClickListener(new OnClickListener() {
@@ -118,11 +118,16 @@ public class ListViewAdapter extends ArrayAdapter<Vakantie> implements Filterabl
                       (vakanties.get(position).getVertrekDatum()));
                  intent.putExtra("terugdatum",
                        (vakanties.get(position).getTerugkeerDatum()));
-                intent.putExtra("prijs", vakanties.get(position).getBasisprijs());
+                intent.putExtra("prijs", vakanties.get(position).getPrijsStr());
                 intent.putExtra("afbeelding1", vakanties.get(position).getFoto1());
                 intent.putExtra("afbeelding2", vakanties.get(position).getFoto2());
                 intent.putExtra("afbeelding3", vakanties.get(position).getFoto3());
                 intent.putExtra("doelgroep", vakanties.get(position).getDoelGroep());
+                intent.putExtra("beschrijving", vakanties.get(position).getKorteBeschrijving());
+                intent.putExtra("periode", vakanties.get(position).getPeriode());
+                intent.putExtra("veroer", vakanties.get(position).getVervoerswijze());
+                intent.putExtra("formule", vakanties.get(position).getFormule());
+                intent.putExtra("maxAantalDeelnemers",(vakanties.get(position).getMaxAantalDeelnemers()));
                 context.startActivity(intent);
             }
         });

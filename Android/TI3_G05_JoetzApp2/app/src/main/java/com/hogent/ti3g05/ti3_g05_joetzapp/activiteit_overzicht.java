@@ -83,19 +83,24 @@ public class activiteit_overzicht extends Activity {
                     ParseFile image3 = (ParseFile) vakantie.get("vakAfbeelding3");
 
                     Vakantie map = new Vakantie();
+
                     map.setNaamVakantie((String) vakantie.get("titel"));
                     map.setLocatie((String) vakantie.get("locatie"));
-                    map.setVertrekDatum((java.util.Date) vakantie.get("vertrekdatum"));
-                    map.setTerugkeerDatum((java.util.Date) vakantie.get("terugkeerdatum"));
                     map.setKorteBeschrijving((String) vakantie.get("korteBeschrijving"));
                     map.setDoelGroep((String) vakantie.get("doelgroep"));
-                    //map.setBasisprijs((Double) vakantie.get("basisPrijs"));
+                    map.setKorteBeschrijving((String) vakantie.get("korteBeschrijving"));
+                    map.setBasisprijs((Number) vakantie.get("basisPrijs"));
+                    map.setPeriode((String) vakantie.get("aantalDagenNachten"));
+                    map.setMaxDeeln((Number) vakantie.get("maxAantalDeelnemers"));
+                    map.setFormule((String) vakantie.get("formule"));
+                    map.setVervoerswijze((String) vakantie.get("vervoerwijze"));
 
                     map.setFoto1(image.getUrl());
                     map.setFoto2(image2.getUrl());
                     map.setFoto3(image3.getUrl());
 
                     vakanties.add(map);
+
                 }
             } catch (ParseException e) {
                 Log.e("Error", e.getMessage());

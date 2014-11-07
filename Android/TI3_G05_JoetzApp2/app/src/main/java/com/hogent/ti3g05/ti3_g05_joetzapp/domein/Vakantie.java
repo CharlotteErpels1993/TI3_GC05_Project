@@ -5,20 +5,24 @@ import android.text.method.DateTimeKeyListener;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.NavigableMap;
 
 public class Vakantie extends Activiteit{
     private Date vertrekDatum, terugkeerDatum;
     //aantalDagenNachten is een berekend veld. Wel/niet erin?
     private String vervoerswijze, formule;
-    private double basisprijs, bondMoysonLedenPrijs, sterPrijs;
+    private Number basisprijs, bondMoysonLedenPrijs, sterPrijs;
     private int korting;
     //inbegrepenPrijs ook berekend veld?
     private String doelGroep;
-    private int maxAantalDeelnemers;
+    private Number maxAantalDeelnemers;
     private String naamVakantie;
     private String foto1 ;
     private String foto2;
     private String foto3;
+    private String prijsStr;
+    private String periode;
+    private Number maxDeeln;
 
     public Vakantie(){
         super();
@@ -36,8 +40,12 @@ public class Vakantie extends Activiteit{
                 " - " + objterugkeerDatum;
     }
 
+    public String getPeriode() {return periode;}
+    public void setPeriode(String periode){this.periode=periode;}
     public String getNaamVakantie() {return naamVakantie;}
 
+    public Number getMaxDeeln(){return maxDeeln;}
+    public void setMaxDeeln(Number deeln){this.maxDeeln = deeln;}
     public void setNaamVakantie(String naamVakantie) { this.naamVakantie = naamVakantie;}
 
     public Date getVertrekDatum() {
@@ -55,6 +63,8 @@ public class Vakantie extends Activiteit{
     public void setTerugkeerDatum(Date terugkeerDatum) {
         this.terugkeerDatum = terugkeerDatum;
     }
+    public void setPrijsStr(String prijs){this.prijsStr = prijs;}
+    public String getPrijsStr(){return prijsStr;}
 
     public String getVervoerswijze() {
         return vervoerswijze;
@@ -72,15 +82,15 @@ public class Vakantie extends Activiteit{
         this.formule = formule;
     }
 
-    public double getBasisprijs() {
+    public Number getBasisprijs() {
         return basisprijs;
     }
 
-    public void setBasisprijs(double basisprijs) {
+    public void setBasisprijs(Number basisprijs) {
         this.basisprijs = basisprijs;
     }
 
-    public double getBondMoysonLedenPrijs() {
+    public Number getBondMoysonLedenPrijs() {
         return bondMoysonLedenPrijs;
     }
 
@@ -88,7 +98,7 @@ public class Vakantie extends Activiteit{
         this.bondMoysonLedenPrijs = bondMoysonLedenPrijs;
     }
 
-    public double getSterPrijs() {
+    public Number getSterPrijs() {
         return sterPrijs;
     }
 
@@ -112,7 +122,7 @@ public class Vakantie extends Activiteit{
         this.doelGroep = doelGroep;
     }
 
-    public int getMaxAantalDeelnemers() {
+    public Number getMaxAantalDeelnemers() {
         return maxAantalDeelnemers;
     }
 
