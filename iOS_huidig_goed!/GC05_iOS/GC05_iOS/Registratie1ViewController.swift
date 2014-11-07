@@ -2,8 +2,8 @@ import UIKit
 
 class Registratie1ViewController: UIViewController
 {
-    var ouder: Ouder!
-    var gebruikerIsLid: Bool?
+    var ouder: Ouder! = Ouder(id: "test")
+    var gebruikerIsLid: Bool? = true
  
     @IBOutlet weak var isLid: UISwitch!
     
@@ -15,6 +15,9 @@ class Registratie1ViewController: UIViewController
     @IBOutlet weak var txtRijksregisterNr: UITextField!
     @IBOutlet weak var lblAansluitingsNrTweedeOuder: UILabel!
     @IBOutlet weak var txtAansluitingsNrTweedeOuder: UITextField!
+    
+    var tellerAantalLegeVelden : Int = 0
+    var textVelden: [String: String] = [:]
     
     @IBAction func switched(sender: UISwitch) {
         if sender.on {
@@ -48,34 +51,62 @@ class Registratie1ViewController: UIViewController
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let registratie3ViewController = segue.destinationViewController as Registratie3ViewController
+        ouder.foutBox = nil
         
-        ouder = Ouder(id: "test")
-        
+        //controleren lege velden als switch op on staat
         if gebruikerIsLid == true {
-            ouder.aansluitingsNr = txtAansluitingsNr.text.toInt()!
-            ouder.codeGerechtigde = txtCodeGerechtigde.text.toInt()!
-            ouder.rijksregisterNr = txtRijksregisterNr.text
             
-            if !txtAansluitingsNrTweedeOuder.text.isEmpty {
-                ouder.aansluitingsNrTweedeOuder = txtAansluitingsNrTweedeOuder.text.toInt()!
+            controleerEmptyTextfield(txtAansluitingsNr)
+            controleerEmptyTextfield(txtCodeGerechtigde)
+            controleerEmptyTextfield(txtRijksregisterNr)
+            
+            if tellerAantalLegeVelden > 0 {
+                textVeldenLeegMaken()
+                foutBoxOproepen("Fout", message: "Gelieve alle verplichte velden in te vullen!")
+            } else {
+                //velden van ouder invullen
+                ouder.setAansluitingsNr(txtAansluitingsNr.text.toInt()!)
+                ouder.setCodeGerechtigde(txtCodeGerechtigde.text.toInt()!)
+                ouder.setRijksregisterNr(txtRijksregisterNr.text)
+                
+                //aansluitingsNrTweedeOuder is ingevuld
+                if !txtAansluitingsNrTweedeOuder.text.isEmpty {
+                    ouder.setAansluitingsNrTweedeOuder(txtAansluitingsNrTweedeOuder.text.toInt()!)
+                }
             }
+            
         }
         
-        registratie3ViewController.ouder = ouder
-        
-        /*if lidSocialistischeMutualiteitSwitch.on {
-            registratie2ViewController.gebruikerIsLid = true
+        if ouder.bestaatFoutBoxAl() {
+            textVeldenLeegMaken()
+            foutBoxOproepen(ouder.foutBox!)
         } else {
-            registratie2ViewController.gebruikerIsLid = false
-        }*/
-        /*if segue.identifier == "volgende" {
-            
-            if lidSocialistischeMutualiteitSwitch.on {
-                let registratie2ViewController = segue.destinationViewController as Registratie2ViewController
-            } else {
-                let registratie3ViewController = segue.destinationViewController as Registratie3ViewController
-            }
-        }*/
+            registratie3ViewController.ouder = ouder
+        }
+    }
+    
+    func controleerEmptyTextfield(textField: UITextField) {
+        if textField.text.isEmpty {
+            tellerAantalLegeVelden += 1
+        }
+    }
+    
+    func foutBoxOproepen(title: String, message: String) {
+        var foutBox: FoutBox = FoutBox(title: title, message: message)
+        var alert = foutBox.alert
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    func foutBoxOproepen(foutBox: FoutBox) {
+        var alert = foutBox.alert
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    func textVeldenLeegMaken() {
+        txtAansluitingsNr.text = ""
+        txtCodeGerechtigde.text = ""
+        txtRijksregisterNr.text = ""
+        txtAansluitingsNrTweedeOuder.text = ""
     }
     
     @IBAction func gaTerugNaarRegistreren(segue: UIStoryboard) {
