@@ -17,7 +17,12 @@ class VakantieDetailsTableViewController: UITableViewController {
     var vakantie: Vakantie!
     
     override func viewDidLoad() {
-        // TO DO afbeelding1
+        
+        
+       // afbeelding1.setValue(vakantie.image1, forKey: "")
+       // afbeelding2 = vakantie.image2
+       // afbeelding3 = vakantie.image3
+        
         // TO DO afbeelding2
         // TO DO afbeelding3
         navigationItem.title = vakantie.titel

@@ -11,7 +11,6 @@ class NieuwWachtwoordViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "nieuwWachtwoord2" {
-            let succesvolNieuwWachtwoord = segue.destinationViewController as SuccesvolNieuwWachtwoordViewController
             nieuwWachtwoord()
         }
     }

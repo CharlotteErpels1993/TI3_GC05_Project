@@ -61,4 +61,15 @@ class VakantiesTableViewController: UITableViewController {
         // TO DO cell.doelgroepImage = vakantie.doelgroep
         return cell
     }
+    
+    /*func zoekImages() {
+        var image1 = PFObject(className: "Vakantie")
+        let image1File = image1["vakAfbeelding1"] as PFFile
+        image1File.getDataInBackgroundWithBlock {
+            (imageData: NSData!, error: NSError!) -> Void in
+            if error != nil {
+                let afbeelding = UIImage(data:imageData)
+            }
+        }
+    }*/
 }
