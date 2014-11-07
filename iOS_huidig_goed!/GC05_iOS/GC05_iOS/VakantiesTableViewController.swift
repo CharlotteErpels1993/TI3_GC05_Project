@@ -2,6 +2,7 @@ import UIKit
 
 class VakantiesTableViewController: UITableViewController {
     var vakanties: [Vakantie] = []
+    var ouder: Ouder?
     
     override func viewDidLoad() {
         super.viewDidLoad()
