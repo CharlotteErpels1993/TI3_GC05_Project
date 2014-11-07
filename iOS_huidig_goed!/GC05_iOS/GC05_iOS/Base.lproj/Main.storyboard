@@ -20,47 +20,37 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VakantieNaam" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SRB-Ve-8pV">
-                                            <rect key="frame" x="8" y="8" width="111" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <rect key="frame" x="8" y="8" width="182.5" height="35"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ik wil deze vakantie!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SHQ-5H-NmG">
-                                            <rect key="frame" x="413" y="45" width="154" height="21"/>
+                                            <rect key="frame" x="413" y="45" width="153.5" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nnu-HO-lDP">
-                                            <rect key="frame" x="8" y="45" width="284" height="56"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="56" id="fGy-Q4-ntE"/>
-                                                <constraint firstAttribute="width" constant="284" id="v1c-kq-hL6"/>
-                                            </constraints>
-                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h9d-BQ-QQV">
+                                            <rect key="frame" x="8" y="79" width="48.5" height="24"/>
+                                            <color key="backgroundColor" red="0.98823535439999999" green="0.090196080509999998" blue="0.10588236149999999" alpha="1" colorSpace="deviceRGB"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                            <color key="textColor" red="0.97647064924240112" green="0.99215692281723022" blue="0.99215692281723022" alpha="1" colorSpace="deviceRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="SHQ-5H-NmG" firstAttribute="top" secondItem="P3a-47-5bl" secondAttribute="topMargin" constant="37" id="61B-r8-iM6"/>
                                         <constraint firstItem="SRB-Ve-8pV" firstAttribute="leading" secondItem="P3a-47-5bl" secondAttribute="leadingMargin" id="8Lc-Fz-DYW"/>
-                                        <constraint firstItem="nnu-HO-lDP" firstAttribute="leading" secondItem="P3a-47-5bl" secondAttribute="leadingMargin" id="KFI-Nj-fax"/>
-                                        <constraint firstItem="nnu-HO-lDP" firstAttribute="top" secondItem="SRB-Ve-8pV" secondAttribute="bottom" constant="16" id="PAU-wj-bhy"/>
-                                        <constraint firstItem="nnu-HO-lDP" firstAttribute="leading" secondItem="P3a-47-5bl" secondAttribute="leadingMargin" id="WEm-jL-rOP"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="SHQ-5H-NmG" secondAttribute="trailing" constant="-8" id="WP1-PF-lHc"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="nnu-HO-lDP" secondAttribute="bottom" constant="2.5" id="iu1-hJ-3P1"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="nnu-HO-lDP" secondAttribute="bottom" constant="2.5" id="jCT-Sr-wxC"/>
+                                        <constraint firstItem="h9d-BQ-QQV" firstAttribute="leading" secondItem="P3a-47-5bl" secondAttribute="leadingMargin" id="Z44-NE-Pfe"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="SHQ-5H-NmG" secondAttribute="bottom" constant="37.5" id="mv5-XU-rP6"/>
                                         <constraint firstItem="SRB-Ve-8pV" firstAttribute="top" secondItem="P3a-47-5bl" secondAttribute="topMargin" id="pxt-or-Z0X"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="h9d-BQ-QQV" secondAttribute="bottom" constant="0.5" id="qYz-tb-B8n"/>
                                     </constraints>
-                                    <variation key="default">
-                                        <mask key="constraints">
-                                            <exclude reference="KFI-Nj-fax"/>
-                                            <exclude reference="PAU-wj-bhy"/>
-                                            <exclude reference="iu1-hJ-3P1"/>
-                                        </mask>
-                                    </variation>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="doelgroepImage" destination="nnu-HO-lDP" id="yor-Rr-JP7"/>
+                                    <outlet property="doelgroepLabel" destination="h9d-BQ-QQV" id="6iH-l2-kPZ"/>
                                     <outlet property="gaVerderLabel" destination="SHQ-5H-NmG" id="57X-kL-UEB"/>
                                     <outlet property="vakantieNaamLabel" destination="SRB-Ve-8pV" id="zT0-X2-EnL"/>
                                     <segue destination="q35-qh-mtC" kind="show" identifier="toonVakantie" id="laN-Ih-sVW"/>

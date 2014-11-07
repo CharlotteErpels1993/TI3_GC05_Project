@@ -3,7 +3,7 @@ import UIKit
 class VakantieCell: UITableViewCell {
     
     @IBOutlet weak var gaVerderLabel: UILabel!
-    @IBOutlet weak var doelgroepImage: UIImageView!
+    @IBOutlet weak var doelgroepLabel: UILabel!
     @IBOutlet weak var vakantieNaamLabel: UILabel!
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
