@@ -47,6 +47,7 @@
 		1BDDB9531A02D8770007623D /* Deelnemer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDDB9521A02D8770007623D /* Deelnemer.swift */; };
 		1BDDB9551A02D87F0007623D /* ContactpersoonNood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDDB9541A02D87F0007623D /* ContactpersoonNood.swift */; };
 		1BDDB9571A02DD1E0007623D /* Gebruiker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDDB9561A02DD1E0007623D /* Gebruiker.swift */; };
+		1BDF24B01A0CDEAA00B4B63F /* BekijkAfbeeldingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDF24AF1A0CDEAA00B4B63F /* BekijkAfbeeldingViewController.swift */; };
 		1BFB1E591A0C0A6400E7B53F /* NieuwWachtwoordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFB1E581A0C0A6400E7B53F /* NieuwWachtwoordViewController.swift */; };
 		1BFC33401A066A87009CA8EB /* VakantieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFC333F1A066A87009CA8EB /* VakantieCell.swift */; };
 /* End PBXBuildFile section */
@@ -107,6 +108,7 @@
 		1BDDB9521A02D8770007623D /* Deelnemer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deelnemer.swift; sourceTree = "<group>"; };
 		1BDDB9541A02D87F0007623D /* ContactpersoonNood.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactpersoonNood.swift; sourceTree = "<group>"; };
 		1BDDB9561A02DD1E0007623D /* Gebruiker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gebruiker.swift; sourceTree = "<group>"; };
+		1BDF24AF1A0CDEAA00B4B63F /* BekijkAfbeeldingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BekijkAfbeeldingViewController.swift; sourceTree = "<group>"; };
 		1BFB1E581A0C0A6400E7B53F /* NieuwWachtwoordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NieuwWachtwoordViewController.swift; sourceTree = "<group>"; };
 		1BFC333F1A066A87009CA8EB /* VakantieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VakantieCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -228,6 +230,7 @@
 				1B39CF741A078474008DEC49 /* OverzichtOuderViewController.swift */,
 				1B39CF761A0795D9008DEC49 /* OverzichtMonitorViewController.swift */,
 				1BFB1E581A0C0A6400E7B53F /* NieuwWachtwoordViewController.swift */,
+				1BDF24AF1A0CDEAA00B4B63F /* BekijkAfbeeldingViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -374,6 +377,7 @@
 				1B39CF771A0795D9008DEC49 /* OverzichtMonitorViewController.swift in Sources */,
 				0F2A819A1A091F7100F67A3B /* Regex.swift in Sources */,
 				0FBEA1F41A0684FD005FF0D2 /* Date.swift in Sources */,
+				1BDF24B01A0CDEAA00B4B63F /* BekijkAfbeeldingViewController.swift in Sources */,
 				1B1792851A0272D300C4F82B /* VakantieDetailsTableViewController.swift in Sources */,
 				1B4D784B1A0277F100E823E2 /* Registratie1ViewController.swift in Sources */,
 			);
