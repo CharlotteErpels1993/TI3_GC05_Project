@@ -3,62 +3,62 @@ import Foundation
 class Gebruiker
 {
     var id: String?
-
-    var rijksregisterNr: String? /*{
-        willSet {
-            assert(checkValidRijksregisterNummer(newValue!), "Rijksregisternummer moet geldig zijn!")
-        }
-    }*/
+    var foutBox: FoutBox?
     
-    var email: String? /*{
-        willSet {
-            assert(checkValidEmail(newValue!), "E-mail moet een geldig e-mailadres zijn!")
-        }
-    }*/
-
+    var rijksregisterNr: String?
+    var email: String?
     var wachtwoord: String?
     var voornaam: String?
     var naam: String?
     var straat: String?
-    
-    var nummer: Int? /*{
-        willSet {
-            assert(checkValidNummer(newValue!), "Huisnummer moet een geldig nummer zijn!")
-        }
-    }*/
-    
+    var nummer: Int?
     var bus: String?
     var gemeente: String?
+    var postcode: Int?
+    var telefoon: String?
+    var gsm: String?
+    var aansluitingsNr: Int?
+    var codeGerechtigde: Int?
     
-    var postcode: Int? /*{
-        willSet {
-            assert(checkValidPostcode(newValue!), "Postcode moet geldig zijn!")
+    //setters (zelfgeschreven)
+    func setRijksregisterNr(rrn: String) {
+        if !checkValidRijksregisterNummer(rrn) {
+            if bestaatFoutBoxAl() {
+                
+                foutBox?.alert.message?.extend("\n Rijksregisternummer is niet geldig.")
+            } else {
+                foutBox = FoutBox(title: "Ongeldige waarde(s)", message: "Rijksregisternummer is niet geldig.")
+            }
+        } else {
+            self.rijksregisterNr = rrn
         }
-    }*/
+    }
     
-    var telefoon: String? /*{
-        willSet {
-            assert(checkValidTelefoon(newValue!), "Telefoon moet een geldig telefoonnummer zijn!")
+    func setAansluitingsNr(anr: Int) {
+        if !checkValidAansluitingsNr(anr) {
+            if bestaatFoutBoxAl() {
+                
+                foutBox?.alert.message?.extend("\n Aansluitingsnummer is niet geldig.")
+            } else {
+                foutBox = FoutBox(title: "Ongeldige waarde(s)", message: "Aansluitingsnummer is niet geldig.")
+            }
+        } else {
+            self.aansluitingsNr = anr
         }
-    }*/
-
-    var gsm: String? /*{
-        willSet {
-            assert(checkValidGsm(newValue!), "Gsm moet een geldig gsmnummer zijn!")
-        }
-    }*/
+    }
     
-    var aansluitingsNr: Int? /*{
-        willSet {
-            assert(checkValidAansluitingsNr(newValue!), "Aansluitingsnummer moet geldig zijn!")
+    func setCodeGerechtigde(cg: Int) {
+        if !checkValidCodeGerechtigde(cg) {
+            if bestaatFoutBoxAl() {
+                
+                foutBox?.alert.message?.extend("\n Code gerechtigde is niet geldig.")
+            } else {
+                foutBox = FoutBox(title: "Ongeldige waarde(s)", message: "Code gerechtigde is niet geldig.")
+            }
+        } else {
+            self.codeGerechtigde = cg
         }
-    }*/
-    
-    var codeGerechtigde: Int? /*{
-        willSet {
-            assert(checkValidCodeGerechtigde(newValue!), "Code gerechtigde moet geldig zijn!")
-        }
-    }*/
+    }
     
     init(id: String) {
         self.id = id
@@ -66,20 +66,20 @@ class Gebruiker
     
     init(gebruiker: PFObject) {
         self.id = gebruiker.objectId
-        self.rijksregisterNr = gebruiker["rijksregisterNr"] as String
-        self.email = gebruiker["email"] as String
-        self.wachtwoord = gebruiker["wachtwoord"] as String
-        self.voornaam = gebruiker["voornaam"] as String
-        self.naam = gebruiker["naam"] as String
-        self.straat = gebruiker["straat"] as String
-        self.nummer = gebruiker["nummer"] as Int
-        self.bus = gebruiker["bus"] as String
-        self.gemeente = gebruiker["gemeente"] as String
-        self.postcode = gebruiker["postcode"] as Int
-        self.telefoon = gebruiker["telefoon"] as String
-        self.gsm = gebruiker["gsm"] as String
-        self.aansluitingsNr = gebruiker["aansluitingsNr"] as Int
-        self.codeGerechtigde = gebruiker["codeGerechtigde"] as Int
+        self.rijksregisterNr = gebruiker["rijksregisterNr"] as? String
+        self.email = gebruiker["email"] as? String
+        self.wachtwoord = gebruiker["wachtwoord"] as? String
+        self.voornaam = gebruiker["voornaam"] as? String
+        self.naam = gebruiker["naam"] as? String
+        self.straat = gebruiker["straat"] as? String
+        self.nummer = gebruiker["nummer"] as? Int
+        self.bus = gebruiker["bus"] as? String
+        self.gemeente = gebruiker["gemeente"] as? String
+        self.postcode = gebruiker["postcode"] as? Int
+        self.telefoon = gebruiker["telefoon"] as? String
+        self.gsm = gebruiker["gsm"] as? String
+        self.aansluitingsNr = gebruiker["aansluitingsNr"] as? Int
+        self.codeGerechtigde = gebruiker["codeGerechtigde"] as? Int
     }
     
     init(rijksregisterNr: String, email: String, wachtwoord: String, voornaam: String, naam: String, straat: String, nummer: Int, bus: String, gemeente: String, postcode: Int, telefoon: String, gsm: String, aansluitingsNr: Int, codeGerechtigde: Int) {
@@ -139,6 +139,11 @@ class Gebruiker
     
     private func checkValidRijksregisterNummer(rrn: String) -> Bool {
         var length : Int = countElements(rrn)
+        
+        if length != 11 {
+            return false
+        }
+        
         var eerste9CijfersString: String = rrn.substringWithRange(Range<String.Index>(start: rrn.startIndex, end: advance(rrn.endIndex, -2)))
         
         var eerste9CijfersInt: Int = eerste9CijfersString.toInt()!
@@ -150,9 +155,7 @@ class Gebruiker
         
         var laatste2CijfersInt: Int = laatste2CijfersString.toInt()!
         
-        if length > 11 || length < 11 {
-            return false
-        } else if laatste2CijfersInt != controleGetal {
+        if laatste2CijfersInt != controleGetal {
             return false
         } else {
             return true
@@ -212,5 +215,13 @@ class Gebruiker
             return true
         }
         return false
+    }
+    
+    func bestaatFoutBoxAl() -> Bool {
+        if foutBox == nil {
+            return false
+        } else {
+            return true
+        }
     }
 }

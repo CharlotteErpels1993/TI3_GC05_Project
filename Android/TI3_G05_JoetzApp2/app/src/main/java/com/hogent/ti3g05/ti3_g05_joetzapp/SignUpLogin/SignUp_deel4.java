@@ -74,7 +74,7 @@ public class SignUp_deel4 extends Activity{
                     // make HTTP requests
                     createAccount();
                 } else
-                    Toast.makeText(getApplicationContext(), "Fout bij registreren", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), getString(R.string.error_no_internet), Toast.LENGTH_SHORT).show();
                 //showAlertDialog(getApplicationContext(), "No Internet Connection",
                 //"You don't have internet connection.", false);
             }
@@ -158,7 +158,7 @@ public class SignUp_deel4 extends Activity{
 		} else {
 			// Show a progress spinner, and kick off a background task to
 			// perform the user login attempt.
-			Toast.makeText(getApplicationContext(), "Registreren", Toast.LENGTH_SHORT).show();
+			//Toast.makeText(getApplicationContext(), "Registreren", Toast.LENGTH_SHORT).show();
 			signUp(mEmail,mEmail, mPassword);
 
 		}
@@ -166,7 +166,7 @@ public class SignUp_deel4 extends Activity{
 	}
 
     private void signUp(String username, String mEmail, String mPassword) {
-        //Toast.makeText(getApplicationContext(), mEmail, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), getString(R.string.loading_message), Toast.LENGTH_SHORT).show();
 
         ParseObject gebruiker = new ParseObject("Ouder");
         gebruiker.put("username", username);
@@ -190,12 +190,14 @@ public class SignUp_deel4 extends Activity{
 
             try{
                 //gebruiker.put("wachtwoord", lidBondMoyson);
-                gebruiker.put("aansluitingsNr", Integer.parseInt(aansluitingsnr));
+                if (aansluitingsnr != null)
+                    gebruiker.put("aansluitingsNr", Integer.parseInt(aansluitingsnr));
                 gebruiker.put("voornaam", voornaam);
                 gebruiker.put("naam", naam);
                 gebruiker.put("straat", straat);
                 gebruiker.put("nummer", Integer.parseInt(huisnr));
-                gebruiker.put("bus", bus);
+                if (bus != null && !bus.equals(""))
+                    gebruiker.put("bus", bus);
                 gebruiker.put("gemeente", gemeente);
                 gebruiker.put("postcode", Integer.parseInt(postcode));
                 gebruiker.put("rijksregisterNr", rijksregnr);

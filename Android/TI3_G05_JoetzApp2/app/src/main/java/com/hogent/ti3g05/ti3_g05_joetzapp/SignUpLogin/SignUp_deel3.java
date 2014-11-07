@@ -87,7 +87,7 @@ public class SignUp_deel3 extends Activity{
                 else{
                     // Internet connection is not present
                     // Ask user to connect to Internet
-                    Toast.makeText(getApplicationContext(), "Fout bij registreren", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), getString(R.string.error_no_internet), Toast.LENGTH_SHORT).show();
                 }
 
                 //Intent in = new Intent(getApplicationContext(),SignUp_deel4.class);
@@ -236,7 +236,7 @@ public class SignUp_deel3 extends Activity{
 	}
 
     private void opslaan(String voornaam,String naam, String rijksregnr, String straat, String huisnr, String gemeente, String postcode, String telefoon, String gsm, String bus) {
-        //Toast.makeText(getApplicationContext(), mEmail, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), getString(R.string.loading_message), Toast.LENGTH_SHORT).show();
 
         Intent in = new Intent(getApplicationContext(),SignUp_deel4.class);
 

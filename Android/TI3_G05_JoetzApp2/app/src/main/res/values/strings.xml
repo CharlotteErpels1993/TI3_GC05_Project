@@ -73,7 +73,10 @@
     <string name="signup_melding_monitor">U schrijft zich momenteel in als ouder/voogd. Wilt u inschrijven als monitor?
 Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm en eventueel uw telefoonnummer.
         Ons e-mail adres is joetz.west@joetz.be en u kan ook terecht op het nummer: 056 27 47 00</string>
- 
+
+    <string name="loading_message">Bezig met laden, even geduld aub</string>
+
+    <string name="error_no_internet">Kan geen verbinding maken met de server. Gelieve uw verbinding te controleren.</string>
 
 
 
