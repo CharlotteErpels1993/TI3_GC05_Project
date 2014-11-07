@@ -70,12 +70,10 @@ class Registratie1ViewController: UIViewController
                 foutBoxOproepen("Fout", "Gelieve alle verplichte velden in te vullen!", self)
             } else {
                 controleerVerplichteGegevens()
-                settenVerplichteGegevens()
                 
                 //aansluitingsNrTweedeOuder is ingevuld
                 if !txtAansluitingsNrTweedeOuder.text.isEmpty {
                     controleerAansluitingsNrTweedeOuder(txtAansluitingsNrTweedeOuder.text.toInt()!)
-                    ouder.aansluitingsNrTweedeOuder = txtAansluitingsNrTweedeOuder.text.toInt()!
                 }
             }
             
@@ -85,6 +83,10 @@ class Registratie1ViewController: UIViewController
             textVeldenLeegMaken()
             foutBoxOproepen(foutBox!, self)
         } else {
+            if gebruikerIsLid == true {
+                settenVerplichteGegevens()
+                ouder.aansluitingsNrTweedeOuder = txtAansluitingsNrTweedeOuder.text.toInt()!
+            }
             registratie3ViewController.ouder = ouder
         }
     }
@@ -107,7 +109,7 @@ class Registratie1ViewController: UIViewController
     func controleerVerplichteGegevens() {
         controleerAansluitingsNr(txtAansluitingsNr.text.toInt()!)
         controleerCodeGerechtigde(txtCodeGerechtigde.text.toInt()!)
-        controleerRijksregisterNr(txtRijksregisterNr.text)
+        //controleerRijksregisterNr(txtRijksregisterNr.text)
     }
 
     func controleerAansluitingsNr(aansluitingsNr: Int) {
@@ -160,13 +162,13 @@ class Registratie1ViewController: UIViewController
     
     func checkPatternRijksregisterNr(rijksregisterNr: String) -> Bool {
         var length : Int = countElements(rijksregisterNr)
-        
+    
         if length != 11 {
             return false
         }
-        
+    
         var eerste9CijfersString: String = rijksregisterNr.substringWithRange(Range<String.Index>(start: rijksregisterNr.startIndex, end: advance(rijksregisterNr.endIndex, -2)))
-        
+    
         var eerste9CijfersInt: Int = eerste9CijfersString.toInt()!
         var restNaDeling97: Int = eerste9CijfersInt % 97
         var controleGetal: Int = 97 - restNaDeling97
