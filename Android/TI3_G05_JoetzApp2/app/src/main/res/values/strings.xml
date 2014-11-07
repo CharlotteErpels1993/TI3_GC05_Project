@@ -76,6 +76,8 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
 
     <string name="loading_message">Bezig met laden, even geduld aub</string>
 
+    <string name="error_no_internet">Kan geen verbinding maken met de server. Gelieve uw verbinding te controleren.</string>
+
 
 
 

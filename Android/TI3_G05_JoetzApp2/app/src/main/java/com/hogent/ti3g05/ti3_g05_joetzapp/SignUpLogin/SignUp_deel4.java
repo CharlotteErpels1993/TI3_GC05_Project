@@ -74,7 +74,7 @@ public class SignUp_deel4 extends Activity{
                     // make HTTP requests
                     createAccount();
                 } else
-                    Toast.makeText(getApplicationContext(), "Fout bij registreren", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), getString(R.string.error_no_internet), Toast.LENGTH_SHORT).show();
                 //showAlertDialog(getApplicationContext(), "No Internet Connection",
                 //"You don't have internet connection.", false);
             }

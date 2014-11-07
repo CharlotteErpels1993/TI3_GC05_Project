@@ -87,7 +87,7 @@ public class SignUp_deel3 extends Activity{
                 else{
                     // Internet connection is not present
                     // Ask user to connect to Internet
-                    Toast.makeText(getApplicationContext(), "Fout bij registreren", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), getString(R.string.error_no_internet), Toast.LENGTH_SHORT).show();
                 }
 
                 //Intent in = new Intent(getApplicationContext(),SignUp_deel4.class);
