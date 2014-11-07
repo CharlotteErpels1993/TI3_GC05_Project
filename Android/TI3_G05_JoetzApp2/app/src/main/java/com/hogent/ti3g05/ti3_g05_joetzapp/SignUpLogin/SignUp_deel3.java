@@ -74,25 +74,23 @@ public class SignUp_deel3 extends Activity{
 		volgendeButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
+                // get Internet status
+                isInternetPresent = cd.isConnectingToInternet();
+                // check for Internet status
 
-                    // TODO Data naar db sturen of eventueel een objectje gebruiken om data doorheen de views op te slaan en door te geven, zie activiteit bekijken!
-                    /*
-                            // get Internet status
-                            isInternetPresent = cd.isConnectingToInternet();
-                            // check for Internet status
-                            // Internet connection is not present
-// Ask user to connect to Internet
-                            if (isInternetPresent) {
-                                // Internet Connection is Present
-                                // make HTTP requests
-                                createAccount();
-                            }*/
-                //opslaagGeg();
+                if (isInternetPresent) {
+                    // Internet Connection is Present
+                    // make HTTP requests
+                    opslaagGeg();
+                }
+                else{
+                    // Internet connection is not present
+                    // Ask user to connect to Internet
+                    Toast.makeText(getApplicationContext(), "Fout bij registreren", Toast.LENGTH_SHORT).show();
+                }
 
-                Intent in = new Intent(getApplicationContext(),SignUp_deel4.class);
-                startActivity(in);
-
-
+                //Intent in = new Intent(getApplicationContext(),SignUp_deel4.class);
+                //startActivity(in);
 
             }
         });
@@ -102,7 +100,7 @@ public class SignUp_deel3 extends Activity{
         terugKerenButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent1 = new Intent(SignUp_deel3.this, MainScreen.class);
+                Intent intent1 = new Intent(getApplicationContext(), MainScreen.class);
                 startActivity(intent1);
             }
         });
@@ -115,17 +113,24 @@ public class SignUp_deel3 extends Activity{
 		clearErrors();
         cancel = false;
 
-		//declaratie van focusView & cancel is private gedeclareerd.
-
 		// Store values at the time of the login attempt.
 		voornaam = voornaamText.getText().toString().toLowerCase();
 		naam = naamText.getText().toString().toLowerCase();
-		rijksregnr = Integer.parseInt(rijksregnrText.getText().toString());
+        if (isEmpty(rijksregnrText))
+            rijksregnr = -1;
+        else
+		    rijksregnr = Integer.parseInt(rijksregnrText.getText().toString());
         straat = straatText.getText().toString();
-        huisnr = Integer.parseInt( huisnrText.getText().toString());
+        if (isEmpty(huisnrText))
+            huisnr = -1;
+        else
+            huisnr = Integer.parseInt( huisnrText.getText().toString());
         bus = busText.getText().toString();
         gemeente = gemeenteText.getText().toString();
-        postcode = Integer.parseInt( postcodeText.getText().toString());
+        if (isEmpty(postcodeText))
+            postcode = -1;
+        else
+            postcode = Integer.parseInt( postcodeText.getText().toString());
         telefoon = telefoonText.getText().toString();
         gsm = gsmText.getText().toString();
 
@@ -140,53 +145,63 @@ public class SignUp_deel3 extends Activity{
 			focusView = naamText;
 			cancel = true;
 		}
-/*  ToDo controle of rijksregisternr niet leeg is en cijfers zijn
-		if (TextUtils.isEmpty(rijksregnr)) {
+/*  ToDo controle of rijksregisternr niet leeg is en cijfers zijn*/
+		if (TextUtils.isEmpty(Integer.toString(rijksregnr)) || rijksregnr == -1) {
             rijksregnrText.setError(getString(R.string.error_field_required));
             focusView = rijksregnrText;
             cancel = true;
-        }*/
+        }
 
         if (TextUtils.isEmpty(straat)) {
             straatText.setError(getString(R.string.error_field_required));
             focusView = straatText;
             cancel = true;
         }
-        /*  ToDo controle of huisnr niet leeg is en cijfers zijn
-        if (TextUtils.isEmpty(huisnr)) {
+
+        if (TextUtils.isEmpty(Integer.toString(huisnr)) || huisnr == -1) {
             huisnrText.setError(getString(R.string.error_field_required));
             focusView = huisnrText;
             cancel = true;
-        }*/
+        }
+        if (Integer.toString(huisnr).matches("[0-9]+") && Integer.toString(huisnr).length() >= 1){
+            huisnrText.setError("U moet een geldig huisnummer invoeren.");
+            focusView = huisnrText;
+            cancel = true;
+        }
 
-        if (TextUtils.isEmpty(bus)) {
+        /*if (TextUtils.isEmpty(bus)) {
             busText.setError(getString(R.string.error_field_required));
             focusView = busText;
             cancel = true;
-        }
+        }*/
         if (TextUtils.isEmpty(gemeente)) {
             gemeenteText.setError(getString(R.string.error_field_required));
             focusView = gemeenteText;
             cancel = true;
         }
-        /*  ToDo controle of postcode niet leeg is en cijfers zijn
-        if (TextUtils.isEmpty(postcode)) {
+
+        if (TextUtils.isEmpty(Integer.toString(postcode)) || postcode == -1) {
             postcodeText.setError(getString(R.string.error_field_required));
             focusView = postcodeText;
             cancel = true;
-        } else if(postcode.length()>4||postcode.length()<4) {
-            postcodeText.setError(getString(R.string.error_incorrect_postcode));
-            focusView = postcodeText;
-            cancel = true;
-        }*/
+        } else {
+            if (Integer.toString(postcode).length() != 4) {
+                postcodeText.setError(getString(R.string.error_incorrect_postcode));
+                focusView = postcodeText;
+                cancel = true;
+            }
+            if (Integer.toString(postcode).matches("[0-9]+")){
+                postcodeText.setError("U moet een geldige postcode invoeren.");
+                focusView = postcodeText;
+                cancel = true;
+            }
+        }
 
-        //Controle op telefoon? Dit moet getal zijn en moet een bepaalde lengte hebben
-
-        /*if (TextUtils.isEmpty(telefoon)) {
+        if (TextUtils.isEmpty(telefoon)) {
             telefoonText.setError(getString(R.string.error_field_required));
             focusView = telefoonText;
             cancel = true;
-        }*/
+        }
 
         if (TextUtils.isEmpty(gsm)) {
             gsmText.setError(getString(R.string.error_field_required));
@@ -219,7 +234,6 @@ public class SignUp_deel3 extends Activity{
             String BMnr = extras.getString("aansluitingsnr");
             in.putExtra("lidVanBondMoyson", lidBM);
             in.putExtra("aansluitingsnr", BMnr);
-
         }
 
         in.putExtra("voornaam", voornaam);
@@ -252,9 +266,25 @@ public class SignUp_deel3 extends Activity{
         busText.setError(null);
         telefoonText.setError(null);
         gsmText.setError(null);
-
 	}
 
+    private boolean isEmpty(EditText etText) {
+        return etText.getText().toString().trim().length() == 0;
+    }
+
+    private boolean isValidRijksregisternr(int rrn){
+        String tekstrrn = Integer.toString(rrn);
+        if (tekstrrn.length() != 11)
+            return false;
+        else{
+            String eerste9cijfers, laatste2;
+            eerste9cijfers = tekstrrn.substring(0, 10);
+            laatste2 = tekstrrn.substring(10, 11);
+            int restNaDeling = Integer.parseInt(eerste9cijfers) % 97;
+            int controleGetal = 97 - restNaDeling;
+            return controleGetal == Integer.parseInt(laatste2);
+        }
+    }
 
 	
 }
