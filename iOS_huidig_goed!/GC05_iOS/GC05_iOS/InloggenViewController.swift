@@ -7,20 +7,54 @@ class InloggenViewController: UIViewController
     
     var queryOuder = PFQuery(className: "Ouder")
     var queryMonitor = PFQuery(className: "Monitor")
-    var gebruiker: Gebruiker?
-    
+    var gebruiker: Gebruiker!
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    @IBAction func unwindFromAdd(segue: UIStoryboard) {
+    
+    @IBAction func inloggen(sender: AnyObject) {
+        var email: String = txtEmail.text
+        var wachtwoord: String = txtWachtwoord.text
+        
+        if veldenZijnIngevuld(email, wachtwoord: wachtwoord) {
+            //zoeken naar gebruikers
+            var type: String = zoekenMatchMonitorOfOuder(email, wachtwoord: wachtwoord)
+            
+            if type == "monitor" {
+                var monitorPF = queryMonitor.getFirstObject()
+                self.gebruiker = Monitor(monitor: monitorPF)
+                
+                //let overzichtMonitorViewController = segue.destinationViewController as OverzichtMonitorViewController
+                //overzichtMonitorViewController.monitor = self.gebruiker as Monitor
+                performSegueWithIdentifier("monitorOverzicht", sender: self)
+            } else if type == "ouder" {
+                var ouderPF = queryOuder.getFirstObject()
+                self.gebruiker = Ouder(ouder: ouderPF)
+                
+                //let overzichtOuderViewController = segue.destinationViewController as OverzichtOuderViewController
+                //overzichtOuderViewController.ouder = ouder
+                /*let overzichtVakantiesOuderViewController = segue.destinationViewController as VakantiesTableViewController*/
+                performSegueWithIdentifier("ouderOverzicht", sender: self)
+                //overzichtVakantiesOuderViewController.ouder = self.gebruiker as Ouder
+            }
+        } else {
+            var alert = UIAlertController(title: "Fout", message: "De combinatie e-mail/wachtwoord is niet correct", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Ga terug", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+    }
+    
+    
+    
+    @IBAction func gaTerugNaarInloggen(segue: UIStoryboardSegue) {
         
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        var email: String = txtEmail.text
+        /*var email: String = txtEmail.text
         var wachtwoord: String = txtWachtwoord.text
         
         
@@ -40,17 +74,25 @@ class InloggenViewController: UIViewController
                 
                 //let overzichtOuderViewController = segue.destinationViewController as OverzichtOuderViewController
                 //overzichtOuderViewController.ouder = ouder
-                let overzichtVakantiesOuderViewController = segue.destinationViewController as VakantiesTableViewController
-                overzichtVakantiesOuderViewController.ouder = self.gebruiker as Ouder
+                /*let overzichtVakantiesOuderViewController = segue.destinationViewController as VakantiesTableViewController*/
+                performSegueWithIdentifier("ouderOverzicht", sender: self)
+                //overzichtVakantiesOuderViewController.ouder = self.gebruiker as Ouder
             } else {
                 var alert = UIAlertController(title: "Fout", message: "De combinatie e-mail/wachtwoord is niet correct", preferredStyle: UIAlertControllerStyle.Alert)
                 alert.addAction(UIAlertAction(title: "Ga terug", style: UIAlertActionStyle.Default, handler: nil))
                 self.presentViewController(alert, animated: true, completion: nil)
             }
-        } else if segue.identifier == "nieuwWachtwoord" {
+        } else*/
+        if segue.identifier == "nieuwWachtwoord" {
             let nieuwWachtwoordController = segue.destinationViewController as NieuwWachtwoordViewController
         } else if segue.identifier == "registreren" {
             let registrerenController = segue.destinationViewController as Registratie1ViewController
+        } else if segue.identifier == "ouderOverzicht" {
+            let ouderOverzichtController = segue.destinationViewController as VakantiesTableViewController
+            ouderOverzichtController.ouder = self.gebruiker as Ouder
+        } else if segue.identifier == "overzichtMonitor" {
+            let monitorOverzichtController = segue.destinationViewController as OverzichtMonitorViewController
+            monitorOverzichtController.monitor = self.gebruiker as Monitor
         } else {
             //fout pop-up tonen
             var alert = UIAlertController(title: "Fout", message: "U hebt niet alle velden ingevuld!", preferredStyle: UIAlertControllerStyle.Alert)

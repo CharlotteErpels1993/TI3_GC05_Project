@@ -58,6 +58,11 @@ class VakantieDetailsTableViewController: UITableViewController {
         }
     }
     
+    /*override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        TO DO 
+    }*/
+    
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "bekijkAfbeelding" {
             let bekijkAfbeeldingViewController = segue.destinationViewController as BekijkAfbeeldingViewController
@@ -94,7 +99,7 @@ class VakantieDetailsTableViewController: UITableViewController {
                     (imageData: NSData!, error: NSError!) -> Void in
                     if error == nil {
                         var afb = UIImage(data: imageData)
-                        self.afbeelding1.image = afb
+                        self.afbeelding2.image = afb
                     } // if - end
                 } // getDataInBackgroundWithBlock - end
             } //if - end
@@ -111,7 +116,7 @@ class VakantieDetailsTableViewController: UITableViewController {
                     (imageData: NSData!, error: NSError!) -> Void in
                     if error == nil {
                         var afb = UIImage(data: imageData)
-                        self.afbeelding1.image = afb
+                        self.afbeelding3.image = afb
                         print(afb)
                     } // if - end
                 } // getDataInBackgroundWithBlock - end
