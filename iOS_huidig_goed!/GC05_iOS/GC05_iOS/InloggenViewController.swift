@@ -7,6 +7,7 @@ class InloggenViewController: UIViewController
     
     var queryOuder = PFQuery(className: "Ouder")
     var queryMonitor = PFQuery(className: "Monitor")
+    var gebruiker: Gebruiker?
     
     
     override func viewDidLoad() {
@@ -29,16 +30,18 @@ class InloggenViewController: UIViewController
             
             if type == "monitor" {
                 var monitorPF = queryMonitor.getFirstObject()
-                var monitor = Monitor(monitor: monitorPF)
+                self.gebruiker = Monitor(monitor: monitorPF)
                 
                 let overzichtMonitorViewController = segue.destinationViewController as OverzichtMonitorViewController
-                overzichtMonitorViewController.monitor = monitor
+                overzichtMonitorViewController.monitor = self.gebruiker as Monitor
             } else if type == "ouder" {
                 var ouderPF = queryOuder.getFirstObject()
-                var ouder = Ouder(ouder: ouderPF)
+                self.gebruiker = Ouder(ouder: ouderPF)
                 
-                let overzichtOuderViewController = segue.destinationViewController as OverzichtOuderViewController
-                overzichtOuderViewController.ouder = ouder
+                //let overzichtOuderViewController = segue.destinationViewController as OverzichtOuderViewController
+                //overzichtOuderViewController.ouder = ouder
+                let overzichtVakantiesOuderViewController = segue.destinationViewController as VakantiesTableViewController
+                overzichtVakantiesOuderViewController.ouder = self.gebruiker as Ouder
             } else {
                 var alert = UIAlertController(title: "Fout", message: "De combinatie e-mail/wachtwoord is niet correct", preferredStyle: UIAlertControllerStyle.Alert)
                 alert.addAction(UIAlertAction(title: "Ga terug", style: UIAlertActionStyle.Default, handler: nil))

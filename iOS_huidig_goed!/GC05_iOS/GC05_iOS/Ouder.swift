@@ -4,21 +4,6 @@ class Ouder: Gebruiker
 {
     var aansluitingsNrTweedeOuder: Int?
     
-    //setter (zelf geschreven)
-    func setAansluitingsNrTweedeOuder(anto: Int) {
-        if !checkValidAansluitingsNr(anto) {
-            if bestaatFoutBoxAl() {
-                
-                foutBox?.alert.message?.extend("\n Aansluitingsnummer van de tweede ouder is niet geldig.")
-            } else {
-                foutBox = FoutBox(title: "Ongeldige waarde(s)", message: "Aansluitingsnummer van de tweede ouder is niet geldig.")
-            }
-        } else {
-            self.aansluitingsNrTweedeOuder = anto
-        }
-    }
-    
-    
     override init(id: String) {
         super.init(id: id)
     }

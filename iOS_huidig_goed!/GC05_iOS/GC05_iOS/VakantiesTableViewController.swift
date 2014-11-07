@@ -2,6 +2,7 @@ import UIKit
 
 class VakantiesTableViewController: UITableViewController {
     var vakanties: [Vakantie] = []
+    var ouder: Ouder?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +32,7 @@ class VakantiesTableViewController: UITableViewController {
             let vakantieDetailsController = segue.destinationViewController as VakantieDetailsTableViewController
             let selectedVakantie = vakanties[tableView.indexPathForSelectedRow()!.row]
             vakantieDetailsController.vakantie = selectedVakantie as Vakantie
+            vakantieDetailsController.ouder = ouder
         /*} else if segue.identifier == "registreren" {
             let registratie1ViewController = segue.destinationViewController as Registratie1ViewController*/
         } else if segue.identifier == "inloggen" {
@@ -55,9 +57,9 @@ class VakantiesTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("vakantieCell", forIndexPath: indexPath) as VakantieCell
         let vakantie = vakanties[indexPath.row]
-        cell.gaVerderLabel.text = "Ik wil deze reis!"
+        cell.gaVerderLabel.text = "Meer details"
         cell.vakantieNaamLabel.text = vakantie.titel
-        // TO DO cell.doelgroepImage = vakantie.doelgroep
+        cell.doelgroepLabel.text = " \(vakantie.doelgroep) jaar "
         return cell
     }
 }

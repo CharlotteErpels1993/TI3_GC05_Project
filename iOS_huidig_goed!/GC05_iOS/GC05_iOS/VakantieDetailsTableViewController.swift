@@ -5,47 +5,57 @@ class VakantieDetailsTableViewController: UITableViewController {
     @IBOutlet weak var afbeelding1: UIImageView!
     @IBOutlet weak var afbeelding2: UIImageView!
     @IBOutlet weak var afbeelding3: UIImageView!
+
     
-    @IBOutlet weak var beschrijvingLabel: UILabel!
+    @IBOutlet weak var korteBeschrijvingLabel: UILabel!
+    @IBOutlet weak var doelgroepLabel: UILabel!
     @IBOutlet weak var vertrekdatumLabel: UILabel!
     @IBOutlet weak var aankomstdatumLabel: UILabel!
     @IBOutlet weak var aantalDagenNachtenLabel: UILabel!
     @IBOutlet weak var locatieLabel: UILabel!
-    @IBOutlet weak var inbegrepenPrijsLabel: UILabel!
+    @IBOutlet weak var prijsInbegrepenLabel: UILabel!
     @IBOutlet weak var maxAantalDeelnemersLabel: UILabel!
+    @IBOutlet weak var vervoerwijzeLabel: UILabel!
+    @IBOutlet weak var formuleLabel: UILabel!
+    
+    @IBOutlet weak var basisprijsLabel: UILabel!
+    @IBOutlet weak var bondMoysonPrijsLabel: UILabel!
+    @IBOutlet weak var sterprijs1Label: UILabel!
+    @IBOutlet weak var sterPrijs2Label: UILabel!
     
     var vakantie: Vakantie!
     var images: [UIImage] = []
+    var ouder: Ouder?
     
     override func viewDidLoad() {
         zoekImage1()
         zoekImage2()
         zoekImage3()
         
-       // afbeelding1.setValue(vakantie.image1, forKey: "")
-       // afbeelding2 = vakantie.image2
-       // afbeelding3 = vakantie.image3
-        
-        /*for var i = 1; i <= 3; i += 1 {
-            if i == 1 {
-                afbeelding1.image = images[1]
-            } else if i == 2 {
-                afbeelding2.image = images[2]
-            } else if i == 3 {
-                afbeelding3.image = images[3]
-            }
-        }*/
-        
-        // TO DO afbeelding2
-        // TO DO afbeelding3
         navigationItem.title = vakantie.titel
-        beschrijvingLabel.text = vakantie.korteBeschrijving
+        korteBeschrijvingLabel.text = vakantie.korteBeschrijving
+        doelgroepLabel.text = vakantie.doelgroep
         vertrekdatumLabel.text = String("Vertrekdatum: \(vakantie.beginDatum)")
-        aankomstdatumLabel.text = String("Terugkeerdatum: \(vakantie.terugkeerDatum)")
-        aantalDagenNachtenLabel.text = "Aantal dagen/nachten: \(vakantie.aantalDagenNachten)"
-        locatieLabel.text = vakantie.locatie
-        inbegrepenPrijsLabel.text = vakantie.inbegrepenPrijs
-        maxAantalDeelnemersLabel.text = String(vakantie.maxAantalDeelnemers)
+        aankomstdatumLabel.text = String("Aankomstdatum: \(vakantie.terugkeerDatum)")
+        aantalDagenNachtenLabel.text = String("Aantal dagen/nachten: \(vakantie.aantalDagenNachten)")
+        locatieLabel.text = String("Locatie: \(vakantie.locatie)")
+        prijsInbegrepenLabel.text = String("Inbegrepen in de prijs: \(vakantie.inbegrepenPrijs)")
+        maxAantalDeelnemersLabel.text = String("Max aantal deelnemers: \(vakantie.maxAantalDeelnemers)")
+        vervoerwijzeLabel.text = String("Vervoerwijze: \(vakantie.vervoerwijze)")
+        formuleLabel.text = String("Formule: \(vakantie.formule)")
+        
+        if ouder != nil {
+            basisprijsLabel.text = String("Basisprijs: \(vakantie.basisprijs)")
+            if (vakantie.bondMoysonLedenPrijs != -1) {
+                bondMoysonPrijsLabel.text = String("Bond moyson prijs: \(vakantie.bondMoysonLedenPrijs)")
+            } else { bondMoysonPrijsLabel.hidden = true }
+            if (vakantie.sterPrijs1ouder != -1) {
+                sterprijs1Label.text = String("Ster prijs (1 ouder): \(vakantie.sterPrijs1ouder)")
+            } else { bondMoysonPrijsLabel.hidden = true }
+            if (vakantie.sterPrijs2ouders != -1) {
+                sterPrijs2Label.text = String("Ster prijs (2 ouders): \(vakantie.sterPrijs2ouders)")
+            } else { bondMoysonPrijsLabel.hidden = true }
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
