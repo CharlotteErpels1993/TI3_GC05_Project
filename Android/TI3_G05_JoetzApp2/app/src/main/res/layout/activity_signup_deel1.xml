@@ -39,15 +39,27 @@
         android:id="@+id/radioButtonNee" />
     </RadioGroup>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/signup_melding_monitor"
+        android:id="@+id/txtWaarschuwingMonitor"
+        android:textColor="@color/Rood"
+        android:layout_below="@+id/radioGroup"
+        android:layout_centerHorizontal="true" />
+
 
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/back"
-
         android:id="@+id/btn_terugGaan"
-        android:layout_below="@id/radioGroup"
-        android:layout_alignParentStart="true" />
+        android:layout_below="@id/txtWaarschuwingMonitor"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp"/>
+
+
 
 
 </RelativeLayout>
