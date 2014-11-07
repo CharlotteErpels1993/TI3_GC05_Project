@@ -29,6 +29,9 @@ public class activiteit_detail extends Activity {
         terugdatum = i.getStringExtra("terugdatum");
         afbeelding1 = i.getStringExtra("afbeelding1");
         doelgro = i.getStringExtra("doelgroep");
+        afbeelding2 = i.getStringExtra("afbeelding2");
+
+        afbeelding3 = i.getStringExtra("afbeelding3");
 
         setTitle(naam);
 
@@ -39,6 +42,9 @@ public class activiteit_detail extends Activity {
         TextView txtDoelgr = (TextView) findViewById(R.id.doelgr);
 
         ImageView afbeelding1im = (ImageView) findViewById(R.id.afbeelding1);
+        ImageView afbeelding2im = (ImageView) findViewById(R.id.afbeelding2);
+
+        ImageView afbeelding3im = (ImageView) findViewById(R.id.afbeelding3);
 
 
         //ImageView imgflag = (ImageView) findViewById(R.id.flag);
@@ -52,5 +58,7 @@ public class activiteit_detail extends Activity {
         // Capture position and set results to the ImageView
         // Passes flag images URL into ImageLoader.class
         imageLoader.DisplayImage(afbeelding1, afbeelding1im);
+        imageLoader.DisplayImage(afbeelding2, afbeelding2im);
+        imageLoader.DisplayImage(afbeelding3, afbeelding3im);
     }
 }

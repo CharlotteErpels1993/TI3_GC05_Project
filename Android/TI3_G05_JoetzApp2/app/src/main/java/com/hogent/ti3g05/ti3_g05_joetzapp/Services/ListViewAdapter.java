@@ -89,7 +89,7 @@ public class ListViewAdapter extends ArrayAdapter<Vakantie> implements Filterabl
             holder.vertrekdatum = (TextView) view.findViewById(R.id.vertrekdatum);
             holder.terugdatum = (TextView) view.findViewById(R.id.terugdatum);
             holder.vakantiefto = (ImageView) view.findViewById(R.id.afbeelding);
-            holder.prijs = (TextView) view.findViewById(R.id.prijs);
+          //  holder.prijs = (TextView) view.findViewById(R.id.prijs);
             holder.doelgroep = (TextView) view.findViewById(R.id.doelgroep);
             view.setTag(holder);
         } else {
@@ -97,12 +97,13 @@ public class ListViewAdapter extends ArrayAdapter<Vakantie> implements Filterabl
         }
         holder.naamVakantie.setText(vakanties.get(position).getNaamVakantie());
         holder.locatie.setText(vakanties.get(position).getLocatie());
-        if(ParseUser.getCurrentUser() != null)
+       /* if(ParseUser.getCurrentUser() != null)
         {
             holder.prijs.setText((int) vakanties.get(position).getBasisprijs());
-        }
-        holder.vertrekdatum.setText((CharSequence) vakanties.get(position).getVertrekDatum().toString());
-        holder.terugdatum.setText((CharSequence) vakanties.get(position).getTerugkeerDatum().toString());
+        }*/
+        holder.vertrekdatum.setText(( vakanties.get(position).getVertrekDatum().toString()));
+        holder.terugdatum.setText(( vakanties.get(position).getTerugkeerDatum().toString()));
+        holder.doelgroep.setText(vakanties.get(position).getDoelGroep());
         imageLoader.DisplayImage(vakanties.get(position).getFoto1(),  holder.vakantiefto);
         view.setOnClickListener(new OnClickListener() {
 

@@ -10,4 +10,5 @@
         android:title="@string/title_activity_Register"
         android:orderInCategory="100"
         android:showAsAction="always" />
+
 </menu>

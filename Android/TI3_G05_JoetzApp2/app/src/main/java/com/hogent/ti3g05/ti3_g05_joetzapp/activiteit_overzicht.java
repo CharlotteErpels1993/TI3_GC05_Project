@@ -89,6 +89,7 @@ public class activiteit_overzicht extends Activity {
                     map.setTerugkeerDatum((java.util.Date) vakantie.get("terugkeerdatum"));
                     map.setKorteBeschrijving((String) vakantie.get("korteBeschrijving"));
                     map.setDoelGroep((String) vakantie.get("doelgroep"));
+                    //map.setBasisprijs((Double) vakantie.get("basisPrijs"));
 
                     map.setFoto1(image.getUrl());
                     map.setFoto2(image2.getUrl());

@@ -21,6 +21,7 @@ import android.widget.ListView;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.Login;
 import com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.SignUp_deel1;
+import com.parse.ParseUser;
 
 
 public class navBarMainScreen extends Activity {
@@ -220,6 +221,7 @@ public class navBarMainScreen extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_screen, menu);
+
         return true;
     }
 }
