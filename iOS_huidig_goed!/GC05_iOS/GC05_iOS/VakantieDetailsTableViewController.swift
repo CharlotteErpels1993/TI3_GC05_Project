@@ -2,8 +2,26 @@ import UIKit
 
 class VakantieDetailsTableViewController: UITableViewController {
     
+    @IBOutlet weak var afbeelding1: UIImageView!
+    @IBOutlet weak var afbeelding2: UIImageView!
+    @IBOutlet weak var afbeelding3: UIImageView!
 
     
+    @IBOutlet weak var korteBeschrijvingLabel: UILabel!
+    @IBOutlet weak var doelgroepLabel: UILabel!
+    @IBOutlet weak var vertrekdatumLabel: UILabel!
+    @IBOutlet weak var aankomstdatumLabel: UILabel!
+    @IBOutlet weak var aantalDagenNachtenLabel: UILabel!
+    @IBOutlet weak var locatieLabel: UILabel!
+    @IBOutlet weak var prijsInbegrepenLabel: UILabel!
+    @IBOutlet weak var maxAantalDeelnemersLabel: UILabel!
+    @IBOutlet weak var vervoerwijzeLabel: UILabel!
+    @IBOutlet weak var formuleLabel: UILabel!
+    
+    @IBOutlet weak var basisprijsLabel: UILabel!
+    @IBOutlet weak var bondMoysonPrijsLabel: UILabel!
+    @IBOutlet weak var sterprijs1Label: UILabel!
+    @IBOutlet weak var sterPrijs2Label: UILabel!
     var vakantie: Vakantie!
     var images: [UIImage] = []
     
