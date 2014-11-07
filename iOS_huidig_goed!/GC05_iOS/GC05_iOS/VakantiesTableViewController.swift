@@ -54,22 +54,10 @@ class VakantiesTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("vakantieCell", forIndexPath: indexPath) as VakantieCell
-        
         let vakantie = vakanties[indexPath.row]
         cell.gaVerderLabel.text = "Ik wil deze reis!"
         cell.vakantieNaamLabel.text = vakantie.titel
         // TO DO cell.doelgroepImage = vakantie.doelgroep
         return cell
     }
-    
-    /*func zoekImages() {
-        var image1 = PFObject(className: "Vakantie")
-        let image1File = image1["vakAfbeelding1"] as PFFile
-        image1File.getDataInBackgroundWithBlock {
-            (imageData: NSData!, error: NSError!) -> Void in
-            if error != nil {
-                let afbeelding = UIImage(data:imageData)
-            }
-        }
-    }*/
 }

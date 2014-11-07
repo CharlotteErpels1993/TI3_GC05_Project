@@ -110,39 +110,77 @@
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="150" id="GZf-ci-0r7"/>
                                                         <constraint firstAttribute="height" constant="100" id="KrN-pR-KI0"/>
+                                                        <constraint firstAttribute="height" constant="100" id="dTg-sq-EJy"/>
+                                                        <constraint firstAttribute="width" constant="150" id="qs1-vq-1Es"/>
                                                     </constraints>
-                                                </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iAv-P8-xBj">
-                                                    <rect key="frame" x="225" y="11" width="150" height="100"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="150" id="IcZ-8k-pHF"/>
-                                                        <constraint firstAttribute="height" constant="100" id="pBq-45-K3y"/>
-                                                    </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="GZf-ci-0r7"/>
+                                                            <exclude reference="KrN-pR-KI0"/>
+                                                        </mask>
+                                                    </variation>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kxP-43-geB">
                                                     <rect key="frame" x="429" y="10" width="150" height="100"/>
                                                     <constraints>
+                                                        <constraint firstAttribute="height" constant="100" id="Ibe-ip-LIE"/>
                                                         <constraint firstAttribute="height" constant="100" id="Ngv-PJ-qHf"/>
                                                         <constraint firstAttribute="width" constant="150" id="joZ-mV-YbW"/>
+                                                        <constraint firstAttribute="width" constant="150" id="oqW-Ip-X46"/>
                                                     </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="Ngv-PJ-qHf"/>
+                                                            <exclude reference="joZ-mV-YbW"/>
+                                                        </mask>
+                                                    </variation>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iAv-P8-xBj">
+                                                    <rect key="frame" x="225" y="11" width="150" height="100"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="100" id="7km-aW-zg0"/>
+                                                        <constraint firstAttribute="width" constant="150" id="IcZ-8k-pHF"/>
+                                                        <constraint firstAttribute="height" constant="100" id="pBq-45-K3y"/>
+                                                        <constraint firstAttribute="width" constant="150" id="s9U-TI-gaK"/>
+                                                    </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="IcZ-8k-pHF"/>
+                                                            <exclude reference="pBq-45-K3y"/>
+                                                        </mask>
+                                                    </variation>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="centerX" secondItem="iAv-P8-xBj" secondAttribute="centerX" id="0Zl-Yg-p3H"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="kxP-43-geB" secondAttribute="trailing" constant="13" id="122-5y-QeP"/>
+                                                <constraint firstItem="iAv-P8-xBj" firstAttribute="leading" secondItem="u8f-60-AfE" secondAttribute="trailing" constant="53" id="4rK-hM-Awj"/>
                                                 <constraint firstAttribute="centerY" secondItem="kxP-43-geB" secondAttribute="centerY" constant="-0.25" id="GNe-PM-2Nw"/>
                                                 <constraint firstItem="u8f-60-AfE" firstAttribute="leading" secondItem="dTc-9b-H7l" secondAttribute="leadingMargin" constant="14" id="I9q-e4-REX"/>
                                                 <constraint firstItem="u8f-60-AfE" firstAttribute="leading" secondItem="dTc-9b-H7l" secondAttribute="leadingMargin" constant="14" id="IEn-fe-WPd"/>
                                                 <constraint firstItem="u8f-60-AfE" firstAttribute="top" secondItem="dTc-9b-H7l" secondAttribute="topMargin" constant="3" id="VGf-Vl-L1a"/>
                                                 <constraint firstAttribute="centerY" secondItem="iAv-P8-xBj" secondAttribute="centerY" constant="-1.25" id="cna-3a-0fC"/>
+                                                <constraint firstItem="u8f-60-AfE" firstAttribute="leading" secondItem="dTc-9b-H7l" secondAttribute="leadingMargin" constant="14" id="eJa-Zb-les"/>
                                                 <constraint firstItem="kxP-43-geB" firstAttribute="top" secondItem="dTc-9b-H7l" secondAttribute="topMargin" constant="2" id="kEf-bj-rPF"/>
                                                 <constraint firstItem="u8f-60-AfE" firstAttribute="top" secondItem="dTc-9b-H7l" secondAttribute="topMargin" constant="3" id="sCP-1f-kIf"/>
+                                                <constraint firstItem="kxP-43-geB" firstAttribute="leading" secondItem="iAv-P8-xBj" secondAttribute="trailing" constant="54" id="shd-dJ-dK4"/>
+                                                <constraint firstItem="u8f-60-AfE" firstAttribute="top" secondItem="dTc-9b-H7l" secondAttribute="topMargin" constant="3" id="w6Y-iq-Os5"/>
                                                 <constraint firstAttribute="centerY" secondItem="u8f-60-AfE" secondAttribute="centerY" constant="-1.25" id="wDj-VR-vPs"/>
+                                                <constraint firstItem="kxP-43-geB" firstAttribute="top" secondItem="dTc-9b-H7l" secondAttribute="topMargin" constant="2" id="wK4-1O-G7q"/>
+                                                <constraint firstItem="iAv-P8-xBj" firstAttribute="top" secondItem="dTc-9b-H7l" secondAttribute="topMargin" constant="3" id="x6e-Sh-Rob"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
                                                     <exclude reference="I9q-e4-REX"/>
+                                                    <exclude reference="IEn-fe-WPd"/>
                                                     <exclude reference="VGf-Vl-L1a"/>
+                                                    <exclude reference="sCP-1f-kIf"/>
+                                                    <exclude reference="wDj-VR-vPs"/>
+                                                    <exclude reference="0Zl-Yg-p3H"/>
+                                                    <exclude reference="cna-3a-0fC"/>
+                                                    <exclude reference="122-5y-QeP"/>
+                                                    <exclude reference="GNe-PM-2Nw"/>
+                                                    <exclude reference="kEf-bj-rPF"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
