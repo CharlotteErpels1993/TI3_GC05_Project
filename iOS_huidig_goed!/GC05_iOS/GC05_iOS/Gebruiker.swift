@@ -3,8 +3,6 @@ import Foundation
 class Gebruiker
 {
     var id: String?
-    var foutBox: FoutBox?
-    
     var rijksregisterNr: String?
     var email: String?
     var wachtwoord: String?
@@ -19,46 +17,6 @@ class Gebruiker
     var gsm: String?
     var aansluitingsNr: Int?
     var codeGerechtigde: Int?
-    
-    //setters (zelfgeschreven)
-    func setRijksregisterNr(rrn: String) {
-        if !checkValidRijksregisterNummer(rrn) {
-            if bestaatFoutBoxAl() {
-                
-                foutBox?.alert.message?.extend("\n Rijksregisternummer is niet geldig.")
-            } else {
-                foutBox = FoutBox(title: "Ongeldige waarde(s)", message: "Rijksregisternummer is niet geldig.")
-            }
-        } else {
-            self.rijksregisterNr = rrn
-        }
-    }
-    
-    func setAansluitingsNr(anr: Int) {
-        if !checkValidAansluitingsNr(anr) {
-            if bestaatFoutBoxAl() {
-                
-                foutBox?.alert.message?.extend("\n Aansluitingsnummer is niet geldig.")
-            } else {
-                foutBox = FoutBox(title: "Ongeldige waarde(s)", message: "Aansluitingsnummer is niet geldig.")
-            }
-        } else {
-            self.aansluitingsNr = anr
-        }
-    }
-    
-    func setCodeGerechtigde(cg: Int) {
-        if !checkValidCodeGerechtigde(cg) {
-            if bestaatFoutBoxAl() {
-                
-                foutBox?.alert.message?.extend("\n Code gerechtigde is niet geldig.")
-            } else {
-                foutBox = FoutBox(title: "Ongeldige waarde(s)", message: "Code gerechtigde is niet geldig.")
-            }
-        } else {
-            self.codeGerechtigde = cg
-        }
-    }
     
     init(id: String) {
         self.id = id
@@ -136,32 +94,6 @@ class Gebruiker
         self.codeGerechtigde = codeGerechtigde
     }
     
-    
-    private func checkValidRijksregisterNummer(rrn: String) -> Bool {
-        var length : Int = countElements(rrn)
-        
-        if length != 11 {
-            return false
-        }
-        
-        var eerste9CijfersString: String = rrn.substringWithRange(Range<String.Index>(start: rrn.startIndex, end: advance(rrn.endIndex, -2)))
-        
-        var eerste9CijfersInt: Int = eerste9CijfersString.toInt()!
-        var restNaDeling97: Int = eerste9CijfersInt % 97
-        var controleGetal: Int = 97 - restNaDeling97
-        
-        var laatste2CijfersString: String = rrn.substringWithRange(Range<String.Index>(start: advance(rrn.startIndex, 10), end: rrn.endIndex))
-
-        
-        var laatste2CijfersInt: Int = laatste2CijfersString.toInt()!
-        
-        if laatste2CijfersInt != controleGetal {
-            return false
-        } else {
-            return true
-        }
-    }
-    
     private func checkValidEmail(email: String) -> Bool {
         if countElements(email) == 0 {
             return false
@@ -197,31 +129,5 @@ class Gebruiker
             return true
         }
         return false
-    }
-    
-    func checkValidAansluitingsNr(aansluitingsNr: Int) -> Bool {
-        var aansluitingsNrString: String = String(aansluitingsNr)
-        
-        if countElements(aansluitingsNrString) == 10 {
-            return true
-        }
-        return false
-    }
-    
-    private func checkValidCodeGerechtigde(codeGerechtigde: Int) -> Bool {
-        var codeGerechtigdeString: String = String(codeGerechtigde)
-        
-        if countElements(codeGerechtigdeString) == 6 {
-            return true
-        }
-        return false
-    }
-    
-    func bestaatFoutBoxAl() -> Bool {
-        if foutBox == nil {
-            return false
-        } else {
-            return true
-        }
     }
 }
