@@ -4,9 +4,9 @@
     android:layout_height="fill_parent">
 
     <ImageView
-        android:id="@+id/flag"
+        android:id="@+id/afbeelding1"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:src="@drawable/vakantieftoplaceholder"
@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:textSize="30sp"
         android:textAlignment="center"
-        android:layout_below="@id/flag"/>
+        android:layout_below="@id/afbeelding1"/>
 
     <TextView
         android:id="@+id/loc"
@@ -42,17 +42,24 @@
     <TextView
         android:id="@+id/terug"
         android:layout_centerHorizontal="true"
-
         android:textAlignment="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/vertrek" />
 
+    <TextView
+        android:id="@+id/doelgr"
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/terug"/>
+
     <Button
         android:text="Inschrijven"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/terug"/>
+        android:layout_below="@id/doelgr"/>
 
 
 </RelativeLayout>

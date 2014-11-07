@@ -42,6 +42,7 @@ public class activiteit_overzicht extends Activity {
 
         // Get the view from listview_main.xml
         setContentView(R.layout.activiteit_overzichtnieuw);
+        setTitle("Vakanties");
         // Execute RemoteDataTask AsyncTask
         filtertext = (EditText) findViewById(R.id.filtertext);
         new RemoteDataTask().execute();

@@ -50,8 +50,7 @@ public class navBarMainScreen extends Activity {
         setContentView(R.layout.activity_navigationbar);
 
 
-        mTitle = "Joetz";
-        getActionBar().setTitle(mTitle);
+        getActionBar().setTitle("");
 
 
 

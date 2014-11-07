@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
 import com.hogent.ti3g05.ti3_g05_joetzapp.MainScreen;
 import com.hogent.ti3g05.ti3_g05_joetzapp.R;
+import com.hogent.ti3g05.ti3_g05_joetzapp.navBarMainScreen;
 
 public class SignUp_deel3 extends Activity{
 
@@ -100,7 +101,7 @@ public class SignUp_deel3 extends Activity{
         terugKerenButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent1 = new Intent(getApplicationContext(), MainScreen.class);
+                Intent intent1 = new Intent(SignUp_deel3.this, SignUp_deel1.class);
                 startActivity(intent1);
             }
         });
