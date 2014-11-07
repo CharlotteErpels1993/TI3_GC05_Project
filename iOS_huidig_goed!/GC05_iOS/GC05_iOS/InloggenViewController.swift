@@ -46,7 +46,8 @@ class InloggenViewController: UIViewController
             }
         } else if segue.identifier == "nieuwWachtwoord" {
             let nieuwWachtwoordController = segue.destinationViewController as NieuwWachtwoordViewController
-            
+        } else if segue.identifier == "registreren" {
+            let registrerenController = segue.destinationViewController as Registratie1ViewController
         } else {
             //fout pop-up tonen
             var alert = UIAlertController(title: "Fout", message: "U hebt niet alle velden ingevuld!", preferredStyle: UIAlertControllerStyle.Alert)
