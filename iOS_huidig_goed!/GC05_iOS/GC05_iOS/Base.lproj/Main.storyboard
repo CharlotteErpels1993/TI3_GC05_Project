@@ -73,11 +73,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Vakanties" id="jTS-Lj-o5t">
-                        <barButtonItem key="leftBarButtonItem" title="Registreren" id="2vV-hj-JAV">
-                            <connections>
-                                <segue destination="fyb-xH-x0i" kind="show" identifier="registreren" id="maQ-E0-ytO"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Inloggen" id="ic7-yf-zL0">
                             <connections>
                                 <segue destination="QSw-na-ve9" kind="show" id="1jY-Nu-Zy5"/>
@@ -164,6 +159,7 @@
                                                 <constraint firstItem="kxP-43-geB" firstAttribute="top" secondItem="dTc-9b-H7l" secondAttribute="topMargin" constant="2" id="kEf-bj-rPF"/>
                                                 <constraint firstItem="u8f-60-AfE" firstAttribute="top" secondItem="dTc-9b-H7l" secondAttribute="topMargin" constant="3" id="sCP-1f-kIf"/>
                                                 <constraint firstItem="kxP-43-geB" firstAttribute="leading" secondItem="iAv-P8-xBj" secondAttribute="trailing" constant="54" id="shd-dJ-dK4"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="kxP-43-geB" secondAttribute="trailing" constant="13" id="upv-Hd-PVg"/>
                                                 <constraint firstItem="u8f-60-AfE" firstAttribute="top" secondItem="dTc-9b-H7l" secondAttribute="topMargin" constant="3" id="w6Y-iq-Os5"/>
                                                 <constraint firstAttribute="centerY" secondItem="u8f-60-AfE" secondAttribute="centerY" constant="-1.25" id="wDj-VR-vPs"/>
                                                 <constraint firstItem="kxP-43-geB" firstAttribute="top" secondItem="dTc-9b-H7l" secondAttribute="topMargin" constant="2" id="wK4-1O-G7q"/>
@@ -554,6 +550,9 @@
                                 <state key="normal" title="Nog niet geregistreerd? ">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="fyb-xH-x0i" kind="show" identifier="registreren" id="PkG-nK-xOO"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

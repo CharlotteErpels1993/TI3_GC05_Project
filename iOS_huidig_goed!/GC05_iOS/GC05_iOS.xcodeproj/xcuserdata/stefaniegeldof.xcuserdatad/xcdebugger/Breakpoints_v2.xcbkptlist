@@ -340,11 +340,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GC05_iOS/InloggenViewController.swift"
-            timestampString = "436996667.791714"
+            timestampString = "437050201.288113"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
             landmarkName = "veldenZijnIngevuld(_:wachtwoord:)"
             landmarkType = "5">
          </BreakpointContent>

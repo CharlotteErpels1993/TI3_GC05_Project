@@ -31,8 +31,8 @@ class VakantiesTableViewController: UITableViewController {
             let vakantieDetailsController = segue.destinationViewController as VakantieDetailsTableViewController
             let selectedVakantie = vakanties[tableView.indexPathForSelectedRow()!.row]
             vakantieDetailsController.vakantie = selectedVakantie as Vakantie
-        } else if segue.identifier == "registreren" {
-            let registratie1ViewController = segue.destinationViewController as Registratie1ViewController
+        /*} else if segue.identifier == "registreren" {
+            let registratie1ViewController = segue.destinationViewController as Registratie1ViewController*/
         } else if segue.identifier == "inloggen" {
             let inloggenViewController = segue.destinationViewController as InloggenViewController
         } else if segue.identifier == "toonVakantie" {
