@@ -1,6 +1,5 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/LoginFormContainer"
-    android:background="@color/Wit"
     android:layout_height="fill_parent">
 
 
@@ -9,7 +8,6 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/bondMoyson"
-        android:textColor="@color/Rood"
         android:id="@+id/textViewLid"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"/>
@@ -26,7 +24,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/ja"
-      android:textColor="@color/Rood"
         android:id="@+id/radioButtonJa"
 
           />
@@ -35,7 +32,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/nee"
-        android:textColor="@color/Rood"
         android:id="@+id/radioButtonNee" />
     </RadioGroup>
 
@@ -45,7 +41,6 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/signup_melding_monitor"
         android:id="@+id/txtWaarschuwingMonitor"
-        android:textColor="@color/Rood"
         android:layout_below="@+id/radioGroup"
         android:layout_centerHorizontal="true" />
 

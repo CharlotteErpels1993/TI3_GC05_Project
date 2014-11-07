@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/LoginFormContainer"
-    android:background="@color/Wit">
+    style="@style/LoginFormContainer">
 
     <EditText
         android:id="@+id/Voornaam"
@@ -14,16 +13,11 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp"
-        android:hint="@string/naamHint"
-
-        android:textColorHint="@color/Rood"
-        android:textColor="@color/Rood"/>
+        android:hint="@string/naamHint"/>
 
     <EditText
         android:id="@+id/Naam"
 
-        android:textColorHint="@color/Rood"
-        android:textColor="@color/Rood"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/Voornaam"
@@ -34,8 +28,6 @@
     <EditText
         android:id="@+id/RijksRegNr"
 
-        android:textColorHint="@color/Rood"
-        android:textColor="@color/Rood"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/Naam"
@@ -46,8 +38,6 @@
     <EditText
         android:id="@+id/Straat"
 
-        android:textColorHint="@color/Rood"
-        android:textColor="@color/Rood"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/RijksRegNr"
@@ -58,8 +48,6 @@
     <EditText
         android:id="@+id/Huisnr"
 
-        android:textColorHint="@color/Rood"
-        android:textColor="@color/Rood"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/Straat"
@@ -70,8 +58,6 @@
     <EditText
         android:id="@+id/Bus"
 
-        android:textColorHint="@color/Rood"
-        android:textColor="@color/Rood"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/Huisnr"
@@ -82,8 +68,6 @@
     <EditText
         android:id="@+id/Gemeente"
 
-        android:textColorHint="@color/Rood"
-        android:textColor="@color/Rood"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/Bus"
@@ -94,8 +78,6 @@
     <EditText
         android:id="@+id/Postcode"
 
-        android:textColorHint="@color/Rood"
-        android:textColor="@color/Rood"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/Gemeente"
@@ -106,8 +88,6 @@
     <EditText
         android:id="@+id/Telefoon"
 
-        android:textColorHint="@color/Rood"
-        android:textColor="@color/Rood"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/Postcode"
@@ -118,8 +98,6 @@
     <EditText
         android:id="@+id/Gsm"
 
-        android:textColorHint="@color/Rood"
-        android:textColor="@color/Rood"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/Telefoon"

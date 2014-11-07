@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:background="@color/Wit">
+    android:layout_height="fill_parent">
 
     <ImageView
         android:id="@+id/flag"
@@ -11,12 +10,10 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:src="@drawable/vakantieftoplaceholder"
-        android:background="@color/Wit"
         android:padding="1dp" />
 
     <TextView
         android:id="@+id/naam"
-        android:textColor="@color/Rood"
         android:layout_width="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_height="wrap_content"
@@ -26,7 +23,6 @@
 
     <TextView
         android:id="@+id/loc"
-        android:textColor="@color/Rood"
         android:layout_width="wrap_content"
         android:layout_centerHorizontal="true"
 
