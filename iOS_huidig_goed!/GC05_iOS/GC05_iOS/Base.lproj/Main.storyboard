@@ -180,6 +180,9 @@
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="5lS-tx-JB7" kind="show" identifier="bekijkAfbeelding" id="NoF-xX-9P9"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -324,6 +327,48 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Ye-Cv-YaG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1384" y="336"/>
+        </scene>
+        <!--Bekijk Afbeelding View Controller-->
+        <scene sceneID="dhq-xj-taj">
+            <objects>
+                <viewController id="5lS-tx-JB7" customClass="BekijkAfbeeldingViewController" customModule="JOETZ" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="a1i-JH-Gq9"/>
+                        <viewControllerLayoutGuide type="bottom" id="VG0-lj-dnU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6Y7-Z0-Jhj">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7lm-yh-0PX">
+                                <rect key="frame" x="50" y="72" width="500" height="500"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="500" id="UaK-5k-ZY4"/>
+                                    <constraint firstAttribute="width" constant="500" id="Znr-ai-59S"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="UaK-5k-ZY4"/>
+                                        <exclude reference="Znr-ai-59S"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="7lm-yh-0PX" firstAttribute="top" secondItem="a1i-JH-Gq9" secondAttribute="bottom" constant="8" id="Qj7-Zi-BAD"/>
+                            <constraint firstItem="7lm-yh-0PX" firstAttribute="leading" secondItem="6Y7-Z0-Jhj" secondAttribute="leadingMargin" constant="34" id="bxX-qU-PnO"/>
+                            <constraint firstAttribute="centerX" secondItem="7lm-yh-0PX" secondAttribute="centerX" id="dKV-Xo-XI9"/>
+                            <constraint firstAttribute="centerY" secondItem="7lm-yh-0PX" secondAttribute="centerY" constant="-22" id="ugb-zB-pho"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="afbeelding" destination="7lm-yh-0PX" id="AnI-A1-9YU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gFl-Qp-KCo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2054" y="336"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cC5-ea-HfQ">

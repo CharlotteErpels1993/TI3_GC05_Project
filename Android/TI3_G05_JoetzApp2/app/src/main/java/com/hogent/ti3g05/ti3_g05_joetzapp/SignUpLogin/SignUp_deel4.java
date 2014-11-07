@@ -50,7 +50,7 @@ public class SignUp_deel4 extends Activity{
 		setContentView(R.layout.activity_signup_deel4);
 
 		// creating connection detector class instance
-				cd = new ConnectionDetector(getApplicationContext());
+        cd = new ConnectionDetector(getApplicationContext());
 
 		
 		mEmailEditText = (EditText) findViewById(R.id.etEmail);
@@ -76,8 +76,6 @@ public class SignUp_deel4 extends Activity{
                     Toast.makeText(getApplicationContext(), "Fout bij registreren", Toast.LENGTH_SHORT).show();
                 //showAlertDialog(getApplicationContext(), "No Internet Connection",
                 //"You don't have internet connection.", false);
-
-
             }
         });
 

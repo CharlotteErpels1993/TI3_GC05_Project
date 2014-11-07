@@ -48,6 +48,15 @@ class VakantieDetailsTableViewController: UITableViewController {
         maxAantalDeelnemersLabel.text = String(vakantie.maxAantalDeelnemers)
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "bekijkAfbeelding" {
+            let bekijkAfbeeldingViewController = segue.destinationViewController as BekijkAfbeeldingViewController
+            bekijkAfbeeldingViewController.afbeeldingId = afbeelding1.image
+        }
+    }
+
+
+    
     func zoekImage1() {
         var query = PFQuery(className: "Vakantie")
         query.getObjectInBackgroundWithId(vakantie.id) {
