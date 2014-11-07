@@ -23,6 +23,7 @@ class VakantieDetailsTableViewController: UITableViewController {
     @IBOutlet weak var sterprijs1Label: UILabel!
     @IBOutlet weak var sterPrijs2Label: UILabel!
     
+    
     var vakantie: Vakantie!
     var images: [UIImage] = []
     var ouder: Ouder?
@@ -55,17 +56,26 @@ class VakantieDetailsTableViewController: UITableViewController {
             if (vakantie.sterPrijs2ouders != -1) {
                 sterPrijs2Label.text = String("Ster prijs (2 ouders): \(vakantie.sterPrijs2ouders)")
             } else { bondMoysonPrijsLabel.hidden = true }
+        } else {
+        basisprijsLabel.hidden = true
+        bondMoysonPrijsLabel.hidden = true
+        sterprijs1Label.hidden = true
+        sterPrijs2Label.hidden = true
+        bondMoysonPrijsLabel.hidden = true
         }
+        
     }
     
     /*override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        TO DO 
+        TO DO
     }*/
+    
     
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "bekijkAfbeelding" {
             let bekijkAfbeeldingViewController = segue.destinationViewController as BekijkAfbeeldingViewController
+            
             bekijkAfbeeldingViewController.afbeeldingId = afbeelding1.image
         }
     }
