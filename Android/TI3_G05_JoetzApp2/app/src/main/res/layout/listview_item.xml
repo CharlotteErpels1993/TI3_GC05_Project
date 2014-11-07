@@ -26,36 +26,35 @@
 
     <TextView
         android:id="@+id/locatie"
-
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/naam"/>
 
-
-   <!-- <TextView
-        android:id="@+id/vertrekdatum"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/locatie"/>
-
-    <TextView
-        android:id="@+id/terugdatum"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/vertrekdatum"/>
-
-    <TextView
-        android:id="@+id/kortbijschrift"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/terugdatum"/>
--->
     <TextView
         android:id="@+id/doelgroep"
-
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/locatie"/>
+
+
+    <TextView
+        android:id="@+id/vertrekdatum"
+        android:visibility="invisible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/terugdatum"
+        android:visibility="invisible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/kortbijschrift"
+        android:visibility="invisible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
 
     <TextView
         android:id="@+id/prijs"

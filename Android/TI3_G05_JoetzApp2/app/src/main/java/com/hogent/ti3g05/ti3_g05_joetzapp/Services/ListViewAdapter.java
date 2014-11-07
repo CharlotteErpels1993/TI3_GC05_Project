@@ -61,6 +61,7 @@ public class ListViewAdapter extends ArrayAdapter<Vakantie> implements Filterabl
         TextView terugdatum;
         TextView prijs;
         ImageView vakantiefto;
+        TextView doelgroep;
     }
 
     @Override
@@ -85,10 +86,11 @@ public class ListViewAdapter extends ArrayAdapter<Vakantie> implements Filterabl
             view = inflater.inflate(R.layout.listview_item, null);
             holder.naamVakantie = (TextView) view.findViewById(R.id.naam);
             holder.locatie = (TextView) view.findViewById(R.id.locatie);
-            holder.vertrekdatum = (TextView) view.findViewById(R.id.vertrek);
-            holder.terugdatum = (TextView) view.findViewById(R.id.terug);
+            holder.vertrekdatum = (TextView) view.findViewById(R.id.vertrekdatum);
+            holder.terugdatum = (TextView) view.findViewById(R.id.terugdatum);
             holder.vakantiefto = (ImageView) view.findViewById(R.id.afbeelding);
             holder.prijs = (TextView) view.findViewById(R.id.prijs);
+            holder.doelgroep = (TextView) view.findViewById(R.id.doelgroep);
             view.setTag(holder);
         } else {
             holder = (ViewHolder) view.getTag();
@@ -99,9 +101,9 @@ public class ListViewAdapter extends ArrayAdapter<Vakantie> implements Filterabl
         {
             holder.prijs.setText((int) vakanties.get(position).getBasisprijs());
         }
-//        holder.vertrekdatum.setText((CharSequence) vakanties.get(position).getVertrekDatum());
-  //      holder.terugdatum.setText((CharSequence) vakanties.get(position).getTerugkeerDatum());
-        imageLoader.DisplayImage(vakanties.get(position).getFoto(),  holder.vakantiefto);
+        holder.vertrekdatum.setText((CharSequence) vakanties.get(position).getVertrekDatum().toString());
+        holder.terugdatum.setText((CharSequence) vakanties.get(position).getTerugkeerDatum().toString());
+        imageLoader.DisplayImage(vakanties.get(position).getFoto1(),  holder.vakantiefto);
         view.setOnClickListener(new OnClickListener() {
 
             @Override
@@ -116,8 +118,10 @@ public class ListViewAdapter extends ArrayAdapter<Vakantie> implements Filterabl
                  intent.putExtra("terugdatum",
                        (vakanties.get(position).getTerugkeerDatum()));
                 intent.putExtra("prijs", vakanties.get(position).getBasisprijs());
-                intent.putExtra("afbeelding1", vakanties.get(position).getFoto());
-                intent.putExtra("doelgroep;", vakanties.get(position).getDoelGroep());
+                intent.putExtra("afbeelding1", vakanties.get(position).getFoto1());
+                intent.putExtra("afbeelding2", vakanties.get(position).getFoto2());
+                intent.putExtra("afbeelding3", vakanties.get(position).getFoto3());
+                intent.putExtra("doelgroep", vakanties.get(position).getDoelGroep());
                 context.startActivity(intent);
             }
         });

@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
 import com.hogent.ti3g05.ti3_g05_joetzapp.MainScreen;
 import com.hogent.ti3g05.ti3_g05_joetzapp.R;
+import com.hogent.ti3g05.ti3_g05_joetzapp.navBarMainScreen;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
@@ -84,7 +85,7 @@ public class SignUp_deel4 extends Activity{
         terugKerenButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent1 = new Intent(SignUp_deel4.this, MainScreen.class);
+                Intent intent1 = new Intent(SignUp_deel4.this, navBarMainScreen.class);
                 startActivity(intent1);
             }
         });
@@ -225,7 +226,7 @@ public class SignUp_deel4 extends Activity{
         });
 
         signUpMsg("Account aangemaakt.");
-        Intent in = new Intent(getApplicationContext(), MainScreen.class);
+        Intent in = new Intent(getApplicationContext(), navBarMainScreen.class);
         startActivity(in);
 
         //hieronder is code om data ophalen.

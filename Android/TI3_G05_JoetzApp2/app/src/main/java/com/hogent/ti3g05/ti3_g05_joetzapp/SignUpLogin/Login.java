@@ -175,7 +175,7 @@ public class Login extends Activity{
 	protected void loginSuccessful() {
         Toast.makeText(getApplicationContext(), "U bent succesvol ingelogd", Toast.LENGTH_SHORT).show();
 
-		Intent in =  new Intent(Login.this,MainScreen.class);
+		Intent in =  new Intent(Login.this,navBarMainScreen.class);
 		startActivity(in);
 	}
 	protected void loginUnSuccessful() {

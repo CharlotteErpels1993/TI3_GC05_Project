@@ -79,6 +79,8 @@ public class activiteit_overzicht extends Activity {
                 for (ParseObject vakantie : ob) {
                     // Locate images in flag column
                     ParseFile image = (ParseFile) vakantie.get("vakAfbeelding1");
+                    ParseFile image2 = (ParseFile) vakantie.get("vakAfbeelding2");
+                    ParseFile image3 = (ParseFile) vakantie.get("vakAfbeelding3");
 
                     Vakantie map = new Vakantie();
                     map.setNaamVakantie((String) vakantie.get("titel"));
@@ -88,7 +90,10 @@ public class activiteit_overzicht extends Activity {
                     map.setKorteBeschrijving((String) vakantie.get("korteBeschrijving"));
                     map.setDoelGroep((String) vakantie.get("doelgroep"));
 
-                    map.setFoto(image.getUrl());
+                    map.setFoto1(image.getUrl());
+                    map.setFoto2(image2.getUrl());
+                    map.setFoto3(image3.getUrl());
+
                     vakanties.add(map);
                 }
             } catch (ParseException e) {
