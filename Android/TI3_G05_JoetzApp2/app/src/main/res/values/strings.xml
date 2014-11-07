@@ -91,5 +91,8 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
       <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
     <string name="title_activity_tester_list_item">TesterListItem</string>
+    <string name="meerInfo">Meer info</string>
+
+    <string name="minderInfo">Minder info</string>
 
 </resources>

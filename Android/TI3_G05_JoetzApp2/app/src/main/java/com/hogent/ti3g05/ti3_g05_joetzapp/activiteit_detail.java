@@ -4,6 +4,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -30,6 +33,11 @@ public class activiteit_detail extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activiteit_detailnieuw);
 
+        final Button buttonFadeIn = (Button)findViewById(R.id.fadein);
+
+
+        Button buttonFadeOut = (Button)findViewById(R.id.fadeout);
+
         Intent i = getIntent();
         naam = i.getStringExtra("naam");
         locatie = i.getStringExtra("locatie");
@@ -51,13 +59,13 @@ public class activiteit_detail extends Activity {
         setTitle(naam);
 
         TextView txtNaam = (TextView) findViewById(R.id.titel);
-        TextView txtLocatie = (TextView) findViewById(R.id.locatiev);
-        TextView txtDoelgr = (TextView) findViewById(R.id.doelgroepv);
+        final TextView txtLocatie = (TextView) findViewById(R.id.locatiev);
+        final TextView txtDoelgr = (TextView) findViewById(R.id.doelgroepv);
 
-        TextView txtformule = (TextView)findViewById(R.id.formule);
+        final TextView txtformule = (TextView)findViewById(R.id.formule);
         TextView txtmaxDeeln = (TextView)findViewById(R.id.maxDeelnemers);
-        TextView txtPeriode = (TextView)findViewById(R.id.periode);
-        TextView txtVervoer = (TextView)findViewById(R.id.vervoer);
+        final TextView txtPeriode = (TextView)findViewById(R.id.periode);
+        final TextView txtVervoer = (TextView)findViewById(R.id.vervoer);
         TextView txtPrijs = (TextView)findViewById(R.id.prijs);
         TextView txtBeschrijving = (TextView)findViewById(R.id.beschrijving);
 
@@ -71,7 +79,7 @@ public class activiteit_detail extends Activity {
             public void onClick(View view) {
                 Intent intent1 = new Intent(activiteit_detail.this, afbeeldingUItvergroot.class);
 
-                intent1.putExtra("afbeelding",afbeelding1);
+                intent1.putExtra("afbeelding", afbeelding1);
                 startActivity(intent1);
             }
         });
@@ -112,5 +120,6 @@ public class activiteit_detail extends Activity {
         imageLoader.DisplayImage(afbeelding1, afbeelding1im);
         imageLoader.DisplayImage(afbeelding2, afbeelding2im);
         imageLoader.DisplayImage(afbeelding3, afbeelding3im);
+
     }
 }

@@ -180,10 +180,24 @@
         android:layout_below="@id/terug"/>-->
 
     <Button
+        android:id="@+id/fadein"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_below="@id/lay"
+        android:text="@string/meerInfo"/>
+    <Button
+        android:id="@+id/fadeout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/minderInfo"
+        android:layout_below="@id/fadein"
+        />
+    <Button
         android:text="Inschrijven"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/lay"/>
+        android:layout_below="@id/fadeout"/>
 
 
 </RelativeLayout>
