@@ -4,8 +4,8 @@ class Regex {
     let internalExpression: NSRegularExpression
     let pattern: String
     
-    init(_ pattern: String) {
-        self.pattern = pattern
+    init(p: String) {
+        self.pattern = p
         var error: NSError?
         self.internalExpression = NSRegularExpression(pattern: pattern, options: .CaseInsensitive, error: &error)!
     }

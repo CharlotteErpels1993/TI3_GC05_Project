@@ -73,7 +73,6 @@ class Gebruiker
         self.gsm = gsm
         self.aansluitingsNr = aansluitingsNr
         self.codeGerechtigde = codeGerechtigde
-        /*initializeVariables(rijksregisterNr, email: email, wachtwoord: wachtwoord, voornaam: voornaam, naam: naam, straat: straat, nummer: nummer, bus: bus, gemeente: gemeente, postcode: postcode, telefoon: telefoon, gsm: gsm, aansluitingsNr: aansluitingsNr, codeGerechtigde: codeGerechtigde)*/
     }
     
     func initializeVariables(rijksregisterNr: String, email: String, wachtwoord: String, voornaam: String, naam: String, straat: String, nummer: Int, bus: String, gemeente: String, postcode: Int, telefoon: String, gsm: String, aansluitingsNr: Int, codeGerechtigde: Int)
@@ -94,10 +93,10 @@ class Gebruiker
         self.codeGerechtigde = codeGerechtigde
     }
     
-    private func checkValidEmail(email: String) -> Bool {
+    func checkValidEmail(email: String) -> Bool {
         if countElements(email) == 0 {
             return false
-        } else if Regex("[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}").test(email) {
+        } else if Regex(p: "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}").test(email) {
             return true
         }
         return false
