@@ -67,7 +67,8 @@ class Registratie1ViewController: UIViewController
             
             if tellerAantalLegeVelden > 0 {
                 textVeldenLeegMaken()
-                foutBoxOproepen("Fout", "Gelieve alle verplichte velden in te vullen!", self)
+                self.foutBox = FoutBox(title: "Fout", message: "Gelieve alle verplichte velden in te vullen.")
+                //foutBoxOproepen("Fout", "Gelieve alle verplichte velden in te vullen!", self)
             } else {
                 controleerVerplichteGegevens()
                 
@@ -188,7 +189,7 @@ class Registratie1ViewController: UIViewController
     func settenVerplichteGegevens() {
         ouder.aansluitingsNr = txtAansluitingsNr.text.toInt()!
         ouder.codeGerechtigde = txtCodeGerechtigde.text.toInt()!
-        ouder.rijksregisterNr = txtRijksregisterNr.text
+        //ouder.rijksregisterNr = txtRijksregisterNr.text
     }
     
     func controleerAansluitingsNrTweedeOuder(aansluitingsNrTweedeOuder: Int) {
