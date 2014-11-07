@@ -55,12 +55,20 @@
         android:layout_below="@+id/terugdatum"/>
 -->
     <TextView
-        android:id="@+id/prijs"
+        android:id="@+id/doelgroep"
 
         android:textColor="@color/Rood"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/locatie"/>
+
+    <TextView
+        android:id="@+id/prijs"
+
+        android:textColor="@color/Rood"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"/>
 
 
 </RelativeLayout>

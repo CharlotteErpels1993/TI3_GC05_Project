@@ -101,7 +101,7 @@ public class ListViewAdapter extends ArrayAdapter<Vakantie> implements Filterabl
         }
 //        holder.vertrekdatum.setText((CharSequence) vakanties.get(position).getVertrekDatum());
   //      holder.terugdatum.setText((CharSequence) vakanties.get(position).getTerugkeerDatum());
-        //imageLoader.DisplayImage(vakanties.get(position).getFoto(),  holder.vakantiefto); als er dan effectief fotos in de db komen
+        imageLoader.DisplayImage(vakanties.get(position).getFoto(),  holder.vakantiefto);
         view.setOnClickListener(new OnClickListener() {
 
             @Override
@@ -116,7 +116,7 @@ public class ListViewAdapter extends ArrayAdapter<Vakantie> implements Filterabl
                  intent.putExtra("terugdatum",
                        (vakanties.get(position).getTerugkeerDatum()));
                 intent.putExtra("prijs", vakanties.get(position).getBasisprijs());
-                //intent.putExtra("afbeelding", vakanties.get(position).getFoto()); voor als afbeelding in db komt
+                intent.putExtra("afbeelding", vakanties.get(position).getFoto());
 
                 context.startActivity(intent);
             }

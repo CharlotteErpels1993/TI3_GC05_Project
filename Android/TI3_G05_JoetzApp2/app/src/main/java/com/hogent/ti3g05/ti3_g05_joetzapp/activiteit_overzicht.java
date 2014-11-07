@@ -23,6 +23,7 @@ import com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.Login;
 import com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.SignUp_deel1;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vakantie;
 import com.parse.ParseException;
+import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
@@ -76,7 +77,7 @@ public class activiteit_overzicht extends Activity {
                 ob = query.find();
                 for (ParseObject vakantie : ob) {
                     // Locate images in flag column
-                   // ParseFile image = (ParseFile) vakantie.get("flag");
+                    ParseFile image = (ParseFile) vakantie.get("vakAfbeelding1");
 
                     Vakantie map = new Vakantie();
                     map.setNaamVakantie((String) vakantie.get("titel"));
@@ -84,8 +85,9 @@ public class activiteit_overzicht extends Activity {
                     map.setVertrekDatum((java.util.Date) vakantie.get("vertrekdatum"));
                     map.setTerugkeerDatum((java.util.Date) vakantie.get("terugkeerdatum"));
                     map.setKorteBeschrijving((String) vakantie.get("korteBeschrijving"));
+                    map.setDoelGroep((String) vakantie.get("doelgroep"));
 
-                    //map.setFlag(image.getUrl());
+                    map.setFoto(image.getUrl());
                     vakanties.add(map);
                 }
             } catch (ParseException e) {

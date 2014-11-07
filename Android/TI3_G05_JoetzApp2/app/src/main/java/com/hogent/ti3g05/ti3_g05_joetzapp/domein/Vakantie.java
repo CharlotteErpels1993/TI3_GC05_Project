@@ -16,7 +16,7 @@ public class Vakantie extends Activiteit{
     private String doelGroep;
     private int maxAantalDeelnemers;
     private String naamVakantie;
-    private Image foto ;
+    private String foto ;
 
     public Vakantie(){
         super();
@@ -117,8 +117,8 @@ public class Vakantie extends Activiteit{
     public void setMaxAantalDeelnemers(int maxAantalDeelnemers) {
         this.maxAantalDeelnemers = maxAantalDeelnemers;
     }
-    public Image getFoto(){   return foto; }
+    public String getFoto(){   return foto; }
 
-    public void setFoto(Image fto) {this.foto=fto;}
+    public void setFoto(String fto) {this.foto=fto;}
 
 }
