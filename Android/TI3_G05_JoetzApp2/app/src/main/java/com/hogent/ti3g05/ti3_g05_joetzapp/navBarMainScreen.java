@@ -152,15 +152,22 @@ public class navBarMainScreen extends Activity {
                 Intent intent = new Intent(navBarMainScreen.this, com.hogent.ti3g05.ti3_g05_joetzapp.activiteit_overzicht.class
                 );
                 startActivity(intent);
+                overridePendingTransition(R.anim.right_in, R.anim.left_out);
                 break;
             case 1:
                 fragment = new MainScreen();
+
+                overridePendingTransition(R.anim.right_in, R.anim.left_out);
                 break;
             case 2:
                 fragment = new MainScreen();
+
+                overridePendingTransition(R.anim.right_in, R.anim.left_out);
                 break;
             case 3:
                 fragment = new MainScreen();
+
+                overridePendingTransition(R.anim.right_in, R.anim.left_out);
                 break;
 
             default:

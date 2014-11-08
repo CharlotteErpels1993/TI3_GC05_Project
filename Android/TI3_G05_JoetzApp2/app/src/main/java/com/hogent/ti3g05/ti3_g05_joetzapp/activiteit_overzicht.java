@@ -153,6 +153,8 @@ public class activiteit_overzicht extends Activity {
         if (id == R.id.backMenu) {
             Intent intent1 = new Intent(this, navBarMainScreen.class);
             startActivity(intent1);
+
+            overridePendingTransition(R.anim.left_in, R.anim.right_out);
         }
 
         return super.onOptionsItemSelected(item);
