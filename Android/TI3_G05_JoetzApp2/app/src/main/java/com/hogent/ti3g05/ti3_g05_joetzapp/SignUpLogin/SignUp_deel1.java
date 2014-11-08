@@ -47,6 +47,8 @@ public class SignUp_deel1 extends Activity{
                 intentJa.putExtra("lidVanBondMoyson", "true");
                 startActivity(intentJa);
 
+                overridePendingTransition(R.anim.right_in, R.anim.left_out);
+
 
             }
         });
@@ -58,6 +60,8 @@ public class SignUp_deel1 extends Activity{
                 Intent intentNee = new Intent(getApplicationContext(), SignUp_deel3.class);
                 intentNee.putExtra("lidVanBondMoyson", "false");
                 startActivity(intentNee);
+
+                overridePendingTransition(R.anim.right_in, R.anim.left_out);
             }
         });
 
@@ -69,6 +73,8 @@ public class SignUp_deel1 extends Activity{
             public void onClick(View view) {
                 Intent intent1 = new Intent(SignUp_deel1.this, navBarMainScreen.class);
                 startActivity(intent1);
+
+                overridePendingTransition(R.anim.left_in, R.anim.right_out);
 
 
             }
