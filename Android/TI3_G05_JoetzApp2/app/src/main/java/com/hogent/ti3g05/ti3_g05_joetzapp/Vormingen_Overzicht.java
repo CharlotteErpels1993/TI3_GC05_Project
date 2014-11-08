@@ -1,6 +1,7 @@
 package com.hogent.ti3g05.ti3_g05_joetzapp;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -34,7 +35,7 @@ public class Vormingen_Overzicht extends Activity {
     private List<ParseObject> ob;
     private ProgressDialog mProgressDialog;
     private ListViewAdapter adapter;
-    private List<Vakantie> vakanties = null;
+    private List<Vorming> vormingen = null;
     private EditText filtertext;
 
     @Override
@@ -68,7 +69,7 @@ public class Vormingen_Overzicht extends Activity {
         @Override
         protected Void doInBackground(Void... params) {
             // Create the array
-            vakanties = new ArrayList<Vakantie>();
+            vormingen = new ArrayList<Vorming>();
             try {
                 // Locate the class table named "vakantie" in Parse.com
                 ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(
@@ -85,14 +86,14 @@ public class Vormingen_Overzicht extends Activity {
                     map.setLocatie((String) vorming.get("locatie"));
                     map.setCriteriaDeelnemers((String) vorming.get("criteriaDeelnemer"));
                     map.setKorteBeschrijving((String) vorming.get("korteBeschrijving"));
-                    map.setPeriodes((String) vorming.get("periodes"));
-                    map.setPrijs((Number) vorming.get("prijs"));
-                    map.setPeriodes((String) vorming.get("tips"));
-                    map.setTitel((Number) vorming.get("titel"));
+                   // map.setPeriodes((Date) vorming.get("periodes"));
+                    map.setPrijs((Integer) vorming.get("prijs"));
+                    map.setTips((String) vorming.get("tips"));
+                    map.setTitel((String) vorming.get("titel"));
                     map.setWebsiteLocatie((String) vorming.get("websiteLocatie"));
 
 
-                    vakanties.add(map);
+                    vormingen.add(map);
 
                 }
             } catch (ParseException e) {
