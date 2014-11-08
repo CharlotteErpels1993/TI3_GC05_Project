@@ -28,7 +28,7 @@ class InloggenViewController: UIViewController
                 
                 //let overzichtMonitorViewController = segue.destinationViewController as OverzichtMonitorViewController
                 //overzichtMonitorViewController.monitor = self.gebruiker as Monitor
-                performSegueWithIdentifier("monitorOverzicht", sender: self)
+                performSegueWithIdentifier("overzichtMonitor", sender: self)
             } else if type == "ouder" {
                 var ouderPF = queryOuder.getFirstObject()
                 self.gebruiker = Ouder(ouder: ouderPF)
