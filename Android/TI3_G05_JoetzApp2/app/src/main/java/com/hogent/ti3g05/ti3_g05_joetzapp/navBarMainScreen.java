@@ -149,7 +149,7 @@ public class navBarMainScreen extends Activity {
         switch (position) {
             case 0:
                 //fragment = new activiteit_overzicht_fragment();
-                Intent intent = new Intent(navBarMainScreen.this, com.hogent.ti3g05.ti3_g05_joetzapp.activiteit_overzicht.class
+                Intent intent = new Intent(navBarMainScreen.this, activiteit_overzicht.class
                 );
                 startActivity(intent);
                 break;
@@ -158,8 +158,9 @@ public class navBarMainScreen extends Activity {
 
                 break;
             case 2:
-                fragment = new MainScreen();
-
+                Intent intent2 = new Intent(navBarMainScreen.this, Vormingen_Overzicht.class
+                );
+                startActivity(intent2);
                 break;
             case 3:
                 fragment = new MainScreen();

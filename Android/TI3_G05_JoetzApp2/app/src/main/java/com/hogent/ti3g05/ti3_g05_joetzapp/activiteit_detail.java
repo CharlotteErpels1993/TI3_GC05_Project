@@ -33,10 +33,6 @@ public class activiteit_detail extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activiteit_detailnieuw);
 
-        final Button buttonFadeIn = (Button)findViewById(R.id.fadein);
-
-
-        Button buttonFadeOut = (Button)findViewById(R.id.fadeout);
 
         Intent i = getIntent();
         naam = i.getStringExtra("naam");

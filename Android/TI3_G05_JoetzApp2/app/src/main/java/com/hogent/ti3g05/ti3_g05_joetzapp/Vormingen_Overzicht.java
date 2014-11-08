@@ -20,6 +20,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ListViewAdapter;
+import com.hogent.ti3g05.ti3_g05_joetzapp.Services.VormingAdapter;
 import com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.Login;
 import com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.SignUp_deel1;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vakantie;
@@ -34,7 +35,7 @@ public class Vormingen_Overzicht extends Activity {
     private ListView listview;
     private List<ParseObject> ob;
     private ProgressDialog mProgressDialog;
-    private ListViewAdapter adapter;
+    private VormingAdapter adapter;
     private List<Vorming> vormingen = null;
     private EditText filtertext;
 
@@ -112,7 +113,7 @@ public class Vormingen_Overzicht extends Activity {
             //ArrayAdapter<Profile> profileAdapter = new ArrayAdapter<Profile>(context, resource, profiles)
             //ArrayAdapter<Vakantie> vakantieAdapter = new ArrayAdapter<Vakantie>(activiteit_overzicht.this, R.layout.listview_item , vakanties);
 
-           // adapter = new ListViewAdapter(activiteit_overzicht.this, vakanties);
+            adapter = new VormingAdapter(Vormingen_Overzicht.this, vormingen);
             // Binds the Adapter to the ListView
             listview.setAdapter(adapter);
             // Close the progressdialog

@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.ImageLoader;
 import com.hogent.ti3g05.ti3_g05_joetzapp.R;
+import com.hogent.ti3g05.ti3_g05_joetzapp.VormingDetail;
 import com.hogent.ti3g05.ti3_g05_joetzapp.activiteit_detail;
 import com.hogent.ti3g05.ti3_g05_joetzapp.activiteit_overzicht_fragment;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vakantie;
@@ -33,7 +34,7 @@ public class VormingAdapter extends ArrayAdapter<Vorming> implements Filterable 
     Context context;
     LayoutInflater inflater;
     ImageLoader imageLoader;
-    private List<Vorming> vakanties = null;
+    private List<Vorming> vormingen = null;
     private ArrayList<Vorming> arraylist;
 
 
@@ -43,12 +44,12 @@ public class VormingAdapter extends ArrayAdapter<Vorming> implements Filterable 
 
     public VormingAdapter(Context context,
                            List<Vorming> vormingen) {
-        super(context, R.layout.listview_item);
+        super(context, R.layout.list_view_item_vorming);
         this.context = context;
-        this.vakanties = vakanties;
+        this.vormingen = vormingen;
         inflater = LayoutInflater.from(context);
         this.arraylist = new ArrayList<Vorming>();
-        this.arraylist.addAll(vakanties);
+        this.arraylist.addAll(vormingen);
         imageLoader = new ImageLoader(context);
     }
 
@@ -56,18 +57,17 @@ public class VormingAdapter extends ArrayAdapter<Vorming> implements Filterable 
 
 
     public class ViewHolder {
-        TextView naamVakantie;
+        TextView titel;
         TextView locatie;
-        TextView vertrekdatum;
-        TextView terugdatum;
+        TextView criteriaDeelnemer;
         TextView prijs;
-        ImageView vakantiefto;
-        TextView doelgroep;
+        TextView tips;
+        TextView websiteLocatie;
     }
 
     @Override
     public int getCount() {
-        return vakanties.size();
+        return vormingen.size();
     }
 
    /* @Override
@@ -84,51 +84,45 @@ public class VormingAdapter extends ArrayAdapter<Vorming> implements Filterable 
         final ViewHolder holder;
         if (view == null) {
             holder = new ViewHolder();
-            view = inflater.inflate(R.layout.listview_item, null);
-            holder.naamVakantie = (TextView) view.findViewById(R.id.naam);
-            holder.locatie = (TextView) view.findViewById(R.id.locatie);
-            holder.vertrekdatum = (TextView) view.findViewById(R.id.vertrekdatum);
-            holder.terugdatum = (TextView) view.findViewById(R.id.terugdatum);
-            holder.vakantiefto = (ImageView) view.findViewById(R.id.afbeelding);
-            holder.prijs = (TextView) view.findViewById(R.id.prijs);
-            holder.doelgroep = (TextView) view.findViewById(R.id.doelgroep);
+            view = inflater.inflate(R.layout.list_view_item_vorming, null);
+            holder.titel = (TextView) view.findViewById(R.id.titelV);
+            holder.locatie = (TextView) view.findViewById(R.id.locatieV);
+            holder.criteriaDeelnemer = (TextView) view.findViewById(R.id.criteriaDeelnemer);
+            holder.tips = (TextView) view.findViewById(R.id.tips);
+            holder.prijs = (TextView) view.findViewById(R.id.prijsV);
+            holder.websiteLocatie = (TextView) view.findViewById(R.id.websiteLocatie);
             view.setTag(holder);
         } else {
             holder = (ViewHolder) view.getTag();
         }
-        holder.naamVakantie.setText(vakanties.get(position).getNaamVakantie());
-        holder.locatie.setText(vakanties.get(position).getLocatie());
+        holder.titel.setText(vormingen.get(position).getTitel());
+        holder.locatie.setText(vormingen.get(position).getLocatie());
        /* if(ParseUser.getCurrentUser() != null)
         {
-            holder.prijs.setText((int) vakanties.get(position).getBasisprijs());
+
+        holder.prijs = (TextView) view.findViewById(R.id.prijsV);
         }*/
-        //holder.vertrekdatum.setText(( vakanties.get(position).getVertrekDatum().toString()));
-        //holder.terugdatum.setText(( vakanties.get(position).getTerugkeerDatum().toString()));
-        holder.doelgroep.setText(vakanties.get(position).getDoelGroep());
-        imageLoader.DisplayImage(vakanties.get(position).getFoto1(),  holder.vakantiefto);
+        holder.criteriaDeelnemer.setText(vormingen.get(position).getCriteriaDeelnemers());
+        holder.tips.setText(vormingen.get(position).getTips());
+        holder.websiteLocatie.setText(vormingen.get(position).getWebsiteLocatie());
+
         view.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
-                Intent intent = new Intent(context, activiteit_detail.class);
-                intent.putExtra("naam",
-                        (vakanties.get(position).getNaamVakantie()));
+                Intent intent = new Intent(context, VormingDetail.class);
+                intent.putExtra("titel",
+                        (vormingen.get(position).getTitel()));
                 intent.putExtra("locatie",
-                        (vakanties.get(position).getLocatie()));
-                intent.putExtra("vertrekdatum",
-                        (vakanties.get(position).getVertrekDatum()));
-                intent.putExtra("terugdatum",
-                        (vakanties.get(position).getTerugkeerDatum()));
-                intent.putExtra("prijs", vakanties.get(position).getBasisprijs());
-                intent.putExtra("afbeelding1", vakanties.get(position).getFoto1());
-                intent.putExtra("afbeelding2", vakanties.get(position).getFoto2());
-                intent.putExtra("afbeelding3", vakanties.get(position).getFoto3());
-                intent.putExtra("doelgroep", vakanties.get(position).getDoelGroep());
-                intent.putExtra("beschrijving", vakanties.get(position).getKorteBeschrijving());
-                intent.putExtra("periode", vakanties.get(position).getPeriode());
-                intent.putExtra("veroer", vakanties.get(position).getVervoerswijze());
-                intent.putExtra("formule", vakanties.get(position).getFormule());
-                intent.putExtra("maxAantalDeelnemers",(vakanties.get(position).getMaxAantalDeelnemers()));
+                        (vormingen.get(position).getLocatie()));
+                intent.putExtra("criteriaDeelnemer",
+                        (vormingen.get(position).getCriteriaDeelnemers()));
+                intent.putExtra("tips",
+                        (vormingen.get(position).getTips()));
+                intent.putExtra("prijs", vormingen.get(position).getPrijs());
+                intent.putExtra("websiteLocatie", vormingen.get(position).getWebsiteLocatie());
+                intent.putExtra("korteBeschrijving", vormingen.get(position).getKorteBeschrijving());
+                intent.putExtra("betalingswijze", vormingen.get(position).getBetalingswijze());
                 context.startActivity(intent);
             }
         });
@@ -139,17 +133,17 @@ public class VormingAdapter extends ArrayAdapter<Vorming> implements Filterable 
 
     public void filter(String charText) {
         charText = charText.toLowerCase(Locale.getDefault());
-        vakanties.clear();
+        vormingen.clear();
         if (charText.length() == 0) {
-            vakanties.addAll(arraylist);
+            vormingen.addAll(arraylist);
         }
         else
         {
-            for (Vakantie wp : arraylist)
+            for (Vorming wp : arraylist)
             {
                 if (wp.getLocatie().toLowerCase(Locale.getDefault()).contains(charText))
                 {
-                    vakanties.add(wp);
+                    vormingen.add(wp);
                 }
             }
         }

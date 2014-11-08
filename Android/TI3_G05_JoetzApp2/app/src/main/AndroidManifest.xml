@@ -64,6 +64,10 @@
         <activity android:name=".SignUpLogin.ForgetParsePassword"></activity>
         <activity android:name=".afbeeldingUItvergroot"></activity>
 
+        <activity android:name=".Vormingen_Overzicht"></activity>
+
+        <activity android:name=".VormingDetail"></activity>
+
 
 
     </application>
