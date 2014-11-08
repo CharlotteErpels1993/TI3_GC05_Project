@@ -18,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.Login;
 import com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.SignUp_deel1;
@@ -197,18 +198,26 @@ public class navBarMainScreen extends Activity {
         if (mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
-            // Handle action bar item clicks here. The action bar will
-            // automatically handle clicks on the Home/Up button, so long
-            // as you specify a parent activity in AndroidManifest.xml.
-            int id = item.getItemId();
-            if (id == R.id.inloggen) {
-                Intent intent1 = new Intent(this, Login.class);
-                startActivity(intent1);
-            }
-            if(id == R.id.regisreren){
-                Intent intent1 = new Intent(this, SignUp_deel1.class);
-                startActivity(intent1);
-            }
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+        if (id == R.id.inloggen) {
+            Intent intent1 = new Intent(this, Login.class);
+            startActivity(intent1);
+        }
+        if(id == R.id.regisreren){
+            Intent intent1 = new Intent(this, SignUp_deel1.class);
+            startActivity(intent1);
+        }
+        if(id == R.id.btnUitloggen){
+            Toast.makeText(getApplicationContext(), "U wordt zometeen uitgelogd.", Toast.LENGTH_SHORT);
+            ParseUser.getCurrentUser().logOut();
+            Toast.makeText(getApplicationContext(), "U bent uitgelogd", Toast.LENGTH_SHORT);
+            Intent intent1 = new Intent(this, activiteit_overzicht.class); //navBarMainScreen
+            startActivity(intent1);
+        }
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -219,12 +228,39 @@ public class navBarMainScreen extends Activity {
         boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
 
         menu.findItem(R.id.inloggen).setVisible(!drawerOpen);
+
+        if (ParseUser.getCurrentUser() == null){
+            //gebruiker is niet ingelogd
+            menu.findItem(R.id.inloggen).setVisible(true);
+            menu.findItem(R.id.regisreren).setVisible(true);
+            menu.findItem(R.id.uitloggen).setVisible(false);
+        }
+        else{
+            //gebruiker is ingelogd.
+            menu.findItem(R.id.inloggen).setVisible(false);
+            menu.findItem(R.id.regisreren).setVisible(false);
+            menu.findItem(R.id.uitloggen).setVisible(true);
+        }
+
         return super.onPrepareOptionsMenu(menu);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_screen, menu);
+
+        if (ParseUser.getCurrentUser() == null){
+            //gebruiker is niet ingelogd
+            menu.findItem(R.id.inloggen).setVisible(true);
+            menu.findItem(R.id.regisreren).setVisible(true);
+            menu.findItem(R.id.uitloggen).setVisible(false);
+        }
+        else{
+            //gebruiker is ingelogd.
+            menu.findItem(R.id.inloggen).setVisible(false);
+            menu.findItem(R.id.regisreren).setVisible(false);
+            menu.findItem(R.id.uitloggen).setVisible(true);
+        }
 
         return true;
     }

@@ -13,6 +13,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="RlW-AC-mYB">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" restorationIdentifier="vakantieCell" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="vakantieCell" rowHeight="112" id="u8I-xk-xAt" customClass="VakantieCell" customModule="JOETZ" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -69,6 +74,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="zoekbar" destination="RlW-AC-mYB" id="7KL-cF-nD3"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FgJ-yq-mEZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -85,30 +93,11 @@
                         <sections>
                             <tableViewSection id="9hz-vW-mdA">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="94" id="GwE-Mt-Y7W">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="94" id="GwE-Mt-Y7W">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GwE-Mt-Y7W" id="dTc-9b-H7l">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="afbeedling" translatesAutoresizingMaskIntoConstraints="NO" id="u8f-60-AfE">
-                                                    <rect key="frame" x="8" y="8" width="85" height="76"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="85" id="FCA-8e-H4e"/>
-                                                        <constraint firstAttribute="width" constant="150" id="GZf-ci-0r7"/>
-                                                        <constraint firstAttribute="height" constant="76" id="HMu-VE-p3z"/>
-                                                        <constraint firstAttribute="width" constant="150" id="HaW-5c-46c"/>
-                                                        <constraint firstAttribute="height" constant="100" id="KrN-pR-KI0"/>
-                                                        <constraint firstAttribute="height" constant="100" id="cS1-pr-4oV"/>
-                                                    </constraints>
-                                                    <variation key="default">
-                                                        <mask key="constraints">
-                                                            <exclude reference="GZf-ci-0r7"/>
-                                                            <exclude reference="HaW-5c-46c"/>
-                                                            <exclude reference="KrN-pR-KI0"/>
-                                                            <exclude reference="cS1-pr-4oV"/>
-                                                        </mask>
-                                                    </variation>
-                                                </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WLR-1e-2cl">
                                                     <rect key="frame" x="116" y="8" width="85" height="76"/>
                                                     <constraints>
@@ -147,6 +136,25 @@
                                                         </mask>
                                                     </variation>
                                                 </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="afbeedling" translatesAutoresizingMaskIntoConstraints="NO" id="u8f-60-AfE">
+                                                    <rect key="frame" x="8" y="8" width="85" height="76"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="85" id="FCA-8e-H4e"/>
+                                                        <constraint firstAttribute="width" constant="150" id="GZf-ci-0r7"/>
+                                                        <constraint firstAttribute="height" constant="76" id="HMu-VE-p3z"/>
+                                                        <constraint firstAttribute="width" constant="150" id="HaW-5c-46c"/>
+                                                        <constraint firstAttribute="height" constant="100" id="KrN-pR-KI0"/>
+                                                        <constraint firstAttribute="height" constant="100" id="cS1-pr-4oV"/>
+                                                    </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="GZf-ci-0r7"/>
+                                                            <exclude reference="HaW-5c-46c"/>
+                                                            <exclude reference="KrN-pR-KI0"/>
+                                                            <exclude reference="cS1-pr-4oV"/>
+                                                        </mask>
+                                                    </variation>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="V41-YB-4du" firstAttribute="top" secondItem="dTc-9b-H7l" secondAttribute="topMargin" id="0XA-Pq-G2k"/>
@@ -172,7 +180,7 @@
                                             </variation>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="5lS-tx-JB7" kind="show" identifier="bekijkAfbeelding" id="NoF-xX-9P9"/>
+                                            <segue destination="8O0-y0-e5M" kind="show" id="WSs-Bf-f3C"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -425,46 +433,90 @@
             <point key="canvasLocation" x="1384" y="336"/>
         </scene>
         <!--Bekijk Afbeelding View Controller-->
-        <scene sceneID="dhq-xj-taj">
+        <scene sceneID="JvW-RP-Nns">
             <objects>
-                <viewController id="5lS-tx-JB7" customClass="BekijkAfbeeldingViewController" customModule="JOETZ" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="a1i-JH-Gq9"/>
-                        <viewControllerLayoutGuide type="bottom" id="VG0-lj-dnU"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="6Y7-Z0-Jhj">
+                <tableViewController id="8O0-y0-e5M" customClass="BekijkAfbeeldingViewController" customModule="JOETZ" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Njx-8j-ODl">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7lm-yh-0PX">
-                                <rect key="frame" x="50" y="72" width="500" height="500"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="500" id="UaK-5k-ZY4"/>
-                                    <constraint firstAttribute="width" constant="500" id="Znr-ai-59S"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="UaK-5k-ZY4"/>
-                                        <exclude reference="Znr-ai-59S"/>
-                                    </mask>
-                                </variation>
-                            </imageView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="7lm-yh-0PX" firstAttribute="top" secondItem="a1i-JH-Gq9" secondAttribute="bottom" constant="8" id="Qj7-Zi-BAD"/>
-                            <constraint firstItem="7lm-yh-0PX" firstAttribute="leading" secondItem="6Y7-Z0-Jhj" secondAttribute="leadingMargin" constant="34" id="bxX-qU-PnO"/>
-                            <constraint firstAttribute="centerX" secondItem="7lm-yh-0PX" secondAttribute="centerX" id="dKV-Xo-XI9"/>
-                            <constraint firstAttribute="centerY" secondItem="7lm-yh-0PX" secondAttribute="centerY" constant="-22" id="ugb-zB-pho"/>
-                        </constraints>
-                    </view>
+                        <sections>
+                            <tableViewSection id="WK0-d6-auK">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="411" id="vwS-JS-XIP">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="afbeelding1" tableViewCell="vwS-JS-XIP" id="XFe-JF-UrN">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="V4D-Dw-fhN">
+                                                    <rect key="frame" x="8" y="0.0" width="600" height="410.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="410.5" id="Qta-pM-t22"/>
+                                                        <constraint firstAttribute="width" constant="600" id="i4z-Bz-GZ7"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="centerY" secondItem="V4D-Dw-fhN" secondAttribute="centerY" id="lRj-n6-m3x"/>
+                                                <constraint firstAttribute="centerX" secondItem="V4D-Dw-fhN" secondAttribute="centerX" constant="-8" id="oaa-Lf-nWN"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="411" id="cwP-uR-HEa">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="afbeelding2" tableViewCell="cwP-uR-HEa" id="fME-3l-Vic">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qe1-xF-CHX">
+                                                    <rect key="frame" x="8" y="0.0" width="600" height="410.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="600" id="Fg9-wo-Bap"/>
+                                                        <constraint firstAttribute="height" constant="410.5" id="xCn-xK-fTU"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="centerX" secondItem="qe1-xF-CHX" secondAttribute="centerX" constant="-8" id="d4U-bq-8LC"/>
+                                                <constraint firstAttribute="centerY" secondItem="qe1-xF-CHX" secondAttribute="centerY" id="lmt-Hd-Yjx"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="411" id="ffp-kV-D19">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="afbeelding3" tableViewCell="ffp-kV-D19" id="IfJ-45-gtU">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zxP-4w-StF">
+                                                    <rect key="frame" x="8" y="0.0" width="600" height="410.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="410.5" id="do8-iR-yho"/>
+                                                        <constraint firstAttribute="width" constant="600" id="hsg-4u-Npk"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="centerY" secondItem="zxP-4w-StF" secondAttribute="centerY" id="1F5-Vu-S5k"/>
+                                                <constraint firstAttribute="centerX" secondItem="zxP-4w-StF" secondAttribute="centerX" constant="-8" id="2fK-tb-3kB"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="8O0-y0-e5M" id="Get-yA-adM"/>
+                            <outlet property="delegate" destination="8O0-y0-e5M" id="jge-e8-Tan"/>
+                        </connections>
+                    </tableView>
                     <connections>
-                        <outlet property="afbeelding" destination="7lm-yh-0PX" id="AnI-A1-9YU"/>
+                        <outlet property="afbeelding1" destination="V4D-Dw-fhN" id="KnY-WA-m5F"/>
+                        <outlet property="afbeelding2" destination="qe1-xF-CHX" id="Gtu-Vu-YJY"/>
+                        <outlet property="afbeelding3" destination="zxP-4w-StF" id="wFF-3Y-UNn"/>
                     </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gFl-Qp-KCo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bsd-9b-IzQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2054" y="336"/>
+            <point key="canvasLocation" x="2090" y="336"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cC5-ea-HfQ">
@@ -774,6 +826,14 @@
                     <view key="view" contentMode="scaleToFill" id="w8S-Bp-dmt">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Monitor overzicht!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PMW-L7-kgr">
+                                <rect key="frame" x="216" y="113" width="138" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Overzicht Ouder" id="nxU-o7-jxr"/>

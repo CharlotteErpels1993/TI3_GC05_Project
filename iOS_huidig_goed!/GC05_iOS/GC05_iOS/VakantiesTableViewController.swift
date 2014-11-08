@@ -1,13 +1,37 @@
 import UIKit
 
-class VakantiesTableViewController: UITableViewController {
+class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, UISearchDisplayDelegate {
     var vakanties: [Vakantie] = []
+    var gefilterdeVakanties: [Vakantie] = []
     var ouder: Ouder?
+    
+    @IBOutlet weak var zoekbar: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         zoekVakanties()
+        //zoekbar.showsScopeBar = true
+        //zoekbar.delegate = self
     }
+    
+    
+    /*func searchBarBookmarkButtonClicked(searchBar: UISearchBar) {
+        vakanties.removeAll()
+        var zoek: String = zoekbar.text
+        var query = PFQuery(className: "Vakantie")
+        query.whereKey("titel", containsString: zoek)
+        query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]!, error: NSError!) -> Void in
+            if error == nil {
+                if let PFObjects = objects as? [PFObject!] {
+                    for object in PFObjects {
+                        var vakantie = Vakantie(vakantie: object)
+                        self.vakanties.append(vakantie)
+                    }
+                }
+                self.tableView.reloadData()
+            }
+        }
+    }*/
     
     func zoekVakanties() {
         vakanties.removeAll()

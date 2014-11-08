@@ -5,10 +5,13 @@
     <item android:id="@+id/inloggen"
         android:title="@string/title_activity_Login"
         android:orderInCategory="100"
-        android:showAsAction="always" />
+        android:showAsAction="ifRoom" />
     <item android:id="@+id/regisreren"
         android:title="@string/title_activity_Register"
         android:orderInCategory="100"
-        android:showAsAction="always" />
-
+        android:showAsAction="ifRoom" />
+    <item android:id="@+id/uitloggen"
+        android:title="@string/button_logout"
+        android:orderInCategory="100"
+        android:showAsAction="ifRoom"/>
 </menu>
