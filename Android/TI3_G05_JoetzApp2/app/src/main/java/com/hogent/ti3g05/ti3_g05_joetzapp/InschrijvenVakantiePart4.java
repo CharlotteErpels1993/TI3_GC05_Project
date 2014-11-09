@@ -1,17 +1,36 @@
 package com.hogent.ti3g05.ti3_g05_joetzapp;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 
 public class InschrijvenVakantiePart4 extends Activity {
 
+    private Button btnTerug;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inschrijven_vakantie_part4);
+
+        btnTerug = (Button)findViewById(R.id.btnHome);
+
+
+        btnTerug.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent1 = new Intent(InschrijvenVakantiePart4.this, navBarMainScreen.class);
+                startActivity(intent1);
+
+                overridePendingTransition(R.anim.left_in, R.anim.right_out);
+
+
+            }
+        });
     }
 
 

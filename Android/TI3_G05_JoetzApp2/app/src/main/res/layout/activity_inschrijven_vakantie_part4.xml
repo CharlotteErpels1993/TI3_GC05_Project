@@ -120,11 +120,11 @@
             android:visibility="visible"/>
 
         <Button
-            android:id="@+id/btnNaarDeel1"
+            android:id="@+id/btnHome"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/ExtraInformatie"
-            android:text="@string/back"
+            android:text="@string/ok"
             android:layout_marginTop="8dp"/>
 
 
