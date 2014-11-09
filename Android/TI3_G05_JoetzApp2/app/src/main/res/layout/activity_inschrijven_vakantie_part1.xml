@@ -124,13 +124,13 @@
             android:layout_marginTop="25dp"
             android:text="@string/volgende" />
 
-        <Button
+    <!--    <Button
             android:id="@+id/btnNaarOverzicht"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/btnNaarDeel2Vak"
             android:text="@string/back"
-            android:layout_marginTop="8dp"/>
+            android:layout_marginTop="8dp"/>-->
 
 
     </RelativeLayout>

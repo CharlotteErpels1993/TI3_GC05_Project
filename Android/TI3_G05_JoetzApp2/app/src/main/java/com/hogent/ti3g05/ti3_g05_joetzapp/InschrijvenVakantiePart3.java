@@ -11,14 +11,12 @@ import android.widget.Button;
 
 public class InschrijvenVakantiePart3 extends Activity {
 private Button btnVolgende;
-    private Button btnTerug;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inschrijven_vakantie_part3);
 
         btnVolgende = (Button)findViewById(R.id.btnNaarDeel4V);
-        btnTerug = (Button)findViewById(R.id.btnNaarDeel2V);
 
         btnVolgende.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -29,37 +27,23 @@ private Button btnVolgende;
                 overridePendingTransition(R.anim.right_in, R.anim.left_out);
             }
         });
-        btnTerug.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent1 = new Intent(InschrijvenVakantiePart3.this, InschrijvenVakantiePart2.class);
-                startActivity(intent1);
-
-                overridePendingTransition(R.anim.left_in, R.anim.right_out);
-
-
-            }
-        });
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_inschrijven_vakantie_part3, menu);
+        getMenuInflater().inflate(R.menu.back, menu);
         return true;
     }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
+        if (id == R.id.backMenu) {
+            Intent intent1 = new Intent(this, navBarMainScreen.class);
+            startActivity(intent1);
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+            overridePendingTransition(R.anim.left_in, R.anim.right_out);
         }
 
         return super.onOptionsItemSelected(item);

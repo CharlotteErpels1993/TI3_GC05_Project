@@ -70,20 +70,15 @@
         <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.ForgetParsePassword" />
         <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.afbeeldingUItvergroot" />
         <activity
-            android:name="com.hogent.ti3g05.ti3_g05_joetzapp.InschrijvenVakantiePart1"
-            android:label="@string/title_activity_inschrijven_vakantie_part1" >
+            android:name="com.hogent.ti3g05.ti3_g05_joetzapp.InschrijvenVakantiePart1"></activity>
+        <activity
+            android:name="com.hogent.ti3g05.ti3_g05_joetzapp.InschrijvenVakantiePart2">
         </activity>
         <activity
-            android:name="com.hogent.ti3g05.ti3_g05_joetzapp.InschrijvenVakantiePart2"
-            android:label="@string/title_activity_inschrijven_vakantie_part2" >
+            android:name="com.hogent.ti3g05.ti3_g05_joetzapp.InschrijvenVakantiePart3" >
         </activity>
         <activity
-            android:name="com.hogent.ti3g05.ti3_g05_joetzapp.InschrijvenVakantiePart3"
-            android:label="@string/title_activity_inschrijven_vakantie_part3" >
-        </activity>
-        <activity
-            android:name="com.hogent.ti3g05.ti3_g05_joetzapp.InschrijvenVakantiePart4"
-            android:label="@string/title_activity_inschrijven_vakantie_part4" >
+            android:name="com.hogent.ti3g05.ti3_g05_joetzapp.InschrijvenVakantiePart4" >
         </activity>
 
         <activity android:name=".Vormingen_Overzicht"></activity>
@@ -92,7 +87,7 @@
 
 
 
->>>>>>> origin/master
+
     </application>
 
 </manifest>
