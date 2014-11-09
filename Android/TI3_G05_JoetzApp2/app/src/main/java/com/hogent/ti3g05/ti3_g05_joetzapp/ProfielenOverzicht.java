@@ -1,6 +1,7 @@
 package com.hogent.ti3g05.ti3_g05_joetzapp;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -8,8 +9,11 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ListView;
 
@@ -24,28 +28,27 @@ import java.util.List;
 import java.util.Locale;
 
 
-/**
- * Created by Gebruiker on 9/11/2014.
- */
-public class ProfielenOverzicht extends Activity {
+public class ProfielenOverzicht extends Fragment {
     private ListView listview;
     private List<ParseObject> ob;
     private ProgressDialog mProgressDialog;
     private ProfielAdapter adapter;
     private List<Monitor> profielen = null;
     private EditText filtertext;
+    private View rootView;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Get the view from listview_main.xml
-        setContentView(R.layout.activiteit_overzichtnieuw);
-        setTitle("Monitoren");
-        // Execute RemoteDataTask AsyncTask
-        filtertext = (EditText) findViewById(R.id.filtertext);
+        rootView = inflater.inflate(R.layout.activiteit_overzichtnieuw, container, false);
+
         new RemoteDataTask().execute();
+        listview = (ListView) rootView.findViewById(R.id.listView);
+        filtertext = (EditText) rootView.findViewById(R.id.filtertext);
+        return rootView;
     }
+
 
     // RemoteDataTask AsyncTask
     private class RemoteDataTask extends AsyncTask<Void, Void, Void> {
@@ -53,7 +56,7 @@ public class ProfielenOverzicht extends Activity {
         protected void onPreExecute() {
             super.onPreExecute();
             // Create a progressdialog
-            mProgressDialog = new ProgressDialog(ProfielenOverzicht.this);
+            mProgressDialog = new ProgressDialog(getActivity());
             // Set progressdialog title
             mProgressDialog.setTitle("Ophalen van profielen.");
             // Set progressdialog message
@@ -105,13 +108,12 @@ public class ProfielenOverzicht extends Activity {
         @Override
         protected void onPostExecute(Void result) {
             // Locate the listview in listview_main.xml
-            listview = (ListView) findViewById(R.id.listView);
             // Pass the results into ListViewAdapter.java
             //adapter = new ListViewAdapter(activiteit_overzicht.this, vakanties);
             //ArrayAdapter<Profile> profileAdapter = new ArrayAdapter<Profile>(context, resource, profiles)
             //ArrayAdapter<Vakantie> vakantieAdapter = new ArrayAdapter<Vakantie>(activiteit_overzicht.this, R.layout.listview_item , vakanties);
 
-            adapter = new ProfielAdapter(ProfielenOverzicht.this, profielen);
+            adapter = new ProfielAdapter(getActivity(), profielen);
             // Binds the Adapter to the ListView
             listview.setAdapter(adapter);
             // Close the progressdialog
@@ -134,7 +136,7 @@ public class ProfielenOverzicht extends Activity {
     }
 
 
-    @Override
+   /* @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.back, menu);
         return true;
@@ -151,5 +153,5 @@ public class ProfielenOverzicht extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 }

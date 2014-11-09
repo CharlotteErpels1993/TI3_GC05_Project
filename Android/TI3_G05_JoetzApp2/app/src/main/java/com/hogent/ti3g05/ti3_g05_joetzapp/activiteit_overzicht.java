@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Locale;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -12,11 +13,15 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ListViewAdapter;
 import com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.Login;
@@ -27,25 +32,27 @@ import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
-public class activiteit_overzicht extends Activity {
+public class activiteit_overzicht extends Fragment {
 
     private ListView listview;
     private List<ParseObject> ob;
     private ProgressDialog mProgressDialog;
     private ListViewAdapter adapter;
+
+    private View rootView;
     private List<Vakantie> vakanties = null;
     private EditText filtertext;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Get the view from listview_main.xml
-        setContentView(R.layout.activiteit_overzichtnieuw);
-        setTitle("Vakanties");
-        // Execute RemoteDataTask AsyncTask
-        filtertext = (EditText) findViewById(R.id.filtertext);
+        rootView = inflater.inflate(R.layout.activiteit_overzichtnieuw, container, false);
+
         new RemoteDataTask().execute();
+        listview = (ListView) rootView.findViewById(R.id.listView);
+        filtertext = (EditText) rootView.findViewById(R.id.filtertext);
+        return rootView;
     }
 
     // RemoteDataTask AsyncTask
@@ -54,7 +61,7 @@ public class activiteit_overzicht extends Activity {
         protected void onPreExecute() {
             super.onPreExecute();
             // Create a progressdialog
-            mProgressDialog = new ProgressDialog(activiteit_overzicht.this);
+            mProgressDialog = new ProgressDialog(getActivity());
             // Set progressdialog title
             mProgressDialog.setTitle("Ophalen van vakanties.");
             // Set progressdialog message
@@ -112,13 +119,12 @@ public class activiteit_overzicht extends Activity {
         @Override
         protected void onPostExecute(Void result) {
             // Locate the listview in listview_main.xml
-            listview = (ListView) findViewById(R.id.listView);
             // Pass the results into ListViewAdapter.java
             //adapter = new ListViewAdapter(activiteit_overzicht.this, vakanties);
             //ArrayAdapter<Profile> profileAdapter = new ArrayAdapter<Profile>(context, resource, profiles)
             //ArrayAdapter<Vakantie> vakantieAdapter = new ArrayAdapter<Vakantie>(activiteit_overzicht.this, R.layout.listview_item , vakanties);
 
-            adapter = new ListViewAdapter(activiteit_overzicht.this, vakanties);
+            adapter = new ListViewAdapter(getActivity(), vakanties);
             // Binds the Adapter to the ListView
             listview.setAdapter(adapter);
             // Close the progressdialog
@@ -141,13 +147,13 @@ public class activiteit_overzicht extends Activity {
     }
 
 
-    @Override
+   /* @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.back, menu);
         return true;
-    }
+    }*/
 
-    @Override
+  /*  @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.backMenu) {
@@ -158,5 +164,5 @@ public class activiteit_overzicht extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 }

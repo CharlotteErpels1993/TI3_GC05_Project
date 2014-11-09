@@ -18,7 +18,7 @@
         android:name="com.hogent.ti3g05.ti3_g05_joetzapp.MyParseApplication"
         android:allowBackup="true"
         android:debuggable="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/joetz"
         android:label="@string/app_name"
         android:theme="@android:style/Theme.DeviceDefault" >
 
