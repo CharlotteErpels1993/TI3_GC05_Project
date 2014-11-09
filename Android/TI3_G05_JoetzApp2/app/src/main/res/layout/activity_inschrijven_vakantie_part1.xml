@@ -117,7 +117,7 @@
 
 
         <Button
-            android:id="@+id/btnNaarDeel2"
+            android:id="@+id/btnNaarDeel2Vak"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/Postcode"
@@ -128,7 +128,7 @@
             android:id="@+id/btnNaarOverzicht"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/btnNaarDeel2"
+            android:layout_below="@id/btnNaarDeel2Vak"
             android:text="@string/back"
             android:layout_marginTop="8dp"/>
 
