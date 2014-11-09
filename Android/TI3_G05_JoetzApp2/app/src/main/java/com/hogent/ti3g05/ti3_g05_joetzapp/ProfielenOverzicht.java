@@ -1,9 +1,5 @@
 package com.hogent.ti3g05.ti3_g05_joetzapp;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -14,26 +10,29 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 
-import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ListViewAdapter;
-import com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.Login;
-import com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.SignUp_deel1;
-import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vakantie;
+import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ProfielAdapter;
+import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Monitor;
 import com.parse.ParseException;
-import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
-public class activiteit_overzicht extends Activity {
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
+
+/**
+ * Created by Gebruiker on 9/11/2014.
+ */
+public class ProfielenOverzicht extends Activity {
     private ListView listview;
     private List<ParseObject> ob;
     private ProgressDialog mProgressDialog;
-    private ListViewAdapter adapter;
-    private List<Vakantie> vakanties = null;
+    private ProfielAdapter adapter;
+    private List<Monitor> profielen = null;
     private EditText filtertext;
 
     @Override
@@ -42,7 +41,7 @@ public class activiteit_overzicht extends Activity {
 
         // Get the view from listview_main.xml
         setContentView(R.layout.activiteit_overzichtnieuw);
-        setTitle("Vakanties");
+        setTitle("Monitoren");
         // Execute RemoteDataTask AsyncTask
         filtertext = (EditText) findViewById(R.id.filtertext);
         new RemoteDataTask().execute();
@@ -54,9 +53,9 @@ public class activiteit_overzicht extends Activity {
         protected void onPreExecute() {
             super.onPreExecute();
             // Create a progressdialog
-            mProgressDialog = new ProgressDialog(activiteit_overzicht.this);
+            mProgressDialog = new ProgressDialog(ProfielenOverzicht.this);
             // Set progressdialog title
-            mProgressDialog.setTitle("Ophalen van vakanties.");
+            mProgressDialog.setTitle("Ophalen van profielen.");
             // Set progressdialog message
             mProgressDialog.setMessage("Aan het laden...");
             mProgressDialog.setIndeterminate(false);
@@ -67,39 +66,33 @@ public class activiteit_overzicht extends Activity {
         @Override
         protected Void doInBackground(Void... params) {
             // Create the array
-            vakanties = new ArrayList<Vakantie>();
+            profielen = new ArrayList<Monitor>();
             try {
                 // Locate the class table named "vakantie" in Parse.com
                 ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(
-                        "Vakantie");
+                        "Monitor");
                 // Locate the column named "vertrekdatum" in Parse.com and order list
                 // by ascending
-                query.orderByAscending("vertrekdatum");
+                query.orderByAscending("naam");
                 ob = query.find();
-                for (ParseObject vakantie : ob) {
-                    // Locate images in flag column
-                    ParseFile image = (ParseFile) vakantie.get("vakAfbeelding1");
-                    ParseFile image2 = (ParseFile) vakantie.get("vakAfbeelding2");
-                    ParseFile image3 = (ParseFile) vakantie.get("vakAfbeelding3");
+                for (ParseObject monitor : ob) {
 
-                    Vakantie map = new Vakantie();
+                    Monitor map = new Monitor();
                     //String prijs = vakantie.get("basisPrijs").toString();
-                    map.setNaamVakantie((String) vakantie.get("titel"));
-                    map.setLocatie((String) vakantie.get("locatie"));
-                    map.setKorteBeschrijving((String) vakantie.get("korteBeschrijving"));
-                    map.setDoelGroep((String) vakantie.get("doelgroep"));
-                    map.setKorteBeschrijving((String) vakantie.get("korteBeschrijving"));
-                    map.setBasisprijs((Number)vakantie.get("basisPrijs") );
-                    map.setPeriode((String) vakantie.get("aantalDagenNachten"));
-                    //map.setMaxDeeln((Number) vakantie.get("maxAantalDeelnemers"));
-                    map.setFormule((String) vakantie.get("formule"));
-                    map.setVervoerswijze((String) vakantie.get("vervoerwijze"));
+                    map.setNaam((String) monitor.get("naam"));
+                    map.setVoornaam((String) monitor.get("voornaam"));
+                    map.setStraat((String) monitor.get("straat"));
+                    //map.setPostcode((String) monitor.get("postcode"));
+                    //map.setHuisnr((Number) monitor.get("nummer"));
+                     //map.setLidNummer((Integer) monitor.get("lidNr"));
+                    map.setEmail((String) monitor.get("email"));
+                    map.setGemeente((String) monitor.get("gemeente"));
+                    map.setLinkFacebook((String) monitor.get("linkFacebook"));
+                    map.setGsm((String) monitor.get("telefoon"));
+                    map.setRijksregNr((String) monitor.get("rijksregisterNr"));
 
-                    map.setFoto1(image.getUrl());
-                    map.setFoto2(image2.getUrl());
-                    map.setFoto3(image3.getUrl());
 
-                    vakanties.add(map);
+                    profielen.add(map);
 
                 }
             } catch (ParseException e) {
@@ -118,7 +111,7 @@ public class activiteit_overzicht extends Activity {
             //ArrayAdapter<Profile> profileAdapter = new ArrayAdapter<Profile>(context, resource, profiles)
             //ArrayAdapter<Vakantie> vakantieAdapter = new ArrayAdapter<Vakantie>(activiteit_overzicht.this, R.layout.listview_item , vakanties);
 
-            adapter = new ListViewAdapter(activiteit_overzicht.this, vakanties);
+            adapter = new ProfielAdapter(ProfielenOverzicht.this, profielen);
             // Binds the Adapter to the ListView
             listview.setAdapter(adapter);
             // Close the progressdialog

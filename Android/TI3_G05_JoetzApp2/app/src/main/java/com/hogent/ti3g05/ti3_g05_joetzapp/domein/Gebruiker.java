@@ -11,7 +11,7 @@ public class Gebruiker { //abstract?
     private String voornaam, naam;
     private int huisnummer, rijksregisternummer;
     private String bus, straat, gemeente;
-    private int postcode;
+    private String postcode;
     private String telefoonnr, gsmnr;
 
     public long getUserId() {
@@ -78,11 +78,11 @@ public class Gebruiker { //abstract?
         this.gemeente = gemeente;
     }
 
-    public int getPostcode() {
+    public String getPostcode() {
         return postcode;
     }
 
-    public void setPostcode(int postcode) {
+    public void setPostcode(String postcode) {
         this.postcode = postcode;
     }
 

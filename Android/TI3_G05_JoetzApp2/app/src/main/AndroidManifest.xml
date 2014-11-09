@@ -85,6 +85,9 @@
 
         <activity android:name=".VormingDetail"></activity>
 
+        <activity android:name=".ProfielDetail"></activity>
+        <activity android:name=".ProfielenOverzicht"></activity>
+
 
 
 
