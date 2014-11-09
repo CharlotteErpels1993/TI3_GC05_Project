@@ -79,6 +79,8 @@ public class SignUp_deel2 extends Activity{
             public void onClick(View view) {
                 Intent intent1 = new Intent(SignUp_deel2.this, SignUp_deel1.class);
                 startActivity(intent1);
+
+                overridePendingTransition(R.anim.left_in, R.anim.right_out);
             }
         });
 
@@ -124,6 +126,8 @@ public class SignUp_deel2 extends Activity{
         intent.putExtra("aansluitingsnr", aansluitingsnummerString);
 
         startActivity(intent);
+
+        overridePendingTransition(R.anim.right_in, R.anim.left_out);
         /*user.signUpInBackground(new SignUpCallback() {
             public void done(ParseException e) {
                 if (e == null) {

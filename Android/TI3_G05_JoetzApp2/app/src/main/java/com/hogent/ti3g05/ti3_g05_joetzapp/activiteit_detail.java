@@ -33,10 +33,6 @@ public class activiteit_detail extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activiteit_detailnieuw);
 
-        final Button buttonFadeIn = (Button)findViewById(R.id.fadein);
-
-
-        Button buttonFadeOut = (Button)findViewById(R.id.fadeout);
 
         Intent i = getIntent();
         naam = i.getStringExtra("naam");
@@ -81,6 +77,8 @@ public class activiteit_detail extends Activity {
 
                 intent1.putExtra("afbeelding", afbeelding1);
                 startActivity(intent1);
+
+                overridePendingTransition(R.anim.right_in, R.anim.left_out);
             }
         });
         afbeelding2im.setOnClickListener(new View.OnClickListener() {
@@ -90,6 +88,8 @@ public class activiteit_detail extends Activity {
 
                 intent1.putExtra("afbeelding",afbeelding2);
                 startActivity(intent1);
+
+                overridePendingTransition(R.anim.right_in, R.anim.left_out);
             }
         });
 
@@ -100,6 +100,8 @@ public class activiteit_detail extends Activity {
 
                 intent1.putExtra("afbeelding",afbeelding3);
                 startActivity(intent1);
+
+                overridePendingTransition(R.anim.right_in, R.anim.left_out);
             }
         });
 

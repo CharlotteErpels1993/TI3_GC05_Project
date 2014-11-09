@@ -51,6 +51,8 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+
         </activity>
         <activity
             android:name="com.hogent.ti3g05.ti3_g05_joetzapp.profiel_detail"
@@ -83,6 +85,14 @@
             android:name="com.hogent.ti3g05.ti3_g05_joetzapp.InschrijvenVakantiePart4"
             android:label="@string/title_activity_inschrijven_vakantie_part4" >
         </activity>
+
+        <activity android:name=".Vormingen_Overzicht"></activity>
+
+        <activity android:name=".VormingDetail"></activity>
+
+
+
+>>>>>>> origin/master
     </application>
 
 </manifest>

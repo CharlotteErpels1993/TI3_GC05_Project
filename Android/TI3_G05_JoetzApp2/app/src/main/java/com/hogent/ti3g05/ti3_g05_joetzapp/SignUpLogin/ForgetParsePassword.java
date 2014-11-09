@@ -36,6 +36,8 @@ public class ForgetParsePassword extends Activity{
             public void onClick(View view) {
                 Intent intent1 = new Intent(ForgetParsePassword.this, Login.class);
                 startActivity(intent1);
+
+                overridePendingTransition(R.anim.left_in, R.anim.right_out);
             }
         });
 		

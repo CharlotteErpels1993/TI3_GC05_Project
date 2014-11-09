@@ -98,6 +98,8 @@ public class Login extends Activity{
             public void onClick(View v) {
                 Intent in = new Intent(Login.this, ForgetParsePassword.class);
                 startActivity(in);
+
+                overridePendingTransition(R.anim.right_in, R.anim.left_out);
             }
         });
 
@@ -106,6 +108,8 @@ public class Login extends Activity{
             public void onClick(View view) {
                 Intent intent = new Intent(Login.this, navBarMainScreen.class);
                 startActivity(intent);
+
+                overridePendingTransition(R.anim.left_in, R.anim.right_out);
             }
         });
 
@@ -177,6 +181,8 @@ public class Login extends Activity{
 
 		Intent in =  new Intent(Login.this,navBarMainScreen.class);
 		startActivity(in);
+
+        overridePendingTransition(R.anim.left_in, R.anim.right_out);
 	}
 	protected void loginUnSuccessful() {
 		Toast.makeText(getApplicationContext(), "Email of wachtwoord is ongeldig", Toast.LENGTH_SHORT).show();

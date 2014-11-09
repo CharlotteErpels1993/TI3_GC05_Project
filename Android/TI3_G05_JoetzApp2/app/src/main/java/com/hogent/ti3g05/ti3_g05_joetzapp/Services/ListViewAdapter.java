@@ -135,6 +135,7 @@ public class ListViewAdapter extends ArrayAdapter<Vakantie> implements Filterabl
     }
 
 
+
     public void filter(String charText) {
         charText = charText.toLowerCase(Locale.getDefault());
         vakanties.clear();

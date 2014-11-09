@@ -103,6 +103,8 @@ public class SignUp_deel3 extends Activity{
             public void onClick(View view) {
                 Intent intent1 = new Intent(SignUp_deel3.this, SignUp_deel1.class);
                 startActivity(intent1);
+
+                overridePendingTransition(R.anim.left_in, R.anim.right_out);
             }
         });
 
@@ -260,6 +262,8 @@ public class SignUp_deel3 extends Activity{
         in.putExtra("gsm",gsm);
 
         startActivity(in);
+
+        overridePendingTransition(R.anim.right_in, R.anim.left_out);
 
     }
 

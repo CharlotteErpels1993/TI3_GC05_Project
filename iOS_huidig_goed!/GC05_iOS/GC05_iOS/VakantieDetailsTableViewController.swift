@@ -5,7 +5,7 @@ class VakantieDetailsTableViewController: UITableViewController {
     @IBOutlet weak var afbeelding1: UIImageView!
     @IBOutlet weak var afbeelding2: UIImageView!
     @IBOutlet weak var afbeelding3: UIImageView!
-
+    
     
     @IBOutlet weak var korteBeschrijvingLabel: UILabel!
     @IBOutlet weak var doelgroepLabel: UILabel!
@@ -63,7 +63,6 @@ class VakantieDetailsTableViewController: UITableViewController {
         sterPrijs2Label.hidden = true
         bondMoysonPrijsLabel.hidden = true
         }
-        
     }
     
     /*override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -73,11 +72,13 @@ class VakantieDetailsTableViewController: UITableViewController {
     
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "bekijkAfbeelding" {
+            var afb1 = afbeelding1.image
+            var afb2 = afbeelding2.image
+            var afb3 = afbeelding3.image
             let bekijkAfbeeldingViewController = segue.destinationViewController as BekijkAfbeeldingViewController
-            
-            bekijkAfbeeldingViewController.afbeeldingId = afbeelding1.image
-        }
+            bekijkAfbeeldingViewController.afb1 = afb1
+            bekijkAfbeeldingViewController.afb2 = afb2
+            bekijkAfbeeldingViewController.afb3 = afb3
     }
 
 
