@@ -9,11 +9,11 @@ import java.util.NavigableMap;
 
 public class Vakantie extends Activiteit{
     private Date vertrekDatum, terugkeerDatum;
-    //aantalDagenNachten is een berekend veld. Wel/niet erin?
+    private String aantalDagenNachten;
     private String vervoerswijze, formule;
-    private Number basisprijs, bondMoysonLedenPrijs, sterPrijs;
+    private Number basisprijs, bondMoysonLedenPrijs, sterPrijs1Ouder, sterPrijs2Ouder;
     private int korting;
-    //inbegrepenPrijs ook berekend veld?
+    private String inbegrepenInPrijs;
     private String doelGroep;
     private Number maxAantalDeelnemers;
     private String naamVakantie;
@@ -22,7 +22,6 @@ public class Vakantie extends Activiteit{
     private String foto3;
     private String prijsStr;
     private String periode;
-    private Number maxDeeln;
 
     public Vakantie(){
         super();
@@ -44,8 +43,6 @@ public class Vakantie extends Activiteit{
     public void setPeriode(String periode){this.periode=periode;}
     public String getNaamVakantie() {return naamVakantie;}
 
-    public Number getMaxDeeln(){return maxDeeln;}
-    public void setMaxDeeln(Number deeln){this.maxDeeln = deeln;}
     public void setNaamVakantie(String naamVakantie) { this.naamVakantie = naamVakantie;}
 
     public Date getVertrekDatum() {
@@ -98,14 +95,6 @@ public class Vakantie extends Activiteit{
         this.bondMoysonLedenPrijs = bondMoysonLedenPrijs;
     }
 
-    public Number getSterPrijs() {
-        return sterPrijs;
-    }
-
-    public void setSterPrijs(Number sterPrijs) {
-        this.sterPrijs = sterPrijs;
-    }
-
     public int getKorting() {
         return korting;
     }
@@ -126,9 +115,6 @@ public class Vakantie extends Activiteit{
         return maxAantalDeelnemers;
     }
 
-    public void setMaxAantalDeelnemers(int maxAantalDeelnemers) {
-        this.maxAantalDeelnemers = maxAantalDeelnemers;
-    }
     public String getFoto1(){   return foto1; }
 
     public void setFoto1(String fto) {this.foto1=fto;}
@@ -141,6 +127,39 @@ public class Vakantie extends Activiteit{
 
     public void setFoto3(String fto) {this.foto3=fto;}
 
+    public void setMaxAantalDeelnemers(Number maxAantalDeelnemers) {
+        this.maxAantalDeelnemers = maxAantalDeelnemers;
+    }
 
+    public String getAantalDagenNachten() {
+        return aantalDagenNachten;
+    }
 
+    public void setAantalDagenNachten(String aantalDagenNachten) {
+        this.aantalDagenNachten = aantalDagenNachten;
+    }
+
+    public String getInbegrepenInPrijs() {
+        return inbegrepenInPrijs;
+    }
+
+    public void setInbegrepenInPrijs(String inbegrepenInPrijs) {
+        this.inbegrepenInPrijs = inbegrepenInPrijs;
+    }
+
+    public Number getSterPrijs1Ouder() {
+        return sterPrijs1Ouder;
+    }
+
+    public void setSterPrijs1Ouder(Number sterPrijs1Ouder) {
+        this.sterPrijs1Ouder = sterPrijs1Ouder;
+    }
+
+    public Number getSterPrijs2Ouder() {
+        return sterPrijs2Ouder;
+    }
+
+    public void setSterPrijs2Ouder(Number sterPrijs2Ouder) {
+        this.sterPrijs2Ouder = sterPrijs2Ouder;
+    }
 }
