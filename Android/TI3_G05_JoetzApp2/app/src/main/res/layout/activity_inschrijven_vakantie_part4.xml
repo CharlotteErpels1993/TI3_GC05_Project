@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        style="@style/LoginFormContainer">
+
+        <TextView
+        android:id="@+id/VakantieNaam"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Naam van vakantie (wordt toch tijdens runtime veranderd)"/>
+
+        <TextView
+            android:id="@+id/VakantiePeriode"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/VakantieNaam"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="periodes van vakantie"/>
+
+        <TextView
+            android:id="@+id/Voornaam"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="25dp"
+            android:layout_below="@id/VakantiePeriode"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:hint="@string/naamHint"/>
+
+        <TextView
+            android:id="@+id/Naam"
+
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Voornaam"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="25dp"
+            android:text="@string/famnaamHint"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/AdresGegevens"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Naam"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="25dp"
+            android:text="Adresgegevens"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/GeboorteDatum"
+
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/AdresGegevens"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="25dp"
+            android:text="Geboortedatum"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/NaamContactpersoon"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/GeboorteDatum"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="NaamContactpersoon"/>
+
+        <TextView
+            android:id="@+id/VoornaamContactPersoon"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/NaamContactpersoon"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="VoornaamContactPersoon"/>
+
+        <TextView
+            android:id="@+id/TelefoonContactpersoon"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/VoornaamContactPersoon"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="TelefoonContactpersoon"/>
+
+        <TextView
+            android:id="@+id/GSMcontactpersoon"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/TelefoonContactpersoon"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="GSMcontactpersoon"/>
+
+        <TextView
+            android:id="@+id/ExtraInformatie"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/GSMcontactpersoon"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="ExtraInformatie"
+            android:visibility="visible"/>
+
+        <Button
+            android:id="@+id/btnNaarDeel1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ExtraInformatie"
+            android:text="@string/back"
+            android:layout_marginTop="8dp"/>
+
+
+    </RelativeLayout>
+</ScrollView>

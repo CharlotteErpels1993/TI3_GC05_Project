@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        style="@style/LoginFormContainer">
+
+        <TextView
+            android:id="@+id/AlgemeneUitleg"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/inschrijvenVak3_AlgemeneUitleg"/>
+
+        <EditText
+            android:id="@+id/ExtraInformatie"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="25dp"
+            android:layout_below="@id/AlgemeneUitleg"
+            android:inputType="textMultiLine"/>
+            <!--android:lines="4" /> -->
+
+
+        <Button
+            android:id="@+id/btnNaarDeel3"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ExtraInformatie"
+            android:layout_marginTop="25dp"
+            android:text="@string/volgende" />
+
+        <Button
+            android:id="@+id/btnNaarDeel1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btnNaarDeel3"
+            android:text="@string/back"
+            android:layout_marginTop="8dp"/>
+
+
+    </RelativeLayout>
+</ScrollView>

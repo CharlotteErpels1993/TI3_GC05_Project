@@ -9,7 +9,6 @@
     <string name="orText">of</string>
     <string name="createAccount">Registreer</string>
     <string name="emailHint">Email</string>
-
     <string name="passwordHint">wachtwoord</string>
     <string name="confirmPasswordHint">bevestig wachtwoord</string>
     <string name="title_activity_launcher">LauncherActivity</string>
@@ -69,30 +68,32 @@
     <string name="error_incorrect_postcode">Postcode is niet geldig (moet numeriek zijn, 4 cijfers)</string>
     <string name="error_incorrect_rijksregnr">Rijksregisternummer is niet geldig (11 cijfers, geen spaties of speciale tekens)</string>
     <string name="error_incorrect_huisnr">Huisnummer is niet geldig (moet numeriek zijn)</string>
-
     <string name="signup_melding_monitor">U schrijft zich momenteel in als ouder/voogd. Indien u zich inschrijven als monitor?
 Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm en eventueel uw telefoonnummer.
         Ons e-mail adres is joetz.west@joetz.be en u kan ook terecht op het nummer: 056 27 47 00</string>
-
     <string name="loading_message">Bezig met laden, even geduld aub</string>
-
     <string name="error_no_internet">Kan geen verbinding maken met de server. Gelieve uw verbinding te controleren.</string>
 
+    <string-array name="items">
+        <item>Vakanties</item>
+        <item>Profielen</item>
+        <item>Vormingen</item>
+        <item>about</item>
+    </string-array>
 
-
-
-        <string-array name="items">
-            <item>Vakanties</item>
-            <item>Profielen</item>
-            <item>Vormingen</item>
-            <item>about</item>
-        </string-array>
-
-      <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
     <string name="title_activity_tester_list_item">TesterListItem</string>
     <string name="meerInfo">Meer info</string>
-
     <string name="minderInfo">Minder info</string>
+    <string name="title_activity_inschrijven_vakantie_part1">InschrijvenVakantiePart1</string>
+    <string name="inschrijvenVak1_AlgemeneUitleg">Gelieve de gevens van de deelnemer in te voeren.</string>
+    <string name="label_geboorteDatum">Geboortedatum</string>
+    <string name="inschrijvenVak2_AlgemeneUitleg">Gelieve de gegevens in te vullen van een contactpersoon in geval van nood.</string>
+    <string name="inschrijvenVak3_AlgemeneUitleg">Indien er nog extra info is, waar de leiding van op de hoogte moet zijn, kan u dit hier invullen. Bijvoorbeeld allergieën, ziekte, ...</string>
+
+    <string name="title_activity_inschrijven_vakantie_part2">InschrijvenVakantiePart2</string>
+    <string name="title_activity_inschrijven_vakantie_part3">InschrijvenVakantiePart3</string>
+    <string name="title_activity_inschrijven_vakantie_part4">InschrijvenVakantiePart4</string>
 
 </resources>

@@ -9,73 +9,80 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
-
-    <application
-        android:name=".MyParseApplication"
-        android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name"
-        android:theme="@android:style/Theme.DeviceDefault"
-        android:debuggable="true"
-
-        >
-
-       <!-- <activity
-            android:name=".MainScreen"
-            android:label="@string/title_activity_main_screen" >
-        </activity>
--->
-        <activity
-            android:name=".navBarMainScreen" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".InschrijvenActivity"
-            android:label="@string/title_activity_inschrijven" >
-        </activity>
-        <activity
-            android:name=".activiteit_detail"
-            android:label="@string/title_activity_activiteit_detail" >
-        </activity>
-        <activity
-            android:name=".activiteit_overzicht"
-            android:label="@string/title_activity_activiteit_overzicht" >
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
-        </activity>
-        <activity
-            android:name=".profiel_detail"
-            android:label="@string/title_activity_profiel_detail" >
-        </activity>
-        <activity
-            android:name=".profiel_edit"
-            android:label="@string/title_activity_profiel_edit" >
-        </activity>
-
-        <activity android:name=".SignUpLogin.SignUp_deel1" ></activity>
-        <activity android:name=".SignUpLogin.SignUp_deel2"></activity>
-        <activity android:name=".SignUpLogin.SignUp_deel3"></activity>
-        <activity android:name=".SignUpLogin.SignUp_deel4"></activity>
-        <activity android:name=".SignUpLogin.Login"></activity>
-        <activity android:name=".SignUpLogin.ForgetParsePassword"></activity>
-        <activity android:name=".afbeeldingUItvergroot"></activity>
-
-
-
-    </application>
     <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
+    <application
+        android:name="com.hogent.ti3g05.ti3_g05_joetzapp.MyParseApplication"
+        android:allowBackup="true"
+        android:debuggable="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.DeviceDefault" >
+
+        <!--
+        <activity
+            android:name=".MainScreen"
+            android:label="@string/title_activity_main_screen" >
+        </activity>
+        -->
+        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.navBarMainScreen" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.hogent.ti3g05.ti3_g05_joetzapp.InschrijvenActivity"
+            android:label="@string/title_activity_inschrijven" >
+        </activity>
+        <activity
+            android:name="com.hogent.ti3g05.ti3_g05_joetzapp.activiteit_detail"
+            android:label="@string/title_activity_activiteit_detail" >
+        </activity>
+        <activity
+            android:name="com.hogent.ti3g05.ti3_g05_joetzapp.activiteit_overzicht"
+            android:label="@string/title_activity_activiteit_overzicht" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.hogent.ti3g05.ti3_g05_joetzapp.profiel_detail"
+            android:label="@string/title_activity_profiel_detail" >
+        </activity>
+        <activity
+            android:name="com.hogent.ti3g05.ti3_g05_joetzapp.profiel_edit"
+            android:label="@string/title_activity_profiel_edit" >
+        </activity>
+        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.SignUp_deel1" />
+        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.SignUp_deel2" />
+        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.SignUp_deel3" />
+        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.SignUp_deel4" />
+        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.Login" />
+        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.ForgetParsePassword" />
+        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.afbeeldingUItvergroot" />
+        <activity
+            android:name="com.hogent.ti3g05.ti3_g05_joetzapp.InschrijvenVakantiePart1"
+            android:label="@string/title_activity_inschrijven_vakantie_part1" >
+        </activity>
+        <activity
+            android:name="com.hogent.ti3g05.ti3_g05_joetzapp.InschrijvenVakantiePart2"
+            android:label="@string/title_activity_inschrijven_vakantie_part2" >
+        </activity>
+        <activity
+            android:name="com.hogent.ti3g05.ti3_g05_joetzapp.InschrijvenVakantiePart3"
+            android:label="@string/title_activity_inschrijven_vakantie_part3" >
+        </activity>
+        <activity
+            android:name="com.hogent.ti3g05.ti3_g05_joetzapp.InschrijvenVakantiePart4"
+            android:label="@string/title_activity_inschrijven_vakantie_part4" >
+        </activity>
+    </application>
 
 </manifest>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        style="@style/LoginFormContainer">
+
+        <TextView
+            android:id="@+id/AlgemeneUitleg"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/inschrijvenVak2_AlgemeneUitleg"/>
+
+        <EditText
+            android:id="@+id/Voornaam"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="25dp"
+            android:layout_below="@id/AlgemeneUitleg"
+            android:hint="@string/naamHint"/>
+
+        <EditText
+            android:id="@+id/Naam"
+
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Voornaam"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="25dp"
+            android:hint="@string/famnaamHint" />
+
+        <EditText
+            android:id="@+id/Telefoon"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Naam"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="25dp"
+            android:hint="@string/telefoonHint" />
+
+        <EditText
+            android:id="@+id/Gsm"
+
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Telefoon"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="25dp"
+            android:hint="@string/gsmHint" />
+
+
+        <Button
+            android:id="@+id/btnNaarDeel3"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Gsm"
+            android:layout_marginTop="25dp"
+            android:text="@string/volgende" />
+
+        <Button
+            android:id="@+id/btnNaarDeel1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btnNaarDeel3"
+            android:text="@string/back"
+            android:layout_marginTop="8dp"/>
+
+
+    </RelativeLayout>
+</ScrollView>
