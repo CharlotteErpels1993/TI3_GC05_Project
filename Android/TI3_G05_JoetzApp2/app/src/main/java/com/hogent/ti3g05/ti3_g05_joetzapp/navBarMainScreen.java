@@ -27,7 +27,7 @@ import com.parse.ParseUser;
 
 public class navBarMainScreen extends Activity {
 
-    private Fragment fragment = new ProfielenOverzicht();
+    private Fragment fragment = new activiteit_overzicht();
 
     // Within which the entire activity is enclosed
     private DrawerLayout mDrawerLayout;
