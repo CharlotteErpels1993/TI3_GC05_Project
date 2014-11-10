@@ -13,8 +13,14 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.parse.ParseException;
 import com.parse.ParseUser;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 //ingelogde gebr:      titel, korte beschr, periode, locatie, inbegrepen in prijs, doelgroep (met geboortejaren), max aantal deelnemers,
 //                     vervoerswijze, formule, prijs (basisprijs, BM prijs & sterprijs) kortingen, gegevens contactpersoon inschrijving & algemene voorwaarden
@@ -36,6 +42,10 @@ public class activiteit_detail extends Activity {
     String doelgro;
     String afbeelding2;
     String afbeelding3;
+    String bmLedenPrijs;
+    String sterPrijs1Ouder;
+    String sterPrijs2Ouders;
+    String inbegrepenInPrijs;
 
     private boolean isIngelogd;
 
@@ -61,31 +71,39 @@ public class activiteit_detail extends Activity {
         locatie = i.getStringExtra("locatie");
         vertrekdatum = i.getStringExtra("vertrekdatum");
         terugdatum = i.getStringExtra("terugdatum");
-        afbeelding1 = i.getStringExtra("afbeelding1");
         doelgro = i.getStringExtra("doelgroep");
+        afbeelding1 = i.getStringExtra("afbeelding1");
         afbeelding2 = i.getStringExtra("afbeelding2");
-
         afbeelding3 = i.getStringExtra("afbeelding3");
-
         formule = i.getStringExtra("formule");
         maxDeeln = i.getStringExtra("maxAantalDeelnemers");
         periode = i.getStringExtra("periode");
         vervoer = i.getStringExtra("vervoer");
         prijs = i.getStringExtra("prijs");
         beschrijving = i.getStringExtra("beschrijving");
+        bmLedenPrijs = i.getStringExtra("BMledenPrijs");
+        inbegrepenInPrijs = i.getStringExtra("InbegrepenInPrijs");
+        sterPrijs1Ouder = i.getStringExtra("SterPrijs1Ouder");
+        sterPrijs2Ouders = i.getStringExtra("SterPrijs2Ouders");
+
 
         setTitle(naam);
 
-        TextView txtNaam = (TextView) findViewById(R.id.titel);
+        final TextView txtNaam = (TextView) findViewById(R.id.titel);
         final TextView txtLocatie = (TextView) findViewById(R.id.locatiev);
         final TextView txtDoelgr = (TextView) findViewById(R.id.doelgroepv);
-
         final TextView txtformule = (TextView)findViewById(R.id.formule);
-        TextView txtmaxDeeln = (TextView)findViewById(R.id.maxDeelnemers);
+        final TextView txtmaxDeeln = (TextView)findViewById(R.id.maxDeelnemers);
         final TextView txtPeriode = (TextView)findViewById(R.id.periode);
         final TextView txtVervoer = (TextView)findViewById(R.id.vervoer);
-        TextView txtPrijs = (TextView)findViewById(R.id.prijs);
-        TextView txtBeschrijving = (TextView)findViewById(R.id.beschrijving);
+        final TextView txtPrijs = (TextView)findViewById(R.id.basisprijs);
+        final TextView txtBeschrijving = (TextView)findViewById(R.id.beschrijving);
+        final TextView txtVertrekDatum = (TextView) findViewById(R.id.vertrekdatum);
+        final TextView txtTerugkeerDatum = (TextView) findViewById(R.id.terugkeerdatum);
+        final TextView txtInbegrepenInPrijs = (TextView) findViewById(R.id.inbegrepenInPrijs);
+        final TextView txtBMledenPrijs = (TextView) findViewById(R.id.bondMoysonLedenPrijs);
+        final TextView txtSterPrijs1Ouder = (TextView) findViewById(R.id.sterPrijs1Ouder);
+        final TextView txtSterPrijs2Ouders = (TextView) findViewById(R.id.sterPrijs2Ouders);
 
         btnInschrijven = (Button)findViewById(R.id.btnInschrijvenV);
 
@@ -139,17 +157,39 @@ public class activiteit_detail extends Activity {
             }
         });
 
+        //hieronder wordt er een leesbare datum geconverteerd
+        try{
+            SimpleDateFormat dateFormat = new SimpleDateFormat("EEE MMM d HH:mm:ss zz yyyy");
+            Calendar cal = Calendar.getInstance();
+
+            Date vertrDate = dateFormat.parse(vertrekdatum);
+            cal.setTime(vertrDate);
+            vertrekdatum = cal.get(Calendar.DAY_OF_MONTH) + "/" + cal.get(Calendar.MONTH) + "/" + cal.get(Calendar.YEAR);
+
+            Date terugkDate = dateFormat.parse(terugdatum);
+            cal.setTime(terugkDate);
+            terugdatum = cal.get(Calendar.DAY_OF_MONTH) + "/" + cal.get(Calendar.MONTH) + "/" + cal.get(Calendar.YEAR);
+        }
+        catch(java.text.ParseException pe){
+            Toast.makeText(getApplicationContext(), pe.getMessage(), Toast.LENGTH_SHORT);
+        }
 
 
         txtNaam.setText(naam);
-        txtLocatie.setText(locatie);
-        txtDoelgr.setText(doelgro);
-        txtformule.setText(formule);
-        //txtmaxDeeln.setText(maxDeeln.toString());
-        txtPeriode.setText(periode);
-        txtVervoer.setText(vervoer);
-        //txtPrijs.setText(prijs.toString());
+        txtLocatie.setText("Locatie: " + locatie);
+        txtDoelgr.setText("Doelgroep: " + doelgro);
+        txtformule.setText("Formule: " + formule);
+        txtmaxDeeln.setText("Maximum aantal deelnemers: " + maxDeeln.toString());
+        txtPeriode.setText("Periode: " + periode);
+        txtVervoer.setText("Vervoer: " + vervoer);
+        txtPrijs.setText("Normale prijs: " + prijs);
         txtBeschrijving.setText(beschrijving);
+        txtVertrekDatum.setText("Vertrek: " + vertrekdatum);
+        txtTerugkeerDatum.setText("Terug: " + terugdatum);
+        txtInbegrepenInPrijs.setText("Inbegrepen in de prijs: " + inbegrepenInPrijs);
+        txtBMledenPrijs.setText("Prijs voor leden van Bond Moyson: " + bmLedenPrijs);
+        txtSterPrijs1Ouder.setText("Prijs voor leden waarvan 1 ouder deel is van BM: " + sterPrijs1Ouder);
+        txtSterPrijs2Ouders.setText("Prijs voor leden waarvan 2 ouders deel zijn van BM: " + sterPrijs2Ouders);
 
         // Capture position and set results to the ImageView
         // Passes flag images URL into ImageLoader.class

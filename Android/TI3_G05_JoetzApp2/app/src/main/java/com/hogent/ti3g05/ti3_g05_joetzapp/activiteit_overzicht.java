@@ -96,23 +96,17 @@ public class activiteit_overzicht extends Fragment {
                     map.setLocatie((String) vakantie.get("locatie"));
                     map.setKorteBeschrijving((String) vakantie.get("korteBeschrijving"));
                     map.setDoelGroep((String) vakantie.get("doelgroep"));
-
                     map.setBasisprijs((Number) vakantie.get("basisPrijs"));
                     map.setMaxAantalDeelnemers((Number) vakantie.get("maxAantalDeelnemers"));
-
-                    map.setKorteBeschrijving((String) vakantie.get("korteBeschrijving"));
-                    map.setBasisprijs((Number)vakantie.get("basisPrijs") );
                     map.setPeriode((String) vakantie.get("aantalDagenNachten"));
-                    //map.setMaxDeeln((Number) vakantie.get("maxAantalDeelnemers"));
                     map.setFormule((String) vakantie.get("formule"));
                     map.setVervoerswijze((String) vakantie.get("vervoerwijze"));
-                    map.setPeriode((String) vakantie.get("aantalDagenNachten"));
                     map.setVertrekDatum((Date) vakantie.get("vertrekdatum"));
                     map.setTerugkeerDatum((Date) vakantie.get("terugkeerdatum"));
                     map.setBondMoysonLedenPrijs((Number) vakantie.get("bondMoysonLedenPrijs"));
                     map.setInbegrepenInPrijs((String) vakantie.get("inbegrepenPrijs"));
-                    map.setSterPrijs1Ouder((Number) vakantie.get("sterPrijs1Ouder"));
-                    map.setSterPrijs2Ouder((Number) vakantie.get("sterPrijs2Ouders"));
+                    map.setSterPrijs1Ouder((Number) vakantie.get("sterPrijs1ouder"));
+                    map.setSterPrijs2Ouder((Number) vakantie.get("sterPrijs2ouders"));
                     //TODO gegevens contactpersoon vakantie
 
 
