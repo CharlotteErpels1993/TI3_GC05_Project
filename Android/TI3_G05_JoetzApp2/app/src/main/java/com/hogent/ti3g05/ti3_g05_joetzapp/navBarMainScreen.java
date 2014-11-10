@@ -27,7 +27,7 @@ import com.parse.ParseUser;
 
 public class navBarMainScreen extends Activity {
 
-    private Fragment fragment = new afbeeldingVoor();
+    private Fragment fragment = new activiteit_overzicht();
 
     // Within which the entire activity is enclosed
     private DrawerLayout mDrawerLayout;
@@ -81,7 +81,7 @@ public class navBarMainScreen extends Activity {
 
             /** Called when a drawer is opened */
             public void onDrawerOpened(View drawerView) {
-                getActionBar().setTitle("Joetz");
+                getActionBar().setTitle("");
                 invalidateOptionsMenu();
             }
 
@@ -149,14 +149,16 @@ public class navBarMainScreen extends Activity {
 
         switch (position) {
             case 0:
-                //fragment = new activiteit_overzicht_fragment();
-                Intent intent = new Intent(navBarMainScreen.this, activiteit_overzicht.class
+                fragment = new activiteit_overzicht();
+                /*Intent intent = new Intent(navBarMainScreen.this, activiteit_overzicht.class
                 );
-                startActivity(intent);
+                startActivity(intent);*/
                 break;
             case 1:
-                fragment = new MainScreen();
-
+                fragment = new ProfielenOverzicht();
+               /* Intent intent1 = new Intent(navBarMainScreen.this, ProfielenOverzicht.class
+                );
+                startActivity(intent1);*/
                 break;
             case 2:
                 Intent intent2 = new Intent(navBarMainScreen.this, Vormingen_Overzicht.class

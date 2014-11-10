@@ -3,6 +3,9 @@ package com.hogent.ti3g05.ti3_g05_joetzapp;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -33,7 +36,10 @@ public class activiteit_detail extends Activity {
     String doelgro;
     String afbeelding2;
     String afbeelding3;
+
     private boolean isIngelogd;
+
+    Button btnInschrijven;
 
     //TODO bij doelgroepen moet er volgens de UC ook nog de geboortejaren bij komen -> methode voor maken om dat te berekenen
     //TODO algemene voorwaarden onderaan bijzetten -> string resource, kopieren van JOETZ
@@ -81,10 +87,22 @@ public class activiteit_detail extends Activity {
         TextView txtPrijs = (TextView)findViewById(R.id.prijs);
         TextView txtBeschrijving = (TextView)findViewById(R.id.beschrijving);
 
+        btnInschrijven = (Button)findViewById(R.id.btnInschrijvenV);
+
         ImageView afbeelding1im = (ImageView) findViewById(R.id.afbeelding1);
         ImageView afbeelding2im = (ImageView) findViewById(R.id.afbeelding2);
 
         ImageView afbeelding3im = (ImageView) findViewById(R.id.afbeelding3);
+
+        btnInschrijven.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent3 = new Intent(activiteit_detail.this, InschrijvenVakantiePart1.class);
+                startActivity(intent3);
+
+                overridePendingTransition(R.anim.right_in, R.anim.left_out);
+            }
+        });
 
         afbeelding1im.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -139,5 +157,25 @@ public class activiteit_detail extends Activity {
         imageLoader.DisplayImage(afbeelding2, afbeelding2im);
         imageLoader.DisplayImage(afbeelding3, afbeelding3im);
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.back, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.backMenu) {
+            Intent intent1 = new Intent(this, activiteit_overzicht.class);
+            startActivity(intent1);
+
+            overridePendingTransition(R.anim.left_in, R.anim.right_out);
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

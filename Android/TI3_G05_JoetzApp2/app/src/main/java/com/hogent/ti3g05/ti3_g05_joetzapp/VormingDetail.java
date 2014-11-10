@@ -3,6 +3,9 @@ package com.hogent.ti3g05.ti3_g05_joetzapp;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -61,4 +64,25 @@ public class VormingDetail extends Activity {
         //txtPrijs.setText(prijs.toString());
 
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.back, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.backMenu) {
+            Intent intent1 = new Intent(this, Vormingen_Overzicht.class);
+            startActivity(intent1);
+
+            overridePendingTransition(R.anim.left_in, R.anim.right_out);
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
 }

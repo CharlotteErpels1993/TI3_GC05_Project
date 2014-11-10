@@ -2,47 +2,53 @@ package com.hogent.ti3g05.ti3_g05_joetzapp;
 
 import android.app.Activity;
 import android.app.Fragment;
-import android.app.ListFragment;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 
-import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ListViewAdapter;
-import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vakantie;
+import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ProfielAdapter;
+import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Monitor;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
-public class activiteit_overzicht_fragment extends Fragment {
 
+public class ProfielenOverzicht extends Fragment {
     private ListView listview;
     private List<ParseObject> ob;
     private ProgressDialog mProgressDialog;
-   // private ListViewAdapter adapter;
-    private List<Vakantie> vakanties = null;
+    private ProfielAdapter adapter;
+    private List<Monitor> profielen = null;
+    private EditText filtertext;
     private View rootView;
-    private ListViewAdapter adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        rootView = inflater.inflate(R.layout.activity_main_screen, container, false);
+        rootView = inflater.inflate(R.layout.activiteit_overzichtnieuw, container, false);
 
         new RemoteDataTask().execute();
         listview = (ListView) rootView.findViewById(R.id.listView);
+        filtertext = (EditText) rootView.findViewById(R.id.filtertext);
         return rootView;
     }
+
 
     // RemoteDataTask AsyncTask
     private class RemoteDataTask extends AsyncTask<Void, Void, Void> {
@@ -52,7 +58,7 @@ public class activiteit_overzicht_fragment extends Fragment {
             // Create a progressdialog
             mProgressDialog = new ProgressDialog(getActivity());
             // Set progressdialog title
-            mProgressDialog.setTitle("Ophalen van vakanties.");
+            mProgressDialog.setTitle("Ophalen van profielen.");
             // Set progressdialog message
             mProgressDialog.setMessage("Aan het laden...");
             mProgressDialog.setIndeterminate(false);
@@ -63,28 +69,34 @@ public class activiteit_overzicht_fragment extends Fragment {
         @Override
         protected Void doInBackground(Void... params) {
             // Create the array
-            vakanties = new ArrayList<Vakantie>();
+            profielen = new ArrayList<Monitor>();
             try {
                 // Locate the class table named "vakantie" in Parse.com
                 ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(
-                        "Vakantie");
+                        "Monitor");
                 // Locate the column named "vertrekdatum" in Parse.com and order list
                 // by ascending
-                query.orderByAscending("vertrekdatum");
+                query.orderByAscending("naam");
                 ob = query.find();
-                for (ParseObject vakantie : ob) {
-                    // Locate images in flag column
-                   // ParseFile image = (ParseFile) vakantie.get("flag");
+                for (ParseObject monitor : ob) {
 
-                    Vakantie map = new Vakantie();
-                    map.setNaamVakantie((String) vakantie.get("titel"));
-                    map.setLocatie((String) vakantie.get("locatie"));
-                    map.setVertrekDatum((java.util.Date) vakantie.get("vertrekdatum"));
-                    map.setTerugkeerDatum((java.util.Date) vakantie.get("terugkeerdatum"));
-                    map.setKorteBeschrijving((String) vakantie.get("korteBeschrijving"));
+                    Monitor map = new Monitor();
+                    //String prijs = vakantie.get("basisPrijs").toString();
+                    map.setNaam((String) monitor.get("naam"));
+                    map.setVoornaam((String) monitor.get("voornaam"));
+                    map.setStraat((String) monitor.get("straat"));
+                    //map.setPostcode((String) monitor.get("postcode"));
+                    //map.setHuisnr((Number) monitor.get("nummer"));
+                     //map.setLidNummer((Integer) monitor.get("lidNr"));
+                    map.setEmail((String) monitor.get("email"));
+                    map.setGemeente((String) monitor.get("gemeente"));
+                    map.setLinkFacebook((String) monitor.get("linkFacebook"));
+                    map.setGsm((String) monitor.get("telefoon"));
+                    map.setRijksregNr((String) monitor.get("rijksregisterNr"));
 
-                    //map.setFlag(image.getUrl());
-                    vakanties.add(map);
+
+                    profielen.add(map);
+
                 }
             } catch (ParseException e) {
                 Log.e("Error", e.getMessage());
@@ -99,18 +111,15 @@ public class activiteit_overzicht_fragment extends Fragment {
             // Pass the results into ListViewAdapter.java
             //adapter = new ListViewAdapter(activiteit_overzicht.this, vakanties);
             //ArrayAdapter<Profile> profileAdapter = new ArrayAdapter<Profile>(context, resource, profiles)
-           //ArrayAdapter vakantieAdapter = new ArrayAdapter(getActivity(),android.R.layout.activity_list_item, vakanties );
+            //ArrayAdapter<Vakantie> vakantieAdapter = new ArrayAdapter<Vakantie>(activiteit_overzicht.this, R.layout.listview_item , vakanties);
 
-            //    ListViewAdapter adapter = new ListViewAdapter(rootView, vakanties);
-
-            ListViewAdapter adapter = new ListViewAdapter(getActivity(), vakanties);
+            adapter = new ProfielAdapter(getActivity(), profielen);
             // Binds the Adapter to the ListView
             listview.setAdapter(adapter);
-
             // Close the progressdialog
             mProgressDialog.dismiss();
 
-          /*  filtertext.addTextChangedListener(new TextWatcher() {
+            filtertext.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {                }
 
@@ -121,8 +130,28 @@ public class activiteit_overzicht_fragment extends Fragment {
                 public void afterTextChanged(Editable editable) {
                     String text = filtertext.getText().toString().toLowerCase(Locale.getDefault());
                     adapter.filter(text);
-                }*/
-          //  });
+                }
+            });
         }
     }
+
+
+   /* @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.back, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.backMenu) {
+            Intent intent1 = new Intent(this, navBarMainScreen.class);
+            startActivity(intent1);
+
+            overridePendingTransition(R.anim.left_in, R.anim.right_out);
+        }
+
+        return super.onOptionsItemSelected(item);
+    }*/
 }

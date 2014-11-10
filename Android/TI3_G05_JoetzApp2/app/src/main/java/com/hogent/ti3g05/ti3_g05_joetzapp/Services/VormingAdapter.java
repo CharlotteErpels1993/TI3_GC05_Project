@@ -22,7 +22,6 @@ import com.hogent.ti3g05.ti3_g05_joetzapp.ImageLoader;
 import com.hogent.ti3g05.ti3_g05_joetzapp.R;
 import com.hogent.ti3g05.ti3_g05_joetzapp.VormingDetail;
 import com.hogent.ti3g05.ti3_g05_joetzapp.activiteit_detail;
-import com.hogent.ti3g05.ti3_g05_joetzapp.activiteit_overzicht_fragment;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vakantie;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vorming;
 import com.parse.ParseUser;
