@@ -11,6 +11,12 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.parse.ParseUser;
+
+//ingelogde gebr:      titel, korte beschr, periode, locatie, inbegrepen in prijs, doelgroep (met geboortejaren), max aantal deelnemers,
+//                     vervoerswijze, formule, prijs (basisprijs, BM prijs & sterprijs) kortingen, gegevens contactpersoon inschrijving & algemene voorwaarden
+//niet-ingelogde gebr: titel, korte beschr, periode, locatie, inbegrepen in prijs, doelgroep (met geboortejaren), max aantal deelnemers
+
 public class activiteit_detail extends Activity {
     String naam;
     String locatie;
@@ -27,12 +33,22 @@ public class activiteit_detail extends Activity {
     String doelgro;
     String afbeelding2;
     String afbeelding3;
+    private boolean isIngelogd;
 
+    //TODO bij doelgroepen moet er volgens de UC ook nog de geboortejaren bij komen -> methode voor maken om dat te berekenen
+    //TODO algemene voorwaarden onderaan bijzetten -> string resource, kopieren van JOETZ
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activiteit_detailnieuw);
 
+        if (ParseUser.getCurrentUser() != null){
+            //gebruiker is ingelogd
+            isIngelogd = true;
+        }else{
+            //niet ingelogd
+            isIngelogd = false;
+        }
 
         Intent i = getIntent();
         naam = i.getStringExtra("naam");
@@ -46,10 +62,10 @@ public class activiteit_detail extends Activity {
         afbeelding3 = i.getStringExtra("afbeelding3");
 
         formule = i.getStringExtra("formule");
-         maxDeeln = i.getStringExtra("maxAantalDeelnemers");
-         periode = i.getStringExtra("periode");
-         vervoer = i.getStringExtra("vervoer");
-         prijs = i.getStringExtra("prijs");
+        maxDeeln = i.getStringExtra("maxAantalDeelnemers");
+        periode = i.getStringExtra("periode");
+        vervoer = i.getStringExtra("vervoer");
+        prijs = i.getStringExtra("prijs");
         beschrijving = i.getStringExtra("beschrijving");
 
         setTitle(naam);
