@@ -1,6 +1,7 @@
 package com.hogent.ti3g05.ti3_g05_joetzapp;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -95,12 +96,22 @@ public class activiteit_overzicht extends Fragment {
                     map.setLocatie((String) vakantie.get("locatie"));
                     map.setKorteBeschrijving((String) vakantie.get("korteBeschrijving"));
                     map.setDoelGroep((String) vakantie.get("doelgroep"));
-                    map.setKorteBeschrijving((String) vakantie.get("korteBeschrijving"));
-                    map.setBasisprijs((Number)vakantie.get("basisPrijs") );
+                    map.setBasisprijs((Number) vakantie.get("basisPrijs"));
+                    map.setMaxAantalDeelnemers((Number) vakantie.get("maxAantalDeelnemers"));
                     map.setPeriode((String) vakantie.get("aantalDagenNachten"));
-                    //map.setMaxDeeln((Number) vakantie.get("maxAantalDeelnemers"));
                     map.setFormule((String) vakantie.get("formule"));
                     map.setVervoerswijze((String) vakantie.get("vervoerwijze"));
+                    map.setVertrekDatum((Date) vakantie.get("vertrekdatum"));
+                    map.setTerugkeerDatum((Date) vakantie.get("terugkeerdatum"));
+                    map.setInbegrepenInPrijs((String) vakantie.get("inbegrepenPrijs"));
+                    if (vakantie.get("bondMoysonLedenPrijs") != null)
+                        map.setBondMoysonLedenPrijs((Number) vakantie.get("bondMoysonLedenPrijs"));
+                    if (vakantie.get("sterPrijs1ouder") != null)
+                        map.setSterPrijs1Ouder((Number) vakantie.get("sterPrijs1ouder"));
+                    if (vakantie.get("sterPrijs2ouders") != null)
+                        map.setSterPrijs2Ouder((Number) vakantie.get("sterPrijs2ouders"));
+                    //TODO gegevens contactpersoon vakantie
+
 
                     map.setFoto1(image.getUrl());
                     map.setFoto2(image2.getUrl());

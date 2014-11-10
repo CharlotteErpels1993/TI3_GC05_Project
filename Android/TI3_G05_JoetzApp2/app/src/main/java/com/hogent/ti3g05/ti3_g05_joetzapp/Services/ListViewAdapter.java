@@ -109,24 +109,25 @@ public class ListViewAdapter extends ArrayAdapter<Vakantie> implements Filterabl
             @Override
             public void onClick(View arg0) {
                 Intent intent = new Intent(context, activiteit_detail.class);
-                intent.putExtra("naam",
-                        (vakanties.get(position).getNaamVakantie()));
-                intent.putExtra("locatie",
-                        (vakanties.get(position).getLocatie()));
-                  intent.putExtra("vertrekdatum",
-                      (vakanties.get(position).getVertrekDatum()));
-                 intent.putExtra("terugdatum",
-                       (vakanties.get(position).getTerugkeerDatum()));
-                intent.putExtra("prijs", vakanties.get(position).getBasisprijs());
+                intent.putExtra("naam", (vakanties.get(position).getNaamVakantie()));
+                intent.putExtra("locatie", (vakanties.get(position).getLocatie()));
+                intent.putExtra("vertrekdatum", (vakanties.get(position).getVertrekDatum()).toString());
+                intent.putExtra("terugdatum", (vakanties.get(position).getTerugkeerDatum()).toString());
+                intent.putExtra("prijs", vakanties.get(position).getBasisprijs().toString());
                 intent.putExtra("afbeelding1", vakanties.get(position).getFoto1());
                 intent.putExtra("afbeelding2", vakanties.get(position).getFoto2());
                 intent.putExtra("afbeelding3", vakanties.get(position).getFoto3());
                 intent.putExtra("doelgroep", vakanties.get(position).getDoelGroep());
                 intent.putExtra("beschrijving", vakanties.get(position).getKorteBeschrijving());
                 intent.putExtra("periode", vakanties.get(position).getPeriode());
-                intent.putExtra("veroer", vakanties.get(position).getVervoerswijze());
+                intent.putExtra("vervoer", vakanties.get(position).getVervoerswijze());
                 intent.putExtra("formule", vakanties.get(position).getFormule());
-                intent.putExtra("maxAantalDeelnemers",(vakanties.get(position).getMaxAantalDeelnemers()));
+                intent.putExtra("maxAantalDeelnemers",(vakanties.get(position).getMaxAantalDeelnemers()).toString());
+                intent.putExtra("InbegrepenInPrijs", (vakanties.get(position).getInbegrepenInPrijs()));
+                intent.putExtra("BMledenPrijs", (vakanties.get(position).getBondMoysonLedenPrijs()).toString());
+                intent.putExtra("SterPrijs1Ouder", (vakanties.get(position).getSterPrijs1Ouder()).toString());
+                intent.putExtra("SterPrijs2Ouders", (vakanties.get(position).getSterPrijs2Ouder()).toString());
+
                 context.startActivity(intent);
             }
         });

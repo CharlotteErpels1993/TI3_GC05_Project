@@ -54,7 +54,7 @@
             android:layout_centerHorizontal="true"
             android:layout_height="wrap_content"
             android:id="@+id/titel"
-            android:textSize="25sp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Titel"/>
 
         <TextView
@@ -62,18 +62,38 @@
             android:layout_height="wrap_content"
             android:id="@+id/beschrijving"
             android:layout_below="@id/titel"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             android:text="Right side"
             android:textAlignment="center"
             android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:id="@+id/vertrekdatum"
+            android:layout_width="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_height="wrap_content"
+            android:text="vertrekdatum"
+            android:layout_marginTop="10dp"
+            android:textAlignment="center"
+            android:layout_below="@id/beschrijving"/>
+
+        <TextView
+            android:id="@+id/terugkeerdatum"
+            android:layout_width="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:textAlignment="center"
+            android:text="terugkeerdatum"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/vertrekdatum"
+            android:layout_marginTop="10dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/periode"
             android:text="periode"
-            android:layout_below="@id/beschrijving"
-            android:layout_marginTop="15dp"
+            android:layout_below="@id/terugkeerdatum"
+            android:layout_marginTop="10dp"
             android:textSize="15sp"
             android:layout_centerHorizontal="true"/>
 
@@ -82,7 +102,6 @@
             android:layout_height="wrap_content"
             android:id="@+id/vervoer"
             android:layout_below="@id/periode"
-
             android:layout_marginTop="10dp"
             android:text="Right side"
             android:layout_centerHorizontal="true"/>
@@ -92,7 +111,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/formule"
-
             android:layout_marginTop="10dp"
             android:layout_below="@id/vervoer"
             android:text="Right side"
@@ -102,18 +120,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/locatiev"
-
             android:layout_marginTop="10dp"
             android:layout_below="@id/formule"
             android:text="Right side"
-
             android:layout_centerHorizontal="true"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/doelgroepv"
-
             android:layout_marginTop="10dp"
             android:layout_below="@id/locatiev"
             android:textSize="20sp"
@@ -124,35 +139,59 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/maxDeelnemers"
+            android:layout_marginTop="10dp"
             android:layout_below="@id/doelgroepv"
+            android:text="max deelnemers"
             android:layout_centerHorizontal="true"/>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/inbegrepenInPrijs"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/maxDeelnemers"
+            android:text="InbegrepenInPrijs"
+            android:layout_centerHorizontal="true"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/basisprijs"
-            android:layout_below="@id/maxDeelnemers"
+            android:text="Normale prijs"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/inbegrepenInPrijs"
             android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/bondMoysonLedenPrijs"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/basisprijs"
+            android:text="bondMoysonLedenPrijs"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/sterPrijs1Ouder"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/bondMoysonLedenPrijs"
+            android:text="sterPrijs1Ouder"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/sterPrijs2Ouders"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/sterPrijs1Ouder"
+            android:text="sterPrijs2Ouders"
+            android:layout_centerHorizontal="true"/>
+
     </RelativeLayout>
 
-  <!--  <TextView
-        android:id="@+id/naam"
-        android:layout_width="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:textAlignment="center"
-        android:layout_below="@id/scrollView"/>
-
-    <TextView
-        android:id="@+id/loc"
-        android:layout_width="wrap_content"
-        android:layout_centerHorizontal="true"
-
-        android:textAlignment="center"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/naam"/>
+  <!--
 
 
     <TextView
