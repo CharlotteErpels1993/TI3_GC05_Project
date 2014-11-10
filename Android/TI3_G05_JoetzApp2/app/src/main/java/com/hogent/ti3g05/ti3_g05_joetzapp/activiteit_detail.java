@@ -15,7 +15,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.parse.ParseException;
 import com.parse.ParseUser;
 
 import java.text.SimpleDateFormat;
@@ -79,12 +78,8 @@ public class activiteit_detail extends Activity {
         maxDeeln = i.getStringExtra("maxAantalDeelnemers");
         periode = i.getStringExtra("periode");
         vervoer = i.getStringExtra("vervoer");
-        prijs = i.getStringExtra("prijs");
         beschrijving = i.getStringExtra("beschrijving");
-        bmLedenPrijs = i.getStringExtra("BMledenPrijs");
         inbegrepenInPrijs = i.getStringExtra("InbegrepenInPrijs");
-        sterPrijs1Ouder = i.getStringExtra("SterPrijs1Ouder");
-        sterPrijs2Ouders = i.getStringExtra("SterPrijs2Ouders");
 
 
         setTitle(naam);
@@ -182,14 +177,49 @@ public class activiteit_detail extends Activity {
         txtmaxDeeln.setText("Maximum aantal deelnemers: " + maxDeeln.toString());
         txtPeriode.setText("Periode: " + periode);
         txtVervoer.setText("Vervoer: " + vervoer);
-        txtPrijs.setText("Normale prijs: " + prijs);
         txtBeschrijving.setText(beschrijving);
         txtVertrekDatum.setText("Vertrek: " + vertrekdatum);
         txtTerugkeerDatum.setText("Terug: " + terugdatum);
         txtInbegrepenInPrijs.setText("Inbegrepen in de prijs: " + inbegrepenInPrijs);
-        txtBMledenPrijs.setText("Prijs voor leden van Bond Moyson: " + bmLedenPrijs);
-        txtSterPrijs1Ouder.setText("Prijs voor leden waarvan 1 ouder deel is van BM: " + sterPrijs1Ouder);
-        txtSterPrijs2Ouders.setText("Prijs voor leden waarvan 2 ouders deel zijn van BM: " + sterPrijs2Ouders);
+
+        //TODO: veld toevoegen dat de gebruiker moet inloggen om meer info te zien?
+        //velden toevoegen indien gebruiker is ingelogd, zo niet maak ze onzichtbaar.
+        if (ParseUser.getCurrentUser() == null){
+            //niet ingelogd
+            btnInschrijven.setVisibility(View.GONE);
+            txtPrijs.setVisibility(View.GONE);
+            txtBMledenPrijs.setVisibility(View.GONE);
+            txtSterPrijs1Ouder.setVisibility(View.GONE);
+            txtSterPrijs2Ouders.setVisibility(View.GONE);
+
+        }else{
+            //ingelogd
+            btnInschrijven.setVisibility(View.VISIBLE);
+            //toon normale prijs
+            txtPrijs.setVisibility(View.VISIBLE);
+            prijs = i.getStringExtra("prijs");
+            txtPrijs.setText("Prijs: €" + prijs);
+
+            bmLedenPrijs = i.getStringExtra("BMledenPrijs");
+            sterPrijs1Ouder = i.getStringExtra("SterPrijs1Ouder");
+            sterPrijs2Ouders = i.getStringExtra("SterPrijs2Ouders");
+
+            if (!bmLedenPrijs.equals("-1")) {
+                txtBMledenPrijs.setVisibility(View.VISIBLE);
+                txtBMledenPrijs.setText("Prijs voor leden van Bond Moyson: €" + bmLedenPrijs);
+            }
+
+            if (!sterPrijs1Ouder.equals("-1")) {
+                txtSterPrijs1Ouder.setVisibility(View.VISIBLE);
+                txtSterPrijs1Ouder.setText("Prijs voor leden waarvan 1 ouder deel is van BM: €" + sterPrijs1Ouder);
+            }
+
+            if (!sterPrijs2Ouders.equals("-1")){
+                txtSterPrijs2Ouders.setVisibility(View.VISIBLE);
+                txtSterPrijs2Ouders.setText("Prijs voor leden waarvan 2 ouders deel zijn van BM: €" + sterPrijs2Ouders);
+            }
+        }
+
 
         // Capture position and set results to the ImageView
         // Passes flag images URL into ImageLoader.class

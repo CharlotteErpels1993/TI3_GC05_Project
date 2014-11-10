@@ -103,10 +103,13 @@ public class activiteit_overzicht extends Fragment {
                     map.setVervoerswijze((String) vakantie.get("vervoerwijze"));
                     map.setVertrekDatum((Date) vakantie.get("vertrekdatum"));
                     map.setTerugkeerDatum((Date) vakantie.get("terugkeerdatum"));
-                    map.setBondMoysonLedenPrijs((Number) vakantie.get("bondMoysonLedenPrijs"));
                     map.setInbegrepenInPrijs((String) vakantie.get("inbegrepenPrijs"));
-                    map.setSterPrijs1Ouder((Number) vakantie.get("sterPrijs1ouder"));
-                    map.setSterPrijs2Ouder((Number) vakantie.get("sterPrijs2ouders"));
+                    if (vakantie.get("bondMoysonLedenPrijs") != null)
+                        map.setBondMoysonLedenPrijs((Number) vakantie.get("bondMoysonLedenPrijs"));
+                    if (vakantie.get("sterPrijs1ouder") != null)
+                        map.setSterPrijs1Ouder((Number) vakantie.get("sterPrijs1ouder"));
+                    if (vakantie.get("sterPrijs2ouders") != null)
+                        map.setSterPrijs2Ouder((Number) vakantie.get("sterPrijs2ouders"));
                     //TODO gegevens contactpersoon vakantie
 
 
