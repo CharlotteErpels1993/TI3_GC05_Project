@@ -152,7 +152,7 @@ public class activiteit_detail extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.backMenu) {
-            Intent intent1 = new Intent(this, activiteit_overzicht.class);
+            Intent intent1 = new Intent(this, navBarMainScreen.class);
             startActivity(intent1);
 
             overridePendingTransition(R.anim.left_in, R.anim.right_out);

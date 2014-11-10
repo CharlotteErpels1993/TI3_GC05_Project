@@ -28,7 +28,7 @@ import java.util.List;
 import java.util.Locale;
 
 
-public class ProfielenOverzicht extends Fragment {
+public class ProfielenOverzicht extends Activity {
     private ListView listview;
     private List<ParseObject> ob;
     private ProgressDialog mProgressDialog;
@@ -38,15 +38,15 @@ public class ProfielenOverzicht extends Fragment {
     private View rootView;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        rootView = inflater.inflate(R.layout.activiteit_overzichtnieuw, container, false);
-
+        // Get the view from listview_main.xml
+        setContentView(R.layout.activiteit_overzichtnieuw);
+        setTitle("Profielen");
+        // Execute RemoteDataTask AsyncTask
+        filtertext = (EditText) findViewById(R.id.filtertext);
         new RemoteDataTask().execute();
-        listview = (ListView) rootView.findViewById(R.id.listView);
-        filtertext = (EditText) rootView.findViewById(R.id.filtertext);
-        return rootView;
     }
 
 
@@ -56,7 +56,7 @@ public class ProfielenOverzicht extends Fragment {
         protected void onPreExecute() {
             super.onPreExecute();
             // Create a progressdialog
-            mProgressDialog = new ProgressDialog(getActivity());
+            mProgressDialog = new ProgressDialog(ProfielenOverzicht.this);
             // Set progressdialog title
             mProgressDialog.setTitle("Ophalen van profielen.");
             // Set progressdialog message
@@ -113,7 +113,8 @@ public class ProfielenOverzicht extends Fragment {
             //ArrayAdapter<Profile> profileAdapter = new ArrayAdapter<Profile>(context, resource, profiles)
             //ArrayAdapter<Vakantie> vakantieAdapter = new ArrayAdapter<Vakantie>(activiteit_overzicht.this, R.layout.listview_item , vakanties);
 
-            adapter = new ProfielAdapter(getActivity(), profielen);
+            listview = (ListView) findViewById(R.id.listView);
+            adapter = new ProfielAdapter(ProfielenOverzicht.this, profielen);
             // Binds the Adapter to the ListView
             listview.setAdapter(adapter);
             // Close the progressdialog
@@ -136,7 +137,7 @@ public class ProfielenOverzicht extends Fragment {
     }
 
 
-   /* @Override
+   @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.back, menu);
         return true;
@@ -153,5 +154,5 @@ public class ProfielenOverzicht extends Fragment {
         }
 
         return super.onOptionsItemSelected(item);
-    }*/
+    }
 }

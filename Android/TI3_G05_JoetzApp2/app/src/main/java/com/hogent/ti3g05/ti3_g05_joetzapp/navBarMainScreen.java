@@ -155,10 +155,10 @@ public class navBarMainScreen extends Activity {
                 startActivity(intent);*/
                 break;
             case 1:
-                fragment = new ProfielenOverzicht();
-               /* Intent intent1 = new Intent(navBarMainScreen.this, ProfielenOverzicht.class
+                //fragment = new ProfielenOverzicht();
+                Intent intent1 = new Intent(navBarMainScreen.this, ProfielenOverzicht.class
                 );
-                startActivity(intent1);*/
+                startActivity(intent1);
                 break;
             case 2:
                 Intent intent2 = new Intent(navBarMainScreen.this, Vormingen_Overzicht.class
