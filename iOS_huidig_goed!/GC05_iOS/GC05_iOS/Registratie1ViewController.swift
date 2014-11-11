@@ -58,26 +58,23 @@ class Registratie1ViewController: UIViewController
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let registratie3ViewController = segue.destinationViewController as Registratie3ViewController
         
-        //controleren lege velden als switch op on staat
         if gebruikerIsLid == true {
+            controleerLeegTextField(txtAansluitingsNr, id: "aansluitingsNr")
+            controleerLeegTextField(txtCodeGerechtigde, id: "codeGerechtigde")
+            controleerLeegTextField(txtRijksregisterNr, id: "rijksregisterNr")
             
-            controleerEmptyTextfield(txtAansluitingsNr)
-            controleerEmptyTextfield(txtCodeGerechtigde)
-            controleerEmptyTextfield(txtRijksregisterNr)
-            
-            if tellerAantalLegeVelden > 0 {
-                textVeldenLeegMaken()
-                self.foutBox = FoutBox(title: "Fout", message: "Gelieve alle verplichte velden in te vullen.")
-                //foutBoxOproepen("Fout", "Gelieve alle verplichte velden in te vullen!", self)
+            if controleerAlleVerplichteVeldenLeeg() == true {
+                self.foutBox = FoutBox(title: "Fout", message: "Gelieve alle verplichte velden in te vullen (aansluitingsnummer, code gerechtigde en rijksregisternummer).")
+            } else if controleer1ofMeerVerplichteVeldenLeeg() == true {
+                var message: String = geefMessageFoutBox1ofMeerVerplichteVeldenLeeg()
+                self.foutBox = FoutBox(title: "Fout", message: message)
             } else {
                 controleerVerplichteGegevens()
                 
-                //aansluitingsNrTweedeOuder is ingevuld
                 if !txtAansluitingsNrTweedeOuder.text.isEmpty {
                     controleerAansluitingsNrTweedeOuder(txtAansluitingsNrTweedeOuder.text.toInt()!)
                 }
             }
-            
         }
         
         if foutBox != nil {
@@ -86,7 +83,10 @@ class Registratie1ViewController: UIViewController
         } else {
             if gebruikerIsLid == true {
                 settenVerplichteGegevens()
-                ouder.aansluitingsNrTweedeOuder = txtAansluitingsNrTweedeOuder.text.toInt()!
+                
+                if !txtAansluitingsNrTweedeOuder.text.isEmpty {
+                    ouder.aansluitingsNrTweedeOuder = txtAansluitingsNrTweedeOuder.text.toInt()!
+                }
             }
             registratie3ViewController.ouder = ouder
         }
@@ -94,23 +94,79 @@ class Registratie1ViewController: UIViewController
     
     
     //extra functies
-    func controleerEmptyTextfield(textField: UITextField) {
+    func controleerAlleVerplichteVeldenLeeg() -> Bool {
+        if textVelden["aansluitingsNr"] == "leeg" && textVelden["codeGerechtigde"] == "leeg"
+            && textVelden["rijksregisterNr"] == "leeg" {
+                return true
+        } else {
+            return false
+        }
+    }
+
+    func controleer1ofMeerVerplichteVeldenLeeg() -> Bool {
+        var teller: Int = 0
+        
+        if textVelden["aansluitingsNr"] == "leeg" {
+            teller += 1
+        }
+        if textVelden["codeGerechtigde"] == "leeg" {
+            teller += 1
+        }
+        if textVelden["rijksregisterNr"] == "leeg" {
+            teller += 1
+        }
+        
+        if teller >= 1 {
+            return true
+        } else {
+            return false
+        }
+    }
+
+    func geefMessageFoutBox1ofMeerVerplichteVeldenLeeg() -> String {
+        var message: String = ""
+        
+        
+        if textVelden["aansluitingsNr"] == "leeg" {
+            message.extend("Gelieve aansluitingsnummer in te vullen.\n")
+        }
+        if textVelden["codeGerechtigde"] == "leeg" {
+            message.extend("Gelieve code gerechtigde in te vullen.\n")
+        }
+        if textVelden["rijksregisterNr"] == "leeg" {
+            message.extend("Gelieve rijksregisternummer in te vullen.\n")
+        }
+        return message
+    }
+    
+    func controleerLeegTextField(textField: UITextField, id: String) {
         if textField.text.isEmpty {
             tellerAantalLegeVelden += 1
+            textVelden[id] = "leeg"
         }
     }
     
     func textVeldenLeegMaken() {
-        txtAansluitingsNr.text = ""
-        txtCodeGerechtigde.text = ""
-        txtRijksregisterNr.text = ""
-        txtAansluitingsNrTweedeOuder.text = ""
+        if textVelden["aansluitingsNr"] == "ongeldig" {
+            txtAansluitingsNr.text = ""
+            
+            txtAansluitingsNr.setMarkedText(<#markedText: String!#>, selectedRange: <#NSRange#>)
+        }
+        if textVelden["codeGerechtigde"] == "ongeldig" {
+            txtCodeGerechtigde.text = ""
+        }
+        if textVelden["rijksregisterNr"] == "ongeldig" {
+            txtRijksregisterNr.text = ""
+        }
+        if textVelden["aansluitingsNrTweedeOuder"] == "ongeldig" {
+            txtAansluitingsNrTweedeOuder.text = ""
+        }
     }
     
     func controleerVerplichteGegevens() {
         controleerAansluitingsNr(txtAansluitingsNr.text.toInt()!)
         controleerCodeGerechtigde(txtCodeGerechtigde.text.toInt()!)
-        //controleerRijksregisterNr(txtRijksregisterNr.text)
+        controleerRijksregisterNr(txtRijksregisterNr.text)
     }
 
     func controleerAansluitingsNr(aansluitingsNr: Int) {
@@ -120,6 +176,7 @@ class Registratie1ViewController: UIViewController
             } else {
                 foutBox = FoutBox(title: "Ongeldige waarde(s)", message: "Aansluitingsnummer is niet geldig.")
             }
+            textVelden["aansluitingsNr"] = "ongeldig"
         }
     }
     
@@ -130,6 +187,7 @@ class Registratie1ViewController: UIViewController
             } else {
                 foutBox = FoutBox(title: "Ongeldige waarde(s)", message: "Code gerechtigde is niet geldig.")
             }
+            textVelden["codeGerechtigde"] = "ongeldig"
         }
     }
     
@@ -140,6 +198,7 @@ class Registratie1ViewController: UIViewController
             } else {
                 foutBox = FoutBox(title: "Ongeldige waarde(s)", message: "Rijksregisternummer is niet geldig.")
             }
+            textVelden["rijksregisterNr"] = "ongeldig"
         }
     }
     
@@ -189,7 +248,7 @@ class Registratie1ViewController: UIViewController
     func settenVerplichteGegevens() {
         ouder.aansluitingsNr = txtAansluitingsNr.text.toInt()!
         ouder.codeGerechtigde = txtCodeGerechtigde.text.toInt()!
-        //ouder.rijksregisterNr = txtRijksregisterNr.text
+        ouder.rijksregisterNr = txtRijksregisterNr.text
     }
     
     func controleerAansluitingsNrTweedeOuder(aansluitingsNrTweedeOuder: Int) {
@@ -199,6 +258,7 @@ class Registratie1ViewController: UIViewController
             } else {
                 foutBox = FoutBox(title: "Ongeldige waarde(s)", message: "Aansluitingsnummer van de tweede ouder is niet geldig.")
             }
+            textVelden["aansluitingsNrTweedeOuder"] = "ongeldig"
         }
     }
 }
