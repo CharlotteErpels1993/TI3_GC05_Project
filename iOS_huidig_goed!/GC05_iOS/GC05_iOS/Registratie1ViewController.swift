@@ -150,7 +150,7 @@ class Registratie1ViewController: UIViewController
         if textVelden["aansluitingsNr"] == "ongeldig" {
             txtAansluitingsNr.text = ""
             
-            txtAansluitingsNr.setMarkedText(<#markedText: String!#>, selectedRange: <#NSRange#>)
+            
         }
         if textVelden["codeGerechtigde"] == "ongeldig" {
             txtCodeGerechtigde.text = ""
