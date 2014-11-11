@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GC05_iOS/VakantiesTableViewController.swift"
-            timestampString = "437426820.267554"
+            timestampString = "437427116.929832"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
             landmarkName = "zoekVakanties()"
             landmarkType = "5">
          </BreakpointContent>
@@ -26,27 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GC05_iOS/VakantiesTableViewController.swift"
-            timestampString = "437426820.267554"
+            timestampString = "437427116.929832"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
-            landmarkName = "tableView(_:cellForRowAtIndexPath:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GC05_iOS/VakantiesTableViewController.swift"
-            timestampString = "437426820.267554"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
             landmarkName = "tableView(_:cellForRowAtIndexPath:)"
             landmarkType = "5">
          </BreakpointContent>
