@@ -1,4 +1,5 @@
 import UIKit
+import QuartzCore
 
 class Registratie3ViewController: UIViewController
 {
@@ -13,103 +14,201 @@ class Registratie3ViewController: UIViewController
     @IBOutlet weak var txtGsm: UITextField!
     
     var ouder: Ouder!
-    var tellerAantalLegeVelden: Int = 0
     var foutBox: FoutBox? = nil
+    var statusTextFields: [String: String] = [:]
+    var redColor: UIColor = UIColor.redColor()
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
-    {
-        if segue.identifier == "volgende" {
-            let registratie4ViewController = segue.destinationViewController as Registratie4ViewController
-            
-            controlerenVerplichteVeldenIngevuld()
-            
-            if tellerAantalLegeVelden > 0 && tellerAantalLegeVelden < 8{
-                textVeldenLeegMaken()
-                foutBoxOproepen("Fout", "Gelieve alle verplichte velden in te vullen!", self)
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+         let registratie4ViewController = segue.destinationViewController as Registratie4ViewController
+        
+        //TO DO: controleren op formaat van ingevulde text! (String, int, ...)
+        
+        setStatusTextFields()
+        pasLayoutVeldenAan()
+        
+        if controleerRodeBordersAanwezig() == true {
+            foutBoxOproepen("Fout", "Gelieve de velden correct in te vullen!", self)
+        } else {
+            settenVerplichteGegevens()
+            settenOptioneleGegevens()
+            registratie4ViewController.ouder = ouder
+        }
+    }
+    
+    func setStatusTextFields() {
+        if txtVoornaam.text.isEmpty {
+            statusTextFields["voornaam"] = "leeg"
+        } else {
+            //TO DO: checken op pattern?
+            statusTextFields["voornaam"] = "ingevuld"
+        }
+        
+        if txtNaam.text.isEmpty {
+            statusTextFields["naam"] = "leeg"
+        } else {
+            //TO DO: checken op pattern?
+            statusTextFields["naam"] = "ingevuld"
+        }
+        
+        if txtStraat.text.isEmpty {
+            statusTextFields["straat"] = "leeg"
+        } else {
+            //TO DO: checken op pattern?
+            statusTextFields["straat"] = "ingevuld"
+        }
+        
+        if txtNummer.text.isEmpty {
+            statusTextFields["nummer"] = "leeg"
+        } else {
+            if !checkPatternNummer(txtNummer.text.toInt()!) {
+                statusTextFields["nummer"] = "ongeldig"
             } else {
-                controlerenPatternsVerplichteVelden()
+                statusTextFields["nummer"] = "geldig"
             }
-
-            if !txtBus.text.isEmpty {
-                ouder.bus = txtBus.text
-            }
-            
-            if !txtTelefoon.text.isEmpty {
-                controleerTelefoon(txtTelefoon.text)
-            }
-            
-            
-            if foutBox != nil {
-                textVeldenLeegMaken()
-                foutBoxOproepen(foutBox!, self)
+        }
+        
+        if txtBus.text.isEmpty {
+            statusTextFields["bus"] = "leeg"
+        } else {
+            //TO DO: checken op pattern?
+            statusTextFields["bus"] = "ingevuld"
+        }
+        
+        if txtGemeente.text.isEmpty {
+            statusTextFields["gemeente"] = "leeg"
+        } else {
+            //TO DO: checken op pattern?
+            statusTextFields["gemeente"] = "ingevuld"
+        }
+        
+        if txtPostcode.text.isEmpty {
+            statusTextFields["postcode"] = "leeg"
+        } else {
+            if !checkPatternPostcode(txtPostcode.text.toInt()!) {
+                statusTextFields["postcode"] = "ongeldig"
             } else {
-                settenVerplichteGegevens()
-                registratie4ViewController.ouder = ouder
+                statusTextFields["postcode"] = "geldig"
+            }
+        }
+        
+        if txtTelefoon.text.isEmpty {
+            statusTextFields["telefoon"] = "leeg"
+        } else {
+            if !checkPatternTelefoon(txtTelefoon.text) {
+                statusTextFields["telefoon"] = "ongeldig"
+            } else {
+                statusTextFields["telefoon"] = "geldig"
+            }
+        }
+        
+        if txtGsm.text.isEmpty {
+            statusTextFields["gsm"] = "leeg"
+        } else {
+            if !checkPatternGsm(txtGsm.text) {
+                statusTextFields["gsm"] = "ongeldig"
+            } else {
+                statusTextFields["gsm"] = "geldig"
             }
         }
     }
     
-    func controlerenVerplichteVeldenIngevuld() {
-        isTextVeldEmpty(txtVoornaam)
-        isTextVeldEmpty(txtNaam)
-        isTextVeldEmpty(txtStraat)
-        isTextVeldEmpty(txtNummer)
-        isTextVeldEmpty(txtGemeente)
-        isTextVeldEmpty(txtPostcode)
-        isTextVeldEmpty(txtGsm)
-    }
-    
-    func isTextVeldEmpty(textVeld: UITextField) {
-        if textVeld.text.isEmpty {
-            tellerAantalLegeVelden += 1
+    func pasLayoutVeldenAan() {
+        if statusTextFields["voornaam"] == "leeg" {
+            giveUITextFieldRedBorder(txtVoornaam)
+        } else {
+            giveUITextFieldDefaultBorder(txtVoornaam)
+        }
+        
+        if statusTextFields["naam"] == "leeg" {
+            giveUITextFieldRedBorder(txtNaam)
+        } else {
+            giveUITextFieldDefaultBorder(txtNaam)
+        }
+        
+        if statusTextFields["straat"] == "leeg" {
+            giveUITextFieldRedBorder(txtStraat)
+        } else {
+            giveUITextFieldDefaultBorder(txtStraat)
+        }
+        
+        if statusTextFields["nummer"] == "leeg" || statusTextFields["nummer"] == "ongeldig"{
+            giveUITextFieldRedBorder(txtNummer)
+        } else {
+            giveUITextFieldDefaultBorder(txtNummer)
+        }
+        
+        if statusTextFields["bus"] == "ongeldig"{
+            giveUITextFieldRedBorder(txtBus)
+        } else {
+            giveUITextFieldDefaultBorder(txtBus)
+        }
+        
+        if statusTextFields["gemeente"] == "leeg" {
+            giveUITextFieldRedBorder(txtGemeente)
+        } else {
+            giveUITextFieldDefaultBorder(txtGemeente)
+        }
+        
+        if statusTextFields["postcode"] == "leeg" || statusTextFields["postcode"] == "ongeldig"{
+            giveUITextFieldRedBorder(txtPostcode)
+        } else {
+            giveUITextFieldDefaultBorder(txtPostcode)
+        }
+        
+        if statusTextFields["telefoon"] == "ongeldig"{
+            giveUITextFieldRedBorder(txtTelefoon)
+        } else {
+            giveUITextFieldDefaultBorder(txtTelefoon)
+        }
+        
+        if statusTextFields["gsm"] == "leeg" || statusTextFields["gsm"] == "ongeldig"{
+            giveUITextFieldRedBorder(txtGsm)
+        } else {
+            giveUITextFieldDefaultBorder(txtGsm)
         }
     }
     
-    func textVeldenLeegMaken() {
-        txtVoornaam.text = ""
-        txtNaam.text = ""
-        txtStraat.text = ""
-        txtNummer.text = ""
-        txtBus.text = ""
-        txtGemeente.text = ""
-        txtPostcode.text = ""
-        txtTelefoon.text = ""
-        txtGsm.text = ""
-    }
-    
-    func controlerenPatternsVerplichteVelden() {
-        controleerNummer(txtNummer.text.toInt()!)
-        controleerPostcode(txtPostcode.text.toInt()!)
-        controleerGsm(txtGsm.text)
-    }
-    
-    func controleerNummer(nummer: Int) {
-        if !checkPatternNummer(nummer) {
-            if foutBox != nil {
-                foutBox?.alert.message?.extend("\n Nummer is niet geldig.")
-            } else {
-                foutBox = FoutBox(title: "Ongeldige waarde(s)", message: "Nummer is niet geldig.")
-            }
+    func controleerRodeBordersAanwezig() -> Bool {
+        if CGColorEqualToColor(txtVoornaam.layer.borderColor, redColor.CGColor) {
+            return true
+        } else if CGColorEqualToColor(txtNaam.layer.borderColor, redColor.CGColor) {
+            return true
+        } else if CGColorEqualToColor(txtStraat.layer.borderColor, redColor.CGColor) {
+            return true
+        } else if CGColorEqualToColor(txtNummer.layer.borderColor, redColor.CGColor) {
+            return true
+        } else if CGColorEqualToColor(txtBus.layer.borderColor, redColor.CGColor) {
+            return true
+        } else if CGColorEqualToColor(txtGemeente.layer.borderColor, redColor.CGColor) {
+            return true
+        } else if CGColorEqualToColor(txtPostcode.layer.borderColor, redColor.CGColor) {
+            return true
+        } else if CGColorEqualToColor(txtTelefoon.layer.borderColor, redColor.CGColor) {
+            return true
+        } else if CGColorEqualToColor(txtGsm.layer.borderColor, redColor.CGColor) {
+            return true
+        } else {
+            return false
         }
     }
     
-    func controleerPostcode(postcode: Int) {
-        if !checkPatternPostcode(postcode) {
-            if foutBox != nil {
-                foutBox?.alert.message?.extend("\n Postcode is niet geldig.")
-            } else {
-                foutBox = FoutBox(title: "Ongeldige waarde(s)", message: "Postcode is niet geldig.")
-            }
-        }
+    func settenVerplichteGegevens() {
+        ouder.voornaam = txtVoornaam.text
+        ouder.naam = txtNaam.text
+        ouder.straat = txtStraat.text
+        ouder.nummer = txtNummer.text.toInt()
+        ouder.gemeente = txtGemeente.text
+        ouder.postcode = txtPostcode.text.toInt()
+        ouder.gsm = txtGsm.text
     }
     
-    func controleerGsm(gsm: String) {
-        if !checkPatternGsm(gsm) {
-            if foutBox != nil {
-                foutBox?.alert.message?.extend("\n Gsm is niet geldig.")
-            } else {
-                foutBox = FoutBox(title: "Ongeldige waarde(s)", message: "Gsm is niet geldig.")
-            }
+    func settenOptioneleGegevens() {
+        if statusTextFields["bus"] != "leeg" {
+            ouder.bus = txtBus.text
+        }
+        
+        if statusTextFields["telefoon"] != "leeg" {
+            ouder.telefoon = txtTelefoon.text
         }
     }
     
@@ -134,33 +233,10 @@ class Registratie3ViewController: UIViewController
         return false
     }
     
-    func settenVerplichteGegevens() {
-        ouder.voornaam = txtVoornaam.text
-        ouder.naam = txtNaam.text
-        ouder.straat = txtStraat.text
-        ouder.nummer = txtNummer.text.toInt()
-        ouder.bus = txtBus.text
-        ouder.gemeente = txtGemeente.text
-        ouder.postcode = txtPostcode.text.toInt()
-        ouder.telefoon = txtTelefoon.text
-        ouder.gsm = txtGsm.text
-    }
-    
-    func controleerTelefoon(telefoon: String) {
-        if !checkPatternTelefoon(telefoon) {
-            if foutBox != nil {
-                foutBox?.alert.message?.extend("\n Telefoon is niet geldig.")
-            } else {
-                foutBox = FoutBox(title: "Ongeldige waarde(s)", message: "Telefoon is niet geldig.")
-            }
-        }
-    }
-    
     func checkPatternTelefoon(telefoon: String) -> Bool {
         if countElements(telefoon) == 9 {
             return true
         }
         return false
     }
-    
 }

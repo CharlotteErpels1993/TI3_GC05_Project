@@ -19,10 +19,8 @@ class RegistratieSuccesvolViewController: UIViewController
         ouderJSON.setValue(ouder.naam, forKey: "naam")
         ouderJSON.setValue(ouder.straat, forKey: "straat")
         ouderJSON.setValue(ouder.nummer, forKey: "nummer")
-        ouderJSON.setValue(ouder.bus, forKey: "bus")
         ouderJSON.setValue(ouder.postcode, forKey: "postcode")
         ouderJSON.setValue(ouder.gemeente, forKey: "gemeente")
-        ouderJSON.setValue(ouder.telefoon, forKey: "telefoon")
         ouderJSON.setValue(ouder.gsm, forKey: "gsm")
         
         if ouder.rijksregisterNr != nil {
@@ -33,6 +31,14 @@ class RegistratieSuccesvolViewController: UIViewController
             if ouder.aansluitingsNrTweedeOuder != nil {
                 ouderJSON.setValue(ouder.aansluitingsNrTweedeOuder, forKey: "aansluitingsNrTweedeOuder")
             }
+        }
+        
+        if ouder.bus != nil {
+            ouderJSON.setValue(ouder.bus, forKey: "bus")
+        }
+        
+        if ouder.telefoon != nil {
+            ouderJSON.setValue(ouder.telefoon, forKey: "telefoon")
         }
         
         ouderJSON.save()

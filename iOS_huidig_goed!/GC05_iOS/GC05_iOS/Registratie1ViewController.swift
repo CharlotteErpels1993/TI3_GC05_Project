@@ -7,6 +7,7 @@ class Registratie1ViewController: UIViewController
     var gebruikerIsLid: Bool? = true
     var foutBox: FoutBox? = nil
     var redColor: UIColor = UIColor.redColor()
+    var statusTextFields: [String: String] = [:]
     
     @IBOutlet weak var isLid: UISwitch!
     
@@ -18,10 +19,6 @@ class Registratie1ViewController: UIViewController
     @IBOutlet weak var txtRijksregisterNr: UITextField!
     @IBOutlet weak var lblAansluitingsNrTweedeOuder: UILabel!
     @IBOutlet weak var txtAansluitingsNrTweedeOuder: UITextField!
-    
-    var tellerAantalLegeVelden : Int = 0
-    var statusTextFields: [String: String] = [:]
-    var defaultBorderColor: CGColor?
     
     @IBAction func gaTerugNaarRegistreren(segue: UIStoryboard) {
         
@@ -60,10 +57,7 @@ class Registratie1ViewController: UIViewController
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let registratie3ViewController = segue.destinationViewController as Registratie3ViewController
         
-        //controleren op formaat van ingevulde text! (String, int, ...)
-        
-        defaultBorderColor = txtAansluitingsNr.layer.borderColor
-
+        //TO DO: controleren op formaat van ingevulde text! (String, int, ...)
         
         if gebruikerIsLid == true {
             setStatusTextFields()
@@ -74,7 +68,7 @@ class Registratie1ViewController: UIViewController
             } else {
                 settenVerplichteGegevens()
                 
-                if !txtAansluitingsNrTweedeOuder.text.isEmpty {
+                if statusTextFields["aansluitingsNrTweedeouder"] != "leeg" {
                     ouder.aansluitingsNrTweedeOuder = txtAansluitingsNrTweedeOuder.text.toInt()!
                 }
             }
@@ -129,25 +123,25 @@ class Registratie1ViewController: UIViewController
         if statusTextFields["aansluitingsNr"] == "leeg" || statusTextFields["aansluitingsNr"] == "ongeldig" {
             giveUITextFieldRedBorder(txtAansluitingsNr)
         } else {
-            giveUITextFieldDefaultBorder(txtAansluitingsNr,defaultBorderColor!)
+            giveUITextFieldDefaultBorder(txtAansluitingsNr)
         }
         
         if statusTextFields["codeGerechtigde"] == "leeg" || statusTextFields["codeGerechtigde"] == "ongeldig" {
             giveUITextFieldRedBorder(txtCodeGerechtigde)
         } else {
-            giveUITextFieldDefaultBorder(txtCodeGerechtigde, defaultBorderColor!)
+            giveUITextFieldDefaultBorder(txtCodeGerechtigde)
         }
         
         if statusTextFields["rijksregisterNr"] == "leeg" || statusTextFields["rijksregisterNr"] == "ongeldig" {
             giveUITextFieldRedBorder(txtRijksregisterNr)
         } else {
-            giveUITextFieldDefaultBorder(txtRijksregisterNr, defaultBorderColor!)
+            giveUITextFieldDefaultBorder(txtRijksregisterNr)
         }
         
         if statusTextFields["aansluitingsNrTweedeOuder"] == "ongeldig" {
             giveUITextFieldRedBorder(txtAansluitingsNrTweedeOuder)
         }  else {
-            giveUITextFieldDefaultBorder(txtAansluitingsNrTweedeOuder, defaultBorderColor!)
+            giveUITextFieldDefaultBorder(txtAansluitingsNrTweedeOuder)
         }
     }
     
@@ -234,21 +228,9 @@ func giveUITextFieldRedBorder(textField: UITextField) {
     textField.layer.cornerRadius = 5.0
 }
 
-func giveUITextFieldDefaultBorder(textField: UITextField, defaultColor: CGColor) {
+func giveUITextFieldDefaultBorder(textField: UITextField) {
     var defaultBorderColor: UIColor = UIColor(red: 182.0, green: 182.0, blue: 182.0, alpha: 0)
     textField.layer.borderColor = defaultBorderColor.CGColor
     textField.layer.borderWidth = 1.0
     textField.layer.cornerRadius = 5.0
 }
-
-
-
-
-
-
-
-
-
-
-
-
