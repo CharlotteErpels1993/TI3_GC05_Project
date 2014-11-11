@@ -1,8 +1,9 @@
 import UIKit
+import Foundation
 
 class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, UISearchDisplayDelegate {
     var vakanties: [Vakantie] = []
-    var gefilterdeVakanties: [Vakantie] = []
+    var vakanties2: [Vakantie] = []
     var ouder: Ouder?
     
     @IBOutlet weak var zoekbar: UISearchBar!
@@ -10,31 +11,39 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
     override func viewDidLoad() {
         super.viewDidLoad()
         zoekVakanties()
-        //zoekbar.showsScopeBar = true
-        //zoekbar.delegate = self
+        zoekbar.showsScopeBar = true
+        zoekbar.delegate = self
     }
     
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        zoekGefilterdeVakanties()
+    }
     
-    /*func searchBarBookmarkButtonClicked(searchBar: UISearchBar) {
-        vakanties.removeAll()
-        var zoek: String = zoekbar.text
-        var query = PFQuery(className: "Vakantie")
-        query.whereKey("titel", containsString: zoek)
-        query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]!, error: NSError!) -> Void in
-            if error == nil {
-                if let PFObjects = objects as? [PFObject!] {
-                    for object in PFObjects {
-                        var vakantie = Vakantie(vakantie: object)
-                        self.vakanties.append(vakantie)
-                    }
+    func zoekGefilterdeVakanties() {
+        vakanties2.removeAll(keepCapacity: true)
+        for vakantie in vakanties {
+            vakanties2.append(vakantie)
+        }
+        
+        var zoek = zoekbar.text.lowercaseString
+        vakanties.removeAll(keepCapacity: true)
+        if zoek.isEmpty {
+           zoekVakanties()
+        } else {
+            for vakantie in vakanties2 {
+                if (vakantie.titel.lowercaseString.rangeOfString(zoek) != nil) {
+                    vakanties.append(vakantie)
+                    self.tableView.reloadData()
                 }
-                self.tableView.reloadData()
+                
             }
         }
-    }*/
+        self.tableView.reloadData()
+            
+    }
     
     func zoekVakanties() {
-        vakanties.removeAll()
+        vakanties.removeAll(keepCapacity: true)
         var query = PFQuery(className: "Vakantie")
         query.findObjectsInBackgroundWithBlock({(NSArray objects, NSError error) in
             if(error == nil) {
@@ -84,6 +93,17 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         cell.gaVerderLabel.text = "Meer details"
         cell.vakantieNaamLabel.text = vakantie.titel
         cell.doelgroepLabel.text = " \(vakantie.doelgroep) jaar "
+        /*if !gefilterdeVakanties.isEmpty {
+            let vakantie = gefilterdeVakanties[indexPath.row]
+            cell.gaVerderLabel.text = "Meer details"
+            cell.vakantieNaamLabel.text = vakantie.titel
+            cell.doelgroepLabel.text = " \(vakantie.doelgroep) jaar "
+        } else {
+            let vakantie = vakanties[indexPath.row]
+            cell.gaVerderLabel.text = "Meer details"
+            cell.vakantieNaamLabel.text = vakantie.titel
+            cell.doelgroepLabel.text = " \(vakantie.doelgroep) jaar "
+        }*/
         return cell
     }
 }
