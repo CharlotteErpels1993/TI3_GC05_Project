@@ -51,6 +51,7 @@
 		1BDF24B01A0CDEAA00B4B63F /* BekijkAfbeeldingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDF24AF1A0CDEAA00B4B63F /* BekijkAfbeeldingViewController.swift */; };
 		1BFB1E591A0C0A6400E7B53F /* NieuwWachtwoordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFB1E581A0C0A6400E7B53F /* NieuwWachtwoordViewController.swift */; };
 		1BFC33401A066A87009CA8EB /* VakantieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFC333F1A066A87009CA8EB /* VakantieCell.swift */; };
+		A54E1B9E1A125E7C00C6BB95 /* KorteBeschrijvingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54E1B9D1A125E7C00C6BB95 /* KorteBeschrijvingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +114,7 @@
 		1BDF24AF1A0CDEAA00B4B63F /* BekijkAfbeeldingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BekijkAfbeeldingViewController.swift; sourceTree = "<group>"; };
 		1BFB1E581A0C0A6400E7B53F /* NieuwWachtwoordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NieuwWachtwoordViewController.swift; sourceTree = "<group>"; };
 		1BFC333F1A066A87009CA8EB /* VakantieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VakantieCell.swift; sourceTree = "<group>"; };
+		A54E1B9D1A125E7C00C6BB95 /* KorteBeschrijvingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KorteBeschrijvingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -234,6 +236,7 @@
 				1B39CF761A0795D9008DEC49 /* OverzichtMonitorViewController.swift */,
 				1BFB1E581A0C0A6400E7B53F /* NieuwWachtwoordViewController.swift */,
 				1BDF24AF1A0CDEAA00B4B63F /* BekijkAfbeeldingViewController.swift */,
+				A54E1B9D1A125E7C00C6BB95 /* KorteBeschrijvingViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -306,6 +309,7 @@
 				TargetAttributes = {
 					0FA80B011A01350E008DB343 = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = V7X23DEZ3E;
 					};
 					0FA80B161A01350E008DB343 = {
 						CreatedOnToolsVersion = 6.1;
@@ -371,6 +375,7 @@
 				1BDDB9471A02D8240007623D /* Vorming.swift in Sources */,
 				1BFB1E591A0C0A6400E7B53F /* NieuwWachtwoordViewController.swift in Sources */,
 				1BDDB9511A02D86F0007623D /* Voorkeur.swift in Sources */,
+				A54E1B9E1A125E7C00C6BB95 /* KorteBeschrijvingViewController.swift in Sources */,
 				1B10A3BD1A02622C008E225F /* VakantiesTableViewController.swift in Sources */,
 				1BDDB9571A02DD1E0007623D /* Gebruiker.swift in Sources */,
 				1B39CF731A077C8F008DEC49 /* InloggenViewController.swift in Sources */,

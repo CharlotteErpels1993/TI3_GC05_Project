@@ -14,12 +14,12 @@ class BekijkAfbeeldingViewController: UITableViewController {
         super.viewDidLoad()
         
         self.afbeelding1.image = afb1
-        //self.afbeelding1.sizeToFit()
+        self.afbeelding1.sizeToFit()
         
         self.afbeelding2.image = afb2
-        //self.afbeelding2.sizeToFit()
+        self.afbeelding2.sizeToFit()
         
         self.afbeelding3.image = afb3
-        //self.afbeelding3.sizeToFit()
+        self.afbeelding3.sizeToFit()
     }
 }
