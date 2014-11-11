@@ -57,6 +57,32 @@ class Registratie1ViewController: UIViewController
         
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let registratie3ViewController = segue.destinationViewController as Registratie3ViewController
+        
+        //controleren op formaat van ingevulde text! (String, int, ...)
+        
+        defaultBorderColor = txtAansluitingsNr.layer.borderColor
+
+        
+        if gebruikerIsLid == true {
+            setStatusTextFields()
+            pasLayoutVeldenAan()
+        
+            if controleerRodeBordersAanwezig() == true {
+                foutBoxOproepen("Fout", "Gelieve de velden correct in te vullen!", self)
+            } else {
+                settenVerplichteGegevens()
+                
+                if !txtAansluitingsNrTweedeOuder.text.isEmpty {
+                    ouder.aansluitingsNrTweedeOuder = txtAansluitingsNrTweedeOuder.text.toInt()!
+                }
+            }
+        }
+        registratie3ViewController.ouder = ouder
+        
+    }
+    
     func setStatusTextFields() {
         if txtAansluitingsNr.text.isEmpty {
             statusTextFields["aansluitingsNr"] = "leeg"
@@ -124,7 +150,7 @@ class Registratie1ViewController: UIViewController
             giveUITextFieldDefaultBorder(txtAansluitingsNrTweedeOuder, defaultBorderColor!)
         }
     }
-
+    
     func controleerRodeBordersAanwezig() -> Bool {
         
         if CGColorEqualToColor(txtAansluitingsNr.layer.borderColor, redColor.CGColor) {
@@ -139,194 +165,6 @@ class Registratie1ViewController: UIViewController
             return false
         }
     }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let registratie3ViewController = segue.destinationViewController as Registratie3ViewController
-        
-        //controleren op formaat van ingevulde text! (String, int, ...)
-        
-        defaultBorderColor = txtAansluitingsNr.layer.borderColor
-
-        
-        if gebruikerIsLid == true {
-            setStatusTextFields()
-            pasLayoutVeldenAan()
-        
-            if controleerRodeBordersAanwezig() == true {
-                foutBoxOproepen("Fout", "Gelieve de velden correct in te vullen!", self)
-            } else {
-                settenVerplichteGegevens()
-                
-                if !txtAansluitingsNrTweedeOuder.text.isEmpty {
-                    ouder.aansluitingsNrTweedeOuder = txtAansluitingsNrTweedeOuder.text.toInt()!
-                }
-            }
-        }
-        registratie3ViewController.ouder = ouder
-        
-        
-        /*if controleerRodeBordersAanwezig() == true {
-            foutBoxOproepen("Fout", "Gelieve de velden correct in te vullen!", self)
-        } else {
-            if gebruikerIsLid == true {
-                settenVerplichteGegevens()
-                
-                if !txtAansluitingsNrTweedeOuder.text.isEmpty {
-                    ouder.aansluitingsNrTweedeOuder = txtAansluitingsNrTweedeOuder.text.toInt()!
-                }
-            }
-            registratie3ViewController.ouder = ouder
-        }*/
-        
-        /*if gebruikerIsLid == true {
-            controleerLeegTextField(txtAansluitingsNr, id: "aansluitingsNr")
-            controleerLeegTextField(txtCodeGerechtigde, id: "codeGerechtigde")
-            controleerLeegTextField(txtRijksregisterNr, id: "rijksregisterNr")
-            
-            if controleerAlleVerplichteVeldenLeeg() == true {
-                self.foutBox = FoutBox(title: "Fout", message: "Gelieve alle verplichte velden in te vullen (aansluitingsnummer, code gerechtigde en rijksregisternummer).")
-            } else if controleer1ofMeerVerplichteVeldenLeeg() == true {
-                var message: String = geefMessageFoutBox1ofMeerVerplichteVeldenLeeg()
-                self.foutBox = FoutBox(title: "Fout", message: message)
-            } else {
-                controleerVerplichteGegevens()
-                
-                if !txtAansluitingsNrTweedeOuder.text.isEmpty {
-                    controleerAansluitingsNrTweedeOuder(txtAansluitingsNrTweedeOuder.text.toInt()!)
-                }
-            }
-        }
-        
-        if foutBox != nil {
-            textVeldenLeegMaken()
-            foutBoxOproepen(foutBox!, self)
-        } else {
-            if gebruikerIsLid == true {
-                settenVerplichteGegevens()
-                
-                if !txtAansluitingsNrTweedeOuder.text.isEmpty {
-                    ouder.aansluitingsNrTweedeOuder = txtAansluitingsNrTweedeOuder.text.toInt()!
-                }
-            }
-            registratie3ViewController.ouder = ouder
-        }*/
-    }
-    
-    
-    //extra functies
-    /*func controleerAlleVerplichteVeldenLeeg() -> Bool {
-        if statusTextFields["aansluitingsNr"] == "leeg" && statusTextFields["codeGerechtigde"] == "leeg"
-            && statusTextFields["rijksregisterNr"] == "leeg" {
-                return true
-        } else {
-            return false
-        }
-    }*/
-
-    /*func controleer1ofMeerVerplichteVeldenLeeg() -> Bool {
-        var teller: Int = 0
-        
-        if statusTextFields["aansluitingsNr"] == "leeg" {
-            teller += 1
-        }
-        if statusTextFields["codeGerechtigde"] == "leeg" {
-            teller += 1
-        }
-        if statusTextFields["rijksregisterNr"] == "leeg" {
-            teller += 1
-        }
-        
-        if teller >= 1 {
-            return true
-        } else {
-            return false
-        }
-    }*/
-
-    /*func geefMessageFoutBox1ofMeerVerplichteVeldenLeeg() -> String {
-        var message: String = ""
-        
-        
-        if statusTextFields["aansluitingsNr"] == "leeg" {
-            message.extend("Gelieve aansluitingsnummer in te vullen.\n")
-        }
-        if statusTextFields["codeGerechtigde"] == "leeg" {
-            message.extend("Gelieve code gerechtigde in te vullen.\n")
-        }
-        if statusTextFields["rijksregisterNr"] == "leeg" {
-            message.extend("Gelieve rijksregisternummer in te vullen.\n")
-        }
-        return message
-    }*/
-    
-    /*func controleerLeegTextField(textField: UITextField, id: String) {
-        if textField.text.isEmpty {
-            tellerAantalLegeVelden += 1
-            statusTextFields[id] = "leeg"
-        }
-    }*/
-    
-    /*func textVeldenLeegMaken() {
-        if statusTextFields["aansluitingsNr"] == "ongeldig" {
-            //txtAansluitingsNr.text = ""
-            
-            giveUITextFieldRedBorder(txtAansluitingsNr)
-        }
-        if statusTextFields["codeGerechtigde"] == "ongeldig" {
-            //txtCodeGerechtigde.text = ""
-            
-            giveUITextFieldRedBorder(txtCodeGerechtigde)
-        }
-        if statusTextFields["rijksregisterNr"] == "ongeldig" {
-            //txtRijksregisterNr.text = ""
-            
-            giveUITextFieldRedBorder(txtRijksregisterNr)
-        }
-        if statusTextFields["aansluitingsNrTweedeOuder"] == "ongeldig" {
-            //txtAansluitingsNrTweedeOuder.text = ""
-            
-            giveUITextFieldRedBorder(txtAansluitingsNrTweedeOuder)
-        }
-    }*/
-    
-    /*func controleerVerplichteGegevens() {
-        controleerAansluitingsNr(txtAansluitingsNr.text.toInt()!)
-        controleerCodeGerechtigde(txtCodeGerechtigde.text.toInt()!)
-        controleerRijksregisterNr(txtRijksregisterNr.text)
-    }*/
-
-    /*func controleerAansluitingsNr(aansluitingsNr: Int) {
-        if !checkPatternAansluitingsNr(aansluitingsNr) {
-            if foutBox != nil {
-                foutBox?.alert.message?.extend("\n Aansluitingsnummer is niet geldig.")
-            } else {
-                foutBox = FoutBox(title: "Ongeldige waarde(s)", message: "Aansluitingsnummer is niet geldig.")
-            }
-            statusTextFields["aansluitingsNr"] = "ongeldig"
-        }
-    }*/
-    
-    /*func controleerCodeGerechtigde(codeGerechtigde: Int) {
-        if !checkPatternCodeGerechtigde(codeGerechtigde) {
-            if foutBox != nil {
-                foutBox?.alert.message?.extend("\n Code gerechtigde is niet geldig.")
-            } else {
-                foutBox = FoutBox(title: "Ongeldige waarde(s)", message: "Code gerechtigde is niet geldig.")
-            }
-            statusTextFields["codeGerechtigde"] = "ongeldig"
-        }
-    }*/
-    
-    /*func controleerRijksregisterNr(rijksregisterNr: String) {
-        if !checkPatternRijksregisterNr(rijksregisterNr) {
-            if foutBox != nil {
-                foutBox?.alert.message?.extend("\n Rijksregisternummer is niet geldig.")
-            } else {
-                foutBox = FoutBox(title: "Ongeldige waarde(s)", message: "Rijksregisternummer is niet geldig.")
-            }
-            statusTextFields["rijksregisterNr"] = "ongeldig"
-        }
-    }*/
     
     func checkPatternAansluitingsNr(aansluitingsNr: Int) -> Bool {
         var aansluitingsNrString: String = String(aansluitingsNr)
@@ -376,17 +214,6 @@ class Registratie1ViewController: UIViewController
         ouder.codeGerechtigde = txtCodeGerechtigde.text.toInt()!
         ouder.rijksregisterNr = txtRijksregisterNr.text
     }
-    
-    /*func controleerAansluitingsNrTweedeOuder(aansluitingsNrTweedeOuder: Int) {
-        if !checkPatternAansluitingsNr(aansluitingsNrTweedeOuder) {
-            if foutBox != nil {
-                foutBox?.alert.message?.extend("\n Aansluitingsnummer van de tweede ouder is niet geldig.")
-            } else {
-                foutBox = FoutBox(title: "Ongeldige waarde(s)", message: "Aansluitingsnummer van de tweede ouder is niet geldig.")
-            }
-            statusTextFields["aansluitingsNrTweedeOuder"] = "ongeldig"
-        }
-    }*/
 }
 
 func foutBoxOproepen(title: String, message: String, controller: UIViewController) {
