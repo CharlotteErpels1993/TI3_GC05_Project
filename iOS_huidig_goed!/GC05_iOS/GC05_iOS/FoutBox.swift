@@ -4,6 +4,7 @@ import UIKit
 class FoutBox
 {
     var alert: UIAlertController
+    var soort: String?
     
     init(title: String, message: String) {
         self.alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)

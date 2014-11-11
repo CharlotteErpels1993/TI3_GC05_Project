@@ -6,7 +6,6 @@ class Registratie1ViewController: UIViewController
     var gebruikerIsLid: Bool? = true
     var foutBox: FoutBox? = nil
     
-    
     @IBOutlet weak var isLid: UISwitch!
     
     @IBOutlet weak var lblAansluitingsNr: UILabel!
@@ -148,18 +147,24 @@ class Registratie1ViewController: UIViewController
     
     func textVeldenLeegMaken() {
         if textVelden["aansluitingsNr"] == "ongeldig" {
-            txtAansluitingsNr.text = ""
+            //txtAansluitingsNr.text = ""
             
-            
+            giveUITextFieldRedBorder(txtAansluitingsNr)
         }
         if textVelden["codeGerechtigde"] == "ongeldig" {
-            txtCodeGerechtigde.text = ""
+            //txtCodeGerechtigde.text = ""
+            
+            giveUITextFieldRedBorder(txtCodeGerechtigde)
         }
         if textVelden["rijksregisterNr"] == "ongeldig" {
-            txtRijksregisterNr.text = ""
+            //txtRijksregisterNr.text = ""
+            
+            giveUITextFieldRedBorder(txtRijksregisterNr)
         }
         if textVelden["aansluitingsNrTweedeOuder"] == "ongeldig" {
-            txtAansluitingsNrTweedeOuder.text = ""
+            //txtAansluitingsNrTweedeOuder.text = ""
+            
+            giveUITextFieldRedBorder(txtAansluitingsNrTweedeOuder)
         }
     }
     
@@ -272,4 +277,12 @@ func foutBoxOproepen(title: String, message: String, controller: UIViewControlle
 func foutBoxOproepen(foutBox: FoutBox, controller: UIViewController) {
     var alert = foutBox.alert
     controller.presentViewController(alert, animated: true, completion: nil)
+}
+
+func giveUITextFieldRedBorder(textField: UITextField) {
+    var redColor: UIColor = UIColor.redColor()
+    
+    textField.layer.borderColor = redColor.CGColor
+    textField.layer.borderWidth = 1.0
+    textField.layer.cornerRadius = 5.0
 }
