@@ -37,6 +37,9 @@ class VakantieDetailsTableViewController: UITableViewController {
                 self.zoekImage1(vakantie)
                 self.zoekImage2(vakantie)
                 self.zoekImage3(vakantie)
+                /*self.images.append(self.afbeelding1.image!)
+                self.images.append(self.afbeelding2.image!)
+                self.images.append(self.afbeelding3.image!)*/
             }
         }
         
@@ -94,13 +97,14 @@ class VakantieDetailsTableViewController: UITableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "afbeeldingen" {
-            var afb1 = afbeelding1.image
+            /*var afb1 = afbeelding1.image
             var afb2 = afbeelding2.image
-            var afb3 = afbeelding3.image
-            let bekijkAfbeeldingViewController = segue.destinationViewController as BekijkAfbeeldingViewController
-            bekijkAfbeeldingViewController.afb1 = afb1
+            var afb3 = afbeelding3.image*/
+            let bekijkAfbeeldingViewController = segue.destinationViewController as AfbeeldingenViewController
+            /*bekijkAfbeeldingViewController.afb1 = afb1
             bekijkAfbeeldingViewController.afb2 = afb2
-            bekijkAfbeeldingViewController.afb3 = afb3
+            bekijkAfbeeldingViewController.afb3 = afb3*/
+            bekijkAfbeeldingViewController.images = self.images
         } else if segue.identifier == "korteBeschrijving" {
             let korteBeschrijvingViewController = segue.destinationViewController as KorteBeschrijvingViewController
             korteBeschrijvingViewController.tekst = vakantie.korteBeschrijving

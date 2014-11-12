@@ -180,7 +180,7 @@
                                             </variation>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="8O0-y0-e5M" kind="show" identifier="afbeeldingen" id="WSs-Bf-f3C"/>
+                                            <segue destination="QZS-H4-CBZ" kind="show" identifier="afbeeldingen" id="JiE-d6-cxk"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -446,92 +446,59 @@
             </objects>
             <point key="canvasLocation" x="1384" y="181"/>
         </scene>
-        <!--Afbeeldingen-->
-        <scene sceneID="JvW-RP-Nns">
+        <!--Afbeeldingen View Controller-->
+        <scene sceneID="gLX-2k-qOk">
             <objects>
-                <tableViewController id="8O0-y0-e5M" customClass="BekijkAfbeeldingViewController" customModule="JOETZ" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Njx-8j-ODl">
+                <collectionViewController id="QZS-H4-CBZ" customClass="AfbeeldingenViewController" customModule="JOETZ" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" bouncesZoom="NO" dataMode="prototypes" id="FsM-QF-TvX">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <sections>
-                            <tableViewSection id="WK0-d6-auK">
-                                <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="411" id="vwS-JS-XIP">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="afbeelding1" tableViewCell="vwS-JS-XIP" id="XFe-JF-UrN">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="V4D-Dw-fhN">
-                                                    <rect key="frame" x="8" y="0.0" width="600" height="411"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="410.5" id="Qta-pM-t22"/>
-                                                        <constraint firstAttribute="width" constant="600" id="i4z-Bz-GZ7"/>
-                                                    </constraints>
-                                                </imageView>
-                                            </subviews>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="wet-wz-sQM">
+                            <size key="itemSize" width="295" height="306"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="TopLeft" restorationIdentifier="cell" id="n5a-ey-IVy" customClass="AfbeeldingCollectionViewCell" customModule="JOETZ" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="295" height="306"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dOp-1z-6Op">
+                                            <rect key="frame" x="0.0" y="0.0" width="295" height="306"/>
                                             <constraints>
-                                                <constraint firstAttribute="centerY" secondItem="V4D-Dw-fhN" secondAttribute="centerY" id="lRj-n6-m3x"/>
-                                                <constraint firstAttribute="centerX" secondItem="V4D-Dw-fhN" secondAttribute="centerX" constant="-8" id="oaa-Lf-nWN"/>
+                                                <constraint firstAttribute="width" constant="295" id="FVu-WF-lDP"/>
+                                                <constraint firstAttribute="height" constant="306" id="pTA-Dm-8Wm"/>
                                             </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="411" id="cwP-uR-HEa">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="afbeelding2" tableViewCell="cwP-uR-HEa" id="fME-3l-Vic">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qe1-xF-CHX">
-                                                    <rect key="frame" x="8" y="0.0" width="600" height="411"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="600" id="Fg9-wo-Bap"/>
-                                                        <constraint firstAttribute="height" constant="410.5" id="xCn-xK-fTU"/>
-                                                    </constraints>
-                                                </imageView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="centerX" secondItem="qe1-xF-CHX" secondAttribute="centerX" constant="-8" id="d4U-bq-8LC"/>
-                                                <constraint firstAttribute="centerY" secondItem="qe1-xF-CHX" secondAttribute="centerY" id="lmt-Hd-Yjx"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="411" id="ffp-kV-D19">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="afbeelding3" tableViewCell="ffp-kV-D19" id="IfJ-45-gtU">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zxP-4w-StF">
-                                                    <rect key="frame" x="8" y="0.0" width="600" height="411"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="410.5" id="do8-iR-yho"/>
-                                                        <constraint firstAttribute="width" constant="600" id="hsg-4u-Npk"/>
-                                                    </constraints>
-                                                </imageView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="centerY" secondItem="zxP-4w-StF" secondAttribute="centerY" id="1F5-Vu-S5k"/>
-                                                <constraint firstAttribute="centerX" secondItem="zxP-4w-StF" secondAttribute="centerX" constant="-8" id="2fK-tb-3kB"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                        </sections>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="centerY" secondItem="dOp-1z-6Op" secondAttribute="centerY" id="iFo-He-e6c"/>
+                                    <constraint firstAttribute="centerX" secondItem="dOp-1z-6Op" secondAttribute="centerX" id="y5M-QX-oKY"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="image" destination="dOp-1z-6Op" id="a9W-wA-sq5"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
                         <connections>
-                            <outlet property="dataSource" destination="8O0-y0-e5M" id="Get-yA-adM"/>
-                            <outlet property="delegate" destination="8O0-y0-e5M" id="jge-e8-Tan"/>
+                            <outlet property="dataSource" destination="QZS-H4-CBZ" id="560-Kt-nF1"/>
+                            <outlet property="delegate" destination="QZS-H4-CBZ" id="Olg-aa-gto"/>
                         </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Afbeeldingen" id="6D3-jX-96w"/>
+                    </collectionView>
+                    <navigationItem key="navigationItem" id="Dd7-I6-rhL"/>
                     <connections>
-                        <outlet property="afbeelding1" destination="V4D-Dw-fhN" id="KnY-WA-m5F"/>
-                        <outlet property="afbeelding2" destination="qe1-xF-CHX" id="Gtu-Vu-YJY"/>
-                        <outlet property="afbeelding3" destination="zxP-4w-StF" id="wFF-3Y-UNn"/>
+                        <outlet property="collectionView" destination="FsM-QF-TvX" id="iVp-jU-MZv"/>
                     </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Bsd-9b-IzQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j59-FE-zlU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2090" y="336"/>
+            <point key="canvasLocation" x="2180" y="198"/>
         </scene>
         <!--Korte beschrijving-->
         <scene sceneID="UKo-4s-58l">
