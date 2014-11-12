@@ -91,10 +91,10 @@ class InloggenViewController: UIViewController
             let registrerenController = segue.destinationViewController as Registratie1ViewController
         } else if segue.identifier == "ouderOverzicht" {
             let ouderOverzichtController = segue.destinationViewController as VakantiesTableViewController
-            ouderOverzichtController.ouder = self.gebruiker as Ouder
+            ouderOverzichtController.ouder = self.gebruiker as? Ouder
         } else if segue.identifier == "overzichtMonitor" {
             let monitorOverzichtController = segue.destinationViewController as OverzichtMonitorViewController
-            monitorOverzichtController.monitor = self.gebruiker as Monitor
+            monitorOverzichtController.monitor = self.gebruiker as? Monitor
         } else {
             //fout pop-up tonen
             var alert = UIAlertController(title: "Fout", message: "U hebt niet alle velden ingevuld!", preferredStyle: UIAlertControllerStyle.Alert)

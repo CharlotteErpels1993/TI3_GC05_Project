@@ -1,27 +1,24 @@
+import Foundation
 import UIKit
-import QuartzCore
 
-class Registratie3ViewController: UIViewController
-{
+class InschrijvenVakantie1ViewController : UIViewController {
+    
     @IBOutlet weak var txtVoornaam: UITextField!
     @IBOutlet weak var txtNaam: UITextField!
     @IBOutlet weak var txtStraat: UITextField!
     @IBOutlet weak var txtNummer: UITextField!
     @IBOutlet weak var txtBus: UITextField!
-    @IBOutlet weak var txtGemeente: UITextField!
     @IBOutlet weak var txtPostcode: UITextField!
-    @IBOutlet weak var txtTelefoon: UITextField!
-    @IBOutlet weak var txtGsm: UITextField!
+    @IBOutlet weak var txtGemeente: UITextField!
     
-    var ouder: Ouder!
+    var vakantie: Vakantie!
+    var deelnemer: Deelnemer! = Deelnemer(id: "test")
     var foutBox: FoutBox? = nil
-    var statusTextFields: [String: String] = [:]
     var redColor: UIColor = UIColor.redColor()
+    var statusTextFields: [String: String] = [:]
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let registratie4ViewController = segue.destinationViewController as Registratie4ViewController
-        
-        //TO DO: controleren op formaat van ingevulde text! (String, int, ...)
+        let inschrijvenVakantie2ViewController = segue.destinationViewController as InschrijvenVakantie2ViewController
         
         setStatusTextFields()
         pasLayoutVeldenAan()
@@ -30,9 +27,14 @@ class Registratie3ViewController: UIViewController
             foutBoxOproepen("Fout", "Gelieve de velden correct in te vullen!", self)
         } else {
             settenVerplichteGegevens()
-            settenOptioneleGegevens()
-            registratie4ViewController.ouder = ouder
+            
+            if statusTextFields["bus"] != "leeg" {
+                deelnemer.bus = txtBus.text
+            }
+            
+            inschrijvenVakantie2ViewController.deelnemer = deelnemer
         }
+        
     }
     
     func setStatusTextFields() {
@@ -90,26 +92,6 @@ class Registratie3ViewController: UIViewController
                 statusTextFields["postcode"] = "geldig"
             }
         }
-        
-        if txtTelefoon.text.isEmpty {
-            statusTextFields["telefoon"] = "leeg"
-        } else {
-            if !checkPatternTelefoon(txtTelefoon.text) {
-                statusTextFields["telefoon"] = "ongeldig"
-            } else {
-                statusTextFields["telefoon"] = "geldig"
-            }
-        }
-        
-        if txtGsm.text.isEmpty {
-            statusTextFields["gsm"] = "leeg"
-        } else {
-            if !checkPatternGsm(txtGsm.text) {
-                statusTextFields["gsm"] = "ongeldig"
-            } else {
-                statusTextFields["gsm"] = "geldig"
-            }
-        }
     }
     
     func pasLayoutVeldenAan() {
@@ -137,34 +119,22 @@ class Registratie3ViewController: UIViewController
             giveUITextFieldDefaultBorder(txtNummer)
         }
         
-        if statusTextFields["bus"] == "ongeldig"{
+        if statusTextFields["bus"] == "ongeldig" {
             giveUITextFieldRedBorder(txtBus)
         } else {
             giveUITextFieldDefaultBorder(txtBus)
+        }
+        
+        if statusTextFields["postcode"] == "leeg" || statusTextFields["nummer"] == "ongeldig"{
+            giveUITextFieldRedBorder(txtPostcode)
+        } else {
+            giveUITextFieldDefaultBorder(txtPostcode)
         }
         
         if statusTextFields["gemeente"] == "leeg" {
             giveUITextFieldRedBorder(txtGemeente)
         } else {
             giveUITextFieldDefaultBorder(txtGemeente)
-        }
-        
-        if statusTextFields["postcode"] == "leeg" || statusTextFields["postcode"] == "ongeldig"{
-            giveUITextFieldRedBorder(txtPostcode)
-        } else {
-            giveUITextFieldDefaultBorder(txtPostcode)
-        }
-        
-        if statusTextFields["telefoon"] == "ongeldig"{
-            giveUITextFieldRedBorder(txtTelefoon)
-        } else {
-            giveUITextFieldDefaultBorder(txtTelefoon)
-        }
-        
-        if statusTextFields["gsm"] == "leeg" || statusTextFields["gsm"] == "ongeldig"{
-            giveUITextFieldRedBorder(txtGsm)
-        } else {
-            giveUITextFieldDefaultBorder(txtGsm)
         }
     }
     
@@ -179,13 +149,9 @@ class Registratie3ViewController: UIViewController
             return true
         } else if CGColorEqualToColor(txtBus.layer.borderColor, redColor.CGColor) {
             return true
-        } else if CGColorEqualToColor(txtGemeente.layer.borderColor, redColor.CGColor) {
-            return true
         } else if CGColorEqualToColor(txtPostcode.layer.borderColor, redColor.CGColor) {
             return true
-        } else if CGColorEqualToColor(txtTelefoon.layer.borderColor, redColor.CGColor) {
-            return true
-        } else if CGColorEqualToColor(txtGsm.layer.borderColor, redColor.CGColor) {
+        } else if CGColorEqualToColor(txtGemeente.layer.borderColor, redColor.CGColor) {
             return true
         } else {
             return false
@@ -193,22 +159,13 @@ class Registratie3ViewController: UIViewController
     }
     
     func settenVerplichteGegevens() {
-        ouder.voornaam = txtVoornaam.text
-        ouder.naam = txtNaam.text
-        ouder.straat = txtStraat.text
-        ouder.nummer = txtNummer.text.toInt()
-        ouder.gemeente = txtGemeente.text
-        ouder.postcode = txtPostcode.text.toInt()
-        ouder.gsm = txtGsm.text
-    }
-    
-    func settenOptioneleGegevens() {
-        if statusTextFields["bus"] != "leeg" {
-            ouder.bus = txtBus.text
-        }
-        
-        if statusTextFields["telefoon"] != "leeg" {
-            ouder.telefoon = txtTelefoon.text
-        }
+        deelnemer.voornaam = txtVoornaam.text
+        deelnemer.naam = txtNaam.text
+        deelnemer.straat = txtStraat.text
+        deelnemer.nummer = txtNummer.text.toInt()!
+        deelnemer.postcode = txtPostcode.text.toInt()!
+        deelnemer.gemeente = txtGemeente.text
+        deelnemer.inschrijvingVakantie = InschrijvingVakantie(id: "test")
+        deelnemer.inschrijvingVakantie?.vakantie = vakantie
     }
 }
