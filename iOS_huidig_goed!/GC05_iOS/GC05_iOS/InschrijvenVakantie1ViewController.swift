@@ -18,6 +18,7 @@ class InschrijvenVakantie1ViewController : UIViewController {
     var redColor: UIColor = UIColor.redColor()
     var statusTextFields: [String: String] = [:]
     var ouder: Ouder!
+    var inschrijvingVakantie: InschrijvingVakantie! = InschrijvingVakantie(id: "test")
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let inschrijvenVakantie2ViewController = segue.destinationViewController as InschrijvenVakantie2ViewController
@@ -33,6 +34,9 @@ class InschrijvenVakantie1ViewController : UIViewController {
             if statusTextFields["bus"] != "leeg" {
                 deelnemer.bus = txtBus.text
             }
+            
+            inschrijvingVakantie.vakantie = vakantie
+            deelnemer.inschrijvingVakantie = inschrijvingVakantie
             
             inschrijvenVakantie2ViewController.deelnemer = deelnemer
             inschrijvenVakantie2ViewController.ouder = ouder

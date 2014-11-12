@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F05F22E1A13A73000CFE0A1 /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F05F22D1A13A73000CFE0A1 /* NSDateExtension.swift */; };
 		0F265EFA1A137CD1003F2699 /* InschrijvenVakantieSuccesvolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F265EF91A137CD1003F2699 /* InschrijvenVakantieSuccesvolViewController.swift */; };
 		0F2A819A1A091F7100F67A3B /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2A81991A091F7100F67A3B /* Regex.swift */; };
 		0F6254971A0CCBA300BDEF38 /* FoutBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6254961A0CCBA300BDEF38 /* FoutBox.swift */; };
@@ -75,6 +76,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F05F22D1A13A73000CFE0A1 /* NSDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtension.swift; sourceTree = "<group>"; };
 		0F265EF91A137CD1003F2699 /* InschrijvenVakantieSuccesvolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InschrijvenVakantieSuccesvolViewController.swift; sourceTree = "<group>"; };
 		0F2A81991A091F7100F67A3B /* Regex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
 		0F6254961A0CCBA300BDEF38 /* FoutBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoutBox.swift; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 				0FA80B051A01350E008DB343 /* Supporting Files */,
 				1BFC333F1A066A87009CA8EB /* VakantieCell.swift */,
 				0F2A81991A091F7100F67A3B /* Regex.swift */,
+				0F05F22D1A13A73000CFE0A1 /* NSDateExtension.swift */,
 			);
 			path = GC05_iOS;
 			sourceTree = "<group>";
@@ -427,6 +430,7 @@
 				0FBEA1F41A0684FD005FF0D2 /* Date.swift in Sources */,
 				0F92E3131A136BD00005C86C /* InschrijvenVakantie4ViewController.swift in Sources */,
 				1BDF24B01A0CDEAA00B4B63F /* BekijkAfbeeldingViewController.swift in Sources */,
+				0F05F22E1A13A73000CFE0A1 /* NSDateExtension.swift in Sources */,
 				1B1792851A0272D300C4F82B /* VakantieDetailsTableViewController.swift in Sources */,
 				1B4D784B1A0277F100E823E2 /* Registratie1ViewController.swift in Sources */,
 			);

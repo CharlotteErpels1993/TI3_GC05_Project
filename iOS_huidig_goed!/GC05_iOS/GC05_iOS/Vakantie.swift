@@ -43,6 +43,8 @@ class Vakantie: Activiteit
     }
     
     init(vakantie: PFObject) {
+        self.beginDatum = vakantie["vertrekdatum"] as? NSDate
+        self.terugkeerDatum = vakantie["terugkeerdatum"] as? NSDate
         self.aantalDagenNachten = vakantie["aantalDagenNachten"] as String
         self.vervoerwijze = vakantie["vervoerwijze"] as String
         self.formule = vakantie["formule"] as String
@@ -90,6 +92,4 @@ class Vakantie: Activiteit
         }
         return true
     }
-    
-    // blablablabal
 }

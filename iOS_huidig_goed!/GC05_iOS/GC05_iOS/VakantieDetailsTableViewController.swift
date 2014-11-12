@@ -43,12 +43,17 @@ class VakantieDetailsTableViewController: UITableViewController {
             }
         }
         
+        var beginDatum: String? = vakantie.beginDatum?.toS("dd/MM/yyyy")
+        var terugkeerDatum: String? = vakantie.terugkeerDatum?.toS("dd/MM/yyyy")
+        
         navigationItem.title = vakantie.titel
         korteBeschrijvingLabel.text = vakantie.korteBeschrijving
         korteBeschrijvingLabel.sizeToFit()
         doelgroepLabel.text = vakantie.doelgroep
-        vertrekdatumLabel.text = String("Vertrekdatum: \(vakantie.beginDatum)")
-        aankomstdatumLabel.text = String("Aankomstdatum: \(vakantie.terugkeerDatum)")
+        vertrekdatumLabel.text = "Vertrekdatum: "
+        vertrekdatumLabel.text?.extend(beginDatum!)
+        aankomstdatumLabel.text = "Aankomstdatum: "
+        aankomstdatumLabel.text?.extend(terugkeerDatum!)
         aantalDagenNachtenLabel.text = String("Aantal dagen/nachten: \(vakantie.aantalDagenNachten)")
         locatieLabel.text = String("Locatie: \(vakantie.locatie)")
         maxAantalDeelnemersLabel.text = String("Max aantal deelnemers: \(vakantie.maxAantalDeelnemers)")
@@ -112,7 +117,9 @@ class VakantieDetailsTableViewController: UITableViewController {
             let inbegrepenPrijsViewController = segue.destinationViewController as InbegrepenPrijsTableView
             inbegrepenPrijsViewController.tekst = inbegrepenPrijs.text
         } else if segue.identifier == "inschrijven" {
-            
+            let inschrijvenVakantie1ViewController = segue.destinationViewController as InschrijvenVakantie1ViewController
+            inschrijvenVakantie1ViewController.vakantie = vakantie
+            inschrijvenVakantie1ViewController.ouder = ouder
         }
     }
 
