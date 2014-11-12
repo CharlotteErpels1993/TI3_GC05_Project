@@ -1,5 +1,6 @@
 import Foundation
 import UIKit
+import QuartzCore
 
 class InschrijvenVakantie4ViewController : UIViewController {
     var wilTweedeContactpersoon: Bool! = true
@@ -8,6 +9,7 @@ class InschrijvenVakantie4ViewController : UIViewController {
     var contactpersoon2: ContactpersoonNood! = ContactpersoonNood(id: "test")
     var statusTextFields: [String: String] = [:]
     var redColor: UIColor = UIColor.redColor()
+    var ouder: Ouder!
     
     @IBOutlet weak var switchTweedeContactpersoon: UISwitch!
     
@@ -20,28 +22,29 @@ class InschrijvenVakantie4ViewController : UIViewController {
     @IBOutlet weak var lblGsm: UILabel!
     @IBOutlet weak var txtGsm: UITextField!
     
+    
     @IBAction func switched(sender: UISwitch) {
         if sender.on {
             wilTweedeContactpersoon = true
-    
+            
             lblVoornaam.hidden = false
             lblNaam.hidden = false
             lblTelefoon.hidden = false
             lblGsm.hidden = false
-    
+            
             txtVoornaam.hidden = false
             txtNaam.hidden = false
             txtTelefoon.hidden = false
             txtGsm.hidden = false
-    
+            
         } else {
             wilTweedeContactpersoon = false
-    
+            
             lblVoornaam.hidden = true
             lblNaam.hidden = true
             lblTelefoon.hidden = true
             lblGsm.hidden = true
-    
+            
             txtVoornaam.hidden = true
             txtNaam.hidden = true
             txtTelefoon.hidden = true
@@ -69,7 +72,8 @@ class InschrijvenVakantie4ViewController : UIViewController {
             }
         }
         inschrijvenVakantie5ViewController.deelnemer = deelnemer
-        inschrijvenVakantie5ViewController.contacpersoon1 = contactpersoon1
+        inschrijvenVakantie5ViewController.contactpersoon1 = contactpersoon1
+        inschrijvenVakantie5ViewController.ouder = ouder
     }
     
     func setStatusTextFields() {
