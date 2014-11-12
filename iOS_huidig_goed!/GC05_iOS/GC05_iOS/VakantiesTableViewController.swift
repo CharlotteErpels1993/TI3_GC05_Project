@@ -8,12 +8,25 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
     
     @IBOutlet weak var zoekbar: UISearchBar!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         zoekVakanties()
         zoekbar.showsScopeBar = true
         zoekbar.delegate = self
+        if ouder == nil {
+            self.navigationItem.setHidesBackButton(true, animated: true)
+            //self.navigationItem.backBarButtonItem = nil
+            //self.navigationController?.navigationBar.topItem?.hidesBackButton = true
+        } else {
+            //self.navigationItem.rightBarButtonItem = nil
+            self.navigationItem.rightBarButtonItem?.title = "Uitloggen"
+        }
     }
+    
+    /*override func viewDidAppear(animated: Bool) {
+        
+    }*/
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         zoekGefilterdeVakanties(searchText.lowercaseString)

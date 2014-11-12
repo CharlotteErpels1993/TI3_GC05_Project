@@ -67,13 +67,16 @@
                             <outlet property="delegate" destination="xj6-b1-6XR" id="bf1-Eb-1uV"/>
                         </connections>
                     </tableView>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Vakanties" id="jTS-Lj-o5t">
                         <barButtonItem key="rightBarButtonItem" title="Inloggen" id="ic7-yf-zL0">
                             <connections>
+                                <action selector="inuitloggen:" destination="xj6-b1-6XR" id="1a7-TV-06W"/>
                                 <segue destination="QSw-na-ve9" kind="show" id="1jY-Nu-Zy5"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="zoekbar" destination="RlW-AC-mYB" id="7KL-cF-nD3"/>
                     </connections>
@@ -272,12 +275,12 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Details" id="g4s-HS-JIA">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="gQQ-Ww-DKf" rowHeight="44" style="IBUITableViewCellStyleDefault" id="8BL-MD-uZh">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="gQQ-Ww-DKf" rowHeight="61" style="IBUITableViewCellStyleDefault" id="8BL-MD-uZh">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8BL-MD-uZh" id="LVn-fD-UAp">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Locatie" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="44" id="gQQ-Ww-DKf">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Locatie" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="44" id="gQQ-Ww-DKf">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -444,7 +447,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Ye-Cv-YaG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1384" y="181"/>
+            <point key="canvasLocation" x="1372" y="336"/>
         </scene>
         <!--Afbeeldingen View Controller-->
         <scene sceneID="gLX-2k-qOk">
@@ -498,7 +501,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j59-FE-zlU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2180" y="198"/>
+            <point key="canvasLocation" x="2112" y="336"/>
         </scene>
         <!--Korte beschrijving-->
         <scene sceneID="UKo-4s-58l">
@@ -576,7 +579,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BUp-D3-SGA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3453" y="336"/>
+            <point key="canvasLocation" x="3454" y="336"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cC5-ea-HfQ">

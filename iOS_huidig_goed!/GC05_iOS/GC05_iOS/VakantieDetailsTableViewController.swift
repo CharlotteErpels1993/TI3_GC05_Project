@@ -88,6 +88,8 @@ class VakantieDetailsTableViewController: UITableViewController {
         sterPrijs2Label.hidden = true
         bondMoysonPrijsLabel.hidden = true
         inbegrepenPrijs.hidden = true
+            
+        self.navigationItem.rightBarButtonItem = nil
         }
         
         //navigationItem.rightBarButtonItem.
