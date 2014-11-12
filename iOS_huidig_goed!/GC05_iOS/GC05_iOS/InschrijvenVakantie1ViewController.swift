@@ -1,5 +1,6 @@
 import Foundation
 import UIKit
+import QuartzCore
 
 class InschrijvenVakantie1ViewController : UIViewController {
     
@@ -8,14 +9,15 @@ class InschrijvenVakantie1ViewController : UIViewController {
     @IBOutlet weak var txtStraat: UITextField!
     @IBOutlet weak var txtNummer: UITextField!
     @IBOutlet weak var txtBus: UITextField!
-    @IBOutlet weak var txtPostcode: UITextField!
     @IBOutlet weak var txtGemeente: UITextField!
+    @IBOutlet weak var txtPostcode: UITextField!
     
     var vakantie: Vakantie!
     var deelnemer: Deelnemer! = Deelnemer(id: "test")
     var foutBox: FoutBox? = nil
     var redColor: UIColor = UIColor.redColor()
     var statusTextFields: [String: String] = [:]
+    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let inschrijvenVakantie2ViewController = segue.destinationViewController as InschrijvenVakantie2ViewController

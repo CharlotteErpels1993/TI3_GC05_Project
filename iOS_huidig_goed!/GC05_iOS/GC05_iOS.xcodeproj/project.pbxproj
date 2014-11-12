@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F265EFA1A137CD1003F2699 /* InschrijvenVakantieSuccesvolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F265EF91A137CD1003F2699 /* InschrijvenVakantieSuccesvolViewController.swift */; };
 		0F2A819A1A091F7100F67A3B /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2A81991A091F7100F67A3B /* Regex.swift */; };
 		0F6254971A0CCBA300BDEF38 /* FoutBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6254961A0CCBA300BDEF38 /* FoutBox.swift */; };
 		0F92E30D1A1368A10005C86C /* InschrijvenVakantie1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F92E30C1A1368A10005C86C /* InschrijvenVakantie1ViewController.swift */; };
@@ -71,6 +72,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F265EF91A137CD1003F2699 /* InschrijvenVakantieSuccesvolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InschrijvenVakantieSuccesvolViewController.swift; sourceTree = "<group>"; };
 		0F2A81991A091F7100F67A3B /* Regex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
 		0F6254961A0CCBA300BDEF38 /* FoutBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoutBox.swift; sourceTree = "<group>"; };
 		0F92E30C1A1368A10005C86C /* InschrijvenVakantie1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InschrijvenVakantie1ViewController.swift; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 				0F92E3101A136B240005C86C /* InschrijvenVakantie3ViewController.swift */,
 				0F92E3121A136BD00005C86C /* InschrijvenVakantie4ViewController.swift */,
 				0F92E3141A1373E50005C86C /* InschrijvenVakantie5ViewController.swift */,
+				0F265EF91A137CD1003F2699 /* InschrijvenVakantieSuccesvolViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -393,6 +396,7 @@
 				0F92E3111A136B240005C86C /* InschrijvenVakantie3ViewController.swift in Sources */,
 				1B4D784F1A02893700E823E2 /* Registratie3ViewController.swift in Sources */,
 				1BDDB9471A02D8240007623D /* Vorming.swift in Sources */,
+				0F265EFA1A137CD1003F2699 /* InschrijvenVakantieSuccesvolViewController.swift in Sources */,
 				1BFB1E591A0C0A6400E7B53F /* NieuwWachtwoordViewController.swift in Sources */,
 				1BDDB9511A02D86F0007623D /* Voorkeur.swift in Sources */,
 				0F92E30F1A13697B0005C86C /* InschrijvenVakantie2ViewController.swift in Sources */,

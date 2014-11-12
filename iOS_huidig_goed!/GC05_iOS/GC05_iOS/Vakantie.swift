@@ -3,8 +3,8 @@ import Foundation
 class Vakantie: Activiteit
 {
     
-    var beginDatum: Date?
-    var terugkeerDatum: Date?
+    var beginDatum: NSDate?
+    var terugkeerDatum: NSDate?
     var aantalDagenNachten: String
     var vervoerwijze: String
     var formule: String
@@ -59,7 +59,7 @@ class Vakantie: Activiteit
     }
     
     
-    init(id: String, titel: String, locatie: String, korteBeschrijving: String, beginDatum: Date, terugkeerDatum: Date, aantalDagenNachten: String, vervoerwijze: String, formule: String, basisprijs: Double, bondMoysonLedenPrijs: Double, sterPrijs1: Double, sterPrijs2: Double, kortingen: String, inbegrepenPrijs: String, doelgroep: String, maxAantalDeelnemers: Int) {
+    init(id: String, titel: String, locatie: String, korteBeschrijving: String, beginDatum: NSDate, terugkeerDatum: NSDate, aantalDagenNachten: String, vervoerwijze: String, formule: String, basisprijs: Double, bondMoysonLedenPrijs: Double, sterPrijs1: Double, sterPrijs2: Double, kortingen: String, inbegrepenPrijs: String, doelgroep: String, maxAantalDeelnemers: Int) {
         
         self.beginDatum = beginDatum
         self.terugkeerDatum = terugkeerDatum
