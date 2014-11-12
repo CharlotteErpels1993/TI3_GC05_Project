@@ -25,6 +25,11 @@ class InschrijvenVakantie5ViewController : UIViewController {
         }
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        giveUITextViewDefaultBorder(txtViewExtraInfo)
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let inschrijvenVakantieSuccesvolViewController = segue.destinationViewController as InschrijvenVakantieSuccesvolViewController
     
@@ -35,6 +40,8 @@ class InschrijvenVakantie5ViewController : UIViewController {
             } else {
                 deelnemer.inschrijvingVakantie?.extraInfo = txtViewExtraInfo.text
             }
+        } else {
+            deelnemer.inschrijvingVakantie?.extraInfo = ""
         }
         inschrijvenVakantieSuccesvolViewController.deelnemer = deelnemer
         inschrijvenVakantieSuccesvolViewController.contactpersoon1 = contactpersoon1
@@ -47,8 +54,9 @@ class InschrijvenVakantie5ViewController : UIViewController {
     }
     
     func giveUITextViewDefaultBorder(textView: UITextView) {
-        var defaultBorderColor: UIColor = UIColor(red: 182.0, green: 182.0, blue: 182.0, alpha: 0)
-        textView.layer.borderColor = defaultBorderColor.CGColor
+        //var defaultBorderColor: UIColor = UIColor(red: 182.0, green: 182.0, blue: 182.0, alpha: 0)
+        var grayColor: UIColor = UIColor.grayColor()
+        textView.layer.borderColor = grayColor.CGColor
         textView.layer.borderWidth = 1.0
         textView.layer.cornerRadius = 5.0
     }

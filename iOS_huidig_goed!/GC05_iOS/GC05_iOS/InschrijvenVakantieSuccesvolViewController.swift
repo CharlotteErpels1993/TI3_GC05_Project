@@ -9,12 +9,12 @@ class InschrijvenVakantieSuccesvolViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        parseInschrijvingVakantieToDatabase(deelnemer.inschrijvingVakantie!)
-        parseDeelnemerToDatabase(deelnemer)
-        parseContactpersoonToDatabase(contactpersoon1)
+        var iv: PFObject = parseInschrijvingVakantieToDatabase(deelnemer.inschrijvingVakantie!)
+        parseDeelnemerToDatabase(deelnemer, inschrijvingVakantie: iv)
+        parseContactpersoonToDatabase(contactpersoon1, inschrijvingVakantie: iv)
         
         if contactpersoon2?.naam != nil {
-            parseContactpersoonToDatabase(contactpersoon2!)
+            parseContactpersoonToDatabase(contactpersoon2!, inschrijvingVakantie: iv)
         }
         
         performSegueWithIdentifier("overzichtVakanties", sender: self)
@@ -27,19 +27,21 @@ class InschrijvenVakantieSuccesvolViewController : UIViewController {
         }
     }
     
-    private func parseInschrijvingVakantieToDatabase(inschrijvingVakantie: InschrijvingVakantie) {
+    private func parseInschrijvingVakantieToDatabase(inschrijvingVakantie: InschrijvingVakantie) -> PFObject {
         var inschrijvingVakantieJSON = PFObject(className: "InschrijvingVakantie")
         
-        inschrijvingVakantieJSON.setValue(inschrijvingVakantie.vakantie, forKey: "vakantie")
+        inschrijvingVakantieJSON.setValue(inschrijvingVakantie.vakantie?.id, forKey: "vakantie")
         
-        if inschrijvingVakantie.extraInfo != nil {
+        if inschrijvingVakantie.extraInfo != "" {
            inschrijvingVakantieJSON.setValue(inschrijvingVakantie.extraInfo, forKey: "extraInformatie")
         }
         
         inschrijvingVakantieJSON.save()
+        inschrijvingVakantieJSON.fetch()
+        return inschrijvingVakantieJSON
     }
 
-    private func parseDeelnemerToDatabase(deelnemer: Deelnemer) {
+    private func parseDeelnemerToDatabase(deelnemer: Deelnemer, inschrijvingVakantie: PFObject) {
         var deelnemerJSON = PFObject(className: "Deelnemer")
         
         deelnemerJSON.setValue(deelnemer.voornaam, forKey: "voornaam")
@@ -49,22 +51,23 @@ class InschrijvenVakantieSuccesvolViewController : UIViewController {
         deelnemerJSON.setValue(deelnemer.nummer, forKey: "nummer")
         deelnemerJSON.setValue(deelnemer.gemeente, forKey: "gemeente")
         deelnemerJSON.setValue(deelnemer.postcode, forKey: "postcode")
-        deelnemerJSON.setValue(deelnemer.inschrijvingVakantie, forKey: "inschrijvingVakantie")
+        deelnemerJSON.setValue(inschrijvingVakantie.objectId, forKey: "inschrijvingVakantie")
 
         if deelnemer.bus != nil {
             deelnemerJSON.setValue(deelnemer.bus, forKey: "bus")
         }
         
         deelnemerJSON.save()
+        deelnemerJSON.fetch()
     }
 
-    private func parseContactpersoonToDatabase(contactpersoon: ContactpersoonNood) {
+    private func parseContactpersoonToDatabase(contactpersoon: ContactpersoonNood, inschrijvingVakantie: PFObject) {
         var contactpersoonJSON = PFObject(className: "ContactpersoonNood")
 
         contactpersoonJSON.setValue(contactpersoon.voornaam, forKey: "voornaam")
         contactpersoonJSON.setValue(contactpersoon.naam, forKey: "naam")
         contactpersoonJSON.setValue(contactpersoon.gsm, forKey: "gsm")
-        contactpersoonJSON.setValue(contactpersoon.inschrijvingVakantie, forKey: "inschrijvingVakantie")
+        contactpersoonJSON.setValue(inschrijvingVakantie.objectId, forKey: "inschrijvingVakantie")
 
         if contactpersoon.telefoon != nil {
             contactpersoonJSON.setValue(contactpersoon.telefoon, forKey: "telefoon")
