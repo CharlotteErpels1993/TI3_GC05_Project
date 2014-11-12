@@ -21,5 +21,9 @@ class BekijkAfbeeldingViewController: UITableViewController {
         
         self.afbeelding3.image = afb3
         self.afbeelding3.sizeToFit()
+        
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Bordered, target: nil, action: nil)
+
+ //       self.viewController.navigationItem.backBarButtonItem?.title = "Vakantie"
     }
 }

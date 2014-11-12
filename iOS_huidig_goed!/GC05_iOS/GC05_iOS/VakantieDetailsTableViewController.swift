@@ -52,18 +52,26 @@ class VakantieDetailsTableViewController: UITableViewController {
         vervoerwijzeLabel.text = String("Vervoerwijze: \(vakantie.vervoerwijze)")
         formuleLabel.text = String("Formule: \(vakantie.formule)")
         
+        var euroSymbol: String = "€"
+        
         if ouder != nil {
-            basisprijsLabel.text = String("Basisprijs: \(vakantie.basisprijs)")
-            inbegrepenPrijs.text = String("Inbegrepen prijs: \(vakantie.inbegrepenPrijs)")
+            basisprijsLabel.text = String("Basisprijs: \(vakantie.basisprijs) " + euroSymbol)
+            inbegrepenPrijs.text = String("Inbegrepen prijs: \(vakantie.inbegrepenPrijs) ")
             if (vakantie.bondMoysonLedenPrijs != -1) {
-                bondMoysonPrijsLabel.text = String("Bond moyson prijs: \(vakantie.bondMoysonLedenPrijs)")
-            } else { bondMoysonPrijsLabel.hidden = true }
+                bondMoysonPrijsLabel.text = String("Bond moyson prijs: \(vakantie.bondMoysonLedenPrijs) " + euroSymbol)
+            } else {
+                bondMoysonPrijsLabel.text = String("Bond moyson prijs: /")
+            }
             if (vakantie.sterPrijs1ouder != -1) {
-                sterprijs1Label.text = String("Ster prijs (1 ouder): \(vakantie.sterPrijs1ouder)")
-            } else { bondMoysonPrijsLabel.hidden = true }
+                sterprijs1Label.text = String("Ster prijs (1 ouder): \(vakantie.sterPrijs1ouder) " + euroSymbol)
+            } else {
+                sterprijs1Label.text = String("Ster prijs (1 ouder): /")
+            }
             if (vakantie.sterPrijs2ouders != -1) {
-                sterPrijs2Label.text = String("Ster prijs (2 ouders): \(vakantie.sterPrijs2ouders)")
-            } else { bondMoysonPrijsLabel.hidden = true }
+                sterPrijs2Label.text = String("Ster prijs (2 ouders): \(vakantie.sterPrijs2ouders) " + euroSymbol)
+            } else {
+                sterPrijs2Label.text = String("Ster prijs (2 ouders): /")
+            }
 
         } else {
         basisprijsLabel.hidden = true
@@ -73,6 +81,9 @@ class VakantieDetailsTableViewController: UITableViewController {
         bondMoysonPrijsLabel.hidden = true
         inbegrepenPrijs.hidden = true
         }
+        
+        //navigationItem.rightBarButtonItem.
+
     }
     
     /*override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -93,6 +104,11 @@ class VakantieDetailsTableViewController: UITableViewController {
         } else if segue.identifier == "korteBeschrijving" {
             let korteBeschrijvingViewController = segue.destinationViewController as KorteBeschrijvingViewController
             korteBeschrijvingViewController.tekst = vakantie.korteBeschrijving
+        } else if segue.identifier == "inbegrepenPrijs" {
+            let inbegrepenPrijsViewController = segue.destinationViewController as InbegrepenPrijsTableView
+            inbegrepenPrijsViewController.tekst = inbegrepenPrijs.text
+        } else if segue.identifier == "inschrijven" {
+            
         }
     }
 

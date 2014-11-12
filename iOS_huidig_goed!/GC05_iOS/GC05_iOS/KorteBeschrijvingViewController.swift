@@ -1,12 +1,15 @@
 import UIKit
 
 class KorteBeschrijvingViewController: UIViewController {
-    @IBOutlet weak var korteBeschrijvingLabel: UILabel!
+
+    @IBOutlet weak var korteBeschrijving: UITextView!
     
     var tekst: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        korteBeschrijvingLabel.text = tekst
+        korteBeschrijving.text = tekst
+        //navigationItem.backBarButtonItem?.title = "Vakantie"
+
     }
 }

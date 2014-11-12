@@ -51,6 +51,7 @@
 		1BDF24B01A0CDEAA00B4B63F /* BekijkAfbeeldingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDF24AF1A0CDEAA00B4B63F /* BekijkAfbeeldingViewController.swift */; };
 		1BFB1E591A0C0A6400E7B53F /* NieuwWachtwoordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFB1E581A0C0A6400E7B53F /* NieuwWachtwoordViewController.swift */; };
 		1BFC33401A066A87009CA8EB /* VakantieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFC333F1A066A87009CA8EB /* VakantieCell.swift */; };
+		A53380331A1352700048F948 /* InbegrepenPrijsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53380321A1352700048F948 /* InbegrepenPrijsTableView.swift */; };
 		A54E1B9E1A125E7C00C6BB95 /* KorteBeschrijvingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54E1B9D1A125E7C00C6BB95 /* KorteBeschrijvingViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -114,6 +115,7 @@
 		1BDF24AF1A0CDEAA00B4B63F /* BekijkAfbeeldingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BekijkAfbeeldingViewController.swift; sourceTree = "<group>"; };
 		1BFB1E581A0C0A6400E7B53F /* NieuwWachtwoordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NieuwWachtwoordViewController.swift; sourceTree = "<group>"; };
 		1BFC333F1A066A87009CA8EB /* VakantieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VakantieCell.swift; sourceTree = "<group>"; };
+		A53380321A1352700048F948 /* InbegrepenPrijsTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InbegrepenPrijsTableView.swift; sourceTree = "<group>"; };
 		A54E1B9D1A125E7C00C6BB95 /* KorteBeschrijvingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KorteBeschrijvingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -237,6 +239,7 @@
 				1BFB1E581A0C0A6400E7B53F /* NieuwWachtwoordViewController.swift */,
 				1BDF24AF1A0CDEAA00B4B63F /* BekijkAfbeeldingViewController.swift */,
 				A54E1B9D1A125E7C00C6BB95 /* KorteBeschrijvingViewController.swift */,
+				A53380321A1352700048F948 /* InbegrepenPrijsTableView.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 				1BDDB94D1A02D84B0007623D /* Monitor.swift in Sources */,
 				0FA80B081A01350E008DB343 /* AppDelegate.swift in Sources */,
 				1BDDB9551A02D87F0007623D /* ContactpersoonNood.swift in Sources */,
+				A53380331A1352700048F948 /* InbegrepenPrijsTableView.swift in Sources */,
 				1B4D784F1A02893700E823E2 /* Registratie3ViewController.swift in Sources */,
 				1BDDB9471A02D8240007623D /* Vorming.swift in Sources */,
 				1BFB1E591A0C0A6400E7B53F /* NieuwWachtwoordViewController.swift in Sources */,

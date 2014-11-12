@@ -11,6 +11,8 @@ class InloggenViewController: UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        txtEmail.autocorrectionType = UITextAutocorrectionType.No
+        txtWachtwoord.autocorrectionType = UITextAutocorrectionType.No
     }
     
     
