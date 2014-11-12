@@ -28,4 +28,11 @@ class VormingDetailsTableViewController: UITableViewController {
         periodesLabel.text = vorming.periodes
         tipsLabel.text = vorming.tips
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "inschrijven" {
+            let inschrijvenVormingViewController = segue.destinationViewController as InschrijvenVormingViewController
+            inschrijvenVormingViewController.monitor = self.monitor
+        }
+    }
 }
