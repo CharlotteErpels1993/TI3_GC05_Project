@@ -61,6 +61,8 @@
 		A50740F81A1386D900D01900 /* AfbeeldingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50740F71A1386D900D01900 /* AfbeeldingCollectionViewCell.swift */; };
 		A53380331A1352700048F948 /* InbegrepenPrijsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53380321A1352700048F948 /* InbegrepenPrijsTableView.swift */; };
 		A54E1B9E1A125E7C00C6BB95 /* KorteBeschrijvingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54E1B9D1A125E7C00C6BB95 /* KorteBeschrijvingViewController.swift */; };
+		A5CEA07B1A13998900E14103 /* VormingenTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CEA07A1A13998900E14103 /* VormingenTableViewController.swift */; };
+		A5CEA07D1A1399CA00E14103 /* VormingDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CEA07C1A1399CA00E14103 /* VormingDetailsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,6 +135,8 @@
 		A50740F71A1386D900D01900 /* AfbeeldingCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AfbeeldingCollectionViewCell.swift; sourceTree = "<group>"; };
 		A53380321A1352700048F948 /* InbegrepenPrijsTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InbegrepenPrijsTableView.swift; sourceTree = "<group>"; };
 		A54E1B9D1A125E7C00C6BB95 /* KorteBeschrijvingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KorteBeschrijvingViewController.swift; sourceTree = "<group>"; };
+		A5CEA07A1A13998900E14103 /* VormingenTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VormingenTableViewController.swift; sourceTree = "<group>"; };
+		A5CEA07C1A1399CA00E14103 /* VormingDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VormingDetailsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -264,6 +268,8 @@
 				A50740F51A1384EA00D01900 /* AfbeeldingenViewController.swift */,
 				A50740F71A1386D900D01900 /* AfbeeldingCollectionViewCell.swift */,
 				0F265EF91A137CD1003F2699 /* InschrijvenVakantieSuccesvolViewController.swift */,
+				A5CEA07A1A13998900E14103 /* VormingenTableViewController.swift */,
+				A5CEA07C1A1399CA00E14103 /* VormingDetailsTableViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -396,6 +402,7 @@
 				1BDDB94F1A02D8630007623D /* Ouder.swift in Sources */,
 				1B4D78511A02897500E823E2 /* Registratie4ViewController.swift in Sources */,
 				1BDDB94D1A02D84B0007623D /* Monitor.swift in Sources */,
+				A5CEA07D1A1399CA00E14103 /* VormingDetailsTableViewController.swift in Sources */,
 				0FA80B081A01350E008DB343 /* AppDelegate.swift in Sources */,
 				1BDDB9551A02D87F0007623D /* ContactpersoonNood.swift in Sources */,
 				A53380331A1352700048F948 /* InbegrepenPrijsTableView.swift in Sources */,
@@ -405,6 +412,7 @@
 				1BDDB9471A02D8240007623D /* Vorming.swift in Sources */,
 				0F265EFA1A137CD1003F2699 /* InschrijvenVakantieSuccesvolViewController.swift in Sources */,
 				1BFB1E591A0C0A6400E7B53F /* NieuwWachtwoordViewController.swift in Sources */,
+				A5CEA07B1A13998900E14103 /* VormingenTableViewController.swift in Sources */,
 				A50740F81A1386D900D01900 /* AfbeeldingCollectionViewCell.swift in Sources */,
 				1BDDB9511A02D86F0007623D /* Voorkeur.swift in Sources */,
 				0F92E30F1A13697B0005C86C /* InschrijvenVakantie2ViewController.swift in Sources */,
