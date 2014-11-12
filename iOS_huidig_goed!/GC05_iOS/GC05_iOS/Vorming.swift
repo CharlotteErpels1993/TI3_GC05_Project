@@ -15,17 +15,6 @@ class Vorming: Activiteit
     var tips: String
     var betalingWijze: String
     
-    init(vorming: PFObject) {
-        self.periodes = vorming["periodes"] as String
-        self.prijs = vorming["prijs"] as Double
-        self.criteriaDeelnemers = vorming["criteriaDeelnemer"] as String
-        self.websiteLocatie = vorming["websiteLocatie"] as String
-        self.tips = vorming["tips"] as String
-        self.betalingWijze = vorming["betalingswijze"] as String
-        super.init(activiteit: vorming)
-        
-    }
-    
     init(id: String, titel: String, locatie: String, korteBeschrijving: String, periodes: String, prijs: Double, criteriaDeelnemers: String, websiteLocatie: String, tips: String, betalingWijze: String) {
         
         self.periodes = periodes
