@@ -132,7 +132,7 @@ class Registratie4ViewController: UIViewController
         query.whereKey("email", containsString: txtEmail.text)
         
         var aantalOudersMetEmail: Int = query.countObjects()
-    
+        
         if aantalOudersMetEmail > 0 {
             return true
         } else {
