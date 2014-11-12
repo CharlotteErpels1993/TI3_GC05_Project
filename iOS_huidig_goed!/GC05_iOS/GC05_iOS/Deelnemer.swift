@@ -3,17 +3,21 @@ import Foundation
 class Deelnemer
 {
     var id: String
-    var voornaam: String
-    var naam: String
-    var geboortedatum: Date //zelfgemaakte klasse/type, want swift heeft geen date type
-    var straat: String
-    var nummer: Int
-    var bus: String
-    var gemeente: String
-    var postcode: Int
-    var inschrijvingVakantie: InschrijvingVakantie
+    var voornaam: String?
+    var naam: String?
+    var geboortedatum: NSDate? //zelfgemaakte klasse/type, want swift heeft geen date type
+    var straat: String?
+    var nummer: Int?
+    var bus: String?
+    var gemeente: String?
+    var postcode: Int?
+    var inschrijvingVakantie: InschrijvingVakantie?
     
-    init(id: String, voornaam: String, naam: String, geboortedatum: Date, straat: String, nummer: Int, bus: String, gemeente: String, postcode: Int, inschrijvingVakantie: InschrijvingVakantie) {
+    init(id: String) {
+        self.id = id
+    }
+    
+    init(id: String, voornaam: String, naam: String, geboortedatum: NSDate, straat: String, nummer: Int, bus: String, gemeente: String, postcode: Int, inschrijvingVakantie: InschrijvingVakantie) {
         self.id = id
         self.voornaam = voornaam
         self.naam = naam
