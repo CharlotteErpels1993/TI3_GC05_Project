@@ -42,7 +42,7 @@ class VormingenTableViewController: UITableViewController, UISearchBarDelegate, 
         })
     }
     
-    /*@IBAction func gaTerugNaarOverzichtVakanties(segue: UIStoryboardSegue) {
+    /*@IBAction func gaTerugNaarOverzichtVormingen(segue: UIStoryboardSegue) {
         // TO DO ouder insteken?
     }*/
     
