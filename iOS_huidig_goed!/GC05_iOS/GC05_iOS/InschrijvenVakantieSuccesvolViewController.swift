@@ -13,8 +13,17 @@ class InschrijvenVakantieSuccesvolViewController : UIViewController {
         parseDeelnemerToDatabase(deelnemer)
         parseContactpersoonToDatabase(contactpersoon1)
         
-        if contactpersoon2 != nil {
+        if contactpersoon2?.naam != nil {
             parseContactpersoonToDatabase(contactpersoon2!)
+        }
+        
+        performSegueWithIdentifier("overzichtVakanties", sender: self)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "overzichtVakanties" {
+            let vakantiesOverzichtTableViewController = segue.destinationViewController as VakantiesTableViewController
+            vakantiesOverzichtTableViewController.ouder = self.ouder!
         }
     }
     
