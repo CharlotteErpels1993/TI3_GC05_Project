@@ -8,6 +8,7 @@ class InschrijvenVakantie3ViewController : UIViewController {
     var redColor: UIColor = UIColor.redColor()
     var statusTextFields: [String: String] = [:]
     var contactpersoon: ContactpersoonNood! = ContactpersoonNood(id: "test")
+    var ouder: Ouder!
     
     @IBOutlet weak var txtVoornaam: UITextField!
     @IBOutlet weak var txtNaam: UITextField!
@@ -31,6 +32,7 @@ class InschrijvenVakantie3ViewController : UIViewController {
         
             inschrijvenVakantie4ViewController.contactpersoon1 = contactpersoon
             inschrijvenVakantie4ViewController.deelnemer = deelnemer
+            inschrijvenVakantie4ViewController.ouder = ouder
         }
     }
     

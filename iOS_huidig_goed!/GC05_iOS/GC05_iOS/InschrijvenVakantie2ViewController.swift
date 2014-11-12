@@ -4,6 +4,7 @@ import UIKit
 class InschrijvenVakantie2ViewController : UIViewController {
     var deelnemer: Deelnemer!
     var redColor: UIColor = UIColor.redColor()
+    var ouder: Ouder!
     
     @IBOutlet weak var dpGeboortedatum: UIDatePicker!
     
@@ -15,6 +16,6 @@ class InschrijvenVakantie2ViewController : UIViewController {
         deelnemer.geboortedatum = dpGeboortedatum.date
         
         inschrijvenVakantie3ViewController.deelnemer = deelnemer
-        
+        inschrijvenVakantie3ViewController.ouder = ouder
     }
 }

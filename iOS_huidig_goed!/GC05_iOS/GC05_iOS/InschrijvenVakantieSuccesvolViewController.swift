@@ -5,7 +5,7 @@ class InschrijvenVakantieSuccesvolViewController : UIViewController {
     var deelnemer: Deelnemer!
     var contactpersoon1: ContactpersoonNood!
     var contactpersoon2: ContactpersoonNood?
-    
+    var ouder: Ouder!
     
     override func viewDidLoad() {
         super.viewDidLoad()

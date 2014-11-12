@@ -17,7 +17,7 @@ class InschrijvenVakantie1ViewController : UIViewController {
     var foutBox: FoutBox? = nil
     var redColor: UIColor = UIColor.redColor()
     var statusTextFields: [String: String] = [:]
-    
+    var ouder: Ouder!
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let inschrijvenVakantie2ViewController = segue.destinationViewController as InschrijvenVakantie2ViewController
@@ -35,6 +35,7 @@ class InschrijvenVakantie1ViewController : UIViewController {
             }
             
             inschrijvenVakantie2ViewController.deelnemer = deelnemer
+            inschrijvenVakantie2ViewController.ouder = ouder
         }
         
     }

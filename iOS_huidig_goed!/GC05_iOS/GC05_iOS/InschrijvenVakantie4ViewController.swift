@@ -9,6 +9,7 @@ class InschrijvenVakantie4ViewController : UIViewController {
     var contactpersoon2: ContactpersoonNood! = ContactpersoonNood(id: "test")
     var statusTextFields: [String: String] = [:]
     var redColor: UIColor = UIColor.redColor()
+    var ouder: Ouder!
     
     @IBOutlet weak var switchTweedeContactpersoon: UISwitch!
     
@@ -72,6 +73,7 @@ class InschrijvenVakantie4ViewController : UIViewController {
         }
         inschrijvenVakantie5ViewController.deelnemer = deelnemer
         inschrijvenVakantie5ViewController.contactpersoon1 = contactpersoon1
+        inschrijvenVakantie5ViewController.ouder = ouder
     }
     
     func setStatusTextFields() {
