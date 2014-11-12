@@ -62,7 +62,7 @@ class Registratie1ViewController: UIViewController
         if gebruikerIsLid == true {
             setStatusTextFields()
             pasLayoutVeldenAan()
-        
+            
             if controleerRodeBordersAanwezig() == true {
                 foutBoxOproepen("Fout", "Gelieve de velden correct in te vullen!", self)
             } else {
@@ -180,13 +180,13 @@ class Registratie1ViewController: UIViewController
     
     func checkPatternRijksregisterNr(rijksregisterNr: String) -> Bool {
         var length : Int = countElements(rijksregisterNr)
-    
+        
         if length != 11 {
             return false
         }
-    
+        
         var eerste9CijfersString: String = rijksregisterNr.substringWithRange(Range<String.Index>(start: rijksregisterNr.startIndex, end: advance(rijksregisterNr.endIndex, -2)))
-    
+        
         var eerste9CijfersInt: Int = eerste9CijfersString.toInt()!
         var restNaDeling97: Int = eerste9CijfersInt % 97
         var controleGetal: Int = 97 - restNaDeling97
@@ -208,6 +208,34 @@ class Registratie1ViewController: UIViewController
         ouder.codeGerechtigde = txtCodeGerechtigde.text.toInt()!
         ouder.rijksregisterNr = txtRijksregisterNr.text
     }
+}
+
+func checkPatternNummer(nummer: Int) -> Bool {
+    if nummer <= 0 {
+        return false
+    }
+    return true
+}
+
+func checkPatternPostcode(postcode: Int) -> Bool {
+    if postcode < 1000 || postcode > 9992 {
+        return false
+    }
+    return true
+}
+
+func checkPatternGsm(gsm: String) -> Bool {
+    if countElements(gsm) == 10 {
+        return true
+    }
+    return false
+}
+
+func checkPatternTelefoon(telefoon: String) -> Bool {
+    if countElements(telefoon) == 9 {
+        return true
+    }
+    return false
 }
 
 func foutBoxOproepen(title: String, message: String, controller: UIViewController) {
