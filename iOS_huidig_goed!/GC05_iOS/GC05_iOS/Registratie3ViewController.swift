@@ -19,7 +19,7 @@ class Registratie3ViewController: UIViewController
     var redColor: UIColor = UIColor.redColor()
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-         let registratie4ViewController = segue.destinationViewController as Registratie4ViewController
+        let registratie4ViewController = segue.destinationViewController as Registratie4ViewController
         
         //TO DO: controleren op formaat van ingevulde text! (String, int, ...)
         
@@ -210,33 +210,5 @@ class Registratie3ViewController: UIViewController
         if statusTextFields["telefoon"] != "leeg" {
             ouder.telefoon = txtTelefoon.text
         }
-    }
-    
-    func checkPatternNummer(nummer: Int) -> Bool {
-        if nummer <= 0 {
-            return false
-        }
-        return true
-    }
-    
-    func checkPatternPostcode(postcode: Int) -> Bool {
-        if postcode < 1000 || postcode > 9992 {
-            return false
-        }
-        return true
-    }
-    
-    func checkPatternGsm(gsm: String) -> Bool {
-        if countElements(gsm) == 10 {
-            return true
-        }
-        return false
-    }
-    
-    func checkPatternTelefoon(telefoon: String) -> Bool {
-        if countElements(telefoon) == 9 {
-            return true
-        }
-        return false
     }
 }
