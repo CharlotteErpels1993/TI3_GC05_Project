@@ -938,7 +938,7 @@
         <!--Inschrijven-->
         <scene sceneID="Aar-ZT-CNN">
             <objects>
-                <viewController id="hts-ZH-ofq" sceneMemberID="viewController">
+                <viewController id="hts-ZH-ofq" customClass="InschrijvenVakantie1ViewController" customModule="JOETZ" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xwo-sR-V46"/>
                         <viewControllerLayoutGuide type="bottom" id="UVn-E7-uFW"/>
@@ -1087,7 +1087,7 @@
         <!--Inschrijven-->
         <scene sceneID="HhN-zZ-53m">
             <objects>
-                <viewController id="JG9-Yc-TEg" sceneMemberID="viewController">
+                <viewController id="JG9-Yc-TEg" customClass="InschrijvenVakantie2ViewController" customModule="JOETZ" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="JeY-4v-Jqr"/>
                         <viewControllerLayoutGuide type="bottom" id="dt4-zN-heL"/>
@@ -1134,7 +1134,7 @@
         <!--Inschrijven-->
         <scene sceneID="QwS-Lb-gTR">
             <objects>
-                <viewController id="X5a-t7-Gqi" sceneMemberID="viewController">
+                <viewController id="X5a-t7-Gqi" customClass="InschrijvenVakantie3ViewController" customModule="JOETZ" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1YD-Hm-zmw"/>
                         <viewControllerLayoutGuide type="bottom" id="dW6-Xr-CHU"/>
