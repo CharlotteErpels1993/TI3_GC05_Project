@@ -1152,7 +1152,13 @@
                             <outlet property="delegate" destination="lk2-dS-RuI" id="yoj-PK-b6x"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="ujr-s1-KPf"/>
+                    <navigationItem key="navigationItem" id="ujr-s1-KPf">
+                        <barButtonItem key="rightBarButtonItem" title="Inschrijven" id="KMS-1s-xIQ">
+                            <connections>
+                                <segue destination="d80-lq-Zhz" kind="show" identifier="inschrijven" id="fmQ-pI-xab"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="betalingsWijzeLabel" destination="B0n-BH-0rG" id="3Qv-Ro-Up8"/>
                         <outlet property="criteriaDeelnemersLabel" destination="SGa-yW-lPC" id="Ovu-HS-d4F"/>
@@ -1167,6 +1173,101 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GN6-EQ-ph7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="986" y="3306"/>
+        </scene>
+        <!--Inschrijven Vorming View Controller-->
+        <scene sceneID="p25-kf-g8D">
+            <objects>
+                <viewController id="d80-lq-Zhz" customClass="InschrijvenVormingViewController" customModule="JOETZ" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="AiD-Dl-GQb"/>
+                        <viewControllerLayoutGuide type="bottom" id="ocU-ce-heN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ibw-Am-ctg">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Selecteer een datum:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WRc-it-Qin">
+                                <rect key="frame" x="16" y="72" width="164" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H0z-nC-lBY">
+                                <rect key="frame" x="0.0" y="117" width="600" height="162"/>
+                            </pickerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="H0z-nC-lBY" secondAttribute="trailing" constant="-16" id="3ex-tj-c7Q"/>
+                            <constraint firstItem="WRc-it-Qin" firstAttribute="top" secondItem="AiD-Dl-GQb" secondAttribute="bottom" constant="52" id="A6x-TV-eGi"/>
+                            <constraint firstItem="WRc-it-Qin" firstAttribute="leading" secondItem="ibw-Am-ctg" secondAttribute="leadingMargin" id="Aww-m4-ljw"/>
+                            <constraint firstItem="H0z-nC-lBY" firstAttribute="top" secondItem="AiD-Dl-GQb" secondAttribute="bottom" constant="97" id="IBg-Wh-Khm"/>
+                            <constraint firstItem="H0z-nC-lBY" firstAttribute="leading" secondItem="WRc-it-Qin" secondAttribute="trailing" constant="-180" id="Kz0-IY-e6a"/>
+                            <constraint firstItem="H0z-nC-lBY" firstAttribute="leading" secondItem="ibw-Am-ctg" secondAttribute="leadingMargin" constant="-16" id="b6B-L8-qLi"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="SnW-3p-V4Z">
+                        <barButtonItem key="rightBarButtonItem" title="Inschrijven" id="eJ4-gB-mdv">
+                            <connections>
+                                <segue destination="ZYZ-vO-yCv" kind="show" identifier="inschrijven" id="PGy-G6-PVM"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="pickerView" destination="H0z-nC-lBY" id="sOC-UJ-20f"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DoI-d3-O23" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1686" y="3306"/>
+        </scene>
+        <!--Inschrijven Vorming Succesvol View Controller-->
+        <scene sceneID="Anh-fn-7Ev">
+            <objects>
+                <viewController id="ZYZ-vO-yCv" customClass="InschrijvenVormingSuccesvolViewController" customModule="JOETZ" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="WLs-rm-4dI"/>
+                        <viewControllerLayoutGuide type="bottom" id="S3u-LL-x3W"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7eC-y6-QbT">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="U bent succesvol ingeschreven!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JkE-Kt-ngW">
+                                <rect key="frame" x="178" y="289.5" width="244" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ojS-E6-A5l">
+                                <rect key="frame" x="16" y="318" width="568" height="30"/>
+                                <state key="normal" title="Terug naar overzicht">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="terugNaarOverzicht:" destination="ZYZ-vO-yCv" eventType="touchUpInside" id="VDj-3K-QjC"/>
+                                    <segue destination="jwD-DV-qrq" kind="unwind" identifier="overzichtMonitor" unwindAction="gaTerugNaarOverzichtMonitor:" id="y2B-lm-EeY"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="JkE-Kt-ngW" secondAttribute="centerY" constant="0.5" id="2zy-gW-opg"/>
+                            <constraint firstItem="ojS-E6-A5l" firstAttribute="top" secondItem="JkE-Kt-ngW" secondAttribute="bottom" constant="8" id="8l5-Ik-dnr"/>
+                            <constraint firstAttribute="centerX" secondItem="JkE-Kt-ngW" secondAttribute="centerX" id="Lxg-eF-QHd"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ojS-E6-A5l" secondAttribute="trailing" id="dfb-1a-x4n"/>
+                            <constraint firstItem="ojS-E6-A5l" firstAttribute="leading" secondItem="7eC-y6-QbT" secondAttribute="leadingMargin" id="jsj-HM-egx"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="04K-dE-ZTa"/>
+                    <connections>
+                        <outlet property="terugNaarOverzicht" destination="ojS-E6-A5l" id="S6y-6s-6dP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bb5-ba-jow" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="jwD-DV-qrq" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2390" y="3306"/>
         </scene>
         <!--Inschrijven-->
         <scene sceneID="Aar-ZT-CNN">
