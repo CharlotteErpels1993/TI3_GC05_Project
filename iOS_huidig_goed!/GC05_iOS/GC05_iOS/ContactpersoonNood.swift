@@ -3,11 +3,15 @@ import Foundation
 class ContactpersoonNood
 {
     var id: String
-    var voornaam: String
-    var naam: String
-    var telefoon: String
-    var gsm: String
-    var inschrijvingVakantie: InschrijvingVakantie
+    var voornaam: String?
+    var naam: String?
+    var telefoon: String?
+    var gsm: String?
+    var inschrijvingVakantie: InschrijvingVakantie?
+    
+    init(id: String) {
+        self.id = id
+    }
     
     init(id: String, voornaam: String, naam: String, telefoon: String, gsm: String, inschrijvingVakantie: InschrijvingVakantie) {
         self.id = id
