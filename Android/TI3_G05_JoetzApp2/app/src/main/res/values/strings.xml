@@ -67,8 +67,9 @@
     <string name="gsmHint">Gsmnummer</string>
     <string name="error_incorrect_postcode">Postcode is niet geldig (moet numeriek zijn, 4 cijfers)</string>
     <string name="error_incorrect_rijksregnr">Rijksregisternummer is niet geldig (11 cijfers, geen spaties of speciale tekens)</string>
+    <string name="error_incorrect_rijksregisternummer">Ongeldig rijksregisternummer</string>
     <string name="error_incorrect_huisnr">Huisnummer is niet geldig (moet numeriek zijn)</string>
-    <string name="signup_melding_monitor">U schrijft zich momenteel in als ouder/voogd. Indien u zich inschrijven als monitor?
+    <string name="signup_melding_monitor">U schrijft zich momenteel in als ouder/voogd. Wilt u zich inschrijven als monitor?
 Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm en eventueel uw telefoonnummer.
         Ons e-mail adres is joetz.west@joetz.be en u kan ook terecht op het nummer: 056 27 47 00</string>
     <string name="loading_message">Bezig met laden, even geduld aub</string>

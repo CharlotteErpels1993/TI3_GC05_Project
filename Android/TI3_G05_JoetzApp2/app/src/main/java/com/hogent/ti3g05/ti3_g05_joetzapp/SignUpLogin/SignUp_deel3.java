@@ -200,7 +200,7 @@ public class SignUp_deel3 extends Activity{
                 cancel = true;
             }
             if (isValidRijksregisternr(rijksregnr) == false){
-                rijksregnrText.setError(getString(R.string.error_incorrect_rijksregnr));
+                rijksregnrText.setError(getString(R.string.error_incorrect_rijksregisternummer));
                 focusView = rijksregnrText;
                 cancel = true;
             }
