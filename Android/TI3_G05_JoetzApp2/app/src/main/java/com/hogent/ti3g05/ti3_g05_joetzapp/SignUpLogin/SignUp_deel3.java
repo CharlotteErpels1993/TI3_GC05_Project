@@ -193,12 +193,19 @@ public class SignUp_deel3 extends Activity{
             rijksregnrText.setError(getString(R.string.error_field_required));
             focusView = rijksregnrText;
             cancel = true;
+        }else{
+            if (!rijksregnr.matches("[0-9]+") && rijksregnr.length() != 11){
+                rijksregnrText.setError(getString(R.string.error_incorrect_rijksregnr));
+                focusView = rijksregnrText;
+                cancel = true;
+            }
+            if (isValidRijksregisternr(rijksregnr) == false){
+                rijksregnrText.setError(getString(R.string.error_incorrect_rijksregnr));
+                focusView = rijksregnrText;
+                cancel = true;
+            }
         }
-        if (!rijksregnr.matches("[0-9]+") && rijksregnr.length() != 11){
-            rijksregnrText.setError(getString(R.string.error_incorrect_rijksregnr));
-            focusView = rijksregnrText;
-            cancel = true;
-        }
+
 
 		if (TextUtils.isEmpty(naam)) {
 			naamText.setError(getString(R.string.error_field_required));
@@ -211,11 +218,6 @@ public class SignUp_deel3 extends Activity{
             focusView = voornaamText;
             cancel = true;
         }
-
-
-
-
-
 
 
 
@@ -288,12 +290,10 @@ public class SignUp_deel3 extends Activity{
         return etText.getText().toString().trim().length() == 0;
     }
 
-    private boolean isValidRijksregisternr(int rrn){
-        String tekstrrn = Integer.toString(rrn);
-
+    private boolean isValidRijksregisternr(String rrn){
         String eerste9cijfers, laatste2;
-        eerste9cijfers = tekstrrn.substring(0, 10);
-        laatste2 = tekstrrn.substring(10, 11);
+        eerste9cijfers = rrn.substring(0, 9);
+        laatste2 = rrn.substring(9, 11);
         int restNaDeling = Integer.parseInt(eerste9cijfers) % 97;
         int controleGetal = 97 - restNaDeling;
         return controleGetal == Integer.parseInt(laatste2);
