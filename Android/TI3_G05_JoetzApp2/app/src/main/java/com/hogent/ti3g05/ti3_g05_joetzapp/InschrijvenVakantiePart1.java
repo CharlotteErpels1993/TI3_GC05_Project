@@ -41,6 +41,8 @@ public class InschrijvenVakantiePart1 extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inschrijven_vakantie_part1);
 
+        cd = new ConnectionDetector(getApplicationContext());
+
         txtVoornaam = (EditText) findViewById(R.id.Voornaam);
         txtNaam = (EditText) findViewById(R.id.Naam);
         txtStraat = (EditText) findViewById(R.id.Straat);
@@ -65,17 +67,6 @@ public class InschrijvenVakantiePart1 extends FragmentActivity {
                     // Ask user to connect to Internet
                     Toast.makeText(getApplicationContext(), getString(R.string.error_no_internet), Toast.LENGTH_SHORT).show();
                 }
-            }
-        });
-
-        btnTerug = (Button) findViewById(R.id.btnNaarOverzicht);
-        btnTerug.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                Intent intent = new Intent(InschrijvenVakantiePart1.this, activiteit_overzicht.class);
-                startActivity(intent);
-
-                overridePendingTransition(R.anim.right_in, R.anim.left_out);
             }
         });
 
