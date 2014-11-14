@@ -199,24 +199,37 @@ public class activiteit_detail extends Activity {
             txtPrijs.setVisibility(View.VISIBLE);
             prijs = i.getStringExtra("prijs");
             txtPrijs.setText("Prijs: €" + prijs);
+            if (!(prijs.contains(".") || prijs.contains(","))){
+                txtPrijs.append(",00");
+            }
 
             bmLedenPrijs = i.getStringExtra("BMledenPrijs");
             sterPrijs1Ouder = i.getStringExtra("SterPrijs1Ouder");
             sterPrijs2Ouders = i.getStringExtra("SterPrijs2Ouders");
 
+
             if (!bmLedenPrijs.equals("-1")) {
                 txtBMledenPrijs.setVisibility(View.VISIBLE);
                 txtBMledenPrijs.setText("Prijs voor leden van Bond Moyson: €" + bmLedenPrijs);
+                if (!(bmLedenPrijs.contains(".") || bmLedenPrijs.contains(","))){
+                    txtBMledenPrijs.append(",00");
+                }
             }
 
             if (!sterPrijs1Ouder.equals("-1")) {
                 txtSterPrijs1Ouder.setVisibility(View.VISIBLE);
                 txtSterPrijs1Ouder.setText("Prijs voor leden waarvan 1 ouder deel is van BM: €" + sterPrijs1Ouder);
+                if (!(sterPrijs1Ouder.contains(".") || sterPrijs1Ouder.contains(","))){
+                    txtSterPrijs1Ouder.append(",00");
+                }
             }
 
             if (!sterPrijs2Ouders.equals("-1")){
                 txtSterPrijs2Ouders.setVisibility(View.VISIBLE);
                 txtSterPrijs2Ouders.setText("Prijs voor leden waarvan 2 ouders deel zijn van BM: €" + sterPrijs2Ouders);
+                if (!(sterPrijs2Ouders.contains(".") || sterPrijs2Ouders.contains(","))){
+                    txtSterPrijs2Ouders.append(",00");
+                }
             }
         }
 

@@ -1,40 +1,45 @@
 import UIKit
+import Foundation
 
 class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, UISearchDisplayDelegate {
     var vakanties: [Vakantie] = []
-    var gefilterdeVakanties: [Vakantie] = []
+    var vakanties2: [Vakantie] = []
     var ouder: Ouder?
     
     @IBOutlet weak var zoekbar: UISearchBar!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         zoekVakanties()
-        //zoekbar.showsScopeBar = true
-        //zoekbar.delegate = self
+        zoekbar.showsScopeBar = true
+        zoekbar.delegate = self
+        if ouder == nil {
+            self.navigationItem.setHidesBackButton(true, animated: true)
+            //self.navigationItem.backBarButtonItem = nil
+            //self.navigationController?.navigationBar.topItem?.hidesBackButton = true
+        } else {
+            //self.navigationItem.rightBarButtonItem = nil
+            self.navigationItem.rightBarButtonItem?.title = "Uitloggen"
+        }
     }
     
-    
-    /*func searchBarBookmarkButtonClicked(searchBar: UISearchBar) {
-        vakanties.removeAll()
-        var zoek: String = zoekbar.text
-        var query = PFQuery(className: "Vakantie")
-        query.whereKey("titel", containsString: zoek)
-        query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]!, error: NSError!) -> Void in
-            if error == nil {
-                if let PFObjects = objects as? [PFObject!] {
-                    for object in PFObjects {
-                        var vakantie = Vakantie(vakantie: object)
-                        self.vakanties.append(vakantie)
-                    }
-                }
-                self.tableView.reloadData()
-            }
-        }
+    /*override func viewDidAppear(animated: Bool) {
+        
     }*/
     
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        zoekGefilterdeVakanties(searchText.lowercaseString)
+    }
+    
+    func zoekGefilterdeVakanties(zoek: String) {
+        vakanties2 = vakanties.filter { $0.titel.lowercaseString.rangeOfString(zoek) != nil }
+        self.tableView.reloadData()
+            
+    }
+    
     func zoekVakanties() {
-        vakanties.removeAll()
+        vakanties.removeAll(keepCapacity: true)
         var query = PFQuery(className: "Vakantie")
         query.findObjectsInBackgroundWithBlock({(NSArray objects, NSError error) in
             if(error == nil) {
@@ -44,11 +49,15 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
                         self.vakanties.append(vakantie)
                     }
                 }
+                self.vakanties2 = self.vakanties
                 self.tableView.reloadData()
             }
         })
     }
     
+    @IBAction func gaTerugNaarOverzichtVakanties(segue: UIStoryboardSegue) {
+        // TO DO ouder insteken?
+    }
     
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -57,8 +66,6 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
             let selectedVakantie = vakanties[tableView.indexPathForSelectedRow()!.row]
             vakantieDetailsController.vakantie = selectedVakantie as Vakantie
             vakantieDetailsController.ouder = ouder
-        /*} else if segue.identifier == "registreren" {
-            let registratie1ViewController = segue.destinationViewController as Registratie1ViewController*/
         } else if segue.identifier == "inloggen" {
             let inloggenViewController = segue.destinationViewController as InloggenViewController
         } else if segue.identifier == "toonVakantie" {
@@ -74,13 +81,13 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return vakanties.count
+        return vakanties2.count
     }
     
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("vakantieCell", forIndexPath: indexPath) as VakantieCell
-        let vakantie = vakanties[indexPath.row]
+        let vakantie = vakanties2[indexPath.row]
         cell.gaVerderLabel.text = "Meer details"
         cell.vakantieNaamLabel.text = vakantie.titel
         cell.doelgroepLabel.text = " \(vakantie.doelgroep) jaar "

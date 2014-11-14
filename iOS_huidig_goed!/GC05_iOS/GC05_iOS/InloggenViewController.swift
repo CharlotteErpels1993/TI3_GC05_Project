@@ -1,4 +1,5 @@
 import UIKit
+import QuartzCore
 
 class InloggenViewController: UIViewController
 {
@@ -8,17 +9,90 @@ class InloggenViewController: UIViewController
     var queryOuder = PFQuery(className: "Ouder")
     var queryMonitor = PFQuery(className: "Monitor")
     var gebruiker: Gebruiker!
+    var statusTextFields: [String: String] = [:]
+    var redColor: UIColor = UIColor.redColor()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        txtEmail.autocorrectionType = UITextAutocorrectionType.No
+        txtWachtwoord.autocorrectionType = UITextAutocorrectionType.No
     }
     
+    func checkPatternEmail(email: String) -> Bool {
+        if countElements(email) == 0 {
+            return false
+        } else if Regex(p: "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}").test(email) {
+            return true
+        }
+        return false
+    }
+    
+    func setStatusTextFields() {
+        if txtEmail.text.isEmpty {
+            statusTextFields["email"] = "leeg"
+        } else {
+            if !checkPatternEmail(txtEmail.text) {
+                statusTextFields["email"] = "ongeldig"
+            } else {
+                statusTextFields["email"] = "geldig"
+            }
+        }
+        
+        if txtWachtwoord.text.isEmpty {
+            statusTextFields["wachtwoord"] = "leeg"
+        } else {
+            statusTextFields["wachtwoord"] = "ingevuld"
+        }
+    }
+    
+    func pasLayoutVeldenAan() {
+        if statusTextFields["email"] == "leeg" || statusTextFields["email"] == "ongeldig" {
+            giveUITextFieldRedBorder(txtEmail)
+        } else {
+            giveUITextFieldDefaultBorder(txtEmail)
+        }
+        
+        if statusTextFields["wachtwoord"] == "leeg" {
+            giveUITextFieldRedBorder(txtWachtwoord)
+        } else {
+            giveUITextFieldDefaultBorder(txtWachtwoord)
+        }
+    }
+    
+    func controleerRodeBordersAanwezig() -> Bool {
+        if CGColorEqualToColor(txtEmail.layer.borderColor, redColor.CGColor) {
+            return true
+        } else if CGColorEqualToColor(txtWachtwoord.layer.borderColor, redColor.CGColor) {
+            return true
+        } else {
+            return false
+        }
+    }
     
     @IBAction func inloggen(sender: AnyObject) {
         var email: String = txtEmail.text
         var wachtwoord: String = txtWachtwoord.text
         
-        if veldenZijnIngevuld(email, wachtwoord: wachtwoord) {
+        setStatusTextFields()
+        pasLayoutVeldenAan()
+        
+        if controleerRodeBordersAanwezig() == true {
+            foutBoxOproepen("Fout", "Gelieve de velden correct in te vullen!", self)
+        } else {
+            var type: String = zoekenMatchMonitorOfOuder(email, wachtwoord: wachtwoord)
+            
+            if type == "monitor" {
+                var monitorPF = queryMonitor.getFirstObject()
+                self.gebruiker = Monitor(monitor: monitorPF)
+                performSegueWithIdentifier("overzichtMonitor", sender: self)
+            } else if type == "ouder" {
+                var ouderPF = queryOuder.getFirstObject()
+                self.gebruiker = Ouder(ouder: ouderPF)
+                performSegueWithIdentifier("ouderOverzicht", sender: self)
+            }
+        }
+        
+        /*if veldenZijnIngevuld(email, wachtwoord: wachtwoord) {
             //zoeken naar gebruikers
             var type: String = zoekenMatchMonitorOfOuder(email, wachtwoord: wachtwoord)
             
@@ -43,7 +117,7 @@ class InloggenViewController: UIViewController
             var alert = UIAlertController(title: "Fout", message: "De combinatie e-mail/wachtwoord is niet correct", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Ga terug", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
-        }
+        }*/
     }
     
     
@@ -89,10 +163,10 @@ class InloggenViewController: UIViewController
             let registrerenController = segue.destinationViewController as Registratie1ViewController
         } else if segue.identifier == "ouderOverzicht" {
             let ouderOverzichtController = segue.destinationViewController as VakantiesTableViewController
-            ouderOverzichtController.ouder = self.gebruiker as Ouder
+            ouderOverzichtController.ouder = self.gebruiker as? Ouder
         } else if segue.identifier == "overzichtMonitor" {
             let monitorOverzichtController = segue.destinationViewController as OverzichtMonitorViewController
-            monitorOverzichtController.monitor = self.gebruiker as Monitor
+            monitorOverzichtController.monitor = self.gebruiker as? Monitor
         } else {
             //fout pop-up tonen
             var alert = UIAlertController(title: "Fout", message: "U hebt niet alle velden ingevuld!", preferredStyle: UIAlertControllerStyle.Alert)

@@ -93,7 +93,7 @@ class Gebruiker
         self.codeGerechtigde = codeGerechtigde
     }
     
-    func checkValidEmail(email: String) -> Bool {
+    func checkPatternEmail(email: String) -> Bool {
         if countElements(email) == 0 {
             return false
         } else if Regex(p: "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}").test(email) {

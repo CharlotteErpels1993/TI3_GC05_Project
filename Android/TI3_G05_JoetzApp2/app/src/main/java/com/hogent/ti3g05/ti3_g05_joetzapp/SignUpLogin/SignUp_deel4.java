@@ -170,7 +170,6 @@ public class SignUp_deel4 extends Activity{
         Toast.makeText(getApplicationContext(), getString(R.string.loading_message), Toast.LENGTH_SHORT).show();
 
         ParseObject gebruiker = new ParseObject("Ouder");
-        gebruiker.put("username", username);
         gebruiker.put("email", mEmail);
         gebruiker.put("wachtwoord", mPassword);
 
