@@ -12,6 +12,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
+import com.parse.ParseException;
+import com.parse.ParseObject;
 
 
 public class InschrijvenVakantiePart3 extends Activity {
@@ -88,26 +90,59 @@ public class InschrijvenVakantiePart3 extends Activity {
         Toast.makeText(getApplicationContext(), getString(R.string.loading_message), Toast.LENGTH_SHORT).show();
         Intent in = new Intent(getApplicationContext(),activiteit_overzicht.class);
 
-
-        /*Bundle extras = getIntent().getExtras();
+        String voornaam = null, naam = null, straat = null, huisnr = null, bus = null, gemeente = null, postcode = null, voornaamCP = null, naamCP = null, telefoonCP = null, gsmCP = null;
+        Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            String lidBM = extras.getString("lidVanBondMoyson");
-            String BMnr = extras.getString("aansluitingsnr");
-            in.putExtra("lidVanBondMoyson", lidBM);
-            in.putExtra("aansluitingsnr", BMnr);
-        }*/
+            voornaam = extras.getString("voornaam");
+            naam = extras.getString("naam");
+            straat = extras.getString("straat");
+            huisnr = extras.getString("huisnr");
+            bus = extras.getString("bus");
+            gemeente = extras.getString("gemeente");
+            postcode = extras.getString("postcode");
 
-        extraInformatie = editExtraInformatie.getText().toString();
-        if (!TextUtils.isEmpty(extraInformatie)){
-            //er zit iets in -> doorgeven
-            in.putExtra("extraInformatie", extraInformatie);
+            voornaamCP = extras.getString("voornaamCP");
+            naamCP = extras.getString("naamCP");
+            telefoonCP = extras.getString("telefoonCP");
+            gsmCP = extras.getString("gsmCP");
         }
 
-        Toast.makeText(getApplicationContext(), getString(R.string.dialog_ingeschreven_melding), Toast.LENGTH_SHORT).show();
-        startActivity(in);
+        extraInformatie = editExtraInformatie.getText().toString();
 
-        overridePendingTransition(R.anim.right_in, R.anim.left_out);
+        if (inschrijvingOpslaan(voornaam, naam, straat, huisnr,  bus, gemeente, postcode, voornaamCP, naamCP, telefoonCP, gsmCP, extraInformatie)){
+            Toast.makeText(getApplicationContext(), getString(R.string.dialog_ingeschreven_melding), Toast.LENGTH_SHORT).show();
+            startActivity(in);
 
+            overridePendingTransition(R.anim.right_in, R.anim.left_out);
+        }else{
+            Toast.makeText(getApplicationContext(), "Er is een fout opgetreden. Onze excuses voor het ongemak.", Toast.LENGTH_SHORT);
+        }
+
+    }
+
+    public boolean inschrijvingOpslaan(String voornaam, String naam, String straat, String huisnr, String bus, String gemeente, String postcode,
+                                    String voornaamCP, String naamCP, String telefoonCP, String gsmCP, String extraInfo){
+        try{
+            ParseObject inschrijving = new ParseObject("InschrijvingVakantie");
+            inschrijving.put("voornaamDeelnemer", voornaam);
+            inschrijving.put("naamDeelnemer" , naam);
+            inschrijving.put("straatDeelnemer" , straat);
+            inschrijving.put("huisnrDeelnemer" , Integer.parseInt(huisnr));
+            inschrijving.put("busDeelnemer" , bus);
+            inschrijving.put("gemeenteDeelnemer" , gemeente);
+            inschrijving.put("PostcodeDeelnemer" , Integer.parseInt(postcode));
+            inschrijving.put("voornaamContactPersoon" , voornaamCP);
+            inschrijving.put("naamContactPersoon" , naamCP);
+            inschrijving.put("telefoonContactPersoon" , Integer.parseInt(telefoonCP));
+            inschrijving.put("gsmContactPersoon" , Integer.parseInt(gsmCP));
+            inschrijving.put("extraInformatie" , extraInfo);
+            inschrijving.saveInBackground();
+
+            return true;
+        }
+        catch(Exception e){
+            return false;
+        }
 
     }
 }

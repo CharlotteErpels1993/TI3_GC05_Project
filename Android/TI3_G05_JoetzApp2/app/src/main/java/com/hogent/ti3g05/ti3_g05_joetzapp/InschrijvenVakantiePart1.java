@@ -144,11 +144,7 @@ public class InschrijvenVakantiePart1 extends FragmentActivity {
             cancel = true;
         }
 
-        /*if (TextUtils.isEmpty(bus)) {
-            busText.setError(getString(R.string.error_field_required));
-            focusView = busText;
-            cancel = true;
-        }*/
+        //TODO: datepicker toevoegen
 
         if (TextUtils.isEmpty(huisnr)) {
             txtHuisnr.setError(getString(R.string.error_field_required));
