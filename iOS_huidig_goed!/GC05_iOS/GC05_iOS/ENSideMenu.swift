@@ -31,7 +31,9 @@ enum ENSideMenuPosition : Int {
 extension UIViewController {
     
     public func toggleSideMenuView () {
+        //sideMenuController()?.sideMenu?.toggleMenu()
         sideMenuController()?.sideMenu?.toggleMenu()
+        
     }
     
     public func hideSideMenuView () {
@@ -119,7 +121,6 @@ class ENSideMenu : NSObject {
     convenience init(sourceView: UIView, menuTableViewController: UITableViewController, menuPosition: ENSideMenuPosition) {
         self.init(sourceView: sourceView, menuPosition: menuPosition)
         self.menuTableViewController = menuTableViewController
-        self.menuTableViewController.reloadInputViews()
         self.menuTableViewController.tableView.frame = sideMenuContainerView.bounds
         self.menuTableViewController.tableView.autoresizingMask = .FlexibleHeight | .FlexibleWidth
         sideMenuContainerView.addSubview(self.menuTableViewController.tableView)
@@ -166,6 +167,7 @@ class ENSideMenu : NSObject {
     }
     
     private func toggleMenu (shouldOpen: Bool) {
+        self.menuTableViewController.tableView.reloadData()
         isMenuOpen = shouldOpen
         if (bouncingEnabled) {
             
@@ -248,7 +250,6 @@ class ENSideMenu : NSObject {
             frame.size.width = menuWidth
             sideMenuContainerView.frame = frame
             sideMenuContainerView.layer.shadowPath = UIBezierPath(rect: sideMenuContainerView.bounds).CGPath
-
             needUpdateApperance = false
         }
     }

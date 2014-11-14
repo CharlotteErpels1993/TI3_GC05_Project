@@ -5,6 +5,7 @@ class SidebarTableViewController: UITableViewController {
     var arrayKind: [String] = ["Vakanties","Inloggen", "Registreren"]
     var arrayOuder: [String] = ["Vakanties", "Uitloggen"]
     var arrayMonitor: [String] = ["Vakanties", "Uitloggen", "Vormingen", "Profielen"]
+    var array: [String]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +23,10 @@ class SidebarTableViewController: UITableViewController {
         
     }
     
+    func update() {
+        self.tableView.reloadData()
+    }
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -33,7 +38,7 @@ class SidebarTableViewController: UITableViewController {
         } else {
             var gebruikerPF = PFUser.currentUser()
             var soort: String = gebruikerPF["soort"] as String
-            if soort == "monitor" {
+            if soort == "ouder" {
                 return 2
             } else {
                 return 4
@@ -82,7 +87,61 @@ class SidebarTableViewController: UITableViewController {
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         var destViewController: UIViewController
         
-        switch indexPath.row {
+        if PFUser.currentUser() == nil {
+            switch indexPath.row {
+            case 0:
+                destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
+                break
+            case 1:
+                destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Inloggen") as UIViewController
+                break
+            case 2:
+                destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Registreren") as UIViewController
+                break
+            default:
+                destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
+                break
+            }
+            sideMenuController()?.setContentViewController(destViewController)
+        } else {
+            var gebruikerPF = PFUser.currentUser()
+            var soort: String = gebruikerPF["soort"] as String
+            if soort == "monitor" {
+                switch indexPath.row {
+                case 0:
+                    destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
+                    break
+                case 1:
+                    destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Uitloggen") as UIViewController
+                    break
+                case 2:
+                    destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vormingen") as UIViewController
+                    break
+                    /*case 3:
+                    destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Profielen") as UIViewController
+                    break*/
+                default:
+                    destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
+                    break
+                }
+                sideMenuController()?.setContentViewController(destViewController)
+            } else if soort == "ouder" {
+                switch indexPath.row {
+                case 0:
+                    destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
+                    break
+                case 1:
+                    destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Uitloggen") as UIViewController
+                    break
+                default:
+                    destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
+                    break
+                }
+                sideMenuController()?.setContentViewController(destViewController)
+            }
+        }
+        
+        /*switch indexPath.row {
         case 0:
             destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
             break
@@ -105,6 +164,8 @@ class SidebarTableViewController: UITableViewController {
             destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
             break
         }
-        sideMenuController()?.setContentViewController(destViewController)
+        sideMenuController()?.setContentViewController(destViewController)*/
     }
+    
+    
 }
