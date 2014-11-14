@@ -183,7 +183,7 @@ public class navBarMainScreen extends Activity {
 
                 break;
             case 3:
-                fragment = new MainScreen();
+                Toast.makeText(this,"Nog niet ondersteund", Toast.LENGTH_SHORT).show();
 
                 break;
 

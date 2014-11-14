@@ -118,5 +118,6 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
     <string name="ledenprijs">De bond moyson ledenprijs</string>
     <string name="sterPrijsOuder1">Sterprijs ouder 1</string>
     <string name="sterPrijs2Ouders">De sterprijs voor 2 ouders</string>
+    <string name="forgetPass">Wachtwoord vergeten</string>
 
 </resources>

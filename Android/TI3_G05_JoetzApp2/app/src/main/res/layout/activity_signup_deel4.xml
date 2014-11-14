@@ -42,7 +42,8 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/etPasswordConfirm"
-        android:layout_marginTop="25dp"
+
+        android:layout_marginTop="10dp"
         android:text="@string/createAccount" />
 
     <Button
@@ -50,6 +51,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/btnCreateAccount"
+        android:layout_marginTop="8dp"
         android:text="@string/back" />
 
 </RelativeLayout>

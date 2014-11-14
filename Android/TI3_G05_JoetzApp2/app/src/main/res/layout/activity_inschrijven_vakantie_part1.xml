@@ -52,7 +52,7 @@
             android:onClick="showDatePickerDialog"
             android:layout_below="@id/Naam"
             android:layout_marginTop="25dp"
-            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
             />
 
         <EditText
