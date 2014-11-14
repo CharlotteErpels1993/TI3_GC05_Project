@@ -37,12 +37,22 @@ class VakantieDetailsTableViewController: UITableViewController {
         query.getObjectInBackgroundWithId(vakantie.id) {
             (vakantie: PFObject!, error: NSError!) -> Void in
             if error == nil {
-                self.zoekImage1(vakantie)
+                /*self.zoekImage1(vakantie)
                 self.zoekImage2(vakantie)
-                self.zoekImage3(vakantie)
+                self.zoekImage3(vakantie)*/
                 /*self.images.append(self.afbeelding1.image!)
                 self.images.append(self.afbeelding2.image!)
                 self.images.append(self.afbeelding3.image!)*/
+                if self.images.count == 3 {
+                    self.afbeelding1.image = self.images[0]
+                    self.afbeelding2.image = self.images[1]
+                    self.afbeelding3.image = self.images[2]
+                } else if self.images.count == 2 {
+                    self.afbeelding1.image = self.images[0]
+                    self.afbeelding2.image = self.images[1]
+                } else if self.images.count == 1 {
+                    self.afbeelding1.image = self.images[0]
+                }
             }
         }
         
@@ -120,8 +130,6 @@ class VakantieDetailsTableViewController: UITableViewController {
                         
                     }
                 }
-                NSLog(String(self.images.count))
-                
             }
         })
     }
@@ -157,7 +165,7 @@ class VakantieDetailsTableViewController: UITableViewController {
 
 
     
-    func zoekImage1(vakantie: PFObject!) {
+    /*func zoekImage1(vakantie: PFObject!) {
                   let imageFile = vakantie["vakAfbeelding1"] as PFFile
                 imageFile.getDataInBackgroundWithBlock {
                     (imageData: NSData!, error: NSError!) -> Void in
@@ -189,5 +197,5 @@ class VakantieDetailsTableViewController: UITableViewController {
                         print(afb)
                     } // if - end
                 } // getDataInBackgroundWithBlock - end
-    }
+    }*/
 }

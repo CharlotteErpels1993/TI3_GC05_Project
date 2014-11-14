@@ -516,6 +516,7 @@
                                 </variation>
                                 <connections>
                                     <outlet property="image" destination="dOp-1z-6Op" id="a9W-wA-sq5"/>
+                                    <segue destination="10d-i9-rWT" kind="show" identifier="afbeelding" id="7fN-W0-g5A"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -611,6 +612,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BUp-D3-SGA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3454" y="336"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="QkB-bK-TcD">
+            <objects>
+                <viewController id="10d-i9-rWT" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fnv-zT-ql5"/>
+                        <viewControllerLayoutGuide type="bottom" id="xHl-Zp-AYI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="NRJ-4q-mQR">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sGx-HJ-VTU">
+                                <rect key="frame" x="16" y="4" width="568" height="514"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="xHl-Zp-AYI" firstAttribute="top" secondItem="sGx-HJ-VTU" secondAttribute="bottom" constant="82" id="Qzr-Fu-bQC"/>
+                            <constraint firstItem="sGx-HJ-VTU" firstAttribute="top" secondItem="fnv-zT-ql5" secondAttribute="bottom" constant="-16" id="VqP-1f-s8f"/>
+                            <constraint firstItem="sGx-HJ-VTU" firstAttribute="leading" secondItem="NRJ-4q-mQR" secondAttribute="leadingMargin" id="cTO-vR-M0L"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="sGx-HJ-VTU" secondAttribute="trailing" id="srV-5A-oSp"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="qlM-JR-aKj"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="poF-cv-4Bi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4135" y="336"/>
         </scene>
         <!--My Navigation Controller-->
         <scene sceneID="cC5-ea-HfQ">
