@@ -99,5 +99,22 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
     <string name="ok">Ok</string>
     <string name="logoutText">Weet u zeker dat u wilt uitloggen?</string>
     <string name="Uitloggen">uitloggen</string>
+    <string name="inschrijven">Inschrijven</string>
+
+
+    <string name="beschrijving">Beschrijving</string>
+    <string name="doelgroep">Doelgroep</string>
+    <string name="locatie">Locatie</string>
+    <string name="vertrekdatum">Vertrekdatum</string>
+    <string name="terugkeerdatum">Terugkeerdatum</string>
+    <string name="periode">Periode</string>
+    <string name="vervoer">Vervoer</string>
+    <string name="formule">Formule</string>
+    <string name="maxDeelnemers">Maximum aantal deelnemers</string>
+    <string name="inbegrepenInPrijs">Inbegrepen in de prijs</string>
+    <string name="basisprijs">Prijs</string>
+    <string name="ledenprijs">De bond moyson ledenprijs</string>
+    <string name="sterPrijsOuder1">Sterprijs ouder 1</string>
+    <string name="sterPrijs2Ouders">De sterprijs voor 2 ouders</string>
 
 </resources>

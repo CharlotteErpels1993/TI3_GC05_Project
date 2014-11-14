@@ -58,173 +58,320 @@
             android:text="Titel"/>
 
         <TextView
+            android:id="@+id/beschrijvingLabel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/beschrijving"
+            android:layout_below="@id/titel"
+            android:textSize="20dp"
+            android:layout_marginTop="15dp"
+            />
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/beschrijving"
-            android:layout_below="@id/titel"
+            android:layout_below="@id/beschrijvingLabel"
             android:layout_marginTop="10dp"
-            android:text="Right side"
-            android:textAlignment="center"
-            android:layout_centerHorizontal="true"/>
+            android:text="Beschrijving"
+            android:textAlignment="center"/>
 
         <TextView
-            android:id="@+id/vertrekdatum"
-            android:layout_width="wrap_content"
-            android:layout_centerHorizontal="true"
+            android:id="@+id/doelgroepLabel"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="vertrekdatum"
-            android:layout_marginTop="10dp"
-            android:textAlignment="center"
-            android:layout_below="@id/beschrijving"/>
+            android:text="@string/doelgroep"
+            android:layout_below="@id/beschrijving"
+            android:textSize="20dp"
 
-        <TextView
-            android:id="@+id/terugkeerdatum"
-            android:layout_width="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:textAlignment="center"
-            android:text="terugkeerdatum"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/vertrekdatum"
-            android:layout_marginTop="10dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/periode"
-            android:text="periode"
-            android:layout_below="@id/terugkeerdatum"
-            android:layout_marginTop="10dp"
-            android:textSize="15sp"
-            android:layout_centerHorizontal="true"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/vervoer"
-            android:layout_below="@id/periode"
-            android:layout_marginTop="10dp"
-            android:text="Right side"
-            android:layout_centerHorizontal="true"/>
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/formule"
-            android:layout_marginTop="10dp"
-            android:layout_below="@id/vervoer"
-            android:text="Right side"
-            android:layout_centerHorizontal="true"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/locatiev"
-            android:layout_marginTop="10dp"
-            android:layout_below="@id/formule"
-            android:text="Right side"
-            android:layout_centerHorizontal="true"/>
-
+            android:layout_marginTop="15dp"
+            />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/doelgroepv"
             android:layout_marginTop="10dp"
+            android:layout_below="@id/doelgroepLabel"
+            android:text="Right side"/>
+        <TextView
+            android:id="@+id/locatieLabel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/locatie"
+            android:textSize="20dp"
+android:layout_below="@id/doelgroepv"
+            android:layout_marginTop="15dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/locatieLabel"
+            android:id="@+id/locatiev"
+            android:layout_marginTop="10dp"
+            android:text="Locatie"/>
+
+        <TextView
+            android:id="@+id/vertrekdatumLabel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/vertrekdatum"
             android:layout_below="@id/locatiev"
-            android:textSize="20sp"
-            android:text="Right side"
-            android:layout_centerHorizontal="true"/>
+            android:textSize="20dp"
+
+            android:layout_marginTop="15dp"
+
+            />
+
+        <TextView
+            android:id="@+id/vertrekdatum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="vertrekdatum"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/vertrekdatumLabel"/>
+
+        <TextView
+            android:id="@+id/terugkeerdatumLabel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/terugkeerdatum"
+            android:layout_below="@id/vertrekdatum"
+            android:textSize="20dp"
+
+            android:layout_marginTop="15dp"
+            />
+        <TextView
+            android:id="@+id/terugkeerdatum"
+            android:layout_width="wrap_content"
+            android:text="terugkeerdatum"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/terugkeerdatumLabel"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:id="@+id/periodeLabel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/periode"
+            android:layout_below="@id/terugkeerdatum"
+            android:textSize="20dp"
+
+            android:layout_marginTop="15dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/periode"
+            android:text="periode"
+            android:layout_below="@id/periodeLabel"
+            android:layout_marginTop="10dp"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/maxDeelnemersLabel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/maxDeelnemers"
+            android:layout_below="@id/periode"
+            android:textSize="20dp"
+
+            android:layout_marginTop="15dp"
+            />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/maxDeelnemers"
             android:layout_marginTop="10dp"
-            android:layout_below="@id/doelgroepv"
-            android:text="max deelnemers"
-            android:layout_centerHorizontal="true"/>
+            android:layout_below="@id/maxDeelnemersLabel"
+            android:text="max deelnemers"/>
 
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/verberg2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lay">
+
+
+        <TextView
+            android:id="@+id/vervoerLabel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/vervoer"
+            android:textSize="20dp"
+
+            android:layout_marginTop="15dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/vervoer"
+            android:layout_below="@id/vervoerLabel"
+            android:layout_marginTop="10dp"
+            android:text="Right side"/>
+
+        <TextView
+            android:id="@+id/formuleLabel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/formule"
+            android:layout_below="@id/vervoer"
+            android:textSize="20dp"
+
+            android:layout_marginTop="15dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/formule"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/formuleLabel"
+            android:text="Right side"/>
+
+
+
+        <TextView
+            android:id="@+id/inbegrepenInPrijsLabel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/inbegrepenInPrijs"
+            android:layout_below="@id/formule"
+            android:textSize="20dp"
+
+            android:layout_marginTop="15dp"
+            />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/inbegrepenInPrijs"
             android:layout_marginTop="10dp"
-            android:layout_below="@id/maxDeelnemers"
-            android:text="InbegrepenInPrijs"
-            android:layout_centerHorizontal="true"/>
+            android:layout_below="@id/inbegrepenInPrijsLabel"
+            android:text="InbegrepenInPrijs"/>
+        <TextView
+            android:id="@+id/basisprijsLabel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/basisprijs"
+            android:layout_below="@id/inbegrepenInPrijs"
+            android:textSize="20dp"
 
+            android:layout_marginTop="15dp"
+            />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/basisprijs"
             android:text="Normale prijs"
             android:layout_marginTop="10dp"
-            android:layout_below="@id/inbegrepenInPrijs"
-            android:layout_centerHorizontal="true"/>
+            android:layout_below="@id/basisprijsLabel"/>
 
+        <TextView
+            android:id="@+id/ledenPrijsLabel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/ledenprijs"
+            android:layout_below="@id/basisprijs"
+            android:textSize="20dp"
+
+            android:layout_marginTop="15dp"
+            />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/bondMoysonLedenPrijs"
             android:layout_marginTop="10dp"
-            android:layout_below="@id/basisprijs"
-            android:text="bondMoysonLedenPrijs"
-            android:layout_centerHorizontal="true"/>
+            android:layout_below="@id/ledenPrijsLabel"
+            android:text="bondMoysonLedenPrijs"/>
 
+        <TextView
+            android:id="@+id/sterPrijs1OuderLabel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/sterPrijsOuder1"
+            android:layout_below="@id/bondMoysonLedenPrijs"
+            android:textSize="20dp"
+
+            android:layout_marginTop="15dp"
+            />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/sterPrijs1Ouder"
             android:layout_marginTop="10dp"
-            android:layout_below="@id/bondMoysonLedenPrijs"
-            android:text="sterPrijs1Ouder"
-            android:layout_centerHorizontal="true"/>
+            android:layout_below="@id/sterPrijs1OuderLabel"
+            android:text="sterPrijs1Ouder"/>
 
+        <TextView
+            android:id="@+id/sterPrijs2OudersLabel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/sterPrijs2Ouders"
+            android:layout_below="@id/sterPrijs1Ouder"
+            android:textSize="20dp"
+
+            android:layout_marginTop="15dp"
+            />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/sterPrijs2Ouders"
             android:layout_marginTop="10dp"
-            android:layout_below="@id/sterPrijs1Ouder"
-            android:text="sterPrijs2Ouders"
-            android:layout_centerHorizontal="true"/>
+            android:layout_below="@id/sterPrijs2OudersLabel"
+            android:text="sterPrijs2Ouders"/>
 
     </RelativeLayout>
 
-  <!--
+
+    <!--
 
 
-    <TextView
-        android:id="@+id/vertrek"
-        android:layout_width="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:textAlignment="center"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/loc" />
+      <TextView
+          android:id="@+id/vertrek"
+          android:layout_width="wrap_content"
+          android:layout_centerHorizontal="true"
+          android:textAlignment="center"
+          android:layout_height="wrap_content"
+          android:layout_below="@id/loc" />
 
-    <TextView
-        android:id="@+id/terug"
-        android:layout_centerHorizontal="true"
-        android:textAlignment="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/vertrek" />
+      <TextView
+          android:id="@+id/terug"
+          android:layout_centerHorizontal="true"
+          android:textAlignment="center"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_below="@id/vertrek" />
 
-    <TextView
-        android:id="@+id/doelgr"
-        android:layout_width="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:textAlignment="center"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/terug"/>-->
+      <TextView
+          android:id="@+id/doelgr"
+          android:layout_width="wrap_content"
+          android:layout_centerHorizontal="true"
+          android:textAlignment="center"
+          android:layout_height="wrap_content"
+          android:layout_below="@id/terug"/>-->
 
 
     <Button
-        android:text="Inschrijven"
+        android:text="@string/meerInfo"
+        android:id="@+id/btnMeerInfo"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/verberg2"/>
+    <Button
+        android:text="@string/minderInfo"
+        android:id="@+id/btnMinderInfo"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnMeerInfo"/>
+
+    <Button
+        android:text="@string/inschrijven"
         android:id="@+id/btnInschrijvenV"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/lay"/>
+        android:layout_below="@id/btnMinderInfo"/>
 
 
 </RelativeLayout>

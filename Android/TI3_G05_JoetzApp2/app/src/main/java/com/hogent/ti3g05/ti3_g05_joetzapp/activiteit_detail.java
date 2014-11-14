@@ -12,6 +12,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +21,7 @@ import com.parse.ParseUser;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.logging.Handler;
 
 //ingelogde gebr:      titel, korte beschr, periode, locatie, inbegrepen in prijs, doelgroep (met geboortejaren), max aantal deelnemers,
 //                     vervoerswijze, formule, prijs (basisprijs, BM prijs & sterprijs) kortingen, gegevens contactpersoon inschrijving & algemene voorwaarden
@@ -49,6 +51,8 @@ public class activiteit_detail extends Activity {
     private boolean isIngelogd;
 
     Button btnInschrijven;
+    Button btnmeerInfo;
+    Button btnminderInfo;
 
     //TODO bij doelgroepen moet er volgens de UC ook nog de geboortejaren bij komen -> methode voor maken om dat te berekenen
     //TODO algemene voorwaarden onderaan bijzetten -> string resource, kopieren van JOETZ
@@ -82,6 +86,7 @@ public class activiteit_detail extends Activity {
         inbegrepenInPrijs = i.getStringExtra("InbegrepenInPrijs");
 
 
+
         setTitle(naam);
 
         final TextView txtNaam = (TextView) findViewById(R.id.titel);
@@ -99,8 +104,11 @@ public class activiteit_detail extends Activity {
         final TextView txtBMledenPrijs = (TextView) findViewById(R.id.bondMoysonLedenPrijs);
         final TextView txtSterPrijs1Ouder = (TextView) findViewById(R.id.sterPrijs1Ouder);
         final TextView txtSterPrijs2Ouders = (TextView) findViewById(R.id.sterPrijs2Ouders);
+        final RelativeLayout verberg = (RelativeLayout) findViewById(R.id.verberg2);
 
         btnInschrijven = (Button)findViewById(R.id.btnInschrijvenV);
+        btnmeerInfo = (Button) findViewById(R.id.btnMeerInfo);
+        btnminderInfo = (Button) findViewById(R.id.btnMinderInfo);
 
         ImageView afbeelding1im = (ImageView) findViewById(R.id.afbeelding1);
         ImageView afbeelding2im = (ImageView) findViewById(R.id.afbeelding2);
@@ -114,6 +122,51 @@ public class activiteit_detail extends Activity {
                 startActivity(intent3);
 
                 overridePendingTransition(R.anim.right_in, R.anim.left_out);
+            }
+        });
+
+
+        final Animation fadeInAnimation = AnimationUtils.loadAnimation(this, R.anim.fadein);
+
+        final Animation fadeOutAnimation = AnimationUtils.loadAnimation(this, R.anim.fadeout);
+
+        btnmeerInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                btnmeerInfo.setVisibility(View.GONE);
+                verberg.startAnimation(fadeInAnimation);
+                verberg.setVisibility(View.VISIBLE);
+                btnminderInfo.setVisibility(View.VISIBLE);
+            }
+        });
+
+        btnminderInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fadeOutAnimation.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+
+                        verberg.setVisibility(View.GONE);
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+
+                    }
+                });
+
+                verberg.startAnimation(fadeOutAnimation);
+                btnminderInfo.startAnimation(fadeOutAnimation);
+                btnminderInfo.setVisibility(View.GONE);
+                btnmeerInfo.startAnimation(fadeInAnimation);
+                btnmeerInfo.setVisibility(View.VISIBLE);
             }
         });
 
@@ -173,6 +226,7 @@ public class activiteit_detail extends Activity {
         txtNaam.setText(naam);
         txtLocatie.setText("Locatie: " + locatie);
         txtDoelgr.setText("Doelgroep: " + doelgro);
+
         txtformule.setText("Formule: " + formule);
         txtmaxDeeln.setText("Maximum aantal deelnemers: " + maxDeeln.toString());
         txtPeriode.setText("Periode: " + periode);
@@ -182,8 +236,6 @@ public class activiteit_detail extends Activity {
         txtTerugkeerDatum.setText("Terug: " + terugdatum);
         txtInbegrepenInPrijs.setText("Inbegrepen in de prijs: " + inbegrepenInPrijs);
 
-        //TODO: veld toevoegen dat de gebruiker moet inloggen om meer info te zien?
-        //velden toevoegen indien gebruiker is ingelogd, zo niet maak ze onzichtbaar.
         if (ParseUser.getCurrentUser() == null){
             //niet ingelogd
             btnInschrijven.setVisibility(View.GONE);
@@ -191,10 +243,21 @@ public class activiteit_detail extends Activity {
             txtBMledenPrijs.setVisibility(View.GONE);
             txtSterPrijs1Ouder.setVisibility(View.GONE);
             txtSterPrijs2Ouders.setVisibility(View.GONE);
+            txtformule.setVisibility(View.GONE);
+            txtmaxDeeln.setVisibility(View.GONE);
+            txtInbegrepenInPrijs.setVisibility(View.GONE);
+            btnminderInfo.setVisibility(View.GONE);
+            btnmeerInfo.setVisibility(View.GONE);
+            verberg.setVisibility(View.GONE);
+
 
         }else{
             //ingelogd
             btnInschrijven.setVisibility(View.VISIBLE);
+            btnmeerInfo.setVisibility(View.VISIBLE);
+            verberg.setVisibility(View.GONE);
+            btnminderInfo.setVisibility(View.VISIBLE);
+
             //toon normale prijs
             txtPrijs.setVisibility(View.VISIBLE);
             prijs = i.getStringExtra("prijs");
