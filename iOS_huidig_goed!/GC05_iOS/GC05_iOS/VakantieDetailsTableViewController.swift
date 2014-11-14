@@ -27,6 +27,7 @@ class VakantieDetailsTableViewController: UITableViewController {
     var vakantie: Vakantie!
     var images: [UIImage] = []
     var ouder: Ouder?
+    //var currentUser: PFUser?
     var query = PFQuery(className: "Vakantie")
     var beschrijving: String!
     

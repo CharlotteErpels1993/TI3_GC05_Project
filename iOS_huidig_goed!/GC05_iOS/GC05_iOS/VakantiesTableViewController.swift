@@ -4,7 +4,8 @@ import Foundation
 class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, UISearchDisplayDelegate {
     var vakanties: [Vakantie] = []
     var vakanties2: [Vakantie] = []
-    var ouder: Ouder?
+    //var ouder: Ouder?
+    var currentUser: PFUser?
     
     @IBOutlet weak var zoekbar: UISearchBar!
     
@@ -18,7 +19,8 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         zoekbar.showsScopeBar = true
         zoekbar.delegate = self
         
-        if ouder != nil {
+        //if ouder != nil {
+        if currentUser != nil {
             self.navigationItem.setHidesBackButton(true, animated: true)
             self.navigationItem.rightBarButtonItem = nil
         }
@@ -26,9 +28,9 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         //self.navigationItem.rightBarButtonItem?.accessibilityPath.    
     }
     
-    /*override func viewDidAppear(animated: Bool) {
-        
-    }*/
+    override func viewDidAppear(animated: Bool) {
+        currentUser = PFUser.currentUser()
+    }
     
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
@@ -68,7 +70,7 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
             let vakantieDetailsController = segue.destinationViewController as VakantieDetailsTableViewController
             let selectedVakantie = vakanties[tableView.indexPathForSelectedRow()!.row]
             vakantieDetailsController.vakantie = selectedVakantie as Vakantie
-            vakantieDetailsController.ouder = ouder
+            //vakantieDetailsController.ouder = ouder
         } else if segue.identifier == "inloggen" {
             let inloggenViewController = segue.destinationViewController as InloggenViewController
         } else if segue.identifier == "toonVakantie" {
