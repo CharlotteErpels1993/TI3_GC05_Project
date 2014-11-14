@@ -1,6 +1,7 @@
 package com.hogent.ti3g05.ti3_g05_joetzapp.Services;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
@@ -22,6 +23,7 @@ import com.hogent.ti3g05.ti3_g05_joetzapp.ImageLoader;
 import com.hogent.ti3g05.ti3_g05_joetzapp.R;
 import com.hogent.ti3g05.ti3_g05_joetzapp.activiteit_detail;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vakantie;
+import com.parse.ParseFile;
 import com.parse.ParseUser;
 
 import org.w3c.dom.Text;
@@ -33,11 +35,9 @@ public class ListViewAdapter extends ArrayAdapter<Vakantie> implements Filterabl
     ImageLoader imageLoader;
     private List<Vakantie> vakanties = null;
     private ArrayList<Vakantie> arraylist;
+    private HashMap<String, ArrayList<ParseFile>> afbeeldingenMap;
 
 
-    public ListViewAdapter(Context context, int resource) {
-        super(context, resource);
-    }
 
     public ListViewAdapter(Context context,
                            List<Vakantie> vakanties) {
@@ -117,6 +117,7 @@ public class ListViewAdapter extends ArrayAdapter<Vakantie> implements Filterabl
                 intent.putExtra("afbeelding1", vakanties.get(position).getFoto1());
                 intent.putExtra("afbeelding2", vakanties.get(position).getFoto2());
                 intent.putExtra("afbeelding3", vakanties.get(position).getFoto3());
+                //intent.putExtra("fotos", vakanties.get(position).getFotos());
                 intent.putExtra("doelgroep", vakanties.get(position).getDoelGroep());
                 intent.putExtra("beschrijving", vakanties.get(position).getKorteBeschrijving());
                 intent.putExtra("periode", vakanties.get(position).getPeriode());

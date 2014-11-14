@@ -3,8 +3,12 @@ package com.hogent.ti3g05.ti3_g05_joetzapp.domein;
 import android.media.Image;
 import android.text.method.DateTimeKeyListener;
 
+import com.parse.ParseFile;
+
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.NavigableMap;
 
 public class Vakantie extends Activiteit{
@@ -22,6 +26,9 @@ public class Vakantie extends Activiteit{
     private String foto3;
     private String prijsStr;
     private String periode;
+    private String vakantieID;
+
+    private HashMap<String, ArrayList<String>> fotos;
 
     public Vakantie(){
         super();
@@ -38,6 +45,13 @@ public class Vakantie extends Activiteit{
                 objvertrekDatum +
                 " - " + objterugkeerDatum;
     }*/
+
+    public HashMap<String, ArrayList<String>> getFotos(){return fotos;}
+    public void setFotos(HashMap<String,ArrayList< String>> fotos){this.fotos = fotos;}
+
+
+    public String getVakantieID(){return vakantieID;}
+    public void setVakantieID(String vakantieID){this.vakantieID=vakantieID;}
 
     public String getPeriode() {return periode;}
     public void setPeriode(String periode){this.periode=periode;}

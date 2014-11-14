@@ -2,6 +2,7 @@ package com.hogent.ti3g05.ti3_g05_joetzapp;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
@@ -37,9 +38,11 @@ public class activiteit_overzicht extends Fragment {
 
     private ListView listview;
     private List<ParseObject> ob;
+    Vakantie map;
     private ProgressDialog mProgressDialog;
     private ListViewAdapter adapter;
-
+    private ArrayList<String> images = new ArrayList<String>();
+    private HashMap<String, ArrayList<String>> afbeeldingenMap = new HashMap<String, ArrayList<String>>();
     private View rootView;
     private List<Vakantie> vakanties = null;
     private EditText filtertext;
@@ -90,7 +93,8 @@ public class activiteit_overzicht extends Fragment {
                     ParseFile image2 = (ParseFile) vakantie.get("vakAfbeelding2");
                     ParseFile image3 = (ParseFile) vakantie.get("vakAfbeelding3");
 
-                    Vakantie map = new Vakantie();
+                    map = new Vakantie();
+
                     //String prijs = vakantie.get("basisPrijs").toString();
                     map.setNaamVakantie((String) vakantie.get("titel"));
                     map.setLocatie((String) vakantie.get("locatie"));
@@ -104,6 +108,7 @@ public class activiteit_overzicht extends Fragment {
                     map.setVertrekDatum((Date) vakantie.get("vertrekdatum"));
                     map.setTerugkeerDatum((Date) vakantie.get("terugkeerdatum"));
                     map.setInbegrepenInPrijs((String) vakantie.get("inbegrepenPrijs"));
+                    map.setVakantieID((String) vakantie.get("objectId"));
                     if (vakantie.get("bondMoysonLedenPrijs") != null)
                         map.setBondMoysonLedenPrijs((Number) vakantie.get("bondMoysonLedenPrijs"));
                     if (vakantie.get("sterPrijs1ouder") != null)
@@ -120,6 +125,35 @@ public class activiteit_overzicht extends Fragment {
                     vakanties.add(map);
 
                 }
+               /* ParseQuery<ParseObject> afbeeldingenQuery = new ParseQuery<ParseObject>(
+                        "Afbeelding");
+                // Locate the column named "vertrekdatum" in Parse.com and order list
+                // by ascending
+                query.orderByAscending("VakantieID");
+                ob = query.find();
+                for (ParseObject afbeelding : ob) {
+                    if(afbeeldingenMap.get((String)afbeelding.get("VakantieID")) == null)
+                    {
+                        ParseFile image = (ParseFile)afbeelding.get("Afbeelding");
+                        images.add(image.getUrl());
+                        afbeeldingenMap.put((String)afbeelding.get("VakantieID"), images);
+                        images.clear();
+                    }
+                    else
+                    {
+                        ParseFile image = (ParseFile)afbeelding.get("Afbeelding");
+                        images = afbeeldingenMap.get((String) afbeelding.get("VakantieID"));
+                        images.add(image.getUrl());
+                        afbeeldingenMap.put((String)afbeelding.get("VakantieID"), images);
+                        images.clear();
+                    }
+
+                }
+
+                map.setFotos(afbeeldingenMap);
+                vakanties.add(map);*/
+
+
             } catch (ParseException e) {
                 Log.e("Error", e.getMessage());
                 e.printStackTrace();
