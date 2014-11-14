@@ -6,11 +6,13 @@ class RegistratieSuccesvolViewController: UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        parseOuderToDatabase(ouder)
+        parseOuderToDatabase()
+        createPFUser()
+        logIn()
         self.navigationItem.setHidesBackButton(true, animated: true)
     }
     
-    private func parseOuderToDatabase(ouder: Ouder) {
+    private func parseOuderToDatabase() {
         
         var ouderJSON = PFObject(className: "Ouder")
         
@@ -43,5 +45,23 @@ class RegistratieSuccesvolViewController: UIViewController
         }
         
         ouderJSON.save()
+    }
+    
+    private func createPFUser() {
+        var user = PFUser()
+        user.username = ouder.email
+        user.password = ouder.wachtwoord
+        user.email = ouder.email
+        
+        user.signUpInBackgroundWithBlock {
+            (succeeded: Bool!, error: NSError!) -> Void in
+            if error == nil {
+                
+            }
+        }
+    }
+    
+    private func logIn() {
+        PFUser.logInWithUsername(ouder.email, password: ouder.wachtwoord)
     }
 }

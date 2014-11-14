@@ -26,7 +26,7 @@ class VakantieDetailsTableViewController: UITableViewController {
     
     var vakantie: Vakantie!
     var images: [UIImage] = []
-    var ouder: Ouder?
+    //var ouder: Ouder?
     //var currentUser: PFUser?
     var query = PFQuery(className: "Vakantie")
     var beschrijving: String!
@@ -63,7 +63,7 @@ class VakantieDetailsTableViewController: UITableViewController {
         
         var euroSymbol: String = "€"
         
-        if ouder != nil {
+        if PFUser.currentUser() != nil {
             basisprijsLabel.text = String("Basisprijs: \(vakantie.basisprijs) " + euroSymbol)
             inbegrepenPrijs.text = String("Inbegrepen prijs: \(vakantie.inbegrepenPrijs) ")
             if (vakantie.bondMoysonLedenPrijs != -1) {
@@ -122,7 +122,7 @@ class VakantieDetailsTableViewController: UITableViewController {
         } else if segue.identifier == "inschrijven" {
             let inschrijvenVakantie1ViewController = segue.destinationViewController as InschrijvenVakantie1ViewController
             inschrijvenVakantie1ViewController.vakantie = vakantie
-            inschrijvenVakantie1ViewController.ouder = ouder
+            //inschrijvenVakantie1ViewController.ouder = ouder
         }
     }
 

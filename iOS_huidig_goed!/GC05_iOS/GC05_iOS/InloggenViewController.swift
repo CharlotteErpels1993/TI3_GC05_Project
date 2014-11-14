@@ -8,9 +8,13 @@ class InloggenViewController: UIViewController
     
     var queryOuder = PFQuery(className: "Ouder")
     var queryMonitor = PFQuery(className: "Monitor")
-    var gebruiker: Gebruiker!
+    //var gebruiker: Gebruiker!
     var statusTextFields: [String: String] = [:]
     var redColor: UIColor = UIColor.redColor()
+    
+    @IBAction func toggle(sender: AnyObject) {
+        toggleSideMenuView()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,11 +89,15 @@ class InloggenViewController: UIViewController
             
             if type == "monitor" {
                 var monitorPF = queryMonitor.getFirstObject()
-                self.gebruiker = Monitor(monitor: monitorPF)
+                //self.gebruiker = Monitor(monitor: monitorPF)
+                var monitor = Monitor(monitor: monitorPF)
+                PFUser.logInWithUsername(monitor.email, password: monitor.wachtwoord)
                 performSegueWithIdentifier("overzichtMonitor", sender: self)
             } else if type == "ouder" {
                 var ouderPF = queryOuder.getFirstObject()
-                self.gebruiker = Ouder(ouder: ouderPF)
+                //self.gebruiker = Ouder(ouder: ouderPF)
+                var ouder = Ouder(ouder: ouderPF)
+                PFUser.logInWithUsername(ouder.email, password: ouder.wachtwoord)
                 performSegueWithIdentifier("ouderOverzicht", sender: self)
             }
         }
@@ -121,8 +129,6 @@ class InloggenViewController: UIViewController
             self.presentViewController(alert, animated: true, completion: nil)
         }*/
     }
-    
-    
     
     @IBAction func gaTerugNaarInloggen(segue: UIStoryboardSegue) {
         
@@ -165,10 +171,10 @@ class InloggenViewController: UIViewController
             let registrerenController = segue.destinationViewController as Registratie1ViewController
         } else if segue.identifier == "ouderOverzicht" {
             let ouderOverzichtController = segue.destinationViewController as VakantiesTableViewController
-            ouderOverzichtController.ouder = self.gebruiker as? Ouder
+            //ouderOverzichtController.ouder = self.gebruiker as? Ouder
         } else if segue.identifier == "overzichtMonitor" {
             let monitorOverzichtController = segue.destinationViewController as OverzichtMonitorViewController
-            monitorOverzichtController.monitor = self.gebruiker as? Monitor
+            //monitorOverzichtController.monitor = self.gebruiker as? Monitor
         } else {
             //fout pop-up tonen
             var alert = UIAlertController(title: "Fout", message: "U hebt niet alle velden ingevuld!", preferredStyle: UIAlertControllerStyle.Alert)

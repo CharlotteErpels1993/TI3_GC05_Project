@@ -2,6 +2,9 @@ import UIKit
 
 class SidebarTableViewController: UITableViewController {
     var selectedMenuItem : Int = 0
+    var arrayKind: [String] = ["Vakanties","Inloggen", "Registreren"]
+    var arrayOuder: [String] = ["Vakanties", "Uitloggen"]
+    var arrayMonitor: [String] = ["Vakanties", "Uitloggen", "Vormingen", "Profielen"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,6 +19,7 @@ class SidebarTableViewController: UITableViewController {
         self.clearsSelectionOnViewWillAppear = false
         
         tableView.selectRowAtIndexPath(NSIndexPath(forRow: selectedMenuItem, inSection: 0), animated: false, scrollPosition: .Middle)
+        
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -23,7 +27,18 @@ class SidebarTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        if PFUser.currentUser() == nil {
+            return 3
+            
+        } else {
+            var gebruikerPF = PFUser.currentUser()
+            var soort: String = gebruikerPF["soort"] as String
+            if soort == "monitor" {
+                return 2
+            } else {
+                return 4
+            }
+        }
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -38,7 +53,19 @@ class SidebarTableViewController: UITableViewController {
             cell!.selectedBackgroundView = selectedBackgroundView
         }
         
-        cell!.textLabel.text = "test"
+        if PFUser.currentUser() == nil {
+            cell!.textLabel.text = self.arrayKind[indexPath.row]
+
+        } else {
+            var gebruikerPF = PFUser.currentUser()
+            var soort: String = gebruikerPF["soort"] as String
+            if soort == "monitor" {
+                cell!.textLabel.text = self.arrayMonitor[indexPath.row]
+            } else if soort == "ouder" {
+                cell!.textLabel.text = self.arrayOuder[indexPath.row]
+
+            }
+        }
         return cell!
     }
     
@@ -57,13 +84,25 @@ class SidebarTableViewController: UITableViewController {
         
         switch indexPath.row {
         case 0:
-            destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Inloggen") as UIViewController
+            destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
             break
         case 1:
+            destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Inloggen") as UIViewController
+            break
+        case 2:
             destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Registreren") as UIViewController
             break
+        case 3:
+            destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Uitloggen") as UIViewController
+            break
+        case 4:
+            destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vormingen") as UIViewController
+            break
+        /*case 5:
+            destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Profielen") as UIViewController
+            break*/
         default:
-            destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("ViewController4") as UIViewController
+            destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
             break
         }
         sideMenuController()?.setContentViewController(destViewController)

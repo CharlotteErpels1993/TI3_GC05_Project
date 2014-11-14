@@ -97,28 +97,29 @@ class ENSideMenu : NSObject {
         animator = UIDynamicAnimator(referenceView:sourceView)
         
         // Add right swipe gesture recognizer
-        let rightSwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "handleGesture:")
+        /*let rightSwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "handleGesture:")
         rightSwipeGestureRecognizer.direction =  UISwipeGestureRecognizerDirection.Right
-        sourceView.addGestureRecognizer(rightSwipeGestureRecognizer)
+        sourceView.addGestureRecognizer(rightSwipeGestureRecognizer)*/
         
         // Add left swipe gesture recognizer
-        let leftSwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "handleGesture:")
-        leftSwipeGestureRecognizer.direction = UISwipeGestureRecognizerDirection.Left
+        /*let leftSwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "handleGesture:")
+        leftSwipeGestureRecognizer.direction = UISwipeGestureRecognizerDirection.Left*/
         
-        if (menuPosition == .Left) {
+        /*if (menuPosition == .Left) {
             sourceView.addGestureRecognizer(rightSwipeGestureRecognizer)
             sideMenuContainerView.addGestureRecognizer(leftSwipeGestureRecognizer)
         }
         else {
             sideMenuContainerView.addGestureRecognizer(rightSwipeGestureRecognizer)
             sourceView.addGestureRecognizer(leftSwipeGestureRecognizer)
-        }
+        }*/
         
     }
 
     convenience init(sourceView: UIView, menuTableViewController: UITableViewController, menuPosition: ENSideMenuPosition) {
         self.init(sourceView: sourceView, menuPosition: menuPosition)
         self.menuTableViewController = menuTableViewController
+        self.menuTableViewController.reloadInputViews()
         self.menuTableViewController.tableView.frame = sideMenuContainerView.bounds
         self.menuTableViewController.tableView.autoresizingMask = .FlexibleHeight | .FlexibleWidth
         sideMenuContainerView.addSubview(self.menuTableViewController.tableView)

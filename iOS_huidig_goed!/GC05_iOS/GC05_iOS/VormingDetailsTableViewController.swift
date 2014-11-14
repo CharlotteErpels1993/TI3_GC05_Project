@@ -2,7 +2,7 @@ import UIKit
 
 class VormingDetailsTableViewController: UITableViewController {
 
-    var monitor: Monitor!
+    //var monitor: Monitor!
     var vorming: Vorming!
     var euro: String = "€"
     
@@ -32,7 +32,7 @@ class VormingDetailsTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "inschrijven" {
             let inschrijvenVormingViewController = segue.destinationViewController as InschrijvenVormingViewController
-            inschrijvenVormingViewController.monitor = self.monitor
+            //inschrijvenVormingViewController.monitor = self.monitor
             inschrijvenVormingViewController.vorming = self.vorming
             inschrijvenVormingViewController.pickerData = vorming.periodes
         }

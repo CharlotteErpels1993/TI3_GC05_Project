@@ -24,6 +24,10 @@ class Registratie1ViewController: UIViewController
         //performSegueWithIdentifier("gaTerug", sender: self)
     }
     
+    @IBAction func toggle(sender: AnyObject) {
+        toggleSideMenuView()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.setHidesBackButton(true, animated: true)

@@ -26,7 +26,7 @@ class InschrijvenVormingSuccesvolViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "overzichtMonitor" {
             let overzichtMonitorViewController = segue.destinationViewController as OverzichtMonitorViewController
-            overzichtMonitorViewController.monitor = self.inschrijvingVorming.monitor
+            //overzichtMonitorViewController.monitor = self.inschrijvingVorming.monitor
         }
     }
 }

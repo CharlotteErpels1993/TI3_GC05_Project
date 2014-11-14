@@ -60,11 +60,12 @@
 		A50740F61A1384EA00D01900 /* AfbeeldingenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50740F51A1384EA00D01900 /* AfbeeldingenViewController.swift */; };
 		A50740F81A1386D900D01900 /* AfbeeldingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50740F71A1386D900D01900 /* AfbeeldingCollectionViewCell.swift */; };
 		A512381B1A1630D1002242C6 /* SidebarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A512381A1A1630D1002242C6 /* SidebarTableViewController.swift */; };
-		A512381D1A16332D002242C6 /* NavigationSidebarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A512381C1A16332D002242C6 /* NavigationSidebarController.swift */; };
+		A512381D1A16332D002242C6 /* MyNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A512381C1A16332D002242C6 /* MyNavigationController.swift */; };
 		A53380331A1352700048F948 /* InbegrepenPrijsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53380321A1352700048F948 /* InbegrepenPrijsTableView.swift */; };
 		A54E1B9E1A125E7C00C6BB95 /* KorteBeschrijvingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54E1B9D1A125E7C00C6BB95 /* KorteBeschrijvingViewController.swift */; };
 		A575A0691A1633E500F6735A /* ENSideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575A0671A1633E500F6735A /* ENSideMenu.swift */; };
 		A575A06A1A1633E500F6735A /* ENSideMenuNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575A0681A1633E500F6735A /* ENSideMenuNavigationController.swift */; };
+		A575A06C1A16463D00F6735A /* UitloggenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575A06B1A16463D00F6735A /* UitloggenViewController.swift */; };
 		A5CEA07B1A13998900E14103 /* VormingenTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CEA07A1A13998900E14103 /* VormingenTableViewController.swift */; };
 		A5CEA07D1A1399CA00E14103 /* VormingDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CEA07C1A1399CA00E14103 /* VormingDetailsTableViewController.swift */; };
 		A5CEA07F1A13ACDF00E14103 /* InschrijvenVormingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CEA07E1A13ACDF00E14103 /* InschrijvenVormingViewController.swift */; };
@@ -140,11 +141,12 @@
 		A50740F51A1384EA00D01900 /* AfbeeldingenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AfbeeldingenViewController.swift; sourceTree = "<group>"; };
 		A50740F71A1386D900D01900 /* AfbeeldingCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AfbeeldingCollectionViewCell.swift; sourceTree = "<group>"; };
 		A512381A1A1630D1002242C6 /* SidebarTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidebarTableViewController.swift; sourceTree = "<group>"; };
-		A512381C1A16332D002242C6 /* NavigationSidebarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationSidebarController.swift; sourceTree = "<group>"; };
+		A512381C1A16332D002242C6 /* MyNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyNavigationController.swift; sourceTree = "<group>"; };
 		A53380321A1352700048F948 /* InbegrepenPrijsTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InbegrepenPrijsTableView.swift; sourceTree = "<group>"; };
 		A54E1B9D1A125E7C00C6BB95 /* KorteBeschrijvingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KorteBeschrijvingViewController.swift; sourceTree = "<group>"; };
 		A575A0671A1633E500F6735A /* ENSideMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENSideMenu.swift; sourceTree = "<group>"; };
 		A575A0681A1633E500F6735A /* ENSideMenuNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENSideMenuNavigationController.swift; sourceTree = "<group>"; };
+		A575A06B1A16463D00F6735A /* UitloggenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UitloggenViewController.swift; sourceTree = "<group>"; };
 		A5CEA07A1A13998900E14103 /* VormingenTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VormingenTableViewController.swift; sourceTree = "<group>"; };
 		A5CEA07C1A1399CA00E14103 /* VormingDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VormingDetailsTableViewController.swift; sourceTree = "<group>"; };
 		A5CEA07E1A13ACDF00E14103 /* InschrijvenVormingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InschrijvenVormingViewController.swift; sourceTree = "<group>"; };
@@ -287,7 +289,8 @@
 				A5CEA07E1A13ACDF00E14103 /* InschrijvenVormingViewController.swift */,
 				A5E8A6861A13AE1400DA861A /* InschrijvenVormingSuccesvolViewController.swift */,
 				A512381A1A1630D1002242C6 /* SidebarTableViewController.swift */,
-				A512381C1A16332D002242C6 /* NavigationSidebarController.swift */,
+				A512381C1A16332D002242C6 /* MyNavigationController.swift */,
+				A575A06B1A16463D00F6735A /* UitloggenViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -442,13 +445,14 @@
 				A575A06A1A1633E500F6735A /* ENSideMenuNavigationController.swift in Sources */,
 				0F92E3151A1373E50005C86C /* InschrijvenVakantie5ViewController.swift in Sources */,
 				1BDDB9571A02DD1E0007623D /* Gebruiker.swift in Sources */,
-				A512381D1A16332D002242C6 /* NavigationSidebarController.swift in Sources */,
+				A512381D1A16332D002242C6 /* MyNavigationController.swift in Sources */,
 				1B39CF731A077C8F008DEC49 /* InloggenViewController.swift in Sources */,
 				1BDDB9491A02D82D0007623D /* InschrijvingVorming.swift in Sources */,
 				1BDDB9431A02D0FB0007623D /* Vakantie.swift in Sources */,
 				1BDDB9451A02D3440007623D /* Activiteit.swift in Sources */,
 				1B39CF771A0795D9008DEC49 /* OverzichtMonitorViewController.swift in Sources */,
 				0F2A819A1A091F7100F67A3B /* Regex.swift in Sources */,
+				A575A06C1A16463D00F6735A /* UitloggenViewController.swift in Sources */,
 				0F92E30D1A1368A10005C86C /* InschrijvenVakantie1ViewController.swift in Sources */,
 				0FBEA1F41A0684FD005FF0D2 /* Date.swift in Sources */,
 				0F92E3131A136BD00005C86C /* InschrijvenVakantie4ViewController.swift in Sources */,
