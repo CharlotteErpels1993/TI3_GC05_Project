@@ -6,6 +6,8 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -28,14 +30,15 @@ import java.util.List;
 import java.util.Locale;
 
 
-public class ProfielenOverzicht extends Activity {
+public class ProfielenOverzicht extends Activity implements SwipeRefreshLayout.OnRefreshListener  {
     private ListView listview;
     private List<ParseObject> ob;
     private ProgressDialog mProgressDialog;
     private ProfielAdapter adapter;
     private List<Monitor> profielen = null;
     private EditText filtertext;
-    private View rootView;
+
+    SwipeRefreshLayout swipeLayout;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -46,8 +49,39 @@ public class ProfielenOverzicht extends Activity {
         setTitle("Profielen");
         // Execute RemoteDataTask AsyncTask
         filtertext = (EditText) findViewById(R.id.filtertext);
+
+        swipeLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_container);
+        onCreateSwipeToRefresh(swipeLayout);
+
         new RemoteDataTask().execute();
     }
+
+    private void onCreateSwipeToRefresh(SwipeRefreshLayout refreshLayout) {
+
+        refreshLayout.setOnRefreshListener(this);
+
+        refreshLayout.setColorScheme(
+                android.R.color.holo_blue_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_green_light,
+                android.R.color.holo_red_light);
+
+    }
+    @Override
+    public void onRefresh() {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+
+                new RemoteDataTask().execute();
+
+            }
+        }, 1000);
+    }
+
+
+
 
 
     // RemoteDataTask AsyncTask
@@ -119,6 +153,8 @@ public class ProfielenOverzicht extends Activity {
             listview.setAdapter(adapter);
             // Close the progressdialog
             mProgressDialog.dismiss();
+
+            swipeLayout.setRefreshing(false);
 
             filtertext.addTextChangedListener(new TextWatcher() {
                 @Override

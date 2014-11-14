@@ -35,7 +35,7 @@ public class SignUp_deel1 extends Activity{
         rg.clearCheck();
 
         // creating connection detector class instance
-        cd = new ConnectionDetector(getApplicationContext());
+        //cd = new ConnectionDetector(getApplicationContext());
 
         terugButton = (Button) findViewById(R.id.btn_terugGaan);
 

@@ -10,6 +10,8 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -30,7 +32,7 @@ import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
-public class Vormingen_Overzicht extends Activity {
+public class Vormingen_Overzicht extends Activity implements SwipeRefreshLayout.OnRefreshListener {
 
     private ListView listview;
     private List<ParseObject> ob;
@@ -38,6 +40,8 @@ public class Vormingen_Overzicht extends Activity {
     private VormingAdapter adapter;
     private List<Vorming> vormingen = null;
     private EditText filtertext;
+
+    SwipeRefreshLayout swipeLayout;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -48,8 +52,41 @@ public class Vormingen_Overzicht extends Activity {
         setTitle("Vormingen");
         // Execute RemoteDataTask AsyncTask
         filtertext = (EditText) findViewById(R.id.filtertext);
+
+        swipeLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_container);
+        onCreateSwipeToRefresh(swipeLayout);
+
         new RemoteDataTask().execute();
     }
+
+    private void onCreateSwipeToRefresh(SwipeRefreshLayout refreshLayout) {
+
+        refreshLayout.setOnRefreshListener(this);
+
+        refreshLayout.setColorScheme(
+                android.R.color.holo_blue_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_green_light,
+                android.R.color.holo_red_light);
+
+    }
+    @Override
+    public void onRefresh() {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+
+                new RemoteDataTask().execute();
+
+            }
+        }, 1000);
+    }
+
+
+
+
+
 
     // RemoteDataTask AsyncTask
     private class RemoteDataTask extends AsyncTask<Void, Void, Void> {
@@ -118,6 +155,8 @@ public class Vormingen_Overzicht extends Activity {
             listview.setAdapter(adapter);
             // Close the progressdialog
             mProgressDialog.dismiss();
+
+            swipeLayout.setRefreshing(false);
 
             filtertext.addTextChangedListener(new TextWatcher() {
                 @Override

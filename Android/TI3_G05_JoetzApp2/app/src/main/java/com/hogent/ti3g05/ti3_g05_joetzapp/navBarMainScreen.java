@@ -151,12 +151,10 @@ public class navBarMainScreen extends Activity {
         switch (position) {
             case 0:
                 fragment = new activiteit_overzicht();
-                /*Intent intent = new Intent(navBarMainScreen.this, activiteit_overzicht.class
-                );
-                startActivity(intent);*/
+
                 break;
             case 1:
-                //fragment = new ProfielenOverzicht();
+
                 if(ParseUser.getCurrentUser()!=null)
                 {
                     Intent intent1 = new Intent(navBarMainScreen.this, ProfielenOverzicht.class
@@ -165,7 +163,7 @@ public class navBarMainScreen extends Activity {
                 }
                 else
                 {
-                    Toast.makeText(this,"U hebt niet de juiste bevoegdheid om dit te bekijken", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this,"U hebt niet de juiste bevoegdheid om dit te bekijken.", Toast.LENGTH_SHORT).show();
                     fragment = new activiteit_overzicht();
                 }
 
@@ -179,7 +177,7 @@ public class navBarMainScreen extends Activity {
                 }
                 else
                 {
-                    Toast.makeText(this,"U hebt niet de juiste bevoegdheid om dit te bekijken", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this,"U hebt niet de juiste bevoegdheid om dit te bekijken.", Toast.LENGTH_SHORT).show();
                     fragment = new activiteit_overzicht();
                 }
 
@@ -219,9 +217,7 @@ public class navBarMainScreen extends Activity {
         if (mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
         if (id == R.id.inloggen) {
             Intent intent1 = new Intent(this, Login.class);
@@ -233,17 +229,15 @@ public class navBarMainScreen extends Activity {
         }
         if(id == R.id.uitloggen){
 
-            Intent intent1 = new Intent(this, Loguit.class); //navBarMainScreen
+            Intent intent1 = new Intent(this, Loguit.class);
             startActivity(intent1);
         }
 
         return super.onOptionsItemSelected(item);
     }
 
-    /** Called whenever we call invalidateOptionsMenu() */
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        // If the drawer is open, hide action items related to the content view
         boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
 
         menu.findItem(R.id.inloggen).setVisible(!drawerOpen);

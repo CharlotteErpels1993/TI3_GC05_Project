@@ -12,6 +12,8 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -24,7 +26,9 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ListViewAdapter;
 import com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.Login;
 import com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.SignUp_deel1;
@@ -34,10 +38,12 @@ import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
-public class activiteit_overzicht extends Fragment {
+public class activiteit_overzicht extends Fragment implements SwipeRefreshLayout.OnRefreshListener{
 
     private ListView listview;
     private List<ParseObject> ob;
+    private List<ParseObject> ob2;
+    ConnectionDetector conn;
     Vakantie map;
     private ProgressDialog mProgressDialog;
     private ListViewAdapter adapter;
@@ -46,6 +52,7 @@ public class activiteit_overzicht extends Fragment {
     private View rootView;
     private List<Vakantie> vakanties = null;
     private EditText filtertext;
+    SwipeRefreshLayout swipeLayout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -53,11 +60,43 @@ public class activiteit_overzicht extends Fragment {
 
         rootView = inflater.inflate(R.layout.activiteit_overzichtnieuw, container, false);
 
+        conn= new ConnectionDetector(rootView.getContext());
         new RemoteDataTask().execute();
         listview = (ListView) rootView.findViewById(R.id.listView);
         filtertext = (EditText) rootView.findViewById(R.id.filtertext);
+        swipeLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_container);
+        onCreateSwipeToRefresh(swipeLayout);
+
+
         return rootView;
     }
+
+    private void onCreateSwipeToRefresh(SwipeRefreshLayout refreshLayout) {
+
+        refreshLayout.setOnRefreshListener(this);
+
+        refreshLayout.setColorScheme(
+                android.R.color.holo_blue_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_green_light,
+                android.R.color.holo_red_light);
+
+    }
+    @Override
+    public void onRefresh() {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+
+                new RemoteDataTask().execute();
+
+            }
+        }, 1000);
+    }
+
+
+
 
     // RemoteDataTask AsyncTask
     private class RemoteDataTask extends AsyncTask<Void, Void, Void> {
@@ -78,86 +117,93 @@ public class activiteit_overzicht extends Fragment {
         @Override
         protected Void doInBackground(Void... params) {
             // Create the array
+
+            Boolean isInternetPresent = conn.isConnectingToInternet();
             vakanties = new ArrayList<Vakantie>();
-            try {
-                // Locate the class table named "vakantie" in Parse.com
-                ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(
-                        "Vakantie");
-                // Locate the column named "vertrekdatum" in Parse.com and order list
-                // by ascending
-                query.orderByAscending("vertrekdatum");
-                ob = query.find();
-                for (ParseObject vakantie : ob) {
-                    // Locate images in flag column
-                    ParseFile image = (ParseFile) vakantie.get("vakAfbeelding1");
-                    ParseFile image2 = (ParseFile) vakantie.get("vakAfbeelding2");
-                    ParseFile image3 = (ParseFile) vakantie.get("vakAfbeelding3");
+            if(isInternetPresent)
+            {
+                try {
+                    // Locate the class table named "vakantie" in Parse.com
+                    ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(
+                            "Vakantie");
+                    // Locate the column named "vertrekdatum" in Parse.com and order list
+                    // by ascending
+                    query.orderByAscending("vertrekdatum");
+                    ob = query.find();
+                    for (ParseObject vakantie : ob) {
+                        // Locate images in flag column
+                        ParseFile image = (ParseFile) vakantie.get("vakAfbeelding1");
+                        ParseFile image2 = (ParseFile) vakantie.get("vakAfbeelding2");
+                        ParseFile image3 = (ParseFile) vakantie.get("vakAfbeelding3");
 
-                    map = new Vakantie();
+                        map = new Vakantie();
 
-                    //String prijs = vakantie.get("basisPrijs").toString();
-                    map.setNaamVakantie((String) vakantie.get("titel"));
-                    map.setLocatie((String) vakantie.get("locatie"));
-                    map.setKorteBeschrijving((String) vakantie.get("korteBeschrijving"));
-                    map.setDoelGroep((String) vakantie.get("doelgroep"));
-                    map.setBasisprijs((Number) vakantie.get("basisPrijs"));
-                    map.setMaxAantalDeelnemers((Number) vakantie.get("maxAantalDeelnemers"));
-                    map.setPeriode((String) vakantie.get("aantalDagenNachten"));
-                    map.setFormule((String) vakantie.get("formule"));
-                    map.setVervoerswijze((String) vakantie.get("vervoerwijze"));
-                    map.setVertrekDatum((Date) vakantie.get("vertrekdatum"));
-                    map.setTerugkeerDatum((Date) vakantie.get("terugkeerdatum"));
-                    map.setInbegrepenInPrijs((String) vakantie.get("inbegrepenPrijs"));
-                    map.setVakantieID((String) vakantie.get("objectId"));
-                    if (vakantie.get("bondMoysonLedenPrijs") != null)
-                        map.setBondMoysonLedenPrijs((Number) vakantie.get("bondMoysonLedenPrijs"));
-                    if (vakantie.get("sterPrijs1ouder") != null)
-                        map.setSterPrijs1Ouder((Number) vakantie.get("sterPrijs1ouder"));
-                    if (vakantie.get("sterPrijs2ouders") != null)
-                        map.setSterPrijs2Ouder((Number) vakantie.get("sterPrijs2ouders"));
-                    //TODO gegevens contactpersoon vakantie
+                        //String prijs = vakantie.get("basisPrijs").toString();
+                        map.setNaamVakantie((String) vakantie.get("titel"));
+                        map.setLocatie((String) vakantie.get("locatie"));
+                        map.setKorteBeschrijving((String) vakantie.get("korteBeschrijving"));
+                        map.setDoelGroep((String) vakantie.get("doelgroep"));
+                        map.setBasisprijs((Number) vakantie.get("basisPrijs"));
+                        map.setMaxAantalDeelnemers((Number) vakantie.get("maxAantalDeelnemers"));
+                        map.setPeriode((String) vakantie.get("aantalDagenNachten"));
+                        map.setFormule((String) vakantie.get("formule"));
+                        map.setVervoerswijze((String) vakantie.get("vervoerwijze"));
+                        map.setVertrekDatum((Date) vakantie.get("vertrekdatum"));
+                        map.setTerugkeerDatum((Date) vakantie.get("terugkeerdatum"));
+                        map.setInbegrepenInPrijs((String) vakantie.get("inbegrepenPrijs"));
+                        map.setVakantieID((String) vakantie.get("objectId"));
+                        if (vakantie.get("bondMoysonLedenPrijs") != null)
+                            map.setBondMoysonLedenPrijs((Number) vakantie.get("bondMoysonLedenPrijs"));
+                        if (vakantie.get("sterPrijs1ouder") != null)
+                            map.setSterPrijs1Ouder((Number) vakantie.get("sterPrijs1ouder"));
+                        if (vakantie.get("sterPrijs2ouders") != null)
+                            map.setSterPrijs2Ouder((Number) vakantie.get("sterPrijs2ouders"));
+                        //TODO gegevens contactpersoon vakantie
 
 
-                    map.setFoto1(image.getUrl());
-                    map.setFoto2(image2.getUrl());
-                    map.setFoto3(image3.getUrl());
+                        map.setFoto1(image.getUrl());
+                        map.setFoto2(image2.getUrl());
+                        map.setFoto3(image3.getUrl());
 
+                        vakanties.add(map);
+
+                    }
+                    ParseQuery<ParseObject> afbeeldingenQuery = new ParseQuery<ParseObject>(
+                            "Afbeelding");
+                    // Locate the column named "vertrekdatum" in Parse.com and order list
+                    // by ascending
+                    afbeeldingenQuery.orderByAscending("VakantieID");
+                    ob2 = afbeeldingenQuery.find();
+                    for (ParseObject afbeelding : ob2) {
+                        if(afbeeldingenMap.get((String)afbeelding.get("VakantieID")) == null)
+                        {
+                            ParseFile image = (ParseFile)afbeelding.get("Afbeelding");
+                            images.add(image.getUrl());
+                            afbeeldingenMap.put((String)afbeelding.get("VakantieID"), images);
+                            images.clear();
+                        }
+                        else
+                        {
+                            ParseFile image = (ParseFile)afbeelding.get("Afbeelding");
+                            images = afbeeldingenMap.get((String) afbeelding.get("VakantieID"));
+                            images.add(image.getUrl());
+                            afbeeldingenMap.put((String)afbeelding.get("VakantieID"), images);
+                            images.clear();
+                        }
+
+                    }
+
+                    map.setFotos(afbeeldingenMap);
                     vakanties.add(map);
 
-                }
-               /* ParseQuery<ParseObject> afbeeldingenQuery = new ParseQuery<ParseObject>(
-                        "Afbeelding");
-                // Locate the column named "vertrekdatum" in Parse.com and order list
-                // by ascending
-                query.orderByAscending("VakantieID");
-                ob = query.find();
-                for (ParseObject afbeelding : ob) {
-                    if(afbeeldingenMap.get((String)afbeelding.get("VakantieID")) == null)
-                    {
-                        ParseFile image = (ParseFile)afbeelding.get("Afbeelding");
-                        images.add(image.getUrl());
-                        afbeeldingenMap.put((String)afbeelding.get("VakantieID"), images);
-                        images.clear();
-                    }
-                    else
-                    {
-                        ParseFile image = (ParseFile)afbeelding.get("Afbeelding");
-                        images = afbeeldingenMap.get((String) afbeelding.get("VakantieID"));
-                        images.add(image.getUrl());
-                        afbeeldingenMap.put((String)afbeelding.get("VakantieID"), images);
-                        images.clear();
-                    }
 
+                } catch (ParseException e) {
+                    Log.e("Error", e.getMessage());
+                    e.printStackTrace();
                 }
 
-                map.setFotos(afbeeldingenMap);
-                vakanties.add(map);*/
-
-
-            } catch (ParseException e) {
-                Log.e("Error", e.getMessage());
-                e.printStackTrace();
             }
+
             return null;
         }
 
@@ -169,25 +215,37 @@ public class activiteit_overzicht extends Fragment {
             //ArrayAdapter<Profile> profileAdapter = new ArrayAdapter<Profile>(context, resource, profiles)
             //ArrayAdapter<Vakantie> vakantieAdapter = new ArrayAdapter<Vakantie>(activiteit_overzicht.this, R.layout.listview_item , vakanties);
 
-            adapter = new ListViewAdapter(getActivity(), vakanties);
-            // Binds the Adapter to the ListView
-            listview.setAdapter(adapter);
-            // Close the progressdialog
+            Boolean isInternetPresent = conn.isConnectingToInternet();
+
+            if(isInternetPresent)
+            {
+
+                adapter = new ListViewAdapter(getActivity(), vakanties);
+                // Binds the Adapter to the ListView
+                listview.setAdapter(adapter);
+                // Close the progressdialog
+                mProgressDialog.dismiss();
+
+                filtertext.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {                }
+
+                    @Override
+                    public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {                }
+
+                    @Override
+                    public void afterTextChanged(Editable editable) {
+                        String text = filtertext.getText().toString().toLowerCase(Locale.getDefault());
+                        adapter.filter(text);
+                    }
+                });
+            }else
+                Toast.makeText(getActivity(), "Geen verbinding", Toast.LENGTH_LONG).show();
+
             mProgressDialog.dismiss();
 
-            filtertext.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {                }
+            swipeLayout.setRefreshing(false);
 
-                @Override
-                public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {                }
-
-                @Override
-                public void afterTextChanged(Editable editable) {
-                    String text = filtertext.getText().toString().toLowerCase(Locale.getDefault());
-                    adapter.filter(text);
-                }
-            });
         }
     }
 

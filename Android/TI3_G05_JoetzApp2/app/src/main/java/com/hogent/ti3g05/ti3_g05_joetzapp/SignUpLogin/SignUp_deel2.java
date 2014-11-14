@@ -39,7 +39,7 @@ public class SignUp_deel2 extends Activity{
 
 
         // creating connection detector class instance
-        cd = new ConnectionDetector(getApplicationContext());
+        //cd = new ConnectionDetector(getApplicationContext());
 
 
         aansluitingsnummer = (EditText) findViewById(R.id.aansluitingsnummer);
@@ -54,7 +54,7 @@ public class SignUp_deel2 extends Activity{
             public void onClick(View view) {
 
                         // get Internet status
-                        isInternetPresent = cd.isConnectingToInternet();
+                        //isInternetPresent = cd.isConnectingToInternet();
                         // check for Internet status
                         // Internet connection is not present
                         // Ask user to connect to Internet
