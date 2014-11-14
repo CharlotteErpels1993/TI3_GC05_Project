@@ -18,6 +18,9 @@ class InschrijvenVakantieSuccesvolViewController : UIViewController {
         }
         
         performSegueWithIdentifier("overzichtVakanties", sender: self)
+        self.navigationItem.setHidesBackButton(true, animated: true)
+
+        
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

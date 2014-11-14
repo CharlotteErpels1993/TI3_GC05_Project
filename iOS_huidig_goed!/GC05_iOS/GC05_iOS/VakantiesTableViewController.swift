@@ -16,15 +16,15 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         zoekbar.delegate = self
         
         if ouder != nil {
-            self.navigationItem.rightBarButtonItem?.title = "Uitloggen"
-        } else {
-            self.navigationItem.rightBarButtonItem?.title = "Inloggen"
+            self.navigationItem.setHidesBackButton(true, animated: true)
+            self.navigationItem.rightBarButtonItem = nil
         }
     }
     
     /*override func viewDidAppear(animated: Bool) {
         
     }*/
+    
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         zoekGefilterdeVakanties(searchText.lowercaseString)

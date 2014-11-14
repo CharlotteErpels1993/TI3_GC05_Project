@@ -7,6 +7,7 @@ class RegistratieSuccesvolViewController: UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         parseOuderToDatabase(ouder)
+        self.navigationItem.setHidesBackButton(true, animated: true)
     }
     
     private func parseOuderToDatabase(ouder: Ouder) {

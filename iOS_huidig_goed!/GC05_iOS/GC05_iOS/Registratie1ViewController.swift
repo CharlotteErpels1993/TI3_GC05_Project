@@ -20,8 +20,16 @@ class Registratie1ViewController: UIViewController
     @IBOutlet weak var lblAansluitingsNrTweedeOuder: UILabel!
     @IBOutlet weak var txtAansluitingsNrTweedeOuder: UITextField!
     
+    @IBAction func annuleer(sender: AnyObject) {
+        //performSegueWithIdentifier("gaTerug", sender: self)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.navigationItem.setHidesBackButton(true, animated: true)
+    }
+    
     @IBAction func gaTerugNaarRegistreren(segue: UIStoryboard) {
-        
     }
     
     @IBAction func switched(sender: UISwitch) {

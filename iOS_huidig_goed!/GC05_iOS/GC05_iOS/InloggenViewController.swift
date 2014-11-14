@@ -16,6 +16,8 @@ class InloggenViewController: UIViewController
         super.viewDidLoad()
         txtEmail.autocorrectionType = UITextAutocorrectionType.No
         txtWachtwoord.autocorrectionType = UITextAutocorrectionType.No
+        
+
     }
     
     func checkPatternEmail(email: String) -> Bool {
