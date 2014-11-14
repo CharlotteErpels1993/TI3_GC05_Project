@@ -25,7 +25,7 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
             self.navigationItem.rightBarButtonItem = nil
         }
         
-        //self.navigationItem
+        //self.navigationItem.rightBarButtonItem.
         
     }
     
