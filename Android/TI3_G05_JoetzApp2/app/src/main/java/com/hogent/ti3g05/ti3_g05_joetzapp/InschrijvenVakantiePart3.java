@@ -34,10 +34,11 @@ public class InschrijvenVakantiePart3 extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inschrijven_vakantie_part3);
+        cd = new ConnectionDetector(getApplicationContext());
 
         editExtraInformatie = (EditText) findViewById(R.id.ExtraInformatie);
 
-        btnVolgende = (Button)findViewById(R.id.btnNaarDeel3V);
+        btnVolgende = (Button)findViewById(R.id.btnNaarDeel4V);
         btnVolgende.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -54,16 +55,6 @@ public class InschrijvenVakantiePart3 extends Activity {
             }
         });
 
-        btnTerug = (Button) findViewById(R.id.btnNaarDeel1V);
-        btnTerug.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                Intent intent = new Intent(InschrijvenVakantiePart3.this, activiteit_overzicht.class);
-                startActivity(intent);
-
-                overridePendingTransition(R.anim.right_in, R.anim.left_out);
-            }
-        });
     }
 
 
@@ -88,7 +79,7 @@ public class InschrijvenVakantiePart3 extends Activity {
 
     public void doorsturenNaarDeel4(){
         Toast.makeText(getApplicationContext(), getString(R.string.loading_message), Toast.LENGTH_SHORT).show();
-        Intent in = new Intent(getApplicationContext(),activiteit_overzicht.class);
+        Intent in = new Intent(getApplicationContext(),navBarMainScreen.class);
 
         String voornaam = null, naam = null, straat = null, huisnr = null, bus = null, gemeente = null, postcode = null, voornaamCP = null, naamCP = null, telefoonCP = null, gsmCP = null;
         Bundle extras = getIntent().getExtras();
