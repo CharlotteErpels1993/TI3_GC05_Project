@@ -947,13 +947,18 @@
                             <constraint firstItem="E7A-jt-wkG" firstAttribute="top" secondItem="vGq-Rl-Mwa" secondAttribute="bottom" constant="8" id="wn5-dl-0Js"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Overzicht Ouder" id="nxU-o7-jxr"/>
+                    <navigationItem key="navigationItem" title="Welkom" id="nxU-o7-jxr">
+                        <barButtonItem key="backBarButtonItem" title="Terug" id="rf3-sj-KcM"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="welkomTxt" destination="4mn-rW-WhR" id="1G1-hn-wOF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gWV-ST-DPG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-400" y="3306"/>
         </scene>
-        <!--Vormingen Table View Controller-->
+        <!--Vormingen-->
         <scene sceneID="LFw-gx-GK6">
             <objects>
                 <tableViewController id="YS9-9D-Eok" customClass="VormingenTableViewController" customModule="JOETZ" customModuleProvider="target" sceneMemberID="viewController">
@@ -997,7 +1002,9 @@
                             <outlet property="delegate" destination="YS9-9D-Eok" id="Z8w-qv-rzb"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="3ip-p1-dgO"/>
+                    <navigationItem key="navigationItem" title="Vormingen" id="3ip-p1-dgO">
+                        <barButtonItem key="backBarButtonItem" title="Terug" id="OGh-iC-dDQ"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="zoekbar" destination="Cis-Fw-Ccu" id="5EL-bh-fCN"/>
                     </connections>
@@ -1006,7 +1013,7 @@
             </objects>
             <point key="canvasLocation" x="306" y="3306"/>
         </scene>
-        <!--Vorming Details Table View Controller-->
+        <!--Vorming-->
         <scene sceneID="QVD-cK-qxX">
             <objects>
                 <tableViewController id="lk2-dS-RuI" customClass="VormingDetailsTableViewController" customModule="JOETZ" customModuleProvider="target" sceneMemberID="viewController">
@@ -1157,7 +1164,8 @@
                             <outlet property="delegate" destination="lk2-dS-RuI" id="yoj-PK-b6x"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="ujr-s1-KPf">
+                    <navigationItem key="navigationItem" title="Vorming" id="ujr-s1-KPf">
+                        <barButtonItem key="backBarButtonItem" title="Terug" id="bIu-Nv-dg7"/>
                         <barButtonItem key="rightBarButtonItem" title="Inschrijven" id="KMS-1s-xIQ">
                             <connections>
                                 <segue destination="d80-lq-Zhz" kind="show" identifier="inschrijven" id="fmQ-pI-xab"/>
