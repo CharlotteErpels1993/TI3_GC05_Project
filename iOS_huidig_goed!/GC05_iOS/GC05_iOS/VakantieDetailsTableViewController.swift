@@ -32,6 +32,7 @@ class VakantieDetailsTableViewController: UITableViewController {
     var beschrijving: String!
     
     override func viewDidLoad() {
+        zoekImages()
         hideSideMenuView()
         query.getObjectInBackgroundWithId(vakantie.id) {
             (vakantie: PFObject!, error: NSError!) -> Void in
@@ -63,12 +64,12 @@ class VakantieDetailsTableViewController: UITableViewController {
         formuleLabel.text = String("Formule: \(vakantie.formule)")
         
         var euroSymbol: String = "€"
+        
+        if PFUser.currentUser() != nil {
         var gebruikerPF = PFUser.currentUser()
         var soort: String = gebruikerPF["soort"] as String
         
-        
-        
-        if PFUser.currentUser() != nil && soort == "ouder" {
+            if soort == "ouder" {
             basisprijsLabel.text = String("Basisprijs: \(vakantie.basisprijs) " + euroSymbol)
             inbegrepenPrijs.text = String("Inbegrepen prijs: \(vakantie.inbegrepenPrijs) ")
             if (vakantie.bondMoysonLedenPrijs != -1) {
@@ -86,6 +87,7 @@ class VakantieDetailsTableViewController: UITableViewController {
             } else {
                 sterPrijs2Label.text = String("Ster prijs (2 ouders): /")
             }
+            }
 
         } else {
         basisprijsLabel.hidden = true
@@ -100,6 +102,28 @@ class VakantieDetailsTableViewController: UITableViewController {
         
         //navigationItem.rightBarButtonItem.
 
+    }
+    
+    func zoekImages() {
+        var query = PFQuery(className: "Afbeelding")
+        query.whereKey("VakantieID", equalTo: vakantie.id)
+        query.findObjectsInBackgroundWithBlock({(NSArray objects, NSError error) in
+            if(error == nil) {
+                
+                for object in objects {
+                    let imageFile = object["Afbeelding"] as PFFile
+                    imageFile.getDataInBackgroundWithBlock { (imageData: NSData!, error: NSError!) -> Void in
+                        if error == nil {
+                            var afb = UIImage(data: imageData)
+                            self.images.append(afb!)
+                        }
+                        
+                    }
+                }
+                NSLog(String(self.images.count))
+                
+            }
+        })
     }
     
     /*override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
