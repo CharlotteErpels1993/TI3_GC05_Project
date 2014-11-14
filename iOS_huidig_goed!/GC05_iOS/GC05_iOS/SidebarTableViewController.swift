@@ -2,7 +2,9 @@ import UIKit
 
 class SidebarTableViewController: UITableViewController {
     var selectedMenuItem : Int = 0
-    var array: [String] = ["Vakanties","Inloggen", "Registreren", "Uitloggen", "Vormingen bekijken", "Profielen bekijken"]
+    var arrayKind: [String] = ["Vakanties","Inloggen", "Registreren"]
+    var arrayOuder: [String] = ["Vakanties", "Uitloggen"]
+    var arrayMonitor: [String] = ["Vakanties", "Uitloggen", "Vormingen", "Profielen"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +26,18 @@ class SidebarTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        if PFUser.currentUser() == nil {
+            return 3
+            
+        } else {
+            var gebruikerPF = PFUser.currentUser()
+            var soort: String = gebruikerPF["soort"] as String
+            if soort == "monitor" {
+                return 2
+            } else {
+                return 4
+            }
+        }
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -39,7 +52,19 @@ class SidebarTableViewController: UITableViewController {
             cell!.selectedBackgroundView = selectedBackgroundView
         }
         
-        cell!.textLabel.text = self.array[indexPath.row]
+        if PFUser.currentUser() == nil {
+            cell!.textLabel.text = self.arrayKind[indexPath.row]
+
+        } else {
+            var gebruikerPF = PFUser.currentUser()
+            var soort: String = gebruikerPF["soort"] as String
+            if soort == "monitor" {
+                cell!.textLabel.text = self.arrayMonitor[indexPath.row]
+            } else if soort == "ouder" {
+                cell!.textLabel.text = self.arrayOuder[indexPath.row]
+
+            }
+        }
         return cell!
     }
     
