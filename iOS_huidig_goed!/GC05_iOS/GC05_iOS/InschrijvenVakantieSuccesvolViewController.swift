@@ -5,7 +5,7 @@ class InschrijvenVakantieSuccesvolViewController : UIViewController {
     var deelnemer: Deelnemer!
     var contactpersoon1: ContactpersoonNood!
     var contactpersoon2: ContactpersoonNood?
-    var ouder: Ouder!
+    //var ouder: Ouder!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +26,7 @@ class InschrijvenVakantieSuccesvolViewController : UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "overzichtVakanties" {
             let vakantiesOverzichtTableViewController = segue.destinationViewController as VakantiesTableViewController
-            vakantiesOverzichtTableViewController.ouder = self.ouder!
+            //vakantiesOverzichtTableViewController.ouder = self.ouder!
         }
     }
     

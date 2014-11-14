@@ -4,7 +4,7 @@ class VormingenTableViewController: UITableViewController, UISearchBarDelegate, 
     
     var vormingen: [Vorming] = []
     var vormingen2: [Vorming] = []
-    var monitor: Monitor!
+    //var monitor: Monitor!
     
     @IBOutlet weak var zoekbar: UISearchBar!
     
@@ -52,7 +52,7 @@ class VormingenTableViewController: UITableViewController, UISearchBarDelegate, 
             let vormingDetailsController = segue.destinationViewController as VormingDetailsTableViewController
             let selectedVorming = vormingen[tableView.indexPathForSelectedRow()!.row]
             vormingDetailsController.vorming = selectedVorming as Vorming
-            vormingDetailsController.monitor = self.monitor
+            //vormingDetailsController.monitor = self.monitor
         }
         
     }

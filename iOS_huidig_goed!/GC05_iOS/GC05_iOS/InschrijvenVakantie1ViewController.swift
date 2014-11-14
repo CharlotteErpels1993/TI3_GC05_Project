@@ -17,7 +17,7 @@ class InschrijvenVakantie1ViewController : UIViewController {
     var foutBox: FoutBox? = nil
     var redColor: UIColor = UIColor.redColor()
     var statusTextFields: [String: String] = [:]
-    var ouder: Ouder!
+    //var ouder: Ouder!
     var inschrijvingVakantie: InschrijvingVakantie! = InschrijvingVakantie(id: "test")
     
     override func viewDidLoad() {
@@ -43,7 +43,7 @@ class InschrijvenVakantie1ViewController : UIViewController {
             deelnemer.inschrijvingVakantie = inschrijvingVakantie
             
             inschrijvenVakantie2ViewController.deelnemer = deelnemer
-            inschrijvenVakantie2ViewController.ouder = ouder
+            //inschrijvenVakantie2ViewController.ouder = ouder
         }
         
     }
