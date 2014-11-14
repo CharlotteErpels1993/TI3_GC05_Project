@@ -11,6 +11,7 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
     
     @IBAction func toggle(sender: AnyObject) {
         toggleSideMenuView()
+        
     }
     
     override func viewDidLoad() {
