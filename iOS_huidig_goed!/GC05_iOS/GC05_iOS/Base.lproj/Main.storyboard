@@ -901,12 +901,6 @@
                                     <segue destination="YS9-9D-Eok" kind="show" identifier="vormingen" id="3pj-FW-3J4"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GV5-OT-tjR">
-                                <rect key="frame" x="16" y="189" width="568" height="30"/>
-                                <state key="normal" title="Monitor profielen bekijken">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welkom monitorNaam," lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4mn-rW-WhR">
                                 <rect key="frame" x="16" y="70" width="175" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -925,14 +919,18 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GV5-OT-tjR">
+                                <rect key="frame" x="16" y="189" width="568" height="30"/>
+                                <state key="normal" title="Monitor profielen bekijken">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="vGq-Rl-Mwa" secondAttribute="trailing" id="0BJ-Oi-U0S"/>
                             <constraint firstItem="UY8-W0-6qa" firstAttribute="leading" secondItem="w8S-Bp-dmt" secondAttribute="leadingMargin" id="6ht-SG-gkT"/>
                             <constraint firstItem="4mn-rW-WhR" firstAttribute="leading" secondItem="w8S-Bp-dmt" secondAttribute="leadingMargin" id="7kT-tc-y7i"/>
-                            <constraint firstAttribute="centerX" secondItem="vGq-Rl-Mwa" secondAttribute="centerX" constant="-0.5" id="7lR-M9-dMS"/>
-                            <constraint firstItem="vGq-Rl-Mwa" firstAttribute="top" secondItem="SJA-U2-rZq" secondAttribute="bottom" constant="93" id="8Bt-Vu-TOL"/>
                             <constraint firstItem="GV5-OT-tjR" firstAttribute="top" secondItem="E7A-jt-wkG" secondAttribute="bottom" constant="8" id="CEz-wP-wcy"/>
                             <constraint firstAttribute="centerX" secondItem="GV5-OT-tjR" secondAttribute="centerX" id="G0Q-PT-Gfi"/>
                             <constraint firstItem="GV5-OT-tjR" firstAttribute="leading" secondItem="w8S-Bp-dmt" secondAttribute="leadingMargin" id="Gg2-SO-cOV"/>
@@ -942,6 +940,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="UY8-W0-6qa" secondAttribute="trailing" id="bNb-ta-Am7"/>
                             <constraint firstItem="vGq-Rl-Mwa" firstAttribute="leading" secondItem="w8S-Bp-dmt" secondAttribute="leadingMargin" id="bg5-zR-IDj"/>
                             <constraint firstAttribute="trailingMargin" secondItem="GV5-OT-tjR" secondAttribute="trailing" id="brL-3o-doV"/>
+                            <constraint firstItem="vGq-Rl-Mwa" firstAttribute="top" secondItem="SJA-U2-rZq" secondAttribute="bottom" constant="93" id="keK-CL-ENe"/>
                             <constraint firstAttribute="centerX" secondItem="UY8-W0-6qa" secondAttribute="centerX" constant="-0.5" id="npV-AH-b8k"/>
                             <constraint firstAttribute="centerX" secondItem="E7A-jt-wkG" secondAttribute="centerX" constant="-0.5" id="oLq-nW-7E0"/>
                             <constraint firstItem="E7A-jt-wkG" firstAttribute="leading" secondItem="w8S-Bp-dmt" secondAttribute="leadingMargin" id="wTy-2Z-JHW"/>
@@ -968,7 +967,7 @@
                             <textInputTraits key="textInputTraits"/>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="vormingCell" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="bFs-wr-5cg" detailTextLabel="R9e-fJ-SL9" style="IBUITableViewCellStyleValue1" id="TZD-Xg-VPk">
+                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="vormingCell" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="vormingCell" textLabel="bFs-wr-5cg" detailTextLabel="R9e-fJ-SL9" style="IBUITableViewCellStyleValue1" id="TZD-Xg-VPk">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TZD-Xg-VPk" id="RjT-G4-ETX">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -992,6 +991,7 @@
                                 </connections>
                             </tableViewCell>
                         </prototypes>
+                        <sections/>
                         <connections>
                             <outlet property="dataSource" destination="YS9-9D-Eok" id="2lA-cp-Vk4"/>
                             <outlet property="delegate" destination="YS9-9D-Eok" id="Z8w-qv-rzb"/>

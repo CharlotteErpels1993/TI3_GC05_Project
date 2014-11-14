@@ -34,13 +34,11 @@ class VormingenTableViewController: UITableViewController, UISearchBarDelegate, 
                     for object in PFObjects {
                         var vorming = Vorming(vorming: object)
                         self.vormingen.append(vorming)
-                        print(vorming)
                     }
                 }
                 self.vormingen2 = self.vormingen
                 self.tableView.reloadData()
             }
-            println(error)
         })
     }
     
@@ -70,7 +68,9 @@ class VormingenTableViewController: UITableViewController, UISearchBarDelegate, 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("vormingCell", forIndexPath: indexPath) as UITableViewCell
+        //let cell = tableView.dequeueReusableCellWithIdentifier("vormingCell")? as UITableViewCell
         let vorming = vormingen2[indexPath.row]
+
         cell.textLabel.text = vorming.titel
         cell.detailTextLabel!.text = "Meer informatie"
         return cell
