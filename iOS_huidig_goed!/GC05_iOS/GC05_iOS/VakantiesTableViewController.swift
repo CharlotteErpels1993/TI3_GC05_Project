@@ -23,7 +23,8 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
             self.navigationItem.rightBarButtonItem = nil
         }
         
-        //self.navigationItem.rightBarButtonItem?.accessibilityPath.    }
+        //self.navigationItem.rightBarButtonItem?.accessibilityPath.    
+    }
     
     /*override func viewDidAppear(animated: Bool) {
         
