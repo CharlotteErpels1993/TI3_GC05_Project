@@ -32,6 +32,7 @@ class VakantieDetailsTableViewController: UITableViewController {
     var beschrijving: String!
     
     override func viewDidLoad() {
+        hideSideMenuView()
         query.getObjectInBackgroundWithId(vakantie.id) {
             (vakantie: PFObject!, error: NSError!) -> Void in
             if error == nil {
@@ -62,8 +63,12 @@ class VakantieDetailsTableViewController: UITableViewController {
         formuleLabel.text = String("Formule: \(vakantie.formule)")
         
         var euroSymbol: String = "€"
+        var gebruikerPF = PFUser.currentUser()
+        var soort: String = gebruikerPF["soort"] as String
         
-        if PFUser.currentUser() != nil {
+        
+        
+        if PFUser.currentUser() != nil && soort == "ouder" {
             basisprijsLabel.text = String("Basisprijs: \(vakantie.basisprijs) " + euroSymbol)
             inbegrepenPrijs.text = String("Inbegrepen prijs: \(vakantie.inbegrepenPrijs) ")
             if (vakantie.bondMoysonLedenPrijs != -1) {
