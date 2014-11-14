@@ -31,6 +31,7 @@ class InschrijvenVakantie5ViewController : UIViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "volgende" {
         let inschrijvenVakantieSuccesvolViewController = segue.destinationViewController as InschrijvenVakantieSuccesvolViewController
     
         if wilExtraInfo == true {
@@ -49,6 +50,9 @@ class InschrijvenVakantie5ViewController : UIViewController {
         
         if contactpersoon2 != nil {
             inschrijvenVakantieSuccesvolViewController.contactpersoon2 = contactpersoon2
+        }
+        } else if segue.identifier == "gaTerug" {
+            let vakantiesTableViewController = segue.destinationViewController as VakantiesTableViewController
         }
     
     }

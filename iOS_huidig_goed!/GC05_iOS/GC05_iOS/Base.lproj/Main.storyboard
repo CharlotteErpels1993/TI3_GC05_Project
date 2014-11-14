@@ -554,7 +554,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d1H-PH-gHC">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d1H-PH-gHC">
                                 <rect key="frame" x="5" y="7" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -665,13 +665,14 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="74u-0a-ryP">
-                                <rect key="frame" x="16" y="550" width="61" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="74u-0a-ryP">
+                                <rect key="frame" x="523" y="550" width="61" height="30"/>
                                 <state key="normal" title="Annuleer">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="annuleer:" destination="fyb-xH-x0i" eventType="touchUpInside" id="ukO-UO-VPw"/>
+                                    <segue destination="xj6-b1-6XR" kind="show" identifier="gaTerug" id="7Pw-Uu-eiY"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -679,8 +680,8 @@
                         <constraints>
                             <constraint firstItem="gBr-1o-c4l" firstAttribute="trailing" secondItem="OaM-e4-sMk" secondAttribute="trailingMargin" id="31l-do-r3Y"/>
                             <constraint firstItem="Fsh-T0-4Sa" firstAttribute="top" secondItem="5IY-zh-MZg" secondAttribute="bottom" constant="40" id="9UQ-g6-mwe"/>
-                            <constraint firstItem="h54-IA-4ZC" firstAttribute="top" secondItem="74u-0a-ryP" secondAttribute="bottom" constant="20" id="AnN-Mb-Lt4"/>
                             <constraint firstItem="Ffo-9X-igg" firstAttribute="top" secondItem="MfE-6E-2Xb" secondAttribute="bottom" constant="7" id="B6C-Dd-ruz"/>
+                            <constraint firstItem="74u-0a-ryP" firstAttribute="trailing" secondItem="OaM-e4-sMk" secondAttribute="trailingMargin" id="CPt-iP-cwW"/>
                             <constraint firstItem="m1W-MR-gUq" firstAttribute="leading" secondItem="OaM-e4-sMk" secondAttribute="leadingMargin" id="H63-W5-232"/>
                             <constraint firstItem="m1W-MR-gUq" firstAttribute="top" secondItem="8Av-pM-lTQ" secondAttribute="bottom" constant="8" id="HGj-Pd-WjI"/>
                             <constraint firstItem="o7V-bX-HUj" firstAttribute="trailing" secondItem="OaM-e4-sMk" secondAttribute="trailingMargin" id="JFw-Jd-qOT"/>
@@ -690,6 +691,7 @@
                             <constraint firstItem="o7V-bX-HUj" firstAttribute="leading" secondItem="OaM-e4-sMk" secondAttribute="leadingMargin" id="STD-Yd-ff6"/>
                             <constraint firstItem="Fsh-T0-4Sa" firstAttribute="top" secondItem="5IY-zh-MZg" secondAttribute="bottom" constant="8" id="VcU-CX-vSB"/>
                             <constraint firstItem="74u-0a-ryP" firstAttribute="leading" secondItem="OaM-e4-sMk" secondAttribute="leadingMargin" id="W8a-4W-cpf"/>
+                            <constraint firstItem="h54-IA-4ZC" firstAttribute="top" secondItem="74u-0a-ryP" secondAttribute="bottom" constant="20" id="WwX-rh-mwe"/>
                             <constraint firstItem="8Av-pM-lTQ" firstAttribute="top" secondItem="Ffo-9X-igg" secondAttribute="bottom" constant="11" id="X8s-rc-52a"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ARF-UY-Xdf" secondAttribute="trailing" constant="116" id="XGB-bt-DG1"/>
                             <constraint firstItem="m7p-Dv-81d" firstAttribute="top" secondItem="Fsh-T0-4Sa" secondAttribute="bottom" constant="8" id="dNP-OM-j5t"/>
@@ -715,6 +717,7 @@
                                 <exclude reference="yVB-JH-oyO"/>
                                 <exclude reference="ewi-Pq-9DE"/>
                                 <exclude reference="m4b-gB-lnJ"/>
+                                <exclude reference="W8a-4W-cpf"/>
                             </mask>
                         </variation>
                     </view>
@@ -731,6 +734,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="isLid" destination="m7p-Dv-81d" id="c1g-r4-jDp"/>
                         <outlet property="lblAansluitingsNr" destination="MfE-6E-2Xb" id="TP2-zY-Exv"/>
@@ -1224,15 +1228,26 @@
                             <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H0z-nC-lBY">
                                 <rect key="frame" x="0.0" y="117" width="600" height="162"/>
                             </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cLx-Za-Wc7">
+                                <rect key="frame" x="523" y="518" width="61" height="30"/>
+                                <state key="normal" title="Annuleer">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="YS9-9D-Eok" kind="show" identifier="gaTerug" id="Vpx-YM-klv"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="ocU-ce-heN" firstAttribute="top" secondItem="cLx-Za-Wc7" secondAttribute="bottom" constant="8" id="3c3-8N-m05"/>
                             <constraint firstAttribute="trailingMargin" secondItem="H0z-nC-lBY" secondAttribute="trailing" constant="-16" id="3ex-tj-c7Q"/>
                             <constraint firstItem="WRc-it-Qin" firstAttribute="top" secondItem="AiD-Dl-GQb" secondAttribute="bottom" constant="52" id="A6x-TV-eGi"/>
                             <constraint firstItem="WRc-it-Qin" firstAttribute="leading" secondItem="ibw-Am-ctg" secondAttribute="leadingMargin" id="Aww-m4-ljw"/>
                             <constraint firstItem="H0z-nC-lBY" firstAttribute="top" secondItem="AiD-Dl-GQb" secondAttribute="bottom" constant="97" id="IBg-Wh-Khm"/>
                             <constraint firstItem="H0z-nC-lBY" firstAttribute="leading" secondItem="WRc-it-Qin" secondAttribute="trailing" constant="-180" id="Kz0-IY-e6a"/>
                             <constraint firstItem="H0z-nC-lBY" firstAttribute="leading" secondItem="ibw-Am-ctg" secondAttribute="leadingMargin" constant="-16" id="b6B-L8-qLi"/>
+                            <constraint firstItem="cLx-Za-Wc7" firstAttribute="trailing" secondItem="ibw-Am-ctg" secondAttribute="trailingMargin" id="xdg-E9-0UX"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="SnW-3p-V4Z">
@@ -1393,12 +1408,23 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fno-9f-XVJ">
+                                <rect key="frame" x="523" y="518" width="61" height="30"/>
+                                <state key="normal" title="Annuleer">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="xj6-b1-6XR" kind="show" identifier="gaTerug" id="wPb-QZ-j94"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="V57-8G-FM8" firstAttribute="top" secondItem="L7N-2o-UlT" secondAttribute="bottom" constant="18.5" id="2wX-gk-cms"/>
+                            <constraint firstItem="UVn-E7-uFW" firstAttribute="top" secondItem="fno-9f-XVJ" secondAttribute="bottom" constant="8" id="8py-eO-UOo"/>
                             <constraint firstItem="cGm-8P-pfg" firstAttribute="top" secondItem="Hu8-Wl-3Zq" secondAttribute="bottom" constant="8" id="Aab-DI-zuD"/>
                             <constraint firstItem="Elt-a1-IWT" firstAttribute="top" secondItem="V57-8G-FM8" secondAttribute="bottom" constant="8" id="BRM-VQ-dhW"/>
+                            <constraint firstItem="fno-9f-XVJ" firstAttribute="trailing" secondItem="3RQ-w7-3Tj" secondAttribute="trailingMargin" id="GrG-Ur-btk"/>
                             <constraint firstAttribute="trailingMargin" secondItem="J2S-Gr-em8" secondAttribute="trailing" constant="4" id="HKz-5f-7FD"/>
                             <constraint firstItem="4IC-eU-0QO" firstAttribute="leading" secondItem="3RQ-w7-3Tj" secondAttribute="leadingMargin" id="HTo-WS-eL9"/>
                             <constraint firstItem="Elt-a1-IWT" firstAttribute="leading" secondItem="HUj-q5-dRo" secondAttribute="trailing" constant="89.5" id="HkA-qg-FtR"/>
@@ -1485,12 +1511,23 @@
                                 </date>
                                 <locale key="locale" localeIdentifier="nl_BE"/>
                             </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Mf-ew-jA5">
+                                <rect key="frame" x="523" y="518" width="61" height="30"/>
+                                <state key="normal" title="Annuleer">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="xj6-b1-6XR" kind="show" identifier="gaTerug" id="d2Y-VN-tY4"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="yXh-3O-ZzA" secondAttribute="trailing" id="0Ol-rT-KAZ"/>
+                            <constraint firstItem="dt4-zN-heL" firstAttribute="top" secondItem="0Mf-ew-jA5" secondAttribute="bottom" constant="8" id="JRw-XA-yip"/>
                             <constraint firstAttribute="trailingMargin" secondItem="XVp-7Y-Xg3" secondAttribute="trailing" constant="-16" id="LVw-10-0LM"/>
                             <constraint firstItem="yXh-3O-ZzA" firstAttribute="top" secondItem="JeY-4v-Jqr" secondAttribute="bottom" constant="38" id="ZaK-tf-ibZ"/>
+                            <constraint firstItem="0Mf-ew-jA5" firstAttribute="trailing" secondItem="PYG-TA-U3b" secondAttribute="trailingMargin" id="gZn-C2-ZO4"/>
                             <constraint firstItem="XVp-7Y-Xg3" firstAttribute="top" secondItem="yXh-3O-ZzA" secondAttribute="bottom" constant="18" id="uYI-EV-PgF"/>
                             <constraint firstItem="yXh-3O-ZzA" firstAttribute="leading" secondItem="PYG-TA-U3b" secondAttribute="leadingMargin" constant="6" id="w9z-pf-FhE"/>
                             <constraint firstItem="XVp-7Y-Xg3" firstAttribute="leading" secondItem="PYG-TA-U3b" secondAttribute="leadingMargin" constant="-16" id="xOF-9f-3Ta"/>
@@ -1500,7 +1537,7 @@
                         <barButtonItem key="backBarButtonItem" title="Terug" id="93V-XJ-qlN"/>
                         <barButtonItem key="rightBarButtonItem" title="Volgende" id="gRg-tk-md4">
                             <connections>
-                                <segue destination="X5a-t7-Gqi" kind="show" id="iNH-iN-G1z"/>
+                                <segue destination="X5a-t7-Gqi" kind="show" identifier="volgende" id="iNH-iN-G1z"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1574,6 +1611,15 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yHa-o7-ctV">
+                                <rect key="frame" x="523" y="518" width="61" height="30"/>
+                                <state key="normal" title="Annuleer">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="xj6-b1-6XR" kind="show" identifier="gaTerug" id="Tr7-eB-2ls"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1599,14 +1645,16 @@
                             <constraint firstAttribute="trailingMargin" secondItem="nUT-nL-tZr" secondAttribute="trailing" constant="4" id="e7b-zl-9ac"/>
                             <constraint firstItem="toU-JD-Yff" firstAttribute="leading" secondItem="Gvh-AU-xVe" secondAttribute="trailing" constant="65" id="fA9-kc-JoM"/>
                             <constraint firstAttribute="trailingMargin" secondItem="YS2-6O-f3j" secondAttribute="trailing" constant="4" id="ghG-yD-6Os"/>
+                            <constraint firstItem="yHa-o7-ctV" firstAttribute="trailing" secondItem="evA-Gp-lQ5" secondAttribute="trailingMargin" id="rhu-Ag-RrV"/>
                             <constraint firstAttribute="trailingMargin" secondItem="BWb-f0-M6K" secondAttribute="trailing" constant="4" id="rm5-EW-hmp"/>
+                            <constraint firstItem="dW6-Xr-CHU" firstAttribute="top" secondItem="yHa-o7-ctV" secondAttribute="bottom" constant="8" id="sMQ-DG-zm5"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Inschrijven" id="Ljr-c7-hY9">
                         <barButtonItem key="backBarButtonItem" title="Terug" id="cRa-AS-ztW"/>
                         <barButtonItem key="rightBarButtonItem" title="Volgende" id="LAg-GL-iRC">
                             <connections>
-                                <segue destination="fiA-PH-Lvg" kind="show" id="E6m-gO-M1Y"/>
+                                <segue destination="fiA-PH-Lvg" kind="show" identifier="volgende" id="E6m-gO-M1Y"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1689,6 +1737,15 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o7d-V9-E9v">
+                                <rect key="frame" x="523" y="518" width="61" height="30"/>
+                                <state key="normal" title="Annuleer">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="xj6-b1-6XR" kind="show" identifier="gaTerug" id="ifn-Vz-c4s"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1701,6 +1758,7 @@
                             <constraint firstItem="Cut-bj-zZS" firstAttribute="top" secondItem="PY2-vd-DPe" secondAttribute="bottom" constant="72" id="ECY-Fg-mMU"/>
                             <constraint firstAttribute="trailingMargin" secondItem="PY2-vd-DPe" secondAttribute="trailing" id="KA8-6x-l5K"/>
                             <constraint firstItem="PY2-vd-DPe" firstAttribute="leading" secondItem="RlO-89-cJg" secondAttribute="leadingMargin" id="Kh0-tG-q64"/>
+                            <constraint firstItem="o7d-V9-E9v" firstAttribute="trailing" secondItem="RlO-89-cJg" secondAttribute="trailingMargin" id="NgI-RJ-Rkr"/>
                             <constraint firstItem="1ue-xw-vq7" firstAttribute="top" secondItem="mkz-zm-ZZj" secondAttribute="bottom" constant="8" id="P05-ws-OhJ"/>
                             <constraint firstItem="mkz-zm-ZZj" firstAttribute="top" secondItem="kkf-zg-pe0" secondAttribute="bottom" constant="8" id="TV5-dJ-IPj"/>
                             <constraint firstItem="dgj-AE-kEn" firstAttribute="top" secondItem="b5o-z8-zWB" secondAttribute="bottom" constant="17.5" id="Wgd-Ob-3Qe"/>
@@ -1717,13 +1775,14 @@
                             <constraint firstAttribute="trailingMargin" secondItem="1ue-xw-vq7" secondAttribute="trailing" constant="4.5" id="pWe-gT-OLp"/>
                             <constraint firstAttribute="trailingMargin" secondItem="kkf-zg-pe0" secondAttribute="trailing" constant="4" id="rIx-QH-cl9"/>
                             <constraint firstItem="nis-wC-4lx" firstAttribute="top" secondItem="i22-ZR-kVf" secondAttribute="bottom" constant="31.5" id="rk1-xt-7QZ"/>
+                            <constraint firstItem="DH0-AP-rAa" firstAttribute="top" secondItem="o7d-V9-E9v" secondAttribute="bottom" constant="8" id="yrC-dq-cbM"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Inschrijven" id="bi7-NQ-CC8">
                         <barButtonItem key="backBarButtonItem" title="Terug" id="zTx-wV-sMc"/>
                         <barButtonItem key="rightBarButtonItem" title="Volgende" id="9qQ-DS-d9b">
                             <connections>
-                                <segue destination="C57-CL-LAn" kind="show" id="ZaK-tF-Lqp"/>
+                                <segue destination="C57-CL-LAn" kind="show" identifier="volgende" id="ZaK-tF-Lqp"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1755,32 +1814,43 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Wilt u extra informatie meegeven?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iOI-be-7bI">
-                                <rect key="frame" x="16" y="53" width="262" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wilt u extra informatie meegeven?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iOI-be-7bI">
+                                <rect key="frame" x="16" y="53" width="261.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6BJ-HQ-xv6">
-                                <rect key="frame" x="16" y="82" width="51" height="31"/>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6BJ-HQ-xv6">
+                                <rect key="frame" x="16" y="81" width="51" height="31"/>
                                 <connections>
                                     <action selector="switched:" destination="C57-CL-LAn" eventType="valueChanged" id="yFv-zb-rt1"/>
                                 </connections>
                             </switch>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eaN-yk-YyH">
-                                <rect key="frame" x="16" y="131" width="568" height="226"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eaN-yk-YyH">
+                                <rect key="frame" x="16" y="130" width="568" height="226.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tAQ-ng-oiQ">
+                                <rect key="frame" x="523" y="550" width="61" height="30"/>
+                                <state key="normal" title="Annuleer">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="xj6-b1-6XR" kind="show" identifier="gaTerug" id="hMW-uG-f1U"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="tAQ-ng-oiQ" firstAttribute="trailing" secondItem="e3Q-rB-n4I" secondAttribute="trailingMargin" id="0RF-VG-GTu"/>
                             <constraint firstItem="eaN-yk-YyH" firstAttribute="leading" secondItem="e3Q-rB-n4I" secondAttribute="leadingMargin" id="BW1-Dz-l2D"/>
                             <constraint firstItem="zvN-o6-1RE" firstAttribute="top" secondItem="eaN-yk-YyH" secondAttribute="bottom" constant="243" id="CWL-pV-lx4"/>
                             <constraint firstItem="iOI-be-7bI" firstAttribute="leading" secondItem="e3Q-rB-n4I" secondAttribute="leadingMargin" id="Klk-Hw-8Uf"/>
                             <constraint firstItem="6BJ-HQ-xv6" firstAttribute="leading" secondItem="e3Q-rB-n4I" secondAttribute="leadingMargin" id="OoK-Va-4PO"/>
                             <constraint firstItem="6BJ-HQ-xv6" firstAttribute="top" secondItem="iOI-be-7bI" secondAttribute="bottom" constant="8" id="YY8-eD-GGY"/>
+                            <constraint firstItem="zvN-o6-1RE" firstAttribute="top" secondItem="tAQ-ng-oiQ" secondAttribute="bottom" constant="20" id="aRD-bo-K4e"/>
                             <constraint firstItem="eaN-yk-YyH" firstAttribute="top" secondItem="6BJ-HQ-xv6" secondAttribute="bottom" constant="18" id="acM-M2-QCu"/>
                             <constraint firstItem="eaN-yk-YyH" firstAttribute="trailing" secondItem="e3Q-rB-n4I" secondAttribute="trailingMargin" id="ghg-Wq-mJF"/>
                             <constraint firstItem="iOI-be-7bI" firstAttribute="top" secondItem="oiE-gc-skE" secondAttribute="bottom" constant="33" id="rQ8-se-uuY"/>
@@ -1789,7 +1859,7 @@
                     <navigationItem key="navigationItem" title="Inschrijven" id="tmb-o3-OYi">
                         <barButtonItem key="rightBarButtonItem" title="Inschrijven" id="g69-zQ-NwD">
                             <connections>
-                                <segue destination="XVP-eA-hta" kind="show" id="vdn-nt-PEa"/>
+                                <segue destination="XVP-eA-hta" kind="show" identifier="volgende" id="vdn-nt-PEa"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -2151,6 +2221,15 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kqc-px-T9r">
+                                <rect key="frame" x="523" y="550" width="61" height="30"/>
+                                <state key="normal" title="Annuleer">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="xj6-b1-6XR" kind="show" identifier="gaTerug" id="Raw-ZD-Rau"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -2173,6 +2252,7 @@
                             <constraint firstItem="e5U-JW-t69" firstAttribute="leading" secondItem="jQu-jq-x84" secondAttribute="leadingMargin" constant="142" id="Nul-Fy-nUg"/>
                             <constraint firstAttribute="trailingMargin" secondItem="VdY-Dj-GYy" secondAttribute="trailing" constant="4" id="OfO-mY-vAk"/>
                             <constraint firstItem="sPo-ug-FXW" firstAttribute="leading" secondItem="jQu-jq-x84" secondAttribute="leadingMargin" constant="2" id="Ph1-lX-2V7"/>
+                            <constraint firstItem="4sV-bi-WCP" firstAttribute="top" secondItem="kqc-px-T9r" secondAttribute="bottom" constant="20" id="QZL-ws-ofW"/>
                             <constraint firstItem="aPx-7q-Y5b" firstAttribute="top" secondItem="VdY-Dj-GYy" secondAttribute="bottom" constant="8" id="RuS-ji-hX8"/>
                             <constraint firstItem="d5Y-ga-U1B" firstAttribute="leading" secondItem="jQu-jq-x84" secondAttribute="leadingMargin" constant="2" id="Sq3-5c-WSC"/>
                             <constraint firstItem="cDM-Tc-SoP" firstAttribute="top" secondItem="pXx-D7-FEu" secondAttribute="bottom" constant="16" id="V6U-oH-QZG"/>
@@ -2200,6 +2280,7 @@
                             <constraint firstItem="y3V-s2-jpB" firstAttribute="leading" secondItem="jQu-jq-x84" secondAttribute="leadingMargin" constant="2" id="v8y-5M-TiI"/>
                             <constraint firstItem="36J-Ir-AWM" firstAttribute="top" secondItem="rv3-hV-UiZ" secondAttribute="bottom" constant="17" id="w4u-od-705"/>
                             <constraint firstItem="fIi-DO-OV8" firstAttribute="top" secondItem="L0V-IX-dNX" secondAttribute="bottom" constant="15" id="wvA-be-OXv"/>
+                            <constraint firstItem="kqc-px-T9r" firstAttribute="trailing" secondItem="jQu-jq-x84" secondAttribute="trailingMargin" id="xQe-Ii-Hdf"/>
                             <constraint firstItem="Zsm-U5-ccr" firstAttribute="top" secondItem="fIi-DO-OV8" secondAttribute="bottom" constant="8" id="xd8-Mk-5j0"/>
                         </constraints>
                     </view>
@@ -2279,6 +2360,15 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8UF-HO-LKh">
+                                <rect key="frame" x="523" y="550" width="61" height="30"/>
+                                <state key="normal" title="Annuleer">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="xj6-b1-6XR" kind="show" identifier="gaTerug" id="1pu-rM-ZIZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -2289,6 +2379,7 @@
                             <constraint firstItem="eoq-1C-h6g" firstAttribute="top" secondItem="yWf-vl-Uis" secondAttribute="bottom" constant="7" id="NOR-pt-kaj"/>
                             <constraint firstItem="XDv-uS-Fzx" firstAttribute="trailing" secondItem="MaB-Lm-Qic" secondAttribute="trailingMargin" id="QhE-Xg-pK9"/>
                             <constraint firstItem="mbB-eL-1dg" firstAttribute="top" secondItem="7gc-Cb-9dP" secondAttribute="bottom" constant="48" id="Qu4-q4-W6n"/>
+                            <constraint firstItem="XCc-2e-nXM" firstAttribute="top" secondItem="8UF-HO-LKh" secondAttribute="bottom" constant="20" id="RJ0-gY-cC9"/>
                             <constraint firstItem="zbz-TI-f1b" firstAttribute="leading" secondItem="MaB-Lm-Qic" secondAttribute="leadingMargin" id="Tb4-Dq-2fw"/>
                             <constraint firstItem="6nT-CA-MLe" firstAttribute="leading" secondItem="MaB-Lm-Qic" secondAttribute="leadingMargin" id="VeH-Zw-8zf"/>
                             <constraint firstItem="XDv-uS-Fzx" firstAttribute="top" secondItem="KVD-77-46V" secondAttribute="bottom" constant="7" id="WlA-yJ-XHE"/>
@@ -2298,6 +2389,7 @@
                             <constraint firstItem="zbz-TI-f1b" firstAttribute="top" secondItem="6nT-CA-MLe" secondAttribute="bottom" constant="8" id="gnw-zA-IjE"/>
                             <constraint firstItem="KVD-77-46V" firstAttribute="top" secondItem="zbz-TI-f1b" secondAttribute="bottom" constant="11" id="kIZ-rY-Evu"/>
                             <constraint firstItem="zbz-TI-f1b" firstAttribute="trailing" secondItem="MaB-Lm-Qic" secondAttribute="trailingMargin" id="lHE-Rs-8v7"/>
+                            <constraint firstItem="8UF-HO-LKh" firstAttribute="trailing" secondItem="MaB-Lm-Qic" secondAttribute="trailingMargin" id="r9e-sV-aFA"/>
                             <constraint firstItem="mbB-eL-1dg" firstAttribute="leading" secondItem="MaB-Lm-Qic" secondAttribute="leadingMargin" id="sSj-eQ-25u"/>
                         </constraints>
                     </view>
@@ -2377,6 +2469,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="wxv-CA-5fs"/>
+        <segue reference="hMW-uG-f1U"/>
+        <segue reference="Vpx-YM-klv"/>
     </inferredMetricsTieBreakers>
 </document>

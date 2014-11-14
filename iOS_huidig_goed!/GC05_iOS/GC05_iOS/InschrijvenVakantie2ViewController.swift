@@ -9,6 +9,7 @@ class InschrijvenVakantie2ViewController : UIViewController {
     @IBOutlet weak var dpGeboortedatum: UIDatePicker!
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "volegnde" {
         let inschrijvenVakantie3ViewController = segue.destinationViewController as InschrijvenVakantie3ViewController
         
         //nog controleren!!!
@@ -17,5 +18,8 @@ class InschrijvenVakantie2ViewController : UIViewController {
         
         inschrijvenVakantie3ViewController.deelnemer = deelnemer
         //inschrijvenVakantie3ViewController.ouder = ouder
+        } else if segue.identifier == "gaTerug" {
+            let vakantiesTableViewController = segue.destinationViewController as VakantiesTableViewController
+        }
     }
 }

@@ -13,6 +13,7 @@ class Registratie4ViewController: UIViewController
     var redColor: UIColor = UIColor.redColor()
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "volgende" {
         let registratieSuccesvolViewController = segue.destinationViewController as RegistratieSuccesvolViewController
         
         //TO DO: controleren op formaat van ingevulde text! (String, int, ...)
@@ -39,6 +40,9 @@ class Registratie4ViewController: UIViewController
                     foutBoxOproepen("Fout", "Wachtwoord en bevestig wachtwoord komen niet overeen.", self)
                 }
             }
+        }
+        } else if segue.identifier == "gaTerug" {
+            let vakantiesTableViewController = segue.destinationViewController as VakantiesTableViewController
         }
     }
     

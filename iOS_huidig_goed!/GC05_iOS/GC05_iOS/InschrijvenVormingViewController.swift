@@ -42,6 +42,8 @@ class InschrijvenVormingViewController: UIViewController, UIPickerViewDataSource
             inschrijvingVorming.vorming = self.vorming
             
             inschrijvenVormingSuccesvolViewController.inschrijvingVorming = self.inschrijvingVorming
+        } else if segue.identifier == "gaTerug" {
+            let vormingenTableViewController = segue.destinationViewController as VormingenTableViewController
         }
     }
 }

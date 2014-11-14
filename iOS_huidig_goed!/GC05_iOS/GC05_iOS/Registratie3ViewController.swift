@@ -19,6 +19,7 @@ class Registratie3ViewController: UIViewController
     var redColor: UIColor = UIColor.redColor()
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "volgende" {
         let registratie4ViewController = segue.destinationViewController as Registratie4ViewController
         
         //TO DO: controleren op formaat van ingevulde text! (String, int, ...)
@@ -32,6 +33,9 @@ class Registratie3ViewController: UIViewController
             settenVerplichteGegevens()
             settenOptioneleGegevens()
             registratie4ViewController.ouder = ouder
+        }
+        } else if segue.identifier == "gaTerug" {
+            let vakantiesViewController = segue.destinationViewController as VakantiesTableViewController
         }
     }
     

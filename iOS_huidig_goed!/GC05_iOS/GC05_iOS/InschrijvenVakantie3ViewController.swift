@@ -16,6 +16,7 @@ class InschrijvenVakantie3ViewController : UIViewController {
     @IBOutlet weak var txtGsm: UITextField!
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "volgende" {
         let inschrijvenVakantie4ViewController = segue.destinationViewController as InschrijvenVakantie4ViewController
         
         setStatusTextFields()
@@ -33,6 +34,9 @@ class InschrijvenVakantie3ViewController : UIViewController {
             inschrijvenVakantie4ViewController.contactpersoon1 = contactpersoon
             inschrijvenVakantie4ViewController.deelnemer = deelnemer
             //inschrijvenVakantie4ViewController.ouder = ouder
+        }
+        } else if segue.identifier == "gaTerug" {
+            let vakantiesTableViewController = segue.destinationViewController as VakantiesTableViewController
         }
     }
     
