@@ -62,7 +62,6 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
     }
     
     @IBAction func gaTerugNaarOverzichtVakanties(segue: UIStoryboardSegue) {
-        // TO DO ouder insteken?
     }
     
     
