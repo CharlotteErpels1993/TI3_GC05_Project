@@ -12,6 +12,10 @@ class InloggenViewController: UIViewController
     var statusTextFields: [String: String] = [:]
     var redColor: UIColor = UIColor.redColor()
     
+    @IBAction func toggle(sender: AnyObject) {
+        toggleSideMenuView()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         txtEmail.autocorrectionType = UITextAutocorrectionType.No
@@ -125,8 +129,6 @@ class InloggenViewController: UIViewController
             self.presentViewController(alert, animated: true, completion: nil)
         }*/
     }
-    
-    
     
     @IBAction func gaTerugNaarInloggen(segue: UIStoryboardSegue) {
         

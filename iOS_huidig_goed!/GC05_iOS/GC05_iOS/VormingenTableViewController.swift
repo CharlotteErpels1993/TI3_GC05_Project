@@ -6,6 +6,10 @@ class VormingenTableViewController: UITableViewController, UISearchBarDelegate, 
     var vormingen2: [Vorming] = []
     //var monitor: Monitor!
     
+    @IBAction func toggle(sender: AnyObject) {
+        toggleSideMenuView()
+    }
+    
     @IBOutlet weak var zoekbar: UISearchBar!
     
     override func viewDidLoad() {
