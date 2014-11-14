@@ -19,6 +19,7 @@ class SidebarTableViewController: UITableViewController {
         self.clearsSelectionOnViewWillAppear = false
         
         tableView.selectRowAtIndexPath(NSIndexPath(forRow: selectedMenuItem, inSection: 0), animated: false, scrollPosition: .Middle)
+        
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
