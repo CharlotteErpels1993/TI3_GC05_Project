@@ -20,6 +20,10 @@ class InschrijvenVakantie1ViewController : UIViewController {
     var ouder: Ouder!
     var inschrijvingVakantie: InschrijvingVakantie! = InschrijvingVakantie(id: "test")
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let inschrijvenVakantie2ViewController = segue.destinationViewController as InschrijvenVakantie2ViewController
         

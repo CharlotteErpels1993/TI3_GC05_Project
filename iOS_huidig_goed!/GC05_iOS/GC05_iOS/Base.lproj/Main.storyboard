@@ -72,7 +72,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Inloggen" id="ic7-yf-zL0">
                             <connections>
                                 <action selector="inuitloggen:" destination="xj6-b1-6XR" id="hAA-00-E69"/>
-                                <segue destination="Wvb-DA-A5t" kind="show" id="EQM-Bh-4xx"/>
+                                <segue destination="QSw-na-ve9" kind="show" id="KES-Bh-Zqz"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -418,11 +418,7 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Vakanties" id="EyU-Xm-7Wp">
-                        <barButtonItem key="rightBarButtonItem" title="Inschrijven" id="tca-mm-haN">
-                            <connections>
-                                <segue destination="hts-ZH-ofq" kind="show" identifier="inschrijven" id="T0t-0q-YQX"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Inschrijven" id="tca-mm-haN"/>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -1737,7 +1733,7 @@
                                     <action selector="switched:" destination="C57-CL-LAn" eventType="valueChanged" id="yFv-zb-rt1"/>
                                 </connections>
                             </switch>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eaN-yk-YyH">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eaN-yk-YyH">
                                 <rect key="frame" x="16" y="131" width="568" height="226"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
