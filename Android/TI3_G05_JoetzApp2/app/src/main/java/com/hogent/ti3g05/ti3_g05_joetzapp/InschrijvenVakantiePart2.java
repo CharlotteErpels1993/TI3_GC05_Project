@@ -3,27 +3,63 @@ package com.hogent.ti3g05.ti3_g05_joetzapp;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
 
 
 public class InschrijvenVakantiePart2 extends Activity {
+    private EditText txtVoornaam, txtNaam, txtTelefoon, txtGSM;
+
+    private String voornaam, naam, telefoon, gsm;
 
     private Button btnVolgende;
+    private Button btnTerug;
+    private boolean cancel = false;
+    private View focusView = null;
+
+    // flag for Internet connection status
+    Boolean isInternetPresent = false;
+    // Connection detector class
+    ConnectionDetector cd;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inschrijven_vakantie_part2);
 
+        txtVoornaam = (EditText) findViewById(R.id.VoornaamContactPersoon);
+        txtNaam = (EditText) findViewById(R.id.NaamContactPersoon);
+        txtTelefoon = (EditText) findViewById(R.id.TelefoonContactPersoon);
+        txtGSM = (EditText) findViewById(R.id.GsmContactPersoon);
+
         btnVolgende = (Button)findViewById(R.id.btnNaarDeel3V);
-
-
         btnVolgende.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(InschrijvenVakantiePart2.this, InschrijvenVakantiePart3.class);
+                isInternetPresent = cd.isConnectingToInternet();
+
+                if (isInternetPresent) {
+                    controlerenOpfouten();
+                }
+                else{
+                    // Internet connection is not present
+                    // Ask user to connect to Internet
+                    Toast.makeText(getApplicationContext(), getString(R.string.error_no_internet), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        btnTerug = (Button) findViewById(R.id.btnNaarDeel1V);
+        btnTerug.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent intent = new Intent(InschrijvenVakantiePart2.this, activiteit_overzicht.class);
                 startActivity(intent);
 
                 overridePendingTransition(R.anim.right_in, R.anim.left_out);
@@ -51,5 +87,80 @@ public class InschrijvenVakantiePart2 extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void controlerenOpfouten(){
+        clearErrors();
+        cancel = false;
+
+        // Store values at the time of the login attempt.
+        voornaam = txtVoornaam.getText().toString().toLowerCase();
+        naam = txtNaam.getText().toString().toLowerCase();
+        telefoon = txtTelefoon.getText().toString();
+        gsm = txtGSM.getText().toString();
+
+
+        if (TextUtils.isEmpty(gsm)) {
+            txtGSM.setError(getString(R.string.error_field_required));
+            focusView = txtGSM;
+            cancel = true;
+        }else{
+            if (!gsm.matches("[0-9]+") && gsm.length() == 10){
+                txtGSM.setError(getString(R.string.error_incorrect_gsm));
+                focusView = txtGSM;
+                cancel = true;
+            }
+        }
+
+        if (TextUtils.isEmpty(telefoon)) {
+            txtTelefoon.setError(getString(R.string.error_field_required));
+            focusView = txtTelefoon;
+            cancel = true;
+        }else{
+            if (!telefoon.matches("[0-9]+") && telefoon.length() == 9){
+                txtTelefoon.setError(getString(R.string.error_incorrect_tel));
+                focusView = txtTelefoon;
+                cancel = true;
+            }
+        }
+
+        if (TextUtils.isEmpty(naam)) {
+            txtNaam.setError(getString(R.string.error_field_required));
+            focusView = txtNaam;
+            cancel = true;
+        }
+
+        if (TextUtils.isEmpty(voornaam)) {
+            txtVoornaam.setError(getString(R.string.error_field_required));
+            focusView = txtVoornaam;
+            cancel = true;
+        }
+
+
+        if (cancel) {
+            // There was an error; don't attempt login and focus the first
+            // form field with an error.
+            focusView.requestFocus();
+        } else {
+            // Show a progress spinner, and kick off a background task to
+            // perform the user login attempt.
+            opslaan(voornaam ,naam, telefoon, gsm);
+            //Toast.makeText(getApplicationContext(), "Opgeslagen", Toast.LENGTH_SHORT).show();
+
+        }
+    }
+
+    private void opslaan(String voornaam,String naam, String telefoon, String gsm) {
+
+
+
+    }
+
+
+    private void clearErrors(){
+        txtVoornaam.setError(null);
+        txtNaam.setError(null);
+        txtTelefoon.setError(null);
+        txtGSM.setError(null);
     }
 }

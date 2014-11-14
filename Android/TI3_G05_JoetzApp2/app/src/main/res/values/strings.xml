@@ -74,7 +74,9 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
         Ons e-mail adres is joetz.west@joetz.be en u kan ook terecht op het nummer: 056 27 47 00</string>
     <string name="loading_message">Bezig met laden, even geduld aub</string>
     <string name="error_no_internet">Kan geen verbinding maken met de server. Gelieve uw verbinding te controleren.</string>
-
+    <string name="error_incorrect_gsm">Ongeldig gsm-nummer (precies 10 cijfers, geen spaties of speciale tekens)</string>
+    <string name="error_incorrect_tel">Ongeldig telefoon nummer (precies 9 cijfers, geen spaties of speciale tekens)</string>
+    <string name="dialog_ingeschreven_melding">U heeft zich succesvol ingeschreven.</string>
     <string-array name="items">
         <item>Vakanties</item>
         <item>Profielen</item>

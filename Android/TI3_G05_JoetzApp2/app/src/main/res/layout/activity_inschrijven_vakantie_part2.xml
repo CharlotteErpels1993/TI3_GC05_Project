@@ -17,7 +17,7 @@
             android:text="@string/inschrijvenVak2_AlgemeneUitleg"/>
 
         <EditText
-            android:id="@+id/Voornaam"
+            android:id="@+id/VoornaamContactPersoon"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
@@ -26,30 +26,28 @@
             android:hint="@string/naamHint"/>
 
         <EditText
-            android:id="@+id/Naam"
-
+            android:id="@+id/NaamContactPersoon"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/Voornaam"
+            android:layout_below="@id/VoornaamContactPersoon"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="25dp"
             android:hint="@string/famnaamHint" />
 
         <EditText
-            android:id="@+id/Telefoon"
+            android:id="@+id/TelefoonContactPersoon"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/Naam"
+            android:layout_below="@id/NaamContactPersoon"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="25dp"
             android:hint="@string/telefoonHint" />
 
         <EditText
-            android:id="@+id/Gsm"
-
+            android:id="@+id/GsmContactPersoon"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/Telefoon"
+            android:layout_below="@id/TelefoonContactPersoon"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="25dp"
             android:hint="@string/gsmHint" />
@@ -59,17 +57,17 @@
             android:id="@+id/btnNaarDeel3V"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/Gsm"
+            android:layout_below="@id/GsmContactPersoon"
             android:layout_marginTop="25dp"
             android:text="@string/volgende" />
 
-    <!--    <Button
+        <Button
             android:id="@+id/btnNaarDeel1V"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/btnNaarDeel3"
+            android:layout_below="@id/btnNaarDeel3V"
             android:text="@string/back"
-            android:layout_marginTop="8dp"/>-->
+            android:layout_marginTop="8dp"/>
 
 
     </RelativeLayout>
