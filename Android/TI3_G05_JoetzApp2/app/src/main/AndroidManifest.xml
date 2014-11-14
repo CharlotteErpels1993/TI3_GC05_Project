@@ -43,17 +43,7 @@
             android:name="com.hogent.ti3g05.ti3_g05_joetzapp.activiteit_detail"
             android:label="@string/title_activity_activiteit_detail" >
         </activity>
-        <activity
-            android:name="com.hogent.ti3g05.ti3_g05_joetzapp.activiteit_overzicht"
-            android:label="@string/title_activity_activiteit_overzicht" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
-
-        </activity>
         <activity
             android:name="com.hogent.ti3g05.ti3_g05_joetzapp.profiel_detail"
             android:label="@string/title_activity_profiel_detail" >
@@ -87,6 +77,8 @@
 
         <activity android:name=".ProfielDetail"></activity>
         <activity android:name=".ProfielenOverzicht"></activity>
+
+        <activity android:name=".Loguit"></activity>
 
 
 

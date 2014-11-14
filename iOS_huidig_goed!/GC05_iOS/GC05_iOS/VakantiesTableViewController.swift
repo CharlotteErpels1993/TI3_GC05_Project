@@ -14,13 +14,11 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         zoekVakanties()
         zoekbar.showsScopeBar = true
         zoekbar.delegate = self
-        if ouder == nil {
-            self.navigationItem.setHidesBackButton(true, animated: true)
-            //self.navigationItem.backBarButtonItem = nil
-            //self.navigationController?.navigationBar.topItem?.hidesBackButton = true
-        } else {
-            //self.navigationItem.rightBarButtonItem = nil
+        
+        if ouder != nil {
             self.navigationItem.rightBarButtonItem?.title = "Uitloggen"
+        } else {
+            self.navigationItem.rightBarButtonItem?.title = "Inloggen"
         }
     }
     
