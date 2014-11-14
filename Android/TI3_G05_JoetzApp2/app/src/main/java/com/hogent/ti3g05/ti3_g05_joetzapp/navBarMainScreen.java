@@ -48,6 +48,7 @@ public class navBarMainScreen extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigationbar);
 
@@ -212,11 +213,9 @@ public class navBarMainScreen extends Activity {
             Intent intent1 = new Intent(this, SignUp_deel1.class);
             startActivity(intent1);
         }
-        if(id == R.id.btnUitloggen){
-            Toast.makeText(getApplicationContext(), "U wordt zometeen uitgelogd.", Toast.LENGTH_SHORT);
-            ParseUser.getCurrentUser().logOut();
-            Toast.makeText(getApplicationContext(), "U bent uitgelogd", Toast.LENGTH_SHORT);
-            Intent intent1 = new Intent(this, activiteit_overzicht.class); //navBarMainScreen
+        if(id == R.id.uitloggen){
+
+            Intent intent1 = new Intent(this, Loguit.class); //navBarMainScreen
             startActivity(intent1);
         }
 

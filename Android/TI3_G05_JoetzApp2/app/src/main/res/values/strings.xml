@@ -96,5 +96,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
     <string name="title_activity_inschrijven_vakantie_part3">InschrijvenVakantiePart3</string>
     <string name="title_activity_inschrijven_vakantie_part4">InschrijvenVakantiePart4</string>
     <string name="ok">Ok</string>
+    <string name="logoutText">Weet u zeker dat u wilt uitloggen?</string>
+    <string name="Uitloggen">uitloggen</string>
 
 </resources>
