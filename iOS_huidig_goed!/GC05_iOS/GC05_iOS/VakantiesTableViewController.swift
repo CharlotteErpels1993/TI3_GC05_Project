@@ -5,9 +5,13 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
     var vakanties: [Vakantie] = []
     var vakanties2: [Vakantie] = []
     var ouder: Ouder?
+    //var currentUser: PFUser?
     
     @IBOutlet weak var zoekbar: UISearchBar!
     
+    @IBAction func toggle(sender: AnyObject) {
+        toggleSideMenuView()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,13 +20,17 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         zoekbar.delegate = self
         
         if ouder != nil {
+        //if currentUser != nil {
             self.navigationItem.setHidesBackButton(true, animated: true)
             self.navigationItem.rightBarButtonItem = nil
         }
+        
+        //self.navigationItem
+        
     }
     
     /*override func viewDidAppear(animated: Bool) {
-        
+        currentUser = PFUser.currentUser()
     }*/
     
     

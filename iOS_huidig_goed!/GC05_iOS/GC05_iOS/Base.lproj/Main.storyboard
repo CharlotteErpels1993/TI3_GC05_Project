@@ -5,7 +5,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Vakanties-->
+        <!--Vakanties Table View Controller-->
         <scene sceneID="RQL-0y-cO4">
             <objects>
                 <tableViewController id="xj6-b1-6XR" customClass="VakantiesTableViewController" customModule="JOETZ" customModuleProvider="target" sceneMemberID="viewController">
@@ -68,12 +68,10 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Vakanties" id="jTS-Lj-o5t">
-                        <barButtonItem key="backBarButtonItem" title="Terug" id="DsG-9g-2Wc"/>
-                        <barButtonItem key="rightBarButtonItem" title="Inloggen" id="ic7-yf-zL0">
+                    <navigationItem key="navigationItem" id="jTS-Lj-o5t">
+                        <barButtonItem key="rightBarButtonItem" title="Toggle" id="ic7-yf-zL0">
                             <connections>
-                                <action selector="inuitloggen:" destination="xj6-b1-6XR" id="hAA-00-E69"/>
-                                <segue destination="QSw-na-ve9" kind="show" id="KES-Bh-Zqz"/>
+                                <action selector="toggle:" destination="xj6-b1-6XR" id="lfG-P1-hpW"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -517,7 +515,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="79b-9q-gfh">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="79b-9q-gfh">
                                 <rect key="frame" x="6" y="20" width="583" height="580"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -556,7 +554,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d1H-PH-gHC">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d1H-PH-gHC">
                                 <rect key="frame" x="5" y="7" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -583,10 +581,10 @@
             </objects>
             <point key="canvasLocation" x="3454" y="336"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--My Navigation Controller-->
         <scene sceneID="cC5-ea-HfQ">
             <objects>
-                <navigationController id="b2K-U9-3tu" sceneMemberID="viewController">
+                <navigationController id="b2K-U9-3tu" customClass="MyNavigationController" customModule="JOETZ" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="UJe-vi-RMu">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -602,7 +600,7 @@
         <!--Registreren-->
         <scene sceneID="EhX-Bi-hdO">
             <objects>
-                <viewController id="fyb-xH-x0i" customClass="Registratie1ViewController" customModule="JOETZ" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Registreren" id="fyb-xH-x0i" customClass="Registratie1ViewController" customModule="JOETZ" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5IY-zh-MZg"/>
                         <viewControllerLayoutGuide type="bottom" id="h54-IA-4ZC"/>
@@ -748,7 +746,7 @@
         <!--Inloggen-->
         <scene sceneID="F5A-yL-Jej">
             <objects>
-                <viewController id="QSw-na-ve9" customClass="InloggenViewController" customModule="JOETZ" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Inloggen" id="QSw-na-ve9" customClass="InloggenViewController" customModule="JOETZ" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5QS-Qa-34g"/>
                         <viewControllerLayoutGuide type="bottom" id="3aO-vb-ZaZ"/>
@@ -1751,7 +1749,7 @@
                                     <action selector="switched:" destination="C57-CL-LAn" eventType="valueChanged" id="yFv-zb-rt1"/>
                                 </connections>
                             </switch>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eaN-yk-YyH">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eaN-yk-YyH">
                                 <rect key="frame" x="16" y="131" width="568" height="226"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -2357,6 +2355,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="xe1-I8-Pkw"/>
+        <segue reference="quD-W8-2tt"/>
     </inferredMetricsTieBreakers>
 </document>
