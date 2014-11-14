@@ -166,11 +166,12 @@ public class navBarMainScreen extends Activity {
                 else
                 {
                     Toast.makeText(this,"U hebt niet de juiste bevoegdheid om dit te bekijken", Toast.LENGTH_SHORT).show();
+                    fragment = new activiteit_overzicht();
                 }
 
                 break;
             case 2:
-                if(ParseUser.getCurrentUser()!=null)
+                if(ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("monitor"))
                 {
                     Intent intent2 = new Intent(navBarMainScreen.this, Vormingen_Overzicht.class
                     );
@@ -179,12 +180,13 @@ public class navBarMainScreen extends Activity {
                 else
                 {
                     Toast.makeText(this,"U hebt niet de juiste bevoegdheid om dit te bekijken", Toast.LENGTH_SHORT).show();
+                    fragment = new activiteit_overzicht();
                 }
 
                 break;
             case 3:
                 Toast.makeText(this,"Nog niet ondersteund", Toast.LENGTH_SHORT).show();
-
+                fragment = new activiteit_overzicht();
                 break;
 
             default:
