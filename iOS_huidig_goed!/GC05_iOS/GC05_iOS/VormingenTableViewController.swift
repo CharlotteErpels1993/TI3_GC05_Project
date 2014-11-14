@@ -34,11 +34,13 @@ class VormingenTableViewController: UITableViewController, UISearchBarDelegate, 
                     for object in PFObjects {
                         var vorming = Vorming(vorming: object)
                         self.vormingen.append(vorming)
+                        print(vorming)
                     }
                 }
                 self.vormingen2 = self.vormingen
                 self.tableView.reloadData()
             }
+            println(error)
         })
     }
     
