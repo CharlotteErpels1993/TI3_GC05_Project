@@ -511,7 +511,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="79b-9q-gfh">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="79b-9q-gfh">
                                 <rect key="frame" x="6" y="20" width="583" height="580"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -886,14 +886,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vGq-Rl-Mwa">
-                                <rect key="frame" x="163" y="113" width="275" height="30"/>
-                                <state key="normal" title="Vakanties bekijken en voorkeur indienen">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E7A-jt-wkG">
-                                <rect key="frame" x="231" y="151" width="139" height="30"/>
+                                <rect key="frame" x="16" y="151" width="568" height="30"/>
                                 <state key="normal" title="Vormingen bekijken">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -902,43 +896,49 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GV5-OT-tjR">
-                                <rect key="frame" x="211" y="189" width="178" height="30"/>
+                                <rect key="frame" x="16" y="189" width="568" height="30"/>
                                 <state key="normal" title="Monitor profielen bekijken">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welkom monitorNaam," lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4mn-rW-WhR">
-                                <rect key="frame" x="16" y="70" width="175" height="21"/>
+                                <rect key="frame" x="16" y="70" width="175" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UY8-W0-6qa">
-                                <rect key="frame" x="230" y="227" width="141" height="30"/>
+                                <rect key="frame" x="16" y="227" width="568" height="30"/>
                                 <state key="normal" title="Uw profiel bewerken">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vGq-Rl-Mwa">
+                                <rect key="frame" x="16" y="113" width="568" height="30"/>
+                                <state key="normal" title="Vakanties bekijken en voorkeur indienen">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="vGq-Rl-Mwa" secondAttribute="trailing" constant="146" id="0BJ-Oi-U0S"/>
-                            <constraint firstItem="UY8-W0-6qa" firstAttribute="leading" secondItem="w8S-Bp-dmt" secondAttribute="leadingMargin" constant="214" id="6ht-SG-gkT"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="vGq-Rl-Mwa" secondAttribute="trailing" id="0BJ-Oi-U0S"/>
+                            <constraint firstItem="UY8-W0-6qa" firstAttribute="leading" secondItem="w8S-Bp-dmt" secondAttribute="leadingMargin" id="6ht-SG-gkT"/>
                             <constraint firstItem="4mn-rW-WhR" firstAttribute="leading" secondItem="w8S-Bp-dmt" secondAttribute="leadingMargin" id="7kT-tc-y7i"/>
                             <constraint firstAttribute="centerX" secondItem="vGq-Rl-Mwa" secondAttribute="centerX" constant="-0.5" id="7lR-M9-dMS"/>
                             <constraint firstItem="vGq-Rl-Mwa" firstAttribute="top" secondItem="SJA-U2-rZq" secondAttribute="bottom" constant="93" id="8Bt-Vu-TOL"/>
                             <constraint firstItem="GV5-OT-tjR" firstAttribute="top" secondItem="E7A-jt-wkG" secondAttribute="bottom" constant="8" id="CEz-wP-wcy"/>
                             <constraint firstAttribute="centerX" secondItem="GV5-OT-tjR" secondAttribute="centerX" id="G0Q-PT-Gfi"/>
-                            <constraint firstItem="GV5-OT-tjR" firstAttribute="leading" secondItem="w8S-Bp-dmt" secondAttribute="leadingMargin" constant="195" id="Gg2-SO-cOV"/>
+                            <constraint firstItem="GV5-OT-tjR" firstAttribute="leading" secondItem="w8S-Bp-dmt" secondAttribute="leadingMargin" id="Gg2-SO-cOV"/>
                             <constraint firstItem="UY8-W0-6qa" firstAttribute="top" secondItem="GV5-OT-tjR" secondAttribute="bottom" constant="8" id="L8A-1I-hlp"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="E7A-jt-wkG" secondAttribute="trailing" constant="214" id="Wtp-CC-9IJ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="E7A-jt-wkG" secondAttribute="trailing" id="Wtp-CC-9IJ"/>
                             <constraint firstItem="4mn-rW-WhR" firstAttribute="top" secondItem="SJA-U2-rZq" secondAttribute="bottom" constant="50" id="Y7w-Cd-KOi"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="UY8-W0-6qa" secondAttribute="trailing" constant="213" id="bNb-ta-Am7"/>
-                            <constraint firstItem="vGq-Rl-Mwa" firstAttribute="leading" secondItem="w8S-Bp-dmt" secondAttribute="leadingMargin" constant="147" id="bg5-zR-IDj"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="GV5-OT-tjR" secondAttribute="trailing" constant="195" id="brL-3o-doV"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="UY8-W0-6qa" secondAttribute="trailing" id="bNb-ta-Am7"/>
+                            <constraint firstItem="vGq-Rl-Mwa" firstAttribute="leading" secondItem="w8S-Bp-dmt" secondAttribute="leadingMargin" id="bg5-zR-IDj"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="GV5-OT-tjR" secondAttribute="trailing" id="brL-3o-doV"/>
                             <constraint firstAttribute="centerX" secondItem="UY8-W0-6qa" secondAttribute="centerX" constant="-0.5" id="npV-AH-b8k"/>
                             <constraint firstAttribute="centerX" secondItem="E7A-jt-wkG" secondAttribute="centerX" constant="-0.5" id="oLq-nW-7E0"/>
-                            <constraint firstItem="E7A-jt-wkG" firstAttribute="leading" secondItem="w8S-Bp-dmt" secondAttribute="leadingMargin" constant="215" id="wTy-2Z-JHW"/>
+                            <constraint firstItem="E7A-jt-wkG" firstAttribute="leading" secondItem="w8S-Bp-dmt" secondAttribute="leadingMargin" id="wTy-2Z-JHW"/>
                             <constraint firstItem="E7A-jt-wkG" firstAttribute="top" secondItem="vGq-Rl-Mwa" secondAttribute="bottom" constant="8" id="wn5-dl-0Js"/>
                         </constraints>
                     </view>
@@ -1733,7 +1733,7 @@
                                     <action selector="switched:" destination="C57-CL-LAn" eventType="valueChanged" id="yFv-zb-rt1"/>
                                 </connections>
                             </switch>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eaN-yk-YyH">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eaN-yk-YyH">
                                 <rect key="frame" x="16" y="131" width="568" height="226"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
