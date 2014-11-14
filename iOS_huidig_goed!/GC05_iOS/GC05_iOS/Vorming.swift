@@ -2,7 +2,7 @@ import Foundation
 
 class Vorming: Activiteit
 {
-    var periodes: String // TYPE?
+    var periodes: [String]
     
     var prijs: Double {
         willSet {
@@ -16,9 +16,9 @@ class Vorming: Activiteit
     var betalingWijze: String
     
     init(vorming: PFObject) {
-        self.periodes = vorming["periodes"] as String
+        self.periodes = vorming["periodes"] as [String]
         self.prijs = vorming["prijs"] as Double
-        self.criteriaDeelnemers = vorming["criteriaDeelnemer"] as String
+        self.criteriaDeelnemers = vorming["criteriaDeelnemers"] as String
         self.websiteLocatie = vorming["websiteLocatie"] as String
         self.tips = vorming["tips"] as String
         self.betalingWijze = vorming["betalingswijze"] as String
@@ -26,7 +26,7 @@ class Vorming: Activiteit
         
     }
     
-    init(id: String, titel: String, locatie: String, korteBeschrijving: String, periodes: String, prijs: Double, criteriaDeelnemers: String, websiteLocatie: String, tips: String, betalingWijze: String) {
+    init(id: String, titel: String, locatie: String, korteBeschrijving: String, periodes: [String], prijs: Double, criteriaDeelnemers: String, websiteLocatie: String, tips: String, betalingWijze: String) {
         
         self.periodes = periodes
         self.prijs = prijs
@@ -43,6 +43,15 @@ class Vorming: Activiteit
             return false
         }
         return false
+    }
+    
+    func periodesToString() -> String {
+        var periodesString: String = ""
+        
+        for periode in periodes {
+            periodesString.extend(periode)
+        }
+        return periodesString
     }
     
 }

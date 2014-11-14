@@ -11,4 +11,12 @@ class OverzichtMonitorViewController: UIViewController
     @IBAction func gaTerugNaarOverzichtMonitor(segue: UIStoryboardSegue) {
         
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "vormingen" {
+            let vormingenTableViewController = segue.destinationViewController as VormingenTableViewController
+            
+            vormingenTableViewController.monitor = self.monitor
+        }
+    }
 }

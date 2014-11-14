@@ -25,7 +25,7 @@ class VormingDetailsTableViewController: UITableViewController {
         websiteLocatieLabel.text = ("Webiste locatie: \(vorming.websiteLocatie)")
         prijsLabel.text = String("Prijs: \(vorming.prijs) " + euro)
         betalingsWijzeLabel.text = String("Betalingswijze: \(vorming.betalingWijze)")
-        periodesLabel.text = vorming.periodes
+        periodesLabel.text = vorming.periodesToString()
         tipsLabel.text = vorming.tips
     }
     
@@ -33,6 +33,8 @@ class VormingDetailsTableViewController: UITableViewController {
         if segue.identifier == "inschrijven" {
             let inschrijvenVormingViewController = segue.destinationViewController as InschrijvenVormingViewController
             inschrijvenVormingViewController.monitor = self.monitor
+            inschrijvenVormingViewController.vorming = self.vorming
+            inschrijvenVormingViewController.pickerData = vorming.periodes
         }
     }
 }

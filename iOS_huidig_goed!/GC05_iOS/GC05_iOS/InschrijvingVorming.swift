@@ -3,16 +3,18 @@ import Foundation
 class InschrijvingVorming
 {
     var id: String
-    var begindatum: Date
-    var einddatum: Date
-    var monitor: Monitor
-    var vakantie: Vakantie
+    var periode: String?
+    var monitor: Monitor?
+    var vorming: Vorming?
     
-    init(id: String, begindatum: Date, einddatum: Date, monitor: Monitor, vakantie: Vakantie) {
+    init(id: String) {
         self.id = id
-        self.begindatum = begindatum
-        self.einddatum = einddatum
+    }
+    
+    init(id: String, periode: String, monitor: Monitor, vorming: Vorming) {
+        self.id = id
+        self.periode = periode
         self.monitor = monitor
-        self.vakantie = vakantie
+        self.vorming = vorming
     }
 }
