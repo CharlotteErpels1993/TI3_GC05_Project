@@ -8,6 +8,9 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
     
     @IBOutlet weak var zoekbar: UISearchBar!
     
+    @IBAction func toggle(sender: AnyObject) {
+        toggleSideMenuView()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +22,8 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
             self.navigationItem.setHidesBackButton(true, animated: true)
             self.navigationItem.rightBarButtonItem = nil
         }
-    }
+        
+        //self.navigationItem.rightBarButtonItem?.accessibilityPath.    }
     
     /*override func viewDidAppear(animated: Bool) {
         
