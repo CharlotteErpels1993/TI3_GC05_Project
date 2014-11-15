@@ -43,7 +43,7 @@ class VakantieDetailsTableViewController: UITableViewController {
                 /*self.images.append(self.afbeelding1.image!)
                 self.images.append(self.afbeelding2.image!)
                 self.images.append(self.afbeelding3.image!)*/
-                if self.images.count == 3 {
+                if self.images.count >= 3 {
                     self.afbeelding1.image = self.images[0]
                     self.afbeelding2.image = self.images[1]
                     self.afbeelding3.image = self.images[2]
