@@ -15,6 +15,15 @@ class AfbeeldingenViewController: UICollectionViewController {
             afbeeldingDetailViewController.image = object
             //let indexPath! = self.collectionView.indexPathsForSelectedItems()
             //let object = self.collectionView.cellForItemAtIndexPath(indexPath)*/
+            //let index = self.collectionView
+            //var view = collectionView
+            //self.images[view.indexPathsForSelectedItems()[indexPath.row]]
+           // let selected = self.images[collectionView as TableView
+            //    indexPathForSelectedRow()!.row]
+            let afbeeldingViewController = segue.destinationViewController as AfbeeldingDetailViewController
+            var indexPath: NSIndexPath = self.collectionView.indexPathsForSelectedItems()?.last! as NSIndexPath
+            var image: UIImage! = self.images[indexPath.row]
+            afbeeldingViewController.image = image
         }
     }
     
