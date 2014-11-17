@@ -31,14 +31,14 @@ import java.util.List;
 import java.util.Locale;
 
 
-public class ProfielenOverzicht extends Activity  implements SwipeRefreshLayout.OnRefreshListener {
+public class ProfielenOverzicht extends Activity /* implements SwipeRefreshLayout.OnRefreshListener*/ {
     private ListView listview;
     private List<ParseObject> ob;
     private ProgressDialog mProgressDialog;
     private ProfielAdapter adapter;
     private List<Monitor> profielen = null;
     private EditText filtertext;
-    SwipeRefreshLayout swipeLayout;
+    //SwipeRefreshLayout swipeLayout;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -49,13 +49,13 @@ public class ProfielenOverzicht extends Activity  implements SwipeRefreshLayout.
         setTitle("Profielen");
         // Execute RemoteDataTask AsyncTask
         filtertext = (EditText) findViewById(R.id.filtertext);
-        swipeLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_container);
-        onCreateSwipeToRefresh(swipeLayout);
+        /*swipeLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_container);
+        onCreateSwipeToRefresh(swipeLayout);*/
 
         new RemoteDataTask().execute();
     }
 
-    private void onCreateSwipeToRefresh(SwipeRefreshLayout refreshLayout) {
+   /* private void onCreateSwipeToRefresh(SwipeRefreshLayout refreshLayout) {
 
         refreshLayout.setOnRefreshListener(this);
 
@@ -77,7 +77,7 @@ public class ProfielenOverzicht extends Activity  implements SwipeRefreshLayout.
 
             }
         }, 1000);
-    }
+    }*/
 
 
     // RemoteDataTask AsyncTask
@@ -151,7 +151,7 @@ public class ProfielenOverzicht extends Activity  implements SwipeRefreshLayout.
             // Close the progressdialog
             mProgressDialog.dismiss();
 
-            swipeLayout.setRefreshing(false);
+            //swipeLayout.setRefreshing(false);
 
             filtertext.addTextChangedListener(new TextWatcher() {
                 @Override

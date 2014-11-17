@@ -32,7 +32,7 @@ import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
-public class Vormingen_Overzicht extends Activity implements SwipeRefreshLayout.OnRefreshListener {
+public class Vormingen_Overzicht extends Activity /*implements SwipeRefreshLayout.OnRefreshListener*/ {
 
     private ListView listview;
     private List<ParseObject> ob;
@@ -40,7 +40,7 @@ public class Vormingen_Overzicht extends Activity implements SwipeRefreshLayout.
     private VormingAdapter adapter;
     private List<Vorming> vormingen = null;
     private EditText filtertext;
-    SwipeRefreshLayout swipeLayout;
+   // SwipeRefreshLayout swipeLayout;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -51,12 +51,12 @@ public class Vormingen_Overzicht extends Activity implements SwipeRefreshLayout.
         setTitle("Vormingen");
         // Execute RemoteDataTask AsyncTask
         filtertext = (EditText) findViewById(R.id.filtertext);
-        swipeLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_container);
-        onCreateSwipeToRefresh(swipeLayout);
+        /*swipeLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_container);
+        onCreateSwipeToRefresh(swipeLayout);*/
         new RemoteDataTask().execute();
     }
 
-    private void onCreateSwipeToRefresh(SwipeRefreshLayout refreshLayout) {
+ /*   private void onCreateSwipeToRefresh(SwipeRefreshLayout refreshLayout) {
 
         refreshLayout.setOnRefreshListener(this);
 
@@ -78,7 +78,7 @@ public class Vormingen_Overzicht extends Activity implements SwipeRefreshLayout.
 
             }
         }, 1000);
-    }
+    }*/
 
 
     // RemoteDataTask AsyncTask
@@ -149,7 +149,7 @@ public class Vormingen_Overzicht extends Activity implements SwipeRefreshLayout.
             // Close the progressdialog
             mProgressDialog.dismiss();
 
-            swipeLayout.setRefreshing(false);
+            //swipeLayout.setRefreshing(false);
 
             filtertext.addTextChangedListener(new TextWatcher() {
                 @Override

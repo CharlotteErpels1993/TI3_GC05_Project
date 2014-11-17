@@ -40,7 +40,7 @@ import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
-public class activiteit_overzicht extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
+public class activiteit_overzicht extends Fragment /*implements SwipeRefreshLayout.OnRefreshListener*/ {
 
     private ListView listview;
     private List<ParseObject> ob;
@@ -55,7 +55,7 @@ public class activiteit_overzicht extends Fragment implements SwipeRefreshLayout
     private View rootView;
     private List<Vakantie> vakanties = null;
     private EditText filtertext;
-    SwipeRefreshLayout swipeLayout;
+    //SwipeRefreshLayout swipeLayout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -66,8 +66,8 @@ public class activiteit_overzicht extends Fragment implements SwipeRefreshLayout
         new RemoteDataTask().execute();
         listview = (ListView) rootView.findViewById(R.id.listView);
         filtertext = (EditText) rootView.findViewById(R.id.filtertext);
-        swipeLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_container);
-        onCreateSwipeToRefresh(swipeLayout);
+        //swipeLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_container);
+        //onCreateSwipeToRefresh(swipeLayout);
 
         myDB = new myDb(rootView.getContext());
         myDB.open();
@@ -77,7 +77,7 @@ public class activiteit_overzicht extends Fragment implements SwipeRefreshLayout
 
         return rootView;
     }
-    private void onCreateSwipeToRefresh(SwipeRefreshLayout refreshLayout) {
+    /*private void onCreateSwipeToRefresh(SwipeRefreshLayout refreshLayout) {
 
         refreshLayout.setOnRefreshListener(this);
 
@@ -99,7 +99,7 @@ public class activiteit_overzicht extends Fragment implements SwipeRefreshLayout
 
             }
         }, 1000);
-    }
+    }*/
 
     // RemoteDataTask AsyncTask
     private class RemoteDataTask extends AsyncTask<Void, Void, Void> {
@@ -242,7 +242,7 @@ public class activiteit_overzicht extends Fragment implements SwipeRefreshLayout
             listview.setAdapter(adapter);
             // Close the progressdialog
             mProgressDialog.dismiss();
-            swipeLayout.setRefreshing(false);
+            //swipeLayout.setRefreshing(false);
 
             filtertext.addTextChangedListener(new TextWatcher() {
                 @Override
