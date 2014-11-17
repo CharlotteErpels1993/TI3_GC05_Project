@@ -11,6 +11,8 @@ class InschrijvenVormingViewController: UIViewController, UIPickerViewDataSource
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        pickerView.delegate = self
+        pickerView.dataSource = self
     }
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {

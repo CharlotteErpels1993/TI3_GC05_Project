@@ -13,7 +13,7 @@ class Registratie4ViewController: UIViewController
     var redColor: UIColor = UIColor.redColor()
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "volgende" {
+        if segue.identifier == "voltooiRegistratie" {
         let registratieSuccesvolViewController = segue.destinationViewController as RegistratieSuccesvolViewController
         
         //TO DO: controleren op formaat van ingevulde text! (String, int, ...)
