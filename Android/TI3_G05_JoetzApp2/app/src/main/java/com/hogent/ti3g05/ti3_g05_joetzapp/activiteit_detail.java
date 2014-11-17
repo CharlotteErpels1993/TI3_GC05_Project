@@ -287,13 +287,13 @@ public class activiteit_detail extends Activity {
                 }
             }
 
-          /*  if (!sterPrijs2Ouders.equals("-1")){
+            if (!sterPrijs2Ouders.equals("-1")){
                 txtSterPrijs2Ouders.setVisibility(View.VISIBLE);
                 txtSterPrijs2Ouders.setText("Prijs voor leden waarvan 2 ouders deel zijn van BM: €" + sterPrijs2Ouders);
                 if (!(sterPrijs2Ouders.contains(".") || sterPrijs2Ouders.contains(","))){
                     txtSterPrijs2Ouders.append(",00");
                 }
-            }*/
+            }
         }
 
 

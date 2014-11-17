@@ -133,7 +133,7 @@ public class DBHandler extends SQLiteOpenHelper {
             vakantie.setInbegrepenInPrijs(cursor.getString(15));
             vakantie.setBondMoysonLedenPrijs(Integer.parseInt(cursor.getString(16)));
             vakantie.setSterPrijs1Ouder(Integer.parseInt(cursor.getString(17)));
-            //vakantie.setSterPrijs2Ouder(Integer.parseInt(cursor.getString(18)));
+            vakantie.setSterPrijs2Ouder(Integer.parseInt(cursor.getString(18)));
         } else
         {
             vakantie = null;
