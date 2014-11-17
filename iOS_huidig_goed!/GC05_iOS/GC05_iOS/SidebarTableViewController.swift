@@ -3,8 +3,8 @@ import UIKit
 class SidebarTableViewController: UITableViewController {
     var selectedMenuItem : Int = 0
     var arrayKind: [String] = ["Vakanties","Inloggen", "Registreren"]
-    var arrayOuder: [String] = ["Vakanties", "Uitloggen"]
-    var arrayMonitor: [String] = ["Vakanties", "Uitloggen", "Vormingen", "Voorkeur vak.", "Profielen"]
+    var arrayOuder: [String] = ["Uitloggen", "Vakanties"]
+    var arrayMonitor: [String] = ["Uitloggen","Vakanties",  "Vormingen", "Voorkeur vak.", "Profielen"]
     var array: [String]?
     
     override func viewDidLoad() {
@@ -88,7 +88,9 @@ class SidebarTableViewController: UITableViewController {
         var destViewController: UIViewController
         
         if PFUser.currentUser() == nil {
+            self.tableView.reloadData()
             switch indexPath.row {
+                
             case 0:
                 destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
                 break
@@ -100,6 +102,7 @@ class SidebarTableViewController: UITableViewController {
                 break
             default:
                 destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
+                
                 break
             }
             sideMenuController()?.setContentViewController(destViewController)
@@ -107,11 +110,12 @@ class SidebarTableViewController: UITableViewController {
             var gebruikerPF = PFUser.currentUser()
             var soort: String = gebruikerPF["soort"] as String
             if soort == "monitor" {
+                self.tableView.reloadData()
                 switch indexPath.row {
-                case 0:
+                case 1:
                     destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
                     break
-                case 1:
+                case 0:
                     destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Uitloggen") as UIViewController
                     break
                 case 2:
@@ -129,11 +133,12 @@ class SidebarTableViewController: UITableViewController {
                 }
                 sideMenuController()?.setContentViewController(destViewController)
             } else if soort == "ouder" {
+                self.tableView.reloadData()
                 switch indexPath.row {
-                case 0:
+                case 1:
                     destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
                     break
-                case 1:
+                case 0:
                     destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Uitloggen") as UIViewController
                     break
                 default:
@@ -170,5 +175,13 @@ class SidebarTableViewController: UITableViewController {
         sideMenuController()?.setContentViewController(destViewController)*/
     }
     
+    func getTopController() -> UIViewController {
+        var topViewController: UIViewController! = UIApplication.sharedApplication().keyWindow?.rootViewController!
+        while (topViewController.presentedViewController != nil) {
+            topViewController = topViewController.presentedViewController!
+        }
+        
+        return topViewController
+    }
     
 }

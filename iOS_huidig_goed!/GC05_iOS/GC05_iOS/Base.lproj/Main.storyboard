@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="b2K-U9-3tu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="b2K-U9-3tu">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -975,15 +975,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Ve-MB-6Yz">
-                                <rect key="frame" x="16" y="341.5" width="166" height="30"/>
-                                <state key="normal" title="Nog niet geregistreerd? ">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="fyb-xH-x0i" kind="show" identifier="registreren" id="PkG-nK-xOO"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1005,12 +996,9 @@
                             <constraint firstAttribute="trailingMargin" secondItem="IeG-wh-GGy" secondAttribute="trailing" constant="5" id="bcW-sZ-9jA"/>
                             <constraint firstItem="4pR-QD-gU1" firstAttribute="top" secondItem="d94-IW-Wd6" secondAttribute="bottom" constant="16" id="c9k-5L-XdF"/>
                             <constraint firstItem="GnE-q7-jzk" firstAttribute="top" secondItem="5QS-Qa-34g" secondAttribute="bottom" constant="278" id="euR-hv-bKE"/>
-                            <constraint firstItem="9Ve-MB-6Yz" firstAttribute="leading" secondItem="omj-uN-gDv" secondAttribute="leadingMargin" id="fzT-6n-CmG"/>
                             <constraint firstItem="d94-IW-Wd6" firstAttribute="top" secondItem="5QS-Qa-34g" secondAttribute="bottom" constant="36" id="iua-GL-P10"/>
                             <constraint firstItem="GnE-q7-jzk" firstAttribute="top" secondItem="H0a-36-oYG" secondAttribute="bottom" constant="40" id="lhU-kh-YcT"/>
                             <constraint firstItem="IeG-wh-GGy" firstAttribute="top" secondItem="4pR-QD-gU1" secondAttribute="bottom" constant="9" id="mzi-ap-e6R"/>
-                            <constraint firstItem="9Ve-MB-6Yz" firstAttribute="top" secondItem="GnE-q7-jzk" secondAttribute="bottom" constant="-3" id="oc3-ed-Ng4"/>
-                            <constraint firstItem="9Ve-MB-6Yz" firstAttribute="top" secondItem="GnE-q7-jzk" secondAttribute="bottom" constant="8" id="pKv-n1-EcH"/>
                             <constraint firstItem="4pR-QD-gU1" firstAttribute="leading" secondItem="omj-uN-gDv" secondAttribute="leadingMargin" id="s5Y-uY-rkp"/>
                             <constraint firstItem="hZK-bN-dtd" firstAttribute="top" secondItem="H0a-36-oYG" secondAttribute="bottom" constant="8" id="s7e-i0-4xA"/>
                             <constraint firstAttribute="trailingMargin" secondItem="H0a-36-oYG" secondAttribute="trailing" constant="5" id="sL2-AN-6vW"/>
@@ -1036,7 +1024,6 @@
                                 <exclude reference="Nvm-e2-MTA"/>
                                 <exclude reference="AjT-jy-NaQ"/>
                                 <exclude reference="euR-hv-bKE"/>
-                                <exclude reference="oc3-ed-Ng4"/>
                             </mask>
                         </variation>
                     </view>
@@ -3118,6 +3105,6 @@
         <image name="Klevertje.png" width="615" height="427"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hMW-uG-f1U"/>
+        <segue reference="wxv-CA-5fs"/>
     </inferredMetricsTieBreakers>
 </document>

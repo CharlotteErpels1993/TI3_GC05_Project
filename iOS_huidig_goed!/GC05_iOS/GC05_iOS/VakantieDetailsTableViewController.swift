@@ -34,7 +34,7 @@ class VakantieDetailsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         zoekImages()
-        hideSideMenuView()
+        toggleSideMenuView()
         query.getObjectInBackgroundWithId(vakantie.id) {
             (vakantie: PFObject!, error: NSError!) -> Void in
             if error == nil {
