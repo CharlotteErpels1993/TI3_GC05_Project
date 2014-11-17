@@ -15,6 +15,9 @@ class VormingDetailsTableViewController: UITableViewController {
     @IBOutlet weak var periodesLabel: UILabel!
     @IBOutlet weak var tipsLabel: UILabel!
     
+    @IBAction func toggle(sender: AnyObject) {
+        toggleSideMenuView()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
