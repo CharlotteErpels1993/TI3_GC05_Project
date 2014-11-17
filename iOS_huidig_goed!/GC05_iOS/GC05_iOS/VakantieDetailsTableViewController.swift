@@ -30,7 +30,7 @@ class VakantieDetailsTableViewController: UITableViewController {
     //var currentUser: PFUser?
     var query = PFQuery(className: "Vakantie")
     var beschrijving: String!
-    var sectionToDelete = 0;
+    var sectionToDelete = -1;
     
     override func viewDidLoad() {
         zoekImages()
@@ -95,13 +95,28 @@ class VakantieDetailsTableViewController: UITableViewController {
             }
 
         } else {
+            self.sectionToDelete = 5;
+            self.tableView.deleteSections(NSIndexSet(index: self.sectionToDelete), withRowAnimation: UITableViewRowAnimation.None)
+            /*basisprijsLabel = nil
+            bondMoysonPrijsLabel = nil
+            sterprijs1Label = nil
+            sterPrijs2Label = nil
+            bondMoysonPrijsLabel = nil
+            inbegrepenPrijs = nil*/
         //basisprijsLabel.delete(true)
-        basisprijsLabel.hidden = true
+        /*basisprijsLabel.hidden = true
         bondMoysonPrijsLabel.hidden = true
         sterprijs1Label.hidden = true
         sterPrijs2Label.hidden = true
         bondMoysonPrijsLabel.hidden = true
-        inbegrepenPrijs.hidden = true
+        inbegrepenPrijs.hidden = true*/
+            
+            /*basisprijsLabel = nil
+            bondMoysonPrijsLabel = nil
+            sterprijs1Label = nil
+            sterPrijs2Label = nil
+            bondMoysonPrijsLabel = nil
+            inbegrepenPrijs = nil*/
         
         //self.tableView.deleteSections(NSIndexSet(index: 5), withRowAnimation: .None)
          //   self.tableView.beginUpdates()
@@ -113,15 +128,28 @@ class VakantieDetailsTableViewController: UITableViewController {
 
     }
     
-    /*override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(animated: Bool) {
         //super.viewDidAppear()
-        self.sectionToDelete = 1;
+        if PFUser.currentUser() == nil {
+        /*self.sectionToDelete = 5;
         self.tableView.deleteSections(NSIndexSet(index: self.sectionToDelete), withRowAnimation: UITableViewRowAnimation.None)
+        basisprijsLabel = nil
+        bondMoysonPrijsLabel = nil
+        sterprijs1Label = nil
+        sterPrijs2Label = nil
+        bondMoysonPrijsLabel = nil
+        inbegrepenPrijs = nil*/
         self.tableView.reloadData()
+        }
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-            return 5 - self.sectionToDelete
+        if sectionToDelete == -1 {
+            return 6
+        } else {
+            return 5
+        }
+            //return 5 - 1
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -130,15 +158,15 @@ class VakantieDetailsTableViewController: UITableViewController {
         } else if section == 4 {
             return 4
         } else if section == 5 {
-            if self.sectionToDelete == 0 {
-                return 0
-            } else {
+            if self.sectionToDelete == -1 {
                 return 5
+            } else {
+                return 0
             }
         } else {
             return 1
         }
-    }*/
+    }
     
     
     /*override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {

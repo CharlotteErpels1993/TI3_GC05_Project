@@ -4,7 +4,7 @@ class SidebarTableViewController: UITableViewController {
     var selectedMenuItem : Int = 0
     var arrayKind: [String] = ["Vakanties","Inloggen", "Registreren"]
     var arrayOuder: [String] = ["Vakanties", "Uitloggen"]
-    var arrayMonitor: [String] = ["Vakanties", "Uitloggen", "Vormingen", "Profielen"]
+    var arrayMonitor: [String] = ["Vakanties", "Uitloggen", "Vormingen", "Voorkeur vak.", "Profielen"]
     var array: [String]?
     
     override func viewDidLoad() {
@@ -41,7 +41,7 @@ class SidebarTableViewController: UITableViewController {
             if soort == "ouder" {
                 return 2
             } else {
-                return 4
+                return 5
             }
         }
     }
@@ -117,11 +117,14 @@ class SidebarTableViewController: UITableViewController {
                 case 2:
                     destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vormingen") as UIViewController
                     break
-                    /*case 3:
+                case 3:
+                    destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Voorkeur") as UIViewController
+                    break
+                case 4:
                     destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Profielen") as UIViewController
-                    break*/
+                    break
                 default:
-                    destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
+                    destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Profiel") as UIViewController
                     break
                 }
                 sideMenuController()?.setContentViewController(destViewController)
