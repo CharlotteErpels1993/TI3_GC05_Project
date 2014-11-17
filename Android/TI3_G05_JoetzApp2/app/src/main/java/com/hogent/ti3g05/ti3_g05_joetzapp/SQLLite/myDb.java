@@ -11,6 +11,8 @@ import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vakantie;
 
 import java.util.List;
 
+import static com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.Constants.TABLE_VAKANTIE;
+
 /**
  * Created by Gebruiker on 17/11/2014.
  */
@@ -34,6 +36,12 @@ public class myDb {
         {
             Log.e("mydb", "kon db niet openen");
         }
+    }
+
+    public void drop()
+    {
+       db.drop(db.getWritableDatabase());
+
     }
 
     public void close()

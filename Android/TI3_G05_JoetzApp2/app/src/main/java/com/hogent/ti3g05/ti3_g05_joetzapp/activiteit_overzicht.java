@@ -114,7 +114,7 @@ public class activiteit_overzicht extends Fragment implements SwipeRefreshLayout
             mProgressDialog.setMessage("Aan het laden...");
             mProgressDialog.setIndeterminate(false);
             // Show progressdialog
-            //mProgressDialog.show();
+            mProgressDialog.show();
         }
 
         @Override
@@ -136,8 +136,10 @@ public class activiteit_overzicht extends Fragment implements SwipeRefreshLayout
                             "Vakantie");
                     // Locate the column named "vertrekdatum" in Parse.com and order list
                     // by ascending
+                    //myDB.drop();
                     query.orderByAscending("vertrekdatum");
                     ob = query.find();
+                    myDB.drop();
                     for (ParseObject vakantie : ob) {
                         // Locate images in flag column
                         ParseFile image = (ParseFile) vakantie.get("vakAfbeelding1");
@@ -179,6 +181,7 @@ public class activiteit_overzicht extends Fragment implements SwipeRefreshLayout
                         //handler.toevoegenGegevensVakantie(map);
 
                         vakanties.add(map);
+
                         myDB.insertVakantie(map);
 
                     }

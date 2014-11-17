@@ -42,6 +42,12 @@ public class DBHandler extends SQLiteOpenHelper {
 
     }
 
+    public void drop(SQLiteDatabase db)
+    {
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_VAKANTIE);
+        onCreate(db);
+    }
+
     public Long toevoegenGegevensVakantie(Vakantie vakantie)
     {
         ContentValues values = new ContentValues();
@@ -71,7 +77,7 @@ public class DBHandler extends SQLiteOpenHelper {
             vakantie.setSterPrijs2Ouder(0);
 
         values.put(Constants.COLUMN_STERPRIJSOUDER1,(Integer) vakantie.getSterPrijs1Ouder());
-        //values.put(Constants.COLUMN_STERPRIJS2OUDERS,(Integer) vakantie.getSterPrijs2Ouder());
+        values.put(Constants.COLUMN_STERPRIJS2OUDERS,(Integer) vakantie.getSterPrijs2Ouder());
         SQLiteDatabase db = this.getWritableDatabase();
 
         Long id = db.insert(TABLE_VAKANTIE, null, values);
