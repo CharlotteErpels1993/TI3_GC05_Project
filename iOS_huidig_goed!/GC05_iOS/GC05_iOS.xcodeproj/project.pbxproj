@@ -61,6 +61,8 @@
 		A50740F81A1386D900D01900 /* AfbeeldingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50740F71A1386D900D01900 /* AfbeeldingCollectionViewCell.swift */; };
 		A512381B1A1630D1002242C6 /* SidebarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A512381A1A1630D1002242C6 /* SidebarTableViewController.swift */; };
 		A512381D1A16332D002242C6 /* MyNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A512381C1A16332D002242C6 /* MyNavigationController.swift */; };
+		A52976D11A1A0A5E00420FEE /* Klevertje.png in Resources */ = {isa = PBXBuildFile; fileRef = A52976D01A1A0A5E00420FEE /* Klevertje.png */; };
+		A52976D31A1A0B6E00420FEE /* KlevertjeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52976D21A1A0B6E00420FEE /* KlevertjeViewController.swift */; };
 		A53380331A1352700048F948 /* InbegrepenPrijsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53380321A1352700048F948 /* InbegrepenPrijsTableView.swift */; };
 		A54E1B9E1A125E7C00C6BB95 /* KorteBeschrijvingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54E1B9D1A125E7C00C6BB95 /* KorteBeschrijvingViewController.swift */; };
 		A575A0691A1633E500F6735A /* ENSideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575A0671A1633E500F6735A /* ENSideMenu.swift */; };
@@ -143,6 +145,8 @@
 		A50740F71A1386D900D01900 /* AfbeeldingCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AfbeeldingCollectionViewCell.swift; sourceTree = "<group>"; };
 		A512381A1A1630D1002242C6 /* SidebarTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidebarTableViewController.swift; sourceTree = "<group>"; };
 		A512381C1A16332D002242C6 /* MyNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyNavigationController.swift; sourceTree = "<group>"; };
+		A52976D01A1A0A5E00420FEE /* Klevertje.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Klevertje.png; path = Images.xcassets/Klevertje.png; sourceTree = "<group>"; };
+		A52976D21A1A0B6E00420FEE /* KlevertjeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KlevertjeViewController.swift; sourceTree = "<group>"; };
 		A53380321A1352700048F948 /* InbegrepenPrijsTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InbegrepenPrijsTableView.swift; sourceTree = "<group>"; };
 		A54E1B9D1A125E7C00C6BB95 /* KorteBeschrijvingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KorteBeschrijvingViewController.swift; sourceTree = "<group>"; };
 		A575A0671A1633E500F6735A /* ENSideMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENSideMenu.swift; sourceTree = "<group>"; };
@@ -221,6 +225,7 @@
 		0FA80B041A01350E008DB343 /* GC05_iOS */ = {
 			isa = PBXGroup;
 			children = (
+				A52976CD1A1A094900420FEE /* Images */,
 				A575A0671A1633E500F6735A /* ENSideMenu.swift */,
 				A575A0681A1633E500F6735A /* ENSideMenuNavigationController.swift */,
 				0F6254961A0CCBA300BDEF38 /* FoutBox.swift */,
@@ -294,6 +299,7 @@
 				A512381C1A16332D002242C6 /* MyNavigationController.swift */,
 				A575A06B1A16463D00F6735A /* UitloggenViewController.swift */,
 				A59F1A8D1A16B29700A17D09 /* AfbeeldingDetailViewController.swift */,
+				A52976D21A1A0B6E00420FEE /* KlevertjeViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -315,6 +321,14 @@
 				1BDDB9561A02DD1E0007623D /* Gebruiker.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		A52976CD1A1A094900420FEE /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				A52976D01A1A0A5E00420FEE /* Klevertje.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -400,6 +414,7 @@
 			files = (
 				0FA80B0D1A01350E008DB343 /* Main.storyboard in Resources */,
 				0FA80B0F1A01350E008DB343 /* Images.xcassets in Resources */,
+				A52976D11A1A0A5E00420FEE /* Klevertje.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,6 +446,7 @@
 				1BDDB94D1A02D84B0007623D /* Monitor.swift in Sources */,
 				A5CEA07D1A1399CA00E14103 /* VormingDetailsTableViewController.swift in Sources */,
 				0FA80B081A01350E008DB343 /* AppDelegate.swift in Sources */,
+				A52976D31A1A0B6E00420FEE /* KlevertjeViewController.swift in Sources */,
 				1BDDB9551A02D87F0007623D /* ContactpersoonNood.swift in Sources */,
 				A53380331A1352700048F948 /* InbegrepenPrijsTableView.swift in Sources */,
 				A50740F61A1384EA00D01900 /* AfbeeldingenViewController.swift in Sources */,
