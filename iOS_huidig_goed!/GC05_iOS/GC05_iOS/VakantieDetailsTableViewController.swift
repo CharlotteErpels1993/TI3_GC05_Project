@@ -22,7 +22,7 @@ class VakantieDetailsTableViewController: UITableViewController {
     @IBOutlet weak var sterprijs1Label: UILabel!
     @IBOutlet weak var sterPrijs2Label: UILabel!
     @IBOutlet weak var inbegrepenPrijs: UILabel!
-    
+
     
     var vakantie: Vakantie!
     var images: [UIImage] = []
@@ -30,6 +30,7 @@ class VakantieDetailsTableViewController: UITableViewController {
     //var currentUser: PFUser?
     var query = PFQuery(className: "Vakantie")
     var beschrijving: String!
+    var sectionToDelete = 0;
     
     override func viewDidLoad() {
         zoekImages()
@@ -37,12 +38,6 @@ class VakantieDetailsTableViewController: UITableViewController {
         query.getObjectInBackgroundWithId(vakantie.id) {
             (vakantie: PFObject!, error: NSError!) -> Void in
             if error == nil {
-                /*self.zoekImage1(vakantie)
-                self.zoekImage2(vakantie)
-                self.zoekImage3(vakantie)*/
-                /*self.images.append(self.afbeelding1.image!)
-                self.images.append(self.afbeelding2.image!)
-                self.images.append(self.afbeelding3.image!)*/
                 if self.images.count >= 3 {
                     self.afbeelding1.image = self.images[0]
                     self.afbeelding2.image = self.images[1]
@@ -100,19 +95,56 @@ class VakantieDetailsTableViewController: UITableViewController {
             }
 
         } else {
+        //basisprijsLabel.delete(true)
         basisprijsLabel.hidden = true
         bondMoysonPrijsLabel.hidden = true
         sterprijs1Label.hidden = true
         sterPrijs2Label.hidden = true
         bondMoysonPrijsLabel.hidden = true
         inbegrepenPrijs.hidden = true
-            
+        
+        //self.tableView.deleteSections(NSIndexSet(index: 5), withRowAnimation: .None)
+         //   self.tableView.beginUpdates()
+        //self.tableView.endUpdates()
         self.navigationItem.rightBarButtonItem = nil
         }
         
         //navigationItem.rightBarButtonItem.
 
     }
+    
+    /*override func viewDidAppear(animated: Bool) {
+        //super.viewDidAppear()
+        self.sectionToDelete = 1;
+        self.tableView.deleteSections(NSIndexSet(index: self.sectionToDelete), withRowAnimation: UITableViewRowAnimation.None)
+        self.tableView.reloadData()
+    }
+    
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+            return 5 - self.sectionToDelete
+    }
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 3 {
+            return 3
+        } else if section == 4 {
+            return 4
+        } else if section == 5 {
+            if self.sectionToDelete == 0 {
+                return 0
+            } else {
+                return 5
+            }
+        } else {
+            return 1
+        }
+    }*/
+    
+    
+    /*override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        //tableView.deleteSelections(NSIndexSet(index: 5), withRowAnimation: UITableViewRowAnimation.None)
+        tableView.deleteSections(NSIndexSet(index: 5), withRowAnimation: UITableViewRowAnimation.None)
+    }*/
     
     func zoekImages() {
         var query = PFQuery(className: "Afbeelding")

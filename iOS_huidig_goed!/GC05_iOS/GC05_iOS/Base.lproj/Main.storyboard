@@ -96,7 +96,7 @@
                         <sections>
                             <tableViewSection id="9hz-vW-mdA">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="94" id="GwE-Mt-Y7W">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="94" id="GwE-Mt-Y7W">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GwE-Mt-Y7W" id="dTc-9b-H7l">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -190,7 +190,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Korte beschrijving" id="fg0-Xd-9js">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="c4b-zC-cDK" style="IBUITableViewCellStyleDefault" id="lO1-Iq-Ytu">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="c4b-zC-cDK" style="IBUITableViewCellStyleDefault" id="lO1-Iq-Ytu">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lO1-Iq-Ytu" id="Gvj-I1-waX">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -211,7 +211,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Doelgroep" id="aY9-VA-l76">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="YGY-Ah-WIL" style="IBUITableViewCellStyleDefault" id="EUf-qZ-Fsz">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="YGY-Ah-WIL" style="IBUITableViewCellStyleDefault" id="EUf-qZ-Fsz">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EUf-qZ-Fsz" id="aAN-1M-LIi">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -229,7 +229,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Periode" id="a5x-d7-jHK">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="taw-Bm-ocr" style="IBUITableViewCellStyleDefault" id="8YS-NS-a8u">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="taw-Bm-ocr" style="IBUITableViewCellStyleDefault" id="8YS-NS-a8u">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8YS-NS-a8u" id="4kj-gJ-M5K">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -243,7 +243,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="jZG-yo-KzI" style="IBUITableViewCellStyleDefault" id="2su-oW-vdn">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="jZG-yo-KzI" style="IBUITableViewCellStyleDefault" id="2su-oW-vdn">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2su-oW-vdn" id="TCl-AA-hMp">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -257,7 +257,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="jKE-X1-m7i" style="IBUITableViewCellStyleDefault" id="A3C-cN-DKe">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="jKE-X1-m7i" style="IBUITableViewCellStyleDefault" id="A3C-cN-DKe">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="A3C-cN-DKe" id="rlP-Ql-Sxf">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -275,7 +275,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Details" id="g4s-HS-JIA">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="gQQ-Ww-DKf" rowHeight="61" style="IBUITableViewCellStyleDefault" id="8BL-MD-uZh">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="gQQ-Ww-DKf" rowHeight="61" style="IBUITableViewCellStyleDefault" id="8BL-MD-uZh">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8BL-MD-uZh" id="LVn-fD-UAp">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -289,7 +289,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="q5p-DG-HWl" rowHeight="44" style="IBUITableViewCellStyleDefault" id="fWo-rA-2j9">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="q5p-DG-HWl" rowHeight="44" style="IBUITableViewCellStyleDefault" id="fWo-rA-2j9">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fWo-rA-2j9" id="R8P-z1-KBV">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -303,7 +303,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="Kmg-bE-kDe" rowHeight="101" style="IBUITableViewCellStyleDefault" id="Xtn-Uu-juS">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="Kmg-bE-kDe" rowHeight="101" style="IBUITableViewCellStyleDefault" id="Xtn-Uu-juS">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Xtn-Uu-juS" id="wH7-Ib-Vad">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -317,7 +317,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="6av-Pr-Xva" rowHeight="44" style="IBUITableViewCellStyleDefault" id="tUw-jI-ilO">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="6av-Pr-Xva" rowHeight="44" style="IBUITableViewCellStyleDefault" id="tUw-jI-ilO">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tUw-jI-ilO" id="Ckg-W3-dy4">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -335,7 +335,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Prijs" id="Kqj-JX-6uj">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="aGO-yv-kHP" style="IBUITableViewCellStyleDefault" id="fBH-wf-vvf">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="aGO-yv-kHP" style="IBUITableViewCellStyleDefault" id="fBH-wf-vvf">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fBH-wf-vvf" id="FGe-aA-MBd">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -349,7 +349,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="7z2-hp-SZc" style="IBUITableViewCellStyleDefault" id="Nmv-IB-maN">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="7z2-hp-SZc" style="IBUITableViewCellStyleDefault" id="Nmv-IB-maN">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Nmv-IB-maN" id="5WM-70-Ikv">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -363,7 +363,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="Dqi-r0-7gm" style="IBUITableViewCellStyleDefault" id="v3l-bi-3Lf">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="Dqi-r0-7gm" style="IBUITableViewCellStyleDefault" id="v3l-bi-3Lf">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="v3l-bi-3Lf" id="mvi-zq-fJg">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -377,7 +377,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="Mrx-x2-RlI" style="IBUITableViewCellStyleDefault" id="ZHk-a8-UKT">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="Mrx-x2-RlI" style="IBUITableViewCellStyleDefault" id="ZHk-a8-UKT">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZHk-a8-UKT" id="nRj-hT-Sls">
                                             <autoresizingMask key="autoresizingMask"/>
