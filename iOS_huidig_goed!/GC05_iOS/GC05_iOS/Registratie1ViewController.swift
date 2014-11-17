@@ -19,6 +19,7 @@ class Registratie1ViewController: UIViewController
     @IBOutlet weak var txtRijksregisterNr: UITextField!
     @IBOutlet weak var lblAansluitingsNrTweedeOuder: UILabel!
     @IBOutlet weak var txtAansluitingsNrTweedeOuder: UITextField!
+    @IBOutlet weak var buttonNummers: UIButton!
     
     @IBAction func annuleer(sender: AnyObject) {
         ouder = nil
@@ -50,6 +51,7 @@ class Registratie1ViewController: UIViewController
             txtCodeGerechtigde.hidden = false
             txtRijksregisterNr.hidden = false
             txtAansluitingsNrTweedeOuder.hidden = false
+            buttonNummers.hidden = false
             
         } else {
             gebruikerIsLid = false
@@ -63,6 +65,7 @@ class Registratie1ViewController: UIViewController
             txtCodeGerechtigde.hidden = true
             txtRijksregisterNr.hidden = true
             txtAansluitingsNrTweedeOuder.hidden = true
+            buttonNummers.hidden = true
         }
         
     }

@@ -626,6 +626,62 @@
             </objects>
             <point key="canvasLocation" x="3454" y="336"/>
         </scene>
+        <!--Klevertje View Controller-->
+        <scene sceneID="WGR-ZJ-U9O">
+            <objects>
+                <viewController id="eo3-QX-La5" customClass="KlevertjeViewController" customModule="JOETZ" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="non-wZ-FYo"/>
+                        <viewControllerLayoutGuide type="bottom" id="Xup-GC-Ii6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1l2-Mt-io0">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Klevertje.png" translatesAutoresizingMaskIntoConstraints="NO" id="GVm-2i-3L4">
+                                <rect key="frame" x="16" y="64" width="568" height="536"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="600" id="jjd-3h-zsW"/>
+                                    <constraint firstAttribute="width" constant="600" id="ysf-R7-7Jh"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="jjd-3h-zsW"/>
+                                        <exclude reference="ysf-R7-7Jh"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="GVm-2i-3L4" firstAttribute="leading" secondItem="1l2-Mt-io0" secondAttribute="leadingMargin" id="30g-3W-fRE"/>
+                            <constraint firstItem="Xup-GC-Ii6" firstAttribute="top" secondItem="GVm-2i-3L4" secondAttribute="bottom" constant="84" id="37W-DB-bcQ"/>
+                            <constraint firstItem="GVm-2i-3L4" firstAttribute="top" secondItem="non-wZ-FYo" secondAttribute="bottom" id="Bez-0z-hl1"/>
+                            <constraint firstItem="GVm-2i-3L4" firstAttribute="leading" secondItem="1l2-Mt-io0" secondAttribute="leadingMargin" constant="80" id="LVa-eN-xkg"/>
+                            <constraint firstItem="Xup-GC-Ii6" firstAttribute="top" secondItem="GVm-2i-3L4" secondAttribute="bottom" id="RlX-mg-eKQ"/>
+                            <constraint firstItem="GVm-2i-3L4" firstAttribute="leading" secondItem="1l2-Mt-io0" secondAttribute="leadingMargin" id="bYw-Qs-0uV"/>
+                            <constraint firstItem="GVm-2i-3L4" firstAttribute="top" secondItem="non-wZ-FYo" secondAttribute="bottom" constant="20" id="dLh-oz-u2g"/>
+                            <constraint firstItem="GVm-2i-3L4" firstAttribute="top" secondItem="non-wZ-FYo" secondAttribute="bottom" id="tzr-gq-1XS"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="GVm-2i-3L4" secondAttribute="trailing" id="utC-ca-d0Y"/>
+                            <constraint firstItem="GVm-2i-3L4" firstAttribute="trailing" secondItem="1l2-Mt-io0" secondAttribute="trailingMargin" id="zVi-FX-ISa"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="LVa-eN-xkg"/>
+                                <exclude reference="bYw-Qs-0uV"/>
+                                <exclude reference="dLh-oz-u2g"/>
+                                <exclude reference="tzr-gq-1XS"/>
+                                <exclude reference="zVi-FX-ISa"/>
+                                <exclude reference="37W-DB-bcQ"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" id="KLr-WD-I2R"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XMb-oO-VDX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3541" y="1052"/>
+        </scene>
         <!--Afbeelding Detail View Controller-->
         <scene sceneID="QkB-bK-TcD">
             <objects>
@@ -731,12 +787,12 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gBr-1o-c4l">
-                                <rect key="frame" x="16" y="424.5" width="568" height="30"/>
+                                <rect key="frame" x="16" y="424" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bent u lid van de socialistische mutualiteit? " lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fsh-T0-4Sa">
-                                <rect key="frame" x="16" y="104" width="335.5" height="20.5"/>
+                                <rect key="frame" x="16" y="104" width="568" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -756,17 +812,29 @@
                                     <segue destination="xj6-b1-6XR" kind="show" identifier="gaTerug" id="7Pw-Uu-eiY"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uqW-jm-he0">
+                                <rect key="frame" x="16" y="462" width="198" height="30"/>
+                                <state key="normal" title="Waar vind ik deze nummers?">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="eo3-QX-La5" kind="push" id="AjK-cZ-Fuz"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="gBr-1o-c4l" firstAttribute="trailing" secondItem="OaM-e4-sMk" secondAttribute="trailingMargin" id="31l-do-r3Y"/>
                             <constraint firstItem="Fsh-T0-4Sa" firstAttribute="top" secondItem="5IY-zh-MZg" secondAttribute="bottom" constant="40" id="9UQ-g6-mwe"/>
+                            <constraint firstItem="h54-IA-4ZC" firstAttribute="top" secondItem="uqW-jm-he0" secondAttribute="bottom" constant="8" id="Afg-lJ-fEP"/>
                             <constraint firstItem="Ffo-9X-igg" firstAttribute="top" secondItem="MfE-6E-2Xb" secondAttribute="bottom" constant="7" id="B6C-Dd-ruz"/>
                             <constraint firstItem="74u-0a-ryP" firstAttribute="trailing" secondItem="OaM-e4-sMk" secondAttribute="trailingMargin" id="CPt-iP-cwW"/>
                             <constraint firstItem="m1W-MR-gUq" firstAttribute="leading" secondItem="OaM-e4-sMk" secondAttribute="leadingMargin" id="H63-W5-232"/>
                             <constraint firstItem="m1W-MR-gUq" firstAttribute="top" secondItem="8Av-pM-lTQ" secondAttribute="bottom" constant="8" id="HGj-Pd-WjI"/>
+                            <constraint firstItem="uqW-jm-he0" firstAttribute="leading" secondItem="OaM-e4-sMk" secondAttribute="leadingMargin" id="HTq-mI-sHa"/>
                             <constraint firstItem="o7V-bX-HUj" firstAttribute="trailing" secondItem="OaM-e4-sMk" secondAttribute="trailingMargin" id="JFw-Jd-qOT"/>
                             <constraint firstItem="ARF-UY-Xdf" firstAttribute="leading" secondItem="OaM-e4-sMk" secondAttribute="leadingMargin" id="M59-Sr-uhZ"/>
+                            <constraint firstItem="uqW-jm-he0" firstAttribute="top" secondItem="gBr-1o-c4l" secondAttribute="bottom" constant="8" id="Nha-Fj-QB5"/>
                             <constraint firstItem="Ffo-9X-igg" firstAttribute="leading" secondItem="OaM-e4-sMk" secondAttribute="leadingMargin" id="SIB-YR-eIg"/>
                             <constraint firstItem="8Av-pM-lTQ" firstAttribute="leading" secondItem="OaM-e4-sMk" secondAttribute="leadingMargin" id="SLL-h9-0bG"/>
                             <constraint firstItem="o7V-bX-HUj" firstAttribute="leading" secondItem="OaM-e4-sMk" secondAttribute="leadingMargin" id="STD-Yd-ff6"/>
@@ -778,6 +846,7 @@
                             <constraint firstItem="m7p-Dv-81d" firstAttribute="top" secondItem="Fsh-T0-4Sa" secondAttribute="bottom" constant="8" id="dNP-OM-j5t"/>
                             <constraint firstItem="m7p-Dv-81d" firstAttribute="leading" secondItem="OaM-e4-sMk" secondAttribute="leadingMargin" id="ewi-Pq-9DE"/>
                             <constraint firstItem="gBr-1o-c4l" firstAttribute="leading" secondItem="OaM-e4-sMk" secondAttribute="leadingMargin" id="gcM-fk-Kac"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="uqW-jm-he0" secondAttribute="trailing" constant="370" id="hPc-B7-VM6"/>
                             <constraint firstItem="Fsh-T0-4Sa" firstAttribute="leading" secondItem="OaM-e4-sMk" secondAttribute="leadingMargin" id="its-u2-PDD"/>
                             <constraint firstItem="m7p-Dv-81d" firstAttribute="leading" secondItem="OaM-e4-sMk" secondAttribute="leadingMargin" id="ixS-bJ-XXV"/>
                             <constraint firstItem="ARF-UY-Xdf" firstAttribute="top" secondItem="o7V-bX-HUj" secondAttribute="bottom" constant="11" id="kXv-xc-RrY"/>
@@ -788,6 +857,7 @@
                             <constraint firstItem="MfE-6E-2Xb" firstAttribute="leading" secondItem="OaM-e4-sMk" secondAttribute="leadingMargin" id="pfT-mC-hI5"/>
                             <constraint firstItem="K80-KY-GXh" firstAttribute="leading" secondItem="OaM-e4-sMk" secondAttribute="leadingMargin" id="qna-3a-A6t"/>
                             <constraint firstItem="m1W-MR-gUq" firstAttribute="trailing" secondItem="OaM-e4-sMk" secondAttribute="trailingMargin" id="r6A-3s-Fw0"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Fsh-T0-4Sa" secondAttribute="trailing" id="reJ-e2-Sy7"/>
                             <constraint firstItem="o7V-bX-HUj" firstAttribute="top" secondItem="K80-KY-GXh" secondAttribute="bottom" constant="6" id="vVM-da-DcP"/>
                             <constraint firstItem="Ffo-9X-igg" firstAttribute="trailing" secondItem="OaM-e4-sMk" secondAttribute="trailingMargin" id="wlr-Gv-WN4"/>
                             <constraint firstItem="Fsh-T0-4Sa" firstAttribute="leading" secondItem="OaM-e4-sMk" secondAttribute="leadingMargin" id="yVB-JH-oyO"/>
@@ -798,11 +868,14 @@
                                 <exclude reference="yVB-JH-oyO"/>
                                 <exclude reference="ewi-Pq-9DE"/>
                                 <exclude reference="m4b-gB-lnJ"/>
+                                <exclude reference="hPc-B7-VM6"/>
+                                <exclude reference="Afg-lJ-fEP"/>
                                 <exclude reference="W8a-4W-cpf"/>
                             </mask>
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Registreren" id="XDx-Ng-P49">
+                        <barButtonItem key="backBarButtonItem" title="Terug" id="0RI-iT-a2S"/>
                         <barButtonItem key="leftBarButtonItem" title="Menu" id="19o-nJ-TWu">
                             <connections>
                                 <action selector="toggle:" destination="fyb-xH-x0i" id="aes-6c-sMY"/>
@@ -817,6 +890,7 @@
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="buttonNummers" destination="uqW-jm-he0" id="faw-Nf-pSS"/>
                         <outlet property="isLid" destination="m7p-Dv-81d" id="c1g-r4-jDp"/>
                         <outlet property="lblAansluitingsNr" destination="MfE-6E-2Xb" id="TP2-zY-Exv"/>
                         <outlet property="lblAansluitingsNrTweedeOuder" destination="ARF-UY-Xdf" id="xyu-dg-6zn"/>
@@ -2550,8 +2624,11 @@
             <point key="canvasLocation" x="2829" y="1052"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Klevertje.png" width="615" height="427"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="1pu-rM-ZIZ"/>
+        <segue reference="7Pw-Uu-eiY"/>
         <segue reference="Vpx-YM-klv"/>
     </inferredMetricsTieBreakers>
 </document>
