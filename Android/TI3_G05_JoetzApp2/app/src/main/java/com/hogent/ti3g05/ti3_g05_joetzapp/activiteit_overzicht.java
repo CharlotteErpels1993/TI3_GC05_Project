@@ -113,7 +113,7 @@ public class activiteit_overzicht extends Fragment implements SwipeRefreshLayout
             mProgressDialog.setMessage("Aan het laden...");
             mProgressDialog.setIndeterminate(false);
             // Show progressdialog
-            //mProgressDialog.show();
+            mProgressDialog.show();
         }
 
         @Override
@@ -121,9 +121,10 @@ public class activiteit_overzicht extends Fragment implements SwipeRefreshLayout
             // Create the array
             vakanties = new ArrayList<Vakantie>();
 
+            boolean meh = true;
             //TODO indien connectie er niet is, gegevens ophalen van de sqliteDB
-           /* if(!conn.isConnectingToInternet())
-            {
+            /*if(!meh/*conn.isConnectingToInternet()*///)
+           /* {
                 vakanties = myDB.getVakanties();
             }
             else {*/
@@ -177,6 +178,7 @@ public class activiteit_overzicht extends Fragment implements SwipeRefreshLayout
                         //handler.toevoegenGegevensVakantie(map);
 
                         vakanties.add(map);
+                        myDB.insertVakantie(map);
 
                     }
 
@@ -210,6 +212,12 @@ public class activiteit_overzicht extends Fragment implements SwipeRefreshLayout
 
 
                 } catch (ParseException e) {
+
+                    //hier zeggen van gebruik sql database anders?
+                    //maar eerst isconnected proberen
+                    vakanties = myDB.getVakanties();
+
+
                     Log.e("Error", e.getMessage());
                     e.printStackTrace();
                 }

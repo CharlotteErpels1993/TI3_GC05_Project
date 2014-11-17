@@ -65,8 +65,13 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put(Constants.COLUMN_INBEGREPENINPRIJS, vakantie.getInbegrepenInPrijs());
         values.put(Constants.COLUMN_BMLEDENPRIJS,(Integer) vakantie.getBondMoysonLedenPrijs());
 
+        if((Integer)vakantie.getSterPrijs1Ouder()<0)
+            vakantie.setSterPrijs1Ouder(0);
+        if((Integer)vakantie.getSterPrijs2Ouder()<0)
+            vakantie.setSterPrijs2Ouder(0);
+
         values.put(Constants.COLUMN_STERPRIJSOUDER1,(Integer) vakantie.getSterPrijs1Ouder());
-        values.put(Constants.COLUMN_STERPRIJS2OUDERS,(Integer) vakantie.getSterPrijs2Ouder());
+        //values.put(Constants.COLUMN_STERPRIJS2OUDERS,(Integer) vakantie.getSterPrijs2Ouder());
         SQLiteDatabase db = this.getWritableDatabase();
 
         Long id = db.insert(TABLE_VAKANTIE, null, values);
@@ -122,7 +127,7 @@ public class DBHandler extends SQLiteOpenHelper {
             vakantie.setInbegrepenInPrijs(cursor.getString(15));
             vakantie.setBondMoysonLedenPrijs(Integer.parseInt(cursor.getString(16)));
             vakantie.setSterPrijs1Ouder(Integer.parseInt(cursor.getString(17)));
-            vakantie.setSterPrijs2Ouder(Integer.parseInt(cursor.getString(18)));
+            //vakantie.setSterPrijs2Ouder(Integer.parseInt(cursor.getString(18)));
         } else
         {
             vakantie = null;
