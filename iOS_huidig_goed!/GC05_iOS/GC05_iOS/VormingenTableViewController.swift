@@ -4,7 +4,11 @@ class VormingenTableViewController: UITableViewController, UISearchBarDelegate, 
     
     var vormingen: [Vorming] = []
     var vormingen2: [Vorming] = []
-    var monitor: Monitor!
+    //var monitor: Monitor!
+    
+    @IBAction func toggle(sender: AnyObject) {
+        toggleSideMenuView()
+    }
     
     @IBOutlet weak var zoekbar: UISearchBar!
     
@@ -52,7 +56,7 @@ class VormingenTableViewController: UITableViewController, UISearchBarDelegate, 
             let vormingDetailsController = segue.destinationViewController as VormingDetailsTableViewController
             let selectedVorming = vormingen[tableView.indexPathForSelectedRow()!.row]
             vormingDetailsController.vorming = selectedVorming as Vorming
-            vormingDetailsController.monitor = self.monitor
+            //vormingDetailsController.monitor = self.monitor
         }
         
     }

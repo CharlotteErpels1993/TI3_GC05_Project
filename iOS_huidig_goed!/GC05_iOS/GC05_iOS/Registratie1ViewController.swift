@@ -21,7 +21,12 @@ class Registratie1ViewController: UIViewController
     @IBOutlet weak var txtAansluitingsNrTweedeOuder: UITextField!
     
     @IBAction func annuleer(sender: AnyObject) {
+        ouder = nil
         //performSegueWithIdentifier("gaTerug", sender: self)
+    }
+    
+    @IBAction func toggle(sender: AnyObject) {
+        toggleSideMenuView()
     }
     
     override func viewDidLoad() {
@@ -63,7 +68,10 @@ class Registratie1ViewController: UIViewController
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "volgende" {
         let registratie3ViewController = segue.destinationViewController as Registratie3ViewController
+        
+        
         
         //TO DO: controleren op formaat van ingevulde text! (String, int, ...)
         
@@ -82,6 +90,9 @@ class Registratie1ViewController: UIViewController
             }
         }
         registratie3ViewController.ouder = ouder
+        } else if segue.identifier == "gaTerug" {
+                let vakantiesViewController = segue.destinationViewController as VakantiesTableViewController
+            }
         
     }
     

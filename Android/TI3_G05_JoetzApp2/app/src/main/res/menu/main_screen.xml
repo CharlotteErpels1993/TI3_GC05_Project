@@ -1,6 +1,5 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.hogent.ti3g05.ti3_g05_joetzapp.MainScreen" >
+    xmlns:tools="http://schemas.android.com/tools" >
 
     <item android:id="@+id/inloggen"
         android:title="@string/title_activity_Login"

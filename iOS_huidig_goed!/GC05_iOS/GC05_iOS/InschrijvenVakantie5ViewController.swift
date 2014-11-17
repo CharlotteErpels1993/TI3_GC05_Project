@@ -7,7 +7,7 @@ class InschrijvenVakantie5ViewController : UIViewController {
     var deelnemer: Deelnemer!
     var contactpersoon1: ContactpersoonNood!
     var contactpersoon2: ContactpersoonNood?
-    var ouder: Ouder!
+    //var ouder: Ouder!
     
     @IBOutlet weak var switchExtraInfo: UISwitch!
     
@@ -31,6 +31,7 @@ class InschrijvenVakantie5ViewController : UIViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "volgende" {
         let inschrijvenVakantieSuccesvolViewController = segue.destinationViewController as InschrijvenVakantieSuccesvolViewController
     
         if wilExtraInfo == true {
@@ -45,10 +46,13 @@ class InschrijvenVakantie5ViewController : UIViewController {
         }
         inschrijvenVakantieSuccesvolViewController.deelnemer = deelnemer
         inschrijvenVakantieSuccesvolViewController.contactpersoon1 = contactpersoon1
-        inschrijvenVakantieSuccesvolViewController.ouder = ouder
+        //inschrijvenVakantieSuccesvolViewController.ouder = ouder
         
         if contactpersoon2 != nil {
             inschrijvenVakantieSuccesvolViewController.contactpersoon2 = contactpersoon2
+        }
+        } else if segue.identifier == "gaTerug" {
+            let vakantiesTableViewController = segue.destinationViewController as VakantiesTableViewController
         }
     
     }

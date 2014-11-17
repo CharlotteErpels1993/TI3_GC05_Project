@@ -26,20 +26,33 @@ class VakantieDetailsTableViewController: UITableViewController {
     
     var vakantie: Vakantie!
     var images: [UIImage] = []
-    var ouder: Ouder?
+    //var ouder: Ouder?
+    //var currentUser: PFUser?
     var query = PFQuery(className: "Vakantie")
     var beschrijving: String!
     
     override func viewDidLoad() {
+        zoekImages()
+        hideSideMenuView()
         query.getObjectInBackgroundWithId(vakantie.id) {
             (vakantie: PFObject!, error: NSError!) -> Void in
             if error == nil {
-                self.zoekImage1(vakantie)
+                /*self.zoekImage1(vakantie)
                 self.zoekImage2(vakantie)
-                self.zoekImage3(vakantie)
+                self.zoekImage3(vakantie)*/
                 /*self.images.append(self.afbeelding1.image!)
                 self.images.append(self.afbeelding2.image!)
                 self.images.append(self.afbeelding3.image!)*/
+                if self.images.count >= 3 {
+                    self.afbeelding1.image = self.images[0]
+                    self.afbeelding2.image = self.images[1]
+                    self.afbeelding3.image = self.images[2]
+                } else if self.images.count == 2 {
+                    self.afbeelding1.image = self.images[0]
+                    self.afbeelding2.image = self.images[1]
+                } else if self.images.count == 1 {
+                    self.afbeelding1.image = self.images[0]
+                }
             }
         }
         
@@ -62,7 +75,11 @@ class VakantieDetailsTableViewController: UITableViewController {
         
         var euroSymbol: String = "€"
         
-        if ouder != nil {
+        if PFUser.currentUser() != nil {
+        var gebruikerPF = PFUser.currentUser()
+        var soort: String = gebruikerPF["soort"] as String
+        
+            if soort == "ouder" {
             basisprijsLabel.text = String("Basisprijs: \(vakantie.basisprijs) " + euroSymbol)
             inbegrepenPrijs.text = String("Inbegrepen prijs: \(vakantie.inbegrepenPrijs) ")
             if (vakantie.bondMoysonLedenPrijs != -1) {
@@ -80,6 +97,7 @@ class VakantieDetailsTableViewController: UITableViewController {
             } else {
                 sterPrijs2Label.text = String("Ster prijs (2 ouders): /")
             }
+            }
 
         } else {
         basisprijsLabel.hidden = true
@@ -94,6 +112,26 @@ class VakantieDetailsTableViewController: UITableViewController {
         
         //navigationItem.rightBarButtonItem.
 
+    }
+    
+    func zoekImages() {
+        var query = PFQuery(className: "Afbeelding")
+        query.whereKey("VakantieID", equalTo: vakantie.id)
+        query.findObjectsInBackgroundWithBlock({(NSArray objects, NSError error) in
+            if(error == nil) {
+                
+                for object in objects {
+                    let imageFile = object["Afbeelding"] as PFFile
+                    imageFile.getDataInBackgroundWithBlock { (imageData: NSData!, error: NSError!) -> Void in
+                        if error == nil {
+                            var afb = UIImage(data: imageData)
+                            self.images.append(afb!)
+                        }
+                        
+                    }
+                }
+            }
+        })
     }
     
     /*override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -121,13 +159,13 @@ class VakantieDetailsTableViewController: UITableViewController {
         } else if segue.identifier == "inschrijven" {
             let inschrijvenVakantie1ViewController = segue.destinationViewController as InschrijvenVakantie1ViewController
             inschrijvenVakantie1ViewController.vakantie = vakantie
-            inschrijvenVakantie1ViewController.ouder = ouder
+            //inschrijvenVakantie1ViewController.ouder = ouder
         }
     }
 
 
     
-    func zoekImage1(vakantie: PFObject!) {
+    /*func zoekImage1(vakantie: PFObject!) {
                   let imageFile = vakantie["vakAfbeelding1"] as PFFile
                 imageFile.getDataInBackgroundWithBlock {
                     (imageData: NSData!, error: NSError!) -> Void in
@@ -159,5 +197,5 @@ class VakantieDetailsTableViewController: UITableViewController {
                         print(afb)
                     } // if - end
                 } // getDataInBackgroundWithBlock - end
-    }
+    }*/
 }

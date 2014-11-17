@@ -11,7 +11,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
-import com.hogent.ti3g05.ti3_g05_joetzapp.MainScreen;
 import com.hogent.ti3g05.ti3_g05_joetzapp.R;
 import com.hogent.ti3g05.ti3_g05_joetzapp.navBarMainScreen;
 import com.parse.LogInCallback;
@@ -54,7 +53,7 @@ public class Login extends Activity{
         //ParseAnalytics.trackAppOpened(getIntent());
 
         // creating connection detector class instance
-        cd = new ConnectionDetector(getApplicationContext());
+        //cd = new ConnectionDetector(getApplicationContext());
 
         btn_LoginIn = (Button) findViewById(R.id.btn_login);
         btn_SignUp = (Button) findViewById(R.id.btn_signup);
@@ -68,7 +67,7 @@ public class Login extends Activity{
             @Override
             public void onClick(View v) {
                 // get Internet status
-                isInternetPresent = cd.isConnectingToInternet();
+                //isInternetPresent = cd.isConnectingToInternet();
                 // check for Internet status
                 if (isInternetPresent) {
                     // Internet Connection is Present

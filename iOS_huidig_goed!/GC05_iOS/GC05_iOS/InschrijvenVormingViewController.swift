@@ -4,7 +4,7 @@ class InschrijvenVormingViewController: UIViewController, UIPickerViewDataSource
     
     @IBOutlet weak var pickerView: UIPickerView!
     
-    var monitor: Monitor!
+    //var monitor: Monitor!
     var pickerData: [String] = []
     var vorming: Vorming!
     var inschrijvingVorming: InschrijvingVorming = InschrijvingVorming(id: "test")
@@ -33,10 +33,17 @@ class InschrijvenVormingViewController: UIViewController, UIPickerViewDataSource
         if segue.identifier == "inschrijven" {
             let inschrijvenVormingSuccesvolViewController = segue.destinationViewController as InschrijvenVormingSuccesvolViewController
             
-            inschrijvingVorming.monitor = self.monitor
+            var query = PFQuery(className: "Monitor")
+            query.whereKey("email", containsString: PFUser.currentUser().email)
+            var monitorPF = query.getFirstObject()
+            var monitor = Monitor(monitor: monitorPF)
+            
+            inschrijvingVorming.monitor = monitor
             inschrijvingVorming.vorming = self.vorming
             
             inschrijvenVormingSuccesvolViewController.inschrijvingVorming = self.inschrijvingVorming
+        } else if segue.identifier == "gaTerug" {
+            let vormingenTableViewController = segue.destinationViewController as VormingenTableViewController
         }
     }
 }

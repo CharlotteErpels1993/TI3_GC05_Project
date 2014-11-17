@@ -61,14 +61,6 @@
             android:layout_marginTop="25dp"
             android:text="@string/volgende" />
 
-        <Button
-            android:id="@+id/btnNaarDeel1V"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/btnNaarDeel3V"
-            android:text="@string/back"
-            android:layout_marginTop="8dp"/>
-
 
     </RelativeLayout>
 </ScrollView>

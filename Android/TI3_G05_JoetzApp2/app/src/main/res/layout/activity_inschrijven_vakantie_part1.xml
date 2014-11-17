@@ -52,7 +52,7 @@
             android:onClick="showDatePickerDialog"
             android:layout_below="@id/Naam"
             android:layout_marginTop="25dp"
-            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
             />
 
         <EditText
@@ -113,15 +113,6 @@
             android:layout_below="@id/Postcode"
             android:layout_marginTop="25dp"
             android:text="@string/volgende" />
-
-        <Button
-            android:id="@+id/btnNaarOverzicht"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/btnNaarDeel2Vak"
-            android:text="@string/back"
-            android:layout_marginTop="8dp"/>
-
 
     </RelativeLayout>
 </ScrollView>

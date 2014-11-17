@@ -32,6 +32,7 @@ public class InschrijvenVakantiePart2 extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inschrijven_vakantie_part2);
+        cd = new ConnectionDetector(getApplicationContext());
 
         txtVoornaam = (EditText) findViewById(R.id.VoornaamContactPersoon);
         txtNaam = (EditText) findViewById(R.id.NaamContactPersoon);
@@ -52,17 +53,6 @@ public class InschrijvenVakantiePart2 extends Activity {
                     // Ask user to connect to Internet
                     Toast.makeText(getApplicationContext(), getString(R.string.error_no_internet), Toast.LENGTH_SHORT).show();
                 }
-            }
-        });
-
-        btnTerug = (Button) findViewById(R.id.btnNaarDeel1V);
-        btnTerug.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                Intent intent = new Intent(InschrijvenVakantiePart2.this, activiteit_overzicht.class);
-                startActivity(intent);
-
-                overridePendingTransition(R.anim.right_in, R.anim.left_out);
             }
         });
 
@@ -105,7 +95,7 @@ public class InschrijvenVakantiePart2 extends Activity {
             focusView = txtGSM;
             cancel = true;
         }else{
-            if (!gsm.matches("[0-9]+") && gsm.length() == 10){
+            if (!gsm.matches("[0-9]+") || gsm.length() != 10){
                 txtGSM.setError(getString(R.string.error_incorrect_gsm));
                 focusView = txtGSM;
                 cancel = true;
@@ -117,7 +107,7 @@ public class InschrijvenVakantiePart2 extends Activity {
             focusView = txtTelefoon;
             cancel = true;
         }else{
-            if (!telefoon.matches("[0-9]+") && telefoon.length() == 9){
+            if (!telefoon.matches("[0-9]+") || telefoon.length() != 9){
                 txtTelefoon.setError(getString(R.string.error_incorrect_tel));
                 focusView = txtTelefoon;
                 cancel = true;
@@ -150,10 +140,36 @@ public class InschrijvenVakantiePart2 extends Activity {
         }
     }
 
-    private void opslaan(String voornaam,String naam, String telefoon, String gsm) {
+    private void opslaan(String voornaamCP,String naamCP, String telefoonCP, String gsmCP) {
+        Toast.makeText(getApplicationContext(), getString(R.string.loading_message), Toast.LENGTH_SHORT).show();
+        Intent in = new Intent(getApplicationContext(),InschrijvenVakantiePart3.class);
 
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            String voornaam = extras.getString("voornaam");
+            String naam = extras.getString("naam");
+            String straat = extras.getString("straat");
+            String huisnr = extras.getString("huisnr");
+            String bus = extras.getString("bus");
+            String gemeente = extras.getString("gemeente");
+            String postcode = extras.getString("postcode");
+            in.putExtra("voornaam", voornaam);
+            in.putExtra("naam", naam);
+            in.putExtra("straat", straat);
+            in.putExtra("huisnr", huisnr);
+            in.putExtra("bus", bus);
+            in.putExtra("gemeente", gemeente);
+            in.putExtra("postcode", postcode);
+        }
 
+        in.putExtra("voornaamCP", voornaamCP);
+        in.putExtra("naamCP", naamCP);
+        in.putExtra("telefoonCP", telefoonCP);
+        in.putExtra("gsmCP", gsmCP);
 
+        startActivity(in);
+
+        overridePendingTransition(R.anim.right_in, R.anim.left_out);
     }
 
 

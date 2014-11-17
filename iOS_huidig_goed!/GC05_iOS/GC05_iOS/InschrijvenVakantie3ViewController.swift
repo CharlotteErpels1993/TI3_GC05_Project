@@ -8,7 +8,7 @@ class InschrijvenVakantie3ViewController : UIViewController {
     var redColor: UIColor = UIColor.redColor()
     var statusTextFields: [String: String] = [:]
     var contactpersoon: ContactpersoonNood! = ContactpersoonNood(id: "test")
-    var ouder: Ouder!
+    //var ouder: Ouder!
     
     @IBOutlet weak var txtVoornaam: UITextField!
     @IBOutlet weak var txtNaam: UITextField!
@@ -16,6 +16,7 @@ class InschrijvenVakantie3ViewController : UIViewController {
     @IBOutlet weak var txtGsm: UITextField!
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "volgende" {
         let inschrijvenVakantie4ViewController = segue.destinationViewController as InschrijvenVakantie4ViewController
         
         setStatusTextFields()
@@ -32,7 +33,10 @@ class InschrijvenVakantie3ViewController : UIViewController {
         
             inschrijvenVakantie4ViewController.contactpersoon1 = contactpersoon
             inschrijvenVakantie4ViewController.deelnemer = deelnemer
-            inschrijvenVakantie4ViewController.ouder = ouder
+            //inschrijvenVakantie4ViewController.ouder = ouder
+        }
+        } else if segue.identifier == "gaTerug" {
+            let vakantiesTableViewController = segue.destinationViewController as VakantiesTableViewController
         }
     }
     

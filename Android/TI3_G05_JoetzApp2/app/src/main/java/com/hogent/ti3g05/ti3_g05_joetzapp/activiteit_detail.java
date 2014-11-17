@@ -110,6 +110,8 @@ public class activiteit_detail extends Activity {
         btnmeerInfo = (Button) findViewById(R.id.btnMeerInfo);
         btnminderInfo = (Button) findViewById(R.id.btnMinderInfo);
 
+        btnminderInfo.setVisibility(View.GONE);
+
         ImageView afbeelding1im = (ImageView) findViewById(R.id.afbeelding1);
         ImageView afbeelding2im = (ImageView) findViewById(R.id.afbeelding2);
 
@@ -246,7 +248,6 @@ public class activiteit_detail extends Activity {
             txtformule.setVisibility(View.GONE);
             txtmaxDeeln.setVisibility(View.GONE);
             txtInbegrepenInPrijs.setVisibility(View.GONE);
-            btnminderInfo.setVisibility(View.GONE);
             btnmeerInfo.setVisibility(View.GONE);
             verberg.setVisibility(View.GONE);
 
@@ -256,7 +257,6 @@ public class activiteit_detail extends Activity {
             btnInschrijven.setVisibility(View.VISIBLE);
             btnmeerInfo.setVisibility(View.VISIBLE);
             verberg.setVisibility(View.GONE);
-            btnminderInfo.setVisibility(View.VISIBLE);
 
             //toon normale prijs
             txtPrijs.setVisibility(View.VISIBLE);
