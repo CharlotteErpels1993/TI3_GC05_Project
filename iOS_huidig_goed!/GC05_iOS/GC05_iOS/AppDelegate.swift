@@ -17,6 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             PFUser.logOut()
         }
         
+        //rode tekstkleur
+        
+        
         /*var object = PFObject(className: "test")
         object.setValue("Banana", forKey: "favoriteFood")
         object.setValue("Chocolate", forKey: "favoriteIceCream")
