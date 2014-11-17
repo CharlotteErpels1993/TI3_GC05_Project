@@ -27,6 +27,8 @@ public class Vakantie extends Activiteit{
     private String prijsStr;
     private String periode;
     private String vakantieID;
+    private String locatie;
+    private String korteBeschrijving;
 
     private HashMap<String, ArrayList<String>> fotos;
 
@@ -35,6 +37,11 @@ public class Vakantie extends Activiteit{
 
     }
 
+    public void setLocatie(String locatie){this.locatie = locatie;}
+    public String getLocatie() {return locatie;}
+
+    public void setKorteBeschrijving(String korteBeschrijving){this.korteBeschrijving = korteBeschrijving;}
+    public String getKorteBeschrijving(){return korteBeschrijving;}
     /*public String toString(){
         Calendar cal = Calendar.getInstance();
         cal.setTime(getVertrekDatum());

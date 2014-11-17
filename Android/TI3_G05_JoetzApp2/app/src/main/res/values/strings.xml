@@ -78,7 +78,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
     <string name="error_incorrect_tel">Ongeldig telefoon nummer (precies 9 cijfers, geen spaties of speciale tekens)</string>
     <string name="dialog_ingeschreven_melding">U heeft zich succesvol ingeschreven.</string>
     <string-array name="items">
-        <item>Vakanties</item>
+
         <item>Profielen</item>
         <item>Vormingen</item>
         <item>about</item>

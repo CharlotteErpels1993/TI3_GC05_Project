@@ -10,6 +10,7 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
@@ -25,6 +26,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.DBHandler;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ListViewAdapter;
 import com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.Login;
 import com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.SignUp_deel1;
@@ -38,6 +40,8 @@ public class activiteit_overzicht extends Fragment {
 
     private ListView listview;
     private List<ParseObject> ob;
+
+    DBHandler handler = new DBHandler(getActivity(), null);
     Vakantie map;
     private ProgressDialog mProgressDialog;
     private ListViewAdapter adapter;
@@ -79,6 +83,8 @@ public class activiteit_overzicht extends Fragment {
         protected Void doInBackground(Void... params) {
             // Create the array
             vakanties = new ArrayList<Vakantie>();
+
+            //TODO indien connectie er niet is, gegevens ophalen van de sqliteDB
             try {
                 // Locate the class table named "vakantie" in Parse.com
                 ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(
@@ -121,6 +127,11 @@ public class activiteit_overzicht extends Fragment {
                     map.setFoto1(image.getUrl());
                     map.setFoto2(image2.getUrl());
                     map.setFoto3(image3.getUrl());
+
+                    //hier ook naar database schrijven denkk?
+                    //TODO hier naar db sqlite
+
+                    //handler.toevoegenGegevensVakantie(map);
 
                     vakanties.add(map);
 

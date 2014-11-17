@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
@@ -93,6 +94,7 @@ public class ProfielenOverzicht extends Activity {
                     map.setLinkFacebook((String) monitor.get("linkFacebook"));
                     map.setGsm((String) monitor.get("telefoon"));
                     map.setRijksregNr((String) monitor.get("rijksregisterNr"));
+
 
 
                     profielen.add(map);

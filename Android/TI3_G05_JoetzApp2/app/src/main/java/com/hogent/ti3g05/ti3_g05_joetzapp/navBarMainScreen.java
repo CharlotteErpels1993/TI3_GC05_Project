@@ -149,13 +149,13 @@ public class navBarMainScreen extends Activity {
     protected void getUrl(int position) {
 
         switch (position) {
-            case 0:
-                fragment = new activiteit_overzicht();
+            /*case 0:
+                //fragment = new activiteit_overzicht();
                 /*Intent intent = new Intent(navBarMainScreen.this, activiteit_overzicht.class
                 );
-                startActivity(intent);*/
-                break;
-            case 1:
+                startActivity(intent);
+                break;*/
+            case 0:
                 //fragment = new ProfielenOverzicht();
                 if(ParseUser.getCurrentUser()!=null)
                 {
@@ -169,7 +169,7 @@ public class navBarMainScreen extends Activity {
                 }
 
                 break;
-            case 2:
+            case 1:
                 if(ParseUser.getCurrentUser()!=null)
                 {
                     Intent intent2 = new Intent(navBarMainScreen.this, Vormingen_Overzicht.class
@@ -182,7 +182,7 @@ public class navBarMainScreen extends Activity {
                 }
 
                 break;
-            case 3:
+            case 2:
                 fragment = new MainScreen();
 
                 break;
