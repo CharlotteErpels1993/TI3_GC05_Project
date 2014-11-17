@@ -13,6 +13,8 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -36,7 +38,7 @@ import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
-public class activiteit_overzicht extends Fragment {
+public class activiteit_overzicht extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
 
     private ListView listview;
     private List<ParseObject> ob;
@@ -50,6 +52,7 @@ public class activiteit_overzicht extends Fragment {
     private View rootView;
     private List<Vakantie> vakanties = null;
     private EditText filtertext;
+    SwipeRefreshLayout swipeLayout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -60,7 +63,33 @@ public class activiteit_overzicht extends Fragment {
         new RemoteDataTask().execute();
         listview = (ListView) rootView.findViewById(R.id.listView);
         filtertext = (EditText) rootView.findViewById(R.id.filtertext);
+        swipeLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_container);
+        onCreateSwipeToRefresh(swipeLayout);
+
         return rootView;
+    }
+    private void onCreateSwipeToRefresh(SwipeRefreshLayout refreshLayout) {
+
+        refreshLayout.setOnRefreshListener(this);
+
+        refreshLayout.setColorScheme(
+                android.R.color.holo_blue_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_green_light,
+                android.R.color.holo_red_light);
+
+    }
+    @Override
+    public void onRefresh() {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+
+                new RemoteDataTask().execute();
+
+            }
+        }, 1000);
     }
 
     // RemoteDataTask AsyncTask
@@ -185,6 +214,7 @@ public class activiteit_overzicht extends Fragment {
             listview.setAdapter(adapter);
             // Close the progressdialog
             mProgressDialog.dismiss();
+            swipeLayout.setRefreshing(false);
 
             filtertext.addTextChangedListener(new TextWatcher() {
                 @Override
