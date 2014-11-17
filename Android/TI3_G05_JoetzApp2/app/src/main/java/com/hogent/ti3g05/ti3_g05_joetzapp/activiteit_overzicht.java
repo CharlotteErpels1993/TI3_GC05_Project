@@ -29,6 +29,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.DBHandler;
+import com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.myDb;
+import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ListViewAdapter;
 import com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.Login;
 import com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.SignUp_deel1;
@@ -43,8 +45,9 @@ public class activiteit_overzicht extends Fragment implements SwipeRefreshLayout
     private ListView listview;
     private List<ParseObject> ob;
 
-    DBHandler handler = new DBHandler(getActivity(), null);
+    private myDb myDB;
     Vakantie map;
+    private ConnectionDetector conn;
     private ProgressDialog mProgressDialog;
     private ListViewAdapter adapter;
     private ArrayList<String> images = new ArrayList<String>();
@@ -65,6 +68,11 @@ public class activiteit_overzicht extends Fragment implements SwipeRefreshLayout
         filtertext = (EditText) rootView.findViewById(R.id.filtertext);
         swipeLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_container);
         onCreateSwipeToRefresh(swipeLayout);
+
+        myDB = new myDb(rootView.getContext());
+        myDB.open();
+        conn = new ConnectionDetector(rootView.getContext());
+
 
         return rootView;
     }
@@ -105,7 +113,7 @@ public class activiteit_overzicht extends Fragment implements SwipeRefreshLayout
             mProgressDialog.setMessage("Aan het laden...");
             mProgressDialog.setIndeterminate(false);
             // Show progressdialog
-            mProgressDialog.show();
+            //mProgressDialog.show();
         }
 
         @Override
@@ -114,57 +122,64 @@ public class activiteit_overzicht extends Fragment implements SwipeRefreshLayout
             vakanties = new ArrayList<Vakantie>();
 
             //TODO indien connectie er niet is, gegevens ophalen van de sqliteDB
-            try {
-                // Locate the class table named "vakantie" in Parse.com
-                ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(
-                        "Vakantie");
-                // Locate the column named "vertrekdatum" in Parse.com and order list
-                // by ascending
-                query.orderByAscending("vertrekdatum");
-                ob = query.find();
-                for (ParseObject vakantie : ob) {
-                    // Locate images in flag column
-                    ParseFile image = (ParseFile) vakantie.get("vakAfbeelding1");
-                    ParseFile image2 = (ParseFile) vakantie.get("vakAfbeelding2");
-                    ParseFile image3 = (ParseFile) vakantie.get("vakAfbeelding3");
+           /* if(!conn.isConnectingToInternet())
+            {
+                vakanties = myDB.getVakanties();
+            }
+            else {*/
 
-                    map = new Vakantie();
+                try {
+                    // Locate the class table named "vakantie" in Parse.com
+                    ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(
+                            "Vakantie");
+                    // Locate the column named "vertrekdatum" in Parse.com and order list
+                    // by ascending
+                    query.orderByAscending("vertrekdatum");
+                    ob = query.find();
+                    for (ParseObject vakantie : ob) {
+                        // Locate images in flag column
+                        ParseFile image = (ParseFile) vakantie.get("vakAfbeelding1");
+                        ParseFile image2 = (ParseFile) vakantie.get("vakAfbeelding2");
+                        ParseFile image3 = (ParseFile) vakantie.get("vakAfbeelding3");
 
-                    //String prijs = vakantie.get("basisPrijs").toString();
-                    map.setNaamVakantie((String) vakantie.get("titel"));
-                    map.setLocatie((String) vakantie.get("locatie"));
-                    map.setKorteBeschrijving((String) vakantie.get("korteBeschrijving"));
-                    map.setDoelGroep((String) vakantie.get("doelgroep"));
-                    map.setBasisprijs((Number) vakantie.get("basisPrijs"));
-                    map.setMaxAantalDeelnemers((Number) vakantie.get("maxAantalDeelnemers"));
-                    map.setPeriode((String) vakantie.get("aantalDagenNachten"));
-                    map.setFormule((String) vakantie.get("formule"));
-                    map.setVervoerswijze((String) vakantie.get("vervoerwijze"));
-                    map.setVertrekDatum((Date) vakantie.get("vertrekdatum"));
-                    map.setTerugkeerDatum((Date) vakantie.get("terugkeerdatum"));
-                    map.setInbegrepenInPrijs((String) vakantie.get("inbegrepenPrijs"));
-                    map.setVakantieID((String) vakantie.get("objectId"));
-                    if (vakantie.get("bondMoysonLedenPrijs") != null)
-                        map.setBondMoysonLedenPrijs((Number) vakantie.get("bondMoysonLedenPrijs"));
-                    if (vakantie.get("sterPrijs1ouder") != null)
-                        map.setSterPrijs1Ouder((Number) vakantie.get("sterPrijs1ouder"));
-                    if (vakantie.get("sterPrijs2ouders") != null)
-                        map.setSterPrijs2Ouder((Number) vakantie.get("sterPrijs2ouders"));
-                    //TODO gegevens contactpersoon vakantie
+                        map = new Vakantie();
+
+                        //String prijs = vakantie.get("basisPrijs").toString();
+                        map.setNaamVakantie((String) vakantie.get("titel"));
+                        map.setLocatie((String) vakantie.get("locatie"));
+                        map.setKorteBeschrijving((String) vakantie.get("korteBeschrijving"));
+                        map.setDoelGroep((String) vakantie.get("doelgroep"));
+                        map.setBasisprijs((Number) vakantie.get("basisPrijs"));
+                        map.setMaxAantalDeelnemers((Number) vakantie.get("maxAantalDeelnemers"));
+                        map.setPeriode((String) vakantie.get("aantalDagenNachten"));
+                        map.setFormule((String) vakantie.get("formule"));
+                        map.setVervoerswijze((String) vakantie.get("vervoerwijze"));
+                        map.setVertrekDatum((Date) vakantie.get("vertrekdatum"));
+                        map.setTerugkeerDatum((Date) vakantie.get("terugkeerdatum"));
+                        map.setInbegrepenInPrijs((String) vakantie.get("inbegrepenPrijs"));
+                        map.setVakantieID((String) vakantie.get("objectId"));
+                        if (vakantie.get("bondMoysonLedenPrijs") != null)
+                            map.setBondMoysonLedenPrijs((Number) vakantie.get("bondMoysonLedenPrijs"));
+                        if (vakantie.get("sterPrijs1ouder") != null)
+                            map.setSterPrijs1Ouder((Number) vakantie.get("sterPrijs1ouder"));
+                        if (vakantie.get("sterPrijs2ouders") != null)
+                            map.setSterPrijs2Ouder((Number) vakantie.get("sterPrijs2ouders"));
+                        //TODO gegevens contactpersoon vakantie
 
 
-                    map.setFoto1(image.getUrl());
-                    map.setFoto2(image2.getUrl());
-                    map.setFoto3(image3.getUrl());
+                        map.setFoto1(image.getUrl());
+                        map.setFoto2(image2.getUrl());
+                        map.setFoto3(image3.getUrl());
 
-                    //hier ook naar database schrijven denkk?
-                    //TODO hier naar db sqlite
+                        //hier ook naar database schrijven denkk?
+                        //TODO hier naar db sqlite
 
-                    //handler.toevoegenGegevensVakantie(map);
+                        //handler.toevoegenGegevensVakantie(map);
 
-                    vakanties.add(map);
+                        vakanties.add(map);
 
-                }
+                    }
+
                /* ParseQuery<ParseObject> afbeeldingenQuery = new ParseQuery<ParseObject>(
                         "Afbeelding");
                 // Locate the column named "vertrekdatum" in Parse.com and order list
@@ -194,10 +209,11 @@ public class activiteit_overzicht extends Fragment implements SwipeRefreshLayout
                 vakanties.add(map);*/
 
 
-            } catch (ParseException e) {
-                Log.e("Error", e.getMessage());
-                e.printStackTrace();
-            }
+                } catch (ParseException e) {
+                    Log.e("Error", e.getMessage());
+                    e.printStackTrace();
+                }
+            //}
             return null;
         }
 

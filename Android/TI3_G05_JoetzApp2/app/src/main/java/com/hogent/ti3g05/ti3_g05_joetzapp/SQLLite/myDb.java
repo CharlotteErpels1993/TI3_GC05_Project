@@ -7,6 +7,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.util.Log;
 
+import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vakantie;
+
+import java.util.List;
+
 /**
  * Created by Gebruiker on 17/11/2014.
  */
@@ -18,7 +22,7 @@ public class myDb {
 
     public myDb(Context context) {
         this.context = context;
-        db = new DBHandler(context,null);
+        db = new DBHandler(context);
     }
 
     public void open()
@@ -42,17 +46,19 @@ public class myDb {
         }
     }
 
-    public long insertVakantie(ContentValues nieuweVakantie)
+    public long insertVakantie(Vakantie nieuweVakantie)
     {
         return db.toevoegenGegevensVakantie(nieuweVakantie);
     }
 
-    public Cursor getVakanties()
+    public List<Vakantie> getVakanties()
     {
-        String query = "SELECT * FROM" + Constants.TABLE_VAKANTIE;
-        Cursor c = sqLiteDatabase.rawQuery(query,null);
+        return db.krijgAlleVakanties();
+    }
 
-        return c;
+    public Vakantie getVakanie(String naam)
+    {
+        return db.krijgVakanties(naam);
     }
 
 
