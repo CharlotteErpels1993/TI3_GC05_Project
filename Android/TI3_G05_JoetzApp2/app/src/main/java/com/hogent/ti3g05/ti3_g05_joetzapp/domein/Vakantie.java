@@ -29,6 +29,8 @@ public class Vakantie extends Activiteit{
     private String vakantieID;
     private String locatie;
     private String korteBeschrijving;
+    private String vertrekDatumString, terugDatumString;
+
 
     private HashMap<String, ArrayList<String>> fotos;
 
@@ -36,6 +38,12 @@ public class Vakantie extends Activiteit{
         super();
 
     }
+
+    public void setVertrekDatumString(String vertrekDatumString){this.vertrekDatumString = vertrekDatumString;}
+    public String getVertrekDatumString(){return vertrekDatumString;}
+
+    public void setTerugDatumString(String terugDatumString){this.terugDatumString = terugDatumString;}
+    public String getTerugDatumString(){return terugDatumString;}
 
     public void setLocatie(String locatie){this.locatie = locatie;}
     public String getLocatie() {return locatie;}

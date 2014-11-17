@@ -111,8 +111,16 @@ public class ListViewAdapter extends ArrayAdapter<Vakantie> implements Filterabl
                 Intent intent = new Intent(context, activiteit_detail.class);
                 intent.putExtra("naam", (vakanties.get(position).getNaamVakantie()));
                 intent.putExtra("locatie", (vakanties.get(position).getLocatie()));
-                intent.putExtra("vertrekdatum", (vakanties.get(position).getVertrekDatum()).toString());
-                intent.putExtra("terugdatum", (vakanties.get(position).getTerugkeerDatum()).toString());
+                if(vakanties.get(position).getVertrekDatum() == null || vakanties.get(position).getTerugkeerDatum() == null)
+                {
+                    intent.putExtra("vertrekdatum", (vakanties.get(position).getVertrekDatumString()));
+                    intent.putExtra("terugdatum", (vakanties.get(position).getTerugDatumString()));
+                }
+                else
+                {
+                    intent.putExtra("vertrekdatum", (vakanties.get(position).getVertrekDatum()).toString());
+                    intent.putExtra("terugdatum", (vakanties.get(position).getTerugkeerDatum()).toString());
+                }
                 intent.putExtra("prijs", vakanties.get(position).getBasisprijs().toString());
                 intent.putExtra("afbeelding1", vakanties.get(position).getFoto1());
                 intent.putExtra("afbeelding2", vakanties.get(position).getFoto2());
@@ -127,7 +135,7 @@ public class ListViewAdapter extends ArrayAdapter<Vakantie> implements Filterabl
                 intent.putExtra("InbegrepenInPrijs", (vakanties.get(position).getInbegrepenInPrijs()));
                 intent.putExtra("BMledenPrijs", (vakanties.get(position).getBondMoysonLedenPrijs()).toString());
                 intent.putExtra("SterPrijs1Ouder", (vakanties.get(position).getSterPrijs1Ouder()).toString());
-                intent.putExtra("SterPrijs2Ouders", (vakanties.get(position).getSterPrijs2Ouder()).toString());
+                //intent.putExtra("SterPrijs2Ouders", (vakanties.get(position).getSterPrijs2Ouder()).toString());
 
                 context.startActivity(intent);
             }

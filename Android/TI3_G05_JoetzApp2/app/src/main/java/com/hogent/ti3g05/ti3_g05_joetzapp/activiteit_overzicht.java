@@ -71,6 +71,7 @@ public class activiteit_overzicht extends Fragment implements SwipeRefreshLayout
 
         myDB = new myDb(rootView.getContext());
         myDB.open();
+
         conn = new ConnectionDetector(rootView.getContext());
 
 
@@ -113,7 +114,7 @@ public class activiteit_overzicht extends Fragment implements SwipeRefreshLayout
             mProgressDialog.setMessage("Aan het laden...");
             mProgressDialog.setIndeterminate(false);
             // Show progressdialog
-            mProgressDialog.show();
+            //mProgressDialog.show();
         }
 
         @Override

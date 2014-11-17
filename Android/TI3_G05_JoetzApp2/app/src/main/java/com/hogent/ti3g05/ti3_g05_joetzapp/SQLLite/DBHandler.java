@@ -31,7 +31,7 @@ public class DBHandler extends SQLiteOpenHelper {
                 Constants.COLUMN_TERUGDATUM + " TEXT," + Constants.COLUMN_PRIJS + " NUMERIC," + Constants.COLUMN_AFBEELDING1 + " TEXT," +Constants.COLUMN_AFBEELDING2 + " TEXT," +Constants.COLUMN_AFBEELDING3 + " TEXT," +
                 Constants.COLUMN_DOELGROEP + " TEXT," + Constants.COLUMN_BESCHRIJVING + " TEXT," + Constants.COLUMN_PERIODE + " TEXT," + Constants.COLUMN_VERVOER + " TEXT," +
                 Constants.COLUMN_FORMULE + " TEXT," + Constants.COLUMN_MAXDEELNEMERS + " NUMERIC," + Constants.COLUMN_INBEGREPENINPRIJS + " TEXT," + Constants.COLUMN_BMLEDENPRIJS + " NUMERIC," +
-                Constants.COLUMN_STERPRIJSOUDER1 + " NUMERIC" + Constants.COLUMN_STERPRIJS2OUDERS + " NUMERIC" + ")";
+                Constants.COLUMN_STERPRIJSOUDER1 + " NUMERIC," + Constants.COLUMN_STERPRIJS2OUDERS + " NUMERIC" + ")";
         sqLiteDatabase.execSQL(CREATE_VAKANTIE_TABLE);
     }
 
@@ -112,8 +112,8 @@ public class DBHandler extends SQLiteOpenHelper {
             cursor.moveToFirst();
             vakantie.setNaamVakantie(cursor.getString(1));
             vakantie.setLocatie(cursor.getString(2));
-            //vakantie.setVertrekDatum(cursor.getString(3));
-            //vakantie.setTerugdatum(cursor.getString(4));
+            vakantie.setVertrekDatumString(cursor.getString(3));
+            vakantie.setTerugDatumString(cursor.getString(4));
             vakantie.setBasisprijs(Integer.parseInt(cursor.getString(5)));
             vakantie.setFoto1(cursor.getString(6));
             vakantie.setFoto2(cursor.getString(7));
@@ -132,6 +132,7 @@ public class DBHandler extends SQLiteOpenHelper {
         {
             vakantie = null;
         }
+        cursor.close();
         db.close();
         return vakantie;
     }

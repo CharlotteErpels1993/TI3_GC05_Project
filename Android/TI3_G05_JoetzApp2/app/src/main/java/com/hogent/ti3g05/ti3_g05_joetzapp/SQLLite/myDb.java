@@ -62,4 +62,6 @@ public class myDb {
     }
 
 
+    //TODO moet ook voor vormingen en profielen, dus nieuwe tabel aanmaken, en functies in helper
+
 }

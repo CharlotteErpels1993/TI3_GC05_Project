@@ -27,5 +27,5 @@ public class Constants {
     public static final String COLUMN_INBEGREPENINPRIJS = "inbegrepenInPrijs";
     public static final String COLUMN_BMLEDENPRIJS = "BMLedenPrijs";
     public static final String COLUMN_STERPRIJSOUDER1 = "sterPrijsOuder1";
-    public static final String COLUMN_STERPRIJS2OUDERS = "sterPrijs2Ouders";
+    public static final String COLUMN_STERPRIJS2OUDERS = "sterPrijs2Ouder";
 }
