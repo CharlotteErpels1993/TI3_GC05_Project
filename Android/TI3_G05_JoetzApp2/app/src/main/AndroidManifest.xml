@@ -43,7 +43,6 @@
             android:name="com.hogent.ti3g05.ti3_g05_joetzapp.activiteit_detail"
             android:label="@string/title_activity_activiteit_detail" >
         </activity>
-
         <activity
             android:name="com.hogent.ti3g05.ti3_g05_joetzapp.profiel_detail"
             android:label="@string/title_activity_profiel_detail" >
@@ -59,31 +58,23 @@
         <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.Login" />
         <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.ForgetParsePassword" />
         <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.afbeeldingUItvergroot" />
-        <activity
-            android:name="com.hogent.ti3g05.ti3_g05_joetzapp.InschrijvenVakantiePart1"></activity>
-        <activity
-            android:name="com.hogent.ti3g05.ti3_g05_joetzapp.InschrijvenVakantiePart2">
+        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.InschrijvenVakantiePart1" />
+        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.InschrijvenVakantiePart2" >
         </activity>
-        <activity
-            android:name="com.hogent.ti3g05.ti3_g05_joetzapp.InschrijvenVakantiePart3" >
+        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.InschrijvenVakantiePart3" >
         </activity>
-        <activity
-            android:name="com.hogent.ti3g05.ti3_g05_joetzapp.InschrijvenVakantiePart4" >
+        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.InschrijvenVakantiePart4" >
         </activity>
-
-        <activity android:name=".Vormingen_Overzicht"></activity>
-
-        <activity android:name=".VormingDetail"></activity>
-
-        <activity android:name=".ProfielDetail"></activity>
-        <activity android:name=".ProfielenOverzicht"></activity>
-
-        <activity android:name=".Loguit"></activity>
-        <activity android:name=".about"></activity>
-
-
-
-
+        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.Vormingen_Overzicht" />
+        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.VormingDetail" />
+        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.ProfielDetail" />
+        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.ProfielenOverzicht" />
+        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.Loguit" />
+        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.about" />
+        <activity
+            android:name="com.hogent.ti3g05.ti3_g05_joetzapp.InschrijvingSignup"
+            android:label="@string/title_activity_inschrijving_signup" >
+        </activity>
     </application>
 
 </manifest>
