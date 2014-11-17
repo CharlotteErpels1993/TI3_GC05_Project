@@ -19,6 +19,10 @@ class VormingDetailsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.estimatedRowHeight = 44.0
+        //tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
         korteBeschrijvingLabel.text = vorming.korteBeschrijving
         criteriaDeelnemersLabel.text = vorming.criteriaDeelnemers
         locatieLabel.text = String("Locatie: \(vorming.locatie)")
@@ -27,6 +31,23 @@ class VormingDetailsTableViewController: UITableViewController {
         betalingsWijzeLabel.text = String("Betalingswijze: \(vorming.betalingWijze)")
         periodesLabel.text = vorming.periodesToString()
         tipsLabel.text = vorming.tips
+        
+
+    }
+    
+    /*override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        
+        var height: CGFloat = 0.0
+        
+        if indexPath.row == 4 && indexPath.section == 1 {
+            var text: NSString = self.description.
+        }
+        
+        return 44.0
+    }*/
+    
+    override func viewDidAppear(animated: Bool) {
+        tableView.reloadData()
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
