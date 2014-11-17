@@ -79,6 +79,7 @@
         <activity android:name=".ProfielenOverzicht"></activity>
 
         <activity android:name=".Loguit"></activity>
+        <activity android:name=".about"></activity>
 
 
 
