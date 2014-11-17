@@ -35,6 +35,7 @@ class Registratie1ViewController: UIViewController
         self.navigationItem.setHidesBackButton(true, animated: true)
     }
     
+    
     @IBAction func gaTerugNaarRegistreren(segue: UIStoryboard) {
     }
     
