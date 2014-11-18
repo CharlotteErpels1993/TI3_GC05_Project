@@ -31,9 +31,7 @@ enum ENSideMenuPosition : Int {
 extension UIViewController {
     
     public func toggleSideMenuView () {
-        //sideMenuController()?.sideMenu?.toggleMenu()
         sideMenuController()?.sideMenu?.toggleMenu()
-        
     }
     
     public func hideSideMenuView () {
@@ -170,7 +168,7 @@ class ENSideMenu : NSObject {
         self.menuTableViewController.tableView.reloadData()
         isMenuOpen = shouldOpen
         if (bouncingEnabled) {
-            
+            //self.menuTableViewController.tableView.reloadData()
             animator.removeAllBehaviors()
             
             var gravityDirectionX: CGFloat
@@ -209,6 +207,8 @@ class ENSideMenu : NSObject {
             let menuViewBehavior = UIDynamicItemBehavior(items: [sideMenuContainerView])
             menuViewBehavior.elasticity = 0.25
             animator.addBehavior(menuViewBehavior)
+            
+            
             
         }
         else {
@@ -271,6 +271,9 @@ class ENSideMenu : NSObject {
     }
     
     internal func hideSideMenu () {
+
+                //self.menuTableViewController.tableView.reloadInputViews()
+
         if (isMenuOpen) {
             toggleMenu(false)
         }

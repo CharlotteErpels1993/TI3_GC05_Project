@@ -16,14 +16,16 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
     override func viewDidLoad() {
         super.viewDidLoad()
         zoekVakanties()
+        hideSideMenuView()
         zoekbar.showsScopeBar = true
         zoekbar.delegate = self
         
         //if ouder != nil {
         if PFUser.currentUser() != nil {
             self.navigationItem.setHidesBackButton(true, animated: true)
-            self.navigationItem.rightBarButtonItem = nil
+            self.navigationItem.rightBarButtonItem = nil   
         }
+        
         
         //self.navigationItem.rightBarButtonItem.
         
@@ -39,7 +41,7 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
     }
     
     func zoekGefilterdeVakanties(zoek: String) {
-        vakanties2 = vakanties.filter { $0.titel.lowercaseString.rangeOfString(zoek) != nil }
+        vakanties2 = vakanties.filter { $0.titel?.lowercaseString.rangeOfString(zoek) != nil }
         self.tableView.reloadData()
             
     }
@@ -95,7 +97,7 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         let vakantie = vakanties2[indexPath.row]
         cell.gaVerderLabel.text = "Meer details"
         cell.vakantieNaamLabel.text = vakantie.titel
-        cell.doelgroepLabel.text = " \(vakantie.doelgroep) jaar "
+        cell.doelgroepLabel.text! = " \(vakantie.doelgroep!) jaar "
         return cell
     }
 }

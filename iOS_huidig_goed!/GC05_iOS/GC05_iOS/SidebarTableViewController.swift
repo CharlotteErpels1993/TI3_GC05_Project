@@ -3,9 +3,10 @@ import UIKit
 class SidebarTableViewController: UITableViewController {
     var selectedMenuItem : Int = 0
     var arrayKind: [String] = ["Vakanties","Inloggen", "Registreren"]
-    var arrayOuder: [String] = ["Vakanties", "Uitloggen"]
-    var arrayMonitor: [String] = ["Vakanties", "Uitloggen", "Vormingen", "Voorkeur vak.", "Profielen"]
+    var arrayOuder: [String] = ["Uitloggen", "Vakanties"]
+    var arrayMonitor: [String] = ["Uitloggen","Vakanties",  "Vormingen", "Voorkeur vak.", "Profielen"]
     var array: [String]?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +59,8 @@ class SidebarTableViewController: UITableViewController {
             cell!.selectedBackgroundView = selectedBackgroundView
         }
         
+        
+        
         if PFUser.currentUser() == nil {
             cell!.textLabel.text = self.arrayKind[indexPath.row]
 
@@ -80,7 +83,9 @@ class SidebarTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.row == selectedMenuItem {
-            return
+            //tableView.reloadInputViews()
+            hideSideMenuView()
+            //return
         }
         selectedMenuItem = indexPath.row
         
@@ -88,7 +93,8 @@ class SidebarTableViewController: UITableViewController {
         var destViewController: UIViewController
         
         if PFUser.currentUser() == nil {
-            switch indexPath.row {
+            self.tableView.reloadData()
+            switch indexPath.row {  
             case 0:
                 destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
                 break
@@ -100,6 +106,7 @@ class SidebarTableViewController: UITableViewController {
                 break
             default:
                 destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
+                
                 break
             }
             sideMenuController()?.setContentViewController(destViewController)
@@ -107,11 +114,12 @@ class SidebarTableViewController: UITableViewController {
             var gebruikerPF = PFUser.currentUser()
             var soort: String = gebruikerPF["soort"] as String
             if soort == "monitor" {
+                self.tableView.reloadData()
                 switch indexPath.row {
-                case 0:
+                case 1:
                     destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
                     break
-                case 1:
+                case 0:
                     destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Uitloggen") as UIViewController
                     break
                 case 2:
@@ -127,13 +135,16 @@ class SidebarTableViewController: UITableViewController {
                     destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Profiel") as UIViewController
                     break
                 }
+                
+                
                 sideMenuController()?.setContentViewController(destViewController)
             } else if soort == "ouder" {
+                self.tableView.reloadInputViews()
                 switch indexPath.row {
-                case 0:
+                case 1:
                     destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
                     break
-                case 1:
+                case 0:
                     destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Uitloggen") as UIViewController
                     break
                 default:
@@ -169,6 +180,6 @@ class SidebarTableViewController: UITableViewController {
         }
         sideMenuController()?.setContentViewController(destViewController)*/
     }
-    
+
     
 }

@@ -4,22 +4,44 @@ class EigenprofielMonitorViewController: UIViewController
 {
     //var monitor: Monitor!
     
-    //@IBOutlet weak var welkomTxt: UILabel!
+    @IBOutlet weak var welkom: UILabel!
+    @IBOutlet weak var voornaam: UILabel!
+    @IBOutlet weak var naam: UILabel!
+    @IBOutlet weak var email: UILabel!
+    @IBOutlet weak var telefoon: UILabel!
+    @IBOutlet weak var gsm: UILabel!
+    @IBOutlet weak var facebook: UILabel!
     
     @IBAction func toggle(sender: AnyObject) {
         toggleSideMenuView()
     }
     
     override func viewDidLoad() {
-        //navigationItem.title =
         super.viewDidLoad()
-        //navigationItem.titel = "Welkom \(String(monitor.voornaam!)) \(String(monitor.naam!)),"
         var query = PFQuery(className: "Monitor")
         query.whereKey("email", containsString: PFUser.currentUser().email)
         var monitorPF = query.getFirstObject()
         var monitor = Monitor(monitor: monitorPF)
         self.navigationItem.setHidesBackButton(true, animated: true)
-        //welkomTxt.text = "Welkom \(String(monitor.voornaam!)) \(String(monitor.naam!)),"
+        welkom.text = "Welkom \(String(monitor.voornaam!)) \(String(monitor.naam!)),"
+        voornaam.text = monitor.voornaam
+        naam.text = monitor.naam
+        email.text = monitor.email
+        
+        if monitor.telefoon == nil {
+            telefoon.text = "/"
+        } else {
+            telefoon.text = monitor.telefoon
+        }
+        
+        gsm.text = monitor.gsm
+        
+        if monitor.linkFacebook == nil {
+            facebook.text = "Nog niet ingevuld"
+        } else {
+            facebook.text = monitor.linkFacebook
+        }
+        
     }
     
     @IBAction func gaTerugNaarOverzichtMonitor(segue: UIStoryboardSegue) {

@@ -63,8 +63,7 @@
 		A512381B1A1630D1002242C6 /* SidebarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A512381A1A1630D1002242C6 /* SidebarTableViewController.swift */; };
 		A512381D1A16332D002242C6 /* MyNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A512381C1A16332D002242C6 /* MyNavigationController.swift */; };
 		A52976D11A1A0A5E00420FEE /* Klevertje.png in Resources */ = {isa = PBXBuildFile; fileRef = A52976D01A1A0A5E00420FEE /* Klevertje.png */; };
-		A53380331A1352700048F948 /* InbegrepenPrijsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53380321A1352700048F948 /* InbegrepenPrijsTableView.swift */; };
-		A54E1B9E1A125E7C00C6BB95 /* KorteBeschrijvingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54E1B9D1A125E7C00C6BB95 /* KorteBeschrijvingViewController.swift */; };
+		A54E1B9E1A125E7C00C6BB95 /* ExtraTekstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54E1B9D1A125E7C00C6BB95 /* ExtraTekstViewController.swift */; };
 		A575A0691A1633E500F6735A /* ENSideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575A0671A1633E500F6735A /* ENSideMenu.swift */; };
 		A575A06A1A1633E500F6735A /* ENSideMenuNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575A0681A1633E500F6735A /* ENSideMenuNavigationController.swift */; };
 		A575A06C1A16463D00F6735A /* UitloggenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575A06B1A16463D00F6735A /* UitloggenViewController.swift */; };
@@ -151,8 +150,7 @@
 		A512381A1A1630D1002242C6 /* SidebarTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidebarTableViewController.swift; sourceTree = "<group>"; };
 		A512381C1A16332D002242C6 /* MyNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyNavigationController.swift; sourceTree = "<group>"; };
 		A52976D01A1A0A5E00420FEE /* Klevertje.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Klevertje.png; path = Images.xcassets/Klevertje.png; sourceTree = "<group>"; };
-		A53380321A1352700048F948 /* InbegrepenPrijsTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InbegrepenPrijsTableView.swift; sourceTree = "<group>"; };
-		A54E1B9D1A125E7C00C6BB95 /* KorteBeschrijvingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KorteBeschrijvingViewController.swift; sourceTree = "<group>"; };
+		A54E1B9D1A125E7C00C6BB95 /* ExtraTekstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtraTekstViewController.swift; sourceTree = "<group>"; };
 		A575A0671A1633E500F6735A /* ENSideMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENSideMenu.swift; sourceTree = "<group>"; };
 		A575A0681A1633E500F6735A /* ENSideMenuNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENSideMenuNavigationController.swift; sourceTree = "<group>"; };
 		A575A06B1A16463D00F6735A /* UitloggenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UitloggenViewController.swift; sourceTree = "<group>"; };
@@ -286,8 +284,7 @@
 				1B39CF761A0795D9008DEC49 /* EigenprofielMonitorViewController.swift */,
 				1BFB1E581A0C0A6400E7B53F /* NieuwWachtwoordViewController.swift */,
 				1BDF24AF1A0CDEAA00B4B63F /* BekijkAfbeeldingViewController.swift */,
-				A54E1B9D1A125E7C00C6BB95 /* KorteBeschrijvingViewController.swift */,
-				A53380321A1352700048F948 /* InbegrepenPrijsTableView.swift */,
+				A54E1B9D1A125E7C00C6BB95 /* ExtraTekstViewController.swift */,
 				0F92E30C1A1368A10005C86C /* InschrijvenVakantie1ViewController.swift */,
 				0F92E30E1A13697B0005C86C /* InschrijvenVakantie2ViewController.swift */,
 				0F92E3101A136B240005C86C /* InschrijvenVakantie3ViewController.swift */,
@@ -484,7 +481,6 @@
 				A5CEA07D1A1399CA00E14103 /* VormingDetailsTableViewController.swift in Sources */,
 				0FA80B081A01350E008DB343 /* AppDelegate.swift in Sources */,
 				1BDDB9551A02D87F0007623D /* ContactpersoonNood.swift in Sources */,
-				A53380331A1352700048F948 /* InbegrepenPrijsTableView.swift in Sources */,
 				A50740F61A1384EA00D01900 /* AfbeeldingenViewController.swift in Sources */,
 				0F92E3111A136B240005C86C /* InschrijvenVakantie3ViewController.swift in Sources */,
 				1B4D784F1A02893700E823E2 /* Registratie3ViewController.swift in Sources */,
@@ -497,7 +493,7 @@
 				A50740F81A1386D900D01900 /* AfbeeldingCollectionViewCell.swift in Sources */,
 				1BDDB9511A02D86F0007623D /* Voorkeur.swift in Sources */,
 				0F92E30F1A13697B0005C86C /* InschrijvenVakantie2ViewController.swift in Sources */,
-				A54E1B9E1A125E7C00C6BB95 /* KorteBeschrijvingViewController.swift in Sources */,
+				A54E1B9E1A125E7C00C6BB95 /* ExtraTekstViewController.swift in Sources */,
 				1B10A3BD1A02622C008E225F /* VakantiesTableViewController.swift in Sources */,
 				A503E0EC1A1A7778000A9908 /* ProfielBewerkenViewController.swift in Sources */,
 				A575A06A1A1633E500F6735A /* ENSideMenuNavigationController.swift in Sources */,

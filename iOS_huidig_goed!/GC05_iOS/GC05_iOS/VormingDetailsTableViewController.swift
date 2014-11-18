@@ -1,10 +1,12 @@
 import UIKit
+import CoreData
 
 class VormingDetailsTableViewController: UITableViewController {
 
     //var monitor: Monitor!
     var vorming: Vorming!
     var euro: String = "€"
+    var fetchedResultController: NSFetchedResultsController = NSFetchedResultsController()
     
     @IBOutlet weak var korteBeschrijvingLabel: UILabel!
     @IBOutlet weak var criteriaDeelnemersLabel: UILabel!
@@ -19,12 +21,11 @@ class VormingDetailsTableViewController: UITableViewController {
         toggleSideMenuView()
     }
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        tableView.estimatedRowHeight = 44.0
-        //tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.rowHeight = UITableViewAutomaticDimension
+        navigationItem.title = vorming.titel
         
         korteBeschrijvingLabel.text = vorming.korteBeschrijving
         criteriaDeelnemersLabel.text = vorming.criteriaDeelnemers
@@ -38,17 +39,6 @@ class VormingDetailsTableViewController: UITableViewController {
 
     }
     
-    /*override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        
-        var height: CGFloat = 0.0
-        
-        if indexPath.row == 4 && indexPath.section == 1 {
-            var text: NSString = self.description.
-        }
-        
-        return 44.0
-    }*/
-    
     override func viewDidAppear(animated: Bool) {
         tableView.reloadData()
     }
@@ -59,6 +49,18 @@ class VormingDetailsTableViewController: UITableViewController {
             //inschrijvenVormingViewController.monitor = self.monitor
             inschrijvenVormingViewController.vorming = self.vorming
             inschrijvenVormingViewController.pickerData = vorming.periodes
+        } else if segue.identifier == "korteBeschrijvingVorming" {
+            let extraTekstViewController = segue.destinationViewController as ExtraTekstViewController
+            extraTekstViewController.tekst = vorming.korteBeschrijving
+            extraTekstViewController.type = 1
+        } else if segue.identifier == "criteriaVorming" {
+            let extraTekstViewController = segue.destinationViewController as ExtraTekstViewController
+            extraTekstViewController.tekst = vorming.criteriaDeelnemers
+            extraTekstViewController.type = 3
+        } else if segue.identifier == "betalingsWijzeVorming" {
+            let extraTekstViewController = segue.destinationViewController as ExtraTekstViewController
+            extraTekstViewController.tekst = vorming.betalingWijze
+            extraTekstViewController.type = 4
         }
     }
 }

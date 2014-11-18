@@ -4,14 +4,58 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Spinner;
+import android.widget.Toast;
+
+import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
 
 
 public class InschrijvingSignup extends Activity {
+
+    private Button btnInschrijven;
+    private Spinner spnDataInschrijven;
+
+    Boolean isInternetPresent = false;
+    ConnectionDetector cd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inschrijving_signup);
+
+        spnDataInschrijven = (Spinner) findViewById(R.id.spnDataVorming);
+
+        btnInschrijven = (Button) findViewById(R.id.btnInschrijven);
+        btnInschrijven.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // get Internet status
+                isInternetPresent = cd.isConnectingToInternet();
+                // check for Internet status
+
+                if (isInternetPresent) {
+                    // Internet Connection is Present
+                    // make HTTP requests
+                    controlerenIngevuld();
+                }
+                else{
+                    // Internet connection is not present
+                    // Ask user to connect to Internet
+                    Toast.makeText(getApplicationContext(), getString(R.string.error_no_internet), Toast.LENGTH_SHORT).show();
+                }
+
+                //Intent in = new Intent(getApplicationContext(),SignUp_deel4.class);
+                //startActivity(in);
+
+            }
+        });
+
+    }
+
+    public void controlerenIngevuld(){
+
     }
 
 

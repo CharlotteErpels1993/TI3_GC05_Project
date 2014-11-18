@@ -40,6 +40,10 @@ class InschrijvenVormingViewController: UIViewController, UIPickerViewDataSource
             var monitorPF = query.getFirstObject()
             var monitor = Monitor(monitor: monitorPF)
             
+            if inschrijvingVorming.periode == nil {
+                inschrijvingVorming.periode = pickerData[0]
+            }
+            
             inschrijvingVorming.monitor = monitor
             inschrijvingVorming.vorming = self.vorming
             
