@@ -5,7 +5,7 @@ package com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite;
  */
 public class Constants {
 
-    public static final int DATABASE_VERSION = 1;
+    public static final int DATABASE_VERSION = 2;
     public static final String DATABASE_NAAM = "joetz.db";
 
     //vakanties

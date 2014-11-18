@@ -36,12 +36,12 @@ public class DBHandler extends SQLiteOpenHelper {
                 Constants.COLUMN_STERPRIJSOUDER1 + " NUMERIC," + Constants.COLUMN_STERPRIJS2OUDERS + " NUMERIC" + ")";
 
 
-      /*  String CREATE_PROFIELEN_TABLE = "CREATE TABLE " + TABLE_PROFIELEN + "(" +Constants.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +Constants.COLUMN_AANSLUITINGSNUMMER + " NUMERIC," + Constants.COLUMN_BUS + " TEXT," + Constants.COLUMN_CODEGERECHTIGDE + " NUMERIC," +
+        String CREATE_PROFIELEN_TABLE = "CREATE TABLE " + TABLE_PROFIELEN + "(" +Constants.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +Constants.COLUMN_AANSLUITINGSNUMMER + " NUMERIC," + Constants.COLUMN_BUS + " TEXT," + Constants.COLUMN_CODEGERECHTIGDE + " NUMERIC," +
                 Constants.COLUMN_EMAIL + " TEXT," + Constants.COLUMN_GEMEENTE + " TEXT," + Constants.COLUMN_GSM + " TEXT," +Constants.COLUMN_LIDNR + " NUMERIC," +Constants.COLUMN_LINKFACEBOOK + " TEXT," +
                 Constants.COLUMN_NAAM + " TEXT," + Constants.COLUMN_NUMMER + " NUMERIC," + Constants.COLUMN_POSTCODE + " NUMERIC," + Constants.COLUMN_RIJKSREGISTERNUMMER + " TEXT," +
-                Constants.COLUMN_STRAAT + " TEXT," + Constants.COLUMN_TELEFOON + " TEXT," + Constants.COLUMN_VOORNAAM + " TEXT" + ")";*/
+                Constants.COLUMN_STRAAT + " TEXT," + Constants.COLUMN_TELEFOON + " TEXT," + Constants.COLUMN_VOORNAAM + " TEXT" + ")";
         sqLiteDatabase.execSQL(CREATE_VAKANTIE_TABLE);
-        //sqLiteDatabase.execSQL(CREATE_PROFIELEN_TABLE);
+        sqLiteDatabase.execSQL(CREATE_PROFIELEN_TABLE);
     }
 
     @Override
