@@ -24,7 +24,7 @@ class VormingenTableViewController: UITableViewController, UISearchBarDelegate, 
     }
     
     func zoekGefilterdeVormingen(zoek: String) {
-        vormingen2 = vormingen.filter { $0.titel.lowercaseString.rangeOfString(zoek) != nil }
+        vormingen2 = vormingen.filter {$0.titel?.lowercaseString.rangeOfString(zoek) != nil }
         self.tableView.reloadData()
         
     }

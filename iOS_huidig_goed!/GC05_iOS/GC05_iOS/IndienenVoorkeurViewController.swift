@@ -1,19 +1,26 @@
 import UIKit
 
-class IndienenVoorkeurViewController: UIViewController {
+class IndienenVoorkeurViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate{
     
     @IBOutlet weak var pickerView: UIPickerView!
     
+    @IBOutlet weak var txtViewPeriodes: UITextView!
     var vakanties: [Vakantie] = []
     var pickerData: [String] = []
+    var voorkeur: Voorkeur = Voorkeur(id: "test")
     //var vorming: Vorming!
     //var inschrijvingVorming: InschrijvingVorming = InschrijvingVorming(id: "test")
     
-    /*override func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
+        
+        for var index = 0; index < self.vakanties.count; index += 1 {
+            pickerData[index] = vakanties[index].titel!
+        }
+        
         pickerView.delegate = self
         pickerView.dataSource = self
-    }*/
+    }
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
@@ -28,29 +35,42 @@ class IndienenVoorkeurViewController: UIViewController {
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        inschrijvingVorming.periode = pickerData[row]
+        var vakantieNaam = pickerData[row]
+        
+        var vakantie: Vakantie = Vakantie(id: "test")
+        
+        for v in vakanties {
+            if v.titel == vakantieNaam {
+                vakantie = v
+            }
+        }
+        
+        voorkeur.vakantie = vakantie
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "inschrijven" {
-            let inschrijvenVormingSuccesvolViewController = segue.destinationViewController as InschrijvenVormingSuccesvolViewController
+            let indienenVoorkeurSuccesvolViewController = segue.destinationViewController as IndienenVoorkeurSuccesvolViewController
+            
+            
             
             var query = PFQuery(className: "Monitor")
             query.whereKey("email", containsString: PFUser.currentUser().email)
             var monitorPF = query.getFirstObject()
             var monitor = Monitor(monitor: monitorPF)
             
-            if inschrijvingVorming.periode == nil {
-                inschrijvingVorming.periode = pickerData[0]
+            self.voorkeur.monitor = monitor
+            self.voorkeur.data = txtViewPeriodes.text
+            
+            if self.voorkeur.vakantie == nil {
+                self.voorkeur.vakantie = vakanties[0]
             }
             
-            inschrijvingVorming.monitor = monitor
-            inschrijvingVorming.vorming = self.vorming
+            indienenVoorkeurSuccesvolViewController.voorkeur = self.voorkeur
             
-            inschrijvenVormingSuccesvolViewController.inschrijvingVorming = self.inschrijvingVorming
-        } else if segue.identifier == "gaTerug" {
+        } /*else if segue.identifier == "gaTerug" {
             let vormingenTableViewController = segue.destinationViewController as VormingenTableViewController
-        }
+        }*/
     }
 
     

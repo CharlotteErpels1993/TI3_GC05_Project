@@ -3,9 +3,13 @@ import Foundation
 class Activiteit
 {
     var id : String
-    var titel: String
-    var locatie: String
-    var korteBeschrijving: String
+    var titel: String?
+    var locatie: String?
+    var korteBeschrijving: String?
+    
+    init(id: String) {
+        self.id = id
+    }
     
     init(activiteit: PFObject) {
         self.id = activiteit.objectId

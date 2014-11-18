@@ -41,7 +41,7 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
     }
     
     func zoekGefilterdeVakanties(zoek: String) {
-        vakanties2 = vakanties.filter { $0.titel.lowercaseString.rangeOfString(zoek) != nil }
+        vakanties2 = vakanties.filter { $0.titel?.lowercaseString.rangeOfString(zoek) != nil }
         self.tableView.reloadData()
             
     }

@@ -5,41 +5,45 @@ class Vakantie: Activiteit
     
     var beginDatum: NSDate?
     var terugkeerDatum: NSDate?
-    var aantalDagenNachten: String
-    var vervoerwijze: String
-    var formule: String
+    var aantalDagenNachten: String?
+    var vervoerwijze: String?
+    var formule: String?
     
-    var basisprijs: Double {
+    var basisprijs: Double? {
         willSet {
-            assert(checkPrijsValid(newValue), "Basisprijs moet een geldige prijs zijn!")
+            assert(checkPrijsValid(newValue!), "Basisprijs moet een geldige prijs zijn!")
         }
     }
     
-    var bondMoysonLedenPrijs: Double {
+    var bondMoysonLedenPrijs: Double? {
         willSet {
-            assert(checkPrijsValid(newValue), "Bond Moyson ledenprijs moet een geldige prijs zijn!")
+            assert(checkPrijsValid(newValue!), "Bond Moyson ledenprijs moet een geldige prijs zijn!")
         }
     }
     
-    var sterPrijs1ouder: Double {
+    var sterPrijs1ouder: Double? {
         willSet {
-            assert(checkPrijsValid(newValue), "Sterprijs moet een geldige prijs zijn!")
+            assert(checkPrijsValid(newValue!), "Sterprijs moet een geldige prijs zijn!")
         }
     }
     
-    var sterPrijs2ouders: Double {
+    var sterPrijs2ouders: Double? {
         willSet {
-            assert(checkPrijsValid(newValue), "Sterprijs moet een geldige prijs zijn!")
+            assert(checkPrijsValid(newValue!), "Sterprijs moet een geldige prijs zijn!")
         }
     }
 
-    var inbegrepenPrijs: String
-    var doelgroep: String // TYPE?
+    var inbegrepenPrijs: String?
+    var doelgroep: String? // TYPE?
     
-    var maxAantalDeelnemers: Int {
+    var maxAantalDeelnemers: Int? {
         willSet {
-            assert(checkMaxAantalDeelnemersValid(newValue), "Maximum aantal deelnemers moet positief zijn!")
+            assert(checkMaxAantalDeelnemersValid(newValue!), "Maximum aantal deelnemers moet positief zijn!")
         }
+    }
+    
+    override init(id: String) {
+        super.init(id: id)
     }
     
     init(vakantie: PFObject) {
