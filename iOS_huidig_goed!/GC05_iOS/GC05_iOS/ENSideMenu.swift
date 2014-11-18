@@ -165,7 +165,7 @@ class ENSideMenu : NSObject {
     }
     
     private func toggleMenu (shouldOpen: Bool) {
-       // self.menuTableViewController.tableView.reloadData()
+        self.menuTableViewController.tableView.reloadData()
         isMenuOpen = shouldOpen
         if (bouncingEnabled) {
             //self.menuTableViewController.tableView.reloadData()
@@ -272,9 +272,7 @@ class ENSideMenu : NSObject {
     
     internal func hideSideMenu () {
 
-        
-        self.menuTableViewController.tableView.reloadData()
-        //self.menuTableViewController.tableView.reloadInputViews()
+                //self.menuTableViewController.tableView.reloadInputViews()
 
         if (isMenuOpen) {
             toggleMenu(false)
