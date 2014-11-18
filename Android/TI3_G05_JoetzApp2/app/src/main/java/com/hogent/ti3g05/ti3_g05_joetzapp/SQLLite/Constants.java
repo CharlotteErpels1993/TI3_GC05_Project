@@ -7,6 +7,8 @@ public class Constants {
 
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAAM = "joetz.db";
+
+    //vakanties
     public static final String TABLE_VAKANTIE = "vakantie";
 
     public static final String COLUMN_ID = "_id";
@@ -28,4 +30,24 @@ public class Constants {
     public static final String COLUMN_BMLEDENPRIJS = "BMLedenPrijs";
     public static final String COLUMN_STERPRIJSOUDER1 = "sterPrijsOuder1";
     public static final String COLUMN_STERPRIJS2OUDERS = "sterPrijs2Ouder";
+
+    //profielen
+    public static final String TABLE_PROFIELEN = "monitor";
+    public static final String COLUMN_AANSLUITINGSNUMMER = "aansluitingsNr";
+    public static final String COLUMN_BUS = "bus";
+    public static final String COLUMN_CODEGERECHTIGDE = "codeGerechtigde";
+    public static final String COLUMN_EMAIL = "email";
+    public static final String COLUMN_GEMEENTE = "gemeente";
+    public static final String COLUMN_GSM = "gsm";
+    public static final String COLUMN_LIDNR = "lidNr";
+    public static final String COLUMN_LINKFACEBOOK = "linkFacebook";
+    public static final String COLUMN_NAAM = "naam";
+    public static final String COLUMN_NUMMER = "nummer";
+    public static final String COLUMN_POSTCODE = "postcode";
+    public static final String COLUMN_RIJKSREGISTERNUMMER = "rijksregisterNr";
+    public static final String COLUMN_STRAAT = "straat";
+    public static final String COLUMN_TELEFOON = "telefoon";
+    public static final String COLUMN_VOORNAAM = "voornaam";
+
+
 }

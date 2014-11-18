@@ -105,6 +105,7 @@ public class activiteit_detail extends Activity {
         final TextView txtSterPrijs1Ouder = (TextView) findViewById(R.id.sterPrijs1Ouder);
         final TextView txtSterPrijs2Ouders = (TextView) findViewById(R.id.sterPrijs2Ouders);
         final RelativeLayout verberg = (RelativeLayout) findViewById(R.id.verberg2);
+        final TextView labelBM = (TextView) findViewById(R.id.ledenPrijsLabel);
 
         btnInschrijven = (Button)findViewById(R.id.btnInschrijvenV);
         btnmeerInfo = (Button) findViewById(R.id.btnMeerInfo);
@@ -273,10 +274,15 @@ public class activiteit_detail extends Activity {
 
             if (!bmLedenPrijs.equals("-1")) {
                 txtBMledenPrijs.setVisibility(View.VISIBLE);
+                labelBM.setVisibility(View.VISIBLE);
                 txtBMledenPrijs.setText("Prijs voor leden van Bond Moyson: €" + bmLedenPrijs);
                 if (!(bmLedenPrijs.contains(".") || bmLedenPrijs.contains(","))){
                     txtBMledenPrijs.append(",00");
                 }
+            } else
+            {
+                txtBMledenPrijs.setVisibility(View.GONE);
+                labelBM.setVisibility(View.GONE);
             }
 
             if (!sterPrijs1Ouder.equals("-1")) {

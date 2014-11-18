@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.util.Log;
 
+import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Monitor;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vakantie;
 
 import java.util.List;
@@ -71,5 +72,20 @@ public class myDb {
 
 
     //TODO moet ook voor vormingen en profielen, dus nieuwe tabel aanmaken, en functies in helper
+
+    public long insertProfiel(Monitor nieuwProfiel)
+    {
+        return db.toevoegenGegevensMonitor(nieuwProfiel);
+    }
+
+    public List<Monitor> getProfielen()
+    {
+        return db.krijgProfielen();
+    }
+
+    public Monitor getProfiel(String naam)
+    {
+        return db.krijgProfielen(naam);
+    }
 
 }

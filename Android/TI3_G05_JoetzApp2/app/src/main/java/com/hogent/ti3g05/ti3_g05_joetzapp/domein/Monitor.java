@@ -7,13 +7,28 @@ public class Monitor extends Gebruiker {
     private String linkFacebook;
     private String naam, voornaam, email, gemeente, gsm, rijksregNr, straat;
     private String postcode;
-    private Number huisnr;
+    private Number huisnr, codeGerechtigde;
     private int lidNummer;
 
+    private String bus, telefoon;
+
+    private Number aansluitingsNr;
     public Monitor(){
         super();
 
     }
+
+    public void setTelefoon(String telefoon){this.telefoon = telefoon;}
+    public String getTelefoon(){return telefoon;}
+
+    public void setCodeGerechtigde(Number codeGerechtigde){this.codeGerechtigde=codeGerechtigde;}
+    public Number getCodeGerechtigde(){return codeGerechtigde;}
+
+    public void setBus(String bus){this.bus = bus;}
+    public String getBus(){return bus;}
+
+    public Number getAansluitingsNr(){return aansluitingsNr;}
+    public void setAansluitingsNr(Number aansluitingsNr){this.aansluitingsNr = aansluitingsNr;}
 
     public Number getHuisnr(){return huisnr;}
     public void setHuisnr(Number huisnr){this.huisnr = huisnr;}

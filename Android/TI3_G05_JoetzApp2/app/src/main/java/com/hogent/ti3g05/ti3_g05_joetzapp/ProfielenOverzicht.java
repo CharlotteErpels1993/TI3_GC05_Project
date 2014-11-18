@@ -20,6 +20,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.myDb;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ProfielAdapter;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Monitor;
 import com.parse.ParseException;
@@ -38,6 +39,7 @@ public class ProfielenOverzicht extends Activity /* implements SwipeRefreshLayou
     private ProfielAdapter adapter;
     private List<Monitor> profielen = null;
     private EditText filtertext;
+    private myDb myDB;
     //SwipeRefreshLayout swipeLayout;
 
     @Override
@@ -49,6 +51,9 @@ public class ProfielenOverzicht extends Activity /* implements SwipeRefreshLayou
         setTitle("Profielen");
         // Execute RemoteDataTask AsyncTask
         filtertext = (EditText) findViewById(R.id.filtertext);
+        myDB = new myDb(this);
+        myDB.open();
+
         /*swipeLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_container);
         onCreateSwipeToRefresh(swipeLayout);*/
 
@@ -108,6 +113,8 @@ public class ProfielenOverzicht extends Activity /* implements SwipeRefreshLayou
                 // by ascending
                 query.orderByAscending("naam");
                 ob = query.find();
+
+                myDB.drop();
                 for (ParseObject monitor : ob) {
 
                     Monitor map = new Monitor();
@@ -128,10 +135,15 @@ public class ProfielenOverzicht extends Activity /* implements SwipeRefreshLayou
 
                     profielen.add(map);
 
+                    myDB.insertProfiel(map);
+
                 }
             } catch (ParseException e) {
                 Log.e("Error", e.getMessage());
                 e.printStackTrace();
+
+                profielen = myDB.getProfielen();
+
             }
             return null;
         }
