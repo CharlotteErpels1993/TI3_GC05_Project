@@ -97,7 +97,7 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         let vakantie = vakanties2[indexPath.row]
         cell.gaVerderLabel.text = "Meer details"
         cell.vakantieNaamLabel.text = vakantie.titel
-        cell.doelgroepLabel.text! = " \(vakantie.doelgroep) jaar "
+        cell.doelgroepLabel.text! = " \(vakantie.doelgroep!) jaar "
         return cell
     }
 }
