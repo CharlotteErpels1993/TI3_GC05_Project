@@ -31,9 +31,7 @@ enum ENSideMenuPosition : Int {
 extension UIViewController {
     
     public func toggleSideMenuView () {
-        //sideMenuController()?.sideMenu?.toggleMenu()
         sideMenuController()?.sideMenu?.toggleMenu()
-        
     }
     
     public func hideSideMenuView () {
@@ -210,8 +208,11 @@ class ENSideMenu : NSObject {
             menuViewBehavior.elasticity = 0.25
             animator.addBehavior(menuViewBehavior)
             
+            
+            
         }
         else {
+            
             var destFrame :CGRect
             if (menuPosition == .Left) {
                 destFrame = CGRectMake((shouldOpen) ? -2.0 : -menuWidth, 0, menuWidth, sideMenuContainerView.frame.size.height)

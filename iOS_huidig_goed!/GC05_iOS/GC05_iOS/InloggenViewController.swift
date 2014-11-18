@@ -18,6 +18,7 @@ class InloggenViewController: UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        hideSideMenuView()
         txtEmail.autocorrectionType = UITextAutocorrectionType.No
         txtWachtwoord.autocorrectionType = UITextAutocorrectionType.No
         

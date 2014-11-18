@@ -78,12 +78,13 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="view" destination="xxD-Ib-aLY" id="vqA-FM-3Jv"/>
                         <outlet property="zoekbar" destination="RlW-AC-mYB" id="7KL-cF-nD3"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FgJ-yq-mEZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="631" y="336"/>
+            <point key="canvasLocation" x="614" y="324"/>
         </scene>
         <!--Vakantie-->
         <scene sceneID="Rwh-qy-srh">
@@ -3076,7 +3077,7 @@
         <image name="Klevertje.png" width="615" height="427"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="7Pw-Uu-eiY"/>
+        <segue reference="quD-W8-2tt"/>
         <segue reference="C1a-7e-WRD"/>
     </inferredMetricsTieBreakers>
 </document>

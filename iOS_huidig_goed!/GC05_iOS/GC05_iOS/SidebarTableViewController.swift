@@ -7,6 +7,7 @@ class SidebarTableViewController: UITableViewController {
     var arrayMonitor: [String] = ["Uitloggen","Vakanties",  "Vormingen", "Voorkeur vak.", "Profielen"]
     var array: [String]?
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -86,12 +87,10 @@ class SidebarTableViewController: UITableViewController {
         
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         var destViewController: UIViewController
-        var topController: UIViewController = getTopController()
         
         if PFUser.currentUser() == nil {
             self.tableView.reloadData()
-            switch indexPath.row {
-                
+            switch indexPath.row {  
             case 0:
                 destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
                 break
@@ -133,6 +132,8 @@ class SidebarTableViewController: UITableViewController {
                     destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Profiel") as UIViewController
                     break
                 }
+                
+                
                 sideMenuController()?.setContentViewController(destViewController)
             } else if soort == "ouder" {
                 switch indexPath.row {
@@ -176,14 +177,6 @@ class SidebarTableViewController: UITableViewController {
         }
         sideMenuController()?.setContentViewController(destViewController)*/
     }
-    
-    func getTopController() -> UIViewController {
-        var topViewController: UIViewController! = UIApplication.sharedApplication().keyWindow?.rootViewController!
-        while (topViewController.presentedViewController != nil) {
-            topViewController = topViewController.presentedViewController!
-        }
-        
-        return topViewController
-    }
+
     
 }

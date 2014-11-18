@@ -16,14 +16,16 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
     override func viewDidLoad() {
         super.viewDidLoad()
         zoekVakanties()
+        hideSideMenuView()
         zoekbar.showsScopeBar = true
         zoekbar.delegate = self
         
         //if ouder != nil {
         if PFUser.currentUser() != nil {
             self.navigationItem.setHidesBackButton(true, animated: true)
-            self.navigationItem.rightBarButtonItem = nil
+            self.navigationItem.rightBarButtonItem = nil   
         }
+        
         
         //self.navigationItem.rightBarButtonItem.
         
