@@ -1510,7 +1510,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Locatie" id="67j-4U-46c">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="60" id="YOr-0Q-ywp">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="60" id="YOr-0Q-ywp">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YOr-0Q-ywp" id="VhW-OX-xgK">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -1529,7 +1529,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="60" id="NKx-jO-RTg">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="60" id="NKx-jO-RTg">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NKx-jO-RTg" id="hKx-tD-oI9">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -1552,7 +1552,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Prijs" id="1pG-bL-Q7h">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="x3I-KU-RCq">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="x3I-KU-RCq">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="x3I-KU-RCq" id="8tl-ne-kIb">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -1597,7 +1597,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Periodes" id="jtS-eT-w17">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="89" id="L1x-T8-LRZ">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="89" id="L1x-T8-LRZ">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="L1x-T8-LRZ" id="sjb-9h-Zud">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -1620,7 +1620,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Tips" id="zwM-AS-ker">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="160" id="wPd-ql-2fJ">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="160" id="wPd-ql-2fJ">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wPd-ql-2fJ" id="h7M-CB-dKO">
                                             <autoresizingMask key="autoresizingMask"/>
