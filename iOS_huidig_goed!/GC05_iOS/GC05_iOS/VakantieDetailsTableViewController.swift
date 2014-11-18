@@ -34,7 +34,7 @@ class VakantieDetailsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         zoekImages()
-        toggleSideMenuView()
+        hideSideMenuView()
         query.getObjectInBackgroundWithId(vakantie.id) {
             (vakantie: PFObject!, error: NSError!) -> Void in
             if error == nil {
@@ -210,12 +210,16 @@ class VakantieDetailsTableViewController: UITableViewController {
             bekijkAfbeeldingViewController.afb2 = afb2
             bekijkAfbeeldingViewController.afb3 = afb3*/
             bekijkAfbeeldingViewController.images = self.images
-        } else if segue.identifier == "korteBeschrijving" {
-            let korteBeschrijvingViewController = segue.destinationViewController as KorteBeschrijvingViewController
-            korteBeschrijvingViewController.tekst = vakantie.korteBeschrijving
+        } else if segue.identifier == "korteBeschrijvingVakantie" {
+            let extraTekstViewController = segue.destinationViewController as ExtraTekstViewController
+            extraTekstViewController.tekst = vakantie.korteBeschrijving
+            extraTekstViewController.type = 1
         } else if segue.identifier == "inbegrepenPrijs" {
-            let inbegrepenPrijsViewController = segue.destinationViewController as InbegrepenPrijsTableView
-            inbegrepenPrijsViewController.tekst = inbegrepenPrijs.text
+            //let inbegrepenPrijsViewController = segue.destinationViewController as InbegrepenPrijsTableView
+            //inbegrepenPrijsViewController.tekst = inbegrepenPrijs.text
+            let extraTekstViewController = segue.destinationViewController as ExtraTekstViewController
+            extraTekstViewController.tekst = vakantie.inbegrepenPrijs
+            extraTekstViewController.type = 2
         } else if segue.identifier == "inschrijven" {
             let inschrijvenVakantie1ViewController = segue.destinationViewController as InschrijvenVakantie1ViewController
             inschrijvenVakantie1ViewController.vakantie = vakantie

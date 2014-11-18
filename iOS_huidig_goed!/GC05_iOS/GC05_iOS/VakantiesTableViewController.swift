@@ -15,7 +15,6 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        hideSideMenuView()
         zoekVakanties()
         zoekbar.showsScopeBar = true
         zoekbar.delegate = self

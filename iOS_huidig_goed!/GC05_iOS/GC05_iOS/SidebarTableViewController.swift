@@ -86,6 +86,7 @@ class SidebarTableViewController: UITableViewController {
         
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         var destViewController: UIViewController
+        var topController: UIViewController = getTopController()
         
         if PFUser.currentUser() == nil {
             self.tableView.reloadData()
@@ -113,6 +114,7 @@ class SidebarTableViewController: UITableViewController {
                 self.tableView.reloadData()
                 switch indexPath.row {
                 case 1:
+                    self.tableView.reloadData()
                     destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
                     break
                 case 0:
@@ -133,9 +135,9 @@ class SidebarTableViewController: UITableViewController {
                 }
                 sideMenuController()?.setContentViewController(destViewController)
             } else if soort == "ouder" {
-                self.tableView.reloadData()
                 switch indexPath.row {
                 case 1:
+                    self.tableView.reloadInputViews()
                     destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
                     break
                 case 0:
