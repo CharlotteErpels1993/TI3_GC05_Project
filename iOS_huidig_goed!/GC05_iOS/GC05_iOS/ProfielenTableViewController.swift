@@ -2,8 +2,8 @@ import UIKit
 
 class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, UISearchDisplayDelegate {
     
-    var profielen  = []
-    var profielen2 = []
+    var monitoren: [Monitor] = []
+    var monitoren2: [Monitor] = []
     
     @IBOutlet weak var zoekbar: UISearchBar!
     
@@ -11,39 +11,45 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
         toggleSideMenuView()
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        //zoekVormingen()
+        zoekMonitoren()
         zoekbar.showsScopeBar = true
         zoekbar.delegate = self
     }
     
-    /*func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        zoekGefilterdeProf ,ielen(searchText.lowercaseString)
-    }*/
+    func zoekMonitorenZelfdeKamp() {
+        //PFQuery query = PFQuery(className: "Monitor")
+        //query.whereKey(")
+    }
     
-    /*func zoekGefilterdeVormingen(zoek: String) {
-        profielen2 = profielen.filter { $0.titel.lowercaseString.rangeOfString(zoek) != nil }
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        zoekGefilterdeMonitoren(searchText.lowercaseString)
+    }
+    
+    func zoekGefilterdeMonitoren(zoek: String) {
+        monitoren2 = monitoren.filter { $0.naam!.rangeOfString(zoek) != nil }
         self.tableView.reloadData()
         
-    }*/
+    }
     
-    /*func zoekVormingen() {
-        vormingen.removeAll(keepCapacity: true)
-        var query = PFQuery(className: "Vorming")
+    func zoekMonitoren() {
+        monitoren.removeAll(keepCapacity: true)
+        var query = PFQuery(className: "Monitor")
         query.findObjectsInBackgroundWithBlock({(NSArray objects, NSError error) in
             if(error == nil) {
                 if let PFObjects = objects as? [PFObject!] {
                     for object in PFObjects {
-                        var vorming = Vorming(vorming: object)
-                        self.vormingen.append(vorming)
+                        var monitor = Monitor(monitor: object)
+                        self.monitoren.append(monitor)
                     }
                 }
-                self.vormingen2 = self.vormingen
+                self.monitoren2 = self.monitoren
                 self.tableView.reloadData()
             }
         })
-    }*/
+    }
     
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -61,17 +67,36 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return profielen2.count
+        if section == 0 {
+            // TO DO --> monitoren zelfde kamp/vorming
+            return monitoren2.count
+        } else if section == 2 {
+            return monitoren2.count
+        }
+        return 0
     }
     
     
-    /*override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("vormingCell", forIndexPath: indexPath) as UITableViewCell
-        //let cell = tableView.dequeueReusableCellWithIdentifier("vormingCell")? as UITableViewCell
-        let vorming = vormingen2[indexPath.row]
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        if indexPath.section == 0 {
+            /* TO DO --> monitoren zelfde kamp/vorming */
+            
+            let cell = tableView.dequeueReusableCellWithIdentifier("monitorCellZelfdeKamp", forIndexPath: indexPath) as UITableViewCell
+            return cell
+            
+            /*let cell = tableView.dequeueReusableCellWithIdentifier("vormingCell", forIndexPath: indexPath) as UITableViewCell
+            //let cell = tableView.dequeueReusableCellWithIdentifier("vormingCell")? as UITableViewCell
+            let profiel = vormingen2[indexPath.row]
         
-        cell.textLabel.text = vorming.titel
-        cell.detailTextLabel!.text = "Meer informatie"
-        return cell
-    }*/
+            cell.textLabel.text = vorming.titel
+            cell.detailTextLabel!.text = "Meer informatie"
+            return cell*/
+        } else {
+            let cell = tableView.dequeueReusableCellWithIdentifier("monitorCell", forIndexPath: indexPath) as UITableViewCell
+            let monitor = monitoren2[indexPath.row]
+            cell.textLabel.text = monitor.voornaam! + " " + monitor.voornaam!
+            cell.detailTextLabel?.text = "Meer informatie"
+            return cell
+        }
+    }
 }
