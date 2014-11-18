@@ -59,6 +59,8 @@ class SidebarTableViewController: UITableViewController {
             cell!.selectedBackgroundView = selectedBackgroundView
         }
         
+        
+        
         if PFUser.currentUser() == nil {
             cell!.textLabel.text = self.arrayKind[indexPath.row]
 
@@ -81,7 +83,9 @@ class SidebarTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.row == selectedMenuItem {
-            return
+            //tableView.reloadInputViews()
+            hideSideMenuView()
+            //return
         }
         selectedMenuItem = indexPath.row
         
@@ -113,7 +117,6 @@ class SidebarTableViewController: UITableViewController {
                 self.tableView.reloadData()
                 switch indexPath.row {
                 case 1:
-                    self.tableView.reloadData()
                     destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
                     break
                 case 0:
@@ -136,9 +139,9 @@ class SidebarTableViewController: UITableViewController {
                 
                 sideMenuController()?.setContentViewController(destViewController)
             } else if soort == "ouder" {
+                self.tableView.reloadInputViews()
                 switch indexPath.row {
                 case 1:
-                    self.tableView.reloadInputViews()
                     destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
                     break
                 case 0:

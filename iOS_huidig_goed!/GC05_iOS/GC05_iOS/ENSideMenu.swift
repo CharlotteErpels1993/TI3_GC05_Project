@@ -165,10 +165,10 @@ class ENSideMenu : NSObject {
     }
     
     private func toggleMenu (shouldOpen: Bool) {
-        self.menuTableViewController.tableView.reloadData()
+       // self.menuTableViewController.tableView.reloadData()
         isMenuOpen = shouldOpen
         if (bouncingEnabled) {
-            
+            //self.menuTableViewController.tableView.reloadData()
             animator.removeAllBehaviors()
             
             var gravityDirectionX: CGFloat
@@ -212,7 +212,6 @@ class ENSideMenu : NSObject {
             
         }
         else {
-            
             var destFrame :CGRect
             if (menuPosition == .Left) {
                 destFrame = CGRectMake((shouldOpen) ? -2.0 : -menuWidth, 0, menuWidth, sideMenuContainerView.frame.size.height)
@@ -272,6 +271,11 @@ class ENSideMenu : NSObject {
     }
     
     internal func hideSideMenu () {
+
+        
+        self.menuTableViewController.tableView.reloadData()
+        //self.menuTableViewController.tableView.reloadInputViews()
+
         if (isMenuOpen) {
             toggleMenu(false)
         }

@@ -18,4 +18,5 @@ class MyNavigationController: ENSideMenuNavigationController, ENSideMenuDelegate
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
 }
