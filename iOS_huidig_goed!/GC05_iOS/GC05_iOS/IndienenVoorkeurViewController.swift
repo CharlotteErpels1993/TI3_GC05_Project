@@ -14,6 +14,12 @@ class IndienenVoorkeurViewController: UIViewController, UIPickerViewDataSource, 
     var voorkeur: Voorkeur = Voorkeur(id: "test")
     //var vorming: Vorming!
     //var inschrijvingVorming: InschrijvingVorming = InschrijvingVorming(id: "test")
+    @IBAction func gaTerugNaarOverzicht(sender: AnyObject) {
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        var destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Profiel") as UIViewController
+        sideMenuController()?.setContentViewController(destViewController)
+        hideSideMenuView()
+    }
     
     func zoekVakanties() {
         //vakanties.removeAll(keepCapacity: true)

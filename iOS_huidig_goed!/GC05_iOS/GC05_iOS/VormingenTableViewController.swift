@@ -12,6 +12,10 @@ class VormingenTableViewController: UITableViewController, UISearchBarDelegate, 
     
     @IBOutlet weak var zoekbar: UISearchBar!
     
+    @IBAction func gaTerugNaarVormingTableView(segue: UIStoryboardSegue) {
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

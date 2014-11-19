@@ -1298,21 +1298,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Geef de vakantie waarvoor u geïnteresseerd bent:" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XWp-wD-jjx">
-                                <rect key="frame" x="16" y="74" width="568" height="21"/>
+                                <rect key="frame" x="16" y="74" width="568" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oox-Wx-zBH">
-                                <rect key="frame" x="1" y="103" width="600" height="162"/>
+                            <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Oox-Wx-zBH">
+                                <rect key="frame" x="1" y="102" width="600" height="162"/>
                             </pickerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Geef uw beschikbare periodes op:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sE9-QE-zgl">
-                                <rect key="frame" x="16" y="284" width="263" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Geef uw beschikbare periodes op:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sE9-QE-zgl">
+                                <rect key="frame" x="16" y="283" width="263" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bv0-aI-2GO">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bv0-aI-2GO">
                                 <rect key="frame" x="16" y="312" width="568" height="129"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -1321,6 +1321,15 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Qu-NI-7Ru">
+                                <rect key="frame" x="523" y="550" width="61" height="30"/>
+                                <state key="normal" title="Annuleer">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="gaTerugNaarOverzicht:" destination="o7H-cr-yrT" eventType="touchUpInside" id="0nf-UB-ZEo"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1329,8 +1338,10 @@
                             <constraint firstItem="sE9-QE-zgl" firstAttribute="leading" secondItem="EfU-VK-91v" secondAttribute="leadingMargin" id="88m-EM-Drc"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Oox-Wx-zBH" secondAttribute="trailing" constant="-17" id="9ff-41-wJe"/>
                             <constraint firstItem="XWp-wD-jjx" firstAttribute="top" secondItem="YTT-VQ-8kq" secondAttribute="bottom" constant="10" id="BRx-HA-dA3"/>
+                            <constraint firstItem="OKd-jD-Bc5" firstAttribute="top" secondItem="0Qu-NI-7Ru" secondAttribute="bottom" constant="20" id="hw0-01-553"/>
                             <constraint firstItem="XWp-wD-jjx" firstAttribute="leading" secondItem="EfU-VK-91v" secondAttribute="leadingMargin" id="lSg-mA-Um8"/>
                             <constraint firstItem="Bv0-aI-2GO" firstAttribute="top" secondItem="sE9-QE-zgl" secondAttribute="bottom" constant="8.5" id="mwG-lr-0dx"/>
+                            <constraint firstItem="0Qu-NI-7Ru" firstAttribute="trailing" secondItem="EfU-VK-91v" secondAttribute="trailingMargin" id="n0A-c8-wc3"/>
                             <constraint firstItem="Bv0-aI-2GO" firstAttribute="trailing" secondItem="EfU-VK-91v" secondAttribute="trailingMargin" id="nkY-HC-Gww"/>
                             <constraint firstItem="Bv0-aI-2GO" firstAttribute="leading" secondItem="EfU-VK-91v" secondAttribute="leadingMargin" id="uRh-5Q-4bv"/>
                             <constraint firstAttribute="trailingMargin" secondItem="XWp-wD-jjx" secondAttribute="trailing" id="vQs-uW-lWO"/>
@@ -1755,7 +1766,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="QYx-bf-zKF" kind="show" identifier="gaTerug" id="Vpx-YM-klv"/>
+                                    <segue destination="nux-XJ-5Ap" kind="unwind" unwindAction="gaTerugNaarVormingTableView:" id="KCr-nR-ASh"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1784,6 +1795,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DoI-d3-O23" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="nux-XJ-5Ap" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2498" y="3306"/>
         </scene>
@@ -1940,7 +1952,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="xj6-b1-6XR" kind="show" identifier="gaTerug" id="wPb-QZ-j94"/>
+                                    <segue destination="0pD-gK-vms" kind="unwind" unwindAction="gaTerugNaarOverzichtVakanties:" id="oKB-90-Ola"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="* verplicht in te vullen" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dkY-G6-S6a">
@@ -2015,6 +2027,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A6q-k2-bbC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="0pD-gK-vms" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-394" y="2561"/>
         </scene>
@@ -2052,7 +2065,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="xj6-b1-6XR" kind="show" identifier="gaTerug" id="d2Y-VN-tY4"/>
+                                    <segue destination="KPW-Yw-0RU" kind="unwind" unwindAction="gaTerugNaarOverzichtVakanties:" id="lls-9J-x11"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -2082,6 +2095,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4hD-J7-wWY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="KPW-Yw-0RU" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="273" y="2561"/>
         </scene>
@@ -2153,7 +2167,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="xj6-b1-6XR" kind="show" identifier="gaTerug" id="Tr7-eB-2ls"/>
+                                    <segue destination="JNT-gz-o04" kind="unwind" unwindAction="gaTerugNaarOverzichtVakanties:" id="NAa-C2-IAg"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="* verplicht in te vullen" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K2Y-oR-XVp">
@@ -2211,6 +2225,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FSf-Y4-OcG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="JNT-gz-o04" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="924" y="2555"/>
         </scene>
@@ -2288,7 +2303,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="xj6-b1-6XR" kind="show" identifier="gaTerug" id="ifn-Vz-c4s"/>
+                                    <segue destination="x1w-kP-j7E" kind="unwind" unwindAction="gaTerugNaarOverzichtVakanties:" id="77k-mV-pVE"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="* verplicht in te vullen" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g3U-6M-oMG">
@@ -2353,6 +2368,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ibo-Sa-p2F" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="x1w-kP-j7E" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1622" y="2555"/>
         </scene>
@@ -2386,7 +2402,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="xj6-b1-6XR" kind="show" identifier="gaTerug" id="hMW-uG-f1U"/>
+                                    <segue destination="una-oL-4nC" kind="unwind" unwindAction="gaTerugNaarOverzichtVakanties:" id="Gpd-FD-Uqh"/>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eaN-yk-YyH">
@@ -2424,6 +2440,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3lf-Qa-xzx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="una-oL-4nC" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2297" y="2555"/>
         </scene>
@@ -3161,7 +3178,7 @@
         <image name="Klevertje.png" width="615" height="427"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="wPb-QZ-j94"/>
+        <segue reference="xe1-I8-Pkw"/>
         <segue reference="n6i-tz-46X"/>
     </inferredMetricsTieBreakers>
 </document>
