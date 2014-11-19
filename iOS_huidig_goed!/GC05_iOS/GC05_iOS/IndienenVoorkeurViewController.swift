@@ -6,13 +6,36 @@ class IndienenVoorkeurViewController: UIViewController, UIPickerViewDataSource, 
     
     @IBOutlet weak var txtViewPeriodes: UITextView!
     var vakanties: [Vakantie] = []
+    //var vakanties2: [Vakantie] = []
     var pickerData: [String] = []
     var voorkeur: Voorkeur = Voorkeur(id: "test")
     //var vorming: Vorming!
     //var inschrijvingVorming: InschrijvingVorming = InschrijvingVorming(id: "test")
     
+    func zoekVakanties() {
+        //vakanties.removeAll(keepCapacity: true)
+        var query = PFQuery(className: "Vakantie")
+        query.findObjectsInBackgroundWithBlock({(NSArray objects, NSError error) in
+            if(error == nil) {
+                if let PFObjects = objects as? [PFObject!] {
+                    for object in PFObjects {
+                        var vakantie = Vakantie(vakantie: object)
+                        self.vakanties.append(vakantie)
+                    }
+                }
+                //self.vakanties2 = self.vakanties
+                //self.tableView.reloadData()
+            }
+        })
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        zoekVakanties()
+        
+        //var query = PFQuery(className: "Vakantie")
+        //self.vakanties = query.findObjects() as [Vakantie]
         
         for var index = 0; index < self.vakanties.count; index += 1 {
             pickerData[index] = vakanties[index].titel!
