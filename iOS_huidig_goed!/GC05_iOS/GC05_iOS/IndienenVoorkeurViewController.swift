@@ -21,11 +21,15 @@ class IndienenVoorkeurViewController: UIViewController, UIPickerViewDataSource, 
                     for object in PFObjects {
                         var vakantie = Vakantie(vakantie: object)
                         self.vakanties.append(vakantie)
+                        var titel = vakantie.titel
+                        self.pickerData.append(titel!)
                     }
+                    
                 }
-                //self.vakanties2 = self.vakanties
-                //self.tableView.reloadData()
+                
+                
             }
+            
         })
     }
 
@@ -33,13 +37,13 @@ class IndienenVoorkeurViewController: UIViewController, UIPickerViewDataSource, 
         super.viewDidLoad()
         
         zoekVakanties()
-        
+
         //var query = PFQuery(className: "Vakantie")
         //self.vakanties = query.findObjects() as [Vakantie]
         
-        for var index = 0; index < self.vakanties.count; index += 1 {
+        /*for var index = 0; index < self.vakanties.count; index += 1 {
             pickerData[index] = vakanties[index].titel!
-        }
+        }*/
         
         pickerView.delegate = self
         pickerView.dataSource = self
