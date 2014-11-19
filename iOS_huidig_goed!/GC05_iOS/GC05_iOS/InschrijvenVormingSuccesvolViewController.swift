@@ -8,7 +8,9 @@ class InschrijvenVormingSuccesvolViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        activityIndicatorView.startAnimating()
         parseInschrijvingVormingToDatabase()
+        activityIndicatorView.stopAnimating()
     }
     
     func parseInschrijvingVormingToDatabase() {

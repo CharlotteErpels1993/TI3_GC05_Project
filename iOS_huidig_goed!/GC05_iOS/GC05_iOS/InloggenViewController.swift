@@ -175,6 +175,7 @@ class InloggenViewController: UIViewController
             //ouderOverzichtController.ouder = self.gebruiker as? Ouder
         } else if segue.identifier == "overzichtMonitor" {
             let profielOverzichtController = segue.destinationViewController as EigenprofielMonitorViewController
+            
             //monitorOverzichtController.monitor = self.gebruiker as? Monitor
         } else {
             //fout pop-up tonen

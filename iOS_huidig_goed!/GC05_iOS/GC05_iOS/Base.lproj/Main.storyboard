@@ -2598,7 +2598,6 @@
                     <navigationItem key="navigationItem" title="Wachtwoord vergeten" id="aVl-CL-caF"/>
                     <connections>
                         <outlet property="activityIndicatorView" destination="HYc-EX-YHN" id="G90-e4-Dp4"/>
-                        <outlet property="gaTerugBtn" destination="rAR-ya-agS" id="SP8-x5-7th"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zle-uu-kzH" userLabel="First Responder" sceneMemberID="firstResponder"/>

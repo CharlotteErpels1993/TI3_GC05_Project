@@ -19,6 +19,7 @@ class EigenprofielMonitorViewController: UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        activityIndicatorView.startAnimating()
         var query = PFQuery(className: "Monitor")
         query.whereKey("email", containsString: PFUser.currentUser().email)
         var monitorPF = query.getFirstObject()
@@ -43,6 +44,7 @@ class EigenprofielMonitorViewController: UIViewController
             facebook.text = monitor.linkFacebook
         }
         
+        activityIndicatorView.stopAnimating()
     }
     
     @IBAction func gaTerugNaarOverzichtMonitor(segue: UIStoryboardSegue) {

@@ -10,6 +10,7 @@ class InschrijvenVakantieSuccesvolViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        activityIndicatorView.startAnimating()
         var iv: PFObject = parseInschrijvingVakantieToDatabase(deelnemer.inschrijvingVakantie!)
         parseDeelnemerToDatabase(deelnemer, inschrijvingVakantie: iv)
         parseContactpersoonToDatabase(contactpersoon1, inschrijvingVakantie: iv)
@@ -21,7 +22,7 @@ class InschrijvenVakantieSuccesvolViewController : UIViewController {
         performSegueWithIdentifier("overzichtVakanties", sender: self)
         self.navigationItem.setHidesBackButton(true, animated: true)
 
-        
+        activityIndicatorView.stopAnimating()
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

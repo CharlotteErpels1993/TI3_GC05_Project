@@ -8,6 +8,9 @@ class AfbeeldingDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        acivityIndicatorView.startAnimating()
         imageView.image = image
+        acivityIndicatorView.stopAnimating()
+
     }
 }

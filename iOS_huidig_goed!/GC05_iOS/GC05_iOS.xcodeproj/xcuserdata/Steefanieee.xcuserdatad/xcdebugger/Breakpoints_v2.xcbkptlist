@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GC05_iOS/InschrijvenVakantieSuccesvolViewController.swift"
-            timestampString = "437490612.89144"
+            timestampString = "438078791.810278"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "10"
-            endingLineNumber = "10"
+            startingLineNumber = "11"
+            endingLineNumber = "11"
             landmarkName = "viewDidLoad()"
             landmarkType = "5">
          </BreakpointContent>
@@ -186,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GC05_iOS/EigenprofielMonitorViewController.swift"
-            timestampString = "437953867.18328"
+            timestampString = "438079119.271575"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
             landmarkName = "viewDidLoad()"
             landmarkType = "5">
          </BreakpointContent>
