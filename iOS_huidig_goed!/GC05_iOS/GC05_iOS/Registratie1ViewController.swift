@@ -24,9 +24,16 @@ class Registratie1ViewController: UIViewController
     @IBAction func toggle(sender: AnyObject) {
         toggleSideMenuView()
     }
+    @IBAction func gaTerugNaarInloggen(sender: AnyObject) {
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        var destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Inloggen") as UIViewController
+        sideMenuController()?.setContentViewController(destViewController)
+        hideSideMenuView()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        hideSideMenuView()
         self.navigationItem.setHidesBackButton(true, animated: true)
     }
     
