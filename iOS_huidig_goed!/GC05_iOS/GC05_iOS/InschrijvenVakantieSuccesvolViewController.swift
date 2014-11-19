@@ -19,18 +19,17 @@ class InschrijvenVakantieSuccesvolViewController : UIViewController {
             parseContactpersoonToDatabase(contactpersoon2!, inschrijvingVakantie: iv)
         }
         
-        performSegueWithIdentifier("overzichtVakanties", sender: self)
         self.navigationItem.setHidesBackButton(true, animated: true)
 
         activityIndicatorView.stopAnimating()
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    /*override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "overzichtVakanties" {
             let vakantiesOverzichtTableViewController = segue.destinationViewController as VakantiesTableViewController
             //vakantiesOverzichtTableViewController.ouder = self.ouder!
         }
-    }
+    }*/
     
     private func parseInschrijvingVakantieToDatabase(inschrijvingVakantie: InschrijvingVakantie) -> PFObject {
         var inschrijvingVakantieJSON = PFObject(className: "InschrijvingVakantie")

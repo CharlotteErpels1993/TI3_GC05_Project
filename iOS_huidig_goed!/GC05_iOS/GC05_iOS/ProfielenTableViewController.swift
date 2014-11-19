@@ -4,6 +4,8 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
     
     var monitoren: [Monitor] = []
     var monitoren2: [Monitor] = []
+    var monitorenZelfdeVorming: [Monitor] = []
+    var huidigeMonitor = PFUser.currentUser()
     
     @IBOutlet weak var zoekbar: UISearchBar!
     
@@ -25,11 +27,11 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
     }
     
     func zoekMonitorenZelfdeKamp() {
-        //PFQuery query = PFQuery(className: "Monitor")
-        //query.whereKey(")
+        /*PFQuery query = PFQuery(className: "Monitor")
+        query.whereKey(")*/
     }
     
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+    /*func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         zoekGefilterdeMonitoren(searchText.lowercaseString)
     }
     
@@ -37,7 +39,7 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
         monitoren2 = monitoren.filter { $0.naam!.rangeOfString(zoek) != nil }
         self.tableView.reloadData()
         
-    }
+    }*/
     
     func zoekMonitoren() {
         monitoren.removeAll(keepCapacity: true)
@@ -86,7 +88,7 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
         if indexPath.section == 0 {
             /* TO DO --> monitoren zelfde kamp/vorming */
             
-            let cell = tableView.dequeueReusableCellWithIdentifier("monitorCellZelfdeKamp", forIndexPath: indexPath) as UITableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("monitorCellZelfdeVorming", forIndexPath: indexPath) as UITableViewCell
             return cell
             
             /*let cell = tableView.dequeueReusableCellWithIdentifier("vormingCell", forIndexPath: indexPath) as UITableViewCell

@@ -1213,7 +1213,7 @@
         <scene sceneID="kh0-eD-1bF">
             <objects>
                 <tableViewController storyboardIdentifier="Profielen" id="n8h-Pf-gLH" customClass="ProfielenTableViewController" customModule="JOETZ" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="R1M-DC-H9W">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="R1M-DC-H9W">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1223,7 +1223,7 @@
                             <textInputTraits key="textInputTraits"/>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="vYR-gn-HM6" detailTextLabel="QsY-lH-0Zo" style="IBUITableViewCellStyleValue1" id="LTF-aN-dX0">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="monitorCellZelfdeVorming" textLabel="vYR-gn-HM6" detailTextLabel="QsY-lH-0Zo" style="IBUITableViewCellStyleValue1" id="LTF-aN-dX0">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LTF-aN-dX0" id="tim-Z6-4U3">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -1245,6 +1245,26 @@
                                 <connections>
                                     <segue destination="dHm-iF-4PQ" kind="show" id="xSz-Mr-cgx"/>
                                 </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="monitorCell" textLabel="Db5-rT-kn6" detailTextLabel="BkL-rk-9E4" style="IBUITableViewCellStyleValue1" id="6P3-Kh-gog">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6P3-Kh-gog" id="OJ8-Qz-avH">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Db5-rT-kn6">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BkL-rk-9E4">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -1300,7 +1320,6 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="129" id="eYT-h0-0Sj"/>
                                 </constraints>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -1789,8 +1808,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="terugNaarOverzicht:" destination="ZYZ-vO-yCv" eventType="touchUpInside" id="VDj-3K-QjC"/>
-                                    <segue destination="jwD-DV-qrq" kind="unwind" identifier="overzichtMonitor" unwindAction="gaTerugNaarOverzichtMonitor:" id="y2B-lm-EeY"/>
+                                    <action selector="gaTerugNaarOverzicht:" destination="ZYZ-vO-yCv" eventType="touchUpInside" id="kPU-dO-kqP"/>
                                 </connections>
                             </button>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="R5M-SR-7ia">
@@ -1812,11 +1830,9 @@
                     <navigationItem key="navigationItem" id="04K-dE-ZTa"/>
                     <connections>
                         <outlet property="activityIndicatorView" destination="R5M-SR-7ia" id="xOx-RK-8p6"/>
-                        <outlet property="terugNaarOverzicht" destination="ojS-E6-A5l" id="S6y-6s-6dP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bb5-ba-jow" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="jwD-DV-qrq" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3202" y="3306"/>
         </scene>
@@ -3001,7 +3017,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="3Ah-cP-UoS" kind="unwind" identifier="terugOvericht" unwindAction="gaTerugNaarInloggen:" id="8fg-mq-WOS"/>
+                                    <segue destination="3Ah-cP-UoS" kind="unwind" unwindAction="gaTerugNaarInloggen:" id="pNU-AA-Ejo"/>
                                 </connections>
                             </button>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="CSP-El-R4c">
@@ -3141,7 +3157,7 @@
         <image name="Klevertje.png" width="615" height="427"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Raw-ZD-Rau"/>
+        <segue reference="wxv-CA-5fs"/>
         <segue reference="n6i-tz-46X"/>
     </inferredMetricsTieBreakers>
 </document>

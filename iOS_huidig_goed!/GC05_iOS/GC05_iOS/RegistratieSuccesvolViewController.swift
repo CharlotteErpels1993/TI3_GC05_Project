@@ -6,7 +6,6 @@ class RegistratieSuccesvolViewController: UIViewController
     
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
        
@@ -19,7 +18,7 @@ class RegistratieSuccesvolViewController: UIViewController
         self.navigationItem.setHidesBackButton(true, animated: true)
         
         //Activity indicator (stop animating)
-        //activityIndicatorView.stopAnimating()
+        activityIndicatorView.stopAnimating()
     }
     
     private func parseOuderToDatabase() {

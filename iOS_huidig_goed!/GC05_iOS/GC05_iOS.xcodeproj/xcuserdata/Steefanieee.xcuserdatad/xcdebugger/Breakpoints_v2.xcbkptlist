@@ -287,8 +287,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "13"
             endingLineNumber = "13"
-            landmarkName = "VakantiesTableViewController"
-            landmarkType = "3">
+            landmarkName = "toggle(_:)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -303,8 +303,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "13"
             endingLineNumber = "13"
-            landmarkName = "VakantiesTableViewController"
-            landmarkType = "3">
+            landmarkName = "toggle(_:)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -479,8 +479,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "180"
             endingLineNumber = "180"
-            landmarkName = "zoekImages()"
-            landmarkType = "5">
+            landmarkName = "VakantieDetailsTableViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -495,8 +495,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "179"
             endingLineNumber = "179"
-            landmarkName = "zoekImages()"
-            landmarkType = "5">
+            landmarkName = "VakantieDetailsTableViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -735,8 +735,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "175"
             endingLineNumber = "175"
-            landmarkName = "VakantieDetailsTableViewController"
-            landmarkType = "3">
+            landmarkName = "tableView(_:numberOfRowsInSection:)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -751,8 +751,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "174"
             endingLineNumber = "174"
-            landmarkName = "VakantieDetailsTableViewController"
-            landmarkType = "3">
+            landmarkName = "tableView(_:numberOfRowsInSection:)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -942,13 +942,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GC05_iOS/ProfielenTableViewController.swift"
-            timestampString = "437997542.763149"
+            timestampString = "438084364.335971"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
-            landmarkName = "zoekGefilterdeMonitoren(_:)"
-            landmarkType = "5">
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "ProfielenTableViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -958,11 +958,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GC05_iOS/ProfielenTableViewController.swift"
-            timestampString = "437997542.763149"
+            timestampString = "438084364.335971"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
             landmarkName = "tableView(_:cellForRowAtIndexPath:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1108,6 +1108,170 @@
             startingLineNumber = "97"
             endingLineNumber = "97"
             landmarkName = "tableView(_:didSelectRowAtIndexPath:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GC05_iOS/IndienenVoorkeurViewController.swift"
+            timestampString = "438083371.357159"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GC05_iOS/IndienenVoorkeurViewController.swift"
+            timestampString = "438083371.357159"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GC05_iOS/ProfielenTableViewController.swift"
+            timestampString = "438084162.917334"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "8"
+            endingLineNumber = "8"
+            landmarkName = "ProfielenTableViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "JOETZ.ProfielenTableViewController.zoekbar.getter : weak Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.UISearchBar&gt;"
+                  moduleName = "JOETZ"
+                  urlString = "file:///Volumes/HDD/Documenten%20/TI3_GC05_Project/iOS_huidig_goed!/GC05_iOS/GC05_iOS/ProfielenTableViewController.swift"
+                  timestampString = "438084162.954994"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "8"
+                  endingLineNumber = "8"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "JOETZ.ProfielenTableViewController.zoekbar.setter : weak Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.UISearchBar&gt;"
+                  moduleName = "JOETZ"
+                  urlString = "file:///Volumes/HDD/Documenten%20/TI3_GC05_Project/iOS_huidig_goed!/GC05_iOS/GC05_iOS/ProfielenTableViewController.swift"
+                  timestampString = "438084162.955143"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "8"
+                  endingLineNumber = "8"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "JOETZ.ProfielenTableViewController.zoekbar.materializeForSet : weak Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.UISearchBar&gt;"
+                  moduleName = "JOETZ"
+                  urlString = "file:///Volumes/HDD/Documenten%20/TI3_GC05_Project/iOS_huidig_goed!/GC05_iOS/GC05_iOS/ProfielenTableViewController.swift"
+                  timestampString = "438084162.955227"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "8"
+                  endingLineNumber = "8"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "JOETZ.ProfielenTableViewController.init (JOETZ.ProfielenTableViewController.Type)(style : C.UITableViewStyle) -&gt; JOETZ.ProfielenTableViewController"
+                  moduleName = "JOETZ"
+                  urlString = "file:///Volumes/HDD/Documenten%20/TI3_GC05_Project/iOS_huidig_goed!/GC05_iOS/GC05_iOS/ProfielenTableViewController.swift"
+                  timestampString = "438084162.955307"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "8"
+                  endingLineNumber = "8"
+                  offsetFromSymbolStart = "373">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "JOETZ.ProfielenTableViewController.init (JOETZ.ProfielenTableViewController.Type)(nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;ObjectiveC.NSBundle&gt;) -&gt; JOETZ.ProfielenTableViewController"
+                  moduleName = "JOETZ"
+                  urlString = "file:///Volumes/HDD/Documenten%20/TI3_GC05_Project/iOS_huidig_goed!/GC05_iOS/GC05_iOS/ProfielenTableViewController.swift"
+                  timestampString = "438084162.955384"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "8"
+                  endingLineNumber = "8"
+                  offsetFromSymbolStart = "399">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "JOETZ.ProfielenTableViewController.init (JOETZ.ProfielenTableViewController.Type)() -&gt; JOETZ.ProfielenTableViewController"
+                  moduleName = "JOETZ"
+                  urlString = "file:///Volumes/HDD/Documenten%20/TI3_GC05_Project/iOS_huidig_goed!/GC05_iOS/GC05_iOS/ProfielenTableViewController.swift"
+                  timestampString = "438084162.955464"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "8"
+                  endingLineNumber = "8"
+                  offsetFromSymbolStart = "365">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "JOETZ.ProfielenTableViewController.init (JOETZ.ProfielenTableViewController.Type)(coder : ObjectiveC.NSCoder) -&gt; JOETZ.ProfielenTableViewController"
+                  moduleName = "JOETZ"
+                  urlString = "file:///Volumes/HDD/Documenten%20/TI3_GC05_Project/iOS_huidig_goed!/GC05_iOS/GC05_iOS/ProfielenTableViewController.swift"
+                  timestampString = "438084162.955545"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "8"
+                  endingLineNumber = "8"
+                  offsetFromSymbolStart = "373">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GC05_iOS/EigenprofielMonitorViewController.swift"
+            timestampString = "438087094.226928"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "gaTerugNaarOverzichtMonitor(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
