@@ -35,14 +35,21 @@ public class DBHandler extends SQLiteOpenHelper {
                 Constants.COLUMN_FORMULE + " TEXT," + Constants.COLUMN_MAXDEELNEMERS + " NUMERIC," + Constants.COLUMN_INBEGREPENINPRIJS + " TEXT," + Constants.COLUMN_BMLEDENPRIJS + " NUMERIC," +
                 Constants.COLUMN_STERPRIJSOUDER1 + " NUMERIC," + Constants.COLUMN_STERPRIJS2OUDERS + " NUMERIC" + ")";
 
+        sqLiteDatabase.execSQL(CREATE_VAKANTIE_TABLE);
+
+    }
+
+    public void onCreateProfielen(SQLiteDatabase sqLiteDatabase) {
 
         String CREATE_PROFIELEN_TABLE = "CREATE TABLE " + TABLE_PROFIELEN + "(" +Constants.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +Constants.COLUMN_AANSLUITINGSNUMMER + " NUMERIC," + Constants.COLUMN_BUS + " TEXT," + Constants.COLUMN_CODEGERECHTIGDE + " NUMERIC," +
                 Constants.COLUMN_EMAIL + " TEXT," + Constants.COLUMN_GEMEENTE + " TEXT," + Constants.COLUMN_GSM + " TEXT," +Constants.COLUMN_LIDNR + " NUMERIC," +Constants.COLUMN_LINKFACEBOOK + " TEXT," +
                 Constants.COLUMN_NAAM + " TEXT," + Constants.COLUMN_NUMMER + " NUMERIC," + Constants.COLUMN_POSTCODE + " NUMERIC," + Constants.COLUMN_RIJKSREGISTERNUMMER + " TEXT," +
                 Constants.COLUMN_STRAAT + " TEXT," + Constants.COLUMN_TELEFOON + " TEXT," + Constants.COLUMN_VOORNAAM + " TEXT" + ")";
-        sqLiteDatabase.execSQL(CREATE_VAKANTIE_TABLE);
+
         sqLiteDatabase.execSQL(CREATE_PROFIELEN_TABLE);
     }
+
+
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i2) {
@@ -55,9 +62,17 @@ public class DBHandler extends SQLiteOpenHelper {
     public void drop(SQLiteDatabase db)
     {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_VAKANTIE);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_PROFIELEN);
         onCreate(db);
     }
+
+    public void dropProfielen(SQLiteDatabase db)
+    {
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_PROFIELEN);
+        onCreateProfielen(db);
+
+    }
+
+
 
     public Long toevoegenGegevensVakantie(Vakantie vakantie)
     {
@@ -161,20 +176,22 @@ public class DBHandler extends SQLiteOpenHelper {
     public Long toevoegenGegevensMonitor(Monitor monitor)
     {
         ContentValues values = new ContentValues();
-        values.put(Constants.COLUMN_AANSLUITINGSNUMMER,(Integer) monitor.getAansluitingsNr());
-        values.put(Constants.COLUMN_BUS, monitor.getBus());
-        values.put(Constants.COLUMN_CODEGERECHTIGDE,(Integer) monitor.getCodeGerechtigde());
+        //values.put(Constants.COLUMN_AANSLUITINGSNUMMER,(Integer) monitor.getAansluitingsNr());
+        //values.put(Constants.COLUMN_BUS, monitor.getBus());
+        //values.put(Constants.COLUMN_CODEGERECHTIGDE,(Integer) monitor.getCodeGerechtigde());
         values.put(Constants.COLUMN_EMAIL, monitor.getEmail());
 
         values.put(Constants.COLUMN_GEMEENTE, monitor.getGemeente());
         values.put(Constants.COLUMN_GSM, monitor.getGsm());
         values.put(Constants.COLUMN_LIDNR, monitor.getLidNummer());
+        if(monitor.getLinkFacebook() == null)
+            monitor.setLinkFacebook("");
         values.put(Constants.COLUMN_LINKFACEBOOK, monitor.getLinkFacebook());
         values.put(Constants.COLUMN_NAAM, monitor.getNaam());
 
         values.put(Constants.COLUMN_NUMMER,(Integer) monitor.getHuisnr());
         values.put(Constants.COLUMN_POSTCODE, monitor.getPostcode());
-        values.put(Constants.COLUMN_RIJKSREGISTERNUMMER, monitor.getRijksregNr());
+        //values.put(Constants.COLUMN_RIJKSREGISTERNUMMER, monitor.getRijksregNr());
 
         values.put(Constants.COLUMN_STRAAT, monitor.getStraat());
         values.put(Constants.COLUMN_TELEFOON, monitor.getTelefoon());
@@ -218,9 +235,9 @@ public class DBHandler extends SQLiteOpenHelper {
         if(cursor.moveToFirst())
         {
             cursor.moveToFirst();
-            monitor.setAansluitingsNr(Integer.parseInt(cursor.getString(1)));
-            monitor.setBus(cursor.getString(2));
-            monitor.setCodeGerechtigde(Integer.parseInt(cursor.getString(3)));
+            //monitor.setAansluitingsNr(Integer.parseInt(cursor.getString(1)));
+            //monitor.setBus(cursor.getString(2));
+            //monitor.setCodeGerechtigde(Integer.parseInt(cursor.getString(3)));
             monitor.setEmail(cursor.getString(4));
             monitor.setGemeente(cursor.getString(5));
             monitor.setGsm(cursor.getString(6));
@@ -228,8 +245,8 @@ public class DBHandler extends SQLiteOpenHelper {
             monitor.setLinkFacebook(cursor.getString(8));
             monitor.setNaam(cursor.getString(9));
             monitor.setHuisnr(Integer.parseInt(cursor.getString(10)));
-            monitor.setPostcode(cursor.getString(11));
-            monitor.setRijksregNr(cursor.getString(12));
+            monitor.setPostcode(Integer.parseInt(cursor.getString(11)));
+            //monitor.setRijksregNr(cursor.getString(12));
             monitor.setStraat(cursor.getString(13));
             monitor.setTelefoon(cursor.getString(14));
             monitor.setVoornaam(cursor.getString(15));

@@ -45,6 +45,12 @@ public class myDb {
 
     }
 
+    public void dropProfielen()
+    {
+        db.dropProfielen(db.getWritableDatabase());
+
+    }
+
     public void close()
     {
         try{

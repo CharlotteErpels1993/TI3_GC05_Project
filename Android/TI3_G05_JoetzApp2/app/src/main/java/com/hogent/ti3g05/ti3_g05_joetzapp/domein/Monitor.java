@@ -6,7 +6,7 @@ package com.hogent.ti3g05.ti3_g05_joetzapp.domein;
 public class Monitor extends Gebruiker {
     private String linkFacebook;
     private String naam, voornaam, email, gemeente, gsm, rijksregNr, straat;
-    private String postcode;
+    private int postcode;
     private Number huisnr, codeGerechtigde;
     private int lidNummer;
 
@@ -54,8 +54,8 @@ public class Monitor extends Gebruiker {
     public String getStraat(){return straat;}
     public void setStraat(String straat){this.straat=straat;}
 
-    public String getPostcode(){return postcode;}
-    public void setPostcode(String postcode){this.postcode=postcode;}
+    public int getPostcode(){return postcode;}
+    public void setPostcode(int postcode){this.postcode=postcode;}
 
     public String getLinkFacebook() {
         return linkFacebook;

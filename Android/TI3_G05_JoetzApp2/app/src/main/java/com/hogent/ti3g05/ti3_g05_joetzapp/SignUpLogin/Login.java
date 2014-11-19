@@ -35,7 +35,7 @@ public class Login extends Activity{
     );*/
 
 	// flag for Internet connection status
-	Boolean isInternetPresent = false;
+	Boolean isInternetPresent = true;
 	// Connection detector class
 	ConnectionDetector cd;
 
@@ -72,6 +72,7 @@ public class Login extends Activity{
                 if (isInternetPresent) {
                     // Internet Connection is Present
                     // make HTTP requests
+                    Toast.makeText(getApplicationContext(), "U wordt ingelogged, even geduld aub", Toast.LENGTH_LONG).show();
                     attemptLogin();
                 } else {
                     // Internet connection is not present

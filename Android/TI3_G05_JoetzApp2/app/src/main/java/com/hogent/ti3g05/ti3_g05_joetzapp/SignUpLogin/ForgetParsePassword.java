@@ -19,7 +19,7 @@ public class ForgetParsePassword extends Activity{
 	EditText et_forgetpassword = null;
 	Button btn_submitforgetpassword = null;
     Button btn_back = null;
-	String password = null;
+	String email = null;
 	
 	
 	@Override
@@ -46,7 +46,8 @@ public class ForgetParsePassword extends Activity{
 			@Override
 			public void onClick(View v) {
 				
-				password = et_forgetpassword.getText().toString();
+				email = et_forgetpassword.getText().toString();
+                Toast.makeText(getApplicationContext(), "Mail wordt verstuurd", Toast.LENGTH_LONG).show();
 				checkEmailID();
 				
 				
@@ -56,13 +57,13 @@ public class ForgetParsePassword extends Activity{
 	}
 	
 	protected void checkEmailID() {
-		if (TextUtils.isEmpty(password)) {
+		if (TextUtils.isEmpty(email)) {
 			et_forgetpassword.setError(getString(R.string.error_field_required));
-		} else if (!password.contains("@")) {
+		} else if (!email.contains("@")) {
 			et_forgetpassword.setError(getString(R.string.error_invalid_email));
 		}
 		else
-			forgotPassword(password);
+			forgotPassword(email);
 	}
 
 	public void forgotPassword(String email) {
@@ -79,6 +80,10 @@ public class ForgetParsePassword extends Activity{
 		public void done(ParseException e) {
 			if (e == null) {
 				Toast.makeText(getApplicationContext(), "Successfully sent link to your email for reset Password", Toast.LENGTH_LONG).show();
+                Intent intent1 = new Intent(ForgetParsePassword.this, Login.class);
+                startActivity(intent1);
+
+                overridePendingTransition(R.anim.left_in, R.anim.right_out);
 			} else {
 				Toast.makeText(getApplicationContext(), "Failed to sent link to your email for reset Password", Toast.LENGTH_LONG).show();
 				

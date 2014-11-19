@@ -98,7 +98,7 @@ public class ProfielenOverzicht extends Activity /* implements SwipeRefreshLayou
             mProgressDialog.setMessage("Aan het laden...");
             mProgressDialog.setIndeterminate(false);
             // Show progressdialog
-            mProgressDialog.show();
+            //mProgressDialog.show();
         }
 
         @Override
@@ -114,17 +114,16 @@ public class ProfielenOverzicht extends Activity /* implements SwipeRefreshLayou
                 query.orderByAscending("naam");
                 ob = query.find();
 
-                myDB.drop();
+                myDB.dropProfielen();
                 for (ParseObject monitor : ob) {
 
                     Monitor map = new Monitor();
-                    //String prijs = vakantie.get("basisPrijs").toString();
                     map.setNaam((String) monitor.get("naam"));
                     map.setVoornaam((String) monitor.get("voornaam"));
                     map.setStraat((String) monitor.get("straat"));
-                    //map.setPostcode((String) monitor.get("postcode"));
-                    //map.setHuisnr((Number) monitor.get("nummer"));
-                     //map.setLidNummer((Integer) monitor.get("lidNr"));
+                    map.setPostcode((Integer) monitor.get("postcode"));
+                    map.setHuisnr((Number) monitor.get("nummer"));
+                     map.setLidNummer((Integer) monitor.get("lidNr"));
                     map.setEmail((String) monitor.get("email"));
                     map.setGemeente((String) monitor.get("gemeente"));
                     map.setLinkFacebook((String) monitor.get("linkFacebook"));

@@ -82,6 +82,7 @@ public class ProfielAdapter extends ArrayAdapter<Vorming> implements Filterable 
         if (view == null) {
             holder = new ViewHolder();
             view = inflater.inflate(R.layout.profiel_listview_item, null);
+
             holder.naam = (TextView) view.findViewById(R.id.achternaam);
             holder.voornaam = (TextView) view.findViewById(R.id.voornaam);
             holder.straat = (TextView) view.findViewById(R.id.straat);
@@ -92,6 +93,7 @@ public class ProfielAdapter extends ArrayAdapter<Vorming> implements Filterable 
         } else {
             holder = (ViewHolder) view.getTag();
         }
+//TODO geeft error bij getview
         holder.naam.setText(profielen.get(position).getNaam());
         holder.voornaam.setText(profielen.get(position).getVoornaam());
 
