@@ -4,12 +4,22 @@ class RegistratieSuccesvolViewController: UIViewController
 {
     var ouder: Ouder!
     
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+       
+        //Activity indicator (start animating)
+        activityIndicatorView.startAnimating()
+        
         parseOuderToDatabase()
         createPFUser()
         logIn()
         self.navigationItem.setHidesBackButton(true, animated: true)
+        
+        //Activity indicator (stop animating)
+        //activityIndicatorView.stopAnimating()
     }
     
     private func parseOuderToDatabase() {

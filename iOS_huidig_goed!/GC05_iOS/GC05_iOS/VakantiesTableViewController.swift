@@ -7,6 +7,8 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
     //var ouder: Ouder?
     //var currentUser: PFUser?
     
+    @IBOutlet var activityIndicatorView: UIActivityIndicatorView!
+    
     @IBOutlet weak var zoekbar: UISearchBar!
     
     @IBAction func toggle(sender: AnyObject) {
@@ -15,6 +17,9 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        var activityIndicator = getActivityIndicatorView(self)
+        
+        //activityIndicatorView.startAnimating()
         zoekVakanties()
         hideSideMenuView()
         zoekbar.showsScopeBar = true
@@ -26,9 +31,9 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
             self.navigationItem.rightBarButtonItem = nil   
         }
         
+        activityIndicator.stopAnimating()
         
         //self.navigationItem.rightBarButtonItem.
-        
     }
     
     /*override func viewDidAppear(animated: Bool) {
@@ -100,4 +105,13 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         cell.doelgroepLabel.text! = " \(vakantie.doelgroep!) jaar "
         return cell
     }
+}
+
+func getActivityIndicatorView(controller: UIViewController) -> UIActivityIndicatorView {
+    let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
+    activityIndicator.color = UIColor.redColor()
+    activityIndicator.frame = CGRectMake(100, 100, 100, 100)
+    activityIndicator.startAnimating()
+    controller.view.addSubview(activityIndicator)
+    return activityIndicator
 }

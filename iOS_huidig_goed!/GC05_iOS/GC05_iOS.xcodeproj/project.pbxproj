@@ -10,6 +10,7 @@
 		0F05F22E1A13A73000CFE0A1 /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F05F22D1A13A73000CFE0A1 /* NSDateExtension.swift */; };
 		0F265EFA1A137CD1003F2699 /* InschrijvenVakantieSuccesvolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F265EF91A137CD1003F2699 /* InschrijvenVakantieSuccesvolViewController.swift */; };
 		0F2A819A1A091F7100F67A3B /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2A81991A091F7100F67A3B /* Regex.swift */; };
+		0F4C2DCE1A1BE253008EDEA4 /* ActivityIndicatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4C2DCD1A1BE253008EDEA4 /* ActivityIndicatorViewController.swift */; };
 		0F6254971A0CCBA300BDEF38 /* FoutBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6254961A0CCBA300BDEF38 /* FoutBox.swift */; };
 		0F92E30D1A1368A10005C86C /* InschrijvenVakantie1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F92E30C1A1368A10005C86C /* InschrijvenVakantie1ViewController.swift */; };
 		0F92E30F1A13697B0005C86C /* InschrijvenVakantie2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F92E30E1A13697B0005C86C /* InschrijvenVakantie2ViewController.swift */; };
@@ -92,6 +93,7 @@
 		0F05F22D1A13A73000CFE0A1 /* NSDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtension.swift; sourceTree = "<group>"; };
 		0F265EF91A137CD1003F2699 /* InschrijvenVakantieSuccesvolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InschrijvenVakantieSuccesvolViewController.swift; sourceTree = "<group>"; };
 		0F2A81991A091F7100F67A3B /* Regex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
+		0F4C2DCD1A1BE253008EDEA4 /* ActivityIndicatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorViewController.swift; sourceTree = "<group>"; };
 		0F6254961A0CCBA300BDEF38 /* FoutBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoutBox.swift; sourceTree = "<group>"; };
 		0F92E30C1A1368A10005C86C /* InschrijvenVakantie1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InschrijvenVakantie1ViewController.swift; sourceTree = "<group>"; };
 		0F92E30E1A13697B0005C86C /* InschrijvenVakantie2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InschrijvenVakantie2ViewController.swift; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 				0FA80B0B1A01350E008DB343 /* Main.storyboard */,
 				0FA80B0E1A01350E008DB343 /* Images.xcassets */,
 				0FA80B051A01350E008DB343 /* Supporting Files */,
+				0F4C2DCD1A1BE253008EDEA4 /* ActivityIndicatorViewController.swift */,
 			);
 			path = GC05_iOS;
 			sourceTree = "<group>";
@@ -490,6 +493,7 @@
 				1BFB1E591A0C0A6400E7B53F /* NieuwWachtwoordViewController.swift in Sources */,
 				A5CEA07B1A13998900E14103 /* VormingenTableViewController.swift in Sources */,
 				A5A158341A1A6A7600FEF51D /* ProfielenTableViewController.swift in Sources */,
+				0F4C2DCE1A1BE253008EDEA4 /* ActivityIndicatorViewController.swift in Sources */,
 				A50740F81A1386D900D01900 /* AfbeeldingCollectionViewCell.swift in Sources */,
 				1BDDB9511A02D86F0007623D /* Voorkeur.swift in Sources */,
 				0F92E30F1A13697B0005C86C /* InschrijvenVakantie2ViewController.swift in Sources */,

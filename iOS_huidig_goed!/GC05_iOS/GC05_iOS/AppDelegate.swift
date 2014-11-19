@@ -10,6 +10,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
+        
+        
+        
         // dit in de plaats van hieronder in de functie?
         Parse.setApplicationId("a3jgklEb2rHZYcgqDezLfqSP6i1C2u4eVV8R03YS", clientKey: "3ZguW3kx5J6PuieccT7ypJ5ZvYhwX08ESKL8cDNX")
         
