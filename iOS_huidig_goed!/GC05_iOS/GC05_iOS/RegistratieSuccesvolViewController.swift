@@ -6,6 +6,14 @@ class RegistratieSuccesvolViewController: UIViewController
     
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
+    
+    @IBAction func gaTerugNaarInloggen(sender: AnyObject) {
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        var destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Inloggen") as UIViewController
+        sideMenuController()?.setContentViewController(destViewController)
+        hideSideMenuView()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
        

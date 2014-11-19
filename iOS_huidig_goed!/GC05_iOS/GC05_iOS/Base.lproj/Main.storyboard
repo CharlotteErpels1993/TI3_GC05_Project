@@ -1404,26 +1404,30 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rJd-H7-4j2">
-                                <rect key="frame" x="267" y="318" width="66" height="30"/>
-                                <state key="normal" title="Overzicht">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Y3D-b9-iCG">
                                 <rect key="frame" x="281" y="281" width="37" height="37"/>
                                 <color key="color" red="0.9794921875" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rJd-H7-4j2">
+                                <rect key="frame" x="231" y="317" width="139" height="30"/>
+                                <state key="normal" title="Terug naar overzicht">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="gaTerugNaarOverzicht:" destination="a6c-ZB-4eV" eventType="touchUpInside" id="CAI-ld-3iq"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="rJd-H7-4j2" firstAttribute="leading" secondItem="4LX-k5-Obl" secondAttribute="leadingMargin" constant="215" id="0Kq-f6-GVC"/>
                             <constraint firstAttribute="centerY" secondItem="Y3D-b9-iCG" secondAttribute="centerY" id="7WU-hU-Wx3"/>
                             <constraint firstItem="rJd-H7-4j2" firstAttribute="top" secondItem="kDW-hq-QtZ" secondAttribute="bottom" constant="8" id="8fj-VR-U7W"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="rJd-H7-4j2" secondAttribute="trailing" constant="214" id="9es-26-tZ0"/>
                             <constraint firstItem="kDW-hq-QtZ" firstAttribute="leading" secondItem="4LX-k5-Obl" secondAttribute="leadingMargin" id="Dt7-7o-NBH"/>
                             <constraint firstAttribute="centerX" secondItem="Y3D-b9-iCG" secondAttribute="centerX" id="H65-7Q-6p4"/>
+                            <constraint firstItem="rJd-H7-4j2" firstAttribute="top" secondItem="Y3D-b9-iCG" secondAttribute="bottom" constant="-1" id="Of0-XR-ZVB"/>
                             <constraint firstAttribute="centerY" secondItem="kDW-hq-QtZ" secondAttribute="centerY" constant="0.5" id="ULQ-tM-OEe"/>
-                            <constraint firstItem="rJd-H7-4j2" firstAttribute="leading" secondItem="4LX-k5-Obl" secondAttribute="leadingMargin" constant="251" id="Zf3-ny-qsj"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="rJd-H7-4j2" secondAttribute="trailing" constant="251" id="ci3-CB-ZZI"/>
                             <constraint firstAttribute="trailingMargin" secondItem="kDW-hq-QtZ" secondAttribute="trailing" id="sZI-TJ-pAx"/>
                         </constraints>
                     </view>
@@ -2437,12 +2441,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aKZ-2H-F1N">
-                                <rect key="frame" x="268" y="307" width="65" height="30"/>
-                                <state key="normal" title="Overzicht">
+                                <rect key="frame" x="231" y="307" width="139" height="30"/>
+                                <state key="normal" title="Terug naar overzicht">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="104-sA-mof" kind="unwind" identifier="overzichtVakanties" unwindAction="gaTerugNaarOverzichtVakanties:" id="eQE-lp-bLq"/>
+                                    <segue destination="104-sA-mof" kind="unwind" unwindAction="gaTerugNaarOverzichtVakanties:" id="6v1-6m-6TX"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="U bent succesvol ingeschreven!" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X2Y-UH-TaC">
@@ -2548,24 +2552,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Er is een mail verstuurd." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eTC-bJ-1Fs">
-                                <rect key="frame" x="208" y="232" width="185" height="21"/>
+                                <rect key="frame" x="208" y="232" width="184.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Volg de stappen om uw wachtwoord opnieuw in te stellen" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9AP-bJ-lcA">
-                                <rect key="frame" x="79" y="260" width="442" height="21"/>
+                                <rect key="frame" x="79" y="260" width="442" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rAR-ya-agS">
-                                <rect key="frame" x="270" y="310" width="60" height="30"/>
-                                <state key="normal" title="Ga terug">
+                                <rect key="frame" x="232" y="309" width="135" height="30"/>
+                                <state key="normal" title="Terug naar inloggen">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="b4B-Ah-gfj" kind="unwind" unwindAction="gaTerugNaarInloggen:" id="1ep-xK-nvZ"/>
+                                    <segue destination="b4B-Ah-gfj" kind="unwind" unwindAction="gaTerugNaarInloggen:" id="ofc-Xy-BxO"/>
                                 </connections>
                             </button>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="HYc-EX-YHN">
@@ -3017,6 +3021,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="gaTerugNaarInloggen:" destination="69z-Tv-Va1" eventType="touchUpInside" id="pRb-tA-6v0"/>
                                     <segue destination="3Ah-cP-UoS" kind="unwind" unwindAction="gaTerugNaarInloggen:" id="pNU-AA-Ejo"/>
                                 </connections>
                             </button>
@@ -3157,7 +3162,7 @@
         <image name="Klevertje.png" width="615" height="427"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="wxv-CA-5fs"/>
+        <segue reference="xe1-I8-Pkw"/>
         <segue reference="n6i-tz-46X"/>
     </inferredMetricsTieBreakers>
 </document>
