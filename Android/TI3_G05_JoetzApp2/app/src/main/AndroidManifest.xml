@@ -71,8 +71,9 @@
         <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.ProfielenOverzicht" />
         <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.Loguit" />
         <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.about" />
+        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.IndienenVoorkeurVakantie" />
         <activity
-            android:name="com.hogent.ti3g05.ti3_g05_joetzapp.InschrijvingSignup"
+            android:name="com.hogent.ti3g05.ti3_g05_joetzapp.InschrijvingVorming"
             android:label="@string/title_activity_inschrijving_signup" >
         </activity>
     </application>

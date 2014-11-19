@@ -17,7 +17,7 @@
             android:text="@string/inschrijvenVak2_AlgemeneUitleg"/>
 
         <EditText
-            android:id="@+id/VoornaamContactPersoon"
+            android:id="@+id/VoornaamContactPersoonIns"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
@@ -29,13 +29,14 @@
             android:id="@+id/NaamContactPersoon"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/VoornaamContactPersoon"
+            android:layout_below="@id/VoornaamContactPersoonIns"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="25dp"
             android:hint="@string/famnaamHint" />
 
         <EditText
             android:id="@+id/TelefoonContactPersoon"
+            android:inputType="number"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/NaamContactPersoon"
@@ -45,6 +46,7 @@
 
         <EditText
             android:id="@+id/GsmContactPersoon"
+            android:inputType="number"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/TelefoonContactPersoon"

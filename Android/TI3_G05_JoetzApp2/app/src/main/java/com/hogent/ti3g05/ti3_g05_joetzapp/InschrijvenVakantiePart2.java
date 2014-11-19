@@ -34,7 +34,7 @@ public class InschrijvenVakantiePart2 extends Activity {
         setContentView(R.layout.activity_inschrijven_vakantie_part2);
         cd = new ConnectionDetector(getApplicationContext());
 
-        txtVoornaam = (EditText) findViewById(R.id.VoornaamContactPersoon);
+        txtVoornaam = (EditText) findViewById(R.id.VoornaamContactPersoonIns);
         txtNaam = (EditText) findViewById(R.id.NaamContactPersoon);
         txtTelefoon = (EditText) findViewById(R.id.TelefoonContactPersoon);
         txtGSM = (EditText) findViewById(R.id.GsmContactPersoon);

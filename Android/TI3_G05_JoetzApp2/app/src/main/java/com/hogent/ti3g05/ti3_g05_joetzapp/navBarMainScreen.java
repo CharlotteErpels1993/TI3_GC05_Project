@@ -162,33 +162,58 @@ public class navBarMainScreen extends Activity {
                 else
                 {
                     Toast.makeText(this,"U hebt niet de juiste bevoegdheid om dit te bekijken.", Toast.LENGTH_SHORT).show();
-                    fragment = new activiteit_overzicht();
                 }
 
                 break;
 
 
             case 1:
-                if(ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("monitor"))
-
-                {
-                    Intent intent2 = new Intent(navBarMainScreen.this, Vormingen_Overzicht.class
+                if(ParseUser.getCurrentUser() == null ) {
+                    Toast.makeText(this, "U hebt niet de juiste bevoegdheid om dit te bekijken.", Toast.LENGTH_SHORT).show();
+                    Intent intent1 = new Intent(navBarMainScreen.this, navBarMainScreen.class
                     );
-                    startActivity(intent2);
-                }
-                else
-                {
-                    Toast.makeText(this,"U hebt niet de juiste bevoegdheid om dit te bekijken.", Toast.LENGTH_SHORT).show();
-                    fragment = new activiteit_overzicht();
+                    startActivity(intent1); }
+                else{
+                    if (ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("monitor"))
+
+                    {
+                        Intent intent2 = new Intent(navBarMainScreen.this, Vormingen_Overzicht.class
+                        );
+                        startActivity(intent2);
+                    } else {
+                        Toast.makeText(this, "U hebt niet de juiste bevoegdheid om dit te bekijken.", Toast.LENGTH_SHORT).show();
+                        Intent intent1 = new Intent(navBarMainScreen.this, navBarMainScreen.class
+                        );
+                        startActivity(intent1);
+                    }
                 }
 
                 break;
 
             case 2:
+                if(ParseUser.getCurrentUser() != null) {
+                    if (ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("monitor"))
+                    {
+                        Intent intent2 = new Intent(navBarMainScreen.this, IndienenVoorkeurVakantie.class
+                        );
+                        startActivity(intent2);
+                    } else {
+                        Toast.makeText(this, "U hebt niet de juiste bevoegdheid om dit te bekijken.", Toast.LENGTH_SHORT).show();
+                        Intent intent1 = new Intent(navBarMainScreen.this, navBarMainScreen.class
+                        );
+                        startActivity(intent1);
+                    }
+                } else {
+                    Intent intent1 = new Intent(navBarMainScreen.this, navBarMainScreen.class
+                    );
+                    startActivity(intent1);
+                }
+                break;
+            case 3:
 
-                Intent intent2 = new Intent(navBarMainScreen.this, about.class
+                Intent intent3 = new Intent(navBarMainScreen.this, about.class
                 );
-                startActivity(intent2);
+                startActivity(intent3);
 
                 break;
 

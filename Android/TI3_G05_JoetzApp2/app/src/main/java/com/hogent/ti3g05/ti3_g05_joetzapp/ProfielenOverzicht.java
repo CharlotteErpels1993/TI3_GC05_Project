@@ -21,6 +21,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.myDb;
+import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ProfielAdapter;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Monitor;
 import com.parse.ParseException;
@@ -42,6 +43,11 @@ public class ProfielenOverzicht extends Activity /* implements SwipeRefreshLayou
     private myDb myDB;
     //SwipeRefreshLayout swipeLayout;
 
+    // flag for Internet connection status
+    Boolean isInternetPresent = false;
+    // Connection detector class
+    ConnectionDetector cd;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +57,7 @@ public class ProfielenOverzicht extends Activity /* implements SwipeRefreshLayou
         setTitle("Profielen");
         // Execute RemoteDataTask AsyncTask
         filtertext = (EditText) findViewById(R.id.filtertext);
+        cd = new ConnectionDetector(getApplicationContext());
         myDB = new myDb(this);
         myDB.open();
 
@@ -98,51 +105,57 @@ public class ProfielenOverzicht extends Activity /* implements SwipeRefreshLayou
             mProgressDialog.setMessage("Aan het laden...");
             mProgressDialog.setIndeterminate(false);
             // Show progressdialog
-            //mProgressDialog.show();
+            mProgressDialog.show();
         }
 
         @Override
         protected Void doInBackground(Void... params) {
             // Create the array
             profielen = new ArrayList<Monitor>();
-            try {
-                // Locate the class table named "vakantie" in Parse.com
-                ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(
-                        "Monitor");
-                // Locate the column named "vertrekdatum" in Parse.com and order list
-                // by ascending
-                query.orderByAscending("naam");
-                ob = query.find();
+            isInternetPresent = cd.isConnectingToInternet();
+            if(isInternetPresent) {
 
-                myDB.dropProfielen();
-                for (ParseObject monitor : ob) {
+                try {
+                    // Locate the class table named "vakantie" in Parse.com
+                    ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(
+                            "Monitor");
+                    // Locate the column named "vertrekdatum" in Parse.com and order list
+                    // by ascending
+                    query.orderByAscending("naam");
+                    ob = query.find();
 
-                    Monitor map = new Monitor();
-                    map.setNaam((String) monitor.get("naam"));
-                    map.setVoornaam((String) monitor.get("voornaam"));
-                    map.setStraat((String) monitor.get("straat"));
-                    map.setPostcode((Integer) monitor.get("postcode"));
-                    map.setHuisnr((Number) monitor.get("nummer"));
-                     map.setLidNummer((Integer) monitor.get("lidNr"));
-                    map.setEmail((String) monitor.get("email"));
-                    map.setGemeente((String) monitor.get("gemeente"));
-                    map.setLinkFacebook((String) monitor.get("linkFacebook"));
-                    map.setGsm((String) monitor.get("telefoon"));
-                    map.setRijksregNr((String) monitor.get("rijksregisterNr"));
+                    myDB.dropProfielen();
+                    for (ParseObject monitor : ob) {
+
+                        Monitor map = new Monitor();
+                        map.setNaam((String) monitor.get("naam"));
+                        map.setVoornaam((String) monitor.get("voornaam"));
+                        map.setStraat((String) monitor.get("straat"));
+                        map.setPostcode((Integer) monitor.get("postcode"));
+                        map.setHuisnr((Number) monitor.get("nummer"));
+                        map.setLidNummer((Integer) monitor.get("lidNr"));
+                        map.setEmail((String) monitor.get("email"));
+                        map.setGemeente((String) monitor.get("gemeente"));
+                        map.setLinkFacebook((String) monitor.get("linkFacebook"));
+                        map.setGsm((String) monitor.get("telefoon"));
+                        map.setRijksregNr((String) monitor.get("rijksregisterNr"));
 
 
+                        profielen.add(map);
 
-                    profielen.add(map);
+                        myDB.insertProfiel(map);
 
-                    myDB.insertProfiel(map);
+                    }
+
+                } catch (ParseException e) {
+                    Log.e("Error", e.getMessage());
+                    e.printStackTrace();
+
+                    profielen = myDB.getProfielen();
 
                 }
-            } catch (ParseException e) {
-                Log.e("Error", e.getMessage());
-                e.printStackTrace();
-
+            } else {
                 profielen = myDB.getProfielen();
-
             }
             return null;
         }

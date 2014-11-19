@@ -27,7 +27,7 @@
 
     <EditText
         android:id="@+id/RijksRegNr"
-
+        android:inputType="number"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/Naam"
@@ -47,7 +47,7 @@
 
     <EditText
         android:id="@+id/Huisnr"
-
+        android:inputType="number"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/Straat"
@@ -57,7 +57,7 @@
 
     <EditText
         android:id="@+id/Bus"
-
+        android:inputType="number"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/Huisnr"
@@ -77,7 +77,7 @@
 
     <EditText
         android:id="@+id/Postcode"
-
+        android:inputType="number"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/Gemeente"
@@ -87,7 +87,7 @@
 
     <EditText
         android:id="@+id/Telefoon"
-
+        android:inputType="number"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/Postcode"
@@ -97,7 +97,7 @@
 
     <EditText
         android:id="@+id/Gsm"
-
+        android:inputType="number"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/Telefoon"

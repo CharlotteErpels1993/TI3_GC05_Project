@@ -49,10 +49,10 @@ public class activiteit_overzicht extends Fragment /*implements SwipeRefreshLayo
     Vakantie map;
     private ConnectionDetector conn;
     private ProgressDialog mProgressDialog;
-    private ListViewAdapter adapter;
     private ArrayList<String> images = new ArrayList<String>();
     private HashMap<String, ArrayList<String>> afbeeldingenMap = new HashMap<String, ArrayList<String>>();
     private View rootView;
+    private ListViewAdapter adapter;
     private List<Vakantie> vakanties = null;
     private EditText filtertext;
     //SwipeRefreshLayout swipeLayout;

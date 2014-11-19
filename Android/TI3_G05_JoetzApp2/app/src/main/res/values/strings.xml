@@ -81,6 +81,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
     <string-array name="items">
         <item>Profielen</item>
         <item>Vormingen</item>
+        <item>Indienen voorkeur</item>
         <item>Over Joetz</item>
     </string-array>
 

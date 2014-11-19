@@ -43,8 +43,8 @@ public class InschrijvenVakantiePart1 extends FragmentActivity {
 
         cd = new ConnectionDetector(getApplicationContext());
 
-        txtVoornaam = (EditText) findViewById(R.id.Voornaam);
-        txtNaam = (EditText) findViewById(R.id.Naam);
+        txtVoornaam = (EditText) findViewById(R.id.VoornaamIns);
+        txtNaam = (EditText) findViewById(R.id.NaamIns);
         txtStraat = (EditText) findViewById(R.id.Straat);
         txtHuisnr = (EditText) findViewById(R.id.Huisnr);
         txtBus = (EditText) findViewById(R.id.Bus);

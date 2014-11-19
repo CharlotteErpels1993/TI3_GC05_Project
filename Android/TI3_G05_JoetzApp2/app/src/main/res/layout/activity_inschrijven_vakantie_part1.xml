@@ -17,7 +17,7 @@
             android:text="@string/inschrijvenVak1_AlgemeneUitleg"/>
 
         <EditText
-            android:id="@+id/Voornaam"
+            android:id="@+id/VoornaamIns"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
@@ -26,10 +26,10 @@
             android:hint="@string/naamHint"/>
 
         <EditText
-            android:id="@+id/Naam"
+            android:id="@+id/NaamIns"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/Voornaam"
+            android:layout_below="@id/VoornaamIns"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="25dp"
             android:hint="@string/famnaamHint" />
@@ -50,7 +50,7 @@
             android:layout_height="wrap_content"
             android:text="@string/label_geboorteDatum"
             android:onClick="showDatePickerDialog"
-            android:layout_below="@id/Naam"
+            android:layout_below="@id/NaamIns"
             android:layout_marginTop="25dp"
             android:layout_marginStart="5dp"
             />
@@ -67,7 +67,7 @@
 
         <EditText
             android:id="@+id/Huisnr"
-
+            android:inputType="number"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/Straat"
@@ -77,7 +77,7 @@
 
         <EditText
             android:id="@+id/Bus"
-
+            android:inputType="number"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/Huisnr"
@@ -97,7 +97,7 @@
 
         <EditText
             android:id="@+id/Postcode"
-
+            android:inputType="number"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/Gemeente"
