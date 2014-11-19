@@ -33,6 +33,10 @@ class VakantieDetailsTableViewController: UITableViewController {
     var sectionToDelete = -1;
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        var activityIndicator = getActivityIndicatorView(self)
+        
         zoekImages()
         hideSideMenuView()
         query.getObjectInBackgroundWithId(vakantie.id) {
@@ -125,6 +129,8 @@ class VakantieDetailsTableViewController: UITableViewController {
         }
         
         //navigationItem.rightBarButtonItem.
+        
+        activityIndicator.stopAnimating()
 
     }
     

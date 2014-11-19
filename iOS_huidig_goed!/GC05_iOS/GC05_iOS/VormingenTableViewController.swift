@@ -14,9 +14,14 @@ class VormingenTableViewController: UITableViewController, UISearchBarDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        var activityIndicator = getActivityIndicatorView(self)
+        
         zoekVormingen()
         zoekbar.showsScopeBar = true
         zoekbar.delegate = self
+        
+        activityIndicator.stopAnimating()
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {

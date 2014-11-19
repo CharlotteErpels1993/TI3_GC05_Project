@@ -7,8 +7,6 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
     //var ouder: Ouder?
     //var currentUser: PFUser?
     
-    @IBOutlet var activityIndicatorView: UIActivityIndicatorView!
-    
     @IBOutlet weak var zoekbar: UISearchBar!
     
     @IBAction func toggle(sender: AnyObject) {
@@ -19,7 +17,6 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         super.viewDidLoad()
         var activityIndicator = getActivityIndicatorView(self)
         
-        //activityIndicatorView.startAnimating()
         zoekVakanties()
         hideSideMenuView()
         zoekbar.showsScopeBar = true
@@ -110,8 +107,21 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
 func getActivityIndicatorView(controller: UIViewController) -> UIActivityIndicatorView {
     let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
     activityIndicator.color = UIColor.redColor()
-    activityIndicator.frame = CGRectMake(100, 100, 100, 100)
+    activityIndicator.center = controller.view.center
     activityIndicator.startAnimating()
     controller.view.addSubview(activityIndicator)
+
     return activityIndicator
 }
+
+
+
+
+
+
+
+
+
+
+
+

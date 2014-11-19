@@ -14,9 +14,14 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        var activityIndicator = getActivityIndicatorView(self)
+        
         zoekMonitoren()
         zoekbar.showsScopeBar = true
         zoekbar.delegate = self
+        
+        activityIndicator.stopAnimating()
     }
     
     func zoekMonitorenZelfdeKamp() {
