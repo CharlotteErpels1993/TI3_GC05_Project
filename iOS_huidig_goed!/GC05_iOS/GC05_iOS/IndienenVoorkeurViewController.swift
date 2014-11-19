@@ -5,6 +5,7 @@ class IndienenVoorkeurViewController: UIViewController, UIPickerViewDataSource, 
     @IBOutlet weak var pickerView: UIPickerView!
     
     
+    
     @IBOutlet weak var txtViewPeriodes: UITextView!
     
     var vakanties: [Vakantie] = []
