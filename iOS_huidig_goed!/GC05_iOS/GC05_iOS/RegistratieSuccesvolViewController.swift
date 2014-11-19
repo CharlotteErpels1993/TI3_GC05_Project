@@ -69,6 +69,7 @@ class RegistratieSuccesvolViewController: UIViewController
         user.username = ouder.email
         user.password = ouder.wachtwoord
         user.email = ouder.email
+        user["soort"] = "ouder"
         
         user.signUpInBackgroundWithBlock {
             (succeeded: Bool!, error: NSError!) -> Void in
