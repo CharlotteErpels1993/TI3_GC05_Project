@@ -3,6 +3,7 @@ import UIKit
 class ExtraTekstViewController: UIViewController {
 
     @IBOutlet weak var korteBeschrijving: UITextView!
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
     var tekst: String?
     var type: Int!
@@ -10,6 +11,7 @@ class ExtraTekstViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        activityIndicatorView.startAnimating()
         korteBeschrijving.text = tekst
         
         switch type {
@@ -28,5 +30,7 @@ class ExtraTekstViewController: UIViewController {
         default:
             self.navigationController?.title = " "
         }
+        
+        activityIndicatorView.stopAnimating()
     }
 }

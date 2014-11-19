@@ -33,6 +33,10 @@ class VakantieDetailsTableViewController: UITableViewController {
     var sectionToDelete = -1;
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        var activityIndicator = getActivityIndicatorView(self)
+        
         zoekImages()
         hideSideMenuView()
         query.getObjectInBackgroundWithId(vakantie.id) {
@@ -75,57 +79,32 @@ class VakantieDetailsTableViewController: UITableViewController {
         var soort: String = gebruikerPF["soort"] as String
         
             if soort == "ouder" {
-            basisprijsLabel.text = String("Basisprijs: \(vakantie.basisprijs) " + euroSymbol)
-            inbegrepenPrijs.text = String("Inbegrepen prijs: \(vakantie.inbegrepenPrijs) ")
-            if (vakantie.bondMoysonLedenPrijs != -1) {
-                bondMoysonPrijsLabel.text = String("Bond moyson prijs: \(vakantie.bondMoysonLedenPrijs) " + euroSymbol)
+                basisprijsLabel.text = String("Basisprijs: \(vakantie.basisprijs) " + euroSymbol)
+                inbegrepenPrijs.text = String("Inbegrepen prijs: \(vakantie.inbegrepenPrijs) ")
+                if (vakantie.bondMoysonLedenPrijs != -1) {
+                    bondMoysonPrijsLabel.text = String("Bond moyson prijs: \(vakantie.bondMoysonLedenPrijs) " + euroSymbol)
+                } else {
+                    bondMoysonPrijsLabel.text = String("Bond moyson prijs: /")
+                }
+                if (vakantie.sterPrijs1ouder != -1) {
+                    sterprijs1Label.text = String("Ster prijs (1 ouder): \(vakantie.sterPrijs1ouder) " + euroSymbol)
+                } else {
+                    sterprijs1Label.text = String("Ster prijs (1 ouder): /")
+                }
+                if (vakantie.sterPrijs2ouders != -1) {
+                    sterPrijs2Label.text = String("Ster prijs (2 ouders): \(vakantie.sterPrijs2ouders) " + euroSymbol)
+                } else {
+                    sterPrijs2Label.text = String("Ster prijs (2 ouders): /")
+                }
             } else {
-                bondMoysonPrijsLabel.text = String("Bond moyson prijs: /")
+                self.navigationItem.rightBarButtonItem = nil
             }
-            if (vakantie.sterPrijs1ouder != -1) {
-                sterprijs1Label.text = String("Ster prijs (1 ouder): \(vakantie.sterPrijs1ouder) " + euroSymbol)
-            } else {
-                sterprijs1Label.text = String("Ster prijs (1 ouder): /")
-            }
-            if (vakantie.sterPrijs2ouders != -1) {
-                sterPrijs2Label.text = String("Ster prijs (2 ouders): \(vakantie.sterPrijs2ouders) " + euroSymbol)
-            } else {
-                sterPrijs2Label.text = String("Ster prijs (2 ouders): /")
-            }
-            }
-
         } else {
             self.sectionToDelete = 5;
             self.tableView.deleteSections(NSIndexSet(index: self.sectionToDelete), withRowAnimation: UITableViewRowAnimation.None)
-            /*basisprijsLabel = nil
-            bondMoysonPrijsLabel = nil
-            sterprijs1Label = nil
-            sterPrijs2Label = nil
-            bondMoysonPrijsLabel = nil
-            inbegrepenPrijs = nil*/
-        //basisprijsLabel.delete(true)
-        /*basisprijsLabel.hidden = true
-        bondMoysonPrijsLabel.hidden = true
-        sterprijs1Label.hidden = true
-        sterPrijs2Label.hidden = true
-        bondMoysonPrijsLabel.hidden = true
-        inbegrepenPrijs.hidden = true*/
-            
-            /*basisprijsLabel = nil
-            bondMoysonPrijsLabel = nil
-            sterprijs1Label = nil
-            sterPrijs2Label = nil
-            bondMoysonPrijsLabel = nil
-            inbegrepenPrijs = nil*/
-        
-        //self.tableView.deleteSections(NSIndexSet(index: 5), withRowAnimation: .None)
-         //   self.tableView.beginUpdates()
-        //self.tableView.endUpdates()
-        self.navigationItem.rightBarButtonItem = nil
+            self.navigationItem.rightBarButtonItem = nil
         }
-        
-        //navigationItem.rightBarButtonItem.
-
+        activityIndicator.stopAnimating()
     }
     
     override func viewDidAppear(animated: Bool) {

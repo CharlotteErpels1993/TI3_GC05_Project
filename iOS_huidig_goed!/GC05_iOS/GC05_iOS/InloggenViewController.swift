@@ -100,6 +100,10 @@ class InloggenViewController: UIViewController
                 var ouder = Ouder(ouder: ouderPF)
                 PFUser.logInWithUsername(ouder.email, password: ouder.wachtwoord)
                 performSegueWithIdentifier("ouderOverzicht", sender: self)
+            } else { //geen records
+                txtEmail.text = ""
+                txtWachtwoord.text = ""
+                foutBoxOproepen("Fout", "Foutieve combinatie e-mail & wachtwoord", self)
             }
         }
         
@@ -175,6 +179,7 @@ class InloggenViewController: UIViewController
             //ouderOverzichtController.ouder = self.gebruiker as? Ouder
         } else if segue.identifier == "overzichtMonitor" {
             let profielOverzichtController = segue.destinationViewController as EigenprofielMonitorViewController
+            
             //monitorOverzichtController.monitor = self.gebruiker as? Monitor
         } else {
             //fout pop-up tonen

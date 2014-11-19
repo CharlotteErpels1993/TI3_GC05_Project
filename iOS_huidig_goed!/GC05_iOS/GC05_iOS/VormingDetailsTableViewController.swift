@@ -25,6 +25,10 @@ class VormingDetailsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        hideSideMenuView()
+        
+        var activityIndicator = getActivityIndicatorView(self)
+        
         navigationItem.title = vorming.titel
         
         korteBeschrijvingLabel.text = vorming.korteBeschrijving
@@ -35,12 +39,14 @@ class VormingDetailsTableViewController: UITableViewController {
         betalingsWijzeLabel.text = String("Betalingswijze: \(vorming.betalingWijze)")
         periodesLabel.text = vorming.periodesToString()
         tipsLabel.text = vorming.tips
-        
 
+        activityIndicator.stopAnimating()
     }
     
     override func viewDidAppear(animated: Bool) {
         tableView.reloadData()
+        
+        
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

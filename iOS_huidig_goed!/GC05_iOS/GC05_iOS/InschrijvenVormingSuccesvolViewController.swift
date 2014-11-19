@@ -4,9 +4,13 @@ class InschrijvenVormingSuccesvolViewController: UIViewController {
     
     var inschrijvingVorming: InschrijvingVorming!
     
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        activityIndicatorView.startAnimating()
         parseInschrijvingVormingToDatabase()
+        activityIndicatorView.stopAnimating()
     }
     
     func parseInschrijvingVormingToDatabase() {
@@ -18,15 +22,16 @@ class InschrijvenVormingSuccesvolViewController: UIViewController {
         
         inschrijvingVormingJSON.save()
     }
+    @IBAction func gaTerugNaarOverzicht(sender: AnyObject) {
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        var destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Profiel") as UIViewController
+        sideMenuController()?.setContentViewController(destViewController)
+        hideSideMenuView()
+    }
     
-    @IBAction func terugNaarOverzicht(sender: AnyObject) {
+    /*@IBAction func terugNaarOverzicht(sender: AnyObject) {
         performSegueWithIdentifier("ouderOverzicht", sender: self)
-    }
+    }*/
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "overzichtMonitor" {
-            let profielMonitorViewController = segue.destinationViewController as EigenprofielMonitorViewController
-            //overzichtMonitorViewController.monitor = self.inschrijvingVorming.monitor
-        }
-    }
+
 }

@@ -4,12 +4,29 @@ class RegistratieSuccesvolViewController: UIViewController
 {
     var ouder: Ouder!
     
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
+    
+    
+    @IBAction func gaTerugNaarInloggen(sender: AnyObject) {
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        var destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Inloggen") as UIViewController
+        sideMenuController()?.setContentViewController(destViewController)
+        hideSideMenuView()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+       
+        //Activity indicator (start animating)
+        activityIndicatorView.startAnimating()
+        
         parseOuderToDatabase()
         createPFUser()
         logIn()
         self.navigationItem.setHidesBackButton(true, animated: true)
+        
+        //Activity indicator (stop animating)
+        activityIndicatorView.stopAnimating()
     }
     
     private func parseOuderToDatabase() {
@@ -52,6 +69,7 @@ class RegistratieSuccesvolViewController: UIViewController
         user.username = ouder.email
         user.password = ouder.wachtwoord
         user.email = ouder.email
+        user["soort"] = "ouder"
         
         user.signUpInBackgroundWithBlock {
             (succeeded: Bool!, error: NSError!) -> Void in

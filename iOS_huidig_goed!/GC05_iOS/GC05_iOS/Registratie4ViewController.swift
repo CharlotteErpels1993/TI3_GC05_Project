@@ -12,6 +12,14 @@ class Registratie4ViewController: UIViewController
     var statusTextFields: [String: String] = [:]
     var redColor: UIColor = UIColor.redColor()
     
+    @IBAction func gaTerugNaarInloggen(sender: AnyObject) {
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        var destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Inloggen") as UIViewController
+        sideMenuController()?.setContentViewController(destViewController)
+        hideSideMenuView()
+    }
+    
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "voltooiRegistratie" {
         let registratieSuccesvolViewController = segue.destinationViewController as RegistratieSuccesvolViewController

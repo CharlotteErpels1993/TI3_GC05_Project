@@ -11,6 +11,7 @@ class EigenprofielMonitorViewController: UIViewController
     @IBOutlet weak var telefoon: UILabel!
     @IBOutlet weak var gsm: UILabel!
     @IBOutlet weak var facebook: UILabel!
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
     @IBAction func toggle(sender: AnyObject) {
         toggleSideMenuView()
@@ -18,6 +19,7 @@ class EigenprofielMonitorViewController: UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        activityIndicatorView.startAnimating()
         var query = PFQuery(className: "Monitor")
         query.whereKey("email", containsString: PFUser.currentUser().email)
         var monitorPF = query.getFirstObject()
@@ -42,6 +44,7 @@ class EigenprofielMonitorViewController: UIViewController
             facebook.text = monitor.linkFacebook
         }
         
+        activityIndicatorView.stopAnimating()
     }
     
     @IBAction func gaTerugNaarOverzichtMonitor(segue: UIStoryboardSegue) {

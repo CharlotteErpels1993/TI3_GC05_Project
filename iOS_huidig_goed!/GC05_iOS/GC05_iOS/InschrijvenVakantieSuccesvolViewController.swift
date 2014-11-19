@@ -6,9 +6,11 @@ class InschrijvenVakantieSuccesvolViewController : UIViewController {
     var contactpersoon1: ContactpersoonNood!
     var contactpersoon2: ContactpersoonNood?
     //var ouder: Ouder!
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        activityIndicatorView.startAnimating()
         var iv: PFObject = parseInschrijvingVakantieToDatabase(deelnemer.inschrijvingVakantie!)
         parseDeelnemerToDatabase(deelnemer, inschrijvingVakantie: iv)
         parseContactpersoonToDatabase(contactpersoon1, inschrijvingVakantie: iv)
@@ -17,18 +19,17 @@ class InschrijvenVakantieSuccesvolViewController : UIViewController {
             parseContactpersoonToDatabase(contactpersoon2!, inschrijvingVakantie: iv)
         }
         
-        performSegueWithIdentifier("overzichtVakanties", sender: self)
         self.navigationItem.setHidesBackButton(true, animated: true)
 
-        
+        activityIndicatorView.stopAnimating()
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    /*override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "overzichtVakanties" {
             let vakantiesOverzichtTableViewController = segue.destinationViewController as VakantiesTableViewController
             //vakantiesOverzichtTableViewController.ouder = self.ouder!
         }
-    }
+    }*/
     
     private func parseInschrijvingVakantieToDatabase(inschrijvingVakantie: InschrijvingVakantie) -> PFObject {
         var inschrijvingVakantieJSON = PFObject(className: "InschrijvingVakantie")

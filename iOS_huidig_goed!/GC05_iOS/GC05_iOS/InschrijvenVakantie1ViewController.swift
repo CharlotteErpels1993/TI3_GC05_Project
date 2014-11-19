@@ -13,7 +13,7 @@ class InschrijvenVakantie1ViewController : UIViewController {
     @IBOutlet weak var txtPostcode: UITextField!
     
     var vakantie: Vakantie!
-    var deelnemer: Deelnemer! = Deelnemer(id: "test")
+    var deelnemer: Deelnemer = Deelnemer(id: "test")
     var foutBox: FoutBox? = nil
     var redColor: UIColor = UIColor.redColor()
     var statusTextFields: [String: String] = [:]
@@ -174,13 +174,13 @@ class InschrijvenVakantie1ViewController : UIViewController {
     }
     
     func settenVerplichteGegevens() {
-        deelnemer.voornaam = txtVoornaam.text
-        deelnemer.naam = txtNaam.text
-        deelnemer.straat = txtStraat.text
-        deelnemer.nummer = txtNummer.text.toInt()!
-        deelnemer.postcode = txtPostcode.text.toInt()!
-        deelnemer.gemeente = txtGemeente.text
-        deelnemer.inschrijvingVakantie = InschrijvingVakantie(id: "test")
-        deelnemer.inschrijvingVakantie?.vakantie = vakantie
+        self.deelnemer.voornaam = txtVoornaam.text
+        self.deelnemer.naam = txtNaam.text
+        self.deelnemer.straat = txtStraat.text
+        self.deelnemer.nummer = txtNummer.text.toInt()!
+        self.deelnemer.postcode = txtPostcode.text.toInt()!
+        self.deelnemer.gemeente = txtGemeente.text
+        self.deelnemer.inschrijvingVakantie = InschrijvingVakantie(id: "test")
+        self.deelnemer.inschrijvingVakantie?.vakantie = self.vakantie
     }
 }

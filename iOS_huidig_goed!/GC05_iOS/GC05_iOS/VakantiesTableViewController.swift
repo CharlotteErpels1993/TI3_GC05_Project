@@ -15,6 +15,8 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        var activityIndicator = getActivityIndicatorView(self)
+        
         zoekVakanties()
         hideSideMenuView()
         zoekbar.showsScopeBar = true
@@ -26,9 +28,9 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
             self.navigationItem.rightBarButtonItem = nil   
         }
         
+        activityIndicator.stopAnimating()
         
         //self.navigationItem.rightBarButtonItem.
-        
     }
     
     /*override func viewDidAppear(animated: Bool) {
@@ -101,3 +103,25 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         return cell
     }
 }
+
+func getActivityIndicatorView(controller: UIViewController) -> UIActivityIndicatorView {
+    let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
+    activityIndicator.color = UIColor.redColor()
+    activityIndicator.center = controller.view.center
+    activityIndicator.startAnimating()
+    controller.view.addSubview(activityIndicator)
+
+    return activityIndicator
+}
+
+
+
+
+
+
+
+
+
+
+
+

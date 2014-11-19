@@ -11,6 +11,7 @@ class InschrijvenVakantie5ViewController : UIViewController {
     
     @IBOutlet weak var switchExtraInfo: UISwitch!
     
+    
     @IBOutlet weak var txtViewExtraInfo: UITextView!
     
     @IBAction func switched(sender: UISwitch) {
@@ -57,19 +58,34 @@ class InschrijvenVakantie5ViewController : UIViewController {
     
     }
     
-    func giveUITextViewDefaultBorder(textView: UITextView) {
+    /*func giveUITextViewDefaultBorder(textView: UITextView) {
         //var defaultBorderColor: UIColor = UIColor(red: 182.0, green: 182.0, blue: 182.0, alpha: 0)
         var grayColor: UIColor = UIColor.grayColor()
         textView.layer.borderColor = grayColor.CGColor
         textView.layer.borderWidth = 1.0
         textView.layer.cornerRadius = 5.0
-    }
+    }*/
     
-    func giveUITextViewRedBorder(textView: UITextView) {
+    /*func giveUITextViewRedBorder(textView: UITextView) {
         var redColor: UIColor = UIColor.redColor()
         textView.layer.borderColor = redColor.CGColor
         textView.layer.borderWidth = 1.0
         textView.layer.cornerRadius = 5.0
-    }
+    }*/
     
+}
+
+func giveUITextViewDefaultBorder(textView: UITextView) {
+    //var defaultBorderColor: UIColor = UIColor(red: 182.0, green: 182.0, blue: 182.0, alpha: 0)
+    var grayColor: UIColor = UIColor.grayColor()
+    textView.layer.borderColor = grayColor.CGColor
+    textView.layer.borderWidth = 1.0
+    textView.layer.cornerRadius = 5.0
+}
+
+func giveUITextViewRedBorder(textView: UITextView) {
+    var redColor: UIColor = UIColor.redColor()
+    textView.layer.borderColor = redColor.CGColor
+    textView.layer.borderWidth = 1.0
+    textView.layer.cornerRadius = 5.0
 }
