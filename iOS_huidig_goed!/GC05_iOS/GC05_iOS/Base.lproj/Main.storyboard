@@ -787,7 +787,6 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="annuleer:" destination="fyb-xH-x0i" eventType="touchUpInside" id="ukO-UO-VPw"/>
                                     <segue destination="xj6-b1-6XR" kind="show" identifier="gaTerug" id="7Pw-Uu-eiY"/>
                                 </connections>
                             </button>
@@ -870,7 +869,6 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Volgende" id="w17-Kj-bON">
                             <connections>
-                                <action selector="registrerenVolgende:" destination="fyb-xH-x0i" id="Q7x-tD-PJc"/>
                                 <segue destination="y0D-Ac-bEH" kind="show" identifier="volgende" id="w9N-f5-ObP"/>
                             </connections>
                         </barButtonItem>
@@ -3163,7 +3161,7 @@
         <image name="Klevertje.png" width="615" height="427"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="xe1-I8-Pkw"/>
+        <segue reference="7Pw-Uu-eiY"/>
         <segue reference="n6i-tz-46X"/>
     </inferredMetricsTieBreakers>
 </document>

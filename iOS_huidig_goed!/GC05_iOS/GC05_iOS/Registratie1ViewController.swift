@@ -21,11 +21,6 @@ class Registratie1ViewController: UIViewController
     @IBOutlet weak var txtAansluitingsNrTweedeOuder: UITextField!
     @IBOutlet weak var buttonNummers: UIButton!
     
-    @IBAction func annuleer(sender: AnyObject) {
-        ouder = nil
-        //performSegueWithIdentifier("gaTerug", sender: self)
-    }
-    
     @IBAction func toggle(sender: AnyObject) {
         toggleSideMenuView()
     }
