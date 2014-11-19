@@ -64,7 +64,7 @@ public class VormingDetail extends Activity {
         txtkorteBeschrijving.setText(korteBeschrijving);
         txtTips.setText(tips);
         //txtPrijs.setText(prijs.toString());
-        inschrijven = (Button) findViewById(R.id.lay1);
+        inschrijven = (Button) findViewById(R.id.btnInschrijven);
         inschrijven.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

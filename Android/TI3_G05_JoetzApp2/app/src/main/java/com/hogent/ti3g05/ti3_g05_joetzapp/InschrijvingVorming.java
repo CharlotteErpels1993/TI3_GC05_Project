@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -12,7 +13,7 @@ import android.widget.Toast;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
 
 
-public class InschrijvingSignup extends Activity {
+public class InschrijvingVorming extends Activity {
 
     private Button btnInschrijven;
     private Spinner spnDataInschrijven;
@@ -55,7 +56,10 @@ public class InschrijvingSignup extends Activity {
     }
 
     public void controlerenIngevuld(){
-
+        if (spnDataInschrijven.getSelectedItem() != null && spnDataInschrijven.getSelectedItemPosition() != AdapterView.INVALID_POSITION){
+            //er is een deftige waarde geselecteerd
+            
+        }
     }
 
 
