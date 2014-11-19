@@ -14,6 +14,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.hogent.ti3g05.ti3_g05_joetzapp.domein.InschrijvingVorming;
+
 public class VormingDetail extends Activity {
     String titel;
     String locatie;
@@ -24,7 +26,7 @@ public class VormingDetail extends Activity {
     String prijs;
     String tips;
     String websiteLocatie;
-
+    private Button inschrijven;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -62,7 +64,14 @@ public class VormingDetail extends Activity {
         txtkorteBeschrijving.setText(korteBeschrijving);
         txtTips.setText(tips);
         //txtPrijs.setText(prijs.toString());
-
+        inschrijven = (Button) findViewById(R.id.lay1);
+        inschrijven.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent inte = new Intent(getApplicationContext(), InschrijvingVorming.class);
+                startActivity(inte);
+            }
+        });
     }
 
     @Override
