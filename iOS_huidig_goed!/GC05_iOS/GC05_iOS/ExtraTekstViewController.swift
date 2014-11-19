@@ -3,6 +3,7 @@ import UIKit
 class ExtraTekstViewController: UIViewController {
 
     @IBOutlet weak var korteBeschrijving: UITextView!
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
     var tekst: String?
     var type: Int!

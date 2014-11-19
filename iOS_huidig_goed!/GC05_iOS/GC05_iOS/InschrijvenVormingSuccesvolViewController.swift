@@ -4,6 +4,8 @@ class InschrijvenVormingSuccesvolViewController: UIViewController {
     
     var inschrijvingVorming: InschrijvingVorming!
     
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         parseInschrijvingVormingToDatabase()

@@ -1,9 +1,6 @@
 import UIKit
 
-class IndienenVoorkeurSuccesvolViewController: UIViewController {
-    
-    var voorkeur: Voorkeur!
-    
+class SuccesvolNieuwWachtwoordViewController: UIViewController {
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
     override func viewDidLoad() {

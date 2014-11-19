@@ -11,6 +11,7 @@ class EigenprofielMonitorViewController: UIViewController
     @IBOutlet weak var telefoon: UILabel!
     @IBOutlet weak var gsm: UILabel!
     @IBOutlet weak var facebook: UILabel!
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
     @IBAction func toggle(sender: AnyObject) {
         toggleSideMenuView()

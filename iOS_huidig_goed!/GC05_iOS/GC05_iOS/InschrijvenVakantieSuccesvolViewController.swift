@@ -6,6 +6,7 @@ class InschrijvenVakantieSuccesvolViewController : UIViewController {
     var contactpersoon1: ContactpersoonNood!
     var contactpersoon2: ContactpersoonNood?
     //var ouder: Ouder!
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
