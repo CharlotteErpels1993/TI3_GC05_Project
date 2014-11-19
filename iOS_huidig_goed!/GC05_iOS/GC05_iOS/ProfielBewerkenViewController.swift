@@ -1,6 +1,6 @@
 import UIKit
 
-class ProfielBewerkenViewController: UIViewController {
+class ProfielBewerkenViewController: ResponsiveTextFieldViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }

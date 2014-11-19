@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 import QuartzCore
 
-class InschrijvenVakantie4ViewController : UIViewController {
+class InschrijvenVakantie4ViewController : ResponsiveTextFieldViewController {
     var wilTweedeContactpersoon: Bool! = true
     var deelnemer: Deelnemer!
     var contactpersoon1: ContactpersoonNood!

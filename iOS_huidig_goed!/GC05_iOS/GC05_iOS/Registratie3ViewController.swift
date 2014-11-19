@@ -1,7 +1,7 @@
 import UIKit
 import QuartzCore
 
-class Registratie3ViewController: UIViewController
+class Registratie3ViewController: ResponsiveTextFieldViewController
 {
     @IBOutlet weak var txtVoornaam: UITextField!
     @IBOutlet weak var txtNaam: UITextField!

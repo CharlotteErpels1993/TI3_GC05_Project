@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 import QuartzCore
 
-class InschrijvenVakantie3ViewController : UIViewController {
+class InschrijvenVakantie3ViewController : ResponsiveTextFieldViewController {
     var deelnemer: Deelnemer!
     var foutBox: FoutBox? = nil
     var redColor: UIColor = UIColor.redColor()

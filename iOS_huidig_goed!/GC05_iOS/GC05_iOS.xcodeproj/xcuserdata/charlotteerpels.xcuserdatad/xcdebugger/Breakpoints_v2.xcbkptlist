@@ -47,8 +47,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "45"
             endingLineNumber = "45"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "5">
+            landmarkName = "IndienenVoorkeurViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -63,7 +63,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "22"
             endingLineNumber = "22"
-            landmarkName = "zoekVakanties()"
+            landmarkName = "gaTerugNaarOverzicht(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

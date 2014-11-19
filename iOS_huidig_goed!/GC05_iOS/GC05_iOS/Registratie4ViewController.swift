@@ -1,7 +1,7 @@
 import UIKit
 import QuartzCore
 
-class Registratie4ViewController: UIViewController
+class Registratie4ViewController: ResponsiveTextFieldViewController
 {
     @IBOutlet weak var txtEmail: UITextField!
     @IBOutlet weak var txtWachtwoord: UITextField!
