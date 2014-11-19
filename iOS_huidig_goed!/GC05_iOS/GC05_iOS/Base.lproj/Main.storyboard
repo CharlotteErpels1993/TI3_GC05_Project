@@ -855,7 +855,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uc2-Hp-ZHR">
-                                <rect key="frame" x="16" y="500" width="167" height="30"/>
+                                <rect key="frame" x="16" y="486" width="167" height="30"/>
                                 <state key="normal" title="Registreren als monitor?">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -886,7 +886,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                             <constraint firstItem="h54-IA-4ZC" firstAttribute="top" secondItem="74u-0a-ryP" secondAttribute="bottom" constant="20" id="WwX-rh-mwe"/>
                             <constraint firstItem="8Av-pM-lTQ" firstAttribute="top" secondItem="Ffo-9X-igg" secondAttribute="bottom" constant="11" id="X8s-rc-52a"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ARF-UY-Xdf" secondAttribute="trailing" constant="116" id="XGB-bt-DG1"/>
-                            <constraint firstItem="uc2-Hp-ZHR" firstAttribute="top" secondItem="uqW-jm-he0" secondAttribute="bottom" constant="8" id="XIC-mr-l5b"/>
+                            <constraint firstItem="uc2-Hp-ZHR" firstAttribute="top" secondItem="uqW-jm-he0" secondAttribute="bottom" constant="-6" id="XIC-mr-l5b"/>
                             <constraint firstItem="m7p-Dv-81d" firstAttribute="top" secondItem="Fsh-T0-4Sa" secondAttribute="bottom" constant="8" id="dNP-OM-j5t"/>
                             <constraint firstItem="m7p-Dv-81d" firstAttribute="leading" secondItem="OaM-e4-sMk" secondAttribute="leadingMargin" id="ewi-Pq-9DE"/>
                             <constraint firstItem="hLu-qs-iu3" firstAttribute="leading" secondItem="OaM-e4-sMk" secondAttribute="leadingMargin" id="fEX-Wp-zAg"/>
