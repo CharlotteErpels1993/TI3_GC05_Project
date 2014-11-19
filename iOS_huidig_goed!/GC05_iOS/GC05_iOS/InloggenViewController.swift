@@ -100,6 +100,10 @@ class InloggenViewController: UIViewController
                 var ouder = Ouder(ouder: ouderPF)
                 PFUser.logInWithUsername(ouder.email, password: ouder.wachtwoord)
                 performSegueWithIdentifier("ouderOverzicht", sender: self)
+            } else { //geen records
+                txtEmail.text = ""
+                txtWachtwoord.text = ""
+                foutBoxOproepen("Fout", "Foutieve combinatie e-mail & wachtwoord", self)
             }
         }
         
