@@ -25,6 +25,7 @@ class VormingDetailsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        hideSideMenuView()
         
         var activityIndicator = getActivityIndicatorView(self)
         
