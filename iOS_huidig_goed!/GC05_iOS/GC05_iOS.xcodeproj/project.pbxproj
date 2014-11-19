@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0F05F22E1A13A73000CFE0A1 /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F05F22D1A13A73000CFE0A1 /* NSDateExtension.swift */; };
+		0F145EDF1A1CDE98003067EA /* ResponsiveTextFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F145EDE1A1CDE98003067EA /* ResponsiveTextFieldViewController.swift */; };
 		0F265EFA1A137CD1003F2699 /* InschrijvenVakantieSuccesvolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F265EF91A137CD1003F2699 /* InschrijvenVakantieSuccesvolViewController.swift */; };
 		0F2A819A1A091F7100F67A3B /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2A81991A091F7100F67A3B /* Regex.swift */; };
 		0F4C2DCE1A1BE253008EDEA4 /* ActivityIndicatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4C2DCD1A1BE253008EDEA4 /* ActivityIndicatorViewController.swift */; };
@@ -91,6 +92,7 @@
 
 /* Begin PBXFileReference section */
 		0F05F22D1A13A73000CFE0A1 /* NSDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtension.swift; sourceTree = "<group>"; };
+		0F145EDE1A1CDE98003067EA /* ResponsiveTextFieldViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponsiveTextFieldViewController.swift; sourceTree = "<group>"; };
 		0F265EF91A137CD1003F2699 /* InschrijvenVakantieSuccesvolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InschrijvenVakantieSuccesvolViewController.swift; sourceTree = "<group>"; };
 		0F2A81991A091F7100F67A3B /* Regex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
 		0F4C2DCD1A1BE253008EDEA4 /* ActivityIndicatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorViewController.swift; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 				0FA80B0E1A01350E008DB343 /* Images.xcassets */,
 				0FA80B051A01350E008DB343 /* Supporting Files */,
 				0F4C2DCD1A1BE253008EDEA4 /* ActivityIndicatorViewController.swift */,
+				0F145EDE1A1CDE98003067EA /* ResponsiveTextFieldViewController.swift */,
 			);
 			path = GC05_iOS;
 			sourceTree = "<group>";
@@ -468,6 +471,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F145EDF1A1CDE98003067EA /* ResponsiveTextFieldViewController.swift in Sources */,
 				A5CEA07F1A13ACDF00E14103 /* InschrijvenVormingViewController.swift in Sources */,
 				0F6254971A0CCBA300BDEF38 /* FoutBox.swift in Sources */,
 				A59F1A8E1A16B29700A17D09 /* AfbeeldingDetailViewController.swift in Sources */,

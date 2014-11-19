@@ -1,7 +1,7 @@
 import UIKit
 import QuartzCore
 
-class Registratie1ViewController: UIViewController
+class Registratie1ViewController: ResponsiveTextFieldViewController
 {
     var ouder: Ouder! = Ouder(id: "test")
     var gebruikerIsLid: Bool? = true
