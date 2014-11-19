@@ -11,6 +11,7 @@ class InschrijvenVakantie5ViewController : UIViewController {
     
     @IBOutlet weak var switchExtraInfo: UISwitch!
     
+    
     @IBOutlet weak var txtViewExtraInfo: UITextView!
     
     @IBAction func switched(sender: UISwitch) {
