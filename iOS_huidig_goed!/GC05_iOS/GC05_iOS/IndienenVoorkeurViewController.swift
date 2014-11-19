@@ -4,7 +4,9 @@ class IndienenVoorkeurViewController: UIViewController, UIPickerViewDataSource, 
     
     @IBOutlet weak var pickerView: UIPickerView!
     
+    
     @IBOutlet weak var txtViewPeriodes: UITextView!
+    
     var vakanties: [Vakantie] = []
     //var vakanties2: [Vakantie] = []
     var pickerData: [String] = []
@@ -23,6 +25,7 @@ class IndienenVoorkeurViewController: UIViewController, UIPickerViewDataSource, 
                         self.vakanties.append(vakantie)
                         var titel = vakantie.titel
                         self.pickerData.append(titel!)
+                        self.pickerView.reloadAllComponents()
                     }
                     
                 }
@@ -45,8 +48,12 @@ class IndienenVoorkeurViewController: UIViewController, UIPickerViewDataSource, 
             pickerData[index] = vakanties[index].titel!
         }*/
         
+        giveUITextViewDefaultBorder(txtViewPeriodes)
+        
         pickerView.delegate = self
         pickerView.dataSource = self
+        
+        
     }
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
@@ -76,10 +83,14 @@ class IndienenVoorkeurViewController: UIViewController, UIPickerViewDataSource, 
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "inschrijven" {
+        //if segue.identifier == "inschrijven" {
             let indienenVoorkeurSuccesvolViewController = segue.destinationViewController as IndienenVoorkeurSuccesvolViewController
             
+        if txtViewPeriodes.text.isEmpty {
+            giveUITextViewRedBorder(txtViewPeriodes)
+            foutBoxOproepen("Fout", "Gelieve het veld in te vullen!", self)
             
+        } else {
             
             var query = PFQuery(className: "Monitor")
             query.whereKey("email", containsString: PFUser.currentUser().email)
@@ -94,10 +105,25 @@ class IndienenVoorkeurViewController: UIViewController, UIPickerViewDataSource, 
             }
             
             indienenVoorkeurSuccesvolViewController.voorkeur = self.voorkeur
+        }
             
-        } /*else if segue.identifier == "gaTerug" {
-            let vormingenTableViewController = segue.destinationViewController as VormingenTableViewController
-        }*/
+            /*var query = PFQuery(className: "Monitor")
+            query.whereKey("email", containsString: PFUser.currentUser().email)
+            var monitorPF = query.getFirstObject()
+            var monitor = Monitor(monitor: monitorPF)
+            
+            self.voorkeur.monitor = monitor
+            self.voorkeur.data = txtViewPeriodes.text
+            
+            if self.voorkeur.vakantie == nil {
+                self.voorkeur.vakantie = vakanties[0]
+            }
+            
+            indienenVoorkeurSuccesvolViewController.voorkeur = self.voorkeur*/
+            
+        //} /*else if segue.identifier == "gaTerug" {
+            //let vormingenTableViewController = segue.destinationViewController as VormingenTableViewController
+        //}
     }
 
     
