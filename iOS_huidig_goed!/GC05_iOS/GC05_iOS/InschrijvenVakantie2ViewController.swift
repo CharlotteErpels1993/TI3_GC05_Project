@@ -9,7 +9,7 @@ class InschrijvenVakantie2ViewController : UIViewController {
     @IBOutlet weak var dpGeboortedatum: UIDatePicker!
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "volegnde" {
+        if segue.identifier == "volgende" {
         let inschrijvenVakantie3ViewController = segue.destinationViewController as InschrijvenVakantie3ViewController
         
         //nog controleren!!!
