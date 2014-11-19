@@ -2950,7 +2950,6 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Registreren" id="suI-Ue-v3o">
-                        <barButtonItem key="leftBarButtonItem" title="Menu" id="79r-uu-jiM"/>
                         <barButtonItem key="rightBarButtonItem" title="Volgende" id="L9b-bD-fFu">
                             <connections>
                                 <segue destination="w0S-HA-suc" kind="show" identifier="volgende" id="H9B-i3-Yhv"/>
