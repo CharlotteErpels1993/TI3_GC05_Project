@@ -30,7 +30,7 @@ class EigenprofielMonitorViewController: UIViewController
         naam.text = monitor.naam
         email.text = monitor.email
         
-        if monitor.telefoon == nil {
+        if monitor.telefoon == "" {
             telefoon.text = "/"
         } else {
             telefoon.text = monitor.telefoon
@@ -38,11 +38,17 @@ class EigenprofielMonitorViewController: UIViewController
         
         gsm.text = monitor.gsm
         
-        if monitor.linkFacebook == nil {
+        if monitor.linkFacebook == ""{
             facebook.text = "Nog niet ingevuld"
         } else {
             facebook.text = monitor.linkFacebook
         }
+        
+        /*if (monitor.linkFacebook == nil) {
+            facebook.text = "Nog niet ingevuld"
+        } else {
+            facebook.text = monitor.linkFacebook
+        }*/
         
         activityIndicatorView.stopAnimating()
     }

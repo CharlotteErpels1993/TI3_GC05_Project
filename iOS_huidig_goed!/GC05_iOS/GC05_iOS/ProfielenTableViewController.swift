@@ -37,6 +37,9 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
     
     func zoekGefilterdeMonitoren(zoek: String) {
         monitoren2 = monitoren.filter { $0.naam!.rangeOfString(zoek) != nil }
+        if zoek.isEmpty {
+        self.vakanties2 = vakanties
+        }
         self.tableView.reloadData()
         
     }*/

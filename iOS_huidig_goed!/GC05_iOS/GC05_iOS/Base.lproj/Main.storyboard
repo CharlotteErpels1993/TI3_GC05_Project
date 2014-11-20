@@ -258,12 +258,12 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="jKE-X1-m7i" style="IBUITableViewCellStyleDefault" id="A3C-cN-DKe">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="jKE-X1-m7i" rowHeight="50" style="IBUITableViewCellStyleDefault" id="A3C-cN-DKe">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="A3C-cN-DKe" id="rlP-Ql-Sxf">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Aantal dagen/nachten" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jKE-X1-m7i">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Aantal dagen/nachten" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jKE-X1-m7i">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -560,7 +560,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="79b-9q-gfh">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="79b-9q-gfh">
                                 <rect key="frame" x="6" y="64" width="583" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -775,58 +775,58 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m7p-Dv-81d">
-                                <rect key="frame" x="16" y="132" width="51" height="31"/>
+                                <rect key="frame" x="16" y="109" width="51" height="31"/>
                                 <connections>
                                     <action selector="switched:" destination="fyb-xH-x0i" eventType="valueChanged" id="nYn-y5-G4g"/>
                                 </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aansluitingsnummer: *" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MfE-6E-2Xb">
-                                <rect key="frame" x="16" y="191" width="171.5" height="20.5"/>
+                                <rect key="frame" x="16" y="168" width="171.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Code gerechtigde: *" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Av-pM-lTQ">
-                                <rect key="frame" x="16" y="260" width="153" height="20.5"/>
+                                <rect key="frame" x="16" y="237" width="153" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="110110" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m1W-MR-gUq">
-                                <rect key="frame" x="16" y="288" width="568" height="30"/>
+                                <rect key="frame" x="16" y="265" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rijksregisternummer: *" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K80-KY-GXh">
-                                <rect key="frame" x="16" y="329" width="173.5" height="20.5"/>
+                                <rect key="frame" x="16" y="306" width="173.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="12345678910" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="o7V-bX-HUj">
-                                <rect key="frame" x="16" y="356" width="568" height="30"/>
+                                <rect key="frame" x="16" y="333" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aansluitingsnummer tweede ouder (indien van toepassing):" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ARF-UY-Xdf">
-                                <rect key="frame" x="16" y="397" width="452" height="20.5"/>
+                                <rect key="frame" x="16" y="374" width="452" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gBr-1o-c4l">
-                                <rect key="frame" x="16" y="424" width="568" height="30"/>
+                                <rect key="frame" x="16" y="401" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bent u lid van de socialistische mutualiteit? " lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fsh-T0-4Sa">
-                                <rect key="frame" x="16" y="104" width="568" height="20.5"/>
+                                <rect key="frame" x="16" y="81" width="568" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="3091234567" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ffo-9X-igg">
-                                <rect key="frame" x="16" y="219" width="568" height="30"/>
+                                <rect key="frame" x="16" y="196" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
@@ -840,7 +840,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uqW-jm-he0">
-                                <rect key="frame" x="16" y="462" width="198" height="30"/>
+                                <rect key="frame" x="16" y="439" width="198" height="30"/>
                                 <state key="normal" title="Waar vind ik deze nummers?">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -848,14 +848,8 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                     <segue destination="eo3-QX-La5" kind="push" id="AjK-cZ-Fuz"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* verplicht in te vullen" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hLu-qs-iu3">
-                                <rect key="frame" x="16" y="577" width="119.5" height="14.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uc2-Hp-ZHR">
-                                <rect key="frame" x="16" y="486" width="167" height="30"/>
+                                <rect key="frame" x="16" y="463" width="167" height="30"/>
                                 <state key="normal" title="Registreren als monitor?">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -863,12 +857,18 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                     <segue destination="1ab-Ky-SvP" kind="show" id="Y50-ed-9EW"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* verplicht in te vullen" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hLu-qs-iu3">
+                                <rect key="frame" x="16" y="559" width="119.5" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="gBr-1o-c4l" firstAttribute="trailing" secondItem="OaM-e4-sMk" secondAttribute="trailingMargin" id="31l-do-r3Y"/>
-                            <constraint firstItem="h54-IA-4ZC" firstAttribute="top" secondItem="hLu-qs-iu3" secondAttribute="bottom" constant="8" id="4mN-33-nSx"/>
-                            <constraint firstItem="Fsh-T0-4Sa" firstAttribute="top" secondItem="5IY-zh-MZg" secondAttribute="bottom" constant="40" id="9UQ-g6-mwe"/>
+                            <constraint firstItem="h54-IA-4ZC" firstAttribute="top" secondItem="hLu-qs-iu3" secondAttribute="bottom" constant="26.5" id="4mN-33-nSx"/>
+                            <constraint firstItem="Fsh-T0-4Sa" firstAttribute="top" secondItem="5IY-zh-MZg" secondAttribute="bottom" constant="17" id="9UQ-g6-mwe"/>
                             <constraint firstItem="h54-IA-4ZC" firstAttribute="top" secondItem="uqW-jm-he0" secondAttribute="bottom" constant="8" id="Afg-lJ-fEP"/>
                             <constraint firstItem="Ffo-9X-igg" firstAttribute="top" secondItem="MfE-6E-2Xb" secondAttribute="bottom" constant="7" id="B6C-Dd-ruz"/>
                             <constraint firstItem="74u-0a-ryP" firstAttribute="trailing" secondItem="OaM-e4-sMk" secondAttribute="trailingMargin" id="CPt-iP-cwW"/>
@@ -1101,138 +1101,121 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gPP-8V-lg0">
-                                <rect key="frame" x="13" y="99" width="571" height="449"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Uw profiel bevat volgende gegevens:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hvh-bZ-pEh">
-                                        <rect key="frame" x="0.0" y="21" width="283.5" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Voornaam:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xh6-zR-f9s">
-                                        <rect key="frame" x="0.0" y="63.5" width="82.5" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Naam:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BGE-s2-IJF">
-                                        <rect key="frame" x="0.0" y="114" width="50.5" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Al-ON-Oco">
-                                        <rect key="frame" x="0.0" y="166" width="47" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Telefoon:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zeu-k5-vAO">
-                                        <rect key="frame" x="0.0" y="214" width="69.5" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gsm:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VgU-ot-sfq">
-                                        <rect key="frame" x="0.0" y="261" width="41" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Facebook link:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kfJ-nM-krZ">
-                                        <rect key="frame" x="0.0" y="303" width="112" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_voornaam" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KNG-Y5-I6A">
-                                        <rect key="frame" x="7.5" y="86" width="85.5" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.5" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_naam" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iMB-Pc-yFa">
-                                        <rect key="frame" x="8" y="138.5" width="51.5" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.5" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3AE-ru-1dz">
-                                        <rect key="frame" x="8" y="186.5" width="49.5" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.5" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_telefoon" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8RM-q2-BHA">
-                                        <rect key="frame" x="7.5" y="236" width="70.5" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.5" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_gsm" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hh8-wN-ak8">
-                                        <rect key="frame" x="8" y="278" width="42" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.5" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_facebook" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oW3-ty-hY6">
-                                        <rect key="frame" x="8" y="320.5" width="80" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.5" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="GSf-p9-a6V">
-                                        <rect key="frame" x="266" y="206" width="37" height="37"/>
-                                        <color key="color" red="0.9794921875" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    </activityIndicatorView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="iMB-Pc-yFa" firstAttribute="top" secondItem="KNG-Y5-I6A" secondAttribute="bottom" constant="32.5" id="3Ir-6r-2Mq"/>
-                                    <constraint firstItem="hh8-wN-ak8" firstAttribute="leading" secondItem="VgU-ot-sfq" secondAttribute="trailing" constant="-33" id="3fI-T7-5CK"/>
-                                    <constraint firstItem="BGE-s2-IJF" firstAttribute="leading" secondItem="gPP-8V-lg0" secondAttribute="leading" id="3gm-Tc-y2l"/>
-                                    <constraint firstItem="VgU-ot-sfq" firstAttribute="leading" secondItem="gPP-8V-lg0" secondAttribute="leading" id="7vv-pk-oQu"/>
-                                    <constraint firstItem="BGE-s2-IJF" firstAttribute="top" secondItem="xh6-zR-f9s" secondAttribute="bottom" constant="29.5" id="AXg-yB-E3G"/>
-                                    <constraint firstItem="kfJ-nM-krZ" firstAttribute="top" secondItem="VgU-ot-sfq" secondAttribute="bottom" constant="21.5" id="FTK-Gf-OX7"/>
-                                    <constraint firstItem="kfJ-nM-krZ" firstAttribute="leading" secondItem="gPP-8V-lg0" secondAttribute="leading" id="IdQ-h4-C9Y"/>
-                                    <constraint firstItem="KNG-Y5-I6A" firstAttribute="top" secondItem="xh6-zR-f9s" secondAttribute="bottom" constant="2.5" id="Jnf-UH-XS6"/>
-                                    <constraint firstItem="3AE-ru-1dz" firstAttribute="leading" secondItem="1Al-ON-Oco" secondAttribute="trailing" constant="-39" id="K2T-fw-daI"/>
-                                    <constraint firstAttribute="centerY" secondItem="GSf-p9-a6V" secondAttribute="centerY" constant="-0.5" id="Lgm-tS-3uR"/>
-                                    <constraint firstItem="1Al-ON-Oco" firstAttribute="top" secondItem="BGE-s2-IJF" secondAttribute="bottom" constant="31.5" id="Nme-98-a4N"/>
-                                    <constraint firstItem="KNG-Y5-I6A" firstAttribute="leading" secondItem="xh6-zR-f9s" secondAttribute="trailing" constant="-74.5" id="QXb-88-cQ1"/>
-                                    <constraint firstItem="xh6-zR-f9s" firstAttribute="leading" secondItem="gPP-8V-lg0" secondAttribute="leading" id="Qu9-17-mkq"/>
-                                    <constraint firstItem="oW3-ty-hY6" firstAttribute="leading" secondItem="kfJ-nM-krZ" secondAttribute="trailing" constant="-104" id="TP7-zk-h7n"/>
-                                    <constraint firstAttribute="height" constant="449" id="bTq-u4-TE7"/>
-                                    <constraint firstItem="hh8-wN-ak8" firstAttribute="top" secondItem="8RM-q2-BHA" secondAttribute="bottom" constant="21.5" id="bVC-SK-e7K"/>
-                                    <constraint firstItem="Hvh-bZ-pEh" firstAttribute="leading" secondItem="gPP-8V-lg0" secondAttribute="leading" id="cCm-Ka-at9"/>
-                                    <constraint firstAttribute="width" constant="571" id="eMv-01-wba"/>
-                                    <constraint firstAttribute="centerX" secondItem="GSf-p9-a6V" secondAttribute="centerX" constant="0.5" id="ex3-lG-c8a"/>
-                                    <constraint firstItem="oW3-ty-hY6" firstAttribute="top" secondItem="hh8-wN-ak8" secondAttribute="bottom" constant="22.5" id="fiY-va-XYB"/>
-                                    <constraint firstItem="8RM-q2-BHA" firstAttribute="top" secondItem="3AE-ru-1dz" secondAttribute="bottom" constant="29.5" id="gKa-Ut-FQj"/>
-                                    <constraint firstItem="Hvh-bZ-pEh" firstAttribute="top" secondItem="gPP-8V-lg0" secondAttribute="top" constant="21" id="it9-sh-GIg"/>
-                                    <constraint firstItem="Zeu-k5-vAO" firstAttribute="top" secondItem="1Al-ON-Oco" secondAttribute="bottom" constant="27.5" id="jeC-VG-ymW"/>
-                                    <constraint firstItem="8RM-q2-BHA" firstAttribute="leading" secondItem="Zeu-k5-vAO" secondAttribute="trailing" constant="-61.5" id="kW7-0u-qhB"/>
-                                    <constraint firstItem="iMB-Pc-yFa" firstAttribute="leading" secondItem="BGE-s2-IJF" secondAttribute="trailing" constant="-42.5" id="kcu-Cz-U8O"/>
-                                    <constraint firstItem="1Al-ON-Oco" firstAttribute="leading" secondItem="gPP-8V-lg0" secondAttribute="leading" id="mcg-Jw-X5o"/>
-                                    <constraint firstItem="3AE-ru-1dz" firstAttribute="top" secondItem="iMB-Pc-yFa" secondAttribute="bottom" constant="27.5" id="pnC-yq-cSe"/>
-                                    <constraint firstItem="xh6-zR-f9s" firstAttribute="top" secondItem="Hvh-bZ-pEh" secondAttribute="bottom" constant="22.5" id="rbp-Qb-2rH"/>
-                                    <constraint firstItem="Zeu-k5-vAO" firstAttribute="leading" secondItem="gPP-8V-lg0" secondAttribute="leading" id="rx9-CT-qKG"/>
-                                    <constraint firstItem="VgU-ot-sfq" firstAttribute="top" secondItem="Zeu-k5-vAO" secondAttribute="bottom" constant="26.5" id="uFS-3I-lxX"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="eMv-01-wba"/>
-                                    </mask>
-                                </variation>
-                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Uw profiel bevat volgende gegevens:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hvh-bZ-pEh">
+                                <rect key="frame" x="16" y="110" width="283.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Voornaam:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xh6-zR-f9s">
+                                <rect key="frame" x="15" y="145" width="82.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Naam:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BGE-s2-IJF">
+                                <rect key="frame" x="15" y="189" width="50.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Al-ON-Oco">
+                                <rect key="frame" x="15" y="236" width="47" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Telefoon:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zeu-k5-vAO">
+                                <rect key="frame" x="15" y="285" width="69.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gsm:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VgU-ot-sfq">
+                                <rect key="frame" x="15" y="332" width="41" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Facebook link:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kfJ-nM-krZ">
+                                <rect key="frame" x="16" y="380" width="112" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_voornaam" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KNG-Y5-I6A">
+                                <rect key="frame" x="26" y="166" width="85.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.5" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_naam" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iMB-Pc-yFa">
+                                <rect key="frame" x="26" y="210" width="51.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.5" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3AE-ru-1dz">
+                                <rect key="frame" x="26" y="257" width="49.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.5" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_telefoon" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8RM-q2-BHA">
+                                <rect key="frame" x="26" y="306" width="70.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.5" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_gsm" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hh8-wN-ak8">
+                                <rect key="frame" x="26" y="354" width="42" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.5" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_facebook" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oW3-ty-hY6">
+                                <rect key="frame" x="26" y="401" width="80" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.5" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="GSf-p9-a6V">
+                                <rect key="frame" x="282" y="281" width="37" height="37"/>
+                                <color key="color" red="0.9794921875" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="gPP-8V-lg0" firstAttribute="leading" secondItem="w8S-Bp-dmt" secondAttribute="leadingMargin" constant="-3" id="48Q-Jj-fZP"/>
+                            <constraint firstItem="BGE-s2-IJF" firstAttribute="top" secondItem="KNG-Y5-I6A" secondAttribute="bottom" constant="2.5" id="1YI-lC-e18"/>
+                            <constraint firstItem="oW3-ty-hY6" firstAttribute="leading" secondItem="w8S-Bp-dmt" secondAttribute="leadingMargin" constant="10" id="4H3-3B-BW2"/>
+                            <constraint firstItem="Hvh-bZ-pEh" firstAttribute="leading" secondItem="w8S-Bp-dmt" secondAttribute="leadingMargin" id="8JT-b7-Oc6"/>
+                            <constraint firstItem="8RM-q2-BHA" firstAttribute="leading" secondItem="w8S-Bp-dmt" secondAttribute="leadingMargin" constant="10" id="Ag0-c3-WoC"/>
+                            <constraint firstItem="Zeu-k5-vAO" firstAttribute="leading" secondItem="w8S-Bp-dmt" secondAttribute="leadingMargin" constant="-1" id="BFC-Hs-z4K"/>
+                            <constraint firstItem="Hvh-bZ-pEh" firstAttribute="top" secondItem="0hp-w5-hYn" secondAttribute="bottom" constant="17.5" id="CTg-wL-J5S"/>
+                            <constraint firstItem="kfJ-nM-krZ" firstAttribute="leading" secondItem="w8S-Bp-dmt" secondAttribute="leadingMargin" id="FCg-J6-v6Y"/>
+                            <constraint firstItem="hh8-wN-ak8" firstAttribute="top" secondItem="VgU-ot-sfq" secondAttribute="bottom" constant="1.5" id="Ffv-ey-chg"/>
+                            <constraint firstItem="8RM-q2-BHA" firstAttribute="top" secondItem="Zeu-k5-vAO" secondAttribute="bottom" constant="0.5" id="HdY-Fb-AYz"/>
+                            <constraint firstItem="kfJ-nM-krZ" firstAttribute="top" secondItem="hh8-wN-ak8" secondAttribute="bottom" constant="5.5" id="I5Z-Mz-rmf"/>
+                            <constraint firstItem="VgU-ot-sfq" firstAttribute="top" secondItem="8RM-q2-BHA" secondAttribute="bottom" constant="5.5" id="I69-gJ-mBO"/>
+                            <constraint firstItem="1Al-ON-Oco" firstAttribute="leading" secondItem="w8S-Bp-dmt" secondAttribute="leadingMargin" constant="-1" id="IeC-k5-dZN"/>
+                            <constraint firstItem="oW3-ty-hY6" firstAttribute="top" secondItem="kfJ-nM-krZ" secondAttribute="bottom" constant="0.5" id="KiO-cs-1eG"/>
                             <constraint firstItem="0hp-w5-hYn" firstAttribute="top" secondItem="SJA-U2-rZq" secondAttribute="bottom" constant="8" id="Ro6-6e-F97"/>
-                            <constraint firstItem="gPP-8V-lg0" firstAttribute="trailing" secondItem="w8S-Bp-dmt" secondAttribute="trailingMargin" id="bpE-y8-d6L"/>
+                            <constraint firstItem="1Al-ON-Oco" firstAttribute="top" secondItem="iMB-Pc-yFa" secondAttribute="bottom" constant="5.5" id="Wz9-IW-fFW"/>
+                            <constraint firstAttribute="centerX" secondItem="GSf-p9-a6V" secondAttribute="centerX" constant="-0.5" id="akJ-nF-FkN"/>
+                            <constraint firstAttribute="centerY" secondItem="GSf-p9-a6V" secondAttribute="centerY" constant="0.5" id="ana-bo-MSE"/>
+                            <constraint firstItem="xh6-zR-f9s" firstAttribute="top" secondItem="Hvh-bZ-pEh" secondAttribute="bottom" constant="14.5" id="b4n-QK-6Xa"/>
+                            <constraint firstItem="iMB-Pc-yFa" firstAttribute="leading" secondItem="w8S-Bp-dmt" secondAttribute="leadingMargin" constant="10" id="fU1-GJ-uvt"/>
+                            <constraint firstItem="BGE-s2-IJF" firstAttribute="leading" secondItem="w8S-Bp-dmt" secondAttribute="leadingMargin" constant="-1" id="fuj-ip-PM1"/>
+                            <constraint firstItem="hh8-wN-ak8" firstAttribute="leading" secondItem="w8S-Bp-dmt" secondAttribute="leadingMargin" constant="10" id="jRs-HF-hxE"/>
+                            <constraint firstItem="3AE-ru-1dz" firstAttribute="leading" secondItem="w8S-Bp-dmt" secondAttribute="leadingMargin" constant="10" id="jmK-9M-cjz"/>
                             <constraint firstItem="0hp-w5-hYn" firstAttribute="leading" secondItem="w8S-Bp-dmt" secondAttribute="leadingMargin" id="mDf-gm-Apt"/>
-                            <constraint firstItem="gPP-8V-lg0" firstAttribute="top" secondItem="SJA-U2-rZq" secondAttribute="bottom" constant="35" id="uXx-RP-V0i"/>
+                            <constraint firstItem="3AE-ru-1dz" firstAttribute="top" secondItem="1Al-ON-Oco" secondAttribute="bottom" constant="0.5" id="nGG-G4-lK1"/>
+                            <constraint firstItem="KNG-Y5-I6A" firstAttribute="leading" secondItem="w8S-Bp-dmt" secondAttribute="leadingMargin" constant="10" id="s6k-A8-UBx"/>
+                            <constraint firstItem="xh6-zR-f9s" firstAttribute="leading" secondItem="w8S-Bp-dmt" secondAttribute="leadingMargin" constant="-1" id="se0-bm-bw4"/>
+                            <constraint firstItem="KNG-Y5-I6A" firstAttribute="top" secondItem="xh6-zR-f9s" secondAttribute="bottom" constant="0.5" id="tGV-AE-PBk"/>
+                            <constraint firstItem="Zeu-k5-vAO" firstAttribute="top" secondItem="3AE-ru-1dz" secondAttribute="bottom" constant="7.5" id="vfE-YN-cwj"/>
+                            <constraint firstItem="iMB-Pc-yFa" firstAttribute="top" secondItem="BGE-s2-IJF" secondAttribute="bottom" constant="0.5" id="xQt-Jc-dPt"/>
+                            <constraint firstItem="VgU-ot-sfq" firstAttribute="leading" secondItem="w8S-Bp-dmt" secondAttribute="leadingMargin" constant="-1" id="yAO-P5-vrk"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Welkom" id="nxU-o7-jxr">
@@ -1249,6 +1232,9 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                 <state key="normal" title="Profiel bewerken">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="QEK-4R-DCz" kind="show" id="97b-6M-xjB"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
@@ -2950,7 +2936,6 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Registreren" id="suI-Ue-v3o">
-                        <barButtonItem key="leftBarButtonItem" title="Menu" id="79r-uu-jiM"/>
                         <barButtonItem key="rightBarButtonItem" title="Volgende" id="L9b-bD-fFu">
                             <connections>
                                 <segue destination="w0S-HA-suc" kind="show" identifier="volgende" id="H9B-i3-Yhv"/>
@@ -3197,15 +3182,136 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                     <view key="view" contentMode="scaleToFill" id="AAs-zI-xjp">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Voornaam:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OFM-q2-v5W">
+                                <rect key="frame" x="16" y="117" width="82.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Naam:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aQ1-IJ-lN7">
+                                <rect key="frame" x="16" y="154" width="50.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Telefoon:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UDN-iK-7PX">
+                                <rect key="frame" x="16" y="260" width="69.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gsm:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bYt-Gy-erx">
+                                <rect key="frame" x="16" y="326.5" width="41" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Facebook link:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z3u-lG-cAe">
+                                <rect key="frame" x="16" y="393" width="112" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Aw8-sv-3S2">
+                                <rect key="frame" x="138.5" y="114" width="445.5" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EFO-BA-8dE">
+                                <rect key="frame" x="138.5" y="156" width="445.5" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lxx-qr-SDn">
+                                <rect key="frame" x="16" y="222" width="568" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1DH-g1-s7c">
+                                <rect key="frame" x="16" y="288.5" width="568" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BkO-ho-YuC">
+                                <rect key="frame" x="16" y="355" width="568" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HqP-Uv-9B5">
+                                <rect key="frame" x="16" y="421.5" width="568" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bewerk u gegevens:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bbg-68-a9h">
+                                <rect key="frame" x="16" y="72" width="155.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tQz-am-iGj">
+                                <rect key="frame" x="16" y="193.5" width="47" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="bbg-68-a9h" firstAttribute="top" secondItem="yPy-FH-5hL" secondAttribute="bottom" constant="8" id="2uE-VJ-Gxz"/>
+                            <constraint firstItem="HqP-Uv-9B5" firstAttribute="top" secondItem="z3u-lG-cAe" secondAttribute="bottom" constant="8" id="4Jr-tM-zfp"/>
+                            <constraint firstItem="tQz-am-iGj" firstAttribute="leading" secondItem="AAs-zI-xjp" secondAttribute="leadingMargin" id="4XY-hg-7Jr"/>
+                            <constraint firstItem="Aw8-sv-3S2" firstAttribute="leading" secondItem="OFM-q2-v5W" secondAttribute="trailing" constant="40" id="5SS-2O-2il"/>
+                            <constraint firstItem="BkO-ho-YuC" firstAttribute="trailing" secondItem="AAs-zI-xjp" secondAttribute="trailingMargin" id="5Zg-lp-072"/>
+                            <constraint firstItem="aQ1-IJ-lN7" firstAttribute="top" secondItem="OFM-q2-v5W" secondAttribute="bottom" constant="16" id="6Pm-uN-3Bg"/>
+                            <constraint firstItem="bbg-68-a9h" firstAttribute="leading" secondItem="AAs-zI-xjp" secondAttribute="leadingMargin" id="7oO-nb-fnN"/>
+                            <constraint firstItem="BkO-ho-YuC" firstAttribute="top" secondItem="bYt-Gy-erx" secondAttribute="bottom" constant="8" id="83e-aV-88F"/>
+                            <constraint firstItem="lxx-qr-SDn" firstAttribute="top" secondItem="tQz-am-iGj" secondAttribute="bottom" constant="8" id="8Ck-LS-1BL"/>
+                            <constraint firstItem="tQz-am-iGj" firstAttribute="top" secondItem="aQ1-IJ-lN7" secondAttribute="bottom" constant="19" id="CSZ-PZ-62O"/>
+                            <constraint firstItem="EFO-BA-8dE" firstAttribute="trailing" secondItem="AAs-zI-xjp" secondAttribute="trailingMargin" id="GSh-7d-JPN"/>
+                            <constraint firstItem="1DH-g1-s7c" firstAttribute="leading" secondItem="AAs-zI-xjp" secondAttribute="leadingMargin" id="H0f-L3-XQ3"/>
+                            <constraint firstItem="BkO-ho-YuC" firstAttribute="leading" secondItem="AAs-zI-xjp" secondAttribute="leadingMargin" id="L5Z-m1-E8c"/>
+                            <constraint firstItem="bYt-Gy-erx" firstAttribute="top" secondItem="1DH-g1-s7c" secondAttribute="bottom" constant="8" id="Ld0-AE-9dr"/>
+                            <constraint firstItem="EFO-BA-8dE" firstAttribute="top" secondItem="Aw8-sv-3S2" secondAttribute="bottom" constant="12" id="LdO-MO-OC5"/>
+                            <constraint firstItem="UDN-iK-7PX" firstAttribute="leading" secondItem="AAs-zI-xjp" secondAttribute="leadingMargin" id="Lof-f1-rQm"/>
+                            <constraint firstItem="lxx-qr-SDn" firstAttribute="leading" secondItem="AAs-zI-xjp" secondAttribute="leadingMargin" id="OQ8-ma-ePv"/>
+                            <constraint firstItem="UDN-iK-7PX" firstAttribute="top" secondItem="lxx-qr-SDn" secondAttribute="bottom" constant="8" id="Rzx-Ig-rgo"/>
+                            <constraint firstItem="aQ1-IJ-lN7" firstAttribute="leading" secondItem="AAs-zI-xjp" secondAttribute="leadingMargin" id="T4n-7Q-JoG"/>
+                            <constraint firstItem="Aw8-sv-3S2" firstAttribute="trailing" secondItem="AAs-zI-xjp" secondAttribute="trailingMargin" id="Zs6-OS-ncJ"/>
+                            <constraint firstItem="bYt-Gy-erx" firstAttribute="leading" secondItem="AAs-zI-xjp" secondAttribute="leadingMargin" id="aXe-1q-CQx"/>
+                            <constraint firstItem="HqP-Uv-9B5" firstAttribute="trailing" secondItem="AAs-zI-xjp" secondAttribute="trailingMargin" id="bgN-rt-gso"/>
+                            <constraint firstItem="1DH-g1-s7c" firstAttribute="top" secondItem="UDN-iK-7PX" secondAttribute="bottom" constant="8" id="btE-Zd-Q67"/>
+                            <constraint firstItem="OFM-q2-v5W" firstAttribute="leading" secondItem="AAs-zI-xjp" secondAttribute="leadingMargin" id="c1d-DM-uIh"/>
+                            <constraint firstItem="Aw8-sv-3S2" firstAttribute="top" secondItem="yPy-FH-5hL" secondAttribute="bottom" constant="50" id="caA-rk-6u7"/>
+                            <constraint firstItem="lxx-qr-SDn" firstAttribute="trailing" secondItem="AAs-zI-xjp" secondAttribute="trailingMargin" id="grB-ta-tC4"/>
+                            <constraint firstItem="1DH-g1-s7c" firstAttribute="trailing" secondItem="AAs-zI-xjp" secondAttribute="trailingMargin" id="hXM-Fd-TBb"/>
+                            <constraint firstItem="EFO-BA-8dE" firstAttribute="leading" secondItem="aQ1-IJ-lN7" secondAttribute="trailing" constant="72" id="kTF-BG-BHY"/>
+                            <constraint firstItem="HqP-Uv-9B5" firstAttribute="leading" secondItem="AAs-zI-xjp" secondAttribute="leadingMargin" id="nTI-eL-Pf0"/>
+                            <constraint firstItem="z3u-lG-cAe" firstAttribute="leading" secondItem="AAs-zI-xjp" secondAttribute="leadingMargin" id="nWj-6l-nxJ"/>
+                            <constraint firstItem="z3u-lG-cAe" firstAttribute="top" secondItem="BkO-ho-YuC" secondAttribute="bottom" constant="8" id="qGY-CF-aYX"/>
+                            <constraint firstItem="OFM-q2-v5W" firstAttribute="top" secondItem="bbg-68-a9h" secondAttribute="bottom" constant="24.5" id="vxx-VG-048"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Uw profiel bewerken" id="IJZ-eP-hBc">
                         <barButtonItem key="leftBarButtonItem" title="Menu" id="M1U-Hb-imF"/>
+                        <barButtonItem key="rightBarButtonItem" title="Opslaan" id="2Sc-vN-VMg">
+                            <connections>
+                                <action selector="opslaan:" destination="QEK-4R-DCz" id="eZb-FF-BR1"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="emailTxt" destination="lxx-qr-SDn" id="Y5x-3B-xjh"/>
+                        <outlet property="facebookTxt" destination="HqP-Uv-9B5" id="IaD-CV-DPy"/>
+                        <outlet property="gsmTxt" destination="BkO-ho-YuC" id="C6d-EP-6jI"/>
+                        <outlet property="naamTxt" destination="EFO-BA-8dE" id="EXk-wj-a7j"/>
+                        <outlet property="telefoonTxt" destination="1DH-g1-s7c" id="0p4-Jg-WrV"/>
+                        <outlet property="voornaamTxt" destination="Aw8-sv-3S2" id="jTB-6D-bKA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Ou-l6-kOL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="391" y="5401"/>
+            <point key="canvasLocation" x="395" y="5401"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ftW-zk-yYi">
@@ -3250,5 +3356,6 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
     <inferredMetricsTieBreakers>
         <segue reference="xe1-I8-Pkw"/>
         <segue reference="n6i-tz-46X"/>
+        <segue reference="97b-6M-xjB"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -59,18 +59,18 @@ class VakantieDetailsTableViewController: UITableViewController {
         var terugkeerDatum: String? = vakantie.terugkeerDatum?.toS("dd/MM/yyyy")
         
         navigationItem.title = vakantie.titel
-        korteBeschrijvingLabel.text = vakantie.korteBeschrijving
+        korteBeschrijvingLabel.text! = vakantie.korteBeschrijving!
         korteBeschrijvingLabel.sizeToFit()
-        doelgroepLabel.text = vakantie.doelgroep
+        doelgroepLabel.text! = vakantie.doelgroep!
         vertrekdatumLabel.text = "Vertrekdatum: "
-        vertrekdatumLabel.text?.extend(beginDatum!)
+        vertrekdatumLabel.text!.extend(beginDatum!)
         aankomstdatumLabel.text = "Aankomstdatum: "
-        aankomstdatumLabel.text?.extend(terugkeerDatum!)
-        aantalDagenNachtenLabel.text = String("Aantal dagen/nachten: \(vakantie.aantalDagenNachten)")
-        locatieLabel.text = String("Locatie: \(vakantie.locatie)")
-        maxAantalDeelnemersLabel.text = String("Max aantal deelnemers: \(vakantie.maxAantalDeelnemers)")
-        vervoerwijzeLabel.text = String("Vervoerwijze: \(vakantie.vervoerwijze)")
-        formuleLabel.text = String("Formule: \(vakantie.formule)")
+        aankomstdatumLabel.text!.extend(terugkeerDatum!)
+        aantalDagenNachtenLabel.text! = String("Aantal dagen/nachten: \(vakantie.aantalDagenNachten!)")
+        locatieLabel.text! = String("Locatie: \(vakantie.locatie!)")
+        maxAantalDeelnemersLabel.text! = String("Max aantal deelnemers: \(vakantie.maxAantalDeelnemers!)")
+        vervoerwijzeLabel.text! = String("Vervoerwijze: \(vakantie.vervoerwijze!)")
+        formuleLabel.text! = String("Formule: \(vakantie.formule!)")
         
         var euroSymbol: String = "€"
         
@@ -79,20 +79,20 @@ class VakantieDetailsTableViewController: UITableViewController {
         var soort: String = gebruikerPF["soort"] as String
         
             if soort == "ouder" {
-                basisprijsLabel.text = String("Basisprijs: \(vakantie.basisprijs) " + euroSymbol)
-                inbegrepenPrijs.text = String("Inbegrepen prijs: \(vakantie.inbegrepenPrijs) ")
+                basisprijsLabel.text = String("Basisprijs: \(vakantie.basisprijs!) " + euroSymbol)
+                inbegrepenPrijs.text = String("Inbegrepen prijs: \(vakantie.inbegrepenPrijs!) ")
                 if (vakantie.bondMoysonLedenPrijs != -1) {
-                    bondMoysonPrijsLabel.text = String("Bond moyson prijs: \(vakantie.bondMoysonLedenPrijs) " + euroSymbol)
+                    bondMoysonPrijsLabel.text = String("Bond moyson prijs: \(vakantie.bondMoysonLedenPrijs!) " + euroSymbol)
                 } else {
                     bondMoysonPrijsLabel.text = String("Bond moyson prijs: /")
                 }
                 if (vakantie.sterPrijs1ouder != -1) {
-                    sterprijs1Label.text = String("Ster prijs (1 ouder): \(vakantie.sterPrijs1ouder) " + euroSymbol)
+                    sterprijs1Label.text = String("Ster prijs (1 ouder): \(vakantie.sterPrijs1ouder!) " + euroSymbol)
                 } else {
                     sterprijs1Label.text = String("Ster prijs (1 ouder): /")
                 }
                 if (vakantie.sterPrijs2ouders != -1) {
-                    sterPrijs2Label.text = String("Ster prijs (2 ouders): \(vakantie.sterPrijs2ouders) " + euroSymbol)
+                    sterPrijs2Label.text = String("Ster prijs (2 ouders): \(vakantie.sterPrijs2ouders!) " + euroSymbol)
                 } else {
                     sterPrijs2Label.text = String("Ster prijs (2 ouders): /")
                 }
@@ -192,7 +192,7 @@ class VakantieDetailsTableViewController: UITableViewController {
         } else if segue.identifier == "korteBeschrijvingVakantie" {
             let extraTekstViewController = segue.destinationViewController as ExtraTekstViewController
             extraTekstViewController.tekst = vakantie.korteBeschrijving
-            extraTekstViewController.type = 1
+            extraTekstViewController.type = 1 as Int
         } else if segue.identifier == "inbegrepenPrijs" {
             //let inbegrepenPrijsViewController = segue.destinationViewController as InbegrepenPrijsTableView
             //inbegrepenPrijsViewController.tekst = inbegrepenPrijs.text
