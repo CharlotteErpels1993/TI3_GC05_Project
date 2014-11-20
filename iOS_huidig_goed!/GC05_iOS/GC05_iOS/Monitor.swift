@@ -10,6 +10,7 @@ class Monitor: Gebruiker
     }
     
     init(monitor: PFObject) {
+        self.linkFacebook = monitor["linkFacebook"] as? String
         super.init(gebruiker: monitor)
     }
     
