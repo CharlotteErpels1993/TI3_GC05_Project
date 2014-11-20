@@ -3,9 +3,9 @@ import UIKit
 class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, UISearchDisplayDelegate {
     
     var monitoren: [Monitor] = []
-    var monitoren2: [Monitor] = []
+    var vormingen: [InschrijvingVorming] = []
+    //var monitoren2: [Monitor] = []
     var monitorenZelfdeVorming: [Monitor] = []
-    var huidigeMonitor = PFUser.currentUser()
     
     @IBOutlet weak var zoekbar: UISearchBar!
     
@@ -20,16 +20,20 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
         var activityIndicator = getActivityIndicatorView(self)
         
         zoekMonitoren()
+        zoekVormingenVanHuidigeMonitor()
+        zoekMonitorenMetDezelfdeVormingen()
+        
+        
         zoekbar.showsScopeBar = true
         zoekbar.delegate = self
         
         activityIndicator.stopAnimating()
     }
     
-    func zoekMonitorenZelfdeKamp() {
+    //func zoekMonitorenZelfdeVorming() {
         /*PFQuery query = PFQuery(className: "Monitor")
         query.whereKey(")*/
-    }
+    //}
     
     /*func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         zoekGefilterdeMonitoren(searchText.lowercaseString)
@@ -55,10 +59,67 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
                         self.monitoren.append(monitor)
                     }
                 }
-                self.monitoren2 = self.monitoren
+                println("monitoren: \(self.monitoren)")
+                //self.monitoren2 = self.monitoren
                 self.tableView.reloadData()
             }
         })
+    }
+    
+    func zoekVormingenVanHuidigeMonitor() {
+        var monitor = getCurrentUser()
+        var query = PFQuery(className: "InschrijvingVorming")
+        query.whereKey("monitor", equalTo: monitor.id)
+        query.findObjectsInBackgroundWithBlock({(NSArray objects, NSError error) in
+            if(error == nil) {
+                if let PFObjects = objects as? [PFObject!] {
+                    for object in PFObjects {
+                        var vorming = InschrijvingVorming(inschrijving: object)
+                        self.vormingen.append(vorming)
+                    }
+                }
+                //self.monitoren2 = self.monitoren
+                println("vormoingen: \(self.vormingen)")
+                self.tableView.reloadData()
+            }
+        })
+    }
+    
+    func zoekMonitorenMetDezelfdeVormingen() {
+        for vorming in self.vormingen {
+            for monitor in self.monitoren {
+                zoekMonitorMetDezelfdeVorming(vorming, monitor: monitor)
+            }
+        }
+        println("monitorenZelfdeVorming \(self.monitorenZelfdeVorming)")
+    }
+    
+    func zoekMonitorMetDezelfdeVorming(vorming: InschrijvingVorming, monitor: Monitor) {
+        var query = PFQuery(className: "InschrijvenVorming")
+        query.whereKey("monitor", equalTo: monitor.id)
+        query.whereKey("vorming", equalTo: vorming.id)
+        query.findObjectsInBackgroundWithBlock({(NSArray objects, NSError error) in
+            if(error == nil) {
+                if let PFObjects = objects as? [PFObject!] {
+                    for object in PFObjects {
+                        var vorming2 = InschrijvingVorming(inschrijving: object)
+                        self.monitorenZelfdeVorming.append(monitor)
+                    }
+                }
+                //self.monitoren2 = self.monitoren
+                self.tableView.reloadData()
+            }
+        })
+        
+        
+    }
+    
+    
+    func getCurrentUser() -> Monitor {
+        var query = PFQuery(className: "Monitor")
+        query.whereKey("email", containsString: PFUser.currentUser().email)
+        var monitorPF = query.getFirstObject()
+        return Monitor(monitor: monitorPF)
     }
     
     
@@ -79,31 +140,27 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             // TO DO --> monitoren zelfde kamp/vorming
-            return monitoren2.count
+            return monitorenZelfdeVorming.count
         } else if section == 2 {
-            return monitoren2.count
+            return monitoren.count
         }
         return 0
     }
     
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
         if indexPath.section == 0 {
             /* TO DO --> monitoren zelfde kamp/vorming */
             
             let cell = tableView.dequeueReusableCellWithIdentifier("monitorCellZelfdeVorming", forIndexPath: indexPath) as UITableViewCell
-            return cell
-            
-            /*let cell = tableView.dequeueReusableCellWithIdentifier("vormingCell", forIndexPath: indexPath) as UITableViewCell
-            //let cell = tableView.dequeueReusableCellWithIdentifier("vormingCell")? as UITableViewCell
-            let profiel = vormingen2[indexPath.row]
-        
-            cell.textLabel.text = vorming.titel
+            let monitor = monitorenZelfdeVorming[indexPath.row]
+            cell.textLabel.text = monitor.voornaam! + " " + monitor.naam!
             cell.detailTextLabel!.text = "Meer informatie"
-            return cell*/
+            return cell
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier("monitorCell", forIndexPath: indexPath) as UITableViewCell
-            let monitor = monitoren2[indexPath.row]
+            let monitor = monitoren[indexPath.row]
             cell.textLabel.text = monitor.voornaam! + " " + monitor.voornaam!
             cell.detailTextLabel?.text = "Meer informatie"
             return cell
