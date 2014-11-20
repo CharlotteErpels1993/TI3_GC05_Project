@@ -5,7 +5,7 @@ package com.hogent.ti3g05.ti3_g05_joetzapp.domein;
  */
 public class Activiteit { //abstract?
 
-    private int activiteitID;
+    private String activiteitID;
     private String titel, locatie, korteBeschrijving, GegevensContactPersoon;
 
     public Activiteit(){
@@ -20,11 +20,11 @@ public class Activiteit { //abstract?
         GegevensContactPersoon = gegevensContactPersoon;
     }
 
-    public int getActiviteitID() {
+    public String getActiviteitID() {
         return activiteitID;
     }
 
-    public void setActiviteitID(int activiteitID) {
+    public void setActiviteitID(String activiteitID) {
         this.activiteitID = activiteitID;
     }
 

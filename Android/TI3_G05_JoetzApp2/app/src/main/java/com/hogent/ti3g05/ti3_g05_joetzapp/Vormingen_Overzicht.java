@@ -122,7 +122,7 @@ public class Vormingen_Overzicht extends Activity /*implements SwipeRefreshLayou
                     map.setTips((String) vorming.get("tips"));
                     map.setTitel((String) vorming.get("titel"));
                     map.setWebsiteLocatie((String) vorming.get("websiteLocatie"));
-
+                    map.setActiviteitID((String) vorming.get("objectId"));
 
                     vormingen.add(map);
 

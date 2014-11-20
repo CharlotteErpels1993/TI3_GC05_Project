@@ -1,6 +1,7 @@
 package com.hogent.ti3g05.ti3_g05_joetzapp;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -11,6 +12,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
+import com.parse.ParseObject;
 
 
 public class InschrijvingVorming extends Activity {
@@ -20,6 +22,8 @@ public class InschrijvingVorming extends Activity {
 
     Boolean isInternetPresent = false;
     ConnectionDetector cd;
+
+    private String vormingID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +62,19 @@ public class InschrijvingVorming extends Activity {
     public void controlerenIngevuld(){
         if (spnDataInschrijven.getSelectedItem() != null && spnDataInschrijven.getSelectedItemPosition() != AdapterView.INVALID_POSITION){
             //er is een deftige waarde geselecteerd
-            
+
+            //TODO: monitorID ophalen aan de hand van email
+            String monitorID = "";
+
+            ParseObject nieuweVorming = new ParseObject("InschrijvingVorming");
+            nieuweVorming.put("vorming", vormingID);
+            nieuweVorming.put("monitor", monitorID);
+            nieuweVorming.put("periode", String.valueOf(spnDataInschrijven.getSelectedItem()) );
+            nieuweVorming.saveInBackground();
+
+            Toast.makeText(getApplicationContext(), getString(R.string.dialog_ingeschreven_melding), Toast.LENGTH_SHORT);
+            Intent in = new Intent(getApplicationContext(),navBarMainScreen.class);
+            startActivity(in);
         }
     }
 
