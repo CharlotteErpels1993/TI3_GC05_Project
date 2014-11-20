@@ -54,7 +54,7 @@ class VormingDetailsTableViewController: UITableViewController {
             let inschrijvenVormingViewController = segue.destinationViewController as InschrijvenVormingViewController
             //inschrijvenVormingViewController.monitor = self.monitor
             inschrijvenVormingViewController.vorming = self.vorming
-            inschrijvenVormingViewController.pickerData = vorming.periodes
+            inschrijvenVormingViewController.pickerData = vorming.periodes!
         } else if segue.identifier == "korteBeschrijvingVorming" {
             let extraTekstViewController = segue.destinationViewController as ExtraTekstViewController
             extraTekstViewController.tekst = vorming.korteBeschrijving

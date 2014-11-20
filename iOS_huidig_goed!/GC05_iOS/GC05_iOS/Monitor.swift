@@ -5,6 +5,10 @@ class Monitor: Gebruiker
     var linkFacebook: String?
     var lidNr: Int?
     
+    override init(id: String) {
+        super.init(id: id)
+    }
+    
     init(monitor: PFObject) {
         super.init(gebruiker: monitor)
     }

@@ -2,18 +2,24 @@ import Foundation
 
 class Vorming: Activiteit
 {
-    var periodes: [String]
+    var periodes: [String]?
     
-    var prijs: Double {
+    var prijs: Double? {
         willSet {
-            assert(checkPrijsValid(newValue), "Prijs moet een geldig bedrag zijn!")
+            assert(checkPrijsValid(newValue!), "Prijs moet een geldig bedrag zijn!")
         }
     }
     
-    var criteriaDeelnemers: String
-    var websiteLocatie: String
-    var tips: String
-    var betalingWijze: String
+    var criteriaDeelnemers: String?
+    var websiteLocatie: String?
+    var tips: String?
+    var betalingWijze: String?
+    
+    
+    
+    override init(id: String) {
+        super.init(id: id)
+    }
     
     init(vorming: PFObject) {
         self.periodes = vorming["periodes"] as [String]
@@ -50,7 +56,7 @@ class Vorming: Activiteit
         
         var teller: Int = 0
         
-        for periode in periodes {
+        for periode in self.periodes! {
             
             if teller != 0 {
                 periodesString.extend(", ")
