@@ -105,7 +105,7 @@ public class Vormingen_Overzicht extends Activity /*implements SwipeRefreshLayou
             mProgressDialog.setMessage("Aan het laden...");
             mProgressDialog.setIndeterminate(false);
             // Show progressdialog
-            //mProgressDialog.show();
+            mProgressDialog.show();
         }
 
         @Override

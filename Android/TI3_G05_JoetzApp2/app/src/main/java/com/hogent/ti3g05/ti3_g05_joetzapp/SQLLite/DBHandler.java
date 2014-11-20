@@ -235,7 +235,7 @@ public class DBHandler extends SQLiteOpenHelper {
         c.moveToFirst();
         while(!c.isAfterLast())
         {
-            Monitor v = krijgProfielen(c.getString(15));
+            Monitor v = krijgProfielen(c.getString(9));
             profielen.add(v);
             c.moveToNext();
         }

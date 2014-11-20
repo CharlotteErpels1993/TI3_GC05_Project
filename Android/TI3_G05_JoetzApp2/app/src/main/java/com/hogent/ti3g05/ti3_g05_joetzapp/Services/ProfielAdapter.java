@@ -17,6 +17,7 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.ImageLoader;
 import com.hogent.ti3g05.ti3_g05_joetzapp.ProfielDetail;
@@ -93,7 +94,8 @@ public class ProfielAdapter extends ArrayAdapter<Vorming> implements Filterable 
         } else {
             holder = (ViewHolder) view.getTag();
         }
-//TODO geeft error bij getview
+        //TODO geeft error bij getview bij sqlite
+
         holder.naam.setText(profielen.get(position).getNaam());
         holder.voornaam.setText(profielen.get(position).getVoornaam());
 

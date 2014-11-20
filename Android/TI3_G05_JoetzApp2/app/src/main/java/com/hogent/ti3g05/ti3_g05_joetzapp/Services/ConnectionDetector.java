@@ -24,7 +24,7 @@ public class ConnectionDetector {
 				  for (int i = 0; i < info.length; i++) 
 					  if (info[i].getState() == NetworkInfo.State.CONNECTED)
 					  {
-						  connected = true;
+						   return true;
 					  }
 
 		  }

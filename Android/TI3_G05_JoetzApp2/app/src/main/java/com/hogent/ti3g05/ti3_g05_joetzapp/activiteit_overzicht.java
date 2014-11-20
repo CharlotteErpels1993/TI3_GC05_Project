@@ -27,6 +27,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.DBHandler;
 import com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.myDb;
@@ -47,7 +48,6 @@ public class activiteit_overzicht extends Fragment /*implements SwipeRefreshLayo
 
     private myDb myDB;
     Vakantie map;
-    private ConnectionDetector conn;
     private ProgressDialog mProgressDialog;
     private ArrayList<String> images = new ArrayList<String>();
     private HashMap<String, ArrayList<String>> afbeeldingenMap = new HashMap<String, ArrayList<String>>();
@@ -57,23 +57,51 @@ public class activiteit_overzicht extends Fragment /*implements SwipeRefreshLayo
     private EditText filtertext;
     //SwipeRefreshLayout swipeLayout;
 
+    Boolean isInternetPresent = false;
+    // Connection detector class
+    ConnectionDetector cd;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         rootView = inflater.inflate(R.layout.activiteit_overzichtnieuw, container, false);
 
-        new RemoteDataTask().execute();
+
         listview = (ListView) rootView.findViewById(R.id.listView);
         filtertext = (EditText) rootView.findViewById(R.id.filtertext);
         //swipeLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_container);
         //onCreateSwipeToRefresh(swipeLayout);
 
+        cd = new ConnectionDetector(rootView.getContext());
         myDB = new myDb(rootView.getContext());
         myDB.open();
+        isInternetPresent = cd.isConnectingToInternet();
+        if (isInternetPresent) {
+            //Toast.makeText(getActivity(), "internet", Toast.LENGTH_SHORT).show();
+            new RemoteDataTask().execute();
+        }
+        else {
+            //Toast.makeText(getActivity(), "geen internet", Toast.LENGTH_SHORT).show();
+            vakanties = myDB.getVakanties();
+            adapter = new ListViewAdapter(getActivity(), vakanties);
+            // Binds the Adapter to the ListView
+            listview.setAdapter(adapter);
 
-        conn = new ConnectionDetector(rootView.getContext());
+            filtertext.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {                }
 
+                @Override
+                public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {                }
+
+                @Override
+                public void afterTextChanged(Editable editable) {
+                    String text = filtertext.getText().toString().toLowerCase(Locale.getDefault());
+                    adapter.filter(text);
+                }
+            });
+        }
 
         return rootView;
     }
@@ -114,7 +142,9 @@ public class activiteit_overzicht extends Fragment /*implements SwipeRefreshLayo
             mProgressDialog.setMessage("Aan het laden...");
             mProgressDialog.setIndeterminate(false);
             // Show progressdialog
+
             mProgressDialog.show();
+
         }
 
         @Override
@@ -123,20 +153,11 @@ public class activiteit_overzicht extends Fragment /*implements SwipeRefreshLayo
             vakanties = new ArrayList<Vakantie>();
 
 
-            //TODO indien connectie er niet is, gegevens ophalen van de sqliteDB
-            /*if(!meh/*conn.isConnectingToInternet()*///)
-           /* {
-                vakanties = myDB.getVakanties();
-            }
-            else {*/
 
                 try {
                     // Locate the class table named "vakantie" in Parse.com
                     ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(
                             "Vakantie");
-                    // Locate the column named "vertrekdatum" in Parse.com and order list
-                    // by ascending
-                    //myDB.drop();
                     query.orderByAscending("vertrekdatum");
                     ob = query.find();
                     myDB.drop();
@@ -217,15 +238,12 @@ public class activiteit_overzicht extends Fragment /*implements SwipeRefreshLayo
 
                 } catch (ParseException e) {
 
-                    //hier zeggen van gebruik sql database anders?
-                    //maar eerst isconnected proberen
-                    vakanties = myDB.getVakanties();
 
 
                     Log.e("Error", e.getMessage());
                     e.printStackTrace();
                 }
-            //}
+
             return null;
         }
 

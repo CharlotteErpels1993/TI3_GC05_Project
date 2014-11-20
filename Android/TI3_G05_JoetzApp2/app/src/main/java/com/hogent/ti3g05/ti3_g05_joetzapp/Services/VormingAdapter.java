@@ -96,11 +96,7 @@ public class VormingAdapter extends ArrayAdapter<Vorming> implements Filterable 
         }
         holder.titel.setText(vormingen.get(position).getTitel());
         holder.locatie.setText(vormingen.get(position).getLocatie());
-       /* if(ParseUser.getCurrentUser() != null)
-        {
 
-        holder.prijs = (TextView) view.findViewById(R.id.prijsV);
-        }*/
         holder.criteriaDeelnemer.setText(vormingen.get(position).getCriteriaDeelnemers());
         holder.tips.setText(vormingen.get(position).getTips());
         holder.websiteLocatie.setText(vormingen.get(position).getWebsiteLocatie());
