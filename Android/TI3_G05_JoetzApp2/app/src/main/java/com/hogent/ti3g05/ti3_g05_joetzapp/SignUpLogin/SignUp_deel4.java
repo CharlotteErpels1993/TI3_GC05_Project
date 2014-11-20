@@ -171,6 +171,7 @@ public class SignUp_deel4 extends Activity{
         ParseObject gebruiker = new ParseObject("Ouder");
         gebruiker.put("email", mEmail);
         gebruiker.put("wachtwoord", mPassword);
+        gebruiker.put("soort", "ouder");
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
