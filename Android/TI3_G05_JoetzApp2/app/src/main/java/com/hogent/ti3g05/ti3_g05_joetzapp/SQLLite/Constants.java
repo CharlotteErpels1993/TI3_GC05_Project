@@ -49,5 +49,20 @@ public class Constants {
     public static final String COLUMN_TELEFOON = "telefoon";
     public static final String COLUMN_VOORNAAM = "voornaam";
 
+    //vormingen
+
+    public static final String TABLE_VORMINGEN = "vorming";
+    public static final String COLUMN_BETALINGSWIJZE = "betalingswijze";
+    public static final String COLUMN_CRITERIADEELNEMER = "criteriaDeelnemer";
+    public static final String COLUMN_INBEGREPENINPRIJSV = "inbegrepenInPrijs";
+    public static final String COLUMN_KORTEBESCHRIJVING = "korteBeschrijving";
+    public static final String COLUMN_LOCATIEV = "locatie";
+    public static final String COLUMN_PERIODES = "periodes";
+    public static final String COLUMN_PRIJSV = "prijs";
+    public static final String COLUMN_TIPS = "tips";
+    public static final String COLUMN_TITEL = "titel";
+    public static final String COLUMN_WEBSITELOCATIE = "websiteLocatie";
+
+
 
 }

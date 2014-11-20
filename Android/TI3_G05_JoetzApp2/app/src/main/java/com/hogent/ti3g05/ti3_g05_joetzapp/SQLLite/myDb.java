@@ -9,6 +9,7 @@ import android.util.Log;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Monitor;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vakantie;
+import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vorming;
 
 import java.util.List;
 
@@ -39,6 +40,21 @@ public class myDb {
         }
     }
 
+    public void creerProfielen()
+    {
+        db.onCreateProfielen(db.getWritableDatabase());
+    }
+
+    public void creerVormingen()
+    {
+        db.onCreateVormingen(db.getWritableDatabase());
+    }
+
+    public void creerVakanties()
+    {
+        db.onCreateVakantie(db.getWritableDatabase());
+    }
+
     public void drop()
     {
        db.drop(db.getWritableDatabase());
@@ -48,6 +64,12 @@ public class myDb {
     public void dropProfielen()
     {
         db.dropProfielen(db.getWritableDatabase());
+
+    }
+
+    public void dropVormingen()
+    {
+        db.dropVormingen(db.getWritableDatabase());
 
     }
 
@@ -77,7 +99,6 @@ public class myDb {
     }
 
 
-    //TODO moet ook voor vormingen en profielen, dus nieuwe tabel aanmaken, en functies in helper
 
     public long insertProfiel(Monitor nieuwProfiel)
     {
@@ -92,6 +113,23 @@ public class myDb {
     public Monitor getProfiel(String naam)
     {
         return db.krijgProfielen(naam);
+    }
+
+
+    //vormingen
+    public long insertVorming(Vorming nieuweVorming)
+    {
+        return db.toevoegenGegevensVorming(nieuweVorming);
+    }
+
+    public List<Vorming> getVormingen()
+    {
+        return db.krijgVormingen();
+    }
+
+    public Vorming getVorming(String naam)
+    {
+        return db.krijgVormingen(naam);
     }
 
 }

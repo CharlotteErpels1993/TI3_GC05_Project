@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Monitor;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vakantie;
+import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vorming;
 
 import java.awt.font.NumericShaper;
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ import java.util.List;
 
 import static com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.Constants.TABLE_PROFIELEN;
 import static com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.Constants.TABLE_VAKANTIE;
+import static com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.Constants.TABLE_VORMINGEN;
 
 public class DBHandler extends SQLiteOpenHelper {
 
@@ -26,9 +28,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
     }
 
-
-    @Override
-    public void onCreate(SQLiteDatabase sqLiteDatabase) {
+    public void onCreateVakantie(SQLiteDatabase sqLiteDatabase) {
         String CREATE_VAKANTIE_TABLE = "CREATE TABLE " + TABLE_VAKANTIE + "(" +Constants.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +Constants.COLUMN_VAKANTIENAAM + " TEXT," + Constants.COLUMN_LOCATIE + " TEXT," + Constants.COLUMN_VERTREKDATUM + " TEXT," +
                 Constants.COLUMN_TERUGDATUM + " TEXT," + Constants.COLUMN_PRIJS + " NUMERIC," + Constants.COLUMN_AFBEELDING1 + " TEXT," +Constants.COLUMN_AFBEELDING2 + " TEXT," +Constants.COLUMN_AFBEELDING3 + " TEXT," +
                 Constants.COLUMN_DOELGROEP + " TEXT," + Constants.COLUMN_BESCHRIJVING + " TEXT," + Constants.COLUMN_PERIODE + " TEXT," + Constants.COLUMN_VERVOER + " TEXT," +
@@ -49,12 +49,26 @@ public class DBHandler extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(CREATE_PROFIELEN_TABLE);
     }
 
+    public void onCreateVormingen(SQLiteDatabase sqLiteDatabase) {
 
+        String CREATE_VORMINGEN_TABLE = "CREATE TABLE " + TABLE_VORMINGEN + "(" +Constants.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +Constants.COLUMN_BETALINGSWIJZE + " TEXT," + Constants.COLUMN_CRITERIADEELNEMER + " TEXT," + Constants.COLUMN_INBEGREPENINPRIJSV + " TEXT," +
+                Constants.COLUMN_KORTEBESCHRIJVING + " TEXT," + Constants.COLUMN_LOCATIEV + " TEXT," + Constants.COLUMN_PERIODES + " TEXT," +Constants.COLUMN_PRIJSV + " NUMERIC," +Constants.COLUMN_TIPS + " TEXT," +
+                Constants.COLUMN_TITEL + " TEXT," + Constants.COLUMN_WEBSITELOCATIE + " TEXT" + ")";
+
+        sqLiteDatabase.execSQL(CREATE_VORMINGEN_TABLE);
+    }
+
+
+    @Override
+    public void onCreate(SQLiteDatabase sqLiteDatabase) {
+
+    }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i2) {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_VAKANTIE);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_PROFIELEN);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_VORMINGEN);
         onCreate(sqLiteDatabase);
 
     }
@@ -62,7 +76,13 @@ public class DBHandler extends SQLiteOpenHelper {
     public void drop(SQLiteDatabase db)
     {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_VAKANTIE);
-        onCreate(db);
+        onCreateVakantie(db);
+    }
+
+    public void dropVormingen(SQLiteDatabase db)
+    {
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_VORMINGEN);
+        onCreateVormingen(db);
     }
 
     public void dropProfielen(SQLiteDatabase db)
@@ -258,5 +278,80 @@ public class DBHandler extends SQLiteOpenHelper {
         cursor.close();
         db.close();
         return monitor;
+    }
+
+    public Long toevoegenGegevensVorming(Vorming vorming)
+    {
+        ContentValues values = new ContentValues();
+
+        values.put(Constants.COLUMN_BETALINGSWIJZE, vorming.getBetalingswijze());
+
+        values.put(Constants.COLUMN_CRITERIADEELNEMER, vorming.getCriteriaDeelnemers());
+        //values.put(Constants.COLUMN_INBEGREPENINPRIJSV, vorming.get);
+        values.put(Constants.COLUMN_KORTEBESCHRIJVING, vorming.getKorteBeschrijving());
+
+        values.put(Constants.COLUMN_LOCATIEV, vorming.getLocatie());
+        //values.put(Constants.COLUMN_PERIODES, vorming.getPeriodes());
+
+        values.put(Constants.COLUMN_PRIJSV, vorming.getPrijs());
+        values.put(Constants.COLUMN_TIPS, vorming.getTips());
+
+        values.put(Constants.COLUMN_TITEL, vorming.getTitel());
+        values.put(Constants.COLUMN_WEBSITELOCATIE, vorming.getWebsiteLocatie());
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Long id = db.insert(TABLE_VORMINGEN, null, values);
+        db.close();
+
+        return id;
+
+    }
+
+    public List<Vorming> krijgVormingen()
+    {
+        List<Vorming> vormingen = new ArrayList<Vorming>();
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT * FROM " + TABLE_VORMINGEN;
+        Cursor c = db.rawQuery(query,null);
+        c.moveToFirst();
+        while(!c.isAfterLast())
+        {
+            Vorming v = krijgVormingen(c.getString(9));
+            vormingen.add(v);
+            c.moveToNext();
+        }
+        c.close();
+        return vormingen;
+    }
+
+    public Vorming krijgVormingen(String vormingTitel)
+    {
+        String query = "Select * FROM " + TABLE_VORMINGEN + " WHERE " + Constants.COLUMN_TITEL + " = \"" + vormingTitel + "\"";
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        Vorming vorming = new Vorming();
+
+        if(cursor.moveToFirst())
+        {
+            cursor.moveToFirst();
+            vorming.setBetalingswijze(cursor.getString(1));
+            vorming.setCriteriaDeelnemers(cursor.getString(2));
+            vorming.setKorteBeschrijving(cursor.getString(4));
+            vorming.setLocatie(cursor.getString(5));
+            vorming.setPrijs(Integer.parseInt(cursor.getString(7)));
+            vorming.setTips(cursor.getString(8));
+            vorming.setTitel(cursor.getString(9));
+            vorming.setWebsiteLocatie(cursor.getString(10));
+
+        } else
+        {
+            vorming = null;
+        }
+        cursor.close();
+        db.close();
+        return vorming;
     }
 }

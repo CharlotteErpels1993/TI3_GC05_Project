@@ -61,6 +61,7 @@ public class ProfielenOverzicht extends Activity /* implements SwipeRefreshLayou
         myDB = new myDb(this);
         myDB.open();
 
+
         /*swipeLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_container);
         onCreateSwipeToRefresh(swipeLayout);*/
 
@@ -105,7 +106,7 @@ public class ProfielenOverzicht extends Activity /* implements SwipeRefreshLayou
             mProgressDialog.setMessage("Aan het laden...");
             mProgressDialog.setIndeterminate(false);
             // Show progressdialog
-            mProgressDialog.show();
+            //mProgressDialog.show();
         }
 
         @Override
@@ -131,6 +132,7 @@ public class ProfielenOverzicht extends Activity /* implements SwipeRefreshLayou
                         map.setNaam((String) monitor.get("naam"));
                         map.setVoornaam((String) monitor.get("voornaam"));
                         map.setStraat((String) monitor.get("straat"));
+
                         map.setPostcode((Integer) monitor.get("postcode"));
                         map.setHuisnr((Number) monitor.get("nummer"));
                         map.setLidNummer((Integer) monitor.get("lidNr"));

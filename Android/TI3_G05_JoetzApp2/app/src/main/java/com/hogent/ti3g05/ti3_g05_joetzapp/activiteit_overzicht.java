@@ -122,7 +122,7 @@ public class activiteit_overzicht extends Fragment /*implements SwipeRefreshLayo
             // Create the array
             vakanties = new ArrayList<Vakantie>();
 
-            boolean meh = true;
+
             //TODO indien connectie er niet is, gegevens ophalen van de sqliteDB
             /*if(!meh/*conn.isConnectingToInternet()*///)
            /* {

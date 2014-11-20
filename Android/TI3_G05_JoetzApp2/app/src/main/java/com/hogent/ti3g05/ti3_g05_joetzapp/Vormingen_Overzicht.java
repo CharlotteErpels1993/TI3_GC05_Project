@@ -21,6 +21,8 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.myDb;
+import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ListViewAdapter;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.VormingAdapter;
 import com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.Login;
@@ -38,9 +40,14 @@ public class Vormingen_Overzicht extends Activity /*implements SwipeRefreshLayou
     private List<ParseObject> ob;
     private ProgressDialog mProgressDialog;
     private VormingAdapter adapter;
+    private myDb myDB;
     private List<Vorming> vormingen = null;
     private EditText filtertext;
    // SwipeRefreshLayout swipeLayout;
+   // flag for Internet connection status
+   Boolean isInternetPresent = false;
+    // Connection detector class
+    ConnectionDetector cd;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -53,6 +60,10 @@ public class Vormingen_Overzicht extends Activity /*implements SwipeRefreshLayou
         filtertext = (EditText) findViewById(R.id.filtertext);
         /*swipeLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_container);
         onCreateSwipeToRefresh(swipeLayout);*/
+
+        cd = new ConnectionDetector(getApplicationContext());
+        myDB = new myDb(this);
+        myDB.open();
         new RemoteDataTask().execute();
     }
 
@@ -94,7 +105,7 @@ public class Vormingen_Overzicht extends Activity /*implements SwipeRefreshLayou
             mProgressDialog.setMessage("Aan het laden...");
             mProgressDialog.setIndeterminate(false);
             // Show progressdialog
-            mProgressDialog.show();
+            //mProgressDialog.show();
         }
 
         @Override
@@ -126,10 +137,43 @@ public class Vormingen_Overzicht extends Activity /*implements SwipeRefreshLayou
 
                     vormingen.add(map);
 
+
+            isInternetPresent = cd.isConnectingToInternet();
+            if(isInternetPresent) {
+                try {
+                    // Locate the class table named "vakantie" in Parse.com
+                    ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(
+                            "Vorming");
+                    // Locate the column named "vertrekdatum" in Parse.com and order list
+                    // by ascending
+                    query.orderByAscending("prijs");
+                    ob = query.find();
+                    myDB.dropVormingen();
+                    for (ParseObject vorming : ob) {
+
+                        Vorming map = new Vorming();
+                        //String prijs = vakantie.get("basisPrijs").toString();
+                        map.setBetalingswijze((String) vorming.get("betalingswijze"));
+                        map.setLocatie((String) vorming.get("locatie"));
+                        map.setCriteriaDeelnemers((String) vorming.get("criteriaDeelnemer"));
+                        map.setKorteBeschrijving((String) vorming.get("korteBeschrijving"));
+                        // map.setPeriodes((Date) vorming.get("periodes"));
+                        map.setPrijs((Integer) vorming.get("prijs"));
+                        map.setTips((String) vorming.get("tips"));
+                        map.setTitel((String) vorming.get("titel"));
+                        map.setWebsiteLocatie((String) vorming.get("websiteLocatie"));
+
+
+                        vormingen.add(map);
+                        myDB.insertVorming(map);
+
+                    }
+                } catch (ParseException e) {
+                    Log.e("Error", e.getMessage());
+                    e.printStackTrace();
                 }
-            } catch (ParseException e) {
-                Log.e("Error", e.getMessage());
-                e.printStackTrace();
+            }else {
+                vormingen = myDB.getVormingen();
             }
             return null;
         }
