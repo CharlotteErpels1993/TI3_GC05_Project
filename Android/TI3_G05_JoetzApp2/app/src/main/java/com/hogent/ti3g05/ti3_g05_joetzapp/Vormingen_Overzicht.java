@@ -128,7 +128,7 @@ public class Vormingen_Overzicht extends Activity /*implements SwipeRefreshLayou
                     map.setLocatie((String) vorming.get("locatie"));
                     map.setCriteriaDeelnemers((String) vorming.get("criteriaDeelnemer"));
                     map.setKorteBeschrijving((String) vorming.get("korteBeschrijving"));
-                   // map.setPeriodes((Date) vorming.get("periodes"));
+                    // map.setPeriodes((Date) vorming.get("periodes"));
                     map.setPrijs((Integer) vorming.get("prijs"));
                     map.setTips((String) vorming.get("tips"));
                     map.setTitel((String) vorming.get("titel"));
@@ -138,42 +138,48 @@ public class Vormingen_Overzicht extends Activity /*implements SwipeRefreshLayou
                     vormingen.add(map);
 
 
-            isInternetPresent = cd.isConnectingToInternet();
-            if(isInternetPresent) {
-                try {
-                    // Locate the class table named "vakantie" in Parse.com
-                    ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(
-                            "Vorming");
-                    // Locate the column named "vertrekdatum" in Parse.com and order list
-                    // by ascending
-                    query.orderByAscending("prijs");
-                    ob = query.find();
-                    myDB.dropVormingen();
-                    for (ParseObject vorming : ob) {
+                   /* isInternetPresent = cd.isConnectingToInternet();
+                    if (isInternetPresent) {
+                        try {
+                            // Locate the class table named "vakantie" in Parse.com
+                            ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(
+                                    "Vorming");
+                            // Locate the column named "vertrekdatum" in Parse.com and order list
+                            // by ascending
+                            query.orderByAscending("prijs");
+                            ob = query.find();
+                            myDB.dropVormingen();
+                            for (ParseObject vorming : ob) {
 
-                        Vorming map = new Vorming();
-                        //String prijs = vakantie.get("basisPrijs").toString();
-                        map.setBetalingswijze((String) vorming.get("betalingswijze"));
-                        map.setLocatie((String) vorming.get("locatie"));
-                        map.setCriteriaDeelnemers((String) vorming.get("criteriaDeelnemer"));
-                        map.setKorteBeschrijving((String) vorming.get("korteBeschrijving"));
-                        // map.setPeriodes((Date) vorming.get("periodes"));
-                        map.setPrijs((Integer) vorming.get("prijs"));
-                        map.setTips((String) vorming.get("tips"));
-                        map.setTitel((String) vorming.get("titel"));
-                        map.setWebsiteLocatie((String) vorming.get("websiteLocatie"));
+                                Vorming map = new Vorming();
+                                //String prijs = vakantie.get("basisPrijs").toString();
+                                map.setBetalingswijze((String) vorming.get("betalingswijze"));
+                                map.setLocatie((String) vorming.get("locatie"));
+                                map.setCriteriaDeelnemers((String) vorming.get("criteriaDeelnemer"));
+                                map.setKorteBeschrijving((String) vorming.get("korteBeschrijving"));
+                                // map.setPeriodes((Date) vorming.get("periodes"));
+                                map.setPrijs((Integer) vorming.get("prijs"));
+                                map.setTips((String) vorming.get("tips"));
+                                map.setTitel((String) vorming.get("titel"));
+                                map.setWebsiteLocatie((String) vorming.get("websiteLocatie"));
 
 
-                        vormingen.add(map);
-                        myDB.insertVorming(map);
+                                vormingen.add(map);
+                                myDB.insertVorming(map);
 
-                    }
-                } catch (ParseException e) {
-                    Log.e("Error", e.getMessage());
-                    e.printStackTrace();
+                            }
+                        } catch (ParseException e) {
+                            Log.e("Error", e.getMessage());
+                            e.printStackTrace();
+                        }
+                    } else {
+                        vormingen = myDB.getVormingen();
+                    }*/
+
                 }
-            }else {
-                vormingen = myDB.getVormingen();
+            }catch (ParseException e) {
+                Log.e("Error", e.getMessage());
+                e.printStackTrace();
             }
             return null;
         }

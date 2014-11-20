@@ -145,6 +145,7 @@ public class ProfielenOverzicht extends Activity /* implements SwipeRefreshLayou
 
                         profielen.add(map);
 
+
                         myDB.insertProfiel(map);
 
                     }
