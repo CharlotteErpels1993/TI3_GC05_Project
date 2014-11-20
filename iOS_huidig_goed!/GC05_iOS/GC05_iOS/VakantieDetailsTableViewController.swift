@@ -59,18 +59,18 @@ class VakantieDetailsTableViewController: UITableViewController {
         var terugkeerDatum: String? = vakantie.terugkeerDatum?.toS("dd/MM/yyyy")
         
         navigationItem.title = vakantie.titel
-        korteBeschrijvingLabel.text = vakantie.korteBeschrijving
+        korteBeschrijvingLabel.text! = vakantie.korteBeschrijving!
         korteBeschrijvingLabel.sizeToFit()
-        doelgroepLabel.text = vakantie.doelgroep
+        doelgroepLabel.text! = vakantie.doelgroep!
         vertrekdatumLabel.text = "Vertrekdatum: "
-        vertrekdatumLabel.text?.extend(beginDatum!)
+        vertrekdatumLabel.text!.extend(beginDatum!)
         aankomstdatumLabel.text = "Aankomstdatum: "
-        aankomstdatumLabel.text?.extend(terugkeerDatum!)
-        aantalDagenNachtenLabel.text = String("Aantal dagen/nachten: \(vakantie.aantalDagenNachten)")
-        locatieLabel.text = String("Locatie: \(vakantie.locatie)")
-        maxAantalDeelnemersLabel.text = String("Max aantal deelnemers: \(vakantie.maxAantalDeelnemers)")
-        vervoerwijzeLabel.text = String("Vervoerwijze: \(vakantie.vervoerwijze)")
-        formuleLabel.text = String("Formule: \(vakantie.formule)")
+        aankomstdatumLabel.text!.extend(terugkeerDatum!)
+        aantalDagenNachtenLabel.text! = String("Aantal dagen/nachten: \(vakantie.aantalDagenNachten!)")
+        locatieLabel.text! = String("Locatie: \(vakantie.locatie!)")
+        maxAantalDeelnemersLabel.text! = String("Max aantal deelnemers: \(vakantie.maxAantalDeelnemers!)")
+        vervoerwijzeLabel.text! = String("Vervoerwijze: \(vakantie.vervoerwijze!)")
+        formuleLabel.text! = String("Formule: \(vakantie.formule!)")
         
         var euroSymbol: String = "€"
         
