@@ -8,7 +8,7 @@ import java.util.List;
  * Created by Gilles De Vylder on 29/10/2014.
  */
 public class Vorming extends Activiteit {
-    private List<Date> periodes;
+    private List<String> periodes;
     private Number prijs;
     private String titel;
 
@@ -19,7 +19,7 @@ public class Vorming extends Activiteit {
 
     public Vorming(){
         super();
-        this.periodes = new ArrayList<Date>();
+        this.periodes = new ArrayList<String>();
 
     }
 
@@ -31,7 +31,7 @@ public class Vorming extends Activiteit {
         this.inbegrepenInPrijs = inbegrepenInPrijs;
     }
 
-    public List<Date> getPeriodes() {
+    public List<String> getPeriodes() {
         return periodes;
     }
 
@@ -47,7 +47,7 @@ public class Vorming extends Activiteit {
 
     public void setKorteBeschrijving(String korteBeschrijving){this.korteBeschrijving = korteBeschrijving;}
 
-    public void setPeriodes(List<Date> periodes) {
+    public void setPeriodes(List<String> periodes) {
         this.periodes = periodes;
     }
 

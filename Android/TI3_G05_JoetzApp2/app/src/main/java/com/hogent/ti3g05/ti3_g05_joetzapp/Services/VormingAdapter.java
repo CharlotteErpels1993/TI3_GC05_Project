@@ -120,6 +120,8 @@ public class VormingAdapter extends ArrayAdapter<Vorming> implements Filterable 
                 intent.putExtra("betalingswijze", vormingen.get(position).getBetalingswijze());
                 intent.putExtra("inbegrepenInPrijs", vormingen.get(position).getInbegrepenInPrijs());
                 intent.putExtra("objectId", vormingen.get(position).getActiviteitID());
+                List<String> voorlopigeLijstVormingen = vormingen.get(position).getPeriodes();
+                intent.putExtra("periodes", voorlopigeLijstVormingen.toArray(new String[voorlopigeLijstVormingen.size()]));
                 context.startActivity(intent);
             }
         });

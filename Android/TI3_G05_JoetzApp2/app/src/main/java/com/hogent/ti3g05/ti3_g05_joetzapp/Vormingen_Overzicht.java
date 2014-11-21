@@ -126,13 +126,14 @@ public class Vormingen_Overzicht extends Activity /*implements SwipeRefreshLayou
                         map.setLocatie((String) vorming.get("locatie"));
                         map.setCriteriaDeelnemers((String) vorming.get("criteriaDeelnemers"));
                         map.setKorteBeschrijving((String) vorming.get("korteBeschrijving"));
-                        // map.setPeriodes((Date) vorming.get("periodes"));
                         map.setPrijs((Integer) vorming.get("prijs"));
                         map.setInbegrepenInPrijs((String) vorming.get("inbegrepenInPrijs"));
                         map.setTips((String) vorming.get("tips"));
                         map.setTitel((String) vorming.get("titel"));
                         map.setWebsiteLocatie((String) vorming.get("websiteLocatie"));
                         map.setActiviteitID((String) vorming.get("objectId"));
+                        List<String> lijstPeriodes = vorming.getList("periodes") ;
+                        map.setPeriodes(  lijstPeriodes);
 
                         vormingen.add(map);
 

@@ -16,18 +16,21 @@ import android.widget.TextView;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.InschrijvingVorming;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class VormingDetail extends Activity {
     String titel;
     String locatie;
     String betalingswijze;
     String criteriaDeelnemer;
     String korteBeschrijving;
-    String periodes;
     String prijs;
     String tips;
     String websiteLocatie;
     String inbegrepenInPrijs;
     String objectId;
+    List<String> periodes;
     private Button inschrijven;
 
     @Override
@@ -48,30 +51,36 @@ public class VormingDetail extends Activity {
         inbegrepenInPrijs = i.getStringExtra("inbegrepenInPrijs");
         objectId = i.getStringExtra("objectId");
         websiteLocatie = i.getStringExtra("websiteLocatie");
+        String[] voorlopigePeriodes = i.getStringArrayExtra("periodes");
+        periodes = Arrays.asList(voorlopigePeriodes);
 
         setTitle(titel);
 
         TextView txtTitel = (TextView) findViewById(R.id.titelVD);
         final TextView txtLocatie = (TextView) findViewById(R.id.locatieVD);
         final TextView txtbetalingswijze = (TextView) findViewById(R.id.betalingswijzeVD);
-
         final TextView txtCriteriaDeelnemer = (TextView)findViewById(R.id.criteriaDeelnemerVD);
         TextView txtkorteBeschrijving = (TextView)findViewById(R.id.beschrijvingVD);
         final TextView txtTips = (TextView)findViewById(R.id.tipsVD);
         TextView txtPrijs = (TextView) findViewById(R.id.prijs);
         TextView txtInbegrepenInPrijs = (TextView) findViewById(R.id.inbegrepenInPrijs);
         TextView txtWebsite = (TextView) findViewById(R.id.websiteLocatieVD);
+        TextView txtPeriodes = (TextView) findViewById(R.id.periodesVD);
 
         txtTitel.setText(titel);
         txtLocatie.setText(locatie);
         txtbetalingswijze.setText(betalingswijze);
         txtCriteriaDeelnemer.setText(criteriaDeelnemer);
-        //txtmaxDeeln.setText(maxDeeln.toString());
         txtkorteBeschrijving.setText(korteBeschrijving);
         txtTips.setText(tips);
         txtPrijs.setText(prijs);
         txtInbegrepenInPrijs.setText(inbegrepenInPrijs);
         txtWebsite.setText(websiteLocatie);
+        txtPeriodes.setText(getString(R.string.periode) + ": ");
+        for (String obj : periodes){
+            txtPeriodes.setText(txtPeriodes.getText() + "\n- " + obj);
+        }
+
         inschrijven = (Button) findViewById(R.id.btnInschrijvenVorming);
         inschrijven.setOnClickListener(new View.OnClickListener() {
             @Override
