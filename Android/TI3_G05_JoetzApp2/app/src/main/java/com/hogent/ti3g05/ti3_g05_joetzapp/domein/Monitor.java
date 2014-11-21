@@ -11,12 +11,16 @@ public class Monitor extends Gebruiker {
     private int lidNummer;
 
     private String bus, telefoon;
+    private String monitorId;
 
     private Number aansluitingsNr;
     public Monitor(){
         super();
 
     }
+
+    public void setMonitorId(String monitorId){this.monitorId = monitorId;}
+    public String getMonitorId(){return monitorId;}
 
     public void setTelefoon(String telefoon){this.telefoon = telefoon;}
     public String getTelefoon(){return telefoon;}

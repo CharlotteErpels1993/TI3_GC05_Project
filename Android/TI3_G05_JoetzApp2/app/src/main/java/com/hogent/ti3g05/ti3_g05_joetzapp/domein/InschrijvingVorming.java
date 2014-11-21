@@ -7,6 +7,7 @@ import java.util.Date;
  */
 public class InschrijvingVorming {
     private int inschrijvingVormingID;
+    private String monitor, vorming;
     private Date beginDatum, eindDatum; //kan een vorming over meerdere data spannen?
 
     public InschrijvingVorming(){
@@ -20,6 +21,12 @@ public class InschrijvingVorming {
     public void setInschrijvingVormingID(int inschrijvingVormingID) {
         this.inschrijvingVormingID = inschrijvingVormingID;
     }
+
+    public void setMonitor(String monitor){this.monitor = monitor;}
+    public String getMonitor(){return monitor;}
+
+    public void setVorming(String vorming){this.vorming = vorming;}
+    public String getVorming(){return vorming;}
 
     public Date getBeginDatum() {
         return beginDatum;

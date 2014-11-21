@@ -19,14 +19,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.myDb;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ProfielAdapter;
+import com.hogent.ti3g05.ti3_g05_joetzapp.domein.InschrijvingVorming;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Monitor;
+import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vorming;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,11 +40,17 @@ import java.util.Locale;
 public class ProfielenOverzicht extends Activity /* implements SwipeRefreshLayout.OnRefreshListener*/ {
     private ListView listview;
     private List<ParseObject> ob;
+    private List<ParseObject> obVorming;
     private ProgressDialog mProgressDialog;
     private ProfielAdapter adapter;
     private List<Monitor> profielen = null;
+    private List<Monitor> profielenMetZelfdeVorming = null;
+    private List<Monitor> profielenAndere = null;
+    private List<Monitor> profielenSamen = null;
     private EditText filtertext;
     private myDb myDB;
+    private List<InschrijvingVorming> inschrijvingVormingen = new ArrayList<InschrijvingVorming>();
+    private List<InschrijvingVorming> alleIns = new ArrayList<InschrijvingVorming>();
     //SwipeRefreshLayout swipeLayout;
 
     // flag for Internet connection status
@@ -106,13 +116,16 @@ public class ProfielenOverzicht extends Activity /* implements SwipeRefreshLayou
             mProgressDialog.setMessage("Aan het laden...");
             mProgressDialog.setIndeterminate(false);
             // Show progressdialog
-            mProgressDialog.show();
+            //mProgressDialog.show();
         }
 
         @Override
         protected Void doInBackground(Void... params) {
             // Create the array
             profielen = new ArrayList<Monitor>();
+            profielenAndere = new ArrayList<Monitor>();
+            profielenMetZelfdeVorming = new ArrayList<Monitor>();
+            profielenSamen = new ArrayList<Monitor>();
             isInternetPresent = cd.isConnectingToInternet();
             if(isInternetPresent) {
 
@@ -132,10 +145,16 @@ public class ProfielenOverzicht extends Activity /* implements SwipeRefreshLayou
                         map.setNaam((String) monitor.get("naam"));
                         map.setVoornaam((String) monitor.get("voornaam"));
                         map.setStraat((String) monitor.get("straat"));
-
+                        map.setMonitorId( monitor.getObjectId());
                         map.setPostcode((Integer) monitor.get("postcode"));
                         map.setHuisnr((Number) monitor.get("nummer"));
-                        map.setLidNummer((Integer) monitor.get("lidNr"));
+                        if((Integer) monitor.get("lidNr") == null)
+                        {
+                            map.setLidNummer(0);
+                        } else
+                        {
+                            map.setLidNummer((Integer) monitor.get("lidNr"));
+                        }
                         map.setEmail((String) monitor.get("email"));
                         map.setGemeente((String) monitor.get("gemeente"));
                         map.setLinkFacebook((String) monitor.get("linkFacebook"));
@@ -149,14 +168,79 @@ public class ProfielenOverzicht extends Activity /* implements SwipeRefreshLayou
                         myDB.insertProfiel(map);
 
                     }
-
-                } catch (ParseException e) {
+                }catch (ParseException e) {
                     Log.e("Error", e.getMessage());
                     e.printStackTrace();
 
                     profielen = myDB.getProfielen();
 
                 }
+                    try {
+                        ParseQuery<ParseObject> queryVorming = new ParseQuery<ParseObject>(
+                                "InschrijvingVorming");
+                        // Locate the column named "vertrekdatum" in Parse.com and order list
+                        // by ascending
+                        queryVorming.orderByAscending("monitor");
+                        obVorming = queryVorming.find();
+                        InschrijvingVorming iv = null;
+                        for (ParseObject inschrVorming : obVorming) {
+                            iv = new InschrijvingVorming();
+                            iv.setMonitor((String)inschrVorming.get("monitor"));
+                            iv.setVorming((String)inschrVorming.get("vorming"));
+                            if(ParseUser.getCurrentUser().getObjectId().equals(inschrVorming.get("monitor")))
+                            {
+                                inschrijvingVormingen.add(iv);
+                            }
+                            alleIns.add(iv);
+
+                        }
+                        for(Monitor m : profielen)
+                        {
+                            for(InschrijvingVorming inv : alleIns)
+                            {for(InschrijvingVorming invm : inschrijvingVormingen)
+                                if(inv.getMonitor().equals(m.getMonitorId()) && inv.getVorming().equals(invm.getVorming()))
+                                {
+                                    profielenMetZelfdeVorming.add(m);
+                                    break;
+                                }
+
+                            }profielenAndere.add(m);
+
+
+
+
+
+
+
+                            /*
+                            Monitor map = new Monitor();
+                            map.setNaam((String) monitor.get("naam"));
+                            map.setVoornaam((String) monitor.get("voornaam"));
+                            map.setStraat((String) monitor.get("straat"));
+
+                            map.setPostcode((Integer) monitor.get("postcode"));
+                            map.setHuisnr((Number) monitor.get("nummer"));
+                            map.setLidNummer((Integer) monitor.get("lidNr"));
+                            map.setEmail((String) monitor.get("email"));
+                            map.setGemeente((String) monitor.get("gemeente"));
+                            map.setLinkFacebook((String) monitor.get("linkFacebook"));
+                            map.setGsm((String) monitor.get("telefoon"));
+                            map.setRijksregNr((String) monitor.get("rijksregisterNr"));
+
+
+                            profielen.add(map);*/
+
+
+                        }
+
+                        profielenSamen.addAll(profielenMetZelfdeVorming);
+                        profielenSamen.addAll(profielenAndere);
+
+
+                    }catch (ParseException e)
+                    {
+                        Toast.makeText(ProfielenOverzicht.this,"FOut bij ophalen vormingen", Toast.LENGTH_SHORT).show();
+                    }
             } else {
                 profielen = myDB.getProfielen();
             }
@@ -172,7 +256,7 @@ public class ProfielenOverzicht extends Activity /* implements SwipeRefreshLayou
             //ArrayAdapter<Vakantie> vakantieAdapter = new ArrayAdapter<Vakantie>(activiteit_overzicht.this, R.layout.listview_item , vakanties);
 
             listview = (ListView) findViewById(R.id.listView);
-            adapter = new ProfielAdapter(ProfielenOverzicht.this, profielen);
+            adapter = new ProfielAdapter(ProfielenOverzicht.this, profielenSamen);
             // Binds the Adapter to the ListView
             listview.setAdapter(adapter);
             // Close the progressdialog
