@@ -293,7 +293,7 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put(Constants.COLUMN_LOCATIEV, vorming.getLocatie());
         //values.put(Constants.COLUMN_PERIODES, vorming.getPeriodes());
 
-        values.put(Constants.COLUMN_PRIJSV, vorming.getPrijs());
+        //values.put(Constants.COLUMN_PRIJSV, vorming.getPrijs());
         values.put(Constants.COLUMN_TIPS, vorming.getTips());
 
         values.put(Constants.COLUMN_TITEL, vorming.getTitel());

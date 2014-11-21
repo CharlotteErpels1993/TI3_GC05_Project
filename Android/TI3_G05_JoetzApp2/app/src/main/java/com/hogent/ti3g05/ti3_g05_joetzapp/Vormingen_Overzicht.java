@@ -123,17 +123,17 @@ public class Vormingen_Overzicht extends Activity /*implements SwipeRefreshLayou
                 for (ParseObject vorming : ob) {
 
                     Vorming map = new Vorming();
-                    //String prijs = vakantie.get("basisPrijs").toString();
                     map.setBetalingswijze((String) vorming.get("betalingswijze"));
                     map.setLocatie((String) vorming.get("locatie"));
-                    map.setCriteriaDeelnemers((String) vorming.get("criteriaDeelnemer"));
+                    map.setCriteriaDeelnemers((String) vorming.get("criteriaDeelnemers"));
                     map.setKorteBeschrijving((String) vorming.get("korteBeschrijving"));
                     // map.setPeriodes((Date) vorming.get("periodes"));
-                    map.setPrijs((Integer) vorming.get("prijs"));
+                    map.setInbegrepenInPrijs((String) vorming.get("inbegrepenInPrijs"));
+                    map.setPrijs((Number) vorming.get("prijs"));
                     map.setTips((String) vorming.get("tips"));
                     map.setTitel((String) vorming.get("titel"));
                     map.setWebsiteLocatie((String) vorming.get("websiteLocatie"));
-                    map.setActiviteitID((String) vorming.get("objectId"));
+                    map.setActiviteitID(vorming.getObjectId());
 
                     vormingen.add(map);
 

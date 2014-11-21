@@ -26,6 +26,8 @@ public class VormingDetail extends Activity {
     String prijs;
     String tips;
     String websiteLocatie;
+    String inbegrepenInPrijs;
+    String objectId;
     private Button inschrijven;
 
     @Override
@@ -37,12 +39,14 @@ public class VormingDetail extends Activity {
         Intent i = getIntent();
         titel = i.getStringExtra("titel");
         locatie = i.getStringExtra("locatie");
-        betalingswijze = i.getStringExtra("betalingsWijze");
-        criteriaDeelnemer = i.getStringExtra("criteriaDeelnemer");
+        betalingswijze = i.getStringExtra("betalingswijze");
+        criteriaDeelnemer = i.getStringExtra("criteriaDeelnemers");
         korteBeschrijving = i.getStringExtra("korteBeschrijving");
        // periodes = i.getStringExtra("periodes");
         tips = i.getStringExtra("tips");
-
+        prijs = i.getStringExtra("prijs");
+        inbegrepenInPrijs = i.getStringExtra("inbegrepenInPrijs");
+        objectId = i.getStringExtra("objectId");
         websiteLocatie = i.getStringExtra("websiteLocatie");
 
         setTitle(titel);
@@ -54,7 +58,9 @@ public class VormingDetail extends Activity {
         final TextView txtCriteriaDeelnemer = (TextView)findViewById(R.id.criteriaDeelnemerVD);
         TextView txtkorteBeschrijving = (TextView)findViewById(R.id.beschrijvingVD);
         final TextView txtTips = (TextView)findViewById(R.id.tipsVD);
-
+        TextView txtPrijs = (TextView) findViewById(R.id.prijs);
+        TextView txtInbegrepenInPrijs = (TextView) findViewById(R.id.inbegrepenInPrijs);
+        TextView txtWebsite = (TextView) findViewById(R.id.websiteLocatieVD);
 
         txtTitel.setText(titel);
         txtLocatie.setText(locatie);
@@ -63,12 +69,14 @@ public class VormingDetail extends Activity {
         //txtmaxDeeln.setText(maxDeeln.toString());
         txtkorteBeschrijving.setText(korteBeschrijving);
         txtTips.setText(tips);
-        //txtPrijs.setText(prijs.toString());
+        txtPrijs.setText(prijs);
+        txtInbegrepenInPrijs.setText(inbegrepenInPrijs);
+        txtWebsite.setText(websiteLocatie);
         inschrijven = (Button) findViewById(R.id.btnInschrijvenVorming);
         inschrijven.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent inte = new Intent(getApplicationContext(), InschrijvingVorming.class);
+                Intent inte = new Intent(getApplicationContext(), VormingSignup.class);
                 startActivity(inte);
             }
         });
