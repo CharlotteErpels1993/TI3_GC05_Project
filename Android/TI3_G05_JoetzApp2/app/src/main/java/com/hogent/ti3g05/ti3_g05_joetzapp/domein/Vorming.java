@@ -9,10 +9,11 @@ import java.util.List;
  */
 public class Vorming extends Activiteit {
     private List<Date> periodes;
-    private int prijs;
+    private Number prijs;
     private String titel;
 
     private String criteriaDeelnemers, websiteLocatie, tips, betalingswijze;
+    private String inbegrepenInPrijs;
     private String locatie;
     private String korteBeschrijving;
 
@@ -22,6 +23,13 @@ public class Vorming extends Activiteit {
 
     }
 
+    public String getInbegrepenInPrijs() {
+        return inbegrepenInPrijs;
+    }
+
+    public void setInbegrepenInPrijs(String inbegrepenInPrijs) {
+        this.inbegrepenInPrijs = inbegrepenInPrijs;
+    }
 
     public List<Date> getPeriodes() {
         return periodes;
@@ -43,11 +51,11 @@ public class Vorming extends Activiteit {
         this.periodes = periodes;
     }
 
-    public int getPrijs() {
+    public Number getPrijs() {
         return prijs;
     }
 
-    public void setPrijs(int prijs) {
+    public void setPrijs(Number prijs) {
         this.prijs = prijs;
     }
 

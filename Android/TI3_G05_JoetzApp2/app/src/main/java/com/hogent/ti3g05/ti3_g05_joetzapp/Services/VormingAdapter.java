@@ -110,14 +110,16 @@ public class VormingAdapter extends ArrayAdapter<Vorming> implements Filterable 
                         (vormingen.get(position).getTitel()));
                 intent.putExtra("locatie",
                         (vormingen.get(position).getLocatie()));
-                intent.putExtra("criteriaDeelnemer",
+                intent.putExtra("criteriaDeelnemers",
                         (vormingen.get(position).getCriteriaDeelnemers()));
                 intent.putExtra("tips",
                         (vormingen.get(position).getTips()));
-                intent.putExtra("prijs", vormingen.get(position).getPrijs());
+                intent.putExtra("prijs", vormingen.get(position).getPrijs().toString());
                 intent.putExtra("websiteLocatie", vormingen.get(position).getWebsiteLocatie());
                 intent.putExtra("korteBeschrijving", vormingen.get(position).getKorteBeschrijving());
                 intent.putExtra("betalingswijze", vormingen.get(position).getBetalingswijze());
+                intent.putExtra("inbegrepenInPrijs", vormingen.get(position).getInbegrepenInPrijs());
+                intent.putExtra("objectId", vormingen.get(position).getActiviteitID());
                 context.startActivity(intent);
             }
         });

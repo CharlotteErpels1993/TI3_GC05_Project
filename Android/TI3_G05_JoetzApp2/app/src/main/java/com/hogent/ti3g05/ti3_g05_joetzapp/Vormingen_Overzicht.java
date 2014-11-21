@@ -43,9 +43,9 @@ public class Vormingen_Overzicht extends Activity /*implements SwipeRefreshLayou
     private myDb myDB;
     private List<Vorming> vormingen = null;
     private EditText filtertext;
-   // SwipeRefreshLayout swipeLayout;
-   // flag for Internet connection status
-   Boolean isInternetPresent = false;
+    // SwipeRefreshLayout swipeLayout;
+    // flag for Internet connection status
+    Boolean isInternetPresent = false;
     // Connection detector class
     ConnectionDetector cd;
 
@@ -68,25 +68,19 @@ public class Vormingen_Overzicht extends Activity /*implements SwipeRefreshLayou
     }
 
  /*   private void onCreateSwipeToRefresh(SwipeRefreshLayout refreshLayout) {
-
         refreshLayout.setOnRefreshListener(this);
-
         refreshLayout.setColorScheme(
                 android.R.color.holo_blue_light,
                 android.R.color.holo_orange_light,
                 android.R.color.holo_green_light,
                 android.R.color.holo_red_light);
-
     }
     @Override
     public void onRefresh() {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-
-
                 new RemoteDataTask().execute();
-
             }
         }, 1000);
     }*/
@@ -128,13 +122,13 @@ public class Vormingen_Overzicht extends Activity /*implements SwipeRefreshLayou
                     for (ParseObject vorming : ob) {
 
                         Vorming map = new Vorming();
-                        //String prijs = vakantie.get("basisPrijs").toString();
                         map.setBetalingswijze((String) vorming.get("betalingswijze"));
                         map.setLocatie((String) vorming.get("locatie"));
-                        map.setCriteriaDeelnemers((String) vorming.get("criteriaDeelnemer"));
+                        map.setCriteriaDeelnemers((String) vorming.get("criteriaDeelnemers"));
                         map.setKorteBeschrijving((String) vorming.get("korteBeschrijving"));
                         // map.setPeriodes((Date) vorming.get("periodes"));
                         map.setPrijs((Integer) vorming.get("prijs"));
+                        map.setInbegrepenInPrijs((String) vorming.get("inbegrepenInPrijs"));
                         map.setTips((String) vorming.get("tips"));
                         map.setTitel((String) vorming.get("titel"));
                         map.setWebsiteLocatie((String) vorming.get("websiteLocatie"));
@@ -157,7 +151,6 @@ public class Vormingen_Overzicht extends Activity /*implements SwipeRefreshLayou
                             ob = query.find();
                             myDB.dropVormingen();
                             for (ParseObject vorming : ob) {
-
                                 Vorming map = new Vorming();
                                 //String prijs = vakantie.get("basisPrijs").toString();
                                 map.setBetalingswijze((String) vorming.get("betalingswijze"));
@@ -169,11 +162,8 @@ public class Vormingen_Overzicht extends Activity /*implements SwipeRefreshLayou
                                 map.setTips((String) vorming.get("tips"));
                                 map.setTitel((String) vorming.get("titel"));
                                 map.setWebsiteLocatie((String) vorming.get("websiteLocatie"));
-
-
                                 vormingen.add(map);
                                 myDB.insertVorming(map);
-
                             }
                         } catch (ParseException e) {
                             Log.e("Error", e.getMessage());

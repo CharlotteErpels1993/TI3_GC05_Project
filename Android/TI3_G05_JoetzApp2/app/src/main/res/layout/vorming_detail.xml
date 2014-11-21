@@ -20,6 +20,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_height="wrap_content"
                 android:id="@+id/titelVD"
+                android:text="test"
                 android:textSize="25sp"/>
 
             <TextView
@@ -29,12 +30,14 @@
                 android:layout_below="@id/titelVD"
                 android:layout_marginTop="15dp"
                 android:textAlignment="center"
+                android:text="test"
                 android:layout_centerHorizontal="true"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/locatieVD"
+                android:text="test"
                 android:layout_below="@id/beschrijvingVD"
                 android:layout_marginTop="15dp"
                 android:textSize="15sp"
@@ -44,8 +47,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/tipsVD"
+                android:text="test"
                 android:layout_below="@id/locatieVD"
-
                 android:layout_marginTop="10dp"
                 android:layout_centerHorizontal="true"/>
 
@@ -53,8 +56,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="test"
                 android:id="@+id/criteriaDeelnemerVD"
-
                 android:layout_marginTop="10dp"
                 android:layout_below="@id/tipsVD"
                 android:layout_centerHorizontal="true"/>
@@ -63,17 +66,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/periodesVD"
-                android:visibility="invisible"
+                android:text="periodes"
                 android:layout_marginTop="10dp"
-                android:layout_below="@id/tipsVD"
-
+                android:layout_below="@id/criteriaDeelnemerVD"
                 android:layout_centerHorizontal="true"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/betalingswijzeVD"
-
+                android:text="test"
                 android:layout_marginTop="10dp"
                 android:layout_below="@id/periodesVD"
                 android:textSize="20sp"
@@ -82,8 +84,29 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/websiteLocatieVD"
+                android:id="@+id/prijs"
+                android:layout_marginTop="10dp"
+                android:text="test"
                 android:layout_below="@id/betalingswijzeVD"
+                android:textSize="20sp"
+                android:layout_centerHorizontal="true"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/inbegrepenInPrijs"
+                android:layout_marginTop="10dp"
+                android:text="test"
+                android:layout_below="@id/prijs"
+                android:textSize="20sp"
+                android:layout_centerHorizontal="true"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/websiteLocatieVD"
+                android:text="test"
+                android:layout_below="@id/inbegrepenInPrijs"
                 android:layout_centerHorizontal="true"/>
 
         </RelativeLayout>
