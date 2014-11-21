@@ -276,6 +276,25 @@ public class IndienenVoorkeurVakantie extends Activity {
             return false;
         }
         try{
+            ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(
+                    "Voorkeur");
+
+            query.orderByAscending("vakantie");
+            ob = query.find();
+            for (ParseObject voorkeur : ob) {
+                if(voorkeur.get("monitor").equals(monitorId) && voorkeur.get("vakantie").equals(vakantie.getVakantieID()))
+                {
+                    Toast.makeText(IndienenVoorkeurVakantie.this, "U heeft al voorkeuren ingediend voor deze vakantie" , Toast.LENGTH_LONG).show();
+                    return false;
+                }
+
+            }
+        }
+        catch(Exception e){
+            Toast.makeText(this,"fout bij ophalen voorkeuren",Toast.LENGTH_LONG).show();
+            return false;
+        }
+        try{
             ParseObject voorkeurVakantie = new ParseObject("Voorkeur");
             voorkeurVakantie.put("monitor", monitorId);
             voorkeurVakantie.put("periodes" , periodes);
