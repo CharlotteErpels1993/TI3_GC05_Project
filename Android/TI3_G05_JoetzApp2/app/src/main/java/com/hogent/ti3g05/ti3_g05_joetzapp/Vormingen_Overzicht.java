@@ -43,9 +43,9 @@ public class Vormingen_Overzicht extends Activity /*implements SwipeRefreshLayou
     private myDb myDB;
     private List<Vorming> vormingen = null;
     private EditText filtertext;
-   // SwipeRefreshLayout swipeLayout;
-   // flag for Internet connection status
-   Boolean isInternetPresent = false;
+    // SwipeRefreshLayout swipeLayout;
+    // flag for Internet connection status
+    Boolean isInternetPresent = false;
     // Connection detector class
     ConnectionDetector cd;
 
@@ -68,25 +68,19 @@ public class Vormingen_Overzicht extends Activity /*implements SwipeRefreshLayou
     }
 
  /*   private void onCreateSwipeToRefresh(SwipeRefreshLayout refreshLayout) {
-
         refreshLayout.setOnRefreshListener(this);
-
         refreshLayout.setColorScheme(
                 android.R.color.holo_blue_light,
                 android.R.color.holo_orange_light,
                 android.R.color.holo_green_light,
                 android.R.color.holo_red_light);
-
     }
     @Override
     public void onRefresh() {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-
-
                 new RemoteDataTask().execute();
-
             }
         }, 1000);
     }*/
@@ -112,30 +106,37 @@ public class Vormingen_Overzicht extends Activity /*implements SwipeRefreshLayou
         protected Void doInBackground(Void... params) {
             // Create the array
             vormingen = new ArrayList<Vorming>();
-            try {
-                // Locate the class table named "vakantie" in Parse.com
-                ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(
-                        "Vorming");
-                // Locate the column named "vertrekdatum" in Parse.com and order list
-                // by ascending
-                query.orderByAscending("prijs");
-                ob = query.find();
-                for (ParseObject vorming : ob) {
+            isInternetPresent = cd.isConnectingToInternet();
+            if(isInternetPresent) {
+                try {
+                    // Locate the class table named "vakantie" in Parse.com
+                    ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(
+                            "Vorming");
+                    // Locate the column named "vertrekdatum" in Parse.com and order list
+                    // by ascending
+                    query.orderByAscending("prijs");
+                    ob = query.find();
 
-                    Vorming map = new Vorming();
-                    map.setBetalingswijze((String) vorming.get("betalingswijze"));
-                    map.setLocatie((String) vorming.get("locatie"));
-                    map.setCriteriaDeelnemers((String) vorming.get("criteriaDeelnemers"));
-                    map.setKorteBeschrijving((String) vorming.get("korteBeschrijving"));
-                    // map.setPeriodes((Date) vorming.get("periodes"));
-                    map.setInbegrepenInPrijs((String) vorming.get("inbegrepenInPrijs"));
-                    map.setPrijs((Number) vorming.get("prijs"));
-                    map.setTips((String) vorming.get("tips"));
-                    map.setTitel((String) vorming.get("titel"));
-                    map.setWebsiteLocatie((String) vorming.get("websiteLocatie"));
-                    map.setActiviteitID(vorming.getObjectId());
 
-                    vormingen.add(map);
+                    myDB.dropVormingen();
+                    for (ParseObject vorming : ob) {
+
+                        Vorming map = new Vorming();
+                        map.setBetalingswijze((String) vorming.get("betalingswijze"));
+                        map.setLocatie((String) vorming.get("locatie"));
+                        map.setCriteriaDeelnemers((String) vorming.get("criteriaDeelnemers"));
+                        map.setKorteBeschrijving((String) vorming.get("korteBeschrijving"));
+                        // map.setPeriodes((Date) vorming.get("periodes"));
+                        map.setPrijs((Integer) vorming.get("prijs"));
+                        map.setInbegrepenInPrijs((String) vorming.get("inbegrepenInPrijs"));
+                        map.setTips((String) vorming.get("tips"));
+                        map.setTitel((String) vorming.get("titel"));
+                        map.setWebsiteLocatie((String) vorming.get("websiteLocatie"));
+                        map.setActiviteitID((String) vorming.get("objectId"));
+
+                        vormingen.add(map);
+
+                        myDB.insertVorming(map);
 
 
                    /* isInternetPresent = cd.isConnectingToInternet();
@@ -150,7 +151,6 @@ public class Vormingen_Overzicht extends Activity /*implements SwipeRefreshLayou
                             ob = query.find();
                             myDB.dropVormingen();
                             for (ParseObject vorming : ob) {
-
                                 Vorming map = new Vorming();
                                 //String prijs = vakantie.get("basisPrijs").toString();
                                 map.setBetalingswijze((String) vorming.get("betalingswijze"));
@@ -162,11 +162,8 @@ public class Vormingen_Overzicht extends Activity /*implements SwipeRefreshLayou
                                 map.setTips((String) vorming.get("tips"));
                                 map.setTitel((String) vorming.get("titel"));
                                 map.setWebsiteLocatie((String) vorming.get("websiteLocatie"));
-
-
                                 vormingen.add(map);
                                 myDB.insertVorming(map);
-
                             }
                         } catch (ParseException e) {
                             Log.e("Error", e.getMessage());
@@ -176,10 +173,13 @@ public class Vormingen_Overzicht extends Activity /*implements SwipeRefreshLayou
                         vormingen = myDB.getVormingen();
                     }*/
 
+                    }
+                } catch (ParseException e) {
+                    Log.e("Error", e.getMessage());
+                    e.printStackTrace();
                 }
-            }catch (ParseException e) {
-                Log.e("Error", e.getMessage());
-                e.printStackTrace();
+            }else {
+                vormingen = myDB.getVormingen();
             }
             return null;
         }
