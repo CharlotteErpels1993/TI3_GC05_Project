@@ -106,7 +106,7 @@ public class ProfielenOverzicht extends Activity /* implements SwipeRefreshLayou
             mProgressDialog.setMessage("Aan het laden...");
             mProgressDialog.setIndeterminate(false);
             // Show progressdialog
-            //mProgressDialog.show();
+            mProgressDialog.show();
         }
 
         @Override
