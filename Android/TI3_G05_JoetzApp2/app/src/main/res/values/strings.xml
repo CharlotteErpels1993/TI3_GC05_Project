@@ -125,5 +125,6 @@ De smaak te pakken? Wacht dan niet te lang en boek een onvergetelijke JOETZ-vaka
     <string name="title_activity_inschrijving_signup">InschrijvingSignup</string>
     <string name="infolabel_vormingInschrijven">Gelieve een datum te selecteren waarop u de vorming wilt bijwonen.</string>
     <string name="title_activity_vorming_signup">VormingSignup</string>
+    <string name="periodesHint">Vul hier uw periodes in</string>
 
 </resources>

@@ -10,9 +10,12 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.NumberPicker;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,22 +45,30 @@ public class IndienenVoorkeurVakantie extends Activity {
     private ProgressDialog mProgressDialog;
     private List<ParseObject> ob;
     Vakantie map;
-    TextView indienenVoorkeurVakantie;
+    EditText periodesVoorkeur;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.indienen_voorkeur_vakantie);
+        periodesVoorkeur = (EditText) findViewById(R.id.periodesVoorkeur);
+        //periodesVoorkeur.setBackgroundResource(R.drawable.drawable);
+        periodesVoorkeur.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    hideKeyboard(v);
+                }
+            }
+        });
         new RemoteDataTask().execute();
-
-
-       indienenVoorkeurVakantie = (TextView)findViewById(R.id.IndienenVoorkeurVak);
-
-
 
     }
 
-
+    public void hideKeyboard(View view) {
+        InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
     public void showVakantiePickerDialog(View v) {
         NumberPicker picker = new NumberPicker(this);
         picker.setMinValue(0);
@@ -134,8 +145,20 @@ public class IndienenVoorkeurVakantie extends Activity {
         @Override
         protected void onPostExecute(Void result) {
 
-            indienenVoorkeurVakantie.setText(vakantienamen.get(0));
             // Binds the Adapter to the ListView
+
+            array = new String[vakantienamen.size()];
+            for(int i = 0 ;i < vakantienamen.size(); i++)
+            {
+                array[i] = vakantienamen.get(i);
+            }
+
+            Spinner spinner;
+            ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(IndienenVoorkeurVakantie.this, android.R.layout.simple_spinner_item,array);
+            spinnerArrayAdapter.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item );
+
+            spinner = (Spinner) findViewById( R.id.spinnerVakanties );
+            spinner.setAdapter(spinnerArrayAdapter);
 
 
 
