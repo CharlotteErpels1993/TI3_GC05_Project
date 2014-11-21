@@ -15,8 +15,8 @@ import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
 import com.parse.ParseObject;
 
 
-public class InschrijvingVorming extends Activity {
 
+public class VormingSignup extends Activity {
     private Button btnInschrijven;
     private Spinner spnDataInschrijven;
 
@@ -28,7 +28,7 @@ public class InschrijvingVorming extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_inschrijving_signup);
+        setContentView(R.layout.activity_vorming_signup);
 
         spnDataInschrijven = (Spinner) findViewById(R.id.spnDataVorming);
 
@@ -82,7 +82,7 @@ public class InschrijvingVorming extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_inschrijving_signup, menu);
+        getMenuInflater().inflate(R.menu.menu_vorming_signup, menu);
         return true;
     }
 

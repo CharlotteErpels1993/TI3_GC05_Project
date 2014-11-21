@@ -11,6 +11,13 @@ class InschrijvingVorming
         self.id = id
     }
     
+    init(inschrijving: PFObject) {
+        self.id = inschrijving.objectId
+        self.periode = inschrijving["periode"] as? String
+        self.monitor = inschrijving["monitor"] as? Monitor
+        self.vorming = inschrijving["vorming"] as? Vorming
+    }
+    
     init(id: String, periode: String, monitor: Monitor, vorming: Vorming) {
         self.id = id
         self.periode = periode
