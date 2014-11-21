@@ -86,6 +86,8 @@ public class VormingDetail extends Activity {
             @Override
             public void onClick(View view) {
                 Intent inte = new Intent(getApplicationContext(), VormingSignup.class);
+                inte.putExtra("periodes", periodes.toArray(new String[periodes.size()]));
+                inte.putExtra("objectId", objectId);
                 startActivity(inte);
             }
         });
