@@ -106,7 +106,7 @@ public class InschrijvenVakantiePart3 extends Activity {
 
             overridePendingTransition(R.anim.right_in, R.anim.left_out);
         }else{
-            Toast.makeText(getApplicationContext(), "Er is een fout opgetreden. Onze excuses voor het ongemak.", Toast.LENGTH_SHORT);
+            Toast.makeText(getApplicationContext(), "Er is een fout opgetreden. Onze excuses voor het ongemak.", Toast.LENGTH_SHORT).show();
         }
 
     }

@@ -20,6 +20,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
 import com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.Login;
 import com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.SignUp_deel1;
 import com.parse.ParseUser;
@@ -43,6 +44,11 @@ public class navBarMainScreen extends Activity {
 
     private String[] menuItems;
 
+    // flag for Internet connection status
+    Boolean isInternetPresent = false;
+    // Connection detector class
+    ConnectionDetector cd;
+
 
     @SuppressLint("NewApi")
     @Override
@@ -54,8 +60,7 @@ public class navBarMainScreen extends Activity {
 
 
         getActionBar().setTitle("");
-
-
+        cd = new ConnectionDetector(getApplicationContext());
 
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
@@ -147,6 +152,7 @@ public class navBarMainScreen extends Activity {
     }
 
     protected void getUrl(int position) {
+        isInternetPresent = cd.isConnectingToInternet();
 
         switch (position) {
 
@@ -191,19 +197,26 @@ public class navBarMainScreen extends Activity {
                 break;
 
             case 2:
-                if(ParseUser.getCurrentUser() != null) {
-                    if (ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("monitor"))
-                    {
-                        Intent intent2 = new Intent(navBarMainScreen.this, IndienenVoorkeurVakantie.class
-                        );
-                        startActivity(intent2);
+                if (isInternetPresent) {
+                    if (ParseUser.getCurrentUser() != null) {
+                        if (ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("monitor")) {
+                            Intent intent2 = new Intent(navBarMainScreen.this, IndienenVoorkeurVakantie.class
+                            );
+                            startActivity(intent2);
+                        } else {
+                            Toast.makeText(this, "U hebt niet de juiste bevoegdheid om dit te bekijken.", Toast.LENGTH_SHORT).show();
+                            Intent intent1 = new Intent(navBarMainScreen.this, navBarMainScreen.class
+                            );
+                            startActivity(intent1);
+                        }
                     } else {
-                        Toast.makeText(this, "U hebt niet de juiste bevoegdheid om dit te bekijken.", Toast.LENGTH_SHORT).show();
                         Intent intent1 = new Intent(navBarMainScreen.this, navBarMainScreen.class
                         );
                         startActivity(intent1);
                     }
-                } else {
+                } else
+                {
+                    Toast.makeText(this, "U hebt niet de juiste bevoegdheid om dit te bekijken.", Toast.LENGTH_SHORT).show();
                     Intent intent1 = new Intent(navBarMainScreen.this, navBarMainScreen.class
                     );
                     startActivity(intent1);

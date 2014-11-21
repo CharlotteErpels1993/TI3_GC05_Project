@@ -171,6 +171,7 @@ public class activiteit_overzicht extends Fragment /*implements SwipeRefreshLayo
 
                         //String prijs = vakantie.get("basisPrijs").toString();
                         map.setNaamVakantie((String) vakantie.get("titel"));
+                        map.setVakantieID((String) vakantie.get("objectId"));
                         map.setLocatie((String) vakantie.get("locatie"));
                         map.setKorteBeschrijving((String) vakantie.get("korteBeschrijving"));
                         map.setDoelGroep((String) vakantie.get("doelgroep"));
@@ -196,10 +197,6 @@ public class activiteit_overzicht extends Fragment /*implements SwipeRefreshLayo
                         map.setFoto2(image2.getUrl());
                         map.setFoto3(image3.getUrl());
 
-                        //hier ook naar database schrijven denkk?
-                        //TODO hier naar db sqlite
-
-                        //handler.toevoegenGegevensVakantie(map);
 
                         vakanties.add(map);
 
