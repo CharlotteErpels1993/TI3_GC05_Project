@@ -7,6 +7,8 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
     //var ouder: Ouder?
     //var currentUser: PFUser?
     
+    var parseData = ParseData()
+    
     @IBOutlet weak var zoekbar: UISearchBar!
     
     @IBAction func toggle(sender: AnyObject) {
@@ -17,7 +19,11 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         super.viewDidLoad()
         var activityIndicator = getActivityIndicatorView(self)
         
-        zoekVakanties()
+        vakanties = parseData.getAllVakanties()
+        vakanties2 = parseData.getAllVakanties()
+        self.tableView.reloadData()
+        
+        //zoekVakanties()
         hideSideMenuView()
         zoekbar.showsScopeBar = true
         zoekbar.delegate = self

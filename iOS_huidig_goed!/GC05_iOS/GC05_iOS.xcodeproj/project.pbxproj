@@ -19,6 +19,9 @@
 		0F454DDA1A1D2F7E00904529 /* ContactpersoonRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F454DD91A1D2F7E00904529 /* ContactpersoonRepository.swift */; };
 		0F4C2DCE1A1BE253008EDEA4 /* ActivityIndicatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4C2DCD1A1BE253008EDEA4 /* ActivityIndicatorViewController.swift */; };
 		0F6254971A0CCBA300BDEF38 /* FoutBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6254961A0CCBA300BDEF38 /* FoutBox.swift */; };
+		0F88A6C01A1F37C30094D457 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F88A6BF1A1F37C30094D457 /* libsqlite3.dylib */; };
+		0F88A6C31A1F3B840094D457 /* SwiftData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F88A6C21A1F3B840094D457 /* SwiftData.swift */; };
+		0F88A6C51A1F3BF20094D457 /* ParseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F88A6C41A1F3BF20094D457 /* ParseData.swift */; };
 		0F92E30D1A1368A10005C86C /* InschrijvenVakantie1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F92E30C1A1368A10005C86C /* InschrijvenVakantie1ViewController.swift */; };
 		0F92E30F1A13697B0005C86C /* InschrijvenVakantie2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F92E30E1A13697B0005C86C /* InschrijvenVakantie2ViewController.swift */; };
 		0F92E3111A136B240005C86C /* InschrijvenVakantie3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F92E3101A136B240005C86C /* InschrijvenVakantie3ViewController.swift */; };
@@ -109,6 +112,9 @@
 		0F454DD91A1D2F7E00904529 /* ContactpersoonRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactpersoonRepository.swift; sourceTree = "<group>"; };
 		0F4C2DCD1A1BE253008EDEA4 /* ActivityIndicatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorViewController.swift; sourceTree = "<group>"; };
 		0F6254961A0CCBA300BDEF38 /* FoutBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoutBox.swift; sourceTree = "<group>"; };
+		0F88A6BF1A1F37C30094D457 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		0F88A6C21A1F3B840094D457 /* SwiftData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftData.swift; sourceTree = "<group>"; };
+		0F88A6C41A1F3BF20094D457 /* ParseData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseData.swift; sourceTree = "<group>"; };
 		0F92E30C1A1368A10005C86C /* InschrijvenVakantie1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InschrijvenVakantie1ViewController.swift; sourceTree = "<group>"; };
 		0F92E30E1A13697B0005C86C /* InschrijvenVakantie2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InschrijvenVakantie2ViewController.swift; sourceTree = "<group>"; };
 		0F92E3101A136B240005C86C /* InschrijvenVakantie3ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InschrijvenVakantie3ViewController.swift; sourceTree = "<group>"; };
@@ -186,6 +192,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F88A6C01A1F37C30094D457 /* libsqlite3.dylib in Frameworks */,
 				1BD1A8261A0A63FE00F34AD3 /* Bolts.framework in Frameworks */,
 				1BD1A8271A0A63FE00F34AD3 /* Parse.framework in Frameworks */,
 				1BD1A8281A0A63FE00F34AD3 /* ParseFacebookUtils.framework in Frameworks */,
@@ -225,9 +232,19 @@
 			name = Repositories;
 			sourceTree = "<group>";
 		};
+		0F88A6C11A1F37C80094D457 /* SQLite */ = {
+			isa = PBXGroup;
+			children = (
+				0F88A6C21A1F3B840094D457 /* SwiftData.swift */,
+				0F88A6C41A1F3BF20094D457 /* ParseData.swift */,
+			);
+			name = SQLite;
+			sourceTree = "<group>";
+		};
 		0FA80AF91A01350E008DB343 = {
 			isa = PBXGroup;
 			children = (
+				0F88A6BF1A1F37C30094D457 /* libsqlite3.dylib */,
 				1BD1A8231A0A63FD00F34AD3 /* Bolts.framework */,
 				1BD1A8241A0A63FE00F34AD3 /* Parse.framework */,
 				1BD1A8251A0A63FE00F34AD3 /* ParseFacebookUtils.framework */,
@@ -260,6 +277,7 @@
 		0FA80B041A01350E008DB343 /* GC05_iOS */ = {
 			isa = PBXGroup;
 			children = (
+				0F88A6C11A1F37C80094D457 /* SQLite */,
 				0F145EE01A1D25BC003067EA /* Repositories */,
 				A503E0EF1A1A77EB000A9908 /* Custom cells */,
 				A503E0EE1A1A77D8000A9908 /* Hulp */,
@@ -528,6 +546,7 @@
 				0F4C2DCE1A1BE253008EDEA4 /* ActivityIndicatorViewController.swift in Sources */,
 				0F145EE21A1D25E4003067EA /* UserRepository.swift in Sources */,
 				A50740F81A1386D900D01900 /* AfbeeldingCollectionViewCell.swift in Sources */,
+				0F88A6C51A1F3BF20094D457 /* ParseData.swift in Sources */,
 				1BDDB9511A02D86F0007623D /* Voorkeur.swift in Sources */,
 				0F92E30F1A13697B0005C86C /* InschrijvenVakantie2ViewController.swift in Sources */,
 				A54E1B9E1A125E7C00C6BB95 /* ExtraTekstViewController.swift in Sources */,
@@ -547,6 +566,7 @@
 				1B39CF771A0795D9008DEC49 /* EigenprofielMonitorViewController.swift in Sources */,
 				0F2A819A1A091F7100F67A3B /* Regex.swift in Sources */,
 				A575A06C1A16463D00F6735A /* UitloggenViewController.swift in Sources */,
+				0F88A6C31A1F3B840094D457 /* SwiftData.swift in Sources */,
 				0F92E30D1A1368A10005C86C /* InschrijvenVakantie1ViewController.swift in Sources */,
 				0FBEA1F41A0684FD005FF0D2 /* Date.swift in Sources */,
 				0F92E3131A136BD00005C86C /* InschrijvenVakantie4ViewController.swift in Sources */,

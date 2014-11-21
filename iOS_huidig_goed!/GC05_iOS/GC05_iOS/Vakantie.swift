@@ -15,23 +15,23 @@ class Vakantie: Activiteit
         }
     }
     
-    var bondMoysonLedenPrijs: Double? {
+    var bondMoysonLedenPrijs: Double?/* {
         willSet {
             assert(checkPrijsValid(newValue!), "Bond Moyson ledenprijs moet een geldige prijs zijn!")
         }
-    }
+    }*/
     
-    var sterPrijs1ouder: Double? {
+    var sterPrijs1ouder: Double? /*{
         willSet {
             assert(checkPrijsValid(newValue!), "Sterprijs moet een geldige prijs zijn!")
         }
-    }
+    }*/
     
-    var sterPrijs2ouders: Double? {
+    var sterPrijs2ouders: Double? /*{
         willSet {
             assert(checkPrijsValid(newValue!), "Sterprijs moet een geldige prijs zijn!")
         }
-    }
+    }*/
 
     var inbegrepenPrijs: String?
     var doelgroep: String? // TYPE?

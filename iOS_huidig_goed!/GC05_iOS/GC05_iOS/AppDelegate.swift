@@ -20,8 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             PFUser.logOut()
         }
         
-        //rode tekstkleur
+        //SQLite (probeersel!)
+        var parseData = ParseData()
         
+        parseData.createDatabase()
         
         /*var object = PFObject(className: "test")
         object.setValue("Banana", forKey: "favoriteFood")
