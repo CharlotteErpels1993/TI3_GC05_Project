@@ -238,9 +238,10 @@ public class ProfielenOverzicht extends Activity /* implements SwipeRefreshLayou
 
                         }
 
-                        profielenSamen.addAll(profielenMetZelfdeVorming);
-                        profielenSamen.addAll(profielenMetZelfdeVorming.size(),profielenAndere);
-                       // profielenSamen.addAll(profielenAndere);
+
+                       // profielenSamen.addAll(profielenMetZelfdeVorming.size(),profielenAndere);
+                        profielenSamen.addAll(profielenAndere);
+                        profielenSamen.addAll(0,profielenMetZelfdeVorming);
 
 
                     }catch (ParseException e)
