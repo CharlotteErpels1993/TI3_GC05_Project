@@ -17,10 +17,9 @@ import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
 public class InschrijvenVakantiePart2 extends Activity {
     private EditText txtVoornaam, txtNaam, txtTelefoon, txtGSM;
 
-    private String voornaam, naam, telefoon, gsm, objectId;
+    private String voornaam, naam, telefoon, gsm;
 
     private Button btnVolgende;
-    private Button btnTerug;
     private boolean cancel = false;
     private View focusView = null;
 

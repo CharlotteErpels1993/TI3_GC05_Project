@@ -122,7 +122,7 @@ public class InschrijvenVakantiePart3 extends Activity {
             contactPers.put("gsm" , gsmCP);
             contactPers.save();
 
-            deeln.put("contactPersoonInNood", contactPers.getObjectId());
+            //deeln.put("contactPersoonInNood", contactPers.getObjectId());
             deeln.put("voornaam", voornaam);
             deeln.put("naam" , naam);
             deeln.put("straat" , straat);
@@ -136,7 +136,12 @@ public class InschrijvenVakantiePart3 extends Activity {
             inschrijving.put("contactpersoonID", contactPers.getObjectId());
             inschrijving.put("vakantie", activiteitID);
             inschrijving.put("extraInformatie" , extraInfo);
-            inschrijving.saveInBackground();
+            inschrijving.save();
+
+            contactPers.put("inschrijvingVakantie", inschrijving.getObjectId());
+            contactPers.saveInBackground();
+            deeln.put("inschrijvingVakantie", inschrijving.getObjectId());
+            deeln.saveInBackground();
 
             return true;
         }

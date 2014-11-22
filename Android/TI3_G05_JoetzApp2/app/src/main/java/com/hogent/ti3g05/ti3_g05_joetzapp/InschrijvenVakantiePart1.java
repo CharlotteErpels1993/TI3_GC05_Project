@@ -14,16 +14,18 @@ import android.widget.Toast;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
 
+import java.util.Date;
+
 
 public class InschrijvenVakantiePart1 extends FragmentActivity {
 
     private EditText txtVoornaam, txtNaam, txtStraat, txtHuisnr, txtBus, txtGemeente, txtPostcode;
     private Button btnGeboorteDatum;
 
-    private String voornaam, naam, straat, huisnr, bus, gemeente, postcode, objectId;
+    private String voornaam, naam, straat, huisnr, bus, gemeente, postcode;
+    private Date geboorteDatum;
 
     private Button btnVolgende;
-    private Button btnTerug;
     //!!!!!!!!!!!!!!!!!!!!!!!
     //voor date picker:
     //http://developer.android.com/guide/topics/ui/controls/pickers.html#DatePicker
@@ -50,7 +52,7 @@ public class InschrijvenVakantiePart1 extends FragmentActivity {
         txtGemeente = (EditText) findViewById(R.id.Gemeente);
         txtPostcode = (EditText) findViewById(R.id.Postcode);
         btnGeboorteDatum = (Button) findViewById(R.id.uitlegVoorData);
-        objectId = getIntent().getStringExtra("objectId");
+
 
         btnVolgende = (Button)findViewById(R.id.btnNaarDeel2Vak);
         btnVolgende.setOnClickListener(new View.OnClickListener() {
