@@ -17,7 +17,7 @@ import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
 public class InschrijvenVakantiePart2 extends Activity {
     private EditText txtVoornaam, txtNaam, txtTelefoon, txtGSM;
 
-    private String voornaam, naam, telefoon, gsm;
+    private String voornaam, naam, telefoon, gsm, objectId;
 
     private Button btnVolgende;
     private Button btnTerug;
@@ -153,6 +153,7 @@ public class InschrijvenVakantiePart2 extends Activity {
             String bus = extras.getString("bus");
             String gemeente = extras.getString("gemeente");
             String postcode = extras.getString("postcode");
+            String objectId = extras.getString("objectId");
             in.putExtra("voornaam", voornaam);
             in.putExtra("naam", naam);
             in.putExtra("straat", straat);
@@ -160,6 +161,7 @@ public class InschrijvenVakantiePart2 extends Activity {
             in.putExtra("bus", bus);
             in.putExtra("gemeente", gemeente);
             in.putExtra("postcode", postcode);
+            in.putExtra("objectId", objectId);
         }
 
         in.putExtra("voornaamCP", voornaamCP);

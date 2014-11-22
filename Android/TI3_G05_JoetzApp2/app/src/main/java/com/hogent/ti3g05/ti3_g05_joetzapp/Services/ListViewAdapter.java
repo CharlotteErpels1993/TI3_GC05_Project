@@ -7,7 +7,6 @@ import java.util.Locale;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -127,6 +126,7 @@ public class ListViewAdapter extends ArrayAdapter<Vakantie> implements Filterabl
                 intent.putExtra("afbeelding3", vakanties.get(position).getFoto3());
                 //intent.putExtra("fotos", vakanties.get(position).getFotos());
                 intent.putExtra("doelgroep", vakanties.get(position).getDoelGroep());
+                intent.putExtra("objectId", vakanties.get(position).getVakantieID());
                 intent.putExtra("beschrijving", vakanties.get(position).getKorteBeschrijving());
                 intent.putExtra("periode", vakanties.get(position).getPeriode());
                 intent.putExtra("vervoer", vakanties.get(position).getVervoerswijze());

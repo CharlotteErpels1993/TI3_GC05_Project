@@ -3,7 +3,6 @@ package com.hogent.ti3g05.ti3_g05_joetzapp;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,7 +11,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
-import com.parse.ParseException;
 import com.parse.ParseObject;
 
 
@@ -23,7 +21,6 @@ public class InschrijvenVakantiePart3 extends Activity {
     private String extraInformatie;
 
     private Button btnVolgende;
-    private Button btnTerug;
 
     // flag for Internet connection status
     Boolean isInternetPresent = false;
@@ -81,9 +78,10 @@ public class InschrijvenVakantiePart3 extends Activity {
         Toast.makeText(getApplicationContext(), getString(R.string.loading_message), Toast.LENGTH_SHORT).show();
         Intent in = new Intent(getApplicationContext(),navBarMainScreen.class);
 
-        String voornaam = null, naam = null, straat = null, huisnr = null, bus = null, gemeente = null, postcode = null, voornaamCP = null, naamCP = null, telefoonCP = null, gsmCP = null;
+        String voornaam = null, naam = null, straat = null, huisnr = null, bus = null, gemeente = null, postcode = null, voornaamCP = null, naamCP = null, telefoonCP = null, gsmCP = null, objectId = null;
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
+            objectId = extras.getString("objectId");
             voornaam = extras.getString("voornaam");
             naam = extras.getString("naam");
             straat = extras.getString("straat");
@@ -100,8 +98,8 @@ public class InschrijvenVakantiePart3 extends Activity {
 
         extraInformatie = editExtraInformatie.getText().toString();
 
-        if (inschrijvingOpslaan(voornaam, naam, straat, huisnr,  bus, gemeente, postcode, voornaamCP, naamCP, telefoonCP, gsmCP, extraInformatie)){
-            Toast.makeText(getApplicationContext(), getString(R.string.dialog_ingeschreven_melding), Toast.LENGTH_SHORT).show();
+        if (inschrijvingOpslaan(objectId, voornaam, naam, straat, huisnr,  bus, gemeente, postcode, voornaamCP, naamCP, telefoonCP, gsmCP, extraInformatie)){
+            Toast.makeText(getApplicationContext(), getString(R.string.dialog_ingeschreven_melding), Toast.LENGTH_LONG).show();
             startActivity(in);
 
             overridePendingTransition(R.anim.right_in, R.anim.left_out);
@@ -111,21 +109,32 @@ public class InschrijvenVakantiePart3 extends Activity {
 
     }
 
-    public boolean inschrijvingOpslaan(String voornaam, String naam, String straat, String huisnr, String bus, String gemeente, String postcode,
+    public boolean inschrijvingOpslaan(String activiteitID, String voornaam, String naam, String straat, String huisnr, String bus, String gemeente, String postcode,
                                     String voornaamCP, String naamCP, String telefoonCP, String gsmCP, String extraInfo){
         try{
+            ParseObject contactPers = new ParseObject("ContactpersoonNood");
             ParseObject inschrijving = new ParseObject("InschrijvingVakantie");
-            inschrijving.put("voornaamDeelnemer", voornaam);
-            inschrijving.put("naamDeelnemer" , naam);
-            inschrijving.put("straatDeelnemer" , straat);
-            inschrijving.put("huisnrDeelnemer" , Integer.parseInt(huisnr));
-            inschrijving.put("busDeelnemer" , bus);
-            inschrijving.put("gemeenteDeelnemer" , gemeente);
-            inschrijving.put("PostcodeDeelnemer" , Integer.parseInt(postcode));
-            inschrijving.put("voornaamContactPersoon" , voornaamCP);
-            inschrijving.put("naamContactPersoon" , naamCP);
-            inschrijving.put("telefoonContactPersoon" , Integer.parseInt(telefoonCP));
-            inschrijving.put("gsmContactPersoon" , Integer.parseInt(gsmCP));
+            ParseObject deeln = new ParseObject("Deelnemer");
+
+            contactPers.put("voornaam" , voornaamCP);
+            contactPers.put("naam" , naamCP);
+            contactPers.put("telefoon" , telefoonCP);
+            contactPers.put("gsm" , gsmCP);
+            contactPers.save();
+
+            deeln.put("contactPersoonInNood", contactPers.getObjectId());
+            deeln.put("voornaam", voornaam);
+            deeln.put("naam" , naam);
+            deeln.put("straat" , straat);
+            deeln.put("nummer" , Integer.parseInt(huisnr));
+            deeln.put("bus" , bus);
+            deeln.put("gemeente" , gemeente);
+            deeln.put("postcode" , Integer.parseInt(postcode));
+            deeln.save();
+
+            inschrijving.put("deelnemerID", deeln.getObjectId());
+            inschrijving.put("contactpersoonID", contactPers.getObjectId());
+            inschrijving.put("vakantie", activiteitID);
             inschrijving.put("extraInformatie" , extraInfo);
             inschrijving.saveInBackground();
 

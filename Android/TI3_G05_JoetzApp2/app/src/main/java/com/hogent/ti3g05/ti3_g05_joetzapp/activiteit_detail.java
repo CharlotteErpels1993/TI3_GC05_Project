@@ -47,6 +47,7 @@ public class activiteit_detail extends Activity {
     String sterPrijs1Ouder;
     String sterPrijs2Ouders;
     String inbegrepenInPrijs;
+    String activiteitID;
 
     private boolean isIngelogd;
 
@@ -84,6 +85,7 @@ public class activiteit_detail extends Activity {
         vervoer = i.getStringExtra("vervoer");
         beschrijving = i.getStringExtra("beschrijving");
         inbegrepenInPrijs = i.getStringExtra("InbegrepenInPrijs");
+        activiteitID = i.getStringExtra("objectId");
 
 
 
@@ -122,6 +124,7 @@ public class activiteit_detail extends Activity {
             @Override
             public void onClick(View view) {
                 Intent intent3 = new Intent(activiteit_detail.this, InschrijvenVakantiePart1.class);
+                intent3.putExtra("objectId", activiteitID);
                 startActivity(intent3);
 
                 overridePendingTransition(R.anim.right_in, R.anim.left_out);

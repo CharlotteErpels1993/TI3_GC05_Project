@@ -1,6 +1,5 @@
 package com.hogent.ti3g05.ti3_g05_joetzapp;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
@@ -21,7 +20,7 @@ public class InschrijvenVakantiePart1 extends FragmentActivity {
     private EditText txtVoornaam, txtNaam, txtStraat, txtHuisnr, txtBus, txtGemeente, txtPostcode;
     private Button btnGeboorteDatum;
 
-    private String voornaam, naam, straat, huisnr, bus, gemeente, postcode;
+    private String voornaam, naam, straat, huisnr, bus, gemeente, postcode, objectId;
 
     private Button btnVolgende;
     private Button btnTerug;
@@ -50,6 +49,8 @@ public class InschrijvenVakantiePart1 extends FragmentActivity {
         txtBus = (EditText) findViewById(R.id.Bus);
         txtGemeente = (EditText) findViewById(R.id.Gemeente);
         txtPostcode = (EditText) findViewById(R.id.Postcode);
+        btnGeboorteDatum = (Button) findViewById(R.id.uitlegVoorData);
+        objectId = getIntent().getStringExtra("objectId");
 
         btnVolgende = (Button)findViewById(R.id.btnNaarDeel2Vak);
         btnVolgende.setOnClickListener(new View.OnClickListener() {
@@ -135,7 +136,7 @@ public class InschrijvenVakantiePart1 extends FragmentActivity {
             cancel = true;
         }
 
-        //TODO: datepicker toevoegen
+        //TODO: datepicker toevoegen, waarde ophalen en controleren of ie is ingevuld. Plus controle op deftige waarde? (niet 100+ jaar oud of 5 jaar in de toekomst)
 
         if (TextUtils.isEmpty(huisnr)) {
             txtHuisnr.setError(getString(R.string.error_field_required));
@@ -192,6 +193,7 @@ public class InschrijvenVakantiePart1 extends FragmentActivity {
         in.putExtra("bus", bus);
         in.putExtra("gemeente", gemeente);
         in.putExtra("postcode", postcode);
+        in.putExtra("objectId", getIntent().getStringExtra("objectId"));
 
         startActivity(in);
 

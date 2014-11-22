@@ -6,11 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
-import android.app.Activity;
 import android.app.Fragment;
 import android.app.ProgressDialog;
-import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -19,15 +16,11 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.DBHandler;
 import com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.myDb;
@@ -171,7 +164,7 @@ public class activiteit_overzicht extends Fragment /*implements SwipeRefreshLayo
 
                         //String prijs = vakantie.get("basisPrijs").toString();
                         map.setNaamVakantie((String) vakantie.get("titel"));
-                        map.setVakantieID((String) vakantie.get("objectId"));
+                        map.setVakantieID(vakantie.getObjectId());
                         map.setLocatie((String) vakantie.get("locatie"));
                         map.setKorteBeschrijving((String) vakantie.get("korteBeschrijving"));
                         map.setDoelGroep((String) vakantie.get("doelgroep"));
@@ -183,7 +176,6 @@ public class activiteit_overzicht extends Fragment /*implements SwipeRefreshLayo
                         map.setVertrekDatum((Date) vakantie.get("vertrekdatum"));
                         map.setTerugkeerDatum((Date) vakantie.get("terugkeerdatum"));
                         map.setInbegrepenInPrijs((String) vakantie.get("inbegrepenPrijs"));
-                        map.setVakantieID((String) vakantie.get("objectId"));
                         if (vakantie.get("bondMoysonLedenPrijs") != null)
                             map.setBondMoysonLedenPrijs((Number) vakantie.get("bondMoysonLedenPrijs"));
                         if (vakantie.get("sterPrijs1ouder") != null)
