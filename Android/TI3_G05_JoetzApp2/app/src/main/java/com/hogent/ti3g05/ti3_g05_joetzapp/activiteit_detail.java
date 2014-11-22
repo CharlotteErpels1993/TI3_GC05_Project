@@ -231,7 +231,7 @@ public class activiteit_detail extends Activity {
         txtDoelgr.setText("Doelgroep: " + doelgro);
 
         txtformule.setText("Formule: " + formule);
-        txtmaxDeeln.setText("Maximum aantal deelnemers: " + maxDeeln.toString());
+        txtmaxDeeln.setText("Maximum aantal deelnemers: " + maxDeeln);
         txtPeriode.setText("Periode: " + periode);
         txtVervoer.setText("Vervoer: " + vervoer);
         txtBeschrijving.setText(beschrijving);
