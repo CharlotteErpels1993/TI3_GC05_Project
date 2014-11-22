@@ -341,7 +341,13 @@ public class DBHandler extends SQLiteOpenHelper {
             vorming.setCriteriaDeelnemers(cursor.getString(2));
             vorming.setKorteBeschrijving(cursor.getString(4));
             vorming.setLocatie(cursor.getString(5));
-            vorming.setPrijs(Integer.parseInt(cursor.getString(7)));
+            if(cursor.getString(7) == null)
+            {
+                vorming.setPrijs(0);
+            }else
+            {
+                vorming.setPrijs(Integer.parseInt(cursor.getString(7)));
+            }
             vorming.setTips(cursor.getString(8));
             vorming.setTitel(cursor.getString(9));
             vorming.setWebsiteLocatie(cursor.getString(10));

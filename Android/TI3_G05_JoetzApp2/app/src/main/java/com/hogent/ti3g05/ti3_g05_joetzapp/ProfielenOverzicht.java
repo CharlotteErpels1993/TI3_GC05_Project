@@ -116,7 +116,7 @@ public class ProfielenOverzicht extends Activity /* implements SwipeRefreshLayou
             mProgressDialog.setMessage("Aan het laden...");
             mProgressDialog.setIndeterminate(false);
             // Show progressdialog
-            //mProgressDialog.show();
+            mProgressDialog.show();
         }
 
         @Override
@@ -187,7 +187,7 @@ public class ProfielenOverzicht extends Activity /* implements SwipeRefreshLayou
                             iv = new InschrijvingVorming();
                             iv.setMonitor((String)inschrVorming.get("monitor"));
                             iv.setVorming((String)inschrVorming.get("vorming"));
-                            if(ParseUser.getCurrentUser().getObjectId().equals(inschrVorming.get("monitor")))
+                            if(ParseUser.getCurrentUser().getObjectId().equals(iv.getMonitor()))
                             {
                                 inschrijvingVormingen.add(iv);
                             }
@@ -197,14 +197,19 @@ public class ProfielenOverzicht extends Activity /* implements SwipeRefreshLayou
                         for(Monitor m : profielen)
                         {
                             for(InschrijvingVorming inv : alleIns)
-                            {for(InschrijvingVorming invm : inschrijvingVormingen)
-                                if(inv.getMonitor().equals(m.getMonitorId()) && inv.getVorming().equals(invm.getVorming()))
+                            {
+                                for(InschrijvingVorming invm : inschrijvingVormingen)
                                 {
-                                    profielenMetZelfdeVorming.add(m);
-                                    break;
+                                    if(inv.getMonitor().equals(m.getMonitorId()) && inv.getVorming().equals(invm.getVorming()))
+                                    {
+                                        profielenMetZelfdeVorming.add(m);
+                                        break;
+                                    }
                                 }
 
-                            }profielenAndere.add(m);
+
+                            }
+                            profielenAndere.add(m);
 
 
 
@@ -234,15 +239,16 @@ public class ProfielenOverzicht extends Activity /* implements SwipeRefreshLayou
                         }
 
                         profielenSamen.addAll(profielenMetZelfdeVorming);
-                        profielenSamen.addAll(profielenAndere);
+                        profielenSamen.addAll(profielenMetZelfdeVorming.size(),profielenAndere);
+                       // profielenSamen.addAll(profielenAndere);
 
 
                     }catch (ParseException e)
                     {
-                        Toast.makeText(ProfielenOverzicht.this,"FOut bij ophalen vormingen", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ProfielenOverzicht.this,"Fout bij ophalen vormingen", Toast.LENGTH_SHORT).show();
                     }
             } else {
-                profielen = myDB.getProfielen();
+                profielenSamen = myDB.getProfielen();
             }
             return null;
         }
