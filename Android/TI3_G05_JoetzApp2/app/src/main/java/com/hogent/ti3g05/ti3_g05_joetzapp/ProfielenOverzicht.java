@@ -148,7 +148,7 @@ public class ProfielenOverzicht extends Activity /* implements SwipeRefreshLayou
                         map.setMonitorId( monitor.getObjectId());
                         map.setPostcode((Integer) monitor.get("postcode"));
                         map.setHuisnr((Number) monitor.get("nummer"));
-                        if((Integer) monitor.get("lidNr") == null)
+                        if(monitor.get("lidNr") == null)
                         {
                             map.setLidNummer(0);
                         } else
