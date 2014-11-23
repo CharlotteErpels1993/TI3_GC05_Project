@@ -282,18 +282,24 @@ public class DBHandler extends SQLiteOpenHelper {
 
     public Long toevoegenGegevensVorming(Vorming vorming)
     {
+        String periodesStr = "";
         ContentValues values = new ContentValues();
 
         values.put(Constants.COLUMN_BETALINGSWIJZE, vorming.getBetalingswijze());
 
         values.put(Constants.COLUMN_CRITERIADEELNEMER, vorming.getCriteriaDeelnemers());
-        //values.put(Constants.COLUMN_INBEGREPENINPRIJSV, vorming.get);
+        values.put(Constants.COLUMN_INBEGREPENINPRIJSV, vorming.getInbegrepenInPrijs());
         values.put(Constants.COLUMN_KORTEBESCHRIJVING, vorming.getKorteBeschrijving());
 
         values.put(Constants.COLUMN_LOCATIEV, vorming.getLocatie());
-        //values.put(Constants.COLUMN_PERIODES, vorming.getPeriodes());
+        ArrayList<String> periodes = (ArrayList<String>) vorming.getPeriodes();
+        for(String p: periodes)
+        {
+            periodesStr+=p+",";
+        }
+        values.put(Constants.COLUMN_PERIODES, periodesStr);
 
-        //values.put(Constants.COLUMN_PRIJSV, vorming.getPrijs());
+        values.put(Constants.COLUMN_PRIJSV, vorming.getPrijs().intValue());
         values.put(Constants.COLUMN_TIPS, vorming.getTips());
 
         values.put(Constants.COLUMN_TITEL, vorming.getTitel());
@@ -339,8 +345,10 @@ public class DBHandler extends SQLiteOpenHelper {
             cursor.moveToFirst();
             vorming.setBetalingswijze(cursor.getString(1));
             vorming.setCriteriaDeelnemers(cursor.getString(2));
+            vorming.setInbegrepenInPrijs(cursor.getString(3));
             vorming.setKorteBeschrijving(cursor.getString(4));
             vorming.setLocatie(cursor.getString(5));
+            vorming.setPeriodes(cursor.getString(6));
             if(cursor.getString(7) == null)
             {
                 vorming.setPrijs(0);

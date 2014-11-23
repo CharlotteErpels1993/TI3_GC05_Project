@@ -73,7 +73,7 @@ public class VormingDetail extends Activity {
         txtCriteriaDeelnemer.setText(criteriaDeelnemer);
         txtkorteBeschrijving.setText(korteBeschrijving);
         txtTips.setText(tips);
-        txtPrijs.setText(prijs);
+        txtPrijs.setText("€" + prijs);
         txtInbegrepenInPrijs.setText(inbegrepenInPrijs);
         txtWebsite.setText(websiteLocatie);
         txtPeriodes.setText(getString(R.string.periode) + ": ");

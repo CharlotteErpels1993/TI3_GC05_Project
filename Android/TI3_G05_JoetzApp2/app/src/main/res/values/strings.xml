@@ -101,7 +101,7 @@ Mail Joetz met uw voornaam, naam, e-mailadres, rijksregisternummer, adresgegeven
     <string name="locatie">Locatie</string>
     <string name="vertrekdatum">Vertrekdatum</string>
     <string name="terugkeerdatum">Terugkeerdatum</string>
-    <string name="periode">Periode</string>
+    <string name="periode">Periodes</string>
     <string name="vervoer">Vervoer</string>
     <string name="formule">Formule</string>
     <string name="maxDeelnemers">Maximum aantal deelnemers</string>

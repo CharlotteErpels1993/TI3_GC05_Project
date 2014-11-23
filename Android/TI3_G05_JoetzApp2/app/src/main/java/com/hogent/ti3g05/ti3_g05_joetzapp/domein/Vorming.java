@@ -90,4 +90,14 @@ public class Vorming extends Activiteit {
     public void setBetalingswijze(String betalingswijze) {
         this.betalingswijze = betalingswijze;
     }
+
+    public void setPeriodes(String string) {
+        String[] perdiodesStr = string.split(",");
+        for(int i = 0; i<perdiodesStr.length;i++)
+        {
+            periodes.add(perdiodesStr[i]);
+
+        }
+
+    }
 }
