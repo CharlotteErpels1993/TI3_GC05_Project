@@ -13,6 +13,13 @@ import android.widget.Toast;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
 import com.parse.ParseObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.Locale;
+
 
 public class InschrijvenVakantiePart3 extends Activity {
 
@@ -78,7 +85,7 @@ public class InschrijvenVakantiePart3 extends Activity {
         Toast.makeText(getApplicationContext(), getString(R.string.loading_message), Toast.LENGTH_SHORT).show();
         Intent in = new Intent(getApplicationContext(),navBarMainScreen.class);
 
-        String voornaam = null, naam = null, straat = null, huisnr = null, bus = null, gemeente = null, postcode = null, voornaamCP = null, naamCP = null, telefoonCP = null, gsmCP = null, objectId = null;
+        String dag = null, maand = null, jaar = null, voornaam = null, naam = null, straat = null, huisnr = null, bus = null, gemeente = null, postcode = null, voornaamCP = null, naamCP = null, telefoonCP = null, gsmCP = null, objectId = null;
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             objectId = extras.getString("objectId");
@@ -89,6 +96,7 @@ public class InschrijvenVakantiePart3 extends Activity {
             bus = extras.getString("bus");
             gemeente = extras.getString("gemeente");
             postcode = extras.getString("postcode");
+            jaar = extras.getString("jaar");
 
             voornaamCP = extras.getString("voornaamCP");
             naamCP = extras.getString("naamCP");
@@ -98,7 +106,7 @@ public class InschrijvenVakantiePart3 extends Activity {
 
         extraInformatie = editExtraInformatie.getText().toString();
 
-        if (inschrijvingOpslaan(objectId, voornaam, naam, straat, huisnr,  bus, gemeente, postcode, voornaamCP, naamCP, telefoonCP, gsmCP, extraInformatie)){
+        if (inschrijvingOpslaan(objectId, voornaam, naam, straat, huisnr,  bus, gemeente, postcode, voornaamCP, naamCP, telefoonCP, gsmCP, extraInformatie, jaar)){
             Toast.makeText(getApplicationContext(), getString(R.string.dialog_ingeschreven_melding), Toast.LENGTH_LONG).show();
             startActivity(in);
 
@@ -110,7 +118,15 @@ public class InschrijvenVakantiePart3 extends Activity {
     }
 
     public boolean inschrijvingOpslaan(String activiteitID, String voornaam, String naam, String straat, String huisnr, String bus, String gemeente, String postcode,
-                                    String voornaamCP, String naamCP, String telefoonCP, String gsmCP, String extraInfo){
+                                    String voornaamCP, String naamCP, String telefoonCP, String gsmCP, String extraInfo,  String jaar){
+
+        SimpleDateFormat formatter = new SimpleDateFormat("MMM dd, yyyy");
+        Date date = null;
+        try {
+            date = formatter.parse(jaar);
+        } catch (ParseException e) {
+            Toast.makeText(InschrijvenVakantiePart3.this, "Fout bij datum omzetten",Toast.LENGTH_SHORT).show();
+        }
         try{
             ParseObject contactPers = new ParseObject("ContactpersoonNood");
             ParseObject inschrijving = new ParseObject("InschrijvingVakantie");
@@ -130,6 +146,7 @@ public class InschrijvenVakantiePart3 extends Activity {
             deeln.put("bus" , bus);
             deeln.put("gemeente" , gemeente);
             deeln.put("postcode" , Integer.parseInt(postcode));
+            deeln.put("geboortedatum", date);
             deeln.save();
 
             inschrijving.put("deelnemerID", deeln.getObjectId());

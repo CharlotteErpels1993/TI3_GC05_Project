@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
@@ -22,15 +23,21 @@ public class InschrijvenVakantiePart1 extends FragmentActivity {
     private EditText txtVoornaam, txtNaam, txtStraat, txtHuisnr, txtBus, txtGemeente, txtPostcode;
     private Button btnGeboorteDatum;
 
-    private String voornaam, naam, straat, huisnr, bus, gemeente, postcode;
+    private String maandI, datum ,voornaam, naam, straat, huisnr, bus, gemeente, postcode;
     private Date geboorteDatum;
 
+    private TextView dag;
+    private TextView maand;
+    private TextView jaar;
     private Button btnVolgende;
+
+    private TextView gebDatum;
     //!!!!!!!!!!!!!!!!!!!!!!!
     //voor date picker:
     //http://developer.android.com/guide/topics/ui/controls/pickers.html#DatePicker
     private boolean cancel = false;
     private View focusView = null;
+    CustomDatePicker customDatePicker;
 
     // flag for Internet connection status
     Boolean isInternetPresent = false;
@@ -52,6 +59,10 @@ public class InschrijvenVakantiePart1 extends FragmentActivity {
         txtGemeente = (EditText) findViewById(R.id.Gemeente);
         txtPostcode = (EditText) findViewById(R.id.Postcode);
         btnGeboorteDatum = (Button) findViewById(R.id.uitlegVoorData);
+        gebDatum = (TextView) findViewById(R.id.DateIns);
+        dag = (TextView) findViewById(R.id.dagIns);
+        jaar = (TextView) findViewById(R.id.jaarIns);
+        maand = (TextView) findViewById(R.id.maandIns);
 
 
         btnVolgende = (Button)findViewById(R.id.btnNaarDeel2Vak);
@@ -113,7 +124,8 @@ public class InschrijvenVakantiePart1 extends FragmentActivity {
         bus = txtBus.getText().toString();
         gemeente = txtGemeente.getText().toString();
         postcode = txtPostcode.getText().toString();
-
+        datum = gebDatum.getText().toString();
+        maandI = maand.getText().toString();
 
         if (TextUtils.isEmpty(postcode)) {
             txtPostcode.setError(getString(R.string.error_field_required));
@@ -169,6 +181,13 @@ public class InschrijvenVakantiePart1 extends FragmentActivity {
             cancel = true;
         }
 
+        if(gebDatum.getText().equals(""))
+        {
+            gebDatum.setError(getString(R.string.error_field_required));
+            focusView = gebDatum;
+            cancel = true;
+        }
+
 
         if (cancel) {
             // There was an error; don't attempt login and focus the first
@@ -196,6 +215,7 @@ public class InschrijvenVakantiePart1 extends FragmentActivity {
         in.putExtra("gemeente", gemeente);
         in.putExtra("postcode", postcode);
         in.putExtra("objectId", getIntent().getStringExtra("objectId"));
+        in.putExtra("jaar", maandI);
 
         startActivity(in);
 

@@ -101,17 +101,13 @@ public class InschrijvenVakantiePart2 extends Activity {
             }
         }
 
-        if (TextUtils.isEmpty(telefoon)) {
-            txtTelefoon.setError(getString(R.string.error_field_required));
-            focusView = txtTelefoon;
-            cancel = true;
-        }else{
-            if (!telefoon.matches("[0-9]+") || telefoon.length() != 9){
+
+            if (!TextUtils.isEmpty(telefoon) && !telefoon.matches("[0-9]+") || telefoon.length() != 9){
                 txtTelefoon.setError(getString(R.string.error_incorrect_tel));
                 focusView = txtTelefoon;
                 cancel = true;
             }
-        }
+
 
         if (TextUtils.isEmpty(naam)) {
             txtNaam.setError(getString(R.string.error_field_required));
@@ -153,6 +149,9 @@ public class InschrijvenVakantiePart2 extends Activity {
             String gemeente = extras.getString("gemeente");
             String postcode = extras.getString("postcode");
             String objectId = extras.getString("objectId");
+            String jaar = extras.getString("jaar");
+            String maand = extras.getString("maand");
+            String dag = extras.getString("dag");
             in.putExtra("voornaam", voornaam);
             in.putExtra("naam", naam);
             in.putExtra("straat", straat);
@@ -161,6 +160,8 @@ public class InschrijvenVakantiePart2 extends Activity {
             in.putExtra("gemeente", gemeente);
             in.putExtra("postcode", postcode);
             in.putExtra("objectId", objectId);
+            in.putExtra("jaar", jaar);
+
         }
 
         in.putExtra("voornaamCP", voornaamCP);
