@@ -48,7 +48,7 @@
                 android:textAlignment="center"
                 android:layout_centerHorizontal="true"/>
 
-            <TextView
+            <!--<TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/straatP"
@@ -62,7 +62,6 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/huisnrP"
                 android:layout_below="@id/straatP"
-
                 android:layout_marginTop="10dp"
                 android:layout_centerHorizontal="true"/>
 
@@ -71,7 +70,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/gemeenteP"
-
                 android:layout_marginTop="10dp"
                 android:layout_below="@id/huisnrP"
                 android:layout_centerHorizontal="true"/>
@@ -80,26 +78,23 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/postcodeP"
-
                 android:layout_marginTop="10dp"
                 android:layout_below="@id/gemeenteP"
-
                 android:layout_centerHorizontal="true"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/RijksRegNrP"
-
                 android:layout_marginTop="10dp"
                 android:layout_below="@id/postcodeP"
-                android:layout_centerHorizontal="true"/>
+                android:layout_centerHorizontal="true"/>-->
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/gsmP"
-                android:layout_below="@id/RijksRegNrP"
+                android:layout_below="@id/emailP"
                 android:layout_centerHorizontal="true"/>
 
 
@@ -109,6 +104,14 @@
                 android:id="@+id/facebookL"
                 android:layout_below="@id/gsmP"
                 android:layout_centerHorizontal="true"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btn_ProfielEdit"
+                android:id="@+id/btnProfielEdit"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true" />
         </RelativeLayout>
 
 

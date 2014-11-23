@@ -13,20 +13,27 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
+
+//UC: naam en voornaam van de monitor, emailadres, gsm nummer en eventueel link naar facebookprofiel.
 public class ProfielDetail extends Activity {
     String naam;
     String voornaam;
-    String straat;
+    String email;
+    String gsm;
+    String facebook;
+    /*String straat;
     String huisnr;
     String gemeente;
     String postcode;
     String lidNr;
-    String email;
-    String gsm;
-    String facebook;
-    String rijksregisterNr;
+    String rijksregisterNr;*/
+    private Button btnProfielEdit;
 
+    Boolean isInternetPresent = false;
+    ConnectionDetector cd;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -37,43 +44,63 @@ public class ProfielDetail extends Activity {
         Intent i = getIntent();
         naam = i.getStringExtra("naam");
         voornaam = i.getStringExtra("voornaam");
-        straat = i.getStringExtra("straat");
-        //huisnr = i.getStringExtra("huisnr");
-        gemeente = i.getStringExtra("gemeente");
-        // periodes = i.getStringExtra("periodes");
-        lidNr = i.getStringExtra("lidNr");
-
         email = i.getStringExtra("email");
         facebook = i.getStringExtra("facebook");
         gsm = i.getStringExtra("gsm");
-
+        /*straat = i.getStringExtra("straat");
+        //huisnr = i.getStringExtra("huisnr");
+        gemeente = i.getStringExtra("gemeente");
+        // periodes = i.getStringExtra("periodes");
         rijksregisterNr = i.getStringExtra("rijksregNr");
+        lidNr = i.getStringExtra("lidNr");*/
 
         setTitle(naam + " " + voornaam);
+        cd = new ConnectionDetector(getApplicationContext());
 
         TextView txtNaam = (TextView) findViewById(R.id.achternaamP);
         final TextView txtVoornaam = (TextView) findViewById(R.id.voornaamP);
-        final TextView txtStraat = (TextView) findViewById(R.id.straatP);
         TextView txtEmail = (TextView) findViewById(R.id.emailP);
-
-        final TextView txtGemeente = (TextView)findViewById(R.id.gemeenteP);
-        TextView txtLidNr = (TextView)findViewById(R.id.lidNr);
         TextView txtFacebook = (TextView)findViewById(R.id.facebookL);
         final TextView txtGsm = (TextView)findViewById(R.id.gsmP);
-        final TextView txtRijksregNr = (TextView)findViewById(R.id.RijksRegNrP);
+        btnProfielEdit = (Button) findViewById(R.id.btnProfielEdit);
+        btnProfielEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                isInternetPresent = cd.isConnectingToInternet();
+
+                if (isInternetPresent) {
+                    Intent inte = new Intent(getApplicationContext(), ProfielEdit.class);
+                    inte.putExtra("naam", naam);
+                    inte.putExtra("voornaam", voornaam);
+                    inte.putExtra("facebook", facebook);
+                    inte.putExtra("gsm", gsm);
+                    inte.putExtra("email", email);
+                    startActivity(inte);
+                }
+                else{
+                    Toast.makeText(getApplicationContext(), getString(R.string.error_no_internet), Toast.LENGTH_SHORT).show();
+                }
+
+
+            }
+        });
+
+        /*final TextView txtStraat = (TextView) findViewById(R.id.straatP);
+        final TextView txtGemeente = (TextView)findViewById(R.id.gemeenteP);
+        TextView txtLidNr = (TextView)findViewById(R.id.lidNr);
+        final TextView txtRijksregNr = (TextView)findViewById(R.id.RijksRegNrP);*/
 
 
         txtNaam.setText(naam);
         txtVoornaam.setText(voornaam);
-        txtStraat.setText(straat);
-        txtGemeente.setText(gemeente);
         txtEmail.setText(email);
-        //txtmaxDeeln.setText(maxDeeln.toString());
-        //txtLidNr.setText(lidNr);
         txtFacebook.setText(facebook);
         txtGsm.setText(gsm);
-        txtRijksregNr.setText(rijksregisterNr);
-        //txtPrijs.setText(prijs.toString());
+        /*//txtmaxDeeln.setText(maxDeeln.toString());
+        //txtLidNr.setText(lidNr);
+        txtStraat.setText(straat);
+        txtGemeente.setText(gemeente);
+        txtRijksregNr.setText(rijksregisterNr);*/
 
     }
 

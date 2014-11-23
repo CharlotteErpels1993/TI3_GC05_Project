@@ -112,15 +112,12 @@ public class ProfielAdapter extends ArrayAdapter<Vorming> implements Filterable 
                         (profielen.get(position).getNaam()));
                 intent.putExtra("voornaam",
                         (profielen.get(position).getVoornaam()));
-                intent.putExtra("straat",
-                        (profielen.get(position).getStraat()));
-                intent.putExtra("gemeente",
-                        (profielen.get(position).getGemeente()));
-                //intent.putExtra("lidNr", profielen.get(position).getLidNummer());
+                /*intent.putExtra("straat", (profielen.get(position).getStraat()));
+                intent.putExtra("gemeente", (profielen.get(position).getGemeente()));
+                intent.putExtra("rijksregNr", profielen.get(position).getRijksregNr());
+                //intent.putExtra("lidNr", profielen.get(position).getLidNummer());*/
                 intent.putExtra("facebook", profielen.get(position).getLinkFacebook());
                 intent.putExtra("gsm", profielen.get(position).getGsm());
-                intent.putExtra("rijksregNr", profielen.get(position).getRijksregNr());
-
                 intent.putExtra("email", profielen.get(position).getEmail());
                 context.startActivity(intent);
             }
