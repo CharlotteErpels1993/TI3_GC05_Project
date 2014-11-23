@@ -43,7 +43,15 @@
             android:layout_below="@id/RijksRegNr"
             android:layout_marginTop="25dp"
             android:layout_marginLeft="8dp"/>-->
+        <TextView
+            android:id="@+id/DateIns"
 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/NaamIns"
+            android:layout_marginTop="40dp"
+            android:textSize="15sp"
+            android:layout_marginStart="5dp"/>
         <Button
             android:id="@+id/uitlegVoorData"
             android:layout_width="wrap_content"
@@ -51,6 +59,8 @@
             android:text="@string/label_geboorteDatum"
             android:onClick="showDatePickerDialog"
             android:layout_below="@id/NaamIns"
+            android:layout_alignParentEnd="true"
+            android:layout_alignEnd="@id/DateIns"
             android:layout_marginTop="25dp"
             android:layout_marginStart="5dp"
             />
@@ -114,5 +124,20 @@
             android:layout_marginTop="25dp"
             android:text="@string/volgende" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/dagIns"
+            android:visibility="gone"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/maandIns"
+            android:visibility="gone"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/jaarIns"
+            android:visibility="gone"/>
     </RelativeLayout>
 </ScrollView>
