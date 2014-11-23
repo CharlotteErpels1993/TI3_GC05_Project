@@ -80,6 +80,10 @@
             android:name="com.hogent.ti3g05.ti3_g05_joetzapp.VormingSignup"
             android:label="@string/title_activity_vorming_signup" >
         </activity>
+        <activity
+            android:name="com.hogent.ti3g05.ti3_g05_joetzapp.ProfielEdit"
+            android:label="@string/title_activity_profiel_edit" >
+        </activity>
     </application>
 
 </manifest>
