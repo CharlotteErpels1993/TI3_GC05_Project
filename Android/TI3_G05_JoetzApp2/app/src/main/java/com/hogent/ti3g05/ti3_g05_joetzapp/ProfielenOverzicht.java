@@ -27,6 +27,7 @@ import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ProfielAdapter;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.InschrijvingVorming;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Monitor;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vorming;
+import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
@@ -51,6 +52,8 @@ public class ProfielenOverzicht extends Activity /* implements SwipeRefreshLayou
     private myDb myDB;
     private List<InschrijvingVorming> inschrijvingVormingen = new ArrayList<InschrijvingVorming>();
     private List<InschrijvingVorming> alleIns = new ArrayList<InschrijvingVorming>();
+
+    private Monitor ingelogdeMonitor = new Monitor();
     //SwipeRefreshLayout swipeLayout;
 
     // flag for Internet connection status
@@ -162,6 +165,11 @@ public class ProfielenOverzicht extends Activity /* implements SwipeRefreshLayou
                         map.setRijksregNr((String) monitor.get("rijksregisterNr"));
 
 
+                        if (map.getEmail().equals(ParseUser.getCurrentUser().getEmail()))
+                        {
+                            ingelogdeMonitor = map;
+                        }
+
                         profielen.add(map);
 
 
@@ -180,42 +188,41 @@ public class ProfielenOverzicht extends Activity /* implements SwipeRefreshLayou
                                 "InschrijvingVorming");
                         // Locate the column named "vertrekdatum" in Parse.com and order list
                         // by ascending
-                        queryVorming.orderByAscending("monitor");
+                        //queryVorming.orderByAscending("monitor");
                         obVorming = queryVorming.find();
-                        InschrijvingVorming iv = null;
+                        InschrijvingVorming iv;
                         for (ParseObject inschrVorming : obVorming) {
                             iv = new InschrijvingVorming();
                             iv.setMonitor((String)inschrVorming.get("monitor"));
                             iv.setVorming((String)inschrVorming.get("vorming"));
-                            if(ParseUser.getCurrentUser().getObjectId().equals(iv.getMonitor()))
+                            if(ingelogdeMonitor.getMonitorId().equals(iv.getMonitor()))
                             {
                                 inschrijvingVormingen.add(iv);
                             }
                             alleIns.add(iv);
 
                         }
+                        profielenMetZelfdeVorming.add(ingelogdeMonitor);
                         for(Monitor m : profielen)
                         {
                             for(InschrijvingVorming inv : alleIns)
                             {
                                 for(InschrijvingVorming invm : inschrijvingVormingen)
                                 {
-                                    if(inv.getMonitor().equals(m.getMonitorId()) && inv.getVorming().equals(invm.getVorming()))
+
+                                    if(inv.getMonitor().equals(m.getMonitorId()) && inv.getVorming().equals(invm.getVorming()) && !inv.getMonitor().equals(ingelogdeMonitor.getMonitorId()))
                                     {
-                                        profielenMetZelfdeVorming.add(m);
+                                        profielenMetZelfdeVorming.add(m); //Blijft leeg en zou 1 moeten inzitten
                                         break;
                                     }
                                 }
 
 
                             }
-                            profielenAndere.add(m);
-
-
-
-
-
-
+                            if(!profielenMetZelfdeVorming.contains(m))
+                            {
+                                profielenAndere.add(m);
+                            }
 
                             /*
                             Monitor map = new Monitor();
