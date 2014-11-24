@@ -25,9 +25,12 @@ struct /*class*/ MonitorSQL {
         
         let (resultSet, err) = SD.executeQuery("SELECT * FROM Monitor")
         
-        if err != nil {
-            //there was an error during the query, handle it here
-        } else {
+        if err != nil
+        {
+            println("ERROR: error tijdens ophalen van alle monitors uit table Monitor")
+        }
+        else
+        {
             for row in resultSet {
                 monitor = getMonitor(row)
                 monitors.append(monitor)
@@ -44,9 +47,12 @@ struct /*class*/ MonitorSQL {
         
         let (resultSet, err) = SD.executeQuery("SELECT * FROM Monitor WHERE email = \(email)")
         
-        if err != nil {
-            //there was an error during the query, handle it here
-        } else {
+        if err != nil
+        {
+            println("ERROR: error tijdens ophalen van monitors met email uit table Monitor")
+        }
+        else
+        {
             for row in resultSet {
                 monitor = getMonitor(row)
                 monitors.append(monitor)
@@ -139,6 +145,7 @@ struct /*class*/ MonitorSQL {
         var linkFacebook: String?
         
         for monitor in monitors {
+            
             objectId = monitor.objectId as String
             rijksregisterNr = monitor["rijksregisterNr"] as? String
             email = monitor["email"] as String
@@ -157,9 +164,12 @@ struct /*class*/ MonitorSQL {
             lidNr = monitor["lidNr"] as? Int
             linkFacebook = monitor["linkFacebook"] as? String
             
-            if let err = SD.executeChange("INSERT INTO Monitor (objectId, rijksregisterNr, email, wachtwoord, voornaam, naam, straat, nummer, bus, postcode, gemeente, telefoon, gsm, aansluitingsNr, codeGerechtigde, lidNr, linkFacebook) VALUES ('\(objectId)', '\(rijksregisterNr)', '\(email)', '\(wachtwoord)', '\(voornaam)', '\(naam)', '\(straat)', '\(nummer)', '\(bus)', '\(postcode)', '\(gemeente)', '\(telefoon)', '\(gsm)', '\(aansluitingsNr)', '\(codeGerechtigde)', '\(lidNr)', '\(linkFacebook)')") {
-                //there was an error during the insert, handle it here
-            } else {
+            if let err = SD.executeChange("INSERT INTO Monitor (objectId, rijksregisterNr, email, wachtwoord, voornaam, naam, straat, nummer, bus, postcode, gemeente, telefoon, gsm, aansluitingsNr, codeGerechtigde, lidNr, linkFacebook) VALUES ('\(objectId)', '\(rijksregisterNr)', '\(email)', '\(wachtwoord)', '\(voornaam)', '\(naam)', '\(straat)', '\(nummer)', '\(bus)', '\(postcode)', '\(gemeente)', '\(telefoon)', '\(gsm)', '\(aansluitingsNr)', '\(codeGerechtigde)', '\(lidNr)', '\(linkFacebook)')")
+            {
+                println("ERROR: error tijdens toevoegen van nieuwe monitor in table Monitor")
+            }
+            else
+            {
                 //no error, the row was inserted successfully
             }
             
@@ -174,9 +184,12 @@ struct /*class*/ MonitorSQL {
         for mId in monitorIds {
             var (resultSet, err) = SD.executeQuery("SELECT * FROM Monitor WHERE objectId = \(mId)")
             
-            if err != nil {
-                //there was an error during the query, handle it here
-            } else {
+            if err != nil
+            {
+                println("ERROR: error tijdens ophalen van Monitors met id uit table Monitor")
+            }
+            else
+            {
                 for row in resultSet {
                     monitor = getMonitor(row)
                     monitors.append(monitor)
@@ -215,9 +228,12 @@ struct /*class*/ MonitorSQL {
     static func updateMonitor(monitorNieuw: Monitor, email: String) {
         let (resultSet, err) = SD.executeQuery("UPDATE Monitor SET voornaam='\(monitorNieuw.voornaam)', naam='\(monitorNieuw.naam)', telefoon='\(monitorNieuw.telefoon)', gsm='\(monitorNieuw.gsm)', linkFacebook='\(monitorNieuw.linkFacebook)' WHERE email = \(email)")
         
-        if err != nil {
-            //there was an error during the query, handle it here
-        } else {
+        if err != nil
+        {
+            println("ERROR: error tijdens updaten van monitor in table Monitor")
+        }
+        else
+        {
             //no error
         }
 
