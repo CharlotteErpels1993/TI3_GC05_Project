@@ -3,13 +3,14 @@ import Foundation
 struct /*class*/ UserSQL {
     
     static func createUserTable() {
-        if let error = SD.createTable("User", withColumnNamesAndTypes: ["objectId":
-            .StringVal, "username": .StringVal, "password": .StringVal, "email":
-                .StringVal, "soort": .StringVal]) {
-                    
-                    //there was an error
-                    
-        } else {
+        if let error = SD.createTable("User", withColumnNamesAndTypes:
+            ["objectId": .StringVal, "username": .StringVal, "password": .StringVal,
+             "email": .StringVal, "soort": .StringVal])
+        {
+            //there was an error
+            println("ERROR: error tijdens create van table User")
+        }
+        else {
             //no error
         }
     }
