@@ -118,6 +118,14 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         cell.doelgroepLabel.text! = " \(vakantie.doelgroep!) jaar "
         return cell
     }
+    
+    @IBAction func refresh(sender: UIRefreshControl) {
+        var parseData = ParseData()
+        parseData.deleteAllTables()
+        parseData.createDatabase()
+        self.refreshControl?.endRefreshing()
+        //viewDidLoad()
+    }
 }
 
 func getActivityIndicatorView(controller: UIViewController) -> UIActivityIndicatorView {

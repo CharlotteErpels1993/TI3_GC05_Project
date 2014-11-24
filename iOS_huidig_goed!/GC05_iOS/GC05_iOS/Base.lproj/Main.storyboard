@@ -77,6 +77,13 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="UVf-bj-c6l">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <attributedString key="attributedTitle"/>
+                        <connections>
+                            <action selector="refresh:" destination="xj6-b1-6XR" eventType="valueChanged" id="iOj-QV-LaQ"/>
+                        </connections>
+                    </refreshControl>
                     <connections>
                         <outlet property="view" destination="xxD-Ib-aLY" id="vqA-FM-3Jv"/>
                         <outlet property="zoekbar" destination="RlW-AC-mYB" id="7KL-cF-nD3"/>

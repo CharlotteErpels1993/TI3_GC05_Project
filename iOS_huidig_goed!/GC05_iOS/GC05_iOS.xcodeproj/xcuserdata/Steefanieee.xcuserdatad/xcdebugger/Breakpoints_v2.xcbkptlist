@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GC05_iOS/VakantiesTableViewController.swift"
-            timestampString = "438520863.28946"
+            timestampString = "438525027.15689"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122"
+            startingLineNumber = "130"
+            endingLineNumber = "130"
             landmarkName = "getActivityIndicatorView(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1128,6 +1128,22 @@
             startingLineNumber = "64"
             endingLineNumber = "64"
             landmarkName = "viewDidLoad()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GC05_iOS/VakantiesTableViewController.swift"
+            timestampString = "438524825.411395"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
+            landmarkName = "refresh(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
