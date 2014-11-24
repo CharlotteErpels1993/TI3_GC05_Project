@@ -7,15 +7,26 @@ class InschrijvenVakantieSuccesvolViewController : UIViewController {
     var contactpersoon2: ContactpersoonNood?
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
+    //moet nog static klasse worden!
+    var parseData: ParseData = ParseData()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         activityIndicatorView.startAnimating()
+        
         //var iv: PFObject = parseInschrijvingVakantieToDatabase(deelnemer.inschrijvingVakantie!)
+        var inschrijvingId = parseData.parseInschrijvingVakantieToDatabase(deelnemer.inschrijvingVakantie!)
+        
         //parseDeelnemerToDatabase(deelnemer, inschrijvingVakantie: iv)
+        parseData.parseDeelnemerToDatabase(deelnemer, inschrijvingId: inschrijvingId)
+        
         //parseContactpersoonToDatabase(contactpersoon1, inschrijvingVakantie: iv)
+        parseData.parseContactpersoonNoodToDatabase(contactpersoon1, inschrijvingId: inschrijvingId)
         
         if contactpersoon2?.naam != nil {
             //parseContactpersoonToDatabase(contactpersoon2!, inschrijvingVakantie: iv)
+            parseData.parseContactpersoonNoodToDatabase(contactpersoon2, inschrijvingId: inschrijvingId)
         }
         
         self.navigationItem.setHidesBackButton(true, animated: true)

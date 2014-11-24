@@ -4,6 +4,10 @@ class RegistratieSuccesvolViewController: UIViewController
 {
     var ouder: Ouder!
     
+    //moet nog static klasse worden!
+    var parseData: ParseData = ParseData()
+    
+    
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
     
@@ -19,8 +23,14 @@ class RegistratieSuccesvolViewController: UIViewController
         activityIndicatorView.startAnimating()
         
         //parseOuderToDatabase()
+        parseData.parseOuderToDatabase(ouder)
+        
+        //deze methodes worden ook in ParseData direct uitgevoerd
         //createPFUser()
-        logIn()
+        //logIn()
+        
+        
+        
         self.navigationItem.setHidesBackButton(true, animated: true)
 
         activityIndicatorView.stopAnimating()

@@ -84,7 +84,7 @@ class ParseData {
         vulVakantieTableOp()
     }
     
-    func zoekAlleMonitors() -> [Monitor] {
+    func getAlleMonitors() -> [Monitor] {
         return self.monitorSQL.zoekAlleMonitors()
     }
     
@@ -130,7 +130,7 @@ class ParseData {
         return self.inschrijvingVakantieSQL.parseInschrijvingVakantieToDatabase(inschrijving)
     }
     
-    func zoekUserMetEmailEnWachtwoord(email: String, wachtwoord: String) -> PFUser {
+    func getUserMetEmailEnWachtwoord(email: String, wachtwoord: String) -> PFUser {
         return self.userSQL.zoekUserMetEmailEnWachtwoord(email, wachtwoord: wachtwoord)
     }
     

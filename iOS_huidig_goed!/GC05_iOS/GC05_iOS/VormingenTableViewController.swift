@@ -21,6 +21,7 @@ class VormingenTableViewController: UITableViewController, UISearchBarDelegate, 
         var activityIndicator = getActivityIndicatorView(self)
         
         //zoekVormingen()
+        
         zoekbar.showsScopeBar = true
         zoekbar.delegate = self
         
