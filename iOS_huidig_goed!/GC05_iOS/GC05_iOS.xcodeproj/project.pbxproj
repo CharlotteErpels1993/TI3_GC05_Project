@@ -42,6 +42,17 @@
 		0FA80B381A0135A8008DB343 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FA80B371A0135A8008DB343 /* StoreKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		0FA80B3A1A0135B1008DB343 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FA80B391A0135B1008DB343 /* SystemConfiguration.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		0FBEA1F41A0684FD005FF0D2 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBEA1F31A0684FD005FF0D2 /* Date.swift */; };
+		0FD07EB51A2348DE006A4E60 /* VakantieSQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD07EB41A2348DE006A4E60 /* VakantieSQL.swift */; };
+		0FD07EB71A234A2E006A4E60 /* MonitorSQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD07EB61A234A2E006A4E60 /* MonitorSQL.swift */; };
+		0FD07EB91A234C41006A4E60 /* VoorkeurSQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD07EB81A234C41006A4E60 /* VoorkeurSQL.swift */; };
+		0FD07EBB1A234CD5006A4E60 /* InschrijvingVormingSQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD07EBA1A234CD5006A4E60 /* InschrijvingVormingSQL.swift */; };
+		0FD07EBD1A234D44006A4E60 /* VormingSQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD07EBC1A234D44006A4E60 /* VormingSQL.swift */; };
+		0FD07EBF1A234DE1006A4E60 /* ContactpersoonNoodSQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD07EBE1A234DE1006A4E60 /* ContactpersoonNoodSQL.swift */; };
+		0FD07EC11A234EBE006A4E60 /* DeelnemerSQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD07EC01A234EBE006A4E60 /* DeelnemerSQL.swift */; };
+		0FD07EC31A234F46006A4E60 /* InschrijvingVakantieSQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD07EC21A234F46006A4E60 /* InschrijvingVakantieSQL.swift */; };
+		0FD07EC51A234FAB006A4E60 /* UserSQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD07EC41A234FAB006A4E60 /* UserSQL.swift */; };
+		0FD07EC71A23544A006A4E60 /* OuderSQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD07EC61A23544A006A4E60 /* OuderSQL.swift */; };
+		0FD07EC91A2354B5006A4E60 /* AfbeeldingSQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD07EC81A2354B5006A4E60 /* AfbeeldingSQL.swift */; };
 		1B10A3BD1A02622C008E225F /* VakantiesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B10A3BC1A02622C008E225F /* VakantiesTableViewController.swift */; };
 		1B1792851A0272D300C4F82B /* VakantieDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1792841A0272D300C4F82B /* VakantieDetailsTableViewController.swift */; };
 		1B39CF731A077C8F008DEC49 /* InloggenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B39CF721A077C8F008DEC49 /* InloggenViewController.swift */; };
@@ -141,6 +152,17 @@
 		0FA80B391A0135B1008DB343 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		0FA80B3D1A0135FF008DB343 /* GC05_iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GC05_iOS-Bridging-Header.h"; sourceTree = "<group>"; };
 		0FBEA1F31A0684FD005FF0D2 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		0FD07EB41A2348DE006A4E60 /* VakantieSQL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VakantieSQL.swift; sourceTree = "<group>"; };
+		0FD07EB61A234A2E006A4E60 /* MonitorSQL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitorSQL.swift; sourceTree = "<group>"; };
+		0FD07EB81A234C41006A4E60 /* VoorkeurSQL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoorkeurSQL.swift; sourceTree = "<group>"; };
+		0FD07EBA1A234CD5006A4E60 /* InschrijvingVormingSQL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InschrijvingVormingSQL.swift; sourceTree = "<group>"; };
+		0FD07EBC1A234D44006A4E60 /* VormingSQL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VormingSQL.swift; sourceTree = "<group>"; };
+		0FD07EBE1A234DE1006A4E60 /* ContactpersoonNoodSQL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactpersoonNoodSQL.swift; sourceTree = "<group>"; };
+		0FD07EC01A234EBE006A4E60 /* DeelnemerSQL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeelnemerSQL.swift; sourceTree = "<group>"; };
+		0FD07EC21A234F46006A4E60 /* InschrijvingVakantieSQL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InschrijvingVakantieSQL.swift; sourceTree = "<group>"; };
+		0FD07EC41A234FAB006A4E60 /* UserSQL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSQL.swift; sourceTree = "<group>"; };
+		0FD07EC61A23544A006A4E60 /* OuderSQL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OuderSQL.swift; sourceTree = "<group>"; };
+		0FD07EC81A2354B5006A4E60 /* AfbeeldingSQL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AfbeeldingSQL.swift; sourceTree = "<group>"; };
 		1B10A3BC1A02622C008E225F /* VakantiesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VakantiesTableViewController.swift; sourceTree = "<group>"; };
 		1B1792841A0272D300C4F82B /* VakantieDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VakantieDetailsTableViewController.swift; sourceTree = "<group>"; };
 		1B39CF721A077C8F008DEC49 /* InloggenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InloggenViewController.swift; sourceTree = "<group>"; };
@@ -239,6 +261,17 @@
 			children = (
 				0F88A6C21A1F3B840094D457 /* SwiftData.swift */,
 				0F88A6C41A1F3BF20094D457 /* ParseData.swift */,
+				0FD07EB41A2348DE006A4E60 /* VakantieSQL.swift */,
+				0FD07EB61A234A2E006A4E60 /* MonitorSQL.swift */,
+				0FD07EB81A234C41006A4E60 /* VoorkeurSQL.swift */,
+				0FD07EBA1A234CD5006A4E60 /* InschrijvingVormingSQL.swift */,
+				0FD07EBC1A234D44006A4E60 /* VormingSQL.swift */,
+				0FD07EBE1A234DE1006A4E60 /* ContactpersoonNoodSQL.swift */,
+				0FD07EC01A234EBE006A4E60 /* DeelnemerSQL.swift */,
+				0FD07EC21A234F46006A4E60 /* InschrijvingVakantieSQL.swift */,
+				0FD07EC41A234FAB006A4E60 /* UserSQL.swift */,
+				0FD07EC61A23544A006A4E60 /* OuderSQL.swift */,
+				0FD07EC81A2354B5006A4E60 /* AfbeeldingSQL.swift */,
 			);
 			name = SQLite;
 			sourceTree = "<group>";
@@ -526,40 +559,50 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FD07EC11A234EBE006A4E60 /* DeelnemerSQL.swift in Sources */,
 				0F145EDF1A1CDE98003067EA /* ResponsiveTextFieldViewController.swift in Sources */,
 				A5CEA07F1A13ACDF00E14103 /* InschrijvenVormingViewController.swift in Sources */,
+				0FD07EC91A2354B5006A4E60 /* AfbeeldingSQL.swift in Sources */,
 				0F6254971A0CCBA300BDEF38 /* FoutBox.swift in Sources */,
+				0FD07EBB1A234CD5006A4E60 /* InschrijvingVormingSQL.swift in Sources */,
 				A59F1A8E1A16B29700A17D09 /* AfbeeldingDetailViewController.swift in Sources */,
 				1BDDB9531A02D8770007623D /* Deelnemer.swift in Sources */,
 				1B4D78531A028A8B00E823E2 /* RegistratieSuccesvolViewController.swift in Sources */,
 				1BFC33401A066A87009CA8EB /* VakantieCell.swift in Sources */,
 				A512381B1A1630D1002242C6 /* SidebarTableViewController.swift in Sources */,
 				A5A158361A1A6AAB00FEF51D /* ProfielDetailsTableViewController.swift in Sources */,
+				0FD07EB91A234C41006A4E60 /* VoorkeurSQL.swift in Sources */,
 				1BDDB94B1A02D8380007623D /* InschrijvingVakantie.swift in Sources */,
 				1BDDB94F1A02D8630007623D /* Ouder.swift in Sources */,
 				1B4D78511A02897500E823E2 /* Registratie3ViewController.swift in Sources */,
 				0F145EE81A1D2660003067EA /* VakantieRepository.swift in Sources */,
 				1BDDB94D1A02D84B0007623D /* Monitor.swift in Sources */,
 				A5049CAD1A2334510012D990 /* Reachability.swift in Sources */,
+				0FD07EB51A2348DE006A4E60 /* VakantieSQL.swift in Sources */,
+				0FD07EC71A23544A006A4E60 /* OuderSQL.swift in Sources */,
 				A5CEA07D1A1399CA00E14103 /* VormingDetailsTableViewController.swift in Sources */,
 				0FA80B081A01350E008DB343 /* AppDelegate.swift in Sources */,
 				1BDDB9551A02D87F0007623D /* ContactpersoonNood.swift in Sources */,
+				0FD07EBF1A234DE1006A4E60 /* ContactpersoonNoodSQL.swift in Sources */,
 				A50740F61A1384EA00D01900 /* AfbeeldingenViewController.swift in Sources */,
 				0F92E3111A136B240005C86C /* InschrijvenVakantie3ViewController.swift in Sources */,
 				0F145EE41A1D2615003067EA /* MonitorRepository.swift in Sources */,
 				1B4D784F1A02893700E823E2 /* Registratie2ViewController.swift in Sources */,
 				1BDDB9471A02D8240007623D /* Vorming.swift in Sources */,
 				0F265EFA1A137CD1003F2699 /* InschrijvenVakantieSuccesvolViewController.swift in Sources */,
+				0FD07EB71A234A2E006A4E60 /* MonitorSQL.swift in Sources */,
 				A55321DF1A1C8258005146F8 /* SuccesvolNieuwWachtwoordViewController.swift in Sources */,
 				A5E8A6871A13AE1400DA861A /* InschrijvenVormingSuccesvolViewController.swift in Sources */,
 				1BFB1E591A0C0A6400E7B53F /* NieuwWachtwoordViewController.swift in Sources */,
 				A5CEA07B1A13998900E14103 /* VormingenTableViewController.swift in Sources */,
 				A5A158341A1A6A7600FEF51D /* ProfielenTableViewController.swift in Sources */,
+				0FD07EBD1A234D44006A4E60 /* VormingSQL.swift in Sources */,
 				0F4C2DCE1A1BE253008EDEA4 /* ActivityIndicatorViewController.swift in Sources */,
 				0F145EE21A1D25E4003067EA /* UserRepository.swift in Sources */,
 				A50740F81A1386D900D01900 /* AfbeeldingCollectionViewCell.swift in Sources */,
 				0F88A6C51A1F3BF20094D457 /* ParseData.swift in Sources */,
 				1BDDB9511A02D86F0007623D /* Voorkeur.swift in Sources */,
+				0FD07EC31A234F46006A4E60 /* InschrijvingVakantieSQL.swift in Sources */,
 				0F92E30F1A13697B0005C86C /* InschrijvenVakantie2ViewController.swift in Sources */,
 				A54E1B9E1A125E7C00C6BB95 /* ExtraTekstViewController.swift in Sources */,
 				1B10A3BD1A02622C008E225F /* VakantiesTableViewController.swift in Sources */,
@@ -579,6 +622,7 @@
 				0F2A819A1A091F7100F67A3B /* Regex.swift in Sources */,
 				A575A06C1A16463D00F6735A /* UitloggenViewController.swift in Sources */,
 				0F88A6C31A1F3B840094D457 /* SwiftData.swift in Sources */,
+				0FD07EC51A234FAB006A4E60 /* UserSQL.swift in Sources */,
 				0F92E30D1A1368A10005C86C /* InschrijvenVakantie1ViewController.swift in Sources */,
 				0FBEA1F41A0684FD005FF0D2 /* Date.swift in Sources */,
 				0F92E3131A136BD00005C86C /* InschrijvenVakantie4ViewController.swift in Sources */,
