@@ -48,7 +48,7 @@ class AfbeeldingSQL {
             //there was an error during the query, handle it here
         } else {
             for row in resultSet {
-                afbeelding = getA(row)
+                afbeelding = getAfbeelding(row)
                 afbeeldingen.append(afbeelding)
             }
         }

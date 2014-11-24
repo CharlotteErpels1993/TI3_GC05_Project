@@ -18,7 +18,7 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         checkConnectie()
         var activityIndicator = getActivityIndicatorView(self)
         
-        vakanties = parseData.getAllVakanties()
+        vakanties = parseData.getAlleVakanties()
         self.vakanties2 = self.vakanties
         self.tableView.reloadData()
         

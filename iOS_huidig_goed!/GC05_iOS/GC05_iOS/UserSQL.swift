@@ -55,7 +55,7 @@ class UserSQL {
             //there was an error during the query, handle it here
         } else {
             for row in resultSet {
-                user = getU(row)
+                user = getUser(row)
                 users.append(user)
             }
         }
