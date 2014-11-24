@@ -161,7 +161,8 @@ public class ProfielenOverzicht extends Activity /* implements SwipeRefreshLayou
                         map.setEmail((String) monitor.get("email"));
                         map.setGemeente((String) monitor.get("gemeente"));
                         map.setLinkFacebook((String) monitor.get("linkFacebook"));
-                        map.setGsm((String) monitor.get("telefoon"));
+                        map.setGsm((String) monitor.get("gsm"));
+                        map.setTelefoon((String) monitor.get("telefoon"));
                         map.setRijksregNr((String) monitor.get("rijksregisterNr"));
 
 

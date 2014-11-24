@@ -13,7 +13,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
+import com.parse.ParseException;
 import com.parse.ParseObject;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
+
+import java.util.List;
 
 
 public class ProfielEdit extends Activity {
@@ -73,13 +78,7 @@ public class ProfielEdit extends Activity {
             public void onClick(View view) {
                 isInternetPresent = cd.isConnectingToInternet();
 
-                Intent inte = new Intent(getApplicationContext(), navBarMainScreen.class);
-                inte.putExtra("naam", initieleNaam);
-                inte.putExtra("voornaam", initieleVoornaam);
-                inte.putExtra("facebook", initieleFacebook);
-                inte.putExtra("gsm", initieleGsm);
-                inte.putExtra("email", initieleGsm);
-                startActivity(inte);
+                terugSturenNaarProfielDetail(initieleNaam, initieleVoornaam, initieleEmail, initieleGsm, initieleFacebook);
             }
         });
 
@@ -97,8 +96,8 @@ public class ProfielEdit extends Activity {
         String naam, voornaam, email, gsm, facebook;
 
         // Store values at the time of the login attempt.
-        naam = txtNaam.getText().toString().toLowerCase();
-        voornaam = txtVoornaam.getText().toString().toLowerCase();
+        naam = txtNaam.getText().toString();
+        voornaam = txtVoornaam.getText().toString();
         email = txtEmail.getText().toString().toLowerCase();
         gsm = txtGSM.getText().toString();
         facebook = txtFacebook.getText().toString();
@@ -132,28 +131,50 @@ public class ProfielEdit extends Activity {
 
 
         if (cancel) {
-            // There was an error; don't attempt login and focus the first
-            // form field with an error.
             focusView.requestFocus();
         } else {
-            // Show a progress spinner, and kick off a background task to
-            // perform the user login attempt.
             opslaan(naam, voornaam ,email, gsm, facebook);
-            //Toast.makeText(getApplicationContext(), "Opgeslagen", Toast.LENGTH_SHORT).show();
-
         }
     }
 
     public void opslaan(String objnaam, String objvoornaam, String objemail, String objGSM, String objFB){
-        try{
-            //TODO: ParseObject ophalen, gegevens wijzigen indien nodig, opslaan en terug sturen
+        //eerst kijken of de gebruiker iets heeft gewijzigd, zo ja, sla alles op, zo niet, stuur direct door
+        if (isErIetsGewijzigd(objnaam, objvoornaam, objemail, objGSM, objFB)){
+            try{
+                ParseQuery<ParseObject> query = ParseQuery.getQuery("Monitor");
+                query.whereEqualTo("email", initieleEmail);
 
+                List<ParseObject> lijstObjecten = query.find();
+                if (lijstObjecten.size() != 1){
+                    throw new Exception();
+                }
+                ParseObject teVeranderenGebruiker = lijstObjecten.get(0);
+                teVeranderenGebruiker.put("email", objemail);
+                teVeranderenGebruiker.put("naam", objnaam);
+                teVeranderenGebruiker.put("voornaam", objvoornaam);
+                teVeranderenGebruiker.put("gsm", objGSM);
+                teVeranderenGebruiker.put("linkFacebook", objFB);
+                teVeranderenGebruiker.saveInBackground();
 
+                ParseUser.getCurrentUser().setEmail(objemail);
+                ParseUser.getCurrentUser().setUsername(objemail);
+                ParseUser.getCurrentUser().saveInBackground();
+                //TODO: extra save?
 
+                terugSturenNaarProfielDetail(objnaam, objvoornaam, objemail, objGSM, objFB);
+
+            }
+            catch(ParseException e){
+                Toast.makeText(getApplicationContext(), "Er is een fout opgetreden. Onze excuses voor het ongemak.", Toast.LENGTH_SHORT);
+            }
+            catch(Exception e){
+                Toast.makeText(getApplicationContext(), "Er is een fout opgetreden. Onze excuses voor het ongemak.", Toast.LENGTH_SHORT);
+            }
         }
-        catch(Exception e){
-            Toast.makeText(getApplicationContext(), "Er is een fout opgetreden. Onze excuses voor het ongemak.", Toast.LENGTH_SHORT);
+        else{
+            terugSturenNaarProfielDetail(objnaam, objvoornaam, objemail, objGSM, objFB);
         }
+
     }
 
     public void clearErrors(){
@@ -162,6 +183,31 @@ public class ProfielEdit extends Activity {
         txtGSM.setError(null);
         txtEmail.setError(null);
         txtFacebook.setError(null);
+    }
+
+    public void terugSturenNaarProfielDetail(String objnaam, String objvoornaam, String objemail, String objGSM, String objFB){
+        Intent inte = new Intent(getApplicationContext(), ProfielDetail.class);
+        inte.putExtra("naam", objnaam);
+        inte.putExtra("voornaam", objvoornaam);
+        inte.putExtra("facebook", objFB);
+        inte.putExtra("gsm", objGSM);
+        inte.putExtra("email", objemail);
+        startActivity(inte);
+    }
+
+    public boolean isErIetsGewijzigd(String nieuweNaam, String nieuweVoornaam, String nieuweEmail, String nieuweGSM, String nieuweFB){
+        if (!nieuweNaam.equals(initieleNaam))
+            return true;
+        if (!nieuweVoornaam.equals(initieleVoornaam))
+            return true;
+        if (!nieuweEmail.equals(initieleEmail))
+            return true;
+        if (!nieuweGSM.equals(initieleGsm))
+            return true;
+        if (!nieuweFB.equals(initieleFacebook))
+            return true;
+
+        return false;
     }
 
 

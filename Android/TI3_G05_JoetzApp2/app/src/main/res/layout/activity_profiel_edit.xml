@@ -60,7 +60,6 @@ xmlns:android="http://schemas.android.com/apk/res/android">
 
     <EditText
         android:id="@+id/Email"
-        android:inputType="number"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/labelVoorEmail"
@@ -100,7 +99,6 @@ xmlns:android="http://schemas.android.com/apk/res/android">
 
     <EditText
         android:id="@+id/Facebook"
-        android:inputType="number"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/labelVoorFacebook"
