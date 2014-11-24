@@ -120,7 +120,24 @@ class SidebarTableViewController: UITableViewController {
                     destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
                     break
                 case 0:
-                    destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Uitloggen") as UIViewController
+                    hideSideMenuView()
+                    destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Profiel") as UIViewController
+                    let alertController = UIAlertController(title: "Uitloggen", message: "Wilt u zeker uitloggen?", preferredStyle: .ActionSheet)
+                    
+                    let callAction = UIAlertAction(title: "Uitloggen", style: .Default, handler: {
+                        action in
+                        PFUser.logOut()
+                        destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
+                        self.sideMenuController()?.setContentViewController(destViewController)
+                        self.hideSideMenuView()
+                        }
+                    )
+                    alertController.addAction(callAction)
+                    
+                    let cancelAction = UIAlertAction(title: "Annuleer", style: .Default, handler: nil)
+                    alertController.addAction(cancelAction)
+                    
+                    presentViewController(alertController, animated: true, completion: nil)
                     break
                 case 2:
                     destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vormingen") as UIViewController
@@ -145,7 +162,24 @@ class SidebarTableViewController: UITableViewController {
                     destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
                     break
                 case 0:
-                    destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Uitloggen") as UIViewController
+                    hideSideMenuView()
+                    destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
+                    let alertController = UIAlertController(title: "Uitloggen", message: "Wilt u zeker uitloggen?", preferredStyle: .ActionSheet)
+                    
+                    let callAction = UIAlertAction(title: "Uitloggen", style: .Default, handler: {
+                        action in
+                        PFUser.logOut()
+                        destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
+                        self.sideMenuController()?.setContentViewController(destViewController)
+                        self.hideSideMenuView()
+                        }
+                    )
+                    alertController.addAction(callAction)
+                    
+                    let cancelAction = UIAlertAction(title: "Annuleer", style: .Default, handler: nil)
+                    alertController.addAction(cancelAction)
+                    
+                    presentViewController(alertController, animated: true, completion: nil)
                     break
                 default:
                     destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController

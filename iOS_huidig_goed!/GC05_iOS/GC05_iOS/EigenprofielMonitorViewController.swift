@@ -17,6 +17,7 @@ class EigenprofielMonitorViewController: UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        hideSideMenuView()
         activityIndicatorView.startAnimating()
         var query = PFQuery(className: "Monitor")
         query.whereKey("email", containsString: PFUser.currentUser().email)

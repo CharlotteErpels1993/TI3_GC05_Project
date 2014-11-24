@@ -4,11 +4,11 @@ class Vorming: Activiteit
 {
     var periodes: [String]?
     
-    var prijs: Double? {
+    var prijs: Double? /*{
         willSet {
             assert(checkPrijsValid(newValue!), "Prijs moet een geldig bedrag zijn!")
         }
-    }
+    }*/
     
     var criteriaDeelnemers: String?
     var websiteLocatie: String?

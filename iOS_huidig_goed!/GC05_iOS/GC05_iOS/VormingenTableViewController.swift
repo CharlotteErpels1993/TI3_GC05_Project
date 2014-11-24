@@ -22,7 +22,7 @@ class VormingenTableViewController: UITableViewController, UISearchBarDelegate, 
         super.viewDidLoad()
         
         var activityIndicator = getActivityIndicatorView(self)
-        
+        VormingSQL.vulVormingTableOp()
         //zoekVormingen()
         self.vormingen = ParseData.getAlleVormingen()
         //self.vormingen2 = self.vormingen

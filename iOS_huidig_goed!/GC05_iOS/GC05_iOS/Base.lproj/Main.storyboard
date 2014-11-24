@@ -2727,56 +2727,6 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
             </objects>
             <point key="canvasLocation" x="1296" y="1885"/>
         </scene>
-        <!--Uitloggen View Controller-->
-        <scene sceneID="M8d-Hh-jc9">
-            <objects>
-                <viewController storyboardIdentifier="Uitloggen" id="Wvb-DA-A5t" customClass="UitloggenViewController" customModule="JOETZ" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="OGm-rh-cBc"/>
-                        <viewControllerLayoutGuide type="bottom" id="mlT-kh-mqn"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="zDq-jS-Eug">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bent u zeker dat u wilt uitloggen?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K70-JV-df8">
-                                <rect key="frame" x="172" y="289" width="257" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YxN-7G-2zz">
-                                <rect key="frame" x="267" y="317" width="66" height="30"/>
-                                <state key="normal" title="Uitloggen">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="uitloggen:" destination="Wvb-DA-A5t" eventType="touchUpInside" id="esd-PC-7f2"/>
-                                    <segue destination="xj6-b1-6XR" kind="show" identifier="overzichtVakanties" id="wxv-CA-5fs"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="centerX" secondItem="YxN-7G-2zz" secondAttribute="centerX" id="61a-iV-axi"/>
-                            <constraint firstAttribute="centerY" secondItem="K70-JV-df8" secondAttribute="centerY" constant="0.5" id="H19-SB-uZm"/>
-                            <constraint firstItem="YxN-7G-2zz" firstAttribute="top" secondItem="K70-JV-df8" secondAttribute="bottom" constant="7.5" id="Vqy-Jl-j59"/>
-                            <constraint firstAttribute="centerX" secondItem="K70-JV-df8" secondAttribute="centerX" constant="-0.5" id="mWf-WZ-dDn"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="D3R-BB-nlj">
-                        <barButtonItem key="leftBarButtonItem" title="Menu" id="dNE-6b-o5f">
-                            <connections>
-                                <action selector="toggle:" destination="Wvb-DA-A5t" id="Vgt-HP-Ufx"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="uqi-R7-jvE" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1955" y="1885"/>
-        </scene>
         <!--Registreren-->
         <scene sceneID="vTF-1M-xK9">
             <objects>
@@ -3384,8 +3334,8 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
         <image name="Klevertje.png" width="615" height="427"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="XVa-z3-f9o"/>
         <segue reference="xe1-I8-Pkw"/>
         <segue reference="97b-6M-xjB"/>
-        <segue reference="XVa-z3-f9o"/>
     </inferredMetricsTieBreakers>
 </document>
