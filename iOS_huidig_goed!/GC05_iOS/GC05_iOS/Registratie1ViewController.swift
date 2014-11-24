@@ -95,7 +95,7 @@ class Registratie1ViewController: ResponsiveTextFieldViewController
                 }
             }
         }
-        registratie3ViewController.ouder = ouder
+        registratie2ViewController.ouder = ouder
         } else if segue.identifier == "gaTerug" {
                 let vakantiesViewController = segue.destinationViewController as VakantiesTableViewController
             }

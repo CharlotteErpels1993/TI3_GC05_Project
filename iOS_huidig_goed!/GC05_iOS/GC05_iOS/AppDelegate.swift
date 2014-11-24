@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil))
             alert.addAction(UIAlertAction(title: "Ga naar instellingen", style: .Default, handler: { action in
                 switch action.style{
-                case .Default:
+                default:
                     UIApplication.sharedApplication().openURL(NSURL(string:UIApplicationOpenSettingsURLString)!);
                 }
             }))
