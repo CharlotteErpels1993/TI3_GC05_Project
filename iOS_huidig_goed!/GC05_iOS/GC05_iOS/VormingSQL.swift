@@ -71,7 +71,7 @@ struct /*class*/ VormingSQL {
     
     static func getAlleVormingen() -> [Vorming] {
         
-        var vormingen: [Vorming] = []
+        /*var vormingen: [Vorming] = []
         var vorming: Vorming = Vorming(id: "test")
         
         let (resultSet, err) = SD.executeQuery("SELECT * FROM Vorming")
@@ -82,6 +82,22 @@ struct /*class*/ VormingSQL {
                 for row in resultSet {
                     vorming = getVorming(row)
                     vormingen.append(vorming)
+            }
+        }
+        
+        return vormingen*/
+        
+        var vormingen:[Vorming] = []
+        var vorming: Vorming = Vorming(id: "test")
+        
+        let (resultSet, err) = SD.executeQuery("SELECT * FROM Vorming")
+        
+        if err != nil {
+            //there was an error during the query, handle it here
+        } else {
+            for row in resultSet {
+                vorming = getVorming(row)
+                vormingen.append(vorming)
             }
         }
         
@@ -123,10 +139,9 @@ struct /*class*/ VormingSQL {
         if let betalingswijze = row["betalingswijze"]?.asString() {
             vorming.betalingWijze = betalingswijze
         }
-        /* inbegrepenInPrijs staat niet in model klasse?
         if let inbegrepenInPrijs = row["inbegrepenInPrijs"]?.asString() {
-        vorming. = basisPrijs
-        }*/
+        vorming.inbegrepenPrijs = inbegrepenInPrijs
+        }
         
         return vorming
     }

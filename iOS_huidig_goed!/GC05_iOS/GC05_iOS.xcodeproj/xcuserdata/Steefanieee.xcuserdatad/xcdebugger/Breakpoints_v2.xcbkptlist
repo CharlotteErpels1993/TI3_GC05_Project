@@ -1179,5 +1179,349 @@
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GC05_iOS/VormingenTableViewController.swift"
+            timestampString = "438533837.077885"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "5"
+            endingLineNumber = "5"
+            landmarkName = "VormingenTableViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "JOETZ.VormingenTableViewController.vormingen.getter : Swift.Array&lt;JOETZ.Vorming&gt;"
+                  moduleName = "JOETZ"
+                  urlString = "file:///Volumes/HDD/Documenten%20/TI3_GC05_Project/iOS_huidig_goed!/GC05_iOS/GC05_iOS/VormingenTableViewController.swift"
+                  timestampString = "438533837.107182"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "5"
+                  endingLineNumber = "5"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "JOETZ.VormingenTableViewController.vormingen.setter : Swift.Array&lt;JOETZ.Vorming&gt;"
+                  moduleName = "JOETZ"
+                  urlString = "file:///Volumes/HDD/Documenten%20/TI3_GC05_Project/iOS_huidig_goed!/GC05_iOS/GC05_iOS/VormingenTableViewController.swift"
+                  timestampString = "438533837.107338"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "5"
+                  endingLineNumber = "5"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "JOETZ.VormingenTableViewController.vormingen.materializeForSet : Swift.Array&lt;JOETZ.Vorming&gt;"
+                  moduleName = "JOETZ"
+                  urlString = "file:///Volumes/HDD/Documenten%20/TI3_GC05_Project/iOS_huidig_goed!/GC05_iOS/GC05_iOS/VormingenTableViewController.swift"
+                  timestampString = "438533837.107434"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "5"
+                  endingLineNumber = "5"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "JOETZ.VormingenTableViewController.init (JOETZ.VormingenTableViewController.Type)(style : C.UITableViewStyle) -&gt; JOETZ.VormingenTableViewController"
+                  moduleName = "JOETZ"
+                  urlString = "file:///Volumes/HDD/Documenten%20/TI3_GC05_Project/iOS_huidig_goed!/GC05_iOS/GC05_iOS/VormingenTableViewController.swift"
+                  timestampString = "438533837.107524"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "5"
+                  endingLineNumber = "5"
+                  offsetFromSymbolStart = "52">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "JOETZ.VormingenTableViewController.init (JOETZ.VormingenTableViewController.Type)(nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;ObjectiveC.NSBundle&gt;) -&gt; JOETZ.VormingenTableViewController"
+                  moduleName = "JOETZ"
+                  urlString = "file:///Volumes/HDD/Documenten%20/TI3_GC05_Project/iOS_huidig_goed!/GC05_iOS/GC05_iOS/VormingenTableViewController.swift"
+                  timestampString = "438533837.107619"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "5"
+                  endingLineNumber = "5"
+                  offsetFromSymbolStart = "47">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "JOETZ.VormingenTableViewController.init (JOETZ.VormingenTableViewController.Type)() -&gt; JOETZ.VormingenTableViewController"
+                  moduleName = "JOETZ"
+                  urlString = "file:///Volumes/HDD/Documenten%20/TI3_GC05_Project/iOS_huidig_goed!/GC05_iOS/GC05_iOS/VormingenTableViewController.swift"
+                  timestampString = "438533837.107705"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "5"
+                  endingLineNumber = "5"
+                  offsetFromSymbolStart = "48">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "JOETZ.VormingenTableViewController.init (JOETZ.VormingenTableViewController.Type)(coder : ObjectiveC.NSCoder) -&gt; JOETZ.VormingenTableViewController"
+                  moduleName = "JOETZ"
+                  urlString = "file:///Volumes/HDD/Documenten%20/TI3_GC05_Project/iOS_huidig_goed!/GC05_iOS/GC05_iOS/VormingenTableViewController.swift"
+                  timestampString = "438533837.10779"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "5"
+                  endingLineNumber = "5"
+                  offsetFromSymbolStart = "52">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GC05_iOS/VormingenTableViewController.swift"
+            timestampString = "438533857.661961"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GC05_iOS/VormingenTableViewController.swift"
+            timestampString = "438533894.201995"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "4"
+            endingLineNumber = "4"
+            landmarkName = "VormingenTableViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "JOETZ.VormingenTableViewController.vormingen.getter : Swift.Array&lt;JOETZ.Vorming&gt;"
+                  moduleName = "JOETZ"
+                  urlString = "file:///Volumes/HDD/Documenten%20/TI3_GC05_Project/iOS_huidig_goed!/GC05_iOS/GC05_iOS/VormingenTableViewController.swift"
+                  timestampString = "438533894.204403"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "5"
+                  endingLineNumber = "5"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "JOETZ.VormingenTableViewController.vormingen.setter : Swift.Array&lt;JOETZ.Vorming&gt;"
+                  moduleName = "JOETZ"
+                  urlString = "file:///Volumes/HDD/Documenten%20/TI3_GC05_Project/iOS_huidig_goed!/GC05_iOS/GC05_iOS/VormingenTableViewController.swift"
+                  timestampString = "438533894.20458"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "5"
+                  endingLineNumber = "5"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "JOETZ.VormingenTableViewController.vormingen.materializeForSet : Swift.Array&lt;JOETZ.Vorming&gt;"
+                  moduleName = "JOETZ"
+                  urlString = "file:///Volumes/HDD/Documenten%20/TI3_GC05_Project/iOS_huidig_goed!/GC05_iOS/GC05_iOS/VormingenTableViewController.swift"
+                  timestampString = "438533894.204711"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "5"
+                  endingLineNumber = "5"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "JOETZ.VormingenTableViewController.init (JOETZ.VormingenTableViewController.Type)(style : C.UITableViewStyle) -&gt; JOETZ.VormingenTableViewController"
+                  moduleName = "JOETZ"
+                  urlString = "file:///Volumes/HDD/Documenten%20/TI3_GC05_Project/iOS_huidig_goed!/GC05_iOS/GC05_iOS/VormingenTableViewController.swift"
+                  timestampString = "438533894.204838"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "5"
+                  endingLineNumber = "5"
+                  offsetFromSymbolStart = "52">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "JOETZ.VormingenTableViewController.init (JOETZ.VormingenTableViewController.Type)(nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;ObjectiveC.NSBundle&gt;) -&gt; JOETZ.VormingenTableViewController"
+                  moduleName = "JOETZ"
+                  urlString = "file:///Volumes/HDD/Documenten%20/TI3_GC05_Project/iOS_huidig_goed!/GC05_iOS/GC05_iOS/VormingenTableViewController.swift"
+                  timestampString = "438533894.204956"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "5"
+                  endingLineNumber = "5"
+                  offsetFromSymbolStart = "47">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "JOETZ.VormingenTableViewController.init (JOETZ.VormingenTableViewController.Type)() -&gt; JOETZ.VormingenTableViewController"
+                  moduleName = "JOETZ"
+                  urlString = "file:///Volumes/HDD/Documenten%20/TI3_GC05_Project/iOS_huidig_goed!/GC05_iOS/GC05_iOS/VormingenTableViewController.swift"
+                  timestampString = "438533894.205072"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "5"
+                  endingLineNumber = "5"
+                  offsetFromSymbolStart = "48">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "JOETZ.VormingenTableViewController.init (JOETZ.VormingenTableViewController.Type)(coder : ObjectiveC.NSCoder) -&gt; JOETZ.VormingenTableViewController"
+                  moduleName = "JOETZ"
+                  urlString = "file:///Volumes/HDD/Documenten%20/TI3_GC05_Project/iOS_huidig_goed!/GC05_iOS/GC05_iOS/VormingenTableViewController.swift"
+                  timestampString = "438533894.205193"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "5"
+                  endingLineNumber = "5"
+                  offsetFromSymbolStart = "52">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GC05_iOS/VormingSQL.swift"
+            timestampString = "438534034.075488"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "vulVormingTableOp()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GC05_iOS/VormingenTableViewController.swift"
+            timestampString = "438534130.54045"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GC05_iOS/VormingSQL.swift"
+            timestampString = "438534667.507764"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
+            landmarkName = "getAlleVormingen()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GC05_iOS/VormingSQL.swift"
+            timestampString = "438534271.930379"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
+            landmarkName = "getAlleVormingen()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GC05_iOS/VormingSQL.swift"
+            timestampString = "438534476.313087"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "vulVormingTableOp()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GC05_iOS/VormingSQL.swift"
+            timestampString = "438534483.296912"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "vulVormingTableOp()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

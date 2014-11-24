@@ -25,7 +25,7 @@ class VormingenTableViewController: UITableViewController, UISearchBarDelegate, 
         VormingSQL.vulVormingTableOp()
         //zoekVormingen()
         self.vormingen = ParseData.getAlleVormingen()
-        //self.vormingen2 = self.vormingen
+        self.vormingen2 = self.vormingen
         self.tableView.reloadData()
         
         zoekbar.showsScopeBar = true
