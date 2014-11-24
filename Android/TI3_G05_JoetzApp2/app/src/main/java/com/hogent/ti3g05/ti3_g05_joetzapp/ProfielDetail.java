@@ -116,6 +116,7 @@ public class ProfielDetail extends Activity {
         int id = item.getItemId();
         if (id == R.id.backMenu) {
             Intent intent1 = new Intent(this, ProfielenOverzicht.class);
+            intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent1);
 
             overridePendingTransition(R.anim.left_in, R.anim.right_out);

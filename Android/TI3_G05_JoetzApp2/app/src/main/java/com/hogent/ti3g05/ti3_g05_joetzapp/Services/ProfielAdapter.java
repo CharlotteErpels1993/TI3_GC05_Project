@@ -119,6 +119,7 @@ public class ProfielAdapter extends ArrayAdapter<Vorming> implements Filterable 
                 intent.putExtra("facebook", profielen.get(position).getLinkFacebook());
                 intent.putExtra("gsm", profielen.get(position).getGsm());
                 intent.putExtra("email", profielen.get(position).getEmail());
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
             }
         });

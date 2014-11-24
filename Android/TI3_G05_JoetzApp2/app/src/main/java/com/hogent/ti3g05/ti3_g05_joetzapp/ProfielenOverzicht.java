@@ -313,4 +313,11 @@ public class ProfielenOverzicht extends Activity /* implements SwipeRefreshLayou
 
         return super.onOptionsItemSelected(item);
     }
+    @Override
+    public void onBackPressed() {
+        Intent setIntent = new Intent(ProfielenOverzicht.this, navBarMainScreen.class);
+        setIntent.addCategory(Intent.CATEGORY_HOME);
+        setIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(setIntent);
+    }
 }

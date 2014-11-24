@@ -7,6 +7,7 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
@@ -30,6 +31,7 @@ public class navBarMainScreen extends Activity {
 
     private Fragment fragment = new activiteit_overzicht();
 
+    private boolean doubleBackToExitPressedOnce = false;
     // Within which the entire activity is enclosed
     private DrawerLayout mDrawerLayout;
 
@@ -319,5 +321,24 @@ public class navBarMainScreen extends Activity {
         }
 
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed();
+            return;
+        }
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this,"Ben je zeker dat je de app wil sluiten?",Toast.LENGTH_SHORT).show();
+
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce=false;
+            }
+        }, 2000);
     }
 }

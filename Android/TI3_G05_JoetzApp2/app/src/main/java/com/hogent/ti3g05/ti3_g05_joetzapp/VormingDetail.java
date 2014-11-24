@@ -105,8 +105,8 @@ public class VormingDetail extends Activity {
         int id = item.getItemId();
         if (id == R.id.backMenu) {
             Intent intent1 = new Intent(this, Vormingen_Overzicht.class);
-            startActivity(intent1);
 
+            startActivity(intent1);
             overridePendingTransition(R.anim.left_in, R.anim.right_out);
         }
 

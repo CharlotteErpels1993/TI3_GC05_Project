@@ -225,7 +225,7 @@ public class activiteit_detail extends Activity {
             terugdatum = cal.get(Calendar.DAY_OF_MONTH) + "/" + cal.get(Calendar.MONTH) + "/" + cal.get(Calendar.YEAR);
         }
         catch(java.text.ParseException pe){
-            Toast.makeText(getApplicationContext(), pe.getMessage(), Toast.LENGTH_SHORT);
+            Toast.makeText(getApplicationContext(), pe.getMessage(), Toast.LENGTH_SHORT).show();
         }
 
 
@@ -326,6 +326,7 @@ public class activiteit_detail extends Activity {
         int id = item.getItemId();
         if (id == R.id.backMenu) {
             Intent intent1 = new Intent(this, navBarMainScreen.class);
+            intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent1);
 
             overridePendingTransition(R.anim.left_in, R.anim.right_out);

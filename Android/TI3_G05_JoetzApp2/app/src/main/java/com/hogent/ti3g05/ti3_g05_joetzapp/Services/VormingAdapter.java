@@ -122,6 +122,7 @@ public class VormingAdapter extends ArrayAdapter<Vorming> implements Filterable 
                 intent.putExtra("objectId", vormingen.get(position).getActiviteitID());
                 List<String> voorlopigeLijstVormingen = vormingen.get(position).getPeriodes();
                 intent.putExtra("periodes", voorlopigeLijstVormingen.toArray(new String[voorlopigeLijstVormingen.size()]));
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
             }
         });
