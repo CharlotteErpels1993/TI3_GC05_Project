@@ -86,7 +86,7 @@ class InloggenViewController: UIViewController
         if controleerRodeBordersAanwezig() == true {
             foutBoxOproepen("Fout", "Gelieve de velden correct in te vullen!", self)
         } else {
-            /*var type: String = zoekenMatchMonitorOfOuder(email, wachtwoord: wachtwoord)
+            var type: String = zoekenMatchMonitorOfOuder(email, wachtwoord: wachtwoord)
             
             if type == "monitor" {
                 var monitorPF = queryMonitor.getFirstObject()
@@ -104,7 +104,7 @@ class InloggenViewController: UIViewController
                 txtEmail.text = ""
                 txtWachtwoord.text = ""
                 foutBoxOproepen("Fout", "Foutieve combinatie e-mail & wachtwoord", self)
-            }*/
+            }
         }
         
         /*if veldenZijnIngevuld(email, wachtwoord: wachtwoord) {
@@ -198,7 +198,7 @@ class InloggenViewController: UIViewController
         }
     }
     
-    /*private func zoekenMatchMonitorOfOuder(email: String, wachtwoord: String) -> String {
+    private func zoekenMatchMonitorOfOuder(email: String, wachtwoord: String) -> String {
         if queryBevatRecords(email, wachtwoord: wachtwoord, query: queryMonitor) {
             return "monitor"
         } else if queryBevatRecords(email, wachtwoord: wachtwoord, query: queryOuder) {
@@ -216,5 +216,5 @@ class InloggenViewController: UIViewController
         } else {
             return false
         }
-    }*/
+    }
 }

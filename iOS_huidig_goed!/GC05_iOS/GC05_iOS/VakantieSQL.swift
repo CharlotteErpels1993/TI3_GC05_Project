@@ -11,7 +11,7 @@ struct /*class*/ VakantieSQL {
             "inbegrepenPrijs": .StringVal, "doelgroep": .StringVal, "maxAantalDeelnemers":
                 .IntVal, "sterPrijs1ouder": .StringVal, "sterPrijs2ouders": .DoubleVal]) {
                     
-                    //there was an error
+                    print("error bij create vakantie table")
                     
         } else {
             //no error
