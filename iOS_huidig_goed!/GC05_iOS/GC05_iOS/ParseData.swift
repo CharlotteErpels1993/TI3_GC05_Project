@@ -98,9 +98,10 @@ struct /*class*/ ParseData {
         
         if response.1 == nil {
             //geen error
-            
             for table in response.0 {
-                let err = SD.deleteTable(table)
+                if table != "sqlite_sequence" {
+                    let err = SD.deleteTable(table)
+                }
             }
         }
     }
