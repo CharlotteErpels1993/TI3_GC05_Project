@@ -93,11 +93,11 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
             vakantieDetailsController.vakantie = selectedVakantie as Vakantie
         } else if segue.identifier == "inloggen" {
             let inloggenViewController = segue.destinationViewController as InloggenViewController
-        } else if segue.identifier == "toonVakantie" {
+        } /*else if segue.identifier == "toonVakantie" {
             let vakantieDetailsController = segue.destinationViewController as VakantieDetailsTableViewController
             let selectedVakantie = vakanties[tableView.indexPathForSelectedRow()!.row]
             vakantieDetailsController.vakantie = selectedVakantie
-        }
+        }*/
         
     }
     
