@@ -19,6 +19,7 @@
 		0F454DDA1A1D2F7E00904529 /* ContactpersoonRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F454DD91A1D2F7E00904529 /* ContactpersoonRepository.swift */; };
 		0F4C2DCE1A1BE253008EDEA4 /* ActivityIndicatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4C2DCD1A1BE253008EDEA4 /* ActivityIndicatorViewController.swift */; };
 		0F6254971A0CCBA300BDEF38 /* FoutBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6254961A0CCBA300BDEF38 /* FoutBox.swift */; };
+		0F86C8661A23C19F00FA2555 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F86C8651A23C19F00FA2555 /* StringExtension.swift */; };
 		0F88A6C01A1F37C30094D457 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F88A6BF1A1F37C30094D457 /* libsqlite3.dylib */; };
 		0F88A6C31A1F3B840094D457 /* SwiftData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F88A6C21A1F3B840094D457 /* SwiftData.swift */; };
 		0F88A6C51A1F3BF20094D457 /* ParseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F88A6C41A1F3BF20094D457 /* ParseData.swift */; };
@@ -124,6 +125,7 @@
 		0F454DD91A1D2F7E00904529 /* ContactpersoonRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactpersoonRepository.swift; sourceTree = "<group>"; };
 		0F4C2DCD1A1BE253008EDEA4 /* ActivityIndicatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorViewController.swift; sourceTree = "<group>"; };
 		0F6254961A0CCBA300BDEF38 /* FoutBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoutBox.swift; sourceTree = "<group>"; };
+		0F86C8651A23C19F00FA2555 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		0F88A6BF1A1F37C30094D457 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		0F88A6C21A1F3B840094D457 /* SwiftData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftData.swift; sourceTree = "<group>"; };
 		0F88A6C41A1F3BF20094D457 /* ParseData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseData.swift; sourceTree = "<group>"; };
@@ -428,6 +430,7 @@
 				0F6254961A0CCBA300BDEF38 /* FoutBox.swift */,
 				0F05F22D1A13A73000CFE0A1 /* NSDateExtension.swift */,
 				0F2A81991A091F7100F67A3B /* Regex.swift */,
+				0F86C8651A23C19F00FA2555 /* StringExtension.swift */,
 			);
 			name = Hulp;
 			sourceTree = "<group>";
@@ -571,6 +574,7 @@
 				1BDDB9531A02D8770007623D /* Deelnemer.swift in Sources */,
 				1B4D78531A028A8B00E823E2 /* RegistratieSuccesvolViewController.swift in Sources */,
 				1BFC33401A066A87009CA8EB /* VakantieCell.swift in Sources */,
+				0F86C8661A23C19F00FA2555 /* StringExtension.swift in Sources */,
 				A512381B1A1630D1002242C6 /* SidebarTableViewController.swift in Sources */,
 				A5A158361A1A6AAB00FEF51D /* ProfielDetailsTableViewController.swift in Sources */,
 				0FD07EB91A234C41006A4E60 /* VoorkeurSQL.swift in Sources */,
