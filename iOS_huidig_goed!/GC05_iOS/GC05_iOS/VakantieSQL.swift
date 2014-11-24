@@ -44,6 +44,7 @@ struct /*class*/ VakantieSQL {
         var sterPrijs2ouders: Double = 0.0
         
         for vakantie in vakanties {
+            
             objectId = vakantie.objectId as String
             titel = vakantie["titel"] as String
             locatie = vakantie["locatie"] as String
@@ -61,9 +62,12 @@ struct /*class*/ VakantieSQL {
             sterPrijs1ouder = vakantie["sterPrijs1ouder"] as Double
             sterPrijs2ouders = vakantie["sterPrijs2ouders"] as Double
             
-            if let err = SD.executeChange("INSERT INTO Vakantie (objectId, titel, locatie, korteBeschrijving, vertrekdatum, terugkeerdatum, aantalDagenNachten, vervoerwijze, formule, basisPrijs, bondMoysonLedenPrijs, inbegrepenPrijs, doelgroep, maxAantalDeelnemers, sterPrijs1ouder, sterPrijs2ouders) VALUES ('\(objectId)', '\(titel)', '\(locatie)', '\(korteBeschrijving)', '\(vertrekdatum)', '\(terugkeerdatum)', '\(aantalDagenNachten)', '\(vervoerwijze)', '\(formule)', '\(basisPrijs)', '\(bondMoysonLedenPrijs)', '\(inbegrepenPrijs)', '\(doelgroep)', '\(maxAantalDeelnemers)', '\(sterPrijs1ouder)', '\(sterPrijs2ouders)')") {
-                //there was an error during the insert, handle it here
-            } else {
+            if let err = SD.executeChange("INSERT INTO Vakantie (objectId, titel, locatie, korteBeschrijving, vertrekdatum, terugkeerdatum, aantalDagenNachten, vervoerwijze, formule, basisPrijs, bondMoysonLedenPrijs, inbegrepenPrijs, doelgroep, maxAantalDeelnemers, sterPrijs1ouder, sterPrijs2ouders) VALUES ('\(objectId)', '\(titel)', '\(locatie)', '\(korteBeschrijving)', '\(vertrekdatum)', '\(terugkeerdatum)', '\(aantalDagenNachten)', '\(vervoerwijze)', '\(formule)', '\(basisPrijs)', '\(bondMoysonLedenPrijs)', '\(inbegrepenPrijs)', '\(doelgroep)', '\(maxAantalDeelnemers)', '\(sterPrijs1ouder)', '\(sterPrijs2ouders)')")
+            {
+                println("ERROR: error tijdens toevoegen van nieuwe vakantie in table Vakantie")
+            }
+            else
+            {
                 //no error, the row was inserted successfully
             }
             
@@ -77,9 +81,12 @@ struct /*class*/ VakantieSQL {
         
         let (resultSet, err) = SD.executeQuery("SELECT * FROM Vakantie")
         
-        if err != nil {
-            //there was an error during the query, handle it here
-        } else {
+        if err != nil
+        {
+            println("ERROR: error tijdens ophalen van alle vakanties uit table Vakantie")
+        }
+        else
+        {
             for row in resultSet {
                 vakantie = getVakantie(row)
                 vakanties.append(vakantie)
