@@ -124,6 +124,7 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         parseData.deleteAllTables()
         parseData.createDatabase()
         self.refreshControl?.endRefreshing()
+        viewDidLoad()
         //viewDidLoad()
     }
 }
