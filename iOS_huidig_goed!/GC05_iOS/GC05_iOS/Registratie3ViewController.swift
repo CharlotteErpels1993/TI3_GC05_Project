@@ -123,8 +123,12 @@ class Registratie3ViewController: ResponsiveTextFieldViewController
     
     func settenGegevens() {
         ouder.email = txtEmail.text
+        
+        // ENCRYPTEREN
+        
         ouder.wachtwoord = txtWachtwoord.text
     }
+
     
     func checkPatternEmail(email: String) -> Bool {
         if countElements(email) == 0 {
