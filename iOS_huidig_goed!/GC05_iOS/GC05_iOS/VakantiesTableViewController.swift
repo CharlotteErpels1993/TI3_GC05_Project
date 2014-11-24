@@ -15,7 +15,7 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        checkConnectie()
+        //checkConnectie()
         var activityIndicator = getActivityIndicatorView(self)
         
         vakanties = ParseData.getAlleVakanties()
