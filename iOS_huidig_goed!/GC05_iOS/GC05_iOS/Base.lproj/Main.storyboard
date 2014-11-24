@@ -1725,6 +1725,28 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                             <segue destination="PFk-dV-vV6" kind="show" identifier="betalingsWijzeVorming" id="C1a-7e-WRD"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="60" id="9i3-nt-hx0">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9i3-nt-hx0" id="gYL-qR-Ggf">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Inbegrepen prijs" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J8L-ll-7FX">
+                                                    <rect key="frame" x="8" y="11" width="551" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="J8L-ll-7FX" firstAttribute="leading" secondItem="gYL-qR-Ggf" secondAttribute="leadingMargin" id="CMm-KE-XII"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="J8L-ll-7FX" secondAttribute="trailing" id="eGr-jB-oI6"/>
+                                                <constraint firstItem="J8L-ll-7FX" firstAttribute="top" secondItem="gYL-qR-Ggf" secondAttribute="topMargin" constant="3" id="pWg-ma-KJX"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="PFk-dV-vV6" kind="show" identifier="inbegrepenPrijs" id="XVa-z3-f9o"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="Periodes" id="jtS-eT-w17">
@@ -1790,6 +1812,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                     <connections>
                         <outlet property="betalingsWijzeLabel" destination="B0n-BH-0rG" id="3Qv-Ro-Up8"/>
                         <outlet property="criteriaDeelnemersLabel" destination="SGa-yW-lPC" id="Ovu-HS-d4F"/>
+                        <outlet property="inbegrepenPrijsLabel" destination="J8L-ll-7FX" id="ECq-uN-362"/>
                         <outlet property="korteBeschrijvingLabel" destination="UIJ-wd-10r" id="IcK-2M-TGY"/>
                         <outlet property="locatieLabel" destination="hCk-Oc-L8l" id="FCf-Xs-vdA"/>
                         <outlet property="periodesLabel" destination="hyk-dK-1fD" id="6zA-OR-0KI"/>
@@ -3362,7 +3385,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="xe1-I8-Pkw"/>
-        <segue reference="n6i-tz-46X"/>
         <segue reference="97b-6M-xjB"/>
+        <segue reference="XVa-z3-f9o"/>
     </inferredMetricsTieBreakers>
 </document>

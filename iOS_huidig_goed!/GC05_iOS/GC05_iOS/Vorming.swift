@@ -14,7 +14,7 @@ class Vorming: Activiteit
     var websiteLocatie: String?
     var tips: String?
     var betalingWijze: String?
-    
+    var inbegrepenPrijs: String?
     
     
     override init(id: String) {
@@ -28,6 +28,7 @@ class Vorming: Activiteit
         self.websiteLocatie = vorming["websiteLocatie"] as String
         self.tips = vorming["tips"] as String
         self.betalingWijze = vorming["betalingswijze"] as String
+        //self.inbegrepenPrijs = vomring["in"]
         super.init(activiteit: vorming)
         
     }

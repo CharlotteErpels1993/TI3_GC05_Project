@@ -13,6 +13,7 @@ class VormingDetailsTableViewController: UITableViewController {
     @IBOutlet weak var websiteLocatieLabel: UILabel!
     @IBOutlet weak var prijsLabel: UILabel!
     @IBOutlet weak var betalingsWijzeLabel: UILabel!
+    @IBOutlet weak var inbegrepenPrijsLabel: UILabel!
     @IBOutlet weak var periodesLabel: UILabel!
     @IBOutlet weak var tipsLabel: UILabel!
     
@@ -34,6 +35,7 @@ class VormingDetailsTableViewController: UITableViewController {
         websiteLocatieLabel.text = ("Webiste locatie: \(vorming.websiteLocatie)")
         prijsLabel.text = String("Prijs: \(vorming.prijs) " + euro)
         betalingsWijzeLabel.text = String("Betalingswijze: \(vorming.betalingWijze)")
+        inbegrepenPrijsLabel.text = String("Inbegrepen in de prijs: \(vorming.inbegrepenPrijs)")
         periodesLabel.text = vorming.periodesToString()
         tipsLabel.text = vorming.tips
 
@@ -61,6 +63,10 @@ class VormingDetailsTableViewController: UITableViewController {
             let extraTekstViewController = segue.destinationViewController as ExtraTekstViewController
             extraTekstViewController.tekst = vorming.betalingWijze
             extraTekstViewController.type = 4
+        } else if segue.identifier == "inbegrepenPrijs" {
+            let extraTekstViewController = segue.destinationViewController as ExtraTekstViewController
+            extraTekstViewController.tekst = vorming.inbegrepenPrijs
+            extraTekstViewController.type = 2
         }
     }
 }
