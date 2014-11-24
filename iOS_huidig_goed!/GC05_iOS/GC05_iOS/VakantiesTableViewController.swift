@@ -4,8 +4,6 @@ import Foundation
 class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, UISearchDisplayDelegate {
     var vakanties: [Vakantie] = []
     var vakanties2: [Vakantie] = []
-    //var ouder: Ouder?
-    //var currentUser: PFUser?
     
     var parseData = ParseData()
     
@@ -17,6 +15,7 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        checkConnectie()
         var activityIndicator = getActivityIndicatorView(self)
         
         vakanties = parseData.getAllVakanties()
@@ -33,6 +32,24 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         }
         
         activityIndicator.stopAnimating()
+    }
+    
+    func checkConnectie() {
+        // Connectie check
+        if !(Reachability.isConnectedToNetwork()) {
+            var alert = UIAlertController(title: "Oeps..", message: "Je hebt geen internet verbinding. Ga naar instellingen om dit aan te passen.", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: { action in
+                exit(0)
+            }))
+            alert.addAction(UIAlertAction(title: "Ga naar instellingen", style: .Default, handler: { action in
+                switch action.style{
+                default:
+                    UIApplication.sharedApplication().openURL(NSURL(string:UIApplicationOpenSettingsURLString)!);
+                }
+                
+            }))
+            presentViewController(alert, animated: true, completion: nil)
+        }
     }
     
     

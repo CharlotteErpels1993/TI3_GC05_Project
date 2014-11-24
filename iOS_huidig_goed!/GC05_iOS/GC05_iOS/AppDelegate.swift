@@ -6,6 +6,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var parseData = ParseData()
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -20,13 +21,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             PFUser.logOut()
         }
         
-        //SQLite (probeersel!)
-        var parseData = ParseData()
-        
         //parseData.createDatabase()
-        
+        self.parseData.deleteAllTables()
         if Reachability.isConnectedToNetwork() {
-            parseData.createDatabase()
+            self.parseData.createDatabase()
+        }
+        //self.parseData.createDatabase()
+
+        
+        // Connectie check
+        /*if Reachability.isConnectedToNetwork() {
+            self.parseData.createDatabase()
+        } else {
+            var alert = UIAlertController(title: "Oeps..", message: "Je hebt geen internet verbinding. Ga naar instellingen om dit aan te passen.", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: { action in
+                exit(0)
+            }))
+            alert.addAction(UIAlertAction(title: "Ga naar instellingen", style: .Default, handler: { action in
+                switch action.style{
+                default:
+                    UIApplication.sharedApplication().openURL(NSURL(string:UIApplicationOpenSettingsURLString)!);
+                }
+                
+            }))
+            ViewController(alert, animated: true, completion: nil)
+        }*/
+        
+        /*if Reachability.isConnectedToNetwork() {
+            self.parseData.createDatabase()
         } else {
             var alert = UIAlertController(title: "Oeps..", message: "Je hebt geen internet verbinding. Ga naar instellingen om dit aan te passen.", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil))
@@ -58,7 +80,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             alertController.addAction(defaultAction)*/
             
             //presentViewController(alertController, animated: true, completion: nil)
-        }
+        }*/
         
         return true
     }
