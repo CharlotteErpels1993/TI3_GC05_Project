@@ -8,6 +8,23 @@ class ParseData {
         vulTabellenOp()
     }
     
+    func deleteAllTables() {
+        //let err = SD.deleteTable("TableName")
+        var response: ([String], Int?) = SD.existingTables()
+        
+        if response.1 == nil {
+            //geen error
+            
+            for table in response.0 {
+                let err = SD.deleteTable(table)
+            }
+        }
+    }
+    
+    /*func parseInschrijvingVormingToDatabase(inschrijving: InschrijvingVorming) {
+        
+    }*/
+
     func getMonitorWithEmail(email: String) -> Monitor {
         
         var monitors: [Monitor] = []
