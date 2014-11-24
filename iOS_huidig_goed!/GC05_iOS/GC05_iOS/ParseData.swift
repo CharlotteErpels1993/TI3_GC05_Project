@@ -6,7 +6,7 @@ class ParseData {
     var vakantieSQL: VakantieSQL
     var monitorSQL: MonitorSQL
     var voorkeurSQL: VoorkeurSQL
-    var inschrijvingVoorkeurSQL: InschrijvingVoorkeurSQL
+    var inschrijvingVormingSQL: InschrijvingVormingSQL
     var vormingSQL: VormingSQL
     var contactpersoonNoodSQL: ContactpersoonNoodSQL
     var deelnemerSQL: DeelnemerSQL
@@ -19,7 +19,7 @@ class ParseData {
         self.vakantieSQL = VakantieSQL()
         self.monitorSQL = MonitorSQL()
         self.voorkeurSQL = VoorkeurSQL()
-        self.inschrijvingVoorkeurSQL = InschrijvingVoorkeurSQL()
+        self.inschrijvingVormingSQL = InschrijvingVormingSQL()
         self.vormingSQL = VormingSQL()
         self.contactpersoonNoodSQL = ContactpersoonNoodSQL()
         self.deelnemerSQL = DeelnemerSQL()
@@ -84,10 +84,6 @@ class ParseData {
         vulVakantieTableOp()
     }
     
-    /*func getMonitorsMetDezelfdeVormingen() {
-        
-    }*/
-    
     func zoekAlleMonitors() -> [Monitor] {
         return self.monitorSQL.zoekAlleMonitors()
     }
@@ -139,7 +135,7 @@ class ParseData {
     }
     
     func parseOuderToDatabase(ouder: Ouder) {
-        self.ouderSQL.parseOuderToDatabase()
+        self.ouderSQL.parseOuderToDatabase(ouder)
     }
     
     func getAfbeeldingenMetVakantieId(vakantieId: String) -> [UIImage]{

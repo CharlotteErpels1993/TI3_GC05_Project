@@ -18,7 +18,7 @@ class VakantieSQL {
         }
     }
     
-    private func vulVakantieTableOp() {
+    func vulVakantieTableOp() {
         
         var vakanties: [PFObject] = []
         var query = PFQuery(className: "Vakantie")
