@@ -1,8 +1,8 @@
 import Foundation
 
-class VormingSQL {
+struct /*class*/ VormingSQL {
     
-    func createVormingTable() {
+    static func createVormingTable() {
         if let error = SD.createTable("Vorming", withColumnNamesAndTypes: ["objectId":
             .StringVal, "titel": .StringVal, "locatie": .StringVal, "korteBeschrijving":
                 .StringVal, "periodes": .StringVal, "prijs": .DoubleVal,
@@ -16,7 +16,7 @@ class VormingSQL {
         }
     }
     
-    func vulVormingTableOp() {
+    static func vulVormingTableOp() {
         
         var vormingen: [PFObject] = []
         var query = PFQuery(className: "Vorming")
@@ -69,7 +69,7 @@ class VormingSQL {
         }
     }
     
-    func getAlleVormingen() -> [Vorming] {
+    static func getAlleVormingen() -> [Vorming] {
         
         var vormingen: [Vorming] = []
         var vorming: Vorming = Vorming(id: "test")
@@ -88,7 +88,7 @@ class VormingSQL {
         return vormingen
     }
     
-    private func getVorming(row: SD.SDRow) -> Vorming {
+    static private func getVorming(row: SD.SDRow) -> Vorming {
         var vorming: Vorming = Vorming(id: "test")
         
         if let objectId = row["objectId"]?.asString() {

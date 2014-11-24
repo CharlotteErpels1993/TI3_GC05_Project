@@ -31,7 +31,7 @@ class VakantieDetailsTableViewController: UITableViewController {
     var sectionToDelete = -1;
     
     //moet nog static class worden!
-    var parseData: ParseData = ParseData()
+    //var parseData: ParseData = ParseData()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +39,7 @@ class VakantieDetailsTableViewController: UITableViewController {
         var activityIndicator = getActivityIndicatorView(self)
         
         //zoekImages()
-        self.images = self.parseData.getAfbeeldingenMetVakantieId(vakantie.id)
+        self.images = ParseData.getAfbeeldingenMetVakantieId(vakantie.id)
         
         hideSideMenuView()
         

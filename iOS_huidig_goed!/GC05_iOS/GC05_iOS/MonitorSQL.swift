@@ -1,8 +1,8 @@
 import Foundation
 
-class MonitorSQL {
+struct /*class*/ MonitorSQL {
     
-    func zoekAlleMonitors() -> [Monitor] {
+    static func zoekAlleMonitors() -> [Monitor] {
         var monitors: [Monitor] = []
         var monitor: Monitor = Monitor(id: "test")
         
@@ -20,7 +20,7 @@ class MonitorSQL {
         return monitors
     }
     
-    func getMonitorWithEmail(email: String) -> Monitor {
+    static func getMonitorWithEmail(email: String) -> Monitor {
         
         var monitors: [Monitor] = []
         var monitor: Monitor = Monitor(id: "test")
@@ -39,7 +39,7 @@ class MonitorSQL {
         return monitors.first!
     }
     
-    func getMonitor(row: SD.SDRow) -> Monitor {
+    static func getMonitor(row: SD.SDRow) -> Monitor {
         var monitor: Monitor = Monitor(id: "test")
         
         if let objectId = row["objectId"]?.asString() {
@@ -97,7 +97,7 @@ class MonitorSQL {
         return monitor
     }
     
-    func vulMonitorTableOp() {
+    static func vulMonitorTableOp() {
         
         var monitors: [PFObject] = []
         var query = PFQuery(className: "Monitor")
@@ -149,7 +149,7 @@ class MonitorSQL {
         }
     }
     
-    func createMonitorTable() {
+    static func createMonitorTable() {
         if let error = SD.createTable("Monitor", withColumnNamesAndTypes: ["objectId": .StringVal, "rijksregisterNr": .StringVal, "email": .StringVal, "wachtwoord": .StringVal ,"voornaam": .StringVal, "naam": .StringVal, "straat": .StringVal, "nummer": .IntVal, "bus": .StringVal, "postcode": .IntVal, "gemeente": .StringVal, "telefoon": .StringVal, "gsm": .StringVal, "aansluitingsNr": .IntVal, "codeGerechtigde": .IntVal, "lidNr": .IntVal, "linkFacebook": .StringVal]) {
             
             //there was an error
@@ -160,7 +160,7 @@ class MonitorSQL {
     }
     
     
-    func getMonitorsMetId(monitorIds: [String]) -> [Monitor] {
+    static func getMonitorsMetId(monitorIds: [String]) -> [Monitor] {
         var monitors: [Monitor] = []
         var monitor: Monitor = Monitor(id: "test")
         
@@ -182,7 +182,7 @@ class MonitorSQL {
     }
     
     
-    func getAndereMonitors(monitors: [Monitor]) -> [Monitor] {
+    static func getAndereMonitors(monitors: [Monitor]) -> [Monitor] {
         var alleMonitors = zoekAlleMonitors()
         var andereMonitors: [Monitor] = []
         
@@ -203,6 +203,17 @@ class MonitorSQL {
         }
         
         return andereMonitors
+    }
+    
+    static func updateMonitor(monitorNieuw: Monitor, email: String) {
+        let (resultSet, err) = SD.executeQuery("UPDATE Monitor SET voornaam='\(monitorNieuw.voornaam)', naam='\(monitorNieuw.naam)', telefoon='\(monitorNieuw.telefoon)', gsm='\(monitorNieuw.gsm)', linkFacebook='\(monitorNieuw.linkFacebook)' WHERE email = \(email)")
+        
+        if err != nil {
+            //there was an error during the query, handle it here
+        } else {
+            //no error
+        }
+
     }
     
 }

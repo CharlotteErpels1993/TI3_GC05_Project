@@ -5,7 +5,7 @@ class RegistratieSuccesvolViewController: UIViewController
     var ouder: Ouder!
     
     //moet nog static klasse worden!
-    var parseData: ParseData = ParseData()
+    //var parseData: ParseData = ParseData()
     
     
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
@@ -23,7 +23,7 @@ class RegistratieSuccesvolViewController: UIViewController
         activityIndicatorView.startAnimating()
         
         //parseOuderToDatabase()
-        parseData.parseOuderToDatabase(ouder)
+        ParseData.parseOuderToDatabase(ouder)
         
         //deze methodes worden ook in ParseData direct uitgevoerd
         //createPFUser()

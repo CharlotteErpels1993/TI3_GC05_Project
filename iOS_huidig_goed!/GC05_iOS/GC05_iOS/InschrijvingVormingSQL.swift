@@ -1,8 +1,8 @@
 import Foundation
 
-class InschrijvingVormingSQL {
+struct /*class*/ InschrijvingVormingSQL {
     
-    func createInschrijvingVormingTable() {
+    static func createInschrijvingVormingTable() {
         if let error = SD.createTable("InschrijvingVorming", withColumnNamesAndTypes: ["objectId": .StringVal, "monitor": .StringVal, "periode": .StringVal, "vorming":
             .StringVal]) {
                 
@@ -13,7 +13,7 @@ class InschrijvingVormingSQL {
         }
     }
     
-    func parseInschrijvingVormingToDatabase(inschrijving: InschrijvingVorming) {
+    static func parseInschrijvingVormingToDatabase(inschrijving: InschrijvingVorming) {
         var inschrijvingJSON = PFObject(className: "InschrijvingVorming")
         
         inschrijvingJSON.setValue(inschrijving.periode, forKey: "periode")
@@ -23,7 +23,7 @@ class InschrijvingVormingSQL {
         inschrijvingJSON.save()
     }
 
-    func getVormingIdMetMonitorId(monitorId: String) -> [String] {
+    static func getVormingIdMetMonitorId(monitorId: String) -> [String] {
         var vormingenIds: [String] = []
         
         let (resultSet, err) = SD.executeQuery("SELECT vorming FROM InschrijvingVorming WHERE monitor = \(monitorId)")
@@ -41,7 +41,7 @@ class InschrijvingVormingSQL {
         return vormingenIds
     }
     
-    func getMonitorsIdMetVormingId(vormingen: [String]) -> [String] {
+    static func getMonitorsIdMetVormingId(vormingen: [String]) -> [String] {
         var monitorsId: [String] = []
         
         for vorming in vormingen {

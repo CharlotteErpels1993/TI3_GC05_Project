@@ -1,9 +1,9 @@
 import Foundation
 import UIKit
 
-class ParseData {
+struct /*class*/ ParseData {
     
-    var vakantieSQL: VakantieSQL
+    /*var vakantieSQL: VakantieSQL
     var monitorSQL: MonitorSQL
     var voorkeurSQL: VoorkeurSQL
     var inschrijvingVormingSQL: InschrijvingVormingSQL
@@ -13,9 +13,9 @@ class ParseData {
     var inschrijvingVakantieSQL: InschrijvingVakantieSQL
     var userSQL: UserSQL
     var ouderSQL: OuderSQL
-    var afbeeldingSQL: AfbeeldingSQL
+    var afbeeldingSQL: AfbeeldingSQL*/
     
-    init() {
+    /*init() {
         self.vakantieSQL = VakantieSQL()
         self.monitorSQL = MonitorSQL()
         self.voorkeurSQL = VoorkeurSQL()
@@ -27,14 +27,14 @@ class ParseData {
         self.userSQL = UserSQL()
         self.ouderSQL = OuderSQL()
         self.afbeeldingSQL = AfbeeldingSQL()
-    }
+    }*/
     
-    func createDatabase() {
+    static func createDatabase() {
         createTabellen()
         vulTabellenOp()
     }
     
-    private func createTabellen() {
+    static private func createTabellen() {
         
         var response: ([String], Int?) = SD.existingTables()
         
@@ -77,22 +77,22 @@ class ParseData {
         }
     }
     
-    private func vulTabellenOp() {
+    static private func vulTabellenOp() {
         vulUserTableOp()
         vulMonitorTableOp()
         vulOuderTableOp()
         vulVakantieTableOp()
     }
     
-    func getAlleMonitors() -> [Monitor] {
-        return self.monitorSQL.zoekAlleMonitors()
+    static func getAlleMonitors() -> [Monitor] {
+        return MonitorSQL.zoekAlleMonitors()
     }
     
-    func parseVoorkeurToDatabase(voorkeur: Voorkeur) {
-        self.voorkeurSQL.parseVoorkeurToDatabase(voorkeur)
+    static func parseVoorkeurToDatabase(voorkeur: Voorkeur) {
+        VoorkeurSQL.parseVoorkeurToDatabase(voorkeur)
     }
     
-    func deleteAllTables() {
+    static func deleteAllTables() {
         //let err = SD.deleteTable("TableName")
         var response: ([String], Int?) = SD.existingTables()
         
@@ -105,125 +105,128 @@ class ParseData {
         }
     }
     
-    func parseInschrijvingVormingToDatabase(inschrijving: InschrijvingVorming) {
-        self.inschrijvingVormingSQL.parseInschrijvingVormingToDatabase(inschrijving)
+    static func parseInschrijvingVormingToDatabase(inschrijving: InschrijvingVorming) {
+        InschrijvingVormingSQL.parseInschrijvingVormingToDatabase(inschrijving)
     }
 
-    func getMonitorWithEmail(email: String) -> Monitor {
-        return self.monitorSQL.getMonitorWithEmail(email)
+    static func getMonitorWithEmail(email: String) -> Monitor {
+        return MonitorSQL.getMonitorWithEmail(email)
     }
     
-    func getAlleVormingen() -> [Vorming] {
-        return self.vormingSQL.getAlleVormingen()
+    static func getAlleVormingen() -> [Vorming] {
+        return VormingSQL.getAlleVormingen()
     }
     
-    func parseContactpersoonNoodToDatabase(contactpersoon: ContactpersoonNood, inschrijvingId: String) {
+    static func parseContactpersoonNoodToDatabase(contactpersoon: ContactpersoonNood, inschrijvingId: String) {
         
-        self.contactpersoonNoodSQL.parseContactpersoonNoodToDatabase(contactpersoon, inschrijvingId: inschrijvingId)
+        ContactpersoonNoodSQL.parseContactpersoonNoodToDatabase(contactpersoon, inschrijvingId: inschrijvingId)
     }
     
-    func parseDeelnemerToDatabase(deelnemer: Deelnemer, inschrijvingId: String) {
-        self.deelnemerSQL.parseDeelnemerToDatabase(deelnemer, inschrijvingId: inschrijvingId)
+    static func parseDeelnemerToDatabase(deelnemer: Deelnemer, inschrijvingId: String) {
+        DeelnemerSQL.parseDeelnemerToDatabase(deelnemer, inschrijvingId: inschrijvingId)
     }
     
-    func parseInschrijvingVakantieToDatabase(inschrijving: InschrijvingVakantie) -> String {
-        return self.inschrijvingVakantieSQL.parseInschrijvingVakantieToDatabase(inschrijving)
+    static func parseInschrijvingVakantieToDatabase(inschrijving: InschrijvingVakantie) -> String {
+        return InschrijvingVakantieSQL.parseInschrijvingVakantieToDatabase(inschrijving)
     }
     
-    func getUserMetEmailEnWachtwoord(email: String, wachtwoord: String) -> PFUser {
-        return self.userSQL.zoekUserMetEmailEnWachtwoord(email, wachtwoord: wachtwoord)
+    static func getUserMetEmailEnWachtwoord(email: String, wachtwoord: String) -> PFUser {
+        return UserSQL.zoekUserMetEmailEnWachtwoord(email, wachtwoord: wachtwoord)
     }
     
-    func parseOuderToDatabase(ouder: Ouder) {
-        self.ouderSQL.parseOuderToDatabase(ouder)
+    static func parseOuderToDatabase(ouder: Ouder) {
+        OuderSQL.parseOuderToDatabase(ouder)
     }
     
-    func getAfbeeldingenMetVakantieId(vakantieId: String) -> [UIImage]{
-        return self.afbeeldingSQL.getAfbeeldingenMetVakantieId(vakantieId)
+    static func getAfbeeldingenMetVakantieId(vakantieId: String) -> [UIImage]{
+        return AfbeeldingSQL.getAfbeeldingenMetVakantieId(vakantieId)
     }
     
-    func getAlleVakanties() -> [Vakantie] {
-        return self.vakantieSQL.getAlleVakanties()
+    static func getAlleVakanties() -> [Vakantie] {
+        return VakantieSQL.getAlleVakanties()
     }
     
-    private func vulUserTableOp() {
-        self.userSQL.vulUserTableOp()
+    static private func vulUserTableOp() {
+        UserSQL.vulUserTableOp()
     }
     
-    private func vulMonitorTableOp() {
-        self.monitorSQL.vulMonitorTableOp()
+    static private func vulMonitorTableOp() {
+        MonitorSQL.vulMonitorTableOp()
     }
     
-    private func vulOuderTableOp() {
-        self.ouderSQL.vulOuderTableOp()
+    static private func vulOuderTableOp() {
+        OuderSQL.vulOuderTableOp()
     }
     
-    private func vulVakantieTableOp() {
-        self.vakantieSQL.vulVakantieTableOp()
+    static private func vulVakantieTableOp() {
+        VakantieSQL.vulVakantieTableOp()
     }
     
-    private func vulVormingTableOp() {
-        self.vormingSQL.vulVormingTableOp()
+    static private func vulVormingTableOp() {
+        VormingSQL.vulVormingTableOp()
     }
     
-    private func vulAfbeeldingTableOp() {
-        self.afbeeldingSQL.vulAfbeeldingTableOp()
+    static private func vulAfbeeldingTableOp() {
+        AfbeeldingSQL.vulAfbeeldingTableOp()
     }
     
-    private func createUserTable() {
-       self.userSQL.createUserTable()
+    static private func createUserTable() {
+       UserSQL.createUserTable()
     }
     
-    private func createAfbeeldingTable() {
-        self.afbeeldingSQL.createAfbeeldingTable()
+    static private func createAfbeeldingTable() {
+        AfbeeldingSQL.createAfbeeldingTable()
     }
     
-    private func createContactpersoonNoodTable() {
-        self.contactpersoonNoodSQL.createContactpersoonNoodTable()
+    static private func createContactpersoonNoodTable() {
+        ContactpersoonNoodSQL.createContactpersoonNoodTable()
     }
     
-    private func createDeelnemerTable() {
-        self.deelnemerSQL.createDeelnemerTable()
+    static private func createDeelnemerTable() {
+        DeelnemerSQL.createDeelnemerTable()
     }
     
-    private func createInschrijvingVakantieTable() {
-        self.inschrijvingVakantieSQL.createInschrijvingVakantieTable()
+    static private func createInschrijvingVakantieTable() {
+        InschrijvingVakantieSQL.createInschrijvingVakantieTable()
     }
     
-    private func createInschrijvingVormingTable() {
-        self.inschrijvingVormingSQL.createInschrijvingVormingTable()
+    static private func createInschrijvingVormingTable() {
+        InschrijvingVormingSQL.createInschrijvingVormingTable()
     }
     
-    private func createMonitorTable() {
-        self.monitorSQL.createMonitorTable()
+    static private func createMonitorTable() {
+        MonitorSQL.createMonitorTable()
     }
     
-    private func createOuderTable() {
-        self.ouderSQL.createOuderTable()
+    static private func createOuderTable() {
+        OuderSQL.createOuderTable()
     }
     
-    private func createVakantieTable() {
-        self.vakantieSQL.createVakantieTable()
+    static private func createVakantieTable() {
+        VakantieSQL.createVakantieTable()
     }
     
-    private func createVoorkeurTable() {
-        self.voorkeurSQL.createVoorkeurTable()
+    static private func createVoorkeurTable() {
+        VoorkeurSQL.createVoorkeurTable()
     }
     
-    private func createVormingTable() {
-        self.vormingSQL.createVormingTable()
+    static private func createVormingTable() {
+        VormingSQL.createVormingTable()
     }
     
-    func getMonitorsMetDezelfdeVormingen(monitorId: String) -> [Monitor] {
-        var vormingen = self.inschrijvingVormingSQL.getVormingIdMetMonitorId(monitorId)
-        var monitorIds = self.inschrijvingVormingSQL.getMonitorsIdMetVormingId(vormingen)
-        var monitors = self.monitorSQL.getMonitorsMetId(monitorIds)
+    static func getMonitorsMetDezelfdeVormingen(monitorId: String) -> [Monitor] {
+        var vormingen = InschrijvingVormingSQL.getVormingIdMetMonitorId(monitorId)
+        var monitorIds = InschrijvingVormingSQL.getMonitorsIdMetVormingId(vormingen)
+        var monitors = MonitorSQL.getMonitorsMetId(monitorIds)
         
         return monitors
     }
     
-    func getMonitorsMetAndereVormingen(monitorsMetDezelfdeVorming: [Monitor]) -> [Monitor] {
-        return self.monitorSQL.getAndereMonitors(monitorsMetDezelfdeVorming)
+    static func getMonitorsMetAndereVormingen(monitorsMetDezelfdeVorming: [Monitor]) -> [Monitor] {
+        return MonitorSQL.getAndereMonitors(monitorsMetDezelfdeVorming)
     }
     
+    static func updateMonitor(monitor: Monitor) {
+        MonitorSQL.updateMonitor(monitor, email: PFUser.currentUser().email)
+    }
 }

@@ -1,8 +1,8 @@
 import Foundation
 
-class VakantieSQL {
+struct /*class*/ VakantieSQL {
     
-    func createVakantieTable() {
+    static func createVakantieTable() {
         if let error = SD.createTable("Vakantie", withColumnNamesAndTypes: ["objectId":
             .StringVal, "titel": .StringVal, "locatie": .StringVal, "korteBeschrijving":
                 .StringVal, "vertrekdatum": .DateVal, "terugkeerdatum": .DateVal,
@@ -18,7 +18,7 @@ class VakantieSQL {
         }
     }
     
-    func vulVakantieTableOp() {
+    static func vulVakantieTableOp() {
         
         var vakanties: [PFObject] = []
         var query = PFQuery(className: "Vakantie")
@@ -68,7 +68,7 @@ class VakantieSQL {
         }
     }
     
-    func getAlleVakanties() -> [Vakantie] {
+    static func getAlleVakanties() -> [Vakantie] {
         
         var vakanties:[Vakantie] = []
         var vakantie: Vakantie = Vakantie(id: "test")
@@ -87,7 +87,7 @@ class VakantieSQL {
         return vakanties
     }
     
-    private func getVakantie(row: SD.SDRow) -> Vakantie {
+    static private func getVakantie(row: SD.SDRow) -> Vakantie {
         var vakantie: Vakantie = Vakantie(id: "test")
         
         if let objectId = row["objectId"]?.asString() {

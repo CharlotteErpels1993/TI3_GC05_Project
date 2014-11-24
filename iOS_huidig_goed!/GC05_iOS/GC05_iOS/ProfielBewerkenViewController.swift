@@ -8,8 +8,18 @@ class ProfielBewerkenViewController: ResponsiveTextFieldViewController {
     @IBOutlet weak var telefoonTxt: UITextField!
     @IBOutlet weak var gsmTxt: UITextField!
     @IBOutlet weak var facebookTxt: UITextField!
+    var monitor: Monitor?
+
+    //moet nog static klasse worden!
+    //var parseData: ParseData = ParseData()
+    
     
     @IBAction func opslaan(sender: AnyObject) {
+        
+        monitor = Monitor(id: "test")
+        vulGegevensIn()
+        ParseData.updateMonitor(self.monitor!)
+        
         //schrijfGegevensNaarDatabank()
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         var destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Profiel") as UIViewController
@@ -17,12 +27,12 @@ class ProfielBewerkenViewController: ResponsiveTextFieldViewController {
         hideSideMenuView()
     }
     
-    var monitor: Monitor!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         hideSideMenuView()
+    
         //getCurrentUser()
+        
         //vulGegevensDatabankIn()
     }
     
@@ -33,13 +43,13 @@ class ProfielBewerkenViewController: ResponsiveTextFieldViewController {
         monitor = Monitor(monitor: monitorPF)
     }*/
     
-    func vulGegevensDatabankIn() {
-        voornaamTxt.text = monitor.voornaam
-        naamTxt.text = monitor.naam
-        emailTxt.text = monitor.email
-        telefoonTxt.text = monitor.telefoon
-        gsmTxt.text = monitor.gsm
-        facebookTxt.text = monitor.linkFacebook
+    func vulGegevensIn() {
+        monitor?.voornaam = voornaamTxt.text
+        monitor?.naam = naamTxt.text
+        //monitor.email = emailTxt.text
+        monitor?.telefoon = telefoonTxt.text
+        monitor?.gsm = gsmTxt.text
+        monitor?.linkFacebook = facebookTxt.text
     }
     
     /*func schrijfGegevensNaarDatabank() {

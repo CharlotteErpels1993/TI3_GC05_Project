@@ -5,6 +5,9 @@ class VormingenTableViewController: UITableViewController, UISearchBarDelegate, 
     var vormingen: [Vorming] = []
     var vormingen2: [Vorming] = []
     
+    //moet nog static klasse worden!
+    //var parseData: ParseData = ParseData()
+    
     @IBAction func toggle(sender: AnyObject) {
         toggleSideMenuView()
     }
@@ -21,6 +24,9 @@ class VormingenTableViewController: UITableViewController, UISearchBarDelegate, 
         var activityIndicator = getActivityIndicatorView(self)
         
         //zoekVormingen()
+        self.vormingen = ParseData.getAlleVormingen()
+        //self.vormingen2 = self.vormingen
+        self.tableView.reloadData()
         
         zoekbar.showsScopeBar = true
         zoekbar.delegate = self

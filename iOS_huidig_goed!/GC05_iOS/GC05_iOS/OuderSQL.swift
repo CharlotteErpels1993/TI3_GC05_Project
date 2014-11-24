@@ -1,8 +1,8 @@
 import Foundation
 
-class OuderSQL {
+struct /*class*/ OuderSQL {
     
-    func createOuderTable() {
+    static func createOuderTable() {
         if let error = SD.createTable("Ouder", withColumnNamesAndTypes: ["objectId": .StringVal, "rijksregisterNr": .StringVal, "email": .StringVal, "wachtwoord": .StringVal ,"voornaam": .StringVal, "naam": .StringVal, "straat": .StringVal, "nummer": .IntVal, "bus": .StringVal, "postcode": .IntVal, "gemeente": .StringVal, "telefoon": .StringVal, "gsm": .StringVal, "aansluitingsNr": .IntVal, "codeGerechtigde": .IntVal, "aansluitingsNrTweedeOuder": .IntVal]) {
             
             //there was an error
@@ -12,7 +12,7 @@ class OuderSQL {
         }
     }
     
-    func vulOuderTableOp() {
+    static func vulOuderTableOp() {
         
         var ouders: [PFObject] = []
         var query = PFQuery(className: "Ouder")
@@ -62,7 +62,7 @@ class OuderSQL {
         }
     }
     
-    func parseOuderToDatabase(ouder: Ouder) {
+    static func parseOuderToDatabase(ouder: Ouder) {
         var ouderJSON = PFObject(className: "Ouder")
         
         ouderJSON.setValue(ouder.email, forKey: "email")
@@ -99,7 +99,7 @@ class OuderSQL {
         logIn(ouder)
     }
     
-    private func createPFUser(ouder: Ouder) {
+    static private func createPFUser(ouder: Ouder) {
         var user = PFUser()
         user.username = ouder.email
         user.password = ouder.wachtwoord
@@ -114,7 +114,7 @@ class OuderSQL {
         }
     }
     
-    private func logIn(ouder: Ouder) {
+    static private func logIn(ouder: Ouder) {
         PFUser.logInWithUsername(ouder.email, password: ouder.wachtwoord)
     }
     

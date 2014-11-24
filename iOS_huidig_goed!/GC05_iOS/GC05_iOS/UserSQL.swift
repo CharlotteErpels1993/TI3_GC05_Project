@@ -1,8 +1,8 @@
 import Foundation
 
-class UserSQL {
+struct /*class*/ UserSQL {
     
-    func createUserTable() {        
+    static func createUserTable() {
         if let error = SD.createTable("User", withColumnNamesAndTypes: ["objectId":
             .StringVal, "username": .StringVal, "password": .StringVal, "email":
                 .StringVal, "soort": .StringVal]) {
@@ -14,7 +14,7 @@ class UserSQL {
         }
     }
     
-    func vulUserTableOp() {
+    static func vulUserTableOp() {
         
         var users: [PFUser] = []
         var query = PFUser.query()
@@ -43,7 +43,7 @@ class UserSQL {
         }
     }
     
-    func zoekUserMetEmailEnWachtwoord(email: String, wachtwoord: String) -> PFUser {
+    static func zoekUserMetEmailEnWachtwoord(email: String, wachtwoord: String) -> PFUser {
         var users: [PFUser] = []
         var user: PFUser = PFUser()
         
@@ -63,7 +63,7 @@ class UserSQL {
         return users.first!
     }
     
-    private func getUser(row: SD.SDRow) -> PFUser {
+    static private func getUser(row: SD.SDRow) -> PFUser {
         var user: PFUser = PFUser()
         
         if let objectId = row["objectId"]?.asString() {

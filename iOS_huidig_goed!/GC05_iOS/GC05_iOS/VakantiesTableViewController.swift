@@ -5,7 +5,7 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
     var vakanties: [Vakantie] = []
     var vakanties2: [Vakantie] = []
     
-    var parseData = ParseData()
+    //var parseData = ParseData()
     
     @IBOutlet weak var zoekbar: UISearchBar!
     
@@ -18,7 +18,7 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         checkConnectie()
         var activityIndicator = getActivityIndicatorView(self)
         
-        vakanties = parseData.getAlleVakanties()
+        vakanties = ParseData.getAlleVakanties()
         self.vakanties2 = self.vakanties
         self.tableView.reloadData()
         
@@ -121,8 +121,8 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
     
     @IBAction func refresh(sender: UIRefreshControl) {
         var parseData = ParseData()
-        parseData.deleteAllTables()
-        parseData.createDatabase()
+        ParseData.deleteAllTables()
+        ParseData.createDatabase()
         self.refreshControl?.endRefreshing()
         viewDidLoad()
         //viewDidLoad()

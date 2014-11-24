@@ -1,8 +1,8 @@
 import Foundation
 
-class AfbeeldingSQL {
+struct /*class*/ AfbeeldingSQL {
     
-    func createAfbeeldingTable() {
+    static func createAfbeeldingTable() {
         if let error = SD.createTable("Afbeelding", withColumnNamesAndTypes: ["objectId":
             .StringVal, "afbeelding": .ImageVal, "vakantie": .StringVal]) {
                 
@@ -13,7 +13,7 @@ class AfbeeldingSQL {
         }
     }
     
-    func vulAfbeeldingTableOp() {
+    static func vulAfbeeldingTableOp() {
         var afbeeldingen: [PFObject] = []
         var query = PFQuery(className: "Afbeelding")
         afbeeldingen = query.findObjects() as [PFObject]
@@ -36,7 +36,7 @@ class AfbeeldingSQL {
         }
     }
     
-    func getAfbeeldingenMetVakantieId(vakantieId: String) -> [UIImage]{
+    static func getAfbeeldingenMetVakantieId(vakantieId: String) -> [UIImage]{
         var afbeeldingen: [UIImage] = []
         var afbeelding: UIImage = UIImage()
         
@@ -56,7 +56,7 @@ class AfbeeldingSQL {
         return afbeeldingen
     }
     
-    private func getAfbeelding(row: SD.SDRow) -> UIImage {
+    static private func getAfbeelding(row: SD.SDRow) -> UIImage {
         var afbeelding: UIImage = UIImage()
         
         if let a = row["afbeelding"]?.asImage()! {

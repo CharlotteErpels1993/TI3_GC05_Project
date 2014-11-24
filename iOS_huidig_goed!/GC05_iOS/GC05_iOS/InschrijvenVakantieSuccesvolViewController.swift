@@ -8,7 +8,7 @@ class InschrijvenVakantieSuccesvolViewController : UIViewController {
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
     //moet nog static klasse worden!
-    var parseData: ParseData = ParseData()
+    //var parseData: ParseData = ParseData()
     
     
     override func viewDidLoad() {
@@ -16,17 +16,17 @@ class InschrijvenVakantieSuccesvolViewController : UIViewController {
         activityIndicatorView.startAnimating()
         
         //var iv: PFObject = parseInschrijvingVakantieToDatabase(deelnemer.inschrijvingVakantie!)
-        var inschrijvingId = parseData.parseInschrijvingVakantieToDatabase(deelnemer.inschrijvingVakantie!)
+        var inschrijvingId = ParseData.parseInschrijvingVakantieToDatabase(deelnemer.inschrijvingVakantie!)
         
         //parseDeelnemerToDatabase(deelnemer, inschrijvingVakantie: iv)
-        parseData.parseDeelnemerToDatabase(deelnemer, inschrijvingId: inschrijvingId)
+        ParseData.parseDeelnemerToDatabase(deelnemer, inschrijvingId: inschrijvingId)
         
         //parseContactpersoonToDatabase(contactpersoon1, inschrijvingVakantie: iv)
-        parseData.parseContactpersoonNoodToDatabase(contactpersoon1, inschrijvingId: inschrijvingId)
+        ParseData.parseContactpersoonNoodToDatabase(contactpersoon1, inschrijvingId: inschrijvingId)
         
         if contactpersoon2?.naam != nil {
             //parseContactpersoonToDatabase(contactpersoon2!, inschrijvingVakantie: iv)
-            parseData.parseContactpersoonNoodToDatabase(contactpersoon2, inschrijvingId: inschrijvingId)
+            ParseData.parseContactpersoonNoodToDatabase(contactpersoon2!, inschrijvingId: inschrijvingId)
         }
         
         self.navigationItem.setHidesBackButton(true, animated: true)

@@ -6,10 +6,17 @@ class InschrijvenVormingSuccesvolViewController: UIViewController {
     
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
+    //moet nog static klasse worden!
+    //var parseData: ParseData = ParseData()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         activityIndicatorView.startAnimating()
+        
         //parseInschrijvingVormingToDatabase()
+        ParseData.parseInschrijvingVormingToDatabase(inschrijvingVorming)
+        
         activityIndicatorView.stopAnimating()
     }
     

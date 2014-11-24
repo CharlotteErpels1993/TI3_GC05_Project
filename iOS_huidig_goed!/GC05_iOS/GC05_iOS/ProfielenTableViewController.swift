@@ -2,6 +2,9 @@ import UIKit
 
 class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, UISearchDisplayDelegate {
     
+    //moet nog static klasse worden!
+    //var parseData: ParseData = ParseData()
+    
     var monitoren: [Monitor] = []
     var vormingen: [InschrijvingVorming] = []
     var monitoren2: [Monitor] = []
@@ -19,7 +22,13 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
         
         var activityIndicator = getActivityIndicatorView(self)
         
+        var monitor = ParseData.getMonitorWithEmail(PFUser.currentUser().email)
+        
         //zoekMonitoren()
+        self.monitorenZelfdeVorming = ParseData.getMonitorsMetDezelfdeVormingen(monitor.id!)
+        self.monitoren = ParseData.getMonitorsMetAndereVormingen(self.monitorenZelfdeVorming)
+        
+        
         //zoekVormingenVanHuidigeMonitor()
         //zoekMonitorenMetDezelfdeVormingen()
         

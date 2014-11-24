@@ -1,8 +1,8 @@
 import Foundation
 
-class InschrijvingVakantieSQL {
+struct /*class*/ InschrijvingVakantieSQL {
     
-    func createInschrijvingVakantieTable() {
+    static func createInschrijvingVakantieTable() {
         if let error = SD.createTable("InschrijvingVakantie", withColumnNamesAndTypes: ["objectId": .StringVal, "extraInformatie": .StringVal, "vakantie": .StringVal]) {
             
             //there was an error
@@ -12,7 +12,7 @@ class InschrijvingVakantieSQL {
         }
     }
     
-    func parseInschrijvingVakantieToDatabase(inschrijving: InschrijvingVakantie) -> String {
+    static func parseInschrijvingVakantieToDatabase(inschrijving: InschrijvingVakantie) -> String {
         var inschrijvingJSON = PFObject(className: "InschrijvingVakantie")
         
         inschrijvingJSON.setValue(inschrijving.vakantie?.id, forKey: "vakantie")

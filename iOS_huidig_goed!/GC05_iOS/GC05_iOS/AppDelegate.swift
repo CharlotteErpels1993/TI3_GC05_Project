@@ -6,7 +6,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var parseData = ParseData()
+    //var parseData = ParseData()
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -22,9 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         //parseData.createDatabase()
-        self.parseData.deleteAllTables()
+        ParseData.deleteAllTables()
         if Reachability.isConnectedToNetwork() {
-            self.parseData.createDatabase()
+            ParseData.createDatabase()
         }
         //self.parseData.createDatabase()
 

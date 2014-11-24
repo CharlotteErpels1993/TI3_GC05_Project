@@ -1,8 +1,8 @@
 import Foundation
 
-class VoorkeurSQL {
+struct /*class*/ VoorkeurSQL {
     
-    func createVoorkeurTable() {
+    static func createVoorkeurTable() {
         if let error = SD.createTable("Voorkeur", withColumnNamesAndTypes: ["objectId":
             .StringVal, "monitor": .StringVal, "vakantie": .StringVal, "periodes":
                 .StringVal]) {
@@ -14,7 +14,7 @@ class VoorkeurSQL {
         }
     }
     
-    func parseVoorkeurToDatabase(voorkeur: Voorkeur) {
+    static func parseVoorkeurToDatabase(voorkeur: Voorkeur) {
         var voorkeurJSON = PFObject(className: "Voorkeur")
         
         voorkeurJSON.setValue(voorkeur.data, forKey: "periodes")

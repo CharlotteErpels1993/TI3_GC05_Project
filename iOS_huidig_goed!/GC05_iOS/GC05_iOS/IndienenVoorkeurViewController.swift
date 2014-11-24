@@ -4,7 +4,8 @@ class IndienenVoorkeurViewController: UIViewController, UIPickerViewDataSource, 
     
     @IBOutlet weak var pickerView: UIPickerView!
     
-    
+    //moet nog static klasse worden!
+    //var parseData: ParseData = ParseData()
     
     @IBOutlet weak var txtViewPeriodes: UITextView!
     
@@ -46,6 +47,7 @@ class IndienenVoorkeurViewController: UIViewController, UIPickerViewDataSource, 
         super.viewDidLoad()
         
         //zoekVakanties()
+        vakanties = ParseData.getAlleVakanties()
         
         giveUITextViewDefaultBorder(txtViewPeriodes)
         
