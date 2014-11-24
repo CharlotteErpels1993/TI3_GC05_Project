@@ -72,8 +72,14 @@ class ParseData {
         if let aansluitingsNr = row["aansluitingsNr"]?.asInt() {
             monitor.aansluitingsNr = aansluitingsNr
         }
-        if let postcode = row["postcode"]?.asInt() {
-            monitor.postcode = postcode
+        if let codeGerechtigde = row["codeGerechtigde"]?.asInt() {
+            monitor.codeGerechtigde = codeGerechtigde
+        }
+        if let lidNr = row["lidNr"]?.asInt() {
+            monitor.lidNr = lidNr
+        }
+        if let linkFacebook = row["linkFacebook"]?.asString() {
+            monitor.linkFacebook = linkFacebook
         }
         
         return monitor
