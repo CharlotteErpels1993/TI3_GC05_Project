@@ -20,7 +20,8 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         var activityIndicator = getActivityIndicatorView(self)
         
         vakanties = parseData.getAllVakanties()
-        vakanties2 = parseData.getAllVakanties()
+        //vakanties2 = parseData.getAllVakanties()
+        self.vakanties2 = self.vakanties
         self.tableView.reloadData()
         
         //zoekVakanties()
@@ -56,7 +57,7 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         self.tableView.reloadData()
     }
     
-    func zoekVakanties() {
+    /*func zoekVakanties() {
         vakanties.removeAll(keepCapacity: true)
         var query = PFQuery(className: "Vakantie")
         query.findObjectsInBackgroundWithBlock({(NSArray objects, NSError error) in
@@ -71,7 +72,7 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
                 self.tableView.reloadData()
             }
         })
-    }
+    }*/
     
     @IBAction func gaTerugNaarOverzichtVakanties(segue: UIStoryboardSegue) {
     }
