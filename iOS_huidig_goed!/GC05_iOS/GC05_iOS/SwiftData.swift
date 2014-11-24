@@ -1566,6 +1566,15 @@ public struct SwiftData {
         }
         
         /**
+        Return the column value as an UIImage
+        
+        :returns:  An Optional UIImage corresponding to the apprioriate column value. Will be nil if: the column name does not exist, the value cannot be cast as a UIImage, or the value is NULL
+        */
+        public func asImage() -> UIImage? {
+            return value as? UIImage
+        }
+        
+        /**
         Return the column value path as a UIImage
 
         :returns:  An Optional UIImage corresponding to the path of the apprioriate column value. Will be nil if: the column name does not exist, the value of the specified path cannot be cast as a UIImage, or the value is NULL
@@ -1767,6 +1776,7 @@ extension SwiftData {
         case DataVal
         case DateVal
         case UIImageVal
+        case ImageVal
         
         private func toSQL() -> String {
             
@@ -1784,6 +1794,8 @@ extension SwiftData {
                 return "BLOB"
             case .DateVal:
                 return "DATE"
+            case .ImageVal:
+                return "BLOB"
             }
         }
         

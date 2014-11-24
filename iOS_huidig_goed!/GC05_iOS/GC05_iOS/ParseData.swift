@@ -1,10 +1,318 @@
 import Foundation
+import UIKit
 
 class ParseData {
     
     func createDatabase() {
         createTabellen()
         vulTabellenOp()
+    }
+    
+    func getMonitorWithEmail(email: String) -> Monitor {
+        
+        var monitors: [Monitor] = []
+        var monitor: Monitor = Monitor(id: "test")
+        
+        let (resultSet, err) = SD.executeQuery("SELECT * FROM Monitor WHERE email = \(email)")
+        
+        if err != nil {
+            //there was an error during the query, handle it here
+        } else {
+            for row in resultSet {
+                monitor = getMonitor(row)
+                monitors.append(monitor)
+            }
+        }
+        
+        return monitors.first!
+    }
+    
+    func getMonitor(row: SD.SDRow) -> Monitor {
+        var monitor: Monitor = Monitor(id: "test")
+        
+        if let objectId = row["objectId"]?.asString() {
+            monitor.id = objectId
+        }
+        if let rijksregisterNr = row["rijksregisterNr"]?.asString() {
+            monitor.rijksregisterNr = rijksregisterNr
+        }
+        if let email = row["email"]?.asString() {
+            monitor.email = email
+        }
+        if let wachtwoord = row["wachtwoord"]?.asString() {
+            monitor.wachtwoord = wachtwoord
+        }
+        if let voornaam = row["voornaam"]?.asString() {
+            monitor.voornaam = voornaam
+        }
+        if let naam = row["naam"]?.asString() {
+            monitor.naam = naam
+        }
+        if let straat = row["straat"]?.asString() {
+            monitor.straat = straat
+        }
+        if let nummer = row["nummer"]?.asInt() {
+            monitor.nummer = nummer
+        }
+        if let bus = row["bus"]?.asString() {
+            monitor.bus = bus
+        }
+        if let postcode = row["postcode"]?.asInt() {
+            monitor.postcode = postcode
+        }
+        if let gemeente = row["gemeente"]?.asString() {
+            monitor.gemeente = gemeente
+        }
+        if let telefoon = row["telefoon"]?.asString() {
+            monitor.telefoon = telefoon
+        }
+        if let gsm = row["gsm"]?.asString() {
+            monitor.gsm = gsm
+        }
+        if let aansluitingsNr = row["aansluitingsNr"]?.asInt() {
+            monitor.aansluitingsNr = aansluitingsNr
+        }
+        if let postcode = row["postcode"]?.asInt() {
+            monitor.postcode = postcode
+        }
+        
+        return monitor
+    }
+    
+    func getAllVormingen() -> [Vorming] {
+    
+        var vormingen: [Vorming] = []
+        var vorming: Vorming = Vorming(id: "test")
+        
+        let (resultSet, err) = SD.executeQuery("SELECT * FROM Vorming")
+    
+        if err != nil {
+            //there was an error during the query, handle it here
+        } else {
+            for row in resultSet {
+                vorming = getVorming(row)
+                vormingen.append(vorming)
+            }
+        }
+    
+        return vormingen
+    }
+    
+    private func getVorming(row: SD.SDRow) -> Vorming {
+        var vorming: Vorming = Vorming(id: "test")
+        
+        if let objectId = row["objectId"]?.asString() {
+            vorming.id = objectId
+        }
+        if let titel = row["titel"]?.asString() {
+            vorming.titel = titel
+        }
+        if let locatie = row["locatie"]?.asString() {
+            vorming.locatie = locatie
+        }
+        if let korteBeschrijving = row["korteBeschrijving"]?.asString() {
+            vorming.korteBeschrijving = korteBeschrijving
+        }
+        /* ARRAY!!!!
+        if let periodes = row["periodes"]?.asString() {
+        vorming.periodes = periodes
+        }
+        */
+        if let prijs = row["prijs"]?.asDouble()! {
+            vorming.prijs = prijs
+        }
+        if let websiteLocatie = row["websiteLocatie"]?.asString() {
+            vorming.websiteLocatie = websiteLocatie
+        }
+        if let criteriaDeelnemers = row["criteriaDeelnemers"]?.asString() {
+            vorming.criteriaDeelnemers = criteriaDeelnemers
+        }
+        if let tips = row["tips"]?.asString() {
+            vorming.tips = tips
+        }
+        if let betalingswijze = row["betalingswijze"]?.asString() {
+            vorming.betalingWijze = betalingswijze
+        }
+        /* inbegrepenInPrijs staat niet in model klasse?
+        if let inbegrepenInPrijs = row["inbegrepenInPrijs"]?.asString() {
+            vorming. = basisPrijs
+        }*/
+        
+        return vorming
+    }
+    
+    func parseContactpersoonNoodToDatabase(contactpersoon: ContactpersoonNood, inschrijvingId: String) {
+        var contactpersoonJSON = PFObject(className: "ContactpersoonNood")
+        
+        contactpersoonJSON.setValue(contactpersoon.voornaam, forKey: "voornaam")
+        contactpersoonJSON.setValue(contactpersoon.naam, forKey: "naam")
+        contactpersoonJSON.setValue(contactpersoon.gsm, forKey: "gsm")
+        contactpersoonJSON.setValue(inschrijvingId, forKey: "inschrijvingVakantie")
+        
+        if contactpersoon.telefoon != nil {
+            contactpersoonJSON.setValue(contactpersoon.telefoon, forKey: "telefoon")
+        }
+        
+        contactpersoonJSON.save()
+    }
+    
+    func parseDeelnemerToDatabase(deelnemer: Deelnemer, inschrijvingId: String) {
+        var deelnemerJSON = PFObject(className: "Deelnemer")
+        
+        deelnemerJSON.setValue(deelnemer.voornaam, forKey: "voornaam")
+        deelnemerJSON.setValue(deelnemer.naam, forKey: "naam")
+        deelnemerJSON.setValue(deelnemer.geboortedatum, forKey: "geboortedatum")
+        deelnemerJSON.setValue(deelnemer.straat, forKey: "straat")
+        deelnemerJSON.setValue(deelnemer.nummer, forKey: "nummer")
+        deelnemerJSON.setValue(deelnemer.gemeente, forKey: "gemeente")
+        deelnemerJSON.setValue(deelnemer.postcode, forKey: "postcode")
+        deelnemerJSON.setValue(inschrijvingId, forKey: "inschrijvingVakantie")
+        
+        if deelnemer.bus != nil {
+            deelnemerJSON.setValue(deelnemer.bus, forKey: "bus")
+        }
+        
+        deelnemerJSON.save()
+        //deelnemerJSON.fetch()
+    }
+    
+    func parseInschrijvingVakantieToDatabase(inschrijving: InschrijvingVakantie) -> String {
+        var inschrijvingJSON = PFObject(className: "InschrijvingVakantie")
+        
+        inschrijvingJSON.setValue(inschrijving.vakantie?.id, forKey: "vakantie")
+        
+        if inschrijving.extraInfo != "" {
+            inschrijvingJSON.setValue(inschrijving.extraInfo, forKey: "extraInformatie")
+        }
+        
+        inschrijvingJSON.save()
+        inschrijvingJSON.fetch()
+        return inschrijvingJSON.objectId
+    }
+    
+    func zoekUserMetEmailEnWachtwoord(email: String, wachtwoord: String) -> PFUser {
+        var users: [PFUser] = []
+        var user: PFUser = PFUser()
+        
+        var query = "SELECT * FROM User WHERE email = \(email) AND wachtwoord = \(wachtwoord)"
+        
+        let (resultSet, err) = SD.executeQuery(query)
+        
+        if err != nil {
+            //there was an error during the query, handle it here
+        } else {
+            for row in resultSet {
+                user = getU(row)
+                users.append(user)
+            }
+        }
+        
+        return users.first!
+    }
+    
+    private func getU(row: SD.SDRow) -> PFUser {
+        var user: PFUser = PFUser()
+        
+        if let objectId = row["objectId"]?.asString() {
+            user.objectId = objectId
+        }
+        if let username = row["username"]?.asString() {
+            user.username = username
+        }
+        if let password = row["password"]?.asString() {
+            user.password = password
+        }
+        if let soort = row["soort"]?.asString() {
+            user["soort"] = soort
+        }
+        
+        return user
+    }
+    
+    func parseOuderToDatabase(ouder: Ouder) {
+        var ouderJSON = PFObject(className: "Ouder")
+        
+        ouderJSON.setValue(ouder.email, forKey: "email")
+        ouderJSON.setValue(ouder.wachtwoord, forKey: "wachtwoord")
+        ouderJSON.setValue(ouder.voornaam, forKey: "voornaam")
+        ouderJSON.setValue(ouder.naam, forKey: "naam")
+        ouderJSON.setValue(ouder.straat, forKey: "straat")
+        ouderJSON.setValue(ouder.nummer, forKey: "nummer")
+        ouderJSON.setValue(ouder.postcode, forKey: "postcode")
+        ouderJSON.setValue(ouder.gemeente, forKey: "gemeente")
+        ouderJSON.setValue(ouder.gsm, forKey: "gsm")
+        
+        if ouder.rijksregisterNr != nil {
+            ouderJSON.setValue(ouder.rijksregisterNr, forKey: "rijksregisterNr")
+            ouderJSON.setValue(ouder.aansluitingsNr, forKey: "aansluitingsNr")
+            ouderJSON.setValue(ouder.codeGerechtigde, forKey: "codeGerechtigde")
+            
+            if ouder.aansluitingsNrTweedeOuder != nil {
+                ouderJSON.setValue(ouder.aansluitingsNrTweedeOuder, forKey: "aansluitingsNrTweedeOuder")
+            }
+        }
+        
+        if ouder.bus != nil {
+            ouderJSON.setValue(ouder.bus, forKey: "bus")
+        }
+        
+        if ouder.telefoon != nil {
+            ouderJSON.setValue(ouder.telefoon, forKey: "telefoon")
+        }
+        
+        ouderJSON.save()
+        
+        createPFUser(ouder)
+        logIn(ouder)
+    }
+    
+    private func createPFUser(ouder: Ouder) {
+        var user = PFUser()
+        user.username = ouder.email
+        user.password = ouder.wachtwoord
+        user.email = ouder.email
+        user["soort"] = "ouder"
+        
+        user.signUpInBackgroundWithBlock {
+            (succeeded: Bool!, error: NSError!) -> Void in
+            if error == nil {
+                
+            }
+        }
+    }
+    
+    private func logIn(ouder: Ouder) {
+        PFUser.logInWithUsername(ouder.email, password: ouder.wachtwoord)
+    }
+    
+    func getAfbeeldingenMetVakantieId(vakantieId: String) -> [UIImage]{
+        var afbeeldingen: [UIImage] = []
+        var afbeelding: UIImage = UIImage()
+        
+        var query = "SELECT * FROM Afbeelding WHERE vakantie = \(vakantieId)"
+        
+        let (resultSet, err) = SD.executeQuery(query)
+        
+        if err != nil {
+            //there was an error during the query, handle it here
+        } else {
+            for row in resultSet {
+                afbeelding = getA(row)
+                afbeeldingen.append(afbeelding)
+            }
+        }
+        
+        return afbeeldingen
+    }
+    
+    private func getA(row: SD.SDRow) -> UIImage {
+        var afbeelding: UIImage = UIImage()
+        
+        if let a = row["afbeelding"]?.asImage()! {
+            afbeelding = a
+        }
+        
+        return afbeelding
     }
     
     func getAllVakanties() -> [Vakantie] {
@@ -91,6 +399,9 @@ class ParseData {
             if !contains(response.0, "User") {
                 createUserTable()
             }
+            if !contains(response.0, "Afbeelding") {
+                
+            }
             if !contains(response.0, "ContactpersoonNood") {
                 createContactpersoonNoodTable()
             }
@@ -126,7 +437,6 @@ class ParseData {
         vulMonitorTableOp()
         vulOuderTableOp()
         vulVakantieTableOp()
-        
     }
     
     private func vulUserTableOp() {
@@ -363,6 +673,30 @@ class ParseData {
         }
     }
     
+    private func vulAfbeeldingTableOp() {
+        
+        var afbeeldingen: [PFObject] = []
+        var query = PFQuery(className: "Afbeelding")
+        afbeeldingen = query.findObjects() as [PFObject]
+        
+        var objectId: String = ""
+        var afbeelding: UIImage = UIImage()
+        var vakantie: String = ""
+        
+        for a in afbeeldingen {
+            objectId = a.objectId as String
+            afbeelding = a["afbeelding"] as UIImage
+            vakantie = a["vakantie"] as String
+            
+            if let err = SD.executeChange("INSERT INTO Afbeelding (objectId, afbeelding, vakantie) VALUES ('\(objectId)', '\(afbeelding)', '\(vakantie)')") {
+                //there was an error during the insert, handle it here
+            } else {
+                //no error, the row was inserted successfully
+            }
+            
+        }
+    }
+    
     private func createUserTable() {
         
         
@@ -372,6 +706,17 @@ class ParseData {
             .StringVal, "soort": .StringVal]) {
             
             //there was an error
+                    
+        } else {
+            //no error
+        }
+    }
+    
+    private func createAfbeeldingTable() {
+        if let error = SD.createTable("Afbeelding", withColumnNamesAndTypes: ["objectId":
+            .StringVal, "afbeelding": .ImageVal, "vakantie": .StringVal]) {
+                    
+                    //there was an error
                     
         } else {
             //no error
