@@ -23,12 +23,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //SQLite (probeersel!)
         var parseData = ParseData()
         
-        parseData.createDatabase()
+        //parseData.createDatabase()
         
-        /*var object = PFObject(className: "test")
-        object.setValue("Banana", forKey: "favoriteFood")
-        object.setValue("Chocolate", forKey: "favoriteIceCream")
-        object.save()*/
+        if Reachability.isConnectedToNetwork() {
+            parseData.createDatabase()
+        } else {
+            var alert = UIAlertController(title: "Oeps..", message: "Je hebt geen internet verbinding. Ga naar instellingen om dit aan te passen.", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil))
+            alert.addAction(UIAlertAction(title: "Ga naar instellingen", style: .Default, handler: { action in
+                switch action.style{
+                case .Default:
+                    UIApplication.sharedApplication().openURL(NSURL(string:UIApplicationOpenSettingsURLString)!);
+                }
+            }))
+
+            
+            /*alert.addAction(UIAlertAction(title: "Settings", style: .Default, handler: { action in
+                UIApplication.sharedApplication().openURL(NSURL(string:UIApplicationOpenSettingsURLString)!)
+            }))
+            self.presentViewController(alert, animated: true, completion: nil)*/
+            /*let alertController = UIAlertController(title: "Oeps...", message: "Je hebt geen internet verbinding. Ga naar settings om dit aan te passen.", preferredStyle: .ActionSheet)
+            
+            let callAction = UIAlertAction(title: "Settings", style: .Default, handler: {
+                action in
+                /*let alertMessage = UIAlertController(title: "Service Unavailable", message: "Sorry, the call feature is not available yet. Please retry later.", preferredStyle: .Alert)
+                alertMessage.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+                self.presentViewController(alertMessage, animated: true, completion: nil)*/
+                UIApplication.sharedApplication().openURL(NSURL(string:UIApplicationOpenSettingsURLString)!)
+                }
+            )
+            alertController.addAction(callAction)
+            
+            let defaultAction = UIAlertAction(title: "Cancel", style: .Default, handler: nil)
+            alertController.addAction(defaultAction)*/
+            
+            //presentViewController(alertController, animated: true, completion: nil)
+        }
         
         return true
     }

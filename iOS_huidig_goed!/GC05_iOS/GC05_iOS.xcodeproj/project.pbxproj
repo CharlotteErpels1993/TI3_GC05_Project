@@ -68,6 +68,7 @@
 		1BFB1E591A0C0A6400E7B53F /* NieuwWachtwoordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFB1E581A0C0A6400E7B53F /* NieuwWachtwoordViewController.swift */; };
 		1BFC33401A066A87009CA8EB /* VakantieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFC333F1A066A87009CA8EB /* VakantieCell.swift */; };
 		A503E0EC1A1A7778000A9908 /* ProfielBewerkenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A503E0EB1A1A7778000A9908 /* ProfielBewerkenViewController.swift */; };
+		A5049CAD1A2334510012D990 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5049CAC1A2334510012D990 /* Reachability.swift */; };
 		A50740F61A1384EA00D01900 /* AfbeeldingenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50740F51A1384EA00D01900 /* AfbeeldingenViewController.swift */; };
 		A50740F81A1386D900D01900 /* AfbeeldingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50740F71A1386D900D01900 /* AfbeeldingCollectionViewCell.swift */; };
 		A512381B1A1630D1002242C6 /* SidebarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A512381A1A1630D1002242C6 /* SidebarTableViewController.swift */; };
@@ -166,6 +167,7 @@
 		1BFB1E581A0C0A6400E7B53F /* NieuwWachtwoordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NieuwWachtwoordViewController.swift; sourceTree = "<group>"; };
 		1BFC333F1A066A87009CA8EB /* VakantieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VakantieCell.swift; sourceTree = "<group>"; };
 		A503E0EB1A1A7778000A9908 /* ProfielBewerkenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfielBewerkenViewController.swift; sourceTree = "<group>"; };
+		A5049CAC1A2334510012D990 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		A50740F51A1384EA00D01900 /* AfbeeldingenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AfbeeldingenViewController.swift; sourceTree = "<group>"; };
 		A50740F71A1386D900D01900 /* AfbeeldingCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AfbeeldingCollectionViewCell.swift; sourceTree = "<group>"; };
 		A512381A1A1630D1002242C6 /* SidebarTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidebarTableViewController.swift; sourceTree = "<group>"; };
@@ -192,11 +194,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FA80B3A1A0135B1008DB343 /* SystemConfiguration.framework in Frameworks */,
 				0F88A6C01A1F37C30094D457 /* libsqlite3.dylib in Frameworks */,
 				1BD1A8261A0A63FE00F34AD3 /* Bolts.framework in Frameworks */,
 				1BD1A8271A0A63FE00F34AD3 /* Parse.framework in Frameworks */,
 				1BD1A8281A0A63FE00F34AD3 /* ParseFacebookUtils.framework in Frameworks */,
-				0FA80B3A1A0135B1008DB343 /* SystemConfiguration.framework in Frameworks */,
 				0FA80B381A0135A8008DB343 /* StoreKit.framework in Frameworks */,
 				0FA80B361A01359F008DB343 /* Security.framework in Frameworks */,
 				0FA80B341A013595008DB343 /* QuartzCore.framework in Frameworks */,
@@ -277,6 +279,7 @@
 		0FA80B041A01350E008DB343 /* GC05_iOS */ = {
 			isa = PBXGroup;
 			children = (
+				A5049CAB1A23343E0012D990 /* InternetConnectionCheck */,
 				0F88A6C11A1F37C80094D457 /* SQLite */,
 				0F145EE01A1D25BC003067EA /* Repositories */,
 				A503E0EF1A1A77EB000A9908 /* Custom cells */,
@@ -289,8 +292,6 @@
 				0FA80B0B1A01350E008DB343 /* Main.storyboard */,
 				0FA80B0E1A01350E008DB343 /* Images.xcassets */,
 				0FA80B051A01350E008DB343 /* Supporting Files */,
-				0F4C2DCD1A1BE253008EDEA4 /* ActivityIndicatorViewController.swift */,
-				0F145EDE1A1CDE98003067EA /* ResponsiveTextFieldViewController.swift */,
 			);
 			path = GC05_iOS;
 			sourceTree = "<group>";
@@ -390,6 +391,8 @@
 		A503E0EE1A1A77D8000A9908 /* Hulp */ = {
 			isa = PBXGroup;
 			children = (
+				0F4C2DCD1A1BE253008EDEA4 /* ActivityIndicatorViewController.swift */,
+				0F145EDE1A1CDE98003067EA /* ResponsiveTextFieldViewController.swift */,
 				0F6254961A0CCBA300BDEF38 /* FoutBox.swift */,
 				0F05F22D1A13A73000CFE0A1 /* NSDateExtension.swift */,
 				0F2A81991A091F7100F67A3B /* Regex.swift */,
@@ -404,6 +407,14 @@
 				A50740F71A1386D900D01900 /* AfbeeldingCollectionViewCell.swift */,
 			);
 			name = "Custom cells";
+			sourceTree = "<group>";
+		};
+		A5049CAB1A23343E0012D990 /* InternetConnectionCheck */ = {
+			isa = PBXGroup;
+			children = (
+				A5049CAC1A2334510012D990 /* Reachability.swift */,
+			);
+			name = InternetConnectionCheck;
 			sourceTree = "<group>";
 		};
 		A52976CD1A1A094900420FEE /* Images */ = {
@@ -529,6 +540,7 @@
 				1B4D78511A02897500E823E2 /* Registratie3ViewController.swift in Sources */,
 				0F145EE81A1D2660003067EA /* VakantieRepository.swift in Sources */,
 				1BDDB94D1A02D84B0007623D /* Monitor.swift in Sources */,
+				A5049CAD1A2334510012D990 /* Reachability.swift in Sources */,
 				A5CEA07D1A1399CA00E14103 /* VormingDetailsTableViewController.swift in Sources */,
 				0FA80B081A01350E008DB343 /* AppDelegate.swift in Sources */,
 				1BDDB9551A02D87F0007623D /* ContactpersoonNood.swift in Sources */,
