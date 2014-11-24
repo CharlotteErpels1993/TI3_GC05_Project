@@ -3,11 +3,16 @@ import Foundation
 struct /*class*/ DeelnemerSQL {
     
     static func createDeelnemerTable() {
-        if let error = SD.createTable("Deelnemer", withColumnNamesAndTypes: ["objectId": .StringVal, "voornaam": .StringVal, "naam": .StringVal, "geboortedatum": .DateVal ,"straat": .StringVal, "nummer": .IntVal, "bus": .StringVal, "postcode": .IntVal, "gemeente": .StringVal, "inschrijvingVakantie": .StringVal]) {
-            
-            //there was an error
-            
-        } else {
+        if let error = SD.createTable("Deelnemer", withColumnNamesAndTypes:
+            ["objectId": .StringVal, "voornaam": .StringVal, "naam": .StringVal,
+             "geboortedatum": .DateVal ,"straat": .StringVal, "nummer": .IntVal,
+             "bus": .StringVal, "postcode": .IntVal, "gemeente": .StringVal,
+             "inschrijvingVakantie": .StringVal])
+        {
+            println("ERROR: error tijdens creatie van table Deelnemer")
+        }
+        else
+        {
             //no error
         }
     }

@@ -3,12 +3,13 @@ import Foundation
 struct /*class*/ ContactpersoonNoodSQL {
     
     static func createContactpersoonNoodTable() {
-        if let error = SD.createTable("ContactpersoonNood", withColumnNamesAndTypes: ["objectId": .StringVal, "voornaam": .StringVal, "naam": .StringVal, "gsm":
-            .StringVal, "telefoon": .StringVal, "inschrijvingVakantie": .StringVal]) {
-                
-                //there was an error
-                
-        } else {
+        if let error = SD.createTable("ContactpersoonNood", withColumnNamesAndTypes: ["objectId": .StringVal, "voornaam": .StringVal, "naam": .StringVal,
+            "gsm": .StringVal, "telefoon": .StringVal, "inschrijvingVakantie": .StringVal])
+        {
+            println("ERROR: error tijdens creatie van table ContactpersoonNood")
+        }
+        else
+        {
             //no error
         }
     }

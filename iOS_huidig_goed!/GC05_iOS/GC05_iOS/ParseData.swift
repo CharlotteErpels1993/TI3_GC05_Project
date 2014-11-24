@@ -45,7 +45,7 @@ struct /*class*/ ParseData {
                 createUserTable()
             }
             if !contains(response.0, "Afbeelding") {
-                
+                createAfbeeldingTable()
             }
             if !contains(response.0, "ContactpersoonNood") {
                 createContactpersoonNoodTable()

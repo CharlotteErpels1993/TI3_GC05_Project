@@ -2,6 +2,23 @@ import Foundation
 
 struct /*class*/ MonitorSQL {
     
+    static func createMonitorTable() {
+        if let error = SD.createTable("Monitor", withColumnNamesAndTypes:
+        ["objectId": .StringVal, "rijksregisterNr": .StringVal, "email": .StringVal,
+         "wachtwoord": .StringVal ,"voornaam": .StringVal, "naam": .StringVal,
+         "straat": .StringVal, "nummer": .IntVal, "bus": .StringVal, "postcode": .IntVal,
+         "gemeente": .StringVal, "telefoon": .StringVal, "gsm": .StringVal,
+         "aansluitingsNr": .IntVal, "codeGerechtigde": .IntVal, "lidNr": .IntVal,
+         "linkFacebook": .StringVal])
+        {
+            println("ERROR: error tijdens creatie van table Monitor")
+        }
+        else
+        {
+            //no error
+        }
+    }
+    
     static func zoekAlleMonitors() -> [Monitor] {
         var monitors: [Monitor] = []
         var monitor: Monitor = Monitor(id: "test")
@@ -146,16 +163,6 @@ struct /*class*/ MonitorSQL {
                 //no error, the row was inserted successfully
             }
             
-        }
-    }
-    
-    static func createMonitorTable() {
-        if let error = SD.createTable("Monitor", withColumnNamesAndTypes: ["objectId": .StringVal, "rijksregisterNr": .StringVal, "email": .StringVal, "wachtwoord": .StringVal ,"voornaam": .StringVal, "naam": .StringVal, "straat": .StringVal, "nummer": .IntVal, "bus": .StringVal, "postcode": .IntVal, "gemeente": .StringVal, "telefoon": .StringVal, "gsm": .StringVal, "aansluitingsNr": .IntVal, "codeGerechtigde": .IntVal, "lidNr": .IntVal, "linkFacebook": .StringVal]) {
-            
-            //there was an error
-            
-        } else {
-            //no error
         }
     }
     

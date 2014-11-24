@@ -3,11 +3,18 @@ import Foundation
 struct /*class*/ OuderSQL {
     
     static func createOuderTable() {
-        if let error = SD.createTable("Ouder", withColumnNamesAndTypes: ["objectId": .StringVal, "rijksregisterNr": .StringVal, "email": .StringVal, "wachtwoord": .StringVal ,"voornaam": .StringVal, "naam": .StringVal, "straat": .StringVal, "nummer": .IntVal, "bus": .StringVal, "postcode": .IntVal, "gemeente": .StringVal, "telefoon": .StringVal, "gsm": .StringVal, "aansluitingsNr": .IntVal, "codeGerechtigde": .IntVal, "aansluitingsNrTweedeOuder": .IntVal]) {
-            
-            //there was an error
-            
-        } else {
+        if let error = SD.createTable("Ouder", withColumnNamesAndTypes:
+            ["objectId": .StringVal, "rijksregisterNr": .StringVal, "email": .StringVal,
+             "wachtwoord": .StringVal ,"voornaam": .StringVal, "naam": .StringVal,
+             "straat": .StringVal, "nummer": .IntVal, "bus": .StringVal, "postcode": .IntVal,
+             "gemeente": .StringVal, "telefoon": .StringVal, "gsm": .StringVal,
+             "aansluitingsNr": .IntVal, "codeGerechtigde": .IntVal,
+             "aansluitingsNrTweedeOuder": .IntVal])
+        {
+            println("ERROR: error tijdens creatie van table Ouder")
+        }
+        else
+        {
             //no error
         }
     }

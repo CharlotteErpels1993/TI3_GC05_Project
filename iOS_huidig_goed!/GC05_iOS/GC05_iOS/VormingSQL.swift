@@ -3,15 +3,17 @@ import Foundation
 struct /*class*/ VormingSQL {
     
     static func createVormingTable() {
-        if let error = SD.createTable("Vorming", withColumnNamesAndTypes: ["objectId":
-            .StringVal, "titel": .StringVal, "locatie": .StringVal, "korteBeschrijving":
-                .StringVal, "periodes": .StringVal, "prijs": .DoubleVal,
-            "websiteLocatie": .StringVal, "criteriaDeelnemers": .StringVal, "tips":
-                .StringVal, "betalingswijze": .StringVal, "inbegrepenInPrijs": .StringVal]) {
-                    
-                    //there was an error
-                    
-        } else {
+        if let error = SD.createTable("Vorming", withColumnNamesAndTypes:
+            ["objectId": .StringVal, "titel": .StringVal, "locatie": .StringVal,
+             "korteBeschrijving": .StringVal, "periodes": .StringVal, "prijs": .DoubleVal,
+             "websiteLocatie": .StringVal, "criteriaDeelnemers": .StringVal,
+             "tips": .StringVal, "betalingswijze": .StringVal,
+             "inbegrepenInPrijs": .StringVal])
+        {
+            println("ERROR: error tijdens creatie van table Vorming")
+        }
+        else
+        {
             //no error
         }
     }

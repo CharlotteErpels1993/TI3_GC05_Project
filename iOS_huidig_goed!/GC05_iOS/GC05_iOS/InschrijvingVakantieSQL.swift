@@ -3,11 +3,12 @@ import Foundation
 struct /*class*/ InschrijvingVakantieSQL {
     
     static func createInschrijvingVakantieTable() {
-        if let error = SD.createTable("InschrijvingVakantie", withColumnNamesAndTypes: ["objectId": .StringVal, "extraInformatie": .StringVal, "vakantie": .StringVal]) {
-            
-            //there was an error
-            
-        } else {
+        if let error = SD.createTable("InschrijvingVakantie", withColumnNamesAndTypes: ["objectId": .StringVal, "extraInformatie": .StringVal, "vakantie": .StringVal])
+        {
+            println("ERROR: error tijdens creatie van table InschrijvingVakantie")
+        }
+        else
+        {
             //no error
         }
     }

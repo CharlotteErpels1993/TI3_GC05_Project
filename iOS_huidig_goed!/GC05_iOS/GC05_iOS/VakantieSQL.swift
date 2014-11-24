@@ -3,17 +3,19 @@ import Foundation
 struct /*class*/ VakantieSQL {
     
     static func createVakantieTable() {
-        if let error = SD.createTable("Vakantie", withColumnNamesAndTypes: ["objectId":
-            .StringVal, "titel": .StringVal, "locatie": .StringVal, "korteBeschrijving":
-                .StringVal, "vertrekdatum": .DateVal, "terugkeerdatum": .DateVal,
-            "aantalDagenNachten": .StringVal, "vervoerwijze": .StringVal, "formule":
-                .StringVal, "basisPrijs": .DoubleVal, "bondMoysonLedenPrijs": .DoubleVal,
-            "inbegrepenPrijs": .StringVal, "doelgroep": .StringVal, "maxAantalDeelnemers":
-                .IntVal, "sterPrijs1ouder": .StringVal, "sterPrijs2ouders": .DoubleVal]) {
-                    
-                    print("error bij create vakantie table")
-                    
-        } else {
+        if let error = SD.createTable("Vakantie", withColumnNamesAndTypes:
+            ["objectId": .StringVal, "titel": .StringVal, "locatie": .StringVal,
+             "korteBeschrijving": .StringVal, "vertrekdatum": .DateVal,
+             "terugkeerdatum": .DateVal, "aantalDagenNachten": .StringVal,
+             "vervoerwijze": .StringVal, "formule": .StringVal, "basisPrijs": .DoubleVal,
+             "bondMoysonLedenPrijs": .DoubleVal, "inbegrepenPrijs": .StringVal,
+             "doelgroep": .StringVal, "maxAantalDeelnemers": .IntVal,
+             "sterPrijs1ouder": .StringVal, "sterPrijs2ouders": .DoubleVal])
+        {
+            println("ERROR: error tijdens creatie van table Vakantie")
+        }
+        else
+        {
             //no error
         }
     }

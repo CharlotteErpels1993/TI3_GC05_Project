@@ -7,10 +7,10 @@ struct /*class*/ UserSQL {
             ["objectId": .StringVal, "username": .StringVal, "password": .StringVal,
              "email": .StringVal, "soort": .StringVal])
         {
-            //there was an error
-            println("ERROR: error tijdens create van table User")
+            println("ERROR: error tijdens creatie van table User")
         }
-        else {
+        else
+        {
             //no error
         }
     }

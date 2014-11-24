@@ -3,12 +3,13 @@ import Foundation
 struct /*class*/ AfbeeldingSQL {
     
     static func createAfbeeldingTable() {
-        if let error = SD.createTable("Afbeelding", withColumnNamesAndTypes: ["objectId":
-            .StringVal, "afbeelding": .ImageVal, "vakantie": .StringVal]) {
-                
-                //there was an error
-                
-        } else {
+        if let error = SD.createTable("Afbeelding", withColumnNamesAndTypes:
+            ["objectId": .StringVal, "afbeelding": .ImageVal, "vakantie": .StringVal])
+        {
+            println("ERROR: error tijdens creatie van table Afbeelding")
+        }
+        else
+        {
             //no error
         }
     }

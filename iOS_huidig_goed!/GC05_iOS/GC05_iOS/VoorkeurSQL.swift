@@ -3,13 +3,14 @@ import Foundation
 struct /*class*/ VoorkeurSQL {
     
     static func createVoorkeurTable() {
-        if let error = SD.createTable("Voorkeur", withColumnNamesAndTypes: ["objectId":
-            .StringVal, "monitor": .StringVal, "vakantie": .StringVal, "periodes":
-                .StringVal]) {
-                    
-                    //there was an error
-                    
-        } else {
+        if let error = SD.createTable("Voorkeur", withColumnNamesAndTypes:
+            ["objectId": .StringVal, "monitor": .StringVal, "vakantie": .StringVal,
+             "periodes": .StringVal])
+        {
+            println("ERROR: error tijdens creatie van table Voorkeur")
+        }
+        else
+        {
             //no error
         }
     }
