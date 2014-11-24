@@ -10,7 +10,7 @@ class ProfielBewerkenViewController: ResponsiveTextFieldViewController {
     @IBOutlet weak var facebookTxt: UITextField!
     
     @IBAction func opslaan(sender: AnyObject) {
-        schrijfGegevensNaarDatabank()
+        //schrijfGegevensNaarDatabank()
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         var destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Profiel") as UIViewController
         sideMenuController()?.setContentViewController(destViewController)

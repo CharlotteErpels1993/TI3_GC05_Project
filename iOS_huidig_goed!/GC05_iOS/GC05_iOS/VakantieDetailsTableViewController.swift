@@ -96,9 +96,7 @@ class VakantieDetailsTableViewController: UITableViewController {
                 } else {
                     sterPrijs2Label.text = String("Ster prijs (2 ouders): /")
                 }
-            } else {
-                self.navigationItem.rightBarButtonItem = nil
-            }
+            } 
         } else {
             self.sectionToDelete = 5;
             self.tableView.deleteSections(NSIndexSet(index: self.sectionToDelete), withRowAnimation: UITableViewRowAnimation.None)
