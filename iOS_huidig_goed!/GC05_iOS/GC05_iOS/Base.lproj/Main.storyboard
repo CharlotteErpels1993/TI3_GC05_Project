@@ -1234,9 +1234,9 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="cmT-hC-SJd">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="fyB-15-fNT">
-                                <rect key="frame" x="228" y="270" width="115" height="30"/>
+                                <rect key="frame" x="469" y="7" width="69" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Profiel bewerken">
+                                <state key="normal" title="Bewerken">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -3163,63 +3163,58 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Voornaam:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OFM-q2-v5W">
-                                <rect key="frame" x="16" y="117" width="82.5" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Voornaam: *" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OFM-q2-v5W">
+                                <rect key="frame" x="16" y="117" width="93.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Naam:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aQ1-IJ-lN7">
-                                <rect key="frame" x="16" y="154" width="50.5" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Naam: *" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aQ1-IJ-lN7">
+                                <rect key="frame" x="16" y="163" width="61" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Telefoon:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UDN-iK-7PX">
-                                <rect key="frame" x="16" y="260" width="69.5" height="20.5"/>
+                                <rect key="frame" x="16" y="210" width="69.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gsm:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bYt-Gy-erx">
-                                <rect key="frame" x="16" y="326.5" width="41" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gsm: *" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bYt-Gy-erx">
+                                <rect key="frame" x="16" y="276" width="52" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Facebook link:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z3u-lG-cAe">
-                                <rect key="frame" x="16" y="393" width="112" height="20.5"/>
+                                <rect key="frame" x="16" y="343" width="112" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Aw8-sv-3S2">
-                                <rect key="frame" x="138.5" y="114" width="445.5" height="30"/>
+                                <rect key="frame" x="149" y="114" width="435" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EFO-BA-8dE">
-                                <rect key="frame" x="138.5" y="156" width="445.5" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lxx-qr-SDn">
-                                <rect key="frame" x="16" y="222" width="568" height="30"/>
+                                <rect key="frame" x="149" y="165" width="435" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1DH-g1-s7c">
-                                <rect key="frame" x="16" y="288.5" width="568" height="30"/>
+                                <rect key="frame" x="16" y="238" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BkO-ho-YuC">
-                                <rect key="frame" x="16" y="355" width="568" height="30"/>
+                                <rect key="frame" x="16" y="305" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HqP-Uv-9B5">
-                                <rect key="frame" x="16" y="421.5" width="568" height="30"/>
+                                <rect key="frame" x="16" y="371" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -3229,9 +3224,9 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tQz-am-iGj">
-                                <rect key="frame" x="16" y="193.5" width="47" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* verplicht in te vullen" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pjR-1i-mXI">
+                                <rect key="frame" x="16" y="533" width="119.5" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -3240,35 +3235,32 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                         <constraints>
                             <constraint firstItem="bbg-68-a9h" firstAttribute="top" secondItem="yPy-FH-5hL" secondAttribute="bottom" constant="8" id="2uE-VJ-Gxz"/>
                             <constraint firstItem="HqP-Uv-9B5" firstAttribute="top" secondItem="z3u-lG-cAe" secondAttribute="bottom" constant="8" id="4Jr-tM-zfp"/>
-                            <constraint firstItem="tQz-am-iGj" firstAttribute="leading" secondItem="AAs-zI-xjp" secondAttribute="leadingMargin" id="4XY-hg-7Jr"/>
                             <constraint firstItem="Aw8-sv-3S2" firstAttribute="leading" secondItem="OFM-q2-v5W" secondAttribute="trailing" constant="40" id="5SS-2O-2il"/>
                             <constraint firstItem="BkO-ho-YuC" firstAttribute="trailing" secondItem="AAs-zI-xjp" secondAttribute="trailingMargin" id="5Zg-lp-072"/>
-                            <constraint firstItem="aQ1-IJ-lN7" firstAttribute="top" secondItem="OFM-q2-v5W" secondAttribute="bottom" constant="16" id="6Pm-uN-3Bg"/>
+                            <constraint firstItem="aQ1-IJ-lN7" firstAttribute="top" secondItem="OFM-q2-v5W" secondAttribute="bottom" constant="25.5" id="6Pm-uN-3Bg"/>
                             <constraint firstItem="bbg-68-a9h" firstAttribute="leading" secondItem="AAs-zI-xjp" secondAttribute="leadingMargin" id="7oO-nb-fnN"/>
                             <constraint firstItem="BkO-ho-YuC" firstAttribute="top" secondItem="bYt-Gy-erx" secondAttribute="bottom" constant="8" id="83e-aV-88F"/>
-                            <constraint firstItem="lxx-qr-SDn" firstAttribute="top" secondItem="tQz-am-iGj" secondAttribute="bottom" constant="8" id="8Ck-LS-1BL"/>
-                            <constraint firstItem="tQz-am-iGj" firstAttribute="top" secondItem="aQ1-IJ-lN7" secondAttribute="bottom" constant="19" id="CSZ-PZ-62O"/>
                             <constraint firstItem="EFO-BA-8dE" firstAttribute="trailing" secondItem="AAs-zI-xjp" secondAttribute="trailingMargin" id="GSh-7d-JPN"/>
                             <constraint firstItem="1DH-g1-s7c" firstAttribute="leading" secondItem="AAs-zI-xjp" secondAttribute="leadingMargin" id="H0f-L3-XQ3"/>
                             <constraint firstItem="BkO-ho-YuC" firstAttribute="leading" secondItem="AAs-zI-xjp" secondAttribute="leadingMargin" id="L5Z-m1-E8c"/>
                             <constraint firstItem="bYt-Gy-erx" firstAttribute="top" secondItem="1DH-g1-s7c" secondAttribute="bottom" constant="8" id="Ld0-AE-9dr"/>
-                            <constraint firstItem="EFO-BA-8dE" firstAttribute="top" secondItem="Aw8-sv-3S2" secondAttribute="bottom" constant="12" id="LdO-MO-OC5"/>
+                            <constraint firstItem="EFO-BA-8dE" firstAttribute="top" secondItem="Aw8-sv-3S2" secondAttribute="bottom" constant="21" id="LdO-MO-OC5"/>
                             <constraint firstItem="UDN-iK-7PX" firstAttribute="leading" secondItem="AAs-zI-xjp" secondAttribute="leadingMargin" id="Lof-f1-rQm"/>
-                            <constraint firstItem="lxx-qr-SDn" firstAttribute="leading" secondItem="AAs-zI-xjp" secondAttribute="leadingMargin" id="OQ8-ma-ePv"/>
-                            <constraint firstItem="UDN-iK-7PX" firstAttribute="top" secondItem="lxx-qr-SDn" secondAttribute="bottom" constant="8" id="Rzx-Ig-rgo"/>
+                            <constraint firstItem="iJa-6t-5SS" firstAttribute="top" secondItem="pjR-1i-mXI" secondAttribute="bottom" constant="8.5" id="M3O-bw-Zjj"/>
                             <constraint firstItem="aQ1-IJ-lN7" firstAttribute="leading" secondItem="AAs-zI-xjp" secondAttribute="leadingMargin" id="T4n-7Q-JoG"/>
+                            <constraint firstItem="pjR-1i-mXI" firstAttribute="leading" secondItem="AAs-zI-xjp" secondAttribute="leadingMargin" id="Ymh-Wo-rgo"/>
                             <constraint firstItem="Aw8-sv-3S2" firstAttribute="trailing" secondItem="AAs-zI-xjp" secondAttribute="trailingMargin" id="Zs6-OS-ncJ"/>
                             <constraint firstItem="bYt-Gy-erx" firstAttribute="leading" secondItem="AAs-zI-xjp" secondAttribute="leadingMargin" id="aXe-1q-CQx"/>
                             <constraint firstItem="HqP-Uv-9B5" firstAttribute="trailing" secondItem="AAs-zI-xjp" secondAttribute="trailingMargin" id="bgN-rt-gso"/>
                             <constraint firstItem="1DH-g1-s7c" firstAttribute="top" secondItem="UDN-iK-7PX" secondAttribute="bottom" constant="8" id="btE-Zd-Q67"/>
                             <constraint firstItem="OFM-q2-v5W" firstAttribute="leading" secondItem="AAs-zI-xjp" secondAttribute="leadingMargin" id="c1d-DM-uIh"/>
                             <constraint firstItem="Aw8-sv-3S2" firstAttribute="top" secondItem="yPy-FH-5hL" secondAttribute="bottom" constant="50" id="caA-rk-6u7"/>
-                            <constraint firstItem="lxx-qr-SDn" firstAttribute="trailing" secondItem="AAs-zI-xjp" secondAttribute="trailingMargin" id="grB-ta-tC4"/>
                             <constraint firstItem="1DH-g1-s7c" firstAttribute="trailing" secondItem="AAs-zI-xjp" secondAttribute="trailingMargin" id="hXM-Fd-TBb"/>
                             <constraint firstItem="EFO-BA-8dE" firstAttribute="leading" secondItem="aQ1-IJ-lN7" secondAttribute="trailing" constant="72" id="kTF-BG-BHY"/>
                             <constraint firstItem="HqP-Uv-9B5" firstAttribute="leading" secondItem="AAs-zI-xjp" secondAttribute="leadingMargin" id="nTI-eL-Pf0"/>
                             <constraint firstItem="z3u-lG-cAe" firstAttribute="leading" secondItem="AAs-zI-xjp" secondAttribute="leadingMargin" id="nWj-6l-nxJ"/>
                             <constraint firstItem="z3u-lG-cAe" firstAttribute="top" secondItem="BkO-ho-YuC" secondAttribute="bottom" constant="8" id="qGY-CF-aYX"/>
+                            <constraint firstItem="UDN-iK-7PX" firstAttribute="top" secondItem="aQ1-IJ-lN7" secondAttribute="bottom" constant="26.5" id="v4G-Bh-4sV"/>
                             <constraint firstItem="OFM-q2-v5W" firstAttribute="top" secondItem="bbg-68-a9h" secondAttribute="bottom" constant="24.5" id="vxx-VG-048"/>
                         </constraints>
                     </view>
@@ -3281,7 +3273,6 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="emailTxt" destination="lxx-qr-SDn" id="Y5x-3B-xjh"/>
                         <outlet property="facebookTxt" destination="HqP-Uv-9B5" id="IaD-CV-DPy"/>
                         <outlet property="gsmTxt" destination="BkO-ho-YuC" id="C6d-EP-6jI"/>
                         <outlet property="naamTxt" destination="EFO-BA-8dE" id="EXk-wj-a7j"/>

@@ -4,7 +4,6 @@ class ProfielBewerkenViewController: ResponsiveTextFieldViewController {
     
     @IBOutlet weak var voornaamTxt: UITextField!
     @IBOutlet weak var naamTxt: UITextField!
-    @IBOutlet weak var emailTxt: UITextField!
     @IBOutlet weak var telefoonTxt: UITextField!
     @IBOutlet weak var gsmTxt: UITextField!
     @IBOutlet weak var facebookTxt: UITextField!
