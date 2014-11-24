@@ -29,9 +29,12 @@ struct /*class*/ InschrijvingVormingSQL {
         
         let (resultSet, err) = SD.executeQuery("SELECT vorming FROM InschrijvingVorming WHERE monitor = \(monitorId)")
         
-        if err != nil {
-            //there was an error during the query, handle it here
-        } else {
+        if err != nil
+        {
+            println("ERROR: error tijdens ophalen van VormingenIds van Monitor van table InschrijvingVorming")
+        }
+        else
+        {
             for row in resultSet {
                 if let vormingId = row["vorming"]?.asString() {
                     vormingenIds.append(vormingId)
@@ -48,9 +51,12 @@ struct /*class*/ InschrijvingVormingSQL {
         for vorming in vormingen {
             var (resultSet, err) = SD.executeQuery("SELECT monitor FROM InschrijvingVorming WHERE vorming = \(vorming)")
             
-            if err != nil {
-                //there was an error during the query, handle it here
-            } else {
+            if err != nil
+            {
+                println("ERROR: error tijdens ophalen van monitorIds van monitors met dezelfde vorming uit table InschrijvingVorming")
+            }
+            else
+            {
                 for row in resultSet {
                     if let monitorId = row["monitor"]?.asString() {
                         if !contains(monitorsId, monitorId) {
