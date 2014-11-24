@@ -47,22 +47,9 @@ class Vakantie: Activiteit
     }
     
     init(vakantie: PFObject) {
-<<<<<<< Updated upstream
+
         self.vertrekdatum = vakantie["vertrekdatum"] as? NSDate
         self.terugkeerdatum = vakantie["terugkeerdatum"] as? NSDate
-        self.aantalDagenNachten = vakantie["aantalDagenNachten"] as String
-        self.vervoerwijze = vakantie["vervoerwijze"] as String
-        self.formule = vakantie["formule"] as String
-        self.basisprijs = vakantie["basisPrijs"] as Double
-        self.bondMoysonLedenPrijs = vakantie["bondMoysonLedenPrijs"] as Double
-        self.sterPrijs1ouder = vakantie["sterPrijs1ouder"] as Double
-        self.sterPrijs2ouders = vakantie["sterPrijs2ouders"] as Double
-        self.inbegrepenPrijs = vakantie["inbegrepenPrijs"] as String
-        self.doelgroep = vakantie["doelgroep"] as String
-        self.maxAantalDeelnemers = vakantie["maxAantalDeelnemers"] as Int
-=======
-        self.beginDatum = vakantie["vertrekdatum"] as? NSDate
-        self.terugkeerDatum = vakantie["terugkeerdatum"] as? NSDate
         self.aantalDagenNachten = vakantie["aantalDagenNachten"] as? String
         self.vervoerwijze = vakantie["vervoerwijze"] as? String
         self.formule = vakantie["formule"] as? String
@@ -73,7 +60,6 @@ class Vakantie: Activiteit
         self.inbegrepenPrijs = vakantie["inbegrepenPrijs"] as? String
         self.doelgroep = vakantie["doelgroep"] as? String
         self.maxAantalDeelnemers = vakantie["maxAantalDeelnemers"] as? Int
->>>>>>> Stashed changes
         
         super.init(activiteit: vakantie)
         
