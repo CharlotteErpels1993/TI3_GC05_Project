@@ -10,14 +10,9 @@ class InschrijvenVakantie2ViewController : ResponsiveTextFieldViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "volgende" {
-        let inschrijvenVakantie3ViewController = segue.destinationViewController as InschrijvenVakantie3ViewController
-        
-        //nog controleren!!!
-        
-        deelnemer.geboortedatum = dpGeboortedatum.date
-        
-        inschrijvenVakantie3ViewController.deelnemer = deelnemer
-        //inschrijvenVakantie3ViewController.ouder = ouder
+            let inschrijvenVakantie3ViewController = segue.destinationViewController as InschrijvenVakantie3ViewController
+            deelnemer.geboortedatum = dpGeboortedatum.date
+            inschrijvenVakantie3ViewController.deelnemer = deelnemer
         } else if segue.identifier == "gaTerug" {
             let vakantiesTableViewController = segue.destinationViewController as VakantiesTableViewController
         }

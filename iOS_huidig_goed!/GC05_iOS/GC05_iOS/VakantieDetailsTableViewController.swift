@@ -26,8 +26,6 @@ class VakantieDetailsTableViewController: UITableViewController {
     
     var vakantie: Vakantie!
     var images: [UIImage] = []
-    //var ouder: Ouder?
-    //var currentUser: PFUser?
     var query = PFQuery(className: "Vakantie")
     var beschrijving: String!
     var sectionToDelete = -1;
@@ -37,8 +35,10 @@ class VakantieDetailsTableViewController: UITableViewController {
         
         var activityIndicator = getActivityIndicatorView(self)
         
-        zoekImages()
+        //zoekImages()
+        
         hideSideMenuView()
+        
         query.getObjectInBackgroundWithId(vakantie.id) {
             (vakantie: PFObject!, error: NSError!) -> Void in
             if error == nil {
@@ -108,17 +108,8 @@ class VakantieDetailsTableViewController: UITableViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-        //super.viewDidAppear()
         if PFUser.currentUser() == nil {
-        /*self.sectionToDelete = 5;
-        self.tableView.deleteSections(NSIndexSet(index: self.sectionToDelete), withRowAnimation: UITableViewRowAnimation.None)
-        basisprijsLabel = nil
-        bondMoysonPrijsLabel = nil
-        sterprijs1Label = nil
-        sterPrijs2Label = nil
-        bondMoysonPrijsLabel = nil
-        inbegrepenPrijs = nil*/
-        self.tableView.reloadData()
+            self.tableView.reloadData()
         }
     }
     
@@ -128,7 +119,6 @@ class VakantieDetailsTableViewController: UITableViewController {
         } else {
             return 5
         }
-            //return 5 - 1
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -147,13 +137,7 @@ class VakantieDetailsTableViewController: UITableViewController {
         }
     }
     
-    
-    /*override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        //tableView.deleteSelections(NSIndexSet(index: 5), withRowAnimation: UITableViewRowAnimation.None)
-        tableView.deleteSections(NSIndexSet(index: 5), withRowAnimation: UITableViewRowAnimation.None)
-    }*/
-    
-    func zoekImages() {
+    /*func zoekImages() {
         var query = PFQuery(className: "Afbeelding")
         query.whereKey("VakantieID", equalTo: vakantie.id)
         query.findObjectsInBackgroundWithBlock({(NSArray objects, NSError error) in
@@ -171,74 +155,23 @@ class VakantieDetailsTableViewController: UITableViewController {
                 }
             }
         })
-    }
-    
-    /*override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        TO DO
     }*/
-    
-    
-    
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "afbeeldingen" {
-            /*var afb1 = afbeelding1.image
-            var afb2 = afbeelding2.image
-            var afb3 = afbeelding3.image*/
             let bekijkAfbeeldingViewController = segue.destinationViewController as AfbeeldingenViewController
-            /*bekijkAfbeeldingViewController.afb1 = afb1
-            bekijkAfbeeldingViewController.afb2 = afb2
-            bekijkAfbeeldingViewController.afb3 = afb3*/
             bekijkAfbeeldingViewController.images = self.images
         } else if segue.identifier == "korteBeschrijvingVakantie" {
             let extraTekstViewController = segue.destinationViewController as ExtraTekstViewController
             extraTekstViewController.tekst = vakantie.korteBeschrijving
             extraTekstViewController.type = 1 as Int
         } else if segue.identifier == "inbegrepenPrijs" {
-            //let inbegrepenPrijsViewController = segue.destinationViewController as InbegrepenPrijsTableView
-            //inbegrepenPrijsViewController.tekst = inbegrepenPrijs.text
             let extraTekstViewController = segue.destinationViewController as ExtraTekstViewController
             extraTekstViewController.tekst = vakantie.inbegrepenPrijs
             extraTekstViewController.type = 2
         } else if segue.identifier == "inschrijven" {
             let inschrijvenVakantie1ViewController = segue.destinationViewController as InschrijvenVakantie1ViewController
             inschrijvenVakantie1ViewController.vakantie = vakantie
-            //inschrijvenVakantie1ViewController.ouder = ouder
         }
     }
-
-
-    
-    /*func zoekImage1(vakantie: PFObject!) {
-                  let imageFile = vakantie["vakAfbeelding1"] as PFFile
-                imageFile.getDataInBackgroundWithBlock {
-                    (imageData: NSData!, error: NSError!) -> Void in
-                    if error == nil {
-                        var afb = UIImage(data: imageData)
-                        self.afbeelding1.image = afb
-                    } // if - end
-                } // getDataInBackgroundWithBlock - end
-    }
-    
-    func zoekImage2(vakantie: PFObject!) {
-                let imageFile = vakantie["vakAfbeelding2"] as PFFile
-                imageFile.getDataInBackgroundWithBlock {
-                    (imageData: NSData!, error: NSError!) -> Void in
-                    if error == nil {
-                        var afb = UIImage(data: imageData)
-                        self.afbeelding2.image = afb
-                    } // if - end
-                } // getDataInBackgroundWithBlock - end
-    }
-    
-    func zoekImage3(vakantie: PFObject!) {
-                let imageFile = vakantie["vakAfbeelding3"] as PFFile
-                imageFile.getDataInBackgroundWithBlock {
-                    (imageData: NSData!, error: NSError!) -> Void in
-                    if error == nil {
-                        var afb = UIImage(data: imageData)
-                        self.afbeelding3.image = afb
-                        print(afb)
-                    } // if - end
-                } // getDataInBackgroundWithBlock - end
-    }*/
 }

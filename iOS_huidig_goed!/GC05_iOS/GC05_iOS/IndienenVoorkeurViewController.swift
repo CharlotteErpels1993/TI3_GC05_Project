@@ -9,11 +9,11 @@ class IndienenVoorkeurViewController: UIViewController, UIPickerViewDataSource, 
     @IBOutlet weak var txtViewPeriodes: UITextView!
     
     var vakanties: [Vakantie] = []
-    //var vakanties2: [Vakantie] = []
     var pickerData: [String] = []
     var voorkeur: Voorkeur = Voorkeur(id: "test")
     //var vorming: Vorming!
     //var inschrijvingVorming: InschrijvingVorming = InschrijvingVorming(id: "test")
+    
     @IBAction func gaTerugNaarOverzicht(sender: AnyObject) {
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         var destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Profiel") as UIViewController
@@ -21,8 +21,7 @@ class IndienenVoorkeurViewController: UIViewController, UIPickerViewDataSource, 
         hideSideMenuView()
     }
     
-    func zoekVakanties() {
-        //vakanties.removeAll(keepCapacity: true)
+    /*func zoekVakanties() {
         var query = PFQuery(className: "Vakantie")
         query.findObjectsInBackgroundWithBlock({(NSArray objects, NSError error) in
             if(error == nil) {
@@ -41,19 +40,12 @@ class IndienenVoorkeurViewController: UIViewController, UIPickerViewDataSource, 
             }
             
         })
-    }
+    }*/
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        zoekVakanties()
-
-        //var query = PFQuery(className: "Vakantie")
-        //self.vakanties = query.findObjects() as [Vakantie]
-        
-        /*for var index = 0; index < self.vakanties.count; index += 1 {
-            pickerData[index] = vakanties[index].titel!
-        }*/
+        //zoekVakanties()
         
         giveUITextViewDefaultBorder(txtViewPeriodes)
         
@@ -90,8 +82,7 @@ class IndienenVoorkeurViewController: UIViewController, UIPickerViewDataSource, 
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        //if segue.identifier == "inschrijven" {
-            let indienenVoorkeurSuccesvolViewController = segue.destinationViewController as IndienenVoorkeurSuccesvolViewController
+        let indienenVoorkeurSuccesvolViewController = segue.destinationViewController as IndienenVoorkeurSuccesvolViewController
             
         if txtViewPeriodes.text.isEmpty {
             giveUITextViewRedBorder(txtViewPeriodes)
@@ -113,24 +104,7 @@ class IndienenVoorkeurViewController: UIViewController, UIPickerViewDataSource, 
             
             indienenVoorkeurSuccesvolViewController.voorkeur = self.voorkeur
         }
-            
-            /*var query = PFQuery(className: "Monitor")
-            query.whereKey("email", containsString: PFUser.currentUser().email)
-            var monitorPF = query.getFirstObject()
-            var monitor = Monitor(monitor: monitorPF)
-            
-            self.voorkeur.monitor = monitor
-            self.voorkeur.data = txtViewPeriodes.text
-            
-            if self.voorkeur.vakantie == nil {
-                self.voorkeur.vakantie = vakanties[0]
-            }
-            
-            indienenVoorkeurSuccesvolViewController.voorkeur = self.voorkeur*/
-            
-        //} /*else if segue.identifier == "gaTerug" {
-            //let vormingenTableViewController = segue.destinationViewController as VormingenTableViewController
-        //}
+
     }
 
     

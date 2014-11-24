@@ -14,10 +14,10 @@ class IndienenVoorkeurSuccesvolViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        parseVoorkeurToDatabase()
+        //parseVoorkeurToDatabase()
     }
     
-    func parseVoorkeurToDatabase() {
+    /*func parseVoorkeurToDatabase() {
         var voorkeurJSON = PFObject(className: "Voorkeur")
         
         voorkeurJSON.setValue(voorkeur.data, forKey: "periodes")
@@ -25,5 +25,5 @@ class IndienenVoorkeurSuccesvolViewController: UIViewController {
         voorkeurJSON.setValue(voorkeur.vakantie?.id, forKey: "vakantie")
         
         voorkeurJSON.save()
-    }
+    }*/
 }

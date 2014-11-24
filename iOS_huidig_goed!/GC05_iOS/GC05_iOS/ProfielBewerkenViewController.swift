@@ -22,16 +22,16 @@ class ProfielBewerkenViewController: ResponsiveTextFieldViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         hideSideMenuView()
-        getCurrentUser()
-        vulGegevensDatabankIn()
+        //getCurrentUser()
+        //vulGegevensDatabankIn()
     }
     
-    func getCurrentUser() {
+    /*func getCurrentUser() {
         var query = PFQuery(className: "Monitor")
         query.whereKey("email", containsString: PFUser.currentUser().email)
         var monitorPF = query.getFirstObject()
         monitor = Monitor(monitor: monitorPF)
-    }
+    }*/
     
     func vulGegevensDatabankIn() {
         voornaamTxt.text = monitor.voornaam
@@ -42,7 +42,7 @@ class ProfielBewerkenViewController: ResponsiveTextFieldViewController {
         facebookTxt.text = monitor.linkFacebook
     }
     
-    func schrijfGegevensNaarDatabank() {
+    /*func schrijfGegevensNaarDatabank() {
         monitor.voornaam = voornaamTxt.text
         monitor.naam = naamTxt.text
         monitor.email = emailTxt.text
@@ -65,5 +65,5 @@ class ProfielBewerkenViewController: ResponsiveTextFieldViewController {
         monitorJSON.save()
         monitorJSON.fetch()
         
-    }
+    }*/
 }

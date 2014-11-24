@@ -3,7 +3,6 @@ import CoreData
 
 class VormingDetailsTableViewController: UITableViewController {
 
-    //var monitor: Monitor!
     var vorming: Vorming!
     var euro: String = "€"
     var fetchedResultController: NSFetchedResultsController = NSFetchedResultsController()
@@ -20,8 +19,6 @@ class VormingDetailsTableViewController: UITableViewController {
     @IBAction func toggle(sender: AnyObject) {
         toggleSideMenuView()
     }
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,14 +42,11 @@ class VormingDetailsTableViewController: UITableViewController {
     
     override func viewDidAppear(animated: Bool) {
         tableView.reloadData()
-        
-        
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "inschrijven" {
             let inschrijvenVormingViewController = segue.destinationViewController as InschrijvenVormingViewController
-            //inschrijvenVormingViewController.monitor = self.monitor
             inschrijvenVormingViewController.vorming = self.vorming
             inschrijvenVormingViewController.pickerData = vorming.periodes!
         } else if segue.identifier == "korteBeschrijvingVorming" {

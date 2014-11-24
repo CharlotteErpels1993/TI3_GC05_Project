@@ -1,9 +1,8 @@
-import Foundation
 import UIKit
 import QuartzCore
 
-class InschrijvenVakantie1ViewController : ResponsiveTextFieldViewController {
-    
+class Registratie2ViewController: ResponsiveTextFieldViewController
+{
     @IBOutlet weak var txtVoornaam: UITextField!
     @IBOutlet weak var txtNaam: UITextField!
     @IBOutlet weak var txtStraat: UITextField!
@@ -11,21 +10,27 @@ class InschrijvenVakantie1ViewController : ResponsiveTextFieldViewController {
     @IBOutlet weak var txtBus: UITextField!
     @IBOutlet weak var txtGemeente: UITextField!
     @IBOutlet weak var txtPostcode: UITextField!
+    @IBOutlet weak var txtTelefoon: UITextField!
+    @IBOutlet weak var txtGsm: UITextField!
     
-    var vakantie: Vakantie!
-    var deelnemer: Deelnemer = Deelnemer(id: "test")
+    var ouder: Ouder!
     var foutBox: FoutBox? = nil
-    var redColor: UIColor = UIColor.redColor()
     var statusTextFields: [String: String] = [:]
-    var inschrijvingVakantie: InschrijvingVakantie! = InschrijvingVakantie(id: "test")
+    var redColor: UIColor = UIColor.redColor()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    @IBAction func gaTerugNaarInloggen(sender: AnyObject) {
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        var destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Inloggen") as UIViewController
+        sideMenuController()?.setContentViewController(destViewController)
+        hideSideMenuView()
     }
+    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "volgende" {
-        let inschrijvenVakantie2ViewController = segue.destinationViewController as InschrijvenVakantie2ViewController
+        let registratie3ViewController = segue.destinationViewController as Registratie3ViewController
+        
+        //TO DO: controleren op formaat van ingevulde text! (String, int, ...)
         
         setStatusTextFields()
         pasLayoutVeldenAan()
@@ -34,20 +39,12 @@ class InschrijvenVakantie1ViewController : ResponsiveTextFieldViewController {
             foutBoxOproepen("Fout", "Gelieve de velden correct in te vullen!", self)
         } else {
             settenVerplichteGegevens()
-            
-            if statusTextFields["bus"] != "leeg" {
-                deelnemer.bus = txtBus.text
-            }
-            
-            inschrijvingVakantie.vakantie = vakantie
-            deelnemer.inschrijvingVakantie = inschrijvingVakantie
-            
-            inschrijvenVakantie2ViewController.deelnemer = deelnemer
-            }
-        } else if segue.identifier == "gaTerug" {
-            let vakantiesTableViewController = segue.destinationViewController as VakantiesTableViewController
+            settenOptioneleGegevens()
+            registratie3ViewController.ouder = ouder
         }
-        
+        } else if segue.identifier == "gaTerug" {
+            let vakantiesViewController = segue.destinationViewController as VakantiesTableViewController
+        }
     }
     
     func setStatusTextFields() {
@@ -105,6 +102,26 @@ class InschrijvenVakantie1ViewController : ResponsiveTextFieldViewController {
                 statusTextFields["postcode"] = "geldig"
             }
         }
+        
+        if txtTelefoon.text.isEmpty {
+            statusTextFields["telefoon"] = "leeg"
+        } else {
+            if !checkPatternTelefoon(txtTelefoon.text) {
+                statusTextFields["telefoon"] = "ongeldig"
+            } else {
+                statusTextFields["telefoon"] = "geldig"
+            }
+        }
+        
+        if txtGsm.text.isEmpty {
+            statusTextFields["gsm"] = "leeg"
+        } else {
+            if !checkPatternGsm(txtGsm.text) {
+                statusTextFields["gsm"] = "ongeldig"
+            } else {
+                statusTextFields["gsm"] = "geldig"
+            }
+        }
     }
     
     func pasLayoutVeldenAan() {
@@ -132,22 +149,34 @@ class InschrijvenVakantie1ViewController : ResponsiveTextFieldViewController {
             giveUITextFieldDefaultBorder(txtNummer)
         }
         
-        if statusTextFields["bus"] == "ongeldig" {
+        if statusTextFields["bus"] == "ongeldig"{
             giveUITextFieldRedBorder(txtBus)
         } else {
             giveUITextFieldDefaultBorder(txtBus)
-        }
-        
-        if statusTextFields["postcode"] == "leeg" || statusTextFields["nummer"] == "ongeldig"{
-            giveUITextFieldRedBorder(txtPostcode)
-        } else {
-            giveUITextFieldDefaultBorder(txtPostcode)
         }
         
         if statusTextFields["gemeente"] == "leeg" {
             giveUITextFieldRedBorder(txtGemeente)
         } else {
             giveUITextFieldDefaultBorder(txtGemeente)
+        }
+        
+        if statusTextFields["postcode"] == "leeg" || statusTextFields["postcode"] == "ongeldig"{
+            giveUITextFieldRedBorder(txtPostcode)
+        } else {
+            giveUITextFieldDefaultBorder(txtPostcode)
+        }
+        
+        if statusTextFields["telefoon"] == "ongeldig"{
+            giveUITextFieldRedBorder(txtTelefoon)
+        } else {
+            giveUITextFieldDefaultBorder(txtTelefoon)
+        }
+        
+        if statusTextFields["gsm"] == "leeg" || statusTextFields["gsm"] == "ongeldig"{
+            giveUITextFieldRedBorder(txtGsm)
+        } else {
+            giveUITextFieldDefaultBorder(txtGsm)
         }
     }
     
@@ -162,9 +191,13 @@ class InschrijvenVakantie1ViewController : ResponsiveTextFieldViewController {
             return true
         } else if CGColorEqualToColor(txtBus.layer.borderColor, redColor.CGColor) {
             return true
+        } else if CGColorEqualToColor(txtGemeente.layer.borderColor, redColor.CGColor) {
+            return true
         } else if CGColorEqualToColor(txtPostcode.layer.borderColor, redColor.CGColor) {
             return true
-        } else if CGColorEqualToColor(txtGemeente.layer.borderColor, redColor.CGColor) {
+        } else if CGColorEqualToColor(txtTelefoon.layer.borderColor, redColor.CGColor) {
+            return true
+        } else if CGColorEqualToColor(txtGsm.layer.borderColor, redColor.CGColor) {
             return true
         } else {
             return false
@@ -172,13 +205,22 @@ class InschrijvenVakantie1ViewController : ResponsiveTextFieldViewController {
     }
     
     func settenVerplichteGegevens() {
-        self.deelnemer.voornaam = txtVoornaam.text
-        self.deelnemer.naam = txtNaam.text
-        self.deelnemer.straat = txtStraat.text
-        self.deelnemer.nummer = txtNummer.text.toInt()!
-        self.deelnemer.postcode = txtPostcode.text.toInt()!
-        self.deelnemer.gemeente = txtGemeente.text
-        self.deelnemer.inschrijvingVakantie = InschrijvingVakantie(id: "test")
-        self.deelnemer.inschrijvingVakantie?.vakantie = self.vakantie
+        ouder.voornaam = txtVoornaam.text
+        ouder.naam = txtNaam.text
+        ouder.straat = txtStraat.text
+        ouder.nummer = txtNummer.text.toInt()
+        ouder.gemeente = txtGemeente.text
+        ouder.postcode = txtPostcode.text.toInt()
+        ouder.gsm = txtGsm.text
+    }
+    
+    func settenOptioneleGegevens() {
+        if statusTextFields["bus"] != "leeg" {
+            ouder.bus = txtBus.text
+        }
+        
+        if statusTextFields["telefoon"] != "leeg" {
+            ouder.telefoon = txtTelefoon.text
+        }
     }
 }

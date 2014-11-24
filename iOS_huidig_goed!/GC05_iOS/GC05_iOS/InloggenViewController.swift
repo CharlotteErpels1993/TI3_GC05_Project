@@ -198,7 +198,7 @@ class InloggenViewController: UIViewController
         }
     }
     
-    private func zoekenMatchMonitorOfOuder(email: String, wachtwoord: String) -> String {
+    /*private func zoekenMatchMonitorOfOuder(email: String, wachtwoord: String) -> String {
         if queryBevatRecords(email, wachtwoord: wachtwoord, query: queryMonitor) {
             return "monitor"
         } else if queryBevatRecords(email, wachtwoord: wachtwoord, query: queryOuder) {
@@ -216,5 +216,5 @@ class InloggenViewController: UIViewController
         } else {
             return false
         }
-    }
+    }*/
 }

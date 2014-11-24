@@ -4,7 +4,7 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
     
     var monitoren: [Monitor] = []
     var vormingen: [InschrijvingVorming] = []
-    //var monitoren2: [Monitor] = []
+    var monitoren2: [Monitor] = []
     var monitorenZelfdeVorming: [Monitor] = []
     
     @IBOutlet weak var zoekbar: UISearchBar!
@@ -19,9 +19,9 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
         
         var activityIndicator = getActivityIndicatorView(self)
         
-        zoekMonitoren()
-        zoekVormingenVanHuidigeMonitor()
-        zoekMonitorenMetDezelfdeVormingen()
+        //zoekMonitoren()
+        //zoekVormingenVanHuidigeMonitor()
+        //zoekMonitorenMetDezelfdeVormingen()
         
         
         zoekbar.showsScopeBar = true
@@ -30,25 +30,7 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
         activityIndicator.stopAnimating()
     }
     
-    //func zoekMonitorenZelfdeVorming() {
-        /*PFQuery query = PFQuery(className: "Monitor")
-        query.whereKey(")*/
-    //}
-    
-    /*func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        zoekGefilterdeMonitoren(searchText.lowercaseString)
-    }
-    
-    func zoekGefilterdeMonitoren(zoek: String) {
-        monitoren2 = monitoren.filter { $0.naam!.rangeOfString(zoek) != nil }
-        if zoek.isEmpty {
-        self.vakanties2 = vakanties
-        }
-        self.tableView.reloadData()
-        
-    }*/
-    
-    func zoekMonitoren() {
+    /*func zoekMonitoren() {
         monitoren.removeAll(keepCapacity: true)
         var query = PFQuery(className: "Monitor")
         query.findObjectsInBackgroundWithBlock({(NSArray objects, NSError error) in
@@ -112,26 +94,15 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
         })
         
         
-    }
+    }*/
     
     
-    func getCurrentUser() -> Monitor {
+    /*func getCurrentUser() -> Monitor {
         var query = PFQuery(className: "Monitor")
         query.whereKey("email", containsString: PFUser.currentUser().email)
         var monitorPF = query.getFirstObject()
         return Monitor(monitor: monitorPF)
-    }
-    
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        /*if segue.identifier == "toonVorming" {
-            let vormingDetailsController = segue.destinationViewController as VormingDetailsTableViewController
-            let selectedVorming = vormingen[tableView.indexPathForSelectedRow()!.row]
-            vormingDetailsController.vorming = selectedVorming as Vorming
-            //vormingDetailsController.monitor = self.monitor
-        }*/
-        
-    }
+    }*/
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 2

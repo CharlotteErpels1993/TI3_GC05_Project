@@ -4,7 +4,6 @@ class InschrijvenVormingViewController: UIViewController, UIPickerViewDataSource
     
     @IBOutlet weak var pickerView: UIPickerView!
     
-    //var monitor: Monitor!
     var pickerData: [String] = []
     var vorming: Vorming!
     var inschrijvingVorming: InschrijvingVorming = InschrijvingVorming(id: "test")

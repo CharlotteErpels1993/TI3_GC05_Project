@@ -16,20 +16,17 @@ class RegistratieSuccesvolViewController: UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
-        //Activity indicator (start animating)
         activityIndicatorView.startAnimating()
         
-        parseOuderToDatabase()
-        createPFUser()
+        //parseOuderToDatabase()
+        //createPFUser()
         logIn()
         self.navigationItem.setHidesBackButton(true, animated: true)
-        
-        //Activity indicator (stop animating)
+
         activityIndicatorView.stopAnimating()
     }
     
-    private func parseOuderToDatabase() {
+    /*private func parseOuderToDatabase() {
         
         var ouderJSON = PFObject(className: "Ouder")
         
@@ -62,9 +59,9 @@ class RegistratieSuccesvolViewController: UIViewController
         }
         
         ouderJSON.save()
-    }
+    }*/
     
-    private func createPFUser() {
+    /*private func createPFUser() {
         var user = PFUser()
         user.username = ouder.email
         user.password = ouder.wachtwoord
@@ -77,7 +74,7 @@ class RegistratieSuccesvolViewController: UIViewController
                 
             }
         }
-    }
+    }*/
     
     private func logIn() {
         PFUser.logInWithUsername(ouder.email, password: ouder.wachtwoord)

@@ -8,7 +8,6 @@ class UitloggenViewController: UIViewController {
     
     @IBAction func uitloggen(sender: AnyObject) {
         PFUser.logOut()
-        //performSegueWithIdentifier("overzichtVakanties", sender: self)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

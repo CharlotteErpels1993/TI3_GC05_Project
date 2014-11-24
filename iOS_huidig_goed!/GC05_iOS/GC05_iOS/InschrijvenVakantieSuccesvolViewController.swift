@@ -5,18 +5,17 @@ class InschrijvenVakantieSuccesvolViewController : UIViewController {
     var deelnemer: Deelnemer!
     var contactpersoon1: ContactpersoonNood!
     var contactpersoon2: ContactpersoonNood?
-    //var ouder: Ouder!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         activityIndicatorView.startAnimating()
-        var iv: PFObject = parseInschrijvingVakantieToDatabase(deelnemer.inschrijvingVakantie!)
-        parseDeelnemerToDatabase(deelnemer, inschrijvingVakantie: iv)
-        parseContactpersoonToDatabase(contactpersoon1, inschrijvingVakantie: iv)
+        //var iv: PFObject = parseInschrijvingVakantieToDatabase(deelnemer.inschrijvingVakantie!)
+        //parseDeelnemerToDatabase(deelnemer, inschrijvingVakantie: iv)
+        //parseContactpersoonToDatabase(contactpersoon1, inschrijvingVakantie: iv)
         
         if contactpersoon2?.naam != nil {
-            parseContactpersoonToDatabase(contactpersoon2!, inschrijvingVakantie: iv)
+            //parseContactpersoonToDatabase(contactpersoon2!, inschrijvingVakantie: iv)
         }
         
         self.navigationItem.setHidesBackButton(true, animated: true)
@@ -24,14 +23,7 @@ class InschrijvenVakantieSuccesvolViewController : UIViewController {
         activityIndicatorView.stopAnimating()
     }
     
-    /*override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "overzichtVakanties" {
-            let vakantiesOverzichtTableViewController = segue.destinationViewController as VakantiesTableViewController
-            //vakantiesOverzichtTableViewController.ouder = self.ouder!
-        }
-    }*/
-    
-    private func parseInschrijvingVakantieToDatabase(inschrijvingVakantie: InschrijvingVakantie) -> PFObject {
+    /*private func parseInschrijvingVakantieToDatabase(inschrijvingVakantie: InschrijvingVakantie) -> PFObject {
         var inschrijvingVakantieJSON = PFObject(className: "InschrijvingVakantie")
         
         inschrijvingVakantieJSON.setValue(inschrijvingVakantie.vakantie?.id, forKey: "vakantie")
@@ -78,5 +70,5 @@ class InschrijvenVakantieSuccesvolViewController : UIViewController {
         }
 
         contactpersoonJSON.save()
-    }
+    }*/
 }

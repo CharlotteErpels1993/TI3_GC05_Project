@@ -75,7 +75,7 @@ class Registratie1ViewController: ResponsiveTextFieldViewController
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "volgende" {
-        let registratie3ViewController = segue.destinationViewController as Registratie3ViewController
+        let registratie2ViewController = segue.destinationViewController as Registratie2ViewController
         
         
         

@@ -9,10 +9,8 @@ class InschrijvenVakantie4ViewController : ResponsiveTextFieldViewController {
     var contactpersoon2: ContactpersoonNood! = ContactpersoonNood(id: "test")
     var statusTextFields: [String: String] = [:]
     var redColor: UIColor = UIColor.redColor()
-    //var ouder: Ouder!
     
     @IBOutlet weak var switchTweedeContactpersoon: UISwitch!
-    
     @IBOutlet weak var lblVoornaam: UILabel!
     @IBOutlet weak var txtVoornaam: UITextField!
     @IBOutlet weak var lblNaam: UILabel!
@@ -74,7 +72,6 @@ class InschrijvenVakantie4ViewController : ResponsiveTextFieldViewController {
         }
         inschrijvenVakantie5ViewController.deelnemer = deelnemer
         inschrijvenVakantie5ViewController.contactpersoon1 = contactpersoon1
-        //inschrijvenVakantie5ViewController.ouder = ouder
         } else if segue.identifier == "gaTerug" {
             let vakantiesTableViewController = segue.destinationViewController as VakantiesTableViewController
         }

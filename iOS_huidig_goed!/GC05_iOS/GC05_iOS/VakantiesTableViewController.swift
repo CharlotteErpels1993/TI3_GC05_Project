@@ -20,29 +20,20 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         var activityIndicator = getActivityIndicatorView(self)
         
         vakanties = parseData.getAllVakanties()
-        //vakanties2 = parseData.getAllVakanties()
         self.vakanties2 = self.vakanties
         self.tableView.reloadData()
         
-        //zoekVakanties()
         hideSideMenuView()
         zoekbar.showsScopeBar = true
         zoekbar.delegate = self
         
-        //if ouder != nil {
         if PFUser.currentUser() != nil {
             self.navigationItem.setHidesBackButton(true, animated: true)
             self.navigationItem.rightBarButtonItem = nil   
         }
         
         activityIndicator.stopAnimating()
-        
-        //self.navigationItem.rightBarButtonItem.
     }
-    
-    /*override func viewDidAppear(animated: Bool) {
-        currentUser = PFUser.currentUser()
-    }*/
     
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
@@ -83,7 +74,6 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
             let vakantieDetailsController = segue.destinationViewController as VakantieDetailsTableViewController
             let selectedVakantie = vakanties[tableView.indexPathForSelectedRow()!.row]
             vakantieDetailsController.vakantie = selectedVakantie as Vakantie
-            //vakantieDetailsController.ouder = ouder
         } else if segue.identifier == "inloggen" {
             let inloggenViewController = segue.destinationViewController as InloggenViewController
         } else if segue.identifier == "toonVakantie" {

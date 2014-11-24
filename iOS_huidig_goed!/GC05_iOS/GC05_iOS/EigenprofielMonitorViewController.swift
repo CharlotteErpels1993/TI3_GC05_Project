@@ -2,8 +2,6 @@ import UIKit
 
 class EigenprofielMonitorViewController: UIViewController
 {
-    //var monitor: Monitor!
-    
     @IBOutlet weak var welkom: UILabel!
     @IBOutlet weak var voornaam: UILabel!
     @IBOutlet weak var naam: UILabel!
@@ -43,13 +41,7 @@ class EigenprofielMonitorViewController: UIViewController
         } else {
             facebook.text = monitor.linkFacebook
         }
-        
-        /*if (monitor.linkFacebook == nil) {
-            facebook.text = "Nog niet ingevuld"
-        } else {
-            facebook.text = monitor.linkFacebook
-        }*/
-        
+
         activityIndicatorView.stopAnimating()
     }
     
@@ -60,8 +52,6 @@ class EigenprofielMonitorViewController: UIViewController
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "vormingen" {
             let vormingenTableViewController = segue.destinationViewController as VormingenTableViewController
-            
-            //vormingenTableViewController.monitor = self.monitor
         }
     }
 }

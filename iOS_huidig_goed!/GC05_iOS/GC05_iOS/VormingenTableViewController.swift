@@ -4,7 +4,6 @@ class VormingenTableViewController: UITableViewController, UISearchBarDelegate, 
     
     var vormingen: [Vorming] = []
     var vormingen2: [Vorming] = []
-    //var monitor: Monitor!
     
     @IBAction func toggle(sender: AnyObject) {
         toggleSideMenuView()
@@ -41,7 +40,7 @@ class VormingenTableViewController: UITableViewController, UISearchBarDelegate, 
         
     }
     
-    func zoekVormingen() {
+    /*func zoekVormingen() {
         vormingen.removeAll(keepCapacity: true)
         var query = PFQuery(className: "Vorming")
         query.findObjectsInBackgroundWithBlock({(NSArray objects, NSError error) in
@@ -56,19 +55,13 @@ class VormingenTableViewController: UITableViewController, UISearchBarDelegate, 
                 self.tableView.reloadData()
             }
         })
-    }
-    
-    /*@IBAction func gaTerugNaarOverzichtVormingen(segue: UIStoryboardSegue) {
-        // TO DO ouder insteken?
     }*/
-    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "toonVorming" {
             let vormingDetailsController = segue.destinationViewController as VormingDetailsTableViewController
             let selectedVorming = vormingen[tableView.indexPathForSelectedRow()!.row]
             vormingDetailsController.vorming = selectedVorming as Vorming
-            //vormingDetailsController.monitor = self.monitor
         }
         
     }
@@ -84,7 +77,6 @@ class VormingenTableViewController: UITableViewController, UISearchBarDelegate, 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("vormingCell", forIndexPath: indexPath) as UITableViewCell
-        //let cell = tableView.dequeueReusableCellWithIdentifier("vormingCell")? as UITableViewCell
         let vorming = vormingen2[indexPath.row]
 
         cell.textLabel.text = vorming.titel
