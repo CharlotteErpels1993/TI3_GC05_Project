@@ -79,7 +79,7 @@ class VakantieSQL {
             //there was an error during the query, handle it here
         } else {
             for row in resultSet {
-                vakantie = getV(row)
+                vakantie = getVakantie(row)
                 vakanties.append(vakantie)
             }
         }

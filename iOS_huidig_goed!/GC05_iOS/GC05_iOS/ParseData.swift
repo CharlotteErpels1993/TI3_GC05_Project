@@ -214,4 +214,16 @@ class ParseData {
         self.vormingSQL.createVormingTable()
     }
     
+    func getMonitorsMetDezelfdeVormingen(monitorId: String) -> [Monitor] {
+        var vormingen = self.inschrijvingVormingSQL.getVormingIdMetMonitorId(monitorId)
+        var monitorIds = self.inschrijvingVormingSQL.getMonitorsIdMetVormingId(vormingen)
+        var monitors = self.monitorSQL.getMonitorsMetId(monitorIds)
+        
+        return monitors
+    }
+    
+    func getMonitorsMetAndereVormingen(monitorsMetDezelfdeVorming: [Monitor]) -> [Monitor] {
+        return self.monitorSQL.getAndereMonitors(monitorsMetDezelfdeVorming)
+    }
+    
 }

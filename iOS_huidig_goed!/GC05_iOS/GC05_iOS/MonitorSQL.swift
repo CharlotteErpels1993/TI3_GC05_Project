@@ -159,4 +159,50 @@ class MonitorSQL {
         }
     }
     
+    
+    func getMonitorsMetId(monitorIds: [String]) -> [Monitor] {
+        var monitors: [Monitor] = []
+        var monitor: Monitor = Monitor(id: "test")
+        
+        for mId in monitorIds {
+            var (resultSet, err) = SD.executeQuery("SELECT * FROM Monitor WHERE objectId = \(mId)")
+            
+            if err != nil {
+                //there was an error during the query, handle it here
+            } else {
+                for row in resultSet {
+                    monitor = getMonitor(row)
+                    monitors.append(monitor)
+                }
+            }
+            
+        }
+        
+        return monitors
+    }
+    
+    
+    func getAndereMonitors(monitors: [Monitor]) -> [Monitor] {
+        var alleMonitors = zoekAlleMonitors()
+        var andereMonitors: [Monitor] = []
+        
+        var bevatMonitor = false
+        
+        for monitor in alleMonitors {
+            bevatMonitor = false
+            
+            for m in monitors {
+                if m.id == monitor.id {
+                    bevatMonitor = true
+                }
+            }
+            
+            if bevatMonitor == false {
+                andereMonitors.append(monitor)
+            }
+        }
+        
+        return andereMonitors
+    }
+    
 }
