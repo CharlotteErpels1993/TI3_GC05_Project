@@ -3,8 +3,8 @@ import Foundation
 class Vakantie: Activiteit
 {
     
-    var beginDatum: NSDate?
-    var terugkeerDatum: NSDate?
+    var vertrekdatum: NSDate!
+    var terugkeerdatum: NSDate!
     var aantalDagenNachten: String?
     var vervoerwijze: String?
     var formule: String?
@@ -47,8 +47,8 @@ class Vakantie: Activiteit
     }
     
     init(vakantie: PFObject) {
-        self.beginDatum = vakantie["vertrekdatum"] as? NSDate
-        self.terugkeerDatum = vakantie["terugkeerdatum"] as? NSDate
+        self.vertrekdatum = vakantie["vertrekdatum"] as? NSDate
+        self.terugkeerdatum = vakantie["terugkeerdatum"] as? NSDate
         self.aantalDagenNachten = vakantie["aantalDagenNachten"] as String
         self.vervoerwijze = vakantie["vervoerwijze"] as String
         self.formule = vakantie["formule"] as String
@@ -67,8 +67,8 @@ class Vakantie: Activiteit
     
     init(id: String, titel: String, locatie: String, korteBeschrijving: String, beginDatum: NSDate, terugkeerDatum: NSDate, aantalDagenNachten: String, vervoerwijze: String, formule: String, basisprijs: Double, bondMoysonLedenPrijs: Double, sterPrijs1: Double, sterPrijs2: Double, kortingen: String, inbegrepenPrijs: String, doelgroep: String, maxAantalDeelnemers: Int) {
         
-        self.beginDatum = beginDatum
-        self.terugkeerDatum = terugkeerDatum
+        self.vertrekdatum = beginDatum
+        self.terugkeerdatum = terugkeerDatum
         self.aantalDagenNachten = aantalDagenNachten
         self.vervoerwijze = vervoerwijze
         self.formule = formule

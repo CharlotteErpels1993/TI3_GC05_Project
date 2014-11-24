@@ -59,8 +59,8 @@ class VakantieDetailsTableViewController: UITableViewController {
             }
         }
         
-        var beginDatum: String? = vakantie.beginDatum?.toS("dd/MM/yyyy")
-        var terugkeerDatum: String? = vakantie.terugkeerDatum?.toS("dd/MM/yyyy")
+        var beginDatum: String? = vakantie.vertrekdatum?.toS("dd/MM/yyyy")
+        var terugkeerDatum: String? = vakantie.terugkeerdatum?.toS("dd/MM/yyyy")
         
         navigationItem.title = vakantie.titel
         korteBeschrijvingLabel.text! = vakantie.korteBeschrijving!

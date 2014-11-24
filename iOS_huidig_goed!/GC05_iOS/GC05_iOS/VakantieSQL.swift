@@ -103,10 +103,10 @@ struct /*class*/ VakantieSQL {
             vakantie.korteBeschrijving = korteBeschrijving
         }
         if let vertrekdatum = row["vertrekdatum"]?.asDate()! {
-            vakantie.beginDatum = vertrekdatum
+            vakantie.vertrekdatum = vertrekdatum as NSDate
         }
         if let terugkeerdatum = row["terugkeerdatum"]?.asDate()! {
-            vakantie.terugkeerDatum = terugkeerdatum
+            vakantie.terugkeerdatum = terugkeerdatum
         }
         if let aantalDagenNachten = row["aantalDagenNachten"]?.asString() {
             vakantie.aantalDagenNachten = aantalDagenNachten
@@ -123,7 +123,7 @@ struct /*class*/ VakantieSQL {
         if let bondMoysonLedenPrijs = row["bondMoysonLedenPrijs"]?.asDouble() {
             vakantie.bondMoysonLedenPrijs = bondMoysonLedenPrijs
         }
-        if let inbegrepenInPrijs = row["inbegrepenInPrijs"]?.asString() {
+        if let inbegrepenInPrijs = row["inbegrepenPrijs"]?.asString() {
             vakantie.inbegrepenPrijs = inbegrepenInPrijs
         }
         if let doelgroep = row["doelgroep"]?.asString() {
