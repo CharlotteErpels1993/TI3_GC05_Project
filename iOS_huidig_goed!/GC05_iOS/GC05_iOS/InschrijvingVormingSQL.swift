@@ -14,6 +14,57 @@ struct /*class*/ InschrijvingVormingSQL {
         }
     }
     
+    static func vulInschrijvingVormingTableOp() {
+        var inschrijvingenVorming: [PFObject] = []
+        var query = PFQuery(className: "InschrijvingVorming")
+        inschrijvingenVorming = query.findObjects() as [PFObject]
+        
+        var queryString = ""
+        
+        var objectId: String = ""
+        var monitor: String = ""
+        var periode: String = ""
+        var vorming: String = ""
+        
+        for inschrijvingVorming in inschrijvingenVorming {
+            
+            queryString.removeAll(keepCapacity: true)
+            
+            objectId = inschrijvingVorming.objectId as String
+            monitor = inschrijvingVorming["monitor"] as String
+            periode = inschrijvingVorming["periode"] as String
+            vorming = inschrijvingVorming["vorming"] as String
+            
+            queryString.extend("INSERT INTO InschrijvingVorming ")
+            queryString.extend("(")
+            queryString.extend("objectId, ")
+            queryString.extend("monitor, ")
+            queryString.extend("periode, ")
+            queryString.extend("vorming")
+            queryString.extend(")")
+            queryString.extend(" VALUES ")
+            queryString.extend("(")
+            
+            queryString.extend("'\(objectId)', ") //objectId - String
+            queryString.extend("'\(monitor)', ") //monitorId - String
+            queryString.extend("'\(periode)', ") //periode - String
+            queryString.extend("'\(vorming)'") //vormingId - String
+            
+            queryString.extend(")")
+            
+            
+            if let err = SD.executeChange(queryString)
+            {
+                println("ERROR: error tijdens toevoegen van nieuwe InschrijvingVorming in table InschrijvingVorming")
+            }
+            else
+            {
+                //no error, the row was inserted successfully
+            }
+            
+        }
+    }
+    
     static func parseInschrijvingVormingToDatabase(inschrijving: InschrijvingVorming) {
         var inschrijvingJSON = PFObject(className: "InschrijvingVorming")
         
