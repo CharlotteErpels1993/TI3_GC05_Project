@@ -2,9 +2,6 @@ import UIKit
 
 class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, UISearchDisplayDelegate {
     
-    //moet nog static klasse worden!
-    //var parseData: ParseData = ParseData()
-    
     var monitoren: [Monitor] = []
     var monitoren2: [Monitor] = []
     var monitorenZelfdeVorming: [Monitor] = []
@@ -48,23 +45,12 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
     
     func zoekGefilterdeVakanties(zoek: String) {
         monitoren2 = monitoren.filter { ($0.naam!.lowercaseString.rangeOfString(zoek) != nil) || ($0.voornaam!.lowercaseString.rangeOfString(zoek)  != nil) }
-        //monitoren2 = monitoren.filter { $0.voornaam!.lowercaseString.rangeOfString(zoek) != nil }
         monitorenZelfdeVorming2 = monitorenZelfdeVorming.filter { ($0.naam!.lowercaseString.rangeOfString(zoek) != nil) || ($0.voornaam!.lowercaseString.rangeOfString(zoek)  != nil) }
         if zoek.isEmpty {
             self.monitoren2 = monitoren
             self.monitorenZelfdeVorming2 = monitorenZelfdeVorming
         }
         self.tableView.reloadData()
-    }
-    
-    func maakArrayMonitoren() {
-        for monitor in monitoren {
-            monitoren2.append(monitor)
-        }
-        
-        for monitor in monitorenZelfdeVorming {
-            monitoren2.append(monitor)
-        }
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {

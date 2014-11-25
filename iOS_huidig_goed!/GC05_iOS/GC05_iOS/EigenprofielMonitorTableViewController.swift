@@ -9,6 +9,8 @@ class EigenprofielMonitorTableViewController: UITableViewController
     @IBOutlet weak var telefoon: UILabel!
     @IBOutlet weak var gsm: UILabel!
     @IBOutlet weak var facebook: UILabel!
+    
+    var activityIndicator: UIActivityIndicatorView!
     //@IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
     @IBAction func toggle(sender: AnyObject) {
@@ -52,7 +54,7 @@ class EigenprofielMonitorTableViewController: UITableViewController
             facebook.text = monitor.linkFacebook!
         }
         
-        //activityIndicatorView.stopAnimating()
+        //self.activityIndicator.stopAnimating()
     }
     
     @IBAction func gaTerugNaarOverzichtMonitor(segue: UIStoryboardSegue) {
