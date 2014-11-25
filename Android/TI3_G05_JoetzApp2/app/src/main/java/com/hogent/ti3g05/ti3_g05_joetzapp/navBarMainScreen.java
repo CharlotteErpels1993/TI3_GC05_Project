@@ -327,6 +327,7 @@ public class navBarMainScreen extends Activity {
     public void onBackPressed() {
         if (doubleBackToExitPressedOnce) {
             super.onBackPressed();
+            ParseUser.logOut();
             return;
         }
 

@@ -3,6 +3,7 @@
     style="@style/LoginFormContainer"
     android:orientation="vertical"
     android:layout_height="fill_parent"
+    android:finishOnTaskLaunch="true"
     >
 
     <EditText

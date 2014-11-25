@@ -63,28 +63,35 @@ public class ProfielDetail extends Activity {
         TextView txtEmail = (TextView) findViewById(R.id.emailP);
         TextView txtFacebook = (TextView)findViewById(R.id.facebookL);
         final TextView txtGsm = (TextView)findViewById(R.id.gsmP);
-        btnProfielEdit = (Button) findViewById(R.id.btnProfielEdit);
-        btnProfielEdit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                isInternetPresent = cd.isConnectingToInternet();
+        if(ParseUser.getCurrentUser().getEmail().equals(email))
+        {
+            btnProfielEdit = (Button) findViewById(R.id.btnProfielEdit);
+            btnProfielEdit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    isInternetPresent = cd.isConnectingToInternet();
 
-                if (isInternetPresent) {
-                    Intent inte = new Intent(getApplicationContext(), ProfielEdit.class);
-                    inte.putExtra("naam", naam);
-                    inte.putExtra("voornaam", voornaam);
-                    inte.putExtra("facebook", facebook);
-                    inte.putExtra("gsm", gsm);
-                    inte.putExtra("email", email);
-                    startActivity(inte);
+                    if (isInternetPresent) {
+                        Intent inte = new Intent(getApplicationContext(), ProfielEdit.class);
+                        inte.putExtra("naam", naam);
+                        inte.putExtra("voornaam", voornaam);
+                        inte.putExtra("facebook", facebook);
+                        inte.putExtra("gsm", gsm);
+                        inte.putExtra("email", email);
+                        startActivity(inte);
+                    }
+                    else{
+                        Toast.makeText(getApplicationContext(), getString(R.string.error_no_internet), Toast.LENGTH_SHORT).show();
+                    }
+
+
                 }
-                else{
-                    Toast.makeText(getApplicationContext(), getString(R.string.error_no_internet), Toast.LENGTH_SHORT).show();
-                }
+            });
+        } else
+        {
+            btnProfielEdit.setVisibility(View.GONE);
+        }
 
-
-            }
-        });
 
         /*final TextView txtStraat = (TextView) findViewById(R.id.straatP);
         final TextView txtGemeente = (TextView)findViewById(R.id.gemeenteP);

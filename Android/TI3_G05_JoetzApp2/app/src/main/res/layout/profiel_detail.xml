@@ -3,10 +3,11 @@
 
     android:layout_height="match_parent"
     android:layout_width="match_parent"
+    android:finishOnTaskLaunch="true"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+        android:layout_height="wrap_content">
         <ImageView
             android:id="@+id/profielFto"
             android:layout_width="250dp"
@@ -110,7 +111,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/btn_ProfielEdit"
                 android:id="@+id/btnProfielEdit"
-                android:layout_alignParentBottom="true"
+                android:layout_below="@id/facebookL"
                 android:layout_alignParentEnd="true" />
         </RelativeLayout>
 

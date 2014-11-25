@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        style="@style/LoginFormContainer">
+        style="@style/LoginFormContainer"
+        android:finishOnTaskLaunch="true">
 
         <TextView
         android:id="@+id/VakantieNaam"

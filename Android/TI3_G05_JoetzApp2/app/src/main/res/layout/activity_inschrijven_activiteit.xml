@@ -4,12 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.hogent.ti3g05.ti3_g05_joetzapp.InschrijvenActivity"
-    tools:ignore="MergeRootFrame" >
+    tools:ignore="MergeRootFrame"
+    android:finishOnTaskLaunch="true">
 
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_gravity="left|top">
+        android:layout_gravity="start|top">
         <fragment android:name="com.hogent.ti3g05.ti3_g05_joetzapp.InschrijvenActivity$PlaceholderFragment"
             android:id="@+id/headlines_fragment"
             android:layout_weight="1"

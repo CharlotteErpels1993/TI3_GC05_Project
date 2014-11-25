@@ -24,12 +24,12 @@ import java.util.List;
 public class ProfielEdit extends Activity {
     String initieleNaam;//Email wordt op voorhand op geslagen, want ParseUser klasse moet in dat geval ook gewijzigd worden.
     String initieleVoornaam;
-    String initieleEmail;
+    //String initieleEmail;
     String initieleGsm;
     String initieleFacebook;
     private Button btnBevestigen, btnCancel;
 
-    private EditText txtNaam, txtVoornaam, txtEmail, txtGSM, txtFacebook;
+    private EditText txtNaam, txtVoornaam, txtGSM, txtFacebook;
     private boolean cancel = false;
     private View focusView = null;
 
@@ -45,7 +45,7 @@ public class ProfielEdit extends Activity {
         Intent i = getIntent();
         initieleNaam = i.getStringExtra("naam");
         initieleVoornaam = i.getStringExtra("voornaam");
-        initieleEmail = i.getStringExtra("email");
+        //initieleEmail = i.getStringExtra("email");
         initieleFacebook = i.getStringExtra("facebook");
         initieleGsm= i.getStringExtra("gsm");
 
@@ -54,7 +54,7 @@ public class ProfielEdit extends Activity {
 
         txtNaam = (EditText) findViewById(R.id.Familienaam);
         txtVoornaam = (EditText) findViewById(R.id.VoorNaam);
-        txtEmail = (EditText) findViewById(R.id.Email);
+        //txtEmail = (EditText) findViewById(R.id.Email);
         txtFacebook = (EditText)findViewById(R.id.Facebook);
         txtGSM = (EditText)findViewById(R.id.GSM);
 
@@ -78,13 +78,12 @@ public class ProfielEdit extends Activity {
             public void onClick(View view) {
                 isInternetPresent = cd.isConnectingToInternet();
 
-                terugSturenNaarProfielDetail(initieleNaam, initieleVoornaam, initieleEmail, initieleGsm, initieleFacebook);
+                terugSturenNaarProfielDetail(initieleNaam, initieleVoornaam, initieleGsm, initieleFacebook);
             }
         });
 
         txtNaam.setText(initieleNaam);
         txtVoornaam.setText(initieleVoornaam);
-        txtEmail.setText(initieleEmail);
         txtFacebook.setText(initieleFacebook);
         txtGSM.setText(initieleGsm);
     }
@@ -98,7 +97,7 @@ public class ProfielEdit extends Activity {
         // Store values at the time of the login attempt.
         naam = txtNaam.getText().toString();
         voornaam = txtVoornaam.getText().toString();
-        email = txtEmail.getText().toString().toLowerCase();
+        //email = txtEmail.getText().toString().toLowerCase();
         gsm = txtGSM.getText().toString();
         facebook = txtFacebook.getText().toString();
 
@@ -133,35 +132,35 @@ public class ProfielEdit extends Activity {
         if (cancel) {
             focusView.requestFocus();
         } else {
-            opslaan(naam, voornaam ,email, gsm, facebook);
+            opslaan(naam, voornaam , gsm, facebook);
         }
     }
 
-    public void opslaan(String objnaam, String objvoornaam, String objemail, String objGSM, String objFB){
+    public void opslaan(String objnaam, String objvoornaam, String objGSM, String objFB){
         //eerst kijken of de gebruiker iets heeft gewijzigd, zo ja, sla alles op, zo niet, stuur direct door
-        if (isErIetsGewijzigd(objnaam, objvoornaam, objemail, objGSM, objFB)){
+        if (isErIetsGewijzigd(objnaam, objvoornaam, objGSM, objFB)){
             try{
                 ParseQuery<ParseObject> query = ParseQuery.getQuery("Monitor");
-                query.whereEqualTo("email", initieleEmail);
+                query.whereEqualTo("naam", objnaam);
 
                 List<ParseObject> lijstObjecten = query.find();
                 if (lijstObjecten.size() != 1){
                     throw new Exception();
                 }
                 ParseObject teVeranderenGebruiker = lijstObjecten.get(0);
-                teVeranderenGebruiker.put("email", objemail);
+                //teVeranderenGebruiker.put("email", objemail);
                 teVeranderenGebruiker.put("naam", objnaam);
                 teVeranderenGebruiker.put("voornaam", objvoornaam);
                 teVeranderenGebruiker.put("gsm", objGSM);
                 teVeranderenGebruiker.put("linkFacebook", objFB);
                 teVeranderenGebruiker.saveInBackground();
 
-                ParseUser.getCurrentUser().setEmail(objemail);
-                ParseUser.getCurrentUser().setUsername(objemail);
+                //ParseUser.getCurrentUser().setEmail(objemail);
+                //ParseUser.getCurrentUser().setUsername(objemail);
                 ParseUser.getCurrentUser().saveInBackground();
                 //TODO: extra save?
 
-                terugSturenNaarProfielDetail(objnaam, objvoornaam, objemail, objGSM, objFB);
+                terugSturenNaarProfielDetail(objnaam, objvoornaam, objGSM, objFB);
 
             }
             catch(ParseException e){
@@ -172,7 +171,7 @@ public class ProfielEdit extends Activity {
             }
         }
         else{
-            terugSturenNaarProfielDetail(objnaam, objvoornaam, objemail, objGSM, objFB);
+            terugSturenNaarProfielDetail(objnaam, objvoornaam, objGSM, objFB);
         }
 
     }
@@ -181,27 +180,27 @@ public class ProfielEdit extends Activity {
         txtNaam.setError(null);
         txtVoornaam.setError(null);
         txtGSM.setError(null);
-        txtEmail.setError(null);
+        //txtEmail.setError(null);
         txtFacebook.setError(null);
     }
 
-    public void terugSturenNaarProfielDetail(String objnaam, String objvoornaam, String objemail, String objGSM, String objFB){
+    public void terugSturenNaarProfielDetail(String objnaam, String objvoornaam, String objGSM, String objFB){
         Intent inte = new Intent(getApplicationContext(), ProfielDetail.class);
         inte.putExtra("naam", objnaam);
         inte.putExtra("voornaam", objvoornaam);
         inte.putExtra("facebook", objFB);
         inte.putExtra("gsm", objGSM);
-        inte.putExtra("email", objemail);
+        //inte.putExtra("email", objemail);
         startActivity(inte);
     }
 
-    public boolean isErIetsGewijzigd(String nieuweNaam, String nieuweVoornaam, String nieuweEmail, String nieuweGSM, String nieuweFB){
+    public boolean isErIetsGewijzigd(String nieuweNaam, String nieuweVoornaam, String nieuweGSM, String nieuweFB){
         if (!nieuweNaam.equals(initieleNaam))
             return true;
         if (!nieuweVoornaam.equals(initieleVoornaam))
             return true;
-        if (!nieuweEmail.equals(initieleEmail))
-            return true;
+       /*if (!nieuweEmail.equals(initieleEmail))
+            return true;*/
         if (!nieuweGSM.equals(initieleGsm))
             return true;
         if (!nieuweFB.equals(initieleFacebook))
