@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
 import com.parse.ParseObject;
+import com.parse.ParseUser;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -166,5 +167,12 @@ public class InschrijvenVakantiePart3 extends Activity {
             return false;
         }
 
+    }
+
+    @Override
+    protected void onDestroy()
+    {
+        super.onDestroy();
+        ParseUser.logOut();
     }
 }

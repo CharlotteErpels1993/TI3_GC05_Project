@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.InschrijvingVorming;
+import com.parse.ParseUser;
 
 import java.util.Arrays;
 import java.util.List;
@@ -111,6 +112,13 @@ public class VormingDetail extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onDestroy()
+    {
+        super.onDestroy();
+        ParseUser.logOut();
     }
 
 }

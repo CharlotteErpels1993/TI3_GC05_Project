@@ -69,5 +69,12 @@ public class Loguit extends Activity {
         startActivity(setIntent);
     }
 
+    @Override
+    protected void onDestroy()
+    {
+        super.onDestroy();
+        ParseUser.logOut();
+    }
+
 
 }

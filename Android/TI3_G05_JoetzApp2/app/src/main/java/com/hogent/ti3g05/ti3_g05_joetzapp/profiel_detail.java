@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.parse.ParseUser;
+
 
 public class profiel_detail extends Activity {
 
@@ -32,5 +34,12 @@ public class profiel_detail extends Activity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onDestroy()
+    {
+        super.onDestroy();
+        ParseUser.logOut();
     }
 }

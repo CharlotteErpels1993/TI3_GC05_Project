@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
+import com.parse.ParseUser;
 
 
 public class InschrijvenVakantiePart2 extends Activity {
@@ -180,5 +181,12 @@ public class InschrijvenVakantiePart2 extends Activity {
         txtNaam.setError(null);
         txtTelefoon.setError(null);
         txtGSM.setError(null);
+    }
+
+    @Override
+    protected void onDestroy()
+    {
+        super.onDestroy();
+        ParseUser.logOut();
     }
 }

@@ -314,4 +314,11 @@ public class IndienenVoorkeurVakantie extends Activity {
         periodesVoorkeur.setError(null);
 
     }
+
+    @Override
+    protected void onDestroy()
+    {
+        super.onDestroy();
+        ParseUser.logOut();
+    }
 }

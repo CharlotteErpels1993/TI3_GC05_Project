@@ -33,6 +33,7 @@ import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 public class Vormingen_Overzicht extends Activity /*implements SwipeRefreshLayout.OnRefreshListener*/ {
 
@@ -244,5 +245,12 @@ public class Vormingen_Overzicht extends Activity /*implements SwipeRefreshLayou
         setIntent.addCategory(Intent.CATEGORY_HOME);
         setIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(setIntent);
+    }
+
+    @Override
+    protected void onDestroy()
+    {
+        super.onDestroy();
+        ParseUser.logOut();
     }
 }

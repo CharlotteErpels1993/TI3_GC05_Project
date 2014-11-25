@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
+import com.parse.ParseUser;
 
 import java.util.Date;
 
@@ -231,5 +232,12 @@ public class InschrijvenVakantiePart1 extends FragmentActivity {
         txtBus.setError(null);
         txtGemeente.setError(null);
         txtPostcode.setError(null);
+    }
+
+    @Override
+    protected void onDestroy()
+    {
+        super.onDestroy();
+        ParseUser.logOut();
     }
 }

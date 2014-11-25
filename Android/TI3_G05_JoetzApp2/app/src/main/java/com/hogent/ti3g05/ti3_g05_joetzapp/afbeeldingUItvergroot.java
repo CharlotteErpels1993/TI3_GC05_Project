@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.parse.ParseUser;
+
 /**
  * Created by Gebruiker on 7/11/2014.
  */
@@ -27,6 +29,13 @@ public class afbeeldingUItvergroot extends Activity {
         Intent i = getIntent();
         ImageLoader imageLoader = new ImageLoader(this);
         imageLoader.DisplayImage( i.getStringExtra("afbeelding"),im );
+    }
+
+    @Override
+    protected void onDestroy()
+    {
+        super.onDestroy();
+        ParseUser.logOut();
     }
 
 }

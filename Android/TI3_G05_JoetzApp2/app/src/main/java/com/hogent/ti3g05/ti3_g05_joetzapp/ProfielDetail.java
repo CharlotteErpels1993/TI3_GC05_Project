@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
+import com.parse.ParseUser;
 
 //UC: naam en voornaam van de monitor, emailadres, gsm nummer en eventueel link naar facebookprofiel.
 public class ProfielDetail extends Activity {
@@ -125,4 +126,10 @@ public class ProfielDetail extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    protected void onDestroy()
+    {
+        super.onDestroy();
+        ParseUser.logOut();
+    }
 }
