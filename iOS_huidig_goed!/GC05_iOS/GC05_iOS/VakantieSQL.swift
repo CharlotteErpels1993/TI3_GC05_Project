@@ -77,8 +77,6 @@ struct /*class*/ VakantieSQL {
             var vertrekdatumString = vertrekdatum.toS("dd/MM/yyyy")
             var terugkeerdatumString = terugkeerdatum.toS("dd/MM/yyyy")
             
-            //if let err = SD.executeChange("INSERT INTO Cities (Name, Population, IsWarm, FoundedIn) VALUES ('Toronto', 2615060, 0, '1793-08-27')")
-            
             queryString.extend("INSERT INTO Vakantie ")
             queryString.extend("(")
             queryString.extend("objectId, ")
