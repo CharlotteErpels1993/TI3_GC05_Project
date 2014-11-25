@@ -45,11 +45,4 @@ public class SuccesvolDoorgegeven extends Activity {
         setIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(setIntent);
     }
-
-    @Override
-    protected void onDestroy()
-    {
-        super.onDestroy();
-        ParseUser.logOut();
-    }
 }

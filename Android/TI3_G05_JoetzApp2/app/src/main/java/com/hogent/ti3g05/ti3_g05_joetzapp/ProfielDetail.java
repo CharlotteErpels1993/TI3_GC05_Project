@@ -126,10 +126,4 @@ public class ProfielDetail extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    protected void onDestroy()
-    {
-        super.onDestroy();
-        ParseUser.logOut();
-    }
 }

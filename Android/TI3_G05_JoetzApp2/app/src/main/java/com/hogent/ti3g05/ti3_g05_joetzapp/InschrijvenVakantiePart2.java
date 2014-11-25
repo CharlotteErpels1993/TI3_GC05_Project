@@ -183,10 +183,5 @@ public class InschrijvenVakantiePart2 extends Activity {
         txtGSM.setError(null);
     }
 
-    @Override
-    protected void onDestroy()
-    {
-        super.onDestroy();
-        ParseUser.logOut();
-    }
+
 }

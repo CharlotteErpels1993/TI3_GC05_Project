@@ -31,11 +31,6 @@ public class afbeeldingUItvergroot extends Activity {
         imageLoader.DisplayImage( i.getStringExtra("afbeelding"),im );
     }
 
-    @Override
-    protected void onDestroy()
-    {
-        super.onDestroy();
-        ParseUser.logOut();
-    }
+
 
 }

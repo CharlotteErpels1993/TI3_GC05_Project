@@ -324,11 +324,5 @@ public class ProfielenOverzicht extends Activity /* implements SwipeRefreshLayou
         startActivity(setIntent);
     }
 
-    @Override
-    protected void onDestroy()
-    {
-        super.onDestroy();
-        ParseUser.logOut();
-    }
 
 }

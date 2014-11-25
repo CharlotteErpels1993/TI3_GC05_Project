@@ -315,10 +315,4 @@ public class IndienenVoorkeurVakantie extends Activity {
 
     }
 
-    @Override
-    protected void onDestroy()
-    {
-        super.onDestroy();
-        ParseUser.logOut();
-    }
 }

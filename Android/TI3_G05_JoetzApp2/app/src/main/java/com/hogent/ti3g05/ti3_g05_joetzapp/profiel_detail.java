@@ -36,10 +36,4 @@ public class profiel_detail extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    protected void onDestroy()
-    {
-        super.onDestroy();
-        ParseUser.logOut();
-    }
 }

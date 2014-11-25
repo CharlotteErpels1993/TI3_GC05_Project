@@ -169,10 +169,5 @@ public class InschrijvenVakantiePart3 extends Activity {
 
     }
 
-    @Override
-    protected void onDestroy()
-    {
-        super.onDestroy();
-        ParseUser.logOut();
-    }
+
 }

@@ -136,7 +136,7 @@ public class activiteit_overzicht extends Fragment /*implements SwipeRefreshLayo
             mProgressDialog.setIndeterminate(false);
             // Show progressdialog
 
-            mProgressDialog.show();
+            //mProgressDialog.show();
 
         }
 

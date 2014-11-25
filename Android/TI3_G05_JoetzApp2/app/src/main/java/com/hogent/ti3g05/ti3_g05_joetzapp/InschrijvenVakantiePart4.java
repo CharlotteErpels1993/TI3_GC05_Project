@@ -41,10 +41,4 @@ public class InschrijvenVakantiePart4 extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    protected void onDestroy()
-    {
-        super.onDestroy();
-        ParseUser.logOut();
-    }
 }

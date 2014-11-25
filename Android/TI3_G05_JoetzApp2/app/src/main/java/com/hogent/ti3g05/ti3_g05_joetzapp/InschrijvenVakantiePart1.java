@@ -234,10 +234,4 @@ public class InschrijvenVakantiePart1 extends FragmentActivity {
         txtPostcode.setError(null);
     }
 
-    @Override
-    protected void onDestroy()
-    {
-        super.onDestroy();
-        ParseUser.logOut();
-    }
 }

@@ -246,11 +246,4 @@ public class Vormingen_Overzicht extends Activity /*implements SwipeRefreshLayou
         setIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(setIntent);
     }
-
-    @Override
-    protected void onDestroy()
-    {
-        super.onDestroy();
-        ParseUser.logOut();
-    }
 }
