@@ -31,6 +31,8 @@ class VormingenTableViewController: UITableViewController, UISearchBarDelegate, 
         zoekbar.showsScopeBar = true
         zoekbar.delegate = self
         
+        vormingen2.sort({ $0.titel < $1.titel })
+        
         activityIndicator.stopAnimating()
     }
     
