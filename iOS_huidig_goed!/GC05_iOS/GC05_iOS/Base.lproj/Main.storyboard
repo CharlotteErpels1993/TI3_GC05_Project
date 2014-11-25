@@ -1472,7 +1472,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                 <color key="color" red="0.9794921875" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rJd-H7-4j2">
-                                <rect key="frame" x="231" y="318" width="139" height="30"/>
+                                <rect key="frame" x="16" y="318" width="568" height="30"/>
                                 <state key="normal" title="Terug naar overzicht">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -1484,23 +1484,29 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="rJd-H7-4j2" firstAttribute="leading" secondItem="4LX-k5-Obl" secondAttribute="leadingMargin" constant="215" id="0Kq-f6-GVC"/>
+                            <constraint firstItem="rJd-H7-4j2" firstAttribute="leading" secondItem="4LX-k5-Obl" secondAttribute="leadingMargin" id="37H-JC-Kzk"/>
                             <constraint firstAttribute="centerY" secondItem="Y3D-b9-iCG" secondAttribute="centerY" id="7WU-hU-Wx3"/>
                             <constraint firstItem="rJd-H7-4j2" firstAttribute="top" secondItem="kDW-hq-QtZ" secondAttribute="bottom" constant="8" id="8fj-VR-U7W"/>
                             <constraint firstAttribute="trailingMargin" secondItem="rJd-H7-4j2" secondAttribute="trailing" constant="214" id="9es-26-tZ0"/>
                             <constraint firstItem="kDW-hq-QtZ" firstAttribute="leading" secondItem="4LX-k5-Obl" secondAttribute="leadingMargin" id="Dt7-7o-NBH"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="rJd-H7-4j2" secondAttribute="trailing" id="H0N-2G-eIB"/>
                             <constraint firstAttribute="centerX" secondItem="Y3D-b9-iCG" secondAttribute="centerX" id="H65-7Q-6p4"/>
                             <constraint firstItem="rJd-H7-4j2" firstAttribute="top" secondItem="Y3D-b9-iCG" secondAttribute="bottom" constant="-1" id="Of0-XR-ZVB"/>
                             <constraint firstAttribute="centerY" secondItem="kDW-hq-QtZ" secondAttribute="centerY" constant="0.5" id="ULQ-tM-OEe"/>
                             <constraint firstAttribute="centerX" secondItem="kDW-hq-QtZ" secondAttribute="centerX" id="W19-C4-er1"/>
                             <constraint firstAttribute="centerY" secondItem="kDW-hq-QtZ" secondAttribute="centerY" constant="0.25" id="bxJ-ld-fUB"/>
                             <constraint firstAttribute="trailingMargin" secondItem="kDW-hq-QtZ" secondAttribute="trailing" id="sZI-TJ-pAx"/>
+                            <constraint firstItem="rJd-H7-4j2" firstAttribute="top" secondItem="Y3D-b9-iCG" secondAttribute="bottom" constant="-0.5" id="sv0-Nb-C7g"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="Dt7-7o-NBH"/>
                                 <exclude reference="ULQ-tM-OEe"/>
                                 <exclude reference="sZI-TJ-pAx"/>
+                                <exclude reference="0Kq-f6-GVC"/>
                                 <exclude reference="8fj-VR-U7W"/>
+                                <exclude reference="9es-26-tZ0"/>
+                                <exclude reference="Of0-XR-ZVB"/>
                             </mask>
                         </variation>
                     </view>
