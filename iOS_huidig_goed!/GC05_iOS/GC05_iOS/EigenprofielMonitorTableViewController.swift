@@ -34,22 +34,22 @@ class EigenprofielMonitorTableViewController: UITableViewController
         
         self.navigationItem.setHidesBackButton(true, animated: true)
         navigationItem.title = "Welkom \(monitor.voornaam!)"
-        voornaam.text = "Voornaam: \(monitor.voornaam!)"
-        naam.text = "Naam: \(monitor.naam!)"
-        email.text = "Email: \(monitor.email!)"
+        voornaam.text = monitor.voornaam!
+        naam.text = monitor.naam!
+        email.text = monitor.email!
         
         if monitor.telefoon == "" {
-            telefoon.text = "Telefoon: /"
+            telefoon.text = "/"
         } else {
-            telefoon.text = "Telefoon: \(monitor.telefoon!)"
+            telefoon.text = monitor.telefoon!
         }
         
-        gsm.text = "Gsm: \(monitor.gsm!)"
+        gsm.text = monitor.gsm!
         
         if monitor.linkFacebook == "" {
-            facebook.text = "Facebook: Nog niet ingevuld"
+            facebook.text = "Nog niet ingevuld"
         } else {
-            facebook.text = "Facebook: \(monitor.linkFacebook!)"
+            facebook.text = monitor.linkFacebook!
         }
         
         //activityIndicatorView.stopAnimating()
