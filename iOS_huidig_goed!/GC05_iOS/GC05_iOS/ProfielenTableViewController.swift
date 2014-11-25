@@ -8,6 +8,7 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
     var monitoren: [Monitor] = []
     var monitoren2: [Monitor] = []
     var monitorenZelfdeVorming: [Monitor] = []
+    var monitorenZelfdeVorming2: [Monitor] = []
     
     @IBOutlet weak var zoekbar: UISearchBar!
     
@@ -29,6 +30,8 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
         
         self.monitorenZelfdeVorming = ParseData.getMonitorsMetDezelfdeVormingen(monitor.id!)
         self.monitoren = ParseData.getMonitorsMetAndereVormingen(self.monitorenZelfdeVorming)
+        self.monitoren2 = self.monitoren
+        self.monitorenZelfdeVorming2 = self.monitorenZelfdeVorming
         
         monitorenZelfdeVorming.sort({ $0.naam < $1.voornaam })
         monitoren.sort({ $0.naam < $1.voornaam })
@@ -39,15 +42,40 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
         activityIndicator.stopAnimating()
     }
     
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        zoekGefilterdeVakanties(searchText.lowercaseString)
+    }
+    
+    func zoekGefilterdeVakanties(zoek: String) {
+        monitoren2 = monitoren.filter { ($0.naam!.lowercaseString.rangeOfString(zoek) != nil) || ($0.voornaam!.lowercaseString.rangeOfString(zoek)  != nil) }
+        //monitoren2 = monitoren.filter { $0.voornaam!.lowercaseString.rangeOfString(zoek) != nil }
+        monitorenZelfdeVorming2 = monitorenZelfdeVorming.filter { ($0.naam!.lowercaseString.rangeOfString(zoek) != nil) || ($0.voornaam!.lowercaseString.rangeOfString(zoek)  != nil) }
+        if zoek.isEmpty {
+            self.monitoren2 = monitoren
+            self.monitorenZelfdeVorming2 = monitorenZelfdeVorming
+        }
+        self.tableView.reloadData()
+    }
+    
+    func maakArrayMonitoren() {
+        for monitor in monitoren {
+            monitoren2.append(monitor)
+        }
+        
+        for monitor in monitorenZelfdeVorming {
+            monitoren2.append(monitor)
+        }
+    }
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 2
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return monitorenZelfdeVorming.count
+            return monitorenZelfdeVorming2.count
         } else if section == 1 {
-            return monitoren.count
+            return monitoren2.count
         }
         return 0
     }
@@ -67,13 +95,13 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
         
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier("monitorCellZelfdeVorming", forIndexPath: indexPath) as UITableViewCell
-            let monitor = monitorenZelfdeVorming[indexPath.row]
+            let monitor = monitorenZelfdeVorming2[indexPath.row]
             cell.textLabel.text = monitor.voornaam! + " " + monitor.naam!
             cell.detailTextLabel!.text = "Meer informatie"
             return cell
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier("monitorCell", forIndexPath: indexPath) as UITableViewCell
-            let monitor = monitoren[indexPath.row]
+            let monitor = monitoren2[indexPath.row]
             cell.textLabel.text = monitor.voornaam! + " " + monitor.naam!
             cell.detailTextLabel?.text = "Meer informatie"
             return cell
@@ -94,9 +122,9 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
         var selectedMonitor: Monitor
         
         if segue.identifier == "toonProfiel1" {
-            selectedMonitor = monitorenZelfdeVorming[tableView.indexPathForSelectedRow()!.row]
+            selectedMonitor = monitorenZelfdeVorming2[tableView.indexPathForSelectedRow()!.row]
         } else {
-            selectedMonitor = monitoren[tableView.indexPathForSelectedRow()!.row]
+            selectedMonitor = monitoren2[tableView.indexPathForSelectedRow()!.row]
         }
         
         monitorDetailsController.monitor = selectedMonitor as Monitor
