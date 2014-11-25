@@ -8,6 +8,9 @@ class InschrijvenVakantie2ViewController : ResponsiveTextFieldViewController {
     
     @IBOutlet weak var dpGeboortedatum: UIDatePicker!
     
+    @IBAction func annuleer(sender: AnyObject) {
+       annuleerControllerInschrijvenVakantieVorming(self)
+    }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "volgende" {
             let inschrijvenVakantie3ViewController = segue.destinationViewController as InschrijvenVakantie3ViewController

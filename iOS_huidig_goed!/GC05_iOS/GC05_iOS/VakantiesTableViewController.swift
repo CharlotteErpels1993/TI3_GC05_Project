@@ -31,6 +31,7 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         }
         
         vakanties2.sort({ $0.doelgroep < $1.titel })
+        vakanties.sort({ $0.doelgroep < $1.titel })
         
         activityIndicator.stopAnimating()
     }

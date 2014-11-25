@@ -13,6 +13,9 @@ class InschrijvenVormingViewController: UIViewController, UIPickerViewDataSource
         pickerView.delegate = self
         pickerView.dataSource = self
     }
+    @IBAction func annuleer(sender: AnyObject) {
+        annuleerControllerInschrijvenVakantieVorming(self)
+    }
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1

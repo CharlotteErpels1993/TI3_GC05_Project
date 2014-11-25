@@ -843,7 +843,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="gaTerugNaarInloggen:" destination="fyb-xH-x0i" eventType="touchUpInside" id="RAD-un-BR3"/>
+                                    <action selector="gaTerugNaarInloggen:" destination="fyb-xH-x0i" eventType="touchUpInside" id="MCc-ZX-XHt"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uqW-jm-he0">
@@ -1236,11 +1236,6 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Indienen voorkeur" id="rYZ-3l-4iL">
-                        <barButtonItem key="leftBarButtonItem" title="Menu" id="jcd-Li-qOo">
-                            <connections>
-                                <action selector="toggle:" destination="o7H-cr-yrT" id="ZHM-Ox-cet"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Indienen" id="VFO-YT-e5w">
                             <connections>
                                 <segue destination="a6c-ZB-4eV" kind="show" id="lJP-B1-KI9"/>
@@ -1267,7 +1262,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                         <sections>
                             <tableViewSection id="XXR-eA-HNy">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="GcZ-b9-WiX">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="GcZ-b9-WiX">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GcZ-b9-WiX" id="RCD-eY-pd3">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -1304,7 +1299,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                             </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="c4f-HH-FvR">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="c4f-HH-FvR">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="c4f-HH-FvR" id="1Vq-Io-duO">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -1339,7 +1334,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                             </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="G5R-mp-U13">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="G5R-mp-U13">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="G5R-mp-U13" id="cxm-nW-Wfl">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -1376,7 +1371,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                             </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="PGi-Mg-w5l">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="PGi-Mg-w5l">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PGi-Mg-w5l" id="sbY-n2-LCg">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -1411,7 +1406,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                             </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Zxn-W9-yWW">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="Zxn-W9-yWW">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Zxn-W9-yWW" id="Kpb-Kc-hqi">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -1446,7 +1441,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                             </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="hED-r6-HHc">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="hED-r6-HHc">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hED-r6-HHc" id="17L-YD-O6M">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -1912,7 +1907,8 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="nux-XJ-5Ap" kind="unwind" unwindAction="gaTerugNaarVormingTableView:" id="KCr-nR-ASh"/>
+                                    <action selector="annuleer:" destination="d80-lq-Zhz" eventType="touchUpInside" id="f7y-aK-xfF"/>
+                                    <segue destination="nux-XJ-5Ap" kind="unwind" identifier="gaTerug" unwindAction="gaTerugNaarVormingTableView:" id="KCr-nR-ASh"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -2098,7 +2094,8 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="0pD-gK-vms" kind="unwind" unwindAction="gaTerugNaarOverzichtVakanties:" id="oKB-90-Ola"/>
+                                    <action selector="annuleer:" destination="hts-ZH-ofq" eventType="touchUpInside" id="y0A-xm-4QE"/>
+                                    <segue destination="0pD-gK-vms" kind="unwind" identifier="gaTerug" unwindAction="gaTerugNaarOverzichtVakanties:" id="KaA-0E-sKT"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* verplicht in te vullen" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dkY-G6-S6a">
@@ -2211,7 +2208,8 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="KPW-Yw-0RU" kind="unwind" unwindAction="gaTerugNaarOverzichtVakanties:" id="lls-9J-x11"/>
+                                    <action selector="annuleer:" destination="JG9-Yc-TEg" eventType="touchUpInside" id="hQl-e4-EhZ"/>
+                                    <segue destination="KPW-Yw-0RU" kind="unwind" identifier="gaTerug" unwindAction="gaTerugNaarOverzichtVakanties:" id="lls-9J-x11"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -2313,7 +2311,8 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="JNT-gz-o04" kind="unwind" unwindAction="gaTerugNaarOverzichtVakanties:" id="NAa-C2-IAg"/>
+                                    <action selector="annuleer:" destination="X5a-t7-Gqi" eventType="touchUpInside" id="as8-9f-993"/>
+                                    <segue destination="JNT-gz-o04" kind="unwind" identifier="gaTerug" unwindAction="gaTerugNaarOverzichtVakanties:" id="NAa-C2-IAg"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* verplicht in te vullen" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K2Y-oR-XVp">
@@ -2449,7 +2448,8 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="x1w-kP-j7E" kind="unwind" unwindAction="gaTerugNaarOverzichtVakanties:" id="77k-mV-pVE"/>
+                                    <action selector="annuleer:" destination="fiA-PH-Lvg" eventType="touchUpInside" id="Kqt-Nc-6p5"/>
+                                    <segue destination="x1w-kP-j7E" kind="unwind" identifier="gaTerug" unwindAction="gaTerugNaarOverzichtVakanties:" id="77k-mV-pVE"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* verplicht in te vullen" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g3U-6M-oMG">
@@ -2548,7 +2548,8 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="una-oL-4nC" kind="unwind" unwindAction="gaTerugNaarOverzichtVakanties:" id="Gpd-FD-Uqh"/>
+                                    <action selector="annuleer:" destination="C57-CL-LAn" eventType="touchUpInside" id="XY7-YX-QKh"/>
+                                    <segue destination="una-oL-4nC" kind="unwind" identifier="gaTerug" unwindAction="gaTerugNaarOverzichtVakanties:" id="Gpd-FD-Uqh"/>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eaN-yk-YyH">
@@ -2790,7 +2791,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
         <!--Registreren-->
         <scene sceneID="vTF-1M-xK9">
             <objects>
-                <viewController id="y0D-Ac-bEH" customClass="Registratie3ViewController" customModule="JOETZ" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="y0D-Ac-bEH" customClass="Registratie2ViewController" customModule="JOETZ" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Sgs-78-CKk"/>
                         <viewControllerLayoutGuide type="bottom" id="4sV-bi-WCP"/>
@@ -3002,7 +3003,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
         <!--Registreren-->
         <scene sceneID="dth-mh-NbC">
             <objects>
-                <viewController id="w0S-HA-suc" customClass="Registratie4ViewController" customModule="JOETZ" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="w0S-HA-suc" customClass="Registratie3ViewController" customModule="JOETZ" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7gc-Cb-9dP"/>
                         <viewControllerLayoutGuide type="bottom" id="XCc-2e-nXM"/>
@@ -3355,7 +3356,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                         <sections>
                             <tableViewSection id="3M8-Da-3c0">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="iqz-fN-Mpg">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="iqz-fN-Mpg">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iqz-fN-Mpg" id="Q5N-N0-uLT">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -3378,7 +3379,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                             </tableViewSection>
                             <tableViewSection id="v8k-Fj-b8X">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="RNb-Ji-WTd">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="RNb-Ji-WTd">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RNb-Ji-WTd" id="8qd-df-PfH">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -3415,7 +3416,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                             </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="U0K-ZK-Sn8">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="U0K-ZK-Sn8">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="U0K-ZK-Sn8" id="USn-8P-Kjp">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -3452,7 +3453,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                             </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="dHn-sd-Bf8">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="dHn-sd-Bf8">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dHn-sd-Bf8" id="bUI-f2-snV">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -3489,7 +3490,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                             </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="8r6-dV-nyS">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="8r6-dV-nyS">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8r6-dV-nyS" id="1r7-rr-SHE">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -3526,7 +3527,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                             </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="HOG-BM-TDa">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="HOG-BM-TDa">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HOG-BM-TDa" id="rKi-97-E5X">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -3563,7 +3564,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                             </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ezF-E1-zX5">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="ezF-E1-zX5">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ezF-E1-zX5" id="AZc-lA-hdm">
                                             <autoresizingMask key="autoresizingMask"/>

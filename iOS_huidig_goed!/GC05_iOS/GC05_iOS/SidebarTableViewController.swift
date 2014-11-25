@@ -4,7 +4,7 @@ class SidebarTableViewController: UITableViewController {
     var selectedMenuItem : Int = 0
     var arrayKind: [String] = ["Vakanties","Inloggen", "Registreren"]
     var arrayOuder: [String] = ["Uitloggen", "Vakanties"]
-    var arrayMonitor: [String] = ["Uitloggen","Vakanties",  "Vormingen", "Voorkeur vak.", "Profielen"]
+    var arrayMonitor: [String] = ["Uitloggen","Vakanties",  "Vormingen", "Voorkeur vakantie", "Profielen"]
     var array: [String]?
     
     
@@ -124,7 +124,7 @@ class SidebarTableViewController: UITableViewController {
                     destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Profiel") as UIViewController
                     let alertController = UIAlertController(title: "Uitloggen", message: "Wilt u zeker uitloggen?", preferredStyle: .ActionSheet)
                     
-                    let callAction = UIAlertAction(title: "Uitloggen", style: .Default, handler: {
+                    let callAction = UIAlertAction(title: "Uitloggen", style: UIAlertActionStyle.Destructive, handler: {
                         action in
                         PFUser.logOut()
                         destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
@@ -132,6 +132,7 @@ class SidebarTableViewController: UITableViewController {
                         self.hideSideMenuView()
                         }
                     )
+                    
                     alertController.addAction(callAction)
                     
                     let cancelAction = UIAlertAction(title: "Annuleer", style: .Default, handler: nil)
@@ -166,7 +167,7 @@ class SidebarTableViewController: UITableViewController {
                     destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
                     let alertController = UIAlertController(title: "Uitloggen", message: "Wilt u zeker uitloggen?", preferredStyle: .ActionSheet)
                     
-                    let callAction = UIAlertAction(title: "Uitloggen", style: .Default, handler: {
+                    let callAction = UIAlertAction(title: "Uitloggen", style: UIAlertActionStyle.Destructive, handler: {
                         action in
                         PFUser.logOut()
                         destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
@@ -188,31 +189,6 @@ class SidebarTableViewController: UITableViewController {
                 sideMenuController()?.setContentViewController(destViewController)
             }
         }
-        
-        /*switch indexPath.row {
-        case 0:
-            destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
-            break
-        case 1:
-            destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Inloggen") as UIViewController
-            break
-        case 2:
-            destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Registreren") as UIViewController
-            break
-        case 3:
-            destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Uitloggen") as UIViewController
-            break
-        case 4:
-            destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vormingen") as UIViewController
-            break
-        /*case 5:
-            destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Profielen") as UIViewController
-            break*/
-        default:
-            destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
-            break
-        }
-        sideMenuController()?.setContentViewController(destViewController)*/
     }
 
     

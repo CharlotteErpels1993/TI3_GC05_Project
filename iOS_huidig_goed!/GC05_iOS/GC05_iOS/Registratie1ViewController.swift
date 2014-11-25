@@ -25,10 +25,32 @@ class Registratie1ViewController: ResponsiveTextFieldViewController
         toggleSideMenuView()
     }
     @IBAction func gaTerugNaarInloggen(sender: AnyObject) {
-        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        annuleerControllerRegistratie(self)
+        /*let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        var destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
+        
+        //let alertController = UIAlertController(title: "A", message: "Wilt u zeker uitloggen?", preferredStyle: .ActionSheet)
+        let alertController = UIAlertController()
+        
+        let callAction = UIAlertAction(title: "Annuleer", style: UIAlertActionStyle.Destructive, handler: {
+            action in
+            destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Inloggen") as UIViewController
+            self.sideMenuController()?.setContentViewController(destViewController)
+            self.hideSideMenuView()
+            }
+        )
+        alertController.addAction(callAction)
+        
+        let cancelAction = UIAlertAction(title: "Ga terug", style: .Default, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        presentViewController(alertController, animated: true, completion: nil)*/
+        
+        
+        /*let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         var destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Inloggen") as UIViewController
         sideMenuController()?.setContentViewController(destViewController)
-        hideSideMenuView()
+        hideSideMenuView()*/
     }
     
     override func viewDidLoad() {
@@ -287,3 +309,4 @@ func giveUITextFieldDefaultBorder(textField: UITextField) {
     textField.layer.borderWidth = 1.0
     textField.layer.cornerRadius = 5.0
 }
+

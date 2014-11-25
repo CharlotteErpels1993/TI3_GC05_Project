@@ -22,6 +22,10 @@ class InschrijvenVakantie1ViewController : ResponsiveTextFieldViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+
+    @IBAction func annuleer(sender: AnyObject) {
+        annuleerControllerInschrijvenVakantieVorming(self)
+    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "volgende" {

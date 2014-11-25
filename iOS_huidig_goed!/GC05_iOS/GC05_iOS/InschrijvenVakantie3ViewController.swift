@@ -15,6 +15,9 @@ class InschrijvenVakantie3ViewController : ResponsiveTextFieldViewController {
     @IBOutlet weak var txtTelefoon: UITextField!
     @IBOutlet weak var txtGsm: UITextField!
     
+    @IBAction func annuleer(sender: AnyObject) {
+        annuleerControllerInschrijvenVakantieVorming(self)
+    }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "volgende" {
         let inschrijvenVakantie4ViewController = segue.destinationViewController as InschrijvenVakantie4ViewController

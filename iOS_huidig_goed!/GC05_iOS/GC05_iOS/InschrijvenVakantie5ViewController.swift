@@ -29,6 +29,9 @@ class InschrijvenVakantie5ViewController : ResponsiveTextFieldViewController {
         super.viewDidLoad()
         giveUITextViewDefaultBorder(txtViewExtraInfo)
     }
+    @IBAction func annuleer(sender: AnyObject) {
+        annuleerControllerInschrijvenVakantieVorming(self)
+    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "volgende" {
