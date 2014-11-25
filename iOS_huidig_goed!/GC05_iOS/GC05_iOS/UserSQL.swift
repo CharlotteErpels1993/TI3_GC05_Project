@@ -1,6 +1,6 @@
 import Foundation
 
-struct /*class*/ UserSQL {
+struct UserSQL {
     
     static func createUserTable() {
         if let error = SD.createTable("User", withColumnNamesAndTypes:
@@ -21,6 +21,8 @@ struct /*class*/ UserSQL {
         var query = PFUser.query()
         users = query.findObjects() as [PFUser]
         
+        var queryString = ""
+        
         var objectId: String = ""
         var username: String = ""
         var password: String = ""
@@ -28,17 +30,41 @@ struct /*class*/ UserSQL {
         var soort: String = ""
         
         for user in users {
+            
+            queryString.removeAll(keepCapacity: true)
+            
             objectId = user.objectId as String
             username = user.username as String
-            //password = user.password as String
+            password = user.password as String
             email = user.email as String!
-            
-            
             soort = user["soort"] as String
             
-            if let err = SD.executeChange("INSERT INTO User (objectId, username, password, email, soort) VALUES ('\(objectId)', '\(username)', '\(password)', '\(email)', '\(soort)')") {
-                //there was an error during the insert, handle it here
-            } else {
+            queryString.extend("INSERT INTO User ")
+            queryString.extend("(")
+            queryString.extend("objectId, ")
+            queryString.extend("username, ")
+            queryString.extend("password, ")
+            queryString.extend("email, ")
+            queryString.extend("soort")
+            queryString.extend(")")
+            queryString.extend(" VALUES ")
+            queryString.extend("(")
+            
+            queryString.extend("'\(objectId)', ") //objectId - String
+            queryString.extend("'\(username)', ") //username - String
+            queryString.extend("'\(password)', ") //password - String
+            queryString.extend("'\(email)', ") //email - String
+            queryString.extend("'\(soort)'") //soort - String
+            
+            queryString.extend(")")
+
+            
+            if let err = SD.executeChange(queryString)
+            {
+                println("ERROR: error tijdens toevoegen van nieuwe user in table User")
+            }
+            else
+            {
                 //no error, the row was inserted successfully
             }
         }
@@ -52,9 +78,12 @@ struct /*class*/ UserSQL {
         
         let (resultSet, err) = SD.executeQuery(query)
         
-        if err != nil {
-            //there was an error during the query, handle it here
-        } else {
+        if err != nil
+        {
+            println("ERROR: error tijdens ophalen van user met email en wachtwoord uit table User")
+        }
+        else
+        {
             for row in resultSet {
                 user = getUser(row)
                 users.append(user)
