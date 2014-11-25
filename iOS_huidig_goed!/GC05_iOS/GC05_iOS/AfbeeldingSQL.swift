@@ -14,9 +14,10 @@ struct /*class*/ AfbeeldingSQL {
         }
     }
     
-    static func vulAfbeeldingTableOp() {
+    /*static func vulAfbeeldingTableOp(vakantieId: String) {
         var afbeeldingen: [PFObject] = []
         var query = PFQuery(className: "Afbeelding")
+        query.whereKey("vakantie", equalTo: vakantieId)
         afbeeldingen = query.findObjects() as [PFObject]
         
         var objectId: String = ""
@@ -35,7 +36,7 @@ struct /*class*/ AfbeeldingSQL {
             }
             
         }
-    }
+    }*/
     
     static func getAfbeeldingenMetVakantieId(vakantieId: String) -> [UIImage]{
         var afbeeldingen: [UIImage] = []

@@ -2,10 +2,9 @@ import UIKit
 import Foundation
 
 class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, UISearchDisplayDelegate {
+    
     var vakanties: [Vakantie] = []
     var vakanties2: [Vakantie] = []
-    
-    //var parseData = ParseData()
     
     @IBOutlet weak var zoekbar: UISearchBar!
     
@@ -138,15 +137,3 @@ func getActivityIndicatorView(controller: UIViewController) -> UIActivityIndicat
 
     return activityIndicator
 }
-
-
-
-
-
-
-
-
-
-
-
-
