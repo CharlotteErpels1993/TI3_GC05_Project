@@ -1,25 +1,29 @@
 import Foundation
 
-struct /*class*/ VakantieSQL {
+struct VakantieSQL {
     
     static func createVakantieTable() {
-        if let error = SD.createTable("Vakantie", withColumnNamesAndTypes: ["objectId":
-            .StringVal, "titel": .StringVal, "locatie": .StringVal, "korteBeschrijving":
-                .StringVal, "vertrekdatum": .DateVal, "terugkeerdatum": .DateVal,
-            "aantalDagenNachten": .StringVal, "vervoerwijze": .StringVal, "formule":
-                .StringVal, "basisPrijs": .DoubleVal, "bondMoysonLedenPrijs": .DoubleVal,
-            "inbegrepenPrijs": .StringVal, "doelgroep": .StringVal, "maxAantalDeelnemers":
-                .IntVal, "sterPrijs1ouder": .StringVal, "sterPrijs2ouders": .DoubleVal]) {
-                    
-                    print("error bij create vakantie table")
-                    
-        } else {
+        if let error = SD.createTable("Vakantie", withColumnNamesAndTypes:
+            ["objectId": .StringVal, "titel": .StringVal, "locatie": .StringVal,
+             "korteBeschrijving": .StringVal, "vertrekdatum": .StringVal,
+             "terugkeerdatum": .StringVal, "aantalDagenNachten": .StringVal,
+             "vervoerwijze": .StringVal, "formule": .StringVal, "basisPrijs": .DoubleVal,
+             "bondMoysonLedenPrijs": .DoubleVal, "inbegrepenPrijs": .StringVal,
+             "doelgroep": .StringVal, "maxAantalDeelnemers": .IntVal,
+             "sterPrijs1ouder": .DoubleVal, "sterPrijs2ouders": .DoubleVal])
+        {
+            println("ERROR: error tijdens creatie van table Vakantie")
+        }
+        else
+        {
             //no error
         }
     }
     
     static func vulVakantieTableOp() {
         
+        var queryString: String = ""
+
         var vakanties: [PFObject] = []
         var query = PFQuery(className: "Vakantie")
         vakanties = query.findObjects() as [PFObject]
@@ -41,7 +45,18 @@ struct /*class*/ VakantieSQL {
         var sterPrijs1ouder: Double = 0.0
         var sterPrijs2ouders: Double = 0.0
         
+        var teller: Int = 0
+        
         for vakantie in vakanties {
+            
+            //OPLOSSING fout invoegen vakanties
+            //1ste vakantie ging wel
+            //daarna niet meer
+            //de query werd elke keer langer en langer
+            //waardoor dat de queryString 3 keer de eigenlijke query bevat
+            //OPLOSSING: queryString aan het begin terug leegmaken!
+            queryString.removeAll(keepCapacity: true)
+            
             objectId = vakantie.objectId as String
             titel = vakantie["titel"] as String
             locatie = vakantie["locatie"] as String
@@ -59,11 +74,60 @@ struct /*class*/ VakantieSQL {
             sterPrijs1ouder = vakantie["sterPrijs1ouder"] as Double
             sterPrijs2ouders = vakantie["sterPrijs2ouders"] as Double
             
-            if let err = SD.executeChange("INSERT INTO Vakantie (objectId, titel, locatie, korteBeschrijving, vertrekdatum, terugkeerdatum, aantalDagenNachten, vervoerwijze, formule, basisPrijs, bondMoysonLedenPrijs, inbegrepenPrijs, doelgroep, maxAantalDeelnemers, sterPrijs1ouder, sterPrijs2ouders) VALUES ('\(objectId)', '\(titel)', '\(locatie)', '\(korteBeschrijving)', '\(vertrekdatum)', '\(terugkeerdatum)', '\(aantalDagenNachten)', '\(vervoerwijze)', '\(formule)', '\(basisPrijs)', '\(bondMoysonLedenPrijs)', '\(inbegrepenPrijs)', '\(doelgroep)', '\(maxAantalDeelnemers)', '\(sterPrijs1ouder)', '\(sterPrijs2ouders)')") {
-                //there was an error during the insert, handle it here
-            } else {
+            var vertrekdatumString = vertrekdatum.toS("dd/MM/yyyy")
+            var terugkeerdatumString = terugkeerdatum.toS("dd/MM/yyyy")
+            
+            queryString.extend("INSERT INTO Vakantie ")
+            queryString.extend("(")
+            queryString.extend("objectId, ")
+            queryString.extend("titel, ")
+            queryString.extend("locatie, ")
+            queryString.extend("korteBeschrijving, ")
+            queryString.extend("vertrekdatum, ")
+            queryString.extend("terugkeerdatum, ")
+            queryString.extend("aantalDagenNachten, ")
+            queryString.extend("vervoerwijze, ")
+            queryString.extend("formule, ")
+            queryString.extend("basisPrijs, ")
+            queryString.extend("bondMoysonLedenPrijs, ")
+            queryString.extend("inbegrepenPrijs, ")
+            queryString.extend("doelgroep, ")
+            queryString.extend("maxAantalDeelnemers, ")
+            queryString.extend("sterPrijs1ouder, ")
+            queryString.extend("sterPrijs2ouders")
+            queryString.extend(")")
+            queryString.extend(" VALUES ")
+            queryString.extend("(")
+            
+            queryString.extend("'\(objectId)', ") //objectId - String
+            queryString.extend("'\(titel)', ") //titel - String
+            queryString.extend("'\(locatie)', ") //locatie - String
+            queryString.extend("'\(korteBeschrijving)', ") //korteBeschrijving - String
+            queryString.extend("'\(vertrekdatumString)', ") //vertrekdatumString - String
+            queryString.extend("'\(terugkeerdatumString)', ") //terugkeerdatumString - String
+            queryString.extend("'\(aantalDagenNachten)', ") //aantalDagenNachten - String
+            queryString.extend("'\(vervoerwijze)', ") //vervoerwijze - String
+            queryString.extend("'\(formule)', ") //formule - String
+            queryString.extend("\(basisPrijs), ") //basisPrijs - Double (geen '')!!
+            queryString.extend("\(bondMoysonLedenPrijs), ") //bondMoysonLedenPrijs - Double (geen '')!!
+            queryString.extend("'\(inbegrepenPrijs)', ") //inbegrepenPrijs - String
+            queryString.extend("'\(doelgroep)', ") //doelgroep - String
+            queryString.extend("\(maxAantalDeelnemers), ") //maxAantalDeelnemers - Int (geen '')!!
+            queryString.extend("\(sterPrijs1ouder), ") //sterPrijs1ouder - Double (geen '')!!
+            queryString.extend("\(sterPrijs2ouders)") //sterPrijs2ouders - Double (geen '')!!
+            
+            queryString.extend(")")
+            
+            if let err = SD.executeChange(queryString)
+            {
+                println("ERROR: error tijdens toevoegen van nieuwe vakantie in table Vakantie")
+            }
+            else
+            {
                 //no error, the row was inserted successfully
             }
+            
+            teller += 1
             
         }
     }
@@ -75,9 +139,12 @@ struct /*class*/ VakantieSQL {
         
         let (resultSet, err) = SD.executeQuery("SELECT * FROM Vakantie")
         
-        if err != nil {
-            //there was an error during the query, handle it here
-        } else {
+        if err != nil
+        {
+            println("ERROR: error tijdens ophalen van alle vakanties uit table Vakantie")
+        }
+        else
+        {
             for row in resultSet {
                 vakantie = getVakantie(row)
                 vakanties.append(vakantie)
@@ -102,11 +169,13 @@ struct /*class*/ VakantieSQL {
         if let korteBeschrijving = row["korteBeschrijving"]?.asString() {
             vakantie.korteBeschrijving = korteBeschrijving
         }
-        if let vertrekdatum = row["vertrekdatum"]?.asDate()! {
-            vakantie.beginDatum = vertrekdatum
+        if let vertrekdatum = row["vertrekdatum"]?.asString() {
+            var vertrekdatumString = vertrekdatum
+            vakantie.vertrekdatum = vertrekdatumString.toDate() as NSDate!
         }
-        if let terugkeerdatum = row["terugkeerdatum"]?.asDate()! {
-            vakantie.terugkeerDatum = terugkeerdatum
+        if let terugkeerdatum = row["terugkeerdatum"]?.asString() {
+            var terugkeerdatumString = terugkeerdatum
+            vakantie.terugkeerdatum = terugkeerdatumString.toDate() as NSDate!
         }
         if let aantalDagenNachten = row["aantalDagenNachten"]?.asString() {
             vakantie.aantalDagenNachten = aantalDagenNachten
@@ -123,7 +192,7 @@ struct /*class*/ VakantieSQL {
         if let bondMoysonLedenPrijs = row["bondMoysonLedenPrijs"]?.asDouble() {
             vakantie.bondMoysonLedenPrijs = bondMoysonLedenPrijs
         }
-        if let inbegrepenInPrijs = row["inbegrepenInPrijs"]?.asString() {
+        if let inbegrepenInPrijs = row["inbegrepenPrijs"]?.asString() {
             vakantie.inbegrepenPrijs = inbegrepenInPrijs
         }
         if let doelgroep = row["doelgroep"]?.asString() {

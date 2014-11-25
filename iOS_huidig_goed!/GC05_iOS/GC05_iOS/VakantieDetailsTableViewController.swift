@@ -30,9 +30,6 @@ class VakantieDetailsTableViewController: UITableViewController {
     var beschrijving: String!
     var sectionToDelete = -1;
     
-    //moet nog static class worden!
-    //var parseData: ParseData = ParseData()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -59,8 +56,8 @@ class VakantieDetailsTableViewController: UITableViewController {
             }
         }
         
-        var beginDatum: String? = vakantie.beginDatum?.toS("dd/MM/yyyy")
-        var terugkeerDatum: String? = vakantie.terugkeerDatum?.toS("dd/MM/yyyy")
+        var beginDatum: String? = vakantie.vertrekdatum?.toS("dd/MM/yyyy")
+        var terugkeerDatum: String? = vakantie.terugkeerdatum?.toS("dd/MM/yyyy")
         
         navigationItem.title = vakantie.titel
         korteBeschrijvingLabel.text! = vakantie.korteBeschrijving!
@@ -84,19 +81,19 @@ class VakantieDetailsTableViewController: UITableViewController {
         
             if soort == "ouder" {
                 basisprijsLabel.text = String("Basisprijs: \(vakantie.basisprijs!) " + euroSymbol)
-                inbegrepenPrijs.text = String("Inbegrepen prijs: \(vakantie.inbegrepenPrijs!) ")
+                //inbegrepenPrijs.text = String("Inbegrepen prijs: \(vakantie.inbegrepenPrijs!) ")
                 if (vakantie.bondMoysonLedenPrijs != -1) {
                     bondMoysonPrijsLabel.text = String("Bond moyson prijs: \(vakantie.bondMoysonLedenPrijs!) " + euroSymbol)
                 } else {
                     bondMoysonPrijsLabel.text = String("Bond moyson prijs: /")
                 }
                 if (vakantie.sterPrijs1ouder != -1) {
-                    sterprijs1Label.text = String("Ster prijs (1 ouder): \(vakantie.sterPrijs1ouder!) " + euroSymbol)
+                    //sterprijs1Label.text = String("Ster prijs (1 ouder): \(vakantie.sterPrijs1ouder!) " + euroSymbol)
                 } else {
                     sterprijs1Label.text = String("Ster prijs (1 ouder): /")
                 }
                 if (vakantie.sterPrijs2ouders != -1) {
-                    sterPrijs2Label.text = String("Ster prijs (2 ouders): \(vakantie.sterPrijs2ouders!) " + euroSymbol)
+                   // sterPrijs2Label.text = String("Ster prijs (2 ouders): \(vakantie.sterPrijs2ouders!) " + euroSymbol)
                 } else {
                     sterPrijs2Label.text = String("Ster prijs (2 ouders): /")
                 }

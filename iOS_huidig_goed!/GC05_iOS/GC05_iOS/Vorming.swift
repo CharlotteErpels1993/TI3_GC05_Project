@@ -22,12 +22,12 @@ class Vorming: Activiteit
     }
     
     init(vorming: PFObject) {
-        self.periodes = vorming["periodes"] as [String]
-        self.prijs = vorming["prijs"] as Double
-        self.criteriaDeelnemers = vorming["criteriaDeelnemers"] as String
-        self.websiteLocatie = vorming["websiteLocatie"] as String
-        self.tips = vorming["tips"] as String
-        self.betalingWijze = vorming["betalingswijze"] as String
+        self.periodes = vorming["periodes"] as? [String]
+        self.prijs = vorming["prijs"] as? Double
+        self.criteriaDeelnemers = vorming["criteriaDeelnemers"] as? String
+        self.websiteLocatie = vorming["websiteLocatie"] as? String
+        self.tips = vorming["tips"] as? String
+        self.betalingWijze = vorming["betalingswijze"] as? String
         //self.inbegrepenPrijs = vomring["in"]
         super.init(activiteit: vorming)
         

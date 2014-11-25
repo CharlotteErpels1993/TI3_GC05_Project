@@ -13,9 +13,9 @@ class Activiteit
     
     init(activiteit: PFObject) {
         self.id = activiteit.objectId
-        self.titel = activiteit["titel"] as String
-        self.locatie = activiteit["locatie"] as String
-        self.korteBeschrijving = activiteit["korteBeschrijving"] as String
+        self.titel = activiteit["titel"] as? String
+        self.locatie = activiteit["locatie"] as? String
+        self.korteBeschrijving = activiteit["korteBeschrijving"] as? String
     }
     
     init(id: String, titel: String, locatie: String, korteBeschrijving: String) {

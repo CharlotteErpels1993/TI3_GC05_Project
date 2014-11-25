@@ -3,19 +3,21 @@ import Foundation
 struct /*class*/ AfbeeldingSQL {
     
     static func createAfbeeldingTable() {
-        if let error = SD.createTable("Afbeelding", withColumnNamesAndTypes: ["objectId":
-            .StringVal, "afbeelding": .ImageVal, "vakantie": .StringVal]) {
-                
-                //there was an error
-                
-        } else {
+        if let error = SD.createTable("Afbeelding", withColumnNamesAndTypes:
+            ["objectId": .StringVal, "afbeelding": .ImageVal, "vakantie": .StringVal])
+        {
+            println("ERROR: error tijdens creatie van table Afbeelding")
+        }
+        else
+        {
             //no error
         }
     }
     
-    static func vulAfbeeldingTableOp() {
+    /*static func vulAfbeeldingTableOp(vakantieId: String) {
         var afbeeldingen: [PFObject] = []
         var query = PFQuery(className: "Afbeelding")
+        query.whereKey("vakantie", equalTo: vakantieId)
         afbeeldingen = query.findObjects() as [PFObject]
         
         var objectId: String = ""
@@ -34,7 +36,7 @@ struct /*class*/ AfbeeldingSQL {
             }
             
         }
-    }
+    }*/
     
     static func getAfbeeldingenMetVakantieId(vakantieId: String) -> [UIImage]{
         var afbeeldingen: [UIImage] = []

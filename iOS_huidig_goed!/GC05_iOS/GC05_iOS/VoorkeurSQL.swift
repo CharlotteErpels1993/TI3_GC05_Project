@@ -1,18 +1,6 @@
 import Foundation
 
-struct /*class*/ VoorkeurSQL {
-    
-    static func createVoorkeurTable() {
-        if let error = SD.createTable("Voorkeur", withColumnNamesAndTypes: ["objectId":
-            .StringVal, "monitor": .StringVal, "vakantie": .StringVal, "periodes":
-                .StringVal]) {
-                    
-                    //there was an error
-                    
-        } else {
-            //no error
-        }
-    }
+struct VoorkeurSQL {
     
     static func parseVoorkeurToDatabase(voorkeur: Voorkeur) {
         var voorkeurJSON = PFObject(className: "Voorkeur")

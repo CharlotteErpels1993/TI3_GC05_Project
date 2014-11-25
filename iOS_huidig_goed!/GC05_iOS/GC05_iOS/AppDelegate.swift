@@ -6,14 +6,9 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    //var parseData = ParseData()
-
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        
-        
-        
-        
+  
         // dit in de plaats van hieronder in de functie?
         Parse.setApplicationId("a3jgklEb2rHZYcgqDezLfqSP6i1C2u4eVV8R03YS", clientKey: "3ZguW3kx5J6PuieccT7ypJ5ZvYhwX08ESKL8cDNX")
         
@@ -21,12 +16,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             PFUser.logOut()
         }
         
-        //parseData.createDatabase()
         ParseData.deleteAllTables()
         if Reachability.isConnectedToNetwork() {
             ParseData.createDatabase()
         }
-        //self.parseData.createDatabase()
 
         
         // Connectie check

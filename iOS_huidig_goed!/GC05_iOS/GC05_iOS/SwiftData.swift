@@ -511,6 +511,7 @@ public struct SwiftData {
         
             //execute the statement
             (result, error) = SQLiteDB.sharedInstance.existingTables()
+           
         
             //close the database connection
             SQLiteDB.sharedInstance.close()

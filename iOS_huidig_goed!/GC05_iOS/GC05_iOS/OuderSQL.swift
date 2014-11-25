@@ -1,13 +1,20 @@
 import Foundation
 
-struct /*class*/ OuderSQL {
+struct OuderSQL {
     
     static func createOuderTable() {
-        if let error = SD.createTable("Ouder", withColumnNamesAndTypes: ["objectId": .StringVal, "rijksregisterNr": .StringVal, "email": .StringVal, "wachtwoord": .StringVal ,"voornaam": .StringVal, "naam": .StringVal, "straat": .StringVal, "nummer": .IntVal, "bus": .StringVal, "postcode": .IntVal, "gemeente": .StringVal, "telefoon": .StringVal, "gsm": .StringVal, "aansluitingsNr": .IntVal, "codeGerechtigde": .IntVal, "aansluitingsNrTweedeOuder": .IntVal]) {
-            
-            //there was an error
-            
-        } else {
+        if let error = SD.createTable("Ouder", withColumnNamesAndTypes:
+            ["objectId": .StringVal, "rijksregisterNr": .StringVal, "email": .StringVal,
+             "wachtwoord": .StringVal ,"voornaam": .StringVal, "naam": .StringVal,
+             "straat": .StringVal, "nummer": .IntVal, "bus": .StringVal, "postcode": .IntVal,
+             "gemeente": .StringVal, "telefoon": .StringVal, "gsm": .StringVal,
+             "aansluitingsNr": .IntVal, "codeGerechtigde": .IntVal,
+             "aansluitingsNrTweedeOuder": .IntVal])
+        {
+            println("ERROR: error tijdens creatie van table Ouder")
+        }
+        else
+        {
             //no error
         }
     }
@@ -17,6 +24,8 @@ struct /*class*/ OuderSQL {
         var ouders: [PFObject] = []
         var query = PFQuery(className: "Ouder")
         ouders = query.findObjects() as [PFObject]
+        
+        var queryString = ""
         
         var objectId: String = ""
         var rijksregisterNr: String?
@@ -36,6 +45,9 @@ struct /*class*/ OuderSQL {
         var aansluitingsNrTweedeOuder: Int?
         
         for ouder in ouders {
+            
+            queryString.removeAll(keepCapacity: true)
+            
             objectId = ouder.objectId as String
             rijksregisterNr = ouder["rijksregisterNr"] as? String
             email = ouder["email"] as String
@@ -53,7 +65,49 @@ struct /*class*/ OuderSQL {
             codeGerechtigde = ouder["codeGerechtigde"] as? Int
             aansluitingsNrTweedeOuder = ouder["aansluitingsNrTweedeOuder"] as? Int
             
-            if let err = SD.executeChange("INSERT INTO Ouder (objectId, rijksregisterNr, email, wachtwoord, voornaam, naam, straat, nummer, bus, postcode, gemeente, telefoon, gsm, aansluitingsNr, codeGerechtigde, aansluitingsNrTweedeOuder) VALUES ('\(objectId)', '\(rijksregisterNr)', '\(email)', '\(wachtwoord)', '\(voornaam)', '\(naam)', '\(straat)', '\(nummer)', '\(bus)', '\(postcode)', '\(gemeente)', '\(telefoon)', '\(gsm)', '\(aansluitingsNr)', '\(codeGerechtigde)', '\(aansluitingsNrTweedeOuder)')") {
+            queryString.extend("INSERT INTO Ouder ")
+            queryString.extend("(")
+            queryString.extend("objectId, ")
+            queryString.extend("rijksregisterNr, ")
+            queryString.extend("email, ")
+            queryString.extend("wachtwoord, ")
+            queryString.extend("voornaam, ")
+            queryString.extend("naam, ")
+            queryString.extend("straat, ")
+            queryString.extend("nummer, ")
+            queryString.extend("bus, ")
+            queryString.extend("postcode, ")
+            queryString.extend("gemeente, ")
+            queryString.extend("telefoon, ")
+            queryString.extend("gsm, ")
+            queryString.extend("aansluitingsNr, ")
+            queryString.extend("codeGerechtigde, ")
+            queryString.extend("aansluitingsNrTweedeOuder")
+            queryString.extend(")")
+            queryString.extend(" VALUES ")
+            queryString.extend("(")
+            
+            queryString.extend("'\(objectId)', ") //objectId - String
+            queryString.extend("'\(rijksregisterNr)', ") //rijksregisterNr - String
+            queryString.extend("'\(email)', ") //email - String
+            queryString.extend("'\(wachtwoord)', ") //wachtwoord - String
+            queryString.extend("'\(voornaam)', ") //voornaam - String
+            queryString.extend("'\(naam)', ") //naam - String
+            queryString.extend("'\(straat)', ") //straat - String
+            queryString.extend("\(nummer), ") //nummer - Int (geen '')!!
+            queryString.extend("'\(bus)', ") //bus - String
+            queryString.extend("\(postcode), ") //postcode - Int (geen '')!!
+            queryString.extend("'\(gemeente)', ") //gemeente - String
+            queryString.extend("'\(telefoon)', ") //telefoon - String
+            queryString.extend("'\(gsm)', ") //gsm - String
+            queryString.extend("\(aansluitingsNr), ") //aansluitingsNr - Int (geen '')!!
+            queryString.extend("\(codeGerechtigde), ") //codeGerechtigde - Int (geen '')!!
+            queryString.extend("\(aansluitingsNrTweedeOuder)") //aansluitingsNrTweedeOuder - Int (geen '')!!
+            
+            queryString.extend(")")
+            
+            
+            if let err = SD.executeChange(queryString) {
                 //there was an error during the insert, handle it here
             } else {
                 //no error, the row was inserted successfully
@@ -106,12 +160,13 @@ struct /*class*/ OuderSQL {
         user.email = ouder.email
         user["soort"] = "ouder"
         
-        user.signUpInBackgroundWithBlock {
+        /*user.signUpInBackgroundWithBlock {
             (succeeded: Bool!, error: NSError!) -> Void in
             if error == nil {
                 
             }
-        }
+        }*/
+        user.signUp()
     }
     
     static private func logIn(ouder: Ouder) {

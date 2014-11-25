@@ -3,32 +3,6 @@ import UIKit
 
 struct /*class*/ ParseData {
     
-    /*var vakantieSQL: VakantieSQL
-    var monitorSQL: MonitorSQL
-    var voorkeurSQL: VoorkeurSQL
-    var inschrijvingVormingSQL: InschrijvingVormingSQL
-    var vormingSQL: VormingSQL
-    var contactpersoonNoodSQL: ContactpersoonNoodSQL
-    var deelnemerSQL: DeelnemerSQL
-    var inschrijvingVakantieSQL: InschrijvingVakantieSQL
-    var userSQL: UserSQL
-    var ouderSQL: OuderSQL
-    var afbeeldingSQL: AfbeeldingSQL*/
-    
-    /*init() {
-        self.vakantieSQL = VakantieSQL()
-        self.monitorSQL = MonitorSQL()
-        self.voorkeurSQL = VoorkeurSQL()
-        self.inschrijvingVormingSQL = InschrijvingVormingSQL()
-        self.vormingSQL = VormingSQL()
-        self.contactpersoonNoodSQL = ContactpersoonNoodSQL()
-        self.deelnemerSQL = DeelnemerSQL()
-        self.inschrijvingVakantieSQL = InschrijvingVakantieSQL()
-        self.userSQL = UserSQL()
-        self.ouderSQL = OuderSQL()
-        self.afbeeldingSQL = AfbeeldingSQL()
-    }*/
-    
     static func createDatabase() {
         createTabellen()
         vulTabellenOp()
@@ -44,21 +18,6 @@ struct /*class*/ ParseData {
             if !contains(response.0, "User") {
                 createUserTable()
             }
-            if !contains(response.0, "Afbeelding") {
-                
-            }
-            if !contains(response.0, "ContactpersoonNood") {
-                createContactpersoonNoodTable()
-            }
-            if !contains(response.0, "Deelnemer") {
-                createDeelnemerTable()
-            }
-            if !contains(response.0, "InschrijvingVakantie") {
-                createInschrijvingVakantieTable()
-            }
-            if !contains(response.0, "InschrijvingVorming") {
-                createInschrijvingVormingTable()
-            }
             if !contains(response.0, "Monitor") {
                 createMonitorTable()
             }
@@ -68,12 +27,9 @@ struct /*class*/ ParseData {
             if !contains(response.0, "Vakantie") {
                 createVakantieTable()
             }
-            if !contains(response.0, "Voorkeur") {
-                createVoorkeurTable()
-            }
-            if !contains(response.0, "Vorming") {
+            /*if !contains(response.0, "Vorming") {
                 createVormingTable()
-            }
+            }*/
         }
     }
     
@@ -93,14 +49,14 @@ struct /*class*/ ParseData {
     }
     
     static func deleteAllTables() {
-        //let err = SD.deleteTable("TableName")
         var response: ([String], Int?) = SD.existingTables()
         
         if response.1 == nil {
             //geen error
-            
             for table in response.0 {
-                let err = SD.deleteTable(table)
+                if table != "sqlite_sequence" {
+                    let err = SD.deleteTable(table)
+                }
             }
         }
     }
@@ -138,8 +94,28 @@ struct /*class*/ ParseData {
         OuderSQL.parseOuderToDatabase(ouder)
     }
     
-    static func getAfbeeldingenMetVakantieId(vakantieId: String) -> [UIImage]{
-        return AfbeeldingSQL.getAfbeeldingenMetVakantieId(vakantieId)
+    static func getAfbeeldingenMetVakantieId(vakantieId: String) -> [UIImage] {
+        //return AfbeeldingSQL.getAfbeeldingenMetVakantieId(vakantieId)
+        
+        //onnodig extra afbeeldingen opslaan op device, beter om deze rechtstreeks van parse op te halen
+        
+        var query = PFQuery(className: "Afbeelding")
+        query.whereKey("vakantie", equalTo: vakantieId)
+        
+        var afbeeldingenObjects: [PFObject] = []
+        var afbeeldingFile: PFFile
+        var afbeelding: UIImage
+        var afbeeldingen: [UIImage] = []
+        
+        afbeeldingenObjects = query.findObjects() as [PFObject]
+        
+        for afbeeldingO in afbeeldingenObjects {
+            afbeeldingFile = afbeeldingO["afbeelding"] as PFFile
+            afbeelding = UIImage(data: afbeeldingFile.getData())!
+            afbeeldingen.append(afbeelding)
+        }
+        
+        return afbeeldingen
     }
     
     static func getAlleVakanties() -> [Vakantie] {
@@ -166,28 +142,12 @@ struct /*class*/ ParseData {
         VormingSQL.vulVormingTableOp()
     }
     
-    static private func vulAfbeeldingTableOp() {
-        AfbeeldingSQL.vulAfbeeldingTableOp()
-    }
-    
     static private func createUserTable() {
        UserSQL.createUserTable()
     }
     
     static private func createAfbeeldingTable() {
         AfbeeldingSQL.createAfbeeldingTable()
-    }
-    
-    static private func createContactpersoonNoodTable() {
-        ContactpersoonNoodSQL.createContactpersoonNoodTable()
-    }
-    
-    static private func createDeelnemerTable() {
-        DeelnemerSQL.createDeelnemerTable()
-    }
-    
-    static private func createInschrijvingVakantieTable() {
-        InschrijvingVakantieSQL.createInschrijvingVakantieTable()
     }
     
     static private func createInschrijvingVormingTable() {
@@ -204,10 +164,6 @@ struct /*class*/ ParseData {
     
     static private func createVakantieTable() {
         VakantieSQL.createVakantieTable()
-    }
-    
-    static private func createVoorkeurTable() {
-        VoorkeurSQL.createVoorkeurTable()
     }
     
     static private func createVormingTable() {

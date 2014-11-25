@@ -1,17 +1,6 @@
 import Foundation
 
-struct /*class*/ ContactpersoonNoodSQL {
-    
-    static func createContactpersoonNoodTable() {
-        if let error = SD.createTable("ContactpersoonNood", withColumnNamesAndTypes: ["objectId": .StringVal, "voornaam": .StringVal, "naam": .StringVal, "gsm":
-            .StringVal, "telefoon": .StringVal, "inschrijvingVakantie": .StringVal]) {
-                
-                //there was an error
-                
-        } else {
-            //no error
-        }
-    }
+struct ContactpersoonNoodSQL {
     
     static func parseContactpersoonNoodToDatabase(contactpersoon: ContactpersoonNood, inschrijvingId: String) {
         var contactpersoonJSON = PFObject(className: "ContactpersoonNood")
@@ -27,5 +16,4 @@ struct /*class*/ ContactpersoonNoodSQL {
         
         contactpersoonJSON.save()
     }
-    
 }

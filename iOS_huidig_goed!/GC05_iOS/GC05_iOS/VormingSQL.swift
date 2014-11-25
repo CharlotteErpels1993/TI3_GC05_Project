@@ -1,17 +1,19 @@
 import Foundation
 
-struct /*class*/ VormingSQL {
+struct VormingSQL {
     
     static func createVormingTable() {
-        if let error = SD.createTable("Vorming", withColumnNamesAndTypes: ["objectId":
-            .StringVal, "titel": .StringVal, "locatie": .StringVal, "korteBeschrijving":
-                .StringVal, "periodes": .StringVal, "prijs": .DoubleVal,
-            "websiteLocatie": .StringVal, "criteriaDeelnemers": .StringVal, "tips":
-                .StringVal, "betalingswijze": .StringVal, "inbegrepenInPrijs": .StringVal]) {
-                    
-                    //there was an error
-                    
-        } else {
+        if let error = SD.createTable("Vorming", withColumnNamesAndTypes:
+            ["objectId": .StringVal, "titel": .StringVal, "locatie": .StringVal,
+             "korteBeschrijving": .StringVal, "periodes": .StringVal, "prijs": .DoubleVal,
+             "websiteLocatie": .StringVal, "criteriaDeelnemers": .StringVal,
+             "tips": .StringVal, "betalingswijze": .StringVal,
+             "inbegrepenInPrijs": .StringVal])
+        {
+            println("ERROR: error tijdens creatie van table Vorming")
+        }
+        else
+        {
             //no error
         }
     }
@@ -21,6 +23,8 @@ struct /*class*/ VormingSQL {
         var vormingen: [PFObject] = []
         var query = PFQuery(className: "Vorming")
         vormingen = query.findObjects() as [PFObject]
+        
+        var queryString = ""
         
         var objectId: String = ""
         var titel: String = ""
@@ -36,6 +40,9 @@ struct /*class*/ VormingSQL {
         var inbegrepenInPrijs: String = ""
         
         for vorming in vormingen {
+            
+            queryString.removeAll(keepCapacity: true)
+            
             objectId = vorming.objectId as String
             titel = vorming["titel"] as String
             locatie = vorming["locatie"] as String
@@ -60,9 +67,44 @@ struct /*class*/ VormingSQL {
             betalingswijze = vorming["betalingswijze"] as String
             inbegrepenInPrijs = vorming["inbegrepenInPrijs"] as String
             
-            if let err = SD.executeChange("INSERT INTO Vorming (objectId, titel, locatie, korteBeschrijving, periodes, prijs, websiteLocatie, criteriaDeelnemers, tips, betalingswijze, inbegrepenInPrijs) VALUES ('\(objectId)', '\(titel)', '\(locatie)', '\(korteBeschrijving)', '\(periodesString)', '\(prijs)', '\(websiteLocatie)', '\(criteriaDeelnemers)', '\(tips)', '\(betalingswijze)', '\(inbegrepenInPrijs)')") {
-                //there was an error during the insert, handle it here
-            } else {
+            queryString.extend("INSERT INTO Vorming ")
+            queryString.extend("(")
+            queryString.extend("objectId, ")
+            queryString.extend("titel, ")
+            queryString.extend("locatie, ")
+            queryString.extend("korteBeschrijving, ")
+            queryString.extend("periodes, ")
+            queryString.extend("prijs, ")
+            queryString.extend("websiteLocatie, ")
+            queryString.extend("criteriaDeelnemers, ")
+            queryString.extend("tips, ")
+            queryString.extend("betalingswijze, ")
+            queryString.extend("inbegrepenInPrijs")
+            queryString.extend(")")
+            queryString.extend(" VALUES ")
+            queryString.extend("(")
+            
+            queryString.extend("'\(objectId)', ") //objectId - String
+            queryString.extend("'\(titel)', ") //titel - String
+            queryString.extend("'\(locatie)', ") //locatie - String
+            queryString.extend("'\(korteBeschrijving)', ") //korteBeschrijving - String
+            queryString.extend("'\(periodesString)', ") //periodes - String
+            queryString.extend("\(prijs), ") //prijs - Double (geen '')!!
+            queryString.extend("'\(websiteLocatie)', ") //websiteLocatie - String
+            queryString.extend("'\(criteriaDeelnemers)', ") //criteriaDeelnemers - String
+            queryString.extend("'\(tips)', ") //tips - String
+            queryString.extend("'\(betalingswijze)', ") //betalingswijze - String
+            queryString.extend("'\(inbegrepenInPrijs)'") //inbegrepenInPrijs - String
+            
+            queryString.extend(")")
+            
+            
+            if let err = SD.executeChange(queryString)
+            {
+                println("ERROR: error tijdens toevoegen van nieuwe Vorming in table Vorming")
+            }
+            else
+            {
                 //no error, the row was inserted successfully
             }
             
@@ -119,11 +161,15 @@ struct /*class*/ VormingSQL {
         if let korteBeschrijving = row["korteBeschrijving"]?.asString() {
             vorming.korteBeschrijving = korteBeschrijving
         }
-        /* ARRAY!!!!
         if let periodes = row["periodes"]?.asString() {
-        vorming.periodes = periodes
+            var periodesArray = periodes.componentsSeparatedByString(", ")
+            
+            for p in periodesArray {
+                vorming.periodes?.append(p)
+            }
+            
+            //vorming.periodes = periodes
         }
-        */
         if let prijs = row["prijs"]?.asDouble()! {
             vorming.prijs = prijs
         }
