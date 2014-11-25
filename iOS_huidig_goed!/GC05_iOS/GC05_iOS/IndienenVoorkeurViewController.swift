@@ -4,9 +4,6 @@ class IndienenVoorkeurViewController: UIViewController, UIPickerViewDataSource, 
     
     @IBOutlet weak var pickerView: UIPickerView!
     
-    //moet nog static klasse worden!
-    //var parseData: ParseData = ParseData()
-    
     @IBOutlet weak var txtViewPeriodes: UITextView!
     
     var vakanties: [Vakantie] = []
@@ -49,11 +46,15 @@ class IndienenVoorkeurViewController: UIViewController, UIPickerViewDataSource, 
         //zoekVakanties()
         vakanties = ParseData.getAlleVakanties()
         
+        for vakantie in vakanties {
+            pickerData.append(vakantie.titel!)
+        }
+        
         giveUITextViewDefaultBorder(txtViewPeriodes)
         
         pickerView.delegate = self
         pickerView.dataSource = self
-        
+        pickerView.reloadAllComponents()
         
     }
     

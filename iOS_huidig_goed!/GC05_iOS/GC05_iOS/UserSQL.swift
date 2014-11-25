@@ -2,10 +2,10 @@ import Foundation
 
 struct UserSQL {
     
-    static func createUserTable() {
+    /*static func createUserTable() {
         if let error = SD.createTable("User", withColumnNamesAndTypes:
-            ["objectId": .StringVal, "username": .StringVal, "password": .StringVal,
-             "email": .StringVal, "soort": .StringVal])
+            ["objectId": .StringVal, "username": .StringVal, "email": .StringVal,
+             "soort": .StringVal])
         {
             println("ERROR: error tijdens creatie van table User")
         }
@@ -25,7 +25,7 @@ struct UserSQL {
         
         var objectId: String = ""
         var username: String = ""
-        var password: String = ""
+        //var password: String = ""
         var email: String = ""
         var soort: String = ""
         
@@ -35,7 +35,7 @@ struct UserSQL {
             
             objectId = user.objectId as String
             username = user.username as String
-            password = user.password as String
+            //password = user.password as String
             email = user.email as String!
             soort = user["soort"] as String
             
@@ -43,7 +43,6 @@ struct UserSQL {
             queryString.extend("(")
             queryString.extend("objectId, ")
             queryString.extend("username, ")
-            queryString.extend("password, ")
             queryString.extend("email, ")
             queryString.extend("soort")
             queryString.extend(")")
@@ -52,7 +51,6 @@ struct UserSQL {
             
             queryString.extend("'\(objectId)', ") //objectId - String
             queryString.extend("'\(username)', ") //username - String
-            queryString.extend("'\(password)', ") //password - String
             queryString.extend("'\(email)', ") //email - String
             queryString.extend("'\(soort)'") //soort - String
             
@@ -68,13 +66,13 @@ struct UserSQL {
                 //no error, the row was inserted successfully
             }
         }
-    }
+    }*/
     
-    static func zoekUserMetEmailEnWachtwoord(email: String, wachtwoord: String) -> PFUser {
+    /*static func zoekUserMetEmailEnWachtwoord(email: String, wachtwoord: String) -> PFUser {
         var users: [PFUser] = []
         var user: PFUser = PFUser()
         
-        var query = "SELECT * FROM User WHERE email = \(email) AND wachtwoord = \(wachtwoord)"
+        var query = "SELECT * FROM User WHERE email = \(email) AND password = \(wachtwoord)"
         
         let (resultSet, err) = SD.executeQuery(query)
         
@@ -110,5 +108,5 @@ struct UserSQL {
         }
         
         return user
-    }
+    }*/
 }

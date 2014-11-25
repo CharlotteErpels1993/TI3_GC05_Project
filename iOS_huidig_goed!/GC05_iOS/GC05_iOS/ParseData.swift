@@ -15,9 +15,9 @@ struct /*class*/ ParseData {
         if response.1 == nil {
             //geen error
             
-            if !contains(response.0, "User") {
+            /*if !contains(response.0, "User") {
                 createUserTable()
-            }
+            }*/
             if !contains(response.0, "Monitor") {
                 createMonitorTable()
             }
@@ -34,7 +34,7 @@ struct /*class*/ ParseData {
     }
     
     static private func vulTabellenOp() {
-        vulUserTableOp()
+        //vulUserTableOp()
         vulMonitorTableOp()
         vulOuderTableOp()
         vulVakantieTableOp()
@@ -87,7 +87,15 @@ struct /*class*/ ParseData {
     }
     
     static func getUserMetEmailEnWachtwoord(email: String, wachtwoord: String) -> PFUser {
-        return UserSQL.zoekUserMetEmailEnWachtwoord(email, wachtwoord: wachtwoord)
+        
+        var query = PFUser.query()
+        query.whereKey("email", equalTo: email)
+        query.whereKey("password", equalTo: wachtwoord)
+        
+        var users: [PFUser] = query.findObjects() as [PFUser]
+        return users.first!
+        
+        //return UserSQL.zoekUserMetEmailEnWachtwoord(email, wachtwoord: wachtwoord)
     }
     
     static func parseOuderToDatabase(ouder: Ouder) {
@@ -122,9 +130,9 @@ struct /*class*/ ParseData {
         return VakantieSQL.getAlleVakanties()
     }
     
-    static private func vulUserTableOp() {
+    /*static private func vulUserTableOp() {
         UserSQL.vulUserTableOp()
-    }
+    }*/
     
     static private func vulMonitorTableOp() {
         MonitorSQL.vulMonitorTableOp()
@@ -138,13 +146,34 @@ struct /*class*/ ParseData {
         VakantieSQL.vulVakantieTableOp()
     }
     
-    static private func vulVormingTableOp() {
+    static func vulVormingTableOp() {
+        
+        var response: ([String], Int?) = SD.existingTables()
+        
+        if response.1 == nil {
+            if !contains(response.0, "Vorming") {
+                createVormingTable()
+            }
+        }
+        
         VormingSQL.vulVormingTableOp()
     }
     
-    static private func createUserTable() {
-       UserSQL.createUserTable()
+    static func deleteVormingTable() {
+        
+        var response: ([String], Int?) = SD.existingTables()
+        
+        if response.1 == nil {
+            if contains(response.0, "Vorming") {
+                let err = SD.deleteTable("Vorming")
+            }
+        }
+        
     }
+    
+    /*static private func createUserTable() {
+       UserSQL.createUserTable()
+    }*/
     
     static private func createAfbeeldingTable() {
         AfbeeldingSQL.createAfbeeldingTable()

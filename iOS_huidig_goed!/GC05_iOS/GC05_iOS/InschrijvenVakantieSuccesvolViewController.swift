@@ -5,10 +5,9 @@ class InschrijvenVakantieSuccesvolViewController : UIViewController {
     var deelnemer: Deelnemer!
     var contactpersoon1: ContactpersoonNood!
     var contactpersoon2: ContactpersoonNood?
+
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
-    
-    //moet nog static klasse worden!
-    //var parseData: ParseData = ParseData()
+
     
     
     override func viewDidLoad() {
