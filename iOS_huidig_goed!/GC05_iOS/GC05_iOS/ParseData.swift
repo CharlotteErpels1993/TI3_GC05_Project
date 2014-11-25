@@ -8,17 +8,6 @@ struct /*class*/ ParseData {
         vulTabellenOp()
     }
     
-    /*static func deleteAfbeeldingTable() {
-        var response: ([String], Int?) = SD.existingTables()
-        
-        if response.1 == nil {
-            if contains(response.0, "Afbeelding") {
-                let err = SD.deleteTable("Afbeelding")
-            }
-        }
-    }*/
-    
-    
     static private func createTabellen() {
         
         var response: ([String], Int?) = SD.existingTables()
@@ -29,21 +18,6 @@ struct /*class*/ ParseData {
             if !contains(response.0, "User") {
                 createUserTable()
             }
-            /*if !contains(response.0, "Afbeelding") {
-                createAfbeeldingTable()
-            }*/
-            /*if !contains(response.0, "ContactpersoonNood") {
-                createContactpersoonNoodTable()
-            }
-            if !contains(response.0, "Deelnemer") {
-                createDeelnemerTable()
-            }
-            if !contains(response.0, "InschrijvingVakantie") {
-                createInschrijvingVakantieTable()
-            }
-            if !contains(response.0, "InschrijvingVorming") {
-                createInschrijvingVormingTable()
-            }*/
             if !contains(response.0, "Monitor") {
                 createMonitorTable()
             }
@@ -53,9 +27,6 @@ struct /*class*/ ParseData {
             if !contains(response.0, "Vakantie") {
                 createVakantieTable()
             }
-            /*if !contains(response.0, "Voorkeur") {
-                createVoorkeurTable()
-            }*/
             /*if !contains(response.0, "Vorming") {
                 createVormingTable()
             }*/
@@ -78,7 +49,6 @@ struct /*class*/ ParseData {
     }
     
     static func deleteAllTables() {
-        //let err = SD.deleteTable("TableName")
         var response: ([String], Int?) = SD.existingTables()
         
         if response.1 == nil {
@@ -171,19 +141,6 @@ struct /*class*/ ParseData {
     static private func vulVormingTableOp() {
         VormingSQL.vulVormingTableOp()
     }
-    
-    /*static func vulAfbeeldingTableOp(vakantieId: String) {
-        var response: ([String], Int?) = SD.existingTables()
-        
-        if response.1 == nil {
-            if !contains(response.0, "Afbeelding") {
-                AfbeeldingSQL.createAfbeeldingTable()
-            }
-        }
-        
-        
-        AfbeeldingSQL.vulAfbeeldingTableOp(vakantieId)
-    }*/
     
     static private func createUserTable() {
        UserSQL.createUserTable()
