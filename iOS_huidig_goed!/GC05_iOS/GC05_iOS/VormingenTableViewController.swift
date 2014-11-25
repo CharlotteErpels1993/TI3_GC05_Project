@@ -17,6 +17,7 @@ class VormingenTableViewController: UITableViewController, UISearchBarDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        hideSideMenuView()
         
         ParseData.deleteVormingTable()
         

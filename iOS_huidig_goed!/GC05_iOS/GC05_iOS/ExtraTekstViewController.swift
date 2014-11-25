@@ -28,6 +28,9 @@ class ExtraTekstViewController: UIViewController {
         case 4:
             self.navigationItem.title = "Betalingswijze"
             break
+        case 5:
+            self.navigationItem.title = "Periodes"
+            break
         default:
             self.navigationController?.title = " "
         }

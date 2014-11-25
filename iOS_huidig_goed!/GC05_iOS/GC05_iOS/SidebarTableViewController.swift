@@ -4,7 +4,7 @@ class SidebarTableViewController: UITableViewController {
     var selectedMenuItem : Int = 0
     var arrayKind: [String] = ["Vakanties","Inloggen", "Registreren"]
     var arrayOuder: [String] = ["Uitloggen", "Vakanties"]
-    var arrayMonitor: [String] = ["Uitloggen","Vakanties",  "Vormingen", "Voorkeur vakantie", "Profielen"]
+    var arrayMonitor: [String] = ["Uitloggen","Eigen profiel", "Vakanties",  "Vormingen", "Voorkeur vakantie", "Profielen"]
     var array: [String]?
     
     
@@ -42,7 +42,7 @@ class SidebarTableViewController: UITableViewController {
             if soort == "ouder" {
                 return 2
             } else {
-                return 5
+                return 6
             }
         }
     }
@@ -116,9 +116,6 @@ class SidebarTableViewController: UITableViewController {
             if soort == "monitor" {
                 self.tableView.reloadData()
                 switch indexPath.row {
-                case 1:
-                    destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
-                    break
                 case 0:
                     hideSideMenuView()
                     destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Profiel") as UIViewController
@@ -140,13 +137,19 @@ class SidebarTableViewController: UITableViewController {
                     
                     presentViewController(alertController, animated: true, completion: nil)
                     break
+                case 1:
+                    destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Profiel") as UIViewController
+                    break
                 case 2:
-                    destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vormingen") as UIViewController
+                    destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
                     break
                 case 3:
-                    destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Voorkeur") as UIViewController
+                    destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vormingen") as UIViewController
                     break
                 case 4:
+                    destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Voorkeur") as UIViewController
+                    break
+                case 5:
                     destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Profielen") as UIViewController
                     break
                 default:

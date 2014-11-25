@@ -43,6 +43,7 @@ class IndienenVoorkeurViewController: UIViewController, UIPickerViewDataSource, 
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        hideSideMenuView()
         
         //zoekVakanties()
         vakanties = ParseData.getAlleVakanties()

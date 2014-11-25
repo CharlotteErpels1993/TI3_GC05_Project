@@ -1645,14 +1645,14 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Korte beschrijving" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UIJ-wd-10r">
-                                                    <rect key="frame" x="8" y="11" width="551" height="21"/>
+                                                    <rect key="frame" x="8" y="8" width="551" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="UIJ-wd-10r" firstAttribute="top" secondItem="JmI-xU-2yw" secondAttribute="topMargin" constant="3" id="E0j-hc-la5"/>
+                                                <constraint firstItem="UIJ-wd-10r" firstAttribute="top" secondItem="JmI-xU-2yw" secondAttribute="topMargin" id="E0j-hc-la5"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="UIJ-wd-10r" secondAttribute="trailing" id="bOQ-00-S7C"/>
                                                 <constraint firstItem="UIJ-wd-10r" firstAttribute="leading" secondItem="JmI-xU-2yw" secondAttribute="leadingMargin" id="ra5-GJ-2DB"/>
                                             </constraints>
@@ -1703,7 +1703,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Locatie:" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hCk-Oc-L8l">
-                                                    <rect key="frame" x="8" y="11" width="584" height="21"/>
+                                                    <rect key="frame" x="8" y="8" width="584" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1711,7 +1711,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="hCk-Oc-L8l" firstAttribute="leading" secondItem="VhW-OX-xgK" secondAttribute="leadingMargin" id="0rw-1s-0Ov"/>
-                                                <constraint firstItem="hCk-Oc-L8l" firstAttribute="top" secondItem="VhW-OX-xgK" secondAttribute="topMargin" constant="3" id="Si6-QY-4fQ"/>
+                                                <constraint firstItem="hCk-Oc-L8l" firstAttribute="top" secondItem="VhW-OX-xgK" secondAttribute="topMargin" id="Si6-QY-4fQ"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="hCk-Oc-L8l" secondAttribute="trailing" id="Z7j-8Z-IXE"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -1722,7 +1722,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Website locatie:" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HB9-pp-wOC">
-                                                    <rect key="frame" x="8" y="11" width="584" height="21"/>
+                                                    <rect key="frame" x="8" y="8" width="584" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1730,7 +1730,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailingMargin" secondItem="HB9-pp-wOC" secondAttribute="trailing" id="Aep-qt-sFh"/>
-                                                <constraint firstItem="HB9-pp-wOC" firstAttribute="top" secondItem="hKx-tD-oI9" secondAttribute="topMargin" constant="3" id="miN-j4-BlD"/>
+                                                <constraint firstItem="HB9-pp-wOC" firstAttribute="top" secondItem="hKx-tD-oI9" secondAttribute="topMargin" id="miN-j4-BlD"/>
                                                 <constraint firstItem="HB9-pp-wOC" firstAttribute="leading" secondItem="hKx-tD-oI9" secondAttribute="leadingMargin" id="tZJ-wb-tKX"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -1764,7 +1764,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Betalingswijze:" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B0n-BH-0rG">
-                                                    <rect key="frame" x="8" y="11" width="551" height="21"/>
+                                                    <rect key="frame" x="8" y="8" width="551" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1773,7 +1773,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                             <constraints>
                                                 <constraint firstItem="B0n-BH-0rG" firstAttribute="leading" secondItem="he7-Uc-1Nn" secondAttribute="leadingMargin" id="76w-4a-gFC"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="B0n-BH-0rG" secondAttribute="trailing" id="9nQ-eV-CWd"/>
-                                                <constraint firstItem="B0n-BH-0rG" firstAttribute="top" secondItem="he7-Uc-1Nn" secondAttribute="topMargin" constant="3" id="kpt-Zo-zOw"/>
+                                                <constraint firstItem="B0n-BH-0rG" firstAttribute="top" secondItem="he7-Uc-1Nn" secondAttribute="topMargin" id="kpt-Zo-zOw"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -1786,7 +1786,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Inbegrepen prijs" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J8L-ll-7FX">
-                                                    <rect key="frame" x="8" y="11" width="551" height="21"/>
+                                                    <rect key="frame" x="8" y="8" width="551" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1795,7 +1795,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                             <constraints>
                                                 <constraint firstItem="J8L-ll-7FX" firstAttribute="leading" secondItem="gYL-qR-Ggf" secondAttribute="leadingMargin" id="CMm-KE-XII"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="J8L-ll-7FX" secondAttribute="trailing" id="eGr-jB-oI6"/>
-                                                <constraint firstItem="J8L-ll-7FX" firstAttribute="top" secondItem="gYL-qR-Ggf" secondAttribute="topMargin" constant="3" id="pWg-ma-KJX"/>
+                                                <constraint firstItem="J8L-ll-7FX" firstAttribute="top" secondItem="gYL-qR-Ggf" secondAttribute="topMargin" id="pWg-ma-KJX"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -1806,12 +1806,12 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                             </tableViewSection>
                             <tableViewSection headerTitle="Periodes" id="jtS-eT-w17">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="110" id="L1x-T8-LRZ">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="44" id="L1x-T8-LRZ">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="L1x-T8-LRZ" id="sjb-9h-Zud">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Periodes:" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hyk-dK-1fD">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Periodes: klik voor alle periodes te zien" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hyk-dK-1fD">
                                                     <rect key="frame" x="8" y="11" width="584" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -1824,6 +1824,9 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                                 <constraint firstItem="hyk-dK-1fD" firstAttribute="leading" secondItem="sjb-9h-Zud" secondAttribute="leadingMargin" id="bZ1-9u-W3c"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="PFk-dV-vV6" kind="show" identifier="periodes" id="fmi-Sf-Xxy"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -1835,7 +1838,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tips:" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tje-U1-Qb5">
-                                                    <rect key="frame" x="8" y="11" width="584" height="21"/>
+                                                    <rect key="frame" x="8" y="8" width="584" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1843,7 +1846,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailingMargin" secondItem="Tje-U1-Qb5" secondAttribute="trailing" id="PmG-Li-pvt"/>
-                                                <constraint firstItem="Tje-U1-Qb5" firstAttribute="top" secondItem="h7M-CB-dKO" secondAttribute="topMargin" constant="3" id="hsw-3p-lig"/>
+                                                <constraint firstItem="Tje-U1-Qb5" firstAttribute="top" secondItem="h7M-CB-dKO" secondAttribute="topMargin" id="hsw-3p-lig"/>
                                                 <constraint firstItem="Tje-U1-Qb5" firstAttribute="leading" secondItem="h7M-CB-dKO" secondAttribute="leadingMargin" id="w3a-cK-fjF"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -1878,7 +1881,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GN6-EQ-ph7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2610" y="3306"/>
+            <point key="canvasLocation" x="2610" y="3237"/>
         </scene>
         <!--Inschrijven Vorming View Controller-->
         <scene sceneID="p25-kf-g8D">
@@ -3326,7 +3329,6 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Uw profiel bewerken" id="IJZ-eP-hBc">
-                        <barButtonItem key="leftBarButtonItem" title="Menu" id="M1U-Hb-imF"/>
                         <barButtonItem key="rightBarButtonItem" title="Opslaan" id="2Sc-vN-VMg">
                             <connections>
                                 <action selector="opslaan:" destination="QEK-4R-DCz" id="eZb-FF-BR1"/>
@@ -3610,6 +3612,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Welkom" id="nZa-AM-chs">
+                        <barButtonItem key="backBarButtonItem" title="Terug" id="GMJ-EI-G6j"/>
                         <barButtonItem key="leftBarButtonItem" title="Menu" id="fCb-Ll-6rz">
                             <connections>
                                 <action selector="toggle:" destination="23A-H4-KGV" id="frS-la-DPN"/>
@@ -3696,7 +3699,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
         <segue reference="xe1-I8-Pkw"/>
         <segue reference="9Je-LH-R9J"/>
         <segue reference="fAM-X2-96q"/>
-        <segue reference="rLN-eU-UEX"/>
+        <segue reference="fmi-Sf-Xxy"/>
         <segue reference="xSz-Mr-cgx"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -16,6 +16,7 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        hideSideMenuView()
         
         ParseData.deleteInschrijvingVormingTable()
         
