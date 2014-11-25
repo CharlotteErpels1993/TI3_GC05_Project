@@ -307,24 +307,24 @@ struct MonitorSQL {
         var queryString: String = ""
         
         queryString.extend("UPDATE Monitor SET ")
-        queryString.extend("voornaam='\(monitorNieuw.voornaam)', ")
-        queryString.extend("naam='\(monitorNieuw.naam)', ")
-        queryString.extend("telefoon='\(monitorNieuw.telefoon)', ")
-        queryString.extend("gsm='\(monitorNieuw.gsm)', ")
-        queryString.extend("linkFacebook='\(monitorNieuw.linkFacebook)' ")
-        queryString.extend("WHERE email = \(email)")
+        queryString.extend("voornaam=?, ")
+        queryString.extend("naam=?, ")
+        queryString.extend("telefoon=?, ")
+        queryString.extend("gsm=?, ")
+        queryString.extend("linkFacebook=? ")
+        queryString.extend("WHERE email = ?")
         
         /*let (resultSet, err) = SD.executeQuery("UPDATE Monitor SET voornaam='\(monitorNieuw.voornaam)', naam='\(monitorNieuw.naam)', telefoon='\(monitorNieuw.telefoon)', gsm='\(monitorNieuw.gsm)', linkFacebook='\(monitorNieuw.linkFacebook)' WHERE email = \(email)")*/
-        let (resultSet, err) = SD.executeQuery(queryString)
+        //let (resultSet, err) = SD.executeQuery(queryString, withArgs: [monitorNieuw.voornaam, monitorNieuw.naam, monitorNieuw.telefoon, monitorNieuw.gsm, monitorNieuw.linkFacebook, email])
         
-        if err != nil
+        /*if err != nil
         {
             println("ERROR: error tijdens updaten van monitor in table Monitor")
         }
         else
         {
             //no error
-        }
+        }*/
 
     }
     

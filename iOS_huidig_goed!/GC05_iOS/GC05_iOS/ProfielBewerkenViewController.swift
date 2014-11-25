@@ -8,31 +8,132 @@ class ProfielBewerkenViewController: ResponsiveTextFieldViewController {
     @IBOutlet weak var gsmTxt: UITextField!
     @IBOutlet weak var facebookTxt: UITextField!
     var monitor: Monitor?
-
-    //moet nog static klasse worden!
-    //var parseData: ParseData = ParseData()
     
+    var statusTextFields: [String: String] = [:]
+    var redColor: UIColor = UIColor.redColor()
     
     @IBAction func opslaan(sender: AnyObject) {
         
         monitor = Monitor(id: "test")
-        vulGegevensIn()
-        ParseData.updateMonitor(self.monitor!)
         
-        //schrijfGegevensNaarDatabank()
-        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        var destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Profiel") as UIViewController
-        sideMenuController()?.setContentViewController(destViewController)
-        hideSideMenuView()
+        
+        setStatusTextFields()
+        pasLayoutVeldenAan()
+        
+        if controleerRodeBordersAanwezig() == true {
+            foutBoxOproepen("Fout", "Gelieve de velden correct in te vullen!", self)
+        } else {
+            vulGegevensIn()
+            ParseData.updateMonitor(self.monitor!)
+            
+            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            var destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Profiel") as UIViewController
+            sideMenuController()?.setContentViewController(destViewController)
+            hideSideMenuView()
+        }
+        
+        
+    }
+    
+    func setStatusTextFields() {
+        if voornaamTxt.text.isEmpty {
+            statusTextFields["voornaam"] = "leeg"
+        } else {
+            //TO DO: checken op pattern?
+            statusTextFields["voornaam"] = "ingevuld"
+        }
+        
+        if naamTxt.text.isEmpty {
+            statusTextFields["naam"] = "leeg"
+        } else {
+            //TO DO: checken op pattern?
+            statusTextFields["naam"] = "ingevuld"
+        }
+        if telefoonTxt.text.isEmpty {
+            statusTextFields["telefoon"] = "leeg"
+        } else {
+            if !checkPatternTelefoon(telefoonTxt.text) {
+                statusTextFields["telefoon"] = "ongeldig"
+            } else {
+                statusTextFields["telefoon"] = "geldig"
+            }
+        }
+        if facebookTxt.text.isEmpty {
+            statusTextFields["facebook"] = "leeg"
+        } else {
+            //TO DO: checken op pattern?
+            statusTextFields["facebook"] = "ingevuld"
+        }
+        
+        if gsmTxt.text.isEmpty {
+            statusTextFields["gsm"] = "leeg"
+        } else {
+            if !checkPatternGsm(gsmTxt.text) {
+                statusTextFields["gsm"] = "ongeldig"
+            } else {
+                statusTextFields["gsm"] = "geldig"
+            }
+        }
+    }
+    
+    func pasLayoutVeldenAan() {
+        if statusTextFields["voornaam"] == "leeg" {
+            giveUITextFieldRedBorder(voornaamTxt)
+        } else {
+            giveUITextFieldDefaultBorder(voornaamTxt)
+        }
+        
+        if statusTextFields["naam"] == "leeg" {
+            giveUITextFieldRedBorder(naamTxt)
+        } else {
+            giveUITextFieldDefaultBorder(naamTxt)
+        }
+        if statusTextFields["telefoon"] == "ongeldig"{
+            giveUITextFieldRedBorder(telefoonTxt)
+        } else {
+            giveUITextFieldDefaultBorder(telefoonTxt)
+        }
+        
+        if statusTextFields["gsm"] == "leeg" || statusTextFields["gsm"] == "ongeldig"{
+            giveUITextFieldRedBorder(gsmTxt)
+        } else {
+            giveUITextFieldDefaultBorder(gsmTxt)
+        }
+    }
+    
+    func controleerRodeBordersAanwezig() -> Bool {
+        if CGColorEqualToColor(voornaamTxt.layer.borderColor, redColor.CGColor) {
+            return true
+        } else if CGColorEqualToColor(naamTxt.layer.borderColor, redColor.CGColor) {
+            return true
+        } else if CGColorEqualToColor(telefoonTxt.layer.borderColor, redColor.CGColor) {
+            return true
+        } else if CGColorEqualToColor(gsmTxt.layer.borderColor, redColor.CGColor) {
+            return true
+        } else if CGColorEqualToColor(facebookTxt.layer.borderColor, redColor.CGColor) {
+            return true
+        } else {
+            return false
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         hideSideMenuView()
     
-        //getCurrentUser()
+        self.monitor = ParseData.getMonitorWithEmail(PFUser.currentUser().email)
         
-        //vulGegevensDatabankIn()
+        voornaamTxt.text = monitor?.voornaam
+        naamTxt.text = monitor?.naam
+        gsmTxt.text = monitor?.gsm
+        
+        if !(monitor?.telefoon?.isEmpty != nil) {
+            telefoonTxt.text = monitor?.telefoon
+        }
+        
+        if !(monitor?.linkFacebook?.isEmpty != nil) {
+            facebookTxt.text = monitor?.linkFacebook
+        }
     }
     
     /*func getCurrentUser() {
