@@ -315,16 +315,19 @@ struct MonitorSQL {
         queryString.extend("WHERE email = ?")
         
         /*let (resultSet, err) = SD.executeQuery("UPDATE Monitor SET voornaam='\(monitorNieuw.voornaam)', naam='\(monitorNieuw.naam)', telefoon='\(monitorNieuw.telefoon)', gsm='\(monitorNieuw.gsm)', linkFacebook='\(monitorNieuw.linkFacebook)' WHERE email = \(email)")*/
-        //let (resultSet, err) = SD.executeQuery(queryString, withArgs: [monitorNieuw.voornaam, monitorNieuw.naam, monitorNieuw.telefoon, monitorNieuw.gsm, monitorNieuw.linkFacebook, email])
         
-        /*if err != nil
+        let err = SD.executeChange(queryString, withArgs: [monitorNieuw.voornaam!, monitorNieuw.naam!, monitorNieuw.telefoon!, monitorNieuw.gsm!, monitorNieuw.linkFacebook!, email])
+        
+        
+        
+        if err != nil
         {
             println("ERROR: error tijdens updaten van monitor in table Monitor")
         }
         else
         {
             //no error
-        }*/
+        }
 
     }
     

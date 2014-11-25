@@ -19,10 +19,13 @@ class EigenprofielMonitorViewController: UIViewController
         super.viewDidLoad()
         hideSideMenuView()
         activityIndicatorView.startAnimating()
-        var query = PFQuery(className: "Monitor")
-        query.whereKey("email", containsString: PFUser.currentUser().email)
-        var monitorPF = query.getFirstObject()
-        var monitor = Monitor(monitor: monitorPF)
+        //var query = PFQuery(className: "Monitor")
+        //query.whereKey("email", containsString: PFUser.currentUser().email)
+        //var monitorPF = query.getFirstObject()
+        //var monitor = Monitor(monitor: monitorPF)
+        
+        var monitor = ParseData.getMonitorWithEmail(PFUser.currentUser().email)
+        
         self.navigationItem.setHidesBackButton(true, animated: true)
         welkom.text = "Welkom \(String(monitor.voornaam!)) \(String(monitor.naam!)),"
         voornaam.text = monitor.voornaam
