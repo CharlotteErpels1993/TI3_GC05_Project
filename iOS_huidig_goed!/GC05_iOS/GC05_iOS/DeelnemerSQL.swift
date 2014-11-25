@@ -1,21 +1,6 @@
 import Foundation
 
-struct /*class*/ DeelnemerSQL {
-    
-    static func createDeelnemerTable() {
-        if let error = SD.createTable("Deelnemer", withColumnNamesAndTypes:
-            ["objectId": .StringVal, "voornaam": .StringVal, "naam": .StringVal,
-             "geboortedatum": .DateVal ,"straat": .StringVal, "nummer": .IntVal,
-             "bus": .StringVal, "postcode": .IntVal, "gemeente": .StringVal,
-             "inschrijvingVakantie": .StringVal])
-        {
-            println("ERROR: error tijdens creatie van table Deelnemer")
-        }
-        else
-        {
-            //no error
-        }
-    }
+struct DeelnemerSQL {
     
     static func parseDeelnemerToDatabase(deelnemer: Deelnemer, inschrijvingId: String) {
         var deelnemerJSON = PFObject(className: "Deelnemer")
@@ -34,7 +19,6 @@ struct /*class*/ DeelnemerSQL {
         }
         
         deelnemerJSON.save()
-        //deelnemerJSON.fetch()
     }
     
 }
