@@ -5,7 +5,7 @@ class Deelnemer
     var id: String
     var voornaam: String?
     var naam: String?
-    var geboortedatum: NSDate? //zelfgemaakte klasse/type, want swift heeft geen date type
+    var geboortedatum: NSDate? 
     var straat: String?
     var nummer: Int?
     var bus: String?

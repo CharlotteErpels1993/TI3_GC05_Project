@@ -30,7 +30,7 @@ struct OuderSQL {
         var objectId: String = ""
         var rijksregisterNr: String?
         var email: String = ""
-        var wachtwoord: String?
+        var wachtwoord: String = ""
         var voornaam: String = ""
         var naam: String = ""
         var straat: String = ""
@@ -51,7 +51,7 @@ struct OuderSQL {
             objectId = ouder.objectId as String
             rijksregisterNr = ouder["rijksregisterNr"] as? String
             email = ouder["email"] as String
-            wachtwoord = ouder["wachtwoord"] as? String
+            wachtwoord = ouder["wachtwoord"] as String
             voornaam = ouder["voornaam"] as String
             naam = ouder["naam"] as String
             straat = ouder["straat"] as String
@@ -64,6 +64,26 @@ struct OuderSQL {
             aansluitingsNr = ouder["aansluitingsNr"] as? Int
             codeGerechtigde = ouder["codeGerechtigde"] as? Int
             aansluitingsNrTweedeOuder = ouder["aansluitingsNrTweedeOuder"] as? Int
+            
+            if rijksregisterNr == nil {
+                rijksregisterNr = ""
+            }
+            if bus == nil {
+                bus = ""
+            }
+            if telefoon == nil {
+                telefoon = ""
+            }
+            if aansluitingsNr == nil {
+                aansluitingsNr = 0
+            }
+            if codeGerechtigde == nil {
+                codeGerechtigde = 0
+            }
+            if aansluitingsNrTweedeOuder == nil {
+                aansluitingsNrTweedeOuder = 0
+            }
+            
             
             queryString.extend("INSERT INTO Ouder ")
             queryString.extend("(")
@@ -88,21 +108,21 @@ struct OuderSQL {
             queryString.extend("(")
             
             queryString.extend("'\(objectId)', ") //objectId - String
-            queryString.extend("'\(rijksregisterNr)', ") //rijksregisterNr - String
+            queryString.extend("'\(rijksregisterNr!)', ") //rijksregisterNr - String
             queryString.extend("'\(email)', ") //email - String
             queryString.extend("'\(wachtwoord)', ") //wachtwoord - String
             queryString.extend("'\(voornaam)', ") //voornaam - String
             queryString.extend("'\(naam)', ") //naam - String
             queryString.extend("'\(straat)', ") //straat - String
             queryString.extend("\(nummer), ") //nummer - Int (geen '')!!
-            queryString.extend("'\(bus)', ") //bus - String
+            queryString.extend("'\(bus!)', ") //bus - String
             queryString.extend("\(postcode), ") //postcode - Int (geen '')!!
             queryString.extend("'\(gemeente)', ") //gemeente - String
-            queryString.extend("'\(telefoon)', ") //telefoon - String
+            queryString.extend("'\(telefoon!)', ") //telefoon - String
             queryString.extend("'\(gsm)', ") //gsm - String
-            queryString.extend("\(aansluitingsNr), ") //aansluitingsNr - Int (geen '')!!
-            queryString.extend("\(codeGerechtigde), ") //codeGerechtigde - Int (geen '')!!
-            queryString.extend("\(aansluitingsNrTweedeOuder)") //aansluitingsNrTweedeOuder - Int (geen '')!!
+            queryString.extend("\(aansluitingsNr!), ") //aansluitingsNr - Int (geen '')!!
+            queryString.extend("\(codeGerechtigde!), ") //codeGerechtigde - Int (geen '')!!
+            queryString.extend("\(aansluitingsNrTweedeOuder!)") //aansluitingsNrTweedeOuder - Int (geen '')!!
             
             queryString.extend(")")
             

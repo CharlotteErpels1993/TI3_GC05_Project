@@ -30,7 +30,7 @@ struct VormingSQL {
         var titel: String = ""
         var locatie: String = ""
         var korteBeschrijving: String = ""
-        var periodesArray: [String] = []
+        var periodesArray: [String]
         var periodesString: String = ""
         var prijs: Double = 0.0
         var websiteLocatie: String = ""
@@ -47,7 +47,7 @@ struct VormingSQL {
             titel = vorming["titel"] as String
             locatie = vorming["locatie"] as String
             korteBeschrijving = vorming["korteBeschrijving"] as String
-            periodesArray = vorming["periodes"] as [String]
+            periodesArray = vorming["periodes"] as Array
             
             var teller: Int = 0
             
@@ -83,23 +83,21 @@ struct VormingSQL {
             queryString.extend(")")
             queryString.extend(" VALUES ")
             queryString.extend("(")
-            
-            queryString.extend("'\(objectId)', ") //objectId - String
-            queryString.extend("'\(titel)', ") //titel - String
-            queryString.extend("'\(locatie)', ") //locatie - String
-            queryString.extend("'\(korteBeschrijving)', ") //korteBeschrijving - String
-            queryString.extend("'\(periodesString)', ") //periodes - String
-            queryString.extend("\(prijs), ") //prijs - Double (geen '')!!
-            queryString.extend("'\(websiteLocatie)', ") //websiteLocatie - String
-            queryString.extend("'\(criteriaDeelnemers)', ") //criteriaDeelnemers - String
-            queryString.extend("'\(tips)', ") //tips - String
-            queryString.extend("'\(betalingswijze)', ") //betalingswijze - String
-            queryString.extend("'\(inbegrepenInPrijs)'") //inbegrepenInPrijs - String
-            
+            queryString.extend("?, ") //objectId
+            queryString.extend("?, ") //titel
+            queryString.extend("?, ") //locatie
+            queryString.extend("?, ") //korteBeschrijving
+            queryString.extend("?, ") //periodes
+            queryString.extend("?, ") //prijs
+            queryString.extend("?, ") //websiteLocatie
+            queryString.extend("?, ") //criteriaDeelnemers
+            queryString.extend("?, ") //tips
+            queryString.extend("?, ") //betalingswijze
+            queryString.extend("?") //inbegrepenInPrijs
             queryString.extend(")")
             
             
-            if let err = SD.executeChange(queryString)
+            if let err = SD.executeChange(queryString, withArgs: [objectId, titel, locatie, korteBeschrijving, periodesString, prijs, websiteLocatie, criteriaDeelnemers, tips, betalingswijze, inbegrepenInPrijs])
             {
                 println("ERROR: error tijdens toevoegen van nieuwe Vorming in table Vorming")
             }
