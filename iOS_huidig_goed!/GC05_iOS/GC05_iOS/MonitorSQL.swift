@@ -1,6 +1,6 @@
 import Foundation
 
-struct /*class*/ MonitorSQL {
+struct MonitorSQL {
     
     static func createMonitorTable() {
         if let error = SD.createTable("Monitor", withColumnNamesAndTypes:
@@ -126,6 +126,8 @@ struct /*class*/ MonitorSQL {
         var query = PFQuery(className: "Monitor")
         monitors = query.findObjects() as [PFObject]
         
+        var queryString = ""
+        
         var objectId: String = ""
         var rijksregisterNr: String?
         var email: String = ""
@@ -146,6 +148,8 @@ struct /*class*/ MonitorSQL {
         
         for monitor in monitors {
             
+            queryString.removeAll(keepCapacity: true)
+            
             objectId = monitor.objectId as String
             rijksregisterNr = monitor["rijksregisterNr"] as? String
             email = monitor["email"] as String
@@ -164,7 +168,51 @@ struct /*class*/ MonitorSQL {
             lidNr = monitor["lidNr"] as? Int
             linkFacebook = monitor["linkFacebook"] as? String
             
-            if let err = SD.executeChange("INSERT INTO Monitor (objectId, rijksregisterNr, email, wachtwoord, voornaam, naam, straat, nummer, bus, postcode, gemeente, telefoon, gsm, aansluitingsNr, codeGerechtigde, lidNr, linkFacebook) VALUES ('\(objectId)', '\(rijksregisterNr)', '\(email)', '\(wachtwoord)', '\(voornaam)', '\(naam)', '\(straat)', '\(nummer)', '\(bus)', '\(postcode)', '\(gemeente)', '\(telefoon)', '\(gsm)', '\(aansluitingsNr)', '\(codeGerechtigde)', '\(lidNr)', '\(linkFacebook)')")
+            queryString.extend("INSERT INTO Monitor ")
+            queryString.extend("(")
+            queryString.extend("objectId, ")
+            queryString.extend("rijksregisterNr, ")
+            queryString.extend("email, ")
+            queryString.extend("wachtwoord, ")
+            queryString.extend("voornaam, ")
+            queryString.extend("naam, ")
+            queryString.extend("straat, ")
+            queryString.extend("nummer, ")
+            queryString.extend("bus, ")
+            queryString.extend("postcode, ")
+            queryString.extend("gemeente, ")
+            queryString.extend("telefoon, ")
+            queryString.extend("gsm, ")
+            queryString.extend("aansluitingsNr, ")
+            queryString.extend("codeGerechtigde, ")
+            queryString.extend("lidNr, ")
+            queryString.extend("linkFacebook")
+            queryString.extend(")")
+            queryString.extend(" VALUES ")
+            queryString.extend("(")
+            
+            queryString.extend("'\(objectId)', ") //objectId - String
+            queryString.extend("'\(rijksregisterNr)', ") //rijksregisterNr - String
+            queryString.extend("'\(email)', ") //email - String
+            queryString.extend("'\(wachtwoord)', ") //wachtwoord - String
+            queryString.extend("'\(voornaam)', ") //voornaam - String
+            queryString.extend("'\(naam)', ") //naam - String
+            queryString.extend("'\(straat)', ") //straat - String
+            queryString.extend("\(nummer), ") //nummer - Int (geen '')!!
+            queryString.extend("'\(bus)', ") //bus - String
+            queryString.extend("\(postcode), ") //postcode - Int (geen '')!!
+            queryString.extend("'\(gemeente)', ") //gemeente - String
+            queryString.extend("'\(telefoon)', ") //telefoon - String
+            queryString.extend("'\(gsm)', ") //gsm - String
+            queryString.extend("\(aansluitingsNr), ") //aansluitingsNr - Int (geen '')!!
+            queryString.extend("\(codeGerechtigde), ") //codeGerechtigde - Int (geen '')!!
+            queryString.extend("\(lidNr), ") //lidNr - Int (geen '')!!
+            queryString.extend("'\(linkFacebook)'") //linkFacebook - String
+            
+            queryString.extend(")")
+            
+            
+            if let err = SD.executeChange(queryString)
             {
                 println("ERROR: error tijdens toevoegen van nieuwe monitor in table Monitor")
             }
@@ -226,7 +274,19 @@ struct /*class*/ MonitorSQL {
     }
     
     static func updateMonitor(monitorNieuw: Monitor, email: String) {
-        let (resultSet, err) = SD.executeQuery("UPDATE Monitor SET voornaam='\(monitorNieuw.voornaam)', naam='\(monitorNieuw.naam)', telefoon='\(monitorNieuw.telefoon)', gsm='\(monitorNieuw.gsm)', linkFacebook='\(monitorNieuw.linkFacebook)' WHERE email = \(email)")
+        
+        var queryString: String = ""
+        
+        queryString.extend("UPDATE Monitor SET ")
+        queryString.extend("voornaam='\(monitorNieuw.voornaam)', ")
+        queryString.extend("naam='\(monitorNieuw.naam)', ")
+        queryString.extend("telefoon='\(monitorNieuw.telefoon)', ")
+        queryString.extend("gsm='\(monitorNieuw.gsm)', ")
+        queryString.extend("linkFacebook='\(monitorNieuw.linkFacebook)' ")
+        queryString.extend("WHERE email = \(email)")
+        
+        /*let (resultSet, err) = SD.executeQuery("UPDATE Monitor SET voornaam='\(monitorNieuw.voornaam)', naam='\(monitorNieuw.naam)', telefoon='\(monitorNieuw.telefoon)', gsm='\(monitorNieuw.gsm)', linkFacebook='\(monitorNieuw.linkFacebook)' WHERE email = \(email)")*/
+        let (resultSet, err) = SD.executeQuery(queryString)
         
         if err != nil
         {

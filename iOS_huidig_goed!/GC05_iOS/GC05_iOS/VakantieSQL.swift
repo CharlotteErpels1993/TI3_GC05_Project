@@ -1,6 +1,6 @@
 import Foundation
 
-struct /*class*/ VakantieSQL {
+struct VakantieSQL {
     
     static func createVakantieTable() {
         if let error = SD.createTable("Vakantie", withColumnNamesAndTypes:
