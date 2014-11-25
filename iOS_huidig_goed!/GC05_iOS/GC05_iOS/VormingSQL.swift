@@ -160,11 +160,8 @@ struct VormingSQL {
             vorming.korteBeschrijving = korteBeschrijving
         }
         if let periodes = row["periodes"]?.asString() {
-            var periodesArray = periodes.componentsSeparatedByString(", ")
+            vorming.periodes = periodes.componentsSeparatedByString(", ")
             
-            for p in periodesArray {
-                vorming.periodes?.append(p)
-            }
             
             //vorming.periodes = periodes
         }

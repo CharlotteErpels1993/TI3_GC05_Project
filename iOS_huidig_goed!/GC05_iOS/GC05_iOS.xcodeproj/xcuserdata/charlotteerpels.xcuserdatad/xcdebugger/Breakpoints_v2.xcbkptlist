@@ -73,13 +73,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GC05_iOS/VormingSQL.swift"
-            timestampString = "438616092.567001"
+            filePath = "GC05_iOS/VormingenTableViewController.swift"
+            timestampString = "438616328.410163"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "151"
-            endingLineNumber = "151"
-            landmarkName = "getAlleVormingen()"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "prepareForSegue(_:sender:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -90,12 +90,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GC05_iOS/VormingSQL.swift"
-            timestampString = "438616092.567001"
+            timestampString = "438616928.762483"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "160"
-            endingLineNumber = "160"
-            landmarkName = "getAlleVormingen()"
+            startingLineNumber = "166"
+            endingLineNumber = "166"
+            landmarkName = "getVorming(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

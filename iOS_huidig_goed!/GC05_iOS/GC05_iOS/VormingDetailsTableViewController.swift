@@ -31,11 +31,11 @@ class VormingDetailsTableViewController: UITableViewController {
         
         korteBeschrijvingLabel.text = vorming.korteBeschrijving
         criteriaDeelnemersLabel.text = vorming.criteriaDeelnemers
-        locatieLabel.text = String("Locatie: \(vorming.locatie)")
-        websiteLocatieLabel.text = ("Webiste locatie: \(vorming.websiteLocatie)")
-        prijsLabel.text = String("Prijs: \(vorming.prijs) " + euro)
-        betalingsWijzeLabel.text = String("Betalingswijze: \(vorming.betalingWijze)")
-        inbegrepenPrijsLabel.text = String("Inbegrepen in de prijs: \(vorming.inbegrepenPrijs)")
+        locatieLabel.text = String("Locatie: \(vorming.locatie!)")
+        websiteLocatieLabel.text = ("Website locatie: \(vorming.websiteLocatie!)")
+        prijsLabel.text = String("Prijs: \(vorming.prijs!) " + euro)
+        betalingsWijzeLabel.text = String("Betalingswijze: \(vorming.betalingWijze!)")
+        inbegrepenPrijsLabel.text = String("Inbegrepen in de prijs: \(vorming.inbegrepenPrijs!)")
         periodesLabel.text = vorming.periodesToString()
         tipsLabel.text = vorming.tips
 
