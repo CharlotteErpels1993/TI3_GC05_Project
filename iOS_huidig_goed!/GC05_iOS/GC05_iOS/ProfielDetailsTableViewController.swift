@@ -14,7 +14,7 @@ class ProfielDetailsTableViewController: UITableViewController {
         super.viewDidLoad()
         
         hideSideMenuView()
-        
+        self.navigationItem.title = (" \(monitor.voornaam!) \(monitor.naam!)")
         voornaamLabel.text = "Voornaam: \(monitor.voornaam!)"
         naamLabel.text = "Naam: \(monitor.naam!)"
         emailLabel.text = "Email: \(monitor.email!)"
