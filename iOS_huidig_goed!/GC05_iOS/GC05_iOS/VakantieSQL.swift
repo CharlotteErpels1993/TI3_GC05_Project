@@ -49,6 +49,14 @@ struct /*class*/ VakantieSQL {
         
         for vakantie in vakanties {
             
+            //OPLOSSING fout invoegen vakanties
+            //1ste vakantie ging wel
+            //daarna niet meer
+            //de query werd elke keer langer en langer
+            //waardoor dat de queryString 3 keer de eigenlijke query bevat
+            //OPLOSSING: queryString aan het begin terug leegmaken!
+            queryString.removeAll(keepCapacity: true)
+            
             objectId = vakantie.objectId as String
             titel = vakantie["titel"] as String
             locatie = vakantie["locatie"] as String
