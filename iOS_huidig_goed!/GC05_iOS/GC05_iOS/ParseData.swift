@@ -150,18 +150,6 @@ struct /*class*/ ParseData {
         AfbeeldingSQL.createAfbeeldingTable()
     }
     
-    static private func createContactpersoonNoodTable() {
-        ContactpersoonNoodSQL.createContactpersoonNoodTable()
-    }
-    
-    static private func createDeelnemerTable() {
-        DeelnemerSQL.createDeelnemerTable()
-    }
-    
-    static private func createInschrijvingVakantieTable() {
-        InschrijvingVakantieSQL.createInschrijvingVakantieTable()
-    }
-    
     static private func createInschrijvingVormingTable() {
         InschrijvingVormingSQL.createInschrijvingVormingTable()
     }
@@ -176,10 +164,6 @@ struct /*class*/ ParseData {
     
     static private func createVakantieTable() {
         VakantieSQL.createVakantieTable()
-    }
-    
-    static private func createVoorkeurTable() {
-        VoorkeurSQL.createVoorkeurTable()
     }
     
     static private func createVormingTable() {
