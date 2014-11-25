@@ -1,15 +1,15 @@
 import UIKit
 
-class EigenprofielMonitorViewController: UIViewController
+class EigenprofielMonitorTableViewController: UITableViewController
 {
-    @IBOutlet weak var welkom: UILabel!
+    
     @IBOutlet weak var voornaam: UILabel!
     @IBOutlet weak var naam: UILabel!
     @IBOutlet weak var email: UILabel!
     @IBOutlet weak var telefoon: UILabel!
     @IBOutlet weak var gsm: UILabel!
     @IBOutlet weak var facebook: UILabel!
-    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
+    //@IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
     @IBAction func toggle(sender: AnyObject) {
         toggleSideMenuView()
@@ -18,32 +18,37 @@ class EigenprofielMonitorViewController: UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         hideSideMenuView()
-        activityIndicatorView.startAnimating()
+        
+        tableView.estimatedRowHeight = 44.0
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
+        
+        //activityIndicatorView.startAnimating()
         var query = PFQuery(className: "Monitor")
         query.whereKey("email", containsString: PFUser.currentUser().email)
         var monitorPF = query.getFirstObject()
         var monitor = Monitor(monitor: monitorPF)
         self.navigationItem.setHidesBackButton(true, animated: true)
-        welkom.text = "Welkom \(String(monitor.voornaam!)) \(String(monitor.naam!)),"
-        voornaam.text = monitor.voornaam
-        naam.text = monitor.naam
-        email.text = monitor.email
+        navigationItem.title = "Welkom \(monitor.voornaam!)"
+        voornaam.text = "Voornaam: \(monitor.voornaam!)"
+        naam.text = "Naam: \(monitor.naam!)"
+        email.text = "Email: \(monitor.email!)"
         
         if monitor.telefoon == "" {
-            telefoon.text = "/"
+            telefoon.text = "Telefoon: /"
         } else {
-            telefoon.text = monitor.telefoon
+            telefoon.text = "Telefoon: \(monitor.telefoon!)"
         }
         
-        gsm.text = monitor.gsm
+        gsm.text = "Gsm: \(monitor.gsm!)"
         
-        if monitor.linkFacebook == ""{
-            facebook.text = "Nog niet ingevuld"
+        if monitor.linkFacebook == "" {
+            facebook.text = "Facebook: Nog niet ingevuld"
         } else {
-            facebook.text = monitor.linkFacebook
+            facebook.text = "Facebook: \(monitor.linkFacebook!)"
         }
-
-        activityIndicatorView.stopAnimating()
+        
+        //activityIndicatorView.stopAnimating()
     }
     
     @IBAction func gaTerugNaarOverzichtMonitor(segue: UIStoryboardSegue) {

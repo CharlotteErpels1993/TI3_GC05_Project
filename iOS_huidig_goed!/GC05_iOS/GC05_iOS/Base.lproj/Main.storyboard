@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="b2K-U9-3tu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="b2K-U9-3tu">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -477,7 +477,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="190"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="599.5" height="190"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dOp-1z-6Op">
@@ -781,47 +781,47 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m7p-Dv-81d">
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m7p-Dv-81d">
                                 <rect key="frame" x="16" y="109" width="51" height="31"/>
                                 <connections>
                                     <action selector="switched:" destination="fyb-xH-x0i" eventType="valueChanged" id="nYn-y5-G4g"/>
                                 </connections>
                             </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Aansluitingsnummer: *" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MfE-6E-2Xb">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aansluitingsnummer: *" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MfE-6E-2Xb">
                                 <rect key="frame" x="16" y="168" width="172" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Code gerechtigde: *" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Av-pM-lTQ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Code gerechtigde: *" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Av-pM-lTQ">
                                 <rect key="frame" x="16" y="237" width="153" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="110110" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m1W-MR-gUq">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="110110" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m1W-MR-gUq">
                                 <rect key="frame" x="16" y="265" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Rijksregisternummer: *" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K80-KY-GXh">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rijksregisternummer: *" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K80-KY-GXh">
                                 <rect key="frame" x="16" y="306" width="174" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="12345678910" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="o7V-bX-HUj">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="12345678910" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="o7V-bX-HUj">
                                 <rect key="frame" x="16" y="333" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Aansluitingsnummer tweede ouder (indien van toepassing):" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ARF-UY-Xdf">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aansluitingsnummer tweede ouder (indien van toepassing):" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ARF-UY-Xdf">
                                 <rect key="frame" x="16" y="374" width="452" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gBr-1o-c4l">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gBr-1o-c4l">
                                 <rect key="frame" x="16" y="401" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -832,7 +832,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="3091234567" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ffo-9X-igg">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="3091234567" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ffo-9X-igg">
                                 <rect key="frame" x="16" y="196" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -846,7 +846,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                     <action selector="gaTerugNaarInloggen:" destination="fyb-xH-x0i" eventType="touchUpInside" id="RAD-un-BR3"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uqW-jm-he0">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uqW-jm-he0">
                                 <rect key="frame" x="16" y="439" width="198" height="30"/>
                                 <state key="normal" title="Waar vind ik deze nummers?">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -855,7 +855,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                     <segue destination="eo3-QX-La5" kind="push" id="AjK-cZ-Fuz"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uc2-Hp-ZHR">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uc2-Hp-ZHR">
                                 <rect key="frame" x="16" y="463" width="167" height="30"/>
                                 <state key="normal" title="Registreren als monitor?">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -971,13 +971,13 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Wachtwoord:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vgN-OB-IWF">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wachtwoord:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vgN-OB-IWF">
                                 <rect key="frame" x="16" y="207" width="102" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="E-mail:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4pR-QD-gU1">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="E-mail:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4pR-QD-gU1">
                                 <rect key="frame" x="16" y="133" width="54" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -989,12 +989,12 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IeG-wh-GGy">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IeG-wh-GGy">
                                 <rect key="frame" x="16" y="163" width="563" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hZK-bN-dtd">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hZK-bN-dtd">
                                 <rect key="frame" x="277" y="272" width="59" height="30"/>
                                 <state key="normal" title="Inloggen">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1003,7 +1003,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                     <action selector="inloggen:" destination="QSw-na-ve9" eventType="touchUpInside" id="5Zv-Sx-ZQZ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GnE-q7-jzk">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GnE-q7-jzk">
                                 <rect key="frame" x="16" y="304" width="159" height="30"/>
                                 <state key="normal" title="Wachtwoord vergeten?">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1012,7 +1012,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                     <segue destination="CoC-zI-mSL" kind="show" identifier="nieuwWachtwoord" id="dhz-kz-rF9"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H0a-36-oYG">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H0a-36-oYG">
                                 <rect key="frame" x="16" y="234" width="563" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -1083,182 +1083,12 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                         <outlet property="txtEmail" destination="IeG-wh-GGy" id="8QJ-qK-Ic8"/>
                         <outlet property="txtWachtwoord" destination="H0a-36-oYG" id="UT2-G7-0dY"/>
                         <segue destination="xj6-b1-6XR" kind="show" identifier="ouderOverzicht" id="xe1-I8-Pkw"/>
-                        <segue destination="xaF-xU-ntg" kind="show" identifier="overzichtMonitor" id="hDi-cw-kbM"/>
+                        <segue destination="23A-H4-KGV" kind="show" identifier="overzichtMonitor" id="9Je-LH-R9J"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a5j-lM-quT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-394" y="1793"/>
-        </scene>
-        <!--Overzicht-->
-        <scene sceneID="y70-BM-rua">
-            <objects>
-                <viewController storyboardIdentifier="Profiel" title="Overzicht" id="xaF-xU-ntg" customClass="EigenprofielMonitorViewController" customModule="JOETZ" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="SJA-U2-rZq"/>
-                        <viewControllerLayoutGuide type="bottom" id="nMc-Cd-sxG"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="w8S-Bp-dmt">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welkom monitorNaam," lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0hp-w5-hYn">
-                                <rect key="frame" x="16" y="72" width="175" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Uw profiel bevat volgende gegevens:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hvh-bZ-pEh">
-                                <rect key="frame" x="16" y="110" width="284" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Voornaam:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xh6-zR-f9s">
-                                <rect key="frame" x="15" y="145" width="83" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Naam:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BGE-s2-IJF">
-                                <rect key="frame" x="15" y="189" width="51" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Al-ON-Oco">
-                                <rect key="frame" x="15" y="236" width="47" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Telefoon:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zeu-k5-vAO">
-                                <rect key="frame" x="15" y="285" width="70" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gsm:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VgU-ot-sfq">
-                                <rect key="frame" x="15" y="332" width="41" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Facebook link:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kfJ-nM-krZ">
-                                <rect key="frame" x="16" y="380" width="112" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_voornaam" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KNG-Y5-I6A">
-                                <rect key="frame" x="26" y="166" width="86" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.5" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_naam" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iMB-Pc-yFa">
-                                <rect key="frame" x="26" y="210" width="52" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.5" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3AE-ru-1dz">
-                                <rect key="frame" x="26" y="257" width="50" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.5" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_telefoon" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8RM-q2-BHA">
-                                <rect key="frame" x="26" y="306" width="71" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.5" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_gsm" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hh8-wN-ak8">
-                                <rect key="frame" x="26" y="354" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.5" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_facebook" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oW3-ty-hY6">
-                                <rect key="frame" x="26" y="401" width="80" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.5" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="GSf-p9-a6V">
-                                <rect key="frame" x="282" y="281" width="37" height="37"/>
-                                <color key="color" red="0.9794921875" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            </activityIndicatorView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="BGE-s2-IJF" firstAttribute="top" secondItem="KNG-Y5-I6A" secondAttribute="bottom" constant="2.5" id="1YI-lC-e18"/>
-                            <constraint firstItem="oW3-ty-hY6" firstAttribute="leading" secondItem="w8S-Bp-dmt" secondAttribute="leadingMargin" constant="10" id="4H3-3B-BW2"/>
-                            <constraint firstItem="Hvh-bZ-pEh" firstAttribute="leading" secondItem="w8S-Bp-dmt" secondAttribute="leadingMargin" id="8JT-b7-Oc6"/>
-                            <constraint firstItem="8RM-q2-BHA" firstAttribute="leading" secondItem="w8S-Bp-dmt" secondAttribute="leadingMargin" constant="10" id="Ag0-c3-WoC"/>
-                            <constraint firstItem="Zeu-k5-vAO" firstAttribute="leading" secondItem="w8S-Bp-dmt" secondAttribute="leadingMargin" constant="-1" id="BFC-Hs-z4K"/>
-                            <constraint firstItem="Hvh-bZ-pEh" firstAttribute="top" secondItem="0hp-w5-hYn" secondAttribute="bottom" constant="17.5" id="CTg-wL-J5S"/>
-                            <constraint firstItem="kfJ-nM-krZ" firstAttribute="leading" secondItem="w8S-Bp-dmt" secondAttribute="leadingMargin" id="FCg-J6-v6Y"/>
-                            <constraint firstItem="hh8-wN-ak8" firstAttribute="top" secondItem="VgU-ot-sfq" secondAttribute="bottom" constant="1.5" id="Ffv-ey-chg"/>
-                            <constraint firstItem="8RM-q2-BHA" firstAttribute="top" secondItem="Zeu-k5-vAO" secondAttribute="bottom" constant="0.5" id="HdY-Fb-AYz"/>
-                            <constraint firstItem="kfJ-nM-krZ" firstAttribute="top" secondItem="hh8-wN-ak8" secondAttribute="bottom" constant="5.5" id="I5Z-Mz-rmf"/>
-                            <constraint firstItem="VgU-ot-sfq" firstAttribute="top" secondItem="8RM-q2-BHA" secondAttribute="bottom" constant="5.5" id="I69-gJ-mBO"/>
-                            <constraint firstItem="1Al-ON-Oco" firstAttribute="leading" secondItem="w8S-Bp-dmt" secondAttribute="leadingMargin" constant="-1" id="IeC-k5-dZN"/>
-                            <constraint firstItem="oW3-ty-hY6" firstAttribute="top" secondItem="kfJ-nM-krZ" secondAttribute="bottom" constant="0.5" id="KiO-cs-1eG"/>
-                            <constraint firstItem="0hp-w5-hYn" firstAttribute="top" secondItem="SJA-U2-rZq" secondAttribute="bottom" constant="8" id="Ro6-6e-F97"/>
-                            <constraint firstItem="1Al-ON-Oco" firstAttribute="top" secondItem="iMB-Pc-yFa" secondAttribute="bottom" constant="5.5" id="Wz9-IW-fFW"/>
-                            <constraint firstAttribute="centerX" secondItem="GSf-p9-a6V" secondAttribute="centerX" constant="-0.5" id="akJ-nF-FkN"/>
-                            <constraint firstAttribute="centerY" secondItem="GSf-p9-a6V" secondAttribute="centerY" constant="0.5" id="ana-bo-MSE"/>
-                            <constraint firstItem="xh6-zR-f9s" firstAttribute="top" secondItem="Hvh-bZ-pEh" secondAttribute="bottom" constant="14.5" id="b4n-QK-6Xa"/>
-                            <constraint firstItem="iMB-Pc-yFa" firstAttribute="leading" secondItem="w8S-Bp-dmt" secondAttribute="leadingMargin" constant="10" id="fU1-GJ-uvt"/>
-                            <constraint firstItem="BGE-s2-IJF" firstAttribute="leading" secondItem="w8S-Bp-dmt" secondAttribute="leadingMargin" constant="-1" id="fuj-ip-PM1"/>
-                            <constraint firstItem="hh8-wN-ak8" firstAttribute="leading" secondItem="w8S-Bp-dmt" secondAttribute="leadingMargin" constant="10" id="jRs-HF-hxE"/>
-                            <constraint firstItem="3AE-ru-1dz" firstAttribute="leading" secondItem="w8S-Bp-dmt" secondAttribute="leadingMargin" constant="10" id="jmK-9M-cjz"/>
-                            <constraint firstItem="0hp-w5-hYn" firstAttribute="leading" secondItem="w8S-Bp-dmt" secondAttribute="leadingMargin" id="mDf-gm-Apt"/>
-                            <constraint firstItem="3AE-ru-1dz" firstAttribute="top" secondItem="1Al-ON-Oco" secondAttribute="bottom" constant="0.5" id="nGG-G4-lK1"/>
-                            <constraint firstItem="KNG-Y5-I6A" firstAttribute="leading" secondItem="w8S-Bp-dmt" secondAttribute="leadingMargin" constant="10" id="s6k-A8-UBx"/>
-                            <constraint firstItem="xh6-zR-f9s" firstAttribute="leading" secondItem="w8S-Bp-dmt" secondAttribute="leadingMargin" constant="-1" id="se0-bm-bw4"/>
-                            <constraint firstItem="KNG-Y5-I6A" firstAttribute="top" secondItem="xh6-zR-f9s" secondAttribute="bottom" constant="0.5" id="tGV-AE-PBk"/>
-                            <constraint firstItem="Zeu-k5-vAO" firstAttribute="top" secondItem="3AE-ru-1dz" secondAttribute="bottom" constant="7.5" id="vfE-YN-cwj"/>
-                            <constraint firstItem="iMB-Pc-yFa" firstAttribute="top" secondItem="BGE-s2-IJF" secondAttribute="bottom" constant="0.5" id="xQt-Jc-dPt"/>
-                            <constraint firstItem="VgU-ot-sfq" firstAttribute="leading" secondItem="w8S-Bp-dmt" secondAttribute="leadingMargin" constant="-1" id="yAO-P5-vrk"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Welkom" id="nxU-o7-jxr">
-                        <barButtonItem key="backBarButtonItem" title="Terug" id="rf3-sj-KcM"/>
-                        <barButtonItem key="leftBarButtonItem" title="Menu" id="voH-A5-Bnp">
-                            <connections>
-                                <action selector="toggle:" destination="xaF-xU-ntg" id="ULP-IB-GyW"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="cmT-hC-SJd">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="fyB-15-fNT">
-                                <rect key="frame" x="469" y="7" width="69" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Bewerken">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="QEK-4R-DCz" kind="show" id="97b-6M-xjB"/>
-                                </connections>
-                            </button>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="activityIndicatorView" destination="GSf-p9-a6V" id="ZNf-29-JPA"/>
-                        <outlet property="email" destination="3AE-ru-1dz" id="QCS-29-ZOu"/>
-                        <outlet property="facebook" destination="oW3-ty-hY6" id="saa-Wr-QWu"/>
-                        <outlet property="gsm" destination="hh8-wN-ak8" id="9Rz-eP-Fzs"/>
-                        <outlet property="naam" destination="iMB-Pc-yFa" id="AFo-uz-yak"/>
-                        <outlet property="telefoon" destination="8RM-q2-BHA" id="O6i-tj-raw"/>
-                        <outlet property="voornaam" destination="KNG-Y5-I6A" id="ERI-Rj-ddJ"/>
-                        <outlet property="welkom" destination="0hp-w5-hYn" id="HK4-gR-b8w"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gWV-ST-DPG" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-400" y="3306"/>
         </scene>
         <!--Profielen Table View Controller-->
         <scene sceneID="kh0-eD-1bF">
@@ -1365,7 +1195,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bv0-aI-2GO">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bv0-aI-2GO">
                                 <rect key="frame" x="16" y="313" width="568" height="129"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -1500,13 +1330,13 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="Dt7-7o-NBH"/>
-                                <exclude reference="ULQ-tM-OEe"/>
-                                <exclude reference="sZI-TJ-pAx"/>
                                 <exclude reference="0Kq-f6-GVC"/>
                                 <exclude reference="8fj-VR-U7W"/>
                                 <exclude reference="9es-26-tZ0"/>
                                 <exclude reference="Of0-XR-ZVB"/>
+                                <exclude reference="Dt7-7o-NBH"/>
+                                <exclude reference="ULQ-tM-OEe"/>
+                                <exclude reference="sZI-TJ-pAx"/>
                             </mask>
                         </variation>
                     </view>
@@ -1577,7 +1407,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fc5-Ax-OBH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1118" y="3306"/>
+            <point key="canvasLocation" x="1930" y="3306"/>
         </scene>
         <!--Vorming-->
         <scene sceneID="QVD-cK-qxX">
@@ -1829,7 +1659,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GN6-EQ-ph7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1798" y="3306"/>
+            <point key="canvasLocation" x="2610" y="3306"/>
         </scene>
         <!--Inschrijven Vorming View Controller-->
         <scene sceneID="p25-kf-g8D">
@@ -1889,7 +1719,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DoI-d3-O23" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="nux-XJ-5Ap" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2498" y="3306"/>
+            <point key="canvasLocation" x="3310" y="3306"/>
         </scene>
         <!--Inschrijven Vorming Succesvol View Controller-->
         <scene sceneID="Anh-fn-7Ev">
@@ -1941,7 +1771,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bb5-ba-jow" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3202" y="3306"/>
+            <point key="canvasLocation" x="4014" y="3306"/>
         </scene>
         <!--Inschrijven-->
         <scene sceneID="Aar-ZT-CNN">
@@ -1955,31 +1785,31 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Straat: *" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WIy-ek-Lm7">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Straat: *" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WIy-ek-Lm7">
                                 <rect key="frame" x="18" y="209" width="62" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Naam: *" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HUj-q5-dRo">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Naam: *" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HUj-q5-dRo">
                                 <rect key="frame" x="18" y="172" width="61" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Huisnummer: *" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kpL-97-LSY">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Huisnummer: *" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kpL-97-LSY">
                                 <rect key="frame" x="18" y="248" width="114" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Bus:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aga-HP-gdX">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bus:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aga-HP-gdX">
                                 <rect key="frame" x="18" y="285" width="35" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Gemeente: *" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B6H-os-gyZ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gemeente: *" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B6H-os-gyZ">
                                 <rect key="frame" x="18" y="322" width="95" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -1991,7 +1821,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Andreas" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V57-8G-FM8">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Andreas" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V57-8G-FM8">
                                 <rect key="frame" x="169" y="130" width="412" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -2006,7 +1836,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="3" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k04-tm-T7S">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="3" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k04-tm-T7S">
                                 <rect key="frame" x="169" y="244" width="412" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -2209,25 +2039,25 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Telefoon:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E4i-FK-MAA">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Telefoon:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E4i-FK-MAA">
                                 <rect key="frame" x="18" y="223" width="70" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Naam: *" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sbP-Kp-MiZ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Naam: *" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sbP-Kp-MiZ">
                                 <rect key="frame" x="18" y="186" width="61" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Gsm: *" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gvh-AU-xVe">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gsm: *" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gvh-AU-xVe">
                                 <rect key="frame" x="18" y="261" width="52" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mieke" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YS2-6O-f3j">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mieke" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YS2-6O-f3j">
                                 <rect key="frame" x="135" y="143" width="446" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -2237,7 +2067,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nUT-nL-tZr">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nUT-nL-tZr">
                                 <rect key="frame" x="135" y="219" width="446" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
@@ -2339,25 +2169,25 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                     <action selector="switched:" destination="fiA-PH-Lvg" eventType="valueChanged" id="WZB-WF-fhT"/>
                                 </connections>
                             </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Telefoon:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b5o-z8-zWB">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Telefoon:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b5o-z8-zWB">
                                 <rect key="frame" x="18" y="274" width="70" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Naam: *" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KGh-gL-xlf">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Naam: *" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KGh-gL-xlf">
                                 <rect key="frame" x="18" y="237" width="61" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Gsm: *" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dgj-AE-kEn">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gsm: *" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dgj-AE-kEn">
                                 <rect key="frame" x="18" y="312" width="52" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Jan" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cut-bj-zZS">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Jan" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cut-bj-zZS">
                                 <rect key="frame" x="135" y="195" width="446" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -2482,7 +2312,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6BJ-HQ-xv6">
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6BJ-HQ-xv6">
                                 <rect key="frame" x="16" y="125" width="51" height="31"/>
                                 <connections>
                                     <action selector="switched:" destination="C57-CL-LAn" eventType="valueChanged" id="yFv-zb-rt1"/>
@@ -2497,7 +2327,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                     <segue destination="una-oL-4nC" kind="unwind" unwindAction="gaTerugNaarOverzichtVakanties:" id="Gpd-FD-Uqh"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eaN-yk-YyH">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eaN-yk-YyH">
                                 <rect key="frame" x="16" y="174" width="568" height="139"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -2671,7 +2501,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rAR-ya-agS">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rAR-ya-agS">
                                 <rect key="frame" x="232" y="309" width="135" height="30"/>
                                 <state key="normal" title="Terug naar inloggen">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -2751,101 +2581,101 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Straat: *" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i49-wu-iH9">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Straat: *" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i49-wu-iH9">
                                 <rect key="frame" x="18" y="211" width="62" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Naam: *" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="36J-Ir-AWM">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Naam: *" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="36J-Ir-AWM">
                                 <rect key="frame" x="18" y="175" width="61" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Huisnummer: *" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sPo-ug-FXW">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Huisnummer: *" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sPo-ug-FXW">
                                 <rect key="frame" x="18" y="249" width="114" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Bus:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y3V-s2-jpB">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bus:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y3V-s2-jpB">
                                 <rect key="frame" x="18" y="285" width="35" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Gemeente: *" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pXx-D7-FEu">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gemeente: *" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pXx-D7-FEu">
                                 <rect key="frame" x="18" y="323" width="95" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Postcode: *" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cDM-Tc-SoP">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Postcode: *" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cDM-Tc-SoP">
                                 <rect key="frame" x="16" y="359" width="89" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Telefoon:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Snc-Ua-gBn">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Telefoon:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Snc-Ua-gBn">
                                 <rect key="frame" x="18" y="397" width="70" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Gsm: *" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d5Y-ga-U1B">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gsm: *" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d5Y-ga-U1B">
                                 <rect key="frame" x="18" y="434" width="52" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mieke" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fIi-DO-OV8">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mieke" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fIi-DO-OV8">
                                 <rect key="frame" x="158" y="133" width="422" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Dupoint" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zsm-U5-ccr">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Dupoint" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zsm-U5-ccr">
                                 <rect key="frame" x="158" y="171" width="422" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Stationstraat" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VdY-Dj-GYy">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Stationstraat" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VdY-Dj-GYy">
                                 <rect key="frame" x="158" y="209" width="422" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="3" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aPx-7q-Y5b">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="3" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aPx-7q-Y5b">
                                 <rect key="frame" x="158" y="247" width="422" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IPd-iX-tBc">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IPd-iX-tBc">
                                 <rect key="frame" x="158" y="285" width="422" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="8000" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e5U-JW-t69">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="8000" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e5U-JW-t69">
                                 <rect key="frame" x="158" y="361" width="422" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="04xxxxxxxx" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rl7-nr-tfV">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="04xxxxxxxx" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rl7-nr-tfV">
                                 <rect key="frame" x="158" y="437" width="422" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Voornaam: *" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rv3-hV-UiZ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Voornaam: *" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rv3-hV-UiZ">
                                 <rect key="frame" x="16" y="137" width="94" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Brugge" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BiJ-60-cQZ">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Brugge" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BiJ-60-cQZ">
                                 <rect key="frame" x="158" y="323" width="422" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QeZ-XH-JJ0">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QeZ-XH-JJ0">
                                 <rect key="frame" x="158" y="399" width="422" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
@@ -2963,29 +2793,29 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Wachtwoord: *" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KVD-77-46V">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wachtwoord: *" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KVD-77-46V">
                                 <rect key="frame" x="16" y="179" width="113" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email@email.com" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zbz-TI-f1b">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email@email.com" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zbz-TI-f1b">
                                 <rect key="frame" x="16" y="138" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Bevestig wachtwoord: *" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yWf-vl-Uis">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bevestig wachtwoord: *" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yWf-vl-Uis">
                                 <rect key="frame" x="16" y="245" width="182" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eoq-1C-h6g">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eoq-1C-h6g">
                                 <rect key="frame" x="16" y="272" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XDv-uS-Fzx">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XDv-uS-Fzx">
                                 <rect key="frame" x="16" y="207" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -3137,7 +2967,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="alY-7U-coS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="306" y="3306"/>
+            <point key="canvasLocation" x="1118" y="3306"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="mqR-XO-baj">
@@ -3175,13 +3005,13 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Naam: *" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aQ1-IJ-lN7">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Naam: *" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aQ1-IJ-lN7">
                                 <rect key="frame" x="16" y="163" width="61" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Telefoon:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UDN-iK-7PX">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Telefoon:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UDN-iK-7PX">
                                 <rect key="frame" x="16" y="210" width="70" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -3199,7 +3029,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Aw8-sv-3S2">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Aw8-sv-3S2">
                                 <rect key="frame" x="149" y="114" width="435" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -3290,6 +3120,179 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
             </objects>
             <point key="canvasLocation" x="395" y="5401"/>
         </scene>
+        <!--Welkom-->
+        <scene sceneID="BFc-rk-8GY">
+            <objects>
+                <tableViewController storyboardIdentifier="Profiel" id="23A-H4-KGV" customClass="EigenprofielMonitorTableViewController" customModule="JOETZ" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="JoV-ym-Nec">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <sections>
+                            <tableViewSection id="3M8-Da-3c0">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="RIs-cD-jLD">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RIs-cD-jLD" id="yY5-Ja-uZy">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Uw profiel bevat volgende gegevens:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BJC-5v-gLt">
+                                                    <rect key="frame" x="8" y="11" width="284" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ajP-Jy-MPI">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ajP-Jy-MPI" id="EHK-0U-LqV">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Voornaam:" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J1C-tQ-3FC">
+                                                    <rect key="frame" x="8" y="11" width="584" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="J1C-tQ-3FC" secondAttribute="trailing" id="0L8-FY-7JB"/>
+                                                <constraint firstItem="J1C-tQ-3FC" firstAttribute="leading" secondItem="EHK-0U-LqV" secondAttribute="leadingMargin" id="Fog-6c-dKr"/>
+                                                <constraint firstItem="J1C-tQ-3FC" firstAttribute="top" secondItem="EHK-0U-LqV" secondAttribute="topMargin" constant="3" id="fE5-3w-MSF"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="i5M-yS-FIh">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="i5M-yS-FIh" id="otV-6P-gCf">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Naam:" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2SG-gl-ugp">
+                                                    <rect key="frame" x="8" y="11" width="584" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="2SG-gl-ugp" secondAttribute="trailing" id="IIY-jX-Sri"/>
+                                                <constraint firstItem="2SG-gl-ugp" firstAttribute="leading" secondItem="otV-6P-gCf" secondAttribute="leadingMargin" id="af9-cV-LQo"/>
+                                                <constraint firstItem="2SG-gl-ugp" firstAttribute="top" secondItem="otV-6P-gCf" secondAttribute="topMargin" constant="3" id="whU-9Y-wUu"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="aRI-wW-QEw">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aRI-wW-QEw" id="5CN-dA-SAn">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email:" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nBS-Eg-bvx">
+                                                    <rect key="frame" x="8" y="11" width="584" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="nBS-Eg-bvx" secondAttribute="trailing" id="YZ8-Dr-0FC"/>
+                                                <constraint firstItem="nBS-Eg-bvx" firstAttribute="top" secondItem="5CN-dA-SAn" secondAttribute="topMargin" constant="3" id="lFa-d3-bOK"/>
+                                                <constraint firstItem="nBS-Eg-bvx" firstAttribute="leading" secondItem="5CN-dA-SAn" secondAttribute="leadingMargin" id="ud4-hg-I2D"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ZGF-BI-Oir">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZGF-BI-Oir" id="6jt-hP-OiE">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Telefoon:" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gdt-Q1-eL4">
+                                                    <rect key="frame" x="8" y="11" width="584" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Gdt-Q1-eL4" firstAttribute="top" secondItem="6jt-hP-OiE" secondAttribute="topMargin" constant="3" id="1V7-YY-0co"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Gdt-Q1-eL4" secondAttribute="trailing" id="Xs1-DU-Eup"/>
+                                                <constraint firstItem="Gdt-Q1-eL4" firstAttribute="leading" secondItem="6jt-hP-OiE" secondAttribute="leadingMargin" id="ZsT-TL-oQv"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="SnB-n3-gPZ">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SnB-n3-gPZ" id="5cg-Oq-Ils">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gsm:" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gHv-EX-8xm">
+                                                    <rect key="frame" x="8" y="11" width="584" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="gHv-EX-8xm" firstAttribute="leading" secondItem="5cg-Oq-Ils" secondAttribute="leadingMargin" id="CdY-Aq-rUt"/>
+                                                <constraint firstItem="gHv-EX-8xm" firstAttribute="top" secondItem="5cg-Oq-Ils" secondAttribute="topMargin" constant="3" id="E6K-Kd-U6n"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="gHv-EX-8xm" secondAttribute="trailing" id="q3M-YF-vqE"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="apm-CE-OVF">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="apm-CE-OVF" id="abz-gs-oaQ">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Facebook:" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eF5-Da-Az1">
+                                                    <rect key="frame" x="8" y="11" width="584" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="eF5-Da-Az1" firstAttribute="top" secondItem="abz-gs-oaQ" secondAttribute="topMargin" constant="3" id="slP-f2-jBv"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="eF5-Da-Az1" secondAttribute="trailing" id="wQx-As-nIf"/>
+                                                <constraint firstItem="eF5-Da-Az1" firstAttribute="leading" secondItem="abz-gs-oaQ" secondAttribute="leadingMargin" id="z0l-zy-1zp"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="23A-H4-KGV" id="GW5-Ab-wxH"/>
+                            <outlet property="delegate" destination="23A-H4-KGV" id="kcH-bm-FDl"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Welkom" id="nZa-AM-chs">
+                        <barButtonItem key="leftBarButtonItem" title="Menu" id="fCb-Ll-6rz">
+                            <connections>
+                                <action selector="toggle:" destination="23A-H4-KGV" id="frS-la-DPN"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Bewerken" id="VwY-5F-Tyx">
+                            <connections>
+                                <segue destination="QEK-4R-DCz" kind="show" identifier="bewerken" id="fAM-X2-96q"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="email" destination="nBS-Eg-bvx" id="gNM-JY-5i5"/>
+                        <outlet property="facebook" destination="eF5-Da-Az1" id="fOw-AU-1IC"/>
+                        <outlet property="gsm" destination="gHv-EX-8xm" id="feg-zY-8Vh"/>
+                        <outlet property="naam" destination="2SG-gl-ugp" id="xQY-8s-CwZ"/>
+                        <outlet property="telefoon" destination="Gdt-Q1-eL4" id="5Bv-jp-mvg"/>
+                        <outlet property="voornaam" destination="J1C-tQ-3FC" id="APc-sK-54S"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yRu-N9-3uG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="380" y="3301"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="ftW-zk-yYi">
             <objects>
@@ -3326,13 +3329,32 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
             </objects>
             <point key="canvasLocation" x="-421" y="5401"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="7At-qT-cHu">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cuw-5G-dsV" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Vbv-ZB-BWr">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="23A-H4-KGV" kind="relationship" relationship="rootViewController" id="Lz7-VQ-hgg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0gt-17-1HN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-432" y="3301"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Klevertje.png" width="615" height="427"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="XVa-z3-f9o"/>
         <segue reference="xe1-I8-Pkw"/>
-        <segue reference="97b-6M-xjB"/>
+        <segue reference="9Je-LH-R9J"/>
+        <segue reference="fAM-X2-96q"/>
+        <segue reference="n6i-tz-46X"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -178,7 +178,7 @@ class InloggenViewController: UIViewController
             let ouderOverzichtController = segue.destinationViewController as VakantiesTableViewController
             //ouderOverzichtController.ouder = self.gebruiker as? Ouder
         } else if segue.identifier == "overzichtMonitor" {
-            let profielOverzichtController = segue.destinationViewController as EigenprofielMonitorViewController
+            let profielOverzichtController = segue.destinationViewController as EigenprofielMonitorTableViewController
             
             //monitorOverzichtController.monitor = self.gebruiker as? Monitor
         } else {
