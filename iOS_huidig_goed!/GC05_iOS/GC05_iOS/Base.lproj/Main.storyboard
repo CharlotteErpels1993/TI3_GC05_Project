@@ -1587,13 +1587,13 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                             </tableViewSection>
                             <tableViewSection headerTitle="Periodes" id="jtS-eT-w17">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="89" id="L1x-T8-LRZ">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="110" id="L1x-T8-LRZ">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="L1x-T8-LRZ" id="sjb-9h-Zud">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Periodes:" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hyk-dK-1fD">
-                                                    <rect key="frame" x="8" y="11" width="584" height="21"/>
+                                                    <rect key="frame" x="8" y="11" width="584" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -3355,6 +3355,6 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
         <segue reference="xe1-I8-Pkw"/>
         <segue reference="9Je-LH-R9J"/>
         <segue reference="fAM-X2-96q"/>
-        <segue reference="n6i-tz-46X"/>
+        <segue reference="rLN-eU-UEX"/>
     </inferredMetricsTieBreakers>
 </document>
