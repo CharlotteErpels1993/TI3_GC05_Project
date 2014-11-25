@@ -14,7 +14,7 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //checkConnectie()
+        checkConnectie()
         var activityIndicator = getActivityIndicatorView(self)
         
         vakanties = ParseData.getAlleVakanties()
@@ -29,6 +29,8 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
             self.navigationItem.setHidesBackButton(true, animated: true)
             self.navigationItem.rightBarButtonItem = nil   
         }
+        
+        vakanties2.sort({ $0.doelgroep < $1.titel })
         
         activityIndicator.stopAnimating()
     }
