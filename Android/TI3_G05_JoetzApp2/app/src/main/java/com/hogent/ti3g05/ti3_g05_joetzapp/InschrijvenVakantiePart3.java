@@ -133,11 +133,16 @@ public class InschrijvenVakantiePart3 extends Activity {
             ParseObject inschrijving = new ParseObject("InschrijvingVakantie");
             ParseObject deeln = new ParseObject("Deelnemer");
 
+            inschrijving.put("vakantie", activiteitID);
+            inschrijving.put("extraInformatie" , extraInfo);
+            inschrijving.save();
+
             contactPers.put("voornaam" , voornaamCP);
             contactPers.put("naam" , naamCP);
             contactPers.put("telefoon" , telefoonCP);
             contactPers.put("gsm" , gsmCP);
-            contactPers.save();
+            contactPers.put("inschrijvingVakantie", inschrijving.getObjectId());
+            contactPers.saveInBackground();
 
             //deeln.put("contactPersoonInNood", contactPers.getObjectId());
             deeln.put("voornaam", voornaam);
@@ -148,16 +153,6 @@ public class InschrijvenVakantiePart3 extends Activity {
             deeln.put("gemeente" , gemeente);
             deeln.put("postcode" , Integer.parseInt(postcode));
             deeln.put("geboortedatum", date);
-            deeln.save();
-
-            inschrijving.put("deelnemerID", deeln.getObjectId());
-            inschrijving.put("contactpersoonID", contactPers.getObjectId());
-            inschrijving.put("vakantie", activiteitID);
-            inschrijving.put("extraInformatie" , extraInfo);
-            inschrijving.save();
-
-            contactPers.put("inschrijvingVakantie", inschrijving.getObjectId());
-            contactPers.saveInBackground();
             deeln.put("inschrijvingVakantie", inschrijving.getObjectId());
             deeln.saveInBackground();
 
