@@ -56,7 +56,7 @@
 		1B10A3BD1A02622C008E225F /* VakantiesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B10A3BC1A02622C008E225F /* VakantiesTableViewController.swift */; };
 		1B1792851A0272D300C4F82B /* VakantieDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1792841A0272D300C4F82B /* VakantieDetailsTableViewController.swift */; };
 		1B39CF731A077C8F008DEC49 /* InloggenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B39CF721A077C8F008DEC49 /* InloggenViewController.swift */; };
-		1B39CF771A0795D9008DEC49 /* EigenprofielMonitorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B39CF761A0795D9008DEC49 /* EigenprofielMonitorViewController.swift */; };
+		1B39CF771A0795D9008DEC49 /* EigenprofielMonitorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B39CF761A0795D9008DEC49 /* EigenprofielMonitorTableViewController.swift */; };
 		1B4D784B1A0277F100E823E2 /* Registratie1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4D784A1A0277F100E823E2 /* Registratie1ViewController.swift */; };
 		1B4D784F1A02893700E823E2 /* Registratie2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4D784E1A02893700E823E2 /* Registratie2ViewController.swift */; };
 		1B4D78511A02897500E823E2 /* Registratie3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4D78501A02897500E823E2 /* Registratie3ViewController.swift */; };
@@ -167,7 +167,7 @@
 		1B10A3BC1A02622C008E225F /* VakantiesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VakantiesTableViewController.swift; sourceTree = "<group>"; };
 		1B1792841A0272D300C4F82B /* VakantieDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VakantieDetailsTableViewController.swift; sourceTree = "<group>"; };
 		1B39CF721A077C8F008DEC49 /* InloggenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InloggenViewController.swift; sourceTree = "<group>"; };
-		1B39CF761A0795D9008DEC49 /* EigenprofielMonitorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EigenprofielMonitorViewController.swift; sourceTree = "<group>"; };
+		1B39CF761A0795D9008DEC49 /* EigenprofielMonitorTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EigenprofielMonitorTableViewController.swift; sourceTree = "<group>"; };
 		1B4D784A1A0277F100E823E2 /* Registratie1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Registratie1ViewController.swift; sourceTree = "<group>"; };
 		1B4D784E1A02893700E823E2 /* Registratie2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Registratie2ViewController.swift; sourceTree = "<group>"; };
 		1B4D78501A02897500E823E2 /* Registratie3ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Registratie3ViewController.swift; sourceTree = "<group>"; };
@@ -367,7 +367,7 @@
 				1B4D78501A02897500E823E2 /* Registratie3ViewController.swift */,
 				1B4D78521A028A8B00E823E2 /* RegistratieSuccesvolViewController.swift */,
 				1B39CF721A077C8F008DEC49 /* InloggenViewController.swift */,
-				1B39CF761A0795D9008DEC49 /* EigenprofielMonitorViewController.swift */,
+				1B39CF761A0795D9008DEC49 /* EigenprofielMonitorTableViewController.swift */,
 				1BFB1E581A0C0A6400E7B53F /* NieuwWachtwoordViewController.swift */,
 				1BDF24AF1A0CDEAA00B4B63F /* BekijkAfbeeldingViewController.swift */,
 				A54E1B9D1A125E7C00C6BB95 /* ExtraTekstViewController.swift */,
@@ -624,7 +624,7 @@
 				1BDDB9431A02D0FB0007623D /* Vakantie.swift in Sources */,
 				1BDDB9451A02D3440007623D /* Activiteit.swift in Sources */,
 				0F145EEA1A1D267E003067EA /* VormingRepository.swift in Sources */,
-				1B39CF771A0795D9008DEC49 /* EigenprofielMonitorViewController.swift in Sources */,
+				1B39CF771A0795D9008DEC49 /* EigenprofielMonitorTableViewController.swift in Sources */,
 				0F2A819A1A091F7100F67A3B /* Regex.swift in Sources */,
 				0F88A6C31A1F3B840094D457 /* SwiftData.swift in Sources */,
 				0FD07EC51A234FAB006A4E60 /* UserSQL.swift in Sources */,

@@ -6,7 +6,7 @@ class ExtraTekstViewController: UIViewController {
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
     var tekst: String?
-    var type: Int!
+    var type: Int! = 0
     
     
     override func viewDidLoad() {
@@ -14,18 +14,19 @@ class ExtraTekstViewController: UIViewController {
         activityIndicatorView.startAnimating()
         korteBeschrijving.text = tekst
         
+        
         switch type {
         case 1:
-            self.navigationController?.title = "Korte beschrijving"
+            self.navigationItem.title = "Korte beschrijving"
             break
         case 2:
-            self.navigationController?.title = "Inbegrepen prijs"
+            self.navigationItem.title = "Inbegrepen prijs"
             break
         case 3:
-            self.navigationController?.title = "Criteria"
+            self.navigationItem.title = "Criteria"
             break
         case 4:
-            self.navigationController?.title = "Betalingswijze"
+            self.navigationItem.title = "Betalingswijze"
             break
         default:
             self.navigationController?.title = " "
