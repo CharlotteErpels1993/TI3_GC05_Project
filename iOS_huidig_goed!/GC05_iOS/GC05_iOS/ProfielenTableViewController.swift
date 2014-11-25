@@ -20,7 +20,11 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        ParseData.deleteInschrijvingVormingTable()
+        
         var activityIndicator = getActivityIndicatorView(self)
+        
+        ParseData.vulInschrijvingVormingTableOp()
         
         var monitor = ParseData.getMonitorWithEmail(PFUser.currentUser().email)
         

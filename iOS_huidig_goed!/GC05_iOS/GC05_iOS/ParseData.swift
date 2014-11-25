@@ -159,6 +159,19 @@ struct /*class*/ ParseData {
         VormingSQL.vulVormingTableOp()
     }
     
+    static func vulInschrijvingVormingTableOp() {
+        
+        var response: ([String], Int?) = SD.existingTables()
+        
+        if response.1 == nil {
+            if !contains(response.0, "InschrijvingVorming") {
+                createInschrijvingVormingTable()
+            }
+        }
+        
+        InschrijvingVormingSQL.vulInschrijvingVormingTableOp()
+    }
+    
     static func deleteVormingTable() {
         
         var response: ([String], Int?) = SD.existingTables()
@@ -166,6 +179,18 @@ struct /*class*/ ParseData {
         if response.1 == nil {
             if contains(response.0, "Vorming") {
                 let err = SD.deleteTable("Vorming")
+            }
+        }
+        
+    }
+    
+    static func deleteInschrijvingVormingTable() {
+        
+        var response: ([String], Int?) = SD.existingTables()
+        
+        if response.1 == nil {
+            if contains(response.0, "InschrijvingVorming") {
+                let err = SD.deleteTable("InschrijvingVorming")
             }
         }
         

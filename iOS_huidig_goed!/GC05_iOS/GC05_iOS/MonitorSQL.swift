@@ -45,7 +45,7 @@ struct MonitorSQL {
         var monitors: [Monitor] = []
         var monitor: Monitor = Monitor(id: "test")
         
-        let (resultSet, err) = SD.executeQuery("SELECT * FROM Monitor WHERE email = \(email)")
+        let (resultSet, err) = SD.executeQuery("SELECT * FROM Monitor WHERE email = ?", withArgs: [email])
         
         if err != nil
         {
@@ -252,8 +252,10 @@ struct MonitorSQL {
         var monitors: [Monitor] = []
         var monitor: Monitor = Monitor(id: "test")
         
+        var aangemeldeMonitor = MonitorSQL.getMonitorWithEmail(PFUser.currentUser().email)
+        
         for mId in monitorIds {
-            var (resultSet, err) = SD.executeQuery("SELECT * FROM Monitor WHERE objectId = \(mId)")
+            var (resultSet, err) = SD.executeQuery("SELECT * FROM Monitor WHERE objectId = ?", withArgs: [mId])
             
             if err != nil
             {
@@ -263,7 +265,11 @@ struct MonitorSQL {
             {
                 for row in resultSet {
                     monitor = getMonitor(row)
-                    monitors.append(monitor)
+                    
+                    if monitor.id != aangemeldeMonitor.id {
+                        monitors.append(monitor)
+                    }
+                    
                 }
             }
             
