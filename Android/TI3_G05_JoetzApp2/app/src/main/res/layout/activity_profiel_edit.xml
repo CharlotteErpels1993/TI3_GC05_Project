@@ -48,7 +48,7 @@ xmlns:android="http://schemas.android.com/apk/res/android">
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp" />
 
-   <!-- <TextView
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
@@ -66,7 +66,7 @@ xmlns:android="http://schemas.android.com/apk/res/android">
         android:layout_below="@id/labelVoorEmail"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp" />
--->
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -74,7 +74,7 @@ xmlns:android="http://schemas.android.com/apk/res/android">
         android:text="@string/gsmHint"
         android:layout_marginTop="25dp"
         android:layout_marginStart="10dp"
-        android:layout_below="@id/VoorNaam"
+        android:layout_below="@+id/Email"
         android:id="@+id/labelVoorGSM" />
 
 

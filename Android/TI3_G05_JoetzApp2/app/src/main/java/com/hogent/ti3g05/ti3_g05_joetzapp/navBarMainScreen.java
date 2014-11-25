@@ -343,5 +343,15 @@ public class navBarMainScreen extends Activity {
         }, 2000);
     }
 
+   /* @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ParseUser.logOut();
+    }*/
 
+    /*public void onStart(){
+        super.onStart();
+        if(ParseUser.getCurrentUser()!=null)
+            ParseUser.logOut();
+    }*/
 }
