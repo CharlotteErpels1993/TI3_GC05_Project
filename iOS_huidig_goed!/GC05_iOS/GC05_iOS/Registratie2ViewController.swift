@@ -73,7 +73,9 @@ class Registratie2ViewController: ResponsiveTextFieldViewController
         if txtNummer.text.isEmpty {
             statusTextFields["nummer"] = "leeg"
         } else {
-            if !checkPatternNummer(txtNummer.text.toInt()!) {
+            if !controleerGeldigheidNummer(txtNummer.text) {
+                statusTextFields["nummer"] = "ongeldig"
+            } else if !checkPatternNummer(txtNummer.text.toInt()!) {
                 statusTextFields["nummer"] = "ongeldig"
             } else {
                 statusTextFields["nummer"] = "geldig"
@@ -97,7 +99,9 @@ class Registratie2ViewController: ResponsiveTextFieldViewController
         if txtPostcode.text.isEmpty {
             statusTextFields["postcode"] = "leeg"
         } else {
-            if !checkPatternPostcode(txtPostcode.text.toInt()!) {
+            if !controleerGeldigheidNummer(txtPostcode.text) {
+                statusTextFields["postcode"] = "ongeldig"
+            } else if !checkPatternPostcode(txtPostcode.text.toInt()!) {
                 statusTextFields["postcode"] = "ongeldig"
             } else {
                 statusTextFields["postcode"] = "geldig"
