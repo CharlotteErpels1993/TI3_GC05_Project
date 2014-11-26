@@ -9,7 +9,7 @@ struct VakantieSQL {
              "terugkeerdatum": .StringVal, "aantalDagenNachten": .StringVal,
              "vervoerwijze": .StringVal, "formule": .StringVal, "basisPrijs": .DoubleVal,
              "bondMoysonLedenPrijs": .DoubleVal, "inbegrepenPrijs": .StringVal,
-             "doelgroep": .StringVal, "maxAantalDeelnemers": .IntVal,
+             "minLeeftijd": .IntVal, "maxLeeftijd": .IntVal, "maxAantalDeelnemers": .IntVal,
              "sterPrijs1ouder": .DoubleVal, "sterPrijs2ouders": .DoubleVal])
         {
             println("ERROR: error tijdens creatie van table Vakantie")
@@ -40,7 +40,9 @@ struct VakantieSQL {
         var basisPrijs: Double = 0.0
         var bondMoysonLedenPrijs: Double = 0.0
         var inbegrepenPrijs: String = ""
-        var doelgroep: String = ""
+        //var doelgroep: String = ""
+        var minLeeftijd: Int = 0
+        var maxLeeftijd: Int = 0
         var maxAantalDeelnemers: Int = 0
         var sterPrijs1ouder: Double = 0.0
         var sterPrijs2ouders: Double = 0.0
@@ -69,7 +71,9 @@ struct VakantieSQL {
             basisPrijs = vakantie["basisPrijs"] as Double
             bondMoysonLedenPrijs = vakantie["bondMoysonLedenPrijs"] as Double
             inbegrepenPrijs = vakantie["inbegrepenPrijs"] as String
-            doelgroep = vakantie["doelgroep"] as String
+            //doelgroep = vakantie["doelgroep"] as String
+            minLeeftijd = vakantie["minLeeftijd"] as Int
+            maxLeeftijd = vakantie["maxLeeftijd"] as Int
             maxAantalDeelnemers = vakantie["maxAantalDeelnemers"] as Int
             sterPrijs1ouder = vakantie["sterPrijs1ouder"] as Double
             sterPrijs2ouders = vakantie["sterPrijs2ouders"] as Double
@@ -91,7 +95,9 @@ struct VakantieSQL {
             queryString.extend("basisPrijs, ")
             queryString.extend("bondMoysonLedenPrijs, ")
             queryString.extend("inbegrepenPrijs, ")
-            queryString.extend("doelgroep, ")
+            //queryString.extend("doelgroep, ")
+            queryString.extend("minLeeftijd, ")
+            queryString.extend("maxLeeftijd, ")
             queryString.extend("maxAantalDeelnemers, ")
             queryString.extend("sterPrijs1ouder, ")
             queryString.extend("sterPrijs2ouders")
@@ -111,7 +117,9 @@ struct VakantieSQL {
             queryString.extend("\(basisPrijs), ") //basisPrijs - Double (geen '')!!
             queryString.extend("\(bondMoysonLedenPrijs), ") //bondMoysonLedenPrijs - Double (geen '')!!
             queryString.extend("'\(inbegrepenPrijs)', ") //inbegrepenPrijs - String
-            queryString.extend("'\(doelgroep)', ") //doelgroep - String
+            //queryString.extend("'\(doelgroep)', ") //doelgroep - String
+            queryString.extend("\(minLeeftijd), ") //minLeeftijd - Int (geen '')!!
+            queryString.extend("\(maxLeeftijd), ") //maxLeeftijd - Int (geen '')!!
             queryString.extend("\(maxAantalDeelnemers), ") //maxAantalDeelnemers - Int (geen '')!!
             queryString.extend("\(sterPrijs1ouder), ") //sterPrijs1ouder - Double (geen '')!!
             queryString.extend("\(sterPrijs2ouders)") //sterPrijs2ouders - Double (geen '')!!
@@ -195,8 +203,14 @@ struct VakantieSQL {
         if let inbegrepenInPrijs = row["inbegrepenPrijs"]?.asString() {
             vakantie.inbegrepenPrijs = inbegrepenInPrijs
         }
-        if let doelgroep = row["doelgroep"]?.asString() {
+        /*if let doelgroep = row["doelgroep"]?.asString() {
             vakantie.doelgroep = doelgroep
+        }*/
+        if let minLeeftijd = row["minLeeftijd"]?.asInt()! {
+            vakantie.minLeeftijd = minLeeftijd
+        }
+        if let maxLeeftijd = row["maxLeeftijd"]?.asInt()! {
+            vakantie.maxLeeftijd = maxLeeftijd
         }
         if let maxAantalDeelnemers = row["maxAantalDeelnemers"]?.asInt()! {
             vakantie.maxAantalDeelnemers = maxAantalDeelnemers
