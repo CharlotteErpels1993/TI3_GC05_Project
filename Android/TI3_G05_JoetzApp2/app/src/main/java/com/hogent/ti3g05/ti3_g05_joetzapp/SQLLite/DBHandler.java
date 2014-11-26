@@ -31,7 +31,7 @@ public class DBHandler extends SQLiteOpenHelper {
     public void onCreateVakantie(SQLiteDatabase sqLiteDatabase) {
         String CREATE_VAKANTIE_TABLE = "CREATE TABLE " + TABLE_VAKANTIE + "(" +Constants.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +Constants.COLUMN_VAKANTIENAAM + " TEXT," + Constants.COLUMN_LOCATIE + " TEXT," + Constants.COLUMN_VERTREKDATUM + " TEXT," +
                 Constants.COLUMN_TERUGDATUM + " TEXT," + Constants.COLUMN_PRIJS + " NUMERIC," + Constants.COLUMN_AFBEELDING1 + " TEXT," +Constants.COLUMN_AFBEELDING2 + " TEXT," +Constants.COLUMN_AFBEELDING3 + " TEXT," +
-                Constants.COLUMN_DOELGROEP + " TEXT," + Constants.COLUMN_BESCHRIJVING + " TEXT," + Constants.COLUMN_PERIODE + " TEXT," + Constants.COLUMN_VERVOER + " TEXT," +
+                Constants.COLUMN_MAXDOELGROEP + " TEXT," + Constants.COLUMN_MINDOELGROEP + " TEXT," + Constants.COLUMN_BESCHRIJVING + " TEXT," + Constants.COLUMN_PERIODE + " TEXT," + Constants.COLUMN_VERVOER + " TEXT," +
                 Constants.COLUMN_FORMULE + " TEXT," + Constants.COLUMN_MAXDEELNEMERS + " NUMERIC," + Constants.COLUMN_INBEGREPENINPRIJS + " TEXT," + Constants.COLUMN_BMLEDENPRIJS + " NUMERIC," +
                 Constants.COLUMN_STERPRIJSOUDER1 + " NUMERIC," + Constants.COLUMN_STERPRIJS2OUDERS + " NUMERIC" + ")";
 
@@ -106,7 +106,9 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put(Constants.COLUMN_AFBEELDING1, vakantie.getFoto1());
         values.put(Constants.COLUMN_AFBEELDING2, vakantie.getFoto2());
         values.put(Constants.COLUMN_AFBEELDING3, vakantie.getFoto3());
-        values.put(Constants.COLUMN_DOELGROEP, vakantie.getDoelGroep());
+        //values.put(Constants.COLUMN_DOELGROEP, vakantie.getDoelGroep());
+        values.put(Constants.COLUMN_MAXDOELGROEP, vakantie.getMaxDoelgroep());
+        values.put(Constants.COLUMN_MINDOELGROEP, vakantie.getMinDoelgroep());
 
         values.put(Constants.COLUMN_BESCHRIJVING, vakantie.getKorteBeschrijving());
         values.put(Constants.COLUMN_PERIODE, vakantie.getPeriode());
@@ -170,16 +172,18 @@ public class DBHandler extends SQLiteOpenHelper {
             vakantie.setFoto1(cursor.getString(6));
             vakantie.setFoto2(cursor.getString(7));
             vakantie.setFoto3(cursor.getString(8));
-            vakantie.setDoelGroep(cursor.getString(9));
-            vakantie.setKorteBeschrijving(cursor.getString(10));
-            vakantie.setPeriode(cursor.getString(11));
-            vakantie.setVervoerswijze(cursor.getString(12));
-            vakantie.setFormule(cursor.getString(13));
-            vakantie.setMaxAantalDeelnemers(Integer.parseInt(cursor.getString(14)));
-            vakantie.setInbegrepenInPrijs(cursor.getString(15));
-            vakantie.setBondMoysonLedenPrijs(Double.parseDouble(cursor.getString(16)));
-            vakantie.setSterPrijs1Ouder(Double.parseDouble(cursor.getString(17)));
-            vakantie.setSterPrijs2Ouder(Double.parseDouble(cursor.getString(18)));
+            vakantie.setMaxDoelgroep(Integer.parseInt(cursor.getString(9)));
+            vakantie.setMinDoelgroep(Integer.parseInt(cursor.getString(10)));
+            //vakantie.setDoelGroep(cursor.getString(9));
+            vakantie.setKorteBeschrijving(cursor.getString(11));
+            vakantie.setPeriode(cursor.getString(12));
+            vakantie.setVervoerswijze(cursor.getString(13));
+            vakantie.setFormule(cursor.getString(14));
+            vakantie.setMaxAantalDeelnemers(Integer.parseInt(cursor.getString(15)));
+            vakantie.setInbegrepenInPrijs(cursor.getString(16));
+            vakantie.setBondMoysonLedenPrijs(Double.parseDouble(cursor.getString(17)));
+            vakantie.setSterPrijs1Ouder(Double.parseDouble(cursor.getString(18)));
+            vakantie.setSterPrijs2Ouder(Double.parseDouble(cursor.getString(19)));
         } else
         {
             vakantie = null;

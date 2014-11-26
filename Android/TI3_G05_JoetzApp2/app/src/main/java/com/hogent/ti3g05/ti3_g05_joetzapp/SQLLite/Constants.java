@@ -20,7 +20,8 @@ public class Constants {
     public static final String COLUMN_AFBEELDING1 = "afbeelding1";
     public static final String COLUMN_AFBEELDING2 = "afbeelding2";
     public static final String COLUMN_AFBEELDING3 = "afbeelding3";
-    public static final String COLUMN_DOELGROEP = "doelgroep";
+    public static final String COLUMN_MAXDOELGROEP = "Maxdoelgroep";
+    public static final String COLUMN_MINDOELGROEP = "Mindoelgroep";
     public static final String COLUMN_BESCHRIJVING = "beschrijving";
     public static final String COLUMN_PERIODE = "periode";
     public static final String COLUMN_VERVOER = "vervoer";

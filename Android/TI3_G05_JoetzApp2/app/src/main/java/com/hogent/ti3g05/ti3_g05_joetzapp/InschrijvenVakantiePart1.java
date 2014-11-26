@@ -16,6 +16,9 @@ import android.widget.Toast;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
 import com.parse.ParseUser;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 
@@ -44,6 +47,8 @@ public class InschrijvenVakantiePart1 extends FragmentActivity {
     Boolean isInternetPresent = false;
     // Connection detector class
     ConnectionDetector cd;
+
+    Date now = new Date();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -128,6 +133,8 @@ public class InschrijvenVakantiePart1 extends FragmentActivity {
         datum = gebDatum.getText().toString();
         maandI = maand.getText().toString();
 
+
+
         if (TextUtils.isEmpty(postcode)) {
             txtPostcode.setError(getString(R.string.error_field_required));
             focusView = txtPostcode;
@@ -152,6 +159,20 @@ public class InschrijvenVakantiePart1 extends FragmentActivity {
         }
 
         //TODO: datepicker toevoegen, waarde ophalen en controleren of ie is ingevuld. Plus controle op deftige waarde? (niet 100+ jaar oud of 5 jaar in de toekomst)
+
+        SimpleDateFormat formatter = new SimpleDateFormat("MMM dd, yyyy");
+        Date date = null;
+        try {
+            date = formatter.parse(maandI);
+
+        } catch (ParseException e) {
+            Toast.makeText(InschrijvenVakantiePart1.this, "Fout bij datum omzetten",Toast.LENGTH_SHORT).show();
+        }
+
+
+
+        int age = getAge(date.getYear(), date.getMonth(), date.getDay());
+        //TODO kijken of age groter is dan mindoelgroep en kleiner dan maxdoelgr
 
         if (TextUtils.isEmpty(huisnr)) {
             txtHuisnr.setError(getString(R.string.error_field_required));
@@ -188,7 +209,6 @@ public class InschrijvenVakantiePart1 extends FragmentActivity {
             focusView = gebDatum;
             cancel = true;
         }
-
 
         if (cancel) {
             // There was an error; don't attempt login and focus the first
@@ -234,4 +254,25 @@ public class InschrijvenVakantiePart1 extends FragmentActivity {
         txtPostcode.setError(null);
     }
 
+    public int getAge(int DOByear, int DOBmonth, int DOBday) {
+
+        int age;
+
+        final Calendar calenderToday = Calendar.getInstance();
+        int currentYear = calenderToday.get(Calendar.YEAR);
+        int currentMonth = 1 + calenderToday.get(Calendar.MONTH);
+        int todayDay = calenderToday.get(Calendar.DAY_OF_MONTH);
+
+        age = currentYear - DOByear;
+
+        if(DOBmonth > currentMonth){
+            --age;
+        }
+        else if(DOBmonth == currentMonth){
+            if(DOBday > todayDay){
+                --age;
+            }
+        }
+        return age;
+    }
 }

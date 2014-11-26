@@ -170,6 +170,9 @@ public class navBarMainScreen extends Activity {
                 else
                 {
                     Toast.makeText(this,"U hebt niet de juiste bevoegdheid om dit te bekijken.", Toast.LENGTH_SHORT).show();
+                    Intent intent1 = new Intent(navBarMainScreen.this, navBarMainScreen.class
+                    );
+                    startActivity(intent1);
                 }
 
                 break;

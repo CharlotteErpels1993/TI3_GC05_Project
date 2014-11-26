@@ -16,7 +16,7 @@ public class Vakantie extends Activiteit{
     private String aantalDagenNachten;
     private String vervoerswijze, formule;
     private Number basisprijs, bondMoysonLedenPrijs, sterPrijs1Ouder, sterPrijs2Ouder;
-    private int korting;
+    private int korting, maxDoelgroep, minDoelgroep;
     private String inbegrepenInPrijs;
     private String doelGroep;
     private Number maxAantalDeelnemers;
@@ -38,6 +38,12 @@ public class Vakantie extends Activiteit{
         super();
 
     }
+
+    public void setMaxDoelgroep(int maxDoelgroep){this.maxDoelgroep = maxDoelgroep;}
+    public int getMaxDoelgroep(){return maxDoelgroep;}
+
+    public void setMinDoelgroep(int minDoelgroep){this.minDoelgroep = minDoelgroep;}
+    public int getMinDoelgroep(){return minDoelgroep;}
 
     public void setVertrekDatumString(String vertrekDatumString){this.vertrekDatumString = vertrekDatumString;}
     public String getVertrekDatumString(){return vertrekDatumString;}

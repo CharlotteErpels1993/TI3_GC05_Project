@@ -101,7 +101,7 @@ public class ListViewAdapter extends ArrayAdapter<Vakantie> implements Filterabl
         }*/
         //holder.vertrekdatum.setText(( vakanties.get(position).getVertrekDatum().toString()));
         //holder.terugdatum.setText(( vakanties.get(position).getTerugkeerDatum().toString()));
-        holder.doelgroep.setText(vakanties.get(position).getDoelGroep());
+        holder.doelgroep.setText(vakanties.get(position).getMinDoelgroep() + " - " + vakanties.get(position).getMaxDoelgroep());
         imageLoader.DisplayImage(vakanties.get(position).getFoto1(),  holder.vakantiefto);
         view.setOnClickListener(new OnClickListener() {
 
@@ -125,7 +125,8 @@ public class ListViewAdapter extends ArrayAdapter<Vakantie> implements Filterabl
                 intent.putExtra("afbeelding2", vakanties.get(position).getFoto2());
                 intent.putExtra("afbeelding3", vakanties.get(position).getFoto3());
                 //intent.putExtra("fotos", vakanties.get(position).getFotos());
-                intent.putExtra("doelgroep", vakanties.get(position).getDoelGroep());
+                intent.putExtra("maxdoelgroep", vakanties.get(position).getMaxDoelgroep());
+                intent.putExtra("mindoelgroep", vakanties.get(position).getMinDoelgroep());
                 intent.putExtra("objectId", vakanties.get(position).getVakantieID());
                 intent.putExtra("beschrijving", vakanties.get(position).getKorteBeschrijving());
                 intent.putExtra("periode", vakanties.get(position).getPeriode());

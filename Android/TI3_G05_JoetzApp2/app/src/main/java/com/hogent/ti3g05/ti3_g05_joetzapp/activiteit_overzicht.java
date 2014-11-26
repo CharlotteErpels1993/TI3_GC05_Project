@@ -185,7 +185,8 @@ public class activiteit_overzicht extends Fragment /*implements SwipeRefreshLayo
                         if (vakantie.get("sterPrijs2ouders") != null)
                             map.setSterPrijs2Ouder((Number) vakantie.get("sterPrijs2ouders"));
                         //TODO gegevens contactpersoon vakantie
-
+                        map.setMaxDoelgroep((Integer)vakantie.get("maxLeeftijd"));
+                        map.setMinDoelgroep((Integer)vakantie.get("minLeeftijd"));
 
                         map.setFoto1(image.getUrl());
                         map.setFoto2(image2.getUrl());
