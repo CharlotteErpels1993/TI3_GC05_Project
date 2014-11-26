@@ -310,3 +310,35 @@ func giveUITextFieldDefaultBorder(textField: UITextField) {
     textField.layer.cornerRadius = 5.0
 }
 
+func controleerGeldigheidNummer(nummer: String) -> Bool {
+    var enkelNummers: Bool = false
+    
+    for character in nummer {
+        if character == "0" {
+            enkelNummers = true
+        } else if character == "1" {
+            enkelNummers = true
+        } else if character == "2" {
+            enkelNummers = true
+        } else if character == "3" {
+            enkelNummers = true
+        } else if character == "4" {
+            enkelNummers = true
+        } else if character == "5" {
+            enkelNummers = true
+        } else if character == "6" {
+            enkelNummers = true
+        } else if character == "7" {
+            enkelNummers = true
+        } else if character == "8" {
+            enkelNummers = true
+        } else if character == "9" {
+            enkelNummers = true
+        } else {
+            return false
+        }
+    }
+    
+    return true
+}
+
