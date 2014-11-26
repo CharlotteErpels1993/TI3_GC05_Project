@@ -41,7 +41,7 @@ class EigenprofielMonitorTableViewController: UITableViewController
         email.text = monitor.email!
         
         if monitor.telefoon == "" {
-            telefoon.text = "/"
+            telefoon.text = "Nog niet ingegvuld"
         } else {
             telefoon.text = monitor.telefoon!
         }

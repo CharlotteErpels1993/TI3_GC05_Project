@@ -99,6 +99,12 @@ class ProfielBewerkenViewController: ResponsiveTextFieldViewController {
         } else {
             giveUITextFieldDefaultBorder(gsmTxt)
         }
+        
+        if statusTextFields["facebook"] == "ongeldig"{
+            giveUITextFieldRedBorder(facebookTxt)
+        } else {
+            giveUITextFieldDefaultBorder(facebookTxt)
+        }
     }
     
     func controleerRodeBordersAanwezig() -> Bool {
@@ -123,17 +129,22 @@ class ProfielBewerkenViewController: ResponsiveTextFieldViewController {
     
         self.monitor = ParseData.getMonitorWithEmail(PFUser.currentUser().email)
         
-        voornaamTxt.text = monitor?.voornaam
-        naamTxt.text = monitor?.naam
-        gsmTxt.text = monitor?.gsm
+        voornaamTxt.text = monitor!.voornaam
+        naamTxt.text = monitor!.naam
+        gsmTxt.text = monitor!.gsm
         
-        if !(monitor?.telefoon?.isEmpty != nil) {
-            telefoonTxt.text = monitor?.telefoon
+        if monitor!.telefoon == "" {
+            telefoonTxt.text = ""
+        } else {
+            telefoonTxt.text = monitor!.telefoon
         }
         
-        if !(monitor?.linkFacebook?.isEmpty != nil) {
-            facebookTxt.text = monitor?.linkFacebook
+        if monitor!.linkFacebook == "" {
+            facebookTxt.text = ""
+        } else {
+            facebookTxt.text = monitor!.linkFacebook
         }
+        
     }
     
     /*func getCurrentUser() {
