@@ -27,10 +27,16 @@ public class VormingSignup extends Activity {
     private Spinner spnDataInschrijven;
 
     Boolean isInternetPresent = false;
+
+    private List<ParseObject> ob;
+
+    private List<ParseObject> ob2;
     ConnectionDetector cd;
     private List<String> periodes;
 
     private String vormingID;
+
+    private String vormingInsID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +66,13 @@ public class VormingSignup extends Activity {
                 if (isInternetPresent) {
                     // Internet Connection is Present
                     // make HTTP requests
-                    opslaanGegevens();
+                    if(opslaanGegevens())
+                    {
+
+                        Toast.makeText(getApplicationContext(), getString(R.string.dialog_ingeschreven_melding), Toast.LENGTH_SHORT).show();
+                        Intent in = new Intent(getApplicationContext(),Vormingen_Overzicht.class);
+                        startActivity(in);
+                    }
                 }
                 else{
                     // Internet connection is not present
@@ -76,31 +88,65 @@ public class VormingSignup extends Activity {
 
     }
 
-    public void opslaanGegevens(){
+    public boolean opslaanGegevens(){
+
         //3 gegevens nodig, objectID van Monitor, objectID van Vorming & geselecteerde data.
         String emailToLookFor = ParseUser.getCurrentUser().getEmail();
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Monitor");
         query.whereEqualTo("email", emailToLookFor);
+
+        String monitorId = null;
+        try{
+            ParseQuery<ParseObject> querry = new ParseQuery<ParseObject>(
+                    "Monitor");
+
+            querry.orderByAscending("naam");
+            ob = querry.find();
+            for (ParseObject monitor : ob) {
+                if(monitor.get("email").equals(ParseUser.getCurrentUser().getEmail()))
+                {
+                    monitorId = monitor.getObjectId();
+                }
+
+            }
+            ParseQuery<ParseObject> queryV = new ParseQuery<ParseObject>(
+                    "InschrijvingVorming");
+
+            queryV.orderByAscending("monitor");
+            ob2 = queryV.find();
+            for (ParseObject vormingIns : ob2) {
+                if(vormingIns.get("monitor").equals(monitorId) && vormingIns.get("vorming").equals(vormingID) && vormingIns.get("periode").equals(String.valueOf(spnDataInschrijven.getSelectedItem())))
+                {
+                    Toast.makeText(VormingSignup.this, "U heeft zich al ingeschreven voor deze vorming." , Toast.LENGTH_LONG).show();
+                    return false;
+                }
+
+            }
+        }
+        catch(Exception e){
+            Toast.makeText(this,"fout bij ophalen monitoren",Toast.LENGTH_LONG).show();
+        }
         try{
             List<ParseObject> lijstObjecten = query.find();
             if (lijstObjecten.size() != 1){
                 Toast.makeText(getApplicationContext(), "Er is iets fout gelopen. Onze excuses voor het ongemak.", Toast.LENGTH_SHORT).show();
+                return false;
             }
             else{//er is slechts 1 gebruiker in de Monitor tabel, zoals het hoort.
                 String monitorID = lijstObjecten.get(0).getObjectId();
                 ParseObject nieuweVorming = new ParseObject("InschrijvingVorming");
+
                 nieuweVorming.put("vorming", vormingID);
                 nieuweVorming.put("monitor", monitorID);
                 nieuweVorming.put("periode", String.valueOf(spnDataInschrijven.getSelectedItem()) );
                 nieuweVorming.saveInBackground();
+                return true;
 
-                Toast.makeText(getApplicationContext(), getString(R.string.dialog_ingeschreven_melding), Toast.LENGTH_SHORT).show();
-                Intent in = new Intent(getApplicationContext(),navBarMainScreen.class);
-                startActivity(in);
             }
         }
         catch(ParseException e){
             Toast.makeText(getApplicationContext(), "Er is iets fout gelopen. Onze excuses voor het ongemak.", Toast.LENGTH_SHORT).show();
+            return false;
         }
 
 
