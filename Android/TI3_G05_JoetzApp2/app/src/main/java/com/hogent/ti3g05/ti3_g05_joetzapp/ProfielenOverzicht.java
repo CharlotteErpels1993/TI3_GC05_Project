@@ -80,14 +80,17 @@ public class ProfielenOverzicht extends Activity /* implements SwipeRefreshLayou
         refresh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                isInternetPresent = cd.isConnectingToInternet();
+
                 if (isInternetPresent) {
-                   /* swipeLayout.setColorScheme(
-                            android.R.color.holo_blue_light,
-                            android.R.color.holo_orange_light,
-                            android.R.color.holo_green_light,
-                            android.R.color.holo_red_light);
-                    onRefresh();*/
+                    // Internet Connection is Present
+                    // make HTTP requests
                     new RemoteDataTask().execute();
+                }
+                else{
+                    // Internet connection is not present
+                    // Ask user to connect to Internet
+                    Toast.makeText(ProfielenOverzicht.this, getString(R.string.error_no_internet), Toast.LENGTH_SHORT).show();
                 }
             }
         });
