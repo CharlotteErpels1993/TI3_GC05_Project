@@ -17,7 +17,9 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
@@ -44,6 +46,7 @@ public class Vormingen_Overzicht extends Activity /*implements SwipeRefreshLayou
     private myDb myDB;
     private List<Vorming> vormingen = null;
     private EditText filtertext;
+    private Button refresh;
     // SwipeRefreshLayout swipeLayout;
     // flag for Internet connection status
     Boolean isInternetPresent = false;
@@ -65,6 +68,22 @@ public class Vormingen_Overzicht extends Activity /*implements SwipeRefreshLayou
         cd = new ConnectionDetector(getApplicationContext());
         myDB = new myDb(this);
         myDB.open();
+
+        refresh = (Button) findViewById(R.id.refreshAct);
+        refresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (isInternetPresent) {
+                   /* swipeLayout.setColorScheme(
+                            android.R.color.holo_blue_light,
+                            android.R.color.holo_orange_light,
+                            android.R.color.holo_green_light,
+                            android.R.color.holo_red_light);
+                    onRefresh();*/
+                    new RemoteDataTask().execute();
+                }
+            }
+        });
         new RemoteDataTask().execute();
     }
 

@@ -71,7 +71,7 @@ public class activiteit_overzicht extends Fragment /*implements SwipeRefreshLayo
         //swipeLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_container);
         //onCreateSwipeToRefresh(swipeLayout);
 
-        refresh = (Button) rootView.findViewById(R.id.refreshAct);
+
         cd = new ConnectionDetector(rootView.getContext());
         myDB = new myDb(rootView.getContext());
         myDB.open();
@@ -102,6 +102,7 @@ public class activiteit_overzicht extends Fragment /*implements SwipeRefreshLayo
             });
         }
 
+        refresh = (Button) rootView.findViewById(R.id.refreshAct);
         refresh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -17,6 +17,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -50,6 +51,7 @@ public class ProfielenOverzicht extends Activity /* implements SwipeRefreshLayou
     private List<Monitor> profielenSamen = null;
     private EditText filtertext;
     private myDb myDB;
+    private Button refresh;
     private List<InschrijvingVorming> inschrijvingVormingen = new ArrayList<InschrijvingVorming>();
     private List<InschrijvingVorming> alleIns = new ArrayList<InschrijvingVorming>();
 
@@ -73,6 +75,22 @@ public class ProfielenOverzicht extends Activity /* implements SwipeRefreshLayou
         cd = new ConnectionDetector(getApplicationContext());
         myDB = new myDb(this);
         myDB.open();
+
+        refresh = (Button) findViewById(R.id.refreshAct);
+        refresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (isInternetPresent) {
+                   /* swipeLayout.setColorScheme(
+                            android.R.color.holo_blue_light,
+                            android.R.color.holo_orange_light,
+                            android.R.color.holo_green_light,
+                            android.R.color.holo_red_light);
+                    onRefresh();*/
+                    new RemoteDataTask().execute();
+                }
+            }
+        });
 
 
         /*swipeLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_container);
