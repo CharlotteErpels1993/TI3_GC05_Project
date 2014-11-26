@@ -29,11 +29,14 @@ public class InschrijvenVakantiePart1 extends FragmentActivity {
 
     private String maandI, datum ,voornaam, naam, straat, huisnr, bus, gemeente, postcode;
     private Date geboorteDatum;
+    private String maxdoelgroep, mindoelgroep;
 
     private TextView dag;
     private TextView maand;
     private TextView jaar;
     private Button btnVolgende;
+
+    private TextView errorDate;
 
     private TextView gebDatum;
     //!!!!!!!!!!!!!!!!!!!!!!!
@@ -69,7 +72,8 @@ public class InschrijvenVakantiePart1 extends FragmentActivity {
         dag = (TextView) findViewById(R.id.dagIns);
         jaar = (TextView) findViewById(R.id.jaarIns);
         maand = (TextView) findViewById(R.id.maandIns);
-
+        errorDate = (TextView) findViewById(R.id.ErrorDate);
+        errorDate.setVisibility(View.GONE);
 
         btnVolgende = (Button)findViewById(R.id.btnNaarDeel2Vak);
         btnVolgende.setOnClickListener(new View.OnClickListener() {
@@ -132,6 +136,9 @@ public class InschrijvenVakantiePart1 extends FragmentActivity {
         postcode = txtPostcode.getText().toString();
         datum = gebDatum.getText().toString();
         maandI = maand.getText().toString();
+        Intent i = getIntent();
+        mindoelgroep = i.getStringExtra("mindoelgroep");
+        maxdoelgroep = i.getStringExtra("maxdoelgroep");
 
 
 
@@ -173,6 +180,15 @@ public class InschrijvenVakantiePart1 extends FragmentActivity {
 
         int age = getAge(date.getYear(), date.getMonth(), date.getDay());
         //TODO kijken of age groter is dan mindoelgroep en kleiner dan maxdoelgr
+
+        if(age < Integer.parseInt(mindoelgroep) || age > Integer.parseInt(maxdoelgroep))
+        {
+            gebDatum.setError("De leeftijd valt niet binnen de doelgroep");
+            focusView = gebDatum;
+            errorDate.setText("De leeftijd valt niet binnen de doelgroep");
+            errorDate.setVisibility(View.VISIBLE);
+            cancel = true;
+        }
 
         if (TextUtils.isEmpty(huisnr)) {
             txtHuisnr.setError(getString(R.string.error_field_required));
@@ -252,6 +268,7 @@ public class InschrijvenVakantiePart1 extends FragmentActivity {
         txtBus.setError(null);
         txtGemeente.setError(null);
         txtPostcode.setError(null);
+        errorDate.setVisibility(View.GONE);
     }
 
     public int getAge(int DOByear, int DOBmonth, int DOBday) {

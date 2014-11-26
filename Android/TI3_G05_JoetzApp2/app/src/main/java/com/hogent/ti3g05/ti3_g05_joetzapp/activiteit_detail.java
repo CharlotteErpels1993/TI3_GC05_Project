@@ -40,7 +40,8 @@ public class activiteit_detail extends Activity {
     String beschrijving;
     ImageLoader imageLoader = new ImageLoader(this);
     String afbeelding1;
-    String doelgro;
+    String maxDoelgroep;
+    String minDoelgroep;
     String afbeelding2;
     String afbeelding3;
     String bmLedenPrijs;
@@ -75,7 +76,8 @@ public class activiteit_detail extends Activity {
         locatie = i.getStringExtra("locatie");
         vertrekdatum = i.getStringExtra("vertrekdatum");
         terugdatum = i.getStringExtra("terugdatum");
-        doelgro = i.getStringExtra("doelgroep");
+        maxDoelgroep = i.getStringExtra("maxdoelgroep");
+        minDoelgroep = i.getStringExtra("mindoelgroep");
         afbeelding1 = i.getStringExtra("afbeelding1");
         afbeelding2 = i.getStringExtra("afbeelding2");
         afbeelding3 = i.getStringExtra("afbeelding3");
@@ -125,6 +127,8 @@ public class activiteit_detail extends Activity {
             public void onClick(View view) {
                 Intent intent3 = new Intent(activiteit_detail.this, InschrijvenVakantiePart1.class);
                 intent3.putExtra("objectId", activiteitID);
+                intent3.putExtra("maxdoelgroep", maxDoelgroep);
+                intent3.putExtra("mindoelgroep", minDoelgroep);
                 startActivity(intent3);
 
                 overridePendingTransition(R.anim.right_in, R.anim.left_out);
@@ -231,7 +235,7 @@ public class activiteit_detail extends Activity {
 
         txtNaam.setText(naam);
         txtLocatie.setText("Locatie: " + locatie);
-        txtDoelgr.setText("Doelgroep: " + doelgro);
+        txtDoelgr.setText("Doelgroep: " + minDoelgroep + " - " + maxDoelgroep);
 
         txtformule.setText("Formule: " + formule);
         txtmaxDeeln.setText("Maximum aantal deelnemers: " + maxDeeln);

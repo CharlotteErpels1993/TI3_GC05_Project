@@ -107,8 +107,8 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put(Constants.COLUMN_AFBEELDING2, vakantie.getFoto2());
         values.put(Constants.COLUMN_AFBEELDING3, vakantie.getFoto3());
         //values.put(Constants.COLUMN_DOELGROEP, vakantie.getDoelGroep());
-        values.put(Constants.COLUMN_MAXDOELGROEP, vakantie.getMaxDoelgroep());
-        values.put(Constants.COLUMN_MINDOELGROEP, vakantie.getMinDoelgroep());
+        values.put(Constants.COLUMN_MAXDOELGROEP,(Integer) vakantie.getMaxDoelgroep());
+        values.put(Constants.COLUMN_MINDOELGROEP, (Integer)vakantie.getMinDoelgroep());
 
         values.put(Constants.COLUMN_BESCHRIJVING, vakantie.getKorteBeschrijving());
         values.put(Constants.COLUMN_PERIODE, vakantie.getPeriode());
