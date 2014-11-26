@@ -14,7 +14,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
-import com.parse.ParseUser;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -25,7 +24,6 @@ import java.util.Date;
 public class InschrijvenVakantiePart1 extends FragmentActivity {
 
     private EditText txtVoornaam, txtNaam, txtStraat, txtHuisnr, txtBus, txtGemeente, txtPostcode;
-    private Button btnGeboorteDatum;
 
     private String maandI, datum ,voornaam, naam, straat, huisnr, bus, gemeente, postcode;
     private Date geboorteDatum;
@@ -39,18 +37,14 @@ public class InschrijvenVakantiePart1 extends FragmentActivity {
     private TextView errorDate;
 
     private TextView gebDatum;
-    //!!!!!!!!!!!!!!!!!!!!!!!
-    //voor date picker:
-    //http://developer.android.com/guide/topics/ui/controls/pickers.html#DatePicker
     private boolean cancel = false;
     private View focusView = null;
-    CustomDatePicker customDatePicker;
 
     // flag for Internet connection status
     Boolean isInternetPresent = false;
     // Connection detector class
     ConnectionDetector cd;
-
+    Calendar cal = Calendar.getInstance();
     Date now = new Date();
 
     @Override
@@ -67,7 +61,6 @@ public class InschrijvenVakantiePart1 extends FragmentActivity {
         txtBus = (EditText) findViewById(R.id.Bus);
         txtGemeente = (EditText) findViewById(R.id.Gemeente);
         txtPostcode = (EditText) findViewById(R.id.Postcode);
-        btnGeboorteDatum = (Button) findViewById(R.id.uitlegVoorData);
         gebDatum = (TextView) findViewById(R.id.DateIns);
         dag = (TextView) findViewById(R.id.dagIns);
         jaar = (TextView) findViewById(R.id.jaarIns);
@@ -176,9 +169,12 @@ public class InschrijvenVakantiePart1 extends FragmentActivity {
             Toast.makeText(InschrijvenVakantiePart1.this, "Fout bij datum omzetten",Toast.LENGTH_SHORT).show();
         }
 
+        cal.setTime(date);
+        int year = cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH);
+        int day = cal.get(Calendar.DAY_OF_MONTH);
 
-
-        int age = getAge(date.getYear(), date.getMonth(), date.getDay());
+        int age = getAge(year, month, day);
         //TODO kijken of age groter is dan mindoelgroep en kleiner dan maxdoelgr
 
         if(age < Integer.parseInt(mindoelgroep) || age > Integer.parseInt(maxdoelgroep))
@@ -268,6 +264,7 @@ public class InschrijvenVakantiePart1 extends FragmentActivity {
         txtBus.setError(null);
         txtGemeente.setError(null);
         txtPostcode.setError(null);
+        gebDatum.setError(null);
         errorDate.setVisibility(View.GONE);
     }
 
