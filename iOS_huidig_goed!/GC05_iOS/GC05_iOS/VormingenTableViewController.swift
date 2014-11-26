@@ -33,6 +33,7 @@ class VormingenTableViewController: UITableViewController, UISearchBarDelegate, 
         zoekbar.delegate = self
         
         vormingen2.sort({ $0.titel < $1.titel })
+        vormingen.sort({ $0.titel < $1.titel })
         
         activityIndicator.stopAnimating()
     }

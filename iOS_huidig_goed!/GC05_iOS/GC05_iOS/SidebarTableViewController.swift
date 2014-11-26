@@ -4,7 +4,7 @@ class SidebarTableViewController: UITableViewController {
     var selectedMenuItem : Int = 0
     var arrayKind: [String] = ["Vakanties","Inloggen", "Registreren"]
     var arrayOuder: [String] = ["Uitloggen", "Vakanties"]
-    var arrayMonitor: [String] = ["Uitloggen","Eigen profiel", "Vakanties",  "Vormingen", "Voorkeur vakantie", "Profielen"]
+    var arrayMonitor: [String] = ["Uitloggen","Eigen profiel", "Vakanties",  "Vormingen", "Voorkeur \n vakantie", "Profielen"]
     var array: [String]?
     
     

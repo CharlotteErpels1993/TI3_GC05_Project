@@ -69,7 +69,7 @@ class VormingDetailsTableViewController: UITableViewController {
             extraTekstViewController.type = 2
         } else if segue.identifier == "periodes" {
             let extraTekstViewController = segue.destinationViewController as ExtraTekstViewController
-            extraTekstViewController.tekst = vorming.periodesToString()
+            extraTekstViewController.tekst = vorming.periodesToString(vorming.periodes!)
             extraTekstViewController.type = 5
         }
     }

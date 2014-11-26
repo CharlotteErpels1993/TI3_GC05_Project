@@ -52,15 +52,15 @@ class Vorming: Activiteit
         return false
     }
     
-    func periodesToString() -> String {
+    func periodesToString(periodes: [String]) -> String {
         var periodesString: String = ""
         
         var teller: Int = 0
         
-        for periode in self.periodes! {
+        for periode in periodes {
             
             if teller != 0 {
-                periodesString.extend(", ")
+                periodesString.extend(", \n")
             }
             
             periodesString.extend(periode)
