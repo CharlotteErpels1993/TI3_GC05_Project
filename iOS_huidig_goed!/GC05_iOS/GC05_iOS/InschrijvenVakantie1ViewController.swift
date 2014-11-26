@@ -142,7 +142,7 @@ class InschrijvenVakantie1ViewController : ResponsiveTextFieldViewController {
             giveUITextFieldDefaultBorder(txtBus)
         }
         
-        if statusTextFields["postcode"] == "leeg" || statusTextFields["nummer"] == "ongeldig"{
+        if statusTextFields["postcode"] == "leeg" || statusTextFields["postcode"] == "ongeldig"{
             giveUITextFieldRedBorder(txtPostcode)
         } else {
             giveUITextFieldDefaultBorder(txtPostcode)

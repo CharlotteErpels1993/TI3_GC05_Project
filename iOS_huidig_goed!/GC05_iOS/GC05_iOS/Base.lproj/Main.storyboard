@@ -3696,10 +3696,10 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
         <image name="Klevertje.png" width="615" height="427"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="xe1-I8-Pkw"/>
+        <segue reference="quD-W8-2tt"/>
+        <segue reference="xSz-Mr-cgx"/>
         <segue reference="9Je-LH-R9J"/>
         <segue reference="fAM-X2-96q"/>
         <segue reference="fmi-Sf-Xxy"/>
-        <segue reference="xSz-Mr-cgx"/>
     </inferredMetricsTieBreakers>
 </document>
