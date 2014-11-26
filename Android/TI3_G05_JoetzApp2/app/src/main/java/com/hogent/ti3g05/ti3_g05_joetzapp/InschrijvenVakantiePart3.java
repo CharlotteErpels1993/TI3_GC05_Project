@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
 import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 import java.text.ParseException;
@@ -19,6 +20,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.List;
 import java.util.Locale;
 
 
@@ -28,6 +30,10 @@ public class InschrijvenVakantiePart3 extends Activity {
 
     private String extraInformatie;
 
+    private List<ParseObject> ob2;
+
+    private List<ParseObject> ob;
+    private List<ParseObject> ob3;
     private Button btnVolgende;
 
     // flag for Internet connection status
@@ -129,20 +135,72 @@ public class InschrijvenVakantiePart3 extends Activity {
             Toast.makeText(InschrijvenVakantiePart3.this, "Fout bij datum omzetten",Toast.LENGTH_SHORT).show();
         }
         try{
+
+           /* String deelnemerId = null;
+            String contactpersoonId = null;
+
+                ParseQuery<ParseObject> querry = new ParseQuery<ParseObject>(
+                        "Deelnemer");
+
+                querry.orderByAscending("naam");
+                ob = querry.find();
+                for (ParseObject deelnemer : ob) {
+                    if (deelnemer.get("naam").equals(naam) && deelnemer.get("voornaam").equals(voornaam)) {
+                        deelnemerId = deelnemer.getObjectId();
+
+                        Toast.makeText(InschrijvenVakantiePart3.this, deelnemerId, Toast.LENGTH_LONG).show();
+                        //inscchrijvingVakantie = (String) deelnemer.get("inschrijvingVakantie");
+
+                        //wordt opgevuld
+                    }
+
+                }
+
+
+                ParseQuery<ParseObject> queryV = new ParseQuery<ParseObject>(
+                        "ContactpersoonNood");
+
+                queryV.orderByAscending("naam");
+                ob2 = queryV.find();
+                for (ParseObject contactp : ob2) {
+                    if (contactp.get("naam").equals(naamCP) && contactp.get("voornaam").equals(voornaamCP)) {
+                        //Toast.makeText(InschrijvenVakantiePart3.this, "U heeft zich al ingeschreven voor deze vorming.", Toast.LENGTH_LONG).show();
+                        //return false;
+
+                        contactpersoonId = contactp.getObjectId();
+                        Toast.makeText(InschrijvenVakantiePart3.this, contactpersoonId, Toast.LENGTH_LONG).show();
+
+                        //wordt opgevuld
+
+                    }
+
+                }
+            ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(
+                    "InschrijvingVakantie");
+
+            ob3 = query.find();
+            for (ParseObject inschrijving : ob3) {
+                if (inschrijving.get("contactpersoon1").equals(contactpersoonId) && inschrijving.get("deelnemer").equals(deelnemerId) && inschrijving.get("vakantie").equals(activiteitID)) {
+                    Toast.makeText(InschrijvenVakantiePart3.this, "U heeft zich al ingeschreven voor deze vorming.", Toast.LENGTH_LONG).show();
+                    return false;
+
+                }
+
+            }*/
+
+
             ParseObject contactPers = new ParseObject("ContactpersoonNood");
             ParseObject inschrijving = new ParseObject("InschrijvingVakantie");
             ParseObject deeln = new ParseObject("Deelnemer");
 
-            inschrijving.put("vakantie", activiteitID);
-            inschrijving.put("extraInformatie" , extraInfo);
-            inschrijving.save();
+
 
             contactPers.put("voornaam" , voornaamCP);
             contactPers.put("naam" , naamCP);
             contactPers.put("telefoon" , telefoonCP);
             contactPers.put("gsm" , gsmCP);
-            contactPers.put("inschrijvingVakantie", inschrijving.getObjectId());
-            contactPers.saveInBackground();
+            //contactPers.put("inschrijvingVakantie", inschrijving.getObjectId());
+            contactPers.save();
 
             //deeln.put("contactPersoonInNood", contactPers.getObjectId());
             deeln.put("voornaam", voornaam);
@@ -153,8 +211,14 @@ public class InschrijvenVakantiePart3 extends Activity {
             deeln.put("gemeente" , gemeente);
             deeln.put("postcode" , Integer.parseInt(postcode));
             deeln.put("geboortedatum", date);
-            deeln.put("inschrijvingVakantie", inschrijving.getObjectId());
-            deeln.saveInBackground();
+            //deeln.put("inschrijvingVakantie", inschrijving.getObjectId());
+            deeln.save();
+
+            inschrijving.put("vakantie", activiteitID);
+            inschrijving.put("extraInformatie" , extraInfo);
+            inschrijving.put("contactpersoon1", contactPers.getObjectId());
+            inschrijving.put("deelnemer", deeln.getObjectId());
+            inschrijving.save();
 
             return true;
         }

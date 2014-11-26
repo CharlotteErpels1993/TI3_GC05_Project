@@ -48,12 +48,6 @@
         android:layout_marginTop="8dp"
         android:text="@string/forgetPass" />
 
-    <Button
-        android:id="@+id/btn_return"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/back" />
 
 
 </LinearLayout>

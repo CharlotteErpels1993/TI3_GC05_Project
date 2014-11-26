@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -21,7 +23,6 @@ public class Login extends Activity{
 	Button btn_LoginIn = null;
 	Button btn_SignUp = null;
 	Button btn_ForgetPass = null;
-    Button btn_Return = null;
 	private EditText mUserNameEditText;
 	private EditText mPasswordEditText;
    /* public final Pattern EMAIL_ADDRESS_PATTERN = Pattern.compile(
@@ -58,7 +59,7 @@ public class Login extends Activity{
         btn_LoginIn = (Button) findViewById(R.id.btn_login);
         btn_SignUp = (Button) findViewById(R.id.btn_signup);
         btn_ForgetPass = (Button) findViewById(R.id.btn_ForgetPass);
-        btn_Return = (Button) findViewById(R.id.btn_return);
+
         mUserNameEditText = (EditText) findViewById(R.id.username);
         mPasswordEditText = (EditText) findViewById(R.id.password);
 
@@ -72,7 +73,7 @@ public class Login extends Activity{
                 if (isInternetPresent) {
                     // Internet Connection is Present
                     // make HTTP requests
-                    Toast.makeText(getApplicationContext(), "U wordt ingelogged, even geduld aub", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "U wordt ingelogd, even geduld aub", Toast.LENGTH_SHORT).show();
                     attemptLogin();
                 } else {
                     // Internet connection is not present
@@ -103,15 +104,6 @@ public class Login extends Activity{
             }
         });
 
-        btn_Return.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Login.this, navBarMainScreen.class);
-                startActivity(intent);
-
-                overridePendingTransition(R.anim.left_in, R.anim.right_out);
-            }
-        });
 
 	}
 
@@ -213,6 +205,25 @@ public class Login extends Activity{
         setIntent.addCategory(Intent.CATEGORY_HOME);
         setIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(setIntent);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.back, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.backMenu) {
+            Intent intent1 = new Intent(this, navBarMainScreen.class);
+            startActivity(intent1);
+
+            overridePendingTransition(R.anim.left_in, R.anim.right_out);
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
 }

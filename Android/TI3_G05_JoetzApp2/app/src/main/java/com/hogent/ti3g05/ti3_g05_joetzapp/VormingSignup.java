@@ -97,8 +97,8 @@ public class VormingSignup extends Activity {
 
         String monitorId = null;
         try{
-            ParseQuery<ParseObject> querry = new ParseQuery<ParseObject>(
-                    "Monitor");
+                ParseQuery<ParseObject> querry = new ParseQuery<ParseObject>(
+                        "Monitor");
 
             querry.orderByAscending("naam");
             ob = querry.find();
