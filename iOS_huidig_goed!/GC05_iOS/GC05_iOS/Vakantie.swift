@@ -35,7 +35,7 @@ class Vakantie: Activiteit
 
     var inbegrepenPrijs: String?
     //var doelgroep: String? // TYPE?
-    var minLeeftijd: Int?
+    var minLeeftijd: Int!
     var maxLeeftijd: Int?
     
     var maxAantalDeelnemers: Int?/* {

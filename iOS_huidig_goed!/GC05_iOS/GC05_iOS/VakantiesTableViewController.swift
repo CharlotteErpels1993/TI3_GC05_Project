@@ -30,7 +30,8 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
             self.navigationItem.rightBarButtonItem = nil   
         }
         
-        //vakanties2.sort({ $0.minLeeftijd< $1.titel})
+        vakanties2.sort({ (String($0.minLeeftijd)) < $1.titel})
+        vakanties.sort({ (String($0.minLeeftijd)) < $1.titel})
         //vakanties.sort({ $0.minLeeftijd < $1.titel })
         
         activityIndicator.stopAnimating()
