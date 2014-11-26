@@ -20,6 +20,8 @@ class Registratie1ViewController: ResponsiveTextFieldViewController
     @IBOutlet weak var lblAansluitingsNrTweedeOuder: UILabel!
     @IBOutlet weak var txtAansluitingsNrTweedeOuder: UITextField!
     @IBOutlet weak var buttonNummers: UIButton!
+    @IBOutlet weak var buttonRegisterenMonitor: UIButton!
+    @IBOutlet weak var labelVerplichtInTevullen: UILabel!
     
     @IBAction func toggle(sender: AnyObject) {
         toggleSideMenuView()
@@ -77,6 +79,8 @@ class Registratie1ViewController: ResponsiveTextFieldViewController
             txtRijksregisterNr.hidden = false
             txtAansluitingsNrTweedeOuder.hidden = false
             buttonNummers.hidden = false
+            buttonRegisterenMonitor.hidden = false
+            labelVerplichtInTevullen.hidden = false
             
         } else {
             gebruikerIsLid = false
@@ -91,6 +95,8 @@ class Registratie1ViewController: ResponsiveTextFieldViewController
             txtRijksregisterNr.hidden = true
             txtAansluitingsNrTweedeOuder.hidden = true
             buttonNummers.hidden = true
+            buttonRegisterenMonitor.hidden = true
+            labelVerplichtInTevullen.hidden = true
         }
         
     }

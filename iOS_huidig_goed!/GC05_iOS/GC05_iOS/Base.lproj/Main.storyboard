@@ -863,6 +863,12 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                     <segue destination="eo3-QX-La5" kind="push" id="AjK-cZ-Fuz"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* verplicht in te vullen" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hLu-qs-iu3">
+                                <rect key="frame" x="16" y="559" width="120" height="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uc2-Hp-ZHR">
                                 <rect key="frame" x="16" y="463" width="167" height="30"/>
                                 <state key="normal" title="Registreren als monitor?">
@@ -872,12 +878,6 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                     <segue destination="1ab-Ky-SvP" kind="show" id="Y50-ed-9EW"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* verplicht in te vullen" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hLu-qs-iu3">
-                                <rect key="frame" x="16" y="559" width="120" height="15"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -952,7 +952,9 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="buttonNummers" destination="uqW-jm-he0" id="faw-Nf-pSS"/>
+                        <outlet property="buttonRegisterenMonitor" destination="uc2-Hp-ZHR" id="EP5-Yc-DAD"/>
                         <outlet property="isLid" destination="m7p-Dv-81d" id="c1g-r4-jDp"/>
+                        <outlet property="labelVerplichtInTevullen" destination="hLu-qs-iu3" id="S97-De-MAi"/>
                         <outlet property="lblAansluitingsNr" destination="MfE-6E-2Xb" id="TP2-zY-Exv"/>
                         <outlet property="lblAansluitingsNrTweedeOuder" destination="ARF-UY-Xdf" id="xyu-dg-6zn"/>
                         <outlet property="lblCodeGerechtigde" destination="8Av-pM-lTQ" id="KC3-r5-qvX"/>
@@ -3132,15 +3134,15 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="U bent succesvol geregistreerd!" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zN8-iL-ksi">
-                                <rect key="frame" x="179" y="289" width="243" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="U bent succesvol geregistreerd en ingelogd!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zN8-iL-ksi">
+                                <rect key="frame" x="16" y="289" width="568" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jQV-Y3-Kti">
-                                <rect key="frame" x="271" y="312" width="59" height="30"/>
-                                <state key="normal" title="Inloggen">
+                                <rect key="frame" x="238" y="312" width="124" height="30"/>
+                                <state key="normal" title="Ga naar vakanties">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -3157,18 +3159,23 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="jQV-Y3-Kti" secondAttribute="centerX" constant="-6.5" id="16J-KN-nLk"/>
                             <constraint firstItem="jQV-Y3-Kti" firstAttribute="leading" secondItem="6f7-bp-vGn" secondAttribute="leadingMargin" constant="261" id="54Q-sA-aUb"/>
+                            <constraint firstItem="zN8-iL-ksi" firstAttribute="leading" secondItem="6f7-bp-vGn" secondAttribute="leadingMargin" id="AXD-1A-rCO"/>
                             <constraint firstAttribute="centerX" secondItem="zN8-iL-ksi" secondAttribute="centerX" constant="-0.5" id="SrI-oe-pma"/>
                             <constraint firstItem="jQV-Y3-Kti" firstAttribute="top" secondItem="zN8-iL-ksi" secondAttribute="bottom" constant="2" id="WNJ-Ve-cQB"/>
+                            <constraint firstAttribute="centerY" secondItem="zN8-iL-ksi" secondAttribute="centerY" constant="0.75" id="XEc-ju-ykC"/>
                             <constraint firstAttribute="trailingMargin" secondItem="jQV-Y3-Kti" secondAttribute="trailing" constant="248" id="XjO-HY-Mxn"/>
                             <constraint firstAttribute="centerX" secondItem="CSP-El-R4c" secondAttribute="centerX" constant="-0.5" id="dGN-4P-oQT"/>
                             <constraint firstAttribute="centerY" secondItem="CSP-El-R4c" secondAttribute="centerY" constant="0.5" id="gyU-2Y-lJQ"/>
                             <constraint firstAttribute="centerY" secondItem="zN8-iL-ksi" secondAttribute="centerY" constant="0.5" id="lF0-xu-4HP"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="zN8-iL-ksi" secondAttribute="trailing" id="o20-Zj-rtm"/>
                             <constraint firstItem="jQV-Y3-Kti" firstAttribute="top" secondItem="zN8-iL-ksi" secondAttribute="bottom" constant="8" id="sv7-qM-I4K"/>
                             <constraint firstItem="jQV-Y3-Kti" firstAttribute="top" secondItem="zN8-iL-ksi" secondAttribute="bottom" constant="8" id="tgf-34-lmN"/>
                             <constraint firstAttribute="centerX" secondItem="jQV-Y3-Kti" secondAttribute="centerX" constant="-0.5" id="uOl-dY-5HA"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="SrI-oe-pma"/>
+                                <exclude reference="lF0-xu-4HP"/>
                                 <exclude reference="16J-KN-nLk"/>
                                 <exclude reference="54Q-sA-aUb"/>
                                 <exclude reference="XjO-HY-Mxn"/>

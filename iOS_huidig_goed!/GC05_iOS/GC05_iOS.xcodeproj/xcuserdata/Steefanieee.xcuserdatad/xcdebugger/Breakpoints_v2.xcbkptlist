@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GC05_iOS/Registratie1ViewController.swift"
-            timestampString = "438687097.832624"
+            timestampString = "438726089.038342"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "267"
-            endingLineNumber = "267"
+            startingLineNumber = "273"
+            endingLineNumber = "273"
             landmarkName = "checkPatternNummer(_:)"
             landmarkType = "7">
          </BreakpointContent>
