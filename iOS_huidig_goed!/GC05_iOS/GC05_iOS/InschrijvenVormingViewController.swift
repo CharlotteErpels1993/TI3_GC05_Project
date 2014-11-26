@@ -7,9 +7,14 @@ class InschrijvenVormingViewController: UIViewController, UIPickerViewDataSource
     var pickerData: [String] = []
     var vorming: Vorming!
     var inschrijvingVorming: InschrijvingVorming = InschrijvingVorming(id: "test")
+    var vormingenId: [String] = []
+    var periodesId: [String] = []
+    var periode: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        getAlleVormingen()
+        
         pickerView.delegate = self
         pickerView.dataSource = self
     }
@@ -31,16 +36,16 @@ class InschrijvenVormingViewController: UIViewController, UIPickerViewDataSource
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         inschrijvingVorming.periode = pickerData[row]
+        self.periode = pickerData[row]
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        print(periodesId)
+        controleerOfMonitorDezeVormingAlIngeschrevenIs()
+        
         if segue.identifier == "inschrijven" {
             let inschrijvenVormingSuccesvolViewController = segue.destinationViewController as InschrijvenVormingSuccesvolViewController
             
-            /*var query = PFQuery(className: "Monitor")
-            query.whereKey("email", containsString: PFUser.currentUser().email)
-            var monitorPF = query.getFirstObject()
-            var monitor = Monitor(monitor: monitorPF)*/
             var monitor = ParseData.getMonitorWithEmail(PFUser.currentUser().email)
             
             if inschrijvingVorming.periode == nil {
@@ -55,4 +60,48 @@ class InschrijvenVormingViewController: UIViewController, UIPickerViewDataSource
             let vormingenTableViewController = segue.destinationViewController as VormingenTableViewController
         }
     }
+    
+    func getAlleVormingen() {
+        var monitor: Monitor = ParseData.getMonitorWithEmail(PFUser.currentUser().email)
+
+        var query = PFQuery(className: "InschrijvingVorming")
+        query.whereKey("monitor", equalTo: monitor.id)
+        query.findObjectsInBackgroundWithBlock({(NSArray objects, NSError error) in
+            if error == nil {
+                for object in objects {
+                    let vormingId = object["vorming"] as String
+                    self.vormingenId.append(vormingId)
+                    let periodeId = object["periode"] as String
+                    self.periodesId.append(periodeId)
+                }
+            }
+        })
+    }
+    
+    func controleerOfMonitorDezeVormingAlIngeschrevenIs() {
+        for vorming in self.vormingenId {
+            if self.vorming.id == vorming {
+                 controleerOfMonitorDezeVormingAlIngeschrevenIsPeriodes()
+            }
+        }
+        
+    }
+    
+    func controleerOfMonitorDezeVormingAlIngeschrevenIsPeriodes() {
+        for periode in periodesId {
+            //if self.periode == periode {
+                let alertController = UIAlertController(title: "Fout", message: "Je hebt je al ingeschreven voor deze vorming", preferredStyle: .Alert)
+                let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: {
+                    action in
+                    let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    let destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vormingen") as UIViewController
+                    self.sideMenuController()?.setContentViewController(destViewController)
+                    self.hideSideMenuView()
+                })
+                alertController.addAction(okAction)
+                self.presentViewController(alertController, animated: true, completion: nil)
+            //}
+        }
+    }
+    
 }
