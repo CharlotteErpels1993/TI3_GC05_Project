@@ -29,12 +29,19 @@ public /*static*/ class CustomDatePicker extends DialogFragment
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         // Use the current date as the default date in the picker
         final Calendar c = Calendar.getInstance();
+
+        Time today = new Time(Time.getCurrentTimezone());
+        Date now = new Date();
+        today.setToNow();
+
         int year = c.get(Calendar.YEAR);
         int month = c.get(Calendar.MONTH);
         int day = c.get(Calendar.DAY_OF_MONTH);
 
+        DatePickerDialog dialog = new DatePickerDialog(getActivity(), this, year, month, day);
+        //dialog.getDatePicker().setMaxDate(date.getDate());
         // Create a new instance of DatePickerDialog and return it
-        return new DatePickerDialog(getActivity(), this, year, month, day);
+        return dialog;
     }
 
     public void onDateSet(DatePicker view, int year, int month, int day) {
@@ -42,7 +49,6 @@ public /*static*/ class CustomDatePicker extends DialogFragment
         mYear=year;
         mMonth=month;
         mDay=day;
-
 
         onPopulateSet(year, month + 1, day);
 

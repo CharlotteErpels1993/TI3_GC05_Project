@@ -177,9 +177,9 @@ public class DBHandler extends SQLiteOpenHelper {
             vakantie.setFormule(cursor.getString(13));
             vakantie.setMaxAantalDeelnemers(Integer.parseInt(cursor.getString(14)));
             vakantie.setInbegrepenInPrijs(cursor.getString(15));
-            vakantie.setBondMoysonLedenPrijs(Integer.parseInt(cursor.getString(16)));
-            vakantie.setSterPrijs1Ouder(Integer.parseInt(cursor.getString(17)));
-            vakantie.setSterPrijs2Ouder(Integer.parseInt(cursor.getString(18)));
+            vakantie.setBondMoysonLedenPrijs(Double.parseDouble(cursor.getString(16)));
+            vakantie.setSterPrijs1Ouder(Double.parseDouble(cursor.getString(17)));
+            vakantie.setSterPrijs2Ouder(Double.parseDouble(cursor.getString(18)));
         } else
         {
             vakantie = null;

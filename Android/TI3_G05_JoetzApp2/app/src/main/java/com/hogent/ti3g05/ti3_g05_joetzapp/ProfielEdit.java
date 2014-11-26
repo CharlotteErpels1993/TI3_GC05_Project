@@ -27,10 +27,8 @@ public class ProfielEdit extends Activity {
     String initieleEmail;
     String initieleGsm;
     String initieleFacebook;
-    private Button btnBevestigen, btnCancel;
 
     private EditText txtNaam, txtVoornaam, txtEmail, txtGSM, txtFacebook;
-    private boolean cancel = false;
     private View focusView = null;
 
     Boolean isInternetPresent = false;
@@ -58,7 +56,7 @@ public class ProfielEdit extends Activity {
         txtFacebook = (EditText)findViewById(R.id.Facebook);
         txtGSM = (EditText)findViewById(R.id.GSM);
 
-        btnBevestigen = (Button) findViewById(R.id.btnBevestigen);
+        Button btnBevestigen = (Button) findViewById(R.id.btnBevestigen);
         btnBevestigen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -72,16 +70,6 @@ public class ProfielEdit extends Activity {
             }
         });
 
-        btnCancel = (Button) findViewById(R.id.btnCancel);
-        btnCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                isInternetPresent = cd.isConnectingToInternet();
-
-                terugSturenNaarProfielDetail(initieleNaam, initieleVoornaam, initieleEmail, initieleGsm, initieleFacebook);
-            }
-        });
-
         txtNaam.setText(initieleNaam);
         txtVoornaam.setText(initieleVoornaam);
         txtEmail.setText(initieleEmail);
@@ -91,7 +79,7 @@ public class ProfielEdit extends Activity {
 
     public void controleIngevuld(){
         clearErrors();
-        cancel = false;
+        boolean cancel = false;
 
         String naam, voornaam, email, gsm, facebook;
 
@@ -165,10 +153,10 @@ public class ProfielEdit extends Activity {
 
             }
             catch(ParseException e){
-                Toast.makeText(getApplicationContext(), "Er is een fout opgetreden. Onze excuses voor het ongemak.", Toast.LENGTH_SHORT);
+                Toast.makeText(getApplicationContext(), "Er is een fout opgetreden. Onze excuses voor het ongemak.", Toast.LENGTH_SHORT).show();
             }
             catch(Exception e){
-                Toast.makeText(getApplicationContext(), "Er is een fout opgetreden. Onze excuses voor het ongemak.", Toast.LENGTH_SHORT);
+                Toast.makeText(getApplicationContext(), "Er is een fout opgetreden. Onze excuses voor het ongemak.", Toast.LENGTH_SHORT).show();
             }
         }
         else{
@@ -214,20 +202,15 @@ public class ProfielEdit extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_profiel_edit, menu);
+        getMenuInflater().inflate(R.menu.back, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.backMenu) {
+            terugSturenNaarProfielDetail(initieleNaam, initieleVoornaam, initieleEmail, initieleGsm, initieleFacebook);
         }
 
         return super.onOptionsItemSelected(item);

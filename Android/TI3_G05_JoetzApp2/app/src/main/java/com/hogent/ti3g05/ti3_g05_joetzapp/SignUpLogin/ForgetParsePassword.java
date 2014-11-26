@@ -15,6 +15,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.List;
+
 public class ForgetParsePassword extends Activity{
 	EditText et_forgetpassword = null;
 	Button btn_submitforgetpassword = null;
@@ -57,13 +59,25 @@ public class ForgetParsePassword extends Activity{
 	}
 	
 	protected void checkEmailID() {
-		if (TextUtils.isEmpty(email)) {
+
+        if (TextUtils.isEmpty(email)) {
 			et_forgetpassword.setError(getString(R.string.error_field_required));
 		} else if (!email.contains("@")) {
 			et_forgetpassword.setError(getString(R.string.error_invalid_email));
 		}
-		else
-			forgotPassword(email);
+        List<ParseUser> gebruikers = null;
+        try {
+            gebruikers = ParseUser.getQuery().find();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        for(ParseUser p : gebruikers)
+        {
+            if(p.getEmail().equals(email))
+                forgotPassword(email);
+        }
+        et_forgetpassword.setError("email bestaat niet");
+
 	}
 
 	public void forgotPassword(String email) {

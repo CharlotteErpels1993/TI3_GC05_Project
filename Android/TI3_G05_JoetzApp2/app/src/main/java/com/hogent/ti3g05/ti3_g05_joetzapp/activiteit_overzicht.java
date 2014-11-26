@@ -54,6 +54,8 @@ public class activiteit_overzicht extends Fragment /*implements SwipeRefreshLayo
     // Connection detector class
     ConnectionDetector cd;
 
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -136,7 +138,7 @@ public class activiteit_overzicht extends Fragment /*implements SwipeRefreshLayo
             mProgressDialog.setIndeterminate(false);
             // Show progressdialog
 
-            //mProgressDialog.show();
+            mProgressDialog.show();
 
         }
 
