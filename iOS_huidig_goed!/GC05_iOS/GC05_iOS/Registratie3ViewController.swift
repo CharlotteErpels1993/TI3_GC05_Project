@@ -13,10 +13,11 @@ class Registratie3ViewController: ResponsiveTextFieldViewController
     var redColor: UIColor = UIColor.redColor()
     
     @IBAction func gaTerugNaarInloggen(sender: AnyObject) {
-        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        /*let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         var destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Inloggen") as UIViewController
         sideMenuController()?.setContentViewController(destViewController)
-        hideSideMenuView()
+        hideSideMenuView()*/
+        annuleerControllerRegistratie(self)
     }
     
     

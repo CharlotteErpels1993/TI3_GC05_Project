@@ -62,7 +62,7 @@ class VakantieDetailsTableViewController: UITableViewController {
         navigationItem.title = vakantie.titel
         korteBeschrijvingLabel.text! = vakantie.korteBeschrijving!
         korteBeschrijvingLabel.sizeToFit()
-        doelgroepLabel.text! = vakantie.doelgroep!
+        doelgroepLabel.text! = ("\(vakantie.minLeeftijd!) - \(vakantie.maxLeeftijd!)")
         vertrekdatumLabel.text = "Vertrekdatum: "
         vertrekdatumLabel.text!.extend(beginDatum!)
         aankomstdatumLabel.text = "Aankomstdatum: "
@@ -167,7 +167,7 @@ class VakantieDetailsTableViewController: UITableViewController {
         } else if segue.identifier == "korteBeschrijvingVakantie" {
             let extraTekstViewController = segue.destinationViewController as ExtraTekstViewController
             extraTekstViewController.tekst = vakantie.korteBeschrijving
-            extraTekstViewController.type = 1 as Int
+            extraTekstViewController.type = 1
         } else if segue.identifier == "inbegrepenPrijs" {
             let extraTekstViewController = segue.destinationViewController as ExtraTekstViewController
             extraTekstViewController.tekst = vakantie.inbegrepenPrijs

@@ -1,6 +1,6 @@
 import Foundation
 
-struct /*class*/ InschrijvingVormingSQL {
+struct InschrijvingVormingSQL {
     
     static func createInschrijvingVormingTable() {
         if let error = SD.createTable("InschrijvingVorming", withColumnNamesAndTypes: ["objectId": .StringVal, "monitor": .StringVal, "periode": .StringVal,
@@ -78,7 +78,7 @@ struct /*class*/ InschrijvingVormingSQL {
     static func getVormingIdMetMonitorId(monitorId: String) -> [String] {
         var vormingenIds: [String] = []
         
-        let (resultSet, err) = SD.executeQuery("SELECT vorming FROM InschrijvingVorming WHERE monitor = \(monitorId)")
+        let (resultSet, err) = SD.executeQuery("SELECT vorming FROM InschrijvingVorming WHERE monitor = ?", withArgs: [monitorId])
         
         if err != nil
         {
@@ -100,7 +100,7 @@ struct /*class*/ InschrijvingVormingSQL {
         var monitorsId: [String] = []
         
         for vorming in vormingen {
-            var (resultSet, err) = SD.executeQuery("SELECT monitor FROM InschrijvingVorming WHERE vorming = \(vorming)")
+            var (resultSet, err) = SD.executeQuery("SELECT monitor FROM InschrijvingVorming WHERE vorming = ?", withArgs: [vorming])
             
             if err != nil
             {

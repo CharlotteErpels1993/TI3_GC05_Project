@@ -14,7 +14,7 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //checkConnectie()
+        checkConnectie()
         var activityIndicator = getActivityIndicatorView(self)
         
         vakanties = ParseData.getAlleVakanties()
@@ -29,6 +29,9 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
             self.navigationItem.setHidesBackButton(true, animated: true)
             self.navigationItem.rightBarButtonItem = nil   
         }
+        
+        //vakanties2.sort({ $0.minLeeftijd< $1.titel})
+        //vakanties.sort({ $0.minLeeftijd < $1.titel })
         
         activityIndicator.stopAnimating()
     }
@@ -114,7 +117,7 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         let vakantie = vakanties2[indexPath.row]
         cell.gaVerderLabel.text = "Meer details"
         cell.vakantieNaamLabel.text = vakantie.titel
-        cell.doelgroepLabel.text! = " \(vakantie.doelgroep!) jaar "
+        cell.doelgroepLabel.text! = " \(vakantie.minLeeftijd!) - \(vakantie.maxLeeftijd!) jaar "
         return cell
     }
     
@@ -132,7 +135,7 @@ func getActivityIndicatorView(controller: UIViewController) -> UIActivityIndicat
     let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
     activityIndicator.color = UIColor.redColor()
     activityIndicator.center = controller.view.center
-    activityIndicator.startAnimating()
+    //activityIndicator.startAnimating()
     controller.view.addSubview(activityIndicator)
 
     return activityIndicator

@@ -13,6 +13,9 @@ class InschrijvenVormingViewController: UIViewController, UIPickerViewDataSource
         pickerView.delegate = self
         pickerView.dataSource = self
     }
+    @IBAction func annuleer(sender: AnyObject) {
+        annuleerControllerInschrijvenVakantieVorming(self)
+    }
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
@@ -34,10 +37,11 @@ class InschrijvenVormingViewController: UIViewController, UIPickerViewDataSource
         if segue.identifier == "inschrijven" {
             let inschrijvenVormingSuccesvolViewController = segue.destinationViewController as InschrijvenVormingSuccesvolViewController
             
-            var query = PFQuery(className: "Monitor")
+            /*var query = PFQuery(className: "Monitor")
             query.whereKey("email", containsString: PFUser.currentUser().email)
             var monitorPF = query.getFirstObject()
-            var monitor = Monitor(monitor: monitorPF)
+            var monitor = Monitor(monitor: monitorPF)*/
+            var monitor = ParseData.getMonitorWithEmail(PFUser.currentUser().email)
             
             if inschrijvingVorming.periode == nil {
                 inschrijvingVorming.periode = pickerData[0]

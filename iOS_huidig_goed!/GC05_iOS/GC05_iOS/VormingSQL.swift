@@ -42,7 +42,7 @@ struct VormingSQL {
         for vorming in vormingen {
             
             queryString.removeAll(keepCapacity: true)
-            
+            periodesString.removeAll(keepCapacity: true)
             objectId = vorming.objectId as String
             titel = vorming["titel"] as String
             locatie = vorming["locatie"] as String

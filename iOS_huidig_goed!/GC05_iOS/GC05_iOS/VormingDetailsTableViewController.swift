@@ -36,7 +36,7 @@ class VormingDetailsTableViewController: UITableViewController {
         prijsLabel.text = String("Prijs: \(vorming.prijs!) " + euro)
         betalingsWijzeLabel.text = String("Betalingswijze: \(vorming.betalingWijze!)")
         inbegrepenPrijsLabel.text = String("Inbegrepen in de prijs: \(vorming.inbegrepenPrijs!)")
-        periodesLabel.text = vorming.periodesToString()
+        //periodesLabel.text = vorming.periodesToString()
         tipsLabel.text = vorming.tips
 
         activityIndicator.stopAnimating()
@@ -67,6 +67,10 @@ class VormingDetailsTableViewController: UITableViewController {
             let extraTekstViewController = segue.destinationViewController as ExtraTekstViewController
             extraTekstViewController.tekst = vorming.inbegrepenPrijs
             extraTekstViewController.type = 2
+        } else if segue.identifier == "periodes" {
+            let extraTekstViewController = segue.destinationViewController as ExtraTekstViewController
+            extraTekstViewController.tekst = vorming.periodesToString(vorming.periodes!)
+            extraTekstViewController.type = 5
         }
     }
 }

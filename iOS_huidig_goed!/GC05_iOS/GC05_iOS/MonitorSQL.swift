@@ -45,7 +45,7 @@ struct MonitorSQL {
         var monitors: [Monitor] = []
         var monitor: Monitor = Monitor(id: "test")
         
-        let (resultSet, err) = SD.executeQuery("SELECT * FROM Monitor WHERE email = \(email)")
+        let (resultSet, err) = SD.executeQuery("SELECT * FROM Monitor WHERE email = ?", withArgs: [email])
         
         if err != nil
         {
@@ -252,8 +252,10 @@ struct MonitorSQL {
         var monitors: [Monitor] = []
         var monitor: Monitor = Monitor(id: "test")
         
+        var aangemeldeMonitor = MonitorSQL.getMonitorWithEmail(PFUser.currentUser().email)
+        
         for mId in monitorIds {
-            var (resultSet, err) = SD.executeQuery("SELECT * FROM Monitor WHERE objectId = \(mId)")
+            var (resultSet, err) = SD.executeQuery("SELECT * FROM Monitor WHERE objectId = ?", withArgs: [mId])
             
             if err != nil
             {
@@ -263,7 +265,11 @@ struct MonitorSQL {
             {
                 for row in resultSet {
                     monitor = getMonitor(row)
-                    monitors.append(monitor)
+                    
+                    if monitor.id != aangemeldeMonitor.id {
+                        monitors.append(monitor)
+                    }
+                    
                 }
             }
             
@@ -301,15 +307,18 @@ struct MonitorSQL {
         var queryString: String = ""
         
         queryString.extend("UPDATE Monitor SET ")
-        queryString.extend("voornaam='\(monitorNieuw.voornaam)', ")
-        queryString.extend("naam='\(monitorNieuw.naam)', ")
-        queryString.extend("telefoon='\(monitorNieuw.telefoon)', ")
-        queryString.extend("gsm='\(monitorNieuw.gsm)', ")
-        queryString.extend("linkFacebook='\(monitorNieuw.linkFacebook)' ")
-        queryString.extend("WHERE email = \(email)")
+        queryString.extend("voornaam=?, ")
+        queryString.extend("naam=?, ")
+        queryString.extend("telefoon=?, ")
+        queryString.extend("gsm=?, ")
+        queryString.extend("linkFacebook=? ")
+        queryString.extend("WHERE email = ?")
         
         /*let (resultSet, err) = SD.executeQuery("UPDATE Monitor SET voornaam='\(monitorNieuw.voornaam)', naam='\(monitorNieuw.naam)', telefoon='\(monitorNieuw.telefoon)', gsm='\(monitorNieuw.gsm)', linkFacebook='\(monitorNieuw.linkFacebook)' WHERE email = \(email)")*/
-        let (resultSet, err) = SD.executeQuery(queryString)
+        
+        let err = SD.executeChange(queryString, withArgs: [monitorNieuw.voornaam!, monitorNieuw.naam!, monitorNieuw.telefoon!, monitorNieuw.gsm!, monitorNieuw.linkFacebook!, email])
+        
+        
         
         if err != nil
         {

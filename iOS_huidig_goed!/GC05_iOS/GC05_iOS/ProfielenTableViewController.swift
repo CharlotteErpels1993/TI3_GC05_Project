@@ -2,13 +2,10 @@ import UIKit
 
 class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, UISearchDisplayDelegate {
     
-    //moet nog static klasse worden!
-    //var parseData: ParseData = ParseData()
-    
     var monitoren: [Monitor] = []
-    var vormingen: [InschrijvingVorming] = []
     var monitoren2: [Monitor] = []
     var monitorenZelfdeVorming: [Monitor] = []
+    var monitorenZelfdeVorming2: [Monitor] = []
     
     @IBOutlet weak var zoekbar: UISearchBar!
     
@@ -19,19 +16,23 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        hideSideMenuView()
+        
+        ParseData.deleteInschrijvingVormingTable()
         
         var activityIndicator = getActivityIndicatorView(self)
         
+        ParseData.vulInschrijvingVormingTableOp()
+        
         var monitor = ParseData.getMonitorWithEmail(PFUser.currentUser().email)
         
-        //zoekMonitoren()
         self.monitorenZelfdeVorming = ParseData.getMonitorsMetDezelfdeVormingen(monitor.id!)
         self.monitoren = ParseData.getMonitorsMetAndereVormingen(self.monitorenZelfdeVorming)
+        self.monitoren2 = self.monitoren
+        self.monitorenZelfdeVorming2 = self.monitorenZelfdeVorming
         
-        
-        //zoekVormingenVanHuidigeMonitor()
-        //zoekMonitorenMetDezelfdeVormingen()
-        
+        monitorenZelfdeVorming.sort({ $0.naam < $1.voornaam })
+        monitoren.sort({ $0.naam < $1.voornaam })
         
         zoekbar.showsScopeBar = true
         zoekbar.delegate = self
@@ -39,79 +40,19 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
         activityIndicator.stopAnimating()
     }
     
-    /*func zoekMonitoren() {
-        monitoren.removeAll(keepCapacity: true)
-        var query = PFQuery(className: "Monitor")
-        query.findObjectsInBackgroundWithBlock({(NSArray objects, NSError error) in
-            if(error == nil) {
-                if let PFObjects = objects as? [PFObject!] {
-                    for object in PFObjects {
-                        var monitor = Monitor(monitor: object)
-                        self.monitoren.append(monitor)
-                    }
-                }
-                println("monitoren: \(self.monitoren)")
-                //self.monitoren2 = self.monitoren
-                self.tableView.reloadData()
-            }
-        })
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        zoekGefilterdeVakanties(searchText.lowercaseString)
     }
     
-    func zoekVormingenVanHuidigeMonitor() {
-        var monitor = getCurrentUser()
-        var query = PFQuery(className: "InschrijvingVorming")
-        query.whereKey("monitor", equalTo: monitor.id)
-        query.findObjectsInBackgroundWithBlock({(NSArray objects, NSError error) in
-            if(error == nil) {
-                if let PFObjects = objects as? [PFObject!] {
-                    for object in PFObjects {
-                        var vorming = InschrijvingVorming(inschrijving: object)
-                        self.vormingen.append(vorming)
-                    }
-                }
-                //self.monitoren2 = self.monitoren
-                println("vormoingen: \(self.vormingen)")
-                self.tableView.reloadData()
-            }
-        })
-    }
-    
-    func zoekMonitorenMetDezelfdeVormingen() {
-        for vorming in self.vormingen {
-            for monitor in self.monitoren {
-                zoekMonitorMetDezelfdeVorming(vorming, monitor: monitor)
-            }
+    func zoekGefilterdeVakanties(zoek: String) {
+        monitoren2 = monitoren.filter { ($0.naam!.lowercaseString.rangeOfString(zoek) != nil) || ($0.voornaam!.lowercaseString.rangeOfString(zoek)  != nil) }
+        monitorenZelfdeVorming2 = monitorenZelfdeVorming.filter { ($0.naam!.lowercaseString.rangeOfString(zoek) != nil) || ($0.voornaam!.lowercaseString.rangeOfString(zoek)  != nil) }
+        if zoek.isEmpty {
+            self.monitoren2 = monitoren
+            self.monitorenZelfdeVorming2 = monitorenZelfdeVorming
         }
-        println("monitorenZelfdeVorming \(self.monitorenZelfdeVorming)")
+        self.tableView.reloadData()
     }
-    
-    func zoekMonitorMetDezelfdeVorming(vorming: InschrijvingVorming, monitor: Monitor) {
-        var query = PFQuery(className: "InschrijvenVorming")
-        query.whereKey("monitor", equalTo: monitor.id)
-        query.whereKey("vorming", equalTo: vorming.id)
-        query.findObjectsInBackgroundWithBlock({(NSArray objects, NSError error) in
-            if(error == nil) {
-                if let PFObjects = objects as? [PFObject!] {
-                    for object in PFObjects {
-                        var vorming2 = InschrijvingVorming(inschrijving: object)
-                        self.monitorenZelfdeVorming.append(monitor)
-                    }
-                }
-                //self.monitoren2 = self.monitoren
-                self.tableView.reloadData()
-            }
-        })
-        
-        
-    }*/
-    
-    
-    /*func getCurrentUser() -> Monitor {
-        var query = PFQuery(className: "Monitor")
-        query.whereKey("email", containsString: PFUser.currentUser().email)
-        var monitorPF = query.getFirstObject()
-        return Monitor(monitor: monitorPF)
-    }*/
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 2
@@ -119,31 +60,61 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            // TO DO --> monitoren zelfde kamp/vorming
-            return monitorenZelfdeVorming.count
-        } else if section == 2 {
-            return monitoren.count
+            return monitorenZelfdeVorming2.count
+        } else if section == 1 {
+            return monitoren2.count
         }
         return 0
     }
     
     
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return("Monitoren zelfde vorming")
+        } else if section == 1 {
+            return("Andere monitoren")
+        } else {
+            return("")
+        }
+    }
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         if indexPath.section == 0 {
-            /* TO DO --> monitoren zelfde kamp/vorming */
-            
             let cell = tableView.dequeueReusableCellWithIdentifier("monitorCellZelfdeVorming", forIndexPath: indexPath) as UITableViewCell
-            let monitor = monitorenZelfdeVorming[indexPath.row]
+            let monitor = monitorenZelfdeVorming2[indexPath.row]
             cell.textLabel.text = monitor.voornaam! + " " + monitor.naam!
             cell.detailTextLabel!.text = "Meer informatie"
             return cell
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier("monitorCell", forIndexPath: indexPath) as UITableViewCell
-            let monitor = monitoren[indexPath.row]
-            cell.textLabel.text = monitor.voornaam! + " " + monitor.voornaam!
+            let monitor = monitoren2[indexPath.row]
+            cell.textLabel.text = monitor.voornaam! + " " + monitor.naam!
             cell.detailTextLabel?.text = "Meer informatie"
             return cell
         }
     }
+    
+    override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.section == 1 {
+            performSegueWithIdentifier("toonProfiel1", sender: indexPath)
+        }else {
+            performSegueWithIdentifier("toonProfiel2", sender: indexPath)
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        let monitorDetailsController = segue.destinationViewController as ProfielDetailsTableViewController
+        var selectedMonitor: Monitor
+        
+        if segue.identifier == "toonProfiel1" {
+            selectedMonitor = monitorenZelfdeVorming2[tableView.indexPathForSelectedRow()!.row]
+        } else {
+            selectedMonitor = monitoren2[tableView.indexPathForSelectedRow()!.row]
+        }
+        
+        monitorDetailsController.monitor = selectedMonitor as Monitor
+    }
+
 }
