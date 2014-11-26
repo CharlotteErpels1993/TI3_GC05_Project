@@ -128,7 +128,9 @@ class Registratie1ViewController: ResponsiveTextFieldViewController
         if txtAansluitingsNr.text.isEmpty {
             statusTextFields["aansluitingsNr"] = "leeg"
         } else {
-            if !checkPatternAansluitingsNr(txtAansluitingsNr.text.toInt()!) {
+            if !controleerGeldigheidNummer(txtAansluitingsNr.text) {
+                statusTextFields["aansluitingsNr"] = "ongeldig"
+            } else if !checkPatternAansluitingsNr(txtAansluitingsNr.text.toInt()!) {
                 statusTextFields["aansluitingsNr"] = "ongeldig"
             } else {
                 statusTextFields["aansluitingsNr"] = "geldig"
@@ -138,7 +140,9 @@ class Registratie1ViewController: ResponsiveTextFieldViewController
         if txtCodeGerechtigde.text.isEmpty {
             statusTextFields["codeGerechtigde"] = "leeg"
         } else {
-            if !checkPatternCodeGerechtigde(txtCodeGerechtigde.text.toInt()!) {
+            if !controleerGeldigheidNummer(txtCodeGerechtigde.text) {
+                statusTextFields["codeGerechtigde"] = "ongeldig"
+            } else if !checkPatternCodeGerechtigde(txtCodeGerechtigde.text.toInt()!) {
                 statusTextFields["codeGerechtigde"] = "ongeldig"
             } else {
                 statusTextFields["codeGerechtigde"] = "geldig"
@@ -158,7 +162,9 @@ class Registratie1ViewController: ResponsiveTextFieldViewController
         if txtAansluitingsNrTweedeOuder.text.isEmpty {
             statusTextFields["aansluitingsNrTweedeOuder"] = "leeg"
         } else {
-            if !checkPatternAansluitingsNr(txtAansluitingsNrTweedeOuder.text.toInt()!) {
+            if !controleerGeldigheidNummer(txtAansluitingsNrTweedeOuder.text) {
+                statusTextFields["aansluitingsNrTweedeOuder"] = "ongeldig"
+            } else if !checkPatternAansluitingsNr(txtAansluitingsNrTweedeOuder.text.toInt()!) {
                 statusTextFields["aansluitingsNrTweedeOuder"] = "ongeldig"
             } else {
                 statusTextFields["aansluitingsNrTweedeOuder"] = "geldig"
