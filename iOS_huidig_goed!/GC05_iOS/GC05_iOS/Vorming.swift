@@ -21,7 +21,7 @@ class Vorming: Activiteit
         super.init(id: id)
     }
     
-    init(vorming: PFObject) {
+    /*init(vorming: PFObject) {
         self.periodes = vorming["periodes"] as? [String]
         self.prijs = vorming["prijs"] as? Double
         self.criteriaDeelnemers = vorming["criteriaDeelnemers"] as? String
@@ -31,7 +31,7 @@ class Vorming: Activiteit
         //self.inbegrepenPrijs = vomring["in"]
         super.init(activiteit: vorming)
         
-    }
+    }*/
     
     init(id: String, titel: String, locatie: String, korteBeschrijving: String, periodes: [String], prijs: Double, criteriaDeelnemers: String, websiteLocatie: String, tips: String, betalingWijze: String) {
         

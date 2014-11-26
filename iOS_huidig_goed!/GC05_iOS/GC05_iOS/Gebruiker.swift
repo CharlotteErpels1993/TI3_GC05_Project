@@ -22,7 +22,7 @@ class Gebruiker
         self.id = id
     }
     
-    init(gebruiker: PFObject) {
+    /*init(gebruiker: PFObject) {
         self.id = gebruiker.objectId
         self.rijksregisterNr = gebruiker["rijksregisterNr"] as? String
         self.email = gebruiker["email"] as? String
@@ -38,7 +38,7 @@ class Gebruiker
         self.gsm = gebruiker["gsm"] as? String
         self.aansluitingsNr = gebruiker["aansluitingsNr"] as? Int
         self.codeGerechtigde = gebruiker["codeGerechtigde"] as? Int
-    }
+    }*/
     
     init(rijksregisterNr: String, email: String, wachtwoord: String, voornaam: String, naam: String, straat: String, nummer: Int, bus: String, gemeente: String, postcode: Int, telefoon: String, gsm: String, aansluitingsNr: Int, codeGerechtigde: Int) {
         self.rijksregisterNr = rijksregisterNr

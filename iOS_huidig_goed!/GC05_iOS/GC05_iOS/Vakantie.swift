@@ -34,7 +34,9 @@ class Vakantie: Activiteit
     }*/
 
     var inbegrepenPrijs: String?
-    var doelgroep: String? // TYPE?
+    //var doelgroep: String? // TYPE?
+    var minLeeftijd: Int?
+    var maxLeeftijd: Int?
     
     var maxAantalDeelnemers: Int?/* {
         willSet {
@@ -46,7 +48,7 @@ class Vakantie: Activiteit
         super.init(id: id)
     }
     
-    init(vakantie: PFObject) {
+    /*init(vakantie: PFObject) {
 
         self.vertrekdatum = vakantie["vertrekdatum"] as? NSDate
         self.terugkeerdatum = vakantie["terugkeerdatum"] as? NSDate
@@ -64,7 +66,7 @@ class Vakantie: Activiteit
         super.init(activiteit: vakantie)
         
     }
-    
+    */
     
     init(id: String, titel: String, locatie: String, korteBeschrijving: String, beginDatum: NSDate, terugkeerDatum: NSDate, aantalDagenNachten: String, vervoerwijze: String, formule: String, basisprijs: Double, bondMoysonLedenPrijs: Double, sterPrijs1: Double, sterPrijs2: Double, kortingen: String, inbegrepenPrijs: String, doelgroep: String, maxAantalDeelnemers: Int) {
         
