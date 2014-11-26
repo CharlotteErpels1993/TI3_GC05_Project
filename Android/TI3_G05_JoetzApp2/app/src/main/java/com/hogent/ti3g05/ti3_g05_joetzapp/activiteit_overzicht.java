@@ -19,6 +19,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
@@ -39,6 +40,8 @@ public class activiteit_overzicht extends Fragment /*implements SwipeRefreshLayo
     private ListView listview;
     private List<ParseObject> ob;
 
+    private Button refresh;
+
     private myDb myDB;
     Vakantie map;
     private ProgressDialog mProgressDialog;
@@ -48,7 +51,7 @@ public class activiteit_overzicht extends Fragment /*implements SwipeRefreshLayo
     private ListViewAdapter adapter;
     private List<Vakantie> vakanties = null;
     private EditText filtertext;
-    //SwipeRefreshLayout swipeLayout;
+    SwipeRefreshLayout swipeLayout;
 
     Boolean isInternetPresent = false;
     // Connection detector class
@@ -68,6 +71,7 @@ public class activiteit_overzicht extends Fragment /*implements SwipeRefreshLayo
         //swipeLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_container);
         //onCreateSwipeToRefresh(swipeLayout);
 
+        refresh = (Button) rootView.findViewById(R.id.refreshAct);
         cd = new ConnectionDetector(rootView.getContext());
         myDB = new myDb(rootView.getContext());
         myDB.open();
@@ -98,11 +102,26 @@ public class activiteit_overzicht extends Fragment /*implements SwipeRefreshLayo
             });
         }
 
+        refresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (isInternetPresent) {
+                   /* swipeLayout.setColorScheme(
+                            android.R.color.holo_blue_light,
+                            android.R.color.holo_orange_light,
+                            android.R.color.holo_green_light,
+                            android.R.color.holo_red_light);
+                    onRefresh();*/
+                    new RemoteDataTask().execute();
+                }
+            }
+        });
+
         return rootView;
     }
-    /*private void onCreateSwipeToRefresh(SwipeRefreshLayout refreshLayout) {
+   /* private void onCreateSwipeToRefresh(SwipeRefreshLayout refreshLayout) {
 
-        refreshLayout.setOnRefreshListener(this);
+        //refreshLayout.setOnRefreshListener(this);
 
         refreshLayout.setColorScheme(
                 android.R.color.holo_blue_light,
@@ -110,8 +129,8 @@ public class activiteit_overzicht extends Fragment /*implements SwipeRefreshLayo
                 android.R.color.holo_green_light,
                 android.R.color.holo_red_light);
 
-    }
-    @Override
+    }*/
+
     public void onRefresh() {
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -122,7 +141,7 @@ public class activiteit_overzicht extends Fragment /*implements SwipeRefreshLayo
 
             }
         }, 1000);
-    }*/
+    }
 
     // RemoteDataTask AsyncTask
     private class RemoteDataTask extends AsyncTask<Void, Void, Void> {
@@ -186,7 +205,7 @@ public class activiteit_overzicht extends Fragment /*implements SwipeRefreshLayo
                             map.setSterPrijs2Ouder((Number) vakantie.get("sterPrijs2ouders"));
                         //TODO gegevens contactpersoon vakantie
                         map.setMaxDoelgroep((Integer)vakantie.get("maxLeeftijd"));
-                        map.setMinDoelgroep((Integer)vakantie.get("minLeeftijd"));
+                        map.setMinDoelgroep((Integer) vakantie.get("minLeeftijd"));
 
                         map.setFoto1(image.getUrl());
                         map.setFoto2(image2.getUrl());

@@ -126,5 +126,6 @@ De smaak te pakken? Wacht dan niet te lang en boek een onvergetelijke JOETZ-vaka
     <string name="doorgeven_message">Uw gegevens worden doorgestuurd. Even geduld aub.</string>
     <string name="SuccesvolDoorgegeven">Uw periodes zijn succesvol doorgegeven.</string>
     <string name="btn_ProfielEdit">Profiel wijzigen</string>
+    <string name="refresh">Refresh</string>
 
 </resources>
