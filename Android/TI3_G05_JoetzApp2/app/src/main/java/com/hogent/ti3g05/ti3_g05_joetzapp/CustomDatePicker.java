@@ -19,6 +19,8 @@ public /*static*/ class CustomDatePicker extends DialogFragment
     private int mMonth;
     private int mDay;
     private Date date;
+    private int maxYear;
+    private int maxMonth, maxDay;
 
     public int getDay(){return mDay;}
 
@@ -38,8 +40,12 @@ public /*static*/ class CustomDatePicker extends DialogFragment
         int month = c.get(Calendar.MONTH);
         int day = c.get(Calendar.DAY_OF_MONTH);
 
+        maxYear = c.get(Calendar.YEAR);
+        maxMonth = c.get(Calendar.MONTH);
+        maxDay = c.get(Calendar.DAY_OF_MONTH);
+        Date maxDate = new Date(maxYear, maxMonth, maxDay);
         DatePickerDialog dialog = new DatePickerDialog(getActivity(), this, year, month, day);
-        //dialog.getDatePicker().setMaxDate(date.getDate());
+        dialog.getDatePicker().setMaxDate(now.getTime());
         // Create a new instance of DatePickerDialog and return it
         return dialog;
     }
