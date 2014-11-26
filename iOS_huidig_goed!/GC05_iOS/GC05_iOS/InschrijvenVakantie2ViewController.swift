@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 
 class InschrijvenVakantie2ViewController : ResponsiveTextFieldViewController {
-    var deelnemer: Deelnemer!
+    var inschrijvingVakantie: InschrijvingVakantie!
     var redColor: UIColor = UIColor.redColor()
     //var ouder: Ouder!
     
@@ -14,14 +14,14 @@ class InschrijvenVakantie2ViewController : ResponsiveTextFieldViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "volgende" {
             var leeftijd = calculateAge(dpGeboortedatum.date)
-            var minLeeftijd = deelnemer.inschrijvingVakantie?.vakantie?.minLeeftijd
-            var maxLeeftijd = deelnemer.inschrijvingVakantie?.vakantie?.maxLeeftijd
+            var minLeeftijd = inschrijvingVakantie.vakantie?.minLeeftijd
+            var maxLeeftijd = inschrijvingVakantie?.vakantie?.maxLeeftijd
             
             if leeftijd >= minLeeftijd && leeftijd <= maxLeeftijd {
                 print("goed")
                 let inschrijvenVakantie3ViewController = segue.destinationViewController as InschrijvenVakantie3ViewController
-                deelnemer.geboortedatum = dpGeboortedatum.date
-                inschrijvenVakantie3ViewController.deelnemer = deelnemer
+                inschrijvingVakantie.deelnemer?.geboortedatum = dpGeboortedatum.date
+                inschrijvenVakantie3ViewController.inschrijvingVakantie = inschrijvingVakantie
             } else {
                 print("fout")
                // charlotte
@@ -51,4 +51,18 @@ class InschrijvenVakantie2ViewController : ResponsiveTextFieldViewController {
             return dateComponentNow.year - dateComponentBirth.year
         }
     }
+    
+    /*func controleerKindAlIngeschreven() -> Bool {
+        var inschrijvingen: [InschrijvingVakantie] = []
+        
+        inschrijvingen = ParseData.getInschrijvingenVakantie(inschrijvingVakantie)
+        
+        if inschrijvingen.count > 0 {
+            return true
+        }
+        
+        return false
+    }*/
+    
+    
 }

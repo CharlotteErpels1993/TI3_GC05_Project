@@ -7,18 +7,18 @@ class ContactpersoonNood
     var naam: String?
     var telefoon: String?
     var gsm: String?
-    var inschrijvingVakantie: InschrijvingVakantie?
+    //var inschrijvingVakantie: InschrijvingVakantie?
     
     init(id: String) {
         self.id = id
     }
     
-    init(id: String, voornaam: String, naam: String, telefoon: String, gsm: String, inschrijvingVakantie: InschrijvingVakantie) {
+    init(id: String, voornaam: String, naam: String, telefoon: String, gsm: String/*, inschrijvingVakantie: InschrijvingVakantie*/) {
         self.id = id
         self.naam = naam
         self.voornaam = voornaam
         self.telefoon = telefoon
         self.gsm = gsm
-        self.inschrijvingVakantie = inschrijvingVakantie
+        //self.inschrijvingVakantie = inschrijvingVakantie
     }
 }

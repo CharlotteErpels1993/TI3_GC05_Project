@@ -4,9 +4,9 @@ import QuartzCore
 
 class InschrijvenVakantie5ViewController : ResponsiveTextFieldViewController {
     var wilExtraInfo: Bool! = true
-    var deelnemer: Deelnemer!
-    var contactpersoon1: ContactpersoonNood!
-    var contactpersoon2: ContactpersoonNood?
+    var inschrijvingVakantie: InschrijvingVakantie!
+    //var contactpersoon1: ContactpersoonNood!
+    //var contactpersoon2: ContactpersoonNood?
     
     @IBOutlet weak var switchExtraInfo: UISwitch!
     
@@ -42,17 +42,17 @@ class InschrijvenVakantie5ViewController : ResponsiveTextFieldViewController {
                 giveUITextViewRedBorder(txtViewExtraInfo)
                 foutBoxOproepen("Fout", "Gelieve het veld in te vullen!", self)
             } else {
-                deelnemer.inschrijvingVakantie?.extraInfo = txtViewExtraInfo.text
+                inschrijvingVakantie.extraInfo = txtViewExtraInfo.text
             }
         } else {
-            deelnemer.inschrijvingVakantie?.extraInfo = ""
+            inschrijvingVakantie.extraInfo = ""
         }
-        inschrijvenVakantieSuccesvolViewController.deelnemer = deelnemer
-        inschrijvenVakantieSuccesvolViewController.contactpersoon1 = contactpersoon1
+        inschrijvenVakantieSuccesvolViewController.inschrijvingVakantie = inschrijvingVakantie
+        //inschrijvenVakantieSuccesvolViewController.contactpersoon1 = contactpersoon1
         
-        if contactpersoon2 != nil {
-            inschrijvenVakantieSuccesvolViewController.contactpersoon2 = contactpersoon2
-        }
+        /*if contactpersoon2 != nil {
+            //inschrijvenVakantieSuccesvolViewController.contactpersoon2 = contactpersoon2
+        }*/
         } else if segue.identifier == "gaTerug" {
             let vakantiesTableViewController = segue.destinationViewController as VakantiesTableViewController
         }

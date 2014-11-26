@@ -2,9 +2,9 @@ import Foundation
 import UIKit
 
 class InschrijvenVakantieSuccesvolViewController : UIViewController {
-    var deelnemer: Deelnemer!
-    var contactpersoon1: ContactpersoonNood!
-    var contactpersoon2: ContactpersoonNood?
+    var inschrijvingVakantie: InschrijvingVakantie!
+    //var contactpersoon1: ContactpersoonNood!
+    //var contactpersoon2: ContactpersoonNood?
 
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
 
@@ -14,19 +14,32 @@ class InschrijvenVakantieSuccesvolViewController : UIViewController {
         super.viewDidLoad()
         activityIndicatorView.startAnimating()
         
+        var deelnemerId = ParseData.parseDeelnemerToDatabase(inschrijvingVakantie.deelnemer!)
+        var contactpersoon1Id = ParseData.parseContactpersoonNoodToDatabase(inschrijvingVakantie.contactpersoon1!)
+        
+        inschrijvingVakantie.deelnemer?.id = deelnemerId
+        inschrijvingVakantie.contactpersoon1?.id = contactpersoon1Id
+        
+        if inschrijvingVakantie.contactpersoon2 != nil {
+            var contactpersoon2Id = ParseData.parseContactpersoonNoodToDatabase(inschrijvingVakantie.contactpersoon2!)
+            inschrijvingVakantie.contactpersoon2?.id = contactpersoon2Id
+        }
+        
+        ParseData.parseInschrijvingVakantieToDatabase(inschrijvingVakantie)
+        
         //var iv: PFObject = parseInschrijvingVakantieToDatabase(deelnemer.inschrijvingVakantie!)
-        var inschrijvingId = ParseData.parseInschrijvingVakantieToDatabase(deelnemer.inschrijvingVakantie!)
+        //var inschrijvingId = ParseData.parseInschrijvingVakantieToDatabase(deelnemer.inschrijvingVakantie!)
         
         //parseDeelnemerToDatabase(deelnemer, inschrijvingVakantie: iv)
-        ParseData.parseDeelnemerToDatabase(deelnemer, inschrijvingId: inschrijvingId)
+        //ParseData.parseDeelnemerToDatabase(deelnemer, inschrijvingId: inschrijvingId)
         
         //parseContactpersoonToDatabase(contactpersoon1, inschrijvingVakantie: iv)
-        ParseData.parseContactpersoonNoodToDatabase(contactpersoon1, inschrijvingId: inschrijvingId)
+        //ParseData.parseContactpersoonNoodToDatabase(contactpersoon1, inschrijvingId: inschrijvingId)
         
-        if contactpersoon2?.naam != nil {
+        /*if contactpersoon2?.naam != nil {
             //parseContactpersoonToDatabase(contactpersoon2!, inschrijvingVakantie: iv)
             ParseData.parseContactpersoonNoodToDatabase(contactpersoon2!, inschrijvingId: inschrijvingId)
-        }
+        }*/
         
         self.navigationItem.setHidesBackButton(true, animated: true)
 
