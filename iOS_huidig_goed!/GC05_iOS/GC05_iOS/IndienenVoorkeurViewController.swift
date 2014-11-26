@@ -14,10 +14,6 @@ class IndienenVoorkeurViewController: UIViewController, UIPickerViewDataSource, 
     
     @IBAction func gaTerugNaarOverzicht(sender: AnyObject) {
         annuleerControllerVoorkeur(self)
-        /*let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        var destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Profiel") as UIViewController
-        sideMenuController()?.setContentViewController(destViewController)
-        hideSideMenuView()*/
     }
     
     /*func zoekVakanties() {

@@ -11,6 +11,7 @@ class InschrijvenVormingSuccesvolViewController: UIViewController {
         activityIndicatorView.startAnimating()
         
         ParseData.parseInschrijvingVormingToDatabase(inschrijvingVorming)
+        self.navigationItem.setHidesBackButton(true, animated: true)
         
         activityIndicatorView.stopAnimating()
     }
