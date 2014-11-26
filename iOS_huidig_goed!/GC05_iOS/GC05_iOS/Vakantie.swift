@@ -68,7 +68,7 @@ class Vakantie: Activiteit
     }
     */
     
-    init(id: String, titel: String, locatie: String, korteBeschrijving: String, beginDatum: NSDate, terugkeerDatum: NSDate, aantalDagenNachten: String, vervoerwijze: String, formule: String, basisprijs: Double, bondMoysonLedenPrijs: Double, sterPrijs1: Double, sterPrijs2: Double, kortingen: String, inbegrepenPrijs: String, doelgroep: String, maxAantalDeelnemers: Int) {
+    init(id: String, titel: String, locatie: String, korteBeschrijving: String, beginDatum: NSDate, terugkeerDatum: NSDate, aantalDagenNachten: String, vervoerwijze: String, formule: String, basisprijs: Double, bondMoysonLedenPrijs: Double, sterPrijs1: Double, sterPrijs2: Double, kortingen: String, inbegrepenPrijs: String, minLeeftijd: Int, maxLeeftijd: Int, maxAantalDeelnemers: Int) {
         
         self.vertrekdatum = beginDatum
         self.terugkeerdatum = terugkeerDatum
@@ -80,7 +80,8 @@ class Vakantie: Activiteit
         self.sterPrijs1ouder = sterPrijs1
         self.sterPrijs2ouders = sterPrijs2
         self.inbegrepenPrijs = inbegrepenPrijs
-        self.doelgroep = doelgroep
+        self.minLeeftijd = minLeeftijd
+        self.maxLeeftijd = maxLeeftijd
         self.maxAantalDeelnemers = maxAantalDeelnemers
         
         super.init(id: id, titel: titel, locatie: locatie, korteBeschrijving: korteBeschrijving)

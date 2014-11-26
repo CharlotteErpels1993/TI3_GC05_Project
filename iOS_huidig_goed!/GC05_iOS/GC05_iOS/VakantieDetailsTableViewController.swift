@@ -62,7 +62,7 @@ class VakantieDetailsTableViewController: UITableViewController {
         navigationItem.title = vakantie.titel
         korteBeschrijvingLabel.text! = vakantie.korteBeschrijving!
         korteBeschrijvingLabel.sizeToFit()
-        doelgroepLabel.text! = vakantie.doelgroep!
+        doelgroepLabel.text! = ("\(vakantie.minLeeftijd!) - \(vakantie.maxLeeftijd!)")
         vertrekdatumLabel.text = "Vertrekdatum: "
         vertrekdatumLabel.text!.extend(beginDatum!)
         aankomstdatumLabel.text = "Aankomstdatum: "

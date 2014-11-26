@@ -30,8 +30,8 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
             self.navigationItem.rightBarButtonItem = nil   
         }
         
-        vakanties2.sort({ $0.doelgroep < $1.titel })
-        vakanties.sort({ $0.doelgroep < $1.titel })
+        //vakanties2.sort({ $0.minLeeftijd< $1.titel})
+        //vakanties.sort({ $0.minLeeftijd < $1.titel })
         
         activityIndicator.stopAnimating()
     }
@@ -117,7 +117,7 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         let vakantie = vakanties2[indexPath.row]
         cell.gaVerderLabel.text = "Meer details"
         cell.vakantieNaamLabel.text = vakantie.titel
-        cell.doelgroepLabel.text! = " \(vakantie.doelgroep!) jaar "
+        cell.doelgroepLabel.text! = " \(vakantie.minLeeftijd!) - \(vakantie.maxLeeftijd!) jaar "
         return cell
     }
     
