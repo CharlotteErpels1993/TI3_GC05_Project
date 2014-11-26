@@ -136,7 +136,7 @@ public class InschrijvenVakantiePart3 extends Activity {
         }
         try{
 
-           /* String deelnemerId = null;
+           String deelnemerId = null;
             String contactpersoonId = null;
 
                 ParseQuery<ParseObject> querry = new ParseQuery<ParseObject>(
@@ -175,10 +175,10 @@ public class InschrijvenVakantiePart3 extends Activity {
                     }
 
                 }
-            ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(
+            ParseQuery<ParseObject> queryI = new ParseQuery<ParseObject>(
                     "InschrijvingVakantie");
 
-            ob3 = query.find();
+            ob3 = queryI.find();
             for (ParseObject inschrijving : ob3) {
                 if (inschrijving.get("contactpersoon1").equals(contactpersoonId) && inschrijving.get("deelnemer").equals(deelnemerId) && inschrijving.get("vakantie").equals(activiteitID)) {
                     Toast.makeText(InschrijvenVakantiePart3.this, "U heeft zich al ingeschreven voor deze vorming.", Toast.LENGTH_LONG).show();
@@ -186,7 +186,7 @@ public class InschrijvenVakantiePart3 extends Activity {
 
                 }
 
-            }*/
+            }
 
 
             ParseObject contactPers = new ParseObject("ContactpersoonNood");

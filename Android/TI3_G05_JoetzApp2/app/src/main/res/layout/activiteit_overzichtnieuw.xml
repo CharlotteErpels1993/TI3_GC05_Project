@@ -19,7 +19,7 @@
         android:text="@string/refresh"
         android:id="@+id/refreshAct"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:layout_alignParentEnd="true"/>
     <ListView
         android:id="@+id/listView"

@@ -137,14 +137,18 @@ public class navBarMainScreen extends Activity {
                 // Getting reference to the FragmentManager
                 FragmentManager fragmentManager = getFragmentManager();
 
-                // Creating a fragment transaction
-                FragmentTransaction ft = fragmentManager.beginTransaction();
+                if(ParseUser.getCurrentUser() != null)
+                {
+                    // Creating a fragment transaction
+                    FragmentTransaction ft = fragmentManager.beginTransaction();
 
-                // Adding a fragment to the fragment transaction
-                ft.replace(R.id.content_frame, rFragment);
+                    // Adding a fragment to the fragment transaction
+                    ft.replace(R.id.content_frame, rFragment);
 
-                // Committing the transaction
-                ft.commit();
+                    // Committing the transaction
+                    ft.commit();
+                }
+
 
                 // Closing the drawer
                 mDrawerLayout.closeDrawer(mDrawerList);
@@ -172,6 +176,7 @@ public class navBarMainScreen extends Activity {
                     Toast.makeText(this,"U hebt niet de juiste bevoegdheid om dit te bekijken.", Toast.LENGTH_SHORT).show();
                     Intent intent1 = new Intent(navBarMainScreen.this, navBarMainScreen.class
                     );
+                    refreshFragment(position);
                     startActivity(intent1);
                 }
 
@@ -183,6 +188,7 @@ public class navBarMainScreen extends Activity {
                     Toast.makeText(this, "U hebt niet de juiste bevoegdheid om dit te bekijken.", Toast.LENGTH_SHORT).show();
                     Intent intent1 = new Intent(navBarMainScreen.this, navBarMainScreen.class
                     );
+                    refreshFragment(position);
                     startActivity(intent1); }
                 else{
                     if (ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("monitor"))
@@ -195,6 +201,7 @@ public class navBarMainScreen extends Activity {
                         Toast.makeText(this, "U hebt niet de juiste bevoegdheid om dit te bekijken.", Toast.LENGTH_SHORT).show();
                         Intent intent1 = new Intent(navBarMainScreen.this, navBarMainScreen.class
                         );
+                        refreshFragment(position);
                         startActivity(intent1);
                     }
                 }
@@ -212,11 +219,13 @@ public class navBarMainScreen extends Activity {
                             Toast.makeText(this, "U hebt niet de juiste bevoegdheid om dit te bekijken.", Toast.LENGTH_SHORT).show();
                             Intent intent1 = new Intent(navBarMainScreen.this, navBarMainScreen.class
                             );
+                            refreshFragment(position);
                             startActivity(intent1);
                         }
                     } else {
                         Intent intent1 = new Intent(navBarMainScreen.this, navBarMainScreen.class
                         );
+                        refreshFragment(position);
                         startActivity(intent1);
                     }
                 } else
@@ -224,6 +233,7 @@ public class navBarMainScreen extends Activity {
                     Toast.makeText(this, "Kan geen verbinding maken met de server. Controleer uw internetconnectie.", Toast.LENGTH_SHORT).show();
                     Intent intent1 = new Intent(navBarMainScreen.this, navBarMainScreen.class
                     );
+                    refreshFragment(position);
                     startActivity(intent1);
                 }
                 break;
@@ -235,9 +245,30 @@ public class navBarMainScreen extends Activity {
 
                 break;
 
+
             default:
                 break;
         }
+
+       /* if(fragment != null)
+        {
+            FragmentManager fragmentManager = getFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
+
+            mDrawerList.setItemChecked(position, true);
+            mDrawerList.setSelection(position);
+            setTitle(menuItems[position]);
+            mDrawerLayout.closeDrawer(mDrawerList);
+
+        } else
+        {
+            Log.e("Error", "Error in het maken van fragment");
+        }*/
+
+    }
+
+    protected void refreshFragment(int position)
+    {
         if(fragment != null)
         {
             FragmentManager fragmentManager = getFragmentManager();
@@ -253,6 +284,8 @@ public class navBarMainScreen extends Activity {
             Log.e("Error", "Error in het maken van fragment");
         }
     }
+
+
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
