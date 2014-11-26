@@ -4,12 +4,7 @@ class RegistratieSuccesvolViewController: UIViewController
 {
     var ouder: Ouder!
     
-    //moet nog static klasse worden!
-    //var parseData: ParseData = ParseData()
-    
-    
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
-    
     
     @IBAction func gaTerugNaarInloggen(sender: AnyObject) {
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
@@ -22,14 +17,7 @@ class RegistratieSuccesvolViewController: UIViewController
         super.viewDidLoad()
         activityIndicatorView.startAnimating()
         
-        //parseOuderToDatabase()
         ParseData.parseOuderToDatabase(ouder)
-        
-        //deze methodes worden ook in ParseData direct uitgevoerd
-        //createPFUser()
-        //logIn()
-        
-        
         
         self.navigationItem.setHidesBackButton(true, animated: true)
 
