@@ -44,9 +44,9 @@ class InschrijvenVakantie1ViewController : ResponsiveTextFieldViewController {
             }
             
             inschrijvingVakantie.vakantie = vakantie
-            deelnemer.inschrijvingVakantie = inschrijvingVakantie
+            inschrijvingVakantie.deelnemer = deelnemer
             
-            inschrijvenVakantie2ViewController.deelnemer = deelnemer
+            inschrijvenVakantie2ViewController.inschrijvingVakantie = inschrijvingVakantie
             }
         } else if segue.identifier == "gaTerug" {
             let vakantiesTableViewController = segue.destinationViewController as VakantiesTableViewController
@@ -186,7 +186,8 @@ class InschrijvenVakantie1ViewController : ResponsiveTextFieldViewController {
         self.deelnemer.nummer = txtNummer.text.toInt()!
         self.deelnemer.postcode = txtPostcode.text.toInt()!
         self.deelnemer.gemeente = txtGemeente.text
-        self.deelnemer.inschrijvingVakantie = InschrijvingVakantie(id: "test")
-        self.deelnemer.inschrijvingVakantie?.vakantie = self.vakantie
+        //self.deelnemer.inschrijvingVakantie = InschrijvingVakantie(id: "test")
+        self.inschrijvingVakantie.vakantie = self.vakantie
+        self.inschrijvingVakantie.ouder = ParseData.getOuderWithEmail(PFUser.currentUser().email)
     }
 }

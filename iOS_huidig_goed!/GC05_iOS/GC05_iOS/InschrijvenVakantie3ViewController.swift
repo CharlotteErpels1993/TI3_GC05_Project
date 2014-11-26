@@ -3,7 +3,7 @@ import UIKit
 import QuartzCore
 
 class InschrijvenVakantie3ViewController : ResponsiveTextFieldViewController {
-    var deelnemer: Deelnemer!
+    var inschrijvingVakantie: InschrijvingVakantie!
     var foutBox: FoutBox? = nil
     var redColor: UIColor = UIColor.redColor()
     var statusTextFields: [String: String] = [:]
@@ -34,8 +34,9 @@ class InschrijvenVakantie3ViewController : ResponsiveTextFieldViewController {
                 contactpersoon.telefoon = txtTelefoon.text
             }
         
-            inschrijvenVakantie4ViewController.contactpersoon1 = contactpersoon
-            inschrijvenVakantie4ViewController.deelnemer = deelnemer
+            inschrijvingVakantie.contactpersoon1 = contactpersoon
+            inschrijvenVakantie4ViewController.inschrijvingVakantie = inschrijvingVakantie
+            //inschrijvenVakantie4ViewController.deelnemer = deelnemer
             //inschrijvenVakantie4ViewController.ouder = ouder
         }
         } else if segue.identifier == "gaTerug" {

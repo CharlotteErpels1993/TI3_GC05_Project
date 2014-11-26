@@ -4,10 +4,6 @@ class IndienenVoorkeurSuccesvolViewController: UIViewController {
     
     var voorkeur: Voorkeur!
     
-    //moet nog static klasse worden!
-    //var parseData: ParseData = ParseData()
-    
-    
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
     @IBAction func gaTerugNaarOverzicht(sender: AnyObject) {
@@ -19,7 +15,6 @@ class IndienenVoorkeurSuccesvolViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //parseVoorkeurToDatabase()
         ParseData.parseVoorkeurToDatabase(voorkeur)
         
         

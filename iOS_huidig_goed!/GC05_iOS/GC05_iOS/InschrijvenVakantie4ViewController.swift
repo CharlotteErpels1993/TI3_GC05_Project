@@ -4,8 +4,7 @@ import QuartzCore
 
 class InschrijvenVakantie4ViewController : ResponsiveTextFieldViewController {
     var wilTweedeContactpersoon: Bool! = true
-    var deelnemer: Deelnemer!
-    var contactpersoon1: ContactpersoonNood!
+    var inschrijvingVakantie: InschrijvingVakantie!
     var contactpersoon2: ContactpersoonNood! = ContactpersoonNood(id: "test")
     var statusTextFields: [String: String] = [:]
     var redColor: UIColor = UIColor.redColor()
@@ -70,11 +69,13 @@ class InschrijvenVakantie4ViewController : ResponsiveTextFieldViewController {
                 if statusTextFields["telefoon"] != "leeg" {
                     contactpersoon2.telefoon = txtTelefoon.text
                 }
-                inschrijvenVakantie5ViewController.contactpersoon2 = contactpersoon2
+                inschrijvingVakantie.contactpersoon2 = contactpersoon2
+                inschrijvenVakantie5ViewController.inschrijvingVakantie = inschrijvingVakantie
             }
         }
-        inschrijvenVakantie5ViewController.deelnemer = deelnemer
-        inschrijvenVakantie5ViewController.contactpersoon1 = contactpersoon1
+        //inschrijvenVakantie5ViewController.deelnemer = deelnemer
+        //inschrijvenVakantie5ViewController.contactpersoon1 = contactpersoon1
+            inschrijvenVakantie5ViewController.inschrijvingVakantie = inschrijvingVakantie
         } else if segue.identifier == "gaTerug" {
             let vakantiesTableViewController = segue.destinationViewController as VakantiesTableViewController
         }

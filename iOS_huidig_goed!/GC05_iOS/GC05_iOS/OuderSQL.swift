@@ -19,6 +19,83 @@ struct OuderSQL {
         }
     }
     
+    static func getOuderWithEmail(email: String) -> Ouder {
+        
+        var ouders: [Ouder] = []
+        var ouder: Ouder = Ouder(id: "test")
+        
+        let (resultSet, err) = SD.executeQuery("SELECT * FROM Ouder WHERE email = ?", withArgs: [email])
+        
+        if err != nil
+        {
+            println("ERROR: error tijdens ophalen van ouders met email uit table Ouder")
+        }
+        else
+        {
+            for row in resultSet {
+                ouder = getOuder(row)
+                ouders.append(ouder)
+            }
+        }
+        
+        return ouders.first!
+    }
+    
+    static func getOuder(row: SD.SDRow) -> Ouder {
+        var ouder: Ouder = Ouder(id: "test")
+        
+        if let objectId = row["objectId"]?.asString() {
+            ouder.id = objectId
+        }
+        if let rijksregisterNr = row["rijksregisterNr"]?.asString() {
+            ouder.rijksregisterNr = rijksregisterNr
+        }
+        if let email = row["email"]?.asString() {
+            ouder.email = email
+        }
+        if let wachtwoord = row["wachtwoord"]?.asString() {
+            ouder.wachtwoord = wachtwoord
+        }
+        if let voornaam = row["voornaam"]?.asString() {
+            ouder.voornaam = voornaam
+        }
+        if let naam = row["naam"]?.asString() {
+            ouder.naam = naam
+        }
+        if let straat = row["straat"]?.asString() {
+            ouder.straat = straat
+        }
+        if let nummer = row["nummer"]?.asInt() {
+            ouder.nummer = nummer
+        }
+        if let bus = row["bus"]?.asString() {
+            ouder.bus = bus
+        }
+        if let postcode = row["postcode"]?.asInt() {
+            ouder.postcode = postcode
+        }
+        if let gemeente = row["gemeente"]?.asString() {
+            ouder.gemeente = gemeente
+        }
+        if let telefoon = row["telefoon"]?.asString() {
+            ouder.telefoon = telefoon
+        }
+        if let gsm = row["gsm"]?.asString() {
+            ouder.gsm = gsm
+        }
+        if let aansluitingsNr = row["aansluitingsNr"]?.asInt() {
+            ouder.aansluitingsNr = aansluitingsNr
+        }
+        if let codeGerechtigde = row["codeGerechtigde"]?.asInt() {
+            ouder.codeGerechtigde = codeGerechtigde
+        }
+        if let aansluitingsNrTweedeOuder = row["aansluitingsNrTweedeOuder"]?.asInt() {
+            ouder.aansluitingsNrTweedeOuder = aansluitingsNrTweedeOuder
+        }
+        
+        return ouder
+    }
+    
     static func vulOuderTableOp() {
         
         var ouders: [PFObject] = []
