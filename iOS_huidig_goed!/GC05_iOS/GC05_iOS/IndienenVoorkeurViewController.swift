@@ -130,7 +130,7 @@ class IndienenVoorkeurViewController: UIViewController, UIPickerViewDataSource, 
         if voorkeuren.count > 0 {
             return true
             
-        }
-        return false*/
+        }*/
+        return false
     }
 }
