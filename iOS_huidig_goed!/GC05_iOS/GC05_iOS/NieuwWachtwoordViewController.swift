@@ -5,6 +5,7 @@ class NieuwWachtwoordViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        emailAdresTxt.text = ""
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -15,13 +16,15 @@ class NieuwWachtwoordViewController: UIViewController {
     
     func nieuwWachtwoord() {
         var email = emailAdresTxt.text
-        if email != nil && isValidEmail(email) {
+        if (email != nil && isValidEmail(email) && isValidEmailInDatabase(email)) {
             PFUser.requestPasswordResetForEmail(email)
         } else {
             var alert = UIAlertController(title: "Fout", message: "Vul een geldig email adres in!", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Ga terug", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
             emailAdresTxt.text = " "
+            viewDidLoad()
+            //email = ""
         }
     }
     
@@ -32,5 +35,14 @@ class NieuwWachtwoordViewController: UIViewController {
         return result
     }
     
+    func isValidEmailInDatabase(email: String) -> Bool {
+        var monitor = ParseData.getMonitorWithEmail(email)
+        var ouder = ParseData.getOuderWithEmail(email)
+        if monitor.id == "nil" || monitor.id == "nil"{
+            return false
+        }
+        
+        return true
+    }
     
 }

@@ -319,8 +319,6 @@ struct /*class*/ ParseData {
     
     static func getVoorkeurenVakantie(voorkeur: Voorkeur) -> [Voorkeur] {
     
-        //CHARLOTTE!
-    
         var monitorId: String! = voorkeur.monitor?.id
         var vakantieId: String! = voorkeur.vakantie?.id
         

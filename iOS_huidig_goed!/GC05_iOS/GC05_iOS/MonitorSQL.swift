@@ -43,6 +43,7 @@ struct MonitorSQL {
     static func getMonitorWithEmail(email: String) -> Monitor {
         
         var monitors: [Monitor] = []
+        var monitor2: Monitor = Monitor(id: "test")
         var monitor: Monitor = Monitor(id: "test")
         
         let (resultSet, err) = SD.executeQuery("SELECT * FROM Monitor WHERE email = ?", withArgs: [email])
@@ -59,7 +60,19 @@ struct MonitorSQL {
             }
         }
         
-        return monitors.first!
+        /*if monitors.first? == nil {
+            monitor.id = "nil"
+            return monitor
+        }*/
+        
+        if resultSet.count == 0 {
+            monitor2.id = "nil"
+        } else {
+            monitor2 = monitors.first!
+        }
+        
+        return monitor2
+        //return monitors.first!
     }
     
     static func getMonitor(row: SD.SDRow) -> Monitor {
