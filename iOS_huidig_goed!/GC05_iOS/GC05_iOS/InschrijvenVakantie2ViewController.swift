@@ -19,6 +19,11 @@ class InschrijvenVakantie2ViewController : ResponsiveTextFieldViewController {
             
             if leeftijd >= minLeeftijd && leeftijd <= maxLeeftijd {
                 print("goed")
+                
+                if controleerKindAlIngeschreven() == true {
+                    //stefanie
+                }
+                
                 let inschrijvenVakantie3ViewController = segue.destinationViewController as InschrijvenVakantie3ViewController
                 inschrijvingVakantie.deelnemer?.geboortedatum = dpGeboortedatum.date
                 inschrijvenVakantie3ViewController.inschrijvingVakantie = inschrijvingVakantie
@@ -52,7 +57,7 @@ class InschrijvenVakantie2ViewController : ResponsiveTextFieldViewController {
         }
     }
     
-    /*func controleerKindAlIngeschreven() -> Bool {
+    func controleerKindAlIngeschreven() -> Bool {
         var inschrijvingen: [InschrijvingVakantie] = []
         
         inschrijvingen = ParseData.getInschrijvingenVakantie(inschrijvingVakantie)
@@ -62,7 +67,7 @@ class InschrijvenVakantie2ViewController : ResponsiveTextFieldViewController {
         }
         
         return false
-    }*/
+    }
     
     
 }

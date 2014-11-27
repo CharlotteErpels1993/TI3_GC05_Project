@@ -40,22 +40,40 @@ class InschrijvenVormingViewController: UIViewController, UIPickerViewDataSource
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        print(periodesId)
-        controleerOfMonitorDezeVormingAlIngeschrevenIs()
         
         if segue.identifier == "inschrijven" {
             let inschrijvenVormingSuccesvolViewController = segue.destinationViewController as InschrijvenVormingSuccesvolViewController
+
+            ParseData.deleteInschrijvingVormingTable()
+            
+            ParseData.vulInschrijvingVormingTableOp()
             
             var monitor = ParseData.getMonitorWithEmail(PFUser.currentUser().email)
+            inschrijvingVorming.monitor = monitor
+            
+            inschrijvingVorming.vorming = vorming
             
             if inschrijvingVorming.periode == nil {
                 inschrijvingVorming.periode = pickerData[0]
             }
             
-            inschrijvingVorming.monitor = monitor
-            inschrijvingVorming.vorming = self.vorming
+            if controleerAlIngeschreven() == true {
+                
+                let alertController = UIAlertController(title: "Fout", message: "Je hebt je al ingeschreven voor deze vorming", preferredStyle: .Alert)
+                let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: {
+                    action in
+                    let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    let destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vormingen") as UIViewController
+                    self.sideMenuController()?.setContentViewController(destViewController)
+                    self.hideSideMenuView()
+                })
+                alertController.addAction(okAction)
+                self.presentViewController(alertController, animated: true, completion: nil)
+                
+            } else {
+                inschrijvenVormingSuccesvolViewController.inschrijvingVorming = self.inschrijvingVorming
+            }
             
-            inschrijvenVormingSuccesvolViewController.inschrijvingVorming = self.inschrijvingVorming
         } else if segue.identifier == "gaTerug" {
             let vormingenTableViewController = segue.destinationViewController as VormingenTableViewController
         }
@@ -78,30 +96,16 @@ class InschrijvenVormingViewController: UIViewController, UIPickerViewDataSource
         })
     }
     
-    func controleerOfMonitorDezeVormingAlIngeschrevenIs() {
-        for vorming in self.vormingenId {
-            if self.vorming.id == vorming {
-                 controleerOfMonitorDezeVormingAlIngeschrevenIsPeriodes()
-            }
-        }
-        
-    }
+    func controleerAlIngeschreven() -> Bool {
+        var inschrijvingen: [InschrijvingVorming] = []
     
-    func controleerOfMonitorDezeVormingAlIngeschrevenIsPeriodes() {
-        for periode in periodesId {
-            //if self.periode == periode {
-                let alertController = UIAlertController(title: "Fout", message: "Je hebt je al ingeschreven voor deze vorming", preferredStyle: .Alert)
-                let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: {
-                    action in
-                    let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                    let destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vormingen") as UIViewController
-                    self.sideMenuController()?.setContentViewController(destViewController)
-                    self.hideSideMenuView()
-                })
-                alertController.addAction(okAction)
-                self.presentViewController(alertController, animated: true, completion: nil)
-            //}
+        inschrijvingen = ParseData.getInschrijvingenVorming(inschrijvingVorming)
+    
+        if inschrijvingen.count > 0 {
+            return true
         }
+    
+        return false
     }
     
 }

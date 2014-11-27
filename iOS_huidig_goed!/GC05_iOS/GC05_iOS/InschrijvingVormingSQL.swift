@@ -121,5 +121,33 @@ struct InschrijvingVormingSQL {
         return monitorsId
     }
     
+    static func getInschrijvingenVorming(monitorId: String, vormingId: String, periode: String) -> [InschrijvingVorming] {
+        var inschrijvingen: [InschrijvingVorming] = []
+        var inschrijving: InschrijvingVorming = InschrijvingVorming(id: "test")
+        var queryString: String = ""
+        
+        queryString.extend("SELECT * FROM InschrijvingVorming ")
+        queryString.extend("WHERE monitor = ? ")
+        queryString.extend("AND ")
+        queryString.extend("vorming = ? ")
+        queryString.extend("AND ")
+        queryString.extend("periode = ?")
+        
+        let (resultSet, err) = SwiftData.executeQuery(queryString, withArgs: [monitorId, vormingId, periode])
+        
+        if err != nil
+        {
+            println("ERROR: error tijdens ophalen van inschrijvingenMonitor uit table InschrijvingenVorming")
+        }
+        else
+        {
+            if resultSet.count > 0 {
+                inschrijvingen.append(inschrijving)
+                inschrijvingen.append(inschrijving)
+            }
+        }
+        
+        return inschrijvingen
+    }
     
 }
