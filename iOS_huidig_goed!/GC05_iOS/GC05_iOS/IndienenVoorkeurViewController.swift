@@ -19,6 +19,10 @@ class IndienenVoorkeurViewController: UIViewController, UIPickerViewDataSource, 
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        ParseData.deleteVoorkeurTable()
+        ParseData.vulVoorkeurTableOp()
+        
         hideSideMenuView()
         periodeLabel.hidden = true
         
@@ -51,6 +55,7 @@ class IndienenVoorkeurViewController: UIViewController, UIPickerViewDataSource, 
         periodeLabel.text = ("\(vertrekdatumStr) \(terugkeerdatumStr)")*/
         return pickerData[row]
     }
+    
     @IBAction func toonPeriode(sender: AnyObject) {
         var vertrekdatumStr = self.voorkeur.vakantie?.vertrekdatum.toS("dd/MM/yyyy")
         var terugkeerdatumStr = self.voorkeur.vakantie?.terugkeerdatum.toS("dd/MM/yyyy")
@@ -82,10 +87,11 @@ class IndienenVoorkeurViewController: UIViewController, UIPickerViewDataSource, 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let indienenVoorkeurSuccesvolViewController = segue.destinationViewController as IndienenVoorkeurSuccesvolViewController
 
-            var query = PFQuery(className: "Monitor")
+            /*var query = PFQuery(className: "Monitor")
             query.whereKey("email", containsString: PFUser.currentUser().email)
             var monitorPF = query.getFirstObject()
-            var monitor = Monitor(monitor: monitorPF)
+            var monitor = Monitor(monitor: monitorPF)*/
+            var monitor = ParseData.getMonitorWithEmail(PFUser.currentUser().email)
             
             self.voorkeur.monitor = monitor
             
@@ -95,7 +101,7 @@ class IndienenVoorkeurViewController: UIViewController, UIPickerViewDataSource, 
         
         if controleerAlIngeschreven() == true {
             
-            let alertController = UIAlertController(title: "Fout", message: "Je hebt je al ingeschreven voor deze vorming", preferredStyle: .Alert)
+            let alertController = UIAlertController(title: "Fout", message: "Je hebt je voorkeur al opgegeven voor deze vakantie", preferredStyle: .Alert)
             let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: {
                 action in
                 let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
@@ -106,31 +112,24 @@ class IndienenVoorkeurViewController: UIViewController, UIPickerViewDataSource, 
             alertController.addAction(okAction)
             self.presentViewController(alertController, animated: true, completion: nil)
             
-            } else {
-                indienenVoorkeurSuccesvolViewController.voorkeur = self.voorkeur
+        } else {
+            indienenVoorkeurSuccesvolViewController.voorkeur = self.voorkeur
         }
 
-    }
-    
-    
-
-    
-    @IBAction func toggle(sender: AnyObject) {
-        toggleSideMenuView()
     }
     
     func controleerAlIngeschreven() -> Bool {
         
         // CHARLOTTE!
         
-        /*var voorkeuren: [Voorkeur] = []
+        var voorkeuren: [Voorkeur] = []
         
-        voorkeuren = ParseData.getInschrijvingenVorming(inschrijvingVorming)
+        voorkeuren = ParseData.getVoorkeurenVakantie(self.voorkeur)
         
         if voorkeuren.count > 0 {
             return true
             
-        }*/
+        }
         return false
     }
 }

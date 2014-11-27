@@ -1201,23 +1201,17 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oox-Wx-zBH">
-                                <rect key="frame" x="1" y="102.5" width="600" height="162"/>
+                                <rect key="frame" x="1" y="103" width="600" height="162"/>
                             </pickerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Geef uw beschikbare periodes op:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sE9-QE-zgl">
-                                <rect key="frame" x="16" y="283.5" width="263" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bv0-aI-2GO">
-                                <rect key="frame" x="16" y="312" width="568" height="129"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="129" id="eYT-h0-0Sj"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cY5-ZK-4UG">
+                                <rect key="frame" x="16" y="287" width="97" height="30"/>
+                                <state key="normal" title="Toon periodes">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="toonPeriode:" destination="o7H-cr-yrT" eventType="touchUpInside" id="Cei-pP-HFe"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Qu-NI-7Ru">
                                 <rect key="frame" x="523" y="550" width="61" height="30"/>
                                 <state key="normal" title="Annuleer">
@@ -1227,23 +1221,34 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                     <action selector="gaTerugNaarOverzicht:" destination="o7H-cr-yrT" eventType="touchUpInside" id="0nf-UB-ZEo"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_periode" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sE9-QE-zgl">
+                                <rect key="frame" x="131" y="290" width="67" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Oox-Wx-zBH" firstAttribute="top" secondItem="XWp-wD-jjx" secondAttribute="bottom" constant="8.5" id="33u-8l-VgC"/>
-                            <constraint firstItem="sE9-QE-zgl" firstAttribute="top" secondItem="Oox-Wx-zBH" secondAttribute="bottom" constant="19" id="4DS-q7-tdj"/>
-                            <constraint firstItem="sE9-QE-zgl" firstAttribute="leading" secondItem="EfU-VK-91v" secondAttribute="leadingMargin" id="88m-EM-Drc"/>
+                            <constraint firstItem="cY5-ZK-4UG" firstAttribute="leading" secondItem="EfU-VK-91v" secondAttribute="leadingMargin" id="3PJ-sH-Les"/>
+                            <constraint firstItem="cY5-ZK-4UG" firstAttribute="top" secondItem="Oox-Wx-zBH" secondAttribute="bottom" constant="21" id="3Rt-64-eHG"/>
+                            <constraint firstItem="sE9-QE-zgl" firstAttribute="top" secondItem="Oox-Wx-zBH" secondAttribute="bottom" constant="25" id="4DS-q7-tdj"/>
+                            <constraint firstItem="sE9-QE-zgl" firstAttribute="leading" secondItem="EfU-VK-91v" secondAttribute="leadingMargin" constant="115" id="88m-EM-Drc"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Oox-Wx-zBH" secondAttribute="trailing" constant="-17" id="9ff-41-wJe"/>
                             <constraint firstItem="XWp-wD-jjx" firstAttribute="top" secondItem="YTT-VQ-8kq" secondAttribute="bottom" constant="10" id="BRx-HA-dA3"/>
                             <constraint firstItem="OKd-jD-Bc5" firstAttribute="top" secondItem="0Qu-NI-7Ru" secondAttribute="bottom" constant="20" id="hw0-01-553"/>
                             <constraint firstItem="XWp-wD-jjx" firstAttribute="leading" secondItem="EfU-VK-91v" secondAttribute="leadingMargin" id="lSg-mA-Um8"/>
-                            <constraint firstItem="Bv0-aI-2GO" firstAttribute="top" secondItem="sE9-QE-zgl" secondAttribute="bottom" constant="8.5" id="mwG-lr-0dx"/>
                             <constraint firstItem="0Qu-NI-7Ru" firstAttribute="trailing" secondItem="EfU-VK-91v" secondAttribute="trailingMargin" id="n0A-c8-wc3"/>
-                            <constraint firstItem="Bv0-aI-2GO" firstAttribute="trailing" secondItem="EfU-VK-91v" secondAttribute="trailingMargin" id="nkY-HC-Gww"/>
-                            <constraint firstItem="Bv0-aI-2GO" firstAttribute="leading" secondItem="EfU-VK-91v" secondAttribute="leadingMargin" id="uRh-5Q-4bv"/>
                             <constraint firstAttribute="trailingMargin" secondItem="XWp-wD-jjx" secondAttribute="trailing" id="vQs-uW-lWO"/>
+                            <constraint firstItem="cY5-ZK-4UG" firstAttribute="top" secondItem="Oox-Wx-zBH" secondAttribute="bottom" constant="22" id="wJn-24-4BL"/>
                             <constraint firstItem="Oox-Wx-zBH" firstAttribute="leading" secondItem="EfU-VK-91v" secondAttribute="leadingMargin" constant="-15" id="xgH-FQ-axY"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="3Rt-64-eHG"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Indienen voorkeur" id="rYZ-3l-4iL">
                         <barButtonItem key="rightBarButtonItem" title="Indienen" id="VFO-YT-e5w">
@@ -1253,8 +1258,8 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="periodeLabel" destination="sE9-QE-zgl" id="XK3-Yc-QvM"/>
                         <outlet property="pickerView" destination="Oox-Wx-zBH" id="One-vD-J0t"/>
-                        <outlet property="txtViewPeriodes" destination="Bv0-aI-2GO" id="f4W-Lt-pEA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YOR-sC-Zxq" userLabel="First Responder" sceneMemberID="firstResponder"/>
