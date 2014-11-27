@@ -3113,6 +3113,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                     <navigationItem key="navigationItem" title="Registreren" id="Sfz-uU-Y3L">
                         <barButtonItem key="rightBarButtonItem" title="Voltooi" id="TgS-Sz-GiH">
                             <connections>
+                                <action selector="startIndicator:" destination="w0S-HA-suc" id="yGg-X0-9xR"/>
                                 <segue destination="69z-Tv-Va1" kind="show" identifier="voltooiRegistratie" id="qbT-aP-08U"/>
                             </connections>
                         </barButtonItem>

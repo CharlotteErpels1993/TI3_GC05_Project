@@ -11,15 +11,21 @@ class Registratie3ViewController: ResponsiveTextFieldViewController
     var foutBox: FoutBox? = nil
     var statusTextFields: [String: String] = [:]
     var redColor: UIColor = UIColor.redColor()
+    var activityIndicator: UIActivityIndicatorView!
     
     @IBAction func gaTerugNaarInloggen(sender: AnyObject) {
-        /*let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        var destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Inloggen") as UIViewController
-        sideMenuController()?.setContentViewController(destViewController)
-        hideSideMenuView()*/
         annuleerControllerRegistratie(self)
     }
     
+    @IBAction func startIndicator(sender: AnyObject) {
+        activityIndicator.startAnimating()
+        performSegueWithIdentifier("voltooiRegistratie", sender: self)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        activityIndicator = getActivityIndicatorView(self)
+    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "voltooiRegistratie" {
@@ -49,6 +55,7 @@ class Registratie3ViewController: ResponsiveTextFieldViewController
                     foutBoxOproepen("Fout", "Wachtwoord en bevestig wachtwoord komen niet overeen.", self)
                 }
             }
+            registratieSuccesvolViewController.activityIndicatorView = activityIndicator
         }
         } else if segue.identifier == "gaTerug" {
             let vakantiesTableViewController = segue.destinationViewController as VakantiesTableViewController

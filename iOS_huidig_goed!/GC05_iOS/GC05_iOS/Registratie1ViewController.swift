@@ -56,9 +56,12 @@ class Registratie1ViewController: ResponsiveTextFieldViewController
     }
     
     override func viewDidLoad() {
+        var activityIndicator = getActivityIndicatorView(self)
+        activityIndicator.startAnimating()
         super.viewDidLoad()
         hideSideMenuView()
         self.navigationItem.setHidesBackButton(true, animated: true)
+        activityIndicator.stopAnimating()
     }
     
     

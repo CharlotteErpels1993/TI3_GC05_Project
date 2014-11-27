@@ -15,7 +15,7 @@ class RegistratieSuccesvolViewController: UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        activityIndicatorView.startAnimating()
+        //activityIndicatorView.startAnimating()
         
         ParseData.parseOuderToDatabase(ouder)
         
