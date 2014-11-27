@@ -40,7 +40,6 @@ class InschrijvenVormingViewController: UIViewController, UIPickerViewDataSource
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
         if segue.identifier == "inschrijven" {
             let inschrijvenVormingSuccesvolViewController = segue.destinationViewController as InschrijvenVormingSuccesvolViewController
 
@@ -98,14 +97,13 @@ class InschrijvenVormingViewController: UIViewController, UIPickerViewDataSource
     
     func controleerAlIngeschreven() -> Bool {
         var inschrijvingen: [InschrijvingVorming] = []
-    
+
         inschrijvingen = ParseData.getInschrijvingenVorming(inschrijvingVorming)
     
         if inschrijvingen.count > 0 {
             return true
+
         }
-    
         return false
     }
-    
 }
