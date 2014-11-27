@@ -99,7 +99,7 @@ class IndienenVoorkeurViewController: UIViewController, UIPickerViewDataSource, 
             let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: {
                 action in
                 let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                let destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vormingen") as UIViewController
+                let destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Profiel") as UIViewController
                 self.sideMenuController()?.setContentViewController(destViewController)
                 self.hideSideMenuView()
             })
