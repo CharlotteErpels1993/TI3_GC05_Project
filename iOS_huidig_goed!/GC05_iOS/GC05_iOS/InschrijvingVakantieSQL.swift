@@ -21,24 +21,32 @@ struct InschrijvingVakantieSQL {
         var queryString = ""
         
         var objectId: String = ""
-        var extraInfo: String = ""
+        var extraInfo: String?
         var vakantie: String = ""
         var ouder: String = ""
         var deelnemer: String = ""
         var contactpersoon1: String = ""
-        var contactpersoon2: String = ""
+        var contactpersoon2: String?
         
         for inschrijvingVakantie in inschrijvingenVakantie {
             
             queryString.removeAll(keepCapacity: true)
             
             objectId = inschrijvingVakantie.objectId as String
-            extraInfo = inschrijvingVakantie["extraInformatie"] as String
+            extraInfo = inschrijvingVakantie["extraInformatie"] as? String
             vakantie = inschrijvingVakantie["vakantie"] as String
             ouder = inschrijvingVakantie["ouder"] as String
             deelnemer = inschrijvingVakantie["deelnemer"] as String
             contactpersoon1 = inschrijvingVakantie["contactpersoon1"] as String
-            contactpersoon2 = inschrijvingVakantie["contactpersoon2"] as String
+            contactpersoon2 = inschrijvingVakantie["contactpersoon2"] as? String
+            
+            if extraInfo == nil {
+                extraInfo = ""
+            }
+            
+            if contactpersoon2 == nil {
+                contactpersoon2 = ""
+            }
             
             queryString.extend("INSERT INTO InschrijvingVakantie ")
             queryString.extend("(")

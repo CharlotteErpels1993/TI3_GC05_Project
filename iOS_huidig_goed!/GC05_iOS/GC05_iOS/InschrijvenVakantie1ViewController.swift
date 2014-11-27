@@ -21,6 +21,8 @@ class InschrijvenVakantie1ViewController : ResponsiveTextFieldViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        ParseData.deleteInschrijvingVakantieTable()
+        ParseData.vulInschrijvingVakantieTableOp()
     }
 
     @IBAction func annuleer(sender: AnyObject) {
