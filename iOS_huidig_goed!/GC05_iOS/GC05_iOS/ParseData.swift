@@ -288,6 +288,16 @@ struct /*class*/ ParseData {
         return InschrijvingVormingSQL.getInschrijvingenVorming(monitorId, vormingId: vormingId, periode: periode)
     }
     
+    /*static func getVoorkeurenVakantie(voorkeur: Voorkeur) -> [Voorkeur] {
+    
+        CHARLOTTE!
+    
+        var monitorId: String! = voorkeur.monitor?.id
+        var vakantieId: String! = voorkeur.vakantie?.id
+        
+        return VoorkeurSQL.
+    }*/
+    
     
     /*static func getInschrijvingenVakantieDeelnemer(voornaam: String, naam: String, vakantie: String, ouder: String) -> [InschrijvingVakantie] {
         //var inschrijvingen: [String] = []

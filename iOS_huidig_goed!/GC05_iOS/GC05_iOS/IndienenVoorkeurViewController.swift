@@ -81,27 +81,34 @@ class IndienenVoorkeurViewController: UIViewController, UIPickerViewDataSource, 
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let indienenVoorkeurSuccesvolViewController = segue.destinationViewController as IndienenVoorkeurSuccesvolViewController
-            
-        /*if txtViewPeriodes.text.isEmpty {
-            giveUITextViewRedBorder(txtViewPeriodes)
-            foutBoxOproepen("Fout", "Gelieve het veld in te vullen!", self)
-            
-        } else {*/
-            
+
             var query = PFQuery(className: "Monitor")
             query.whereKey("email", containsString: PFUser.currentUser().email)
             var monitorPF = query.getFirstObject()
             var monitor = Monitor(monitor: monitorPF)
             
             self.voorkeur.monitor = monitor
-            //self.voorkeur.data = txtViewPeriodes.text
             
             if self.voorkeur.vakantie == nil {
                 self.voorkeur.vakantie = vakanties[0]
             }
+        
+        if controleerAlIngeschreven() == true {
             
-            indienenVoorkeurSuccesvolViewController.voorkeur = self.voorkeur
-        //}
+            let alertController = UIAlertController(title: "Fout", message: "Je hebt je al ingeschreven voor deze vorming", preferredStyle: .Alert)
+            let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: {
+                action in
+                let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vormingen") as UIViewController
+                self.sideMenuController()?.setContentViewController(destViewController)
+                self.hideSideMenuView()
+            })
+            alertController.addAction(okAction)
+            self.presentViewController(alertController, animated: true, completion: nil)
+            
+            } else {
+                indienenVoorkeurSuccesvolViewController.voorkeur = self.voorkeur
+        }
 
     }
     
@@ -110,5 +117,20 @@ class IndienenVoorkeurViewController: UIViewController, UIPickerViewDataSource, 
     
     @IBAction func toggle(sender: AnyObject) {
         toggleSideMenuView()
+    }
+    
+    func controleerAlIngeschreven() -> Bool {
+        
+        // CHARLOTTE!
+        
+        /*var voorkeuren: [Voorkeur] = []
+        
+        voorkeuren = ParseData.getInschrijvingenVorming(inschrijvingVorming)
+        
+        if voorkeuren.count > 0 {
+            return true
+            
+        }
+        return false*/
     }
 }
