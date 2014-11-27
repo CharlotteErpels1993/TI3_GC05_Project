@@ -18,18 +18,24 @@ class InschrijvenVakantie2ViewController : ResponsiveTextFieldViewController {
             var maxLeeftijd = inschrijvingVakantie?.vakantie?.maxLeeftijd
             
             if leeftijd >= minLeeftijd && leeftijd <= maxLeeftijd {
-                print("goed")
-                
                 if controleerKindAlIngeschreven() == true {
-                    //stefanie
+                    let alertController = UIAlertController(title: "Fout", message: "Je hebt je al ingeschreven voor deze vakantie", preferredStyle: .Alert)
+                    let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: {
+                        action in
+                        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                        let destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
+                        self.sideMenuController()?.setContentViewController(destViewController)
+                        self.hideSideMenuView()
+                    })
+                    alertController.addAction(okAction)
+                    self.presentViewController(alertController, animated: true, completion: nil)
                 }
                 
                 let inschrijvenVakantie3ViewController = segue.destinationViewController as InschrijvenVakantie3ViewController
                 inschrijvingVakantie.deelnemer?.geboortedatum = dpGeboortedatum.date
                 inschrijvenVakantie3ViewController.inschrijvingVakantie = inschrijvingVakantie
             } else {
-                print("fout")
-               // charlotte
+                foutBoxOproepen("Fout", "De leeftijd moet tussen \(inschrijvingVakantie.vakantie?.minLeeftijd!) en \(inschrijvingVakantie.vakantie?.maxLeeftijd!) liggen.", self)
             }
             
             
