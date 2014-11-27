@@ -15,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -40,7 +41,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 
-public class IndienenVoorkeurVakantie extends Activity {
+public class IndienenVoorkeurVakantie extends Activity implements AdapterView.OnItemSelectedListener {
 
     private ListViewAdapter adapter;
     private ArrayList<String> vakantienamen = null;
@@ -49,7 +50,7 @@ public class IndienenVoorkeurVakantie extends Activity {
     private ProgressDialog mProgressDialog;
     private List<ParseObject> ob;
     Vakantie map;
-    EditText periodesVoorkeur;
+    TextView periodeVakantie;
 
     private View focusView = null;
 
@@ -64,8 +65,10 @@ public class IndienenVoorkeurVakantie extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.indienen_voorkeur_vakantie);
-        periodesVoorkeur = (EditText) findViewById(R.id.periodesVoorkeur);
+        periodeVakantie = (TextView)findViewById(R.id.periodeVakantieVoorkeur);
 
+        spinner = (Spinner) findViewById( R.id.spinnerVakanties );
+        spinner.setOnItemSelectedListener(this);
         btnVolgende = (Button) findViewById(R.id.BevestigVoorkeur);
 
         btnVolgende.setOnClickListener(new View.OnClickListener() {
@@ -75,14 +78,14 @@ public class IndienenVoorkeurVakantie extends Activity {
             }
         });
         //periodesVoorkeur.setBackgroundResource(R.drawable.drawable);
-        periodesVoorkeur.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+       /* periodesVoorkeur.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (!hasFocus) {
                     hideKeyboard(v);
                 }
             }
-        });
+        });*/
         new RemoteDataTask().execute();
 
     }
@@ -90,6 +93,16 @@ public class IndienenVoorkeurVakantie extends Activity {
     public void hideKeyboard(View view) {
         InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
         inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        periodeVakantie.setText(vakanties.get(i).getPeriode());
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
     }
 
 
@@ -167,8 +180,9 @@ public class IndienenVoorkeurVakantie extends Activity {
 
             ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(IndienenVoorkeurVakantie.this, android.R.layout.simple_spinner_item,array);
             spinnerArrayAdapter.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item );
+            periodeVakantie.setText(vakanties.get(0).getPeriode());
 
-            spinner = (Spinner) findViewById( R.id.spinnerVakanties );
+
             spinner.setAdapter(spinnerArrayAdapter);
 
 
@@ -200,7 +214,7 @@ public class IndienenVoorkeurVakantie extends Activity {
 
         String periodes;
 
-        periodes = periodesVoorkeur.getText().toString();
+        periodes = periodeVakantie.getText().toString();
 
         Iterator<Vakantie> vakantieIt = vakanties.iterator();
         Vakantie vakantie = new Vakantie();
@@ -219,17 +233,12 @@ public class IndienenVoorkeurVakantie extends Activity {
     }
 
     public void controlerenOpfouten(Vakantie v,String periodes){
-        clearErrors();
+        //clearErrors();
         cancel = false;
-        Intent in = new Intent(getApplicationContext(),SuccesvolDoorgegeven.class);
+        Intent in = new Intent(getApplicationContext(),navBarMainScreen.class);
 
         // Store values at the time of the login attempt.
 
-        if (TextUtils.isEmpty(periodes)) {
-            periodesVoorkeur.setError(getString(R.string.error_field_required));
-            focusView = periodesVoorkeur;
-            cancel = true;
-        }
 
 
         if (cancel) {
@@ -245,6 +254,7 @@ public class IndienenVoorkeurVakantie extends Activity {
 
                 startActivity(in);
                 overridePendingTransition(R.anim.right_in, R.anim.left_out);
+                Toast.makeText(IndienenVoorkeurVakantie.this, "Uw voorkeur is succesvol doorgegeven", Toast.LENGTH_SHORT).show();
             }else{
                 Toast.makeText(getApplicationContext(), "Er is een fout opgetreden. Onze excuses voor het ongemak.", Toast.LENGTH_SHORT).show();
             }
@@ -308,10 +318,6 @@ public class IndienenVoorkeurVakantie extends Activity {
             Toast.makeText(this,"fout bij opslaan",Toast.LENGTH_LONG).show();
             return false;
         }
-
-    }
-    private void clearErrors(){
-        periodesVoorkeur.setError(null);
 
     }
 
