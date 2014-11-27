@@ -54,25 +54,26 @@ struct MonitorSQL {
         }
         else
         {
-            for row in resultSet {
-                monitor = getMonitor(row)
+            if resultSet.count == 0 {
                 monitors.append(monitor)
+            } else {
+                for row in resultSet {
+                    monitor = getMonitor(row)
+                    monitors.append(monitor)
+                }
             }
         }
         
-        /*if monitors.first? == nil {
-            monitor.id = "nil"
-            return monitor
+        
+        /*if monitors.count == 0 {
+            monitors.append(monitor)
+            //monitor2.id = "nil"
+        } /*else {
+            monitor2 = monitors.first!
         }*/
         
-        if resultSet.count == 0 {
-            monitor2.id = "nil"
-        } else {
-            monitor2 = monitors.first!
-        }
-        
-        return monitor2
-        //return monitors.first!
+        //return monitor2*/
+        return monitors.first!
     }
     
     static func getMonitor(row: SD.SDRow) -> Monitor {

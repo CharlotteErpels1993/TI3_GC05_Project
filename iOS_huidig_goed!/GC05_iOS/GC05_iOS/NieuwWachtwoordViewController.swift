@@ -36,13 +36,20 @@ class NieuwWachtwoordViewController: UIViewController {
     }
     
     func isValidEmailInDatabase(email: String) -> Bool {
-        var monitor = ParseData.getMonitorWithEmail(email)
-        var ouder = ParseData.getOuderWithEmail(email)
-        if monitor.id == "nil" || monitor.id == "nil"{
+        var monitor: Monitor = ParseData.getMonitorWithEmail(email)
+        var ouder: Ouder = ParseData.getOuderWithEmail(email)
+        
+        if ouder.id == "test" && monitor.id == "test" {
             return false
         }
         
         return true
+        
+        /*if monitor.id == "nil" || ouder.id == "nil"{
+            return false
+        }
+        
+        return true*/
     }
     
 }

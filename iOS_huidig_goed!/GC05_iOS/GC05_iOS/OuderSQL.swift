@@ -33,21 +33,26 @@ struct OuderSQL {
         }
         else
         {
-            for row in resultSet {
-                ouder = getOuder(row)
+            if resultSet.count == 0 {
                 ouders.append(ouder)
+            } else {
+                for row in resultSet {
+                    ouder = getOuder(row)
+                    ouders.append(ouder)
+                }
             }
         }
         
-        if resultSet.count == 0 {
-            ouder2.id = "nil"
-        } else {
+        /*if resultSet == 0 {
+            ouders.append(ouder)
+            //ouder2.id = "nil"
+        } /*else {
             ouder2 = ouders.first!
-        }
+        }*/
         
 
-        return ouder2
-        //return ouders.first!
+        //return ouder2*/
+        return ouders.first!
         
         //return ouders.first!
     }
