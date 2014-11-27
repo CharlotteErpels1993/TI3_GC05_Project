@@ -40,7 +40,6 @@ class InschrijvenVormingViewController: UIViewController, UIPickerViewDataSource
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        print(periodesId)
         controleerOfMonitorDezeVormingAlIngeschrevenIs()
         
         if segue.identifier == "inschrijven" {
@@ -89,7 +88,7 @@ class InschrijvenVormingViewController: UIViewController, UIPickerViewDataSource
     
     func controleerOfMonitorDezeVormingAlIngeschrevenIsPeriodes() {
         for periode in periodesId {
-            //if self.periode == periode {
+            if self.inschrijvingVorming.periode == periode {
                 let alertController = UIAlertController(title: "Fout", message: "Je hebt je al ingeschreven voor deze vorming", preferredStyle: .Alert)
                 let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: {
                     action in
@@ -100,7 +99,7 @@ class InschrijvenVormingViewController: UIViewController, UIPickerViewDataSource
                 })
                 alertController.addAction(okAction)
                 self.presentViewController(alertController, animated: true, completion: nil)
-            //}
+            }
         }
     }
     
