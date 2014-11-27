@@ -63,16 +63,6 @@ struct MonitorSQL {
                 }
             }
         }
-        
-        
-        /*if monitors.count == 0 {
-            monitors.append(monitor)
-            //monitor2.id = "nil"
-        } /*else {
-            monitor2 = monitors.first!
-        }*/
-        
-        //return monitor2*/
         return monitors.first!
     }
     

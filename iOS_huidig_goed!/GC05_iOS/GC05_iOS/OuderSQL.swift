@@ -42,19 +42,7 @@ struct OuderSQL {
                 }
             }
         }
-        
-        /*if resultSet == 0 {
-            ouders.append(ouder)
-            //ouder2.id = "nil"
-        } /*else {
-            ouder2 = ouders.first!
-        }*/
-        
-
-        //return ouder2*/
         return ouders.first!
-        
-        //return ouders.first!
     }
     
     static func getOuder(row: SD.SDRow) -> Ouder {
