@@ -8,14 +8,14 @@ class RegistratieSuccesvolViewController: UIViewController
     
     @IBAction func gaTerugNaarInloggen(sender: AnyObject) {
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        var destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Inloggen") as UIViewController
+        var destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
         sideMenuController()?.setContentViewController(destViewController)
         hideSideMenuView()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        activityIndicatorView.startAnimating()
+        //activityIndicatorView.startAnimating()
         
         ParseData.parseOuderToDatabase(ouder)
         

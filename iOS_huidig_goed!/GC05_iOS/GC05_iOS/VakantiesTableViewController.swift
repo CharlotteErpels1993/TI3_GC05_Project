@@ -4,7 +4,7 @@ import Foundation
 class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, UISearchDisplayDelegate {
     
     var vakanties: [Vakantie] = []
-    var vakanties2: [Vakantie] = []
+    var vakanties2: [Vakantie] = []    
     
     @IBOutlet weak var zoekbar: UISearchBar!
     
@@ -13,9 +13,10 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
     }
     
     override func viewDidLoad() {
+        var activityIndicator = getActivityIndicatorView(self)
+        activityIndicator.startAnimating()
         super.viewDidLoad()
         checkConnectie()
-        var activityIndicator = getActivityIndicatorView(self)
         
         vakanties = ParseData.getAlleVakanties()
         self.vakanties2 = self.vakanties
@@ -30,7 +31,8 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
             self.navigationItem.rightBarButtonItem = nil   
         }
         
-        //vakanties2.sort({ $0.minLeeftijd< $1.titel})
+        vakanties2.sort({ (String($0.minLeeftijd)) < $1.titel})
+        vakanties.sort({ (String($0.minLeeftijd)) < $1.titel})
         //vakanties.sort({ $0.minLeeftijd < $1.titel })
         
         activityIndicator.stopAnimating()

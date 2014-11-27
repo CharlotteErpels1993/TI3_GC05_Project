@@ -176,6 +176,31 @@ struct /*class*/ ParseData {
         InschrijvingVakantieSQL.vulInschrijvingVakantieTableOp()
     }
     
+    static func vulVoorkeurTableOp() {
+        
+        var response: ([String], Int?) = SD.existingTables()
+        
+        if response.1 == nil {
+            if !contains(response.0, "Voorkeur") {
+                createVoorkeurTable()
+            }
+        }
+        
+        VoorkeurSQL.vulVoorkeurTableOp()
+    }
+    
+    static func deleteVoorkeurTable() {
+        
+        var response: ([String], Int?) = SD.existingTables()
+        
+        if response.1 == nil {
+            if contains(response.0, "Voorkeur") {
+                let err = SD.deleteTable("Voorkeur")
+            }
+        }
+        
+    }
+    
     static func deleteVormingTable() {
         
         var response: ([String], Int?) = SD.existingTables()
@@ -241,6 +266,10 @@ struct /*class*/ ParseData {
         MonitorSQL.createMonitorTable()
     }
     
+    static private func createVoorkeurTable() {
+        VoorkeurSQL.createVoorkeurTable()
+    }
+    
     static private func createOuderTable() {
         OuderSQL.createOuderTable()
     }
@@ -280,6 +309,21 @@ struct /*class*/ ParseData {
         
     }
     
+    static func getInschrijvingenVorming(inschrijving: InschrijvingVorming) -> [InschrijvingVorming] {
+        var monitorId: String! = inschrijving.monitor?.id
+        var vormingId: String! = inschrijving.vorming?.id
+        var periode: String! = inschrijving.periode
+        
+        return InschrijvingVormingSQL.getInschrijvingenVorming(monitorId, vormingId: vormingId, periode: periode)
+    }
+    
+    static func getVoorkeurenVakantie(voorkeur: Voorkeur) -> [Voorkeur] {
+    
+        var monitorId: String! = voorkeur.monitor?.id
+        var vakantieId: String! = voorkeur.vakantie?.id
+        
+        return VoorkeurSQL.getVoorkeuren(monitorId, vakantieId: vakantieId)
+    }
     
     
     /*static func getInschrijvingenVakantieDeelnemer(voornaam: String, naam: String, vakantie: String, ouder: String) -> [InschrijvingVakantie] {

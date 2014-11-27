@@ -22,6 +22,7 @@ struct OuderSQL {
     static func getOuderWithEmail(email: String) -> Ouder {
         
         var ouders: [Ouder] = []
+        var ouder2: Ouder = Ouder(id: "test")
         var ouder: Ouder = Ouder(id: "test")
         
         let (resultSet, err) = SD.executeQuery("SELECT * FROM Ouder WHERE email = ?", withArgs: [email])
@@ -38,7 +39,17 @@ struct OuderSQL {
             }
         }
         
-        return ouders.first!
+        if resultSet.count == 0 {
+            ouder2.id = "nil"
+        } else {
+            ouder2 = ouders.first!
+        }
+        
+
+        return ouder2
+        //return ouders.first!
+        
+        //return ouders.first!
     }
     
     static func getOuder(row: SD.SDRow) -> Ouder {

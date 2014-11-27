@@ -46,6 +46,20 @@ class InschrijvenVakantie1ViewController : ResponsiveTextFieldViewController {
             inschrijvingVakantie.vakantie = vakantie
             inschrijvingVakantie.deelnemer = deelnemer
             
+            if controleerKindAlIngeschreven() == true {
+                let alertController = UIAlertController(title: "Fout", message: "Je hebt je al ingeschreven voor deze vakantie", preferredStyle: .Alert)
+                let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: {
+                    action in
+                    let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    let destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
+                    self.sideMenuController()?.setContentViewController(destViewController)
+                    self.hideSideMenuView()
+                })
+                alertController.addAction(okAction)
+                self.presentViewController(alertController, animated: true, completion: nil)
+            }
+            
+            
             inschrijvenVakantie2ViewController.inschrijvingVakantie = inschrijvingVakantie
             }
         } else if segue.identifier == "gaTerug" {
@@ -189,5 +203,17 @@ class InschrijvenVakantie1ViewController : ResponsiveTextFieldViewController {
         //self.deelnemer.inschrijvingVakantie = InschrijvingVakantie(id: "test")
         self.inschrijvingVakantie.vakantie = self.vakantie
         self.inschrijvingVakantie.ouder = ParseData.getOuderWithEmail(PFUser.currentUser().email)
+    }
+    
+    func controleerKindAlIngeschreven() -> Bool {
+        var inschrijvingen: [InschrijvingVakantie] = []
+        
+        inschrijvingen = ParseData.getInschrijvingenVakantie(self.inschrijvingVakantie)
+        
+        if inschrijvingen.count > 0 {
+            return true
+        }
+        
+        return false
     }
 }
