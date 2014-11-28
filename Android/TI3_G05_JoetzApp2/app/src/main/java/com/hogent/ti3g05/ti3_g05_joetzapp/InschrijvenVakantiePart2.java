@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
@@ -17,12 +18,15 @@ import com.parse.ParseUser;
 
 public class InschrijvenVakantiePart2 extends Activity {
     private EditText txtVoornaam, txtNaam, txtTelefoon, txtGSM;
+    private EditText txtVoornaamExtra, txtNaamExtra, txtTelefoonExtra, txtGSMExtra;
 
     private String voornaam, naam, telefoon, gsm;
+    private String voornaamExtra, naamExtra, telefoonExtra, gsmExtra;
 
-    private Button btnVolgende;
+    private Button btnVolgende, btnCPextra;
     private boolean cancel = false;
     private View focusView = null;
+    private boolean extraCPZichtbaar = false;
 
     // flag for Internet connection status
     Boolean isInternetPresent = false;
@@ -38,6 +42,10 @@ public class InschrijvenVakantiePart2 extends Activity {
         txtNaam = (EditText) findViewById(R.id.NaamContactPersoon);
         txtTelefoon = (EditText) findViewById(R.id.TelefoonContactPersoon);
         txtGSM = (EditText) findViewById(R.id.GsmContactPersoon);
+        txtVoornaamExtra = (EditText) findViewById(R.id.VoornaamContactPersoonInsExtra);
+        txtNaamExtra = (EditText) findViewById(R.id.NaamContactPersoonExtra);
+        txtTelefoonExtra = (EditText) findViewById(R.id.TelefoonContactPersoonExtra);
+        txtGSMExtra = (EditText) findViewById(R.id.GsmContactPersoonExtra);
 
         btnVolgende = (Button)findViewById(R.id.btnNaarDeel3V);
         btnVolgende.setOnClickListener(new View.OnClickListener() {
@@ -52,6 +60,30 @@ public class InschrijvenVakantiePart2 extends Activity {
                     // Internet connection is not present
                     // Ask user to connect to Internet
                     Toast.makeText(getApplicationContext(), getString(R.string.error_no_internet), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        btnCPextra = (Button) findViewById(R.id.btnExtraCP);
+        btnCPextra.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                extraCPZichtbaar = !extraCPZichtbaar; //indien true -> false en omgekeerd
+                if (extraCPZichtbaar){ //velden zijn zichtbaar
+                    txtVoornaamExtra.setVisibility(View.VISIBLE);
+                    txtNaamExtra.setVisibility(View.VISIBLE);
+                    txtTelefoonExtra.setVisibility(View.VISIBLE);
+                    txtGSMExtra.setVisibility(View.VISIBLE);
+
+                    btnCPextra.setText(getString(R.string.btnCPVerwijderen));
+                }
+                else{//velden zijn onzichtbaar
+                    txtVoornaamExtra.setVisibility(View.GONE);
+                    txtNaamExtra.setVisibility(View.GONE);
+                    txtTelefoonExtra.setVisibility(View.GONE);
+                    txtGSMExtra.setVisibility(View.GONE);
+
+                    btnCPextra.setText(getString(R.string.btnCPtoevoegen));
                 }
             }
         });
@@ -88,7 +120,14 @@ public class InschrijvenVakantiePart2 extends Activity {
         naam = txtNaam.getText().toString().toLowerCase();
         telefoon = txtTelefoon.getText().toString();
         gsm = txtGSM.getText().toString();
+        voornaamExtra = txtVoornaamExtra.getText().toString().toLowerCase();
+        naamExtra = txtNaamExtra.getText().toString().toLowerCase();
+        telefoonExtra = txtTelefoonExtra.getText().toString();
+        gsmExtra = txtGSMExtra.getText().toString();
 
+        if (extraCPZichtbaar){
+            checkOfExtraVeldenZijnIngevuld();
+        }
 
         if (TextUtils.isEmpty(gsm)) {
             txtGSM.setError(getString(R.string.error_field_required));
@@ -122,7 +161,6 @@ public class InschrijvenVakantiePart2 extends Activity {
             cancel = true;
         }
 
-
         if (cancel) {
             // There was an error; don't attempt login and focus the first
             // form field with an error.
@@ -130,13 +168,13 @@ public class InschrijvenVakantiePart2 extends Activity {
         } else {
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
-            opslaan(voornaam ,naam, telefoon, gsm);
+            opslaan();
             //Toast.makeText(getApplicationContext(), "Opgeslagen", Toast.LENGTH_SHORT).show();
 
         }
     }
 
-    private void opslaan(String voornaamCP,String naamCP, String telefoonCP, String gsmCP) {
+    private void opslaan() {
         Toast.makeText(getApplicationContext(), getString(R.string.loading_message), Toast.LENGTH_SHORT).show();
         Intent in = new Intent(getApplicationContext(),InschrijvenVakantiePart3.class);
 
@@ -165,22 +203,65 @@ public class InschrijvenVakantiePart2 extends Activity {
 
         }
 
-        in.putExtra("voornaamCP", voornaamCP);
-        in.putExtra("naamCP", naamCP);
-        in.putExtra("telefoonCP", telefoonCP);
-        in.putExtra("gsmCP", gsmCP);
+        in.putExtra("voornaamCP", voornaam);
+        in.putExtra("naamCP", naam);
+        in.putExtra("telefoonCP", telefoon);
+        in.putExtra("gsmCP", gsm);
+        if (extraCPZichtbaar){
+            in.putExtra("voornaamCPExtra", voornaamExtra);
+            in.putExtra("naamCPExtra", naamExtra);
+            in.putExtra("telefoonCPExtra", telefoonExtra);
+            in.putExtra("gsmCPExtra", gsmExtra);
+        }
 
         startActivity(in);
 
         overridePendingTransition(R.anim.right_in, R.anim.left_out);
     }
 
+    public void checkOfExtraVeldenZijnIngevuld(){
+        if (TextUtils.isEmpty(gsmExtra)) {
+            txtGSMExtra.setError(getString(R.string.error_field_required));
+            focusView = txtGSMExtra;
+            cancel = true;
+        }else{
+            if (!gsmExtra.matches("[0-9]+") || gsmExtra.length() != 10){
+                txtGSMExtra.setError(getString(R.string.error_incorrect_gsm));
+                focusView = txtGSMExtra;
+                cancel = true;
+            }
+        }
+
+        if (!TextUtils.isEmpty(telefoonExtra) && !telefoonExtra.matches("[0-9]+") || telefoonExtra.length() != 9){
+            txtTelefoonExtra.setError(getString(R.string.error_incorrect_tel));
+            focusView = txtTelefoonExtra;
+            cancel = true;
+        }
+
+        if (TextUtils.isEmpty(naamExtra)) {
+            txtNaamExtra.setError(getString(R.string.error_field_required));
+            focusView = txtNaamExtra;
+            cancel = true;
+        }
+
+        if (TextUtils.isEmpty(voornaamExtra)) {
+            txtVoornaamExtra.setError(getString(R.string.error_field_required));
+            focusView = txtVoornaamExtra;
+            cancel = true;
+        }
+    }
 
     private void clearErrors(){
         txtVoornaam.setError(null);
         txtNaam.setError(null);
         txtTelefoon.setError(null);
         txtGSM.setError(null);
+        if (extraCPZichtbaar){
+            txtVoornaamExtra.setError(null);
+            txtNaamExtra.setError(null);
+            txtTelefoonExtra.setError(null);
+            txtGSMExtra.setError(null);
+        }
     }
 
 

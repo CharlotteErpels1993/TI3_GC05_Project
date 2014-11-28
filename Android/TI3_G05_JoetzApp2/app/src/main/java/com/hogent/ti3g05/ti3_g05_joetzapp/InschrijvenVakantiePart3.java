@@ -17,11 +17,8 @@ import com.parse.ParseUser;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
-import java.util.Locale;
 
 
 public class InschrijvenVakantiePart3 extends Activity {
@@ -92,7 +89,9 @@ public class InschrijvenVakantiePart3 extends Activity {
         Toast.makeText(getApplicationContext(), getString(R.string.loading_message), Toast.LENGTH_SHORT).show();
         Intent in = new Intent(getApplicationContext(),navBarMainScreen.class);
 
-        String dag = null, maand = null, jaar = null, voornaam = null, naam = null, straat = null, huisnr = null, bus = null, gemeente = null, postcode = null, voornaamCP = null, naamCP = null, telefoonCP = null, gsmCP = null, objectId = null;
+        String dag = null, maand = null, jaar = null, voornaam = null, naam = null, straat = null, huisnr = null, bus = null, gemeente = null, postcode = null,
+                voornaamCP = null, naamCP = null, telefoonCP = null, gsmCP = null, objectId = null,
+                voornaamCPextra = null, naamCPextra = null, telefoonCPextra = null, gsmCPextra = null;
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             objectId = extras.getString("objectId");
@@ -109,11 +108,15 @@ public class InschrijvenVakantiePart3 extends Activity {
             naamCP = extras.getString("naamCP");
             telefoonCP = extras.getString("telefoonCP");
             gsmCP = extras.getString("gsmCP");
+            voornaamCPextra = extras.getString("voornaamCPExtra");
+            naamCPextra = extras.getString("naamCPExtra");
+            telefoonCPextra = extras.getString("telefoonCPExtra");
+            gsmCPextra = extras.getString("gsmCPExtra");
         }
 
         extraInformatie = editExtraInformatie.getText().toString();
 
-        if (inschrijvingOpslaan(objectId, voornaam, naam, straat, huisnr,  bus, gemeente, postcode, voornaamCP, naamCP, telefoonCP, gsmCP, extraInformatie, jaar)){
+        if (inschrijvingOpslaan(objectId, voornaam, naam, straat, huisnr,  bus, gemeente, postcode, voornaamCP, naamCP, telefoonCP, gsmCP,voornaamCPextra, naamCPextra, telefoonCPextra, gsmCPextra, extraInformatie, jaar)){
             Toast.makeText(getApplicationContext(), getString(R.string.dialog_ingeschreven_melding), Toast.LENGTH_LONG).show();
             startActivity(in);
 
@@ -125,7 +128,8 @@ public class InschrijvenVakantiePart3 extends Activity {
     }
 
     public boolean inschrijvingOpslaan(String activiteitID, String voornaam, String naam, String straat, String huisnr, String bus, String gemeente, String postcode,
-                                    String voornaamCP, String naamCP, String telefoonCP, String gsmCP, String extraInfo,  String jaar){
+                                    String voornaamCP, String naamCP, String telefoonCP, String gsmCP,
+                                    String voornaamCPextra, String naamCPextra, String telefoonCPextra, String gsmCPextra, String extraInfo,  String jaar){
 
         SimpleDateFormat formatter = new SimpleDateFormat("MMM dd, yyyy");
         Date date = null;
@@ -193,6 +197,14 @@ public class InschrijvenVakantiePart3 extends Activity {
             ParseObject inschrijving = new ParseObject("InschrijvingVakantie");
             ParseObject deeln = new ParseObject("Deelnemer");
 
+            ParseObject deelnExtra = new ParseObject("ContactpersoonNood");
+            if(gsmCPextra != null){
+                deelnExtra.put("voornaam" , voornaamCPextra);
+                deelnExtra.put("naam" , naamCPextra);
+                deelnExtra.put("telefoon" , telefoonCPextra);
+                deelnExtra.put("gsm" , gsmCPextra);
+                deelnExtra.save();
+            }
 
 
             contactPers.put("voornaam" , voornaamCP);
@@ -217,8 +229,10 @@ public class InschrijvenVakantiePart3 extends Activity {
             inschrijving.put("vakantie", activiteitID);
             inschrijving.put("extraInformatie" , extraInfo);
             inschrijving.put("contactpersoon1", contactPers.getObjectId());
+            if (gsmCPextra != null)
+                inschrijving.put("contactpersoon2", deelnExtra.getObjectId());
             inschrijving.put("deelnemer", deeln.getObjectId());
-            inschrijving.save();
+            inschrijving.saveInBackground(); //thread hoeft niet te wachten op het opslaan van Inschrijving object, op de rest wel
 
             return true;
         }

@@ -55,14 +55,75 @@
             android:layout_marginTop="25dp"
             android:hint="@string/gsmHint" />
 
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btnCPtoevoegen"
+            android:id="@+id/btnExtraCP"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/GsmContactPersoon" />
+
+        <RelativeLayout
+            android:id="@+id/layout_ExtraCP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btnExtraCP">
+                <EditText
+                    android:id="@+id/VoornaamContactPersoonInsExtra"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+                    android:layout_alignParentTop="true"
+                    android:hint="@string/naamHint"
+                    android:visibility="gone"/>
+
+                <EditText
+                    android:id="@+id/NaamContactPersoonExtra"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/VoornaamContactPersoonInsExtra"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="25dp"
+                    android:hint="@string/famnaamHint"
+                    android:visibility="gone" />
+
+                <EditText
+                    android:id="@+id/TelefoonContactPersoonExtra"
+                    android:inputType="number"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/NaamContactPersoonExtra"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="25dp"
+                    android:hint="@string/telefoonHint"
+                    android:visibility="gone"/>
+
+                <EditText
+                    android:id="@+id/GsmContactPersoonExtra"
+                    android:inputType="number"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/TelefoonContactPersoonExtra"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="25dp"
+                    android:hint="@string/gsmHint"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+
+
 
         <Button
             android:id="@+id/btnNaarDeel3V"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/GsmContactPersoon"
             android:layout_marginTop="25dp"
-            android:text="@string/volgende" />
+            android:text="@string/volgende"
+            android:layout_below="@+id/layout_ExtraCP"
+            android:layout_alignParentBottom="true"/>
+
 
 
     </RelativeLayout>
