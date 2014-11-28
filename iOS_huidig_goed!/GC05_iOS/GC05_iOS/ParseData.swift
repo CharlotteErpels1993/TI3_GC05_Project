@@ -326,7 +326,14 @@ struct /*class*/ ParseData {
     }
     
     static func getEmail(email: String) -> Bool {
-        return OuderSQL.getEmail(email)
+        var boolOuder = OuderSQL.getEmail(email)
+        var boolMonitor = MonitorSQL.getEmail(email)
+        
+        if boolOuder == true || boolMonitor == true {
+            return true
+        }
+        
+        return false
     }
     
     static func getVoorkeurenVakantie(voorkeur: Voorkeur) -> [Voorkeur] {

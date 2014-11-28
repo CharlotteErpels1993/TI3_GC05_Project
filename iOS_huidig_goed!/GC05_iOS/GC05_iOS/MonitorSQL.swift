@@ -66,6 +66,20 @@ struct MonitorSQL {
         return monitors.first!
     }
     
+    static func getEmail(email: String) -> Bool {
+        let (resultSet, err) = SD.executeQuery("SELECT * FROM Monitor WHERE email = ?", withArgs: [email])
+        if err != nil
+        {
+            println("ERROR: error tijdens ophalen van alle gsms")
+        }
+        
+        if resultSet.count == 0 {
+            return false
+        }
+        
+        return true
+    }
+    
     static func getMonitor(row: SD.SDRow) -> Monitor {
         var monitor: Monitor = Monitor(id: "test")
         

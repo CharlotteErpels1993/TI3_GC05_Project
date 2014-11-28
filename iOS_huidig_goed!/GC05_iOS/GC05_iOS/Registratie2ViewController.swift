@@ -39,6 +39,7 @@ class Registratie2ViewController: ResponsiveTextFieldViewController
             settenOptioneleGegevens()
             
             if controleerGSMAlGeregisteerd() == true {
+                giveUITextFieldRedBorder(self.txtGsm)
                 let alertController = UIAlertController(title: "Fout", message: "Deze gsm bestaat al", preferredStyle: .Alert)
                 let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: {
                     action in

@@ -40,6 +40,7 @@ class Registratie3ViewController: ResponsiveTextFieldViewController
             foutBoxOproepen("Fout", "Gelieve de velden correct in te vullen!", self)
         } else {
             if controleerEmailAlGeregisteerd() == true /*emailBestaatAl() == true*/ {
+                giveUITextFieldRedBorder(self.txtEmail)
                 /*giveUITextFieldRedBorder(txtEmail)
                 giveUITextFieldDefaultBorder(txtWachtwoord)
                 giveUITextFieldDefaultBorder(txtBevestigWachtwoord)
@@ -176,4 +177,5 @@ class Registratie3ViewController: ResponsiveTextFieldViewController
     func controleerEmailAlGeregisteerd() -> Bool {
         return ParseData.getEmail(self.txtEmail.text)
     }
+    
 }

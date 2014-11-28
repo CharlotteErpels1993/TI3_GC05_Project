@@ -105,6 +105,7 @@ class Registratie1ViewController: ResponsiveTextFieldViewController
             }
             
             if controleerRijksregisterNummrAlGeregisteerd() == true {
+                giveUITextFieldRedBorder(self.txtRijksregisterNr)
                 let alertController = UIAlertController(title: "Fout", message: "Deze rijksregisternummer bestaat al", preferredStyle: .Alert)
                 let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: {
                     action in
