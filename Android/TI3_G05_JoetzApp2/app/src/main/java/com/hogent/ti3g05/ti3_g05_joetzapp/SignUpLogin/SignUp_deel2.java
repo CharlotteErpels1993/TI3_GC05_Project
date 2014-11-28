@@ -23,6 +23,11 @@ public class SignUp_deel2 extends Activity{
     private Button terugGaanButton;
 
     private String aansluitingsnummerString;
+    private String codeGerechtigdeStr;
+    private EditText codeGerechtigde;
+    private EditText aansluitingsNrOuder2;
+    private String aansluitingsNrOuder2Str;
+    String rijksRegNr;
     private ImageView imageView;
 
 
@@ -39,10 +44,12 @@ public class SignUp_deel2 extends Activity{
 
 
         // creating connection detector class instance
-        //cd = new ConnectionDetector(getApplicationContext());
+        cd = new ConnectionDetector(getApplicationContext());
 
 
         aansluitingsnummer = (EditText) findViewById(R.id.aansluitingsnummer);
+        codeGerechtigde = (EditText) findViewById(R.id.codeGerechtigde);
+        aansluitingsNrOuder2 = (EditText) findViewById(R.id.aansluitingsNrOuder2);
 
         volgendeButton = (Button) findViewById(R.id.btn_volgendedeel3);
 
@@ -58,6 +65,7 @@ public class SignUp_deel2 extends Activity{
                         // check for Internet status
                         // Internet connection is not present
                         // Ask user to connect to Internet
+                isInternetPresent = cd.isConnectingToInternet();
                         if (isInternetPresent) {
                             // Internet Connection is Present
                             // make HTTP requests
@@ -96,12 +104,35 @@ public class SignUp_deel2 extends Activity{
 
         // Store values at the time of the login attempt.
         aansluitingsnummerString = aansluitingsnummer.getText().toString();
+        codeGerechtigdeStr = codeGerechtigde.getText().toString();
+        aansluitingsNrOuder2Str = aansluitingsNrOuder2.getText().toString();
+
 
         // Check for a valid email address.
         if (TextUtils.isEmpty(aansluitingsnummerString)) {
             aansluitingsnummer.setError(getString(R.string.error_field_required));
             focusView = aansluitingsnummer;
             cancel = true;
+        } else if(aansluitingsnummerString.length() != 10)
+        {
+            aansluitingsnummer.setError(getString(R.string.error_incorrect_aansluitingsnr));
+            focusView = aansluitingsnummer;
+            cancel = true;
+        }
+        if (TextUtils.isEmpty(codeGerechtigdeStr)) {
+            codeGerechtigde.setError(getString(R.string.error_field_required));
+            focusView = codeGerechtigde;
+            cancel = true;
+        }
+
+        if (!TextUtils.isEmpty(aansluitingsNrOuder2Str)) {
+            if( aansluitingsNrOuder2Str.length() != 10)
+            {
+                aansluitingsNrOuder2.setError(getString(R.string.error_incorrect_aansluitingsnr));
+                focusView = aansluitingsNrOuder2;
+                cancel = true;
+            }
+
         }
 
         if (cancel) {
@@ -109,21 +140,29 @@ public class SignUp_deel2 extends Activity{
             // form field with an error.
             focusView.requestFocus();
         } else {
-           opslaan(aansluitingsnummerString);
+           opslaan(aansluitingsnummerString, codeGerechtigdeStr, aansluitingsNrOuder2Str);
 
         }
 
     }
 
-    private void opslaan(String aansluitingsnummerString) {
+    private void opslaan(String aansluitingsnummerString, String codeGerechtigdeStr, String aansluitingsNrOuder2Str) {
         Intent intent = new Intent(getApplicationContext(), SignUp_deel3.class);
-
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             String value = extras.getString("lidVanBondMoyson");
+            rijksRegNr = extras.getString("rijksregisternr");
             intent.putExtra("lidVanBondMoyson", value);
+            intent.putExtra("rijksregisternr", rijksRegNr);
         }
         intent.putExtra("aansluitingsnr", aansluitingsnummerString);
+        intent.putExtra("codeGerechtigde", codeGerechtigdeStr);
+        if(aansluitingsNrOuder2Str != null)
+        {
+            intent.putExtra("aansluitingsnrOuder2", aansluitingsNrOuder2Str);
+        }
+        else
+            intent.putExtra("aansluitingsnrOuder2", "");
 
         startActivity(intent);
 
@@ -151,7 +190,7 @@ public class SignUp_deel2 extends Activity{
     }
 
     private void clearErrors(){
-        aansluitingsnummer.setError(null);
+        aansluitingsnummer.setError(null); codeGerechtigde.setError(null);
     }
 
 

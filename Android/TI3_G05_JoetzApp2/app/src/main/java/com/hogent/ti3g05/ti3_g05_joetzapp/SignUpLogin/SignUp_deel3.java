@@ -14,6 +14,11 @@ import android.widget.Toast;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
 import com.hogent.ti3g05.ti3_g05_joetzapp.R;
 import com.hogent.ti3g05.ti3_g05_joetzapp.navBarMainScreen;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+
+import java.util.List;
 
 public class SignUp_deel3 extends Activity{
 
@@ -24,7 +29,6 @@ public class SignUp_deel3 extends Activity{
     private EditText gemeenteText;
     private EditText postcodeText;
     private EditText busText;
-    private EditText rijksregnrText;
     private EditText telefoonText;
     private EditText gsmText;
 
@@ -59,16 +63,15 @@ public class SignUp_deel3 extends Activity{
 		// creating connection detector class instance
 		cd = new ConnectionDetector(getApplicationContext());
 		
-		voornaamText = (EditText) findViewById(R.id.Voornaam);
-		naamText = (EditText) findViewById(R.id.Naam);
-        rijksregnrText = (EditText) findViewById(R.id.RijksRegNr);
-		straatText = (EditText) findViewById(R.id.Straat);
-        huisnrText = (EditText) findViewById(R.id.Huisnr);
-        gemeenteText = (EditText) findViewById(R.id.Gemeente);
-        postcodeText = (EditText) findViewById(R.id.Postcode);
-        telefoonText = (EditText) findViewById(R.id.Telefoon);
-        gsmText = (EditText) findViewById(R.id.Gsm);
-        busText = (EditText) findViewById(R.id.Bus);
+		voornaamText = (EditText) findViewById(R.id.VoornaamSignup);
+		naamText = (EditText) findViewById(R.id.NaamSignup);
+		straatText = (EditText) findViewById(R.id.StraatSignup);
+        huisnrText = (EditText) findViewById(R.id.HuisnrSignup);
+        gemeenteText = (EditText) findViewById(R.id.GemeenteSignup);
+        postcodeText = (EditText) findViewById(R.id.PostcodeSignup);
+        telefoonText = (EditText) findViewById(R.id.TelefoonSignup);
+        gsmText = (EditText) findViewById(R.id.GsmSignup);
+        busText = (EditText) findViewById(R.id.BusSignup);
 
 		volgendeButton = (Button) findViewById(R.id.btnNaarDeel4);
 		volgendeButton.setOnClickListener(new OnClickListener() {
@@ -81,7 +84,7 @@ public class SignUp_deel3 extends Activity{
                 if (isInternetPresent) {
                     // Internet Connection is Present
                     // make HTTP requests
-                    opslaagGeg();
+                    opslaanGeg();
                 }
                 else{
                     // Internet connection is not present
@@ -111,14 +114,13 @@ public class SignUp_deel3 extends Activity{
 
 
 
-	private void opslaagGeg(){
+	private void opslaanGeg(){
 		clearErrors();
         cancel = false;
 
 		// Store values at the time of the login attempt.
 		voornaam = voornaamText.getText().toString().toLowerCase();
 		naam = naamText.getText().toString().toLowerCase();
-        rijksregnr = rijksregnrText.getText().toString();
         straat = straatText.getText().toString();
         huisnr = huisnrText.getText().toString();
         bus = busText.getText().toString();
@@ -135,11 +137,13 @@ public class SignUp_deel3 extends Activity{
             cancel = true;
         }
 
-        if (TextUtils.isEmpty(telefoon)) {
-            telefoonText.setError(getString(R.string.error_field_required));
+        if (!TextUtils.isEmpty(telefoon) && (!telefoon.matches("[0-9]+") || telefoon.length() != 9)){
+
+            telefoonText.setError(getString(R.string.error_incorrect_tel));
             focusView = telefoonText;
             cancel = true;
         }
+
 
         if (TextUtils.isEmpty(postcode)) {
             postcodeText.setError(getString(R.string.error_field_required));
@@ -186,26 +190,6 @@ public class SignUp_deel3 extends Activity{
             focusView = straatText;
             cancel = true;
         }
-
-        //ToDo controle of rijksregisternr niet leeg is en cijfers zijn
-        if (TextUtils.isEmpty(rijksregnr)) {
-            rijksregnrText.setError(getString(R.string.error_field_required));
-            focusView = rijksregnrText;
-            cancel = true;
-        }else{
-            if (!rijksregnr.matches("[0-9]+") && rijksregnr.length() != 11){
-                rijksregnrText.setError(getString(R.string.error_incorrect_rijksregnr));
-                focusView = rijksregnrText;
-                cancel = true;
-            }
-            if (isValidRijksregisternr(rijksregnr) == false){
-                rijksregnrText.setError(getString(R.string.error_incorrect_rijksregisternummer));
-                focusView = rijksregnrText;
-                cancel = true;
-            }
-        }
-
-
 		if (TextUtils.isEmpty(naam)) {
 			naamText.setError(getString(R.string.error_field_required));
 			focusView = naamText;
@@ -218,11 +202,20 @@ public class SignUp_deel3 extends Activity{
             cancel = true;
         }
 
-
-
-
-
-
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Ouder");
+        query.whereEqualTo("gsm", gsm);
+        try{
+            List<ParseObject> lijstObjecten = query.find();
+            if (lijstObjecten.size() > 0){
+                gsmText.setError("Dit gsm-nummer is reeds in gebruik.");
+                focusView = gsmText;
+                cancel = true;
+            }
+        }
+        catch(ParseException e){
+            Toast.makeText(SignUp_deel3.this,"Er is iets fout gelopen. Onze excuses voor het ongemak.", Toast.LENGTH_SHORT).show();
+            cancel = true;
+        }
 
 		if (cancel) {
 			// There was an error; don't attempt login and focus the first
@@ -231,14 +224,14 @@ public class SignUp_deel3 extends Activity{
 		} else {
 			// Show a progress spinner, and kick off a background task to
 			// perform the user login attempt.
-            opslaan(voornaam ,naam, rijksregnr, straat, huisnr, gemeente, postcode, telefoon, gsm, bus);
+            opslaan(voornaam ,naam, straat, huisnr, gemeente, postcode, telefoon, gsm, bus);
 			//Toast.makeText(getApplicationContext(), "Opgeslagen", Toast.LENGTH_SHORT).show();
 
 		}
 
 	}
 
-    private void opslaan(String voornaam,String naam, String rijksregnr, String straat, String huisnr, String gemeente, String postcode, String telefoon, String gsm, String bus) {
+    private void opslaan(String voornaam,String naam, String straat, String huisnr, String gemeente, String postcode, String telefoon, String gsm, String bus) {
         Toast.makeText(getApplicationContext(), getString(R.string.loading_message), Toast.LENGTH_SHORT).show();
 
         Intent in = new Intent(getApplicationContext(),SignUp_deel4.class);
@@ -246,9 +239,15 @@ public class SignUp_deel3 extends Activity{
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             String lidBM = extras.getString("lidVanBondMoyson");
+            rijksregnr = extras.getString("rijksregisternr");
             String BMnr = extras.getString("aansluitingsnr");
+            String codeGerechtigde = extras.getString("codeGerechtigde");
+            String aansluitingsNrOuder2 = extras.getString("aansluitingsnrOuder2");
             in.putExtra("lidVanBondMoyson", lidBM);
             in.putExtra("aansluitingsnr", BMnr);
+            in.putExtra("codeGerechtigde", codeGerechtigde);
+            in.putExtra("aansluitingsnrOuder2", aansluitingsNrOuder2);
+            in.putExtra("rijksregisternr", rijksregnr);
         }
 
         in.putExtra("voornaam", voornaam);
@@ -258,7 +257,6 @@ public class SignUp_deel3 extends Activity{
         in.putExtra("bus", bus);
         in.putExtra("gemeente", gemeente);
         in.putExtra("postcode", postcode);
-        in.putExtra("rijksregnr", rijksregnr);
         in.putExtra("telefoon",telefoon);
         in.putExtra("gsm",gsm);
 
@@ -275,7 +273,6 @@ public class SignUp_deel3 extends Activity{
 	private void clearErrors(){ 
 		voornaamText.setError(null);
 		naamText.setError(null);
-		rijksregnrText.setError(null);
         straatText.setError(null);
         huisnrText.setError(null);
         gemeenteText.setError(null);
@@ -285,11 +282,11 @@ public class SignUp_deel3 extends Activity{
         gsmText.setError(null);
 	}
 
-    private boolean isEmpty(EditText etText) {
+   /* private boolean isEmpty(EditText etText) {
         return etText.getText().toString().trim().length() == 0;
-    }
+    }*/
 
-    private boolean isValidRijksregisternr(String rrn){
+   /* private boolean isValidRijksregisternr(String rrn){
         String eerste9cijfers, laatste2;
         eerste9cijfers = rrn.substring(0, 9);
         laatste2 = rrn.substring(9, 11);
@@ -297,7 +294,7 @@ public class SignUp_deel3 extends Activity{
         int controleGetal = 97 - restNaDeling;
         return controleGetal == Integer.parseInt(laatste2);
 
-    }
+    }*/
 
 	
 }

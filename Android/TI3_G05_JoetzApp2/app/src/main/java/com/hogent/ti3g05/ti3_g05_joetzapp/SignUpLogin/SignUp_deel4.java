@@ -176,6 +176,8 @@ public class SignUp_deel4 extends Activity{
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             //String lidBondMoyson = extras.getString("lidVanBondMoyson");
+            String codeGerechtigde = extras.getString("codeGerechtigde");
+            String aansluitingsnrOuder2 = extras.getString("aansluitingsnrOuder2");
             String aansluitingsnr = extras.getString("aansluitingsnr");
             String voornaam = extras.getString("voornaam");
             String naam = extras.getString("naam");
@@ -184,14 +186,13 @@ public class SignUp_deel4 extends Activity{
             String bus = extras.getString("bus");
             String gemeente = extras.getString("gemeente");
             String postcode = extras.getString("postcode");
-            String rijksregnr = extras.getString("rijksregnr");
+            String rijksregnr = extras.getString("rijksregisternr");
             String telefoon = extras.getString("telefoon");
             String gsm = extras.getString("gsm");
 
             try{
                 //gebruiker.put("wachtwoord", lidBondMoyson);
-                if (aansluitingsnr != null)
-                    gebruiker.put("aansluitingsNr", Integer.parseInt(aansluitingsnr));
+                gebruiker.put("aansluitingsNr", Integer.parseInt(aansluitingsnr));
                 gebruiker.put("voornaam", voornaam);
                 gebruiker.put("naam", naam);
                 gebruiker.put("straat", straat);
@@ -203,9 +204,11 @@ public class SignUp_deel4 extends Activity{
                 gebruiker.put("rijksregisterNr", rijksregnr);
                 gebruiker.put("telefoon", telefoon);
                 gebruiker.put("gsm", gsm);
+                gebruiker.put("aansluitingsNrTweedeOuder", Integer.parseInt(aansluitingsnrOuder2));
+                gebruiker.put("codeGerechtigde", Integer.parseInt(codeGerechtigde));
             }
             catch (NumberFormatException nfe){
-                Toast.makeText(getApplicationContext(), nfe.getMessage(), Toast.LENGTH_SHORT);
+                Toast.makeText(getApplicationContext(), nfe.getMessage(), Toast.LENGTH_SHORT).show();
             }
         }
 

@@ -22,7 +22,17 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:hint="@string/aanlsuitingsnummerhint"
-        android:inputType="text"
+        android:inputType="number"
+        />
+    <EditText
+        android:id="@+id/codeGerechtigde"
+
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/codeGerechtige"
+        android:inputType="number"
+        android:layout_marginTop="8dp"
+        android:layout_below="@id/aansluitingsnummer"
         />
 
     <ImageView
@@ -31,16 +41,29 @@
         android:id="@+id/imageViewBondMoyson"
         android:layout_centerHorizontal="true"
         android:src="@drawable/bondmoyson"
-        android:layout_below="@id/aansluitingsnummer"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/codeGerechtigde"
         android:adjustViewBounds="true"
         />
 
+    <EditText
+        android:id="@+id/aansluitingsNrOuder2"
+
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/aanlsuitingsnummerhintOuder2"
+        android:inputType="number"
+        android:layout_marginTop="8dp"
+
+        android:layout_below="@id/imageViewBondMoyson"
+        />
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/volgende"
         android:id="@+id/btn_volgendedeel3"
-        android:layout_below="@id/imageViewBondMoyson"
+        android:layout_marginTop="8dp"
+        android:layout_below="@id/aansluitingsNrOuder2"
         android:layout_alignParentStart="true" />
     <Button
         android:layout_width="fill_parent"

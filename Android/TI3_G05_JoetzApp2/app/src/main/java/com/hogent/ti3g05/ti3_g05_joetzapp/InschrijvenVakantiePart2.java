@@ -103,7 +103,8 @@ public class InschrijvenVakantiePart2 extends Activity {
         }
 
 
-            if (!TextUtils.isEmpty(telefoon) && !telefoon.matches("[0-9]+") || telefoon.length() != 9){
+            if (!TextUtils.isEmpty(telefoon) && (!telefoon.matches("[0-9]+") || telefoon.length() != 9)){
+
                 txtTelefoon.setError(getString(R.string.error_incorrect_tel));
                 focusView = txtTelefoon;
                 cancel = true;
