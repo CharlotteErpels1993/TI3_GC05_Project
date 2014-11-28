@@ -19,10 +19,11 @@ class NieuwWachtwoordViewController: UIViewController {
         if (email != nil && isValidEmail(email) && isValidEmailInDatabase(email)) {
             PFUser.requestPasswordResetForEmail(email)
         } else {
+            giveUITextFieldRedBorder(self.emailAdresTxt)
             var alert = UIAlertController(title: "Fout", message: "Vul een geldig email adres in!", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Ga terug", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
-            emailAdresTxt.text = " "
+            emailAdresTxt.text = ""
             viewDidLoad()
             //email = ""
         }

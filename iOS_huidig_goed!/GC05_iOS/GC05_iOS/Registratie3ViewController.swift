@@ -48,9 +48,9 @@ class Registratie3ViewController: ResponsiveTextFieldViewController
                 let alertController = UIAlertController(title: "Fout", message: "Deze email bestaat al", preferredStyle: .Alert)
                 let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: {
                     action in
-                    self.txtEmail.text = " "
-                    self.txtWachtwoord.text = " "
-                    self.txtBevestigWachtwoord.text = " "
+                    self.txtEmail.text = ""
+                    self.txtWachtwoord.text = ""
+                    self.txtBevestigWachtwoord.text = ""
                 })
                 alertController.addAction(okAction)
                 self.presentViewController(alertController, animated: true, completion: nil)

@@ -85,6 +85,8 @@ class InloggenViewController: UIViewController
         
         if controleerRodeBordersAanwezig() == true {
             foutBoxOproepen("Fout", "Gelieve de velden correct in te vullen!", self)
+            self.txtEmail.text = ""
+            self.txtWachtwoord.text = ""
         } else {
             var type: String = zoekenMatchMonitorOfOuder(email, wachtwoord: wachtwoord)
             
@@ -99,6 +101,8 @@ class InloggenViewController: UIViewController
                 PFUser.logInWithUsername(ouder.email, password: ouder.wachtwoord)
                 performSegueWithIdentifier("ouderOverzicht", sender: self)
             } else {
+                giveUITextFieldRedBorder(self.txtEmail)
+                giveUITextFieldRedBorder(self.txtWachtwoord)
                 txtEmail.text = ""
                 txtWachtwoord.text = ""
                 foutBoxOproepen("Fout", "Foutieve combinatie e-mail & wachtwoord", self)

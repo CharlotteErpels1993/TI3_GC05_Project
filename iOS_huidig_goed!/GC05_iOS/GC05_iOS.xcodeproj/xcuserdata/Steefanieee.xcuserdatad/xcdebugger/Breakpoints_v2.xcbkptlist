@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GC05_iOS/NieuwWachtwoordViewController.swift"
-            timestampString = "438814432.174653"
+            timestampString = "438862778.718826"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
             landmarkName = "isValidEmailInDatabase(_:)"
             landmarkType = "5">
          </BreakpointContent>
