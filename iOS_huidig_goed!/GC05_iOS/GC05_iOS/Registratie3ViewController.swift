@@ -39,11 +39,20 @@ class Registratie3ViewController: ResponsiveTextFieldViewController
         if controleerRodeBordersAanwezig() == true {
             foutBoxOproepen("Fout", "Gelieve de velden correct in te vullen!", self)
         } else {
-            if emailBestaatAl() == true {
-                giveUITextFieldRedBorder(txtEmail)
+            if controleerEmailAlGeregisteerd() == true /*emailBestaatAl() == true*/ {
+                /*giveUITextFieldRedBorder(txtEmail)
                 giveUITextFieldDefaultBorder(txtWachtwoord)
                 giveUITextFieldDefaultBorder(txtBevestigWachtwoord)
-                foutBoxOproepen("Fout", "Er is al een gebruiker met dit e-mailadres geregistreerd.", self)
+                foutBoxOproepen("Fout", "Er is al een gebruiker met dit e-mailadres geregistreerd.", self)*/
+                let alertController = UIAlertController(title: "Fout", message: "Deze email bestaat al", preferredStyle: .Alert)
+                let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: {
+                    action in
+                    self.txtEmail.text = " "
+                    self.txtWachtwoord.text = " "
+                    self.txtBevestigWachtwoord.text = " "
+                })
+                alertController.addAction(okAction)
+                self.presentViewController(alertController, animated: true, completion: nil)
             } else {
                 if wachtwoordenMatch() == true {
                     settenGegevens()
@@ -148,7 +157,7 @@ class Registratie3ViewController: ResponsiveTextFieldViewController
     }
     
     //alternatief verloop nog toevoegen in lastenboek!!!! (UC Registreren)
-    func emailBestaatAl() -> Bool {
+    /*func emailBestaatAl() -> Bool {
         var ouders: [PFObject] = []
         
         var query = PFQuery(className: "Ouder")
@@ -162,5 +171,9 @@ class Registratie3ViewController: ResponsiveTextFieldViewController
         } else {
             return false
         }
+    }*/
+    
+    func controleerEmailAlGeregisteerd() -> Bool {
+        return ParseData.getEmail(self.txtEmail.text)
     }
 }

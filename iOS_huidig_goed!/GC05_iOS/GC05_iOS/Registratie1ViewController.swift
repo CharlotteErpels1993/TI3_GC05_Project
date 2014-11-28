@@ -28,40 +28,12 @@ class Registratie1ViewController: ResponsiveTextFieldViewController
     }
     @IBAction func gaTerugNaarInloggen(sender: AnyObject) {
         annuleerControllerRegistratie(self)
-        /*let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        var destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
-        
-        //let alertController = UIAlertController(title: "A", message: "Wilt u zeker uitloggen?", preferredStyle: .ActionSheet)
-        let alertController = UIAlertController()
-        
-        let callAction = UIAlertAction(title: "Annuleer", style: UIAlertActionStyle.Destructive, handler: {
-            action in
-            destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Inloggen") as UIViewController
-            self.sideMenuController()?.setContentViewController(destViewController)
-            self.hideSideMenuView()
-            }
-        )
-        alertController.addAction(callAction)
-        
-        let cancelAction = UIAlertAction(title: "Ga terug", style: .Default, handler: nil)
-        alertController.addAction(cancelAction)
-        
-        presentViewController(alertController, animated: true, completion: nil)*/
-        
-        
-        /*let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        var destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Inloggen") as UIViewController
-        sideMenuController()?.setContentViewController(destViewController)
-        hideSideMenuView()*/
     }
     
     override func viewDidLoad() {
-        var activityIndicator = getActivityIndicatorView(self)
-        activityIndicator.startAnimating()
         super.viewDidLoad()
         hideSideMenuView()
         self.navigationItem.setHidesBackButton(true, animated: true)
-        activityIndicator.stopAnimating()
     }
     
     
@@ -74,12 +46,10 @@ class Registratie1ViewController: ResponsiveTextFieldViewController
             
             lblAansluitingsNr.hidden = false
             lblCodeGerechtigde.hidden = false
-            lblRijksregisterNr.hidden = false
             lblAansluitingsNrTweedeOuder.hidden = false
             
             txtAansluitingsNr.hidden = false
             txtCodeGerechtigde.hidden = false
-            txtRijksregisterNr.hidden = false
             txtAansluitingsNrTweedeOuder.hidden = false
             buttonNummers.hidden = false
             buttonRegisterenMonitor.hidden = false
@@ -90,12 +60,10 @@ class Registratie1ViewController: ResponsiveTextFieldViewController
             
             lblAansluitingsNr.hidden = true
             lblCodeGerechtigde.hidden = true
-            lblRijksregisterNr.hidden = true
             lblAansluitingsNrTweedeOuder.hidden = true
             
             txtAansluitingsNr.hidden = true
             txtCodeGerechtigde.hidden = true
-            txtRijksregisterNr.hidden = true
             txtAansluitingsNrTweedeOuder.hidden = true
             buttonNummers.hidden = true
             buttonRegisterenMonitor.hidden = true
@@ -111,26 +79,59 @@ class Registratie1ViewController: ResponsiveTextFieldViewController
         
         
         //TO DO: controleren op formaat van ingevulde text! (String, int, ...)
-        
-        if gebruikerIsLid == true {
-            setStatusTextFields()
-            pasLayoutVeldenAan()
             
-            if controleerRodeBordersAanwezig() == true {
-                foutBoxOproepen("Fout", "Gelieve de velden correct in te vullen!", self)
-            } else {
-                settenVerplichteGegevens()
+            if gebruikerIsLid == true {
+                setStatusTextFields()
+                pasLayoutVeldenAan()
+            
+                if controleerRodeBordersAanwezig() == true {
+                    foutBoxOproepen("Fout", "Gelieve de velden correct in te vullen!", self)
+                } else {
+                    settenVerplichteGegevens()
                 
-                if statusTextFields["aansluitingsNrTweedeouder"] != "leeg" {
-                    ouder.aansluitingsNrTweedeOuder = txtAansluitingsNrTweedeOuder.text.toInt()!
+                    if statusTextFields["aansluitingsNrTweedeouder"] != "leeg" {
+                        ouder.aansluitingsNrTweedeOuder = txtAansluitingsNrTweedeOuder.text.toInt()!
+                    }
+                }
+            } else {
+                setStatusTextFieldsRijksregisterNummer()
+                pasLayoutVeldenAanRijksregisterNummer()
+                
+                if controleerRodeBordersAanwezig() == true {
+                    foutBoxOproepen("Fout", "Gelieve het veld correct in te vullen", self)
+                } else {
+                    self.ouder.rijksregisterNr = self.txtRijksregisterNr.text
                 }
             }
-        }
-        registratie2ViewController.ouder = ouder
+            
+            if controleerRijksregisterNummrAlGeregisteerd() == true {
+                let alertController = UIAlertController(title: "Fout", message: "Deze rijksregisternummer bestaat al", preferredStyle: .Alert)
+                let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: {
+                    action in
+                    self.txtRijksregisterNr.text = " "
+                })
+                alertController.addAction(okAction)
+                self.presentViewController(alertController, animated: true, completion: nil)
+            } else {
+                registratie2ViewController.ouder = ouder
+            }
         } else if segue.identifier == "gaTerug" {
                 let vakantiesViewController = segue.destinationViewController as VakantiesTableViewController
             }
         
+    }
+    
+    func setStatusTextFieldsRijksregisterNummer() {
+        if txtRijksregisterNr.text.isEmpty {
+            statusTextFields["rijksregisterNr"] = "leeg"
+        } else {
+            /*if !checkPatternRijksregisterNr(txtRijksregisterNr.text) {
+                statusTextFields["rijksregisterNr"] = "ongeldig"
+            } else  {
+                statusTextFields["rijksregisterNr"] = "geldig"
+            }*/
+            statusTextFields["rijksregisterNr"] = "geldig"
+        }
     }
     
     func setStatusTextFields() {
@@ -178,6 +179,14 @@ class Registratie1ViewController: ResponsiveTextFieldViewController
             } else {
                 statusTextFields["aansluitingsNrTweedeOuder"] = "geldig"
             }
+        }
+    }
+    
+    func pasLayoutVeldenAanRijksregisterNummer() {
+        if statusTextFields["rijksregisterNr"] == "leeg" || statusTextFields["rijksregisterNr"] == "ongeldig" {
+            giveUITextFieldRedBorder(txtRijksregisterNr)
+        } else {
+            giveUITextFieldDefaultBorder(txtRijksregisterNr)
         }
     }
     
@@ -269,6 +278,19 @@ class Registratie1ViewController: ResponsiveTextFieldViewController
         ouder.aansluitingsNr = txtAansluitingsNr.text.toInt()!
         ouder.codeGerechtigde = txtCodeGerechtigde.text.toInt()!
         ouder.rijksregisterNr = txtRijksregisterNr.text
+    }
+    
+    func controleerRijksregisterNummrAlGeregisteerd() -> Bool {
+        //var bool: Bool = false
+        
+        return ParseData.getRijksregisterNummers(self.txtRijksregisterNr.text)
+        
+        /*if rijksregisterNummers.count > 0 {
+            return true
+        }
+        
+        return false*/
+        //return bool
     }
 }
 

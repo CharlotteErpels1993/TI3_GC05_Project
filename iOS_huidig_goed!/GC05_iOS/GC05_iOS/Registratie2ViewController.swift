@@ -20,10 +20,6 @@ class Registratie2ViewController: ResponsiveTextFieldViewController
     
     @IBAction func gaTerugNaarInloggen(sender: AnyObject) {
         annuleerControllerRegistratie(self)
-        /*let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        var destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Inloggen") as UIViewController
-        sideMenuController()?.setContentViewController(destViewController)
-        hideSideMenuView()*/
     }
     
     
@@ -41,7 +37,19 @@ class Registratie2ViewController: ResponsiveTextFieldViewController
         } else {
             settenVerplichteGegevens()
             settenOptioneleGegevens()
-            registratie3ViewController.ouder = ouder
+            
+            if controleerGSMAlGeregisteerd() == true {
+                let alertController = UIAlertController(title: "Fout", message: "Deze gsm bestaat al", preferredStyle: .Alert)
+                let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: {
+                    action in
+                    self.txtGsm.text = " "
+                })
+                alertController.addAction(okAction)
+                self.presentViewController(alertController, animated: true, completion: nil)
+                //self.txtGsm.text = " "
+            } else {
+                registratie3ViewController.ouder = ouder
+            }
         }
         } else if segue.identifier == "gaTerug" {
             let vakantiesViewController = segue.destinationViewController as VakantiesTableViewController
@@ -227,5 +235,9 @@ class Registratie2ViewController: ResponsiveTextFieldViewController
         if statusTextFields["telefoon"] != "leeg" {
             ouder.telefoon = txtTelefoon.text
         }
+    }
+    
+    func controleerGSMAlGeregisteerd() -> Bool {
+        return ParseData.getGSM(self.txtGsm.text)
     }
 }

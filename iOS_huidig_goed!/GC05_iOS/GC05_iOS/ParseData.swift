@@ -317,6 +317,18 @@ struct /*class*/ ParseData {
         return InschrijvingVormingSQL.getInschrijvingenVorming(monitorId, vormingId: vormingId, periode: periode)
     }
     
+    static func getRijksregisterNummers(rijksregisterNummer: String) -> Bool {
+        return OuderSQL.getRijksregisterNummers(rijksregisterNummer)
+    }
+    
+    static func getGSM(gsm: String) -> Bool {
+        return OuderSQL.getGSM(gsm)
+    }
+    
+    static func getEmail(email: String) -> Bool {
+        return OuderSQL.getEmail(email)
+    }
+    
     static func getVoorkeurenVakantie(voorkeur: Voorkeur) -> [Voorkeur] {
     
         var monitorId: String! = voorkeur.monitor?.id
