@@ -130,6 +130,10 @@ public class InschrijvenVakantiePart3 extends Activity {
     public boolean inschrijvingOpslaan(String activiteitID, String voornaam, String naam, String straat, String huisnr, String bus, String gemeente, String postcode,
                                     String voornaamCP, String naamCP, String telefoonCP, String gsmCP,
                                     String voornaamCPextra, String naamCPextra, String telefoonCPextra, String gsmCPextra, String extraInfo,  String jaar){
+        String ouderID;
+        ouderID = objectIDvanOuderOphalen();
+        if (ouderID == null)
+            return false;
 
         SimpleDateFormat formatter = new SimpleDateFormat("MMM dd, yyyy");
         Date date = null;
@@ -229,6 +233,7 @@ public class InschrijvenVakantiePart3 extends Activity {
             inschrijving.put("vakantie", activiteitID);
             inschrijving.put("extraInformatie" , extraInfo);
             inschrijving.put("contactpersoon1", contactPers.getObjectId());
+            inschrijving.put("ouder", ouderID);
             if (gsmCPextra != null)
                 inschrijving.put("contactpersoon2", deelnExtra.getObjectId());
             inschrijving.put("deelnemer", deeln.getObjectId());
@@ -240,6 +245,24 @@ public class InschrijvenVakantiePart3 extends Activity {
             return false;
         }
 
+    }
+
+    public String objectIDvanOuderOphalen(){
+        String emailToLookFor = ParseUser.getCurrentUser().getEmail();
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Ouder");
+        query.whereEqualTo("email", emailToLookFor);
+        try{
+            List<ParseObject> lijstObjecten = query.find();
+            if (lijstObjecten.size() != 1){
+                return null;
+            }
+            else{//er is slechts 1 gebruiker in de Monitor tabel, zoals het hoort.
+                return lijstObjecten.get(0).getObjectId();
+            }
+        }
+        catch(com.parse.ParseException e){
+            return null;
+        }
     }
 
 
