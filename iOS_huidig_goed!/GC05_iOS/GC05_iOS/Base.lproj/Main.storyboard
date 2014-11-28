@@ -2239,9 +2239,6 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                 <date key="date" timeIntervalSinceReferenceDate="437479781.34447497">
                                     <!--2014-11-12 10:09:41 +0000-->
                                 </date>
-                                <date key="maximumDate" timeIntervalSinceReferenceDate="441630000">
-                                    <!--2014-12-30 11:00:00 +0000-->
-                                </date>
                                 <locale key="locale" localeIdentifier="nl_BE"/>
                             </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Mf-ew-jA5">

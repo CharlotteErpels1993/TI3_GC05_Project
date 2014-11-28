@@ -5,6 +5,7 @@ class InschrijvenVakantie2ViewController : ResponsiveTextFieldViewController {
     var inschrijvingVakantie: InschrijvingVakantie!
     var redColor: UIColor = UIColor.redColor()
     //var ouder: Ouder!
+    var leeftijd: Int = 0
     
     @IBOutlet weak var dpGeboortedatum: UIDatePicker!
     
@@ -13,26 +14,15 @@ class InschrijvenVakantie2ViewController : ResponsiveTextFieldViewController {
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "volgende" {
-            var leeftijd = calculateAge(dpGeboortedatum.date)
-            var minLeeftijd = inschrijvingVakantie.vakantie?.minLeeftijd
-            var maxLeeftijd = inschrijvingVakantie?.vakantie?.maxLeeftijd
+            self.leeftijd = calculateAge(dpGeboortedatum.date) as Int
+            var minLeeftijd = inschrijvingVakantie.vakantie!.minLeeftijd
+            var maxLeeftijd = inschrijvingVakantie.vakantie!.maxLeeftijd
             
-            if leeftijd <= minLeeftijd && leeftijd >= maxLeeftijd {
-                foutBoxOproepen("Fout", "De leeftijd moet tussen \(inschrijvingVakantie.vakantie?.minLeeftijd!) en \(inschrijvingVakantie.vakantie?.maxLeeftijd!) liggen.", self)
+            if leeftijd < minLeeftijd || leeftijd > maxLeeftijd || leeftijd == 0 {
+                dpGeboortedatum.layer.borderColor = redColor.CGColor
+                foutBoxOproepen("Fout", "De leeftijd moet tussen \(inschrijvingVakantie.vakantie!.minLeeftijd!) en \(inschrijvingVakantie.vakantie!.maxLeeftijd!) liggen.", self)
+                 viewDidLoad()
             }
-            
-            /*if controleerKindAlIngeschreven() == true {
-                let alertController = UIAlertController(title: "Fout", message: "Je hebt je al ingeschreven voor deze vakantie", preferredStyle: .Alert)
-                let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: {
-                    action in
-                    let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                    let destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
-                    self.sideMenuController()?.setContentViewController(destViewController)
-                    self.hideSideMenuView()
-                })
-                alertController.addAction(okAction)
-                self.presentViewController(alertController, animated: true, completion: nil)
-            }*/
             
             let inschrijvenVakantie3ViewController = segue.destinationViewController as InschrijvenVakantie3ViewController
             inschrijvingVakantie.deelnemer?.geboortedatum = dpGeboortedatum.date
@@ -62,18 +52,4 @@ class InschrijvenVakantie2ViewController : ResponsiveTextFieldViewController {
             return dateComponentNow.year - dateComponentBirth.year
         }
     }
-    
-    /*func controleerKindAlIngeschreven() -> Bool {
-        var inschrijvingen: [InschrijvingVakantie] = []
-        
-        inschrijvingen = ParseData.getInschrijvingenVakantie(inschrijvingVakantie)
-        
-        if inschrijvingen.count > 0 {
-            return true
-        }
-        
-        return false
-    }*/
-    
-    
 }

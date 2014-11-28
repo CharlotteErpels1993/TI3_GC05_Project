@@ -50,11 +50,9 @@ class IndienenVoorkeurViewController: UIViewController, UIPickerViewDataSource, 
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
         periodeLabel.hidden = true
-        /*var vertrekdatumStr = self.voorkeur.vakantie?.vertrekdatum.toS("dd/MM/yyyy")
-        var terugkeerdatumStr = self.voorkeur.vakantie?.terugkeerdatum.toS("dd/MM/yyyy")
-        periodeLabel.text = ("\(vertrekdatumStr) \(terugkeerdatumStr)")*/
         return pickerData[row]
     }
+    
     
     @IBAction func toonPeriode(sender: AnyObject) {
         var vertrekdatumStr = self.voorkeur.vakantie?.vertrekdatum.toS("dd/MM/yyyy")

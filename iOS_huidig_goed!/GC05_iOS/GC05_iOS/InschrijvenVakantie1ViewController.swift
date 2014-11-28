@@ -48,7 +48,7 @@ class InschrijvenVakantie1ViewController : ResponsiveTextFieldViewController {
             inschrijvingVakantie.vakantie = vakantie
             inschrijvingVakantie.deelnemer = deelnemer
             
-            if controleerKindAlIngeschreven() == true {
+            /*if controleerKindAlIngeschreven() == true {
                 let alertController = UIAlertController(title: "Fout", message: "Je hebt je al ingeschreven voor deze vakantie", preferredStyle: .Alert)
                 let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: {
                     action in
@@ -59,7 +59,7 @@ class InschrijvenVakantie1ViewController : ResponsiveTextFieldViewController {
                 })
                 alertController.addAction(okAction)
                 self.presentViewController(alertController, animated: true, completion: nil)
-            }
+            }*/
             
             
             inschrijvenVakantie2ViewController.inschrijvingVakantie = inschrijvingVakantie
