@@ -33,6 +33,10 @@ class Registratie1ViewController: ResponsiveTextFieldViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         hideSideMenuView()
+        self.txtRijksregisterNr.text = ""
+        self.txtCodeGerechtigde.text = ""
+        self.txtAansluitingsNr.text = ""
+        self.txtAansluitingsNrTweedeOuder.text = ""
         self.navigationItem.setHidesBackButton(true, animated: true)
     }
     
@@ -86,6 +90,7 @@ class Registratie1ViewController: ResponsiveTextFieldViewController
             
                 if controleerRodeBordersAanwezig() == true {
                     foutBoxOproepen("Fout", "Gelieve de velden correct in te vullen!", self)
+                    self.viewDidLoad()
                 } else {
                     settenVerplichteGegevens()
                 
@@ -99,6 +104,7 @@ class Registratie1ViewController: ResponsiveTextFieldViewController
                 
                 if controleerRodeBordersAanwezig() == true {
                     foutBoxOproepen("Fout", "Gelieve het veld correct in te vullen", self)
+                    self.viewDidLoad()
                 } else {
                     self.ouder.rijksregisterNr = self.txtRijksregisterNr.text
                 }
@@ -109,7 +115,7 @@ class Registratie1ViewController: ResponsiveTextFieldViewController
                 let alertController = UIAlertController(title: "Fout", message: "Deze rijksregisternummer bestaat al", preferredStyle: .Alert)
                 let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: {
                     action in
-                    self.txtRijksregisterNr.text = " "
+                    self.viewDidLoad()
                 })
                 alertController.addAction(okAction)
                 self.presentViewController(alertController, animated: true, completion: nil)
@@ -282,16 +288,7 @@ class Registratie1ViewController: ResponsiveTextFieldViewController
     }
     
     func controleerRijksregisterNummrAlGeregisteerd() -> Bool {
-        //var bool: Bool = false
-        
         return ParseData.getRijksregisterNummers(self.txtRijksregisterNr.text)
-        
-        /*if rijksregisterNummers.count > 0 {
-            return true
-        }
-        
-        return false*/
-        //return bool
     }
 }
 

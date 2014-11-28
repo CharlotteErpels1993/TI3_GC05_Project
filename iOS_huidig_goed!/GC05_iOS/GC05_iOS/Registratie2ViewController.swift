@@ -22,6 +22,10 @@ class Registratie2ViewController: ResponsiveTextFieldViewController
         annuleerControllerRegistratie(self)
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.txtGsm.text = ""
+    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "volgende" {
@@ -43,11 +47,11 @@ class Registratie2ViewController: ResponsiveTextFieldViewController
                 let alertController = UIAlertController(title: "Fout", message: "Deze gsm bestaat al", preferredStyle: .Alert)
                 let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: {
                     action in
-                    self.txtGsm.text = " "
+                    self.viewDidLoad()
                 })
                 alertController.addAction(okAction)
                 self.presentViewController(alertController, animated: true, completion: nil)
-                //self.txtGsm.text = " "
+                
             } else {
                 registratie3ViewController.ouder = ouder
             }

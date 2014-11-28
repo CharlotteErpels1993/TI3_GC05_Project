@@ -11,62 +11,59 @@ class Registratie3ViewController: ResponsiveTextFieldViewController
     var foutBox: FoutBox? = nil
     var statusTextFields: [String: String] = [:]
     var redColor: UIColor = UIColor.redColor()
-    var activityIndicator: UIActivityIndicatorView!
     
     @IBAction func gaTerugNaarInloggen(sender: AnyObject) {
         annuleerControllerRegistratie(self)
     }
     
     @IBAction func startIndicator(sender: AnyObject) {
-        activityIndicator.startAnimating()
         performSegueWithIdentifier("voltooiRegistratie", sender: self)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        activityIndicator = getActivityIndicatorView(self)
+        self.txtEmail.text = ""
+        self.txtWachtwoord.text = ""
+        self.txtBevestigWachtwoord.text = ""
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "voltooiRegistratie" {
-        let registratieSuccesvolViewController = segue.destinationViewController as RegistratieSuccesvolViewController
+            let registratieSuccesvolViewController = segue.destinationViewController as RegistratieSuccesvolViewController
         
-        //TO DO: controleren op formaat van ingevulde text! (String, int, ...)
+            //TO DO: controleren op formaat van ingevulde text! (String, int, ...)
         
-        setStatusTextFields()
-        pasLayoutVeldenAan()
+            setStatusTextFields()
+            pasLayoutVeldenAan()
         
-        if controleerRodeBordersAanwezig() == true {
-            foutBoxOproepen("Fout", "Gelieve de velden correct in te vullen!", self)
-        } else {
-            if controleerEmailAlGeregisteerd() == true /*emailBestaatAl() == true*/ {
-                giveUITextFieldRedBorder(self.txtEmail)
-                /*giveUITextFieldRedBorder(txtEmail)
-                giveUITextFieldDefaultBorder(txtWachtwoord)
-                giveUITextFieldDefaultBorder(txtBevestigWachtwoord)
-                foutBoxOproepen("Fout", "Er is al een gebruiker met dit e-mailadres geregistreerd.", self)*/
-                let alertController = UIAlertController(title: "Fout", message: "Deze email bestaat al", preferredStyle: .Alert)
-                let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: {
-                    action in
-                    self.txtEmail.text = ""
-                    self.txtWachtwoord.text = ""
-                    self.txtBevestigWachtwoord.text = ""
-                })
-                alertController.addAction(okAction)
-                self.presentViewController(alertController, animated: true, completion: nil)
+            if controleerRodeBordersAanwezig() == true {
+                foutBoxOproepen("Fout", "Gelieve de velden correct in te vullen!", self)
             } else {
-                if wachtwoordenMatch() == true {
-                    settenGegevens()
-                    registratieSuccesvolViewController.ouder = ouder
+                if controleerEmailAlGeregisteerd() == true /*emailBestaatAl() == true*/ {
+                    giveUITextFieldRedBorder(self.txtEmail)
+                    /*giveUITextFieldRedBorder(txtEmail)
+                    giveUITextFieldDefaultBorder(txtWachtwoord)
+                    giveUITextFieldDefaultBorder(txtBevestigWachtwoord)
+                    foutBoxOproepen("Fout", "Er is al een gebruiker met dit e-mailadres geregistreerd.", self)*/
+                    let alertController = UIAlertController(title: "Fout", message: "Deze email bestaat al", preferredStyle: .Alert)
+                    let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: {
+                    action in
+                    self.viewDidLoad()
+                    })
+                    alertController.addAction(okAction)
+                    self.presentViewController(alertController, animated: true, completion: nil)
                 } else {
-                    giveUITextFieldDefaultBorder(txtEmail)
-                    giveUITextFieldRedBorder(txtWachtwoord)
-                    giveUITextFieldRedBorder(txtBevestigWachtwoord)
-                    foutBoxOproepen("Fout", "Wachtwoord en bevestig wachtwoord komen niet overeen.", self)
+                    if wachtwoordenMatch() == true {
+                        settenGegevens()
+                        registratieSuccesvolViewController.ouder = ouder
+                    } else {
+                        giveUITextFieldDefaultBorder(txtEmail)
+                        giveUITextFieldRedBorder(txtWachtwoord)
+                        giveUITextFieldRedBorder(txtBevestigWachtwoord)
+                        foutBoxOproepen("Fout", "Wachtwoord en bevestig wachtwoord komen niet overeen.", self)
+                    }
                 }
             }
-            registratieSuccesvolViewController.activityIndicatorView = activityIndicator
-        }
         } else if segue.identifier == "gaTerug" {
             let vakantiesTableViewController = segue.destinationViewController as VakantiesTableViewController
         }
