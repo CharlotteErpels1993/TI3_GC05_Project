@@ -19,6 +19,48 @@ struct OuderSQL {
         }
     }
     
+    static func getEmail(email: String) -> Bool {
+            let (resultSet, err) = SD.executeQuery("SELECT * FROM Ouder WHERE email = ?", withArgs: [email])
+            if err != nil
+            {
+                println("ERROR: error tijdens ophalen van alle gsms")
+            }
+            
+            if resultSet.count == 0 {
+                return false
+            }
+            
+            return true
+    }
+    
+    static func getGSM(gsm: String) -> Bool {
+        let (resultSet, err) = SD.executeQuery("SELECT * FROM Ouder WHERE gsm = ?", withArgs: [gsm])
+        if err != nil
+        {
+            println("ERROR: error tijdens ophalen van alle gsms")
+        }
+        
+        if resultSet.count == 0 {
+            return false
+        }
+        
+        return true
+    }
+    
+    static func getRijksregisterNummers(rijksregisterNummer: String) -> Bool {
+        let (resultSet, err) = SD.executeQuery("SELECT * FROM Ouder WHERE rijksregisterNr = ?", withArgs: [rijksregisterNummer])
+        if err != nil
+        {
+            println("ERROR: error tijdens ophalen van alle rijksregisternummers")
+        }
+        
+        if resultSet.count == 0 {
+            return false
+        }
+        
+        return true
+    }
+    
     static func getOuderWithEmail(email: String) -> Ouder {
         
         var ouders: [Ouder] = []
@@ -33,23 +75,16 @@ struct OuderSQL {
         }
         else
         {
-            for row in resultSet {
-                ouder = getOuder(row)
+            if resultSet.count == 0 {
                 ouders.append(ouder)
+            } else {
+                for row in resultSet {
+                    ouder = getOuder(row)
+                    ouders.append(ouder)
+                }
             }
         }
-        
-        if resultSet.count == 0 {
-            ouder2.id = "nil"
-        } else {
-            ouder2 = ouders.first!
-        }
-        
-
-        return ouder2
-        //return ouders.first!
-        
-        //return ouders.first!
+        return ouders.first!
     }
     
     static func getOuder(row: SD.SDRow) -> Ouder {
@@ -116,7 +151,7 @@ struct OuderSQL {
         var queryString = ""
         
         var objectId: String = ""
-        var rijksregisterNr: String?
+        var rijksregisterNr: String = ""
         var email: String = ""
         var wachtwoord: String = ""
         var voornaam: String = ""
@@ -137,7 +172,7 @@ struct OuderSQL {
             queryString.removeAll(keepCapacity: true)
             
             objectId = ouder.objectId as String
-            rijksregisterNr = ouder["rijksregisterNr"] as? String
+            rijksregisterNr = ouder["rijksregisterNr"] as String
             email = ouder["email"] as String
             wachtwoord = ouder["wachtwoord"] as String
             voornaam = ouder["voornaam"] as String
@@ -153,9 +188,6 @@ struct OuderSQL {
             codeGerechtigde = ouder["codeGerechtigde"] as? Int
             aansluitingsNrTweedeOuder = ouder["aansluitingsNrTweedeOuder"] as? Int
             
-            if rijksregisterNr == nil {
-                rijksregisterNr = ""
-            }
             if bus == nil {
                 bus = ""
             }
@@ -196,7 +228,7 @@ struct OuderSQL {
             queryString.extend("(")
             
             queryString.extend("'\(objectId)', ") //objectId - String
-            queryString.extend("'\(rijksregisterNr!)', ") //rijksregisterNr - String
+            queryString.extend("'\(rijksregisterNr)', ") //rijksregisterNr - String
             queryString.extend("'\(email)', ") //email - String
             queryString.extend("'\(wachtwoord)', ") //wachtwoord - String
             queryString.extend("'\(voornaam)', ") //voornaam - String
@@ -236,9 +268,10 @@ struct OuderSQL {
         ouderJSON.setValue(ouder.postcode, forKey: "postcode")
         ouderJSON.setValue(ouder.gemeente, forKey: "gemeente")
         ouderJSON.setValue(ouder.gsm, forKey: "gsm")
+        ouderJSON.setValue(ouder.rijksregisterNr, forKey: "rijksregisterNr")
         
-        if ouder.rijksregisterNr != nil {
-            ouderJSON.setValue(ouder.rijksregisterNr, forKey: "rijksregisterNr")
+        if ouder.aansluitingsNr != nil {
+            //ouderJSON.setValue(ouder.rijksregisterNr, forKey: "rijksregisterNr")
             ouderJSON.setValue(ouder.aansluitingsNr, forKey: "aansluitingsNr")
             ouderJSON.setValue(ouder.codeGerechtigde, forKey: "codeGerechtigde")
             

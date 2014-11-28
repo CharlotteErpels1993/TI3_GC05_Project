@@ -790,36 +790,36 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m7p-Dv-81d">
-                                <rect key="frame" x="16" y="109" width="51" height="31"/>
+                                <rect key="frame" x="16" y="191" width="51" height="31"/>
                                 <connections>
                                     <action selector="switched:" destination="fyb-xH-x0i" eventType="valueChanged" id="nYn-y5-G4g"/>
                                 </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aansluitingsnummer: *" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MfE-6E-2Xb">
-                                <rect key="frame" x="16" y="168" width="172" height="21"/>
+                                <rect key="frame" x="16" y="236" width="171.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Code gerechtigde: *" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Av-pM-lTQ">
-                                <rect key="frame" x="16" y="237" width="153" height="21"/>
+                                <rect key="frame" x="16" y="304" width="153" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="110110" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m1W-MR-gUq">
-                                <rect key="frame" x="16" y="265" width="568" height="30"/>
+                                <rect key="frame" x="16" y="332" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rijksregisternummer: *" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K80-KY-GXh">
-                                <rect key="frame" x="16" y="306" width="174" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vul uw rijksregisternummer in: *" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K80-KY-GXh">
+                                <rect key="frame" x="16" y="83" width="241" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="12345678910" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="o7V-bX-HUj">
-                                <rect key="frame" x="16" y="333" width="568" height="30"/>
+                                <rect key="frame" x="16" y="109" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
@@ -834,14 +834,8 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bent u lid van de socialistische mutualiteit? " lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fsh-T0-4Sa">
-                                <rect key="frame" x="16" y="81" width="568" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="3091234567" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ffo-9X-igg">
-                                <rect key="frame" x="16" y="196" width="568" height="30"/>
+                                <rect key="frame" x="16" y="263" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
@@ -864,7 +858,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* verplicht in te vullen" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hLu-qs-iu3">
-                                <rect key="frame" x="16" y="559" width="120" height="15"/>
+                                <rect key="frame" x="16" y="559" width="119.5" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -878,17 +872,28 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                     <segue destination="1ab-Ky-SvP" kind="show" id="Y50-ed-9EW"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bent u lid van de socialistische mutualiteit? " lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fsh-T0-4Sa">
+                                <rect key="frame" x="16" y="162" width="568" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="o7V-bX-HUj" firstAttribute="trailing" secondItem="OaM-e4-sMk" secondAttribute="trailingMargin" id="014-X5-So0"/>
+                            <constraint firstItem="K80-KY-GXh" firstAttribute="top" secondItem="5IY-zh-MZg" secondAttribute="bottom" constant="19" id="13V-UE-hmn"/>
                             <constraint firstItem="gBr-1o-c4l" firstAttribute="trailing" secondItem="OaM-e4-sMk" secondAttribute="trailingMargin" id="31l-do-r3Y"/>
                             <constraint firstItem="h54-IA-4ZC" firstAttribute="top" secondItem="hLu-qs-iu3" secondAttribute="bottom" constant="26.5" id="4mN-33-nSx"/>
+                            <constraint firstItem="Fsh-T0-4Sa" firstAttribute="leading" secondItem="OaM-e4-sMk" secondAttribute="leadingMargin" id="7DS-nj-FWJ"/>
                             <constraint firstItem="Fsh-T0-4Sa" firstAttribute="top" secondItem="5IY-zh-MZg" secondAttribute="bottom" constant="17" id="9UQ-g6-mwe"/>
                             <constraint firstItem="h54-IA-4ZC" firstAttribute="top" secondItem="uqW-jm-he0" secondAttribute="bottom" constant="8" id="Afg-lJ-fEP"/>
                             <constraint firstItem="Ffo-9X-igg" firstAttribute="top" secondItem="MfE-6E-2Xb" secondAttribute="bottom" constant="7" id="B6C-Dd-ruz"/>
                             <constraint firstItem="74u-0a-ryP" firstAttribute="trailing" secondItem="OaM-e4-sMk" secondAttribute="trailingMargin" id="CPt-iP-cwW"/>
                             <constraint firstItem="m1W-MR-gUq" firstAttribute="leading" secondItem="OaM-e4-sMk" secondAttribute="leadingMargin" id="H63-W5-232"/>
-                            <constraint firstItem="m1W-MR-gUq" firstAttribute="top" secondItem="8Av-pM-lTQ" secondAttribute="bottom" constant="8" id="HGj-Pd-WjI"/>
+                            <constraint firstItem="m1W-MR-gUq" firstAttribute="top" secondItem="8Av-pM-lTQ" secondAttribute="bottom" constant="7" id="HGj-Pd-WjI"/>
+                            <constraint firstItem="Fsh-T0-4Sa" firstAttribute="trailing" secondItem="OaM-e4-sMk" secondAttribute="trailingMargin" id="HHn-VO-gbO"/>
+                            <constraint firstItem="ARF-UY-Xdf" firstAttribute="top" secondItem="m1W-MR-gUq" secondAttribute="bottom" constant="12" id="HQR-aD-TmU"/>
                             <constraint firstItem="uqW-jm-he0" firstAttribute="leading" secondItem="OaM-e4-sMk" secondAttribute="leadingMargin" id="HTq-mI-sHa"/>
                             <constraint firstItem="o7V-bX-HUj" firstAttribute="trailing" secondItem="OaM-e4-sMk" secondAttribute="trailingMargin" id="JFw-Jd-qOT"/>
                             <constraint firstItem="ARF-UY-Xdf" firstAttribute="leading" secondItem="OaM-e4-sMk" secondAttribute="leadingMargin" id="M59-Sr-uhZ"/>
@@ -898,37 +903,56 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                             <constraint firstItem="o7V-bX-HUj" firstAttribute="leading" secondItem="OaM-e4-sMk" secondAttribute="leadingMargin" id="STD-Yd-ff6"/>
                             <constraint firstItem="Fsh-T0-4Sa" firstAttribute="top" secondItem="5IY-zh-MZg" secondAttribute="bottom" constant="8" id="VcU-CX-vSB"/>
                             <constraint firstItem="74u-0a-ryP" firstAttribute="leading" secondItem="OaM-e4-sMk" secondAttribute="leadingMargin" id="W8a-4W-cpf"/>
+                            <constraint firstItem="Fsh-T0-4Sa" firstAttribute="top" secondItem="o7V-bX-HUj" secondAttribute="bottom" constant="23" id="WDN-ME-uxd"/>
                             <constraint firstItem="h54-IA-4ZC" firstAttribute="top" secondItem="74u-0a-ryP" secondAttribute="bottom" constant="20" id="WwX-rh-mwe"/>
                             <constraint firstItem="8Av-pM-lTQ" firstAttribute="top" secondItem="Ffo-9X-igg" secondAttribute="bottom" constant="11" id="X8s-rc-52a"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ARF-UY-Xdf" secondAttribute="trailing" constant="116" id="XGB-bt-DG1"/>
                             <constraint firstItem="uc2-Hp-ZHR" firstAttribute="top" secondItem="uqW-jm-he0" secondAttribute="bottom" constant="-6" id="XIC-mr-l5b"/>
+                            <constraint firstItem="MfE-6E-2Xb" firstAttribute="top" secondItem="m7p-Dv-81d" secondAttribute="bottom" constant="14" id="bMz-zR-TUH"/>
                             <constraint firstItem="m7p-Dv-81d" firstAttribute="top" secondItem="Fsh-T0-4Sa" secondAttribute="bottom" constant="8" id="dNP-OM-j5t"/>
                             <constraint firstItem="m7p-Dv-81d" firstAttribute="leading" secondItem="OaM-e4-sMk" secondAttribute="leadingMargin" id="ewi-Pq-9DE"/>
                             <constraint firstItem="hLu-qs-iu3" firstAttribute="leading" secondItem="OaM-e4-sMk" secondAttribute="leadingMargin" id="fEX-Wp-zAg"/>
                             <constraint firstItem="gBr-1o-c4l" firstAttribute="leading" secondItem="OaM-e4-sMk" secondAttribute="leadingMargin" id="gcM-fk-Kac"/>
+                            <constraint firstItem="K80-KY-GXh" firstAttribute="top" secondItem="5IY-zh-MZg" secondAttribute="bottom" constant="46" id="hF7-IE-Tdb"/>
                             <constraint firstAttribute="trailingMargin" secondItem="uqW-jm-he0" secondAttribute="trailing" constant="370" id="hPc-B7-VM6"/>
                             <constraint firstItem="Fsh-T0-4Sa" firstAttribute="leading" secondItem="OaM-e4-sMk" secondAttribute="leadingMargin" id="its-u2-PDD"/>
                             <constraint firstItem="m7p-Dv-81d" firstAttribute="leading" secondItem="OaM-e4-sMk" secondAttribute="leadingMargin" id="ixS-bJ-XXV"/>
-                            <constraint firstItem="ARF-UY-Xdf" firstAttribute="top" secondItem="o7V-bX-HUj" secondAttribute="bottom" constant="11" id="kXv-xc-RrY"/>
+                            <constraint firstItem="K80-KY-GXh" firstAttribute="leading" secondItem="OaM-e4-sMk" secondAttribute="leadingMargin" id="j5E-q3-eSx"/>
+                            <constraint firstItem="m7p-Dv-81d" firstAttribute="top" secondItem="Fsh-T0-4Sa" secondAttribute="bottom" constant="8" id="kDz-sL-Gcw"/>
+                            <constraint firstItem="ARF-UY-Xdf" firstAttribute="top" secondItem="o7V-bX-HUj" secondAttribute="bottom" constant="207" id="kXv-xc-RrY"/>
                             <constraint firstItem="m7p-Dv-81d" firstAttribute="top" secondItem="Fsh-T0-4Sa" secondAttribute="bottom" constant="8" id="m4b-gB-lnJ"/>
                             <constraint firstItem="gBr-1o-c4l" firstAttribute="top" secondItem="ARF-UY-Xdf" secondAttribute="bottom" constant="7" id="mlq-6a-9J4"/>
-                            <constraint firstItem="K80-KY-GXh" firstAttribute="top" secondItem="m1W-MR-gUq" secondAttribute="bottom" constant="11" id="o5T-ft-jnJ"/>
+                            <constraint firstItem="K80-KY-GXh" firstAttribute="top" secondItem="m1W-MR-gUq" secondAttribute="bottom" constant="-253" id="o5T-ft-jnJ"/>
                             <constraint firstItem="MfE-6E-2Xb" firstAttribute="top" secondItem="m7p-Dv-81d" secondAttribute="bottom" constant="28" id="oeo-SW-ujl"/>
                             <constraint firstItem="MfE-6E-2Xb" firstAttribute="leading" secondItem="OaM-e4-sMk" secondAttribute="leadingMargin" id="pfT-mC-hI5"/>
                             <constraint firstItem="uc2-Hp-ZHR" firstAttribute="leading" secondItem="OaM-e4-sMk" secondAttribute="leadingMargin" id="qHw-qv-WZJ"/>
                             <constraint firstItem="K80-KY-GXh" firstAttribute="leading" secondItem="OaM-e4-sMk" secondAttribute="leadingMargin" id="qna-3a-A6t"/>
                             <constraint firstItem="m1W-MR-gUq" firstAttribute="trailing" secondItem="OaM-e4-sMk" secondAttribute="trailingMargin" id="r6A-3s-Fw0"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Fsh-T0-4Sa" secondAttribute="trailing" id="reJ-e2-Sy7"/>
+                            <constraint firstItem="o7V-bX-HUj" firstAttribute="top" secondItem="K80-KY-GXh" secondAttribute="bottom" constant="6" id="tF7-BO-kg6"/>
                             <constraint firstItem="o7V-bX-HUj" firstAttribute="top" secondItem="K80-KY-GXh" secondAttribute="bottom" constant="6" id="vVM-da-DcP"/>
+                            <constraint firstItem="m7p-Dv-81d" firstAttribute="leading" secondItem="OaM-e4-sMk" secondAttribute="leadingMargin" id="wB4-nB-SKb"/>
                             <constraint firstItem="Ffo-9X-igg" firstAttribute="trailing" secondItem="OaM-e4-sMk" secondAttribute="trailingMargin" id="wlr-Gv-WN4"/>
                             <constraint firstItem="Fsh-T0-4Sa" firstAttribute="leading" secondItem="OaM-e4-sMk" secondAttribute="leadingMargin" id="yVB-JH-oyO"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="hF7-IE-Tdb"/>
+                                <exclude reference="o5T-ft-jnJ"/>
+                                <exclude reference="qna-3a-A6t"/>
+                                <exclude reference="JFw-Jd-qOT"/>
+                                <exclude reference="vVM-da-DcP"/>
+                                <exclude reference="9UQ-g6-mwe"/>
                                 <exclude reference="VcU-CX-vSB"/>
+                                <exclude reference="its-u2-PDD"/>
+                                <exclude reference="reJ-e2-Sy7"/>
                                 <exclude reference="yVB-JH-oyO"/>
+                                <exclude reference="dNP-OM-j5t"/>
                                 <exclude reference="ewi-Pq-9DE"/>
+                                <exclude reference="ixS-bJ-XXV"/>
                                 <exclude reference="m4b-gB-lnJ"/>
+                                <exclude reference="oeo-SW-ujl"/>
+                                <exclude reference="kXv-xc-RrY"/>
                                 <exclude reference="hPc-B7-VM6"/>
                                 <exclude reference="Afg-lJ-fEP"/>
                                 <exclude reference="W8a-4W-cpf"/>
@@ -2214,9 +2238,6 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                 <rect key="frame" x="0.0" y="141" width="600" height="162"/>
                                 <date key="date" timeIntervalSinceReferenceDate="437479781.34447497">
                                     <!--2014-11-12 10:09:41 +0000-->
-                                </date>
-                                <date key="maximumDate" timeIntervalSinceReferenceDate="441630000">
-                                    <!--2014-12-30 11:00:00 +0000-->
                                 </date>
                                 <locale key="locale" localeIdentifier="nl_BE"/>
                             </datePicker>

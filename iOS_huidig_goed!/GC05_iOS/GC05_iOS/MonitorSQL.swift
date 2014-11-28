@@ -54,25 +54,30 @@ struct MonitorSQL {
         }
         else
         {
-            for row in resultSet {
-                monitor = getMonitor(row)
+            if resultSet.count == 0 {
                 monitors.append(monitor)
+            } else {
+                for row in resultSet {
+                    monitor = getMonitor(row)
+                    monitors.append(monitor)
+                }
             }
         }
-        
-        /*if monitors.first? == nil {
-            monitor.id = "nil"
-            return monitor
-        }*/
-        
-        if resultSet.count == 0 {
-            monitor2.id = "nil"
-        } else {
-            monitor2 = monitors.first!
+        return monitors.first!
+    }
+    
+    static func getEmail(email: String) -> Bool {
+        let (resultSet, err) = SD.executeQuery("SELECT * FROM Monitor WHERE email = ?", withArgs: [email])
+        if err != nil
+        {
+            println("ERROR: error tijdens ophalen van alle gsms")
         }
         
-        return monitor2
-        //return monitors.first!
+        if resultSet.count == 0 {
+            return false
+        }
+        
+        return true
     }
     
     static func getMonitor(row: SD.SDRow) -> Monitor {
