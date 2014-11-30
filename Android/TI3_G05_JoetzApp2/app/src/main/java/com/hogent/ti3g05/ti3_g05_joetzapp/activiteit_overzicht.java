@@ -10,7 +10,10 @@ import android.app.ActionBar;
 import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Movie;
+import android.graphics.Paint;
 import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -64,8 +67,6 @@ public class activiteit_overzicht extends Fragment /*implements SwipeRefreshLayo
     Boolean isInternetPresent = false;
     // Connection detector class
     ConnectionDetector cd;
-
-
 
 
 
@@ -176,6 +177,7 @@ public class activiteit_overzicht extends Fragment /*implements SwipeRefreshLayo
         }, 1000);
     }
 
+
     // RemoteDataTask AsyncTask
     private class RemoteDataTask extends AsyncTask<Void, Void, Void> {
         @Override
@@ -185,10 +187,13 @@ public class activiteit_overzicht extends Fragment /*implements SwipeRefreshLayo
             mProgressDialog = new ProgressDialog(getActivity());
             // Set progressdialog title
             mProgressDialog.setTitle("Ophalen van vakanties.");
+
             // Set progressdialog message
             mProgressDialog.setMessage("Aan het laden...");
-            mProgressDialog.setIndeterminate(false);
+            mProgressDialog.setIndeterminate(true);
+            mProgressDialog.setIndeterminateDrawable(getActivity().getResources().getDrawable(R.drawable.my_animation));
             // Show progressdialog
+
 
             mProgressDialog.show();
 
