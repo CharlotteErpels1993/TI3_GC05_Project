@@ -3,6 +3,7 @@ import UIKit
 class IndienenVoorkeurViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate{
     
     @IBOutlet weak var pickerView: UIPickerView!
+    @IBOutlet weak var buttonPeriode: UIButton!
     
     //@IBOutlet weak var txtViewPeriodes: UITextView!
     @IBOutlet weak var periodeLabel: UILabel!
