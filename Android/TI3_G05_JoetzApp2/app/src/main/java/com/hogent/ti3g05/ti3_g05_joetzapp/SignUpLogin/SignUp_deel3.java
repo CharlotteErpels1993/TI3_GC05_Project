@@ -216,6 +216,20 @@ public class SignUp_deel3 extends Activity{
             Toast.makeText(SignUp_deel3.this,"Er is iets fout gelopen. Onze excuses voor het ongemak.", Toast.LENGTH_SHORT).show();
             cancel = true;
         }
+        ParseQuery<ParseObject> query2 = ParseQuery.getQuery("Monitor");
+        query.whereEqualTo("gsm", gsm);
+        try{
+            List<ParseObject> lijstObjecten = query2.find();
+            if (lijstObjecten.size() > 0){
+                gsmText.setError("Dit gsm-nummer is reeds in gebruik.");
+                focusView = gsmText;
+                cancel = true;
+            }
+        }
+        catch(ParseException e){
+            Toast.makeText(SignUp_deel3.this,"Er is iets fout gelopen. Onze excuses voor het ongemak.", Toast.LENGTH_SHORT).show();
+            cancel = true;
+        }
 
 		if (cancel) {
 			// There was an error; don't attempt login and focus the first
