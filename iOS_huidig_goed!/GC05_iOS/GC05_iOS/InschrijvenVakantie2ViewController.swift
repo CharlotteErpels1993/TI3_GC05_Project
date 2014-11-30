@@ -4,6 +4,7 @@ import UIKit
 class InschrijvenVakantie2ViewController : ResponsiveTextFieldViewController {
     var inschrijvingVakantie: InschrijvingVakantie!
     var redColor: UIColor = UIColor.redColor()
+    var grayColor: UIColor = UIColor.grayColor()
     //var ouder: Ouder!
     var leeftijd: Int = 0
     
@@ -12,6 +13,13 @@ class InschrijvenVakantie2ViewController : ResponsiveTextFieldViewController {
     @IBAction func annuleer(sender: AnyObject) {
        annuleerControllerInschrijvenVakantieVorming(self)
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "volgende" {
             self.leeftijd = calculateAge(dpGeboortedatum.date) as Int
@@ -20,6 +28,8 @@ class InschrijvenVakantie2ViewController : ResponsiveTextFieldViewController {
             
             if leeftijd < minLeeftijd || leeftijd > maxLeeftijd || leeftijd == 0 {
                 dpGeboortedatum.layer.borderColor = redColor.CGColor
+                dpGeboortedatum.layer.borderWidth = 2.0
+                dpGeboortedatum.layer.cornerRadius = 5.0
                 foutBoxOproepen("Fout", "De leeftijd moet tussen \(inschrijvingVakantie.vakantie!.minLeeftijd!) en \(inschrijvingVakantie.vakantie!.maxLeeftijd!) liggen.", self)
                  viewDidLoad()
             }
