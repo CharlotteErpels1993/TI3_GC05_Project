@@ -65,16 +65,6 @@
         android:layout_marginTop="8dp"
         android:layout_below="@id/aansluitingsNrOuder2"
         android:layout_alignParentStart="true" />
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/back"
-
-        android:layout_marginTop="8dp"
-        android:id="@+id/btn_terugNaarDeel1"
-        android:layout_below="@id/btn_volgendedeel3"
-        android:layout_alignParentStart="true" />
-
 
 
 </RelativeLayout>

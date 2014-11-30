@@ -5,6 +5,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -79,16 +81,7 @@ public class SignUp_deel4 extends Activity{
             }
         });
 
-        terugKerenButton = (Button) findViewById(R.id.btnBack);
 
-        terugKerenButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent1 = new Intent(SignUp_deel4.this, navBarMainScreen.class);
-                startActivity(intent1);
-                overridePendingTransition(R.anim.left_in, R.anim.right_out);
-            }
-        });
 	}
 
 
@@ -271,6 +264,25 @@ public class SignUp_deel4 extends Activity{
         setIntent.addCategory(Intent.CATEGORY_HOME);
         setIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(setIntent);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.back_2, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.backMenu2) {
+            Intent intent1 = new Intent(this, SignUp_deel1.class);
+            startActivity(intent1);
+
+            overridePendingTransition(R.anim.left_in, R.anim.right_out);
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
 	

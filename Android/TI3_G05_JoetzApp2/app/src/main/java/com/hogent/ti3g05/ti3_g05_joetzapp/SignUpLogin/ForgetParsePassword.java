@@ -1,6 +1,7 @@
 package com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.R;
+import com.hogent.ti3g05.ti3_g05_joetzapp.navBarMainScreen;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.RequestPasswordResetCallback;
@@ -9,6 +10,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -31,17 +34,8 @@ public class ForgetParsePassword extends Activity{
 		
 		et_forgetpassword = (EditText) findViewById(R.id.et_forgetpassword);
 		btn_submitforgetpassword = (Button) findViewById(R.id.btn_submitforgetpassword);
-        btn_back = (Button) findViewById(R.id.btn_back);
 
-        btn_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent1 = new Intent(ForgetParsePassword.this, Login.class);
-                startActivity(intent1);
 
-                overridePendingTransition(R.anim.left_in, R.anim.right_out);
-            }
-        });
 		
 		btn_submitforgetpassword.setOnClickListener(new OnClickListener() {
 			
@@ -104,5 +98,24 @@ public class ForgetParsePassword extends Activity{
 			}
 		}		
 	}
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.back_2, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.backMenu2) {
+            Intent intent1 = new Intent(this, Login.class);
+            startActivity(intent1);
+
+            overridePendingTransition(R.anim.left_in, R.anim.right_out);
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 
 }

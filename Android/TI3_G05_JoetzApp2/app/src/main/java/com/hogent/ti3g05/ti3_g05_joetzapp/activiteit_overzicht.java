@@ -6,8 +6,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
+import android.app.ActionBar;
 import android.app.Fragment;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -16,12 +18,18 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
+
+import android.view.View.OnClickListener;
 import android.widget.Toast;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.DBHandler;
@@ -71,7 +79,41 @@ public class activiteit_overzicht extends Fragment /*implements SwipeRefreshLayo
         filtertext = (EditText) rootView.findViewById(R.id.filtertext);
         //swipeLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_container);
         //onCreateSwipeToRefresh(swipeLayout);
+/*
+        ActionBar mActionBar = getActivity().getActionBar();
+        mActionBar.setDisplayShowHomeEnabled(false);
+        mActionBar.setDisplayShowTitleEnabled(false);
+        LayoutInflater mInflater = LayoutInflater.from(rootView.getContext());
 
+        View mCustomView = mInflater.inflate(R.layout.actionbar_layout, null);
+        TextView mTitleTextView = (TextView) mCustomView.findViewById(R.id.title_text);
+        mTitleTextView.setText("Vakanties");
+
+        ImageButton imageButton = (ImageButton) mCustomView
+                .findViewById(R.id.imageButton);
+        imageButton.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                isInternetPresent = cd.isConnectingToInternet();
+
+                if (isInternetPresent) {
+                    // Internet Connection is Present
+                    // make HTTP requests
+                    new RemoteDataTask().execute();
+                }
+                else{
+                    // Internet connection is not present
+                    // Ask user to connect to Internet
+                    Toast.makeText(getActivity(), getString(R.string.error_no_internet), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        mActionBar.setCustomView(mCustomView);
+        mActionBar.setDisplayShowCustomEnabled(true);
+
+*/
 
         cd = new ConnectionDetector(rootView.getContext());
         myDB = new myDb(rootView.getContext());
@@ -103,24 +145,6 @@ public class activiteit_overzicht extends Fragment /*implements SwipeRefreshLayo
             });
         }
 
-        refresh = (Button) rootView.findViewById(R.id.refreshAct);
-        refresh.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                isInternetPresent = cd.isConnectingToInternet();
-
-                if (isInternetPresent) {
-                    // Internet Connection is Present
-                    // make HTTP requests
-                    new RemoteDataTask().execute();
-                }
-                else{
-                    // Internet connection is not present
-                    // Ask user to connect to Internet
-                    Toast.makeText(getActivity(), getString(R.string.error_no_internet), Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
 
         return rootView;
     }
@@ -292,25 +316,30 @@ public class activiteit_overzicht extends Fragment /*implements SwipeRefreshLayo
         }
     }
 
-
-   /* @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.back, menu);
+        getActivity().getMenuInflater().inflate(R.menu.menu_inschrijven_vakantie_part1, menu);
         return true;
-    }*/
+    }
 
-  /*  @Override
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.backMenu) {
-            Intent intent1 = new Intent(this, navBarMainScreen.class);
-            startActivity(intent1);
+        if (id == R.id.menu_loadVak) {
+            isInternetPresent = cd.isConnectingToInternet();
 
-            overridePendingTransition(R.anim.left_in, R.anim.right_out);
+            if (isInternetPresent) {
+                // Internet Connection is Present
+                // make HTTP requests
+                new RemoteDataTask().execute();
+            }
+            else{
+                // Internet connection is not present
+                // Ask user to connect to Internet
+                Toast.makeText(getActivity(), getString(R.string.error_no_internet), Toast.LENGTH_SHORT).show();
+            }
         }
-
         return super.onOptionsItemSelected(item);
-    }*/
+    }
 
 
 }

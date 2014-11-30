@@ -55,15 +55,6 @@
         android:layout_centerHorizontal="true" />
 
 
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/back"
-        android:id="@+id/btn_terugGaan"
-        android:layout_below="@id/txtWaarschuwingMonitor"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="10dp"/>
-
 
 
 

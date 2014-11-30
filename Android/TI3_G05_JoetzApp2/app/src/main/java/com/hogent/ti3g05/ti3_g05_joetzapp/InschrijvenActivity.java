@@ -1,15 +1,9 @@
 package com.hogent.ti3g05.ti3_g05_joetzapp;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-
-import com.parse.ParseUser;
 
 
 public class InschrijvenActivity extends Activity {
@@ -29,7 +23,7 @@ public class InschrijvenActivity extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.inschrijven, menu);
+        getMenuInflater().inflate(R.menu.back_2, menu);
         return true;
     }
 

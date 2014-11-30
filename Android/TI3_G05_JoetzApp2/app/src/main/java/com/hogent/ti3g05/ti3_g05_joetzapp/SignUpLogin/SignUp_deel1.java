@@ -5,6 +5,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.InputMethodManager;
@@ -63,7 +65,6 @@ public class SignUp_deel1 extends Activity{
         // creating connection detector class instance
         //cd = new ConnectionDetector(getApplicationContext());
 
-        terugButton = (Button) findViewById(R.id.btn_terugGaan);
 
         RadioButton rb1 = (RadioButton) findViewById(R.id.radioButtonJa);
         rb1.setOnClickListener(new OnClickListener() {
@@ -107,19 +108,7 @@ public class SignUp_deel1 extends Activity{
         });
 
 
-        terugButton = (Button) findViewById(R.id.btn_terugGaan);
 
-        terugButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent1 = new Intent(SignUp_deel1.this, navBarMainScreen.class);
-                startActivity(intent1);
-
-                overridePendingTransition(R.anim.left_in, R.anim.right_out);
-
-
-            }
-        });
 
     }
 
@@ -250,5 +239,24 @@ public class SignUp_deel1 extends Activity{
 
     private void clearErrors(){
         rijksregisterNr.setError(null);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.back_2, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.backMenu2) {
+            Intent intent1 = new Intent(this, navBarMainScreen.class);
+            startActivity(intent1);
+
+            overridePendingTransition(R.anim.left_in, R.anim.right_out);
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

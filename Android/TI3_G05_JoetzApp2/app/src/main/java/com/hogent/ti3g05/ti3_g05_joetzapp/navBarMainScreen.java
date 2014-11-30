@@ -98,9 +98,14 @@ public class navBarMainScreen extends Activity {
         // Setting DrawerToggle on DrawerLayout
         mDrawerLayout.setDrawerListener(mDrawerToggle);
 
-        // Creating an ArrayAdapter to add items to the listview mDrawerList
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getBaseContext(),
                 R.layout.activity_drawer_layout_item, getResources().getStringArray(R.array.items));
+        if(ParseUser.getCurrentUser()!= null)
+        {
+            adapter = new ArrayAdapter<String>(getBaseContext(),
+                    R.layout.activity_drawer_layout_item, getResources().getStringArray(R.array.itemsIngelogged));
+
+        }
 
         // Setting the adapter on mDrawerList
         mDrawerList.setAdapter(adapter);
@@ -244,6 +249,30 @@ public class navBarMainScreen extends Activity {
                 startActivity(intent3);
 
                 break;
+            case 4:
+
+                Intent intent4 = null;
+                if(ParseUser.getCurrentUser() != null)
+                {
+                    intent4 = new Intent(navBarMainScreen.this, Loguit.class
+                    );
+                }
+                else
+                {
+                    intent4 = new Intent(navBarMainScreen.this, Login.class
+                    );
+                }
+
+                startActivity(intent4);
+
+                break;
+            case 5:
+
+                Intent intent5 = new Intent(navBarMainScreen.this, SignUp_deel1.class
+                );
+                startActivity(intent5);
+
+                break;
 
 
             default:
@@ -276,7 +305,7 @@ public class navBarMainScreen extends Activity {
 
             mDrawerList.setItemChecked(position, true);
             mDrawerList.setSelection(position);
-            setTitle(menuItems[position]);
+            setTitle("Vakanties");
             mDrawerLayout.closeDrawer(mDrawerList);
 
         } else
@@ -298,7 +327,7 @@ public class navBarMainScreen extends Activity {
         if (mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
-
+/*
         int id = item.getItemId();
         if (id == R.id.inloggen) {
             Intent intent1 = new Intent(this, Login.class);
@@ -313,14 +342,35 @@ public class navBarMainScreen extends Activity {
             Intent intent1 = new Intent(this, Loguit.class);
             startActivity(intent1);
         }
+*/
+        int id = item.getItemId();
 
+        if (id == R.id.menu_loadVak) {
+            isInternetPresent = cd.isConnectingToInternet();
+
+            if (isInternetPresent) {
+                // Internet Connection is Present
+                // make HTTP requests
+                fragment = new activiteit_overzicht();
+                FragmentManager fragmentManager = getFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
+
+                setTitle("Vakanties");
+                mDrawerLayout.closeDrawer(mDrawerList);
+
+            } else {
+                // Internet connection is not present
+                // Ask user to connect to Internet
+                Toast.makeText(navBarMainScreen.this, getString(R.string.error_no_internet), Toast.LENGTH_SHORT).show();
+            }
+        }
         return super.onOptionsItemSelected(item);
     }
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
-
+/*
         menu.findItem(R.id.inloggen).setVisible(!drawerOpen);
 
         if (ParseUser.getCurrentUser() == null){
@@ -335,14 +385,14 @@ public class navBarMainScreen extends Activity {
             menu.findItem(R.id.regisreren).setVisible(false);
             menu.findItem(R.id.uitloggen).setVisible(true);
         }
-
+*/
         return super.onPrepareOptionsMenu(menu);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_screen, menu);
-
+        getMenuInflater().inflate(R.menu.menu_inschrijven_vakantie_part1, menu);
+/*
         if (ParseUser.getCurrentUser() == null){
             //gebruiker is niet ingelogd
             menu.findItem(R.id.inloggen).setVisible(true);
@@ -354,7 +404,7 @@ public class navBarMainScreen extends Activity {
             menu.findItem(R.id.inloggen).setVisible(false);
             menu.findItem(R.id.regisreren).setVisible(false);
             menu.findItem(R.id.uitloggen).setVisible(true);
-        }
+        }*/
 
         return true;
     }

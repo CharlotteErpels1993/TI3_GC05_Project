@@ -76,24 +76,6 @@ public class ProfielenOverzicht extends Activity /* implements SwipeRefreshLayou
         myDB = new myDb(this);
         myDB.open();
 
-        refresh = (Button) findViewById(R.id.refreshAct);
-        refresh.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                isInternetPresent = cd.isConnectingToInternet();
-
-                if (isInternetPresent) {
-                    // Internet Connection is Present
-                    // make HTTP requests
-                    new RemoteDataTask().execute();
-                }
-                else{
-                    // Internet connection is not present
-                    // Ask user to connect to Internet
-                    Toast.makeText(ProfielenOverzicht.this, getString(R.string.error_no_internet), Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
 
 
         /*swipeLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_container);
@@ -333,6 +315,19 @@ public class ProfielenOverzicht extends Activity /* implements SwipeRefreshLayou
             startActivity(intent1);
 
             overridePendingTransition(R.anim.left_in, R.anim.right_out);
+        }
+        if (id == R.id.menu_load) {
+            isInternetPresent = cd.isConnectingToInternet();
+            if (isInternetPresent) {
+                // Internet Connection is Present
+                // make HTTP requests
+                new RemoteDataTask().execute();
+            }
+            else{
+                // Internet connection is not present
+                // Ask user to connect to Internet
+                Toast.makeText(ProfielenOverzicht.this, getString(R.string.error_no_internet), Toast.LENGTH_SHORT).show();
+            }
         }
 
         return super.onOptionsItemSelected(item);

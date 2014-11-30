@@ -12,15 +12,10 @@
     <EditText
         android:id="@+id/filtertext"
         android:layout_marginTop="5dp"
-        android:layout_width="280dp"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:hint="@string/filterhint"/>
-    <Button
-        android:text="@string/refresh"
-        android:id="@+id/refreshAct"
-        android:layout_width="wrap_content"
-        android:layout_height="45dp"
-        android:layout_alignParentEnd="true"/>
+
     <ListView
         android:id="@+id/listView"
 

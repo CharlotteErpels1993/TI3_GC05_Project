@@ -1,10 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.hogent.ti3g05.ti3_g05_joetzapp.TesterListItem">
+    <item android:id="@+id/backMenu2" android:title="@string/back"
+        android:orderInCategory="100" android:showAsAction="always" />
 
-    <item
-        android:id="@+id/menu_loadVak"
-        android:icon="@android:drawable/ic_menu_rotate"
-        android:showAsAction="always"
-        android:title="refresh"/>
 </menu>

@@ -84,6 +84,16 @@ Mail Joetz met uw voornaam, naam, e-mailadres, rijksregisternummer, adresgegeven
         <item>Vormingen</item>
         <item>Indienen voorkeur</item>
         <item>Over Joetz</item>
+        <item>Inloggen</item>
+        <item>Registreren</item>
+    </string-array>
+
+    <string-array name="itemsIngelogged">
+        <item>Profielen</item>
+        <item>Vormingen</item>
+        <item>Indienen voorkeur</item>
+        <item>Over Joetz</item>
+        <item>Uitloggen</item>
     </string-array>
 
     <string name="drawer_open">Open navigation drawer</string>

@@ -5,6 +5,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -14,6 +16,7 @@ import android.widget.Toast;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
 import com.hogent.ti3g05.ti3_g05_joetzapp.R;
+import com.hogent.ti3g05.ti3_g05_joetzapp.navBarMainScreen;
 import com.parse.ParseUser;
 
 public class SignUp_deel2 extends Activity{
@@ -53,7 +56,6 @@ public class SignUp_deel2 extends Activity{
 
         volgendeButton = (Button) findViewById(R.id.btn_volgendedeel3);
 
-        terugGaanButton = (Button) findViewById(R.id.btn_terugNaarDeel1);
 
 
         volgendeButton.setOnClickListener(new OnClickListener() {
@@ -81,16 +83,6 @@ public class SignUp_deel2 extends Activity{
             }
         });
 
-
-        terugGaanButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent1 = new Intent(SignUp_deel2.this, SignUp_deel1.class);
-                startActivity(intent1);
-
-                overridePendingTransition(R.anim.left_in, R.anim.right_out);
-            }
-        });
 
     }
 
@@ -193,6 +185,25 @@ public class SignUp_deel2 extends Activity{
 
     private void clearErrors(){
         aansluitingsnummer.setError(null); codeGerechtigde.setError(null);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.back_2, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.backMenu2) {
+            Intent intent1 = new Intent(this, SignUp_deel1.class);
+            startActivity(intent1);
+
+            overridePendingTransition(R.anim.left_in, R.anim.right_out);
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
 

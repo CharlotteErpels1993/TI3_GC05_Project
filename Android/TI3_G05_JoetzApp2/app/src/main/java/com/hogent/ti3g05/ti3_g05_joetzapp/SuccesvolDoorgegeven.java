@@ -22,14 +22,14 @@ public class SuccesvolDoorgegeven extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.back, menu);
+        getMenuInflater().inflate(R.menu.back_2, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.backMenu) {
+        if (id == R.id.backMenu2) {
             Intent intent1 = new Intent(this, navBarMainScreen.class);
             startActivity(intent1);
 
