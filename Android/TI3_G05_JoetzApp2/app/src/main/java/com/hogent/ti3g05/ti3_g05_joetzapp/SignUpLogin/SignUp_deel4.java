@@ -54,12 +54,15 @@ public class SignUp_deel4 extends Activity{
 		// creating connection detector class instance
         cd = new ConnectionDetector(getApplicationContext());
 
+        getActionBar().setTitle("Registreren");
+
 		
 		mEmailEditText = (EditText) findViewById(R.id.etEmail);
 		mPasswordEditText = (EditText) findViewById(R.id.etPassword);
 		mConfirmPasswordEditText = (EditText) findViewById(R.id.etPasswordConfirm);
 
 		mCreateAccountButton = (Button) findViewById(R.id.btnCreateAccount);
+        mCreateAccountButton.setTextColor(getResources().getColor(R.color.darkRed));
 		mCreateAccountButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {

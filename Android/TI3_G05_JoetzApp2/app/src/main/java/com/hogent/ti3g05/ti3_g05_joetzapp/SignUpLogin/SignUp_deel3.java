@@ -75,7 +75,10 @@ public class SignUp_deel3 extends Activity{
         gsmText = (EditText) findViewById(R.id.GsmSignu);
         busText = (EditText) findViewById(R.id.BusSignu);
 
+
+        getActionBar().setTitle("Registreren");
 		volgendeButton = (Button) findViewById(R.id.btnNaarDeel4);
+        volgendeButton.setTextColor(getResources().getColor(R.color.darkRed));
 		volgendeButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {

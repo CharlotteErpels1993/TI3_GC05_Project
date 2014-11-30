@@ -68,7 +68,9 @@ public class InschrijvenVakantiePart1 extends FragmentActivity {
         errorDate = (TextView) findViewById(R.id.ErrorDate);
         errorDate.setVisibility(View.GONE);
 
+        getActionBar().setTitle("Inschrijven vakantie");
         btnVolgende = (Button)findViewById(R.id.btnNaarDeel2Vak);
+        btnVolgende.setTextColor(getResources().getColor(R.color.darkRed));
         btnVolgende.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

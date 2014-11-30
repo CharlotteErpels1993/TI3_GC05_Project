@@ -2,6 +2,8 @@ package com.hogent.ti3g05.ti3_g05_joetzapp;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.ResolveInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.view.Menu;
@@ -21,6 +23,7 @@ import com.parse.ParseUser;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Handler;
 
 //ingelogde gebr:      titel, korte beschr, periode, locatie, inbegrepen in prijs, doelgroep (met geboortejaren), max aantal deelnemers,
@@ -28,6 +31,7 @@ import java.util.logging.Handler;
 //niet-ingelogde gebr: titel, korte beschr, periode, locatie, inbegrepen in prijs, doelgroep (met geboortejaren), max aantal deelnemers
 
 public class activiteit_detail extends Activity {
+
     String naam;
     String locatie;
     String vertrekdatum;
@@ -55,6 +59,7 @@ public class activiteit_detail extends Activity {
     Button btnInschrijven;
     Button btnmeerInfo;
     Button btnminderInfo;
+
 
     //TODO bij doelgroepen moet er volgens de UC ook nog de geboortejaren bij komen -> methode voor maken om dat te berekenen
     //TODO algemene voorwaarden onderaan bijzetten -> string resource, kopieren van JOETZ
@@ -121,7 +126,16 @@ public class activiteit_detail extends Activity {
         ImageView afbeelding2im = (ImageView) findViewById(R.id.afbeelding2);
 
         ImageView afbeelding3im = (ImageView) findViewById(R.id.afbeelding3);
+        ImageView share  = (ImageView) findViewById(R.id.share);
 
+        share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                shareFacebook();
+            }
+        });
+
+        btnInschrijven.setTextColor(getResources().getColor(R.color.darkRed));
         btnInschrijven.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -140,6 +154,7 @@ public class activiteit_detail extends Activity {
 
         final Animation fadeOutAnimation = AnimationUtils.loadAnimation(this, R.anim.fadeout);
 
+        btnmeerInfo.setTextColor(getResources().getColor(R.color.darkRed));
         btnmeerInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -151,6 +166,7 @@ public class activiteit_detail extends Activity {
             }
         });
 
+        btnminderInfo.setTextColor(getResources().getColor(R.color.darkRed));
         btnminderInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -323,6 +339,43 @@ public class activiteit_detail extends Activity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.back_2, menu);
         return true;
+    }
+
+    public void shareFacebook()
+    {
+        String urlToShare = "";
+
+        if(naam.toLowerCase().equals("kerstvakantie aan zee"))
+        {
+            urlToShare = "http://www.joetz.be/309/Vakanties/Binnenland/Pages/Kerstvakantie.aspx";
+        }
+        else if(naam.toLowerCase().equals("skien in maria alm - krokusvakantie"))
+        {
+            urlToShare = "http://www.joetz.be/Vakanties/Buitenland/Pages/Ski%C3%ABn-in-Maria-Alm---Krokusvakantie.aspx";
+        }
+        else if(naam.toLowerCase().equals("actie, fun en avontuur - trophy"))
+        {
+            urlToShare = "http://www.joetz.be/Vakanties/Buitenland/Pages/Actie,-fun-en-avontuur---Trophy.aspx";
+        }
+
+        boolean facebookAppFound = false;
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        intent.putExtra(Intent.EXTRA_TEXT, urlToShare);
+
+        List<ResolveInfo> matches = getPackageManager().queryIntentActivities(intent, 0);
+        for (ResolveInfo info : matches) {
+            if (info.activityInfo.packageName.toLowerCase().startsWith("com.facebook")) {
+                intent.setPackage(info.activityInfo.packageName);
+                facebookAppFound = true;
+                break;
+            }
+        }
+        if (!facebookAppFound) {
+            String sharerUrl = "https://www.facebook.com/sharer/sharer.php?u=" + urlToShare;
+            intent = new Intent(Intent.ACTION_VIEW, Uri.parse(sharerUrl));
+        }
+        startActivity(intent);
     }
 
     @Override

@@ -28,7 +28,6 @@ import java.util.List;
 public class SignUp_deel1 extends Activity{
 
     private RadioGroup rg = null;
-    private Button terugButton;
 
     EditText rijksregisterNr;
 
@@ -50,6 +49,7 @@ public class SignUp_deel1 extends Activity{
         cd = new ConnectionDetector(getApplicationContext());
         rg = (RadioGroup) findViewById(R.id.radioGroup);
         rg.clearCheck();
+        getActionBar().setTitle("Registreren");
 
         rijksregisterNr = (EditText) findViewById(R.id.rijksRegNrRegistreren);
 

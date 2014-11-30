@@ -71,6 +71,8 @@ public class IndienenVoorkeurVakantie extends Activity implements AdapterView.On
         spinner.setOnItemSelectedListener(this);
         btnVolgende = (Button) findViewById(R.id.BevestigVoorkeur);
 
+        getActionBar().setTitle("Kies uw vakantie");
+        btnVolgende.setTextColor(getResources().getColor(R.color.darkRed));
         btnVolgende.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

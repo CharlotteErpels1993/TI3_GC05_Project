@@ -33,11 +33,12 @@ public class Loguit extends Activity {
         setContentView(R.layout.activity_logout);
 
 
-        getActionBar().setTitle("");
+        getActionBar().setTitle("Loguit");
 
         loguitButton = (Button) findViewById(R.id.btnLogUit);
         terugButton = (Button) findViewById(R.id.btnTerug);
 
+        loguitButton.setTextColor(getResources().getColor(R.color.darkRed));
         loguitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -50,6 +51,7 @@ public class Loguit extends Activity {
             }
         });
 
+        terugButton.setTextColor(getResources().getColor(R.color.darkRed));
         terugButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

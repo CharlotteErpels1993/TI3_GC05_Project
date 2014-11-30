@@ -10,6 +10,8 @@ import android.app.ActionBar;
 import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -22,12 +24,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import android.view.View.OnClickListener;
 import android.widget.Toast;
@@ -68,6 +67,8 @@ public class activiteit_overzicht extends Fragment /*implements SwipeRefreshLayo
 
 
 
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,6 +78,9 @@ public class activiteit_overzicht extends Fragment /*implements SwipeRefreshLayo
 
         listview = (ListView) rootView.findViewById(R.id.listView);
         filtertext = (EditText) rootView.findViewById(R.id.filtertext);
+
+        getActivity().getActionBar().setTitle("Vakanties");
+
         //swipeLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_container);
         //onCreateSwipeToRefresh(swipeLayout);
 /*

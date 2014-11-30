@@ -57,6 +57,7 @@ public class ProfielEdit extends Activity {
         txtGSM = (EditText)findViewById(R.id.GSM);
 
         Button btnBevestigen = (Button) findViewById(R.id.btnBevestigen);
+        btnBevestigen.setTextColor(getResources().getColor(R.color.darkRed));
         btnBevestigen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

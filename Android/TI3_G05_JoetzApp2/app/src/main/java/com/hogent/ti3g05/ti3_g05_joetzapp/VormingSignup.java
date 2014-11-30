@@ -56,6 +56,7 @@ public class VormingSignup extends Activity {
         spnDataInschrijven.setAdapter(dataAdapter);
 
         btnInschrijven = (Button) findViewById(R.id.btnInschrijven);
+        btnInschrijven.setTextColor(getResources().getColor(R.color.darkRed));
         btnInschrijven.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

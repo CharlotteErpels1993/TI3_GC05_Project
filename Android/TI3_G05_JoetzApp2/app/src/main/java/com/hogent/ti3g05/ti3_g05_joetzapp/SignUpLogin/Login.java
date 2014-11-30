@@ -63,6 +63,10 @@ public class Login extends Activity{
         mUserNameEditText = (EditText) findViewById(R.id.username);
         mPasswordEditText = (EditText) findViewById(R.id.password);
 
+        getActionBar().setTitle("Inloggen");
+
+        btn_LoginIn.setTextColor(getResources().getColor(R.color.darkRed));
+
         btn_LoginIn.setOnClickListener(new OnClickListener() {
 
             @Override
@@ -84,6 +88,8 @@ public class Login extends Activity{
             }
         });
 
+        btn_SignUp.setTextColor(getResources().getColor(R.color.darkRed));
+
         btn_SignUp.setOnClickListener(new OnClickListener() {
 
             @Override
@@ -92,6 +98,8 @@ public class Login extends Activity{
                 startActivity(in);
             }
         });
+
+        btn_ForgetPass.setTextColor(getResources().getColor(R.color.darkRed));
 
         btn_ForgetPass.setOnClickListener(new OnClickListener() {
 

@@ -83,6 +83,7 @@ public class VormingDetail extends Activity {
         }
 
         inschrijven = (Button) findViewById(R.id.btnInschrijvenVorming);
+        inschrijven.setTextColor(getResources().getColor(R.color.darkRed));
         inschrijven.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

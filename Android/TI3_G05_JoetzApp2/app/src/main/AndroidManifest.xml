@@ -31,70 +31,101 @@
         </activity>
         -->
 
-        <receiver android:enabled="true" android:name=".BootReceiver"
-            android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
+        <activity
 
+            android:name=".SplashScreen"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Black.NoTitleBar" >
             <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-                <category android:name="android.intent.category.DEFAULT" />
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </receiver>
+        </activity>
 
-        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.navBarMainScreen" >
-            <intent-filter>
+
+        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.navBarMainScreen"
+            android:theme="@style/CustomActionBarTheme">
+
+        </activity>
+        <!--
+         <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <!--
          -->
 
         <activity
             android:name="com.hogent.ti3g05.ti3_g05_joetzapp.InschrijvenActivity"
-            android:label="@string/title_activity_inschrijven" >
+            android:label="@string/title_activity_inschrijven"
+            android:theme="@style/CustomActionBarTheme">
         </activity>
         <activity
             android:name="com.hogent.ti3g05.ti3_g05_joetzapp.activiteit_detail"
-            android:label="@string/title_activity_activiteit_detail" >
+            android:label="@string/title_activity_activiteit_detail"
+            android:theme="@style/CustomActionBarTheme">
         </activity>
         <activity
             android:name="com.hogent.ti3g05.ti3_g05_joetzapp.profiel_detail"
-            android:label="@string/title_activity_profiel_detail" >
+            android:label="@string/title_activity_profiel_detail"
+            android:theme="@style/CustomActionBarTheme">
         </activity>
 
-        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.SignUp_deel1" />
-        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.SignUp_deel2" />
-        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.SignUp_deel3" />
-        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.SignUp_deel4" />
-        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.Login" />
-        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.ForgetParsePassword" />
-        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.afbeeldingUItvergroot" />
-        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.InschrijvenVakantiePart1" />
-        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.InschrijvenVakantiePart2" >
+        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.SignUp_deel1"
+            android:theme="@style/CustomActionBarTheme"/>
+        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.SignUp_deel2"
+            android:theme="@style/CustomActionBarTheme"/>
+        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.SignUp_deel3"
+            android:theme="@style/CustomActionBarTheme"/>
+        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.SignUp_deel4"
+            android:theme="@style/CustomActionBarTheme"/>
+        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.Login"
+            android:theme="@style/CustomActionBarTheme"/>
+        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.ForgetParsePassword"
+            android:theme="@style/CustomActionBarTheme"/>
+        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.afbeeldingUItvergroot"
+            android:theme="@style/CustomActionBarTheme"/>
+        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.InschrijvenVakantiePart1"
+            android:theme="@style/CustomActionBarTheme"/>
+        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.InschrijvenVakantiePart2"
+            android:theme="@style/CustomActionBarTheme">
         </activity>
-        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.InschrijvenVakantiePart3" >
+        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.InschrijvenVakantiePart3"
+            android:theme="@style/CustomActionBarTheme">
         </activity>
-        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.InschrijvenVakantiePart4" >
+        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.InschrijvenVakantiePart4"
+            android:theme="@style/CustomActionBarTheme">
         </activity>
-        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.Vormingen_Overzicht" />
-        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.VormingDetail" />
-        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.ProfielDetail" />
-        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.ProfielenOverzicht" />
-        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.Loguit" />
-        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.about" />
-        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.IndienenVoorkeurVakantie" />
+        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.Vormingen_Overzicht"
+            android:theme="@style/CustomActionBarTheme"/>
+        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.VormingDetail"
+            android:theme="@style/CustomActionBarTheme"/>
+        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.ProfielDetail"
+            android:theme="@style/CustomActionBarTheme"/>
+        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.ProfielenOverzicht"
+            android:theme="@style/CustomActionBarTheme"/>
+        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.Loguit"
+            android:theme="@style/CustomActionBarTheme"/>
+        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.about"
+            android:theme="@style/CustomActionBarTheme"/>
+        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.IndienenVoorkeurVakantie"
+            android:theme="@style/CustomActionBarTheme"/>
         <activity
             android:name="com.hogent.ti3g05.ti3_g05_joetzapp.SuccesvolDoorgegeven"
+            android:theme="@style/CustomActionBarTheme"
             android:label="@string/title_activity_inschrijving_signup" >
         </activity>
         <activity
             android:name="com.hogent.ti3g05.ti3_g05_joetzapp.VormingSignup"
+            android:theme="@style/CustomActionBarTheme"
             android:label="@string/title_activity_vorming_signup" >
         </activity>
         <activity
             android:name="com.hogent.ti3g05.ti3_g05_joetzapp.ProfielEdit"
+            android:theme="@style/CustomActionBarTheme"
             android:label="@string/title_activity_profiel_edit" >
         </activity>
     </application>

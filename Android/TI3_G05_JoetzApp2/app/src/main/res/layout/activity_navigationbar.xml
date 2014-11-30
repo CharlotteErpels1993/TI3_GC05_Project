@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:launchMode="singleTask"
-    android:clearTaskOnLaunch="true">
+    android:clearTaskOnLaunch="true"
+    >
 
     <!-- The main content view -->
 

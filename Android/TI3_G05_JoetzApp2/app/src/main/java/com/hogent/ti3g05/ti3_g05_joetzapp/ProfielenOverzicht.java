@@ -69,7 +69,7 @@ public class ProfielenOverzicht extends Activity /* implements SwipeRefreshLayou
 
         // Get the view from listview_main.xml
         setContentView(R.layout.activiteit_overzichtnieuw);
-        setTitle("Profielen");
+        setTitle("Monitoren");
         // Execute RemoteDataTask AsyncTask
         filtertext = (EditText) findViewById(R.id.filtertext);
         cd = new ConnectionDetector(getApplicationContext());

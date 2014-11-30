@@ -2,4 +2,5 @@
 <resources>
     <item name="Rood" type="color">#FF0000</item>
     <item name="Wit" type="color">#FFFFFF</item>
+    <item name="darkRed" type="color">#8B0000</item>
 </resources>

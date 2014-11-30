@@ -38,6 +38,7 @@ public class InschrijvenVakantiePart2 extends Activity {
         setContentView(R.layout.activity_inschrijven_vakantie_part2);
         cd = new ConnectionDetector(getApplicationContext());
 
+        getActionBar().setTitle("Inschrijven vakantie");
         txtVoornaam = (EditText) findViewById(R.id.VoornaamContactPersoonIns);
         txtNaam = (EditText) findViewById(R.id.NaamContactPersoon);
         txtTelefoon = (EditText) findViewById(R.id.TelefoonContactPersoon);
@@ -48,6 +49,7 @@ public class InschrijvenVakantiePart2 extends Activity {
         txtGSMExtra = (EditText) findViewById(R.id.GsmContactPersoonExtra);
 
         btnVolgende = (Button)findViewById(R.id.btnNaarDeel3V);
+        btnVolgende.setTextColor(getResources().getColor(R.color.darkRed));
         btnVolgende.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,9 +67,11 @@ public class InschrijvenVakantiePart2 extends Activity {
         });
 
         btnCPextra = (Button) findViewById(R.id.btnExtraCP);
+        btnCPextra.setTextColor(getResources().getColor(R.color.darkRed));
         btnCPextra.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
+
                 extraCPZichtbaar = !extraCPZichtbaar; //indien true -> false en omgekeerd
                 if (extraCPZichtbaar){ //velden zijn zichtbaar
                     txtVoornaamExtra.setVisibility(View.VISIBLE);

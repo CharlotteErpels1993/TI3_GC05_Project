@@ -44,9 +44,11 @@ public class InschrijvenVakantiePart3 extends Activity {
         setContentView(R.layout.activity_inschrijven_vakantie_part3);
         cd = new ConnectionDetector(getApplicationContext());
 
+        getActionBar().setTitle("Inschrijven vakantie");
         editExtraInformatie = (EditText) findViewById(R.id.ExtraInformatie);
 
         btnVolgende = (Button)findViewById(R.id.btnNaarDeel4V);
+        btnVolgende.setTextColor(getResources().getColor(R.color.darkRed));
         btnVolgende.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
