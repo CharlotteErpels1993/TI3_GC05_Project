@@ -171,7 +171,6 @@ public class SignUp_deel4 extends Activity{
         ParseObject gebruiker = new ParseObject("Ouder");
         gebruiker.put("email", mEmail);
         gebruiker.put("wachtwoord", mPassword);
-        gebruiker.put("soort", "ouder");
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -192,7 +191,8 @@ public class SignUp_deel4 extends Activity{
 
             try{
                 //gebruiker.put("wachtwoord", lidBondMoyson);
-                gebruiker.put("aansluitingsNr", Integer.parseInt(aansluitingsnr));
+                if (aansluitingsnr != null && !aansluitingsnr.equals(""))
+                    gebruiker.put("aansluitingsNr", Integer.parseInt(aansluitingsnr));
                 gebruiker.put("voornaam", voornaam);
                 gebruiker.put("naam", naam);
                 gebruiker.put("straat", straat);
@@ -204,11 +204,13 @@ public class SignUp_deel4 extends Activity{
                 gebruiker.put("rijksregisterNr", rijksregnr);
                 gebruiker.put("telefoon", telefoon);
                 gebruiker.put("gsm", gsm);
-                gebruiker.put("aansluitingsNrTweedeOuder", Integer.parseInt(aansluitingsnrOuder2));
-                gebruiker.put("codeGerechtigde", Integer.parseInt(codeGerechtigde));
+                if (aansluitingsnrOuder2 != null && !aansluitingsnrOuder2.equals(""))
+                    gebruiker.put("aansluitingsNrTweedeOuder", Integer.parseInt(aansluitingsnrOuder2));
+                if (codeGerechtigde != null && !codeGerechtigde.equals(""))
+                    gebruiker.put("codeGerechtigde", Integer.parseInt(codeGerechtigde));
             }
             catch (NumberFormatException nfe){
-                Toast.makeText(getApplicationContext(), nfe.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Er was een fout tijdens het registeren, onze excuses voor het ongemak.\n" + nfe.getMessage(), Toast.LENGTH_SHORT).show();
             }
         }
 
@@ -225,7 +227,7 @@ public class SignUp_deel4 extends Activity{
                 if (e != null) {
                     // Sign up didn't succeed. Look at the ParseException
                     // to figure out what went wrong
-                    signUpMsg(e.getMessage());
+                    signUpMsg("Er was een fout tijdens het registeren, onze excuses voor het ongemak.");
                 }
             }
         });
