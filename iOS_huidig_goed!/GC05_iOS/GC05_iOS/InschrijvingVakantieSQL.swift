@@ -3,7 +3,7 @@ import Foundation
 struct InschrijvingVakantieSQL {
     
     static func createInschrijvingVakantieTable() {
-        if let error = SD.createTable("InschrijvingVakantie", withColumnNamesAndTypes: ["objectId": .StringVal, "extraInfo": .StringVal, "vakantie": .StringVal, "ouder": .StringVal, "deelnemer": .StringVal, "contactpersoon1": .StringVal, "contactpersoon2": .StringVal])
+        if let error = SD.createTable("InschrijvingVakantie", withColumnNamesAndTypes: ["objectId": .StringVal, "extraInformatie": .StringVal, "vakantie": .StringVal, "ouder": .StringVal, "deelnemer": .StringVal, "contactpersoon1": .StringVal, "contactpersoon2": .StringVal])
         {
             println("ERROR: error tijdens creatie van table InschrijvingVakantie")
         }
@@ -91,16 +91,16 @@ struct InschrijvingVakantieSQL {
         var queryString: String = ""
         
         queryString.extend("SELECT * FROM InschrijvingVakantie ")
-        queryString.extend("JOIN Deelnemer ON InschrijvingVakantie.deelnemer = Deelnemer.objectId ")
-        queryString.extend("WHERE Deelnemer.voornaam = ? ")
-        queryString.extend("AND ")
-        queryString.extend("Deelnemer.naam = ? ")
-        queryString.extend("AND ")
-        queryString.extend("InschrijvingVakantie.vakantie = ? ")
+        //queryString.extend("JOIN Deelnemer ON InschrijvingVakantie.deelnemer = Deelnemer.objectId ")
+        //queryString.extend("WHERE Deelnemer.voornaam = ? ")
+        //queryString.extend("AND ")
+        //queryString.extend("Deelnemer.naam = ? ")
+        //queryString.extend("AND ")
+        queryString.extend("WHERE InschrijvingVakantie.vakantie = ? ")
         queryString.extend("AND ")
         queryString.extend("InschrijvingVakantie.ouder = ?")
         
-        let (resultSet, err) = SwiftData.executeQuery(queryString, withArgs: [voornaamDeelnemer, naamDeelnemer, vakantieId, ouderId])
+        let (resultSet, err) = SwiftData.executeQuery(queryString, withArgs: [vakantieId, ouderId])
         
         if err != nil
         {
@@ -108,6 +108,46 @@ struct InschrijvingVakantieSQL {
         }
         else
         {
+            if resultSet.count > 0 {
+                var row: SD.SDRow = resultSet.first!
+                
+                var deelnemer: String = ""
+                
+                if let deelnemerId = row["deelnemer"]?.asString() {
+                    deelnemer = deelnemerId
+                }
+                
+                queryString.removeAll(keepCapacity: true)
+                queryString.extend("SELECT * FROM Deelnemer ")
+                queryString.extend("WHERE Deelnemer.objectId = ?")
+                
+                let (results, error) = SwiftData.executeQuery(queryString, withArgs: [deelnemer])
+                
+                if error != nil {
+                    //ERROR
+                }
+                else {
+                    var voornaam: String = ""
+                    var naam: String = ""
+                    
+                    if let deelnemerVn = row["voornaam"]?.asString() {
+                        voornaam = deelnemerVn
+                    }
+                    if let deelnemerN = row["naam"]?.asString() {
+                        naam = deelnemerN
+                    }
+                    
+                    
+                    if voornaam == voornaamDeelnemer && naam == naamDeelnemer {
+                        inschrijvingen.append(inschrijving)
+                        inschrijvingen.append(inschrijving)
+                    }
+                    
+                }
+                
+            }
+            
+            
             if resultSet.count > 0 {
                 inschrijvingen.append(inschrijving)
                 inschrijvingen.append(inschrijving)

@@ -177,14 +177,14 @@ public class InschrijvenVakantiePart1 extends FragmentActivity {
         int age = getAge(year, month, day);
         //TODO kijken of age groter is dan mindoelgroep en kleiner dan maxdoelgr
 
-       /* if(age < Integer.parseInt(mindoelgroep) || age > Integer.parseInt(maxdoelgroep))
+        if(age < Integer.parseInt(mindoelgroep) || age > Integer.parseInt(maxdoelgroep))
         {
             gebDatum.setError("De leeftijd valt niet binnen de doelgroep");
             focusView = gebDatum;
             errorDate.setText("De leeftijd valt niet binnen de doelgroep");
             errorDate.setVisibility(View.VISIBLE);
             cancel = true;
-        }*/
+        }
 
         if (TextUtils.isEmpty(huisnr)) {
             txtHuisnr.setError(getString(R.string.error_field_required));
