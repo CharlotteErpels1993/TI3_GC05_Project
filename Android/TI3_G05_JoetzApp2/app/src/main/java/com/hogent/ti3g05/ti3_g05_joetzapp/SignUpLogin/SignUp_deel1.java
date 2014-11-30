@@ -30,10 +30,14 @@ public class SignUp_deel1 extends Activity{
 
     EditText rijksregisterNr;
 
+
+
     // flag for Internet connection status
     Boolean isInternetPresent = false;
     // Connection detector class
     ConnectionDetector cd;
+
+    String rijksregnr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -132,7 +136,7 @@ public class SignUp_deel1 extends Activity{
         boolean cancel = false;
         View focusView = null;
 
-        String rijksregnr = rijksregisterNr.getText().toString();
+        rijksregnr = rijksregisterNr.getText().toString();
         // Internet Connection is Present
         // make HTTP requests
 
@@ -225,7 +229,8 @@ public class SignUp_deel1 extends Activity{
 
         Intent intentJa = new Intent(getApplicationContext(), SignUp_deel2.class);
         intentJa.putExtra("lidVanBondMoyson", "true");
-        intentJa.putExtra("rijksregisternr", rijksregisterNr.getText().toString());
+        intentJa.putExtra("rijksregisternr", rijksregnr);
+        intentJa.putExtra("rijksregnr", rijksregnr);
         startActivity(intentJa);
 
         overridePendingTransition(R.anim.right_in, R.anim.left_out);
@@ -235,8 +240,7 @@ public class SignUp_deel1 extends Activity{
     private void neeOpslaanRijksregNr() {
         Intent intentNee = new Intent(getApplicationContext(), SignUp_deel3.class);
         intentNee.putExtra("lidVanBondMoyson", "false");
-
-        intentNee.putExtra("rijksregisternr", rijksregisterNr.getText().toString());
+        intentNee.putExtra("rijksregisternr", rijksregnr);
         startActivity(intentNee);
 
         overridePendingTransition(R.anim.right_in, R.anim.left_out);

@@ -154,6 +154,8 @@ public class SignUp_deel2 extends Activity{
             rijksRegNr = extras.getString("rijksregisternr");
             intent.putExtra("lidVanBondMoyson", value);
             intent.putExtra("rijksregisternr", rijksRegNr);
+
+            Toast.makeText(getApplicationContext(), "niet leeg deel2", Toast.LENGTH_SHORT).show();
         }
         intent.putExtra("aansluitingsnr", aansluitingsnummerString);
         intent.putExtra("codeGerechtigde", codeGerechtigdeStr);

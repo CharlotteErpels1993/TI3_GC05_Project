@@ -9,7 +9,7 @@
     style="@style/LoginFormContainer">
 
     <EditText
-        android:id="@+id/VoornaamSignup"
+        android:id="@+id/VoornaamSignu"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -17,81 +17,81 @@
         android:hint="@string/naamHint"/>
 
     <EditText
-        android:id="@+id/NaamSignup"
+        android:id="@+id/NaamSignu"
 
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/VoornaamSignup"
+        android:layout_below="@id/VoornaamSignu"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp"
         android:hint="@string/famnaamHint" />
 
     <EditText
-        android:id="@+id/StraatSignup"
+        android:id="@+id/StraatSignu"
 
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/NaamSignup"
+        android:layout_below="@id/NaamSignu"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp"
         android:hint="@string/straatHint" />
 
     <EditText
-        android:id="@+id/HuisnrSignup"
+        android:id="@+id/HuisnrSignu"
         android:inputType="number"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/StraatSignup"
+        android:layout_below="@id/StraatSignu"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp"
         android:hint="@string/huisnrHint" />
 
     <EditText
-        android:id="@+id/BusSignup"
+        android:id="@+id/BusSignu"
         android:inputType="number"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/HuisnrSignup"
+        android:layout_below="@id/HuisnrSignu"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp"
         android:hint="@string/BusHint" />
 
     <EditText
-        android:id="@+id/GemeenteSignup"
+        android:id="@+id/GemeenteSignu"
 
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/BusSignup"
+        android:layout_below="@id/BusSignu"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp"
         android:hint="@string/gemeenteHint" />
 
     <EditText
-        android:id="@+id/PostcodeSignup"
+        android:id="@+id/PostcodeSignu"
         android:inputType="number"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/GemeenteSignup"
+        android:layout_below="@id/GemeenteSignu"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp"
         android:hint="@string/postcodeHint" />
 
     <EditText
-        android:id="@+id/TelefoonSignup"
+        android:id="@+id/TelefoonSignu"
         android:inputType="number"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/PostcodeSignup"
+        android:layout_below="@id/PostcodeSignu"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp"
         android:hint="@string/telefoonHint" />
 
     <EditText
-        android:id="@+id/GsmSignup"
+        android:id="@+id/GsmSignu"
         android:inputType="number"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/TelefoonSignup"
+        android:layout_below="@id/TelefoonSignu"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp"
         android:hint="@string/gsmHint" />
@@ -102,7 +102,7 @@
         android:id="@+id/btnNaarDeel4"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/GsmSignup"
+        android:layout_below="@id/GsmSignu"
         android:layout_marginTop="25dp"
         android:text="@string/volgende" />
 

@@ -63,15 +63,15 @@ public class SignUp_deel3 extends Activity{
 		// creating connection detector class instance
 		cd = new ConnectionDetector(getApplicationContext());
 		
-		voornaamText = (EditText) findViewById(R.id.VoornaamSignup);
-		naamText = (EditText) findViewById(R.id.NaamSignup);
-		straatText = (EditText) findViewById(R.id.StraatSignup);
-        huisnrText = (EditText) findViewById(R.id.HuisnrSignup);
-        gemeenteText = (EditText) findViewById(R.id.GemeenteSignup);
-        postcodeText = (EditText) findViewById(R.id.PostcodeSignup);
-        telefoonText = (EditText) findViewById(R.id.TelefoonSignup);
-        gsmText = (EditText) findViewById(R.id.GsmSignup);
-        busText = (EditText) findViewById(R.id.BusSignup);
+		voornaamText = (EditText) findViewById(R.id.VoornaamSignu);
+		naamText = (EditText) findViewById(R.id.NaamSignu);
+		straatText = (EditText) findViewById(R.id.StraatSignu);
+        huisnrText = (EditText) findViewById(R.id.HuisnrSignu);
+        gemeenteText = (EditText) findViewById(R.id.GemeenteSignu);
+        postcodeText = (EditText) findViewById(R.id.PostcodeSignu);
+        telefoonText = (EditText) findViewById(R.id.TelefoonSignu);
+        gsmText = (EditText) findViewById(R.id.GsmSignu);
+        busText = (EditText) findViewById(R.id.BusSignu);
 
 		volgendeButton = (Button) findViewById(R.id.btnNaarDeel4);
 		volgendeButton.setOnClickListener(new OnClickListener() {
@@ -248,6 +248,7 @@ public class SignUp_deel3 extends Activity{
             in.putExtra("codeGerechtigde", codeGerechtigde);
             in.putExtra("aansluitingsnrOuder2", aansluitingsNrOuder2);
             in.putExtra("rijksregisternr", rijksregnr);
+            Toast.makeText(getApplicationContext(), "niet leeg deel3", Toast.LENGTH_SHORT).show();
         }
 
         in.putExtra("voornaam", voornaam);

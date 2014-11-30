@@ -190,6 +190,8 @@ public class SignUp_deel4 extends Activity{
             String telefoon = extras.getString("telefoon");
             String gsm = extras.getString("gsm");
 
+            Toast.makeText(getApplicationContext(), "niet leeg deel4", Toast.LENGTH_SHORT).show();
+
             try{
                 //gebruiker.put("wachtwoord", lidBondMoyson);
                 gebruiker.put("aansluitingsNr", Integer.parseInt(aansluitingsnr));
