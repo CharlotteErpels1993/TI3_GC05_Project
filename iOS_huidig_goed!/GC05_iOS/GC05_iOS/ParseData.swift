@@ -169,7 +169,7 @@ struct /*class*/ ParseData {
         
         if response.1 == nil {
             if !contains(response.0, "InschrijvingVakantie") {
-                createInschrijvingVormingTable()
+                createInschrijvingVakantieTable()
             }
         }
         
@@ -260,6 +260,10 @@ struct /*class*/ ParseData {
     
     static private func createInschrijvingVormingTable() {
         InschrijvingVormingSQL.createInschrijvingVormingTable()
+    }
+    
+    static private func createInschrijvingVakantieTable() {
+        InschrijvingVakantieSQL.createInschrijvingVakantieTable()
     }
     
     static private func createMonitorTable() {
