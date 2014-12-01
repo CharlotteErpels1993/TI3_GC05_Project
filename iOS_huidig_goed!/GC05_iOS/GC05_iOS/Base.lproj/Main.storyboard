@@ -69,7 +69,7 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Vakanties" id="jTS-Lj-o5t">
-                        <barButtonItem key="backBarButtonItem" title=" " id="njL-6A-xXv"/>
+                        <barButtonItem key="backBarButtonItem" title="Vakanties" id="njL-6A-xXv"/>
                         <barButtonItem key="leftBarButtonItem" image="menu.png" id="ic7-yf-zL0">
                             <connections>
                                 <action selector="toggle:" destination="xj6-b1-6XR" id="lfG-P1-hpW"/>
@@ -426,7 +426,7 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Vakanties" id="EyU-Xm-7Wp">
-                        <barButtonItem key="backBarButtonItem" title=" " id="4W1-Mx-eUU"/>
+                        <barButtonItem key="backBarButtonItem" title="Terug" id="4W1-Mx-eUU"/>
                         <barButtonItem key="rightBarButtonItem" title="Inschrijven" id="tca-mm-haN">
                             <connections>
                                 <segue destination="hts-ZH-ofq" kind="show" identifier="inschrijven" id="vAz-KN-zJl"/>
@@ -553,7 +553,7 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="Dd7-I6-rhL">
-                        <barButtonItem key="backBarButtonItem" title=" " id="m0M-u4-OnI"/>
+                        <barButtonItem key="backBarButtonItem" title="Terug" id="m0M-u4-OnI"/>
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="FsM-QF-TvX" id="iVp-jU-MZv"/>
@@ -622,7 +622,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Klevertje.png" translatesAutoresizingMaskIntoConstraints="NO" id="GVm-2i-3L4">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Klevertje.png" translatesAutoresizingMaskIntoConstraints="NO" id="GVm-2i-3L4">
                                 <rect key="frame" x="16" y="64" width="568" height="536"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="600" id="jjd-3h-zsW"/>
@@ -729,7 +729,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sGx-HJ-VTU">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sGx-HJ-VTU">
                                 <rect key="frame" x="16" y="64" width="568" height="426"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="568" id="GkH-WB-LPD"/>
@@ -965,7 +965,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Registreren" id="XDx-Ng-P49">
-                        <barButtonItem key="backBarButtonItem" title=" " id="0RI-iT-a2S"/>
+                        <barButtonItem key="backBarButtonItem" title="Terug" id="0RI-iT-a2S"/>
                         <barButtonItem key="leftBarButtonItem" image="menu.png" id="19o-nJ-TWu">
                             <connections>
                                 <action selector="toggle:" destination="fyb-xH-x0i" id="aes-6c-sMY"/>
@@ -1109,7 +1109,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Inloggen" id="oE9-F4-VPK">
-                        <barButtonItem key="backBarButtonItem" title=" " id="i0r-4n-3rh"/>
+                        <barButtonItem key="backBarButtonItem" title="Terug" id="i0r-4n-3rh"/>
                         <barButtonItem key="leftBarButtonItem" image="menu.png" id="u7n-vX-idK">
                             <connections>
                                 <action selector="toggle:" destination="QSw-na-ve9" id="by2-Iz-PQv"/>
@@ -1195,7 +1195,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Profielen" id="sWn-EZ-BI4">
-                        <barButtonItem key="backBarButtonItem" title=" " id="9aL-Jh-Chx"/>
+                        <barButtonItem key="backBarButtonItem" title="Profielen" id="9aL-Jh-Chx"/>
                         <barButtonItem key="leftBarButtonItem" image="menu.png" id="eio-zu-qEJ">
                             <connections>
                                 <action selector="toggle:" destination="n8h-Pf-gLH" id="m29-9k-enY"/>
@@ -1657,7 +1657,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Vormingen" id="3ip-p1-dgO">
-                        <barButtonItem key="backBarButtonItem" title=" " id="OGh-iC-dDQ"/>
+                        <barButtonItem key="backBarButtonItem" title="Vormingen" id="OGh-iC-dDQ"/>
                         <barButtonItem key="leftBarButtonItem" image="menu.png" id="Rxr-gt-tAC">
                             <connections>
                                 <action selector="toggle:" destination="YS9-9D-Eok" id="g2U-vp-IaQ"/>
@@ -1904,7 +1904,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Vorming" id="ujr-s1-KPf">
-                        <barButtonItem key="backBarButtonItem" title=" " id="bIu-Nv-dg7"/>
+                        <barButtonItem key="backBarButtonItem" title="Terug" id="bIu-Nv-dg7"/>
                         <barButtonItem key="rightBarButtonItem" title="Inschrijven" id="KMS-1s-xIQ">
                             <connections>
                                 <segue destination="d80-lq-Zhz" kind="show" identifier="inschrijven" id="fmQ-pI-xab"/>
@@ -2197,7 +2197,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Inschrijven" id="GM6-sG-rYO">
-                        <barButtonItem key="backBarButtonItem" title=" " id="Inl-cR-x0d"/>
+                        <barButtonItem key="backBarButtonItem" title="Terug" id="Inl-cR-x0d"/>
                         <barButtonItem key="rightBarButtonItem" title="Volgende" id="R44-tV-3Ab">
                             <connections>
                                 <segue destination="JG9-Yc-TEg" kind="show" identifier="volgende" id="lhB-sI-kla"/>
@@ -2268,7 +2268,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Inschrijven" id="spO-N6-JKi">
-                        <barButtonItem key="backBarButtonItem" title=" " id="93V-XJ-qlN"/>
+                        <barButtonItem key="backBarButtonItem" title="Terug" id="93V-XJ-qlN"/>
                         <barButtonItem key="rightBarButtonItem" title="Volgende" id="gRg-tk-md4">
                             <connections>
                                 <segue destination="X5a-t7-Gqi" kind="show" identifier="volgende" id="iNH-iN-G1z"/>
@@ -2395,7 +2395,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Inschrijven" id="Ljr-c7-hY9">
-                        <barButtonItem key="backBarButtonItem" title=" " id="cRa-AS-ztW"/>
+                        <barButtonItem key="backBarButtonItem" title="Terug" id="cRa-AS-ztW"/>
                         <barButtonItem key="rightBarButtonItem" title="Volgende" id="LAg-GL-iRC">
                             <connections>
                                 <segue destination="fiA-PH-Lvg" kind="show" identifier="volgende" id="E6m-gO-M1Y"/>
@@ -2533,7 +2533,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Inschrijven" id="bi7-NQ-CC8">
-                        <barButtonItem key="backBarButtonItem" title=" " id="zTx-wV-sMc"/>
+                        <barButtonItem key="backBarButtonItem" title="Terug" id="zTx-wV-sMc"/>
                         <barButtonItem key="rightBarButtonItem" title="Volgende" id="9qQ-DS-d9b">
                             <connections>
                                 <segue destination="C57-CL-LAn" kind="show" identifier="volgende" id="ZaK-tF-Lqp"/>
@@ -3006,7 +3006,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Registreren" id="suI-Ue-v3o">
-                        <barButtonItem key="backBarButtonItem" title=" " id="jMl-2B-JNX"/>
+                        <barButtonItem key="backBarButtonItem" title="Terug" id="jMl-2B-JNX"/>
                         <barButtonItem key="rightBarButtonItem" title="Volgende" id="L9b-bD-fFu">
                             <connections>
                                 <segue destination="w0S-HA-suc" kind="show" identifier="volgende" id="H9B-i3-Yhv"/>
@@ -3167,10 +3167,6 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                     <segue destination="3Ah-cP-UoS" kind="unwind" unwindAction="gaTerugNaarInloggen:" id="pNU-AA-Ejo"/>
                                 </connections>
                             </button>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="CSP-El-R4c">
-                                <rect key="frame" x="282" y="281" width="37" height="37"/>
-                                <color key="color" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -3181,8 +3177,6 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                             <constraint firstItem="jQV-Y3-Kti" firstAttribute="top" secondItem="zN8-iL-ksi" secondAttribute="bottom" constant="2" id="WNJ-Ve-cQB"/>
                             <constraint firstAttribute="centerY" secondItem="zN8-iL-ksi" secondAttribute="centerY" constant="0.75" id="XEc-ju-ykC"/>
                             <constraint firstAttribute="trailingMargin" secondItem="jQV-Y3-Kti" secondAttribute="trailing" constant="248" id="XjO-HY-Mxn"/>
-                            <constraint firstAttribute="centerX" secondItem="CSP-El-R4c" secondAttribute="centerX" constant="-0.5" id="dGN-4P-oQT"/>
-                            <constraint firstAttribute="centerY" secondItem="CSP-El-R4c" secondAttribute="centerY" constant="0.5" id="gyU-2Y-lJQ"/>
                             <constraint firstAttribute="centerY" secondItem="zN8-iL-ksi" secondAttribute="centerY" constant="0.5" id="lF0-xu-4HP"/>
                             <constraint firstAttribute="trailingMargin" secondItem="zN8-iL-ksi" secondAttribute="trailing" id="o20-Zj-rtm"/>
                             <constraint firstItem="jQV-Y3-Kti" firstAttribute="top" secondItem="zN8-iL-ksi" secondAttribute="bottom" constant="8" id="sv7-qM-I4K"/>
@@ -3202,9 +3196,6 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Registratie voltooid" id="vbh-wi-0lX"/>
-                    <connections>
-                        <outlet property="activityIndicatorView" destination="CSP-El-R4c" id="Dlt-kW-tKZ"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0km-KM-IRT" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="3Ah-cP-UoS" userLabel="Exit" sceneMemberID="exit"/>
@@ -3654,7 +3645,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Welkom" id="nZa-AM-chs">
-                        <barButtonItem key="backBarButtonItem" title=" " id="GMJ-EI-G6j"/>
+                        <barButtonItem key="backBarButtonItem" title="Terug" id="GMJ-EI-G6j"/>
                         <barButtonItem key="leftBarButtonItem" image="menu.png" id="fCb-Ll-6rz">
                             <connections>
                                 <action selector="toggle:" destination="23A-H4-KGV" id="frS-la-DPN"/>
