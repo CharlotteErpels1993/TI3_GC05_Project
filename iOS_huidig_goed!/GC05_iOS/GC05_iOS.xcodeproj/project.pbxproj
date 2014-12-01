@@ -80,7 +80,6 @@
 		A512381D1A16332D002242C6 /* MyNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A512381C1A16332D002242C6 /* MyNavigationController.swift */; };
 		A52494261A251FC00055DEFF /* AnnuleerButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52494251A251FC00055DEFF /* AnnuleerButtons.swift */; };
 		A52976D11A1A0A5E00420FEE /* Klevertje.png in Resources */ = {isa = PBXBuildFile; fileRef = A52976D01A1A0A5E00420FEE /* Klevertje.png */; };
-		A543AA871A2C74BB00249B4A /* menuicon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A543AA861A2C74BB00249B4A /* menuicon.jpg */; };
 		A543AA891A2C7AC000249B4A /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = A543AA881A2C7AC000249B4A /* menu.png */; };
 		A54E1B9E1A125E7C00C6BB95 /* ExtraTekstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54E1B9D1A125E7C00C6BB95 /* ExtraTekstViewController.swift */; };
 		A55321DF1A1C8258005146F8 /* SuccesvolNieuwWachtwoordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55321DE1A1C8258005146F8 /* SuccesvolNieuwWachtwoordViewController.swift */; };
@@ -188,7 +187,6 @@
 		A512381C1A16332D002242C6 /* MyNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyNavigationController.swift; sourceTree = "<group>"; };
 		A52494251A251FC00055DEFF /* AnnuleerButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnuleerButtons.swift; sourceTree = "<group>"; };
 		A52976D01A1A0A5E00420FEE /* Klevertje.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Klevertje.png; path = Images.xcassets/Klevertje.png; sourceTree = "<group>"; };
-		A543AA861A2C74BB00249B4A /* menuicon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = menuicon.jpg; path = Images.xcassets/menuicon.jpg; sourceTree = "<group>"; };
 		A543AA881A2C7AC000249B4A /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = menu.png; path = Images.xcassets/menu.png; sourceTree = "<group>"; };
 		A54E1B9D1A125E7C00C6BB95 /* ExtraTekstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtraTekstViewController.swift; sourceTree = "<group>"; };
 		A55321DE1A1C8258005146F8 /* SuccesvolNieuwWachtwoordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuccesvolNieuwWachtwoordViewController.swift; sourceTree = "<group>"; };
@@ -437,7 +435,6 @@
 			isa = PBXGroup;
 			children = (
 				A543AA881A2C7AC000249B4A /* menu.png */,
-				A543AA861A2C74BB00249B4A /* menuicon.jpg */,
 				A5E5B9841A23712B0054960C /* joetz.png */,
 				A52976D01A1A0A5E00420FEE /* Klevertje.png */,
 			);
@@ -526,7 +523,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5E5B9831A2370DC0054960C /* LaunchScreen.xib in Resources */,
-				A543AA871A2C74BB00249B4A /* menuicon.jpg in Resources */,
 				0FA80B0D1A01350E008DB343 /* Main.storyboard in Resources */,
 				0FA80B0F1A01350E008DB343 /* Images.xcassets in Resources */,
 				A543AA891A2C7AC000249B4A /* menu.png in Resources */,

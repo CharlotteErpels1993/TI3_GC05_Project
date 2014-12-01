@@ -965,7 +965,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                     </view>
                     <navigationItem key="navigationItem" title="Registreren" id="XDx-Ng-P49">
                         <barButtonItem key="backBarButtonItem" title="Terug" id="0RI-iT-a2S"/>
-                        <barButtonItem key="leftBarButtonItem" title="Menu" id="19o-nJ-TWu">
+                        <barButtonItem key="leftBarButtonItem" image="menu.png" id="19o-nJ-TWu">
                             <connections>
                                 <action selector="toggle:" destination="fyb-xH-x0i" id="aes-6c-sMY"/>
                             </connections>
@@ -1108,7 +1108,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Inloggen" id="oE9-F4-VPK">
-                        <barButtonItem key="leftBarButtonItem" title="Menu" id="u7n-vX-idK">
+                        <barButtonItem key="leftBarButtonItem" image="menu.png" id="u7n-vX-idK">
                             <connections>
                                 <action selector="toggle:" destination="QSw-na-ve9" id="by2-Iz-PQv"/>
                             </connections>
@@ -1194,7 +1194,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                     </tableView>
                     <navigationItem key="navigationItem" title="Profielen" id="sWn-EZ-BI4">
                         <barButtonItem key="backBarButtonItem" title="Terug" id="9aL-Jh-Chx"/>
-                        <barButtonItem key="leftBarButtonItem" title="Menu" id="eio-zu-qEJ">
+                        <barButtonItem key="leftBarButtonItem" image="menu.png" id="eio-zu-qEJ">
                             <connections>
                                 <action selector="toggle:" destination="n8h-Pf-gLH" id="m29-9k-enY"/>
                             </connections>
@@ -1656,7 +1656,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                     </tableView>
                     <navigationItem key="navigationItem" title="Vormingen" id="3ip-p1-dgO">
                         <barButtonItem key="backBarButtonItem" title="Terug" id="OGh-iC-dDQ"/>
-                        <barButtonItem key="leftBarButtonItem" title="Menu" id="Rxr-gt-tAC">
+                        <barButtonItem key="leftBarButtonItem" image="menu.png" id="Rxr-gt-tAC">
                             <connections>
                                 <action selector="toggle:" destination="YS9-9D-Eok" id="g2U-vp-IaQ"/>
                             </connections>
@@ -3652,7 +3652,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                     </tableView>
                     <navigationItem key="navigationItem" title="Welkom" id="nZa-AM-chs">
                         <barButtonItem key="backBarButtonItem" title="Terug" id="GMJ-EI-G6j"/>
-                        <barButtonItem key="leftBarButtonItem" title="Menu" id="fCb-Ll-6rz">
+                        <barButtonItem key="leftBarButtonItem" image="menu.png" id="fCb-Ll-6rz">
                             <connections>
                                 <action selector="toggle:" destination="23A-H4-KGV" id="frS-la-DPN"/>
                             </connections>
@@ -3791,13 +3791,13 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
     </scenes>
     <resources>
         <image name="Klevertje.png" width="615" height="427"/>
-        <image name="menu.png" width="50" height="50"/>
+        <image name="menu.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="n6i-tz-46X"/>
         <segue reference="xe1-I8-Pkw"/>
         <segue reference="9Je-LH-R9J"/>
-        <segue reference="ZW9-Dp-oFd"/>
+        <segue reference="fAM-X2-96q"/>
         <segue reference="xSz-Mr-cgx"/>
     </inferredMetricsTieBreakers>
 </document>
