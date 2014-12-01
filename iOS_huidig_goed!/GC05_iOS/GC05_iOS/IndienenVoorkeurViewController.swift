@@ -11,6 +11,8 @@ class IndienenVoorkeurViewController: UIViewController, UIPickerViewDataSource, 
     var vakanties: [Vakantie] = []
     var pickerData: [String] = []
     var voorkeur: Voorkeur = Voorkeur(id: "test")
+    var vertrekdatumStr: String? = ""
+    var terugkeerdatumStr: String? = ""
     //var vorming: Vorming!
     //var inschrijvingVorming: InschrijvingVorming = InschrijvingVorming(id: "test")
     
@@ -25,13 +27,18 @@ class IndienenVoorkeurViewController: UIViewController, UIPickerViewDataSource, 
         ParseData.vulVoorkeurTableOp()
         
         hideSideMenuView()
-        periodeLabel.hidden = true
+        //periodeLabel.hidden = true
         
         vakanties = ParseData.getAlleVakanties()
         
         for vakantie in vakanties {
             pickerData.append(vakantie.titel!)
         }
+        
+        var vakantie = self.vakanties[0]
+        vertrekdatumStr = vakantie.vertrekdatum.toS("dd/MM/yyyy")
+        terugkeerdatumStr = vakantie.terugkeerdatum.toS("dd/MM/yyyy")
+        periodeLabel.text = ("\(vertrekdatumStr!) - \(terugkeerdatumStr!)")
         
         //giveUITextViewDefaultBorder(txtViewPeriodes)
         
@@ -50,23 +57,7 @@ class IndienenVoorkeurViewController: UIViewController, UIPickerViewDataSource, 
     }
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
-        periodeLabel.hidden = true
         return pickerData[row]
-    }
-    
-    
-    @IBAction func toonPeriode(sender: AnyObject) {
-        var vertrekdatumStr = self.voorkeur.vakantie?.vertrekdatum.toS("dd/MM/yyyy")
-        var terugkeerdatumStr = self.voorkeur.vakantie?.terugkeerdatum.toS("dd/MM/yyyy")
-        
-        if self.voorkeur.vakantie == nil {
-            var vakantie = vakanties[0]
-            vertrekdatumStr = vakantie.vertrekdatum.toS("dd/MM/yyyy")
-            terugkeerdatumStr = vakantie.terugkeerdatum.toS("dd/MM/yyyy")
-        }
-        
-        periodeLabel.text = ("\(vertrekdatumStr!) - \(terugkeerdatumStr!)")
-        periodeLabel.hidden = false
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -81,6 +72,17 @@ class IndienenVoorkeurViewController: UIViewController, UIPickerViewDataSource, 
         }
         
         voorkeur.vakantie = vakantie
+        
+        self.vertrekdatumStr = voorkeur.vakantie!.vertrekdatum.toS("dd/MM/yyyy")
+        self.terugkeerdatumStr = voorkeur.vakantie!.terugkeerdatum.toS("dd/MM/yyyy")
+        
+        if voorkeur.vakantie == nil {
+            var vakantie = vakanties[0]
+            vertrekdatumStr = vakantie.vertrekdatum.toS("dd/MM/yyyy")
+            terugkeerdatumStr = vakantie.terugkeerdatum.toS("dd/MM/yyyy")
+        }
+        
+        periodeLabel.text = ("\(vertrekdatumStr!) - \(terugkeerdatumStr!)")
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -118,9 +120,6 @@ class IndienenVoorkeurViewController: UIViewController, UIPickerViewDataSource, 
     }
     
     func controleerAlIngeschreven() -> Bool {
-        
-        // CHARLOTTE!
-        
         var voorkeuren: [Voorkeur] = []
         
         voorkeuren = ParseData.getVoorkeurenVakantie(self.voorkeur)
