@@ -1,6 +1,6 @@
 import UIKit
 
-class NieuwWachtwoordViewController: UIViewController {
+class NieuwWachtwoordViewController: ResponsiveTextFieldViewController {
     @IBOutlet weak var emailAdresTxt: UITextField!
     
     override func viewDidLoad() {
