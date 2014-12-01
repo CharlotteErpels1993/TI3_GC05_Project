@@ -4,12 +4,12 @@ struct MonitorSQL {
     
     static func createMonitorTable() {
         if let error = SD.createTable("Monitor", withColumnNamesAndTypes:
-        ["objectId": .StringVal, "rijksregisterNr": .StringVal, "email": .StringVal,
-         "wachtwoord": .StringVal ,"voornaam": .StringVal, "naam": .StringVal,
-         "straat": .StringVal, "nummer": .IntVal, "bus": .StringVal, "postcode": .IntVal,
-         "gemeente": .StringVal, "telefoon": .StringVal, "gsm": .StringVal,
-         "aansluitingsNr": .IntVal, "codeGerechtigde": .IntVal, "lidNr": .IntVal,
-         "linkFacebook": .StringVal])
+            ["objectId": .StringVal, "rijksregisterNr": .StringVal, "email": .StringVal,
+                /*"wachtwoord": .StringVal ,*/"voornaam": .StringVal, "naam": .StringVal,
+                "straat": .StringVal, "nummer": .IntVal, "bus": .StringVal, "postcode": .IntVal,
+                "gemeente": .StringVal, "telefoon": .StringVal, "gsm": .StringVal,
+                "aansluitingsNr": .IntVal, "codeGerechtigde": .IntVal, "lidNr": .IntVal,
+                "linkFacebook": .StringVal])
         {
             println("ERROR: error tijdens creatie van table Monitor")
         }
@@ -40,9 +40,65 @@ struct MonitorSQL {
         return monitors
     }
     
+    private static func getMonitor(monitorObject: PFObject) -> Monitor {
+        var id = monitorObject.objectId as String
+        
+        var monitor: Monitor = Monitor(id: id)
+        
+        monitor.email = monitorObject["email"] as? String
+        monitor.rijksregisterNr = monitorObject["rijksregisterNr"] as? String
+        monitor.voornaam = monitorObject["voornaam"] as? String
+        monitor.naam = monitorObject["naam"] as? String
+        monitor.straat = monitorObject["straat"] as? String
+        monitor.nummer = monitorObject["nummer"] as? Int
+        
+        if monitorObject["bus"] as? String != nil {
+            monitor.bus = monitorObject["bus"] as? String
+        }
+        
+        monitor.gemeente = monitorObject["gemeente"] as? String
+        monitor.postcode = monitorObject["postcode"] as? Int
+        
+        if monitorObject["telefoon"] as? String != nil {
+            monitor.telefoon = monitorObject["telefoon"] as? String
+        }
+        
+        monitor.gsm = monitorObject["gsm"] as? String
+        monitor.aansluitingsNr = monitorObject["aansluitingsNr"] as? Int
+        monitor.codeGerechtigde = monitorObject["codeGerechtigde"] as? Int
+        
+        if monitorObject["linkFacebook"] as? String != nil {
+            monitor.linkFacebook = monitorObject["linkFacebook"] as? String
+        }
+        
+        if monitorObject["lidNr"] as? Int != nil {
+            monitor.lidNr = monitorObject["lidNr"] as? Int
+        }
+        
+        return monitor
+    }
+    
     static func getMonitorWithEmail(email: String) -> Monitor {
         
-        var monitors: [Monitor] = []
+        //nieuw: Charlotte
+        var query = PFQuery(className: "Monitor")
+        query.whereKey("email", equalTo: email)
+        
+        var monitorObject = query.getFirstObject()
+        
+        var monitor: Monitor
+        
+        if monitorObject == nil {
+            //ERROR, mag normaal gezien nooit gebeuren door voorgaande controles (MonitorSQL.getMonitorWithEmail)
+            monitor = Monitor(id: "test")
+        } else {
+            monitor = getMonitor(monitorObject)
+        }
+        
+        return monitor
+        
+        
+        /*var monitors: [Monitor] = []
         var monitor2: Monitor = Monitor(id: "test")
         var monitor: Monitor = Monitor(id: "test")
         
@@ -50,20 +106,20 @@ struct MonitorSQL {
         
         if err != nil
         {
-            println("ERROR: error tijdens ophalen van monitors met email uit table Monitor")
+        println("ERROR: error tijdens ophalen van monitors met email uit table Monitor")
         }
         else
         {
-            if resultSet.count == 0 {
-                monitors.append(monitor)
-            } else {
-                for row in resultSet {
-                    monitor = getMonitor(row)
-                    monitors.append(monitor)
-                }
-            }
+        if resultSet.count == 0 {
+        monitors.append(monitor)
+        } else {
+        for row in resultSet {
+        monitor = getMonitor(row)
+        monitors.append(monitor)
         }
-        return monitors.first!
+        }
+        }
+        return monitors.first!*/
     }
     
     static func getEmail(email: String) -> Bool {
@@ -92,9 +148,9 @@ struct MonitorSQL {
         if let email = row["email"]?.asString() {
             monitor.email = email
         }
-        if let wachtwoord = row["wachtwoord"]?.asString() {
-            monitor.wachtwoord = wachtwoord
-        }
+        /*if let wachtwoord = row["wachtwoord"]?.asString() {
+        monitor.wachtwoord = wachtwoord
+        }*/
         if let voornaam = row["voornaam"]?.asString() {
             monitor.voornaam = voornaam
         }
@@ -149,7 +205,7 @@ struct MonitorSQL {
         var objectId: String = ""
         var rijksregisterNr: String?
         var email: String = ""
-        var wachtwoord: String = ""
+        //var wachtwoord: String = ""
         var voornaam: String = ""
         var naam: String = ""
         var straat: String = ""
@@ -171,7 +227,7 @@ struct MonitorSQL {
             objectId = monitor.objectId as String
             rijksregisterNr = monitor["rijksregisterNr"] as? String
             email = monitor["email"] as String
-            wachtwoord = monitor["wachtwoord"] as String
+            //wachtwoord = monitor["wachtwoord"] as String
             voornaam = monitor["voornaam"] as String
             naam = monitor["naam"] as String
             straat = monitor["straat"] as String
@@ -214,7 +270,7 @@ struct MonitorSQL {
             queryString.extend("objectId, ")
             queryString.extend("rijksregisterNr, ")
             queryString.extend("email, ")
-            queryString.extend("wachtwoord, ")
+            //queryString.extend("wachtwoord, ")
             queryString.extend("voornaam, ")
             queryString.extend("naam, ")
             queryString.extend("straat, ")
@@ -235,7 +291,7 @@ struct MonitorSQL {
             queryString.extend("'\(objectId)', ") //objectId - String
             queryString.extend("'\(rijksregisterNr!)', ") //rijksregisterNr - String
             queryString.extend("'\(email)', ") //email - String
-            queryString.extend("'\(wachtwoord)', ") //wachtwoord - String
+            //queryString.extend("'\(wachtwoord)', ") //wachtwoord - String
             queryString.extend("'\(voornaam)', ") //voornaam - String
             queryString.extend("'\(naam)', ") //naam - String
             queryString.extend("'\(straat)', ") //straat - String
@@ -346,7 +402,7 @@ struct MonitorSQL {
         {
             //no error
         }
-
+        
     }
     
 }
