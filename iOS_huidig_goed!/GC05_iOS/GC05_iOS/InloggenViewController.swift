@@ -6,8 +6,8 @@ class InloggenViewController: UIViewController
     @IBOutlet weak var txtEmail: UITextField!
     @IBOutlet weak var txtWachtwoord: UITextField!
     
-    var queryOuder = PFQuery(className: "Ouder")
-    var queryMonitor = PFQuery(className: "Monitor")
+    //var queryOuder = PFQuery(className: "Ouder")
+    //var queryMonitor = PFQuery(className: "Monitor")
     var statusTextFields: [String: String] = [:]
     var redColor: UIColor = UIColor.redColor()
     var activityIndicator: UIActivityIndicatorView?
@@ -105,13 +105,13 @@ class InloggenViewController: UIViewController
                 
                 if type == "monitor" {
                     //user is een monitor
-                    //var monitor = ParseData.getMonitorWithEmail(txtEmail.text)
+                    var monitor = ParseData.getMonitorWithEmail(txtEmail.text)
                     performSegueWithIdentifier("overzichtMonitor", sender: self)
                     
                     
                 } else if type == "ouder" {
                     //user is een ouder
-                    //var ouder = ParseData.getOuderWithEmail(txtEmail.text)
+                    var ouder = ParseData.getOuderWithEmail(txtEmail.text)
                     performSegueWithIdentifier("ouderOverzicht", sender: self)
                 } else {
                     //column "soort" is niet ingevuld bij deze user in tabel User
@@ -172,7 +172,7 @@ class InloggenViewController: UIViewController
         }
     }
     
-    private func zoekenMatchMonitorOfOuder(email: String, wachtwoord: String) -> String {
+    /*private func zoekenMatchMonitorOfOuder(email: String, wachtwoord: String) -> String {
         if queryBevatRecords(email, wachtwoord: wachtwoord, query: queryMonitor) {
             return "monitor"
         } else if queryBevatRecords(email, wachtwoord: wachtwoord, query: queryOuder) {
@@ -190,5 +190,5 @@ class InloggenViewController: UIViewController
         } else {
             return false
         }
-    }
+    }*/
 }
