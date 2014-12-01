@@ -13,9 +13,12 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
     }
     
     override func viewDidLoad() {
-        var activityIndicator = getActivityIndicatorView(self)
-        activityIndicator.startAnimating()
+        
         super.viewDidLoad()
+        
+        var activityIndicator = getActivityIndicatorView(self)
+        //activityIndicator.startAnimating()
+        //super.viewDidLoad()
         checkConnectie()
         
         vakanties = ParseData.getAlleVakanties()
@@ -35,7 +38,7 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         vakanties.sort({ (String($0.minLeeftijd)) < $1.titel})
         //vakanties.sort({ $0.minLeeftijd < $1.titel })
         
-        activityIndicator.stopAnimating()
+        //activityIndicator.stopAnimating()
     }
     
     func checkConnectie() {
@@ -135,9 +138,13 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
 
 func getActivityIndicatorView(controller: UIViewController) -> UIActivityIndicatorView {
     let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
+    
+    //var roodJoetz: UIColor = UIColor(red: 232.0, green: 33.0, blue: 35.0, alpha: 1.0)
+    //activityIndicator.color = roodJoetz
+    
     activityIndicator.color = UIColor.redColor()
     activityIndicator.center = controller.view.center
-    //activityIndicator.startAnimating()
+    activityIndicator.startAnimating()
     controller.view.addSubview(activityIndicator)
 
     return activityIndicator
