@@ -185,6 +185,7 @@ public class activiteit_overzicht extends Fragment /*implements SwipeRefreshLayo
             super.onPreExecute();
             // Create a progressdialog
             mProgressDialog = new ProgressDialog(getActivity());
+            
             // Set progressdialog title
             mProgressDialog.setTitle("Ophalen van vakanties.");
 

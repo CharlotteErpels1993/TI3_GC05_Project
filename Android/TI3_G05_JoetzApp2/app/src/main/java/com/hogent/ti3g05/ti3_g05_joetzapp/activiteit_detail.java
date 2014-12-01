@@ -196,6 +196,14 @@ public class activiteit_detail extends Activity {
             }
         });
 
+        ImageView btnTwitterShare = (ImageView) findViewById(R.id.shareTwitter);
+        btnTwitterShare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                shareTwitter();
+            }
+        });
+
         afbeelding1im.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -341,7 +349,7 @@ public class activiteit_detail extends Activity {
         return true;
     }
 
-    public void shareFacebook()
+    public String getShareUrl()
     {
         String urlToShare = "";
 
@@ -358,6 +366,26 @@ public class activiteit_detail extends Activity {
             urlToShare = "http://www.joetz.be/Vakanties/Buitenland/Pages/Actie,-fun-en-avontuur---Trophy.aspx";
         }
 
+        return urlToShare;
+    }
+
+    public void shareFacebook()
+    {
+        String urlToShare = getShareUrl();
+/*
+        if(naam.toLowerCase().equals("kerstvakantie aan zee"))
+        {
+            urlToShare = "http://www.joetz.be/309/Vakanties/Binnenland/Pages/Kerstvakantie.aspx";
+        }
+        else if(naam.toLowerCase().equals("skien in maria alm - krokusvakantie"))
+        {
+            urlToShare = "http://www.joetz.be/Vakanties/Buitenland/Pages/Ski%C3%ABn-in-Maria-Alm---Krokusvakantie.aspx";
+        }
+        else if(naam.toLowerCase().equals("actie, fun en avontuur - trophy"))
+        {
+            urlToShare = "http://www.joetz.be/Vakanties/Buitenland/Pages/Actie,-fun-en-avontuur---Trophy.aspx";
+        }
+*/
         boolean facebookAppFound = false;
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("text/plain");
@@ -373,6 +401,43 @@ public class activiteit_detail extends Activity {
         }
         if (!facebookAppFound) {
             String sharerUrl = "https://www.facebook.com/sharer/sharer.php?u=" + urlToShare;
+            intent = new Intent(Intent.ACTION_VIEW, Uri.parse(sharerUrl));
+        }
+        startActivity(intent);
+    }
+
+    public void shareTwitter()
+    {
+        String urlToShare = getShareUrl();
+/*
+        if(naam.toLowerCase().equals("kerstvakantie aan zee"))
+        {
+            urlToShare = "http://www.joetz.be/309/Vakanties/Binnenland/Pages/Kerstvakantie.aspx";
+        }
+        else if(naam.toLowerCase().equals("skien in maria alm - krokusvakantie"))
+        {
+            urlToShare = "http://www.joetz.be/Vakanties/Buitenland/Pages/Ski%C3%ABn-in-Maria-Alm---Krokusvakantie.aspx";
+        }
+        else if(naam.toLowerCase().equals("actie, fun en avontuur - trophy"))
+        {
+            urlToShare = "http://www.joetz.be/Vakanties/Buitenland/Pages/Actie,-fun-en-avontuur---Trophy.aspx";
+        }
+*/
+        boolean twitterApp = false;
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        intent.putExtra(Intent.EXTRA_TEXT, urlToShare);
+
+        List<ResolveInfo> matches = getPackageManager().queryIntentActivities(intent, 0);
+        for (ResolveInfo info : matches) {
+            if (info.activityInfo.packageName.toLowerCase().startsWith("com.twitter")) {
+                intent.setPackage(info.activityInfo.packageName);
+                twitterApp = true;
+                break;
+            }
+        }
+        if (!twitterApp) {
+            String sharerUrl = "https://twitter.com/intent/tweet?source=webclient&text=%s" + urlToShare;
             intent = new Intent(Intent.ACTION_VIEW, Uri.parse(sharerUrl));
         }
         startActivity(intent);

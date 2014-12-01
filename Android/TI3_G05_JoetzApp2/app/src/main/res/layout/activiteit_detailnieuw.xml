@@ -317,28 +317,44 @@ android:layout_below="@id/doelgroepv"
     <ImageView
         android:id="@+id/share"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
         android:src="@drawable/btn_facebook_share"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/verberg2"/>
+    <ImageView
+        android:id="@+id/shareTwitter"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/gi"
+        android:layout_alignParentEnd="true"
         android:layout_below="@id/verberg2"/>
     <Button
         android:text="@string/meerInfo"
         android:id="@+id/btnMeerInfo"
+
+
+        android:layout_marginTop="8dp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/share"
 />
+    <!--android:background="@android:color/transparent"-->
     <Button
         android:text="@string/minderInfo"
         android:id="@+id/btnMinderInfo"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/btnMeerInfo"
-        android:background="@android:color/transparent"
+
         android:layout_marginTop="8dp"/>
 
     <Button
         android:text="@string/inschrijven"
         android:id="@+id/btnInschrijvenV"
+
+
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/btnMinderInfo"
