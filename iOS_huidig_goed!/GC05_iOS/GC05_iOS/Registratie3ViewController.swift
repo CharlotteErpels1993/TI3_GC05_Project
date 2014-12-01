@@ -11,6 +11,8 @@ class Registratie3ViewController: ResponsiveTextFieldViewController
     var foutBox: FoutBox? = nil
     var statusTextFields: [String: String] = [:]
     var redColor: UIColor = UIColor.redColor()
+    var emailAlGeregistreerd: Bool = false
+    
     
     @IBAction func gaTerugNaarInloggen(sender: AnyObject) {
         annuleerControllerRegistratie(self)
@@ -31,9 +33,31 @@ class Registratie3ViewController: ResponsiveTextFieldViewController
         if segue.identifier == "voltooiRegistratie" {
             let registratieSuccesvolViewController = segue.destinationViewController as RegistratieSuccesvolViewController
         
-            //TO DO: controleren op formaat van ingevulde text! (String, int, ...)
-        
+            //nieuw: Charlotte
             setStatusTextFields()
+            pasLayoutVeldenAan()
+            
+            if controleerRodeBordersAanwezig() == true {
+                if emailAlGeregistreerd == true {
+                    foutBoxOproepen("Fout", "Dit e-mailadres is al geregistreerd bij ons!", self)
+                } else {
+                    foutBoxOproepen("Fout", "Gelieve de velden correct in te vullen!", self)
+                }
+                self.viewDidLoad()
+            } else {
+                if wachtwoordenMatch() == true {
+                    settenGegevens()
+                    registratieSuccesvolViewController.ouder = ouder
+                } else {
+                    giveUITextFieldDefaultBorder(txtEmail)
+                    giveUITextFieldRedBorder(txtWachtwoord)
+                    giveUITextFieldRedBorder(txtBevestigWachtwoord)
+                    foutBoxOproepen("Fout", "Wachtwoord en bevestig wachtwoord komen niet overeen.", self)
+                }
+            }
+            
+        
+            /*setStatusTextFields()
             pasLayoutVeldenAan()
         
             if controleerRodeBordersAanwezig() == true {
@@ -63,7 +87,7 @@ class Registratie3ViewController: ResponsiveTextFieldViewController
                         foutBoxOproepen("Fout", "Wachtwoord en bevestig wachtwoord komen niet overeen.", self)
                     }
                 }
-            }
+            }*/
         } else if segue.identifier == "gaTerug" {
             let vakantiesTableViewController = segue.destinationViewController as VakantiesTableViewController
         }
@@ -72,11 +96,17 @@ class Registratie3ViewController: ResponsiveTextFieldViewController
     func setStatusTextFields() {
         if txtEmail.text.isEmpty {
             statusTextFields["email"] = "leeg"
+            emailAlGeregistreerd = false
         } else {
             if !checkPatternEmail(txtEmail.text) {
                 statusTextFields["email"] = "ongeldig"
+                emailAlGeregistreerd = false
+            } else if controleerEmailAlGeregisteerd() == true {
+                statusTextFields["email"] = "al geregistreerd"
+                emailAlGeregistreerd = true
             } else {
                 statusTextFields["email"] = "geldig"
+                emailAlGeregistreerd = false
             }
         }
         
@@ -96,7 +126,7 @@ class Registratie3ViewController: ResponsiveTextFieldViewController
     }
     
     func pasLayoutVeldenAan() {
-        if statusTextFields["email"] == "leeg" || statusTextFields["email"] == "ongeldig" {
+        if statusTextFields["email"] == "leeg" || statusTextFields["email"] == "ongeldig" || statusTextFields["email"] == "al geregistreerd" {
             giveUITextFieldRedBorder(txtEmail)
         } else {
             giveUITextFieldDefaultBorder(txtEmail)

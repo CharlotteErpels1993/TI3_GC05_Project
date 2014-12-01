@@ -114,7 +114,15 @@ struct /*class*/ ParseData {
     }
     
     
-    static private func vulOuderTableOp() {
+    static func vulOuderTableOp() {
+        var response: ([String], Int?) = SD.existingTables()
+        
+        if response.1 == nil {
+            if !contains(response.0, "Ouder") {
+                createOuderTable()
+            }
+        }
+        
         OuderSQL.vulOuderTableOp()
     }
     
@@ -198,6 +206,18 @@ struct /*class*/ ParseData {
         
     }
 
+    static func deleteOuderTable() {
+        
+        var response: ([String], Int?) = SD.existingTables()
+        
+        if response.1 == nil {
+            if contains(response.0, "Ouder") {
+                let err = SD.deleteTable("Ouder")
+            }
+        }
+        
+    }
+    
     static func deleteVoorkeurTable() {
         
         var response: ([String], Int?) = SD.existingTables()
@@ -363,7 +383,7 @@ struct /*class*/ ParseData {
     
     
     
-    static func getRijksregisterNummers(rijksregisterNummer: String) -> Bool {
+    static func getRijksregisterNummersOuders(rijksregisterNummer: String) -> Bool {
         return OuderSQL.getRijksregisterNummers(rijksregisterNummer)
     }
     

@@ -8,6 +8,8 @@ class Registratie1ViewController: ResponsiveTextFieldViewController
     var foutBox: FoutBox? = nil
     var redColor: UIColor = UIColor.redColor()
     var statusTextFields: [String: String] = [:]
+    var rijksregisterNrAlGeregistreerd: Bool = false
+    
     
     @IBOutlet weak var isLid: UISwitch!
     
@@ -38,6 +40,9 @@ class Registratie1ViewController: ResponsiveTextFieldViewController
         self.txtAansluitingsNr.text = ""
         self.txtAansluitingsNrTweedeOuder.text = ""
         self.navigationItem.setHidesBackButton(true, animated: true)
+        
+        ParseData.deleteOuderTable()
+        ParseData.vulOuderTableOp()
     }
     
     
@@ -79,12 +84,27 @@ class Registratie1ViewController: ResponsiveTextFieldViewController
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "volgende" {
         let registratie2ViewController = segue.destinationViewController as Registratie2ViewController
-        
-        
-        
-        //TO DO: controleren op formaat van ingevulde text! (String, int, ...)
             
-            if gebruikerIsLid == true {
+            //nieuw: Charlotte
+            setStatusTextFields()
+            pasLayoutVeldenAan()
+            
+            if controleerRodeBordersAanwezig() == true {
+                
+                if rijksregisterNrAlGeregistreerd == true {
+                    foutBoxOproepen("Fout", "Dit rijksregisternummer is al geregistreerd!", self)
+                } else {
+                    foutBoxOproepen("Fout", "Gelieve de velden correct in te vullen!", self)
+                }
+                self.viewDidLoad()
+            } else {
+                ouder.rijksregisterNr = txtRijksregisterNr.text
+                settenOptioneleGegevens()
+                registratie2ViewController.ouder = ouder
+            }
+            
+            
+            /*if gebruikerIsLid == true {
                 setStatusTextFields()
                 pasLayoutVeldenAan()
             
@@ -110,7 +130,7 @@ class Registratie1ViewController: ResponsiveTextFieldViewController
                 }
             }
             
-            if controleerRijksregisterNummrAlGeregisteerd() == true {
+            if controleerRijksregisterNummerAlGeregisteerd() == true {
                 giveUITextFieldRedBorder(self.txtRijksregisterNr)
                 let alertController = UIAlertController(title: "Fout", message: "Deze rijksregisternummer bestaat al", preferredStyle: .Alert)
                 let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: {
@@ -121,14 +141,14 @@ class Registratie1ViewController: ResponsiveTextFieldViewController
                 self.presentViewController(alertController, animated: true, completion: nil)
             } else {
                 registratie2ViewController.ouder = ouder
-            }
+            }*/
         } else if segue.identifier == "gaTerug" {
                 let vakantiesViewController = segue.destinationViewController as VakantiesTableViewController
             }
         
     }
     
-    func setStatusTextFieldsRijksregisterNummer() {
+    /*func setStatusTextFieldsRijksregisterNummer() {
         if txtRijksregisterNr.text.isEmpty {
             statusTextFields["rijksregisterNr"] = "leeg"
         } else {
@@ -139,7 +159,7 @@ class Registratie1ViewController: ResponsiveTextFieldViewController
             }*/
             statusTextFields["rijksregisterNr"] = "geldig"
         }
-    }
+    }*/
     
     func setStatusTextFields() {
         if txtAansluitingsNr.text.isEmpty {
@@ -168,12 +188,20 @@ class Registratie1ViewController: ResponsiveTextFieldViewController
         
         if txtRijksregisterNr.text.isEmpty {
             statusTextFields["rijksregisterNr"] = "leeg"
+            self.rijksregisterNrAlGeregistreerd = false
         } else {
-            if !checkPatternRijksregisterNr(txtRijksregisterNr.text) {
+            /*if !checkPatternRijksregisterNr(txtRijksregisterNr.text) {
                 statusTextFields["rijksregisterNr"] = "ongeldig"
-            } else {
-                statusTextFields["rijksregisterNr"] = "geldig"
-            }
+                self.rijksregisterNrAlGeregistreerd = false
+            } else {*/
+                if controleerRijksregisterNummerAlGeregisteerd() == true {
+                    statusTextFields["rijksregisterNr"] = "al geregistreerd"
+                    self.rijksregisterNrAlGeregistreerd = true
+                } else {
+                    statusTextFields["rijksregisterNr"] = "geldig"
+                    self.rijksregisterNrAlGeregistreerd = false
+                }
+            //}
         }
         
         if txtAansluitingsNrTweedeOuder.text.isEmpty {
@@ -189,36 +217,43 @@ class Registratie1ViewController: ResponsiveTextFieldViewController
         }
     }
     
-    func pasLayoutVeldenAanRijksregisterNummer() {
+    /*func pasLayoutVeldenAanRijksregisterNummer() {
         if statusTextFields["rijksregisterNr"] == "leeg" || statusTextFields["rijksregisterNr"] == "ongeldig" {
             giveUITextFieldRedBorder(txtRijksregisterNr)
         } else {
             giveUITextFieldDefaultBorder(txtRijksregisterNr)
         }
-    }
+    }*/
     
     func pasLayoutVeldenAan() {
-        if statusTextFields["aansluitingsNr"] == "leeg" || statusTextFields["aansluitingsNr"] == "ongeldig" {
-            giveUITextFieldRedBorder(txtAansluitingsNr)
-        } else {
-            giveUITextFieldDefaultBorder(txtAansluitingsNr)
-        }
         
-        if statusTextFields["codeGerechtigde"] == "leeg" || statusTextFields["codeGerechtigde"] == "ongeldig" {
-            giveUITextFieldRedBorder(txtCodeGerechtigde)
-        } else {
-            giveUITextFieldDefaultBorder(txtCodeGerechtigde)
-        }
-        
-        if statusTextFields["rijksregisterNr"] == "leeg" || statusTextFields["rijksregisterNr"] == "ongeldig" {
+        if statusTextFields["rijksregisterNr"] == "leeg" || statusTextFields["rijksregisterNr"] == "ongeldig" || statusTextFields["rijksregisterNr"] == "al geregistreerd" {
             giveUITextFieldRedBorder(txtRijksregisterNr)
         } else {
             giveUITextFieldDefaultBorder(txtRijksregisterNr)
         }
         
-        if statusTextFields["aansluitingsNrTweedeOuder"] == "ongeldig" {
-            giveUITextFieldRedBorder(txtAansluitingsNrTweedeOuder)
-        }  else {
+        if gebruikerIsLid == true {
+            if statusTextFields["aansluitingsNr"] == "leeg" || statusTextFields["aansluitingsNr"] == "ongeldig" {
+                giveUITextFieldRedBorder(txtAansluitingsNr)
+            } else {
+                giveUITextFieldDefaultBorder(txtAansluitingsNr)
+            }
+            
+            if statusTextFields["codeGerechtigde"] == "leeg" || statusTextFields["codeGerechtigde"] == "ongeldig" {
+                giveUITextFieldRedBorder(txtCodeGerechtigde)
+            } else {
+                giveUITextFieldDefaultBorder(txtCodeGerechtigde)
+            }
+            
+            if statusTextFields["aansluitingsNrTweedeOuder"] == "ongeldig" {
+                giveUITextFieldRedBorder(txtAansluitingsNrTweedeOuder)
+            }  else {
+                giveUITextFieldDefaultBorder(txtAansluitingsNrTweedeOuder)
+            }
+        } else {
+            giveUITextFieldDefaultBorder(txtAansluitingsNr)
+            giveUITextFieldDefaultBorder(txtCodeGerechtigde)
             giveUITextFieldDefaultBorder(txtAansluitingsNrTweedeOuder)
         }
     }
@@ -287,14 +322,21 @@ class Registratie1ViewController: ResponsiveTextFieldViewController
         }
     }
     
-    func settenVerplichteGegevens() {
-        ouder.aansluitingsNr = txtAansluitingsNr.text.toInt()!
-        ouder.codeGerechtigde = txtCodeGerechtigde.text.toInt()!
-        ouder.rijksregisterNr = txtRijksregisterNr.text
+    func settenOptioneleGegevens() {
+        
+        if gebruikerIsLid == true {
+            ouder.aansluitingsNr = txtAansluitingsNr.text.toInt()!
+            ouder.codeGerechtigde = txtCodeGerechtigde.text.toInt()!
+            
+            if statusTextFields["aansluitingsNrTweedeouder"] != "leeg" {
+                ouder.aansluitingsNrTweedeOuder = txtAansluitingsNrTweedeOuder.text.toInt()!
+            }
+        }
+        
     }
     
-    func controleerRijksregisterNummrAlGeregisteerd() -> Bool {
-        return ParseData.getRijksregisterNummers(self.txtRijksregisterNr.text)
+    func controleerRijksregisterNummerAlGeregisteerd() -> Bool {
+        return ParseData.getRijksregisterNummersOuders(self.txtRijksregisterNr.text)
     }
 }
 
