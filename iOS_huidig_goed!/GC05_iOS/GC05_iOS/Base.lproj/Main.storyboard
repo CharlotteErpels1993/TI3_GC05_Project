@@ -3802,10 +3802,10 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
         <image name="menu.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="rLN-eU-UEX"/>
-        <segue reference="xe1-I8-Pkw"/>
-        <segue reference="9Je-LH-R9J"/>
-        <segue reference="fAM-X2-96q"/>
+        <segue reference="quD-W8-2tt"/>
         <segue reference="xSz-Mr-cgx"/>
+        <segue reference="fAM-X2-96q"/>
+        <segue reference="9Je-LH-R9J"/>
+        <segue reference="rLN-eU-UEX"/>
     </inferredMetricsTieBreakers>
 </document>

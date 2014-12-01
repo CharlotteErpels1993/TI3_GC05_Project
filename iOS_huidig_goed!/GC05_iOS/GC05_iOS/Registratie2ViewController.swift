@@ -38,7 +38,7 @@ class Registratie2ViewController: ResponsiveTextFieldViewController
             
             if controleerRodeBordersAanwezig() == true {
                 if gsmAlGeregistreerd == true {
-                    foutBoxOproepen("Fout", "Dit GSM-nummer is al geregistreerd bij ons!", self)
+                    foutBoxOproepen("Fout", "Deze GSM-nummer (\(txtGsm.text)) is al geregistreerd bij ons!", self)
                 } else {
                     foutBoxOproepen("Fout", "Gelieve de velden correct in te vullen!", self)
                 }
