@@ -69,7 +69,7 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Vakanties" id="jTS-Lj-o5t">
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="ic7-yf-zL0">
+                        <barButtonItem key="leftBarButtonItem" image="menu.png" id="ic7-yf-zL0">
                             <connections>
                                 <action selector="toggle:" destination="xj6-b1-6XR" id="lfG-P1-hpW"/>
                             </connections>
@@ -3791,6 +3791,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
     </scenes>
     <resources>
         <image name="Klevertje.png" width="615" height="427"/>
+        <image name="menu.png" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="n6i-tz-46X"/>
