@@ -5,11 +5,11 @@ struct OuderSQL {
     static func createOuderTable() {
         if let error = SD.createTable("Ouder", withColumnNamesAndTypes:
             ["objectId": .StringVal, "rijksregisterNr": .StringVal, "email": .StringVal,
-             "wachtwoord": .StringVal ,"voornaam": .StringVal, "naam": .StringVal,
-             "straat": .StringVal, "nummer": .IntVal, "bus": .StringVal, "postcode": .IntVal,
-             "gemeente": .StringVal, "telefoon": .StringVal, "gsm": .StringVal,
-             "aansluitingsNr": .IntVal, "codeGerechtigde": .IntVal,
-             "aansluitingsNrTweedeOuder": .IntVal])
+                /*"wachtwoord": .StringVal ,*/"voornaam": .StringVal, "naam": .StringVal,
+                "straat": .StringVal, "nummer": .IntVal, "bus": .StringVal, "postcode": .IntVal,
+                "gemeente": .StringVal, "telefoon": .StringVal, "gsm": .StringVal,
+                "aansluitingsNr": .IntVal, "codeGerechtigde": .IntVal,
+                "aansluitingsNrTweedeOuder": .IntVal])
         {
             println("ERROR: error tijdens creatie van table Ouder")
         }
@@ -20,17 +20,17 @@ struct OuderSQL {
     }
     
     static func getEmail(email: String) -> Bool {
-            let (resultSet, err) = SD.executeQuery("SELECT * FROM Ouder WHERE email = ?", withArgs: [email])
-            if err != nil
-            {
-                println("ERROR: error tijdens ophalen van alle gsms")
-            }
-            
-            if resultSet.count == 0 {
-                return false
-            }
-            
-            return true
+        let (resultSet, err) = SD.executeQuery("SELECT * FROM Ouder WHERE email = ?", withArgs: [email])
+        if err != nil
+        {
+            println("ERROR: error tijdens ophalen van alle gsms")
+        }
+        
+        if resultSet.count == 0 {
+            return false
+        }
+        
+        return true
     }
     
     static func getGSM(gsm: String) -> Bool {
@@ -61,9 +61,66 @@ struct OuderSQL {
         return true
     }
     
+    private static func getOuder(ouderObject: PFObject) -> Ouder {
+        var id = ouderObject.objectId as String
+        
+        var ouder: Ouder = Ouder(id: id)
+        
+        ouder.email = ouderObject["email"] as? String
+        ouder.rijksregisterNr = ouderObject["rijksregisterNr"] as? String
+        ouder.voornaam = ouderObject["voornaam"] as? String
+        ouder.naam = ouderObject["naam"] as? String
+        ouder.straat = ouderObject["straat"] as? String
+        ouder.nummer = ouderObject["nummer"] as? Int
+        
+        if ouderObject["bus"] as? String != nil {
+            ouder.bus = ouderObject["bus"] as? String
+        }
+        
+        ouder.gemeente = ouderObject["gemeente"] as? String
+        ouder.postcode = ouderObject["postcode"] as? Int
+        
+        if ouderObject["telefoon"] as? String != nil {
+            ouder.telefoon = ouderObject["telefoon"] as? String
+        }
+        
+        ouder.gsm = ouderObject["gsm"] as? String
+        
+        if ouderObject["aansluitingsNr"] as? Int != nil {
+            ouder.aansluitingsNr = ouderObject["aansluitingsNr"] as? Int
+        }
+        
+        if ouderObject["codeGerechtigde"] as? Int != nil {
+            ouder.codeGerechtigde = ouderObject["codeGerechtigde"] as? Int
+        }
+        
+        if ouderObject["aansluitingsNrTweedeOuder"] as? Int != nil {
+            ouder.aansluitingsNrTweedeOuder = ouderObject["aansluitingsNrTweedeOuder"] as? Int
+        }
+        
+        return ouder
+    }
+    
     static func getOuderWithEmail(email: String) -> Ouder {
         
-        var ouders: [Ouder] = []
+        //nieuw: Charlotte
+        var query = PFQuery(className: "Ouder")
+        query.whereKey("email", equalTo: email)
+        
+        var ouderObject = query.getFirstObject()
+        
+        var ouder: Ouder
+        
+        if ouderObject == nil {
+            //ERROR, mag normaal gezien nooit gebeuren door voorgaande controles (OuderSQL.getOuderWithEmail)
+            ouder = Ouder(id: "test")
+        } else {
+            ouder = getOuder(ouderObject)
+        }
+        
+        return ouder
+        
+        /*var ouders: [Ouder] = []
         var ouder2: Ouder = Ouder(id: "test")
         var ouder: Ouder = Ouder(id: "test")
         
@@ -71,20 +128,20 @@ struct OuderSQL {
         
         if err != nil
         {
-            println("ERROR: error tijdens ophalen van ouders met email uit table Ouder")
+        println("ERROR: error tijdens ophalen van ouders met email uit table Ouder")
         }
         else
         {
-            if resultSet.count == 0 {
-                ouders.append(ouder)
-            } else {
-                for row in resultSet {
-                    ouder = getOuder(row)
-                    ouders.append(ouder)
-                }
-            }
+        if resultSet.count == 0 {
+        ouders.append(ouder)
+        } else {
+        for row in resultSet {
+        ouder = getOuder(row)
+        ouders.append(ouder)
         }
-        return ouders.first!
+        }
+        }
+        return ouders.first!*/
     }
     
     static func getOuder(row: SD.SDRow) -> Ouder {
@@ -99,9 +156,9 @@ struct OuderSQL {
         if let email = row["email"]?.asString() {
             ouder.email = email
         }
-        if let wachtwoord = row["wachtwoord"]?.asString() {
-            ouder.wachtwoord = wachtwoord
-        }
+        /*if let wachtwoord = row["wachtwoord"]?.asString() {
+        ouder.wachtwoord = wachtwoord
+        }*/
         if let voornaam = row["voornaam"]?.asString() {
             ouder.voornaam = voornaam
         }
@@ -153,7 +210,7 @@ struct OuderSQL {
         var objectId: String = ""
         var rijksregisterNr: String = ""
         var email: String = ""
-        var wachtwoord: String = ""
+        //var wachtwoord: String = ""
         var voornaam: String = ""
         var naam: String = ""
         var straat: String = ""
@@ -174,7 +231,7 @@ struct OuderSQL {
             objectId = ouder.objectId as String
             rijksregisterNr = ouder["rijksregisterNr"] as String
             email = ouder["email"] as String
-            wachtwoord = ouder["wachtwoord"] as String
+            //wachtwoord = ouder["wachtwoord"] as String
             voornaam = ouder["voornaam"] as String
             naam = ouder["naam"] as String
             straat = ouder["straat"] as String
@@ -210,7 +267,7 @@ struct OuderSQL {
             queryString.extend("objectId, ")
             queryString.extend("rijksregisterNr, ")
             queryString.extend("email, ")
-            queryString.extend("wachtwoord, ")
+            //queryString.extend("wachtwoord, ")
             queryString.extend("voornaam, ")
             queryString.extend("naam, ")
             queryString.extend("straat, ")
@@ -230,7 +287,7 @@ struct OuderSQL {
             queryString.extend("'\(objectId)', ") //objectId - String
             queryString.extend("'\(rijksregisterNr)', ") //rijksregisterNr - String
             queryString.extend("'\(email)', ") //email - String
-            queryString.extend("'\(wachtwoord)', ") //wachtwoord - String
+            //queryString.extend("'\(wachtwoord)', ") //wachtwoord - String
             queryString.extend("'\(voornaam)', ") //voornaam - String
             queryString.extend("'\(naam)', ") //naam - String
             queryString.extend("'\(straat)', ") //straat - String
@@ -260,7 +317,7 @@ struct OuderSQL {
         var ouderJSON = PFObject(className: "Ouder")
         
         ouderJSON.setValue(ouder.email, forKey: "email")
-        ouderJSON.setValue(ouder.wachtwoord, forKey: "wachtwoord")
+        //ouderJSON.setValue(ouder.wachtwoord, forKey: "wachtwoord")
         ouderJSON.setValue(ouder.voornaam, forKey: "voornaam")
         ouderJSON.setValue(ouder.naam, forKey: "naam")
         ouderJSON.setValue(ouder.straat, forKey: "straat")
@@ -302,10 +359,10 @@ struct OuderSQL {
         user["soort"] = "ouder"
         
         /*user.signUpInBackgroundWithBlock {
-            (succeeded: Bool!, error: NSError!) -> Void in
-            if error == nil {
-                
-            }
+        (succeeded: Bool!, error: NSError!) -> Void in
+        if error == nil {
+        
+        }
         }*/
         user.signUp()
     }

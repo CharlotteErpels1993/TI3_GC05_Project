@@ -19,10 +19,13 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
         hideSideMenuView()
         
         ParseData.deleteInschrijvingVormingTable()
+        ParseData.deleteMonitorTable()
+        
         
         var activityIndicator = getActivityIndicatorView(self)
         
         ParseData.vulInschrijvingVormingTableOp()
+        ParseData.vulMonitorTableOp()
         
         var monitor = ParseData.getMonitorWithEmail(PFUser.currentUser().email)
         
@@ -116,5 +119,5 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
         
         monitorDetailsController.monitor = selectedMonitor as Monitor
     }
-
+    
 }

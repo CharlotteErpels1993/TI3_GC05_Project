@@ -16,27 +16,27 @@ struct /*class*/ ParseData {
             //geen error
             
             /*if !contains(response.0, "User") {
-                createUserTable()
+            createUserTable()
             }*/
-            if !contains(response.0, "Monitor") {
-                createMonitorTable()
+            /*if !contains(response.0, "Monitor") {
+            createMonitorTable()
             }
             if !contains(response.0, "Ouder") {
-                createOuderTable()
-            }
+            createOuderTable()
+            }*/
             if !contains(response.0, "Vakantie") {
                 createVakantieTable()
             }
             /*if !contains(response.0, "Vorming") {
-                createVormingTable()
+            createVormingTable()
             }*/
         }
     }
     
     static private func vulTabellenOp() {
         //vulUserTableOp()
-        vulMonitorTableOp()
-        vulOuderTableOp()
+        //vulMonitorTableOp()
+        //vulOuderTableOp()
         vulVakantieTableOp()
     }
     
@@ -64,7 +64,7 @@ struct /*class*/ ParseData {
     static func parseInschrijvingVormingToDatabase(inschrijving: InschrijvingVorming) {
         InschrijvingVormingSQL.parseInschrijvingVormingToDatabase(inschrijving)
     }
-
+    
     static func getMonitorWithEmail(email: String) -> Monitor {
         return MonitorSQL.getMonitorWithEmail(email)
     }
@@ -135,12 +135,12 @@ struct /*class*/ ParseData {
     }
     
     /*static private func vulUserTableOp() {
-        UserSQL.vulUserTableOp()
+    UserSQL.vulUserTableOp()
     }*/
     
-    static private func vulMonitorTableOp() {
-        MonitorSQL.vulMonitorTableOp()
-    }
+    /*static private func vulMonitorTableOp() {
+    MonitorSQL.vulMonitorTableOp()
+    }*/
     
     static private func vulOuderTableOp() {
         OuderSQL.vulOuderTableOp()
@@ -161,6 +161,19 @@ struct /*class*/ ParseData {
         }
         
         VormingSQL.vulVormingTableOp()
+    }
+    
+    static func vulMonitorTableOp() {
+        
+        var response: ([String], Int?) = SD.existingTables()
+        
+        if response.1 == nil {
+            if !contains(response.0, "Monitor") {
+                createMonitorTable()
+            }
+        }
+        
+        MonitorSQL.vulMonitorTableOp()
     }
     
     static func vulInschrijvingVakantieTableOp() {
@@ -196,6 +209,18 @@ struct /*class*/ ParseData {
         if response.1 == nil {
             if contains(response.0, "Voorkeur") {
                 let err = SD.deleteTable("Voorkeur")
+            }
+        }
+        
+    }
+    
+    static func deleteMonitorTable() {
+        
+        var response: ([String], Int?) = SD.existingTables()
+        
+        if response.1 == nil {
+            if contains(response.0, "Monitor") {
+                let err = SD.deleteTable("Monitor")
             }
         }
         
@@ -251,7 +276,7 @@ struct /*class*/ ParseData {
     }
     
     /*static private func createUserTable() {
-       UserSQL.createUserTable()
+    UserSQL.createUserTable()
     }*/
     
     static private func createAfbeeldingTable() {
@@ -341,7 +366,7 @@ struct /*class*/ ParseData {
     }
     
     static func getVoorkeurenVakantie(voorkeur: Voorkeur) -> [Voorkeur] {
-    
+        
         var monitorId: String! = voorkeur.monitor?.id
         var vakantieId: String! = voorkeur.vakantie?.id
         
@@ -350,64 +375,64 @@ struct /*class*/ ParseData {
     
     
     /*static func getInschrijvingenVakantieDeelnemer(voornaam: String, naam: String, vakantie: String, ouder: String) -> [InschrijvingVakantie] {
-        //var inschrijvingen: [String] = []
-        
-        var inschrijvingenVakantie: [InschrijvingVakantie] = []
-        
-        /*var d = DeelnemerSQL.getDeelnemerMetVoornaamEnNaam(deelnemer.voornaam!, naam: deelnemer.naam!)
-        
-        if d == nil {
-            return inschrijvingenVakantie
-        } else {
-            //inschrijvingen = getInschrijvingen(d)
-            //if inschrijvingen.count() == 0
-        }
-        */
-        
-        var queryString = ""
-        
-        queryString.extend("SELECT * FROM Deelnemer ")
-        queryString.extend("JOIN ")
-        queryString.extend("InschrijvingVakantie ON Deelnemer.inschrijvingVakantie = InschrijvingVakantie.objectId ")//join table
-        queryString.extend("JOIN ")
-        queryString.extend("Vakantie ON InschrijvingVakantie.vakantie = Vakantie.objectId ")//join table
-        queryString.extend("JOIN  ")
-        queryString.extend("Ouder ON InschrijvingVakantie.ouder = Ouder.objectId ")//join table
-        queryString.extend("WHERE ")
-        queryString.extend("Deelnemer.voornaam = ? ")
-        queryString.extend("AND ")
-        queryString.extend("Deelnemer.naam = ? ")
-        queryString.extend("AND ")
-        queryString.extend("InschrijvingVakantie.vakantie = ? ")
-        queryString.extend("AND ")
-        queryString.extend("InschrijvingVakantie.ouder = ?")
-        //queryString.extend(")")
-        
-        /*voornaam: String! = deelnemer.voornaam!
-        var naam: String! = deelnemer.naam!
-        var vakantieId: String! = deelnemer.inschrijvingVakantie?.vakantie?.id
-        var ouderId: String! = deelnemer.inschrijvingVakantie?.ouder?.id*/
-        
-        /*if let err = SD.executeQuery(queryString, withArgs: [voornaam, naam, vakantieId, ouderId])
-        {
-            println("ERROR: error tijdens toevoegen van nieuwe vakantie in table Vakantie")
-        }
-        else
-        {
-            //no error, the row was inserted successfully
-        }*/
-        
-        
-        return inschrijvingenVakantie
+    //var inschrijvingen: [String] = []
+    
+    var inschrijvingenVakantie: [InschrijvingVakantie] = []
+    
+    /*var d = DeelnemerSQL.getDeelnemerMetVoornaamEnNaam(deelnemer.voornaam!, naam: deelnemer.naam!)
+    
+    if d == nil {
+    return inschrijvingenVakantie
+    } else {
+    //inschrijvingen = getInschrijvingen(d)
+    //if inschrijvingen.count() == 0
+    }
+    */
+    
+    var queryString = ""
+    
+    queryString.extend("SELECT * FROM Deelnemer ")
+    queryString.extend("JOIN ")
+    queryString.extend("InschrijvingVakantie ON Deelnemer.inschrijvingVakantie = InschrijvingVakantie.objectId ")//join table
+    queryString.extend("JOIN ")
+    queryString.extend("Vakantie ON InschrijvingVakantie.vakantie = Vakantie.objectId ")//join table
+    queryString.extend("JOIN  ")
+    queryString.extend("Ouder ON InschrijvingVakantie.ouder = Ouder.objectId ")//join table
+    queryString.extend("WHERE ")
+    queryString.extend("Deelnemer.voornaam = ? ")
+    queryString.extend("AND ")
+    queryString.extend("Deelnemer.naam = ? ")
+    queryString.extend("AND ")
+    queryString.extend("InschrijvingVakantie.vakantie = ? ")
+    queryString.extend("AND ")
+    queryString.extend("InschrijvingVakantie.ouder = ?")
+    //queryString.extend(")")
+    
+    /*voornaam: String! = deelnemer.voornaam!
+    var naam: String! = deelnemer.naam!
+    var vakantieId: String! = deelnemer.inschrijvingVakantie?.vakantie?.id
+    var ouderId: String! = deelnemer.inschrijvingVakantie?.ouder?.id*/
+    
+    /*if let err = SD.executeQuery(queryString, withArgs: [voornaam, naam, vakantieId, ouderId])
+    {
+    println("ERROR: error tijdens toevoegen van nieuwe vakantie in table Vakantie")
+    }
+    else
+    {
+    //no error, the row was inserted successfully
+    }*/
+    
+    
+    return inschrijvingenVakantie
     }
     
     static func getInschrijvingen(inschrijvingenId: [String]) /*-> [InschrijvingVakantie]*/ {
-        var inschrijvingen: [InschrijvingVakantie] = []
-        
-        //var iv = InschrijvingVakantie.getInschrijvingenMetId(inschrijvingen)
-        
-        
-        
+    var inschrijvingen: [InschrijvingVakantie] = []
+    
+    //var iv = InschrijvingVakantie.getInschrijvingenMetId(inschrijvingen)
+    
+    
+    
     }*/
     
 }

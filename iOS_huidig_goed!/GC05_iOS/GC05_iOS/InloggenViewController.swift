@@ -88,32 +88,64 @@ class InloggenViewController: UIViewController
             self.txtEmail.text = ""
             self.txtWachtwoord.text = ""
         } else {
-            var type: String = zoekenMatchMonitorOfOuder(email, wachtwoord: wachtwoord)
             
-            if type == "monitor" {
-                var monitorPF = queryMonitor.getFirstObject()
-                var monitor = Monitor(monitor: monitorPF)
-                PFUser.logInWithUsername(monitor.email, password: monitor.wachtwoord)
-                performSegueWithIdentifier("overzichtMonitor", sender: self)
-            } else if type == "ouder" {
-                var ouderPF = queryOuder.getFirstObject()
-                var ouder = Ouder(ouder: ouderPF)
-                PFUser.logInWithUsername(ouder.email, password: ouder.wachtwoord)
-                performSegueWithIdentifier("ouderOverzicht", sender: self)
-            } else {
+            //nieuw: Charlotte
+            var user = PFUser.logInWithUsername(txtEmail.text, password: txtWachtwoord.text)
+            
+            if user == nil {
+                //er is geen user met deze combinatie email/wachtwoord
                 giveUITextFieldRedBorder(self.txtEmail)
                 giveUITextFieldRedBorder(self.txtWachtwoord)
                 txtEmail.text = ""
                 txtWachtwoord.text = ""
                 foutBoxOproepen("Fout", "Foutieve combinatie e-mail & wachtwoord", self)
+            } else {
+                //er is een user gevonden
+                var type: String = user["soort"] as String
+                
+                if type == "monitor" {
+                    //user is een monitor
+                    //var monitor = ParseData.getMonitorWithEmail(txtEmail.text)
+                    performSegueWithIdentifier("overzichtMonitor", sender: self)
+                    
+                    
+                } else if type == "ouder" {
+                    //user is een ouder
+                    //var ouder = ParseData.getOuderWithEmail(txtEmail.text)
+                    performSegueWithIdentifier("ouderOverzicht", sender: self)
+                } else {
+                    //column "soort" is niet ingevuld bij deze user in tabel User
+                    //ERROR
+                }
             }
+            
+            
+            /*var type: String = zoekenMatchMonitorOfOuder(email, wachtwoord: wachtwoord)
+            
+            if type == "monitor" {
+            var monitorPF = queryMonitor.getFirstObject()
+            var monitor = Monitor(monitor: monitorPF)
+            PFUser.logInWithUsername(monitor.email, password: monitor.wachtwoord)
+            performSegueWithIdentifier("overzichtMonitor", sender: self)
+            } else if type == "ouder" {
+            var ouderPF = queryOuder.getFirstObject()
+            var ouder = Ouder(ouder: ouderPF)
+            PFUser.logInWithUsername(ouder.email, password: ouder.wachtwoord)
+            performSegueWithIdentifier("ouderOverzicht", sender: self)
+            } else {
+            giveUITextFieldRedBorder(self.txtEmail)
+            giveUITextFieldRedBorder(self.txtWachtwoord)
+            txtEmail.text = ""
+            txtWachtwoord.text = ""
+            foutBoxOproepen("Fout", "Foutieve combinatie e-mail & wachtwoord", self)
+            }*/
         }
     }
     
     @IBAction func gaTerugNaarInloggen(segue: UIStoryboardSegue) {
         
     }
-
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "nieuwWachtwoord" {
             let nieuwWachtwoordController = segue.destinationViewController as NieuwWachtwoordViewController
@@ -128,7 +160,7 @@ class InloggenViewController: UIViewController
             var alert = UIAlertController(title: "Fout", message: "U hebt niet alle velden ingevuld!", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Ga terug", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
-        
+            
         }
     }
     
