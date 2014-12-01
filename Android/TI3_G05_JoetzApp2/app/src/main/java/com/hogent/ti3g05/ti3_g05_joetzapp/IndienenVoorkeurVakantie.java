@@ -311,7 +311,7 @@ public class IndienenVoorkeurVakantie extends Activity implements AdapterView.On
         try{
             ParseObject voorkeurVakantie = new ParseObject("Voorkeur");
             voorkeurVakantie.put("monitor", monitorId);
-            voorkeurVakantie.put("periodes" , periodes);
+            //voorkeurVakantie.put("periodes" , periodes);
             voorkeurVakantie.put("vakantie" , vakantie.getVakantieID());
 
             voorkeurVakantie.saveInBackground();
