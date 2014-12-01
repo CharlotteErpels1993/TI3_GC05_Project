@@ -15,7 +15,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "303"
             endingLineNumber = "303"
-            landmarkName = "getInschrijvingenVakantie(_:)"
+            landmarkName = "createOuderTable()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -111,7 +111,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "312"
             endingLineNumber = "312"
-            landmarkName = "getInschrijvingenVorming(_:)"
+            landmarkName = "createVormingTable()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
