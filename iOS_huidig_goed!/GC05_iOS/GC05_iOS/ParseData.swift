@@ -383,12 +383,19 @@ struct /*class*/ ParseData {
     
     
     
-    static func getRijksregisterNummersOuders(rijksregisterNummer: String) -> Bool {
-        return OuderSQL.getRijksregisterNummers(rijksregisterNummer)
+    static func getRijksregisterNummers(rijksregisterNummer: String) -> Bool {
+        if OuderSQL.getRijksregisterNummers(rijksregisterNummer) == true ||
+            MonitorSQL.getRijksregisterNummers(rijksregisterNummer) == true {
+            return true
+        }
+        return false
     }
     
     static func getGSM(gsm: String) -> Bool {
-        return OuderSQL.getGSM(gsm)
+        if OuderSQL.getGSM(gsm) == true || MonitorSQL.getGSM(gsm) == true {
+            return true
+        }
+        return false
     }
     
     static func getEmail(email: String) -> Bool {

@@ -43,6 +43,9 @@ class Registratie1ViewController: ResponsiveTextFieldViewController
         
         ParseData.deleteOuderTable()
         ParseData.vulOuderTableOp()
+        ParseData.deleteMonitorTable()
+        ParseData.vulMonitorTableOp()
+        
     }
     
     
@@ -92,7 +95,7 @@ class Registratie1ViewController: ResponsiveTextFieldViewController
             if controleerRodeBordersAanwezig() == true {
                 
                 if rijksregisterNrAlGeregistreerd == true {
-                    foutBoxOproepen("Fout", "Dit rijksregisternummer (\(txtRijksregisterNr.text))is al geregistreerd!", self)
+                    foutBoxOproepen("Fout", "Dit rijksregisternummer is al geregistreerd!", self)
                 } else {
                     foutBoxOproepen("Fout", "Gelieve de velden correct in te vullen!", self)
                 }
@@ -336,7 +339,7 @@ class Registratie1ViewController: ResponsiveTextFieldViewController
     }
     
     func controleerRijksregisterNummerAlGeregisteerd() -> Bool {
-        return ParseData.getRijksregisterNummersOuders(self.txtRijksregisterNr.text)
+        return ParseData.getRijksregisterNummers(self.txtRijksregisterNr.text)
     }
 }
 
