@@ -69,8 +69,7 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Vakanties" id="jTS-Lj-o5t">
-                        <barButtonItem key="backBarButtonItem" title="Terug" id="JUm-8P-z9f"/>
-                        <barButtonItem key="leftBarButtonItem" title="Menu" id="ic7-yf-zL0">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="ic7-yf-zL0">
                             <connections>
                                 <action selector="toggle:" destination="xj6-b1-6XR" id="lfG-P1-hpW"/>
                             </connections>
@@ -600,7 +599,6 @@
                     <navigationItem key="navigationItem" id="gjt-FL-Yrj">
                         <barButtonItem key="backBarButtonItem" title="Ga terug" id="DbE-X8-5pM"/>
                     </navigationItem>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="activityIndicatorView" destination="ygU-ne-hAA" id="4PE-BQ-P0V"/>
@@ -662,11 +660,11 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="KLr-WD-I2R"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <nil key="simulatedTopBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XMb-oO-VDX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3541" y="1052"/>
+            <point key="canvasLocation" x="4353" y="1052"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="9L3-0D-tFt">
@@ -712,10 +710,11 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                             </mask>
                         </variation>
                     </view>
+                    <nil key="simulatedTopBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ugn-YS-Usb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4242" y="1047"/>
+            <point key="canvasLocation" x="5054" y="1047"/>
         </scene>
         <!--Afbeelding Detail View Controller-->
         <scene sceneID="QkB-bK-TcD">
@@ -751,7 +750,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="qlM-JR-aKj"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="acivityIndicatorView" destination="Pzb-jV-m1x" id="Ho2-sX-S62"/>
                         <outlet property="imageView" destination="sGx-HJ-VTU" id="kUp-07-GUu"/>
@@ -765,9 +764,14 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
         <scene sceneID="cC5-ea-HfQ">
             <objects>
                 <navigationController id="b2K-U9-3tu" customClass="MyNavigationController" customModule="JOETZ" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="UJe-vi-RMu">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="UJe-vi-RMu">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.90980392156862744" green="0.12941176470588234" blue="0.13725490196078433" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="xj6-b1-6XR" kind="relationship" relationship="rootViewController" id="quD-W8-2tt"/>
@@ -972,7 +976,6 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="buttonNummers" destination="uqW-jm-he0" id="faw-Nf-pSS"/>
@@ -991,7 +994,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B8n-Og-JfT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="477" y="1083"/>
+            <point key="canvasLocation" x="1289" y="1083"/>
         </scene>
         <!--Inloggen-->
         <scene sceneID="F5A-yL-Jej">
@@ -1111,7 +1114,6 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="txtEmail" destination="IeG-wh-GGy" id="8QJ-qK-Ic8"/>
@@ -1122,9 +1124,9 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a5j-lM-quT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-394" y="1793"/>
+            <point key="canvasLocation" x="418" y="1793"/>
         </scene>
-        <!--Profielen Table View Controller-->
+        <!--Profielen-->
         <scene sceneID="kh0-eD-1bF">
             <objects>
                 <tableViewController storyboardIdentifier="Profielen" id="n8h-Pf-gLH" customClass="ProfielenTableViewController" customModule="JOETZ" customModuleProvider="target" sceneMemberID="viewController">
@@ -1190,7 +1192,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                             <outlet property="delegate" destination="n8h-Pf-gLH" id="KtA-Zf-SfF"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="sWn-EZ-BI4">
+                    <navigationItem key="navigationItem" title="Profielen" id="sWn-EZ-BI4">
                         <barButtonItem key="backBarButtonItem" title="Terug" id="9aL-Jh-Chx"/>
                         <barButtonItem key="leftBarButtonItem" title="Menu" id="eio-zu-qEJ">
                             <connections>
@@ -1974,7 +1976,6 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="pickerView" destination="H0z-nC-lBY" id="sOC-UJ-20f"/>
                     </connections>
@@ -2201,7 +2202,6 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="txtBus" destination="cK0-8Y-ere" id="HSJ-fV-pvt"/>
                         <outlet property="txtGemeente" destination="Hu8-Wl-3Zq" id="inj-bG-AaF"/>
@@ -2273,7 +2273,6 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="dpGeboortedatum" destination="XVp-7Y-Xg3" id="k5z-Ce-4LL"/>
                     </connections>
@@ -2401,7 +2400,6 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="txtGsm" destination="toU-JD-Yff" id="u2w-qe-Xxv"/>
                         <outlet property="txtNaam" destination="BWb-f0-M6K" id="Wlp-Zs-bCG"/>
@@ -2540,7 +2538,6 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="lblGsm" destination="dgj-AE-kEn" id="wNX-ti-3Q8"/>
                         <outlet property="lblNaam" destination="KGh-gL-xlf" id="Z84-qd-0HE"/>
@@ -2620,7 +2617,6 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="switchExtraInfo" destination="6BJ-HQ-xv6" id="MD4-nu-HfP"/>
                         <outlet property="txtViewExtraInfo" destination="eaN-yk-YyH" id="cD1-yt-PlR"/>
@@ -2740,7 +2736,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="91n-zZ-7sd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="557" y="1885"/>
+            <point key="canvasLocation" x="1369" y="1885"/>
         </scene>
         <!--Wachtwoord vergeten-->
         <scene sceneID="c6A-85-GXb">
@@ -2775,10 +2771,6 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                     <segue destination="b4B-Ah-gfj" kind="unwind" unwindAction="gaTerugNaarInloggen:" id="ofc-Xy-BxO"/>
                                 </connections>
                             </button>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="HYc-EX-YHN">
-                                <rect key="frame" x="282" y="281" width="37" height="37"/>
-                                <color key="color" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -2791,14 +2783,12 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                             <constraint firstItem="rAR-ya-agS" firstAttribute="top" secondItem="9AP-bJ-lcA" secondAttribute="bottom" constant="29" id="Lh7-HZ-mFe"/>
                             <constraint firstAttribute="trailingMargin" secondItem="9AP-bJ-lcA" secondAttribute="trailing" constant="63" id="N55-JH-WGt"/>
                             <constraint firstItem="9AP-bJ-lcA" firstAttribute="leading" secondItem="SBj-i7-5rB" secondAttribute="leadingMargin" constant="63" id="NEY-yK-zpn"/>
-                            <constraint firstAttribute="centerY" secondItem="HYc-EX-YHN" secondAttribute="centerY" constant="0.5" id="Qig-xA-dQq"/>
                             <constraint firstItem="9AP-bJ-lcA" firstAttribute="top" secondItem="BY1-dH-2w6" secondAttribute="bottom" constant="241" id="VZz-k3-hHz"/>
                             <constraint firstItem="rAR-ya-agS" firstAttribute="leading" secondItem="SBj-i7-5rB" secondAttribute="leadingMargin" constant="261" id="WMw-WD-ko7"/>
                             <constraint firstAttribute="centerY" secondItem="eTC-bJ-1Fs" secondAttribute="centerY" constant="57.5" id="YkS-ue-uKL"/>
                             <constraint firstAttribute="centerX" secondItem="rAR-ya-agS" secondAttribute="centerX" constant="-7" id="dAN-NY-7gZ"/>
                             <constraint firstItem="rAR-ya-agS" firstAttribute="top" secondItem="9AP-bJ-lcA" secondAttribute="bottom" constant="8.5" id="fAH-nh-dcJ"/>
                             <constraint firstItem="rAR-ya-agS" firstAttribute="top" secondItem="9AP-bJ-lcA" secondAttribute="bottom" constant="9.5" id="gZ6-S3-buf"/>
-                            <constraint firstAttribute="centerX" secondItem="HYc-EX-YHN" secondAttribute="centerX" constant="-0.5" id="jMM-mV-hAR"/>
                             <constraint firstItem="9AP-bJ-lcA" firstAttribute="top" secondItem="eTC-bJ-1Fs" secondAttribute="bottom" constant="7.5" id="sjd-BA-M0Z"/>
                             <constraint firstAttribute="centerY" secondItem="9AP-bJ-lcA" secondAttribute="centerY" constant="29.75" id="x6y-ra-Aae"/>
                             <constraint firstItem="9AP-bJ-lcA" firstAttribute="top" secondItem="BY1-dH-2w6" secondAttribute="bottom" constant="240" id="yP6-ya-Ti8"/>
@@ -2819,14 +2809,11 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Wachtwoord vergeten" id="aVl-CL-caF"/>
-                    <connections>
-                        <outlet property="activityIndicatorView" destination="HYc-EX-YHN" id="G90-e4-Dp4"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zle-uu-kzH" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="b4B-Ah-gfj" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1296" y="1885"/>
+            <point key="canvasLocation" x="2108" y="1885"/>
         </scene>
         <!--Registreren-->
         <scene sceneID="vTF-1M-xK9">
@@ -3023,7 +3010,6 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="txtBus" destination="IPd-iX-tBc" id="Zzr-HV-2Qa"/>
                         <outlet property="txtGemeente" destination="BiJ-60-cQZ" id="ruB-Pm-uS3"/>
@@ -3038,7 +3024,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DsR-tm-lD1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1246" y="1052"/>
+            <point key="canvasLocation" x="2058" y="1052"/>
         </scene>
         <!--Registreren-->
         <scene sceneID="dth-mh-NbC">
@@ -3148,7 +3134,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ca8-jE-Hjf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1963" y="1052"/>
+            <point key="canvasLocation" x="2775" y="1052"/>
         </scene>
         <!--Registratie voltooid-->
         <scene sceneID="W6m-of-VF8">
@@ -3220,16 +3206,21 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0km-KM-IRT" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="3Ah-cP-UoS" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2829" y="1052"/>
+            <point key="canvasLocation" x="3641" y="1052"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="TGx-eB-igK">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QYx-bf-zKF" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="637-bZ-CXK">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="637-bZ-CXK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.90980392160000001" green="0.12941176469999999" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -3245,9 +3236,14 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2ht-ME-1rO" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="F7W-Of-Nun">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="F7W-Of-Nun">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.90980392160000001" green="0.12941176469999999" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -3685,9 +3681,14 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ZJk-I8-F0z" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BQu-99-Wsc">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="BQu-99-Wsc">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.90980392160000001" green="0.12941176469999999" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -3703,9 +3704,14 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="far-gB-vxi" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Tvj-Uu-uqk">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="Tvj-Uu-uqk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.90980392160000001" green="0.12941176469999999" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -3724,6 +3730,8 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Vbv-ZB-BWr">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.90980392160000001" green="0.12941176469999999" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -3734,15 +3742,61 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
             </objects>
             <point key="canvasLocation" x="-432" y="3301"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="3xE-y3-kjn">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4NE-dX-cwr" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="b3f-ut-Bq5">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.90980392160000001" green="0.12941176469999999" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="QSw-na-ve9" kind="relationship" relationship="rootViewController" id="Z2l-n4-cJb"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jQS-Bd-13U" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-394" y="1793"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="oTd-OY-sIs">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="y1X-zF-f16" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="xcB-Q4-aLt">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.90980392160000001" green="0.12941176469999999" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="fyb-xH-x0i" kind="relationship" relationship="rootViewController" id="liH-y6-Duj"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TNF-0E-C6Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="477" y="1083"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Klevertje.png" width="615" height="427"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="quD-W8-2tt"/>
-        <segue reference="xSz-Mr-cgx"/>
+        <segue reference="n6i-tz-46X"/>
+        <segue reference="xe1-I8-Pkw"/>
         <segue reference="9Je-LH-R9J"/>
-        <segue reference="fAM-X2-96q"/>
-        <segue reference="fmi-Sf-Xxy"/>
+        <segue reference="ZW9-Dp-oFd"/>
+        <segue reference="xSz-Mr-cgx"/>
     </inferredMetricsTieBreakers>
 </document>

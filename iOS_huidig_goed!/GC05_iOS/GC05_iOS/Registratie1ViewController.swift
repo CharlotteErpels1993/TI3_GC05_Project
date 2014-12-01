@@ -257,6 +257,12 @@ class Registratie1ViewController: ResponsiveTextFieldViewController
     }
     
     func checkPatternRijksregisterNr(rijksregisterNr: String) -> Bool {
+        /*var rest: Int = 0
+        var teControlerenGetal: Int = 0
+        var teControlerenCijfers: String = ""
+        var controleGetal: String
+        controleGetal = rijksregisterNr.substringWithRange(Range<String.Index>(start: advance(rijksregisterNr.startIndex, 9), end: rijksregisterNr.endIndex))*/
+        
         var length : Int = countElements(rijksregisterNr)
         
         if length != 11 {
@@ -269,7 +275,7 @@ class Registratie1ViewController: ResponsiveTextFieldViewController
         var restNaDeling97: Int = eerste9CijfersInt % 97
         var controleGetal: Int = 97 - restNaDeling97
         
-        var laatste2CijfersString: String = rijksregisterNr.substringWithRange(Range<String.Index>(start: advance(rijksregisterNr.startIndex, 10), end: rijksregisterNr.endIndex))
+        var laatste2CijfersString: String = rijksregisterNr.substringWithRange(Range<String.Index>(start: advance(rijksregisterNr.startIndex, 9), end: rijksregisterNr.endIndex))
         
         
         var laatste2CijfersInt: Int = laatste2CijfersString.toInt()!
