@@ -193,10 +193,10 @@ class Registratie1ViewController: ResponsiveTextFieldViewController
             statusTextFields["rijksregisterNr"] = "leeg"
             self.rijksregisterNrAlGeregistreerd = false
         } else {
-            /*if !checkPatternRijksregisterNr(txtRijksregisterNr.text) {
+            if !checkPatternRijksregisterNr(txtRijksregisterNr.text) {
                 statusTextFields["rijksregisterNr"] = "ongeldig"
                 self.rijksregisterNrAlGeregistreerd = false
-            } else {*/
+            } else {
                 if controleerRijksregisterNummerAlGeregisteerd() == true {
                     statusTextFields["rijksregisterNr"] = "al geregistreerd"
                     self.rijksregisterNrAlGeregistreerd = true
@@ -204,7 +204,7 @@ class Registratie1ViewController: ResponsiveTextFieldViewController
                     statusTextFields["rijksregisterNr"] = "geldig"
                     self.rijksregisterNrAlGeregistreerd = false
                 }
-            //}
+            }
         }
         
         if txtAansluitingsNrTweedeOuder.text.isEmpty {
@@ -295,13 +295,52 @@ class Registratie1ViewController: ResponsiveTextFieldViewController
     }
     
     func checkPatternRijksregisterNr(rijksregisterNr: String) -> Bool {
+        var lengte: Int = countElements(rijksregisterNr)
+        
+        if lengte != 11 {
+            return false
+        }
+        
+        var rest: Int = 0
+        var teControlerenGetal: Int = 0
+        var teControlerenCijfers: String = ""
+        var laatste2Str: String = rijksregisterNr.substringWithRange(Range<String.Index>(start: advance(rijksregisterNr.startIndex, 9), end: rijksregisterNr.endIndex))
+        var eerste2Str: String = rijksregisterNr.substringWithRange(Range<String.Index>(start: rijksregisterNr.startIndex, end: advance(rijksregisterNr.endIndex, -9)))
+        var laatste2Int: Int = laatste2Str.toInt()!
+        var eerste2Int: Int = eerste2Str.toInt()!
+        var rijksregisterNrArray = Array(rijksregisterNr)
+        
+        
+        if eerste2Int < 14 {
+            teControlerenCijfers = "2"
+        }
+        
+        for (var i = 0; i <= (lengte-3); i++) {
+            teControlerenCijfers.append(rijksregisterNrArray[i])
+            //teControlerenCijfers.insert(rijksregisterNrArray[i], atIndex: rijksregisterNr.endIndex)
+            /*let y = advance(rijksregisterNr.startIndex, i)
+            teControlerenCijfers.insert(rijksregisterNr[y], atIndex: rijksregisterNr.endIndex)*/
+        }
+        
+        teControlerenGetal = teControlerenCijfers.toInt()!
+        rest = teControlerenGetal % 97
+        
+        var controlGetal: Int = rest + laatste2Int
+        
+        if controlGetal < 97 {
+            return false
+        }
+        
+        return true
+        
+        
         /*var rest: Int = 0
         var teControlerenGetal: Int = 0
         var teControlerenCijfers: String = ""
         var controleGetal: String
         controleGetal = rijksregisterNr.substringWithRange(Range<String.Index>(start: advance(rijksregisterNr.startIndex, 9), end: rijksregisterNr.endIndex))*/
         
-        var length : Int = countElements(rijksregisterNr)
+        /*var length : Int = countElements(rijksregisterNr)
         
         if length != 11 {
             return false
@@ -322,7 +361,7 @@ class Registratie1ViewController: ResponsiveTextFieldViewController
             return false
         } else {
             return true
-        }
+        }*/
     }
     
     func settenOptioneleGegevens() {
