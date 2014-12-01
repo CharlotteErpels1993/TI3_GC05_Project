@@ -24,6 +24,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.ArrayList;
 import java.util.logging.Handler;
 
 //ingelogde gebr:      titel, korte beschr, periode, locatie, inbegrepen in prijs, doelgroep (met geboortejaren), max aantal deelnemers,
@@ -43,9 +44,9 @@ public class activiteit_detail extends Activity {
     String prijs;
     String beschrijving;
     ImageLoader imageLoader = new ImageLoader(this);
-    String afbeelding1;
     String maxDoelgroep;
     String minDoelgroep;
+    String afbeelding1;
     String afbeelding2;
     String afbeelding3;
     String bmLedenPrijs;
@@ -53,8 +54,7 @@ public class activiteit_detail extends Activity {
     String sterPrijs2Ouders;
     String inbegrepenInPrijs;
     String activiteitID;
-
-    private boolean isIngelogd;
+    ArrayList<String> fotos = new ArrayList<String>();
 
     Button btnInschrijven;
     Button btnmeerInfo;
@@ -68,13 +68,6 @@ public class activiteit_detail extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activiteit_detailnieuw);
 
-        if (ParseUser.getCurrentUser() != null){
-            //gebruiker is ingelogd
-            isIngelogd = true;
-        }else{
-            //niet ingelogd
-            isIngelogd = false;
-        }
 
         Intent i = getIntent();
         naam = i.getStringExtra("naam");
@@ -83,9 +76,6 @@ public class activiteit_detail extends Activity {
         terugdatum = i.getStringExtra("terugdatum");
         maxDoelgroep = i.getStringExtra("maxdoelgroep");
         minDoelgroep = i.getStringExtra("mindoelgroep");
-        afbeelding1 = i.getStringExtra("afbeelding1");
-        afbeelding2 = i.getStringExtra("afbeelding2");
-        afbeelding3 = i.getStringExtra("afbeelding3");
         formule = i.getStringExtra("formule");
         maxDeeln = i.getStringExtra("maxAantalDeelnemers");
         periode = i.getStringExtra("periode");
@@ -94,6 +84,14 @@ public class activiteit_detail extends Activity {
         inbegrepenInPrijs = i.getStringExtra("InbegrepenInPrijs");
         activiteitID = i.getStringExtra("objectId");
 
+        //afbeeldingen ophalen met een while-lus, die stopt als de nieuwe afbeelding null is, want we weten niet zeker of
+        String huidigeAfbeelding = i.getStringExtra("foto0");
+        int teller = 0;
+        while(huidigeAfbeelding != null){
+            fotos.add(huidigeAfbeelding);
+            teller++;
+            huidigeAfbeelding = i.getStringExtra("foto" + teller);
+        }
 
 
         setTitle(naam);
@@ -124,7 +122,6 @@ public class activiteit_detail extends Activity {
 
         ImageView afbeelding1im = (ImageView) findViewById(R.id.afbeelding1);
         ImageView afbeelding2im = (ImageView) findViewById(R.id.afbeelding2);
-
         ImageView afbeelding3im = (ImageView) findViewById(R.id.afbeelding3);
         ImageView share  = (ImageView) findViewById(R.id.share);
 
@@ -204,40 +201,45 @@ public class activiteit_detail extends Activity {
             }
         });
 
-        afbeelding1im.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent1 = new Intent(activiteit_detail.this, afbeeldingUItvergroot.class);
+        if (afbeelding1im.getVisibility() == View.VISIBLE){
+            afbeelding1im.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent1 = new Intent(activiteit_detail.this, afbeeldingUItvergroot.class);
 
-                intent1.putExtra("afbeelding", afbeelding1);
-                startActivity(intent1);
+                    intent1.putExtra("afbeelding", afbeelding1);
+                    startActivity(intent1);
 
-                overridePendingTransition(R.anim.right_in, R.anim.left_out);
-            }
-        });
-        afbeelding2im.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent1 = new Intent(activiteit_detail.this, afbeeldingUItvergroot.class);
+                    overridePendingTransition(R.anim.right_in, R.anim.left_out);
+                }
+            });
+        }
+        if (afbeelding2im.getVisibility() == View.VISIBLE){
+            afbeelding2im.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent1 = new Intent(activiteit_detail.this, afbeeldingUItvergroot.class);
 
-                intent1.putExtra("afbeelding",afbeelding2);
-                startActivity(intent1);
+                    intent1.putExtra("afbeelding",afbeelding2);
+                    startActivity(intent1);
 
-                overridePendingTransition(R.anim.right_in, R.anim.left_out);
-            }
-        });
+                    overridePendingTransition(R.anim.right_in, R.anim.left_out);
+                }
+            });
+        }
+        if (afbeelding3im.getVisibility() == View.VISIBLE){
+            afbeelding3im.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent1 = new Intent(activiteit_detail.this, afbeeldingUItvergroot.class);
 
-        afbeelding3im.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent1 = new Intent(activiteit_detail.this, afbeeldingUItvergroot.class);
+                    intent1.putExtra("afbeelding",afbeelding3);
+                    startActivity(intent1);
 
-                intent1.putExtra("afbeelding",afbeelding3);
-                startActivity(intent1);
-
-                overridePendingTransition(R.anim.right_in, R.anim.left_out);
-            }
-        });
+                    overridePendingTransition(R.anim.right_in, R.anim.left_out);
+                }
+            });
+        }
 
         //hieronder wordt er een leesbare datum geconverteerd
         try{
@@ -336,9 +338,32 @@ public class activiteit_detail extends Activity {
 
         // Capture position and set results to the ImageView
         // Passes flag images URL into ImageLoader.class
-        imageLoader.DisplayImage(afbeelding1, afbeelding1im);
-        imageLoader.DisplayImage(afbeelding2, afbeelding2im);
-        imageLoader.DisplayImage(afbeelding3, afbeelding3im);
+        int aantalAfbeeldingen = fotos.size();
+        if (!fotos.isEmpty()){
+            afbeelding1im.setVisibility(View.VISIBLE);
+            afbeelding1 = fotos.get(0);
+            imageLoader.DisplayImage(afbeelding1, afbeelding1im);
+        }
+        else{
+
+            afbeelding1im.setVisibility(View.GONE);
+        }
+        if (aantalAfbeeldingen >= 2){
+            afbeelding2im.setVisibility(View.VISIBLE);
+            afbeelding2 = fotos.get(1);
+            imageLoader.DisplayImage(afbeelding2, afbeelding2im);
+        }
+        else{
+            afbeelding2im.setVisibility(View.GONE);
+        }
+        if (aantalAfbeeldingen >= 3){
+            afbeelding3im.setVisibility(View.VISIBLE);
+            afbeelding3 = fotos.get(2);
+            imageLoader.DisplayImage(afbeelding3, afbeelding3im);
+        }
+        else{
+            afbeelding3im.setVisibility(View.GONE);
+        }
 
     }
 

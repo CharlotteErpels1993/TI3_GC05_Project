@@ -1,7 +1,6 @@
 package com.hogent.ti3g05.ti3_g05_joetzapp.Services;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
@@ -12,8 +11,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
-import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -22,10 +19,6 @@ import com.hogent.ti3g05.ti3_g05_joetzapp.ImageLoader;
 import com.hogent.ti3g05.ti3_g05_joetzapp.R;
 import com.hogent.ti3g05.ti3_g05_joetzapp.activiteit_detail;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vakantie;
-import com.parse.ParseFile;
-import com.parse.ParseUser;
-
-import org.w3c.dom.Text;
 
 public class ListViewAdapter extends ArrayAdapter<Vakantie> implements Filterable {
 
@@ -34,7 +27,6 @@ public class ListViewAdapter extends ArrayAdapter<Vakantie> implements Filterabl
     ImageLoader imageLoader;
     private List<Vakantie> vakanties = null;
     private ArrayList<Vakantie> arraylist;
-    private HashMap<String, ArrayList<ParseFile>> afbeeldingenMap;
 
 
 
@@ -103,6 +95,7 @@ public class ListViewAdapter extends ArrayAdapter<Vakantie> implements Filterabl
         //holder.terugdatum.setText(( vakanties.get(position).getTerugkeerDatum().toString()));
         holder.doelgroep.setText(vakanties.get(position).getMinDoelgroep() + " - " + vakanties.get(position).getMaxDoelgroep());
         imageLoader.DisplayImage(vakanties.get(position).getFoto1(),  holder.vakantiefto);
+
         view.setOnClickListener(new OnClickListener() {
 
             @Override
@@ -121,9 +114,6 @@ public class ListViewAdapter extends ArrayAdapter<Vakantie> implements Filterabl
                     intent.putExtra("terugdatum", (vakanties.get(position).getTerugkeerDatum()).toString());
                 }
                 intent.putExtra("prijs", vakanties.get(position).getBasisprijs().toString());
-                intent.putExtra("afbeelding1", vakanties.get(position).getFoto1());
-                intent.putExtra("afbeelding2", vakanties.get(position).getFoto2());
-                intent.putExtra("afbeelding3", vakanties.get(position).getFoto3());
                 //intent.putExtra("fotos", vakanties.get(position).getFotos());
                 intent.putExtra("maxdoelgroep", (vakanties.get(position).getMaxDoelgroep()).toString());
                 intent.putExtra("mindoelgroep", vakanties.get(position).getMinDoelgroep().toString());
@@ -137,6 +127,14 @@ public class ListViewAdapter extends ArrayAdapter<Vakantie> implements Filterabl
                 intent.putExtra("BMledenPrijs", (vakanties.get(position).getBondMoysonLedenPrijs()).toString());
                 intent.putExtra("SterPrijs1Ouder", (vakanties.get(position).getSterPrijs1Ouder()).toString());
                 intent.putExtra("SterPrijs2Ouders", (vakanties.get(position).getSterPrijs2Ouder()).toString());
+
+                //afbeeldingen ophalen met een while-lus, die stopt als de nieuwe afbeelding null is, want we weten niet zeker of
+                String keyVoorIntent;
+                ArrayList<String> lijstFotos = vakanties.get(position).getFotos();
+                for (int i = 0; i <= lijstFotos.size() - 1; i++){
+                    keyVoorIntent = "foto" + i;
+                    intent.putExtra(keyVoorIntent, lijstFotos.get(i));
+                }
 
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
