@@ -4,7 +4,8 @@ import Foundation
 class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, UISearchDisplayDelegate {
     
     var vakanties: [Vakantie] = []
-    var vakanties2: [Vakantie] = []    
+    var vakanties2: [Vakantie] = []
+    var redColor: UIColor = UIColor(red: CGFloat(232/255.0), green: CGFloat(33/255.0), blue: CGFloat(35/255.0), alpha: CGFloat(1.0))
     
     @IBOutlet weak var zoekbar: UISearchBar!
     
@@ -16,10 +17,12 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         
         super.viewDidLoad()
         
-        var activityIndicator = getActivityIndicatorView(self)
+        
+        //var activityIndicator = getActivityIndicatorView(self)
         //activityIndicator.startAnimating()
         //super.viewDidLoad()
         checkConnectie()
+        
         
         vakanties = ParseData.getAlleVakanties()
         self.vakanties2 = self.vakanties
@@ -120,7 +123,12 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("vakantieCell", forIndexPath: indexPath) as VakantieCell
         let vakantie = vakanties2[indexPath.row]
-        cell.gaVerderLabel.text = "Meer details"
+        var image = ParseData.getAfbeeldingMetVakantieId(vakantie.id)
+        cell.afbeelding.image = image
+        cell.locatieLabel.text = vakantie.locatie
+        cell.doelgroepLabel.layer.borderColor = self.redColor.CGColor
+        cell.doelgroepLabel.layer.borderWidth = 1.0
+        cell.doelgroepLabel.layer.cornerRadius = 5.0
         cell.vakantieNaamLabel.text = vakantie.titel
         cell.doelgroepLabel.text! = " \(vakantie.minLeeftijd!) - \(vakantie.maxLeeftijd!) jaar "
         return cell

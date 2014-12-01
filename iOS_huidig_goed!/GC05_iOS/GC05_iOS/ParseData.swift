@@ -293,6 +293,26 @@ struct /*class*/ ParseData {
         return afbeeldingen
     }
     
+    static func getAfbeeldingMetVakantieId(vakantieId: String) -> UIImage {
+        var query = PFQuery(className: "Afbeelding")
+        query.whereKey("vakantie", equalTo: vakantieId)
+        
+        var afbeeldingenObjects: [PFObject] = []
+        var afbeeldingFile: PFFile
+        var afbeelding: UIImage
+        var afbeeldingen: [UIImage] = []
+        
+        afbeeldingenObjects = query.findObjects() as [PFObject]
+        
+        for afbeeldingO in afbeeldingenObjects {
+            afbeeldingFile = afbeeldingO["afbeelding"] as PFFile
+            afbeelding = UIImage(data: afbeeldingFile.getData())!
+            afbeeldingen.append(afbeelding)
+        }
+        
+        return afbeeldingen[0]
+    }
+    
     //InschrijvingenVakantieTable
     static func getInschrijvingenVakantie(inschrijving: InschrijvingVakantie) -> [InschrijvingVakantie] {
         
