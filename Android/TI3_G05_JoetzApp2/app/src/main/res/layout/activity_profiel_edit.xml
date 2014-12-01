@@ -109,6 +109,7 @@ xmlns:android="http://schemas.android.com/apk/res/android">
 
 
     <Button
+        android:background="@drawable/button_shape"
         android:id="@+id/btnBevestigen"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"

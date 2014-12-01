@@ -20,11 +20,13 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/uitlogText"
         android:layout_marginTop="40dp"
+        android:background="@drawable/button_shape"
         android:text="@string/Uitloggen" />
 
     <Button
         android:id="@+id/btnTerug"
         android:layout_width="150dp"
+        android:background="@drawable/button_shape"
         android:layout_alignParentEnd="true"
         android:layout_height="wrap_content"
         android:layout_below="@id/uitlogText"

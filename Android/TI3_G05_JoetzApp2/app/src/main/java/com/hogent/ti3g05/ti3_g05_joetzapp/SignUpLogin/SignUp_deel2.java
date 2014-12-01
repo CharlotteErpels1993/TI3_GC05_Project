@@ -59,7 +59,7 @@ public class SignUp_deel2 extends Activity{
 
         getActionBar().setTitle("Registreren");
 
-        volgendeButton.setTextColor(getResources().getColor(R.color.darkRed));
+        volgendeButton.setTextColor(getResources().getColor(R.color.Rood));
 
 
         volgendeButton.setOnClickListener(new OnClickListener() {

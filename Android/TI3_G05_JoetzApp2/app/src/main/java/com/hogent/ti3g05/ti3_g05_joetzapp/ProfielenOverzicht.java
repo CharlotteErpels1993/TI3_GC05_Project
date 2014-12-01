@@ -120,7 +120,9 @@ public class ProfielenOverzicht extends Activity /* implements SwipeRefreshLayou
             mProgressDialog.setTitle("Ophalen van profielen.");
             // Set progressdialog message
             mProgressDialog.setMessage("Aan het laden...");
-            mProgressDialog.setIndeterminate(false);
+            mProgressDialog.setIndeterminate(true);
+            mProgressDialog.setIndeterminateDrawable(getResources().getDrawable(R.drawable.my_animation));
+
             // Show progressdialog
             mProgressDialog.show();
         }

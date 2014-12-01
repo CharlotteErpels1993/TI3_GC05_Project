@@ -63,6 +63,7 @@
             android:layout_alignParentEnd="true"
             android:layout_alignEnd="@id/DateIns"
             android:layout_marginTop="25dp"
+            android:background="@drawable/button_shape"
             android:layout_marginStart="5dp"
             />
         <TextView
@@ -130,7 +131,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/Postcode"
             android:layout_marginTop="25dp"
-            android:text="@string/volgende" />
+            android:text="@string/volgende"
+            android:background="@drawable/button_shape"/>
 
         <TextView
             android:layout_width="wrap_content"

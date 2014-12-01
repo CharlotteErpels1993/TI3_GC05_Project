@@ -58,6 +58,7 @@
         android:layout_below="@id/imageViewBondMoyson"
         />
     <Button
+        android:background="@drawable/button_shape"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/volgende"

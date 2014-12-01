@@ -38,6 +38,7 @@
         android:inputType="textPassword" />
 
     <Button
+        android:background="@drawable/button_shape"
         android:id="@+id/btnCreateAccount"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"

@@ -192,7 +192,7 @@ public class activiteit_overzicht extends Fragment /*implements SwipeRefreshLayo
             // Set progressdialog message
             mProgressDialog.setMessage("Aan het laden...");
             mProgressDialog.setIndeterminate(true);
-            mProgressDialog.setIndeterminateDrawable(getActivity().getResources().getDrawable(R.drawable.my_animation));
+            mProgressDialog.setIndeterminateDrawable(rootView.getResources().getDrawable(R.drawable.my_animation));
             // Show progressdialog
 
 

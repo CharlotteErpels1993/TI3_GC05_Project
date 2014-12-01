@@ -38,7 +38,7 @@ public class ForgetParsePassword extends Activity{
 
         getActionBar().setTitle("Wachtwoord vergeten");
 
-        btn_submitforgetpassword.setTextColor(getResources().getColor(R.color.darkRed));
+        btn_submitforgetpassword.setTextColor(getResources().getColor(R.color.Rood));
 		btn_submitforgetpassword.setOnClickListener(new OnClickListener() {
 			
 			@Override

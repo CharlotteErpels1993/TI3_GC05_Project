@@ -334,6 +334,7 @@ android:layout_below="@id/doelgroepv"
         android:id="@+id/btnMeerInfo"
 
 
+        android:background="@drawable/button_shape"
         android:layout_marginTop="8dp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -347,6 +348,8 @@ android:layout_below="@id/doelgroepv"
         android:layout_height="wrap_content"
         android:layout_below="@id/btnMeerInfo"
 
+        android:background="@drawable/button_shape"
+
         android:layout_marginTop="8dp"/>
 
     <Button
@@ -354,6 +357,7 @@ android:layout_below="@id/doelgroepv"
         android:id="@+id/btnInschrijvenV"
 
 
+        android:background="@drawable/button_shape"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/btnMinderInfo"

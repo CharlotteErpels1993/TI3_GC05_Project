@@ -27,6 +27,8 @@
 
     <Button
         android:id="@+id/btn_login"
+
+        android:background="@drawable/button_shape"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -35,6 +37,8 @@
 
     <Button
         android:id="@+id/btn_signup"
+
+        android:background="@drawable/button_shape"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -45,6 +49,8 @@
         android:id="@+id/btn_ForgetPass"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+
+        android:background="@drawable/button_shape"
         android:layout_marginTop="8dp"
         android:text="@string/forgetPass" />
 

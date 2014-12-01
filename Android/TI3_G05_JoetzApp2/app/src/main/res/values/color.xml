@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item name="Rood" type="color">#FF0000</item>
+    <item name="Rood" type="color">#E82123</item>
     <item name="Wit" type="color">#FFFFFF</item>
     <item name="darkRed" type="color">#8B0000</item>
 </resources>
