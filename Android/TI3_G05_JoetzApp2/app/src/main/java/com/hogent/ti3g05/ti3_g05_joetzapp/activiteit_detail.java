@@ -5,14 +5,12 @@ import android.content.Intent;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -25,7 +23,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.logging.Handler;
 
 //ingelogde gebr:      titel, korte beschr, periode, locatie, inbegrepen in prijs, doelgroep (met geboortejaren), max aantal deelnemers,
 //                     vervoerswijze, formule, prijs (basisprijs, BM prijs & sterprijs) kortingen, gegevens contactpersoon inschrijving & algemene voorwaarden
@@ -280,7 +277,6 @@ public class activiteit_detail extends Activity {
             txtSterPrijs1Ouder.setVisibility(View.GONE);
             txtSterPrijs2Ouders.setVisibility(View.GONE);
             txtformule.setVisibility(View.GONE);
-            txtmaxDeeln.setVisibility(View.GONE);
             txtInbegrepenInPrijs.setVisibility(View.GONE);
             btnmeerInfo.setVisibility(View.GONE);
             verberg.setVisibility(View.GONE);
@@ -377,7 +373,7 @@ public class activiteit_detail extends Activity {
     public String getShareUrl()
     {
         String urlToShare = "";
-
+        //TODO: hardcoded -> niet goed. Extra veld in DB?
         if(naam.toLowerCase().equals("kerstvakantie aan zee"))
         {
             urlToShare = "http://www.joetz.be/309/Vakanties/Binnenland/Pages/Kerstvakantie.aspx";

@@ -3,15 +3,10 @@ package com.hogent.ti3g05.ti3_g05_joetzapp;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -63,10 +58,8 @@ public class ProfielDetail extends Activity {
         TextView txtEmail = (TextView) findViewById(R.id.emailP);
         TextView txtFacebook = (TextView)findViewById(R.id.facebookL);
         final TextView txtGsm = (TextView)findViewById(R.id.gsmP);
-        if(ParseUser.getCurrentUser().getEmail().equals(email))
-
-        {
-            btnProfielEdit = (Button) findViewById(R.id.btnProfielEdit);
+        btnProfielEdit = (Button) findViewById(R.id.btnProfielEdit);
+        if(ParseUser.getCurrentUser().getEmail().equals(email)){
             btnProfielEdit.setTextColor(getResources().getColor(R.color.darkRed));
             btnProfielEdit.setOnClickListener(new View.OnClickListener() {
                 @Override

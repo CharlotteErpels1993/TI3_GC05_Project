@@ -1,18 +1,19 @@
 package com.hogent.ti3g05.ti3_g05_joetzapp.domein;
 
-/**
- * Created by Gebruiker on 26/10/2014.
- */
-public class Gebruiker { //abstract?
+
+public class Gebruiker {
     private long userId;
     private String email;
     private String wachtwoord;
 
     private String voornaam, naam;
-    private int huisnummer, rijksregisternummer;
+    private Number huisnr;
+    private String rijksregNr;
     private String bus, straat, gemeente;
     private int postcode;
     private String telefoonnr, gsmnr;
+    private Number aansluitingsNr;
+    private Number codeGerechtigde;
 
     public long getUserId() {
         return userId;
@@ -54,13 +55,8 @@ public class Gebruiker { //abstract?
         this.naam = naam;
     }
 
-    public int getHuisnummer() {
-        return huisnummer;
-    }
-
-    public void setHuisnummer(int huisnummer) {
-        this.huisnummer = huisnummer;
-    }
+    public Number getHuisnr(){return huisnr;}
+    public void setHuisnr(Number huisnr){this.huisnr = huisnr;}
 
     public String getStraat() {
         return straat;
@@ -100,6 +96,25 @@ public class Gebruiker { //abstract?
 
     public void setGsmnr(String gsmnr) {
         this.gsmnr = gsmnr;
+    }
+
+    public Number getCodeGerechtigde() {
+        return codeGerechtigde;
+    }
+
+    public void setCodeGerechtigde(Number codeGerechtigde) {
+        this.codeGerechtigde = codeGerechtigde;
+    }
+
+    public Number getAansluitingsNr(){return aansluitingsNr;}
+    public void setAansluitingsNr(Number aansluitingsNr){this.aansluitingsNr = aansluitingsNr;}
+
+    public String getRijksregNr() {
+        return rijksregNr;
+    }
+
+    public void setRijksregNr(String rijksregisternummer) {
+        this.rijksregNr = rijksregisternummer;
     }
 
     public String getBus() {

@@ -10,7 +10,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -78,9 +77,6 @@ public class SignUp_deel1 extends Activity{
                     }
                 } else
                     Toast.makeText(getApplicationContext(), getString(R.string.error_no_internet), Toast.LENGTH_SHORT).show();
-
-
-
             }
 
 
@@ -101,15 +97,8 @@ public class SignUp_deel1 extends Activity{
                     }
                 } else
                     Toast.makeText(getApplicationContext(), getString(R.string.error_no_internet), Toast.LENGTH_SHORT).show();
-
-
-
             }
         });
-
-
-
-
     }
 
     public void hideKeyboard(View view) {
@@ -160,8 +149,8 @@ public class SignUp_deel1 extends Activity{
                 {
                     tecontrolerenCijfers = "2";
                 }
-
-                for(int i = 0; i<=(rijksregnr.length()-3);i++)
+                int rijksregnrLengte = rijksregnr.length() - 3;
+                for(int i = 0; i<=(rijksregnrLengte);i++)
                 {
                     tecontrolerenCijfers += rijksregnr.charAt(i);
 

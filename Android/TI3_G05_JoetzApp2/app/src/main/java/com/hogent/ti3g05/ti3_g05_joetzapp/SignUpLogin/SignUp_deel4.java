@@ -30,7 +30,6 @@ public class SignUp_deel4 extends Activity{
 	private EditText mPasswordEditText;
 	private EditText mConfirmPasswordEditText;
 	private Button mCreateAccountButton;
-    private Button terugKerenButton;
 
 	private String mEmail;
 	private String mPassword;
@@ -213,7 +212,6 @@ public class SignUp_deel4 extends Activity{
         }
 
         gebruiker.saveInBackground();
-        //TODO: data uit vorige schermen ophalen en erin steken.
 
         ParseUser user = new ParseUser();
         user.setUsername(username);

@@ -160,8 +160,6 @@ public class InschrijvenVakantiePart1 extends FragmentActivity {
             cancel = true;
         }
 
-        //TODO: datepicker toevoegen, waarde ophalen en controleren of ie is ingevuld. Plus controle op deftige waarde? (niet 100+ jaar oud of 5 jaar in de toekomst)
-
         SimpleDateFormat formatter = new SimpleDateFormat("MMM dd, yyyy");
         Date date = null;
         try {
@@ -177,7 +175,6 @@ public class InschrijvenVakantiePart1 extends FragmentActivity {
         int day = cal.get(Calendar.DAY_OF_MONTH);
 
         int age = getAge(year, month, day);
-        //TODO kijken of age groter is dan mindoelgroep en kleiner dan maxdoelgr
 
         if(age < Integer.parseInt(mindoelgroep) || age > Integer.parseInt(maxdoelgroep))
         {

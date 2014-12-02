@@ -5,11 +5,6 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
-import android.support.v4.app.FragmentActivity;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,28 +13,21 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.NumberPicker;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ListViewAdapter;
-import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Monitor;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vakantie;
 import com.parse.ParseException;
-import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
-import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Locale;
 
 public class IndienenVoorkeurVakantie extends Activity implements AdapterView.OnItemSelectedListener {
 
@@ -175,7 +163,8 @@ public class IndienenVoorkeurVakantie extends Activity implements AdapterView.On
             // Binds the Adapter to the ListView
 
             array = new String[vakantienamen.size()];
-            for(int i = 0 ;i < vakantienamen.size(); i++)
+            int vakantienamenLengte = vakantienamen.size();
+            for(int i = 0 ;i < vakantienamenLengte; i++)
             {
                 array[i] = vakantienamen.get(i);
             }

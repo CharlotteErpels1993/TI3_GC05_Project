@@ -1,22 +1,15 @@
 package com.hogent.ti3g05.ti3_g05_joetzapp;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -27,8 +20,6 @@ import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ProfielAdapter;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.InschrijvingVorming;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Monitor;
-import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vorming;
-import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
@@ -166,8 +157,8 @@ public class ProfielenOverzicht extends Activity /* implements SwipeRefreshLayou
                         map.setEmail((String) monitor.get("email"));
                         map.setGemeente((String) monitor.get("gemeente"));
                         map.setLinkFacebook((String) monitor.get("linkFacebook"));
-                        map.setGsm((String) monitor.get("gsm"));
-                        map.setTelefoon((String) monitor.get("telefoon"));
+                        map.setGsmnr((String) monitor.get("gsm"));
+                        map.setTelefoonnr((String) monitor.get("telefoon"));
                         map.setRijksregNr((String) monitor.get("rijksregisterNr"));
 
 

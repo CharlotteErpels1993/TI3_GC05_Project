@@ -208,7 +208,7 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put(Constants.COLUMN_EMAIL, monitor.getEmail());
 
         values.put(Constants.COLUMN_GEMEENTE, monitor.getGemeente());
-        values.put(Constants.COLUMN_GSM, monitor.getGsm());
+        values.put(Constants.COLUMN_GSM, monitor.getGsmnr());
         values.put(Constants.COLUMN_LIDNR, monitor.getLidNummer());
         if(monitor.getLinkFacebook() == null)
             monitor.setLinkFacebook("");
@@ -220,7 +220,7 @@ public class DBHandler extends SQLiteOpenHelper {
         //values.put(Constants.COLUMN_RIJKSREGISTERNUMMER, monitor.getRijksregNr());
 
         values.put(Constants.COLUMN_STRAAT, monitor.getStraat());
-        values.put(Constants.COLUMN_TELEFOON, monitor.getTelefoon());
+        values.put(Constants.COLUMN_TELEFOON, monitor.getTelefoonnr());
         values.put(Constants.COLUMN_VOORNAAM, monitor.getVoornaam());
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -266,7 +266,7 @@ public class DBHandler extends SQLiteOpenHelper {
             //monitor.setCodeGerechtigde(Integer.parseInt(cursor.getString(3)));
             monitor.setEmail(cursor.getString(4));
             monitor.setGemeente(cursor.getString(5));
-            monitor.setGsm(cursor.getString(6));
+            monitor.setGsmnr(cursor.getString(6));
             monitor.setLidNummer(Integer.parseInt(cursor.getString(7)));
             monitor.setLinkFacebook(cursor.getString(8));
             monitor.setNaam(cursor.getString(9));
@@ -274,7 +274,7 @@ public class DBHandler extends SQLiteOpenHelper {
             monitor.setPostcode(Integer.parseInt(cursor.getString(11)));
             //monitor.setRijksregNr(cursor.getString(12));
             monitor.setStraat(cursor.getString(13));
-            monitor.setTelefoon(cursor.getString(14));
+            monitor.setTelefoonnr(cursor.getString(14));
             monitor.setVoornaam(cursor.getString(15));
 
         } else

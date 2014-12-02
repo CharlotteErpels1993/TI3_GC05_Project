@@ -131,7 +131,8 @@ public class ListViewAdapter extends ArrayAdapter<Vakantie> implements Filterabl
                 //afbeeldingen ophalen met een while-lus, die stopt als de nieuwe afbeelding null is, want we weten niet zeker of
                 String keyVoorIntent;
                 ArrayList<String> lijstFotos = vakanties.get(position).getFotos();
-                for (int i = 0; i <= lijstFotos.size() - 1; i++){
+                int lijstFotosLengte = lijstFotos.size()-1;
+                for (int i = 0; i <= lijstFotosLengte; i++){
                     keyVoorIntent = "foto" + i;
                     intent.putExtra(keyVoorIntent, lijstFotos.get(i));
                 }
