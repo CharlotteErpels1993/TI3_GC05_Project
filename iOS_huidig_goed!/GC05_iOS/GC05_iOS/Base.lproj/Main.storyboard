@@ -158,6 +158,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
+                            <tableViewSection id="Vwh-lP-vyi">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="IvD-kl-56b" style="IBUITableViewCellStyleDefault" id="NpT-Cd-68m">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NpT-Cd-68m" id="8YG-0w-brd">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="VakantieNaam" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IvD-kl-56b">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                    <color key="textColor" red="0.90980392156862744" green="0.12941176470588234" blue="0.13725490196078433" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                             <tableViewSection id="9hz-vW-mdA">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="94" id="GwE-Mt-Y7W">
@@ -481,7 +499,7 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Vakanties" id="EyU-Xm-7Wp">
+                    <navigationItem key="navigationItem" title="Details" id="EyU-Xm-7Wp">
                         <barButtonItem key="backBarButtonItem" title="Terug" id="4W1-Mx-eUU"/>
                         <barButtonItem key="rightBarButtonItem" title="Inschrijven" id="tca-mm-haN">
                             <connections>
@@ -506,6 +524,7 @@
                         <outlet property="maxAantalDeelnemersLabel" destination="q5p-DG-HWl" id="8Tf-75-WU1"/>
                         <outlet property="sterPrijs2Label" destination="Mrx-x2-RlI" id="diu-vM-sg6"/>
                         <outlet property="sterprijs1Label" destination="Dqi-r0-7gm" id="HoV-EP-F2n"/>
+                        <outlet property="vakantieNaamLabel" destination="IvD-kl-56b" id="RcO-Bu-VaV"/>
                         <outlet property="vertrekdatumLabel" destination="taw-Bm-ocr" id="n6Y-qM-a79"/>
                         <outlet property="vervoerwijzeLabel" destination="Kmg-bE-kDe" id="xfy-Uf-xJL"/>
                     </connections>
@@ -3891,9 +3910,9 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="quD-W8-2tt"/>
+        <segue reference="n6i-tz-46X"/>
         <segue reference="xSz-Mr-cgx"/>
-        <segue reference="fAM-X2-96q"/>
         <segue reference="9Je-LH-R9J"/>
-        <segue reference="rLN-eU-UEX"/>
+        <segue reference="fAM-X2-96q"/>
     </inferredMetricsTieBreakers>
 </document>

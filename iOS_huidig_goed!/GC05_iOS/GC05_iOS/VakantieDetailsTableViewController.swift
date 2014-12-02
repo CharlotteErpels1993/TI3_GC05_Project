@@ -7,6 +7,7 @@ class VakantieDetailsTableViewController: UITableViewController {
     @IBOutlet weak var afbeelding3: UIImageView!
     
     
+    @IBOutlet var vakantieNaamLabel: UILabel!
     @IBOutlet weak var korteBeschrijvingLabel: UILabel!
     @IBOutlet weak var doelgroepLabel: UILabel!
     @IBOutlet weak var vertrekdatumLabel: UILabel!
@@ -59,7 +60,8 @@ class VakantieDetailsTableViewController: UITableViewController {
         var beginDatum: String? = vakantie.vertrekdatum?.toS("dd/MM/yyyy")
         var terugkeerDatum: String? = vakantie.terugkeerdatum?.toS("dd/MM/yyyy")
         
-        navigationItem.title = vakantie.titel
+        //navigationItem.title = vakantie.titel
+        vakantieNaamLabel.text = vakantie.titel
         korteBeschrijvingLabel.text! = vakantie.korteBeschrijving!
         korteBeschrijvingLabel.sizeToFit()
         doelgroepLabel.text! = ("\(vakantie.minLeeftijd!) - \(vakantie.maxLeeftijd!)")
@@ -98,7 +100,7 @@ class VakantieDetailsTableViewController: UITableViewController {
                     sterPrijs2Label.text = String("Ster prijs (2 ouders): /")
                 }
             } else {
-                self.sectionToDelete = 5;
+                self.sectionToDelete = 6;
                 self.tableView.deleteSections(NSIndexSet(index: self.sectionToDelete), withRowAnimation: UITableViewRowAnimation.None)
                 self.navigationItem.rightBarButtonItem = nil
             }
@@ -118,18 +120,18 @@ class VakantieDetailsTableViewController: UITableViewController {
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         if sectionToDelete == -1 {
-            return 6
-        } else {
             return 5
+        } else {
+            return 6
         }
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 3 {
+        if section == 5 {
             return 3
-        } else if section == 4 {
-            return 4
         } else if section == 5 {
+            return 4
+        } else if section == 6 {
             if self.sectionToDelete == -1 {
                 return 5
             } else {
