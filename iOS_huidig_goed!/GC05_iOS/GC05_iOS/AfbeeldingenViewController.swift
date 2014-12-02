@@ -1,10 +1,13 @@
 import UIKit
 
 class AfbeeldingenViewController: UICollectionViewController {
+
     var images: [UIImage] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.collectionView.dataSource = self
+        self.collectionView.delegate = self
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -27,3 +30,4 @@ class AfbeeldingenViewController: UICollectionViewController {
         return cell
     }
 }
+
