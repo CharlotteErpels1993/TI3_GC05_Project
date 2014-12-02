@@ -29,21 +29,16 @@ class VakantieDetailsTableViewController: UITableViewController {
     var images: [UIImage] = []
     var query = PFQuery(className: "Vakantie")
     var beschrijving: String!
-    var sectionToDelete = -1;
+    var sectionToDelete = -1
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        var activityIndicator = getActivityIndicatorView(self)
         
         //zoekImages()
         self.images = ParseData.getAfbeeldingenMetVakantieId(vakantie.id)
         
         hideSideMenuView()
         
-        query.getObjectInBackgroundWithId(vakantie.id) {
-            (vakantie: PFObject!, error: NSError!) -> Void in
-            if error == nil {
                 if self.images.count >= 3 {
                     self.afbeelding1.image = self.images[0]
                     self.afbeelding2.image = self.images[1]
@@ -54,8 +49,6 @@ class VakantieDetailsTableViewController: UITableViewController {
                 } else if self.images.count == 1 {
                     self.afbeelding1.image = self.images[0]
                 }
-            }
-        }
         
         var beginDatum: String? = vakantie.vertrekdatum?.toS("dd/MM/yyyy")
         var terugkeerDatum: String? = vakantie.terugkeerdatum?.toS("dd/MM/yyyy")
@@ -82,6 +75,7 @@ class VakantieDetailsTableViewController: UITableViewController {
         var soort: String = gebruikerPF["soort"] as String
         
             if soort == "ouder" {
+                self.sectionToDelete = -1
                 basisprijsLabel.text = String("Basisprijs: \(vakantie.basisprijs!) " + euroSymbol)
                 inbegrepenPrijs.text = String("Inbegrepen prijs: \(vakantie.inbegrepenPrijs!) ")
                 if (vakantie.bondMoysonLedenPrijs != 0) {
@@ -100,16 +94,15 @@ class VakantieDetailsTableViewController: UITableViewController {
                     sterPrijs2Label.text = String("Ster prijs (2 ouders): /")
                 }
             } else {
-                self.sectionToDelete = 6;
+                self.sectionToDelete = 6
                 self.tableView.deleteSections(NSIndexSet(index: self.sectionToDelete), withRowAnimation: UITableViewRowAnimation.None)
                 self.navigationItem.rightBarButtonItem = nil
             }
         } else {
-            self.sectionToDelete = 5;
+            self.sectionToDelete = 6
             self.tableView.deleteSections(NSIndexSet(index: self.sectionToDelete), withRowAnimation: UITableViewRowAnimation.None)
             self.navigationItem.rightBarButtonItem = nil
         }
-        activityIndicator.stopAnimating()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -120,14 +113,14 @@ class VakantieDetailsTableViewController: UITableViewController {
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         if sectionToDelete == -1 {
-            return 5
+            return 7
         } else {
             return 6
         }
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 5 {
+        if section == 4 {
             return 3
         } else if section == 5 {
             return 4
@@ -141,26 +134,6 @@ class VakantieDetailsTableViewController: UITableViewController {
             return 1
         }
     }
-    
-    /*func zoekImages() {
-        var query = PFQuery(className: "Afbeelding")
-        query.whereKey("VakantieID", equalTo: vakantie.id)
-        query.findObjectsInBackgroundWithBlock({(NSArray objects, NSError error) in
-            if(error == nil) {
-                
-                for object in objects {
-                    let imageFile = object["Afbeelding"] as PFFile
-                    imageFile.getDataInBackgroundWithBlock { (imageData: NSData!, error: NSError!) -> Void in
-                        if error == nil {
-                            var afb = UIImage(data: imageData)
-                            self.images.append(afb!)
-                        }
-                        
-                    }
-                }
-            }
-        })
-    }*/
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "afbeeldingen" {

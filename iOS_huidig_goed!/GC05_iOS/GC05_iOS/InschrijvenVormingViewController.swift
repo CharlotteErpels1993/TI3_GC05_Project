@@ -13,7 +13,8 @@ class InschrijvenVormingViewController: UIViewController, UIPickerViewDataSource
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getAlleVormingen()
+        //getAlleVormingen()
+        ParseData.getAlleVormingen()
         
         pickerView.delegate = self
         pickerView.dataSource = self
@@ -78,7 +79,7 @@ class InschrijvenVormingViewController: UIViewController, UIPickerViewDataSource
         }
     }
     
-    func getAlleVormingen() {
+    /*func getAlleVormingen() {
         var monitor: Monitor = ParseData.getMonitorWithEmail(PFUser.currentUser().email)
 
         var query = PFQuery(className: "InschrijvingVorming")
@@ -93,7 +94,7 @@ class InschrijvenVormingViewController: UIViewController, UIPickerViewDataSource
                 }
             }
         })
-    }
+    }*/
     
     func controleerAlIngeschreven() -> Bool {
         var inschrijvingen: [InschrijvingVorming] = []

@@ -3,7 +3,7 @@ import Foundation
 struct InschrijvingVormingSQL {
     
     static func createInschrijvingVormingTable() {
-        if let error = SD.createTable("InschrijvingVorming", withColumnNamesAndTypes: ["objectId": .StringVal, "monitor": .StringVal, "periode": .StringVal,
+        if let error = SD.createTable("InschrijvingVorming", withColumnNamesAndTypes: ["objectId": .StringVal, "monitor": .StringVal/*, "periode": .StringVal*/,
              "vorming": .StringVal])
         {
             println("ERROR: error tijdens creatie van table InschrijvingVorming")
@@ -23,7 +23,7 @@ struct InschrijvingVormingSQL {
         
         var objectId: String = ""
         var monitor: String = ""
-        var periode: String = ""
+        //var periode: String = ""
         var vorming: String = ""
         
         for inschrijvingVorming in inschrijvingenVorming {
@@ -32,14 +32,14 @@ struct InschrijvingVormingSQL {
             
             objectId = inschrijvingVorming.objectId as String
             monitor = inschrijvingVorming["monitor"] as String
-            periode = inschrijvingVorming["periode"] as String
+            //periode = inschrijvingVorming["periode"] as String
             vorming = inschrijvingVorming["vorming"] as String
             
             queryString.extend("INSERT INTO InschrijvingVorming ")
             queryString.extend("(")
             queryString.extend("objectId, ")
             queryString.extend("monitor, ")
-            queryString.extend("periode, ")
+            //queryString.extend("periode, ")
             queryString.extend("vorming")
             queryString.extend(")")
             queryString.extend(" VALUES ")
@@ -47,7 +47,7 @@ struct InschrijvingVormingSQL {
             
             queryString.extend("'\(objectId)', ") //objectId - String
             queryString.extend("'\(monitor)', ") //monitorId - String
-            queryString.extend("'\(periode)', ") //periode - String
+            //queryString.extend("'\(periode)', ") //periode - String
             queryString.extend("'\(vorming)'") //vormingId - String
             
             queryString.extend(")")
@@ -68,7 +68,7 @@ struct InschrijvingVormingSQL {
     static func parseInschrijvingVormingToDatabase(inschrijving: InschrijvingVorming) {
         var inschrijvingJSON = PFObject(className: "InschrijvingVorming")
         
-        inschrijvingJSON.setValue(inschrijving.periode, forKey: "periode")
+        //inschrijvingJSON.setValue(inschrijving.periode, forKey: "periode")
         inschrijvingJSON.setValue(inschrijving.monitor?.id, forKey: "monitor")
         inschrijvingJSON.setValue(inschrijving.vorming?.id, forKey: "vorming")
         
@@ -121,7 +121,7 @@ struct InschrijvingVormingSQL {
         return monitorsId
     }
     
-    static func getInschrijvingenVorming(monitorId: String, vormingId: String, periode: String) -> [InschrijvingVorming] {
+    static func getInschrijvingenVorming(monitorId: String, vormingId: String/*, periode: String*/) -> [InschrijvingVorming] {
         var inschrijvingen: [InschrijvingVorming] = []
         var inschrijving: InschrijvingVorming = InschrijvingVorming(id: "test")
         var queryString: String = ""
@@ -129,11 +129,11 @@ struct InschrijvingVormingSQL {
         queryString.extend("SELECT * FROM InschrijvingVorming ")
         queryString.extend("WHERE monitor = ? ")
         queryString.extend("AND ")
-        queryString.extend("vorming = ? ")
-        queryString.extend("AND ")
-        queryString.extend("periode = ?")
+        queryString.extend("vorming = ?")
+        //queryString.extend("AND ")
+        //queryString.extend("periode = ?")
         
-        let (resultSet, err) = SwiftData.executeQuery(queryString, withArgs: [monitorId, vormingId, periode])
+        let (resultSet, err) = SwiftData.executeQuery(queryString, withArgs: [monitorId, vormingId/*, periode*/])
         
         if err != nil
         {
