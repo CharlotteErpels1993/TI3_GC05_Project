@@ -3909,9 +3909,9 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
         <image name="menu.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="IEO-bq-IHJ"/>
         <segue reference="quD-W8-2tt"/>
         <segue reference="n6i-tz-46X"/>
-        <segue reference="xSz-Mr-cgx"/>
         <segue reference="9Je-LH-R9J"/>
         <segue reference="fAM-X2-96q"/>
     </inferredMetricsTieBreakers>
