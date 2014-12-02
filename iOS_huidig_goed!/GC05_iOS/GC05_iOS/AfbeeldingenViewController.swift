@@ -16,6 +16,8 @@ class AfbeeldingenViewController: UICollectionViewController {
             var indexPath: NSIndexPath = self.collectionView.indexPathsForSelectedItems()?.last! as NSIndexPath
             var image: UIImage! = self.images[indexPath.row]
             afbeeldingViewController.image = image
+            afbeeldingViewController.images = self.images
+            afbeeldingViewController.nummer = indexPath.row
         }
     }
     
