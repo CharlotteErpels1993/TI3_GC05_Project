@@ -19,19 +19,19 @@
                             <textInputTraits key="textInputTraits"/>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="vakantieCell" selectionStyle="none" indentationWidth="10" reuseIdentifier="vakantieCell" id="u8I-xk-xAt" customClass="VakantieCell" customModule="JOETZ" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="vakantieCell" selectionStyle="default" indentationWidth="1" reuseIdentifier="vakantieCell" id="u8I-xk-xAt" customClass="VakantieCell" customModule="JOETZ" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="u8I-xk-xAt" id="P3a-47-5bl">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VakantieNaam" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q1S-ad-fX9">
-                                            <rect key="frame" x="8" y="255" width="551" height="21.5"/>
+                                            <rect key="frame" x="8" y="255" width="584" height="21.5"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                             <color key="textColor" red="0.90980392156862744" green="0.12941176470588234" blue="0.13725490196078433" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PaK-Rf-VG9">
-                                            <rect key="frame" x="8" y="8" width="584" height="240"/>
+                                            <rect key="frame" x="13" y="8" width="574" height="240"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="285" id="0Oy-0X-jfj"/>
                                                 <constraint firstAttribute="height" constant="245" id="gE4-lt-FYP"/>
@@ -50,37 +50,46 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Locatie" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eae-8F-4Z1">
-                                            <rect key="frame" x="8" y="281" width="451" height="20.5"/>
+                                            <rect key="frame" x="8" y="279" width="484" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Klik voor meer info" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ya7-iN-w7k">
+                                            <rect key="frame" x="486" y="316" width="112" height="16"/>
+                                            <fontDescription key="fontDescription" type="italicSystem" pointSize="13"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="PaK-Rf-VG9" secondAttribute="trailing" id="02v-u1-Wc2"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="ukk-ej-Mho" secondAttribute="bottom" constant="24" id="0VQ-AA-JO5"/>
                                         <constraint firstItem="PaK-Rf-VG9" firstAttribute="top" secondItem="P3a-47-5bl" secondAttribute="topMargin" id="3mm-qU-ZkP"/>
                                         <constraint firstItem="ukk-ej-Mho" firstAttribute="top" secondItem="q1S-ad-fX9" secondAttribute="bottom" constant="29.5" id="58S-E0-bA1"/>
-                                        <constraint firstItem="Eae-8F-4Z1" firstAttribute="top" secondItem="q1S-ad-fX9" secondAttribute="bottom" constant="5" id="7Id-Fl-qn3"/>
+                                        <constraint firstItem="Eae-8F-4Z1" firstAttribute="top" secondItem="q1S-ad-fX9" secondAttribute="bottom" constant="2.5" id="7Id-Fl-qn3"/>
                                         <constraint firstItem="Eae-8F-4Z1" firstAttribute="top" secondItem="ukk-ej-Mho" secondAttribute="bottom" constant="7.5" id="Aqw-5x-rOU"/>
                                         <constraint firstItem="ukk-ej-Mho" firstAttribute="leading" secondItem="Eae-8F-4Z1" secondAttribute="trailing" id="EqA-Ji-UZw"/>
                                         <constraint firstItem="q1S-ad-fX9" firstAttribute="leading" secondItem="P3a-47-5bl" secondAttribute="leadingMargin" constant="293" id="H8N-0a-DzQ"/>
                                         <constraint firstItem="ukk-ej-Mho" firstAttribute="leading" secondItem="PaK-Rf-VG9" secondAttribute="trailing" constant="8" id="HtJ-UY-baU"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Ya7-iN-w7k" secondAttribute="bottom" constant="-3.5" id="Jw2-Uv-dS3"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="PaK-Rf-VG9" secondAttribute="trailing" constant="5" id="K9t-Ke-MtL"/>
                                         <constraint firstItem="q1S-ad-fX9" firstAttribute="leading" secondItem="PaK-Rf-VG9" secondAttribute="trailing" constant="8" id="KhE-HA-cEH"/>
                                         <constraint firstItem="q1S-ad-fX9" firstAttribute="top" secondItem="P3a-47-5bl" secondAttribute="topMargin" id="Opb-FT-3ni"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="PaK-Rf-VG9" secondAttribute="bottom" constant="80.5" id="Ql2-uL-Rdj"/>
                                         <constraint firstItem="Eae-8F-4Z1" firstAttribute="top" secondItem="ukk-ej-Mho" secondAttribute="bottom" constant="-20.5" id="UXF-w8-Gxh"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="ukk-ej-Mho" secondAttribute="trailing" constant="0.5" id="bLm-7a-Mpk"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="q1S-ad-fX9" secondAttribute="trailing" constant="33" id="cQK-5J-5xQ"/>
+                                        <constraint firstItem="Ya7-iN-w7k" firstAttribute="leading" secondItem="P3a-47-5bl" secondAttribute="leadingMargin" constant="472" id="cDp-1h-QpI"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="q1S-ad-fX9" secondAttribute="trailing" id="cQK-5J-5xQ"/>
                                         <constraint firstItem="ukk-ej-Mho" firstAttribute="top" secondItem="q1S-ad-fX9" secondAttribute="bottom" constant="7.5" id="d4Z-jg-75X"/>
                                         <constraint firstItem="q1S-ad-fX9" firstAttribute="top" secondItem="PaK-Rf-VG9" secondAttribute="bottom" constant="7" id="ezV-dK-mcG"/>
                                         <constraint firstItem="Eae-8F-4Z1" firstAttribute="leading" secondItem="PaK-Rf-VG9" secondAttribute="trailing" constant="8" id="fQh-Cr-gWO"/>
                                         <constraint firstItem="Eae-8F-4Z1" firstAttribute="leading" secondItem="P3a-47-5bl" secondAttribute="leadingMargin" id="hjm-kg-BAJ"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="q1S-ad-fX9" secondAttribute="trailing" id="i2U-lV-g5x"/>
-                                        <constraint firstItem="PaK-Rf-VG9" firstAttribute="leading" secondItem="P3a-47-5bl" secondAttribute="leadingMargin" id="kAZ-Ww-bJC"/>
+                                        <constraint firstItem="PaK-Rf-VG9" firstAttribute="leading" secondItem="P3a-47-5bl" secondAttribute="leadingMargin" constant="5" id="kAZ-Ww-bJC"/>
                                         <constraint firstItem="ukk-ej-Mho" firstAttribute="leading" secondItem="P3a-47-5bl" secondAttribute="leadingMargin" constant="471" id="oKF-j9-dcg"/>
                                         <constraint firstItem="q1S-ad-fX9" firstAttribute="leading" secondItem="P3a-47-5bl" secondAttribute="leadingMargin" id="s4O-qN-YxI"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="Eae-8F-4Z1" secondAttribute="trailing" constant="133" id="xC4-I4-ezP"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Ya7-iN-w7k" secondAttribute="trailing" constant="-6" id="s5I-vN-AbE"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Eae-8F-4Z1" secondAttribute="trailing" constant="100" id="xC4-I4-ezP"/>
                                     </constraints>
                                     <variation key="default">
                                         <mask key="constraints">
@@ -91,6 +100,7 @@
                                             <exclude reference="Aqw-5x-rOU"/>
                                             <exclude reference="UXF-w8-Gxh"/>
                                             <exclude reference="fQh-Cr-gWO"/>
+                                            <exclude reference="cDp-1h-QpI"/>
                                             <exclude reference="58S-E0-bA1"/>
                                             <exclude reference="EqA-Ji-UZw"/>
                                             <exclude reference="HtJ-UY-baU"/>
