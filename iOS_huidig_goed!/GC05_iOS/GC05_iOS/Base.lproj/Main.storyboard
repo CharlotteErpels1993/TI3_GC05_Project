@@ -529,16 +529,76 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" contentMode="TopLeft" restorationIdentifier="afbeeldingcell" reuseIdentifier="afbeeldingcell" id="n5a-ey-IVy" customClass="AfbeeldingCollectionViewCell" customModule="JOETZ" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="TopLeft" restorationIdentifier="afbeeldingcell" reuseIdentifier="afbeeldingcell" id="n5a-ey-IVy" customClass="AfbeeldingCollectionViewCell" customModule="JOETZ" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="121.5" height="113"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dOp-1z-6Op">
+                                            <rect key="frame" x="8" y="8" width="104" height="95"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="95" id="1Mf-yl-so5"/>
+                                                <constraint firstAttribute="height" constant="306" id="3ZD-0l-myu"/>
+                                                <constraint firstAttribute="width" constant="295" id="FVu-WF-lDP"/>
+                                                <constraint firstAttribute="height" constant="167" id="HET-mp-ZQ7"/>
+                                                <constraint firstAttribute="width" constant="295" id="MRg-18-fGM"/>
+                                                <constraint firstAttribute="height" constant="306" id="Onl-gD-aMD"/>
+                                                <constraint firstAttribute="width" constant="186" id="YEJ-Ps-z9B"/>
+                                                <constraint firstAttribute="width" constant="104" id="bho-Ja-PJ6"/>
+                                                <constraint firstAttribute="width" constant="295" id="hoQ-i5-Crs"/>
+                                                <constraint firstAttribute="height" constant="306" id="pTA-Dm-8Wm"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="3ZD-0l-myu"/>
+                                                    <exclude reference="FVu-WF-lDP"/>
+                                                    <exclude reference="HET-mp-ZQ7"/>
+                                                    <exclude reference="MRg-18-fGM"/>
+                                                    <exclude reference="Onl-gD-aMD"/>
+                                                    <exclude reference="YEJ-Ps-z9B"/>
+                                                    <exclude reference="hoQ-i5-Crs"/>
+                                                    <exclude reference="pTA-Dm-8Wm"/>
+                                                </mask>
+                                            </variation>
+                                        </imageView>
+                                    </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <constraints>
+                                    <constraint firstAttribute="centerY" secondItem="dOp-1z-6Op" secondAttribute="centerY" constant="-0.5" id="2mm-7M-Sir"/>
+                                    <constraint firstItem="dOp-1z-6Op" firstAttribute="leading" secondItem="n5a-ey-IVy" secondAttribute="leadingMargin" id="3Ph-Bv-55Q"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="dOp-1z-6Op" secondAttribute="trailing" id="4hA-gy-zPf"/>
+                                    <constraint firstItem="dOp-1z-6Op" firstAttribute="leading" secondItem="n5a-ey-IVy" secondAttribute="leadingMargin" constant="212" id="4ny-oB-gQQ"/>
+                                    <constraint firstAttribute="centerX" secondItem="dOp-1z-6Op" secondAttribute="centerX" constant="-13.25" id="66V-p0-AGO"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="dOp-1z-6Op" secondAttribute="trailing" constant="185.5" id="6ml-I0-3iJ"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="dOp-1z-6Op" secondAttribute="trailing" id="8Lv-KN-Mm5"/>
+                                    <constraint firstItem="dOp-1z-6Op" firstAttribute="leading" secondItem="n5a-ey-IVy" secondAttribute="leadingMargin" id="Djo-rH-1Tq"/>
+                                    <constraint firstItem="dOp-1z-6Op" firstAttribute="leading" secondItem="n5a-ey-IVy" secondAttribute="leadingMargin" id="R2I-xL-c2x"/>
+                                    <constraint firstAttribute="centerX" secondItem="dOp-1z-6Op" secondAttribute="centerX" constant="-13.25" id="TVH-Ln-3PA"/>
+                                    <constraint firstItem="dOp-1z-6Op" firstAttribute="top" secondItem="n5a-ey-IVy" secondAttribute="topMargin" id="cLf-jD-aT9"/>
+                                    <constraint firstAttribute="centerY" secondItem="dOp-1z-6Op" secondAttribute="centerY" id="iFo-He-e6c"/>
+                                    <constraint firstItem="dOp-1z-6Op" firstAttribute="top" secondItem="n5a-ey-IVy" secondAttribute="topMargin" constant="12" id="sal-0S-3Zn"/>
+                                </constraints>
                                 <size key="customSize" width="121.5" height="113"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="2mm-7M-Sir"/>
+                                        <exclude reference="3Ph-Bv-55Q"/>
+                                        <exclude reference="4hA-gy-zPf"/>
+                                        <exclude reference="4ny-oB-gQQ"/>
+                                        <exclude reference="66V-p0-AGO"/>
+                                        <exclude reference="6ml-I0-3iJ"/>
+                                        <exclude reference="8Lv-KN-Mm5"/>
+                                        <exclude reference="R2I-xL-c2x"/>
+                                        <exclude reference="TVH-Ln-3PA"/>
+                                        <exclude reference="iFo-He-e6c"/>
+                                        <exclude reference="sal-0S-3Zn"/>
+                                    </mask>
+                                </variation>
                                 <connections>
+                                    <outlet property="image" destination="dOp-1z-6Op" id="a9W-wA-sq5"/>
                                     <segue destination="10d-i9-rWT" kind="show" identifier="afbeelding" id="7fN-W0-g5A"/>
                                 </connections>
                             </collectionViewCell>
@@ -552,7 +612,7 @@
                         <barButtonItem key="backBarButtonItem" title="Terug" id="m0M-u4-OnI"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="collectionView" destination="FsM-QF-TvX" id="8wk-lA-D90"/>
+                        <outlet property="collectionView" destination="FsM-QF-TvX" id="iVp-jU-MZv"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j59-FE-zlU" userLabel="First Responder" sceneMemberID="firstResponder"/>
