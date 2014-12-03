@@ -55,11 +55,6 @@
          -->
 
         <activity
-            android:name="com.hogent.ti3g05.ti3_g05_joetzapp.InschrijvenActivity"
-            android:label="@string/title_activity_inschrijven"
-            android:theme="@style/CustomActionBarTheme">
-        </activity>
-        <activity
             android:name="com.hogent.ti3g05.ti3_g05_joetzapp.activiteit_detail"
             android:label="@string/title_activity_activiteit_detail"
             android:theme="@style/CustomActionBarTheme">

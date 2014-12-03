@@ -59,7 +59,15 @@ public class navBarMainScreen extends Activity {
         Bundle extra = getIntent().getExtras();
         if(extra != null)
         {
-            String frag = getIntent().getStringExtra("frag");
+            String frag = "";
+            if(getIntent().getStringExtra("frag")!=null)
+            {
+                frag = getIntent().getStringExtra("frag");
+            }
+            if(getIntent().getStringExtra("naarfrag")!= null)
+            {
+                frag = getIntent().getStringExtra("naarfrag");
+            }
             if(frag.toLowerCase().startsWith("activiteit"))
             {
                 fragment = new activiteit_overzicht();
@@ -67,6 +75,10 @@ public class navBarMainScreen extends Activity {
             else if(frag.toLowerCase().startsWith("vorming"))
             {
                 fragment = new Vormingen_Overzicht_Fragment();
+            }
+            else if (frag.toLowerCase().startsWith("profiel"))
+            {
+                fragment = new ProfielenOverzicht_fragment();
             }
         }
         else
@@ -86,6 +98,10 @@ public class navBarMainScreen extends Activity {
             else if(afkomstig.toString().toLowerCase().startsWith("vorming"))
             {
                 fragment = new Vormingen_Overzicht_Fragment();
+            }
+            else if(afkomstig.toString().toLowerCase().startsWith("profiel"))
+            {
+                fragment = new ProfielenOverzicht_fragment();
             }
         }
 
@@ -133,12 +149,8 @@ public class navBarMainScreen extends Activity {
         //ArrayAdapter<String> adapter = new ArrayAdapter<String>(getBaseContext(),
                 //R.layout.activity_drawer_layout_item, getResources().getStringArray(R.array.items));
         ArrayAdapter<String> adapter = null;
-        if(ParseUser.getCurrentUser()!= null && ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("monitor"))
-        {
-            adapter = new ArrayAdapter<String>(getBaseContext(),
-                    R.layout.activity_drawer_layout_item, getResources().getStringArray(R.array.itemsMonitor));
 
-        } else if (ParseUser.getCurrentUser() != null)
+        if (ParseUser.getCurrentUser() != null)
         {
             adapter = new ArrayAdapter<String>(getBaseContext(),
                     R.layout.activity_drawer_layout_item, getResources().getStringArray(R.array.itemsIngelogged));
@@ -178,11 +190,7 @@ public class navBarMainScreen extends Activity {
                 Bundle data = new Bundle();
                 data.putInt("position", position);
                 getUrl(position);
-                if(ParseUser.getCurrentUser() != null && ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("monitor"))
-                {
 
-                    getUrlMonitor(position);
-                }
                 rFragment.setArguments(data);
 
 
@@ -228,9 +236,19 @@ public class navBarMainScreen extends Activity {
 
                 if(ParseUser.getCurrentUser()!=null)
                 {
-                    Intent intent1 = new Intent(navBarMainScreen.this, ProfielenOverzicht.class
-                    );
+                    Intent intent1 = new Intent(navBarMainScreen.this, navBarMainScreen.class);
+                    fragment = new ProfielenOverzicht_fragment();
+
+                    refreshFragment(position);
+
+                    intent1.putExtra("frag", fragment.toString());
                     startActivity(intent1);
+                    //refreshFragment(position);
+                    break;
+
+                    /*Intent intent1 = new Intent(navBarMainScreen.this, ProfielenOverzicht.class
+                    );
+                    startActivity(intent1);*/
                 }
                 else
                 {
@@ -338,125 +356,12 @@ public class navBarMainScreen extends Activity {
                 startActivity(intent5);
 
                 break;
-
-            case 7:
-
-                fragment = new Vormingen_Overzicht_Fragment();
-                refreshFragment(position);
-/*
-                Intent intent5 = new Intent(navBarMainScreen.this, SignUp_deel1.class
-                );
-                startActivity(intent5);
-*/
-                break;
-
             default:
                 break;
         }
 
-       /* if(fragment != null)
-        {
-            FragmentManager fragmentManager = getFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
-
-            mDrawerList.setItemChecked(position, true);
-            mDrawerList.setSelection(position);
-            setTitle(menuItems[position]);
-            mDrawerLayout.closeDrawer(mDrawerList);
-
-        } else
-        {
-            Log.e("Error", "Error in het maken van fragment");
-        }*/
 
     }
-    protected void getUrlMonitor(int position) {
-        isInternetPresent = cd.isConnectingToInternet();
-
-        switch (position) {
-
-            case 0:
-
-                fragment = new activiteit_overzicht();
-                refreshFragment(position);
-                break;
-
-            case 1:
-
-
-                Intent intent1 = new Intent(navBarMainScreen.this, ProfielenOverzicht.class
-                );
-                startActivity(intent1);
-
-                break;
-
-
-            case 2:
-
-                fragment = new Vormingen_Overzicht_Fragment();
-
-                FragmentManager fragmentManager = getFragmentManager();
-                fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
-
-                Toast.makeText(getApplicationContext(), "monitor", Toast.LENGTH_SHORT);
-                setTitle(fragment.getId());
-                mDrawerLayout.closeDrawer(mDrawerList);
-
-                //refreshFragment(position);
-                break;
-
-            case 3:
-                if (isInternetPresent) {
-
-                    Intent intent2 = new Intent(navBarMainScreen.this, IndienenVoorkeurVakantie.class
-                    );
-                    startActivity(intent2);
-
-                } else {
-                    Toast.makeText(this, "Kan geen verbinding maken met de server. Controleer uw internetconnectie.", Toast.LENGTH_SHORT).show();
-                    Intent intent2 = new Intent(navBarMainScreen.this, navBarMainScreen.class
-                    );
-                    refreshFragment(position);
-                    startActivity(intent2);
-                }
-                break;
-            case 4:
-
-                Intent intent3 = new Intent(navBarMainScreen.this, about.class
-                );
-                startActivity(intent3);
-
-                break;
-            case 5:
-
-                Intent intent4 = null;
-
-                    intent4 = new Intent(navBarMainScreen.this, Loguit.class
-                    );
-                startActivity(intent4);
-
-                break;
-
-
-            default:
-                break;
-        }
-    }
-
-       /* if(fragment != null)
-        {
-            FragmentManager fragmentManager = getFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
-
-            mDrawerList.setItemChecked(position, true);
-            mDrawerList.setSelection(position);
-            setTitle(menuItems[position]);
-            mDrawerLayout.closeDrawer(mDrawerList);
-
-        } else
-        {
-            Log.e("Error", "Error in het maken van fragment");
-        }*/
 
 
 
@@ -509,7 +414,10 @@ public class navBarMainScreen extends Activity {
                 {
                     fragment = new Vormingen_Overzicht_Fragment();
                 }
-
+                else if (fragment.toString().toLowerCase().startsWith("profiel"))
+                {
+                    fragment = new ProfielenOverzicht_fragment();
+                }
 
                 FragmentManager fragmentManager = getFragmentManager();
                 fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();

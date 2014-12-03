@@ -88,7 +88,6 @@ Mail Joetz met uw voornaam, naam, e-mailadres, rijksregisternummer, adresgegeven
         <item>Inloggen</item>
         <item>Registreren</item>
 
-        <item>frag</item>
     </string-array>
 
     <string-array name="itemsIngelogged">
@@ -100,14 +99,6 @@ Mail Joetz met uw voornaam, naam, e-mailadres, rijksregisternummer, adresgegeven
         <item>Uitloggen</item>
     </string-array>
 
-    <string-array name="itemsMonitor">
-        <item>Vakanties</item>
-        <item>Profielen</item>
-        <item>Vormingen</item>
-        <item>Indienen voorkeur</item>
-        <item>Over Joetz</item>
-        <item>Uitloggen</item>
-    </string-array>
 
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>

@@ -30,6 +30,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_height="wrap_content"
                 android:id="@+id/achternaamP"
+                android:layout_marginTop="8dp"
                 android:textSize="25sp"/>
 
             <TextView
@@ -39,13 +40,15 @@
                 android:layout_below="@id/achternaamP"
                 android:textSize="25sp"
                 android:textAlignment="center"
+                android:layout_marginTop="8dp"
                 android:layout_centerHorizontal="true"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/emailP"
+                android:layout_marginTop="8dp"
                 android:layout_below="@id/voornaamP"
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:textAlignment="center"
                 android:layout_centerHorizontal="true"/>
 
@@ -96,22 +99,25 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/gsmP"
                 android:layout_below="@id/emailP"
+                android:layout_marginTop="8dp"
                 android:layout_centerHorizontal="true"/>
 
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:id="@+id/facebookL"
                 android:layout_below="@id/gsmP"
                 android:layout_centerHorizontal="true"/>
 
             <Button
                 android:background="@drawable/button_shape"
-                android:layout_width="wrap_content"
+                android:layout_width="170dp"
                 android:layout_height="wrap_content"
                 android:text="@string/btn_ProfielEdit"
                 android:id="@+id/btnProfielEdit"
+                android:layout_marginTop="8dp"
                 android:layout_below="@id/facebookL"
                 android:layout_alignParentEnd="true" />
         </RelativeLayout>

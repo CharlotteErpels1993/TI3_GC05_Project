@@ -125,7 +125,8 @@ public class ProfielDetail extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.backMenu2) {
-            Intent intent1 = new Intent(this, ProfielenOverzicht.class);
+            Intent intent1 = new Intent(this, navBarMainScreen.class);
+            intent1.putExtra("naarfrag", "profiel");
             intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent1);
 
