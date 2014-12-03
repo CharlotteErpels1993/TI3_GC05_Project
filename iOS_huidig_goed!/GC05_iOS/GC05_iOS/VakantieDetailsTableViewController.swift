@@ -38,6 +38,22 @@ class VakantieDetailsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        var ouderResponse = ParseData.getOuderWithEmail(PFUser.currentUser().email)
+        var favorieteVakantie: Favoriet = Favoriet(id: "test")
+        
+        if ouderResponse.1 == nil {
+            favorieteVakantie.ouder = ouderResponse.0
+            favorieteVakantie.vakantie = self.vakantie
+        }
+        
+        if ParseData.isFavorieteVakantie(favorieteVakantie) == true {
+            heartButton.setImage(self.imageHeartFull, forState: UIControlState.Normal)
+            self.favoriet = true
+        } else {
+            heartButton.setImage(self.imageHeartEmpty, forState: UIControlState.Normal)
+            self.favoriet = false
+        }
+        
         //zoekImages()
         
         var responseImages: ([UIImage], Int?)
@@ -148,12 +164,27 @@ class VakantieDetailsTableViewController: UITableViewController {
         }
     }
     @IBAction func switchHeart(sender: AnyObject) {
+        
+        var favorieteVakantie: Favoriet = Favoriet(id: "test")
+        var ouderResponse = ParseData.getOuderWithEmail(PFUser.currentUser().email)
+        
+        if ouderResponse.1 == nil {
+            //er is een ouder gevonden
+            favorieteVakantie.ouder = ouderResponse.0
+        }
+        
+        favorieteVakantie.vakantie = self.vakantie
+        
         if favoriet == false {
             favoriet = true
             // switch image
             heartButton.setImage(self.imageHeartFull, forState: UIControlState.Normal)
             
             // schrijf naar database
+            ParseData.parseFavorietToDatabase(favorieteVakantie)
+            
+            //ParseData.deleteFavorietTable()
+            //ParseData.vulFavorietTableOp()
             
             
             
@@ -163,7 +194,7 @@ class VakantieDetailsTableViewController: UITableViewController {
             heartButton.setImage(self.imageHeartEmpty, forState: UIControlState.Normal)
             
             // haal terug uit de database
-            
+            ParseData.deleteFavorieteVakantie(favorieteVakantie)
         
         
         }

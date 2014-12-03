@@ -45,6 +45,10 @@ struct /*class*/ ParseData {
         DeelnemerSQL.createDeelnemerTable()
     }
     
+    static private func createFavorietTable() {
+        FavorietSQL.createFavorietTable()
+    }
+    
     static private func createAfbeeldingTable() {
         AfbeeldingSQL.createAfbeeldingTable()
     }
@@ -89,6 +93,19 @@ struct /*class*/ ParseData {
         }
         
         DeelnemerSQL.vulDeelnemerTableOp()
+    }
+    
+    static func vulFavorietTableOp() {
+        
+        var response: ([String], Int?) = SD.existingTables()
+        
+        if response.1 == nil {
+            if !contains(response.0, "Favoriet") {
+                createFavorietTable()
+            }
+        }
+        
+        FavorietSQL.vulFavorietTableOp()
     }
     
     static func vulInschrijvingVakantieTableOp() {
@@ -197,7 +214,21 @@ struct /*class*/ ParseData {
                 let err = SD.deleteTable("Deelnemer")
             }
         }
+    }
+    
+    static func deleteFavorietTable() {
         
+        var response: ([String], Int?) = SD.existingTables()
+        
+        if response.1 == nil {
+            if contains(response.0, "Favoriet") {
+                let err = SD.deleteTable("Favoriet")
+            }
+        }
+    }
+    
+    static func deleteFavorieteVakantie(favoriet: Favoriet) {
+        FavorietSQL.deleteFavorieteVakantie(favoriet)
     }
     
     static func deleteInschrijvingVakantieTable() {
@@ -284,6 +315,10 @@ struct /*class*/ ParseData {
     
     static func parseDeelnemerToDatabase(deelnemer: Deelnemer) -> String {
         return DeelnemerSQL.parseDeelnemerToDatabase(deelnemer)
+    }
+    
+    static func parseFavorietToDatabase(favoriet: Favoriet) {
+        return FavorietSQL.parseFavorietToDatabase(favoriet)
     }
     
     static func parseInschrijvingVakantieToDatabase(inschrijving: InschrijvingVakantie) {
@@ -495,6 +530,10 @@ struct /*class*/ ParseData {
         }
         
         return false
+    }
+    
+    static func isFavorieteVakantie(favoriet: Favoriet) -> Bool {
+        return FavorietSQL.isFavoriet(favoriet)
     }
     
     static func getVoorkeurenVakantie(voorkeur: Voorkeur) -> /*[Voorkeur]*/ Int? {
