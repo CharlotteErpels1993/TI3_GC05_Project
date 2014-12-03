@@ -1,15 +1,8 @@
 package com.hogent.ti3g05.ti3_g05_joetzapp.domein;
 
-import android.media.Image;
-import android.text.method.DateTimeKeyListener;
-
-import com.parse.ParseFile;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.NavigableMap;
 
 public class Vakantie extends Activiteit{
     private Date vertrekDatum, terugkeerDatum;
@@ -21,18 +14,13 @@ public class Vakantie extends Activiteit{
     private String doelGroep;
     private Number maxAantalDeelnemers;
     private String naamVakantie;
-    private String foto1 ;
-    private String foto2;
-    private String foto3;
     private String prijsStr;
     private String periode;
     private String vakantieID;
     private String locatie;
     private String korteBeschrijving;
     private String vertrekDatumString, terugDatumString;
-
-
-    private HashMap<String, ArrayList<String>> fotos;
+    private ArrayList< String> fotos;
 
     public Vakantie(){
         super();
@@ -67,8 +55,8 @@ public class Vakantie extends Activiteit{
                 " - " + objterugkeerDatum;
     }*/
 
-    public HashMap<String, ArrayList<String>> getFotos(){return fotos;}
-    public void setFotos(HashMap<String,ArrayList< String>> fotos){this.fotos = fotos;}
+    public ArrayList< String> getFotos(){return fotos;}
+    public void setFotos(ArrayList< String> fotos){this.fotos = fotos;}
 
 
     public String getVakantieID(){return vakantieID;}
@@ -150,17 +138,27 @@ public class Vakantie extends Activiteit{
         return maxAantalDeelnemers;
     }
 
-    public String getFoto1(){   return foto1; }
+    public String getFoto1(){
+        return this.fotos.get(0);
+    }
 
-    public void setFoto1(String fto) {this.foto1=fto;}
+    public String getFoto2(){
+        return this.fotos.get(1);
+    }
 
-    public String getFoto2(){   return foto2; }
+    public String getFoto3(){
+        return (this.fotos.get(2) == null ? null : this.fotos.get(2));
+    }
 
-    public void setFoto2(String fto) {this.foto2=fto;}
-
-    public String getFoto3(){   return foto3; }
-
-    public void setFoto3(String fto) {this.foto3=fto;}
+    public void setFoto1(String obj){
+        this.fotos.set(0, obj);
+    }
+    public void setFoto2(String obj){
+        this.fotos.set(1, obj);
+    }
+    public void setFoto3(String obj){
+        this.fotos.set(2, obj);
+    }
 
     public void setMaxAantalDeelnemers(Number maxAantalDeelnemers) {
         this.maxAantalDeelnemers = maxAantalDeelnemers;

@@ -405,4 +405,31 @@ struct MonitorSQL {
         
     }
     
+    static func getRijksregisterNummers(rijksregisterNummer: String) -> Bool {
+        let (resultSet, err) = SD.executeQuery("SELECT * FROM Monitor WHERE rijksregisterNr = ?", withArgs: [rijksregisterNummer])
+        if err != nil
+        {
+            println("ERROR: error tijdens ophalen van alle rijksregisternummers uit table Monitor")
+        }
+        
+        if resultSet.count == 0 {
+            return false
+        }
+        
+        return true
+    }
+    
+    static func getGSM(gsm: String) -> Bool {
+        let (resultSet, err) = SD.executeQuery("SELECT * FROM Monitor WHERE gsm = ?", withArgs: [gsm])
+        if err != nil
+        {
+            println("ERROR: error tijdens ophalen van alle gsms uit table Monitor")
+        }
+        
+        if resultSet.count == 0 {
+            return false
+        }
+        
+        return true
+    }
 }

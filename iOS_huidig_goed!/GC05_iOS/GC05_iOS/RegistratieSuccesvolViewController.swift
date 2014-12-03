@@ -4,7 +4,6 @@ class RegistratieSuccesvolViewController: UIViewController
 {
     var ouder: Ouder!
     
-    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
     @IBAction func gaTerugNaarInloggen(sender: AnyObject) {
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
@@ -15,13 +14,11 @@ class RegistratieSuccesvolViewController: UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //activityIndicatorView.startAnimating()
         
         ParseData.parseOuderToDatabase(ouder)
         
         self.navigationItem.setHidesBackButton(true, animated: true)
 
-        activityIndicatorView.stopAnimating()
     }
     
     /*private func parseOuderToDatabase() {

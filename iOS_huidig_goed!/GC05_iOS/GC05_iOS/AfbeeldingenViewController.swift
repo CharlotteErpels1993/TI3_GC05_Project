@@ -1,10 +1,13 @@
 import UIKit
 
 class AfbeeldingenViewController: UICollectionViewController {
+
     var images: [UIImage] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.collectionView.dataSource = self
+        self.collectionView.delegate = self
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -13,6 +16,8 @@ class AfbeeldingenViewController: UICollectionViewController {
             var indexPath: NSIndexPath = self.collectionView.indexPathsForSelectedItems()?.last! as NSIndexPath
             var image: UIImage! = self.images[indexPath.row]
             afbeeldingViewController.image = image
+            afbeeldingViewController.images = self.images
+            afbeeldingViewController.nummer = indexPath.row
         }
     }
     
@@ -27,3 +32,4 @@ class AfbeeldingenViewController: UICollectionViewController {
         return cell
     }
 }
+

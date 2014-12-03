@@ -63,9 +63,9 @@ public class Login extends Activity{
         mUserNameEditText = (EditText) findViewById(R.id.username);
         mPasswordEditText = (EditText) findViewById(R.id.password);
 
-        getActionBar().setTitle("Inloggen");
+        getActionBar().setTitle(getString(R.string.title_activity_Login));
 
-        btn_LoginIn.setTextColor(getResources().getColor(R.color.Rood));
+        btn_LoginIn.setTextColor(getResources().getColor(R.color.darkRed));
 
         btn_LoginIn.setOnClickListener(new OnClickListener() {
 
@@ -74,6 +74,7 @@ public class Login extends Activity{
                 // get Internet status
                 //isInternetPresent = cd.isConnectingToInternet();
                 // check for Internet status
+                //TODO: internet vebinding testen
                 if (isInternetPresent) {
                     // Internet Connection is Present
                     // make HTTP requests
@@ -82,7 +83,7 @@ public class Login extends Activity{
                 } else {
                     // Internet connection is not present
                     // Ask user to connect to Internet
-                    Toast.makeText(getApplicationContext(), "Geen internetconnectie", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), getString(R.string.error_no_internet), Toast.LENGTH_SHORT).show();
                 }
 
             }

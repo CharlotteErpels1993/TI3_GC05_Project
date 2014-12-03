@@ -211,7 +211,7 @@ public class SignUp_deel3 extends Activity{
             cancel = true;
         }
         ParseQuery<ParseObject> query2 = ParseQuery.getQuery("Monitor");
-        query.whereEqualTo("gsm", gsm);
+        query2.whereEqualTo("gsm", gsm);
         try{
             List<ParseObject> lijstObjecten = query2.find();
             if (lijstObjecten.size() > 0){

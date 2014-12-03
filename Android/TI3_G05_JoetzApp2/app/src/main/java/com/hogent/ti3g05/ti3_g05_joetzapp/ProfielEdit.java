@@ -9,7 +9,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
@@ -148,7 +147,6 @@ public class ProfielEdit extends Activity {
                 ParseUser.getCurrentUser().setEmail(objemail);
                 ParseUser.getCurrentUser().setUsername(objemail);
                 ParseUser.getCurrentUser().saveInBackground();
-                //TODO: extra save?
 
                 terugSturenNaarProfielDetail(objnaam, objvoornaam, objemail, objGSM, objFB);
 

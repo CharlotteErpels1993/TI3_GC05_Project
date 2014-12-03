@@ -37,7 +37,7 @@ struct OuderSQL {
         let (resultSet, err) = SD.executeQuery("SELECT * FROM Ouder WHERE gsm = ?", withArgs: [gsm])
         if err != nil
         {
-            println("ERROR: error tijdens ophalen van alle gsms")
+            println("ERROR: error tijdens ophalen van alle gsms uit table Ouder")
         }
         
         if resultSet.count == 0 {
@@ -51,7 +51,7 @@ struct OuderSQL {
         let (resultSet, err) = SD.executeQuery("SELECT * FROM Ouder WHERE rijksregisterNr = ?", withArgs: [rijksregisterNummer])
         if err != nil
         {
-            println("ERROR: error tijdens ophalen van alle rijksregisternummers")
+            println("ERROR: error tijdens ophalen van alle rijksregisternummers uit table Ouder")
         }
         
         if resultSet.count == 0 {

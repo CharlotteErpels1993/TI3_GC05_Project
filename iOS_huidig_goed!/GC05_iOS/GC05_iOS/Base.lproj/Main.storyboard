@@ -9,7 +9,7 @@
         <scene sceneID="RQL-0y-cO4">
             <objects>
                 <tableViewController storyboardIdentifier="Vakanties" id="xj6-b1-6XR" customClass="VakantiesTableViewController" customModule="JOETZ" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="112" sectionHeaderHeight="22" sectionFooterHeight="22" id="xxD-Ib-aLY">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="337" sectionHeaderHeight="22" sectionFooterHeight="22" id="xxD-Ib-aLY">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -19,45 +19,101 @@
                             <textInputTraits key="textInputTraits"/>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="vakantieCell" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="vakantieCell" rowHeight="112" id="u8I-xk-xAt" customClass="VakantieCell" customModule="JOETZ" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="vakantieCell" selectionStyle="default" indentationWidth="1" reuseIdentifier="vakantieCell" id="u8I-xk-xAt" customClass="VakantieCell" customModule="JOETZ" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="u8I-xk-xAt" id="P3a-47-5bl">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ik wil deze vakantie!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SHQ-5H-NmG">
-                                            <rect key="frame" x="413" y="45" width="154" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VakantieNaam" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q1S-ad-fX9">
+                                            <rect key="frame" x="8" y="255" width="584" height="21.5"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                            <color key="textColor" red="0.90980392156862744" green="0.12941176470588234" blue="0.13725490196078433" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PaK-Rf-VG9">
+                                            <rect key="frame" x="13" y="8" width="574" height="240"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="285" id="0Oy-0X-jfj"/>
+                                                <constraint firstAttribute="height" constant="245" id="gE4-lt-FYP"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="0Oy-0X-jfj"/>
+                                                    <exclude reference="gE4-lt-FYP"/>
+                                                </mask>
+                                            </variation>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Doelgroep" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ukk-ej-Mho">
+                                            <rect key="frame" x="512" y="284" width="79.5" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h9d-BQ-QQV">
-                                            <rect key="frame" x="8" y="79" width="49" height="24"/>
-                                            <color key="backgroundColor" red="0.98823535439999999" green="0.090196080509999998" blue="0.10588236149999999" alpha="1" colorSpace="deviceRGB"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                            <color key="textColor" red="0.97647064924240112" green="0.99215692281723022" blue="0.99215692281723022" alpha="1" colorSpace="deviceRGB"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Locatie" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eae-8F-4Z1">
+                                            <rect key="frame" x="8" y="279" width="484" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VakantieNaam" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SRB-Ve-8pV">
-                                            <rect key="frame" x="8" y="8" width="127" height="24"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Klik voor meer info" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ya7-iN-w7k">
+                                            <rect key="frame" x="486" y="316" width="112" height="16"/>
+                                            <fontDescription key="fontDescription" type="italicSystem" pointSize="13"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="SHQ-5H-NmG" firstAttribute="top" secondItem="P3a-47-5bl" secondAttribute="topMargin" constant="37" id="61B-r8-iM6"/>
-                                        <constraint firstItem="SRB-Ve-8pV" firstAttribute="leading" secondItem="P3a-47-5bl" secondAttribute="leadingMargin" id="8Lc-Fz-DYW"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="SHQ-5H-NmG" secondAttribute="trailing" constant="-8" id="WP1-PF-lHc"/>
-                                        <constraint firstItem="h9d-BQ-QQV" firstAttribute="leading" secondItem="P3a-47-5bl" secondAttribute="leadingMargin" id="Z44-NE-Pfe"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="SHQ-5H-NmG" secondAttribute="bottom" constant="37.5" id="mv5-XU-rP6"/>
-                                        <constraint firstItem="SRB-Ve-8pV" firstAttribute="top" secondItem="P3a-47-5bl" secondAttribute="topMargin" id="pxt-or-Z0X"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="h9d-BQ-QQV" secondAttribute="bottom" constant="0.5" id="qYz-tb-B8n"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="ukk-ej-Mho" secondAttribute="bottom" constant="24" id="0VQ-AA-JO5"/>
+                                        <constraint firstItem="PaK-Rf-VG9" firstAttribute="top" secondItem="P3a-47-5bl" secondAttribute="topMargin" id="3mm-qU-ZkP"/>
+                                        <constraint firstItem="ukk-ej-Mho" firstAttribute="top" secondItem="q1S-ad-fX9" secondAttribute="bottom" constant="29.5" id="58S-E0-bA1"/>
+                                        <constraint firstItem="Eae-8F-4Z1" firstAttribute="top" secondItem="q1S-ad-fX9" secondAttribute="bottom" constant="2.5" id="7Id-Fl-qn3"/>
+                                        <constraint firstItem="Eae-8F-4Z1" firstAttribute="top" secondItem="ukk-ej-Mho" secondAttribute="bottom" constant="7.5" id="Aqw-5x-rOU"/>
+                                        <constraint firstItem="ukk-ej-Mho" firstAttribute="leading" secondItem="Eae-8F-4Z1" secondAttribute="trailing" id="EqA-Ji-UZw"/>
+                                        <constraint firstItem="q1S-ad-fX9" firstAttribute="leading" secondItem="P3a-47-5bl" secondAttribute="leadingMargin" constant="293" id="H8N-0a-DzQ"/>
+                                        <constraint firstItem="ukk-ej-Mho" firstAttribute="leading" secondItem="PaK-Rf-VG9" secondAttribute="trailing" constant="8" id="HtJ-UY-baU"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Ya7-iN-w7k" secondAttribute="bottom" constant="-3.5" id="Jw2-Uv-dS3"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="PaK-Rf-VG9" secondAttribute="trailing" constant="5" id="K9t-Ke-MtL"/>
+                                        <constraint firstItem="q1S-ad-fX9" firstAttribute="leading" secondItem="PaK-Rf-VG9" secondAttribute="trailing" constant="8" id="KhE-HA-cEH"/>
+                                        <constraint firstItem="q1S-ad-fX9" firstAttribute="top" secondItem="P3a-47-5bl" secondAttribute="topMargin" id="Opb-FT-3ni"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="PaK-Rf-VG9" secondAttribute="bottom" constant="80.5" id="Ql2-uL-Rdj"/>
+                                        <constraint firstItem="Eae-8F-4Z1" firstAttribute="top" secondItem="ukk-ej-Mho" secondAttribute="bottom" constant="-20.5" id="UXF-w8-Gxh"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="ukk-ej-Mho" secondAttribute="trailing" constant="0.5" id="bLm-7a-Mpk"/>
+                                        <constraint firstItem="Ya7-iN-w7k" firstAttribute="leading" secondItem="P3a-47-5bl" secondAttribute="leadingMargin" constant="472" id="cDp-1h-QpI"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="q1S-ad-fX9" secondAttribute="trailing" id="cQK-5J-5xQ"/>
+                                        <constraint firstItem="ukk-ej-Mho" firstAttribute="top" secondItem="q1S-ad-fX9" secondAttribute="bottom" constant="7.5" id="d4Z-jg-75X"/>
+                                        <constraint firstItem="q1S-ad-fX9" firstAttribute="top" secondItem="PaK-Rf-VG9" secondAttribute="bottom" constant="7" id="ezV-dK-mcG"/>
+                                        <constraint firstItem="Eae-8F-4Z1" firstAttribute="leading" secondItem="PaK-Rf-VG9" secondAttribute="trailing" constant="8" id="fQh-Cr-gWO"/>
+                                        <constraint firstItem="Eae-8F-4Z1" firstAttribute="leading" secondItem="P3a-47-5bl" secondAttribute="leadingMargin" id="hjm-kg-BAJ"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="q1S-ad-fX9" secondAttribute="trailing" id="i2U-lV-g5x"/>
+                                        <constraint firstItem="PaK-Rf-VG9" firstAttribute="leading" secondItem="P3a-47-5bl" secondAttribute="leadingMargin" constant="5" id="kAZ-Ww-bJC"/>
+                                        <constraint firstItem="ukk-ej-Mho" firstAttribute="leading" secondItem="P3a-47-5bl" secondAttribute="leadingMargin" constant="471" id="oKF-j9-dcg"/>
+                                        <constraint firstItem="q1S-ad-fX9" firstAttribute="leading" secondItem="P3a-47-5bl" secondAttribute="leadingMargin" id="s4O-qN-YxI"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Ya7-iN-w7k" secondAttribute="trailing" constant="-6" id="s5I-vN-AbE"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Eae-8F-4Z1" secondAttribute="trailing" constant="100" id="xC4-I4-ezP"/>
                                     </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="H8N-0a-DzQ"/>
+                                            <exclude reference="KhE-HA-cEH"/>
+                                            <exclude reference="Opb-FT-3ni"/>
+                                            <exclude reference="i2U-lV-g5x"/>
+                                            <exclude reference="Aqw-5x-rOU"/>
+                                            <exclude reference="UXF-w8-Gxh"/>
+                                            <exclude reference="fQh-Cr-gWO"/>
+                                            <exclude reference="cDp-1h-QpI"/>
+                                            <exclude reference="58S-E0-bA1"/>
+                                            <exclude reference="EqA-Ji-UZw"/>
+                                            <exclude reference="HtJ-UY-baU"/>
+                                            <exclude reference="d4Z-jg-75X"/>
+                                            <exclude reference="oKF-j9-dcg"/>
+                                        </mask>
+                                    </variation>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="doelgroepLabel" destination="h9d-BQ-QQV" id="6iH-l2-kPZ"/>
-                                    <outlet property="gaVerderLabel" destination="SHQ-5H-NmG" id="57X-kL-UEB"/>
-                                    <outlet property="vakantieNaamLabel" destination="SRB-Ve-8pV" id="zT0-X2-EnL"/>
+                                    <outlet property="afbeelding" destination="PaK-Rf-VG9" id="nsm-gO-qQq"/>
+                                    <outlet property="doelgroepLabel" destination="ukk-ej-Mho" id="KOi-B4-JwJ"/>
+                                    <outlet property="locatieLabel" destination="Eae-8F-4Z1" id="Y68-60-sNO"/>
+                                    <outlet property="vakantieNaamLabel" destination="q1S-ad-fX9" id="y2M-1e-Am6"/>
                                     <segue destination="q35-qh-mtC" kind="show" identifier="toonVakantie" id="laN-Ih-sVW"/>
                                 </connections>
                             </tableViewCell>
@@ -69,7 +125,7 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Vakanties" id="jTS-Lj-o5t">
-                        <barButtonItem key="backBarButtonItem" title=" " id="njL-6A-xXv"/>
+                        <barButtonItem key="backBarButtonItem" title="Vakanties" id="njL-6A-xXv"/>
                         <barButtonItem key="leftBarButtonItem" image="menu.png" id="ic7-yf-zL0">
                             <connections>
                                 <action selector="toggle:" destination="xj6-b1-6XR" id="lfG-P1-hpW"/>
@@ -91,7 +147,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FgJ-yq-mEZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="557" y="286"/>
+            <point key="canvasLocation" x="557" y="285"/>
         </scene>
         <!--Vakantie-->
         <scene sceneID="Rwh-qy-srh">
@@ -102,6 +158,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
+                            <tableViewSection id="Vwh-lP-vyi">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="IvD-kl-56b" style="IBUITableViewCellStyleDefault" id="NpT-Cd-68m">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NpT-Cd-68m" id="8YG-0w-brd">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="VakantieNaam" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IvD-kl-56b">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                    <color key="textColor" red="0.90980392156862744" green="0.12941176470588234" blue="0.13725490196078433" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                             <tableViewSection id="9hz-vW-mdA">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="94" id="GwE-Mt-Y7W">
@@ -425,8 +499,8 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Vakanties" id="EyU-Xm-7Wp">
-                        <barButtonItem key="backBarButtonItem" title=" " id="4W1-Mx-eUU"/>
+                    <navigationItem key="navigationItem" title="Details" id="EyU-Xm-7Wp">
+                        <barButtonItem key="backBarButtonItem" title="Terug" id="4W1-Mx-eUU"/>
                         <barButtonItem key="rightBarButtonItem" title="Inschrijven" id="tca-mm-haN">
                             <connections>
                                 <segue destination="hts-ZH-ofq" kind="show" identifier="inschrijven" id="vAz-KN-zJl"/>
@@ -450,6 +524,7 @@
                         <outlet property="maxAantalDeelnemersLabel" destination="q5p-DG-HWl" id="8Tf-75-WU1"/>
                         <outlet property="sterPrijs2Label" destination="Mrx-x2-RlI" id="diu-vM-sg6"/>
                         <outlet property="sterprijs1Label" destination="Dqi-r0-7gm" id="HoV-EP-F2n"/>
+                        <outlet property="vakantieNaamLabel" destination="IvD-kl-56b" id="RcO-Bu-VaV"/>
                         <outlet property="vertrekdatumLabel" destination="taw-Bm-ocr" id="n6Y-qM-a79"/>
                         <outlet property="vervoerwijzeLabel" destination="Kmg-bE-kDe" id="xfy-Uf-xJL"/>
                     </connections>
@@ -466,31 +541,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <inset key="scrollIndicatorInsets" minX="10" minY="20" maxX="0.0" maxY="10"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="wet-wz-sQM">
-                            <size key="itemSize" width="122" height="113"/>
+                            <size key="itemSize" width="90" height="90"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="sectionInset" minX="10" minY="20" maxX="10" maxY="10"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="TopLeft" restorationIdentifier="afbeeldingcell" reuseIdentifier="afbeeldingcell" id="n5a-ey-IVy" customClass="AfbeeldingCollectionViewCell" customModule="JOETZ" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="121.5" height="113"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dOp-1z-6Op">
-                                            <rect key="frame" x="8" y="8" width="104" height="95"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="95" id="1Mf-yl-so5"/>
+                                                <constraint firstAttribute="height" constant="90" id="1Mf-yl-so5"/>
                                                 <constraint firstAttribute="height" constant="306" id="3ZD-0l-myu"/>
                                                 <constraint firstAttribute="width" constant="295" id="FVu-WF-lDP"/>
                                                 <constraint firstAttribute="height" constant="167" id="HET-mp-ZQ7"/>
                                                 <constraint firstAttribute="width" constant="295" id="MRg-18-fGM"/>
                                                 <constraint firstAttribute="height" constant="306" id="Onl-gD-aMD"/>
                                                 <constraint firstAttribute="width" constant="186" id="YEJ-Ps-z9B"/>
-                                                <constraint firstAttribute="width" constant="104" id="bho-Ja-PJ6"/>
+                                                <constraint firstAttribute="width" constant="90" id="bho-Ja-PJ6"/>
                                                 <constraint firstAttribute="width" constant="295" id="hoQ-i5-Crs"/>
                                                 <constraint firstAttribute="height" constant="306" id="pTA-Dm-8Wm"/>
                                             </constraints>
@@ -518,14 +594,14 @@
                                     <constraint firstAttribute="centerX" secondItem="dOp-1z-6Op" secondAttribute="centerX" constant="-13.25" id="66V-p0-AGO"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="dOp-1z-6Op" secondAttribute="trailing" constant="185.5" id="6ml-I0-3iJ"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="dOp-1z-6Op" secondAttribute="trailing" id="8Lv-KN-Mm5"/>
-                                    <constraint firstItem="dOp-1z-6Op" firstAttribute="leading" secondItem="n5a-ey-IVy" secondAttribute="leadingMargin" id="Djo-rH-1Tq"/>
+                                    <constraint firstItem="dOp-1z-6Op" firstAttribute="leading" secondItem="n5a-ey-IVy" secondAttribute="leadingMargin" constant="-8" id="Djo-rH-1Tq"/>
                                     <constraint firstItem="dOp-1z-6Op" firstAttribute="leading" secondItem="n5a-ey-IVy" secondAttribute="leadingMargin" id="R2I-xL-c2x"/>
                                     <constraint firstAttribute="centerX" secondItem="dOp-1z-6Op" secondAttribute="centerX" constant="-13.25" id="TVH-Ln-3PA"/>
-                                    <constraint firstItem="dOp-1z-6Op" firstAttribute="top" secondItem="n5a-ey-IVy" secondAttribute="topMargin" id="cLf-jD-aT9"/>
+                                    <constraint firstItem="dOp-1z-6Op" firstAttribute="top" secondItem="n5a-ey-IVy" secondAttribute="topMargin" constant="-8" id="cLf-jD-aT9"/>
                                     <constraint firstAttribute="centerY" secondItem="dOp-1z-6Op" secondAttribute="centerY" id="iFo-He-e6c"/>
                                     <constraint firstItem="dOp-1z-6Op" firstAttribute="top" secondItem="n5a-ey-IVy" secondAttribute="topMargin" constant="12" id="sal-0S-3Zn"/>
                                 </constraints>
-                                <size key="customSize" width="121.5" height="113"/>
+                                <size key="customSize" width="90" height="90"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="2mm-7M-Sir"/>
@@ -542,7 +618,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <outlet property="image" destination="dOp-1z-6Op" id="a9W-wA-sq5"/>
+                                    <outlet property="image" destination="dOp-1z-6Op" id="OKz-Au-jfd"/>
                                     <segue destination="10d-i9-rWT" kind="show" identifier="afbeelding" id="7fN-W0-g5A"/>
                                 </connections>
                             </collectionViewCell>
@@ -553,15 +629,15 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="Dd7-I6-rhL">
-                        <barButtonItem key="backBarButtonItem" title=" " id="m0M-u4-OnI"/>
+                        <barButtonItem key="backBarButtonItem" title="Terug" id="m0M-u4-OnI"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="collectionView" destination="FsM-QF-TvX" id="iVp-jU-MZv"/>
+                        <outlet property="collectionView" destination="FsM-QF-TvX" id="nXZ-hi-mfk"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j59-FE-zlU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2111.5" y="336"/>
+            <point key="canvasLocation" x="2111" y="336"/>
         </scene>
         <!--Extra Tekst View Controller-->
         <scene sceneID="UKo-4s-58l">
@@ -622,7 +698,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Klevertje.png" translatesAutoresizingMaskIntoConstraints="NO" id="GVm-2i-3L4">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Klevertje.png" translatesAutoresizingMaskIntoConstraints="NO" id="GVm-2i-3L4">
                                 <rect key="frame" x="16" y="64" width="568" height="536"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="600" id="jjd-3h-zsW"/>
@@ -730,31 +806,62 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sGx-HJ-VTU">
-                                <rect key="frame" x="16" y="64" width="568" height="426"/>
+                                <rect key="frame" x="16" y="49" width="568" height="426"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="568" id="GkH-WB-LPD"/>
                                     <constraint firstAttribute="height" constant="426" id="rYi-yb-pM5"/>
                                 </constraints>
                             </imageView>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Pzb-jV-m1x">
-                                <rect key="frame" x="281" y="258" width="37" height="37"/>
-                                <color key="color" red="0.9794921875" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TEk-h1-ZGa">
+                                <rect key="frame" x="16" y="20" width="43" height="30"/>
+                                <state key="normal" title="Vorige">
+                                    <color key="titleColor" red="0.90980392160000001" green="0.12941176469999999" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="vorige:" destination="10d-i9-rWT" eventType="touchUpInside" id="Bb4-V1-OtL"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zhx-gm-b5g">
+                                <rect key="frame" x="520" y="20" width="64" height="30"/>
+                                <state key="normal" title="Volgende">
+                                    <color key="titleColor" red="0.90980392160000001" green="0.12941176469999999" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="volgende:" destination="10d-i9-rWT" eventType="touchUpInside" id="ShQ-zG-dgZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="sGx-HJ-VTU" firstAttribute="trailing" secondItem="NRJ-4q-mQR" secondAttribute="trailingMargin" id="FbK-mm-VxS"/>
-                            <constraint firstItem="sGx-HJ-VTU" firstAttribute="top" secondItem="fnv-zT-ql5" secondAttribute="bottom" id="OiA-tZ-JZE"/>
-                            <constraint firstAttribute="centerX" secondItem="Pzb-jV-m1x" secondAttribute="centerX" id="ZKJ-YL-yWQ"/>
+                            <constraint firstItem="TEk-h1-ZGa" firstAttribute="top" secondItem="fnv-zT-ql5" secondAttribute="bottom" id="I6y-F2-qYF"/>
+                            <constraint firstItem="zhx-gm-b5g" firstAttribute="trailing" secondItem="NRJ-4q-mQR" secondAttribute="trailingMargin" id="MXN-l7-zoB"/>
+                            <constraint firstItem="sGx-HJ-VTU" firstAttribute="top" secondItem="fnv-zT-ql5" secondAttribute="bottom" constant="29" id="OiA-tZ-JZE"/>
                             <constraint firstItem="sGx-HJ-VTU" firstAttribute="leading" secondItem="NRJ-4q-mQR" secondAttribute="leadingMargin" id="aSg-YA-mrb"/>
-                            <constraint firstAttribute="centerY" secondItem="Pzb-jV-m1x" secondAttribute="centerY" constant="23" id="nAJ-zp-GVP"/>
+                            <constraint firstItem="TEk-h1-ZGa" firstAttribute="leading" secondItem="NRJ-4q-mQR" secondAttribute="leadingMargin" id="dr4-V0-qlt"/>
+                            <constraint firstItem="zhx-gm-b5g" firstAttribute="trailing" secondItem="NRJ-4q-mQR" secondAttribute="trailingMargin" id="fEY-GY-noN"/>
+                            <constraint firstItem="xHl-Zp-AYI" firstAttribute="top" secondItem="zhx-gm-b5g" secondAttribute="bottom" id="k43-Sf-ljE"/>
+                            <constraint firstItem="zhx-gm-b5g" firstAttribute="top" secondItem="fnv-zT-ql5" secondAttribute="bottom" id="lKZ-Hj-vPC"/>
+                            <constraint firstItem="TEk-h1-ZGa" firstAttribute="leading" secondItem="NRJ-4q-mQR" secondAttribute="leadingMargin" id="mvT-qK-GjT"/>
+                            <constraint firstItem="xHl-Zp-AYI" firstAttribute="top" secondItem="TEk-h1-ZGa" secondAttribute="bottom" id="wva-Sa-nKP"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="mvT-qK-GjT"/>
+                                <exclude reference="fEY-GY-noN"/>
+                                <exclude reference="k43-Sf-ljE"/>
+                                <exclude reference="wva-Sa-nKP"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="qlM-JR-aKj"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <outlet property="acivityIndicatorView" destination="Pzb-jV-m1x" id="Ho2-sX-S62"/>
                         <outlet property="imageView" destination="sGx-HJ-VTU" id="kUp-07-GUu"/>
+                        <outlet property="volgendeButton" destination="zhx-gm-b5g" id="oQd-FE-y5W"/>
+                        <outlet property="vorigeButton" destination="TEk-h1-ZGa" id="rir-n8-926"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="poF-cv-4Bi" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -847,6 +954,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="74u-0a-ryP">
                                 <rect key="frame" x="523" y="550" width="61" height="30"/>
                                 <state key="normal" title="Annuleer">
+                                    <color key="titleColor" red="0.90980392160000001" green="0.12941176469999999" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -856,6 +964,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uqW-jm-he0">
                                 <rect key="frame" x="16" y="439" width="198" height="30"/>
                                 <state key="normal" title="Waar vind ik deze nummers?">
+                                    <color key="titleColor" red="0.90980392160000001" green="0.12941176469999999" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -868,21 +977,22 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uc2-Hp-ZHR">
-                                <rect key="frame" x="16" y="463" width="167" height="30"/>
-                                <state key="normal" title="Registreren als monitor?">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="1ab-Ky-SvP" kind="show" id="Y50-ed-9EW"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bent u lid van de socialistische mutualiteit? " lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fsh-T0-4Sa">
                                 <rect key="frame" x="16" y="162" width="568" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uc2-Hp-ZHR">
+                                <rect key="frame" x="16" y="463" width="167" height="30"/>
+                                <state key="normal" title="Registreren als monitor?">
+                                    <color key="titleColor" red="0.90980392160000001" green="0.12941176469999999" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="1ab-Ky-SvP" kind="show" id="Y50-ed-9EW"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -965,7 +1075,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Registreren" id="XDx-Ng-P49">
-                        <barButtonItem key="backBarButtonItem" title=" " id="0RI-iT-a2S"/>
+                        <barButtonItem key="backBarButtonItem" title="Terug" id="0RI-iT-a2S"/>
                         <barButtonItem key="leftBarButtonItem" image="menu.png" id="19o-nJ-TWu">
                             <connections>
                                 <action selector="toggle:" destination="fyb-xH-x0i" id="aes-6c-sMY"/>
@@ -1010,19 +1120,19 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wachtwoord:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vgN-OB-IWF">
-                                <rect key="frame" x="16" y="207" width="102" height="21"/>
+                                <rect key="frame" x="16" y="207" width="101.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="E-mail:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4pR-QD-gU1">
-                                <rect key="frame" x="16" y="133" width="54" height="21"/>
+                                <rect key="frame" x="16" y="133" width="53.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Geef uw gegevens in:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d94-IW-Wd6">
-                                <rect key="frame" x="16" y="100" width="166" height="21"/>
+                                <rect key="frame" x="16" y="100" width="165.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -1033,8 +1143,10 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hZK-bN-dtd">
-                                <rect key="frame" x="277" y="272" width="59" height="30"/>
+                                <rect key="frame" x="276" y="271.5" width="61" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Inloggen">
+                                    <color key="titleColor" red="0.90980392160000001" green="0.12941176469999999" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -1042,8 +1154,9 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GnE-q7-jzk">
-                                <rect key="frame" x="16" y="304" width="159" height="30"/>
+                                <rect key="frame" x="16" y="303" width="159" height="30"/>
                                 <state key="normal" title="Wachtwoord vergeten?">
+                                    <color key="titleColor" red="0.90980392160000001" green="0.12941176469999999" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -1051,7 +1164,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H0a-36-oYG">
-                                <rect key="frame" x="16" y="234" width="563" height="30"/>
+                                <rect key="frame" x="16" y="233" width="563" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
@@ -1109,7 +1222,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Inloggen" id="oE9-F4-VPK">
-                        <barButtonItem key="backBarButtonItem" title=" " id="i0r-4n-3rh"/>
+                        <barButtonItem key="backBarButtonItem" title="Terug" id="i0r-4n-3rh"/>
                         <barButtonItem key="leftBarButtonItem" image="menu.png" id="u7n-vX-idK">
                             <connections>
                                 <action selector="toggle:" destination="QSw-na-ve9" id="by2-Iz-PQv"/>
@@ -1195,7 +1308,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Profielen" id="sWn-EZ-BI4">
-                        <barButtonItem key="backBarButtonItem" title=" " id="9aL-Jh-Chx"/>
+                        <barButtonItem key="backBarButtonItem" title="Profielen" id="9aL-Jh-Chx"/>
                         <barButtonItem key="leftBarButtonItem" image="menu.png" id="eio-zu-qEJ">
                             <connections>
                                 <action selector="toggle:" destination="n8h-Pf-gLH" id="m29-9k-enY"/>
@@ -1230,27 +1343,26 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                             </label>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oox-Wx-zBH">
                                 <rect key="frame" x="1" y="103" width="600" height="162"/>
+                                <color key="tintColor" red="0.90980392160000001" green="0.12941176469999999" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                             </pickerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cY5-ZK-4UG">
-                                <rect key="frame" x="16" y="287" width="217" height="30"/>
-                                <state key="normal" title="Klik hier voor de periode te zien">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="toonPeriode:" destination="o7H-cr-yrT" eventType="touchUpInside" id="Cei-pP-HFe"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Qu-NI-7Ru">
                                 <rect key="frame" x="523" y="550" width="61" height="30"/>
                                 <state key="normal" title="Annuleer">
+                                    <color key="titleColor" red="0.90980392160000001" green="0.12941176469999999" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="gaTerugNaarOverzicht:" destination="o7H-cr-yrT" eventType="touchUpInside" id="0nf-UB-ZEo"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Periode:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L6A-tS-9Pw">
+                                <rect key="frame" x="16" y="273" width="66" height="20.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_periode" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sE9-QE-zgl">
-                                <rect key="frame" x="241" y="291" width="67" height="20.5"/>
+                                <rect key="frame" x="90" y="273" width="67" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -1259,24 +1371,18 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Oox-Wx-zBH" firstAttribute="top" secondItem="XWp-wD-jjx" secondAttribute="bottom" constant="8.5" id="33u-8l-VgC"/>
-                            <constraint firstItem="cY5-ZK-4UG" firstAttribute="leading" secondItem="EfU-VK-91v" secondAttribute="leadingMargin" id="3PJ-sH-Les"/>
-                            <constraint firstItem="cY5-ZK-4UG" firstAttribute="top" secondItem="Oox-Wx-zBH" secondAttribute="bottom" constant="21" id="3Rt-64-eHG"/>
-                            <constraint firstItem="sE9-QE-zgl" firstAttribute="top" secondItem="Oox-Wx-zBH" secondAttribute="bottom" constant="26" id="4DS-q7-tdj"/>
-                            <constraint firstItem="sE9-QE-zgl" firstAttribute="leading" secondItem="EfU-VK-91v" secondAttribute="leadingMargin" constant="225" id="88m-EM-Drc"/>
+                            <constraint firstItem="sE9-QE-zgl" firstAttribute="top" secondItem="Oox-Wx-zBH" secondAttribute="bottom" constant="8" id="4DS-q7-tdj"/>
+                            <constraint firstItem="sE9-QE-zgl" firstAttribute="leading" secondItem="EfU-VK-91v" secondAttribute="leadingMargin" constant="74" id="88m-EM-Drc"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Oox-Wx-zBH" secondAttribute="trailing" constant="-17" id="9ff-41-wJe"/>
                             <constraint firstItem="XWp-wD-jjx" firstAttribute="top" secondItem="YTT-VQ-8kq" secondAttribute="bottom" constant="10" id="BRx-HA-dA3"/>
+                            <constraint firstItem="L6A-tS-9Pw" firstAttribute="leading" secondItem="EfU-VK-91v" secondAttribute="leadingMargin" id="GWh-ai-8S5"/>
+                            <constraint firstItem="L6A-tS-9Pw" firstAttribute="top" secondItem="Oox-Wx-zBH" secondAttribute="bottom" constant="8" id="hsD-qp-VVP"/>
                             <constraint firstItem="OKd-jD-Bc5" firstAttribute="top" secondItem="0Qu-NI-7Ru" secondAttribute="bottom" constant="20" id="hw0-01-553"/>
                             <constraint firstItem="XWp-wD-jjx" firstAttribute="leading" secondItem="EfU-VK-91v" secondAttribute="leadingMargin" id="lSg-mA-Um8"/>
                             <constraint firstItem="0Qu-NI-7Ru" firstAttribute="trailing" secondItem="EfU-VK-91v" secondAttribute="trailingMargin" id="n0A-c8-wc3"/>
                             <constraint firstAttribute="trailingMargin" secondItem="XWp-wD-jjx" secondAttribute="trailing" id="vQs-uW-lWO"/>
-                            <constraint firstItem="cY5-ZK-4UG" firstAttribute="top" secondItem="Oox-Wx-zBH" secondAttribute="bottom" constant="22" id="wJn-24-4BL"/>
                             <constraint firstItem="Oox-Wx-zBH" firstAttribute="leading" secondItem="EfU-VK-91v" secondAttribute="leadingMargin" constant="-15" id="xgH-FQ-axY"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="3Rt-64-eHG"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Indienen voorkeur" id="rYZ-3l-4iL">
                         <barButtonItem key="rightBarButtonItem" title="Indienen" id="VFO-YT-e5w">
@@ -1286,7 +1392,6 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="buttonPeriode" destination="cY5-ZK-4UG" id="FIa-w2-hm5"/>
                         <outlet property="periodeLabel" destination="sE9-QE-zgl" id="XK3-Yc-QvM"/>
                         <outlet property="pickerView" destination="Oox-Wx-zBH" id="One-vD-J0t"/>
                     </connections>
@@ -1567,6 +1672,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rJd-H7-4j2">
                                 <rect key="frame" x="16" y="318" width="568" height="30"/>
                                 <state key="normal" title="Terug naar overzicht">
+                                    <color key="titleColor" red="0.90980392160000001" green="0.12941176469999999" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -1657,7 +1763,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Vormingen" id="3ip-p1-dgO">
-                        <barButtonItem key="backBarButtonItem" title=" " id="OGh-iC-dDQ"/>
+                        <barButtonItem key="backBarButtonItem" title="Vormingen" id="OGh-iC-dDQ"/>
                         <barButtonItem key="leftBarButtonItem" image="menu.png" id="Rxr-gt-tAC">
                             <connections>
                                 <action selector="toggle:" destination="YS9-9D-Eok" id="g2U-vp-IaQ"/>
@@ -1904,7 +2010,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Vorming" id="ujr-s1-KPf">
-                        <barButtonItem key="backBarButtonItem" title=" " id="bIu-Nv-dg7"/>
+                        <barButtonItem key="backBarButtonItem" title="Terug" id="bIu-Nv-dg7"/>
                         <barButtonItem key="rightBarButtonItem" title="Inschrijven" id="KMS-1s-xIQ">
                             <connections>
                                 <segue destination="d80-lq-Zhz" kind="show" identifier="inschrijven" id="fmQ-pI-xab"/>
@@ -1947,10 +2053,12 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                             </label>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H0z-nC-lBY">
                                 <rect key="frame" x="0.0" y="117" width="600" height="162"/>
+                                <color key="tintColor" red="0.90980392160000001" green="0.12941176469999999" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cLx-Za-Wc7">
                                 <rect key="frame" x="523" y="562" width="61" height="30"/>
                                 <state key="normal" title="Annuleer">
+                                    <color key="titleColor" red="0.90980392160000001" green="0.12941176469999999" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -2008,6 +2116,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ojS-E6-A5l">
                                 <rect key="frame" x="16" y="318" width="568" height="30"/>
                                 <state key="normal" title="Terug naar overzicht">
+                                    <color key="titleColor" red="0.90980392160000001" green="0.12941176469999999" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -2137,6 +2246,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fno-9f-XVJ">
                                 <rect key="frame" x="523" y="518" width="61" height="30"/>
                                 <state key="normal" title="Annuleer">
+                                    <color key="titleColor" red="0.90980392160000001" green="0.12941176469999999" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -2197,7 +2307,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Inschrijven" id="GM6-sG-rYO">
-                        <barButtonItem key="backBarButtonItem" title=" " id="Inl-cR-x0d"/>
+                        <barButtonItem key="backBarButtonItem" title="Terug" id="Inl-cR-x0d"/>
                         <barButtonItem key="rightBarButtonItem" title="Volgende" id="R44-tV-3Ab">
                             <connections>
                                 <segue destination="JG9-Yc-TEg" kind="show" identifier="volgende" id="lhB-sI-kla"/>
@@ -2239,6 +2349,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                             </label>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="XVp-7Y-Xg3">
                                 <rect key="frame" x="0.0" y="141" width="600" height="162"/>
+                                <color key="tintColor" red="0.90980392160000001" green="0.12941176469999999" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <date key="date" timeIntervalSinceReferenceDate="437479781.34447497">
                                     <!--2014-11-12 10:09:41 +0000-->
                                 </date>
@@ -2247,6 +2358,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Mf-ew-jA5">
                                 <rect key="frame" x="523" y="518" width="61" height="30"/>
                                 <state key="normal" title="Annuleer">
+                                    <color key="titleColor" red="0.90980392160000001" green="0.12941176469999999" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -2268,7 +2380,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Inschrijven" id="spO-N6-JKi">
-                        <barButtonItem key="backBarButtonItem" title=" " id="93V-XJ-qlN"/>
+                        <barButtonItem key="backBarButtonItem" title="Terug" id="93V-XJ-qlN"/>
                         <barButtonItem key="rightBarButtonItem" title="Volgende" id="gRg-tk-md4">
                             <connections>
                                 <segue destination="X5a-t7-Gqi" kind="show" identifier="volgende" id="iNH-iN-G1z"/>
@@ -2349,6 +2461,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yHa-o7-ctV">
                                 <rect key="frame" x="523" y="518" width="61" height="30"/>
                                 <state key="normal" title="Annuleer">
+                                    <color key="titleColor" red="0.90980392160000001" green="0.12941176469999999" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -2395,7 +2508,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Inschrijven" id="Ljr-c7-hY9">
-                        <barButtonItem key="backBarButtonItem" title=" " id="cRa-AS-ztW"/>
+                        <barButtonItem key="backBarButtonItem" title="Terug" id="cRa-AS-ztW"/>
                         <barButtonItem key="rightBarButtonItem" title="Volgende" id="LAg-GL-iRC">
                             <connections>
                                 <segue destination="fiA-PH-Lvg" kind="show" identifier="volgende" id="E6m-gO-M1Y"/>
@@ -2485,6 +2598,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o7d-V9-E9v">
                                 <rect key="frame" x="523" y="518" width="61" height="30"/>
                                 <state key="normal" title="Annuleer">
+                                    <color key="titleColor" red="0.90980392160000001" green="0.12941176469999999" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -2533,7 +2647,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Inschrijven" id="bi7-NQ-CC8">
-                        <barButtonItem key="backBarButtonItem" title=" " id="zTx-wV-sMc"/>
+                        <barButtonItem key="backBarButtonItem" title="Terug" id="zTx-wV-sMc"/>
                         <barButtonItem key="rightBarButtonItem" title="Volgende" id="9qQ-DS-d9b">
                             <connections>
                                 <segue destination="C57-CL-LAn" kind="show" identifier="volgende" id="ZaK-tF-Lqp"/>
@@ -2584,6 +2698,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tAQ-ng-oiQ">
                                 <rect key="frame" x="523" y="506" width="61" height="30"/>
                                 <state key="normal" title="Annuleer">
+                                    <color key="titleColor" red="0.90980392160000001" green="0.12941176469999999" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -2644,6 +2759,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aKZ-2H-F1N">
                                 <rect key="frame" x="231" y="307" width="139" height="30"/>
                                 <state key="normal" title="Terug naar overzicht">
+                                    <color key="titleColor" red="0.90980392160000001" green="0.12941176469999999" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -2708,6 +2824,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ygf-4H-7Bi">
                                 <rect key="frame" x="31" y="241" width="194" height="30"/>
                                 <state key="normal" title="Stel wachtwoord opnieuw in">
+                                    <color key="titleColor" red="0.90980392160000001" green="0.12941176469999999" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -2767,6 +2884,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rAR-ya-agS">
                                 <rect key="frame" x="232" y="309" width="135" height="30"/>
                                 <state key="normal" title="Terug naar inloggen">
+                                    <color key="titleColor" red="0.90980392160000001" green="0.12941176469999999" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -2937,6 +3055,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kqc-px-T9r">
                                 <rect key="frame" x="523" y="550" width="61" height="30"/>
                                 <state key="normal" title="Annuleer">
+                                    <color key="titleColor" red="0.90980392160000001" green="0.12941176469999999" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -3006,7 +3125,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Registreren" id="suI-Ue-v3o">
-                        <barButtonItem key="backBarButtonItem" title=" " id="jMl-2B-JNX"/>
+                        <barButtonItem key="backBarButtonItem" title="Terug" id="jMl-2B-JNX"/>
                         <barButtonItem key="rightBarButtonItem" title="Volgende" id="L9b-bD-fFu">
                             <connections>
                                 <segue destination="w0S-HA-suc" kind="show" identifier="volgende" id="H9B-i3-Yhv"/>
@@ -3083,6 +3202,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8UF-HO-LKh">
                                 <rect key="frame" x="523" y="550" width="61" height="30"/>
                                 <state key="normal" title="Annuleer">
+                                    <color key="titleColor" red="0.90980392160000001" green="0.12941176469999999" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -3160,6 +3280,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jQV-Y3-Kti">
                                 <rect key="frame" x="238" y="312" width="124" height="30"/>
                                 <state key="normal" title="Ga naar vakanties">
+                                    <color key="titleColor" red="0.90980392160000001" green="0.12941176469999999" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -3167,10 +3288,6 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                     <segue destination="3Ah-cP-UoS" kind="unwind" unwindAction="gaTerugNaarInloggen:" id="pNU-AA-Ejo"/>
                                 </connections>
                             </button>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="CSP-El-R4c">
-                                <rect key="frame" x="282" y="281" width="37" height="37"/>
-                                <color key="color" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -3181,8 +3298,6 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                             <constraint firstItem="jQV-Y3-Kti" firstAttribute="top" secondItem="zN8-iL-ksi" secondAttribute="bottom" constant="2" id="WNJ-Ve-cQB"/>
                             <constraint firstAttribute="centerY" secondItem="zN8-iL-ksi" secondAttribute="centerY" constant="0.75" id="XEc-ju-ykC"/>
                             <constraint firstAttribute="trailingMargin" secondItem="jQV-Y3-Kti" secondAttribute="trailing" constant="248" id="XjO-HY-Mxn"/>
-                            <constraint firstAttribute="centerX" secondItem="CSP-El-R4c" secondAttribute="centerX" constant="-0.5" id="dGN-4P-oQT"/>
-                            <constraint firstAttribute="centerY" secondItem="CSP-El-R4c" secondAttribute="centerY" constant="0.5" id="gyU-2Y-lJQ"/>
                             <constraint firstAttribute="centerY" secondItem="zN8-iL-ksi" secondAttribute="centerY" constant="0.5" id="lF0-xu-4HP"/>
                             <constraint firstAttribute="trailingMargin" secondItem="zN8-iL-ksi" secondAttribute="trailing" id="o20-Zj-rtm"/>
                             <constraint firstItem="jQV-Y3-Kti" firstAttribute="top" secondItem="zN8-iL-ksi" secondAttribute="bottom" constant="8" id="sv7-qM-I4K"/>
@@ -3202,9 +3317,6 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Registratie voltooid" id="vbh-wi-0lX"/>
-                    <connections>
-                        <outlet property="activityIndicatorView" destination="CSP-El-R4c" id="Dlt-kW-tKZ"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0km-KM-IRT" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="3Ah-cP-UoS" userLabel="Exit" sceneMemberID="exit"/>
@@ -3654,7 +3766,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Welkom" id="nZa-AM-chs">
-                        <barButtonItem key="backBarButtonItem" title=" " id="GMJ-EI-G6j"/>
+                        <barButtonItem key="backBarButtonItem" title="Terug" id="GMJ-EI-G6j"/>
                         <barButtonItem key="leftBarButtonItem" image="menu.png" id="fCb-Ll-6rz">
                             <connections>
                                 <action selector="toggle:" destination="23A-H4-KGV" id="frS-la-DPN"/>
@@ -3797,10 +3909,10 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
         <image name="menu.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="rLN-eU-UEX"/>
-        <segue reference="xe1-I8-Pkw"/>
+        <segue reference="IEO-bq-IHJ"/>
+        <segue reference="quD-W8-2tt"/>
+        <segue reference="n6i-tz-46X"/>
         <segue reference="9Je-LH-R9J"/>
         <segue reference="fAM-X2-96q"/>
-        <segue reference="xSz-Mr-cgx"/>
     </inferredMetricsTieBreakers>
 </document>

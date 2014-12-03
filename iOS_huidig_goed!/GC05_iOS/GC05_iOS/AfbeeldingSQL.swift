@@ -38,6 +38,7 @@ struct /*class*/ AfbeeldingSQL {
         }
     }*/
     
+    
     static func getAfbeeldingenMetVakantieId(vakantieId: String) -> [UIImage]{
         var afbeeldingen: [UIImage] = []
         var afbeelding: UIImage = UIImage()

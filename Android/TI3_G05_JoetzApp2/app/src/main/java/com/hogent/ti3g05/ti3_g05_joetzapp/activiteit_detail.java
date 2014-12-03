@@ -5,14 +5,12 @@ import android.content.Intent;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -24,7 +22,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.logging.Handler;
+import java.util.ArrayList;
 
 //ingelogde gebr:      titel, korte beschr, periode, locatie, inbegrepen in prijs, doelgroep (met geboortejaren), max aantal deelnemers,
 //                     vervoerswijze, formule, prijs (basisprijs, BM prijs & sterprijs) kortingen, gegevens contactpersoon inschrijving & algemene voorwaarden
@@ -43,9 +41,9 @@ public class activiteit_detail extends Activity {
     String prijs;
     String beschrijving;
     ImageLoader imageLoader = new ImageLoader(this);
-    String afbeelding1;
     String maxDoelgroep;
     String minDoelgroep;
+    String afbeelding1;
     String afbeelding2;
     String afbeelding3;
     String bmLedenPrijs;
@@ -53,8 +51,7 @@ public class activiteit_detail extends Activity {
     String sterPrijs2Ouders;
     String inbegrepenInPrijs;
     String activiteitID;
-
-    private boolean isIngelogd;
+    ArrayList<String> fotos = new ArrayList<String>();
 
     Button btnInschrijven;
     Button btnmeerInfo;
@@ -68,13 +65,6 @@ public class activiteit_detail extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activiteit_detailnieuw);
 
-        if (ParseUser.getCurrentUser() != null){
-            //gebruiker is ingelogd
-            isIngelogd = true;
-        }else{
-            //niet ingelogd
-            isIngelogd = false;
-        }
 
         Intent i = getIntent();
         naam = i.getStringExtra("naam");
@@ -83,9 +73,6 @@ public class activiteit_detail extends Activity {
         terugdatum = i.getStringExtra("terugdatum");
         maxDoelgroep = i.getStringExtra("maxdoelgroep");
         minDoelgroep = i.getStringExtra("mindoelgroep");
-        afbeelding1 = i.getStringExtra("afbeelding1");
-        afbeelding2 = i.getStringExtra("afbeelding2");
-        afbeelding3 = i.getStringExtra("afbeelding3");
         formule = i.getStringExtra("formule");
         maxDeeln = i.getStringExtra("maxAantalDeelnemers");
         periode = i.getStringExtra("periode");
@@ -94,6 +81,14 @@ public class activiteit_detail extends Activity {
         inbegrepenInPrijs = i.getStringExtra("InbegrepenInPrijs");
         activiteitID = i.getStringExtra("objectId");
 
+        //afbeeldingen ophalen met een while-lus, die stopt als de nieuwe afbeelding null is, want we weten niet zeker of
+        String huidigeAfbeelding = i.getStringExtra("foto0");
+        int teller = 0;
+        while(huidigeAfbeelding != null){
+            fotos.add(huidigeAfbeelding);
+            teller++;
+            huidigeAfbeelding = i.getStringExtra("foto" + teller);
+        }
 
 
         setTitle(naam);
@@ -124,7 +119,6 @@ public class activiteit_detail extends Activity {
 
         ImageView afbeelding1im = (ImageView) findViewById(R.id.afbeelding1);
         ImageView afbeelding2im = (ImageView) findViewById(R.id.afbeelding2);
-
         ImageView afbeelding3im = (ImageView) findViewById(R.id.afbeelding3);
         ImageView share  = (ImageView) findViewById(R.id.share);
 
@@ -204,40 +198,45 @@ public class activiteit_detail extends Activity {
             }
         });
 
-        afbeelding1im.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent1 = new Intent(activiteit_detail.this, afbeeldingUItvergroot.class);
+        if (afbeelding1im.getVisibility() == View.VISIBLE){
+            afbeelding1im.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent1 = new Intent(activiteit_detail.this, afbeeldingUItvergroot.class);
 
-                intent1.putExtra("afbeelding", afbeelding1);
-                startActivity(intent1);
+                    intent1.putExtra("afbeelding", afbeelding1);
+                    startActivity(intent1);
 
-                overridePendingTransition(R.anim.right_in, R.anim.left_out);
-            }
-        });
-        afbeelding2im.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent1 = new Intent(activiteit_detail.this, afbeeldingUItvergroot.class);
+                    overridePendingTransition(R.anim.right_in, R.anim.left_out);
+                }
+            });
+        }
+        if (afbeelding2im.getVisibility() == View.VISIBLE){
+            afbeelding2im.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent1 = new Intent(activiteit_detail.this, afbeeldingUItvergroot.class);
 
-                intent1.putExtra("afbeelding",afbeelding2);
-                startActivity(intent1);
+                    intent1.putExtra("afbeelding",afbeelding2);
+                    startActivity(intent1);
 
-                overridePendingTransition(R.anim.right_in, R.anim.left_out);
-            }
-        });
+                    overridePendingTransition(R.anim.right_in, R.anim.left_out);
+                }
+            });
+        }
+        if (afbeelding3im.getVisibility() == View.VISIBLE){
+            afbeelding3im.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent1 = new Intent(activiteit_detail.this, afbeeldingUItvergroot.class);
 
-        afbeelding3im.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent1 = new Intent(activiteit_detail.this, afbeeldingUItvergroot.class);
+                    intent1.putExtra("afbeelding",afbeelding3);
+                    startActivity(intent1);
 
-                intent1.putExtra("afbeelding",afbeelding3);
-                startActivity(intent1);
-
-                overridePendingTransition(R.anim.right_in, R.anim.left_out);
-            }
-        });
+                    overridePendingTransition(R.anim.right_in, R.anim.left_out);
+                }
+            });
+        }
 
         //hieronder wordt er een leesbare datum geconverteerd
         try{
@@ -278,7 +277,6 @@ public class activiteit_detail extends Activity {
             txtSterPrijs1Ouder.setVisibility(View.GONE);
             txtSterPrijs2Ouders.setVisibility(View.GONE);
             txtformule.setVisibility(View.GONE);
-            txtmaxDeeln.setVisibility(View.GONE);
             txtInbegrepenInPrijs.setVisibility(View.GONE);
             btnmeerInfo.setVisibility(View.GONE);
             verberg.setVisibility(View.GONE);
@@ -336,9 +334,32 @@ public class activiteit_detail extends Activity {
 
         // Capture position and set results to the ImageView
         // Passes flag images URL into ImageLoader.class
-        imageLoader.DisplayImage(afbeelding1, afbeelding1im);
-        imageLoader.DisplayImage(afbeelding2, afbeelding2im);
-        imageLoader.DisplayImage(afbeelding3, afbeelding3im);
+        int aantalAfbeeldingen = fotos.size();
+        if (!fotos.isEmpty()){
+            afbeelding1im.setVisibility(View.VISIBLE);
+            afbeelding1 = fotos.get(0);
+            imageLoader.DisplayImage(afbeelding1, afbeelding1im);
+        }
+        else{
+
+            afbeelding1im.setVisibility(View.GONE);
+        }
+        if (aantalAfbeeldingen >= 2){
+            afbeelding2im.setVisibility(View.VISIBLE);
+            afbeelding2 = fotos.get(1);
+            imageLoader.DisplayImage(afbeelding2, afbeelding2im);
+        }
+        else{
+            afbeelding2im.setVisibility(View.GONE);
+        }
+        if (aantalAfbeeldingen >= 3){
+            afbeelding3im.setVisibility(View.VISIBLE);
+            afbeelding3 = fotos.get(2);
+            imageLoader.DisplayImage(afbeelding3, afbeelding3im);
+        }
+        else{
+            afbeelding3im.setVisibility(View.GONE);
+        }
 
     }
 
@@ -352,7 +373,7 @@ public class activiteit_detail extends Activity {
     public String getShareUrl()
     {
         String urlToShare = "";
-
+        //TODO: hardcoded -> niet goed. Extra veld in DB?
         if(naam.toLowerCase().equals("kerstvakantie aan zee"))
         {
             urlToShare = "http://www.joetz.be/309/Vakanties/Binnenland/Pages/Kerstvakantie.aspx";

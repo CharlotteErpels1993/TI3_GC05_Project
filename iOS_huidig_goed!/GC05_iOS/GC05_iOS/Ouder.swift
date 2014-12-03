@@ -8,10 +8,10 @@ class Ouder: Gebruiker
         super.init(id: id)
     }
     
-    init(ouder: PFObject) {
+    /*init(ouder: PFObject) {
         self.aansluitingsNrTweedeOuder = ouder["aansluitingsNrTweedeOuder"] as? Int
         super.init(gebruiker: ouder)
-    }
+    }*/
     
     init(rijksregisterNr: String, email: String, wachtwoord: String, voornaam: String, naam: String, straat: String, nummer: Int, bus: String, gemeente: String, postcode: Int, telefoon: String, gsm: String, aansluitingsNr: Int, codeGerechtigde: Int, aansluitingsNrTweedeOuder: Int)
     {

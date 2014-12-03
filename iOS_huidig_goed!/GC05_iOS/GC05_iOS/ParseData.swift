@@ -114,7 +114,15 @@ struct /*class*/ ParseData {
     }
     
     
-    static private func vulOuderTableOp() {
+    static func vulOuderTableOp() {
+        var response: ([String], Int?) = SD.existingTables()
+        
+        if response.1 == nil {
+            if !contains(response.0, "Ouder") {
+                createOuderTable()
+            }
+        }
+        
         OuderSQL.vulOuderTableOp()
     }
     
@@ -198,6 +206,18 @@ struct /*class*/ ParseData {
         
     }
 
+    static func deleteOuderTable() {
+        
+        var response: ([String], Int?) = SD.existingTables()
+        
+        if response.1 == nil {
+            if contains(response.0, "Ouder") {
+                let err = SD.deleteTable("Ouder")
+            }
+        }
+        
+    }
+    
     static func deleteVoorkeurTable() {
         
         var response: ([String], Int?) = SD.existingTables()
@@ -273,6 +293,26 @@ struct /*class*/ ParseData {
         return afbeeldingen
     }
     
+    static func getAfbeeldingMetVakantieId(vakantieId: String) -> UIImage {
+        var query = PFQuery(className: "Afbeelding")
+        query.whereKey("vakantie", equalTo: vakantieId)
+        
+        var afbeeldingenObjects: [PFObject] = []
+        var afbeeldingFile: PFFile
+        var afbeelding: UIImage
+        var afbeeldingen: [UIImage] = []
+        
+        afbeeldingenObjects = query.findObjects() as [PFObject]
+        
+        for afbeeldingO in afbeeldingenObjects {
+            afbeeldingFile = afbeeldingO["afbeelding"] as PFFile
+            afbeelding = UIImage(data: afbeeldingFile.getData())!
+            afbeeldingen.append(afbeelding)
+        }
+        
+        return afbeeldingen[0]
+    }
+    
     //InschrijvingenVakantieTable
     static func getInschrijvingenVakantie(inschrijving: InschrijvingVakantie) -> [InschrijvingVakantie] {
         
@@ -289,9 +329,9 @@ struct /*class*/ ParseData {
     static func getInschrijvingenVorming(inschrijving: InschrijvingVorming) -> [InschrijvingVorming] {
         var monitorId: String! = inschrijving.monitor?.id
         var vormingId: String! = inschrijving.vorming?.id
-        var periode: String! = inschrijving.periode
+        //var periode: String! = inschrijving.periode
         
-        return InschrijvingVormingSQL.getInschrijvingenVorming(monitorId, vormingId: vormingId, periode: periode)
+        return InschrijvingVormingSQL.getInschrijvingenVorming(monitorId, vormingId: vormingId/*, periode: periode*/)
     }
     
     //MonitorTable
@@ -364,11 +404,18 @@ struct /*class*/ ParseData {
     
     
     static func getRijksregisterNummers(rijksregisterNummer: String) -> Bool {
-        return OuderSQL.getRijksregisterNummers(rijksregisterNummer)
+        if OuderSQL.getRijksregisterNummers(rijksregisterNummer) == true ||
+            MonitorSQL.getRijksregisterNummers(rijksregisterNummer) == true {
+            return true
+        }
+        return false
     }
     
     static func getGSM(gsm: String) -> Bool {
-        return OuderSQL.getGSM(gsm)
+        if OuderSQL.getGSM(gsm) == true || MonitorSQL.getGSM(gsm) == true {
+            return true
+        }
+        return false
     }
     
     static func getEmail(email: String) -> Bool {

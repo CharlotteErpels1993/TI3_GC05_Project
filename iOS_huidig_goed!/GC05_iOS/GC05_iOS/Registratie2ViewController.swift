@@ -17,6 +17,7 @@ class Registratie2ViewController: ResponsiveTextFieldViewController
     var foutBox: FoutBox? = nil
     var statusTextFields: [String: String] = [:]
     var redColor: UIColor = UIColor.redColor()
+    var gsmAlGeregistreerd: Bool = false
     
     @IBAction func gaTerugNaarInloggen(sender: AnyObject) {
         annuleerControllerRegistratie(self)
@@ -29,11 +30,26 @@ class Registratie2ViewController: ResponsiveTextFieldViewController
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "volgende" {
-        let registratie3ViewController = segue.destinationViewController as Registratie3ViewController
+            let registratie3ViewController = segue.destinationViewController as Registratie3ViewController
         
-        //TO DO: controleren op formaat van ingevulde text! (String, int, ...)
-        
-        setStatusTextFields()
+            //nieuw: Charlotte
+            setStatusTextFields()
+            pasLayoutVeldenAan()
+            
+            if controleerRodeBordersAanwezig() == true {
+                if gsmAlGeregistreerd == true {
+                    foutBoxOproepen("Fout", "Deze GSM-nummer (\(self.txtGsm.text)) is al geregistreerd bij ons!", self)
+                } else {
+                    foutBoxOproepen("Fout", "Gelieve de velden correct in te vullen!", self)
+                }
+                self.viewDidLoad()
+            } else {
+                settenVerplichteGegevens()
+                settenOptioneleGegevens()
+                registratie3ViewController.ouder = ouder
+            }
+            
+        /*setStatusTextFields()
         pasLayoutVeldenAan()
         
         if controleerRodeBordersAanwezig() == true {
@@ -55,7 +71,7 @@ class Registratie2ViewController: ResponsiveTextFieldViewController
             } else {
                 registratie3ViewController.ouder = ouder
             }
-        }
+        }*/
         } else if segue.identifier == "gaTerug" {
             let vakantiesViewController = segue.destinationViewController as VakantiesTableViewController
         }
@@ -133,9 +149,14 @@ class Registratie2ViewController: ResponsiveTextFieldViewController
         
         if txtGsm.text.isEmpty {
             statusTextFields["gsm"] = "leeg"
+            gsmAlGeregistreerd = false
         } else {
             if !checkPatternGsm(txtGsm.text) {
                 statusTextFields["gsm"] = "ongeldig"
+                gsmAlGeregistreerd = false
+            } else if controleerGSMAlGeregisteerd() == true {
+                statusTextFields["gsm"] = "al geregistreerd"
+                gsmAlGeregistreerd = true
             } else {
                 statusTextFields["gsm"] = "geldig"
             }
@@ -191,7 +212,7 @@ class Registratie2ViewController: ResponsiveTextFieldViewController
             giveUITextFieldDefaultBorder(txtTelefoon)
         }
         
-        if statusTextFields["gsm"] == "leeg" || statusTextFields["gsm"] == "ongeldig"{
+        if statusTextFields["gsm"] == "leeg" || statusTextFields["gsm"] == "ongeldig" || statusTextFields["gsm"] == "al geregistreerd" {
             giveUITextFieldRedBorder(txtGsm)
         } else {
             giveUITextFieldDefaultBorder(txtGsm)
