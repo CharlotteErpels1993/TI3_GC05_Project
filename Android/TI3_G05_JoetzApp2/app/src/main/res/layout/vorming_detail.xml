@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
-
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     android:finishOnTaskLaunch="true"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp">
 
         <RelativeLayout
             android:id="@+id/lay1"
@@ -18,10 +19,14 @@
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_centerHorizontal="true"
                 android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
                 android:id="@+id/titelVD"
-                android:textSize="25sp"/>
+                android:textColor="@color/Rood"
+                android:layout_marginBottom="15dp"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -109,7 +114,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/lay1"
-            android:id="@+id/btnInschrijvenVorming"/>
+            android:id="@+id/btnInschrijvenVorming"
+            android:layout_marginBottom="5dp"/>
 
 
     </RelativeLayout>

@@ -86,7 +86,7 @@ public class VormingAdapter extends ArrayAdapter<Vorming> implements Filterable 
             view = inflater.inflate(R.layout.list_view_item_vorming, null);
             holder.titel = (TextView) view.findViewById(R.id.titelV);
             holder.locatie = (TextView) view.findViewById(R.id.locatieV);
-            holder.criteriaDeelnemer = (TextView) view.findViewById(R.id.criteriaDeelnemer);
+            //holder.criteriaDeelnemer = (TextView) view.findViewById(R.id.criteriaDeelnemer);
             holder.tips = (TextView) view.findViewById(R.id.tips);
             holder.prijs = (TextView) view.findViewById(R.id.prijsV);
             holder.websiteLocatie = (TextView) view.findViewById(R.id.websiteLocatie);
@@ -96,8 +96,8 @@ public class VormingAdapter extends ArrayAdapter<Vorming> implements Filterable 
         }
         holder.titel.setText(vormingen.get(position).getTitel());
         holder.locatie.setText(vormingen.get(position).getLocatie());
-
-        holder.criteriaDeelnemer.setText(vormingen.get(position).getCriteriaDeelnemers());
+        holder.prijs.setText("€ " + vormingen.get(position).getPrijs().toString());
+        //holder.criteriaDeelnemer.setText(vormingen.get(position).getCriteriaDeelnemers());
         holder.tips.setText(vormingen.get(position).getTips());
         holder.websiteLocatie.setText(vormingen.get(position).getWebsiteLocatie());
 
@@ -106,14 +106,10 @@ public class VormingAdapter extends ArrayAdapter<Vorming> implements Filterable 
             @Override
             public void onClick(View arg0) {
                 Intent intent = new Intent(context, VormingDetail.class);
-                intent.putExtra("titel",
-                        (vormingen.get(position).getTitel()));
-                intent.putExtra("locatie",
-                        (vormingen.get(position).getLocatie()));
-                intent.putExtra("criteriaDeelnemers",
-                        (vormingen.get(position).getCriteriaDeelnemers()));
-                intent.putExtra("tips",
-                        (vormingen.get(position).getTips()));
+                intent.putExtra("titel", (vormingen.get(position).getTitel()));
+                intent.putExtra("locatie", (vormingen.get(position).getLocatie()));
+                intent.putExtra("criteriaDeelnemers", (vormingen.get(position).getCriteriaDeelnemers()));
+                intent.putExtra("tips", (vormingen.get(position).getTips()));
                 intent.putExtra("prijs", vormingen.get(position).getPrijs().toString());
                 intent.putExtra("websiteLocatie", vormingen.get(position).getWebsiteLocatie());
                 intent.putExtra("korteBeschrijving", vormingen.get(position).getKorteBeschrijving());
