@@ -209,6 +209,18 @@
             android:layout_below="@id/maxDeelnemersLabel"
            />
 
+        <TextView
+            android:id="@+id/ExtraInformatie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_below="@+id/maxDeelnemers"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_horizontal"
+            android:textStyle="italic"
+            android:textSize="13sp"
+            android:text="@string/vakantieDetailExtraInformatie"/>
+
 
     </RelativeLayout>
 

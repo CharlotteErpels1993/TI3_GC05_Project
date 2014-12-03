@@ -14,12 +14,10 @@ import android.widget.Button;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
-import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Monitor;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
@@ -134,6 +132,7 @@ public class activiteit_detail extends Activity {
         final TextView txtSterPrijs2Ouders = (TextView) findViewById(R.id.sterPrijs2Ouders);
         final RelativeLayout verberg = (RelativeLayout) findViewById(R.id.verberg2);
         final TextView labelBM = (TextView) findViewById(R.id.ledenPrijsLabel);
+        final TextView txtExtraInfo = (TextView) findViewById(R.id.ExtraInformatie);
 
         btnInschrijven = (Button) findViewById(R.id.btnInschrijvenV);
         btnmeerInfo = (Button) findViewById(R.id.btnMeerInfo);
@@ -333,14 +332,14 @@ public class activiteit_detail extends Activity {
             txtInbegrepenInPrijs.setVisibility(View.GONE);
             btnmeerInfo.setVisibility(View.GONE);
             verberg.setVisibility(View.GONE);
-
+            //txtExtraInfo.setVisibility(View.VISIBLE);
 
         } else {
             //ingelogd
             btnInschrijven.setVisibility(View.VISIBLE);
             btnmeerInfo.setVisibility(View.VISIBLE);
             verberg.setVisibility(View.GONE);
-
+            txtExtraInfo.setVisibility(View.GONE);
             //toon normale prijs
             txtPrijs.setVisibility(View.VISIBLE);
             prijs = i.getStringExtra("prijs");
