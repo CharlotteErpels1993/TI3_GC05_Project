@@ -38,9 +38,38 @@ class VormingenTableViewController: UITableViewController, UISearchBarDelegate, 
         activityIndicator.stopAnimating()
     }
     
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        setTitleCancelButton(searchBar)
+        zoekGefilterdeVormingen(searchBar.text)
+    }
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        searchBar.text = ""
+        zoekGefilterdeVormingen(searchBar.text)
+        searchBar.showsCancelButton = false
+        searchBar.resignFirstResponder()
+    }
+    
+    func setTitleCancelButton(searchBar: UISearchBar) {
+        searchBar.showsCancelButton = true
+        var cancelButton: UIButton?
+        var topView: UIView = searchBar.subviews[0] as UIView
+        for subView in topView.subviews {
+            cancelButton = subView as? UIButton
+        }
+        
+        cancelButton?.setTitle("Annuleer", forState: UIControlState.Normal)
+    }
+    
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        searchBar.showsCancelButton = true
+        setTitleCancelButton(searchBar)
         zoekGefilterdeVormingen(searchText.lowercaseString)
     }
+    
+    /*func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        zoekGefilterdeVormingen(searchText.lowercaseString)
+    }*/
     
     func zoekGefilterdeVormingen(zoek: String) {
         vormingen2 = vormingen.filter {$0.titel?.lowercaseString.rangeOfString(zoek) != nil }
