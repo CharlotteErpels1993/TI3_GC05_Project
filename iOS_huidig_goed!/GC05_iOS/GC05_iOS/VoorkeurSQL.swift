@@ -70,7 +70,8 @@ struct VoorkeurSQL {
         voorkeurJSON.save()
     }
     
-    static func getVoorkeuren(monitorId: String, vakantieId: String) -> [Voorkeur] {
+    static func getVoorkeuren(monitorId: String, vakantieId: String) -> /*[Voorkeur]*/ Int?
+    {
         var voorkeuren: [Voorkeur] = []
         var voorkeur: Voorkeur = Voorkeur(id: "test")
         var queryString: String = ""
@@ -84,19 +85,29 @@ struct VoorkeurSQL {
         
         let (resultSet, err) = SwiftData.executeQuery(queryString, withArgs: [monitorId, vakantieId])
         
+        var error: Int?
+        
         if err != nil
         {
             println("ERROR: error tijdens ophalen van voorkeuren voor bepaalde monitor en vakantie uit table Voorkeur")
         }
         else
         {
-            if resultSet.count > 0 {
-                voorkeuren.append(voorkeur)
-                voorkeuren.append(voorkeur)
+            if resultSet.count == 0 {
+                error = 1
             }
+            else {
+                error = nil
+            }
+            
+            /*if resultSet.count > 0 {
+                voorkeuren.append(voorkeur)
+                voorkeuren.append(voorkeur)
+            }*/
         }
         
-        return voorkeuren
+        //return voorkeuren
+        return error
     }
 
     

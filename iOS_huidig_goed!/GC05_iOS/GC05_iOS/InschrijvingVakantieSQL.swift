@@ -84,11 +84,14 @@ struct InschrijvingVakantieSQL {
         }
     }
     
-    static func getInschrijvingenVakantie(voornaamDeelnemer: String, naamDeelnemer: String, vakantieId: String, ouderId: String) -> [InschrijvingVakantie] {
+    static func getInschrijvingenVakantie(voornaamDeelnemer: String, naamDeelnemer: String, vakantieId: String, ouderId: String) -> /*[InschrijvingVakantie]*/ ([InschrijvingVakantie], Int?) {
         
         var inschrijvingen: [InschrijvingVakantie] = []
         var inschrijving: InschrijvingVakantie = InschrijvingVakantie(id: "test")
         var queryString: String = ""
+        
+        var response: ([InschrijvingVakantie], Int?)
+        var e: Int? = 1
         
         queryString.extend("SELECT * FROM InschrijvingVakantie ")
         //queryString.extend("JOIN Deelnemer ON InschrijvingVakantie.deelnemer = Deelnemer.objectId ")
@@ -139,8 +142,9 @@ struct InschrijvingVakantieSQL {
                     
                     
                     if voornaam == voornaamDeelnemer && naam == naamDeelnemer {
-                        inschrijvingen.append(inschrijving)
-                        inschrijvingen.append(inschrijving)
+                        e = nil
+                        /*inschrijvingen.append(inschrijving)
+                        inschrijvingen.append(inschrijving)*/
                     }
                     
                 }
@@ -149,12 +153,16 @@ struct InschrijvingVakantieSQL {
             
             
             if resultSet.count > 0 {
-                inschrijvingen.append(inschrijving)
-                inschrijvingen.append(inschrijving)
+                e = nil
+                /*inschrijvingen.append(inschrijving)
+                inschrijvingen.append(inschrijving)*/
             }
         }
         
-        return inschrijvingen
+        //return inschrijvingen
+        
+        response = (inschrijvingen, e)
+        return response
     }
     
     /*static private func getInschrijvingVakantie(row: SD.SDRow) -> InschrijvingVakantie {

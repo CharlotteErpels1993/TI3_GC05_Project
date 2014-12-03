@@ -92,12 +92,15 @@ struct DeelnemerSQL {
         }
     }
     
-    static func getDeelnemerMetVoornaamEnNaam(voornaam: String, naam: String) -> Deelnemer? {
+    static func getDeelnemerMetVoornaamEnNaam(voornaam: String, naam: String) -> /*Deelnemer?*/ (Deelnemer, Int?) {
         
         var deelnemers:[Deelnemer] = []
         var deelnemer: Deelnemer = Deelnemer(id: "test")
         
         let (resultSet, err) = SD.executeQuery("SELECT * FROM Deelnemer WHERE voornaam = ? AND naam = ?", withArgs: [voornaam, naam])
+        
+        var response: (Deelnemer, Int?)
+        var error: Int?
         
         if err != nil
         {
@@ -106,8 +109,11 @@ struct DeelnemerSQL {
         else
         {
             if resultSet.count == 0 {
-                return nil
+                error = 1
+                //response = (deelnemer, error)
             } else {
+                error = nil
+                
                 for row in resultSet {
                     deelnemer = getDeelnemer(row)
                     deelnemers.append(deelnemer)
@@ -115,7 +121,11 @@ struct DeelnemerSQL {
             }
         }
         
-        return deelnemers.first
+        //return deelnemers.first
+        
+        response = (deelnemer, error)
+        return response
+    
     }
     
     static private func getDeelnemer(row: SD.SDRow) -> Deelnemer {

@@ -19,11 +19,14 @@ struct MonitorSQL {
         }
     }
     
-    static func zoekAlleMonitors() -> [Monitor] {
+    static func zoekAlleMonitors() -> /*[Monitor]*/ ([Monitor], Int?) {
         var monitors: [Monitor] = []
         var monitor: Monitor = Monitor(id: "test")
         
         let (resultSet, err) = SD.executeQuery("SELECT * FROM Monitor")
+        
+        var response: ([Monitor], Int?)
+        var error: Int?
         
         if err != nil
         {
@@ -31,13 +34,22 @@ struct MonitorSQL {
         }
         else
         {
-            for row in resultSet {
-                monitor = getMonitor(row)
-                monitors.append(monitor)
+            if resultSet.count == 0 {
+                error = 1
+            }
+            else {
+                error = nil
+             
+                for row in resultSet {
+                    monitor = getMonitor(row)
+                    monitors.append(monitor)
+                }
             }
         }
         
-        return monitors
+        response = (monitors, error)
+        
+        return response
     }
     
     private static func getMonitor(monitorObject: PFObject) -> Monitor {
@@ -353,32 +365,67 @@ struct MonitorSQL {
     }
     
     
-    static func getAndereMonitors(monitors: [Monitor]) -> [Monitor] {
-        var alleMonitors = zoekAlleMonitors()
-        var andereMonitors: [Monitor] = []
+    static func getAndereMonitors(monitors: [Monitor]) -> /*[Monitor]*/([Monitor], Int?) {
         
-        var bevatMonitor = false
+        var response = zoekAlleMonitors()
         
-        for monitor in alleMonitors {
-            bevatMonitor = false
+        
+        if response.1 == nil {
+            //geen error, er zijn monitors gevonden
+            var alleMonitors = response.0
+            var andereMonitors: [Monitor] = []
             
-            for m in monitors {
-                if m.id == monitor.id {
-                    bevatMonitor = true
+            var bevatMonitor = false
+            
+            for monitor in alleMonitors {
+                bevatMonitor = false
+            
+                for m in monitors {
+                    if m.id == monitor.id {
+                        bevatMonitor = true
+                    }
+                }
+            
+                if bevatMonitor == false {
+                    andereMonitors.append(monitor)
                 }
             }
             
-            if bevatMonitor == false {
-                andereMonitors.append(monitor)
+            for var i = 0; i < andereMonitors.count; i+=1 {
+                if andereMonitors[i].email == PFUser.currentUser().email {
+                    andereMonitors.removeAtIndex(i)
+                }
             }
+
         }
         
-        return andereMonitors
+        return response
     }
     
-    static func updateMonitor(monitorNieuw: Monitor, email: String) {
+    static func updateMonitor(monitor: Monitor/*, email: String*/) {
         
-        var queryString: String = ""
+        var query = PFQuery(className: "Monitor")
+        var monitorObject = query.getObjectWithId(monitor.id)
+        
+        var telefoon: String = ""
+        var linkFacebook: String = ""
+        
+        monitorObject["voornaam"] = monitor.voornaam
+        monitorObject["naam"] = monitor.naam
+        monitorObject["gsm"] = monitor.gsm
+        
+        if monitor.telefoon != nil {
+            monitorObject["telefoon"] = monitor.telefoon
+        }
+        
+        if monitor.linkFacebook != nil {
+            monitorObject["linkFacebook"] = monitor.linkFacebook
+        }
+
+        monitorObject.save()
+        
+        
+        /*var queryString: String = ""
         
         queryString.extend("UPDATE Monitor SET ")
         queryString.extend("voornaam=?, ")
@@ -388,9 +435,22 @@ struct MonitorSQL {
         queryString.extend("linkFacebook=? ")
         queryString.extend("WHERE email = ?")
         
+        var telefoon: String = ""
+        var linkFacebook: String = ""
+        
+        if monitor.telefoon != nil {
+            telefoon = monitor.telefoon!
+        }
+        
+        if monitor.linkFacebook != nil {
+            linkFacebook = monitor.linkFacebook!
+        }
+        
+        
+        
         /*let (resultSet, err) = SD.executeQuery("UPDATE Monitor SET voornaam='\(monitorNieuw.voornaam)', naam='\(monitorNieuw.naam)', telefoon='\(monitorNieuw.telefoon)', gsm='\(monitorNieuw.gsm)', linkFacebook='\(monitorNieuw.linkFacebook)' WHERE email = \(email)")*/
         
-        let err = SD.executeChange(queryString, withArgs: [monitorNieuw.voornaam!, monitorNieuw.naam!, monitorNieuw.telefoon!, monitorNieuw.gsm!, monitorNieuw.linkFacebook!, email])
+        let err = SD.executeChange(queryString, withArgs: [monitor.voornaam!, monitor.naam!, telefoon, monitor.gsm!, linkFacebook, monitor.email!])
         
         
         
@@ -401,7 +461,7 @@ struct MonitorSQL {
         else
         {
             //no error
-        }
+        }*/
         
     }
     

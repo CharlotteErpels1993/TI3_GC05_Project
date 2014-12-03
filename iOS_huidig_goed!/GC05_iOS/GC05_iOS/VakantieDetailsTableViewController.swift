@@ -35,11 +35,33 @@ class VakantieDetailsTableViewController: UITableViewController {
         super.viewDidLoad()
         
         //zoekImages()
-        self.images = ParseData.getAfbeeldingenMetVakantieId(vakantie.id)
+        
+        var responseImages: ([UIImage], Int?)
+        responseImages = ParseData.getAfbeeldingenMetVakantieId(vakantie.id)
+        
+        //self.images = ParseData.getAfbeeldingenMetVakantieId(vakantie.id)
         
         hideSideMenuView()
         
-                if self.images.count >= 3 {
+        if responseImages.1 == nil {
+            //er zijn images
+            self.images = responseImages.0
+            
+            if self.images.count >= 3 {
+                self.afbeelding1.image = self.images[0]
+                self.afbeelding2.image = self.images[1]
+                self.afbeelding3.image = self.images[2]
+            } else if self.images.count == 2 {
+                self.afbeelding1.image = self.images[0]
+                self.afbeelding2.image = self.images[1]
+            } else if self.images.count == 1 {
+                self.afbeelding1.image = self.images[0]
+            }
+        }
+        
+        //self.images = responseImages.0
+        
+                /*if self.images.count >= 3 {
                     self.afbeelding1.image = self.images[0]
                     self.afbeelding2.image = self.images[1]
                     self.afbeelding3.image = self.images[2]
@@ -48,7 +70,7 @@ class VakantieDetailsTableViewController: UITableViewController {
                     self.afbeelding2.image = self.images[1]
                 } else if self.images.count == 1 {
                     self.afbeelding1.image = self.images[0]
-                }
+                }*/
         
         var beginDatum: String? = vakantie.vertrekdatum?.toS("dd/MM/yyyy")
         var terugkeerDatum: String? = vakantie.terugkeerdatum?.toS("dd/MM/yyyy")
@@ -138,7 +160,13 @@ class VakantieDetailsTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "afbeeldingen" {
             let bekijkAfbeeldingViewController = segue.destinationViewController as AfbeeldingenViewController
-            bekijkAfbeeldingViewController.images = self.images
+            
+            //als er geen images zijn
+            if self.images.count != 0 {
+                bekijkAfbeeldingViewController.images = self.images
+            }
+            
+            //bekijkAfbeeldingViewController.images = self.images
         } else if segue.identifier == "korteBeschrijvingVakantie" {
             let extraTekstViewController = segue.destinationViewController as ExtraTekstViewController
             extraTekstViewController.tekst = vakantie.korteBeschrijving

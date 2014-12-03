@@ -204,18 +204,37 @@ class InschrijvenVakantie1ViewController : ResponsiveTextFieldViewController {
         self.deelnemer.gemeente = txtGemeente.text
         //self.deelnemer.inschrijvingVakantie = InschrijvingVakantie(id: "test")
         self.inschrijvingVakantie.vakantie = self.vakantie
-        self.inschrijvingVakantie.ouder = ParseData.getOuderWithEmail(PFUser.currentUser().email)
+        //self.inschrijvingVakantie.ouder = ParseData.getOuderWithEmail(PFUser.currentUser().email)
+    
+        var ouderResponse = ParseData.getOuderWithEmail(PFUser.currentUser().email)
+        
+        if ouderResponse.1 == nil {
+            //er is een ouder
+            self.inschrijvingVakantie.ouder = ouderResponse.0
+        } else {
+            println("ERROR: er is geen ouder teruggevonden in de database (Class: InschrijvenVakantie1ViewController)")
+        }
+    
+    
     }
     
     func controleerKindAlIngeschreven() -> Bool {
         var inschrijvingen: [InschrijvingVakantie] = []
         
-        inschrijvingen = ParseData.getInschrijvingenVakantie(self.inschrijvingVakantie)
+        //inschrijvingen = ParseData.getInschrijvingenVakantie(self.inschrijvingVakantie)
         
-        if inschrijvingen.count > 0 {
-            return true
+        var inschrijvingenResponse = ParseData.getInschrijvingenVakantie(self.inschrijvingVakantie)
+        
+        if inschrijvingenResponse.1 != nil {
+            //er zijn geen inschrijvingen gevonden
+           return false
         }
+        return true
         
-        return false
+        /*if inschrijvingen.count > 0 {
+            return true
+        }*/
+        
+        //return false
     }
 }

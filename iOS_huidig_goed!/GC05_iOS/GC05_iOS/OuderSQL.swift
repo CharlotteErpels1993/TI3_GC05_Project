@@ -101,24 +101,33 @@ struct OuderSQL {
         return ouder
     }
     
-    static func getOuderWithEmail(email: String) -> Ouder {
+    static func getOuderWithEmail(email: String) -> /*Ouder*/ (Ouder, Int?) {
         
         //nieuw: Charlotte
         var query = PFQuery(className: "Ouder")
         query.whereKey("email", equalTo: email)
         
+        var response: (Ouder, Int?)
+        var error: Int?
+        
         var ouderObject = query.getFirstObject()
         
-        var ouder: Ouder
+        var ouder: Ouder = Ouder(id: "test")
         
         if ouderObject == nil {
             //ERROR, mag normaal gezien nooit gebeuren door voorgaande controles (OuderSQL.getOuderWithEmail)
-            ouder = Ouder(id: "test")
+            //ouder = Ouder(id: "test")
+            error = 1
         } else {
+            error = nil
             ouder = getOuder(ouderObject)
         }
         
-        return ouder
+        //return ouder
+        
+        response = (ouder, error)
+        return response
+        
         
         /*var ouders: [Ouder] = []
         var ouder2: Ouder = Ouder(id: "test")

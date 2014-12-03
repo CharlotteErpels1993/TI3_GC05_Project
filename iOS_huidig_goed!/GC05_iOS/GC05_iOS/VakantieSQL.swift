@@ -140,12 +140,15 @@ struct VakantieSQL {
         }
     }
     
-    static func getAlleVakanties() -> [Vakantie] {
+    static func getAlleVakanties() -> /*[Vakantie]*/ ([Vakantie], Int?) {
         
         var vakanties:[Vakantie] = []
         var vakantie: Vakantie = Vakantie(id: "test")
         
         let (resultSet, err) = SD.executeQuery("SELECT * FROM Vakantie")
+        
+        var response: ([Vakantie], Int?)
+        var error: Int?
         
         if err != nil
         {
@@ -153,13 +156,23 @@ struct VakantieSQL {
         }
         else
         {
-            for row in resultSet {
-                vakantie = getVakantie(row)
-                vakanties.append(vakantie)
+            if resultSet.count == 0 {
+                error = 1
             }
+            else {
+                error = nil
+                
+                for row in resultSet {
+                    vakantie = getVakantie(row)
+                    vakanties.append(vakantie)
+                }
+                
+            }
+            
         }
         
-        return vakanties
+        response = (vakanties, error)
+        return response
     }
     
     static private func getVakantie(row: SD.SDRow) -> Vakantie {
@@ -223,5 +236,14 @@ struct VakantieSQL {
         }
         
         return vakantie
+    }
+    
+    static func deleteVakantiesInVerleden() {
+        var vakantiesObjects: [PFObject] = []
+        
+        var query = PFQuery(className: "Vakantie")
+        vakantiesObjects = query.findObjects() as [PFObject]
+        
+        
     }
 }

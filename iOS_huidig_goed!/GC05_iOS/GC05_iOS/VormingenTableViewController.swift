@@ -25,15 +25,30 @@ class VormingenTableViewController: UITableViewController, UISearchBarDelegate, 
         
         ParseData.vulVormingTableOp()
         //zoekVormingen()
-        self.vormingen = ParseData.getAlleVormingen()
+        
+        var vormingenResponse = ParseData.getAlleVormingen()
+        
+        if vormingenResponse.1 == nil {
+            //geen error, er zijn vormingen
+            self.vormingen = vormingenResponse.0
+            self.vormingen2 = self.vormingen
+            self.tableView.reloadData()
+            
+            vormingen2.sort({ $0.titel < $1.titel })
+            vormingen.sort({ $0.titel < $1.titel })
+        }
+        
+        
+        
+        /*self.vormingen = ParseData.getAlleVormingen()
         self.vormingen2 = self.vormingen
-        self.tableView.reloadData()
+        self.tableView.reloadData()*/
         
         zoekbar.showsScopeBar = true
         zoekbar.delegate = self
         
-        vormingen2.sort({ $0.titel < $1.titel })
-        vormingen.sort({ $0.titel < $1.titel })
+        /*vormingen2.sort({ $0.titel < $1.titel })
+        vormingen.sort({ $0.titel < $1.titel })*/
         
         activityIndicator.stopAnimating()
     }
@@ -119,7 +134,7 @@ class VormingenTableViewController: UITableViewController, UISearchBarDelegate, 
         let cell = tableView.dequeueReusableCellWithIdentifier("vormingCell", forIndexPath: indexPath) as UITableViewCell
         let vorming = vormingen2[indexPath.row]
 
-        cell.textLabel?.text = vorming.titel
+        cell.textLabel.text = vorming.titel
         cell.detailTextLabel!.text = "Meer informatie"
         return cell
     }

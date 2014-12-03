@@ -23,10 +23,24 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         //super.viewDidLoad()
         checkConnectie()
         
+        var responseVakanties: ([Vakantie], Int?) = ParseData.getAlleVakanties()
         
-        vakanties = ParseData.getAlleVakanties()
+        //vakanties = ParseData.getAlleVakanties()
+        
+        if responseVakanties.1 == nil {
+            //er zijn vakanties
+            self.vakanties = responseVakanties.0
+            self.vakanties2 = self.vakanties
+            self.tableView.reloadData()
+            
+            self.vakanties2.sort({ (String($0.minLeeftijd)) < $1.titel})
+            self.vakanties.sort({ (String($0.minLeeftijd)) < $1.titel})
+        }
+        
+        
+        /*self.vakanties = responseVakanties.0
         self.vakanties2 = self.vakanties
-        self.tableView.reloadData()
+        self.tableView.reloadData()*/
         
         hideSideMenuView()
         zoekbar.showsScopeBar = true
@@ -37,9 +51,8 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
             self.navigationItem.rightBarButtonItem = nil   
         }
         
-        vakanties2.sort({ (String($0.minLeeftijd)) < $1.titel})
-        vakanties.sort({ (String($0.minLeeftijd)) < $1.titel})
-        //vakanties.sort({ $0.minLeeftijd < $1.titel })
+        /*vakanties2.sort({ (String($0.minLeeftijd)) < $1.titel})
+        vakanties.sort({ (String($0.minLeeftijd)) < $1.titel})*/
         
         //activityIndicator.stopAnimating()
     }
