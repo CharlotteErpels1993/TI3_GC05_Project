@@ -58,6 +58,7 @@ public class Vormingen_Overzicht_Fragment extends Fragment /*implements SwipeRef
         filtertext = (EditText) rootView.findViewById(R.id.filtertextv);
         //swipeLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_container);
         //onCreateSwipeToRefresh(swipeLayout);
+        getActivity().getActionBar().setTitle("Vormingen");
 
         cd = new ConnectionDetector(rootView.getContext());
         myDB = new myDb(rootView.getContext());

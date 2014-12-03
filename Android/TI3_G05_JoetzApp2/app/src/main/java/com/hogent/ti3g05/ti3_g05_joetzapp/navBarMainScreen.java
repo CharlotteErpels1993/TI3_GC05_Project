@@ -29,7 +29,7 @@ import com.parse.ParseUser;
 
 public class navBarMainScreen extends Activity {
 
-    private Fragment fragment = new activiteit_overzicht();
+    private Fragment fragment;
 
     private boolean doubleBackToExitPressedOnce = false;
     // Within which the entire activity is enclosed
@@ -56,16 +56,22 @@ public class navBarMainScreen extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        if(fragment !=null)
+        Bundle extra = getIntent().getExtras();
+        if(extra != null)
         {
-            if(fragment.toString().toLowerCase().startsWith("activiteit"))
+            String frag = getIntent().getStringExtra("frag");
+            if(frag.toLowerCase().startsWith("activiteit"))
             {
                 fragment = new activiteit_overzicht();
             }
-            else if(fragment.toString().toLowerCase().startsWith("vorming"))
+            else if(frag.toLowerCase().startsWith("vorming"))
             {
                 fragment = new Vormingen_Overzicht_Fragment();
             }
+        }
+        else
+        {
+            fragment = new activiteit_overzicht();
         }
 
 
@@ -87,7 +93,6 @@ public class navBarMainScreen extends Activity {
         setContentView(R.layout.activity_navigationbar);
 
 
-        getActionBar().setTitle("");
         cd = new ConnectionDetector(getApplicationContext());
 
 
@@ -125,8 +130,9 @@ public class navBarMainScreen extends Activity {
         // Setting DrawerToggle on DrawerLayout
         mDrawerLayout.setDrawerListener(mDrawerToggle);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getBaseContext(),
-                R.layout.activity_drawer_layout_item, getResources().getStringArray(R.array.items));
+        //ArrayAdapter<String> adapter = new ArrayAdapter<String>(getBaseContext(),
+                //R.layout.activity_drawer_layout_item, getResources().getStringArray(R.array.items));
+        ArrayAdapter<String> adapter = null;
         if(ParseUser.getCurrentUser()!= null && ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("monitor"))
         {
             adapter = new ArrayAdapter<String>(getBaseContext(),
@@ -137,6 +143,10 @@ public class navBarMainScreen extends Activity {
             adapter = new ArrayAdapter<String>(getBaseContext(),
                     R.layout.activity_drawer_layout_item, getResources().getStringArray(R.array.itemsIngelogged));
 
+        } else
+        {
+            adapter = new ArrayAdapter<String>(getBaseContext(),
+                    R.layout.activity_drawer_layout_item, getResources().getStringArray(R.array.items));
         }
 
         // Setting the adapter on mDrawerList
@@ -206,9 +216,12 @@ public class navBarMainScreen extends Activity {
 
             case 0:
 
+                Intent intent = new Intent(navBarMainScreen.this, navBarMainScreen.class);
                 fragment = new activiteit_overzicht();
                 refreshFragment(position);
 
+                intent.putExtra("frag", fragment.toString());
+                startActivity(intent);
                 break;
 
             case 1:
@@ -242,21 +255,16 @@ public class navBarMainScreen extends Activity {
                     if (ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("monitor"))
 
                     {
+                        Intent intent3 = new Intent(navBarMainScreen.this, navBarMainScreen.class);
                         fragment = new Vormingen_Overzicht_Fragment();
-                        Intent intent1 = new Intent(navBarMainScreen.this, navBarMainScreen.class
-                        );
+
                         refreshFragment(position);
+
+                        intent3.putExtra("frag", fragment.toString());
+                        startActivity(intent3);
+                        //refreshFragment(position);
                         break;
-                        /*FragmentManager fragmentManager = getFragmentManager();
-                        fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
 
-                        setTitle(fragment.getId());*/
-
-                        //startActivity(intent1);
-                        //startActivity(intent1);
-                       /* Intent intent2 = new Intent(navBarMainScreen.this, Vormingen_Overzicht.class
-                        );
-                        startActivity(intent2);*/
                     } else {
                         Toast.makeText(this, "U hebt niet de juiste bevoegdheid om dit te bekijken.", Toast.LENGTH_SHORT).show();
                         Intent intent1 = new Intent(navBarMainScreen.this, navBarMainScreen.class
@@ -385,12 +393,16 @@ public class navBarMainScreen extends Activity {
 
             case 2:
 
-
                 fragment = new Vormingen_Overzicht_Fragment();
 
+                FragmentManager fragmentManager = getFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
 
-                refreshFragment(position);
+                Toast.makeText(getApplicationContext(), "monitor", Toast.LENGTH_SHORT);
+                setTitle(fragment.getId());
+                mDrawerLayout.closeDrawer(mDrawerList);
 
+                //refreshFragment(position);
                 break;
 
             case 3:
@@ -457,7 +469,7 @@ public class navBarMainScreen extends Activity {
 
             mDrawerList.setItemChecked(position, true);
             mDrawerList.setSelection(position);
-            setTitle("vakanties");
+            //setTitle("vakanties");
             mDrawerLayout.closeDrawer(mDrawerList);
 
         } else

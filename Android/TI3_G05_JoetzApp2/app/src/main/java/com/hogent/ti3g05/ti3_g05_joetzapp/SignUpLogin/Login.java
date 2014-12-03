@@ -65,7 +65,7 @@ public class Login extends Activity{
 
         getActionBar().setTitle(getString(R.string.title_activity_Login));
 
-        btn_LoginIn.setTextColor(getResources().getColor(R.color.darkRed));
+        btn_LoginIn.setTextColor(getResources().getColor(R.color.Rood));
 
         btn_LoginIn.setOnClickListener(new OnClickListener() {
 

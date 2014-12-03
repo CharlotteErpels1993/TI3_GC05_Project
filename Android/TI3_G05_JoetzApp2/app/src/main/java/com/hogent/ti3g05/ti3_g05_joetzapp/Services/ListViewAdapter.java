@@ -73,7 +73,7 @@ public class ListViewAdapter extends ArrayAdapter<Vakantie> implements Filterabl
         final ViewHolder holder;
         if (view == null) {
             holder = new ViewHolder();
-            view = inflater.inflate(R.layout.listview_item, null);
+            view = inflater.inflate(R.layout.listview_item_nieuwe_layout, null);
             holder.naamVakantie = (TextView) view.findViewById(R.id.naam);
             holder.locatie = (TextView) view.findViewById(R.id.locatie);
             holder.vertrekdatum = (TextView) view.findViewById(R.id.vertrekdatum);
