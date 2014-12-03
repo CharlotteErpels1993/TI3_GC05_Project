@@ -41,6 +41,10 @@ struct /*class*/ ParseData {
     }
     
     //creatie tabellen
+    static private func createDeelnemerTable() {
+        DeelnemerSQL.createDeelnemerTable()
+    }
+    
     static private func createAfbeeldingTable() {
         AfbeeldingSQL.createAfbeeldingTable()
     }
@@ -74,6 +78,19 @@ struct /*class*/ ParseData {
     }
     
     //opvullen tables
+    static func vulDeelnemerTableOp() {
+        
+        var response: ([String], Int?) = SD.existingTables()
+        
+        if response.1 == nil {
+            if !contains(response.0, "Deelnemer") {
+                createDeelnemerTable()
+            }
+        }
+        
+        DeelnemerSQL.vulDeelnemerTableOp()
+    }
+    
     static func vulInschrijvingVakantieTableOp() {
         
         var response: ([String], Int?) = SD.existingTables()
@@ -169,6 +186,18 @@ struct /*class*/ ParseData {
                 }
             }
         }
+    }
+    
+    static func deleteDeelnemerTable() {
+        
+        var response: ([String], Int?) = SD.existingTables()
+        
+        if response.1 == nil {
+            if contains(response.0, "Deelnemer") {
+                let err = SD.deleteTable("Deelnemer")
+            }
+        }
+        
     }
     
     static func deleteInschrijvingVakantieTable() {

@@ -143,8 +143,8 @@ struct InschrijvingVakantieSQL {
                     
                     if voornaam == voornaamDeelnemer && naam == naamDeelnemer {
                         e = nil
-                        /*inschrijvingen.append(inschrijving)
-                        inschrijvingen.append(inschrijving)*/
+                        inschrijvingen.append(inschrijving)
+                        //inschrijvingen.append(inschrijving)
                     }
                     
                 }
@@ -152,10 +152,10 @@ struct InschrijvingVakantieSQL {
             }
             
             
-            if resultSet.count > 0 {
+            if inschrijvingen.count > 0 {
                 e = nil
-                /*inschrijvingen.append(inschrijving)
-                inschrijvingen.append(inschrijving)*/
+            } else {
+                e = 1
             }
         }
         

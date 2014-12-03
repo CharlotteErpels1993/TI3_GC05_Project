@@ -152,12 +152,20 @@ class VakantieDetailsTableViewController: UITableViewController {
             favoriet = true
             // switch image
             heartButton.setImage(self.imageHeartFull, forState: UIControlState.Normal)
+            
             // schrijf naar database
+            
+            
+            
         } else {
             favoriet = false
             // switch image
             heartButton.setImage(self.imageHeartEmpty, forState: UIControlState.Normal)
+            
             // haal terug uit de database
+            
+        
+        
         }
     }
     
