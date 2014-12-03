@@ -29,8 +29,6 @@ public class ListViewAdapter extends ArrayAdapter<Vakantie> implements Filterabl
     private List<Vakantie> vakanties = null;
     private ArrayList<Vakantie> arraylist;
 
-
-
     public ListViewAdapter(Context context,
                            List<Vakantie> vakanties) {
         super(context, R.layout.listview_item);
@@ -98,7 +96,7 @@ public class ListViewAdapter extends ArrayAdapter<Vakantie> implements Filterabl
         }*/
         //holder.vertrekdatum.setText(( vakanties.get(position).getVertrekDatum().toString()));
         //holder.terugdatum.setText(( vakanties.get(position).getTerugkeerDatum().toString()));
-        holder.doelgroep.setText(vakanties.get(position).getMinDoelgroep() + " - " + vakanties.get(position).getMaxDoelgroep());
+        holder.doelgroep.setText(vakanties.get(position).getMinDoelgroep() + " - " + vakanties.get(position).getMaxDoelgroep() + " jaar");
 
 
         imageLoader.DisplayImage(vakanties.get(position).getFoto1(),  holder.vakantiefto);
@@ -121,7 +119,6 @@ public class ListViewAdapter extends ArrayAdapter<Vakantie> implements Filterabl
                     intent.putExtra("terugdatum", (vakanties.get(position).getTerugkeerDatum()).toString());
                 }
                 intent.putExtra("prijs", vakanties.get(position).getBasisprijs().toString());
-                //intent.putExtra("fotos", vakanties.get(position).getFotos());
                 intent.putExtra("maxdoelgroep", (vakanties.get(position).getMaxDoelgroep()).toString());
                 intent.putExtra("mindoelgroep", vakanties.get(position).getMinDoelgroep().toString());
                 intent.putExtra("objectId", vakanties.get(position).getVakantieID());
@@ -135,7 +132,6 @@ public class ListViewAdapter extends ArrayAdapter<Vakantie> implements Filterabl
                 intent.putExtra("SterPrijs1Ouder", (vakanties.get(position).getSterPrijs1Ouder()).toString());
                 intent.putExtra("SterPrijs2Ouders", (vakanties.get(position).getSterPrijs2Ouder()).toString());
 
-                //afbeeldingen ophalen met een while-lus, die stopt als de nieuwe afbeelding null is, want we weten niet zeker of
                 String keyVoorIntent;
                 ArrayList<String> lijstFotos = vakanties.get(position).getFotos();
                 int lijstFotosLengte = lijstFotos.size()-1;
