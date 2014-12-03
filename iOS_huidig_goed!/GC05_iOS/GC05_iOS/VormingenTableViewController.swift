@@ -134,7 +134,7 @@ class VormingenTableViewController: UITableViewController, UISearchBarDelegate, 
         let cell = tableView.dequeueReusableCellWithIdentifier("vormingCell", forIndexPath: indexPath) as UITableViewCell
         let vorming = vormingen2[indexPath.row]
 
-        cell.textLabel.text = vorming.titel
+        cell.textLabel?.text = vorming.titel
         cell.detailTextLabel!.text = "Meer informatie"
         return cell
     }
