@@ -82,6 +82,7 @@ public class activiteit_overzicht extends Fragment /*implements SwipeRefreshLayo
 
         getActivity().getActionBar().setTitle("Vakanties");
 
+
         //swipeLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_container);
         //onCreateSwipeToRefresh(swipeLayout);
 /*

@@ -56,6 +56,32 @@ public class navBarMainScreen extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        if(fragment !=null)
+        {
+            if(fragment.toString().toLowerCase().startsWith("activiteit"))
+            {
+                fragment = new activiteit_overzicht();
+            }
+            else if(fragment.toString().toLowerCase().startsWith("vorming"))
+            {
+                fragment = new Vormingen_Overzicht_Fragment();
+            }
+        }
+
+
+        Intent afkomstig = getIntent();
+
+        if(afkomstig != null)
+        {
+            if(afkomstig.toString().toLowerCase().startsWith("activiteit"))
+            {
+                fragment = new activiteit_overzicht();
+            }
+            else if(afkomstig.toString().toLowerCase().startsWith("vorming"))
+            {
+                fragment = new Vormingen_Overzicht_Fragment();
+            }
+        }
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigationbar);
@@ -63,6 +89,7 @@ public class navBarMainScreen extends Activity {
 
         getActionBar().setTitle("");
         cd = new ConnectionDetector(getApplicationContext());
+
 
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
@@ -77,7 +104,7 @@ public class navBarMainScreen extends Activity {
 
         // Getting reference to the ActionBarDrawerToggle
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
-                R.drawable.ic_drawer, R.string.drawer_open,
+                R.drawable.menu, R.string.drawer_open,
                 R.string.drawer_close) {
 
             /** Called when drawer is closed */
@@ -100,7 +127,12 @@ public class navBarMainScreen extends Activity {
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getBaseContext(),
                 R.layout.activity_drawer_layout_item, getResources().getStringArray(R.array.items));
-        if(ParseUser.getCurrentUser()!= null)
+        if(ParseUser.getCurrentUser()!= null && ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("monitor"))
+        {
+            adapter = new ArrayAdapter<String>(getBaseContext(),
+                    R.layout.activity_drawer_layout_item, getResources().getStringArray(R.array.itemsMonitor));
+
+        } else if (ParseUser.getCurrentUser() != null)
         {
             adapter = new ArrayAdapter<String>(getBaseContext(),
                     R.layout.activity_drawer_layout_item, getResources().getStringArray(R.array.itemsIngelogged));
@@ -136,6 +168,11 @@ public class navBarMainScreen extends Activity {
                 Bundle data = new Bundle();
                 data.putInt("position", position);
                 getUrl(position);
+                if(ParseUser.getCurrentUser() != null && ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("monitor"))
+                {
+
+                    getUrlMonitor(position);
+                }
                 rFragment.setArguments(data);
 
 
@@ -167,8 +204,14 @@ public class navBarMainScreen extends Activity {
 
         switch (position) {
 
-
             case 0:
+
+                fragment = new activiteit_overzicht();
+                refreshFragment(position);
+
+                break;
+
+            case 1:
 
                 if(ParseUser.getCurrentUser()!=null)
                 {
@@ -188,7 +231,7 @@ public class navBarMainScreen extends Activity {
                 break;
 
 
-            case 1:
+            case 2:
                 if(ParseUser.getCurrentUser() == null ) {
                     Toast.makeText(this, "U hebt niet de juiste bevoegdheid om dit te bekijken.", Toast.LENGTH_SHORT).show();
                     Intent intent1 = new Intent(navBarMainScreen.this, navBarMainScreen.class
@@ -199,9 +242,21 @@ public class navBarMainScreen extends Activity {
                     if (ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("monitor"))
 
                     {
-                        Intent intent2 = new Intent(navBarMainScreen.this, Vormingen_Overzicht.class
+                        fragment = new Vormingen_Overzicht_Fragment();
+                        Intent intent1 = new Intent(navBarMainScreen.this, navBarMainScreen.class
                         );
-                        startActivity(intent2);
+                        refreshFragment(position);
+                        break;
+                        /*FragmentManager fragmentManager = getFragmentManager();
+                        fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
+
+                        setTitle(fragment.getId());*/
+
+                        //startActivity(intent1);
+                        //startActivity(intent1);
+                       /* Intent intent2 = new Intent(navBarMainScreen.this, Vormingen_Overzicht.class
+                        );
+                        startActivity(intent2);*/
                     } else {
                         Toast.makeText(this, "U hebt niet de juiste bevoegdheid om dit te bekijken.", Toast.LENGTH_SHORT).show();
                         Intent intent1 = new Intent(navBarMainScreen.this, navBarMainScreen.class
@@ -210,10 +265,11 @@ public class navBarMainScreen extends Activity {
                         startActivity(intent1);
                     }
                 }
+                refreshFragment(position);
 
                 break;
 
-            case 2:
+            case 3:
                 if (isInternetPresent) {
                     if (ParseUser.getCurrentUser() != null) {
                         if (ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("monitor")) {
@@ -242,14 +298,14 @@ public class navBarMainScreen extends Activity {
                     startActivity(intent1);
                 }
                 break;
-            case 3:
+            case 4:
 
                 Intent intent3 = new Intent(navBarMainScreen.this, about.class
                 );
                 startActivity(intent3);
 
                 break;
-            case 4:
+            case 5:
 
                 Intent intent4 = null;
                 if(ParseUser.getCurrentUser() != null)
@@ -266,7 +322,8 @@ public class navBarMainScreen extends Activity {
                 startActivity(intent4);
 
                 break;
-            case 5:
+            case 6:
+
 
                 Intent intent5 = new Intent(navBarMainScreen.this, SignUp_deel1.class
                 );
@@ -274,6 +331,16 @@ public class navBarMainScreen extends Activity {
 
                 break;
 
+            case 7:
+
+                fragment = new Vormingen_Overzicht_Fragment();
+                refreshFragment(position);
+/*
+                Intent intent5 = new Intent(navBarMainScreen.this, SignUp_deel1.class
+                );
+                startActivity(intent5);
+*/
+                break;
 
             default:
                 break;
@@ -295,6 +362,91 @@ public class navBarMainScreen extends Activity {
         }*/
 
     }
+    protected void getUrlMonitor(int position) {
+        isInternetPresent = cd.isConnectingToInternet();
+
+        switch (position) {
+
+            case 0:
+
+                fragment = new activiteit_overzicht();
+                refreshFragment(position);
+                break;
+
+            case 1:
+
+
+                Intent intent1 = new Intent(navBarMainScreen.this, ProfielenOverzicht.class
+                );
+                startActivity(intent1);
+
+                break;
+
+
+            case 2:
+
+
+                fragment = new Vormingen_Overzicht_Fragment();
+
+
+                refreshFragment(position);
+
+                break;
+
+            case 3:
+                if (isInternetPresent) {
+
+                    Intent intent2 = new Intent(navBarMainScreen.this, IndienenVoorkeurVakantie.class
+                    );
+                    startActivity(intent2);
+
+                } else {
+                    Toast.makeText(this, "Kan geen verbinding maken met de server. Controleer uw internetconnectie.", Toast.LENGTH_SHORT).show();
+                    Intent intent2 = new Intent(navBarMainScreen.this, navBarMainScreen.class
+                    );
+                    refreshFragment(position);
+                    startActivity(intent2);
+                }
+                break;
+            case 4:
+
+                Intent intent3 = new Intent(navBarMainScreen.this, about.class
+                );
+                startActivity(intent3);
+
+                break;
+            case 5:
+
+                Intent intent4 = null;
+
+                    intent4 = new Intent(navBarMainScreen.this, Loguit.class
+                    );
+                startActivity(intent4);
+
+                break;
+
+
+            default:
+                break;
+        }
+    }
+
+       /* if(fragment != null)
+        {
+            FragmentManager fragmentManager = getFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
+
+            mDrawerList.setItemChecked(position, true);
+            mDrawerList.setSelection(position);
+            setTitle(menuItems[position]);
+            mDrawerLayout.closeDrawer(mDrawerList);
+
+        } else
+        {
+            Log.e("Error", "Error in het maken van fragment");
+        }*/
+
+
 
     protected void refreshFragment(int position)
     {
@@ -305,7 +457,7 @@ public class navBarMainScreen extends Activity {
 
             mDrawerList.setItemChecked(position, true);
             mDrawerList.setSelection(position);
-            setTitle("Vakanties");
+            setTitle("vakanties");
             mDrawerLayout.closeDrawer(mDrawerList);
 
         } else
@@ -327,22 +479,7 @@ public class navBarMainScreen extends Activity {
         if (mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
-/*
-        int id = item.getItemId();
-        if (id == R.id.inloggen) {
-            Intent intent1 = new Intent(this, Login.class);
-            startActivity(intent1);
-        }
-        if(id == R.id.regisreren){
-            Intent intent1 = new Intent(this, SignUp_deel1.class);
-            startActivity(intent1);
-        }
-        if(id == R.id.uitloggen){
 
-            Intent intent1 = new Intent(this, Loguit.class);
-            startActivity(intent1);
-        }
-*/
         int id = item.getItemId();
 
         if (id == R.id.menu_loadVak) {
@@ -351,11 +488,21 @@ public class navBarMainScreen extends Activity {
             if (isInternetPresent) {
                 // Internet Connection is Present
                 // make HTTP requests
-                fragment = new activiteit_overzicht();
+
+                if(fragment.toString().toLowerCase().startsWith("activiteit"))
+                {
+                    fragment = new activiteit_overzicht();
+                }
+                else if(fragment.toString().toLowerCase().startsWith("vorming"))
+                {
+                    fragment = new Vormingen_Overzicht_Fragment();
+                }
+
+
                 FragmentManager fragmentManager = getFragmentManager();
                 fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
 
-                setTitle("Vakanties");
+                setTitle(fragment.getId());
                 mDrawerLayout.closeDrawer(mDrawerList);
 
             } else {

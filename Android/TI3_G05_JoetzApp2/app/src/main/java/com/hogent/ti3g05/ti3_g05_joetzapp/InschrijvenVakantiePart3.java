@@ -48,7 +48,7 @@ public class InschrijvenVakantiePart3 extends Activity {
         editExtraInformatie = (EditText) findViewById(R.id.ExtraInformatie);
 
         btnVolgende = (Button)findViewById(R.id.btnNaarDeel4V);
-        btnVolgende.setTextColor(getResources().getColor(R.color.darkRed));
+        btnVolgende.setTextColor(getResources().getColor(R.color.Rood));
         btnVolgende.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

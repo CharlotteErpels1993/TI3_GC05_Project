@@ -88,7 +88,7 @@ public class Login extends Activity{
             }
         });
 
-        btn_SignUp.setTextColor(getResources().getColor(R.color.darkRed));
+        btn_SignUp.setTextColor(getResources().getColor(R.color.Rood));
 
         btn_SignUp.setOnClickListener(new OnClickListener() {
 
@@ -99,7 +99,7 @@ public class Login extends Activity{
             }
         });
 
-        btn_ForgetPass.setTextColor(getResources().getColor(R.color.darkRed));
+        btn_ForgetPass.setTextColor(getResources().getColor(R.color.Rood));
 
         btn_ForgetPass.setOnClickListener(new OnClickListener() {
 

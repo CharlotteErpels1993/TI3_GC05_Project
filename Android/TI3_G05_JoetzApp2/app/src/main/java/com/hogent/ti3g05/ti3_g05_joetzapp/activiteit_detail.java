@@ -135,7 +135,7 @@ public class activiteit_detail extends Activity {
             }
         });
 
-        btnInschrijven.setTextColor(getResources().getColor(R.color.darkRed));
+        btnInschrijven.setTextColor(getResources().getColor(R.color.Rood));
         btnInschrijven.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -154,7 +154,7 @@ public class activiteit_detail extends Activity {
 
         final Animation fadeOutAnimation = AnimationUtils.loadAnimation(this, R.anim.fadeout);
 
-        btnmeerInfo.setTextColor(getResources().getColor(R.color.darkRed));
+        btnmeerInfo.setTextColor(getResources().getColor(R.color.Rood));
         btnmeerInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -166,7 +166,7 @@ public class activiteit_detail extends Activity {
             }
         });
 
-        btnminderInfo.setTextColor(getResources().getColor(R.color.darkRed));
+        btnminderInfo.setTextColor(getResources().getColor(R.color.Rood));
         btnminderInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -62,7 +62,7 @@ public class SignUp_deel4 extends Activity{
 		mConfirmPasswordEditText = (EditText) findViewById(R.id.etPasswordConfirm);
 
 		mCreateAccountButton = (Button) findViewById(R.id.btnCreateAccount);
-        mCreateAccountButton.setTextColor(getResources().getColor(R.color.darkRed));
+        mCreateAccountButton.setTextColor(getResources().getColor(R.color.Rood));
 		mCreateAccountButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {

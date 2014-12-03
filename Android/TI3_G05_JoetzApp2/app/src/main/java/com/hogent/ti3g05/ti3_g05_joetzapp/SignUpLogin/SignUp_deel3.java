@@ -78,7 +78,7 @@ public class SignUp_deel3 extends Activity{
 
         getActionBar().setTitle("Registreren");
 		volgendeButton = (Button) findViewById(R.id.btnNaarDeel4);
-        volgendeButton.setTextColor(getResources().getColor(R.color.darkRed));
+        volgendeButton.setTextColor(getResources().getColor(R.color.Rood));
 		volgendeButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {

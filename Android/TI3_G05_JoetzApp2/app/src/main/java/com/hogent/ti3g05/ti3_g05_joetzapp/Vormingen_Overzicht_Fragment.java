@@ -91,45 +91,7 @@ public class Vormingen_Overzicht_Fragment extends Fragment /*implements SwipeRef
 
         return rootView;
     }
-    /*@Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
 
-        // Get the view from listview_main.xml
-        setContentView(R.layout.activiteit_overzichtnieuw);
-        setTitle("Vormingen");
-        // Execute RemoteDataTask AsyncTask
-        filtertext = (EditText) findViewById(R.id.filtertext);
-        /*swipeLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_container);
-        onCreateSwipeToRefresh(swipeLayout);*/
-
-  /*      cd = new ConnectionDetector(getApplicationContext());
-        myDB = new myDb(this);
-        myDB.open();
-        new RemoteDataTask().execute();
-    }
-*/
-
-
-
-
- /*   private void onCreateSwipeToRefresh(SwipeRefreshLayout refreshLayout) {
-        refreshLayout.setOnRefreshListener(this);
-        refreshLayout.setColorScheme(
-                android.R.color.holo_blue_light,
-                android.R.color.holo_orange_light,
-                android.R.color.holo_green_light,
-                android.R.color.holo_red_light);
-    }
-    @Override
-    public void onRefresh() {
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                new RemoteDataTask().execute();
-            }
-        }, 1000);
-    }*/
 
 
     // RemoteDataTask AsyncTask
@@ -143,7 +105,9 @@ public class Vormingen_Overzicht_Fragment extends Fragment /*implements SwipeRef
             mProgressDialog.setTitle("Ophalen van vormingen.");
             // Set progressdialog message
             mProgressDialog.setMessage("Aan het laden...");
-            mProgressDialog.setIndeterminate(false);
+            mProgressDialog.setIndeterminate(true);
+            mProgressDialog.setIndeterminateDrawable(rootView.getResources().getDrawable(R.drawable.my_animation));
+
             // Show progressdialog
             mProgressDialog.show();
         }
