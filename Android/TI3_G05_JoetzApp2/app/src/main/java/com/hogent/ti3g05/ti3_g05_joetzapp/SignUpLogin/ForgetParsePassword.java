@@ -1,7 +1,6 @@
 package com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.R;
-import com.hogent.ti3g05.ti3_g05_joetzapp.navBarMainScreen;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.RequestPasswordResetCallback;
@@ -23,7 +22,6 @@ import java.util.List;
 public class ForgetParsePassword extends Activity{
 	EditText et_forgetpassword = null;
 	Button btn_submitforgetpassword = null;
-    Button btn_back = null;
 	String email = null;
 	
 	
@@ -72,7 +70,7 @@ public class ForgetParsePassword extends Activity{
             if(p.getEmail().equals(email))
                 forgotPassword(email);
         }
-        et_forgetpassword.setError("email bestaat niet");
+        et_forgetpassword.setError("E-mail adres bestaat niet");
 
 	}
 
@@ -89,13 +87,13 @@ public class ForgetParsePassword extends Activity{
 		@Override
 		public void done(ParseException e) {
 			if (e == null) {
-				Toast.makeText(getApplicationContext(), "Successfully sent link to your email for reset Password", Toast.LENGTH_LONG).show();
+				Toast.makeText(getApplicationContext(), getString(R.string.passwordForgottenEmailSent), Toast.LENGTH_LONG).show();
                 Intent intent1 = new Intent(ForgetParsePassword.this, Login.class);
                 startActivity(intent1);
 
                 overridePendingTransition(R.anim.left_in, R.anim.right_out);
 			} else {
-				Toast.makeText(getApplicationContext(), "Failed to sent link to your email for reset Password", Toast.LENGTH_LONG).show();
+				Toast.makeText(getApplicationContext(), getString(R.string.passwordForgottenEmailFailed), Toast.LENGTH_LONG).show();
 				
 			}
 		}		

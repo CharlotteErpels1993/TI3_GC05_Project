@@ -48,7 +48,7 @@ public class SignUp_deel1 extends Activity{
         cd = new ConnectionDetector(getApplicationContext());
         rg = (RadioGroup) findViewById(R.id.radioGroup);
         rg.clearCheck();
-        getActionBar().setTitle("Registreren");
+        getActionBar().setTitle(getString(R.string.title_activity_Register));
 
         rijksregisterNr = (EditText) findViewById(R.id.rijksRegNrRegistreren);
 
@@ -175,13 +175,13 @@ public class SignUp_deel1 extends Activity{
                 try{
                     List<ParseObject> lijstObjecten = query.find();
                     if (lijstObjecten.size() > 0){
-                        rijksregisterNr.setError("Dit rijksregisternummer is reeds in gebruik.");
+                        rijksregisterNr.setError(getString(R.string.error_occupied_rijksregnr));
                         focusView = rijksregisterNr;
                         cancel = true;
                     }
                 }
                 catch(ParseException e){
-                    Toast.makeText(SignUp_deel1.this,"Er is iets fout gelopen. Onze excuses voor het ongemak.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignUp_deel1.this,getString(R.string.error_generalException), Toast.LENGTH_SHORT).show();
                     cancel = true;
                 }
 

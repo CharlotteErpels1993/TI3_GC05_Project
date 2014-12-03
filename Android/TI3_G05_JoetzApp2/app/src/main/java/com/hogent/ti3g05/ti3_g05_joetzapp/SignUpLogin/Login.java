@@ -50,6 +50,7 @@ public class Login extends Activity{
 
         setContentView(R.layout.activity_login);
 
+        cd = new ConnectionDetector(getApplicationContext());
         //Calling ParseAnalytics to see Analytics of our app
         //ParseAnalytics.trackAppOpened(getIntent());
 
@@ -72,13 +73,12 @@ public class Login extends Activity{
             @Override
             public void onClick(View v) {
                 // get Internet status
-                //isInternetPresent = cd.isConnectingToInternet();
+                isInternetPresent = cd.isConnectingToInternet();
                 // check for Internet status
-                //TODO: internet vebinding testen
                 if (isInternetPresent) {
                     // Internet Connection is Present
                     // make HTTP requests
-                    Toast.makeText(getApplicationContext(), "U wordt ingelogd, even geduld aub", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), getString(R.string.login_loading), Toast.LENGTH_SHORT).show();
                     attemptLogin();
                 } else {
                     // Internet connection is not present
@@ -178,7 +178,7 @@ public class Login extends Activity{
 	}
 
 	protected void loginSuccessful() {
-        Toast.makeText(getApplicationContext(), "U bent succesvol ingelogd", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), getString(R.string.updatingReport), Toast.LENGTH_SHORT).show();
 
 		Intent in =  new Intent(Login.this,navBarMainScreen.class);
 		startActivity(in);
@@ -186,7 +186,7 @@ public class Login extends Activity{
         overridePendingTransition(R.anim.left_in, R.anim.right_out);
 	}
 	protected void loginUnSuccessful() {
-		Toast.makeText(getApplicationContext(), "Email of wachtwoord is ongeldig", Toast.LENGTH_SHORT).show();
+		Toast.makeText(getApplicationContext(), getString(R.string.error_incorrectLogin), Toast.LENGTH_SHORT).show();
 	}
 
 	private void clearErrors(){

@@ -15,7 +15,6 @@ import android.widget.Toast;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
 import com.hogent.ti3g05.ti3_g05_joetzapp.R;
-import com.hogent.ti3g05.ti3_g05_joetzapp.navBarMainScreen;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
@@ -33,20 +32,6 @@ public class SignUp_deel3 extends Activity{
     private EditText busText;
     private EditText telefoonText;
     private EditText gsmText;
-
-	private Button volgendeButton;
-    private Button terugKerenButton;
-
-	private String voornaam;
-	private String naam;
-	private String straat;
-    private String huisnr;
-    private String bus;
-    private String gemeente;
-    private String postcode;
-    private String rijksregnr;
-    private String telefoon;
-    private String gsm;
 
     private boolean cancel = false;
     private View focusView = null;
@@ -76,9 +61,8 @@ public class SignUp_deel3 extends Activity{
         busText = (EditText) findViewById(R.id.BusSignu);
 
 
-        getActionBar().setTitle("Registreren");
-		volgendeButton = (Button) findViewById(R.id.btnNaarDeel4);
-        volgendeButton.setTextColor(getResources().getColor(R.color.Rood));
+        getActionBar().setTitle(getString(R.string.title_activity_Register));
+        Button volgendeButton = (Button) findViewById(R.id.btnNaarDeel4);
 		volgendeButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -113,15 +97,15 @@ public class SignUp_deel3 extends Activity{
         cancel = false;
 
 		// Store values at the time of the login attempt.
-		voornaam = voornaamText.getText().toString().toLowerCase();
-		naam = naamText.getText().toString().toLowerCase();
-        straat = straatText.getText().toString();
-        huisnr = huisnrText.getText().toString();
-        bus = busText.getText().toString();
-        gemeente = gemeenteText.getText().toString();
-        postcode = postcodeText.getText().toString();
-        telefoon = telefoonText.getText().toString();
-        gsm = gsmText.getText().toString();
+        String voornaam = voornaamText.getText().toString().toLowerCase();
+        String naam = naamText.getText().toString().toLowerCase();
+        String straat = straatText.getText().toString();
+        String huisnr = huisnrText.getText().toString();
+        String bus = busText.getText().toString();
+        String gemeente = gemeenteText.getText().toString();
+        String postcode = postcodeText.getText().toString();
+        String telefoon = telefoonText.getText().toString();
+        String gsm = gsmText.getText().toString();
 
         //hieronder wordt gecontroleerd of alles ingevuld is & eventueel numeriek is.
         //Omgekeerde volgorde, zodat de user naar het eerste verkeerde veld wordt gestuurd.
@@ -207,7 +191,7 @@ public class SignUp_deel3 extends Activity{
             }
         }
         catch(ParseException e){
-            Toast.makeText(SignUp_deel3.this,"Er is iets fout gelopen. Onze excuses voor het ongemak.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(SignUp_deel3.this,getString(R.string.error_generalException), Toast.LENGTH_SHORT).show();
             cancel = true;
         }
         ParseQuery<ParseObject> query2 = ParseQuery.getQuery("Monitor");
@@ -221,7 +205,7 @@ public class SignUp_deel3 extends Activity{
             }
         }
         catch(ParseException e){
-            Toast.makeText(SignUp_deel3.this,"Er is iets fout gelopen. Onze excuses voor het ongemak.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(SignUp_deel3.this,getString(R.string.error_generalException), Toast.LENGTH_SHORT).show();
             cancel = true;
         }
 
@@ -233,7 +217,6 @@ public class SignUp_deel3 extends Activity{
 			// Show a progress spinner, and kick off a background task to
 			// perform the user login attempt.
             opslaan(voornaam ,naam, straat, huisnr, gemeente, postcode, telefoon, gsm, bus);
-			//Toast.makeText(getApplicationContext(), "Opgeslagen", Toast.LENGTH_SHORT).show();
 
 		}
 
@@ -247,7 +230,7 @@ public class SignUp_deel3 extends Activity{
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             String lidBM = extras.getString("lidVanBondMoyson");
-            rijksregnr = extras.getString("rijksregisternr");
+            String rijksregnr = extras.getString("rijksregisternr");
             String BMnr = extras.getString("aansluitingsnr");
             String codeGerechtigde = extras.getString("codeGerechtigde");
             String aansluitingsNrOuder2 = extras.getString("aansluitingsnrOuder2");
@@ -256,7 +239,6 @@ public class SignUp_deel3 extends Activity{
             in.putExtra("codeGerechtigde", codeGerechtigde);
             in.putExtra("aansluitingsnrOuder2", aansluitingsNrOuder2);
             in.putExtra("rijksregisternr", rijksregnr);
-            Toast.makeText(getApplicationContext(), "niet leeg deel3", Toast.LENGTH_SHORT).show();
         }
 
         in.putExtra("voornaam", voornaam);
@@ -274,10 +256,6 @@ public class SignUp_deel3 extends Activity{
         overridePendingTransition(R.anim.right_in, R.anim.left_out);
 
     }
-
-	protected void signUpMsg(String msg) {
-		Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();	
-	}
 
 	private void clearErrors(){ 
 		voornaamText.setError(null);
