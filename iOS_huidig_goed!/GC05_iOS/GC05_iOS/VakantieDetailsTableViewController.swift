@@ -7,6 +7,7 @@ class VakantieDetailsTableViewController: UITableViewController {
     @IBOutlet weak var afbeelding3: UIImageView!
     
     
+    @IBOutlet var heartButton: UIButton!
     @IBOutlet var vakantieNaamLabel: UILabel!
     @IBOutlet weak var korteBeschrijvingLabel: UILabel!
     @IBOutlet weak var doelgroepLabel: UILabel!
@@ -30,6 +31,9 @@ class VakantieDetailsTableViewController: UITableViewController {
     var query = PFQuery(className: "Vakantie")
     var beschrijving: String!
     var sectionToDelete = -1
+    var favoriet: Bool = false
+    var imageHeartFull = UIImage(named: "Heart_Full.png")
+    var imageHeartEmpty = UIImage(named: "Heart_Empty.png")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -138,6 +142,19 @@ class VakantieDetailsTableViewController: UITableViewController {
             return 7
         } else {
             return 6
+        }
+    }
+    @IBAction func switchHeart(sender: AnyObject) {
+        if favoriet == false {
+            favoriet = true
+            // switch image
+            heartButton.setImage(self.imageHeartFull, forState: UIControlState.Normal)
+            // schrijf naar database
+        } else {
+            favoriet = false
+            // switch image
+            heartButton.setImage(self.imageHeartEmpty, forState: UIControlState.Normal)
+            // haal terug uit de database
         }
     }
     

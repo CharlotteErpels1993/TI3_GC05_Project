@@ -85,6 +85,8 @@
 		A55321DF1A1C8258005146F8 /* SuccesvolNieuwWachtwoordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55321DE1A1C8258005146F8 /* SuccesvolNieuwWachtwoordViewController.swift */; };
 		A575A0691A1633E500F6735A /* ENSideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575A0671A1633E500F6735A /* ENSideMenu.swift */; };
 		A575A06A1A1633E500F6735A /* ENSideMenuNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575A0681A1633E500F6735A /* ENSideMenuNavigationController.swift */; };
+		A599185B1A2F79150055AAF1 /* Heart_Empty.png in Resources */ = {isa = PBXBuildFile; fileRef = A59918591A2F79150055AAF1 /* Heart_Empty.png */; };
+		A599185C1A2F79150055AAF1 /* Heart_Full.png in Resources */ = {isa = PBXBuildFile; fileRef = A599185A1A2F79150055AAF1 /* Heart_Full.png */; };
 		A59F1A8E1A16B29700A17D09 /* AfbeeldingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59F1A8D1A16B29700A17D09 /* AfbeeldingDetailViewController.swift */; };
 		A5A158301A1A65B200FEF51D /* IndienenVoorkeurViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A1582F1A1A65B200FEF51D /* IndienenVoorkeurViewController.swift */; };
 		A5A158321A1A65E900FEF51D /* IndienenVoorkeurSuccesvolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A158311A1A65E900FEF51D /* IndienenVoorkeurSuccesvolViewController.swift */; };
@@ -192,6 +194,8 @@
 		A55321DE1A1C8258005146F8 /* SuccesvolNieuwWachtwoordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuccesvolNieuwWachtwoordViewController.swift; sourceTree = "<group>"; };
 		A575A0671A1633E500F6735A /* ENSideMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENSideMenu.swift; sourceTree = "<group>"; };
 		A575A0681A1633E500F6735A /* ENSideMenuNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENSideMenuNavigationController.swift; sourceTree = "<group>"; };
+		A59918591A2F79150055AAF1 /* Heart_Empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Heart_Empty.png; path = Images.xcassets/Heart_Empty.png; sourceTree = "<group>"; };
+		A599185A1A2F79150055AAF1 /* Heart_Full.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Heart_Full.png; path = Images.xcassets/Heart_Full.png; sourceTree = "<group>"; };
 		A59F1A8D1A16B29700A17D09 /* AfbeeldingDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AfbeeldingDetailViewController.swift; sourceTree = "<group>"; };
 		A5A1582F1A1A65B200FEF51D /* IndienenVoorkeurViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndienenVoorkeurViewController.swift; sourceTree = "<group>"; };
 		A5A158311A1A65E900FEF51D /* IndienenVoorkeurSuccesvolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndienenVoorkeurSuccesvolViewController.swift; sourceTree = "<group>"; };
@@ -434,6 +438,8 @@
 		A52976CD1A1A094900420FEE /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				A59918591A2F79150055AAF1 /* Heart_Empty.png */,
+				A599185A1A2F79150055AAF1 /* Heart_Full.png */,
 				A543AA881A2C7AC000249B4A /* menu.png */,
 				A5E5B9841A23712B0054960C /* joetz.png */,
 				A52976D01A1A0A5E00420FEE /* Klevertje.png */,
@@ -523,11 +529,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5E5B9831A2370DC0054960C /* LaunchScreen.xib in Resources */,
+				A599185B1A2F79150055AAF1 /* Heart_Empty.png in Resources */,
 				0FA80B0D1A01350E008DB343 /* Main.storyboard in Resources */,
 				0FA80B0F1A01350E008DB343 /* Images.xcassets in Resources */,
 				A543AA891A2C7AC000249B4A /* menu.png in Resources */,
 				A52976D11A1A0A5E00420FEE /* Klevertje.png in Resources */,
 				A5E5B9851A23712B0054960C /* joetz.png in Resources */,
+				A599185C1A2F79150055AAF1 /* Heart_Full.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
