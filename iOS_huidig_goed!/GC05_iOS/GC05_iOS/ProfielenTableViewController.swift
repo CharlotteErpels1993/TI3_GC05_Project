@@ -86,13 +86,13 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier("monitorCellZelfdeVorming", forIndexPath: indexPath) as UITableViewCell
             let monitor = monitorenZelfdeVorming2[indexPath.row]
-            cell.textLabel.text = monitor.voornaam! + " " + monitor.naam!
+            cell.textLabel?.text = monitor.voornaam! + " " + monitor.naam!
             cell.detailTextLabel!.text = "Meer informatie"
             return cell
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier("monitorCell", forIndexPath: indexPath) as UITableViewCell
             let monitor = monitoren2[indexPath.row]
-            cell.textLabel.text = monitor.voornaam! + " " + monitor.naam!
+            cell.textLabel?.text = monitor.voornaam! + " " + monitor.naam!
             cell.detailTextLabel?.text = "Meer informatie"
             return cell
         }
