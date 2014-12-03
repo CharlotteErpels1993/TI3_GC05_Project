@@ -89,12 +89,13 @@ public class FavorieteVakanties extends Fragment{
             cd = new ConnectionDetector(rootView.getContext());
             myDB = new myDb(rootView.getContext());
             myDB.open();
+
             isInternetPresent = cd.isConnectingToInternet();
             if (isInternetPresent) {
                 new RemoteDataTask().execute();
             }
             else {
-                favorieten = myDB.getFavorieten();
+                vakanties = myDB.getFavorieten();
                 adapter = new ListViewAdapter(rootView.getContext(), vakanties);
                 // Binds the Adapter to the ListView
                 listview.setAdapter(adapter);
@@ -213,7 +214,6 @@ public class FavorieteVakanties extends Fragment{
                         map = new Vakantie();
 
 
-                        if(vakantie.getObjectId().equals(favorieten))
                         //String prijs = vakantie.get("basisPrijs").toString();
                         map.setNaamVakantie((String) vakantie.get("titel"));
                         map.setVakantieID(vakantie.getObjectId());

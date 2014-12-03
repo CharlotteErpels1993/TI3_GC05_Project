@@ -201,8 +201,6 @@ public class activiteit_overzicht extends Fragment /*implements SwipeRefreshLayo
             vakanties = new ArrayList<Vakantie>();
 
 
-            Date now = new Date();
-
 
             try {
                 List<ParseObject> lijstAfbeeldingen;

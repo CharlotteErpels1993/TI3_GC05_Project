@@ -15,6 +15,7 @@ import java.awt.font.NumericShaper;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.Constants.COLUMN_VAKANTIEID;
 import static com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.Constants.TABLE_FAVORIETEN;
 import static com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.Constants.TABLE_PROFIELEN;
 import static com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.Constants.TABLE_VAKANTIE;
@@ -57,7 +58,7 @@ public class DBHandler extends SQLiteOpenHelper {
                 Constants.COLUMN_TERUGDATUM + " TEXT," + Constants.COLUMN_PRIJS + " NUMERIC," + Constants.COLUMN_AFBEELDING1 + " TEXT," +Constants.COLUMN_AFBEELDING2 + " TEXT," +Constants.COLUMN_AFBEELDING3 + " TEXT," +
                 Constants.COLUMN_MAXDOELGROEP + " TEXT," + Constants.COLUMN_MINDOELGROEP + " TEXT," + Constants.COLUMN_BESCHRIJVING + " TEXT," + Constants.COLUMN_PERIODE + " TEXT," + Constants.COLUMN_VERVOER + " TEXT," +
                 Constants.COLUMN_FORMULE + " TEXT," + Constants.COLUMN_MAXDEELNEMERS + " NUMERIC," + Constants.COLUMN_INBEGREPENINPRIJS + " TEXT," + Constants.COLUMN_BMLEDENPRIJS + " NUMERIC," +
-                Constants.COLUMN_STERPRIJSOUDER1 + " NUMERIC," + Constants.COLUMN_STERPRIJS2OUDERS + " NUMERIC" + ")";
+                Constants.COLUMN_STERPRIJSOUDER1 + " NUMERIC," + Constants.COLUMN_STERPRIJS2OUDERS + " NUMERIC, " + COLUMN_VAKANTIEID + " TEXT )";
 
         sqLiteDatabase.execSQL(CREATE_FAVORIETEN_TABLE);
     }
@@ -399,37 +400,40 @@ public class DBHandler extends SQLiteOpenHelper {
     public Long toevoegenGegevensFavoriet(Vakantie favorieteVakantie)
     {
         ContentValues values = new ContentValues();
-        values.put(Constants.COLUMN_VAKANTIENAAM, favorieteVakantie.getNaamVakantie());
-        values.put(Constants.COLUMN_LOCATIE, favorieteVakantie.getLocatie());
-        values.put(Constants.COLUMN_VERTREKDATUM, favorieteVakantie.getVertrekDatum().toString());
-        values.put(Constants.COLUMN_TERUGDATUM, favorieteVakantie.getTerugkeerDatum().toString());
+        values.put(Constants.COLUMN_VAKANTIENAAM, favorieteVakantie.getNaamVakantie()); //1
+        values.put(Constants.COLUMN_LOCATIE, favorieteVakantie.getLocatie()); //2
+        values.put(Constants.COLUMN_VERTREKDATUM, favorieteVakantie.getVertrekDatum().toString()); //3
+        values.put(Constants.COLUMN_TERUGDATUM, favorieteVakantie.getTerugkeerDatum().toString()); //4
 
-        values.put(Constants.COLUMN_PRIJS,(Integer) favorieteVakantie.getBasisprijs());
-        values.put(Constants.COLUMN_AFBEELDING1, favorieteVakantie.getFoto1());
+        values.put(Constants.COLUMN_PRIJS,(Integer) favorieteVakantie.getBasisprijs()); //5
+        values.put(Constants.COLUMN_AFBEELDING1, favorieteVakantie.getFoto1()); //6
         if (favorieteVakantie.getFotos().size() >= 2)
-            values.put(Constants.COLUMN_AFBEELDING2, favorieteVakantie.getFoto2());
+            values.put(Constants.COLUMN_AFBEELDING2, favorieteVakantie.getFoto2()); //7
         if (favorieteVakantie.getFotos().size() >= 3)
-            values.put(Constants.COLUMN_AFBEELDING3, favorieteVakantie.getFoto3());
+            values.put(Constants.COLUMN_AFBEELDING3, favorieteVakantie.getFoto3()); //8
         //values.put(Constants.COLUMN_DOELGROEP, vakantie.getDoelGroep());
-        values.put(Constants.COLUMN_MAXDOELGROEP,(Integer) favorieteVakantie.getMaxDoelgroep());
-        values.put(Constants.COLUMN_MINDOELGROEP, (Integer)favorieteVakantie.getMinDoelgroep());
+        values.put(Constants.COLUMN_MAXDOELGROEP,(Integer) favorieteVakantie.getMaxDoelgroep()); //9
+        values.put(Constants.COLUMN_MINDOELGROEP, (Integer)favorieteVakantie.getMinDoelgroep()); //10
 
-        values.put(Constants.COLUMN_BESCHRIJVING, favorieteVakantie.getKorteBeschrijving());
-        values.put(Constants.COLUMN_PERIODE, favorieteVakantie.getPeriode());
-        values.put(Constants.COLUMN_VERVOER, favorieteVakantie.getVervoerswijze());
+        values.put(Constants.COLUMN_BESCHRIJVING, favorieteVakantie.getKorteBeschrijving()); //11
+        values.put(Constants.COLUMN_PERIODE, favorieteVakantie.getPeriode()); //12
+        values.put(Constants.COLUMN_VERVOER, favorieteVakantie.getVervoerswijze()); //13
 
-        values.put(Constants.COLUMN_FORMULE, favorieteVakantie.getFormule());
-        values.put(Constants.COLUMN_MAXDEELNEMERS, (Integer) favorieteVakantie.getMaxAantalDeelnemers());
-        values.put(Constants.COLUMN_INBEGREPENINPRIJS, favorieteVakantie.getInbegrepenInPrijs());
-        values.put(Constants.COLUMN_BMLEDENPRIJS,(Integer) favorieteVakantie.getBondMoysonLedenPrijs());
+        values.put(Constants.COLUMN_FORMULE, favorieteVakantie.getFormule()); //14
+        values.put(Constants.COLUMN_MAXDEELNEMERS, (Integer) favorieteVakantie.getMaxAantalDeelnemers()); //15
+        values.put(Constants.COLUMN_INBEGREPENINPRIJS, favorieteVakantie.getInbegrepenInPrijs()); //16
+        values.put(Constants.COLUMN_BMLEDENPRIJS,(Integer) favorieteVakantie.getBondMoysonLedenPrijs()); //17
+
 
         if((Double)favorieteVakantie.getSterPrijs1Ouder()<0)
             favorieteVakantie.setSterPrijs1Ouder(0);
         if((Double)favorieteVakantie.getSterPrijs2Ouder()<0)
             favorieteVakantie.setSterPrijs2Ouder(0);
 
-        values.put(Constants.COLUMN_STERPRIJSOUDER1,(Double) favorieteVakantie.getSterPrijs1Ouder());
-        values.put(Constants.COLUMN_STERPRIJS2OUDERS,(Double) favorieteVakantie.getSterPrijs2Ouder());
+        values.put(Constants.COLUMN_STERPRIJSOUDER1,(Double) favorieteVakantie.getSterPrijs1Ouder()); //18
+        values.put(Constants.COLUMN_STERPRIJS2OUDERS,(Double) favorieteVakantie.getSterPrijs2Ouder()); //19
+        values.put(Constants.COLUMN_VAKANTIEID, favorieteVakantie.getActiviteitID()); //20
+
         SQLiteDatabase db = this.getWritableDatabase();
 
         Long id = db.insert(TABLE_FAVORIETEN, null, values);
@@ -439,16 +443,16 @@ public class DBHandler extends SQLiteOpenHelper {
 
     }
 
-    public List<FavorieteVakantie> krijgFavorieten()
+    public List<Vakantie> krijgFavorieten()
     {
-        List<FavorieteVakantie> favorieten = new ArrayList<FavorieteVakantie>();
+        List<Vakantie> favorieten = new ArrayList<Vakantie>();
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT * FROM " + TABLE_FAVORIETEN;
         Cursor c = db.rawQuery(query,null);
         c.moveToFirst();
         while(!c.isAfterLast())
         {
-            FavorieteVakantie f = krijgFavorieten(c.getString(1));
+            Vakantie f = krijgFavorieten(c.getString(1));
             favorieten.add(f);
             c.moveToNext();
         }
@@ -456,27 +460,46 @@ public class DBHandler extends SQLiteOpenHelper {
         return favorieten;
     }
 
-    public FavorieteVakantie krijgFavorieten(String vakantieID)
+    public Vakantie krijgFavorieten(String vakantienaam)
     {
-        String query = "Select * FROM " + TABLE_FAVORIETEN + " WHERE " + Constants.COLUMN_VAKANTIEID + " = \"" + vakantieID + "\"";
+        String query = "Select * FROM " + TABLE_FAVORIETEN + " WHERE " + Constants.COLUMN_VAKANTIENAAM + " = \"" + vakantienaam + "\"";
         SQLiteDatabase db = this.getWritableDatabase();
 
         Cursor cursor = db.rawQuery(query, null);
 
-        FavorieteVakantie fav = new FavorieteVakantie();
+        Vakantie vakantie = new Vakantie();
 
         if(cursor.moveToFirst())
         {
             cursor.moveToFirst();
-            fav.setVakantieID(cursor.getString(1));
-            fav.setOuderID(cursor.getString(2));
-
+            vakantie.setNaamVakantie(cursor.getString(1));
+            vakantie.setLocatie(cursor.getString(2));
+            vakantie.setVertrekDatumString(cursor.getString(3));
+            vakantie.setTerugDatumString(cursor.getString(4));
+            vakantie.setBasisprijs(Double.parseDouble(cursor.getString(5)));
+            vakantie.setFoto1(cursor.getString(6));
+            vakantie.setFoto2(cursor.getString(7));
+            vakantie.setFoto3(cursor.getString(8));
+            vakantie.setMaxDoelgroep(Integer.parseInt(cursor.getString(9)));
+            vakantie.setMinDoelgroep(Integer.parseInt(cursor.getString(10)));
+            //vakantie.setDoelGroep(cursor.getString(9));
+            vakantie.setKorteBeschrijving(cursor.getString(11));
+            vakantie.setPeriode(cursor.getString(12));
+            vakantie.setVervoerswijze(cursor.getString(13));
+            vakantie.setFormule(cursor.getString(14));
+            vakantie.setMaxAantalDeelnemers(Integer.parseInt(cursor.getString(15)));
+            vakantie.setInbegrepenInPrijs(cursor.getString(16));
+            vakantie.setBondMoysonLedenPrijs(Double.parseDouble(cursor.getString(17)));
+            vakantie.setSterPrijs1Ouder(Double.parseDouble(cursor.getString(18)));
+            vakantie.setSterPrijs2Ouder(Double.parseDouble(cursor.getString(19)));
+            vakantie.setVakantieID(cursor.getString(20));
         } else
         {
-            fav = null;
+            vakantie = null;
         }
         cursor.close();
         db.close();
-        return fav;
+        return vakantie;
+
     }
 }

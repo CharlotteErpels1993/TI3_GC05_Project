@@ -148,14 +148,14 @@ public class myDb {
         return db.toevoegenGegevensFavoriet(favorieteVakantie);
     }
 
-    public List<FavorieteVakantie> getFavorieten()
+    public List<Vakantie> getFavorieten()
     {
         return db.krijgFavorieten();
     }
 
-    public FavorieteVakantie getFavoriet(String vakantieID)
+    public Vakantie getFavoriet(String naam)
     {
-        return db.krijgFavorieten(vakantieID);
+        return db.krijgFavorieten(naam);
     }
 
 }

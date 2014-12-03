@@ -33,7 +33,7 @@ public class ListViewAdapter extends ArrayAdapter<Vakantie> implements Filterabl
                            List<Vakantie> vakanties) {
         super(context, R.layout.listview_item);
         this.context = context;
-        if(vakanties.isEmpty())
+        if(vakanties == null || vakanties.isEmpty())
         {
             Toast.makeText(context, "U heeft nog geen favoriete vakanties", Toast.LENGTH_LONG).show();
         }
@@ -90,12 +90,7 @@ public class ListViewAdapter extends ArrayAdapter<Vakantie> implements Filterabl
         }
         holder.naamVakantie.setText(vakanties.get(position).getNaamVakantie());
         holder.locatie.setText(vakanties.get(position).getLocatie());
-       /* if(ParseUser.getCurrentUser() != null)
-        {
-            holder.prijs.setText((int) vakanties.get(position).getBasisprijs());
-        }*/
-        //holder.vertrekdatum.setText(( vakanties.get(position).getVertrekDatum().toString()));
-        //holder.terugdatum.setText(( vakanties.get(position).getTerugkeerDatum().toString()));
+
         holder.doelgroep.setText(vakanties.get(position).getMinDoelgroep() + " - " + vakanties.get(position).getMaxDoelgroep() + " jaar");
 
 
