@@ -3547,7 +3547,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
         <!--NieuweMonitor-->
         <scene sceneID="jo5-gN-CMv">
             <objects>
-                <viewController title="NieuweMonitor" id="aCY-od-DTU" sceneMemberID="viewController">
+                <viewController title="NieuweMonitor" id="aCY-od-DTU" customClass="NieuweMonitorViewController" customModule="JOETZ" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="e8X-At-PMC"/>
                         <viewControllerLayoutGuide type="bottom" id="Rfz-oP-zGe"/>
@@ -3620,6 +3620,9 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                     <navigationItem key="navigationItem" title="Nieuwe monitor" id="oAx-gd-RhW">
                         <barButtonItem key="leftBarButtonItem" image="menu.png" id="JIG-0h-ivO">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="toggle:" destination="aCY-od-DTU" id="cwA-cP-bpS"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Opslaan" id="Z6K-JA-IVb">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -3628,15 +3631,20 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="txtEmail" destination="Tj2-FD-QLS" id="Akx-9Y-kfH"/>
+                        <outlet property="txtLidnummer" destination="cGr-fa-7Zp" id="nX5-6m-Mhr"/>
+                        <outlet property="txtRijksregisterNr" destination="rQk-PC-gy8" id="QJx-Wh-HZN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g6n-m6-wfy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="391" y="6120"/>
         </scene>
-        <!--View Controller-->
+        <!--Nieuwe Monitor Succesvol View Controller-->
         <scene sceneID="DMX-6g-oZE">
             <objects>
-                <viewController id="0ou-00-AwE" sceneMemberID="viewController">
+                <viewController id="0ou-00-AwE" customClass="NieuweMonitorSuccesvolViewController" customModule="JOETZ" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="USe-g3-jz4"/>
                         <viewControllerLayoutGuide type="bottom" id="gu4-Ls-bVi"/>
@@ -3657,6 +3665,9 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                                     <color key="titleColor" red="0.90980392160000001" green="0.12941176469999999" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="UYb-Ex-xh9" kind="unwind" unwindAction="gaTerugNaarNieuweMonitor:" id="YjM-HD-czh"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -3672,6 +3683,7 @@ Mail Joetz met uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens
                     <navigationItem key="navigationItem" id="AeD-fE-IVd"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gi3-XF-TjA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="UYb-Ex-xh9" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1067" y="6120"/>
         </scene>
