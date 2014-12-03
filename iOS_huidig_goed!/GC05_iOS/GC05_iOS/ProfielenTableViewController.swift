@@ -48,6 +48,20 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
                 self.monitoren2 = self.monitoren
                 self.monitorenZelfdeVorming2 = self.monitorenZelfdeVorming
             }
+        } else {
+            var monitorsResponse = ParseData.getAlleMonitors()
+            
+            if monitorsResponse.1 == nil {
+                //er zijn monitors gevonden
+                for var i = 0; i < monitorsResponse.0.count; i += 1 {
+                    if monitorsResponse.0[i].email == PFUser.currentUser().email {
+                        monitorsResponse.0.removeAtIndex(i)
+                    }
+                }
+                
+                self.monitoren = monitorsResponse.0
+                self.monitoren2 = self.monitoren
+            }
         }
         
         //self.monitoren = ParseData.getMonitorsMetAndereVormingen(self.monitorenZelfdeVorming)
@@ -183,19 +197,19 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
             } else if indexPath.section == 1 {
                 cell = tableView.dequeueReusableCellWithIdentifier("monitorCell", forIndexPath: indexPath) as UITableViewCell
                 let monitor = monitoren2[indexPath.row]
-                cell.textLabel?.text = monitor.voornaam! + " " + monitor.naam!
+                cell.textLabel.text = monitor.voornaam! + " " + monitor.naam!
                 cell.detailTextLabel?.text = "Meer informatie"
             }
         } else {
             if indexPath.section == 0 {
                 cell = tableView.dequeueReusableCellWithIdentifier("monitorCellZelfdeVorming", forIndexPath: indexPath) as UITableViewCell
                 let monitor = monitorenZelfdeVorming2[indexPath.row]
-                cell.textLabel?.text = monitor.voornaam! + " " + monitor.naam!
+                cell.textLabel.text = monitor.voornaam! + " " + monitor.naam!
                 cell.detailTextLabel!.text = "Meer informatie"
             } else if indexPath.section == 1 {
                 cell = tableView.dequeueReusableCellWithIdentifier("monitorCell", forIndexPath: indexPath) as UITableViewCell
                 let monitor = monitoren2[indexPath.row]
-                cell.textLabel?.text = monitor.voornaam! + " " + monitor.naam!
+                cell.textLabel.text = monitor.voornaam! + " " + monitor.naam!
                 cell.detailTextLabel?.text = "Meer informatie"
             }
         }
