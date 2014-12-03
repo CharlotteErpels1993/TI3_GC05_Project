@@ -139,6 +139,7 @@ struct /*class*/ ParseData {
                 createVoorkeurTable()
             }
         }
+
         
         VoorkeurSQL.vulVoorkeurTableOp()
     }
@@ -242,6 +243,10 @@ struct /*class*/ ParseData {
         
     }
     
+    static func deleteVakantiesInVerleden() {
+        //VakantieSQL.deleteVakantiesInVerleden()
+    }
+    
     //parse to database
     static func parseContactpersoonNoodToDatabase(contactpersoon: ContactpersoonNood) -> String {
         
@@ -269,10 +274,13 @@ struct /*class*/ ParseData {
     }
     
     //AfbeeldingenTable
-    static func getAfbeeldingenMetVakantieId(vakantieId: String) -> [UIImage] {
+    static func getAfbeeldingenMetVakantieId(vakantieId: String) -> /*[UIImage]*/ ([UIImage], Int?) {
         //return AfbeeldingSQL.getAfbeeldingenMetVakantieId(vakantieId)
         
         //onnodig extra afbeeldingen opslaan op device, beter om deze rechtstreeks van parse op te halen
+        
+        var response: ([UIImage], Int?)
+        var error: Int?
         
         var query = PFQuery(className: "Afbeelding")
         query.whereKey("vakantie", equalTo: vakantieId)
@@ -284,13 +292,22 @@ struct /*class*/ ParseData {
         
         afbeeldingenObjects = query.findObjects() as [PFObject]
         
-        for afbeeldingO in afbeeldingenObjects {
-            afbeeldingFile = afbeeldingO["afbeelding"] as PFFile
-            afbeelding = UIImage(data: afbeeldingFile.getData())!
-            afbeeldingen.append(afbeelding)
+        if afbeeldingenObjects.count == 0 {
+            error = 1
+        }
+        else {
+            error = nil
+            
+            for afbeeldingO in afbeeldingenObjects {
+                afbeeldingFile = afbeeldingO["afbeelding"] as PFFile
+                afbeelding = UIImage(data: afbeeldingFile.getData())!
+                afbeeldingen.append(afbeelding)
+            }
         }
         
-        return afbeeldingen
+        //return afbeeldingen
+        response = (afbeeldingen, error)
+        return response
     }
     
     static func getAfbeeldingMetVakantieId(vakantieId: String) -> UIImage {
@@ -314,7 +331,7 @@ struct /*class*/ ParseData {
     }
     
     //InschrijvingenVakantieTable
-    static func getInschrijvingenVakantie(inschrijving: InschrijvingVakantie) -> [InschrijvingVakantie] {
+    static func getInschrijvingenVakantie(inschrijving: InschrijvingVakantie) -> /*[InschrijvingVakantie] */ ([InschrijvingVakantie], Int?){
         
         var voornaam: String! = inschrijving.deelnemer?.voornaam
         var naam: String! = inschrijving.deelnemer?.naam
@@ -335,20 +352,42 @@ struct /*class*/ ParseData {
     }
     
     //MonitorTable
-    static func getAlleMonitors() -> [Monitor] {
+    static func getAlleMonitors() -> /*[Monitor]*/([Monitor], Int?) {
         return MonitorSQL.zoekAlleMonitors()
     }
     
-    static func getMonitorsMetAndereVormingen(monitorsMetDezelfdeVorming: [Monitor]) -> [Monitor] {
+    static func getMonitorsMetAndereVormingen(monitorsMetDezelfdeVorming: [Monitor]) -> /*[Monitor]*/([Monitor], Int?) {
         return MonitorSQL.getAndereMonitors(monitorsMetDezelfdeVorming)
     }
     
-    static func getMonitorsMetDezelfdeVormingen(monitorId: String) -> [Monitor] {
-        var vormingen = InschrijvingVormingSQL.getVormingIdMetMonitorId(monitorId)
-        var monitorIds = InschrijvingVormingSQL.getMonitorsIdMetVormingId(vormingen)
-        var monitors = MonitorSQL.getMonitorsMetId(monitorIds)
+    static func getMonitorsMetDezelfdeVormingen(monitorId: String) -> /*[Monitor]*/ ([Monitor], Int?) {
         
-        return monitors
+        var monitors: [Monitor] = []
+        var response: ([Monitor], Int?)
+        var error: Int?
+        
+        var vormingenResponse = InschrijvingVormingSQL.getVormingIdMetMonitorId(monitorId)
+        
+        if vormingenResponse.1 == nil {
+            //geen error, er zijn vormingen gevonden
+            var monitorIdsResponse = InschrijvingVormingSQL.getMonitorsIdMetVormingId(vormingenResponse.0)
+            
+            if monitorIdsResponse.1 == nil {
+                //geen error, er zijn monitors met dezelfde vormingen gevonden
+                var monitors = MonitorSQL.getMonitorsMetId(monitorIdsResponse.0)
+                error = nil
+                response = (monitors, error)
+                
+            } else {
+                error = 1
+                response = (monitors, error)
+            }
+        } else {
+            error = 1
+            response = (monitors, error)
+        }
+        
+        return response
     }
     
     static func getMonitorWithEmail(email: String) -> Monitor {
@@ -356,21 +395,21 @@ struct /*class*/ ParseData {
     }
     
     static func updateMonitor(monitor: Monitor) {
-        MonitorSQL.updateMonitor(monitor, email: PFUser.currentUser().email)
+        MonitorSQL.updateMonitor(monitor/*, email: PFUser.currentUser().email*/)
     }
     
     //OuderTable
-    static func getOuderWithEmail(email: String) -> Ouder {
+    static func getOuderWithEmail(email: String) -> /*Ouder*/ (Ouder, Int?) {
         return OuderSQL.getOuderWithEmail(email)
     }
     
     //VakantieTable
-    static func getAlleVakanties() -> [Vakantie] {
+    static func getAlleVakanties() -> /*[Vakantie]*/ ([Vakantie], Int?) {
         return VakantieSQL.getAlleVakanties()
     }
     
     //VormingTable
-    static func getAlleVormingen() -> [Vorming] {
+    static func getAlleVormingen() -> /*[Vorming]*/ ([Vorming], Int?) {
         return VormingSQL.getAlleVormingen()
     }
     
@@ -429,7 +468,7 @@ struct /*class*/ ParseData {
         return false
     }
     
-    static func getVoorkeurenVakantie(voorkeur: Voorkeur) -> [Voorkeur] {
+    static func getVoorkeurenVakantie(voorkeur: Voorkeur) -> /*[Voorkeur]*/ Int? {
         
         var monitorId: String! = voorkeur.monitor?.id
         var vakantieId: String! = voorkeur.vakantie?.id

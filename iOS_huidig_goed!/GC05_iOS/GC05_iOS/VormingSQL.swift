@@ -109,7 +109,7 @@ struct VormingSQL {
         }
     }
     
-    static func getAlleVormingen() -> [Vorming] {
+    static func getAlleVormingen() -> /*[Vorming]*/ ([Vorming], Int?) {
         
         /*var vormingen: [Vorming] = []
         var vorming: Vorming = Vorming(id: "test")
@@ -132,16 +132,30 @@ struct VormingSQL {
         
         let (resultSet, err) = SD.executeQuery("SELECT * FROM Vorming")
         
+        var response: ([Vorming], Int?)
+        var error: Int?
+        
         if err != nil {
             //there was an error during the query, handle it here
         } else {
-            for row in resultSet {
-                vorming = getVorming(row)
-                vormingen.append(vorming)
+            
+            if resultSet.count == 0 {
+                error = 1
+            }
+            else {
+                error = nil
+                
+                for row in resultSet {
+                    vorming = getVorming(row)
+                    vormingen.append(vorming)
+                }
             }
         }
         
-        return vormingen
+        //return vormingen
+        
+        response = (vormingen, error)
+        return response
     }
     
     static private func getVorming(row: SD.SDRow) -> Vorming {

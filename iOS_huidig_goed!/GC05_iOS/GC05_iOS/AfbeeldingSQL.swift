@@ -39,7 +39,7 @@ struct /*class*/ AfbeeldingSQL {
     }*/
     
     
-    static func getAfbeeldingenMetVakantieId(vakantieId: String) -> [UIImage]{
+    static func getAfbeeldingenMetVakantieId(vakantieId: String) -> /*[UIImage]*/ ([UIImage], Int?){
         var afbeeldingen: [UIImage] = []
         var afbeelding: UIImage = UIImage()
         
@@ -47,16 +47,28 @@ struct /*class*/ AfbeeldingSQL {
         
         let (resultSet, err) = SD.executeQuery(query)
         
+        var response: ([UIImage], Int?)
+        var error: Int?
+        
         if err != nil {
             //there was an error during the query, handle it here
         } else {
-            for row in resultSet {
-                afbeelding = getAfbeelding(row)
-                afbeeldingen.append(afbeelding)
+            if resultSet.count == 0 {
+                error = 1
+            }
+            else {
+                error = nil
+            
+                for row in resultSet {
+                    afbeelding = getAfbeelding(row)
+                    afbeeldingen.append(afbeelding)
+                }
             }
         }
         
-        return afbeeldingen
+        //return afbeeldingen
+        response = (afbeeldingen, error)
+        return response
     }
     
     static private func getAfbeelding(row: SD.SDRow) -> UIImage {

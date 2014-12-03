@@ -14,7 +14,11 @@ class ProfielBewerkenViewController: ResponsiveTextFieldViewController {
     
     @IBAction func opslaan(sender: AnyObject) {
         
-        monitor = Monitor(id: "test")
+        
+        ParseData.deleteMonitorTable()
+        ParseData.vulMonitorTableOp()
+        
+        monitor = ParseData.getMonitorWithEmail(PFUser.currentUser().email)
         
         
         setStatusTextFields()
@@ -157,7 +161,7 @@ class ProfielBewerkenViewController: ResponsiveTextFieldViewController {
     func vulGegevensIn() {
         monitor?.voornaam = voornaamTxt.text
         monitor?.naam = naamTxt.text
-        //monitor.email = emailTxt.text
+        //monitor?.email = emailTxt.text
         monitor?.telefoon = telefoonTxt.text
         monitor?.gsm = gsmTxt.text
         monitor?.linkFacebook = facebookTxt.text

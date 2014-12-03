@@ -75,10 +75,13 @@ struct InschrijvingVormingSQL {
         inschrijvingJSON.save()
     }
 
-    static func getVormingIdMetMonitorId(monitorId: String) -> [String] {
+    static func getVormingIdMetMonitorId(monitorId: String) -> /*[String]*/ ([String], Int?) {
         var vormingenIds: [String] = []
         
         let (resultSet, err) = SD.executeQuery("SELECT vorming FROM InschrijvingVorming WHERE monitor = ?", withArgs: [monitorId])
+        
+        var response: ([String], Int?)
+        var error: Int?
         
         if err != nil
         {
@@ -86,18 +89,31 @@ struct InschrijvingVormingSQL {
         }
         else
         {
-            for row in resultSet {
-                if let vormingId = row["vorming"]?.asString() {
-                    vormingenIds.append(vormingId)
+            if resultSet.count == 0 {
+                error = 1
+            }
+            else {
+                error = nil
+                
+                for row in resultSet {
+                    if let vormingId = row["vorming"]?.asString() {
+                        vormingenIds.append(vormingId)
+                    }
                 }
             }
+            
         }
         
-        return vormingenIds
+        //return vormingenIds
+        response = (vormingenIds, error)
+        return response
     }
     
-    static func getMonitorsIdMetVormingId(vormingen: [String]) -> [String] {
+    static func getMonitorsIdMetVormingId(vormingen: [String]) -> /*[String]*/ ([String], Int?) {
         var monitorsId: [String] = []
+        
+        var response: ([String], Int?)
+        var error: Int?
         
         for vorming in vormingen {
             var (resultSet, err) = SD.executeQuery("SELECT monitor FROM InschrijvingVorming WHERE vorming = ?", withArgs: [vorming])
@@ -118,7 +134,16 @@ struct InschrijvingVormingSQL {
             }
         }
         
-        return monitorsId
+        if monitorsId.count == 0 {
+            error = 1
+        }
+        else {
+            error = nil
+        }
+        
+        response = (monitorsId, error)
+        
+        return response
     }
     
     static func getInschrijvingenVorming(monitorId: String, vormingId: String/*, periode: String*/) -> [InschrijvingVorming] {
