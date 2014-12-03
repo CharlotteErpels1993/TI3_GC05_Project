@@ -64,6 +64,9 @@ public class Constants {
     public static final String COLUMN_TITEL = "titel";
     public static final String COLUMN_WEBSITELOCATIE = "websiteLocatie";
 
+    //favorieten
 
-
+    public static final String TABLE_FAVORIETEN = "favorieten";
+    public static final String COLUMN_VAKANTIEID = "vakantieID";
+    public static final String COLUMN_OUDERID = "ouderID";
 }

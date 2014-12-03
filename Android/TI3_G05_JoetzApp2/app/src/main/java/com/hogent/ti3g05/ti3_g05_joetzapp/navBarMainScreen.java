@@ -80,6 +80,10 @@ public class navBarMainScreen extends Activity {
             {
                 fragment = new ProfielenOverzicht_fragment();
             }
+            else if(frag.toLowerCase().startsWith("favoriet"))
+            {
+                fragment = new FavorieteVakanties();
+            }
         }
         else
         {
@@ -102,6 +106,10 @@ public class navBarMainScreen extends Activity {
             else if(afkomstig.toString().toLowerCase().startsWith("profiel"))
             {
                 fragment = new ProfielenOverzicht_fragment();
+            }
+            else if(afkomstig.toString().toLowerCase().startsWith("favoriet"))
+            {
+                fragment = new FavorieteVakanties();
             }
         }
 
@@ -243,12 +251,9 @@ public class navBarMainScreen extends Activity {
 
                     intent1.putExtra("frag", fragment.toString());
                     startActivity(intent1);
-                    //refreshFragment(position);
+
                     break;
 
-                    /*Intent intent1 = new Intent(navBarMainScreen.this, ProfielenOverzicht.class
-                    );
-                    startActivity(intent1);*/
                 }
                 else
                 {
@@ -312,6 +317,7 @@ public class navBarMainScreen extends Activity {
                     } else {
                         Intent intent1 = new Intent(navBarMainScreen.this, navBarMainScreen.class
                         );
+                        Toast.makeText(this, "U hebt niet de juiste bevoegdheid om dit te bekijken.", Toast.LENGTH_SHORT).show();
                         refreshFragment(position);
                         startActivity(intent1);
                     }
@@ -350,12 +356,29 @@ public class navBarMainScreen extends Activity {
                 break;
             case 6:
 
+                if(ParseUser.getCurrentUser() ==null)
+                {
+                    Intent intent5 = new Intent(navBarMainScreen.this, SignUp_deel1.class
+                    );
+                    startActivity(intent5);
+                }
+                else
+                {
+                    Intent intent7 = new Intent(navBarMainScreen.this, navBarMainScreen.class);
+                    fragment = new FavorieteVakanties();
 
-                Intent intent5 = new Intent(navBarMainScreen.this, SignUp_deel1.class
-                );
-                startActivity(intent5);
+                    refreshFragment(position);
+
+                    intent7.putExtra("frag", fragment.toString());
+                    startActivity(intent7);
+                    //refreshFragment(position);
+                    break;
+                }
+
 
                 break;
+
+
             default:
                 break;
         }

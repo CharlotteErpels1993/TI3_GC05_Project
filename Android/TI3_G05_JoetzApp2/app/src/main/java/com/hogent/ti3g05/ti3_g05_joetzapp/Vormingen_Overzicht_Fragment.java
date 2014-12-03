@@ -106,8 +106,15 @@ public class Vormingen_Overzicht_Fragment extends Fragment /*implements SwipeRef
             mProgressDialog.setTitle("Ophalen van vormingen.");
             // Set progressdialog message
             mProgressDialog.setMessage("Aan het laden...");
-            mProgressDialog.setIndeterminate(true);
-            mProgressDialog.setIndeterminateDrawable(rootView.getResources().getDrawable(R.drawable.my_animation));
+            try{
+                mProgressDialog.setIndeterminate(true);
+                mProgressDialog.setIndeterminateDrawable(rootView.getResources().getDrawable(R.drawable.my_animation));
+
+            }
+            catch (OutOfMemoryError er)
+            {
+                mProgressDialog.setIndeterminate(false);
+            }
 
             // Show progressdialog
             mProgressDialog.show();

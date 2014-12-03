@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.hogent.ti3g05.ti3_g05_joetzapp.domein.FavorieteVakantie;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Monitor;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vakantie;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vorming;
@@ -14,6 +15,7 @@ import java.awt.font.NumericShaper;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.Constants.TABLE_FAVORIETEN;
 import static com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.Constants.TABLE_PROFIELEN;
 import static com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.Constants.TABLE_VAKANTIE;
 import static com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.Constants.TABLE_VORMINGEN;
@@ -49,6 +51,17 @@ public class DBHandler extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(CREATE_PROFIELEN_TABLE);
     }
 
+    public void onCreateFavorieten(SQLiteDatabase sqLiteDatabase) {
+
+        String CREATE_FAVORIETEN_TABLE = "CREATE TABLE " + TABLE_FAVORIETEN + "(" +Constants.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +Constants.COLUMN_VAKANTIENAAM + " TEXT," + Constants.COLUMN_LOCATIE + " TEXT," + Constants.COLUMN_VERTREKDATUM + " TEXT," +
+                Constants.COLUMN_TERUGDATUM + " TEXT," + Constants.COLUMN_PRIJS + " NUMERIC," + Constants.COLUMN_AFBEELDING1 + " TEXT," +Constants.COLUMN_AFBEELDING2 + " TEXT," +Constants.COLUMN_AFBEELDING3 + " TEXT," +
+                Constants.COLUMN_MAXDOELGROEP + " TEXT," + Constants.COLUMN_MINDOELGROEP + " TEXT," + Constants.COLUMN_BESCHRIJVING + " TEXT," + Constants.COLUMN_PERIODE + " TEXT," + Constants.COLUMN_VERVOER + " TEXT," +
+                Constants.COLUMN_FORMULE + " TEXT," + Constants.COLUMN_MAXDEELNEMERS + " NUMERIC," + Constants.COLUMN_INBEGREPENINPRIJS + " TEXT," + Constants.COLUMN_BMLEDENPRIJS + " NUMERIC," +
+                Constants.COLUMN_STERPRIJSOUDER1 + " NUMERIC," + Constants.COLUMN_STERPRIJS2OUDERS + " NUMERIC" + ")";
+
+        sqLiteDatabase.execSQL(CREATE_FAVORIETEN_TABLE);
+    }
+
     public void onCreateVormingen(SQLiteDatabase sqLiteDatabase) {
 
         String CREATE_VORMINGEN_TABLE = "CREATE TABLE " + TABLE_VORMINGEN + "(" +Constants.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +Constants.COLUMN_BETALINGSWIJZE + " TEXT," + Constants.COLUMN_CRITERIADEELNEMER + " TEXT," + Constants.COLUMN_INBEGREPENINPRIJSV + " TEXT," +
@@ -69,6 +82,7 @@ public class DBHandler extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_VAKANTIE);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_PROFIELEN);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_VORMINGEN);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_FAVORIETEN);
         onCreate(sqLiteDatabase);
 
     }
@@ -89,6 +103,13 @@ public class DBHandler extends SQLiteOpenHelper {
     {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_PROFIELEN);
         onCreateProfielen(db);
+
+    }
+
+    public void dropFavorieten(SQLiteDatabase db)
+    {
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_FAVORIETEN);
+        onCreateFavorieten(db);
 
     }
 
@@ -373,5 +394,89 @@ public class DBHandler extends SQLiteOpenHelper {
         cursor.close();
         db.close();
         return vorming;
+    }
+
+    public Long toevoegenGegevensFavoriet(Vakantie favorieteVakantie)
+    {
+        ContentValues values = new ContentValues();
+        values.put(Constants.COLUMN_VAKANTIENAAM, favorieteVakantie.getNaamVakantie());
+        values.put(Constants.COLUMN_LOCATIE, favorieteVakantie.getLocatie());
+        values.put(Constants.COLUMN_VERTREKDATUM, favorieteVakantie.getVertrekDatum().toString());
+        values.put(Constants.COLUMN_TERUGDATUM, favorieteVakantie.getTerugkeerDatum().toString());
+
+        values.put(Constants.COLUMN_PRIJS,(Integer) favorieteVakantie.getBasisprijs());
+        values.put(Constants.COLUMN_AFBEELDING1, favorieteVakantie.getFoto1());
+        if (favorieteVakantie.getFotos().size() >= 2)
+            values.put(Constants.COLUMN_AFBEELDING2, favorieteVakantie.getFoto2());
+        if (favorieteVakantie.getFotos().size() >= 3)
+            values.put(Constants.COLUMN_AFBEELDING3, favorieteVakantie.getFoto3());
+        //values.put(Constants.COLUMN_DOELGROEP, vakantie.getDoelGroep());
+        values.put(Constants.COLUMN_MAXDOELGROEP,(Integer) favorieteVakantie.getMaxDoelgroep());
+        values.put(Constants.COLUMN_MINDOELGROEP, (Integer)favorieteVakantie.getMinDoelgroep());
+
+        values.put(Constants.COLUMN_BESCHRIJVING, favorieteVakantie.getKorteBeschrijving());
+        values.put(Constants.COLUMN_PERIODE, favorieteVakantie.getPeriode());
+        values.put(Constants.COLUMN_VERVOER, favorieteVakantie.getVervoerswijze());
+
+        values.put(Constants.COLUMN_FORMULE, favorieteVakantie.getFormule());
+        values.put(Constants.COLUMN_MAXDEELNEMERS, (Integer) favorieteVakantie.getMaxAantalDeelnemers());
+        values.put(Constants.COLUMN_INBEGREPENINPRIJS, favorieteVakantie.getInbegrepenInPrijs());
+        values.put(Constants.COLUMN_BMLEDENPRIJS,(Integer) favorieteVakantie.getBondMoysonLedenPrijs());
+
+        if((Double)favorieteVakantie.getSterPrijs1Ouder()<0)
+            favorieteVakantie.setSterPrijs1Ouder(0);
+        if((Double)favorieteVakantie.getSterPrijs2Ouder()<0)
+            favorieteVakantie.setSterPrijs2Ouder(0);
+
+        values.put(Constants.COLUMN_STERPRIJSOUDER1,(Double) favorieteVakantie.getSterPrijs1Ouder());
+        values.put(Constants.COLUMN_STERPRIJS2OUDERS,(Double) favorieteVakantie.getSterPrijs2Ouder());
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Long id = db.insert(TABLE_FAVORIETEN, null, values);
+        db.close();
+
+        return id;
+
+    }
+
+    public List<FavorieteVakantie> krijgFavorieten()
+    {
+        List<FavorieteVakantie> favorieten = new ArrayList<FavorieteVakantie>();
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT * FROM " + TABLE_FAVORIETEN;
+        Cursor c = db.rawQuery(query,null);
+        c.moveToFirst();
+        while(!c.isAfterLast())
+        {
+            FavorieteVakantie f = krijgFavorieten(c.getString(1));
+            favorieten.add(f);
+            c.moveToNext();
+        }
+        c.close();
+        return favorieten;
+    }
+
+    public FavorieteVakantie krijgFavorieten(String vakantieID)
+    {
+        String query = "Select * FROM " + TABLE_FAVORIETEN + " WHERE " + Constants.COLUMN_VAKANTIEID + " = \"" + vakantieID + "\"";
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        FavorieteVakantie fav = new FavorieteVakantie();
+
+        if(cursor.moveToFirst())
+        {
+            cursor.moveToFirst();
+            fav.setVakantieID(cursor.getString(1));
+            fav.setOuderID(cursor.getString(2));
+
+        } else
+        {
+            fav = null;
+        }
+        cursor.close();
+        db.close();
+        return fav;
     }
 }

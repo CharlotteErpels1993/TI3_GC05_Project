@@ -59,12 +59,12 @@
             android:label="@string/title_activity_activiteit_detail"
             android:theme="@style/CustomActionBarTheme">
         </activity>
-        <activity
-            android:name="com.hogent.ti3g05.ti3_g05_joetzapp.profiel_detail"
-            android:label="@string/title_activity_profiel_detail"
-            android:theme="@style/CustomActionBarTheme">
-        </activity>
 
+
+        <!--<activity
+            android:name="com.hogent.ti3g05.ti3_g05_joetzapp.FavorieteVakanties"
+            android:theme="@style/CustomActionBarTheme" >
+        </activity>-->
         <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.SignUp_deel1"
             android:theme="@style/CustomActionBarTheme"/>
         <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.SignUp_deel2"

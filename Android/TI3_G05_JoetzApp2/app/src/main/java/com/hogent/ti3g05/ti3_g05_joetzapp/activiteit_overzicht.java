@@ -1,5 +1,6 @@
 package com.hogent.ti3g05.ti3_g05_joetzapp;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -179,9 +180,15 @@ public class activiteit_overzicht extends Fragment /*implements SwipeRefreshLayo
 
             // Set progressdialog message
             mProgressDialog.setMessage("Aan het laden...");
-            mProgressDialog.setIndeterminate(false);
-            //mProgressDialog.setIndeterminateDrawable(rootView.getResources().getDrawable(R.drawable.my_animation));
-            // Show progressdialog
+            try {
+                mProgressDialog.setIndeterminate(true);
+                mProgressDialog.setIndeterminateDrawable(rootView.getResources().getDrawable(R.drawable.my_animation));
+            } catch (OutOfMemoryError er)
+            {
+                mProgressDialog.setIndeterminate(false);
+            }
+
+             //Show progressdialog
 
 
             mProgressDialog.show();
@@ -193,6 +200,8 @@ public class activiteit_overzicht extends Fragment /*implements SwipeRefreshLayo
             // Create the array
             vakanties = new ArrayList<Vakantie>();
 
+
+            Date now = new Date();
 
 
             try {
@@ -246,7 +255,19 @@ public class activiteit_overzicht extends Fragment /*implements SwipeRefreshLayo
                     map.setFotos(afbeeldingenLijst);
 
 
-                    vakanties.add(map);
+/*
+                    SimpleDateFormat formatter = new SimpleDateFormat("MMM dd, yyyy");
+                    Date date = null;
+
+                    //    date = formatter.parse(now.toString());
+                   // Date vakantiedate = formatter.parse(map.getVertrekDatum().toString());
+
+*/
+                   // if(Integer.parseInt(map.getVertrekDatum().toString())>Integer.parseInt(now.toString()))
+                   /*  if(now.compareTo(map.getVertrekDatum())<0)
+                    {*/
+                        vakanties.add(map);
+                    //}
 
                     myDB.insertVakantie(map);
 
@@ -257,7 +278,9 @@ public class activiteit_overzicht extends Fragment /*implements SwipeRefreshLayo
 
                     Log.e("Error", e.getMessage());
                     e.printStackTrace();
-                }
+                }/* catch (java.text.ParseException e) {
+                e.printStackTrace();
+            }*/
 
             return null;
         }

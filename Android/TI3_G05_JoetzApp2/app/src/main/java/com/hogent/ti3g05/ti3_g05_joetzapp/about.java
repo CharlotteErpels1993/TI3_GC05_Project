@@ -56,6 +56,7 @@ public class about extends Activity {
             Intent intent1 = new Intent(this, navBarMainScreen.class);
             startActivity(intent1);
 
+
             overridePendingTransition(R.anim.left_in, R.anim.right_out);
         }
 

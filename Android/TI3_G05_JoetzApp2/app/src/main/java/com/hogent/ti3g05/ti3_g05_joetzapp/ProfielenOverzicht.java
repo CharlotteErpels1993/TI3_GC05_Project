@@ -32,7 +32,6 @@ import java.util.Locale;
 
 public class ProfielenOverzicht extends Activity /* implements SwipeRefreshLayout.OnRefreshListener*/ {
     private ListView listview;
-    private List<ParseObject> ob;
     private List<ParseObject> obVorming;
     private ProgressDialog mProgressDialog;
     private ProfielAdapter adapter;
@@ -46,6 +45,8 @@ public class ProfielenOverzicht extends Activity /* implements SwipeRefreshLayou
     private List<InschrijvingVorming> inschrijvingVormingen = new ArrayList<InschrijvingVorming>();
     private List<InschrijvingVorming> alleIns = new ArrayList<InschrijvingVorming>();
 
+
+    private List<ParseObject> ob;
     private Monitor ingelogdeMonitor = new Monitor();
     //SwipeRefreshLayout swipeLayout;
 

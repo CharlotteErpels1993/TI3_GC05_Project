@@ -54,6 +54,13 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             />
 
+        <ImageView
+            android:layout_width="50dp"
+            android:id="@+id/favo"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/hartje"/>
+
         <TextView
             android:id="@+id/beschrijvingLabel"
             android:layout_width="fill_parent"

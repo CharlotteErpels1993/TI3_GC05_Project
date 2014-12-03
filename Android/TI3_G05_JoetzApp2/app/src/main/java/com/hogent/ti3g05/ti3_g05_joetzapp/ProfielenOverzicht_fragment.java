@@ -165,8 +165,13 @@ public class ProfielenOverzicht_fragment extends Fragment /* implements SwipeRef
             mProgressDialog.setTitle("Ophalen van profielen.");
             // Set progressdialog message
             mProgressDialog.setMessage("Aan het laden...");
-            mProgressDialog.setIndeterminate(true);
-            mProgressDialog.setIndeterminateDrawable(getResources().getDrawable(R.drawable.my_animation));
+            try {
+                mProgressDialog.setIndeterminate(true);
+                mProgressDialog.setIndeterminateDrawable(getResources().getDrawable(R.drawable.my_animation));
+            }catch (OutOfMemoryError er)
+            {
+                mProgressDialog.setIndeterminate(false);
+            }
 
             // Show progressdialog
             mProgressDialog.show();

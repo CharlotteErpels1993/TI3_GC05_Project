@@ -1,9 +1,5 @@
 package com.hogent.ti3g05.ti3_g05_joetzapp.Services;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -14,35 +10,35 @@ import android.widget.ArrayAdapter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.ImageLoader;
 import com.hogent.ti3g05.ti3_g05_joetzapp.R;
 import com.hogent.ti3g05.ti3_g05_joetzapp.activiteit_detail;
+import com.hogent.ti3g05.ti3_g05_joetzapp.domein.FavorieteVakantie;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vakantie;
 
-public class ListViewAdapter extends ArrayAdapter<Vakantie> implements Filterable {
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+
+public class ListViewAdapterFavorieten extends ArrayAdapter<Vakantie> implements Filterable {
 
     Context context;
     LayoutInflater inflater;
     ImageLoader imageLoader;
     private List<Vakantie> vakanties = null;
-    private ArrayList<Vakantie> arraylist;
+    private ArrayList<FavorieteVakantie> arraylist;
 
 
 
-    public ListViewAdapter(Context context,
-                           List<Vakantie> vakanties) {
+    public ListViewAdapterFavorieten(Context context,
+                                     List<FavorieteVakantie> favorieten, List<Vakantie> vakanties) {
         super(context, R.layout.listview_item);
         this.context = context;
-        if(vakanties.isEmpty())
-        {
-            Toast.makeText(context, "U heeft nog geen favoriete vakanties", Toast.LENGTH_LONG).show();
-        }
         this.vakanties = vakanties;
         inflater = LayoutInflater.from(context);
-        this.arraylist = new ArrayList<Vakantie>();
-        this.arraylist.addAll(vakanties);
+        this.arraylist = new ArrayList<FavorieteVakantie>();
+        this.arraylist.addAll(favorieten);
         imageLoader = new ImageLoader(context);
     }
 
@@ -52,11 +48,14 @@ public class ListViewAdapter extends ArrayAdapter<Vakantie> implements Filterabl
     public class ViewHolder {
         TextView naamVakantie;
         TextView locatie;
-        TextView vertrekdatum;
+        ImageView vakantiefto;
+        /*TextView vertrekdatum;
         TextView terugdatum;
         TextView prijs;
-        ImageView vakantiefto;
-        TextView doelgroep;
+
+        TextView doelgroep;*/
+
+
     }
 
     @Override
@@ -81,15 +80,16 @@ public class ListViewAdapter extends ArrayAdapter<Vakantie> implements Filterabl
             view = inflater.inflate(R.layout.listview_item_nieuwe_layout, null);
             holder.naamVakantie = (TextView) view.findViewById(R.id.naam);
             holder.locatie = (TextView) view.findViewById(R.id.locatie);
-            holder.vertrekdatum = (TextView) view.findViewById(R.id.vertrekdatum);
-            holder.terugdatum = (TextView) view.findViewById(R.id.terugdatum);
+            /*holder.vertrekdatum = (TextView) view.findViewById(R.id.vertrekdatum);
+            holder.terugdatum = (TextView) view.findViewById(R.id.terugdatum);*/
             holder.vakantiefto = (ImageView) view.findViewById(R.id.afbeelding);
-            holder.prijs = (TextView) view.findViewById(R.id.prijs);
-            holder.doelgroep = (TextView) view.findViewById(R.id.doelgroep);
+           /* holder.prijs = (TextView) view.findViewById(R.id.prijs);
+            holder.doelgroep = (TextView) view.findViewById(R.id.doelgroep);*/
             view.setTag(holder);
         } else {
             holder = (ViewHolder) view.getTag();
         }
+
         holder.naamVakantie.setText(vakanties.get(position).getNaamVakantie());
         holder.locatie.setText(vakanties.get(position).getLocatie());
        /* if(ParseUser.getCurrentUser() != null)
@@ -98,9 +98,9 @@ public class ListViewAdapter extends ArrayAdapter<Vakantie> implements Filterabl
         }*/
         //holder.vertrekdatum.setText(( vakanties.get(position).getVertrekDatum().toString()));
         //holder.terugdatum.setText(( vakanties.get(position).getTerugkeerDatum().toString()));
-        holder.doelgroep.setText(vakanties.get(position).getMinDoelgroep() + " - " + vakanties.get(position).getMaxDoelgroep());
+        //holder.doelgroep.setText(vakanties.get(position).getMinDoelgroep() + " - " + vakanties.get(position).getMaxDoelgroep());
 
-
+        
         imageLoader.DisplayImage(vakanties.get(position).getFoto1(),  holder.vakantiefto);
 
         view.setOnClickListener(new OnClickListener() {
@@ -157,17 +157,17 @@ public class ListViewAdapter extends ArrayAdapter<Vakantie> implements Filterabl
         charText = charText.toLowerCase(Locale.getDefault());
         vakanties.clear();
         if (charText.length() == 0) {
-            vakanties.addAll(arraylist);
+     //       vakanties.addAll(arraylist);
         }
         else
         {
-            for (Vakantie wp : arraylist)
+         /*   for (Vakantie wp : arraylist)
             {
                 if (wp.getLocatie().toLowerCase(Locale.getDefault()).contains(charText))
                 {
                     vakanties.add(wp);
                 }
-            }
+            }*/
         }
         notifyDataSetChanged();
     }

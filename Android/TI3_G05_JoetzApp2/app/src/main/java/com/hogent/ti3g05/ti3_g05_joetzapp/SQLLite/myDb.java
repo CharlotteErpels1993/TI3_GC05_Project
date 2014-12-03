@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.util.Log;
 
+import com.hogent.ti3g05.ti3_g05_joetzapp.FavorieteVakanties;
+import com.hogent.ti3g05.ti3_g05_joetzapp.domein.FavorieteVakantie;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Monitor;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vakantie;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vorming;
@@ -55,6 +57,8 @@ public class myDb {
         db.onCreateVakantie(db.getWritableDatabase());
     }
 
+    public void creerFavorieten(){db.onCreateFavorieten(db.getWritableDatabase());}
+
     public void drop()
     {
        db.drop(db.getWritableDatabase());
@@ -72,6 +76,13 @@ public class myDb {
         db.dropVormingen(db.getWritableDatabase());
 
     }
+    public void dropFavorieten()
+    {
+        db.dropFavorieten(db.getWritableDatabase());
+
+    }
+
+
 
     public void close()
     {
@@ -130,6 +141,21 @@ public class myDb {
     public Vorming getVorming(String naam)
     {
         return db.krijgVormingen(naam);
+    }
+
+    public long insertFavoriet(Vakantie favorieteVakantie)
+    {
+        return db.toevoegenGegevensFavoriet(favorieteVakantie);
+    }
+
+    public List<FavorieteVakantie> getFavorieten()
+    {
+        return db.krijgFavorieten();
+    }
+
+    public FavorieteVakantie getFavoriet(String vakantieID)
+    {
+        return db.krijgFavorieten(vakantieID);
     }
 
 }

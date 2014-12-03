@@ -97,6 +97,7 @@ Mail Joetz met uw voornaam, naam, e-mailadres, rijksregisternummer, adresgegeven
         <item>Indienen voorkeur</item>
         <item>Over Joetz</item>
         <item>Uitloggen</item>
+        <item>Favoriete vakanties</item>
     </string-array>
 
 
@@ -147,5 +148,8 @@ De smaak te pakken? Wacht dan niet te lang en boek een onvergetelijke JOETZ-vaka
     <string name="refresh">Refresh</string>
     <string name="aanlsuitingsnummerhintOuder2">Eventueel aansluitingsnummer van ouder 2.</string>
     <string name="KlikVoorMeerInfo">selecteer voor meer info</string>
+    <string name="favoriet">Voeg deze vakantie toe</string>
+    <string name="favoriet2"> aan je favorieten!</string>
+
 
 </resources>

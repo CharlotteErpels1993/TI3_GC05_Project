@@ -20,7 +20,7 @@ public class Vakantie extends Activiteit{
     private String locatie;
     private String korteBeschrijving;
     private String vertrekDatumString, terugDatumString;
-    private ArrayList< String> fotos;
+    private ArrayList< String> fotos = new ArrayList<String>();
 
     public Vakantie(){
         super();
@@ -44,6 +44,8 @@ public class Vakantie extends Activiteit{
 
     public void setKorteBeschrijving(String korteBeschrijving){this.korteBeschrijving = korteBeschrijving;}
     public String getKorteBeschrijving(){return korteBeschrijving;}
+
+
     /*public String toString(){
         Calendar cal = Calendar.getInstance();
         cal.setTime(getVertrekDatum());
@@ -139,25 +141,26 @@ public class Vakantie extends Activiteit{
     }
 
     public String getFoto1(){
-        return this.fotos.get(0);
+        return fotos.get(0);
     }
 
     public String getFoto2(){
-        return this.fotos.get(1);
+        return fotos.get(1);
     }
 
     public String getFoto3(){
-        return (this.fotos.get(2) == null ? null : this.fotos.get(2));
+        return (fotos.get(2) == null ? null : fotos.get(2));
     }
 
     public void setFoto1(String obj){
-        this.fotos.set(0, obj);
+        fotos.add(obj);
+        //this.fotos.set(0, obj);
     }
     public void setFoto2(String obj){
-        this.fotos.set(1, obj);
+        fotos.add(obj);
     }
     public void setFoto3(String obj){
-        this.fotos.set(2, obj);
+        fotos.add(obj);
     }
 
     public void setMaxAantalDeelnemers(Number maxAantalDeelnemers) {
