@@ -59,6 +59,7 @@ public class activiteit_detail extends Activity {
     String inbegrepenInPrijs;
     String activiteitID;
     ArrayList<String> fotos = new ArrayList<String>();
+    String link;
 
     Button btnInschrijven;
     Button btnmeerInfo;
@@ -102,6 +103,7 @@ public class activiteit_detail extends Activity {
         beschrijving = i.getStringExtra("beschrijving");
         inbegrepenInPrijs = i.getStringExtra("InbegrepenInPrijs");
         activiteitID = i.getStringExtra("objectId");
+        link = i.getStringExtra("link");
 
         //afbeeldingen ophalen met een while-lus, die stopt als de nieuwe afbeelding null is, want we weten niet zeker of
         String huidigeAfbeelding = i.getStringExtra("foto0");
@@ -416,7 +418,7 @@ public class activiteit_detail extends Activity {
         getMenuInflater().inflate(R.menu.back_2, menu);
         return true;
     }
-
+/*
     public String getShareUrl() {
         String urlToShare = "";
         //TODO: hardcoded -> niet goed. Extra veld in DB?
@@ -429,52 +431,65 @@ public class activiteit_detail extends Activity {
         }
 
         return urlToShare;
-    }
+    }*/
 
     public void shareFacebook() {
-        String urlToShare = getShareUrl();
+        isInternetPresent = cd.isConnectingToInternet();
 
-        boolean facebookAppFound = false;
-        Intent intent = new Intent(Intent.ACTION_SEND);
-        intent.setType("text/plain");
-        intent.putExtra(Intent.EXTRA_TEXT, urlToShare);
+        if(isInternetPresent)
+        {
+            boolean facebookAppFound = false;
+            Intent intent = new Intent(Intent.ACTION_SEND);
+            intent.setType("text/plain");
+            intent.putExtra(Intent.EXTRA_TEXT, link);
 
-        List<ResolveInfo> matches = getPackageManager().queryIntentActivities(intent, 0);
-        for (ResolveInfo info : matches) {
-            if (info.activityInfo.packageName.toLowerCase().startsWith("com.facebook")) {
-                intent.setPackage(info.activityInfo.packageName);
-                facebookAppFound = true;
-                break;
+            List<ResolveInfo> matches = getPackageManager().queryIntentActivities(intent, 0);
+            for (ResolveInfo info : matches) {
+                if (info.activityInfo.packageName.toLowerCase().startsWith("com.facebook")) {
+                    intent.setPackage(info.activityInfo.packageName);
+                    facebookAppFound = true;
+                    break;
+                }
             }
+            if (!facebookAppFound) {
+                String sharerUrl = "https://www.facebook.com/sharer/sharer.php?u=" + link;
+                intent = new Intent(Intent.ACTION_VIEW, Uri.parse(sharerUrl));
+            }
+            startActivity(intent);
+        } else {
+            Toast.makeText(getApplicationContext(), getString(R.string.error_no_internet), Toast.LENGTH_SHORT).show();
         }
-        if (!facebookAppFound) {
-            String sharerUrl = "https://www.facebook.com/sharer/sharer.php?u=" + urlToShare;
-            intent = new Intent(Intent.ACTION_VIEW, Uri.parse(sharerUrl));
-        }
-        startActivity(intent);
+
     }
 
     public void shareTwitter() {
-        String urlToShare = getShareUrl();
 
-        boolean twitterApp = false;
-        Intent intent = new Intent(Intent.ACTION_SEND);
-        intent.setType("text/plain");
-        intent.putExtra(Intent.EXTRA_TEXT, urlToShare);
+        isInternetPresent = cd.isConnectingToInternet();
+        if(isInternetPresent)
+        {
+            boolean twitterApp = false;
+            Intent intent = new Intent(Intent.ACTION_SEND);
+            intent.setType("text/plain");
+            intent.putExtra(Intent.EXTRA_TEXT, link);
 
-        List<ResolveInfo> matches = getPackageManager().queryIntentActivities(intent, 0);
-        for (ResolveInfo info : matches) {
-            if (info.activityInfo.packageName.toLowerCase().startsWith("com.twitter")) {
-                intent.setPackage(info.activityInfo.packageName);
-                twitterApp = true;
-                break;
+            List<ResolveInfo> matches = getPackageManager().queryIntentActivities(intent, 0);
+            for (ResolveInfo info : matches) {
+                if (info.activityInfo.packageName.toLowerCase().startsWith("com.twitter")) {
+                    intent.setPackage(info.activityInfo.packageName);
+                    twitterApp = true;
+                    break;
+                }
             }
+            if (!twitterApp) {
+                String sharerUrl = "https://twitter.com/intent/tweet?source=webclient&text=%s" + link;
+                intent = new Intent(Intent.ACTION_VIEW, Uri.parse(sharerUrl));
+            }
+            startActivity(intent);
         }
-        if (!twitterApp) {
-            String sharerUrl = "https://twitter.com/intent/tweet?source=webclient&text=%s" + urlToShare;
-            intent = new Intent(Intent.ACTION_VIEW, Uri.parse(sharerUrl));
+        else {
+            Toast.makeText(getApplicationContext(), getString(R.string.error_no_internet), Toast.LENGTH_SHORT).show();
         }
-        startActivity(intent);
+
     }
 
     @Override
@@ -531,8 +546,8 @@ public class activiteit_detail extends Activity {
 
             ParseObject favoriet = new ParseObject("Favoriet");
             if (!controleerReedsFavoriet()) {
-                favoriet.put("vakantieId", activiteitID);
-                favoriet.put("ouderId", ingelogdeOuder);
+                favoriet.put("vakantie", activiteitID);
+                favoriet.put("ouder", ingelogdeOuder);
                 favoriet.save();
                 Toast.makeText(activiteit_detail.this, "Favoriet toegevoegd!", Toast.LENGTH_SHORT).show();
                 favoImage.setVisibility(View.GONE);

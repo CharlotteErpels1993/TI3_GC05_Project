@@ -81,17 +81,13 @@ public class ProfielDetail extends Activity {
                         inte.putExtra("gsm", gsm);
                         inte.putExtra("email", email);
                         startActivity(inte);
-                    }
-                    else{
+                    } else {
                         Toast.makeText(getApplicationContext(), getString(R.string.error_no_internet), Toast.LENGTH_SHORT).show();
                     }
 
 
                 }
             });
-        } else
-        {
-            btnProfielEdit.setVisibility(View.GONE);
         }
 
 

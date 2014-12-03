@@ -47,7 +47,7 @@ public class ImageLoader {
         if (bitmap != null)
             imageView.setImageBitmap(bitmap);
         else {
-            queuePhoto(url, imageView);;
+            queuePhoto(url, imageView);
         }
     }
 

@@ -184,7 +184,7 @@ public class FavorieteVakanties extends Fragment{
                     FavorieteVakantie fav = null;
 
                     ParseQuery<ParseObject> favorietenquery = new ParseQuery<ParseObject>("Favoriet");
-                    favorietenquery.orderByAscending("vakantieId");
+                    favorietenquery.orderByAscending("vakantie");
                     obFav = favorietenquery.find();
 
                     myDB.dropFavorieten();
@@ -192,8 +192,8 @@ public class FavorieteVakanties extends Fragment{
                     {
                         fav = new FavorieteVakantie();
 
-                        fav.setVakantieID((String)favoriet.get("vakantieId"));
-                        fav.setOuderID((String) favoriet.get("ouderId"));
+                        fav.setVakantieID((String)favoriet.get("vakantie"));
+                        fav.setOuderID((String) favoriet.get("ouder"));
 
                         favorieten.add(fav);
                     }

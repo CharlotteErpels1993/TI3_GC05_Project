@@ -6,7 +6,7 @@ import java.util.Date;
 
 public class Vakantie extends Activiteit{
     private Date vertrekDatum, terugkeerDatum;
-    private String aantalDagenNachten;
+    private String aantalDagenNachten, link;
     private String vervoerswijze, formule;
     private Number basisprijs, bondMoysonLedenPrijs, sterPrijs1Ouder, sterPrijs2Ouder;
     private Number korting, maxDoelgroep, minDoelgroep;
@@ -44,6 +44,11 @@ public class Vakantie extends Activiteit{
 
     public void setKorteBeschrijving(String korteBeschrijving){this.korteBeschrijving = korteBeschrijving;}
     public String getKorteBeschrijving(){return korteBeschrijving;}
+
+
+
+    public void setLink(String link){this.link = link;}
+    public String getLink(){return link;}
 
 
     /*public String toString(){

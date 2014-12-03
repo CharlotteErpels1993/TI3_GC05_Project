@@ -240,6 +240,7 @@ public class activiteit_overzicht extends Fragment /*implements SwipeRefreshLayo
                     //TODO gegevens contactpersoon vakantie
                     map.setMaxDoelgroep((Integer)vakantie.get("maxLeeftijd"));
                     map.setMinDoelgroep((Integer)vakantie.get("minLeeftijd"));
+                    map.setLink((String)vakantie.get("link"));
 
                     ArrayList< String> afbeeldingenLijst = new ArrayList<String>();
                     for (ParseObject afbeelding : lijstAfbeeldingen) {
