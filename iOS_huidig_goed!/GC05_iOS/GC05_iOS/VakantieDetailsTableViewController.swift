@@ -102,6 +102,7 @@ class VakantieDetailsTableViewController: UITableViewController {
         
             if soort == "ouder" {
                 self.sectionToDelete = -1
+                self.heartButton.hidden = false
                 basisprijsLabel.text = String("Basisprijs: \(vakantie.basisprijs!) " + euroSymbol)
                 inbegrepenPrijs.text = String("Inbegrepen prijs: \(vakantie.inbegrepenPrijs!) ")
                 if (vakantie.bondMoysonLedenPrijs != 0) {
@@ -123,11 +124,13 @@ class VakantieDetailsTableViewController: UITableViewController {
                 self.sectionToDelete = 6
                 self.tableView.deleteSections(NSIndexSet(index: self.sectionToDelete), withRowAnimation: UITableViewRowAnimation.None)
                 self.navigationItem.rightBarButtonItem = nil
+                self.heartButton.hidden = true
             }
         } else {
             self.sectionToDelete = 6
             self.tableView.deleteSections(NSIndexSet(index: self.sectionToDelete), withRowAnimation: UITableViewRowAnimation.None)
             self.navigationItem.rightBarButtonItem = nil
+            self.heartButton.hidden = true
         }
     }
     
