@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0F05F22E1A13A73000CFE0A1 /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F05F22D1A13A73000CFE0A1 /* NSDateExtension.swift */; };
 		0F145EDF1A1CDE98003067EA /* ResponsiveTextFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F145EDE1A1CDE98003067EA /* ResponsiveTextFieldViewController.swift */; };
+		0F1E19DB1A2F93CC0035DB96 /* FavorietSQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1E19DA1A2F93CC0035DB96 /* FavorietSQL.swift */; };
+		0F1E19DD1A2F9AF70035DB96 /* Favoriet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1E19DC1A2F9AF70035DB96 /* Favoriet.swift */; };
 		0F265EFA1A137CD1003F2699 /* InschrijvenVakantieSuccesvolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F265EF91A137CD1003F2699 /* InschrijvenVakantieSuccesvolViewController.swift */; };
 		0F2A819A1A091F7100F67A3B /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2A81991A091F7100F67A3B /* Regex.swift */; };
 		0F4C2DCE1A1BE253008EDEA4 /* ActivityIndicatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4C2DCD1A1BE253008EDEA4 /* ActivityIndicatorViewController.swift */; };
@@ -85,11 +87,19 @@
 		A55321DF1A1C8258005146F8 /* SuccesvolNieuwWachtwoordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55321DE1A1C8258005146F8 /* SuccesvolNieuwWachtwoordViewController.swift */; };
 		A575A0691A1633E500F6735A /* ENSideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575A0671A1633E500F6735A /* ENSideMenu.swift */; };
 		A575A06A1A1633E500F6735A /* ENSideMenuNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575A0681A1633E500F6735A /* ENSideMenuNavigationController.swift */; };
+		A599185B1A2F79150055AAF1 /* Heart_Empty.png in Resources */ = {isa = PBXBuildFile; fileRef = A59918591A2F79150055AAF1 /* Heart_Empty.png */; };
+		A599185C1A2F79150055AAF1 /* Heart_Full.png in Resources */ = {isa = PBXBuildFile; fileRef = A599185A1A2F79150055AAF1 /* Heart_Full.png */; };
+		A599185E1A2F817B0055AAF1 /* NieuweMonitorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A599185D1A2F817B0055AAF1 /* NieuweMonitorViewController.swift */; };
+		A59918601A2F819D0055AAF1 /* NieuweMonitorSuccesvolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A599185F1A2F819D0055AAF1 /* NieuweMonitorSuccesvolViewController.swift */; };
 		A59F1A8E1A16B29700A17D09 /* AfbeeldingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59F1A8D1A16B29700A17D09 /* AfbeeldingDetailViewController.swift */; };
 		A5A158301A1A65B200FEF51D /* IndienenVoorkeurViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A1582F1A1A65B200FEF51D /* IndienenVoorkeurViewController.swift */; };
 		A5A158321A1A65E900FEF51D /* IndienenVoorkeurSuccesvolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A158311A1A65E900FEF51D /* IndienenVoorkeurSuccesvolViewController.swift */; };
 		A5A158341A1A6A7600FEF51D /* ProfielenTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A158331A1A6A7600FEF51D /* ProfielenTableViewController.swift */; };
 		A5A158361A1A6AAB00FEF51D /* ProfielDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A158351A1A6AAB00FEF51D /* ProfielDetailsTableViewController.swift */; };
+		A5C6C41F1A2F9483004F5648 /* MonitorRegistratie1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C6C41E1A2F9483004F5648 /* MonitorRegistratie1ViewController.swift */; };
+		A5C6C4211A2F97BC004F5648 /* MonitorRegistratie2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C6C4201A2F97BC004F5648 /* MonitorRegistratie2ViewController.swift */; };
+		A5C6C4231A2F97E1004F5648 /* MonitorRegistratie3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C6C4221A2F97E0004F5648 /* MonitorRegistratie3ViewController.swift */; };
+		A5C6C4271A2F982A004F5648 /* MonitorRegistratieSuccesvolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C6C4261A2F982A004F5648 /* MonitorRegistratieSuccesvolViewController.swift */; };
 		A5CEA07B1A13998900E14103 /* VormingenTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CEA07A1A13998900E14103 /* VormingenTableViewController.swift */; };
 		A5CEA07D1A1399CA00E14103 /* VormingDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CEA07C1A1399CA00E14103 /* VormingDetailsTableViewController.swift */; };
 		A5CEA07F1A13ACDF00E14103 /* InschrijvenVormingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CEA07E1A13ACDF00E14103 /* InschrijvenVormingViewController.swift */; };
@@ -111,6 +121,8 @@
 /* Begin PBXFileReference section */
 		0F05F22D1A13A73000CFE0A1 /* NSDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtension.swift; sourceTree = "<group>"; };
 		0F145EDE1A1CDE98003067EA /* ResponsiveTextFieldViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponsiveTextFieldViewController.swift; sourceTree = "<group>"; };
+		0F1E19DA1A2F93CC0035DB96 /* FavorietSQL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavorietSQL.swift; sourceTree = "<group>"; };
+		0F1E19DC1A2F9AF70035DB96 /* Favoriet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Favoriet.swift; sourceTree = "<group>"; };
 		0F265EF91A137CD1003F2699 /* InschrijvenVakantieSuccesvolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InschrijvenVakantieSuccesvolViewController.swift; sourceTree = "<group>"; };
 		0F2A81991A091F7100F67A3B /* Regex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
 		0F4C2DCD1A1BE253008EDEA4 /* ActivityIndicatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorViewController.swift; sourceTree = "<group>"; };
@@ -192,11 +204,19 @@
 		A55321DE1A1C8258005146F8 /* SuccesvolNieuwWachtwoordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuccesvolNieuwWachtwoordViewController.swift; sourceTree = "<group>"; };
 		A575A0671A1633E500F6735A /* ENSideMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENSideMenu.swift; sourceTree = "<group>"; };
 		A575A0681A1633E500F6735A /* ENSideMenuNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENSideMenuNavigationController.swift; sourceTree = "<group>"; };
+		A59918591A2F79150055AAF1 /* Heart_Empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Heart_Empty.png; path = Images.xcassets/Heart_Empty.png; sourceTree = "<group>"; };
+		A599185A1A2F79150055AAF1 /* Heart_Full.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Heart_Full.png; path = Images.xcassets/Heart_Full.png; sourceTree = "<group>"; };
+		A599185D1A2F817B0055AAF1 /* NieuweMonitorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NieuweMonitorViewController.swift; sourceTree = "<group>"; };
+		A599185F1A2F819D0055AAF1 /* NieuweMonitorSuccesvolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NieuweMonitorSuccesvolViewController.swift; sourceTree = "<group>"; };
 		A59F1A8D1A16B29700A17D09 /* AfbeeldingDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AfbeeldingDetailViewController.swift; sourceTree = "<group>"; };
 		A5A1582F1A1A65B200FEF51D /* IndienenVoorkeurViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndienenVoorkeurViewController.swift; sourceTree = "<group>"; };
 		A5A158311A1A65E900FEF51D /* IndienenVoorkeurSuccesvolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndienenVoorkeurSuccesvolViewController.swift; sourceTree = "<group>"; };
 		A5A158331A1A6A7600FEF51D /* ProfielenTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfielenTableViewController.swift; sourceTree = "<group>"; };
 		A5A158351A1A6AAB00FEF51D /* ProfielDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfielDetailsTableViewController.swift; sourceTree = "<group>"; };
+		A5C6C41E1A2F9483004F5648 /* MonitorRegistratie1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitorRegistratie1ViewController.swift; sourceTree = "<group>"; };
+		A5C6C4201A2F97BC004F5648 /* MonitorRegistratie2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitorRegistratie2ViewController.swift; sourceTree = "<group>"; };
+		A5C6C4221A2F97E0004F5648 /* MonitorRegistratie3ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitorRegistratie3ViewController.swift; sourceTree = "<group>"; };
+		A5C6C4261A2F982A004F5648 /* MonitorRegistratieSuccesvolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitorRegistratieSuccesvolViewController.swift; sourceTree = "<group>"; };
 		A5CEA07A1A13998900E14103 /* VormingenTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VormingenTableViewController.swift; sourceTree = "<group>"; };
 		A5CEA07C1A1399CA00E14103 /* VormingDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VormingDetailsTableViewController.swift; sourceTree = "<group>"; };
 		A5CEA07E1A13ACDF00E14103 /* InschrijvenVormingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InschrijvenVormingViewController.swift; sourceTree = "<group>"; };
@@ -253,6 +273,7 @@
 				0FD07EC41A234FAB006A4E60 /* UserSQL.swift */,
 				0FD07EC61A23544A006A4E60 /* OuderSQL.swift */,
 				0FD07EC81A2354B5006A4E60 /* AfbeeldingSQL.swift */,
+				0F1E19DA1A2F93CC0035DB96 /* FavorietSQL.swift */,
 			);
 			name = SQLite;
 			sourceTree = "<group>";
@@ -367,6 +388,12 @@
 				A5A158351A1A6AAB00FEF51D /* ProfielDetailsTableViewController.swift */,
 				A503E0EB1A1A7778000A9908 /* ProfielBewerkenViewController.swift */,
 				A55321DE1A1C8258005146F8 /* SuccesvolNieuwWachtwoordViewController.swift */,
+				A599185D1A2F817B0055AAF1 /* NieuweMonitorViewController.swift */,
+				A599185F1A2F819D0055AAF1 /* NieuweMonitorSuccesvolViewController.swift */,
+				A5C6C41E1A2F9483004F5648 /* MonitorRegistratie1ViewController.swift */,
+				A5C6C4201A2F97BC004F5648 /* MonitorRegistratie2ViewController.swift */,
+				A5C6C4221A2F97E0004F5648 /* MonitorRegistratie3ViewController.swift */,
+				A5C6C4261A2F982A004F5648 /* MonitorRegistratieSuccesvolViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -385,6 +412,7 @@
 				1BDDB9521A02D8770007623D /* Deelnemer.swift */,
 				1BDDB9541A02D87F0007623D /* ContactpersoonNood.swift */,
 				1BDDB9561A02DD1E0007623D /* Gebruiker.swift */,
+				0F1E19DC1A2F9AF70035DB96 /* Favoriet.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -434,6 +462,8 @@
 		A52976CD1A1A094900420FEE /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				A59918591A2F79150055AAF1 /* Heart_Empty.png */,
+				A599185A1A2F79150055AAF1 /* Heart_Full.png */,
 				A543AA881A2C7AC000249B4A /* menu.png */,
 				A5E5B9841A23712B0054960C /* joetz.png */,
 				A52976D01A1A0A5E00420FEE /* Klevertje.png */,
@@ -523,11 +553,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5E5B9831A2370DC0054960C /* LaunchScreen.xib in Resources */,
+				A599185B1A2F79150055AAF1 /* Heart_Empty.png in Resources */,
 				0FA80B0D1A01350E008DB343 /* Main.storyboard in Resources */,
 				0FA80B0F1A01350E008DB343 /* Images.xcassets in Resources */,
 				A543AA891A2C7AC000249B4A /* menu.png in Resources */,
 				A52976D11A1A0A5E00420FEE /* Klevertje.png in Resources */,
 				A5E5B9851A23712B0054960C /* joetz.png in Resources */,
+				A599185C1A2F79150055AAF1 /* Heart_Full.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -594,6 +626,7 @@
 				A503E0EC1A1A7778000A9908 /* ProfielBewerkenViewController.swift in Sources */,
 				A575A06A1A1633E500F6735A /* ENSideMenuNavigationController.swift in Sources */,
 				0F92E3151A1373E50005C86C /* InschrijvenVakantie5ViewController.swift in Sources */,
+				A5C6C4231A2F97E1004F5648 /* MonitorRegistratie3ViewController.swift in Sources */,
 				1BDDB9571A02DD1E0007623D /* Gebruiker.swift in Sources */,
 				A512381D1A16332D002242C6 /* MyNavigationController.swift in Sources */,
 				1B39CF731A077C8F008DEC49 /* InloggenViewController.swift in Sources */,
@@ -602,16 +635,23 @@
 				1BDDB9451A02D3440007623D /* Activiteit.swift in Sources */,
 				1B39CF771A0795D9008DEC49 /* EigenprofielMonitorTableViewController.swift in Sources */,
 				0F2A819A1A091F7100F67A3B /* Regex.swift in Sources */,
+				0F1E19DD1A2F9AF70035DB96 /* Favoriet.swift in Sources */,
 				0F88A6C31A1F3B840094D457 /* SwiftData.swift in Sources */,
+				A5C6C41F1A2F9483004F5648 /* MonitorRegistratie1ViewController.swift in Sources */,
 				0FD07EC51A234FAB006A4E60 /* UserSQL.swift in Sources */,
+				0F1E19DB1A2F93CC0035DB96 /* FavorietSQL.swift in Sources */,
 				0F92E30D1A1368A10005C86C /* InschrijvenVakantie1ViewController.swift in Sources */,
+				A5C6C4271A2F982A004F5648 /* MonitorRegistratieSuccesvolViewController.swift in Sources */,
+				A59918601A2F819D0055AAF1 /* NieuweMonitorSuccesvolViewController.swift in Sources */,
 				0F92E3131A136BD00005C86C /* InschrijvenVakantie4ViewController.swift in Sources */,
 				A5A158321A1A65E900FEF51D /* IndienenVoorkeurSuccesvolViewController.swift in Sources */,
 				1BDF24B01A0CDEAA00B4B63F /* BekijkAfbeeldingViewController.swift in Sources */,
 				0F05F22E1A13A73000CFE0A1 /* NSDateExtension.swift in Sources */,
+				A599185E1A2F817B0055AAF1 /* NieuweMonitorViewController.swift in Sources */,
 				A575A0691A1633E500F6735A /* ENSideMenu.swift in Sources */,
 				1B1792851A0272D300C4F82B /* VakantieDetailsTableViewController.swift in Sources */,
 				1B4D784B1A0277F100E823E2 /* Registratie1ViewController.swift in Sources */,
+				A5C6C4211A2F97BC004F5648 /* MonitorRegistratie2ViewController.swift in Sources */,
 				A5A158301A1A65B200FEF51D /* IndienenVoorkeurViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

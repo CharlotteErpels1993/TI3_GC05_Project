@@ -5,6 +5,7 @@ class SidebarTableViewController: UITableViewController {
     var arrayKind: [String] = ["Vakanties","Inloggen", "Registreren"]
     var arrayOuder: [String] = ["Uitloggen", "Vakanties"]
     var arrayMonitor: [String] = ["Uitloggen","Eigen profiel", "Vakanties",  "Vormingen", "Voorkeur vakantie", "Profielen"]
+    var arrayJoetz: [String] = ["Uitloggen", "Vakanties", "Vormingen", "Profielen", "Nieuwe monitor"]
     var array: [String]?
     
     
@@ -43,7 +44,7 @@ class SidebarTableViewController: UITableViewController {
                 return 2
             } else {
                 return 6
-            }
+            } // else return 5 (JOETZ)
         }
     }
     
@@ -71,8 +72,7 @@ class SidebarTableViewController: UITableViewController {
                 cell!.textLabel.text = self.arrayMonitor[indexPath.row]
             } else if soort == "ouder" {
                 cell!.textLabel.text = self.arrayOuder[indexPath.row]
-
-            }
+            } // else if soort = JOETZ
         }
         return cell!
     }
@@ -83,9 +83,7 @@ class SidebarTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.row == selectedMenuItem {
-            //tableView.reloadInputViews()
             hideSideMenuView()
-            //return
         }
         selectedMenuItem = indexPath.row
         
@@ -190,7 +188,7 @@ class SidebarTableViewController: UITableViewController {
                     break
                 }
                 sideMenuController()?.setContentViewController(destViewController)
-            }
+            } // else if soort = JOETZ
         }
     }
 

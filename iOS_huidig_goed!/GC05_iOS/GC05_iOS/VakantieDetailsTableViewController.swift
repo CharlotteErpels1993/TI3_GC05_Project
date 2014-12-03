@@ -7,6 +7,7 @@ class VakantieDetailsTableViewController: UITableViewController {
     @IBOutlet weak var afbeelding3: UIImageView!
     
     
+    @IBOutlet var heartButton: UIButton!
     @IBOutlet var vakantieNaamLabel: UILabel!
     @IBOutlet weak var korteBeschrijvingLabel: UILabel!
     @IBOutlet weak var doelgroepLabel: UILabel!
@@ -30,9 +31,28 @@ class VakantieDetailsTableViewController: UITableViewController {
     var query = PFQuery(className: "Vakantie")
     var beschrijving: String!
     var sectionToDelete = -1
+    var favoriet: Bool = false
+    var imageHeartFull = UIImage(named: "Heart_Full.png")
+    var imageHeartEmpty = UIImage(named: "Heart_Empty.png")
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        var ouderResponse = ParseData.getOuderWithEmail(PFUser.currentUser().email)
+        var favorieteVakantie: Favoriet = Favoriet(id: "test")
+        
+        if ouderResponse.1 == nil {
+            favorieteVakantie.ouder = ouderResponse.0
+            favorieteVakantie.vakantie = self.vakantie
+        }
+        
+        if ParseData.isFavorieteVakantie(favorieteVakantie) == true {
+            heartButton.setImage(self.imageHeartFull, forState: UIControlState.Normal)
+            self.favoriet = true
+        } else {
+            heartButton.setImage(self.imageHeartEmpty, forState: UIControlState.Normal)
+            self.favoriet = false
+        }
         
         //zoekImages()
         
@@ -98,6 +118,7 @@ class VakantieDetailsTableViewController: UITableViewController {
         
             if soort == "ouder" {
                 self.sectionToDelete = -1
+                self.heartButton.hidden = false
                 basisprijsLabel.text = String("Basisprijs: \(vakantie.basisprijs!) " + euroSymbol)
                 inbegrepenPrijs.text = String("Inbegrepen prijs: \(vakantie.inbegrepenPrijs!) ")
                 if (vakantie.bondMoysonLedenPrijs != 0) {
@@ -119,11 +140,13 @@ class VakantieDetailsTableViewController: UITableViewController {
                 self.sectionToDelete = 6
                 self.tableView.deleteSections(NSIndexSet(index: self.sectionToDelete), withRowAnimation: UITableViewRowAnimation.None)
                 self.navigationItem.rightBarButtonItem = nil
+                self.heartButton.hidden = true
             }
         } else {
             self.sectionToDelete = 6
             self.tableView.deleteSections(NSIndexSet(index: self.sectionToDelete), withRowAnimation: UITableViewRowAnimation.None)
             self.navigationItem.rightBarButtonItem = nil
+            self.heartButton.hidden = true
         }
     }
     
@@ -138,6 +161,42 @@ class VakantieDetailsTableViewController: UITableViewController {
             return 7
         } else {
             return 6
+        }
+    }
+    @IBAction func switchHeart(sender: AnyObject) {
+        
+        var favorieteVakantie: Favoriet = Favoriet(id: "test")
+        var ouderResponse = ParseData.getOuderWithEmail(PFUser.currentUser().email)
+        
+        if ouderResponse.1 == nil {
+            //er is een ouder gevonden
+            favorieteVakantie.ouder = ouderResponse.0
+        }
+        
+        favorieteVakantie.vakantie = self.vakantie
+        
+        if favoriet == false {
+            favoriet = true
+            // switch image
+            heartButton.setImage(self.imageHeartFull, forState: UIControlState.Normal)
+            
+            // schrijf naar database
+            ParseData.parseFavorietToDatabase(favorieteVakantie)
+            
+            //ParseData.deleteFavorietTable()
+            //ParseData.vulFavorietTableOp()
+            
+            
+            
+        } else {
+            favoriet = false
+            // switch image
+            heartButton.setImage(self.imageHeartEmpty, forState: UIControlState.Normal)
+            
+            // haal terug uit de database
+            ParseData.deleteFavorieteVakantie(favorieteVakantie)
+        
+        
         }
     }
     

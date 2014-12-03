@@ -6,7 +6,7 @@ struct DeelnemerSQL {
         if let error = SD.createTable("Deelnemer", withColumnNamesAndTypes:
             ["objectId": .StringVal, "voornaam": .StringVal, "naam": .StringVal,
                 "geboortedatum": .StringVal ,"straat": .StringVal, "nummer": .IntVal,
-                "gemeente": .StringVal, "postcode": .IntVal, "bus": .StringVal, "inschrijvingVakantie": .StringVal])
+                "gemeente": .StringVal, "postcode": .IntVal, "bus": .StringVal])
         {
             println("ERROR: error tijdens creatie van table Deelnemer")
         }
@@ -45,10 +45,12 @@ struct DeelnemerSQL {
             geboortedatum = deelnemer["geboortedatum"] as NSDate
             straat = deelnemer["straat"] as String
             nummer = deelnemer["nummer"] as Int
-            bus = deelnemer["bus"] as String
             postcode = deelnemer["postcode"] as Int
             gemeente = deelnemer["gemeente"] as String
-            inschrijvingVakantie = deelnemer["inschrijvingVakantie"] as String
+            
+            if deelnemer["bus"] != nil {
+                bus = deelnemer["bus"] as String
+            }
             
             var geboortedatumString = geboortedatum.toS("dd/MM/yyyy")
             
@@ -62,8 +64,7 @@ struct DeelnemerSQL {
             queryString.extend("nummer, ")
             queryString.extend("bus, ")
             queryString.extend("postcode, ")
-            queryString.extend("gemeente, ")
-            queryString.extend("inschrijvingVakantie")
+            queryString.extend("gemeente")
             queryString.extend(")")
             queryString.extend(" VALUES ")
             queryString.extend("(")
@@ -76,8 +77,7 @@ struct DeelnemerSQL {
             queryString.extend("\(nummer), ") //nummer - Int
             queryString.extend("'\(bus)', ") //bus - String
             queryString.extend("\(postcode), ") //postcode - Int
-            queryString.extend("'\(gemeente)', ") //gemeente - String
-            queryString.extend("'\(inschrijvingVakantie)'") //inschrijvingVakantie - String
+            queryString.extend("'\(gemeente)'") //gemeente - String
             
             queryString.extend(")")
             
@@ -173,7 +173,6 @@ struct DeelnemerSQL {
         deelnemerJSON.setValue(deelnemer.nummer, forKey: "nummer")
         deelnemerJSON.setValue(deelnemer.gemeente, forKey: "gemeente")
         deelnemerJSON.setValue(deelnemer.postcode, forKey: "postcode")
-        //deelnemerJSON.setValue(inschrijvingId, forKey: "inschrijvingVakantie")
         
         if deelnemer.bus != nil {
             deelnemerJSON.setValue(deelnemer.bus, forKey: "bus")

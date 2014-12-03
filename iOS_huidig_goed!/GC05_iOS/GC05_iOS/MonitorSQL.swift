@@ -397,6 +397,7 @@ struct MonitorSQL {
                 }
             }
 
+            response.0 = andereMonitors
         }
         
         return response

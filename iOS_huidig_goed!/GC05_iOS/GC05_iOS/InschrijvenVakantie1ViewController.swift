@@ -32,6 +32,9 @@ class InschrijvenVakantie1ViewController : ResponsiveTextFieldViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "volgende" {
         let inschrijvenVakantie2ViewController = segue.destinationViewController as InschrijvenVakantie2ViewController
+            
+            ParseData.deleteDeelnemerTable()
+            ParseData.vulDeelnemerTableOp()
         
         setStatusTextFields()
         pasLayoutVeldenAan()
