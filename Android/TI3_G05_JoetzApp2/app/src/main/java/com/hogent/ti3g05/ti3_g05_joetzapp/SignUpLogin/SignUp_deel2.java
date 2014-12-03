@@ -16,22 +16,14 @@ import android.widget.Toast;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
 import com.hogent.ti3g05.ti3_g05_joetzapp.R;
-import com.hogent.ti3g05.ti3_g05_joetzapp.navBarMainScreen;
-import com.parse.ParseUser;
 
 public class SignUp_deel2 extends Activity{
 
     private EditText aansluitingsnummer;
-    private Button volgendeButton;
-    private Button terugGaanButton;
 
-    private String aansluitingsnummerString;
-    private String codeGerechtigdeStr;
     private EditText codeGerechtigde;
     private EditText aansluitingsNrOuder2;
-    private String aansluitingsNrOuder2Str;
     String rijksRegNr;
-    private ImageView imageView;
 
 
     // flag for Internet connection status
@@ -45,32 +37,22 @@ public class SignUp_deel2 extends Activity{
 
         setContentView(R.layout.activity_signup_deel2);
 
-
         // creating connection detector class instance
         cd = new ConnectionDetector(getApplicationContext());
-
 
         aansluitingsnummer = (EditText) findViewById(R.id.aansluitingsnummer);
         codeGerechtigde = (EditText) findViewById(R.id.codeGerechtigde);
         aansluitingsNrOuder2 = (EditText) findViewById(R.id.aansluitingsNrOuder2);
 
-        volgendeButton = (Button) findViewById(R.id.btn_volgendedeel3);
+        Button volgendeButton = (Button) findViewById(R.id.btn_volgendedeel3);
 
 
-        getActionBar().setTitle("Registreren");
-
-        volgendeButton.setTextColor(getResources().getColor(R.color.Rood));
+        getActionBar().setTitle(getString(R.string.title_activity_Register));
 
 
         volgendeButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                        // get Internet status
-                        //isInternetPresent = cd.isConnectingToInternet();
-                        // check for Internet status
-                        // Internet connection is not present
-                        // Ask user to connect to Internet
                 isInternetPresent = cd.isConnectingToInternet();
                         if (isInternetPresent) {
                             // Internet Connection is Present
@@ -80,13 +62,8 @@ public class SignUp_deel2 extends Activity{
                             Toast.makeText(getApplicationContext(), getString(R.string.error_no_internet), Toast.LENGTH_SHORT).show();
                         //showAlertDialog(getApplicationContext(), "No Internet Connection",
                         //"You don't have internet connection.", false);
-
-
-
-
             }
         });
-
 
     }
 
@@ -99,9 +76,9 @@ public class SignUp_deel2 extends Activity{
         View focusView = null;
 
         // Store values at the time of the login attempt.
-        aansluitingsnummerString = aansluitingsnummer.getText().toString();
-        codeGerechtigdeStr = codeGerechtigde.getText().toString();
-        aansluitingsNrOuder2Str = aansluitingsNrOuder2.getText().toString();
+        String aansluitingsnummerString = aansluitingsnummer.getText().toString();
+        String codeGerechtigdeStr = codeGerechtigde.getText().toString();
+        String aansluitingsNrOuder2Str = aansluitingsNrOuder2.getText().toString();
 
 
         // Check for a valid email address.
@@ -150,8 +127,6 @@ public class SignUp_deel2 extends Activity{
             rijksRegNr = extras.getString("rijksregisternr");
             intent.putExtra("lidVanBondMoyson", value);
             intent.putExtra("rijksregisternr", rijksRegNr);
-
-            Toast.makeText(getApplicationContext(), "niet leeg deel2", Toast.LENGTH_SHORT).show();
         }
         intent.putExtra("aansluitingsnr", aansluitingsnummerString);
         intent.putExtra("codeGerechtigde", codeGerechtigdeStr);
@@ -165,26 +140,6 @@ public class SignUp_deel2 extends Activity{
         startActivity(intent);
 
         overridePendingTransition(R.anim.right_in, R.anim.left_out);
-        /*user.signUpInBackground(new SignUpCallback() {
-            public void done(ParseException e) {
-                if (e == null) {
-                //+ opslaan naar db!!
-
-                    Intent intent = new Intent(SignUp_deel2.this, SignUp_deel3.class);
-                    startActivity(intent);
-                } else {
-                    // Sign up didn't succeed. Look at the ParseException
-                    // to figure out what went wrong
-
-                    //of weglaten?
-                    signUpMsg("Aansluitingsnummer verkeerd");
-                }
-            }
-        });*/
-    }
-
-    protected void signUpMsg(String msg) {
-        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
     }
 
     private void clearErrors(){

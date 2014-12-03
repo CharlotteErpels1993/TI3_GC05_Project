@@ -99,24 +99,24 @@ public class activiteit_detail extends Activity {
         //afbeeldingen ophalen met een while-lus, die stopt als de nieuwe afbeelding null is, want we weten niet zeker of
         String huidigeAfbeelding = i.getStringExtra("foto0");
         int teller = 0;
-        while (huidigeAfbeelding != null) {
+        while(huidigeAfbeelding != null){
             fotos.add(huidigeAfbeelding);
             teller++;
             huidigeAfbeelding = i.getStringExtra("foto" + teller);
         }
 
 
-        setTitle(naam);
+        setTitle(getString(R.string.vakantieDetailTitel));
 
         final TextView txtNaam = (TextView) findViewById(R.id.titel);
         final TextView txtLocatie = (TextView) findViewById(R.id.locatiev);
         final TextView txtDoelgr = (TextView) findViewById(R.id.doelgroepv);
-        final TextView txtformule = (TextView) findViewById(R.id.formule);
-        final TextView txtmaxDeeln = (TextView) findViewById(R.id.maxDeelnemers);
-        final TextView txtPeriode = (TextView) findViewById(R.id.periode);
-        final TextView txtVervoer = (TextView) findViewById(R.id.vervoer);
-        final TextView txtPrijs = (TextView) findViewById(R.id.basisprijs);
-        final TextView txtBeschrijving = (TextView) findViewById(R.id.beschrijving);
+        final TextView txtformule = (TextView)findViewById(R.id.formule);
+        final TextView txtmaxDeeln = (TextView)findViewById(R.id.maxDeelnemers);
+        final TextView txtPeriode = (TextView)findViewById(R.id.periode);
+        final TextView txtVervoer = (TextView)findViewById(R.id.vervoer);
+        final TextView txtPrijs = (TextView)findViewById(R.id.basisprijs);
+        final TextView txtBeschrijving = (TextView)findViewById(R.id.beschrijving);
         final TextView txtVertrekDatum = (TextView) findViewById(R.id.vertrekdatum);
         final TextView txtTerugkeerDatum = (TextView) findViewById(R.id.terugkeerdatum);
         final TextView txtInbegrepenInPrijs = (TextView) findViewById(R.id.inbegrepenInPrijs);
@@ -126,7 +126,7 @@ public class activiteit_detail extends Activity {
         final RelativeLayout verberg = (RelativeLayout) findViewById(R.id.verberg2);
         final TextView labelBM = (TextView) findViewById(R.id.ledenPrijsLabel);
 
-        btnInschrijven = (Button) findViewById(R.id.btnInschrijvenV);
+        btnInschrijven = (Button)findViewById(R.id.btnInschrijvenV);
         btnmeerInfo = (Button) findViewById(R.id.btnMeerInfo);
         btnminderInfo = (Button) findViewById(R.id.btnMinderInfo);
 
@@ -137,7 +137,7 @@ public class activiteit_detail extends Activity {
         ImageView afbeelding1im = (ImageView) findViewById(R.id.afbeelding1);
         ImageView afbeelding2im = (ImageView) findViewById(R.id.afbeelding2);
         ImageView afbeelding3im = (ImageView) findViewById(R.id.afbeelding3);
-        ImageView share = (ImageView) findViewById(R.id.share);
+        ImageView share  = (ImageView) findViewById(R.id.share);
 
         share.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -231,7 +231,7 @@ public class activiteit_detail extends Activity {
             }
         });
 
-        if (afbeelding1im.getVisibility() == View.VISIBLE) {
+        if (afbeelding1im.getVisibility() == View.VISIBLE){
             afbeelding1im.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -244,26 +244,26 @@ public class activiteit_detail extends Activity {
                 }
             });
         }
-        if (afbeelding2im.getVisibility() == View.VISIBLE) {
+        if (afbeelding2im.getVisibility() == View.VISIBLE){
             afbeelding2im.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Intent intent1 = new Intent(activiteit_detail.this, afbeeldingUItvergroot.class);
 
-                    intent1.putExtra("afbeelding", afbeelding2);
+                    intent1.putExtra("afbeelding",afbeelding2);
                     startActivity(intent1);
 
                     overridePendingTransition(R.anim.right_in, R.anim.left_out);
                 }
             });
         }
-        if (afbeelding3im.getVisibility() == View.VISIBLE) {
+        if (afbeelding3im.getVisibility() == View.VISIBLE){
             afbeelding3im.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Intent intent1 = new Intent(activiteit_detail.this, afbeeldingUItvergroot.class);
 
-                    intent1.putExtra("afbeelding", afbeelding3);
+                    intent1.putExtra("afbeelding",afbeelding3);
                     startActivity(intent1);
 
                     overridePendingTransition(R.anim.right_in, R.anim.left_out);
@@ -272,7 +272,7 @@ public class activiteit_detail extends Activity {
         }
 
         //hieronder wordt er een leesbare datum geconverteerd
-        try {
+        try{
             SimpleDateFormat dateFormat = new SimpleDateFormat("EEE MMM d HH:mm:ss zz yyyy");
             Calendar cal = Calendar.getInstance();
 
@@ -289,17 +289,16 @@ public class activiteit_detail extends Activity {
 
 
         txtNaam.setText(naam);
-        txtLocatie.setText("Locatie: " + locatie);
-        txtDoelgr.setText("Doelgroep: " + minDoelgroep + " - " + maxDoelgroep);
-
-        txtformule.setText("Formule: " + formule);
-        txtmaxDeeln.setText("Maximum aantal deelnemers: " + maxDeeln);
-        txtPeriode.setText("Periode: " + periode);
-        txtVervoer.setText("Vervoer: " + vervoer);
+        txtLocatie.setText(locatie);
+        txtDoelgr.setText(minDoelgroep + " - " + maxDoelgroep + " jaar");
+        txtformule.setText( formule);
+        txtmaxDeeln.setText(maxDeeln + " personen");
+        txtPeriode.setText(periode);
+        txtVervoer.setText( vervoer);
         txtBeschrijving.setText(beschrijving);
-        txtVertrekDatum.setText("Vertrek: " + vertrekdatum);
-        txtTerugkeerDatum.setText("Terug: " + terugdatum);
-        txtInbegrepenInPrijs.setText("Inbegrepen in de prijs: " + inbegrepenInPrijs);
+        txtVertrekDatum.setText(vertrekdatum);
+        txtTerugkeerDatum.setText(terugdatum);
+        txtInbegrepenInPrijs.setText(inbegrepenInPrijs);
 
         if (ParseUser.getCurrentUser() == null) {
             //niet ingelogd
@@ -323,8 +322,8 @@ public class activiteit_detail extends Activity {
             //toon normale prijs
             txtPrijs.setVisibility(View.VISIBLE);
             prijs = i.getStringExtra("prijs");
-            txtPrijs.setText("Prijs: €" + prijs);
-            if (!(prijs.contains(".") || prijs.contains(","))) {
+            txtPrijs.setText("€" + prijs);
+            if (!(prijs.contains(".") || prijs.contains(","))){
                 txtPrijs.append(",00");
             }
 
@@ -333,11 +332,11 @@ public class activiteit_detail extends Activity {
             sterPrijs2Ouders = i.getStringExtra("SterPrijs2Ouders");
 
 
-            if (!bmLedenPrijs.equals("-1")) {
+            if (!bmLedenPrijs.equals("0")) {
                 txtBMledenPrijs.setVisibility(View.VISIBLE);
                 labelBM.setVisibility(View.VISIBLE);
                 txtBMledenPrijs.setText("Prijs voor leden van Bond Moyson: €" + bmLedenPrijs);
-                if (!(bmLedenPrijs.contains(".") || bmLedenPrijs.contains(","))) {
+                if (!(bmLedenPrijs.contains(".") || bmLedenPrijs.contains(","))){
                     txtBMledenPrijs.append(",00");
                 }
             } else {
@@ -345,18 +344,18 @@ public class activiteit_detail extends Activity {
                 labelBM.setVisibility(View.GONE);
             }
 
-            if (!sterPrijs1Ouder.equals("-1")) {
+            if (!sterPrijs1Ouder.equals("0")) {
                 txtSterPrijs1Ouder.setVisibility(View.VISIBLE);
                 txtSterPrijs1Ouder.setText("Prijs voor leden waarvan 1 ouder deel is van BM: €" + sterPrijs1Ouder);
-                if (!(sterPrijs1Ouder.contains(".") || sterPrijs1Ouder.contains(","))) {
+                if (!(sterPrijs1Ouder.contains(".") || sterPrijs1Ouder.contains(","))){
                     txtSterPrijs1Ouder.append(",00");
                 }
             }
 
-            if (!sterPrijs2Ouders.equals("-1")) {
+            if (!sterPrijs2Ouders.equals("0")){
                 txtSterPrijs2Ouders.setVisibility(View.VISIBLE);
                 txtSterPrijs2Ouders.setText("Prijs voor leden waarvan 2 ouders deel zijn van BM: €" + sterPrijs2Ouders);
-                if (!(sterPrijs2Ouders.contains(".") || sterPrijs2Ouders.contains(","))) {
+                if (!(sterPrijs2Ouders.contains(".") || sterPrijs2Ouders.contains(","))){
                     txtSterPrijs2Ouders.append(",00");
                 }
             }
@@ -366,7 +365,7 @@ public class activiteit_detail extends Activity {
         // Capture position and set results to the ImageView
         // Passes flag images URL into ImageLoader.class
         int aantalAfbeeldingen = fotos.size();
-        if (!fotos.isEmpty()) {
+        if (!fotos.isEmpty()){
             afbeelding1im.setVisibility(View.VISIBLE);
             afbeelding1 = fotos.get(0);
             imageLoader.DisplayImage(afbeelding1, afbeelding1im);

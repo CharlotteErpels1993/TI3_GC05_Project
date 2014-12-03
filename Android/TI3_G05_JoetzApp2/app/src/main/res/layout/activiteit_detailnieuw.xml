@@ -1,19 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
-
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:finishOnTaskLaunch="true">
+    android:finishOnTaskLaunch="true"
+    android:layout_marginStart="5dp"
+    android:layout_marginEnd="5dp">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_height="wrap_content"
+        android:id="@+id/titel"
+        android:textColor="@color/Rood"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        />
 
     <HorizontalScrollView
         android:id="@+id/scrollView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/titel">
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -46,13 +58,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/scrollView">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_height="wrap_content"
-            android:id="@+id/titel"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            />
 
         <ImageView
             android:layout_width="50dp"
@@ -66,16 +71,14 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/beschrijving"
-            android:layout_below="@id/titel"
-            android:textSize="20sp"
-            android:layout_marginTop="15dp"
-            />
+            android:textStyle="bold"
+            android:textSize="20sp"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/beschrijving"
             android:layout_below="@id/beschrijvingLabel"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="8dp"
             android:textAlignment="center"/>
 
         <TextView
@@ -83,24 +86,25 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/doelgroep"
+            android:textStyle="bold"
             android:layout_below="@id/beschrijving"
             android:textSize="20sp"
-
             android:layout_marginTop="15dp"
             />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/doelgroepv"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="8dp"
             android:layout_below="@id/doelgroepLabel"/>
         <TextView
             android:id="@+id/locatieLabel"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/locatie"
+            android:textStyle="bold"
             android:textSize="20sp"
-android:layout_below="@id/doelgroepv"
+            android:layout_below="@id/doelgroepv"
             android:layout_marginTop="15dp"
             />
         <TextView
@@ -108,13 +112,14 @@ android:layout_below="@id/doelgroepv"
             android:layout_height="wrap_content"
             android:layout_below="@id/locatieLabel"
             android:id="@+id/locatiev"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="8dp"/>
 
         <TextView
             android:id="@+id/vertrekdatumLabel"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/vertrekdatum"
+            android:textStyle="bold"
             android:layout_below="@id/locatiev"
             android:textSize="20sp"
 
@@ -126,13 +131,14 @@ android:layout_below="@id/doelgroepv"
             android:id="@+id/vertrekdatum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="8dp"
             android:layout_below="@id/vertrekdatumLabel"/>
 
         <TextView
             android:id="@+id/terugkeerdatumLabel"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:textStyle="bold"
             android:text="@string/terugkeerdatum"
             android:layout_below="@id/vertrekdatum"
             android:textSize="20sp"
@@ -144,12 +150,13 @@ android:layout_below="@id/doelgroepv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/terugkeerdatumLabel"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="8dp"/>
 
         <TextView
             android:id="@+id/periodeLabel"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:textStyle="bold"
             android:text="@string/periode"
             android:layout_below="@id/terugkeerdatum"
             android:textSize="20sp"
@@ -161,13 +168,14 @@ android:layout_below="@id/doelgroepv"
             android:layout_height="wrap_content"
             android:id="@+id/periode"
             android:layout_below="@id/periodeLabel"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="8dp"
             android:textSize="15sp"/>
 
         <TextView
             android:id="@+id/maxDeelnemersLabel"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:textStyle="bold"
             android:text="@string/maxDeelnemers"
             android:layout_below="@id/periode"
             android:textSize="20sp"
@@ -179,7 +187,7 @@ android:layout_below="@id/doelgroepv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/maxDeelnemers"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="8dp"
             android:layout_below="@id/maxDeelnemersLabel"
            />
 
@@ -198,6 +206,7 @@ android:layout_below="@id/doelgroepv"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/vervoer"
+            android:textStyle="bold"
             android:textSize="20sp"
 
             android:layout_marginTop="15dp"
@@ -207,7 +216,7 @@ android:layout_below="@id/doelgroepv"
             android:layout_height="wrap_content"
             android:id="@+id/vervoer"
             android:layout_below="@id/vervoerLabel"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="8dp"/>
 
         <TextView
             android:id="@+id/formuleLabel"
@@ -215,6 +224,7 @@ android:layout_below="@id/doelgroepv"
             android:layout_height="wrap_content"
             android:text="@string/formule"
             android:layout_below="@id/vervoer"
+            android:textStyle="bold"
             android:textSize="20sp"
 
             android:layout_marginTop="15dp"
@@ -224,7 +234,7 @@ android:layout_below="@id/doelgroepv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/formule"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="8dp"
             android:layout_below="@id/formuleLabel"/>
 
 
@@ -233,17 +243,17 @@ android:layout_below="@id/doelgroepv"
             android:id="@+id/inbegrepenInPrijsLabel"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:textStyle="bold"
             android:text="@string/inbegrepenInPrijs"
             android:layout_below="@id/formule"
             android:textSize="20sp"
-
             android:layout_marginTop="15dp"
             />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/inbegrepenInPrijs"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="8dp"
             android:layout_below="@id/inbegrepenInPrijsLabel"
             />
         <TextView
@@ -253,31 +263,31 @@ android:layout_below="@id/doelgroepv"
             android:text="@string/basisprijs"
             android:layout_below="@id/inbegrepenInPrijs"
             android:textSize="20sp"
-
+            android:textStyle="bold"
             android:layout_marginTop="15dp"
             />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/basisprijs"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="8dp"
             android:layout_below="@id/basisprijsLabel"/>
 
         <TextView
             android:id="@+id/ledenPrijsLabel"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:textStyle="bold"
             android:text="@string/ledenprijs"
             android:layout_below="@id/basisprijs"
             android:textSize="20sp"
-
             android:layout_marginTop="15dp"
             />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/bondMoysonLedenPrijs"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="8dp"
             android:layout_below="@id/ledenPrijsLabel"
             />
 
@@ -285,6 +295,7 @@ android:layout_below="@id/doelgroepv"
             android:id="@+id/sterPrijs1OuderLabel"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:textStyle="bold"
             android:text="@string/sterPrijsOuder1"
             android:layout_below="@id/bondMoysonLedenPrijs"
             android:textSize="20sp"
@@ -295,7 +306,7 @@ android:layout_below="@id/doelgroepv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/sterPrijs1Ouder"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="8dp"
             android:layout_below="@id/sterPrijs1OuderLabel"
             />
 
@@ -303,6 +314,7 @@ android:layout_below="@id/doelgroepv"
             android:id="@+id/sterPrijs2OudersLabel"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:textStyle="bold"
             android:text="@string/sterPrijs2Ouders"
             android:layout_below="@id/sterPrijs1Ouder"
             android:textSize="20sp"
@@ -313,7 +325,7 @@ android:layout_below="@id/doelgroepv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/sterPrijs2Ouders"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="8dp"
             android:layout_below="@id/sterPrijs2OudersLabel"
             />
 
@@ -339,12 +351,11 @@ android:layout_below="@id/doelgroepv"
     <Button
         android:text="@string/meerInfo"
         android:id="@+id/btnMeerInfo"
-
-
         android:background="@drawable/button_shape"
         android:layout_marginTop="8dp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/Rood"
         android:layout_below="@id/share"
 />
     <!--android:background="@android:color/transparent"-->
@@ -354,21 +365,18 @@ android:layout_below="@id/doelgroepv"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/btnMeerInfo"
-
         android:background="@drawable/button_shape"
-
+        android:textColor="@color/Rood"
         android:layout_marginTop="8dp"/>
 
     <Button
         android:text="@string/inschrijven"
         android:id="@+id/btnInschrijvenV"
-
-
+        android:textColor="@color/Rood"
         android:background="@drawable/button_shape"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/btnMinderInfo"
-
         android:layout_marginTop="8dp"/>
 
 

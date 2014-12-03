@@ -43,11 +43,40 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
         activityIndicator.stopAnimating()
     }
     
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+    /*func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         zoekGefilterdeVakanties(searchText.lowercaseString)
+    }*/
+    
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        setTitleCancelButton(searchBar)
+        zoekGefilterdeMonitoren(searchBar.text)
     }
     
-    func zoekGefilterdeVakanties(zoek: String) {
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        searchBar.text = ""
+        zoekGefilterdeMonitoren(searchBar.text)
+        searchBar.showsCancelButton = false
+        searchBar.resignFirstResponder()
+    }
+    
+    func setTitleCancelButton(searchBar: UISearchBar) {
+        searchBar.showsCancelButton = true
+        var cancelButton: UIButton?
+        var topView: UIView = searchBar.subviews[0] as UIView
+        for subView in topView.subviews {
+            cancelButton = subView as? UIButton
+        }
+        
+        cancelButton?.setTitle("Annuleer", forState: UIControlState.Normal)
+    }
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        searchBar.showsCancelButton = true
+        setTitleCancelButton(searchBar)
+        zoekGefilterdeMonitoren(searchText.lowercaseString)
+    }
+    
+    func zoekGefilterdeMonitoren(zoek: String) {
         monitoren2 = monitoren.filter { ($0.naam!.lowercaseString.rangeOfString(zoek) != nil) || ($0.voornaam!.lowercaseString.rangeOfString(zoek)  != nil) }
         monitorenZelfdeVorming2 = monitorenZelfdeVorming.filter { ($0.naam!.lowercaseString.rangeOfString(zoek) != nil) || ($0.voornaam!.lowercaseString.rangeOfString(zoek)  != nil) }
         if zoek.isEmpty {
@@ -86,13 +115,13 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier("monitorCellZelfdeVorming", forIndexPath: indexPath) as UITableViewCell
             let monitor = monitorenZelfdeVorming2[indexPath.row]
-            cell.textLabel.text = monitor.voornaam! + " " + monitor.naam!
+            cell.textLabel?.text = monitor.voornaam! + " " + monitor.naam!
             cell.detailTextLabel!.text = "Meer informatie"
             return cell
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier("monitorCell", forIndexPath: indexPath) as UITableViewCell
             let monitor = monitoren2[indexPath.row]
-            cell.textLabel.text = monitor.voornaam! + " " + monitor.naam!
+            cell.textLabel?.text = monitor.voornaam! + " " + monitor.naam!
             cell.detailTextLabel?.text = "Meer informatie"
             return cell
         }

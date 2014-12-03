@@ -17,7 +17,7 @@
     <string name="title_activity_create_account">Registreer</string>
     <string name="menu_settings">opties</string>
     <string name="title_activity_main">Activiteiten</string>
-    <string name="emailingeven">Geef je email in</string>
+    <string name="emailingeven">Geef uw email in</string>
     <string name="back">Terug</string>
     <string name="button_logout">Uitloggen</string>
 
@@ -40,6 +40,7 @@
     <string name="volgende">Volgende</string>
     <string name="aansluitingsnummer">Voer je aansluitingsnummer in.</string>
     <string name="codeGerechtige">Voer je codeGerechtigde in.</string>
+    <string name="login_loading">U wordt ingelogd, even geduld aub.</string>
 
     <string name="bondMoyson">Bent u lid van Bond Moyson?</string>
     <string name="aanlsuitingsnummerhint">Geef uw aansluitingsnummer in</string>
@@ -59,6 +60,7 @@
     <string name="error_incorrect_postcode">Postcode is niet geldig (moet numeriek zijn, 4 cijfers)</string>
     <string name="error_incorrect_rijksregnr">Rijksregisternummer is niet geldig (11 cijfers, geen spaties of speciale tekens)</string>
     <string name="error_incorrect_rijksregisternummer">Ongeldig rijksregisternummer</string>
+    <string name="error_occupied_rijksregnr">Dit rijksregisternummer is reeds in gebruik.</string>
     <string name="error_incorrect_huisnr">Huisnummer is niet geldig (moet numeriek zijn)</string>
     <string name="signup_melding_monitor">U schrijft zich momenteel in als ouder/voogd. Wilt u zich inschrijven als monitor?
 Mail Joetz met uw voornaam, naam, e-mailadres, rijksregisternummer, adresgegevens, gsm en eventueel uw telefoonnummer.
@@ -70,6 +72,10 @@ Mail Joetz met uw voornaam, naam, e-mailadres, rijksregisternummer, adresgegeven
     <string name="error_field_required">Verplicht in te vullen</string>
     <string name="error_invalid_email">Ongeldig e-mailadres</string>
     <string name="error_incorrect_aansluitingsnr">Ongeldig aansluitingsnummer</string>
+    <string name="error_incorrectLogin">Email of wachtwoord is ongeldig</string>
+    <string name="error_generalException">Er is iets fout gelopen. Onze excuses voor het ongemak.</string>
+    <string name="passwordForgottenEmailSent">Er werd een mail gestuurd om uw wachtwoord opnieuw in te stellen.</string>
+    <string name="passwordForgottenEmailFailed">Ons systeem kon geen mail sturen. Onze excuses voor het ongemak.</string>
 
     <string name="error_duplicate_email">Dit e-mailadres is al in gebruik</string>
     <string name="error_incorrect_password">Fout wachtwoord</string>
@@ -97,7 +103,6 @@ Mail Joetz met uw voornaam, naam, e-mailadres, rijksregisternummer, adresgegeven
         <item>Indienen voorkeur</item>
         <item>Over Joetz</item>
         <item>Uitloggen</item>
-        <item>Favoriete vakanties</item>
     </string-array>
 
 
@@ -106,14 +111,11 @@ Mail Joetz met uw voornaam, naam, e-mailadres, rijksregisternummer, adresgegeven
     <string name="title_activity_tester_list_item">TesterListItem</string>
     <string name="meerInfo">Meer info</string>
     <string name="minderInfo">Minder info</string>
-    <string name="title_activity_inschrijven_vakantie_part1">InschrijvenVakantiePart1</string>
+    <string name="vakantieDetailTitel">Vakantie</string>
     <string name="inschrijvenVak1_AlgemeneUitleg">Gelieve de gevens van de deelnemer in te voeren.</string>
     <string name="label_geboorteDatum">Geboortedatum</string>
     <string name="inschrijvenVak2_AlgemeneUitleg">Gelieve de gegevens in te vullen van een contactpersoon in geval van nood. U kan ervoor kiezen om een tweede contactpersoon toe te voegen</string>
     <string name="inschrijvenVak3_AlgemeneUitleg">Indien er nog extra info is, waar de leiding van op de hoogte moet zijn, kan u dit hier invullen. Bijvoorbeeld allergieën, ziekte, &#8230;</string>
-    <string name="title_activity_inschrijven_vakantie_part2">InschrijvenVakantiePart2</string>
-    <string name="title_activity_inschrijven_vakantie_part3">InschrijvenVakantiePart3</string>
-    <string name="title_activity_inschrijven_vakantie_part4">InschrijvenVakantiePart4</string>
     <string name="ok">OK</string>
     <string name="logoutText">Weet u zeker dat u wilt uitloggen?</string>
     <string name="Uitloggen">uitloggen</string>
@@ -123,14 +125,14 @@ Mail Joetz met uw voornaam, naam, e-mailadres, rijksregisternummer, adresgegeven
     <string name="locatie">Locatie</string>
     <string name="vertrekdatum">Vertrekdatum</string>
     <string name="terugkeerdatum">Terugkeerdatum</string>
-    <string name="periode">Periodes</string>
+    <string name="periode">Periode</string>
     <string name="vervoer">Vervoer</string>
     <string name="formule">Formule</string>
     <string name="maxDeelnemers">Maximum aantal deelnemers</string>
     <string name="inbegrepenInPrijs">Inbegrepen in de prijs</string>
     <string name="basisprijs">Prijs</string>
-    <string name="ledenprijs">De bond moyson ledenprijs</string>
-    <string name="sterPrijsOuder1">Sterprijs ouder 1</string>
+    <string name="ledenprijs">De Bond Moyson ledenprijs</string>
+    <string name="sterPrijsOuder1">De sterprijs voor 1 ouder</string>
     <string name="sterPrijs2Ouders">De sterprijs voor 2 ouders</string>
     <string name="forgetPass">Wachtwoord vergeten</string>
     <string name="joetzAbout">Verlang je ook al naar de vakantie? Dan presenteren we je graag de <b>kinder- en jongerenvakanties 2014</b> van JOETZ.
@@ -148,8 +150,6 @@ De smaak te pakken? Wacht dan niet te lang en boek een onvergetelijke JOETZ-vaka
     <string name="refresh">Refresh</string>
     <string name="aanlsuitingsnummerhintOuder2">Eventueel aansluitingsnummer van ouder 2.</string>
     <string name="KlikVoorMeerInfo">selecteer voor meer info</string>
-    <string name="favoriet">Voeg deze vakantie toe</string>
-    <string name="favoriet2"> aan je favorieten!</string>
-
+    <string name="BMsticker">Bond Moyson sticker</string>
 
 </resources>

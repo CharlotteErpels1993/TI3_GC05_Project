@@ -29,11 +29,6 @@ public class SignUp_deel4 extends Activity{
 	private EditText mEmailEditText; 
 	private EditText mPasswordEditText;
 	private EditText mConfirmPasswordEditText;
-	private Button mCreateAccountButton;
-
-	private String mEmail;
-	private String mPassword;
-	private String mConfirmPassword;
 
     private boolean cancel = false;
     private View focusView = null;
@@ -53,25 +48,19 @@ public class SignUp_deel4 extends Activity{
 		// creating connection detector class instance
         cd = new ConnectionDetector(getApplicationContext());
 
-        getActionBar().setTitle("Registreren");
+        getActionBar().setTitle(getString(R.string.title_activity_Register));
 
 		
 		mEmailEditText = (EditText) findViewById(R.id.etEmail);
 		mPasswordEditText = (EditText) findViewById(R.id.etPassword);
 		mConfirmPasswordEditText = (EditText) findViewById(R.id.etPasswordConfirm);
 
-		mCreateAccountButton = (Button) findViewById(R.id.btnCreateAccount);
-        mCreateAccountButton.setTextColor(getResources().getColor(R.color.Rood));
+        Button mCreateAccountButton = (Button) findViewById(R.id.btnCreateAccount);
+        //mCreateAccountButton.setTextColor(getResources().getColor(R.color.Rood));
 		mCreateAccountButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
-                // get Internet status
                 isInternetPresent = cd.isConnectingToInternet();
-                // check for Internet status
-                // Internet connection is not present
-                // Ask user to connect to Internet
                 if (isInternetPresent) {
                     // Internet Connection is Present
                     // make HTTP requests
@@ -94,9 +83,9 @@ public class SignUp_deel4 extends Activity{
 		//declaratie van focusView & cancel is private gedeclareerd.
 
 		// Store values at the time of the login attempt.
-		mEmail = mEmailEditText.getText().toString();
-		mPassword = mPasswordEditText.getText().toString();
-		mConfirmPassword = mConfirmPasswordEditText.getText().toString();
+        String mEmail = mEmailEditText.getText().toString();
+        String mPassword = mPasswordEditText.getText().toString();
+        String mConfirmPassword = mConfirmPasswordEditText.getText().toString();
 
 		// Check for a valid confirm password.
 		if (TextUtils.isEmpty(mConfirmPassword)) {
@@ -142,7 +131,7 @@ public class SignUp_deel4 extends Activity{
             }
         }
         catch(ParseException e){
-            signUpMsg("Er is iets fout gelopen. Onze excuses voor het ongemak.");
+            signUpMsg(getString(R.string.error_generalException));
             cancel = true;
         }
 
@@ -165,7 +154,6 @@ public class SignUp_deel4 extends Activity{
 
         ParseObject gebruiker = new ParseObject("Ouder");
         gebruiker.put("email", mEmail);
-        gebruiker.put("wachtwoord", mPassword);
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -189,7 +177,7 @@ public class SignUp_deel4 extends Activity{
             try{
                 //gebruiker.put("wachtwoord", lidBondMoyson);
                 if (aansluitingsnr != null && !aansluitingsnr.equals(""))
-                    gebruiker.put("aansluitingsNr", Integer.parseInt(aansluitingsnr));
+                    gebruiker.put("aansluitingsNr", Double.parseDouble(aansluitingsnr));
                 gebruiker.put("voornaam", voornaam);
                 gebruiker.put("naam", naam);
                 gebruiker.put("straat", straat);
@@ -202,12 +190,12 @@ public class SignUp_deel4 extends Activity{
                 gebruiker.put("telefoon", telefoon);
                 gebruiker.put("gsm", gsm);
                 if (aansluitingsnrOuder2 != null && !aansluitingsnrOuder2.equals(""))
-                    gebruiker.put("aansluitingsNrTweedeOuder", Integer.parseInt(aansluitingsnrOuder2));
+                    gebruiker.put("aansluitingsNrTweedeOuder", Double.parseDouble(aansluitingsnrOuder2));
                 if (codeGerechtigde != null && !codeGerechtigde.equals(""))
-                    gebruiker.put("codeGerechtigde", Integer.parseInt(codeGerechtigde));
+                    gebruiker.put("codeGerechtigde", Double.parseDouble(codeGerechtigde));
             }
             catch (NumberFormatException nfe){
-                Toast.makeText(getApplicationContext(), "Er was een fout tijdens het registeren, onze excuses voor het ongemak.\n" + nfe.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), getString(R.string.error_generalException), Toast.LENGTH_SHORT).show();
             }
         }
 
@@ -217,13 +205,14 @@ public class SignUp_deel4 extends Activity{
         user.setUsername(username);
         user.setPassword(mPassword);
         user.setEmail(mEmail);
+        user.put("soort", "ouder");
         user.signUpInBackground(new SignUpCallback() {
             @Override
             public void done(ParseException e) {
                 if (e != null) {
                     // Sign up didn't succeed. Look at the ParseException
                     // to figure out what went wrong
-                    signUpMsg("Er was een fout tijdens het registeren, onze excuses voor het ongemak.");
+                    signUpMsg(getString(R.string.error_generalException));
                 }
             }
         });
@@ -231,22 +220,6 @@ public class SignUp_deel4 extends Activity{
         signUpMsg("Account aangemaakt.");
         Intent in = new Intent(getApplicationContext(), navBarMainScreen.class);
         startActivity(in);
-
-        //hieronder is code om data ophalen.
-        /*ParseQuery<ParseObject> query = ParseQuery.getQuery("Ouder");
-        query.whereEqualTo("Email", mEmail);
-        query.findInBackground(new FindCallback<ParseObject>() {
-           public void done(List<ParseObject> objects, ParseException e) {
-               if (e == null) {
-                   // object will be your game score
-                   signUpMsg("Email: " + objects.get(0).getString("Email"));
-                   signUpMsg("Wachtwoord: " + objects.get(0).getString("Wachtwoord"));
-               } else {
-                   // something went wrong
-                   signUpMsg("Er is een fout gebeurd tijdens de registratie. Gelieve opnieuw te proberen.");
-               }
-           }
-       });*/
     }
 
 	protected void signUpMsg(String msg) {
