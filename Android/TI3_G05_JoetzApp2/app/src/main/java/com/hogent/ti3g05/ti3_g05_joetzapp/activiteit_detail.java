@@ -469,6 +469,7 @@ public class activiteit_detail extends Activity {
         int id = item.getItemId();
         if (id == R.id.backMenu2) {
             Intent intent1 = new Intent(this, navBarMainScreen.class);
+            intent1.putExtra("naarfrag", "activiteit");
             intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent1);
 

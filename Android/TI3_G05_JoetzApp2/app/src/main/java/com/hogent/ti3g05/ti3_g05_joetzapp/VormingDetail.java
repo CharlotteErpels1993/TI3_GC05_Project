@@ -102,7 +102,8 @@ public class VormingDetail extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.backMenu) {
-            Intent intent1 = new Intent(this, Vormingen_Overzicht.class);
+            Intent intent1 = new Intent(this, navBarMainScreen.class);
+            intent1.putExtra("naarfrag", "vorming");
 
             startActivity(intent1);
             overridePendingTransition(R.anim.left_in, R.anim.right_out);
