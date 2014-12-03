@@ -28,12 +28,31 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
         ParseData.vulInschrijvingVormingTableOp()
         ParseData.vulMonitorTableOp()
         
-        var monitor = ParseData.getMonitorWithEmail(PFUser.currentUser().email)
+        //var monitor = ParseData.getMonitorWithEmail(PFUser.currentUser().email)
+        var monitorResponse = ParseData.getMonitorWithEmail(PFUser.currentUser().email)
         
-        self.monitorenZelfdeVorming = ParseData.getMonitorsMetDezelfdeVormingen(monitor.id!)
-        self.monitoren = ParseData.getMonitorsMetAndereVormingen(self.monitorenZelfdeVorming)
-        self.monitoren2 = self.monitoren
-        self.monitorenZelfdeVorming2 = self.monitorenZelfdeVorming
+        var monitor = monitorResponse.0
+        
+        var monitorenZelfdeVormingResponse = ParseData.getMonitorsMetDezelfdeVormingen(monitor.id!)
+        //self.monitorenZelfdeVorming = ParseData.getMonitorsMetDezelfdeVormingen(monitor.id!)
+        
+        if monitorenZelfdeVormingResponse.1 == nil {
+            //er zijn monitoren gevonden
+            self.monitorenZelfdeVorming = monitorenZelfdeVormingResponse.0
+            
+            var monitorenResponse = ParseData.getMonitorsMetAndereVormingen(self.monitorenZelfdeVorming)
+            
+            if monitorenResponse.1 == nil {
+                //er zijn monitoren gevonden
+                self.monitoren = monitorenResponse.0
+                self.monitoren2 = self.monitoren
+                self.monitorenZelfdeVorming2 = self.monitorenZelfdeVorming
+            }
+        }
+        
+        //self.monitoren = ParseData.getMonitorsMetAndereVormingen(self.monitorenZelfdeVorming)
+        //self.monitoren2 = self.monitoren
+        //self.monitorenZelfdeVorming2 = self.monitorenZelfdeVorming
         
         monitorenZelfdeVorming.sort({ $0.naam < $1.voornaam })
         monitoren.sort({ $0.naam < $1.voornaam })
@@ -147,19 +166,19 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
         } else {
             cell = tableView.dequeueReusableCellWithIdentifier("monitorCellZelfdeVorming", forIndexPath: indexPath) as UITableViewCell
             let monitor = monitorenZelfdeVorming2[indexPath.row]
-            cell.textLabel?.text = monitor.voornaam! + " " + monitor.naam!
+            cell.textLabel.text = monitor.voornaam! + " " + monitor.naam!
             cell.detailTextLabel!.text = "Meer informatie"
         }
         
         if indexPath.section == 1 {
             cell = tableView.dequeueReusableCellWithIdentifier("monitorCellZelfdeVorming", forIndexPath: indexPath) as UITableViewCell
             let monitor = monitorenZelfdeVorming2[indexPath.row]
-            cell.textLabel?.text = monitor.voornaam! + " " + monitor.naam!
+            cell.textLabel.text = monitor.voornaam! + " " + monitor.naam!
             cell.detailTextLabel!.text = "Meer informatie"
         } else /*if indexPath.section == 2*/ {
             cell = tableView.dequeueReusableCellWithIdentifier("monitorCell", forIndexPath: indexPath) as UITableViewCell
             let monitor = monitoren2[indexPath.row]
-            cell.textLabel?.text = monitor.voornaam! + " " + monitor.naam!
+            cell.textLabel.text = monitor.voornaam! + " " + monitor.naam!
             cell.detailTextLabel?.text = "Meer informatie"
         }
         

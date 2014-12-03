@@ -225,7 +225,7 @@ class InschrijvenVakantie1ViewController : ResponsiveTextFieldViewController {
         
         var inschrijvingenResponse = ParseData.getInschrijvingenVakantie(self.inschrijvingVakantie)
         
-        if inschrijvingenRespone.1 != nil {
+        if inschrijvingenResponse.1 != nil {
             //er zijn geen inschrijvingen gevonden
            return false
         }
@@ -235,6 +235,6 @@ class InschrijvenVakantie1ViewController : ResponsiveTextFieldViewController {
             return true
         }*/
         
-        return false
+        //return false
     }
 }
