@@ -29,7 +29,13 @@ class IndienenVoorkeurViewController: UIViewController, UIPickerViewDataSource, 
         hideSideMenuView()
         //periodeLabel.hidden = true
         
-        vakanties = ParseData.getAlleVakanties()
+        var vakantiesResponse = ParseData.getAlleVakanties()
+        
+        if vakantiesResponse.1 == nil {
+            self.vakanties = vakantiesResponse.0
+        }
+        
+        //vakanties = ParseData.getAlleVakanties()
         
         for vakantie in vakanties {
             pickerData.append(vakantie.titel!)
@@ -122,12 +128,21 @@ class IndienenVoorkeurViewController: UIViewController, UIPickerViewDataSource, 
     func controleerAlIngeschreven() -> Bool {
         var voorkeuren: [Voorkeur] = []
         
-        voorkeuren = ParseData.getVoorkeurenVakantie(self.voorkeur)
+        //voorkeuren = ParseData.getVoorkeurenVakantie(self.voorkeur)
         
-        if voorkeuren.count > 0 {
+        var voorkeurenResponse = ParseData.getVoorkeurenVakantie(self.voorkeur)
+        
+        if voorkeurenResponse == nil {
+            //er zijn voorkeuren gevonden
+            return true
+        }
+        
+        
+        /*if voorkeuren.count > 0 {
             return true
             
-        }
+        }*/
+        
         return false
     }
 }
