@@ -11,8 +11,10 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -62,9 +64,14 @@ public class activiteit_detail extends Activity {
     Button btnmeerInfo;
     Button btnminderInfo;
 
+    ImageView favoImage;
+    ImageView deleteImage;
+
     private List<ParseObject> ob;
     private List<ParseObject> obF;
-    private String ingelogdeOuder ="";
+
+    private List<ParseObject> obD;
+    private String ingelogdeOuder = "";
     //SwipeRefreshLayout swipeLayout;
 
     // flag for Internet connection status
@@ -99,7 +106,7 @@ public class activiteit_detail extends Activity {
         //afbeeldingen ophalen met een while-lus, die stopt als de nieuwe afbeelding null is, want we weten niet zeker of
         String huidigeAfbeelding = i.getStringExtra("foto0");
         int teller = 0;
-        while(huidigeAfbeelding != null){
+        while (huidigeAfbeelding != null) {
             fotos.add(huidigeAfbeelding);
             teller++;
             huidigeAfbeelding = i.getStringExtra("foto" + teller);
@@ -111,12 +118,12 @@ public class activiteit_detail extends Activity {
         final TextView txtNaam = (TextView) findViewById(R.id.titel);
         final TextView txtLocatie = (TextView) findViewById(R.id.locatiev);
         final TextView txtDoelgr = (TextView) findViewById(R.id.doelgroepv);
-        final TextView txtformule = (TextView)findViewById(R.id.formule);
-        final TextView txtmaxDeeln = (TextView)findViewById(R.id.maxDeelnemers);
-        final TextView txtPeriode = (TextView)findViewById(R.id.periode);
-        final TextView txtVervoer = (TextView)findViewById(R.id.vervoer);
-        final TextView txtPrijs = (TextView)findViewById(R.id.basisprijs);
-        final TextView txtBeschrijving = (TextView)findViewById(R.id.beschrijving);
+        final TextView txtformule = (TextView) findViewById(R.id.formule);
+        final TextView txtmaxDeeln = (TextView) findViewById(R.id.maxDeelnemers);
+        final TextView txtPeriode = (TextView) findViewById(R.id.periode);
+        final TextView txtVervoer = (TextView) findViewById(R.id.vervoer);
+        final TextView txtPrijs = (TextView) findViewById(R.id.basisprijs);
+        final TextView txtBeschrijving = (TextView) findViewById(R.id.beschrijving);
         final TextView txtVertrekDatum = (TextView) findViewById(R.id.vertrekdatum);
         final TextView txtTerugkeerDatum = (TextView) findViewById(R.id.terugkeerdatum);
         final TextView txtInbegrepenInPrijs = (TextView) findViewById(R.id.inbegrepenInPrijs);
@@ -126,7 +133,7 @@ public class activiteit_detail extends Activity {
         final RelativeLayout verberg = (RelativeLayout) findViewById(R.id.verberg2);
         final TextView labelBM = (TextView) findViewById(R.id.ledenPrijsLabel);
 
-        btnInschrijven = (Button)findViewById(R.id.btnInschrijvenV);
+        btnInschrijven = (Button) findViewById(R.id.btnInschrijvenV);
         btnmeerInfo = (Button) findViewById(R.id.btnMeerInfo);
         btnminderInfo = (Button) findViewById(R.id.btnMinderInfo);
 
@@ -137,7 +144,7 @@ public class activiteit_detail extends Activity {
         ImageView afbeelding1im = (ImageView) findViewById(R.id.afbeelding1);
         ImageView afbeelding2im = (ImageView) findViewById(R.id.afbeelding2);
         ImageView afbeelding3im = (ImageView) findViewById(R.id.afbeelding3);
-        ImageView share  = (ImageView) findViewById(R.id.share);
+        ImageView share = (ImageView) findViewById(R.id.share);
 
         share.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -177,13 +184,19 @@ public class activiteit_detail extends Activity {
             }
         });
 
-        ImageView favoImage = (ImageView) findViewById(R.id.favo);
+        HorizontalScrollView scrollView = (HorizontalScrollView) findViewById(R.id.scrollView);
+        favoImage = (ImageView) findViewById(R.id.favo);
+        deleteImage = (ImageView) findViewById(R.id.delete);
+        deleteImage.setVisibility(View.GONE);
         favoImage.setVisibility(View.GONE);
 
-        if(ParseUser.getCurrentUser() != null){
-            if(ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("ouder"))
-            {
+        if (ParseUser.getCurrentUser() != null) {
+            if (ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("ouder") && !controleerReedsFavoriet()) {
                 favoImage.setVisibility(View.VISIBLE);
+
+
+            } else {
+                deleteImage.setVisibility(View.VISIBLE);
             }
         }
 
@@ -191,6 +204,13 @@ public class activiteit_detail extends Activity {
             @Override
             public void onClick(View view) {
                 toevoegenAanFavorieten();
+            }
+        });
+
+        deleteImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                deleteFavoriet();
             }
         });
         btnminderInfo.setTextColor(getResources().getColor(R.color.Rood));
@@ -231,7 +251,7 @@ public class activiteit_detail extends Activity {
             }
         });
 
-        if (afbeelding1im.getVisibility() == View.VISIBLE){
+        if (afbeelding1im.getVisibility() == View.VISIBLE) {
             afbeelding1im.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -244,26 +264,26 @@ public class activiteit_detail extends Activity {
                 }
             });
         }
-        if (afbeelding2im.getVisibility() == View.VISIBLE){
+        if (afbeelding2im.getVisibility() == View.VISIBLE) {
             afbeelding2im.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Intent intent1 = new Intent(activiteit_detail.this, afbeeldingUItvergroot.class);
 
-                    intent1.putExtra("afbeelding",afbeelding2);
+                    intent1.putExtra("afbeelding", afbeelding2);
                     startActivity(intent1);
 
                     overridePendingTransition(R.anim.right_in, R.anim.left_out);
                 }
             });
         }
-        if (afbeelding3im.getVisibility() == View.VISIBLE){
+        if (afbeelding3im.getVisibility() == View.VISIBLE) {
             afbeelding3im.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Intent intent1 = new Intent(activiteit_detail.this, afbeeldingUItvergroot.class);
 
-                    intent1.putExtra("afbeelding",afbeelding3);
+                    intent1.putExtra("afbeelding", afbeelding3);
                     startActivity(intent1);
 
                     overridePendingTransition(R.anim.right_in, R.anim.left_out);
@@ -272,7 +292,7 @@ public class activiteit_detail extends Activity {
         }
 
         //hieronder wordt er een leesbare datum geconverteerd
-        try{
+        try {
             SimpleDateFormat dateFormat = new SimpleDateFormat("EEE MMM d HH:mm:ss zz yyyy");
             Calendar cal = Calendar.getInstance();
 
@@ -291,10 +311,10 @@ public class activiteit_detail extends Activity {
         txtNaam.setText(naam);
         txtLocatie.setText(locatie);
         txtDoelgr.setText(minDoelgroep + " - " + maxDoelgroep + " jaar");
-        txtformule.setText( formule);
+        txtformule.setText(formule);
         txtmaxDeeln.setText(maxDeeln + " personen");
         txtPeriode.setText(periode);
-        txtVervoer.setText( vervoer);
+        txtVervoer.setText(vervoer);
         txtBeschrijving.setText(beschrijving);
         txtVertrekDatum.setText(vertrekdatum);
         txtTerugkeerDatum.setText(terugdatum);
@@ -323,7 +343,7 @@ public class activiteit_detail extends Activity {
             txtPrijs.setVisibility(View.VISIBLE);
             prijs = i.getStringExtra("prijs");
             txtPrijs.setText("€" + prijs);
-            if (!(prijs.contains(".") || prijs.contains(","))){
+            if (!(prijs.contains(".") || prijs.contains(","))) {
                 txtPrijs.append(",00");
             }
 
@@ -336,7 +356,7 @@ public class activiteit_detail extends Activity {
                 txtBMledenPrijs.setVisibility(View.VISIBLE);
                 labelBM.setVisibility(View.VISIBLE);
                 txtBMledenPrijs.setText("Prijs voor leden van Bond Moyson: €" + bmLedenPrijs);
-                if (!(bmLedenPrijs.contains(".") || bmLedenPrijs.contains(","))){
+                if (!(bmLedenPrijs.contains(".") || bmLedenPrijs.contains(","))) {
                     txtBMledenPrijs.append(",00");
                 }
             } else {
@@ -347,15 +367,15 @@ public class activiteit_detail extends Activity {
             if (!sterPrijs1Ouder.equals("0")) {
                 txtSterPrijs1Ouder.setVisibility(View.VISIBLE);
                 txtSterPrijs1Ouder.setText("Prijs voor leden waarvan 1 ouder deel is van BM: €" + sterPrijs1Ouder);
-                if (!(sterPrijs1Ouder.contains(".") || sterPrijs1Ouder.contains(","))){
+                if (!(sterPrijs1Ouder.contains(".") || sterPrijs1Ouder.contains(","))) {
                     txtSterPrijs1Ouder.append(",00");
                 }
             }
 
-            if (!sterPrijs2Ouders.equals("0")){
+            if (!sterPrijs2Ouders.equals("0")) {
                 txtSterPrijs2Ouders.setVisibility(View.VISIBLE);
                 txtSterPrijs2Ouders.setText("Prijs voor leden waarvan 2 ouders deel zijn van BM: €" + sterPrijs2Ouders);
-                if (!(sterPrijs2Ouders.contains(".") || sterPrijs2Ouders.contains(","))){
+                if (!(sterPrijs2Ouders.contains(".") || sterPrijs2Ouders.contains(","))) {
                     txtSterPrijs2Ouders.append(",00");
                 }
             }
@@ -365,7 +385,7 @@ public class activiteit_detail extends Activity {
         // Capture position and set results to the ImageView
         // Passes flag images URL into ImageLoader.class
         int aantalAfbeeldingen = fotos.size();
-        if (!fotos.isEmpty()){
+        if (!fotos.isEmpty()) {
             afbeelding1im.setVisibility(View.VISIBLE);
             afbeelding1 = fotos.get(0);
             imageLoader.DisplayImage(afbeelding1, afbeelding1im);
@@ -475,10 +495,9 @@ public class activiteit_detail extends Activity {
 
     public void toevoegenAanFavorieten() {
 
-
+/*
         isInternetPresent = cd.isConnectingToInternet();
         if (isInternetPresent) try {
-            ParseObject favoriet = new ParseObject("Favoriet");
 
 
             // Locate the class table named "vakantie" in Parse.com
@@ -503,17 +522,21 @@ public class activiteit_detail extends Activity {
             String favId = null;
 
             for (ParseObject fav : obF) {
-                if (fav.get("vakantieId").equals(activiteitID) && fav.get("ouderId").equals(ingelogdeOuder))
-                {
-                    favId=fav.getObjectId();
+                if (fav.get("vakantieId").equals(activiteitID) && fav.get("ouderId").equals(ingelogdeOuder)) {
+                    favId = fav.getObjectId();
                 }
-            }
+            }*/
+        try{
 
-            if (favId == null) {
+
+            ParseObject favoriet = new ParseObject("Favoriet");
+            if (!controleerReedsFavoriet()) {
                 favoriet.put("vakantieId", activiteitID);
                 favoriet.put("ouderId", ingelogdeOuder);
                 favoriet.save();
                 Toast.makeText(activiteit_detail.this, "Favoriet toegevoegd!", Toast.LENGTH_SHORT).show();
+                favoImage.setVisibility(View.GONE);
+                deleteImage.setVisibility(View.VISIBLE);
             } else {
                 Toast.makeText(activiteit_detail.this, "Is reeds favoriet.", Toast.LENGTH_SHORT).show();
             }
@@ -521,5 +544,68 @@ public class activiteit_detail extends Activity {
         } catch (ParseException e) {
             e.printStackTrace();
         }
+    }
+
+    public boolean controleerReedsFavoriet() {
+        isInternetPresent = cd.isConnectingToInternet();
+        if (isInternetPresent) try {
+            ParseObject favoriet = new ParseObject("Favoriet");
+
+
+            // Locate the class table named "vakantie" in Parse.com
+            ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(
+                    "Ouder");
+
+            ob = query.find();
+
+            for (ParseObject ouder : ob) {
+
+                if (ouder.get("email").equals(ParseUser.getCurrentUser().getEmail())) {
+                    ingelogdeOuder = ouder.getObjectId();
+                }
+
+
+            }
+
+            ParseQuery<ParseObject> query2 = new ParseQuery<ParseObject>(
+                    "Favoriet");
+
+            obF = query2.find();
+
+
+            String favId = null;
+            for (ParseObject fav : obF) {
+                if (fav.get("vakantieId").equals(activiteitID) && fav.get("ouderId").equals(ingelogdeOuder)) {
+                    favId = fav.getObjectId();
+                    return true;
+                }
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public void deleteFavoriet()
+    {
+        try{
+        ParseQuery<ParseObject> query2 = new ParseQuery<ParseObject>(
+                "Favoriet");
+
+        obD = query2.find();
+
+
+        for (ParseObject fav : obD) {
+            if (fav.get("vakantieId").equals(activiteitID) && fav.get("ouderId").equals(ingelogdeOuder)) {
+                fav.delete();
+                Toast.makeText(activiteit_detail.this, "vakantie is verwijderd van favorieten", Toast.LENGTH_SHORT).show();
+                deleteImage.setVisibility(View.GONE);
+                favoImage.setVisibility(View.VISIBLE);
+
+            }
+        }
+    } catch (ParseException e) {
+        e.printStackTrace();
+    }
     }
 }
