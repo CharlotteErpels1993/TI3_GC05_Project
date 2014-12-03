@@ -91,7 +91,7 @@ public class activiteit_detail extends Activity {
         }
 
 
-        setTitle(naam);
+        setTitle(getString(R.string.vakantieDetailTitel));
 
         final TextView txtNaam = (TextView) findViewById(R.id.titel);
         final TextView txtLocatie = (TextView) findViewById(R.id.locatiev);
@@ -129,7 +129,6 @@ public class activiteit_detail extends Activity {
             }
         });
 
-        btnInschrijven.setTextColor(getResources().getColor(R.color.Rood));
         btnInschrijven.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -148,7 +147,6 @@ public class activiteit_detail extends Activity {
 
         final Animation fadeOutAnimation = AnimationUtils.loadAnimation(this, R.anim.fadeout);
 
-        btnmeerInfo.setTextColor(getResources().getColor(R.color.Rood));
         btnmeerInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -160,7 +158,6 @@ public class activiteit_detail extends Activity {
             }
         });
 
-        btnminderInfo.setTextColor(getResources().getColor(R.color.Rood));
         btnminderInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -257,17 +254,16 @@ public class activiteit_detail extends Activity {
 
 
         txtNaam.setText(naam);
-        txtLocatie.setText("Locatie: " + locatie);
-        txtDoelgr.setText("Doelgroep: " + minDoelgroep + " - " + maxDoelgroep);
-
-        txtformule.setText("Formule: " + formule);
-        txtmaxDeeln.setText("Maximum aantal deelnemers: " + maxDeeln);
-        txtPeriode.setText("Periode: " + periode);
-        txtVervoer.setText("Vervoer: " + vervoer);
+        txtLocatie.setText(locatie);
+        txtDoelgr.setText(minDoelgroep + " - " + maxDoelgroep + " jaar");
+        txtformule.setText( formule);
+        txtmaxDeeln.setText(maxDeeln + " personen");
+        txtPeriode.setText(periode);
+        txtVervoer.setText( vervoer);
         txtBeschrijving.setText(beschrijving);
-        txtVertrekDatum.setText("Vertrek: " + vertrekdatum);
-        txtTerugkeerDatum.setText("Terug: " + terugdatum);
-        txtInbegrepenInPrijs.setText("Inbegrepen in de prijs: " + inbegrepenInPrijs);
+        txtVertrekDatum.setText(vertrekdatum);
+        txtTerugkeerDatum.setText(terugdatum);
+        txtInbegrepenInPrijs.setText(inbegrepenInPrijs);
 
         if (ParseUser.getCurrentUser() == null){
             //niet ingelogd
@@ -291,7 +287,7 @@ public class activiteit_detail extends Activity {
             //toon normale prijs
             txtPrijs.setVisibility(View.VISIBLE);
             prijs = i.getStringExtra("prijs");
-            txtPrijs.setText("Prijs: €" + prijs);
+            txtPrijs.setText("€" + prijs);
             if (!(prijs.contains(".") || prijs.contains(","))){
                 txtPrijs.append(",00");
             }
@@ -301,7 +297,7 @@ public class activiteit_detail extends Activity {
             sterPrijs2Ouders = i.getStringExtra("SterPrijs2Ouders");
 
 
-            if (!bmLedenPrijs.equals("-1")) {
+            if (!bmLedenPrijs.equals("0")) {
                 txtBMledenPrijs.setVisibility(View.VISIBLE);
                 labelBM.setVisibility(View.VISIBLE);
                 txtBMledenPrijs.setText("Prijs voor leden van Bond Moyson: €" + bmLedenPrijs);
@@ -314,7 +310,7 @@ public class activiteit_detail extends Activity {
                 labelBM.setVisibility(View.GONE);
             }
 
-            if (!sterPrijs1Ouder.equals("-1")) {
+            if (!sterPrijs1Ouder.equals("0")) {
                 txtSterPrijs1Ouder.setVisibility(View.VISIBLE);
                 txtSterPrijs1Ouder.setText("Prijs voor leden waarvan 1 ouder deel is van BM: €" + sterPrijs1Ouder);
                 if (!(sterPrijs1Ouder.contains(".") || sterPrijs1Ouder.contains(","))){
@@ -322,7 +318,7 @@ public class activiteit_detail extends Activity {
                 }
             }
 
-            if (!sterPrijs2Ouders.equals("-1")){
+            if (!sterPrijs2Ouders.equals("0")){
                 txtSterPrijs2Ouders.setVisibility(View.VISIBLE);
                 txtSterPrijs2Ouders.setText("Prijs voor leden waarvan 2 ouders deel zijn van BM: €" + sterPrijs2Ouders);
                 if (!(sterPrijs2Ouders.contains(".") || sterPrijs2Ouders.contains(","))){

@@ -78,7 +78,6 @@ public class Login extends Activity{
                 if (isInternetPresent) {
                     // Internet Connection is Present
                     // make HTTP requests
-                    Toast.makeText(getApplicationContext(), getString(R.string.login_loading), Toast.LENGTH_SHORT).show();
                     attemptLogin();
                 } else {
                     // Internet connection is not present
