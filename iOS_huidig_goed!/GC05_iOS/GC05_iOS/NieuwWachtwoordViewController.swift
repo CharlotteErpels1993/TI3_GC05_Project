@@ -38,7 +38,14 @@ class NieuwWachtwoordViewController: ResponsiveTextFieldViewController {
     
     func isValidEmailInDatabase(email: String) -> Bool {
         var monitor: Monitor = ParseData.getMonitorWithEmail(email)
-        var ouder: Ouder = ParseData.getOuderWithEmail(email)
+        
+        var ouderResponse = ParseData.getOuderWithEmail(email)
+        
+        //var ouder: Ouder = ParseData.getOuderWithEmail(email)
+        
+        //aftesten of er wel een ouder is 
+        
+        var ouder = ouderResponse.0
         
         if ouder.id == "test" && monitor.id == "test" {
             return false
