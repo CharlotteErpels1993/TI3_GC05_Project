@@ -54,7 +54,7 @@ class SidebarTableViewController: UITableViewController {
         if cell == nil {
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "CELL")
             cell!.backgroundColor = UIColor.clearColor()
-            cell!.textLabel?.textColor = UIColor.darkGrayColor()
+            cell!.textLabel.textColor = UIColor.darkGrayColor()
             let selectedBackgroundView = UIView(frame: CGRectMake(0, 0, cell!.frame.size.width, cell!.frame.size.height))
             selectedBackgroundView.backgroundColor = UIColor.grayColor().colorWithAlphaComponent(0.2)
             cell!.selectedBackgroundView = selectedBackgroundView
@@ -63,15 +63,15 @@ class SidebarTableViewController: UITableViewController {
         
         
         if PFUser.currentUser() == nil {
-            cell!.textLabel?.text = self.arrayKind[indexPath.row]
+            cell!.textLabel.text = self.arrayKind[indexPath.row]
 
         } else {
             var gebruikerPF = PFUser.currentUser()
             var soort: String = gebruikerPF["soort"] as String
             if soort == "monitor" {
-                cell!.textLabel?.text = self.arrayMonitor[indexPath.row]
+                cell!.textLabel.text = self.arrayMonitor[indexPath.row]
             } else if soort == "ouder" {
-                cell!.textLabel?.text = self.arrayOuder[indexPath.row]
+                cell!.textLabel.text = self.arrayOuder[indexPath.row]
             } // else if soort = JOETZ
         }
         return cell!
