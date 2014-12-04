@@ -155,14 +155,14 @@ class VakantieDetailsTableViewController: UITableViewController {
     
     @IBAction func shareToTwitter(sender: AnyObject) {
         var shareToTwitter : SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
-        shareToTwitter.setInitialText("Bekijk zeker en vast deze vakantie! \n \(vakantie.link!)")
+        shareToTwitter.setInitialText("Bekijk zeker en vast deze vakantie! \n \(vakantie.link!) \n -gedeeld via Joetz app")
         //shareToTwitter.addImage(UIImage(named: "32.png"))
         self.presentViewController(shareToTwitter, animated: true, completion: nil)
     }
     
     @IBAction func shareToFacebook(sender: AnyObject) {
         var shareToFacebook : SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
-        shareToFacebook.setInitialText("Bekijk zeker en vast deze vakantie! \n \(vakantie.link!)")
+        shareToFacebook.setInitialText("Bekijk zeker en vast deze vakantie! \n \(vakantie.link!) \n -gedeeld via Joetz app")
         //shareToFacebook.addImage(UIImage(named: "32.png"))
         self.presentViewController(shareToFacebook, animated: true, completion: nil)
     }
