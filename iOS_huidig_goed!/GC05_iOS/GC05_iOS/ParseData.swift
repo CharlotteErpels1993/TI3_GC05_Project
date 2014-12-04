@@ -544,6 +544,17 @@ struct /*class*/ ParseData {
         return VoorkeurSQL.getVoorkeuren(monitorId, vakantieId: vakantieId)
     }
     
+    static func lidNummerMonitorAlToegevoegd(lidNummer: Int) -> Bool {
+        return MonitorSQL.lidNummerAlToegevoegd(lidNummer)
+    }
+    
+    static func rijksregisterNrMonitorAlToegevoegd(rijksregisterNr: String) -> Bool {
+        return MonitorSQL.getRijksregisterNummers(rijksregisterNr)
+    }
+    
+    static func emailMonitorAlToegevoegd(email: String) -> Bool {
+        return MonitorSQL.getEmail(email)
+    }
     
     /*static func getInschrijvingenVakantieDeelnemer(voornaam: String, naam: String, vakantie: String, ouder: String) -> [InschrijvingVakantie] {
     //var inschrijvingen: [String] = []

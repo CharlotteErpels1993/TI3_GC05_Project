@@ -7,7 +7,7 @@ class MonitorRegistratie2ViewController: UIViewController {
     @IBOutlet var txtAansluitingsNr: UITextField!
     @IBOutlet var txtCodeGerechtigde: UITextField!
     
-    var monitor: Monitor = Monitor(id: "test")
+    var monitor: Monitor!
     
     @IBAction func gaTerugNaarInloggen(sender: AnyObject) {
         annuleerControllerRegistratie(self)

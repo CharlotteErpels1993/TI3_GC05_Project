@@ -138,13 +138,26 @@ struct MonitorSQL {
         let (resultSet, err) = SD.executeQuery("SELECT * FROM Monitor WHERE email = ?", withArgs: [email])
         if err != nil
         {
-            println("ERROR: error tijdens ophalen van alle gsms")
+            println("ERROR: error tijdens ophalen van bepaalde gsm uit table Monitor")
         }
         
         if resultSet.count == 0 {
             return false
         }
         
+        return true
+    }
+    
+    static func lidNummerAlToegevoegd(lidNummer: Int) -> Bool {
+        let (resultSet, err) = SD.executeQuery("SELECT * FROM Monitor WHERE lidNr = ?", withArgs: [lidNummer])
+        
+        if err != nil {
+            println("ERROR: error tijdens ophalen bepaald lidnummer uit table Monitor")
+        }
+        
+        if resultSet.count == 0 {
+            return false
+        }
         return true
     }
     
