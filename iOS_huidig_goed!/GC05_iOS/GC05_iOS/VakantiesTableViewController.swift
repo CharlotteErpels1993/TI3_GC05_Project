@@ -6,6 +6,7 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
     var vakanties: [Vakantie] = []
     var vakanties2: [Vakantie] = []
     var redColor: UIColor = UIColor(red: CGFloat(232/255.0), green: CGFloat(33/255.0), blue: CGFloat(35/255.0), alpha: CGFloat(1.0))
+    var favoriet: Bool = false
     
     @IBOutlet weak var zoekbar: UISearchBar!
     
@@ -22,22 +23,33 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         //activityIndicator.startAnimating()
         //super.viewDidLoad()
         checkConnectie()
-        
-        var responseVakanties: ([Vakantie], Int?) = ParseData.getAlleVakanties()
-        
-        //vakanties = ParseData.getAlleVakanties()
+        var responseVakanties: ([Vakantie], Int?)
+        if PFUser.currentUser() != nil {
+            var ouderResponse = ParseData.getOuderWithEmail(PFUser.currentUser().email)
+            if ouderResponse.1 == nil {
+                if favoriet == false {
+                    responseVakanties = ParseData.getAlleVakanties()
+                } else  {
+                    responseVakanties = ParseData.getFavorieteVakanties(ouderResponse.0)
+                }
+            } else {
+                responseVakanties = ParseData.getAlleVakanties()
+            }
+        } else {
+            responseVakanties = ParseData.getAlleVakanties()
+        }
         
         if responseVakanties.1 == nil {
             //er zijn vakanties
             self.vakanties = responseVakanties.0
             self.vakanties2 = self.vakanties
             self.tableView.reloadData()
-            
-            self.vakanties2.sort({ (String($0.minLeeftijd)) < $1.titel})
-            self.vakanties.sort({ (String($0.minLeeftijd)) < $1.titel})
         }
+    
         
-        
+        self.vakanties2.sort({ (String($0.minLeeftijd)) < $1.titel})
+        self.vakanties.sort({ (String($0.minLeeftijd)) < $1.titel})
+    
         /*self.vakanties = responseVakanties.0
         self.vakanties2 = self.vakanties
         self.tableView.reloadData()*/

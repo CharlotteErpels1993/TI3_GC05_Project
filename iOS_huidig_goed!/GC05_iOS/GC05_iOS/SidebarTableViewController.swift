@@ -3,7 +3,7 @@ import UIKit
 class SidebarTableViewController: UITableViewController {
     var selectedMenuItem : Int = 0
     var arrayKind: [String] = ["Vakanties","Inloggen", "Registreren"]
-    var arrayOuder: [String] = ["Uitloggen", "Vakanties"]
+    var arrayOuder: [String] = ["Uitloggen", "Vakanties", "Favorieten"]
     var arrayMonitor: [String] = ["Uitloggen","Eigen profiel", "Vakanties",  "Vormingen", "Voorkeur vakantie", "Profielen"]
     var arrayJoetz: [String] = ["Uitloggen", "Vakanties", "Vormingen", "Profielen", "Nieuwe monitor"]
     var array: [String]?
@@ -41,7 +41,7 @@ class SidebarTableViewController: UITableViewController {
             var gebruikerPF = PFUser.currentUser()
             var soort: String = gebruikerPF["soort"] as String
             if soort == "ouder" {
-                return 2
+                return 3
             } else {
                 return 6
             } // else return 5 (JOETZ)
@@ -160,9 +160,6 @@ class SidebarTableViewController: UITableViewController {
             } else if soort == "ouder" {
                 self.tableView.reloadInputViews()
                 switch indexPath.row {
-                case 1:
-                    destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
-                    break
                 case 0:
                     hideSideMenuView()
                     destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
@@ -183,9 +180,17 @@ class SidebarTableViewController: UITableViewController {
                     
                     presentViewController(alertController, animated: true, completion: nil)
                     break
+                case 1:
+                    destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
+                    break
+                case 2:
+                    destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as VakantiesTableViewController
+                    //destViewController.favoriet = true
+                    break
                 default:
                     destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
                     break
+                
                 }
                 sideMenuController()?.setContentViewController(destViewController)
             } // else if soort = JOETZ
