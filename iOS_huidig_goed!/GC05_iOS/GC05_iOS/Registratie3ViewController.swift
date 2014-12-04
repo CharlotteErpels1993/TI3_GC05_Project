@@ -12,7 +12,7 @@ class Registratie3ViewController: ResponsiveTextFieldViewController
     var statusTextFields: [String: String] = [:]
     var redColor: UIColor = UIColor.redColor()
     var emailAlGeregistreerd: Bool = false
-    
+    var ww: String = ""
     
     @IBAction func gaTerugNaarInloggen(sender: AnyObject) {
         annuleerControllerRegistratie(self)
@@ -45,9 +45,10 @@ class Registratie3ViewController: ResponsiveTextFieldViewController
                 }
                 self.viewDidLoad()
             } else {
-                if wachtwoordenMatch() == true {
+                if wachtwoordenMatch(txtWachtwoord.text, txtBevestigWachtwoord.text) == true {
                     settenGegevens()
                     registratieSuccesvolViewController.ouder = ouder
+                    registratieSuccesvolViewController.ww = self.ww
                 } else {
                     giveUITextFieldDefaultBorder(txtEmail)
                     giveUITextFieldRedBorder(txtWachtwoord)
@@ -158,20 +159,12 @@ class Registratie3ViewController: ResponsiveTextFieldViewController
         }
     }
     
-    func wachtwoordenMatch() -> Bool {
-        if txtWachtwoord.text == txtBevestigWachtwoord.text {
-            return true
-        } else {
-            return false
-        }
-    }
-    
     func settenGegevens() {
         ouder.email = txtEmail.text
         
         // ENCRYPTEREN
         
-        ouder.wachtwoord = txtWachtwoord.text
+        self.ww = txtWachtwoord.text
     }
 
     
@@ -196,6 +189,14 @@ class Registratie3ViewController: ResponsiveTextFieldViewController
         return ParseData.getEmail(self.txtEmail.text)
     }
     
+}
+
+func wachtwoordenMatch(wachtwoord: String, herhaalWachtwoord: String) -> Bool {
+    if wachtwoord == herhaalWachtwoord {
+        return true
+    } else {
+        return false
+    }
 }
 
 func checkPatternEmail(email: String) -> Bool {

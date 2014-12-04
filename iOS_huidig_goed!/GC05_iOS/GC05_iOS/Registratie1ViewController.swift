@@ -276,24 +276,6 @@ class Registratie1ViewController: ResponsiveTextFieldViewController
         }
     }
     
-    func checkPatternAansluitingsNr(aansluitingsNr: Int) -> Bool {
-        var aansluitingsNrString: String = String(aansluitingsNr)
-        
-        if countElements(aansluitingsNrString) == 10 {
-            return true
-        }
-        return false
-    }
-    
-    func checkPatternCodeGerechtigde(codeGerechtigde: Int) -> Bool {
-        var codeGerechtigdeString: String = String(codeGerechtigde)
-        
-        if countElements(codeGerechtigdeString) == 6 {
-            return true
-        }
-        return false
-    }
-    
     func settenOptioneleGegevens() {
         
         if gebruikerIsLid == true {
@@ -310,6 +292,24 @@ class Registratie1ViewController: ResponsiveTextFieldViewController
     func controleerRijksregisterNummerAlGeregisteerd() -> Bool {
         return ParseData.getRijksregisterNummers(self.txtRijksregisterNr.text)
     }
+}
+
+func checkPatternAansluitingsNr(aansluitingsNr: Int) -> Bool {
+    var aansluitingsNrString: String = String(aansluitingsNr)
+    
+    if countElements(aansluitingsNrString) == 10 {
+        return true
+    }
+    return false
+}
+
+func checkPatternCodeGerechtigde(codeGerechtigde: Int) -> Bool {
+    var codeGerechtigdeString: String = String(codeGerechtigde)
+    
+    if countElements(codeGerechtigdeString) == 6 {
+        return true
+    }
+    return false
 }
 
 func checkPatternNummer(nummer: Int) -> Bool {

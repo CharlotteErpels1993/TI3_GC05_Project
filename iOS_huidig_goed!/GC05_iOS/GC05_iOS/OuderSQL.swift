@@ -322,7 +322,7 @@ struct OuderSQL {
         }
     }
     
-    static func parseOuderToDatabase(ouder: Ouder) {
+    static func parseOuderToDatabase(ouder: Ouder, wachtwoord: String) {
         var ouderJSON = PFObject(className: "Ouder")
         
         ouderJSON.setValue(ouder.email, forKey: "email")
@@ -356,14 +356,14 @@ struct OuderSQL {
         
         ouderJSON.save()
         
-        createPFUser(ouder)
-        logIn(ouder)
+        createPFUser(ouder, wachtwoord: wachtwoord)
+        logIn(ouder, wachtwoord: wachtwoord)
     }
     
-    static private func createPFUser(ouder: Ouder) {
+    static private func createPFUser(ouder: Ouder, wachtwoord: String) {
         var user = PFUser()
         user.username = ouder.email
-        user.password = ouder.wachtwoord
+        user.password = wachtwoord
         user.email = ouder.email
         user["soort"] = "ouder"
         
@@ -376,8 +376,8 @@ struct OuderSQL {
         user.signUp()
     }
     
-    static private func logIn(ouder: Ouder) {
-        PFUser.logInWithUsername(ouder.email, password: ouder.wachtwoord)
+    static private func logIn(ouder: Ouder, wachtwoord: String) {
+        PFUser.logInWithUsername(ouder.email, password: wachtwoord)
     }
     
 }

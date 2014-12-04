@@ -3,6 +3,7 @@ import UIKit
 class RegistratieSuccesvolViewController: UIViewController
 {
     var ouder: Ouder!
+    var ww: String!
     
     
     @IBAction func gaTerugNaarInloggen(sender: AnyObject) {
@@ -15,7 +16,7 @@ class RegistratieSuccesvolViewController: UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        ParseData.parseOuderToDatabase(ouder)
+        ParseData.parseOuderToDatabase(ouder, wachtwoord: ww)
         
         self.navigationItem.setHidesBackButton(true, animated: true)
 
@@ -72,6 +73,6 @@ class RegistratieSuccesvolViewController: UIViewController
     }*/
     
     private func logIn() {
-        PFUser.logInWithUsername(ouder.email, password: ouder.wachtwoord)
+        PFUser.logInWithUsername(ouder.email, password: ww)
     }
 }

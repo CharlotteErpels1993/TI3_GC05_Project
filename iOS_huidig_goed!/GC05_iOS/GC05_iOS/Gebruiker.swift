@@ -5,7 +5,6 @@ class Gebruiker
     var id: String?
     var rijksregisterNr: String?
     var email: String?
-    var wachtwoord: String?
     var voornaam: String?
     var naam: String?
     var straat: String?
@@ -40,10 +39,9 @@ class Gebruiker
         self.codeGerechtigde = gebruiker["codeGerechtigde"] as? Int
     }*/
     
-    init(rijksregisterNr: String, email: String, wachtwoord: String, voornaam: String, naam: String, straat: String, nummer: Int, bus: String, gemeente: String, postcode: Int, telefoon: String, gsm: String, aansluitingsNr: Int, codeGerechtigde: Int) {
+    init(rijksregisterNr: String, email: String, voornaam: String, naam: String, straat: String, nummer: Int, bus: String, gemeente: String, postcode: Int, telefoon: String, gsm: String, aansluitingsNr: Int, codeGerechtigde: Int) {
         self.rijksregisterNr = rijksregisterNr
         self.email = email
-        self.wachtwoord = wachtwoord
         self.voornaam = voornaam
         self.naam = naam
         self.straat = straat
@@ -57,11 +55,10 @@ class Gebruiker
         self.codeGerechtigde = codeGerechtigde
     }
     
-    init(id: String, rijksregisterNr: String, email: String, wachtwoord: String, voornaam: String, naam: String, straat: String, nummer: Int, bus: String, gemeente: String, postcode: Int, telefoon: String, gsm: String, aansluitingsNr: Int, codeGerechtigde: Int) {
+    init(id: String, rijksregisterNr: String, email: String, voornaam: String, naam: String, straat: String, nummer: Int, bus: String, gemeente: String, postcode: Int, telefoon: String, gsm: String, aansluitingsNr: Int, codeGerechtigde: Int) {
         self.id = id
         self.rijksregisterNr = rijksregisterNr
         self.email = email
-        self.wachtwoord = wachtwoord
         self.voornaam = voornaam
         self.naam = naam
         self.straat = straat
@@ -75,11 +72,10 @@ class Gebruiker
         self.codeGerechtigde = codeGerechtigde
     }
     
-    func initializeVariables(rijksregisterNr: String, email: String, wachtwoord: String, voornaam: String, naam: String, straat: String, nummer: Int, bus: String, gemeente: String, postcode: Int, telefoon: String, gsm: String, aansluitingsNr: Int, codeGerechtigde: Int)
+    func initializeVariables(rijksregisterNr: String, email: String, voornaam: String, naam: String, straat: String, nummer: Int, bus: String, gemeente: String, postcode: Int, telefoon: String, gsm: String, aansluitingsNr: Int, codeGerechtigde: Int)
     {
         self.rijksregisterNr = rijksregisterNr
         self.email = email
-        self.wachtwoord = wachtwoord
         self.voornaam = voornaam
         self.naam = naam
         self.straat = straat

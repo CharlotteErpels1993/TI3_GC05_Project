@@ -506,4 +506,53 @@ struct MonitorSQL {
         
         return true
     }
+    
+    static func parseMonitorToDatabase(monitor: Monitor, wachtwoord: String) {
+        var monitorJSON = PFObject(className: "Monitor")
+        
+        monitorJSON.setValue(monitor.email, forKey: "email")
+        monitorJSON.setValue(monitor.voornaam, forKey: "voornaam")
+        monitorJSON.setValue(monitor.naam, forKey: "naam")
+        monitorJSON.setValue(monitor.straat, forKey: "straat")
+        monitorJSON.setValue(monitor.nummer, forKey: "nummer")
+        monitorJSON.setValue(monitor.postcode, forKey: "postcode")
+        monitorJSON.setValue(monitor.gemeente, forKey: "gemeente")
+        monitorJSON.setValue(monitor.gsm, forKey: "gsm")
+        monitorJSON.setValue(monitor.rijksregisterNr, forKey: "rijksregisterNr")
+        monitorJSON.setValue(monitor.aansluitingsNr, forKey: "aansluitingsNr")
+        monitorJSON.setValue(monitor.codeGerechtigde, forKey: "codeGerechtigde")
+        
+        if monitor.bus != nil {
+            monitorJSON.setValue(monitor.bus, forKey: "bus")
+        }
+        
+        if monitor.telefoon != nil {
+            monitorJSON.setValue(monitor.telefoon, forKey: "telefoon")
+        }
+        
+        monitorJSON.save()
+        
+        createPFUser(monitor, wachtwoord: wachtwoord)
+        logIn(monitor, wachtwoord: wachtwoord)
+    }
+    
+    static private func createPFUser(monitor: Monitor, wachtwoord: String) {
+        var user = PFUser()
+        user.username = monitor.email
+        user.password = wachtwoord
+        user.email = monitor.email
+        user["soort"] = "monitor"
+        
+        /*user.signUpInBackgroundWithBlock {
+        (succeeded: Bool!, error: NSError!) -> Void in
+        if error == nil {
+        
+        }
+        }*/
+        user.signUp()
+    }
+    
+    static private func logIn(monitor: Monitor, wachtwoord: String) {
+        PFUser.logInWithUsername(monitor.email, password: wachtwoord)
+    }
 }

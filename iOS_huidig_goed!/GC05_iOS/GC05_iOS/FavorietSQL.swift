@@ -92,4 +92,62 @@ struct FavorietSQL {
         favorietObject.delete()
 
     }
+    
+    
+    static func getFavorieteVakanties(ouder: Ouder) -> ([Vakantie], Int?) {
+        
+        var favorieteVakantiesID: [String] = []
+        var favorieteVakantieID: String = ""
+        var favorieteVakanties:[Vakantie] = []
+        var alleVakanties: [Vakantie] = []
+        var favorieteVakantie: Vakantie = Vakantie(id: "test")
+        var vakantie: Vakantie = Vakantie(id: "test2")
+        
+        let (resultSet, err) = SD.executeQuery("SELECT * FROM Favoriet WHERE ouder = ?", withArgs: [ouder.id!])
+        
+        var response: ([Vakantie], Int?)
+        var error: Int?
+        
+        if err != nil
+        {
+            println("ERROR: error tijdens ophalen van alle favoriete vakanties uit table Favoriet")
+        }
+        else
+        {
+            if resultSet.count == 0 {
+                error = 1
+            }
+            else {
+                error = nil
+                
+                let r: ([Vakantie], Int?) = VakantieSQL.getAlleVakanties()
+                
+                if r.1 != nil {
+                    println("ERROR: geen vakanties gevonden in table Vakantie")
+                }
+                else {
+                    alleVakanties = r.0
+                    
+                    for row in resultSet {
+                        if let id = row["vakantie"]?.asString() {
+                            favorieteVakantiesID.append(id)
+                        }
+                    }
+                    
+                    for fvId in favorieteVakantiesID {
+                        for v in alleVakanties {
+                            if v.id == fvId {
+                                favorieteVakanties.append(v)
+                            }
+                        }
+                    }
+                }
+            }
+            
+        }
+        
+        response = (favorieteVakanties, error)
+        return response
+    }
+    
 }

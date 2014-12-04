@@ -179,7 +179,7 @@ struct VakantieSQL {
         return response
     }
     
-    static private func getVakantie(row: SD.SDRow) -> Vakantie {
+    static func getVakantie(row: SD.SDRow) -> Vakantie {
         var vakantie: Vakantie = Vakantie(id: "test")
         
         if let objectId = row["objectId"]?.asString() {

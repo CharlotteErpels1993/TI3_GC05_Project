@@ -329,8 +329,12 @@ struct /*class*/ ParseData {
         InschrijvingVormingSQL.parseInschrijvingVormingToDatabase(inschrijving)
     }
     
-    static func parseOuderToDatabase(ouder: Ouder) {
-        OuderSQL.parseOuderToDatabase(ouder)
+    static func parseMonitorToDatabase(monitor: Monitor, wachtwoord: String) {
+        MonitorSQL.parseMonitorToDatabase(monitor, wachtwoord: wachtwoord)
+    }
+    
+    static func parseOuderToDatabase(ouder: Ouder, wachtwoord: String) {
+        OuderSQL.parseOuderToDatabase(ouder, wachtwoord: wachtwoord)
     }
     
     static func parseVoorkeurToDatabase(voorkeur: Voorkeur) {
@@ -392,6 +396,10 @@ struct /*class*/ ParseData {
         }
         
         return afbeeldingen[0]
+    }
+    
+    static func getFavorieteVakanties(ouder: Ouder) -> ([Vakantie], Int?) {
+        return FavorietSQL.getFavorieteVakanties(ouder)
     }
     
     //InschrijvingenVakantieTable
