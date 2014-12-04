@@ -31,78 +31,166 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/beschrijvingVD"
+                android:id="@+id/beschrijvingVDLabel"
                 android:layout_below="@id/titelVD"
-                android:layout_marginTop="15dp"
-                android:textAlignment="center"
-                android:layout_centerHorizontal="true"/>
+                android:layout_marginBottom="8dp"
+                android:text="@string/beschrijving"
+                android:textStyle="bold"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/beschrijvingVD"
+                android:layout_below="@id/beschrijvingVDLabel"
+                android:layout_marginBottom="15dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/locatieVDLabel"
+                android:layout_below="@id/beschrijvingVD"
+                android:layout_marginBottom="8dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:text="@string/locatie"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/locatieVD"
-                android:layout_below="@id/beschrijvingVD"
-                android:layout_marginTop="15dp"
+                android:layout_below="@id/locatieVDLabel"
+                android:layout_marginBottom="15dp"
                 android:textSize="15sp"
                 android:layout_centerHorizontal="true"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/tipsVD"
+                android:id="@+id/tipsVDLabel"
                 android:layout_below="@id/locatieVD"
-                android:layout_marginTop="10dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/tips"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tipsVD"
+                android:layout_below="@id/tipsVDLabel"
+                android:layout_marginBottom="15dp"
                 android:layout_centerHorizontal="true"/>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/criteriaDeelnemerVDLabel"
+                android:layout_marginBottom="8dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_below="@id/tipsVD"
+                android:text="@string/criteriaDeelnemer"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/criteriaDeelnemerVD"
-                android:layout_marginTop="10dp"
-                android:layout_below="@id/tipsVD"
+                android:layout_marginBottom="15dp"
+                android:layout_below="@id/criteriaDeelnemerVDLabel"
                 android:layout_centerHorizontal="true"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/periodesVDLabel"
+                android:layout_marginEnd="8dp"
+                android:text="@string/periodes"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_below="@id/criteriaDeelnemerVD"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/periodesVD"
-                android:layout_marginTop="10dp"
-                android:layout_below="@id/criteriaDeelnemerVD"
+                android:layout_marginBottom="15dp"
+                android:layout_below="@id/periodesVDLabel"
                 android:layout_centerHorizontal="true"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/betalingswijzeVDLabel"
+                android:layout_marginBottom="8dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:text="@string/betalingsw"
+                android:layout_below="@id/periodesVD"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/betalingswijzeVD"
-                android:layout_marginTop="10dp"
-                android:layout_below="@id/periodesVD"
-                android:textSize="20sp"
+                android:layout_marginBottom="15dp"
+                android:layout_below="@id/betalingswijzeVDLabel"
+                android:textSize="15sp"
                 android:layout_centerHorizontal="true"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/prijsLabel"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/basisprijs"
+                android:layout_below="@id/betalingswijzeVD"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/prijs"
-                android:layout_marginTop="10dp"
-                android:layout_below="@id/betalingswijzeVD"
-                android:textSize="20sp"
+                android:layout_marginBottom="15dp"
+                android:layout_below="@id/prijsLabel"
+                android:textSize="15sp"
                 android:layout_centerHorizontal="true"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/inbegrepenInPrijsLabel"
+                android:layout_marginBottom="8dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:text="@string/inbegrepenInPrijs"
+                android:layout_below="@id/prijs"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/inbegrepenInPrijs"
-                android:layout_marginTop="10dp"
-                android:layout_below="@id/prijs"
-                android:textSize="20sp"
+                android:layout_marginBottom="15dp"
+                android:layout_below="@id/inbegrepenInPrijsLabel"
+                android:textSize="15sp"
                 android:layout_centerHorizontal="true"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/websiteLocatieVD"
+                android:id="@+id/websiteLocatieVDLabel"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_marginBottom="8dp"
                 android:layout_below="@id/inbegrepenInPrijs"
+                android:text="@string/website"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/websiteLocatieVD"
+                android:layout_marginBottom="15dp"
+                android:layout_below="@id/websiteLocatieVDLabel"
                 android:layout_centerHorizontal="true"/>
 
         </RelativeLayout>
