@@ -192,10 +192,10 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7yb-Mj-oiV">
-                                                    <rect key="frame" x="46" y="8" width="30" height="30"/>
+                                                    <rect key="frame" x="45" y="10" width="26" height="26"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="30" id="S5S-B1-Pxh"/>
-                                                        <constraint firstAttribute="width" constant="30" id="aNt-UE-XKu"/>
+                                                        <constraint firstAttribute="height" constant="26" id="S5S-B1-Pxh"/>
+                                                        <constraint firstAttribute="width" constant="26" id="aNt-UE-XKu"/>
                                                     </constraints>
                                                     <state key="normal" title="Button" image="twitter.png">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -207,9 +207,9 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="6OW-Iy-XEM" firstAttribute="top" secondItem="Rrt-T8-fnY" secondAttribute="topMargin" id="0Kt-xp-TqO"/>
-                                                <constraint firstItem="7yb-Mj-oiV" firstAttribute="leading" secondItem="6OW-Iy-XEM" secondAttribute="trailing" constant="8" id="459-Ud-a9k"/>
+                                                <constraint firstItem="7yb-Mj-oiV" firstAttribute="leading" secondItem="6OW-Iy-XEM" secondAttribute="trailing" constant="7" id="459-Ud-a9k"/>
                                                 <constraint firstItem="p68-Po-ndp" firstAttribute="top" secondItem="Rrt-T8-fnY" secondAttribute="topMargin" id="8hG-53-GwC"/>
-                                                <constraint firstItem="7yb-Mj-oiV" firstAttribute="top" secondItem="Rrt-T8-fnY" secondAttribute="topMargin" id="XrV-eq-RTZ"/>
+                                                <constraint firstItem="7yb-Mj-oiV" firstAttribute="top" secondItem="Rrt-T8-fnY" secondAttribute="topMargin" constant="2" id="XrV-eq-RTZ"/>
                                                 <constraint firstItem="p68-Po-ndp" firstAttribute="top" secondItem="Rrt-T8-fnY" secondAttribute="topMargin" constant="-1" id="hCb-fw-s3X"/>
                                                 <constraint firstItem="p68-Po-ndp" firstAttribute="trailing" secondItem="Rrt-T8-fnY" secondAttribute="trailingMargin" id="hTt-kM-KjH"/>
                                                 <constraint firstItem="6OW-Iy-XEM" firstAttribute="leading" secondItem="Rrt-T8-fnY" secondAttribute="leadingMargin" id="n5G-F6-Jp9"/>
