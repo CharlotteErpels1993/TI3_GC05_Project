@@ -8,6 +8,7 @@ class Vakantie: Activiteit
     var aantalDagenNachten: String?
     var vervoerwijze: String?
     var formule: String?
+    var link: String?
     
     var basisprijs: Double? /*{
         willSet {
@@ -68,7 +69,7 @@ class Vakantie: Activiteit
     }
     */
     
-    init(id: String, titel: String, locatie: String, korteBeschrijving: String, beginDatum: NSDate, terugkeerDatum: NSDate, aantalDagenNachten: String, vervoerwijze: String, formule: String, basisprijs: Double, bondMoysonLedenPrijs: Double, sterPrijs1: Double, sterPrijs2: Double, kortingen: String, inbegrepenPrijs: String, minLeeftijd: Int, maxLeeftijd: Int, maxAantalDeelnemers: Int) {
+    init(id: String, titel: String, locatie: String, korteBeschrijving: String, beginDatum: NSDate, terugkeerDatum: NSDate, aantalDagenNachten: String, vervoerwijze: String, formule: String, basisprijs: Double, bondMoysonLedenPrijs: Double, sterPrijs1: Double, sterPrijs2: Double, kortingen: String, inbegrepenPrijs: String, minLeeftijd: Int, maxLeeftijd: Int, maxAantalDeelnemers: Int, link: String) {
         
         self.vertrekdatum = beginDatum
         self.terugkeerdatum = terugkeerDatum
@@ -83,6 +84,7 @@ class Vakantie: Activiteit
         self.minLeeftijd = minLeeftijd
         self.maxLeeftijd = maxLeeftijd
         self.maxAantalDeelnemers = maxAantalDeelnemers
+        self.link = link
         
         super.init(id: id, titel: titel, locatie: locatie, korteBeschrijving: korteBeschrijving)
     }

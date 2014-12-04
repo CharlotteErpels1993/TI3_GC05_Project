@@ -1,4 +1,5 @@
 import UIKit
+import Social
 
 class VakantieDetailsTableViewController: UITableViewController {
     
@@ -38,20 +39,22 @@ class VakantieDetailsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var ouderResponse = ParseData.getOuderWithEmail(PFUser.currentUser().email)
-        var favorieteVakantie: Favoriet = Favoriet(id: "test")
+        if PFUser.currentUser() != nil {
+            var ouderResponse = ParseData.getOuderWithEmail(PFUser.currentUser().email)
+            var favorieteVakantie: Favoriet = Favoriet(id: "test")
         
-        if ouderResponse.1 == nil {
-            favorieteVakantie.ouder = ouderResponse.0
-            favorieteVakantie.vakantie = self.vakantie
-        }
+            if ouderResponse.1 == nil {
+                favorieteVakantie.ouder = ouderResponse.0
+                favorieteVakantie.vakantie = self.vakantie
+            }
         
-        if ParseData.isFavorieteVakantie(favorieteVakantie) == true {
-            heartButton.setImage(self.imageHeartFull, forState: UIControlState.Normal)
-            self.favoriet = true
-        } else {
-            heartButton.setImage(self.imageHeartEmpty, forState: UIControlState.Normal)
-            self.favoriet = false
+            if ParseData.isFavorieteVakantie(favorieteVakantie) == true {
+                heartButton.setImage(self.imageHeartFull, forState: UIControlState.Normal)
+                self.favoriet = true
+            } else {
+                heartButton.setImage(self.imageHeartEmpty, forState: UIControlState.Normal)
+                self.favoriet = false
+            }
         }
         
         //zoekImages()
@@ -137,17 +140,31 @@ class VakantieDetailsTableViewController: UITableViewController {
                     sterPrijs2Label.text = String("Ster prijs (2 ouders): /")
                 }
             } else {
-                self.sectionToDelete = 6
+                self.sectionToDelete = 7
                 self.tableView.deleteSections(NSIndexSet(index: self.sectionToDelete), withRowAnimation: UITableViewRowAnimation.None)
                 self.navigationItem.rightBarButtonItem = nil
                 self.heartButton.hidden = true
             }
         } else {
-            self.sectionToDelete = 6
+            self.sectionToDelete = 7
             self.tableView.deleteSections(NSIndexSet(index: self.sectionToDelete), withRowAnimation: UITableViewRowAnimation.None)
             self.navigationItem.rightBarButtonItem = nil
             self.heartButton.hidden = true
         }
+    }
+    
+    @IBAction func shareToTwitter(sender: AnyObject) {
+        var shareToTwitter : SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+        shareToTwitter.setInitialText("Bekijk zeker en vast deze vakantie! \(vakantie.link)")
+        //shareToTwitter.addImage(UIImage(named: "32.png"))
+        self.presentViewController(shareToTwitter, animated: true, completion: nil)
+    }
+    
+    @IBAction func shareToFacebook(sender: AnyObject) {
+        var shareToFacebook : SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
+        shareToFacebook.setInitialText("Bekijk zeker en vast deze vakantie! \(vakantie.link)")
+        //shareToFacebook.addImage(UIImage(named: "32.png"))
+        self.presentViewController(shareToFacebook, animated: true, completion: nil)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -158,9 +175,9 @@ class VakantieDetailsTableViewController: UITableViewController {
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         if sectionToDelete == -1 {
-            return 7
+            return 8
         } else {
-            return 6
+            return 7
         }
     }
     @IBAction func switchHeart(sender: AnyObject) {
@@ -201,11 +218,11 @@ class VakantieDetailsTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 4 {
+        if section == 5 {
             return 3
-        } else if section == 5 {
-            return 4
         } else if section == 6 {
+            return 4
+        } else if section == 7 {
             if self.sectionToDelete == -1 {
                 return 5
             } else {

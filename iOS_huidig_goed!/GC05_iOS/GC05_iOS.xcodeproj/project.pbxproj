@@ -87,6 +87,8 @@
 		A55321DF1A1C8258005146F8 /* SuccesvolNieuwWachtwoordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55321DE1A1C8258005146F8 /* SuccesvolNieuwWachtwoordViewController.swift */; };
 		A575A0691A1633E500F6735A /* ENSideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575A0671A1633E500F6735A /* ENSideMenu.swift */; };
 		A575A06A1A1633E500F6735A /* ENSideMenuNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575A0681A1633E500F6735A /* ENSideMenuNavigationController.swift */; };
+		A58126321A305B4300176187 /* facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = A58126301A305B4300176187 /* facebook.png */; };
+		A58126331A305B4300176187 /* twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = A58126311A305B4300176187 /* twitter.png */; };
 		A599185B1A2F79150055AAF1 /* Heart_Empty.png in Resources */ = {isa = PBXBuildFile; fileRef = A59918591A2F79150055AAF1 /* Heart_Empty.png */; };
 		A599185C1A2F79150055AAF1 /* Heart_Full.png in Resources */ = {isa = PBXBuildFile; fileRef = A599185A1A2F79150055AAF1 /* Heart_Full.png */; };
 		A599185E1A2F817B0055AAF1 /* NieuweMonitorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A599185D1A2F817B0055AAF1 /* NieuweMonitorViewController.swift */; };
@@ -204,6 +206,8 @@
 		A55321DE1A1C8258005146F8 /* SuccesvolNieuwWachtwoordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuccesvolNieuwWachtwoordViewController.swift; sourceTree = "<group>"; };
 		A575A0671A1633E500F6735A /* ENSideMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENSideMenu.swift; sourceTree = "<group>"; };
 		A575A0681A1633E500F6735A /* ENSideMenuNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENSideMenuNavigationController.swift; sourceTree = "<group>"; };
+		A58126301A305B4300176187 /* facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = facebook.png; path = Images.xcassets/facebook.png; sourceTree = "<group>"; };
+		A58126311A305B4300176187 /* twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = twitter.png; path = Images.xcassets/twitter.png; sourceTree = "<group>"; };
 		A59918591A2F79150055AAF1 /* Heart_Empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Heart_Empty.png; path = Images.xcassets/Heart_Empty.png; sourceTree = "<group>"; };
 		A599185A1A2F79150055AAF1 /* Heart_Full.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Heart_Full.png; path = Images.xcassets/Heart_Full.png; sourceTree = "<group>"; };
 		A599185D1A2F817B0055AAF1 /* NieuweMonitorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NieuweMonitorViewController.swift; sourceTree = "<group>"; };
@@ -467,6 +471,8 @@
 				A543AA881A2C7AC000249B4A /* menu.png */,
 				A5E5B9841A23712B0054960C /* joetz.png */,
 				A52976D01A1A0A5E00420FEE /* Klevertje.png */,
+				A58126301A305B4300176187 /* facebook.png */,
+				A58126311A305B4300176187 /* twitter.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -556,8 +562,10 @@
 				A599185B1A2F79150055AAF1 /* Heart_Empty.png in Resources */,
 				0FA80B0D1A01350E008DB343 /* Main.storyboard in Resources */,
 				0FA80B0F1A01350E008DB343 /* Images.xcassets in Resources */,
+				A58126321A305B4300176187 /* facebook.png in Resources */,
 				A543AA891A2C7AC000249B4A /* menu.png in Resources */,
 				A52976D11A1A0A5E00420FEE /* Klevertje.png in Resources */,
+				A58126331A305B4300176187 /* twitter.png in Resources */,
 				A5E5B9851A23712B0054960C /* joetz.png in Resources */,
 				A599185C1A2F79150055AAF1 /* Heart_Full.png in Resources */,
 			);

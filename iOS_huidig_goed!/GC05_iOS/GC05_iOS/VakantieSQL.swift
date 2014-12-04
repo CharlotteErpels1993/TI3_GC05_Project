@@ -10,7 +10,7 @@ struct VakantieSQL {
              "vervoerwijze": .StringVal, "formule": .StringVal, "basisPrijs": .DoubleVal,
              "bondMoysonLedenPrijs": .DoubleVal, "inbegrepenPrijs": .StringVal,
              "minLeeftijd": .IntVal, "maxLeeftijd": .IntVal, "maxAantalDeelnemers": .IntVal,
-             "sterPrijs1ouder": .DoubleVal, "sterPrijs2ouders": .DoubleVal])
+                "sterPrijs1ouder": .DoubleVal, "sterPrijs2ouders": .DoubleVal, "link": .StringVal])
         {
             println("ERROR: error tijdens creatie van table Vakantie")
         }
@@ -46,6 +46,7 @@ struct VakantieSQL {
         var maxAantalDeelnemers: Int = 0
         var sterPrijs1ouder: Double = 0.0
         var sterPrijs2ouders: Double = 0.0
+        var link: String = ""
         
         var teller: Int = 0
         
@@ -77,6 +78,7 @@ struct VakantieSQL {
             maxAantalDeelnemers = vakantie["maxAantalDeelnemers"] as Int
             sterPrijs1ouder = vakantie["sterPrijs1ouder"] as Double
             sterPrijs2ouders = vakantie["sterPrijs2ouders"] as Double
+            link = vakantie["link"] as String
             
             var vertrekdatumString = vertrekdatum.toS("dd/MM/yyyy")
             var terugkeerdatumString = terugkeerdatum.toS("dd/MM/yyyy")
@@ -100,7 +102,8 @@ struct VakantieSQL {
             queryString.extend("maxLeeftijd, ")
             queryString.extend("maxAantalDeelnemers, ")
             queryString.extend("sterPrijs1ouder, ")
-            queryString.extend("sterPrijs2ouders")
+            queryString.extend("sterPrijs2ouders, ")
+            queryString.extend("link")
             queryString.extend(")")
             queryString.extend(" VALUES ")
             queryString.extend("(")
@@ -122,7 +125,8 @@ struct VakantieSQL {
             queryString.extend("\(maxLeeftijd), ") //maxLeeftijd - Int (geen '')!!
             queryString.extend("\(maxAantalDeelnemers), ") //maxAantalDeelnemers - Int (geen '')!!
             queryString.extend("\(sterPrijs1ouder), ") //sterPrijs1ouder - Double (geen '')!!
-            queryString.extend("\(sterPrijs2ouders)") //sterPrijs2ouders - Double (geen '')!!
+            queryString.extend("\(sterPrijs2ouders), ") //sterPrijs2ouders - Double (geen '')!!
+            queryString.extend("'\(link)'") // link - String
             
             queryString.extend(")")
             
@@ -233,6 +237,9 @@ struct VakantieSQL {
         }
         if let sterPrijs2ouders = row["sterPrijs2ouders"]?.asDouble() {
             vakantie.sterPrijs2ouders = sterPrijs2ouders
+        }
+        if let link = row["link"]?.asString() {
+            vakantie.link = link
         }
         
         return vakantie
