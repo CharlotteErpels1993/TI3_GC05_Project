@@ -116,8 +116,8 @@ class VakantieDetailsTableViewController: UITableViewController {
         var euroSymbol: String = "€"
         
         if PFUser.currentUser() != nil {
-        var gebruikerPF = PFUser.currentUser()
-        var soort: String = gebruikerPF["soort"] as String
+            var gebruikerPF = PFUser.currentUser()
+            var soort: String = gebruikerPF["soort"] as String
         
             if soort == "ouder" {
                 self.sectionToDelete = -1
@@ -140,13 +140,13 @@ class VakantieDetailsTableViewController: UITableViewController {
                     sterPrijs2Label.text = String("Ster prijs (2 ouders): /")
                 }
             } else {
-                self.sectionToDelete = 7
+                self.sectionToDelete = 7 // prijs
                 self.tableView.deleteSections(NSIndexSet(index: self.sectionToDelete), withRowAnimation: UITableViewRowAnimation.None)
                 self.navigationItem.rightBarButtonItem = nil
                 self.heartButton.hidden = true
             }
         } else {
-            self.sectionToDelete = 7
+            self.sectionToDelete = 7 // prijs
             self.tableView.deleteSections(NSIndexSet(index: self.sectionToDelete), withRowAnimation: UITableViewRowAnimation.None)
             self.navigationItem.rightBarButtonItem = nil
             self.heartButton.hidden = true
@@ -155,14 +155,14 @@ class VakantieDetailsTableViewController: UITableViewController {
     
     @IBAction func shareToTwitter(sender: AnyObject) {
         var shareToTwitter : SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
-        shareToTwitter.setInitialText("Bekijk zeker en vast deze vakantie! \(vakantie.link)")
+        shareToTwitter.setInitialText("Bekijk zeker en vast deze vakantie! \n \(vakantie.link!)")
         //shareToTwitter.addImage(UIImage(named: "32.png"))
         self.presentViewController(shareToTwitter, animated: true, completion: nil)
     }
     
     @IBAction func shareToFacebook(sender: AnyObject) {
         var shareToFacebook : SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
-        shareToFacebook.setInitialText("Bekijk zeker en vast deze vakantie! \(vakantie.link)")
+        shareToFacebook.setInitialText("Bekijk zeker en vast deze vakantie! \n \(vakantie.link!)")
         //shareToFacebook.addImage(UIImage(named: "32.png"))
         self.presentViewController(shareToFacebook, animated: true, completion: nil)
     }
@@ -225,6 +225,12 @@ class VakantieDetailsTableViewController: UITableViewController {
         } else if section == 7 {
             if self.sectionToDelete == -1 {
                 return 5
+            } else {
+                return 0
+            }
+        } else if section == 0 {
+            if self.sectionToDelete == -1 {
+                return 1
             } else {
                 return 0
             }
