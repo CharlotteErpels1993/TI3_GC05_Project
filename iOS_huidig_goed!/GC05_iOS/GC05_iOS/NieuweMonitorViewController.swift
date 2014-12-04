@@ -19,6 +19,9 @@ class NieuweMonitorViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "nieuweMonitor" {
             let nieuweMonitorSuccesvolViewController = segue.destinationViewController as NieuweMonitorSuccesvolViewController
+            
+            
+            
         }
     }
 }

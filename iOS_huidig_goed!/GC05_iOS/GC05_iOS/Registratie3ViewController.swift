@@ -175,15 +175,6 @@ class Registratie3ViewController: ResponsiveTextFieldViewController
     }
 
     
-    func checkPatternEmail(email: String) -> Bool {
-        if countElements(email) == 0 {
-            return false
-        } else if Regex(p: "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}").test(email) {
-            return true
-        }
-        return false
-    }
-    
     //alternatief verloop nog toevoegen in lastenboek!!!! (UC Registreren)
     /*func emailBestaatAl() -> Bool {
         var ouders: [PFObject] = []
@@ -205,4 +196,13 @@ class Registratie3ViewController: ResponsiveTextFieldViewController
         return ParseData.getEmail(self.txtEmail.text)
     }
     
+}
+
+func checkPatternEmail(email: String) -> Bool {
+    if countElements(email) == 0 {
+        return false
+    } else if Regex(p: "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}").test(email) {
+        return true
+    }
+    return false
 }
