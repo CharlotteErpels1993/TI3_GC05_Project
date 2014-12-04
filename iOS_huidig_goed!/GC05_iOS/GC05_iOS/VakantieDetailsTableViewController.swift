@@ -26,7 +26,6 @@ class VakantieDetailsTableViewController: UITableViewController {
     @IBOutlet weak var sterPrijs2Label: UILabel!
     @IBOutlet weak var inbegrepenPrijs: UILabel!
 
-    
     var vakantie: Vakantie!
     var images: [UIImage] = []
     var query = PFQuery(className: "Vakantie")
@@ -57,19 +56,13 @@ class VakantieDetailsTableViewController: UITableViewController {
             }
         }
         
-        //zoekImages()
-        
         var responseImages: ([UIImage], Int?)
         responseImages = ParseData.getAfbeeldingenMetVakantieId(vakantie.id)
-        
-        //self.images = ParseData.getAfbeeldingenMetVakantieId(vakantie.id)
         
         hideSideMenuView()
         
         if responseImages.1 == nil {
-            //er zijn images
             self.images = responseImages.0
-            
             if self.images.count >= 3 {
                 self.afbeelding1.image = self.images[0]
                 self.afbeelding2.image = self.images[1]
@@ -82,23 +75,9 @@ class VakantieDetailsTableViewController: UITableViewController {
             }
         }
         
-        //self.images = responseImages.0
-        
-                /*if self.images.count >= 3 {
-                    self.afbeelding1.image = self.images[0]
-                    self.afbeelding2.image = self.images[1]
-                    self.afbeelding3.image = self.images[2]
-                } else if self.images.count == 2 {
-                    self.afbeelding1.image = self.images[0]
-                    self.afbeelding2.image = self.images[1]
-                } else if self.images.count == 1 {
-                    self.afbeelding1.image = self.images[0]
-                }*/
-        
         var beginDatum: String? = vakantie.vertrekdatum?.toS("dd/MM/yyyy")
         var terugkeerDatum: String? = vakantie.terugkeerdatum?.toS("dd/MM/yyyy")
         
-        //navigationItem.title = vakantie.titel
         vakantieNaamLabel.text = vakantie.titel
         korteBeschrijvingLabel.text! = vakantie.korteBeschrijving!
         korteBeschrijvingLabel.sizeToFit()
@@ -140,30 +119,26 @@ class VakantieDetailsTableViewController: UITableViewController {
                     sterPrijs2Label.text = String("Ster prijs (2 ouders): /")
                 }
             } else {
-                self.sectionToDelete = 7 // prijs
+                self.sectionToDelete = 7
                 self.tableView.deleteSections(NSIndexSet(index: self.sectionToDelete), withRowAnimation: UITableViewRowAnimation.None)
                 self.navigationItem.rightBarButtonItem = nil
-                self.heartButton.hidden = true
             }
         } else {
-            self.sectionToDelete = 7 // prijs
+            self.sectionToDelete = 7
             self.tableView.deleteSections(NSIndexSet(index: self.sectionToDelete), withRowAnimation: UITableViewRowAnimation.None)
             self.navigationItem.rightBarButtonItem = nil
-            self.heartButton.hidden = true
         }
     }
     
     @IBAction func shareToTwitter(sender: AnyObject) {
         var shareToTwitter : SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
         shareToTwitter.setInitialText("Bekijk zeker en vast deze vakantie! \n \(vakantie.link!) \n -gedeeld via Joetz app")
-        //shareToTwitter.addImage(UIImage(named: "32.png"))
         self.presentViewController(shareToTwitter, animated: true, completion: nil)
     }
     
     @IBAction func shareToFacebook(sender: AnyObject) {
         var shareToFacebook : SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
         shareToFacebook.setInitialText("Bekijk zeker en vast deze vakantie! \n \(vakantie.link!) \n -gedeeld via Joetz app")
-        //shareToFacebook.addImage(UIImage(named: "32.png"))
         self.presentViewController(shareToFacebook, animated: true, completion: nil)
     }
     
@@ -180,13 +155,13 @@ class VakantieDetailsTableViewController: UITableViewController {
             return 7
         }
     }
+    
     @IBAction func switchHeart(sender: AnyObject) {
         
         var favorieteVakantie: Favoriet = Favoriet(id: "test")
         var ouderResponse = ParseData.getOuderWithEmail(PFUser.currentUser().email)
         
         if ouderResponse.1 == nil {
-            //er is een ouder gevonden
             favorieteVakantie.ouder = ouderResponse.0
         }
         
@@ -194,26 +169,12 @@ class VakantieDetailsTableViewController: UITableViewController {
         
         if favoriet == false {
             favoriet = true
-            // switch image
             heartButton.setImage(self.imageHeartFull, forState: UIControlState.Normal)
-            
-            // schrijf naar database
             ParseData.parseFavorietToDatabase(favorieteVakantie)
-            
-            //ParseData.deleteFavorietTable()
-            //ParseData.vulFavorietTableOp()
-            
-            
-            
         } else {
             favoriet = false
-            // switch image
             heartButton.setImage(self.imageHeartEmpty, forState: UIControlState.Normal)
-            
-            // haal terug uit de database
             ParseData.deleteFavorieteVakantie(favorieteVakantie)
-        
-        
         }
     }
     
@@ -242,13 +203,10 @@ class VakantieDetailsTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "afbeeldingen" {
             let bekijkAfbeeldingViewController = segue.destinationViewController as AfbeeldingenViewController
-            
-            //als er geen images zijn
+    
             if self.images.count != 0 {
                 bekijkAfbeeldingViewController.images = self.images
             }
-            
-            //bekijkAfbeeldingViewController.images = self.images
         } else if segue.identifier == "korteBeschrijvingVakantie" {
             let extraTekstViewController = segue.destinationViewController as ExtraTekstViewController
             extraTekstViewController.tekst = vakantie.korteBeschrijving

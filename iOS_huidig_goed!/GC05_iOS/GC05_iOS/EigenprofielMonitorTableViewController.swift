@@ -11,7 +11,6 @@ class EigenprofielMonitorTableViewController: UITableViewController
     @IBOutlet weak var facebook: UILabel!
     
     var activityIndicator: UIActivityIndicatorView!
-    //@IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
     @IBAction func toggle(sender: AnyObject) {
         toggleSideMenuView()
@@ -21,18 +20,10 @@ class EigenprofielMonitorTableViewController: UITableViewController
         super.viewDidLoad()
         hideSideMenuView()
 
-        
         tableView.estimatedRowHeight = 44.0
         tableView.rowHeight = UITableViewAutomaticDimension
         
-        
-        //activityIndicatorView.startAnimating()
-        //var query = PFQuery(className: "Monitor")
-        //query.whereKey("email", containsString: PFUser.currentUser().email)
-        //var monitorPF = query.getFirstObject()
-        
         var monitor = ParseData.getMonitorWithEmail(PFUser.currentUser().email)
-        
         
         self.navigationItem.setHidesBackButton(true, animated: true)
         navigationItem.title = "Welkom \(monitor.voornaam!)"
@@ -53,13 +44,9 @@ class EigenprofielMonitorTableViewController: UITableViewController
         } else {
             facebook.text = monitor.linkFacebook!
         }
-        
-        //self.activityIndicator.stopAnimating()
     }
     
-    @IBAction func gaTerugNaarOverzichtMonitor(segue: UIStoryboardSegue) {
-        
-    }
+    @IBAction func gaTerugNaarOverzichtMonitor(segue: UIStoryboardSegue) { }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "vormingen" {

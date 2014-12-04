@@ -41,10 +41,6 @@ class NieuwWachtwoordViewController: ResponsiveTextFieldViewController {
         
         var ouderResponse = ParseData.getOuderWithEmail(email)
         
-        //var ouder: Ouder = ParseData.getOuderWithEmail(email)
-        
-        //aftesten of er wel een ouder is 
-        
         var ouder = ouderResponse.0
         
         if ouder.id == "test" && monitor.id == "test" {
@@ -52,12 +48,6 @@ class NieuwWachtwoordViewController: ResponsiveTextFieldViewController {
         }
         
         return true
-        
-        /*if monitor.id == "nil" || ouder.id == "nil"{
-            return false
-        }
-        
-        return true*/
     }
     
 }

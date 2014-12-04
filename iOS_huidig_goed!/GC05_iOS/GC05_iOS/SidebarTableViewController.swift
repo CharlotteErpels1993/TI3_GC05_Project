@@ -184,8 +184,9 @@ class SidebarTableViewController: UITableViewController {
                     destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
                     break
                 case 2:
-                    destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as VakantiesTableViewController
-                    //destViewController.favoriet = true
+                    var destViewController2: VakantiesTableViewController = /*destViewController = */mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as VakantiesTableViewController
+                    destViewController2.favoriet = true
+                    destViewController = destViewController2
                     break
                 default:
                     destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController

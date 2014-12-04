@@ -1,23 +1,11 @@
-//
-//  ActivityIndicatorViewController.swift
-//  GC05_iOS
-//
-//  Created by Charlotte Erpels on 18/11/14.
-//  Copyright (c) 2014 GC05. All rights reserved.
-//
-
-import Foundation
-import UIKit
-
-class ActivityIndicatorViewController: UIViewController {
+func getActivityIndicatorView(controller: UIViewController) -> UIActivityIndicatorView {
+    let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
     
-    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
+    activityIndicator.color = UIColor.redColor()
+    activityIndicator.center = controller.view.center
+    activityIndicator.startAnimating()
+    controller.view.addSubview(activityIndicator)
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        
-        
-        
-    }
+    return activityIndicator
 }
+

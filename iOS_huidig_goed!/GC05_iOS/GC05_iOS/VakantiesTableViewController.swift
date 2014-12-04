@@ -15,14 +15,9 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
     }
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
-        
-        
-        //var activityIndicator = getActivityIndicatorView(self)
-        //activityIndicator.startAnimating()
-        //super.viewDidLoad()
         checkConnectie()
+        
         var responseVakanties: ([Vakantie], Int?)
         if PFUser.currentUser() != nil {
             var ouderResponse = ParseData.getOuderWithEmail(PFUser.currentUser().email)
@@ -40,20 +35,16 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         }
         
         if responseVakanties.1 == nil {
-            //er zijn vakanties
             self.vakanties = responseVakanties.0
             self.vakanties2 = self.vakanties
             self.tableView.reloadData()
+        } else {
+            foutBoxOproepen("Oeps", "Er zijn geen vakanties gevonden", self)
         }
     
-        
         self.vakanties2.sort({ (String($0.minLeeftijd)) < $1.titel})
         self.vakanties.sort({ (String($0.minLeeftijd)) < $1.titel})
     
-        /*self.vakanties = responseVakanties.0
-        self.vakanties2 = self.vakanties
-        self.tableView.reloadData()*/
-        
         hideSideMenuView()
         zoekbar.showsScopeBar = true
         zoekbar.delegate = self
@@ -62,15 +53,9 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
             self.navigationItem.setHidesBackButton(true, animated: true)
             self.navigationItem.rightBarButtonItem = nil   
         }
-        
-        /*vakanties2.sort({ (String($0.minLeeftijd)) < $1.titel})
-        vakanties.sort({ (String($0.minLeeftijd)) < $1.titel})*/
-        
-        //activityIndicator.stopAnimating()
     }
     
     func checkConnectie() {
-        // Connectie check
         if !(Reachability.isConnectedToNetwork()) {
             var alert = UIAlertController(title: "Oeps..", message: "Je hebt geen internet verbinding. Ga naar instellingen om dit aan te passen.", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: { action in
@@ -124,23 +109,6 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         self.tableView.reloadData()
     }
     
-    /*func zoekVakanties() {
-        vakanties.removeAll(keepCapacity: true)
-        var query = PFQuery(className: "Vakantie")
-        query.findObjectsInBackgroundWithBlock({(NSArray objects, NSError error) in
-            if(error == nil) {
-                if let PFObjects = objects as? [PFObject!] {
-                    for object in PFObjects {
-                        var vakantie = Vakantie(vakantie: object)
-                        self.vakanties.append(vakantie)
-                    }
-                }
-                self.vakanties2 = self.vakanties
-                self.tableView.reloadData()
-            }
-        })
-    }*/
-    
     @IBAction func gaTerugNaarOverzichtVakanties(segue: UIStoryboardSegue) {
     }
     
@@ -152,12 +120,7 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
             vakantieDetailsController.vakantie = selectedVakantie as Vakantie
         } else if segue.identifier == "inloggen" {
             let inloggenViewController = segue.destinationViewController as InloggenViewController
-        } /*else if segue.identifier == "toonVakantie" {
-            let vakantieDetailsController = segue.destinationViewController as VakantieDetailsTableViewController
-            let selectedVakantie = vakanties[tableView.indexPathForSelectedRow()!.row]
-            vakantieDetailsController.vakantie = selectedVakantie
-        }*/
-        
+        }
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -189,20 +152,5 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         ParseData.createDatabase()
         self.refreshControl?.endRefreshing()
         viewDidLoad()
-        //viewDidLoad()
     }
-}
-
-func getActivityIndicatorView(controller: UIViewController) -> UIActivityIndicatorView {
-    let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
-    
-    //var roodJoetz: UIColor = UIColor(red: 232.0, green: 33.0, blue: 35.0, alpha: 1.0)
-    //activityIndicator.color = roodJoetz
-    
-    activityIndicator.color = UIColor.redColor()
-    activityIndicator.center = controller.view.center
-    activityIndicator.startAnimating()
-    controller.view.addSubview(activityIndicator)
-
-    return activityIndicator
 }
