@@ -99,6 +99,8 @@ class InloggenViewController: ResponsiveTextFieldViewController {
                 } else if type == "ouder" {
                     var ouder = ParseData.getOuderWithEmail(txtEmail.text)
                     performSegueWithIdentifier("ouderOverzicht", sender: self)
+                } else if type == "administrator" {
+                    //performSegueWithIdentifier("administratorOverzicht", sender: self)
                 } else {
                     //column "soort" is niet ingevuld bij deze user in tabel User
                     //ERROR
