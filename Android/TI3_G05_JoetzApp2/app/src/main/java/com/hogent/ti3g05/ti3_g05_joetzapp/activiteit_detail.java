@@ -195,7 +195,7 @@ public class activiteit_detail extends Activity {
                 favoImage.setVisibility(View.VISIBLE);
 
 
-            } else {
+            } else if(ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("ouder") && controleerReedsFavoriet()) {
                 deleteImage.setVisibility(View.VISIBLE);
             }
         }
@@ -461,20 +461,6 @@ public class activiteit_detail extends Activity {
         getMenuInflater().inflate(R.menu.back_2, menu);
         return true;
     }
-/*
-    public String getShareUrl() {
-        String urlToShare = "";
-        //TODO: hardcoded -> niet goed. Extra veld in DB?
-        if (naam.toLowerCase().equals("kerstvakantie aan zee")) {
-            urlToShare = "http://www.joetz.be/309/Vakanties/Binnenland/Pages/Kerstvakantie.aspx";
-        } else if (naam.toLowerCase().equals("skien in maria alm - krokusvakantie")) {
-            urlToShare = "http://www.joetz.be/Vakanties/Buitenland/Pages/Ski%C3%ABn-in-Maria-Alm---Krokusvakantie.aspx";
-        } else if (naam.toLowerCase().equals("actie, fun en avontuur - trophy")) {
-            urlToShare = "http://www.joetz.be/Vakanties/Buitenland/Pages/Actie,-fun-en-avontuur---Trophy.aspx";
-        }
-
-        return urlToShare;
-    }*/
 
     public void shareFacebook() {
         isInternetPresent = cd.isConnectingToInternet();
@@ -552,38 +538,6 @@ public class activiteit_detail extends Activity {
 
 
     public void toevoegenAanFavorieten() {
-
-/*
-        isInternetPresent = cd.isConnectingToInternet();
-        if (isInternetPresent) try {
-
-
-            // Locate the class table named "vakantie" in Parse.com
-            ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(
-                    "Ouder");
-
-            ob = query.find();
-
-            for (ParseObject ouder : ob) {
-
-                if (ouder.get("email").equals(ParseUser.getCurrentUser().getEmail())) {
-                    ingelogdeOuder = ouder.getObjectId();
-                }
-
-
-            }
-
-            ParseQuery<ParseObject> query2 = new ParseQuery<ParseObject>(
-                    "Favoriet");
-
-            obF = query2.find();
-            String favId = null;
-
-            for (ParseObject fav : obF) {
-                if (fav.get("vakantieId").equals(activiteitID) && fav.get("ouderId").equals(ingelogdeOuder)) {
-                    favId = fav.getObjectId();
-                }
-            }*/
         try{
 
 

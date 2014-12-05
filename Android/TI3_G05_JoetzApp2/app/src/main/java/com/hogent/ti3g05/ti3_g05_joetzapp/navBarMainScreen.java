@@ -356,14 +356,15 @@ public class navBarMainScreen extends Activity {
                 break;
             case 6:
 
-                if(ParseUser.getCurrentUser() ==null)
+                if(ParseUser.getCurrentUser() == null)
                 {
                     Intent intent5 = new Intent(navBarMainScreen.this, SignUp_deel1.class
                     );
                     startActivity(intent5);
                 }
-                else
+                else if(ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("ouder"))
                 {
+
                     Intent intent7 = new Intent(navBarMainScreen.this, navBarMainScreen.class);
                     fragment = new FavorieteVakanties();
 
@@ -371,8 +372,14 @@ public class navBarMainScreen extends Activity {
 
                     intent7.putExtra("frag", fragment.toString());
                     startActivity(intent7);
-                    //refreshFragment(position);
                     break;
+                } else if(ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("monitor"))
+                {
+                    Toast.makeText(this, "U hebt niet de juiste bevoegdheid om dit te bekijken", Toast.LENGTH_SHORT).show();
+                    Intent intent1 = new Intent(navBarMainScreen.this, navBarMainScreen.class
+                    );
+                    refreshFragment(position);
+                    startActivity(intent1);
                 }
 
 
@@ -440,6 +447,10 @@ public class navBarMainScreen extends Activity {
                 else if (fragment.toString().toLowerCase().startsWith("profiel"))
                 {
                     fragment = new ProfielenOverzicht_fragment();
+                }
+                else if(fragment.toString().toLowerCase().startsWith("favoriet"))
+                {
+                    fragment = new FavorieteVakanties();
                 }
 
                 FragmentManager fragmentManager = getFragmentManager();
