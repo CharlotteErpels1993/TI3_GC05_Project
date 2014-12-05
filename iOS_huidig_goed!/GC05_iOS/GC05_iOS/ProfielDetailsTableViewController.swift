@@ -48,8 +48,8 @@ class ProfielDetailsTableViewController: UITableViewController, MFMailComposeVie
         let mailComposerVC = MFMailComposeViewController()
         mailComposerVC.mailComposeDelegate = self
         mailComposerVC.setToRecipients([monitor.email!])
-        mailComposerVC.setSubject("Onderwerp")
-        mailComposerVC.setMessageBody("Bericht", isHTML: false)
+        mailComposerVC.setSubject("")
+        mailComposerVC.setMessageBody("", isHTML: false)
         return mailComposerVC
     }
     

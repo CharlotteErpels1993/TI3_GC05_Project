@@ -1,6 +1,7 @@
 import UIKit
+import MessageUI
 
-class NieuweMonitorViewController: UIViewController {
+class NieuweMonitorViewController: UIViewController, MFMailComposeViewControllerDelegate {
     
     @IBOutlet var txtLidnummer: UITextField!
     @IBOutlet var txtRijksregisterNr: UITextField!
@@ -59,6 +60,7 @@ class NieuweMonitorViewController: UIViewController {
                 } else {
                     settenGegevens()
                     nieuweMonitorSuccesvolViewController.nieuweMonitor = self.nieuweMonitor
+                    
                 }
             }
             

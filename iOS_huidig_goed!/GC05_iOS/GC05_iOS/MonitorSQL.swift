@@ -575,7 +575,7 @@ struct MonitorSQL {
     
     static func bestaatRijksregisternummerAl(rijksregisternummer: String) -> Bool {
         
-        let (resultSet, err) = SD.executeQuery("SELECT * FROM Monitor WHERE rijksregisternummer = ?", withArgs: [rijksregisternummer])
+        let (resultSet, err) = SD.executeQuery("SELECT * FROM Monitor WHERE rijksregisterNr = ?", withArgs: [rijksregisternummer])
         
         if resultSet.count == 0 {
             return false

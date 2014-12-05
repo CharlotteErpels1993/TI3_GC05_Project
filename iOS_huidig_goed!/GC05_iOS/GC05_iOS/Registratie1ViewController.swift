@@ -1,7 +1,7 @@
 import UIKit
 import QuartzCore
 
-class Registratie1ViewController: ResponsiveTextFieldViewController {
+class Registratie1ViewController: /*ResponsiveTextFieldViewController*/ UITableViewController {
     var ouder: Ouder! = Ouder(id: "test")
     var gebruikerIsLid: Bool? = true
     var foutBox: FoutBox? = nil
@@ -10,17 +10,11 @@ class Registratie1ViewController: ResponsiveTextFieldViewController {
     var rijksregisterNrAlGeregistreerd: Bool = false
     
     @IBOutlet weak var isLid: UISwitch!
-    @IBOutlet weak var lblAansluitingsNr: UILabel!
     @IBOutlet weak var txtAansluitingsNr: UITextField!
-    @IBOutlet weak var lblCodeGerechtigde: UILabel!
     @IBOutlet weak var txtCodeGerechtigde: UITextField!
-    @IBOutlet weak var lblRijksregisterNr: UILabel!
     @IBOutlet weak var txtRijksregisterNr: UITextField!
-    @IBOutlet weak var lblAansluitingsNrTweedeOuder: UILabel!
     @IBOutlet weak var txtAansluitingsNrTweedeOuder: UITextField!
     @IBOutlet weak var buttonNummers: UIButton!
-    @IBOutlet weak var buttonRegisterenMonitor: UIButton!
-    @IBOutlet weak var labelVerplichtInTevullen: UILabel!
     
     @IBAction func toggle(sender: AnyObject) {
         toggleSideMenuView()
@@ -44,15 +38,13 @@ class Registratie1ViewController: ResponsiveTextFieldViewController {
         ParseData.vulMonitorTableOp()
     }
     
-    
-    @IBAction func gaTerugNaarRegistreren(segue: UIStoryboard) {
-    }
-    
     @IBAction func switched(sender: UISwitch) {
         if sender.on {
             gebruikerIsLid = true
-            
-            lblAansluitingsNr.hidden = false
+            buttonNummers.hidden = false
+            viewDidLoad()
+            self.tableView.reloadData()
+            /*lblAansluitingsNr.hidden = false
             lblCodeGerechtigde.hidden = false
             lblAansluitingsNrTweedeOuder.hidden = false
             txtAansluitingsNr.hidden = false
@@ -60,11 +52,12 @@ class Registratie1ViewController: ResponsiveTextFieldViewController {
             txtAansluitingsNrTweedeOuder.hidden = false
             buttonNummers.hidden = false
             buttonRegisterenMonitor.hidden = false
-            labelVerplichtInTevullen.hidden = false
+            labelVerplichtInTevullen.hidden = false*/
         } else {
             gebruikerIsLid = false
-            
-            lblAansluitingsNr.hidden = true
+            self.tableView.deleteSections(NSIndexSet(index: 1), withRowAnimation: UITableViewRowAnimation.None)
+            buttonNummers.hidden = true
+            /*lblAansluitingsNr.hidden = true
             lblCodeGerechtigde.hidden = true
             lblAansluitingsNrTweedeOuder.hidden = true
             txtAansluitingsNr.hidden = true
@@ -72,10 +65,38 @@ class Registratie1ViewController: ResponsiveTextFieldViewController {
             txtAansluitingsNrTweedeOuder.hidden = true
             buttonNummers.hidden = true
             buttonRegisterenMonitor.hidden = true
-            labelVerplichtInTevullen.hidden = true
+            labelVerplichtInTevullen.hidden = true*/
         }
         
     }
+    
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        if gebruikerIsLid == false {
+            return 2
+        } else {
+            return 3
+        }
+    }
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if gebruikerIsLid == false {
+            if section == 0 {
+                return 2
+            } else if section == 1 {
+                return 1
+            }
+        } else {
+            if section == 0 {
+                return 2
+            } else if section == 1 {
+                return 3
+            } else if section == 2 {
+                return 1
+            }
+        }
+        return 0
+    }
+    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "volgende" {
@@ -95,9 +116,7 @@ class Registratie1ViewController: ResponsiveTextFieldViewController {
                 settenOptioneleGegevens()
                 registratie2ViewController.ouder = ouder
             }
-        } else if segue.identifier == "gaTerug" {
-            let vakantiesViewController = segue.destinationViewController as VakantiesTableViewController
-        }
+        } 
     }
     
     func setStatusTextFields() {
