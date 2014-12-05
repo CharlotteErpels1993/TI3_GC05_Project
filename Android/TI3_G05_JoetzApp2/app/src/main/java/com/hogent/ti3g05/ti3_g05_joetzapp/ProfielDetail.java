@@ -1,7 +1,9 @@
 package com.hogent.ti3g05.ti3_g05_joetzapp;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.view.Menu;
@@ -37,7 +39,7 @@ public class ProfielDetail extends Activity {
     ConnectionDetector cd;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profiel_detail);
 
@@ -62,6 +64,7 @@ public class ProfielDetail extends Activity {
         final TextView txtVoornaam = (TextView) findViewById(R.id.voornaamP);
         TextView txtEmail = (TextView) findViewById(R.id.emailP);
         TextView txtFacebook = (TextView)findViewById(R.id.facebookL);
+
         final TextView txtGsm = (TextView)findViewById(R.id.gsmP);
         if(ParseUser.getCurrentUser().getEmail().equals(email))
 
@@ -101,6 +104,16 @@ public class ProfielDetail extends Activity {
         txtEmail.setText(email);
         txtFacebook.setText(facebook);
         txtGsm.setText(gsm);
+
+        ImageView naarProf = (ImageView)findViewById(R.id.naarprofiel);
+
+        naarProf.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent fb = getOpenFacebookIntent(getApplicationContext(), voornaam, naam);
+                startActivity(fb);
+            }
+        });
         /*//txtmaxDeeln.setText(maxDeeln.toString());
         //txtLidNr.setText(lidNr);
         txtStraat.setText(straat);
@@ -109,6 +122,17 @@ public class ProfielDetail extends Activity {
 
     }
 
+    public static Intent getOpenFacebookIntent(Context context, String voornaam, String achternaam) {
+
+        try {
+            context.getPackageManager().getPackageInfo("com.facebook.katana", 0);
+            achternaam.replaceAll("\\s+","");
+            //return new Intent(Intent.ACTION_VIEW, Uri.parse("fb://profile/" + voornaam +"."+achternaam));
+            return new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/" + voornaam+"."+achternaam));
+        } catch (Exception e) {
+            return new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/" + voornaam+"."+achternaam));
+        }
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

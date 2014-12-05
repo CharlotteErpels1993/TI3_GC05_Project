@@ -150,6 +150,13 @@
                 android:layout_marginTop="15dp"
                 android:id="@+id/facebookL"
                 android:layout_below="@id/facebookLLabel"/>
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/facebook"
+                android:layout_below="@id/facebookL"
+                android:id="@+id/naarprofiel"
+                />
 
             <Button
                 android:background="@drawable/button_shape"
