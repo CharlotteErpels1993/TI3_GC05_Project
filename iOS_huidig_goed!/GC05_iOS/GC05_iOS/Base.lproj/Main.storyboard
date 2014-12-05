@@ -4101,7 +4101,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
         <!--NieuweMonitor-->
         <scene sceneID="jo5-gN-CMv">
             <objects>
-                <viewController title="NieuweMonitor" id="aCY-od-DTU" customClass="NieuweMonitorViewController" customModule="JOETZ" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NieuweMonitor" title="NieuweMonitor" id="aCY-od-DTU" customClass="NieuweMonitorViewController" customModule="JOETZ" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="e8X-At-PMC"/>
                         <viewControllerLayoutGuide type="bottom" id="Rfz-oP-zGe"/>

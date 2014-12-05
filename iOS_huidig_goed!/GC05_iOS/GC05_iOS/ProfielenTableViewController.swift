@@ -22,38 +22,47 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
         ParseData.deleteMonitorTable()
         ParseData.vulInschrijvingVormingTableOp()
         ParseData.vulMonitorTableOp()
+        var gebruikerPF = PFUser.currentUser()
+        var soort: String = gebruikerPF["soort"] as String
         
-        var monitorResponse = ParseData.getMonitorWithEmail(PFUser.currentUser().email)
-        
-        var monitor = monitorResponse.0
-        
-        var monitorenZelfdeVormingResponse = ParseData.getMonitorsMetDezelfdeVormingen(monitor.id!)
-        
-        if monitorenZelfdeVormingResponse.1 == nil {
-            self.monitorenZelfdeVorming = monitorenZelfdeVormingResponse.0
-            var monitorenResponse = ParseData.getMonitorsMetAndereVormingen(self.monitorenZelfdeVorming)
+        if soort == "monitor" {
+            var monitorResponse = ParseData.getMonitorWithEmail(PFUser.currentUser().email)
             
-            if monitorenResponse.1 == nil {
-                self.monitoren = monitorenResponse.0
-                self.monitoren2 = self.monitoren
-                self.monitorenZelfdeVorming2 = self.monitorenZelfdeVorming
+            var monitor = monitorResponse.0
+            
+            var monitorenZelfdeVormingResponse = ParseData.getMonitorsMetDezelfdeVormingen(monitor.id!)
+            
+            if monitorenZelfdeVormingResponse.1 == nil {
+                self.monitorenZelfdeVorming = monitorenZelfdeVormingResponse.0
+                var monitorenResponse = ParseData.getMonitorsMetAndereVormingen(self.monitorenZelfdeVorming)
+                
+                if monitorenResponse.1 == nil {
+                    self.monitoren = monitorenResponse.0
+                    self.monitoren2 = self.monitoren
+                    self.monitorenZelfdeVorming2 = self.monitorenZelfdeVorming
+                }
+            } else {
+                var monitorsResponse = ParseData.getAlleMonitors()
+                
+                if monitorsResponse.1 == nil {
+                    for var i = 0; i < monitorsResponse.0.count; i += 1 {
+                        if monitorsResponse.0[i].email == PFUser.currentUser().email {
+                            monitorsResponse.0.removeAtIndex(i)
+                        }
+                    }
+                    self.monitoren = monitorsResponse.0
+                    //self.monitoren2 = self.monitoren
+                }
             }
         } else {
-            var monitorsResponse = ParseData.getAlleMonitors()
-            
-            if monitorsResponse.1 == nil {
-                for var i = 0; i < monitorsResponse.0.count; i += 1 {
-                    if monitorsResponse.0[i].email == PFUser.currentUser().email {
-                        monitorsResponse.0.removeAtIndex(i)
-                    }
-                }
-                self.monitoren = monitorsResponse.0
-                self.monitoren2 = self.monitoren
+            var alleMonitorsReponse = ParseData.getAlleMonitors()
+            if alleMonitorsReponse.1 == nil {
+                self.monitoren = alleMonitorsReponse.0
             }
         }
         
-        var gebruikerPF = PFUser.currentUser()
-        var soort: String = gebruikerPF["soort"] as String
+        self.monitoren2 = self.monitoren
+        
         
         /*if soort == "administrator"  {
             sectionToDelete = 9
