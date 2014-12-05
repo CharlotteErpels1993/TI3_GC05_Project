@@ -2,7 +2,7 @@ package com.hogent.ti3g05.ti3_g05_joetzapp.domein;
 
 public class Monitor extends Gebruiker {
     private String linkFacebook;
-    private int lidNummer;
+    private String lidNummer;
 
     private String monitorId;
 
@@ -22,11 +22,11 @@ public class Monitor extends Gebruiker {
         this.linkFacebook = linkFacebook;
     }
 
-    public int getLidNummer() {
+    public String getLidNummer() {
         return lidNummer;
     }
 
-    public void setLidNummer(int lidNummer) {
+    public void setLidNummer(String lidNummer) {
         this.lidNummer = lidNummer;
     }
 }

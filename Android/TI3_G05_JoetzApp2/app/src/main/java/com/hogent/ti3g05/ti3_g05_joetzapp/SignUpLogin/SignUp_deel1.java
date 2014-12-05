@@ -10,9 +10,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
@@ -29,6 +31,7 @@ public class SignUp_deel1 extends Activity{
     private RadioGroup rg = null;
 
     EditText rijksregisterNr;
+    Button lidnummerJa;
 
 
 
@@ -61,9 +64,14 @@ public class SignUp_deel1 extends Activity{
             }
         });
 
-        // creating connection detector class instance
-        //cd = new ConnectionDetector(getApplicationContext());
 
+        TextView tekst = (TextView) findViewById(R.id.txtWaarschuwingMonitor);
+        tekst.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                hideKeyboard(view);
+            }
+        });
 
         RadioButton rb1 = (RadioButton) findViewById(R.id.radioButtonJa);
         rb1.setOnClickListener(new OnClickListener() {
@@ -94,6 +102,22 @@ public class SignUp_deel1 extends Activity{
                     if(controleRijksregnr())
                     {
                         neeOpslaanRijksregNr();
+                    }
+                } else
+                    Toast.makeText(getApplicationContext(), getString(R.string.error_no_internet), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        lidnummerJa = (Button) findViewById(R.id.lidnrJa);
+
+        lidnummerJa.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                isInternetPresent = cd.isConnectingToInternet();
+                if (isInternetPresent) {
+                    if(controleRijksregnr())
+                    {
+                        lidnrJa();
                     }
                 } else
                     Toast.makeText(getApplicationContext(), getString(R.string.error_no_internet), Toast.LENGTH_SHORT).show();
@@ -184,6 +208,20 @@ public class SignUp_deel1 extends Activity{
                     Toast.makeText(SignUp_deel1.this,getString(R.string.error_generalException), Toast.LENGTH_SHORT).show();
                     cancel = true;
                 }
+                ParseQuery<ParseObject> query2 = ParseQuery.getQuery("Monitor");
+                query2.whereEqualTo("rijksregisterNr", rijksregnr);
+                try{
+                    List<ParseObject> lijstObjecten = query2.find();
+                    if (lijstObjecten.size() > 0){
+                        rijksregisterNr.setError(getString(R.string.error_occupied_rijksregnr));
+                        focusView = rijksregisterNr;
+                        cancel = true;
+                    }
+                }
+                catch(ParseException e){
+                    Toast.makeText(SignUp_deel1.this,getString(R.string.error_generalException), Toast.LENGTH_SHORT).show();
+                    cancel = true;
+                }
 
             }
 
@@ -208,7 +246,6 @@ public class SignUp_deel1 extends Activity{
         Intent intentJa = new Intent(getApplicationContext(), SignUp_deel2.class);
         intentJa.putExtra("lidVanBondMoyson", "true");
         intentJa.putExtra("rijksregisternr", rijksregnr);
-        intentJa.putExtra("rijksregnr", rijksregnr);
         startActivity(intentJa);
 
         overridePendingTransition(R.anim.right_in, R.anim.left_out);
@@ -222,6 +259,17 @@ public class SignUp_deel1 extends Activity{
         startActivity(intentNee);
 
         overridePendingTransition(R.anim.right_in, R.anim.left_out);
+    }
+
+    private void lidnrJa() {
+
+        Intent intentLidnr = new Intent(getApplicationContext(), SignUp_deel2.class);
+        intentLidnr.putExtra("lidnrja", "true");
+        intentLidnr.putExtra("rijksregisternr", rijksregnr);
+        startActivity(intentLidnr);
+
+        overridePendingTransition(R.anim.right_in, R.anim.left_out);
+
     }
 
 

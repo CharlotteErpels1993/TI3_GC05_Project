@@ -185,8 +185,17 @@ public class navBarMainScreen extends Activity {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
 
+                if (ParseUser.getCurrentUser() != null)
+                {
+
+                    menuItems = getResources().getStringArray(R.array.itemsIngelogged);
+
+                } else
+                {
+
+                    menuItems = getResources().getStringArray(R.array.items);
+                }
                 // Getting an array of rivers
-                menuItems = getResources().getStringArray(R.array.items);
 
                 // Currently selected river
                 mTitle = menuItems[position];
@@ -275,7 +284,7 @@ public class navBarMainScreen extends Activity {
                     refreshFragment(position);
                     startActivity(intent1); }
                 else{
-                    if (ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("monitor"))
+                    if (ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("monitor") || ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("administrator"))
 
                     {
                         Intent intent3 = new Intent(navBarMainScreen.this, navBarMainScreen.class);
@@ -285,7 +294,6 @@ public class navBarMainScreen extends Activity {
 
                         intent3.putExtra("frag", fragment.toString());
                         startActivity(intent3);
-                        //refreshFragment(position);
                         break;
 
                     } else {
@@ -381,10 +389,24 @@ public class navBarMainScreen extends Activity {
                     refreshFragment(position);
                     startActivity(intent1);
                 }
-
-
                 break;
 
+            case 7:
+                if(ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("administrator"))
+                {
+                    Intent intent8 = new Intent(navBarMainScreen.this, LidnummerToevoegen.class
+                    );
+                    startActivity(intent8);
+                }
+                else
+                {
+                    Toast.makeText(this, "U hebt niet de juiste bevoegdheid om dit te bekijken", Toast.LENGTH_SHORT).show();
+                    Intent intent1 = new Intent(navBarMainScreen.this, navBarMainScreen.class
+                    );
+                    refreshFragment(position);
+                    startActivity(intent1);
+                }
+                break;
 
             default:
                 break;

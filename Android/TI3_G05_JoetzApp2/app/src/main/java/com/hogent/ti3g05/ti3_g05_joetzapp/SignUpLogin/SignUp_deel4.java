@@ -33,10 +33,19 @@ public class SignUp_deel4 extends Activity{
     private boolean cancel = false;
     private View focusView = null;
 
+    boolean lidnrJuist;
+    String rijksregisternummer;
+
 	// flag for Internet connection status
     Boolean isInternetPresent = false;
     // Connection detector class
     ConnectionDetector cd;
+
+
+    private EditText lidnummer;
+
+
+    String lidnrJa;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +63,18 @@ public class SignUp_deel4 extends Activity{
 		mEmailEditText = (EditText) findViewById(R.id.etEmail);
 		mPasswordEditText = (EditText) findViewById(R.id.etPassword);
 		mConfirmPasswordEditText = (EditText) findViewById(R.id.etPasswordConfirm);
+
+        lidnrJa = getIntent().getStringExtra("lidnrja");
+
+        rijksregisternummer = getIntent().getStringExtra("rijksregisternr");
+
+        if(lidnrJa != null && lidnrJa.equals("true"))
+        {
+            lidnummer = (EditText) findViewById(R.id.lidnrSignup);
+            lidnummer.setVisibility(View.VISIBLE);
+        }
+
+
 
         Button mCreateAccountButton = (Button) findViewById(R.id.btnCreateAccount);
         //mCreateAccountButton.setTextColor(getResources().getColor(R.color.Rood));
@@ -87,6 +108,44 @@ public class SignUp_deel4 extends Activity{
         String mPassword = mPasswordEditText.getText().toString();
         String mConfirmPassword = mConfirmPasswordEditText.getText().toString();
 
+        String lidnr= lidnummer.getText().toString();
+
+
+        if(lidnrJa != null && lidnrJa.equals("true"))
+        {
+
+            if(TextUtils.isEmpty((lidnr)))
+            {
+                lidnummer.setError(getString(R.string.error_field_required));
+                focusView = lidnummer;
+                cancel = true;
+            }
+
+
+            ParseQuery<ParseObject> query = ParseQuery.getQuery("NieuweMonitor");
+            query.whereEqualTo("email", mEmail);
+            try{
+                List<ParseObject> lijstObjecten = query.find();
+                for (ParseObject obj : lijstObjecten)
+                {
+                    lidnrJuist = obj.get("email").equals(mEmail) && obj.get("lidnummer").equals(lidnr) && obj.get("rijksregisternummer").equals(rijksregisternummer);
+                }
+            }
+            catch(ParseException e){
+                signUpMsg(getString(R.string.error_generalException));
+                cancel = true;
+            }
+
+
+            if(!lidnrJuist)
+            {
+                lidnummer.setError(getString(R.string.error_incorrect_lidnr));
+                focusView = lidnummer;
+                cancel = true;
+            }
+
+        }
+
 		// Check for a valid confirm password.
 		if (TextUtils.isEmpty(mConfirmPassword)) {
 			mConfirmPasswordEditText.setError(getString(R.string.error_field_required));
@@ -119,21 +178,44 @@ public class SignUp_deel4 extends Activity{
 			cancel = true;
 		}
 
-        //check if email adress is already used.
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("Ouder");
-        query.whereEqualTo("email", mEmail);
-        try{
-            List<ParseObject> lijstObjecten = query.find();
-            if (lijstObjecten.size() > 0){
-                mEmailEditText.setError("Dit e-mail adres is reeds in gebruik.");
-                focusView = mEmailEditText;
+        if(lidnrJa != null && lidnrJa.equals("true"))
+        {
+
+            ParseQuery<ParseObject> query = ParseQuery.getQuery("Monitor");
+            query.whereEqualTo("email", mEmail);
+            try{
+                List<ParseObject> lijstObjecten = query.find();
+                if (lijstObjecten.size() > 0){
+                    mEmailEditText.setError("Dit e-mail adres is reeds in gebruik.");
+                    focusView = mEmailEditText;
+                    cancel = true;
+                }
+            }
+            catch(ParseException e){
+                signUpMsg(getString(R.string.error_generalException));
                 cancel = true;
             }
         }
-        catch(ParseException e){
-            signUpMsg(getString(R.string.error_generalException));
-            cancel = true;
+        else
+        {
+
+            //check if email adress is already used.
+            ParseQuery<ParseObject> query = ParseQuery.getQuery("Ouder");
+            query.whereEqualTo("email", mEmail);
+            try{
+                List<ParseObject> lijstObjecten = query.find();
+                if (lijstObjecten.size() > 0){
+                    mEmailEditText.setError("Dit e-mail adres is reeds in gebruik.");
+                    focusView = mEmailEditText;
+                    cancel = true;
+                }
+            }
+            catch(ParseException e){
+                signUpMsg(getString(R.string.error_generalException));
+                cancel = true;
+            }
         }
+
 
 		if (cancel) {
 			// There was an error; don't attempt login and focus the first
@@ -152,29 +234,93 @@ public class SignUp_deel4 extends Activity{
     private void signUp(String username, String mEmail, String mPassword) {
         Toast.makeText(getApplicationContext(), getString(R.string.loading_message), Toast.LENGTH_SHORT).show();
 
-        ParseObject gebruiker = new ParseObject("Ouder");
-        gebruiker.put("email", mEmail);
+        String codeGerechtigde = null;
+        String aansluitingsnr = null;
+        String aansluitingsnrOuder2 = null;
+        String voornaam = null;
+        String naam = null;
+        String straat= null;
+        String huisnr=null;
+        String bus=null;
+        String gemeente=null;
+        String postcode=null;
+        String telefoon=null;
+        String gsm=null;
+
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             //String lidBondMoyson = extras.getString("lidVanBondMoyson");
-            String codeGerechtigde = extras.getString("codeGerechtigde");
-            String aansluitingsnrOuder2 = extras.getString("aansluitingsnrOuder2");
-            String aansluitingsnr = extras.getString("aansluitingsnr");
-            String voornaam = extras.getString("voornaam");
-            String naam = extras.getString("naam");
-            String straat = extras.getString("straat");
-            String huisnr = extras.getString("huisnr");
-            String bus = extras.getString("bus");
-            String gemeente = extras.getString("gemeente");
-            String postcode = extras.getString("postcode");
-            String rijksregnr = extras.getString("rijksregisternr");
-            String telefoon = extras.getString("telefoon");
-            String gsm = extras.getString("gsm");
+            codeGerechtigde = extras.getString("codeGerechtigde");
+            aansluitingsnrOuder2 = extras.getString("aansluitingsnrOuder2");
+            aansluitingsnr = extras.getString("aansluitingsnr");
+            voornaam = extras.getString("voornaam");
+            naam = extras.getString("naam");
+            straat = extras.getString("straat");
+            huisnr = extras.getString("huisnr");
+            bus = extras.getString("bus");
+            gemeente = extras.getString("gemeente");
+            postcode = extras.getString("postcode");
+            telefoon = extras.getString("telefoon");
+            gsm = extras.getString("gsm");
+        }
 
-            Toast.makeText(getApplicationContext(), "niet leeg deel4", Toast.LENGTH_SHORT).show();
+            if (lidnrJa != null && lidnrJa.equals("true")) {
 
-            try{
+
+                    ParseObject gebruiker = new ParseObject("Monitor");
+                    gebruiker.put("email", mEmail);
+
+                    try {
+
+                        if (aansluitingsnr != null && !aansluitingsnr.equals(""))
+                            gebruiker.put("aansluitingsNr", Double.parseDouble(aansluitingsnr));
+                        gebruiker.put("voornaam", voornaam);
+                        gebruiker.put("naam", naam);
+                        gebruiker.put("straat", straat);
+                        gebruiker.put("nummer", Integer.parseInt(huisnr));
+                        if (bus != null && !bus.equals(""))
+                            gebruiker.put("bus", bus);
+                        gebruiker.put("gemeente", gemeente);
+                        gebruiker.put("postcode", Integer.parseInt(postcode));
+                        gebruiker.put("rijksregisterNr", rijksregisternummer);
+                        gebruiker.put("telefoon", telefoon);
+                        gebruiker.put("gsm", gsm);
+
+                        if (codeGerechtigde != null && !codeGerechtigde.equals(""))
+                            gebruiker.put("codeGerechtigde", Double.parseDouble(codeGerechtigde));
+                    } catch (NumberFormatException nfe) {
+                        Toast.makeText(getApplicationContext(), getString(R.string.error_generalException), Toast.LENGTH_SHORT).show();
+                    }
+
+                    gebruiker.saveInBackground();
+
+                    ParseUser user = new ParseUser();
+                    user.setUsername(username);
+                    user.setPassword(mPassword);
+                    user.setEmail(mEmail);
+                    user.put("soort", "monitor");
+                    user.signUpInBackground(new SignUpCallback() {
+                        @Override
+                        public void done(ParseException e) {
+                            if (e != null) {
+                                // Sign up didn't succeed. Look at the ParseException
+                                // to figure out what went wrong
+                                signUpMsg(getString(R.string.error_generalException));
+                            }
+                        }
+                    });
+                signUpMsg("Account aangemaakt.");
+                Intent in = new Intent(getApplicationContext(), navBarMainScreen.class);
+                startActivity(in);
+            }
+        else
+            {
+
+                ParseObject gebruiker = new ParseObject("Ouder");
+                gebruiker.put("email", mEmail);
+
+                try{
                 //gebruiker.put("wachtwoord", lidBondMoyson);
                 if (aansluitingsnr != null && !aansluitingsnr.equals(""))
                     gebruiker.put("aansluitingsNr", Double.parseDouble(aansluitingsnr));
@@ -186,7 +332,7 @@ public class SignUp_deel4 extends Activity{
                     gebruiker.put("bus", bus);
                 gebruiker.put("gemeente", gemeente);
                 gebruiker.put("postcode", Integer.parseInt(postcode));
-                gebruiker.put("rijksregisterNr", rijksregnr);
+                gebruiker.put("rijksregisterNr", rijksregisternummer);
                 gebruiker.put("telefoon", telefoon);
                 gebruiker.put("gsm", gsm);
                 if (aansluitingsnrOuder2 != null && !aansluitingsnrOuder2.equals(""))
@@ -197,7 +343,7 @@ public class SignUp_deel4 extends Activity{
             catch (NumberFormatException nfe){
                 Toast.makeText(getApplicationContext(), getString(R.string.error_generalException), Toast.LENGTH_SHORT).show();
             }
-        }
+
 
         gebruiker.saveInBackground();
 
@@ -220,6 +366,7 @@ public class SignUp_deel4 extends Activity{
         signUpMsg("Account aangemaakt.");
         Intent in = new Intent(getApplicationContext(), navBarMainScreen.class);
         startActivity(in);
+            }
     }
 
 	protected void signUpMsg(String msg) {

@@ -17,6 +17,8 @@ import android.widget.Toast;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
 import com.hogent.ti3g05.ti3_g05_joetzapp.R;
 
+import org.w3c.dom.Text;
+
 public class SignUp_deel2 extends Activity{
 
     private EditText aansluitingsnummer;
@@ -24,6 +26,8 @@ public class SignUp_deel2 extends Activity{
     private EditText codeGerechtigde;
     private EditText aansluitingsNrOuder2;
     String rijksRegNr;
+
+
 
 
     // flag for Internet connection status
@@ -48,7 +52,6 @@ public class SignUp_deel2 extends Activity{
 
 
         getActionBar().setTitle(getString(R.string.title_activity_Register));
-
 
         volgendeButton.setOnClickListener(new OnClickListener() {
             @Override
@@ -79,6 +82,7 @@ public class SignUp_deel2 extends Activity{
         String aansluitingsnummerString = aansluitingsnummer.getText().toString();
         String codeGerechtigdeStr = codeGerechtigde.getText().toString();
         String aansluitingsNrOuder2Str = aansluitingsNrOuder2.getText().toString();
+
 
 
         // Check for a valid email address.
@@ -124,9 +128,13 @@ public class SignUp_deel2 extends Activity{
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             String value = extras.getString("lidVanBondMoyson");
+            String lidnrja = extras.getString("lidnrja");
+            if(lidnrja != null && lidnrja.equals("true"))
+                intent.putExtra("lidnrja", lidnrja);
             rijksRegNr = extras.getString("rijksregisternr");
             intent.putExtra("lidVanBondMoyson", value);
             intent.putExtra("rijksregisternr", rijksRegNr);
+
         }
         intent.putExtra("aansluitingsnr", aansluitingsnummerString);
         intent.putExtra("codeGerechtigde", codeGerechtigdeStr);

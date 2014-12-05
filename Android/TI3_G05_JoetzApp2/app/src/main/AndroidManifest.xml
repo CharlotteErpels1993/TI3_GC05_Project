@@ -119,6 +119,10 @@
             android:theme="@style/CustomActionBarTheme"
             android:label="@string/title_activity_profiel_edit" >
         </activity>
+
+        <activity android:name=".LidnummerToevoegen"
+
+            android:theme="@style/CustomActionBarTheme"/>
     </application>
 
 </manifest>

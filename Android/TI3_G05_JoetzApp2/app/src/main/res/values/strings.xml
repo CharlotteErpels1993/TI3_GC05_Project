@@ -39,7 +39,7 @@
     <string name="menu_forgot_password">Wachtwoord vergeten</string>
     <string name="volgende">Volgende</string>
     <string name="aansluitingsnummer">Voer je aansluitingsnummer in.</string>
-    <string name="codeGerechtige">Voer je codeGerechtigde in.</string>
+    <string name="codeGerechtige">Voer uw codeGerechtigde in.</string>
     <string name="login_loading">U wordt ingelogd, even geduld aub.</string>
 
     <string name="bondMoyson">Bent u lid van Bond Moyson?</string>
@@ -72,6 +72,7 @@ Mail Joetz met uw voornaam, naam, e-mailadres, rijksregisternummer, adresgegeven
     <string name="error_field_required">Verplicht in te vullen</string>
     <string name="error_invalid_email">Ongeldig e-mailadres</string>
     <string name="error_incorrect_aansluitingsnr">Ongeldig aansluitingsnummer</string>
+    <string name="error_incorrect_lidnr">Ongeldig lidnummer</string>
     <string name="error_incorrectLogin">Email of wachtwoord is ongeldig</string>
     <string name="error_generalException">Er is iets fout gelopen. Onze excuses voor het ongemak.</string>
     <string name="passwordForgottenEmailSent">Er werd een mail gestuurd om uw wachtwoord opnieuw in te stellen.</string>
@@ -104,6 +105,7 @@ Mail Joetz met uw voornaam, naam, e-mailadres, rijksregisternummer, adresgegeven
         <item>Over Joetz</item>
         <item>Uitloggen</item>
         <item>favoriete vakanties</item>
+        <item>Lidnummer toevoegen</item>
     </string-array>
 
 
@@ -158,5 +160,14 @@ De smaak te pakken? Wacht dan niet te lang en boek een onvergetelijke JOETZ-vaka
     <string name="KlikVoorMeerInfo">selecteer voor meer info</string>
     <string name="BMsticker">Bond Moyson sticker</string>
     <string name="vakantieDetailExtraInformatie">U bekijkt momenteel beperkte informatie van de vakantie. Indien u extra informatie, zoals de prijs wilt bekijken of een inschrijving uitvoeren, gelieve u te registeren/in te loggen.</string>
+    <string name="lidnummerja">Ik heb een lidnummer</string>
+    <string name="lidnummer">Geef uw lidnummer in</string>
+    <string name="lidnummerBeheerder">Geef het lidnummer in</string>
+    <string name="voegLidnrToe">Voeg lidnummer toe</string>
+    <string name="emailToegvoegenLidnr">Geef het email van de monitor in</string>
+    <string name="rijksregnrToevoegenLidnr">Geef het rijksregisternummer in</string>
+    <string name="error_lidnr_used">Lidnummer bestaat reeds</string>
+    <string name="error_email_used">Dit email adres is reeds toegevoegd</string>
+    <string name="error_invalid_lidnummer">Ongeldig lidnummer</string>
 
 </resources>

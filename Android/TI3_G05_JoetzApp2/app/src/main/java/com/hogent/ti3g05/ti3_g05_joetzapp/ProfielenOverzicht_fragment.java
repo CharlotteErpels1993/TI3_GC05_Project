@@ -208,10 +208,10 @@ public class ProfielenOverzicht_fragment extends Fragment /* implements SwipeRef
                         map.setHuisnr((Number) monitor.get("nummer"));
                         if(monitor.get("lidNr") == null)
                         {
-                            map.setLidNummer(0);
+                            map.setLidNummer("0");
                         } else
                         {
-                            map.setLidNummer((Integer) monitor.get("lidNr"));
+                            map.setLidNummer(monitor.get("lidNr").toString());
                         }
                         map.setEmail((String) monitor.get("email"));
                         map.setGemeente((String) monitor.get("gemeente"));
@@ -243,7 +243,9 @@ public class ProfielenOverzicht_fragment extends Fragment /* implements SwipeRef
                     profielen = myDB.getProfielen();
 
                 }
+                if(ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("monitor")) {
                     try {
+
                         ParseQuery<ParseObject> queryVorming = new ParseQuery<ParseObject>(
                                 "InschrijvingVorming");
                         // Locate the column named "vertrekdatum" in Parse.com and order list
@@ -253,25 +255,20 @@ public class ProfielenOverzicht_fragment extends Fragment /* implements SwipeRef
                         InschrijvingVorming iv;
                         for (ParseObject inschrVorming : obVorming) {
                             iv = new InschrijvingVorming();
-                            iv.setMonitor((String)inschrVorming.get("monitor"));
-                            iv.setVorming((String)inschrVorming.get("vorming"));
-                            if(ingelogdeMonitor.getMonitorId().equals(iv.getMonitor()))
-                            {
+                            iv.setMonitor((String) inschrVorming.get("monitor"));
+                            iv.setVorming((String) inschrVorming.get("vorming"));
+                            if (ingelogdeMonitor.getMonitorId().equals(iv.getMonitor())) {
                                 inschrijvingVormingen.add(iv);
                             }
                             alleIns.add(iv);
 
                         }
                         profielenMetZelfdeVorming.add(ingelogdeMonitor);
-                        for(Monitor m : profielen)
-                        {
-                            for(InschrijvingVorming inv : alleIns)
-                            {
-                                for(InschrijvingVorming invm : inschrijvingVormingen)
-                                {
+                        for (Monitor m : profielen) {
+                            for (InschrijvingVorming inv : alleIns) {
+                                for (InschrijvingVorming invm : inschrijvingVormingen) {
 
-                                    if(inv.getMonitor().equals(m.getMonitorId()) && inv.getVorming().equals(invm.getVorming()) && !inv.getMonitor().equals(ingelogdeMonitor.getMonitorId()))
-                                    {
+                                    if (inv.getMonitor().equals(m.getMonitorId()) && inv.getVorming().equals(invm.getVorming()) && !inv.getMonitor().equals(ingelogdeMonitor.getMonitorId())) {
                                         profielenMetZelfdeVorming.add(m); //Blijft leeg en zou 1 moeten inzitten
                                         break;
                                     }
@@ -279,8 +276,7 @@ public class ProfielenOverzicht_fragment extends Fragment /* implements SwipeRef
 
 
                             }
-                            if(!profielenMetZelfdeVorming.contains(m))
-                            {
+                            if (!profielenMetZelfdeVorming.contains(m)) {
                                 profielenAndere.add(m);
                             }
 
@@ -306,15 +302,17 @@ public class ProfielenOverzicht_fragment extends Fragment /* implements SwipeRef
                         }
 
 
-                       // profielenSamen.addAll(profielenMetZelfdeVorming.size(),profielenAndere);
+                        // profielenSamen.addAll(profielenMetZelfdeVorming.size(),profielenAndere);
                         profielenSamen.addAll(profielenAndere);
-                        profielenSamen.addAll(0,profielenMetZelfdeVorming);
+                        profielenSamen.addAll(0, profielenMetZelfdeVorming);
 
 
-                    }catch (ParseException e)
-                    {
-                        Toast.makeText(getActivity(),"Fout bij ophalen vormingen", Toast.LENGTH_SHORT).show();
+                    } catch (ParseException e) {
+                        Toast.makeText(getActivity(), "Fout bij ophalen vormingen", Toast.LENGTH_SHORT).show();
                     }
+                }
+
+
             } else {
                 profielenSamen = myDB.getProfielen();
             }
