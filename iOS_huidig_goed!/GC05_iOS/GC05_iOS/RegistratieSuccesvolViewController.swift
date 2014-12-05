@@ -17,8 +17,4 @@ class RegistratieSuccesvolViewController: UIViewController
         ParseData.parseOuderToDatabase(ouder, wachtwoord: ww)
         self.navigationItem.setHidesBackButton(true, animated: true)
     }
-    
-    private func logIn() {
-        PFUser.logInWithUsername(ouder.email, password: ww)
-    }
 }

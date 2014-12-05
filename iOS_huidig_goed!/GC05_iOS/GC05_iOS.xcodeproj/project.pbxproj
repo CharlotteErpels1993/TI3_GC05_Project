@@ -81,6 +81,7 @@
 		A50740F81A1386D900D01900 /* AfbeeldingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50740F71A1386D900D01900 /* AfbeeldingCollectionViewCell.swift */; };
 		A512381B1A1630D1002242C6 /* SidebarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A512381A1A1630D1002242C6 /* SidebarTableViewController.swift */; };
 		A512381D1A16332D002242C6 /* MyNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A512381C1A16332D002242C6 /* MyNavigationController.swift */; };
+		A51AB06C1A31C57800D012F7 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A51AB06B1A31C57800D012F7 /* MessageUI.framework */; };
 		A52494261A251FC00055DEFF /* AnnuleerButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52494251A251FC00055DEFF /* AnnuleerButtons.swift */; };
 		A52976D11A1A0A5E00420FEE /* Klevertje.png in Resources */ = {isa = PBXBuildFile; fileRef = A52976D01A1A0A5E00420FEE /* Klevertje.png */; };
 		A543AA891A2C7AC000249B4A /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = A543AA881A2C7AC000249B4A /* menu.png */; };
@@ -202,6 +203,7 @@
 		A50740F71A1386D900D01900 /* AfbeeldingCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AfbeeldingCollectionViewCell.swift; sourceTree = "<group>"; };
 		A512381A1A1630D1002242C6 /* SidebarTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidebarTableViewController.swift; sourceTree = "<group>"; };
 		A512381C1A16332D002242C6 /* MyNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyNavigationController.swift; sourceTree = "<group>"; };
+		A51AB06B1A31C57800D012F7 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		A52494251A251FC00055DEFF /* AnnuleerButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnuleerButtons.swift; sourceTree = "<group>"; };
 		A52976D01A1A0A5E00420FEE /* Klevertje.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Klevertje.png; path = Images.xcassets/Klevertje.png; sourceTree = "<group>"; };
 		A543AA881A2C7AC000249B4A /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = menu.png; path = Images.xcassets/menu.png; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A51AB06C1A31C57800D012F7 /* MessageUI.framework in Frameworks */,
 				0FA80B3A1A0135B1008DB343 /* SystemConfiguration.framework in Frameworks */,
 				0F88A6C01A1F37C30094D457 /* libsqlite3.dylib in Frameworks */,
 				1BD1A8261A0A63FE00F34AD3 /* Bolts.framework in Frameworks */,
@@ -290,6 +293,7 @@
 		0FA80AF91A01350E008DB343 = {
 			isa = PBXGroup;
 			children = (
+				A51AB06B1A31C57800D012F7 /* MessageUI.framework */,
 				0F88A6BF1A1F37C30094D457 /* libsqlite3.dylib */,
 				1BD1A8231A0A63FD00F34AD3 /* Bolts.framework */,
 				1BD1A8241A0A63FE00F34AD3 /* Parse.framework */,
