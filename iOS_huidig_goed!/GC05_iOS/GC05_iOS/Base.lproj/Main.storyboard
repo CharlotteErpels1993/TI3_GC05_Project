@@ -1817,6 +1817,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                         <outlet property="txtWachtwoord" destination="H0a-36-oYG" id="UT2-G7-0dY"/>
                         <segue destination="xj6-b1-6XR" kind="show" identifier="ouderOverzicht" id="xe1-I8-Pkw"/>
                         <segue destination="23A-H4-KGV" kind="show" identifier="overzichtMonitor" id="9Je-LH-R9J"/>
+                        <segue destination="xj6-b1-6XR" kind="show" identifier="administratorOverzicht" id="TXD-rz-Cqc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a5j-lM-quT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -4696,10 +4697,10 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
         <image name="twitter.png" width="1067" height="1067"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="IEO-bq-IHJ"/>
-        <segue reference="quD-W8-2tt"/>
-        <segue reference="n6i-tz-46X"/>
+        <segue reference="TXD-rz-Cqc"/>
         <segue reference="9Je-LH-R9J"/>
         <segue reference="fAM-X2-96q"/>
+        <segue reference="n6i-tz-46X"/>
+        <segue reference="IEO-bq-IHJ"/>
     </inferredMetricsTieBreakers>
 </document>

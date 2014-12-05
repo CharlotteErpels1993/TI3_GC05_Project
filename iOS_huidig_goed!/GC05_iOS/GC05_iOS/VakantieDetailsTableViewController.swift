@@ -45,15 +45,23 @@ class VakantieDetailsTableViewController: UITableViewController {
             if ouderResponse.1 == nil {
                 favorieteVakantie.ouder = ouderResponse.0
                 favorieteVakantie.vakantie = self.vakantie
+                
+                if ParseData.isFavorieteVakantie(favorieteVakantie) == true {
+                    heartButton.setImage(self.imageHeartFull, forState: UIControlState.Normal)
+                    self.favoriet = true
+                } else {
+                    heartButton.setImage(self.imageHeartEmpty, forState: UIControlState.Normal)
+                    self.favoriet = false
+                }
             }
         
-            if ParseData.isFavorieteVakantie(favorieteVakantie) == true {
+            /*if ParseData.isFavorieteVakantie(favorieteVakantie) == true {
                 heartButton.setImage(self.imageHeartFull, forState: UIControlState.Normal)
                 self.favoriet = true
             } else {
                 heartButton.setImage(self.imageHeartEmpty, forState: UIControlState.Normal)
                 self.favoriet = false
-            }
+            }*/
         }
         
         var responseImages: ([UIImage], Int?)
@@ -98,7 +106,7 @@ class VakantieDetailsTableViewController: UITableViewController {
             var gebruikerPF = PFUser.currentUser()
             var soort: String = gebruikerPF["soort"] as String
         
-            if soort == "ouder" {
+            if soort == "ouder" || soort == "administrator" {
                 self.sectionToDelete = -1
                 self.heartButton.hidden = false
                 basisprijsLabel.text = String("Basisprijs: \(vakantie.basisprijs!) " + euroSymbol)
@@ -117,6 +125,10 @@ class VakantieDetailsTableViewController: UITableViewController {
                     sterPrijs2Label.text = String("Ster prijs (2 ouders): \(vakantie.sterPrijs2ouders!) " + euroSymbol)
                 } else {
                     sterPrijs2Label.text = String("Ster prijs (2 ouders): /")
+                }
+                if soort == "administrator" {
+                    self.navigationItem.rightBarButtonItem = nil
+                    self.heartButton.hidden = true
                 }
             } else {
                 self.sectionToDelete = 7

@@ -42,10 +42,13 @@ class SidebarTableViewController: UITableViewController {
             var soort: String = gebruikerPF["soort"] as String
             if soort == "ouder" {
                 return 3
-            } else {
+            } else if soort == "monitor"{
                 return 6
-            } // else return 5 (JOETZ)
+            } else if soort == "administrator" {
+                return 5
+            }
         }
+        return 0
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
