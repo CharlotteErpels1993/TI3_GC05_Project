@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 import QuartzCore
 
-class InschrijvenVakantie1ViewController : ResponsiveTextFieldViewController {
+class InschrijvenVakantie1ViewController : /*ResponsiveTextFieldViewController*/ UITableViewController {
     
     @IBOutlet weak var txtVoornaam: UITextField!
     @IBOutlet weak var txtNaam: UITextField!

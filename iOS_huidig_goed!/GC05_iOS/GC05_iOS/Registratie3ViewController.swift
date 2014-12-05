@@ -18,10 +18,6 @@ class Registratie3ViewController: /*ResponsiveTextFieldViewController*/ UITableV
         annuleerControllerRegistratie(self)
     }
     
-    @IBAction func startIndicator(sender: AnyObject) {
-        performSegueWithIdentifier("voltooiRegistratie", sender: self)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.txtEmail.text = ""
