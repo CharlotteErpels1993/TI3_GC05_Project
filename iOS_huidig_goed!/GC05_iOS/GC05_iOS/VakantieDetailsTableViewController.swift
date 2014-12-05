@@ -122,11 +122,13 @@ class VakantieDetailsTableViewController: UITableViewController {
                 self.sectionToDelete = 7
                 self.tableView.deleteSections(NSIndexSet(index: self.sectionToDelete), withRowAnimation: UITableViewRowAnimation.None)
                 self.navigationItem.rightBarButtonItem = nil
+                self.heartButton.hidden = true
             }
         } else {
             self.sectionToDelete = 7
             self.tableView.deleteSections(NSIndexSet(index: self.sectionToDelete), withRowAnimation: UITableViewRowAnimation.None)
             self.navigationItem.rightBarButtonItem = nil
+            self.heartButton.hidden = true
         }
     }
     
@@ -186,12 +188,6 @@ class VakantieDetailsTableViewController: UITableViewController {
         } else if section == 7 {
             if self.sectionToDelete == -1 {
                 return 5
-            } else {
-                return 0
-            }
-        } else if section == 0 {
-            if self.sectionToDelete == -1 {
-                return 1
             } else {
                 return 0
             }

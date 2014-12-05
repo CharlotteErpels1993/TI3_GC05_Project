@@ -17,6 +17,8 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
     override func viewDidLoad() {
         super.viewDidLoad()
         checkConnectie()
+        ParseData.deleteFavorietTable()
+        ParseData.vulFavorietTableOp()
         
         var responseVakanties: ([Vakantie], Int?)
         if PFUser.currentUser() != nil {
@@ -39,7 +41,7 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
             self.vakanties2 = self.vakanties
             self.tableView.reloadData()
         } else {
-            foutBoxOproepen("Oeps", "Er zijn geen vakanties gevonden", self)
+            foutBoxOproepen("Oeps", "Er zijn geen vakanties als favoriet geselecteerd.", self)
         }
     
         self.vakanties2.sort({ (String($0.minLeeftijd)) < $1.titel})
