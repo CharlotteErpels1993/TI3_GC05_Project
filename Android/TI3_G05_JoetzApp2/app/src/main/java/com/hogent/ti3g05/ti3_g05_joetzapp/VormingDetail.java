@@ -1,4 +1,4 @@
-﻿package com.hogent.ti3g05.ti3_g05_joetzapp;
+package com.hogent.ti3g05.ti3_g05_joetzapp;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -40,7 +40,6 @@ public class VormingDetail extends Activity {
         betalingswijze = i.getStringExtra("betalingswijze");
         criteriaDeelnemer = i.getStringExtra("criteriaDeelnemers");
         korteBeschrijving = i.getStringExtra("korteBeschrijving");
-       // periodes = i.getStringExtra("periodes");
         tips = i.getStringExtra("tips");
         prijs = i.getStringExtra("prijs");
         inbegrepenInPrijs = i.getStringExtra("inbegrepenInPrijs");
