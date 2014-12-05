@@ -86,9 +86,9 @@ public class ProfielAdapter extends ArrayAdapter<Vorming> implements Filterable 
 
             holder.naam = (TextView) view.findViewById(R.id.achternaam);
             holder.voornaam = (TextView) view.findViewById(R.id.voornaam);
-            holder.straat = (TextView) view.findViewById(R.id.straat);
+            //holder.straat = (TextView) view.findViewById(R.id.straat);
             holder.gemeente = (TextView) view.findViewById(R.id.gemeente);
-            holder.lidNr = (TextView) view.findViewById(R.id.lidNr);
+            //holder.lidNr = (TextView) view.findViewById(R.id.lidNr);
 
             view.setTag(holder);
         } else {
@@ -99,7 +99,7 @@ public class ProfielAdapter extends ArrayAdapter<Vorming> implements Filterable 
         holder.naam.setText(profielen.get(position).getNaam());
         holder.voornaam.setText(profielen.get(position).getVoornaam());
 
-        holder.straat.setText(profielen.get(position).getStraat());
+        //holder.straat.setText(profielen.get(position).getStraat());
         holder.gemeente.setText(profielen.get(position).getGemeente());
         //holder.lidNr.setText(profielen.get(position).getLidNummer());
 

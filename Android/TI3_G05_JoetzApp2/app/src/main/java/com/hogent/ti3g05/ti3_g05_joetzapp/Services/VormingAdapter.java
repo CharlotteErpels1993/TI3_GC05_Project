@@ -58,9 +58,9 @@ public class VormingAdapter extends ArrayAdapter<Vorming> implements Filterable 
     public class ViewHolder {
         TextView titel;
         TextView locatie;
-        TextView criteriaDeelnemer;
-        TextView prijs;
-        TextView tips;
+        //TextView criteriaDeelnemer;
+        //TextView prijs;
+        //TextView tips;
         TextView websiteLocatie;
     }
 
@@ -87,8 +87,8 @@ public class VormingAdapter extends ArrayAdapter<Vorming> implements Filterable 
             holder.titel = (TextView) view.findViewById(R.id.titelV);
             holder.locatie = (TextView) view.findViewById(R.id.locatieV);
             //holder.criteriaDeelnemer = (TextView) view.findViewById(R.id.criteriaDeelnemer);
-            holder.tips = (TextView) view.findViewById(R.id.tips);
-            holder.prijs = (TextView) view.findViewById(R.id.prijsV);
+            //holder.tips = (TextView) view.findViewById(R.id.tips);
+            //holder.prijs = (TextView) view.findViewById(R.id.prijsV);
             holder.websiteLocatie = (TextView) view.findViewById(R.id.websiteLocatie);
             view.setTag(holder);
         } else {
@@ -96,9 +96,9 @@ public class VormingAdapter extends ArrayAdapter<Vorming> implements Filterable 
         }
         holder.titel.setText(vormingen.get(position).getTitel());
         holder.locatie.setText(vormingen.get(position).getLocatie());
-        holder.prijs.setText("€ " + vormingen.get(position).getPrijs().toString());
+        //holder.prijs.setText("€ " + vormingen.get(position).getPrijs().toString());
         //holder.criteriaDeelnemer.setText(vormingen.get(position).getCriteriaDeelnemers());
-        holder.tips.setText(vormingen.get(position).getTips());
+        //holder.tips.setText(vormingen.get(position).getTips());
         holder.websiteLocatie.setText(vormingen.get(position).getWebsiteLocatie());
 
         view.setOnClickListener(new OnClickListener() {

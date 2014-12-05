@@ -7,7 +7,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp">
         <!--<ImageView
             android:id="@+id/profielFto"
             android:layout_width="250dp"
@@ -32,6 +34,7 @@
                 android:id="@+id/achternaamPLabel"
                 android:layout_marginTop="8dp"
                 android:text="@string/famnaamHint"
+                android:textStyle="bold"
                 android:textSize="20sp"/>
 
             <TextView
@@ -46,6 +49,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/voornaamPLabel"
                 android:layout_below="@id/achternaamP"
+                android:textStyle="bold"
                 android:text="@string/naamHint"
                 android:textSize="20sp"
                 android:textAlignment="center"
@@ -64,6 +68,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/emailPLabel"
                 android:layout_marginTop="15dp"
+                android:textStyle="bold"
                 android:text="@string/EmailHint"
                 android:layout_below="@id/voornaamP"
                 android:textSize="20sp"
@@ -124,21 +129,23 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/gsmPLabel"
                 android:text="@string/gsmHint"
+                android:textStyle="bold"
                 android:textSize="20sp"
                 android:layout_below="@id/emailP"
-                android:layout_marginTop="8dp"/>
+                android:layout_marginTop="15dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/gsmP"
                 android:layout_below="@id/gsmPLabel"
-                android:layout_marginTop="15dp"/>
+                android:layout_marginTop="8dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="15dp"
+                android:textStyle="bold"
                 android:id="@+id/facebookLLabel"
                 android:textSize="20sp"
                 android:text="@string/facebookHint"
@@ -147,7 +154,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="8dp"
                 android:id="@+id/facebookL"
                 android:layout_below="@id/facebookLLabel"/>
 

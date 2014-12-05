@@ -66,19 +66,17 @@ public class VormingDetail extends Activity {
         txtCriteriaDeelnemer.setText(criteriaDeelnemer);
         txtkorteBeschrijving.setText(korteBeschrijving);
         txtTips.setText(tips);
-        txtPrijs.setText("€" + prijs);
+        txtPrijs.setText("€ " + prijs);
         txtInbegrepenInPrijs.setText(inbegrepenInPrijs);
         txtWebsite.setText(websiteLocatie);
 
         StringBuilder periodesBuilder = new StringBuilder();
-        periodesBuilder.append(getString(R.string.periode) + ": ");
         for (String obj : periodes){
-            periodesBuilder.append("\n" + obj);
+            periodesBuilder.append(obj + "\n");
         }
         txtPeriodes.setText(periodesBuilder.toString());
 
         inschrijven = (Button) findViewById(R.id.btnInschrijvenVorming);
-        inschrijven.setTextColor(getResources().getColor(R.color.Rood));
         inschrijven.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

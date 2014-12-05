@@ -61,8 +61,7 @@
                 android:id="@+id/locatieVD"
                 android:layout_below="@id/locatieVDLabel"
                 android:layout_marginBottom="15dp"
-                android:textSize="15sp"
-                android:layout_centerHorizontal="true"/>
+                android:textSize="15sp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -79,8 +78,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/tipsVD"
                 android:layout_below="@id/tipsVDLabel"
-                android:layout_marginBottom="15dp"
-                android:layout_centerHorizontal="true"/>
+                android:layout_marginBottom="15dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -97,8 +95,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/criteriaDeelnemerVD"
                 android:layout_marginBottom="15dp"
-                android:layout_below="@id/criteriaDeelnemerVDLabel"
-                android:layout_centerHorizontal="true"/>
+                android:layout_below="@id/criteriaDeelnemerVDLabel"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -115,8 +112,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/periodesVD"
                 android:layout_marginBottom="15dp"
-                android:layout_below="@id/periodesVDLabel"
-                android:layout_centerHorizontal="true"/>
+                android:layout_below="@id/periodesVDLabel"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -134,8 +130,7 @@
                 android:id="@+id/betalingswijzeVD"
                 android:layout_marginBottom="15dp"
                 android:layout_below="@id/betalingswijzeVDLabel"
-                android:textSize="15sp"
-                android:layout_centerHorizontal="true"/>
+                android:textSize="15sp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -153,8 +148,7 @@
                 android:id="@+id/prijs"
                 android:layout_marginBottom="15dp"
                 android:layout_below="@id/prijsLabel"
-                android:textSize="15sp"
-                android:layout_centerHorizontal="true"/>
+                android:textSize="15sp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -172,8 +166,7 @@
                 android:id="@+id/inbegrepenInPrijs"
                 android:layout_marginBottom="15dp"
                 android:layout_below="@id/inbegrepenInPrijsLabel"
-                android:textSize="15sp"
-                android:layout_centerHorizontal="true"/>
+                android:textSize="15sp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -190,8 +183,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/websiteLocatieVD"
                 android:layout_marginBottom="15dp"
-                android:layout_below="@id/websiteLocatieVDLabel"
-                android:layout_centerHorizontal="true"/>
+                android:layout_below="@id/websiteLocatieVDLabel"/>
 
         </RelativeLayout>
 
@@ -202,6 +194,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/lay1"
+            android:textColor="@color/Rood"
             android:id="@+id/btnInschrijvenVorming"
             android:layout_marginBottom="5dp"/>
 
