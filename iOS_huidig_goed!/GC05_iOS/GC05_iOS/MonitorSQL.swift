@@ -561,4 +561,37 @@ struct MonitorSQL {
     static private func logIn(monitor: Monitor, wachtwoord: String) {
         PFUser.logInWithUsername(monitor.email, password: wachtwoord)
     }
+    
+    static func bestaatLidnummerAl(lidnummer: String) -> Bool {
+        
+        let (resultSet, err) = SD.executeQuery("SELECT * FROM Monitor WHERE lidnummer = ?", withArgs: [lidnummer])
+        
+        if resultSet.count == 0 {
+            return false
+        }
+        
+        return true
+    }
+    
+    static func bestaatRijksregisternummerAl(rijksregisternummer: String) -> Bool {
+        
+        let (resultSet, err) = SD.executeQuery("SELECT * FROM Monitor WHERE rijksregisternummer = ?", withArgs: [rijksregisternummer])
+        
+        if resultSet.count == 0 {
+            return false
+        }
+        
+        return true
+    }
+    
+    static func bestaatEmailAl(email: String) -> Bool {
+        
+        let (resultSet, err) = SD.executeQuery("SELECT * FROM Monitor WHERE email = ?", withArgs: [email])
+        
+        if resultSet.count == 0 {
+            return false
+        }
+        
+        return true
+    }
 }

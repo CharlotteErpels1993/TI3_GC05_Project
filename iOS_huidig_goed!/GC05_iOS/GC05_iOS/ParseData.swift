@@ -361,6 +361,10 @@ struct /*class*/ ParseData {
         MonitorSQL.parseMonitorToDatabase(monitor, wachtwoord: wachtwoord)
     }
     
+    static func parseNieuweMonitorToDatabase(nieuweMonitor: NieuweMonitor) {
+        NieuweMonitorSQL.parseNieuweMonitorToDatabase(nieuweMonitor)
+    }
+    
     static func parseOuderToDatabase(ouder: Ouder, wachtwoord: String) {
         OuderSQL.parseOuderToDatabase(ouder, wachtwoord: wachtwoord)
     }
@@ -526,22 +530,6 @@ struct /*class*/ ParseData {
         //return UserSQL.zoekUserMetEmailEnWachtwoord(email, wachtwoord: wachtwoord)
     }
     
-    
-    /*static private func vulUserTableOp() {
-    UserSQL.vulUserTableOp()
-    }*/
-    
-    /*static private func vulMonitorTableOp() {
-    MonitorSQL.vulMonitorTableOp()
-    }*/
-    
-    
-    /*static private func createUserTable() {
-    UserSQL.createUserTable()
-    }*/
-    
-    
-    
     static func getRijksregisterNummers(rijksregisterNummer: String) -> Bool {
         if OuderSQL.getRijksregisterNummers(rijksregisterNummer) == true ||
             MonitorSQL.getRijksregisterNummers(rijksregisterNummer) == true {
@@ -592,65 +580,28 @@ struct /*class*/ ParseData {
         return MonitorSQL.getEmail(email)
     }
     
-    /*static func getInschrijvingenVakantieDeelnemer(voornaam: String, naam: String, vakantie: String, ouder: String) -> [InschrijvingVakantie] {
-    //var inschrijvingen: [String] = []
-    
-    var inschrijvingenVakantie: [InschrijvingVakantie] = []
-    
-    /*var d = DeelnemerSQL.getDeelnemerMetVoornaamEnNaam(deelnemer.voornaam!, naam: deelnemer.naam!)
-    
-    if d == nil {
-    return inschrijvingenVakantie
-    } else {
-    //inschrijvingen = getInschrijvingen(d)
-    //if inschrijvingen.count() == 0
-    }
-    */
-    
-    var queryString = ""
-    
-    queryString.extend("SELECT * FROM Deelnemer ")
-    queryString.extend("JOIN ")
-    queryString.extend("InschrijvingVakantie ON Deelnemer.inschrijvingVakantie = InschrijvingVakantie.objectId ")//join table
-    queryString.extend("JOIN ")
-    queryString.extend("Vakantie ON InschrijvingVakantie.vakantie = Vakantie.objectId ")//join table
-    queryString.extend("JOIN  ")
-    queryString.extend("Ouder ON InschrijvingVakantie.ouder = Ouder.objectId ")//join table
-    queryString.extend("WHERE ")
-    queryString.extend("Deelnemer.voornaam = ? ")
-    queryString.extend("AND ")
-    queryString.extend("Deelnemer.naam = ? ")
-    queryString.extend("AND ")
-    queryString.extend("InschrijvingVakantie.vakantie = ? ")
-    queryString.extend("AND ")
-    queryString.extend("InschrijvingVakantie.ouder = ?")
-    //queryString.extend(")")
-    
-    /*voornaam: String! = deelnemer.voornaam!
-    var naam: String! = deelnemer.naam!
-    var vakantieId: String! = deelnemer.inschrijvingVakantie?.vakantie?.id
-    var ouderId: String! = deelnemer.inschrijvingVakantie?.ouder?.id*/
-    
-    /*if let err = SD.executeQuery(queryString, withArgs: [voornaam, naam, vakantieId, ouderId])
-    {
-    println("ERROR: error tijdens toevoegen van nieuwe vakantie in table Vakantie")
-    }
-    else
-    {
-    //no error, the row was inserted successfully
-    }*/
-    
-    
-    return inschrijvingenVakantie
+    static func bestaatLidnummerNieuweMonitorAlNieuweMonitor(lidnummer: String) -> Bool {
+        return NieuweMonitorSQL.bestaatLidnummerAl(lidnummer)
     }
     
-    static func getInschrijvingen(inschrijvingenId: [String]) /*-> [InschrijvingVakantie]*/ {
-    var inschrijvingen: [InschrijvingVakantie] = []
+    static func bestaatRijksregisternummerNieuweMonitorAlNieuweMonitor(rijksregisternummer: String) -> Bool{
+        return NieuweMonitorSQL.bestaatRijksregisternummerAl(rijksregisternummer)
+    }
     
-    //var iv = InschrijvingVakantie.getInschrijvingenMetId(inschrijvingen)
+    static func bestaatEmailNieuweMonitorAlNieuweMonitor(email: String) -> Bool {
+        return NieuweMonitorSQL.bestaatEmailAl(email)
+    }
     
+    static func bestaatLidnummerNieuweMonitorAlMonitor(lidnummer: String) -> Bool {
+        return MonitorSQL.bestaatLidnummerAl(lidnummer)
+    }
     
+    static func bestaatRijksregisternummerNieuweMonitorAlMonitor(rijksregisternummer: String) -> Bool{
+        return MonitorSQL.bestaatRijksregisternummerAl(rijksregisternummer)
+    }
     
-    }*/
+    static func bestaatEmailNieuweMonitorAlMonitor(email: String) -> Bool {
+        return MonitorSQL.bestaatEmailAl(email)
+    }
     
 }

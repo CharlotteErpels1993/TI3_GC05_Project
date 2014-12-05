@@ -147,7 +147,39 @@ struct NieuweMonitorSQL {
         
         var nieuweMonitorObject = query.getFirstObject()
         nieuweMonitorObject.delete()
+    }
+    
+    static func bestaatLidnummerAl(lidnummer: String) -> Bool {
         
+        let (resultSet, err) = SD.executeQuery("SELECT * FROM NieuweMonitor WHERE lidnummer = ?", withArgs: [lidnummer])
+        
+        if resultSet.count == 0 {
+            return false
+        }
+        
+        return true
+    }
+    
+    static func bestaatRijksregisternummerAl(rijksregisternummer: String) -> Bool {
+        
+        let (resultSet, err) = SD.executeQuery("SELECT * FROM NieuweMonitor WHERE rijksregisternummer = ?", withArgs: [rijksregisternummer])
+        
+        if resultSet.count == 0 {
+            return false
+        }
+        
+        return true
+    }
+    
+    static func bestaatEmailAl(email: String) -> Bool {
+        
+        let (resultSet, err) = SD.executeQuery("SELECT * FROM NieuweMonitor WHERE email = ?", withArgs: [email])
+        
+        if resultSet.count == 0 {
+            return false
+        }
+        
+        return true
     }
 }
 
