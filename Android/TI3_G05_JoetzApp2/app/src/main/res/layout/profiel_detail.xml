@@ -185,6 +185,8 @@
                 android:text="@string/btn_ProfielEdit"
                 android:id="@+id/btnProfielEdit"
                 android:textColor="@color/Rood"
+
+                android:visibility="gone"
                 android:layout_marginTop="15dp"
                 android:layout_below="@id/mail"
                 android:layout_alignParentEnd="true" />

@@ -120,6 +120,7 @@ public class ProfielDetail extends Activity {
 
         ImageView naarProf = (ImageView)findViewById(R.id.naarprofiel);
 
+        naarProf.setVisibility(View.GONE);
         naarProf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
