@@ -1,7 +1,6 @@
 import UIKit
 
-class EigenprofielMonitorTableViewController: UITableViewController
-{
+class EigenprofielMonitorTableViewController: UITableViewController {
     
     @IBOutlet weak var voornaam: UILabel!
     @IBOutlet weak var naam: UILabel!

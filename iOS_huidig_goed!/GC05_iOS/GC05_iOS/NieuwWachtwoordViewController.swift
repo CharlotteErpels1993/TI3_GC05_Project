@@ -25,7 +25,6 @@ class NieuwWachtwoordViewController: ResponsiveTextFieldViewController {
             self.presentViewController(alert, animated: true, completion: nil)
             emailAdresTxt.text = ""
             viewDidLoad()
-            //email = ""
         }
     }
     

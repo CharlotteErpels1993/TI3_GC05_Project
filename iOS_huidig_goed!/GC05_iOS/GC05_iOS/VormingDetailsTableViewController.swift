@@ -25,8 +25,6 @@ class VormingDetailsTableViewController: UITableViewController {
         super.viewDidLoad()
         hideSideMenuView()
         
-        var activityIndicator = getActivityIndicatorView(self)
-        
         navigationItem.title = vorming.titel
         
         korteBeschrijvingLabel.text = vorming.korteBeschrijving
@@ -36,10 +34,7 @@ class VormingDetailsTableViewController: UITableViewController {
         prijsLabel.text = String("Prijs: \(vorming.prijs!) " + euro)
         betalingsWijzeLabel.text = String("Betalingswijze: \(vorming.betalingWijze!)")
         inbegrepenPrijsLabel.text = String("Inbegrepen in de prijs: \(vorming.inbegrepenPrijs!)")
-        //periodesLabel.text = vorming.periodesToString()
         tipsLabel.text = vorming.tips
-
-        activityIndicator.stopAnimating()
     }
     
     override func viewDidAppear(animated: Bool) {

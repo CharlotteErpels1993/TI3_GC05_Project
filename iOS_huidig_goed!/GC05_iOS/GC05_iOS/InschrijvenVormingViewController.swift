@@ -13,7 +13,6 @@ class InschrijvenVormingViewController: UIViewController, UIPickerViewDataSource
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //getAlleVormingen()
         ParseData.getAlleVormingen()
         
         pickerView.delegate = self
@@ -45,7 +44,6 @@ class InschrijvenVormingViewController: UIViewController, UIPickerViewDataSource
             let inschrijvenVormingSuccesvolViewController = segue.destinationViewController as InschrijvenVormingSuccesvolViewController
 
             ParseData.deleteInschrijvingVormingTable()
-            
             ParseData.vulInschrijvingVormingTableOp()
             
             var monitor = ParseData.getMonitorWithEmail(PFUser.currentUser().email)
@@ -79,28 +77,9 @@ class InschrijvenVormingViewController: UIViewController, UIPickerViewDataSource
         }
     }
     
-    /*func getAlleVormingen() {
-        var monitor: Monitor = ParseData.getMonitorWithEmail(PFUser.currentUser().email)
-
-        var query = PFQuery(className: "InschrijvingVorming")
-        query.whereKey("monitor", equalTo: monitor.id)
-        query.findObjectsInBackgroundWithBlock({(NSArray objects, NSError error) in
-            if error == nil {
-                for object in objects {
-                    let vormingId = object["vorming"] as String
-                    self.vormingenId.append(vormingId)
-                    let periodeId = object["periode"] as String
-                    self.periodesId.append(periodeId)
-                }
-            }
-        })
-    }*/
-    
     func controleerAlIngeschreven() -> Bool {
         var inschrijvingen: [InschrijvingVorming] = []
-
         inschrijvingen = ParseData.getInschrijvingenVorming(inschrijvingVorming)
-    
         if inschrijvingen.count > 0 {
             return true
 

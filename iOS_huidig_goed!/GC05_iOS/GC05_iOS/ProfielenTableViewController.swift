@@ -14,36 +14,26 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
         toggleSideMenuView()
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         hideSideMenuView()
         
         ParseData.deleteInschrijvingVormingTable()
         ParseData.deleteMonitorTable()
-        
-        
-        var activityIndicator = getActivityIndicatorView(self)
-        
         ParseData.vulInschrijvingVormingTableOp()
         ParseData.vulMonitorTableOp()
         
-        //var monitor = ParseData.getMonitorWithEmail(PFUser.currentUser().email)
         var monitorResponse = ParseData.getMonitorWithEmail(PFUser.currentUser().email)
         
         var monitor = monitorResponse.0
         
         var monitorenZelfdeVormingResponse = ParseData.getMonitorsMetDezelfdeVormingen(monitor.id!)
-        //self.monitorenZelfdeVorming = ParseData.getMonitorsMetDezelfdeVormingen(monitor.id!)
         
         if monitorenZelfdeVormingResponse.1 == nil {
-            //er zijn monitoren gevonden
             self.monitorenZelfdeVorming = monitorenZelfdeVormingResponse.0
-            
             var monitorenResponse = ParseData.getMonitorsMetAndereVormingen(self.monitorenZelfdeVorming)
             
             if monitorenResponse.1 == nil {
-                //er zijn monitoren gevonden
                 self.monitoren = monitorenResponse.0
                 self.monitoren2 = self.monitoren
                 self.monitorenZelfdeVorming2 = self.monitorenZelfdeVorming
@@ -52,21 +42,15 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
             var monitorsResponse = ParseData.getAlleMonitors()
             
             if monitorsResponse.1 == nil {
-                //er zijn monitors gevonden
                 for var i = 0; i < monitorsResponse.0.count; i += 1 {
                     if monitorsResponse.0[i].email == PFUser.currentUser().email {
                         monitorsResponse.0.removeAtIndex(i)
                     }
                 }
-                
                 self.monitoren = monitorsResponse.0
                 self.monitoren2 = self.monitoren
             }
         }
-        
-        //self.monitoren = ParseData.getMonitorsMetAndereVormingen(self.monitorenZelfdeVorming)
-        //self.monitoren2 = self.monitoren
-        //self.monitorenZelfdeVorming2 = self.monitorenZelfdeVorming
         
         if monitorenZelfdeVorming2.count == 0 {
             sectionToDelete = 1
@@ -83,13 +67,7 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
         
         zoekbar.showsScopeBar = true
         zoekbar.delegate = self
-        
-        activityIndicator.stopAnimating()
     }
-    
-    /*func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        zoekGefilterdeVakanties(searchText.lowercaseString)
-    }*/
     
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
         setTitleCancelButton(searchBar)
@@ -139,8 +117,6 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        /*if section == 0 {
-            return 1*/
         if sectionToDelete == 0 {
             if section == 0 {
                 return monitorenZelfdeVorming2.count

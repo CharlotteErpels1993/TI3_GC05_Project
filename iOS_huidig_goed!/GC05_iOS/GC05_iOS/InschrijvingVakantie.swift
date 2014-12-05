@@ -1,7 +1,6 @@
 import Foundation
 
-class InschrijvingVakantie
-{
+class InschrijvingVakantie {
     var id: String
     var extraInfo: String?
     var vakantie: Vakantie?

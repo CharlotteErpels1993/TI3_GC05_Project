@@ -16,17 +16,5 @@ class IndienenVoorkeurSuccesvolViewController: UIViewController {
         super.viewDidLoad()
         self.navigationItem.setHidesBackButton(true, animated: true)
         ParseData.parseVoorkeurToDatabase(voorkeur)
-        
-        
     }
-    
-    /*func parseVoorkeurToDatabase() {
-        var voorkeurJSON = PFObject(className: "Voorkeur")
-        
-        voorkeurJSON.setValue(voorkeur.data, forKey: "periodes")
-        voorkeurJSON.setValue(voorkeur.monitor?.id, forKey: "monitor")
-        voorkeurJSON.setValue(voorkeur.vakantie?.id, forKey: "vakantie")
-        
-        voorkeurJSON.save()
-    }*/
 }

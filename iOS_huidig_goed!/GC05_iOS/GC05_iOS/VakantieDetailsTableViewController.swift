@@ -199,7 +199,6 @@ class VakantieDetailsTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "afbeeldingen" {
             let bekijkAfbeeldingViewController = segue.destinationViewController as AfbeeldingenViewController
-    
             if self.images.count != 0 {
                 bekijkAfbeeldingViewController.images = self.images
             }

@@ -7,19 +7,16 @@ class ProfielBewerkenViewController: ResponsiveTextFieldViewController {
     @IBOutlet weak var telefoonTxt: UITextField!
     @IBOutlet weak var gsmTxt: UITextField!
     @IBOutlet weak var facebookTxt: UITextField!
-    var monitor: Monitor?
     
+    var monitor: Monitor?
     var statusTextFields: [String: String] = [:]
     var redColor: UIColor = UIColor.redColor()
     
     @IBAction func opslaan(sender: AnyObject) {
-        
-        
         ParseData.deleteMonitorTable()
         ParseData.vulMonitorTableOp()
         
         monitor = ParseData.getMonitorWithEmail(PFUser.currentUser().email)
-        
         
         setStatusTextFields()
         pasLayoutVeldenAan()
@@ -35,8 +32,6 @@ class ProfielBewerkenViewController: ResponsiveTextFieldViewController {
             sideMenuController()?.setContentViewController(destViewController)
             hideSideMenuView()
         }
-        
-        
     }
     
     func setStatusTextFields() {
@@ -151,44 +146,11 @@ class ProfielBewerkenViewController: ResponsiveTextFieldViewController {
         
     }
     
-    /*func getCurrentUser() {
-        var query = PFQuery(className: "Monitor")
-        query.whereKey("email", containsString: PFUser.currentUser().email)
-        var monitorPF = query.getFirstObject()
-        monitor = Monitor(monitor: monitorPF)
-    }*/
-    
     func vulGegevensIn() {
         monitor?.voornaam = voornaamTxt.text
         monitor?.naam = naamTxt.text
-        //monitor?.email = emailTxt.text
         monitor?.telefoon = telefoonTxt.text
         monitor?.gsm = gsmTxt.text
         monitor?.linkFacebook = facebookTxt.text
     }
-    
-    /*func schrijfGegevensNaarDatabank() {
-        monitor.voornaam = voornaamTxt.text
-        monitor.naam = naamTxt.text
-        monitor.email = emailTxt.text
-        monitor.telefoon = telefoonTxt.text
-        monitor.gsm = gsmTxt.text
-        monitor.linkFacebook = facebookTxt.text
-        
-        var monitorJSON = PFObject(className: "Monitor")
-        monitorJSON.objectId = monitor.id
-        
-        //query.whereKey("email", containsString: PFUser.currentUser().email)
-        
-        monitorJSON.setValue(monitor.voornaam, forKey: "voornaam")
-        monitorJSON.setValue(monitor.naam, forKey: "naam")
-        monitorJSON.setValue(monitor.email, forKey: "email")
-        monitorJSON.setValue(monitor.telefoon, forKey: "telefoon")
-        monitorJSON.setValue(monitor.gsm, forKey: "gsm")
-        monitorJSON.setValue(monitor.linkFacebook, forKey: "linkFacebook")
-        
-        monitorJSON.save()
-        monitorJSON.fetch()
-        
-    }*/
 }

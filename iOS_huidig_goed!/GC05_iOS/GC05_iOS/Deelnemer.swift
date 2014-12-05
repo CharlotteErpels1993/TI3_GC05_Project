@@ -1,7 +1,6 @@
 import Foundation
 
-class Deelnemer
-{
+class Deelnemer {
     var id: String
     var voornaam: String?
     var naam: String?
@@ -11,13 +10,12 @@ class Deelnemer
     var bus: String?
     var gemeente: String?
     var postcode: Int?
-    //var inschrijvingVakantie: InschrijvingVakantie?
     
     init(id: String) {
         self.id = id
     }
     
-    init(id: String, voornaam: String, naam: String, geboortedatum: NSDate, straat: String, nummer: Int, bus: String, gemeente: String, postcode: Int/*, inschrijvingVakantie: InschrijvingVakantie*/) {
+    init(id: String, voornaam: String, naam: String, geboortedatum: NSDate, straat: String, nummer: Int, bus: String, gemeente: String, postcode: Int) {
         self.id = id
         self.voornaam = voornaam
         self.naam = naam
@@ -26,7 +24,6 @@ class Deelnemer
         self.bus = bus
         self.gemeente = gemeente
         self.postcode = postcode
-        //self.inschrijvingVakantie = inschrijvingVakantie
         self.geboortedatum = geboortedatum
     }
 }

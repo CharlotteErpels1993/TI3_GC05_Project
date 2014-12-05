@@ -97,6 +97,7 @@
 		A5A158321A1A65E900FEF51D /* IndienenVoorkeurSuccesvolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A158311A1A65E900FEF51D /* IndienenVoorkeurSuccesvolViewController.swift */; };
 		A5A158341A1A6A7600FEF51D /* ProfielenTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A158331A1A6A7600FEF51D /* ProfielenTableViewController.swift */; };
 		A5A158361A1A6AAB00FEF51D /* ProfielDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A158351A1A6AAB00FEF51D /* ProfielDetailsTableViewController.swift */; };
+		A5B4C7641A31A5CD002A6F00 /* ValidatieMethodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B4C7631A31A5CD002A6F00 /* ValidatieMethodes.swift */; };
 		A5C6C41F1A2F9483004F5648 /* MonitorRegistratie1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C6C41E1A2F9483004F5648 /* MonitorRegistratie1ViewController.swift */; };
 		A5C6C4211A2F97BC004F5648 /* MonitorRegistratie2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C6C4201A2F97BC004F5648 /* MonitorRegistratie2ViewController.swift */; };
 		A5C6C4231A2F97E1004F5648 /* MonitorRegistratie3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C6C4221A2F97E0004F5648 /* MonitorRegistratie3ViewController.swift */; };
@@ -215,6 +216,7 @@
 		A5A158311A1A65E900FEF51D /* IndienenVoorkeurSuccesvolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndienenVoorkeurSuccesvolViewController.swift; sourceTree = "<group>"; };
 		A5A158331A1A6A7600FEF51D /* ProfielenTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfielenTableViewController.swift; sourceTree = "<group>"; };
 		A5A158351A1A6AAB00FEF51D /* ProfielDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfielDetailsTableViewController.swift; sourceTree = "<group>"; };
+		A5B4C7631A31A5CD002A6F00 /* ValidatieMethodes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidatieMethodes.swift; sourceTree = "<group>"; };
 		A5C6C41E1A2F9483004F5648 /* MonitorRegistratie1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitorRegistratie1ViewController.swift; sourceTree = "<group>"; };
 		A5C6C4201A2F97BC004F5648 /* MonitorRegistratie2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitorRegistratie2ViewController.swift; sourceTree = "<group>"; };
 		A5C6C4221A2F97E0004F5648 /* MonitorRegistratie3ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitorRegistratie3ViewController.swift; sourceTree = "<group>"; };
@@ -439,6 +441,7 @@
 				0F2A81991A091F7100F67A3B /* Regex.swift */,
 				0F86C8651A23C19F00FA2555 /* StringExtension.swift */,
 				A52494251A251FC00055DEFF /* AnnuleerButtons.swift */,
+				A5B4C7631A31A5CD002A6F00 /* ValidatieMethodes.swift */,
 			);
 			name = Hulp;
 			sourceTree = "<group>";
@@ -648,6 +651,7 @@
 				0F92E30D1A1368A10005C86C /* InschrijvenVakantie1ViewController.swift in Sources */,
 				A5C6C4271A2F982A004F5648 /* MonitorRegistratieSuccesvolViewController.swift in Sources */,
 				A59918601A2F819D0055AAF1 /* NieuweMonitorSuccesvolViewController.swift in Sources */,
+				A5B4C7641A31A5CD002A6F00 /* ValidatieMethodes.swift in Sources */,
 				0F92E3131A136BD00005C86C /* InschrijvenVakantie4ViewController.swift in Sources */,
 				A5A158321A1A65E900FEF51D /* IndienenVoorkeurSuccesvolViewController.swift in Sources */,
 				0F05F22E1A13A73000CFE0A1 /* NSDateExtension.swift in Sources */,

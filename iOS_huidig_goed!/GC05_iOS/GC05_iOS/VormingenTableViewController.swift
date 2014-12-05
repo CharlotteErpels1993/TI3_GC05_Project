@@ -20,16 +20,11 @@ class VormingenTableViewController: UITableViewController, UISearchBarDelegate, 
         hideSideMenuView()
         
         ParseData.deleteVormingTable()
-        
-        var activityIndicator = getActivityIndicatorView(self)
-        
         ParseData.vulVormingTableOp()
-        //zoekVormingen()
         
         var vormingenResponse = ParseData.getAlleVormingen()
         
         if vormingenResponse.1 == nil {
-            //geen error, er zijn vormingen
             self.vormingen = vormingenResponse.0
             self.vormingen2 = self.vormingen
             self.tableView.reloadData()
@@ -38,19 +33,8 @@ class VormingenTableViewController: UITableViewController, UISearchBarDelegate, 
             vormingen.sort({ $0.titel < $1.titel })
         }
         
-        
-        
-        /*self.vormingen = ParseData.getAlleVormingen()
-        self.vormingen2 = self.vormingen
-        self.tableView.reloadData()*/
-        
         zoekbar.showsScopeBar = true
         zoekbar.delegate = self
-        
-        /*vormingen2.sort({ $0.titel < $1.titel })
-        vormingen.sort({ $0.titel < $1.titel })*/
-        
-        activityIndicator.stopAnimating()
     }
     
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
@@ -82,10 +66,6 @@ class VormingenTableViewController: UITableViewController, UISearchBarDelegate, 
         zoekGefilterdeVormingen(searchText.lowercaseString)
     }
     
-    /*func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        zoekGefilterdeVormingen(searchText.lowercaseString)
-    }*/
-    
     func zoekGefilterdeVormingen(zoek: String) {
         vormingen2 = vormingen.filter {$0.titel?.lowercaseString.rangeOfString(zoek) != nil }
         if zoek.isEmpty {
@@ -94,23 +74,6 @@ class VormingenTableViewController: UITableViewController, UISearchBarDelegate, 
         self.tableView.reloadData()
         
     }
-    
-    /*func zoekVormingen() {
-        vormingen.removeAll(keepCapacity: true)
-        var query = PFQuery(className: "Vorming")
-        query.findObjectsInBackgroundWithBlock({(NSArray objects, NSError error) in
-            if(error == nil) {
-                if let PFObjects = objects as? [PFObject!] {
-                    for object in PFObjects {
-                        var vorming = Vorming(vorming: object)
-                        self.vormingen.append(vorming)
-                    }
-                }
-                self.vormingen2 = self.vormingen
-                self.tableView.reloadData()
-            }
-        })
-    }*/
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "toonVorming" {

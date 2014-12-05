@@ -10,8 +10,4 @@ class FoutBox
         self.alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
         self.alert.addAction(UIAlertAction(title: "Ga terug", style: UIAlertActionStyle.Default, handler: nil))
     }
-    
-    /*func getAlert() -> UIAlertController {
-        return self.alert
-    }*/
 }

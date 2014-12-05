@@ -2,10 +2,10 @@ import Foundation
 import UIKit
 
 class InschrijvenVakantie2ViewController : ResponsiveTextFieldViewController {
+    
     var inschrijvingVakantie: InschrijvingVakantie!
     var redColor: UIColor = UIColor.redColor()
     var grayColor: UIColor = UIColor.grayColor()
-    //var ouder: Ouder!
     var leeftijd: Int = 0
     
     @IBOutlet weak var dpGeboortedatum: UIDatePicker!
@@ -17,8 +17,6 @@ class InschrijvenVakantie2ViewController : ResponsiveTextFieldViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
-    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "volgende" {
