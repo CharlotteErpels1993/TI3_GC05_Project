@@ -66,8 +66,8 @@ public class ProfielDetail extends Activity {
         TextView txtFacebook = (TextView)findViewById(R.id.facebookL);
 
         final TextView txtGsm = (TextView)findViewById(R.id.gsmP);
-
         if(ParseUser.getCurrentUser().getEmail().equals(email))
+
         {
             btnProfielEdit = (Button) findViewById(R.id.btnProfielEdit);
             btnProfielEdit.setOnClickListener(new View.OnClickListener() {

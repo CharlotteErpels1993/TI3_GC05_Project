@@ -186,7 +186,6 @@
                 android:id="@+id/btnProfielEdit"
                 android:textColor="@color/Rood"
                 android:layout_marginTop="15dp"
-                android:visibility="gone"
                 android:layout_below="@id/mail"
                 android:layout_alignParentEnd="true" />
         </RelativeLayout>
