@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 import QuartzCore
 
-class InschrijvenVakantie4ViewController : ResponsiveTextFieldViewController {
+class InschrijvenVakantie4ViewController : /*ResponsiveTextFieldViewController*/ UITableViewController {
     var wilTweedeContactpersoon: Bool! = true
     var inschrijvingVakantie: InschrijvingVakantie!
     var contactpersoon2: ContactpersoonNood! = ContactpersoonNood(id: "test")
@@ -10,21 +10,21 @@ class InschrijvenVakantie4ViewController : ResponsiveTextFieldViewController {
     var redColor: UIColor = UIColor.redColor()
     
     @IBOutlet weak var switchTweedeContactpersoon: UISwitch!
-    @IBOutlet weak var lblVoornaam: UILabel!
     @IBOutlet weak var txtVoornaam: UITextField!
-    @IBOutlet weak var lblNaam: UILabel!
     @IBOutlet weak var txtNaam: UITextField!
-    @IBOutlet weak var lblTelefoon: UILabel!
     @IBOutlet weak var txtTelefoon: UITextField!
-    @IBOutlet weak var lblGsm: UILabel!
     @IBOutlet weak var txtGsm: UITextField!
+    @IBOutlet var labelVerplicht: UILabel!
     
     
     @IBAction func switched(sender: UISwitch) {
         if sender.on {
             wilTweedeContactpersoon = true
+            labelVerplicht.hidden = false
+            viewDidLoad()
+            self.tableView.reloadData()
             
-            lblVoornaam.hidden = false
+            /*lblVoornaam.hidden = false
             lblNaam.hidden = false
             lblTelefoon.hidden = false
             lblGsm.hidden = false
@@ -32,12 +32,14 @@ class InschrijvenVakantie4ViewController : ResponsiveTextFieldViewController {
             txtVoornaam.hidden = false
             txtNaam.hidden = false
             txtTelefoon.hidden = false
-            txtGsm.hidden = false
+            txtGsm.hidden = false*/
             
         } else {
             wilTweedeContactpersoon = false
+            self.tableView.deleteSections(NSIndexSet(index: 1), withRowAnimation: UITableViewRowAnimation.None)
+            labelVerplicht.hidden = true
             
-            lblVoornaam.hidden = true
+            /*lblVoornaam.hidden = true
             lblNaam.hidden = true
             lblTelefoon.hidden = true
             lblGsm.hidden = true
@@ -45,12 +47,32 @@ class InschrijvenVakantie4ViewController : ResponsiveTextFieldViewController {
             txtVoornaam.hidden = true
             txtNaam.hidden = true
             txtTelefoon.hidden = true
-            txtGsm.hidden = true
+            txtGsm.hidden = true*/
         }
     }
     
     @IBAction func annuleer(sender: AnyObject) {
         annuleerControllerInschrijvenVakantieVorming(self)
+    }
+    
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        if wilTweedeContactpersoon == false {
+            return 2
+        } else {
+            return 3
+        }
+    }
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if wilTweedeContactpersoon == false {
+            return 1
+        } else {
+            if section == 1 {
+                return 4
+            } else {
+                return 1
+            }
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
