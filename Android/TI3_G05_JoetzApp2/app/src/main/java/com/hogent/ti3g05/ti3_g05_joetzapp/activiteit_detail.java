@@ -185,7 +185,6 @@ public class activiteit_detail extends Activity {
             }
         });
 
-        HorizontalScrollView scrollView = (HorizontalScrollView) findViewById(R.id.scrollView);
         favoImage = (ImageView) findViewById(R.id.favo);
         deleteImage = (ImageView) findViewById(R.id.delete);
         deleteImage.setVisibility(View.GONE);
@@ -334,9 +333,54 @@ public class activiteit_detail extends Activity {
             verberg.setVisibility(View.GONE);
             //txtExtraInfo.setVisibility(View.VISIBLE);
 
-        } else {
-            //ingelogd
+        } else if(ParseUser.getCurrentUser()!= null && ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("ouder")) {
+            //ingelogd als ouder
             btnInschrijven.setVisibility(View.VISIBLE);
+            btnmeerInfo.setVisibility(View.VISIBLE);
+            verberg.setVisibility(View.GONE);
+            txtExtraInfo.setVisibility(View.GONE);
+            //toon normale prijs
+            txtPrijs.setVisibility(View.VISIBLE);
+            prijs = i.getStringExtra("prijs");
+            txtPrijs.setText("€" + prijs);
+            if (!(prijs.contains(".") || prijs.contains(","))) {
+                txtPrijs.append(",00");
+            }
+
+            bmLedenPrijs = i.getStringExtra("BMledenPrijs");
+            sterPrijs1Ouder = i.getStringExtra("SterPrijs1Ouder");
+            sterPrijs2Ouders = i.getStringExtra("SterPrijs2Ouders");
+
+
+            if (!bmLedenPrijs.equals("0")) {
+                txtBMledenPrijs.setVisibility(View.VISIBLE);
+                labelBM.setVisibility(View.VISIBLE);
+                txtBMledenPrijs.setText("Prijs voor leden van Bond Moyson: €" + bmLedenPrijs);
+                if (!(bmLedenPrijs.contains(".") || bmLedenPrijs.contains(","))) {
+                    txtBMledenPrijs.append(",00");
+                }
+            } else {
+                txtBMledenPrijs.setVisibility(View.GONE);
+                labelBM.setVisibility(View.GONE);
+            }
+
+            if (!sterPrijs1Ouder.equals("0")) {
+                txtSterPrijs1Ouder.setVisibility(View.VISIBLE);
+                txtSterPrijs1Ouder.setText("Prijs voor leden waarvan 1 ouder deel is van BM: €" + sterPrijs1Ouder);
+                if (!(sterPrijs1Ouder.contains(".") || sterPrijs1Ouder.contains(","))) {
+                    txtSterPrijs1Ouder.append(",00");
+                }
+            }
+
+            if (!sterPrijs2Ouders.equals("0")) {
+                txtSterPrijs2Ouders.setVisibility(View.VISIBLE);
+                txtSterPrijs2Ouders.setText("Prijs voor leden waarvan 2 ouders deel zijn van BM: €" + sterPrijs2Ouders);
+                if (!(sterPrijs2Ouders.contains(".") || sterPrijs2Ouders.contains(","))) {
+                    txtSterPrijs2Ouders.append(",00");
+                }
+            }
+        } else if (ParseUser.getCurrentUser()!=null && ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("monitor"))
+        {
             btnmeerInfo.setVisibility(View.VISIBLE);
             verberg.setVisibility(View.GONE);
             txtExtraInfo.setVisibility(View.GONE);
@@ -589,7 +633,7 @@ public class activiteit_detail extends Activity {
 
             String favId = null;
             for (ParseObject fav : obF) {
-                if (fav.get("vakantieId").equals(activiteitID) && fav.get("ouderId").equals(ingelogdeOuder)) {
+                if (fav.get("vakantie").equals(activiteitID) && fav.get("ouder").equals(ingelogdeOuder)) {
                     favId = fav.getObjectId();
                     return true;
                 }

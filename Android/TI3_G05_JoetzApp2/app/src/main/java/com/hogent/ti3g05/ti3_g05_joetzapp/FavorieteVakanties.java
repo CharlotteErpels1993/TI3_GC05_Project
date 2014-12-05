@@ -23,13 +23,13 @@ import android.widget.Toast;
 import com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.myDb;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ListViewAdapter;
-import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ListViewAdapterFavorieten;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.FavorieteVakantie;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vakantie;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -49,6 +49,8 @@ public class FavorieteVakanties extends Fragment{
         private ListView listview;
         private List<ParseObject> ob;
 
+
+    private List<ParseObject> obOuder;
     private List<ParseObject> obFav;
 
 
@@ -177,7 +179,22 @@ public class FavorieteVakanties extends Fragment{
                 // Create the array
                 vakanties = new ArrayList<Vakantie>();
                 vakantiesAllemaal = new ArrayList<Vakantie>();
+                String ingelogdeOuder = "";
                 try {
+
+                    ParseQuery<ParseObject> queryOuder = new ParseQuery<ParseObject>(
+                            "Ouder");
+
+                    obOuder = queryOuder.find();
+
+                    for (ParseObject ouder : obOuder) {
+
+                        if (ouder.get("email").equals(ParseUser.getCurrentUser().getEmail())) {
+                            ingelogdeOuder = ouder.getObjectId();
+                        }
+
+
+                    }
 
                     //favorieten ophalen
                     List<FavorieteVakantie> favorieten = new ArrayList<FavorieteVakantie>();
@@ -259,7 +276,7 @@ public class FavorieteVakanties extends Fragment{
                     {
                         for(Vakantie vakantie: vakantiesAllemaal)
                         {
-                            if(favorieteVakantie.getVakantieID().equals(vakantie.getVakantieID()))
+                            if(favorieteVakantie.getVakantieID().equals(vakantie.getVakantieID()) && favorieteVakantie.getOuderID().equals(ingelogdeOuder))
                             {
                                 vakanties.add(vakantie);
                                 myDB.insertFavoriet(vakantie);
