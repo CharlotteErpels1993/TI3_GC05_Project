@@ -65,6 +65,10 @@ struct /*class*/ ParseData {
         MonitorSQL.createMonitorTable()
     }
     
+    static private func createNieuweMonitorTable() {
+        NieuweMonitorSQL.createNieuweMonitorTable()
+    }
+    
     static private func createOuderTable() {
         OuderSQL.createOuderTable()
     }
@@ -147,6 +151,18 @@ struct /*class*/ ParseData {
         MonitorSQL.vulMonitorTableOp()
     }
     
+    static func vulNieuweMonitorTableOp() {
+        
+        var response: ([String], Int?) = SD.existingTables()
+        
+        if response.1 == nil {
+            if !contains(response.0, "NieuweMonitor") {
+                createNieuweMonitorTable()
+            }
+        }
+        
+        NieuweMonitorSQL.vulNieuweMonitorTableOp()
+    }
     
     static func vulOuderTableOp() {
         var response: ([String], Int?) = SD.existingTables()
@@ -262,6 +278,18 @@ struct /*class*/ ParseData {
         if response.1 == nil {
             if contains(response.0, "Monitor") {
                 let err = SD.deleteTable("Monitor")
+            }
+        }
+        
+    }
+    
+    static func deleteNieuweMonitorTable() {
+        
+        var response: ([String], Int?) = SD.existingTables()
+        
+        if response.1 == nil {
+            if contains(response.0, "NieuweMonitor") {
+                let err = SD.deleteTable("NieuweMonitor")
             }
         }
         
@@ -552,8 +580,8 @@ struct /*class*/ ParseData {
         return VoorkeurSQL.getVoorkeuren(monitorId, vakantieId: vakantieId)
     }
     
-    static func lidNummerMonitorAlToegevoegd(lidNummer: Int) -> Bool {
-        return MonitorSQL.lidNummerAlToegevoegd(lidNummer)
+    static func bestaatCombinatie(lidnummer: String, rijksregisternummer: String, email: String) -> Bool {
+        return NieuweMonitorSQL.bestaatCombinatie(lidnummer, rijksregisternummer: rijksregisternummer, email: email)
     }
     
     static func rijksregisterNrMonitorAlToegevoegd(rijksregisterNr: String) -> Bool {
