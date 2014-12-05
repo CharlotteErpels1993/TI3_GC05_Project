@@ -8,7 +8,7 @@ struct MonitorSQL {
                 /*"wachtwoord": .StringVal ,*/"voornaam": .StringVal, "naam": .StringVal,
                 "straat": .StringVal, "nummer": .IntVal, "bus": .StringVal, "postcode": .IntVal,
                 "gemeente": .StringVal, "telefoon": .StringVal, "gsm": .StringVal,
-                "aansluitingsNr": .IntVal, "codeGerechtigde": .IntVal, "lidNr": .IntVal,
+                "aansluitingsNr": .IntVal, "codeGerechtigde": .IntVal, "lidnummer": .StringVal,
                 "linkFacebook": .StringVal])
         {
             println("ERROR: error tijdens creatie van table Monitor")
@@ -83,8 +83,8 @@ struct MonitorSQL {
             monitor.linkFacebook = monitorObject["linkFacebook"] as? String
         }
         
-        if monitorObject["lidNr"] as? Int != nil {
-            monitor.lidNr = monitorObject["lidNr"] as? Int
+        if monitorObject["lidNr"] as? String != nil {
+            monitor.lidNr = monitorObject["lidnummer"] as? String
         }
         
         return monitor
@@ -148,8 +148,8 @@ struct MonitorSQL {
         return true
     }
     
-    static func lidNummerAlToegevoegd(lidNummer: Int) -> Bool {
-        let (resultSet, err) = SD.executeQuery("SELECT * FROM Monitor WHERE lidNr = ?", withArgs: [lidNummer])
+    static func lidNummerAlToegevoegd(lidNummer: String) -> Bool {
+        let (resultSet, err) = SD.executeQuery("SELECT * FROM Monitor WHERE lidnummer = ?", withArgs: [lidNummer])
         
         if err != nil {
             println("ERROR: error tijdens ophalen bepaald lidnummer uit table Monitor")
@@ -209,7 +209,7 @@ struct MonitorSQL {
         if let codeGerechtigde = row["codeGerechtigde"]?.asInt() {
             monitor.codeGerechtigde = codeGerechtigde
         }
-        if let lidNr = row["lidNr"]?.asInt() {
+        if let lidNr = row["lidnummer"]?.asString() {
             monitor.lidNr = lidNr
         }
         if let linkFacebook = row["linkFacebook"]?.asString() {
@@ -242,7 +242,7 @@ struct MonitorSQL {
         var gsm: String = ""
         var aansluitingsNr: Int?
         var codeGerechtigde: Int?
-        var lidNr: Int?
+        var lidNr: String?
         var linkFacebook: String?
         
         for monitor in monitors {
@@ -264,7 +264,7 @@ struct MonitorSQL {
             gsm = monitor["gsm"] as String
             aansluitingsNr = monitor["aansluitingsNr"] as? Int
             codeGerechtigde = monitor["codeGerechtigde"] as? Int
-            lidNr = monitor["lidNr"] as? Int
+            lidNr = monitor["lidnummer"] as? String
             linkFacebook = monitor["linkFacebook"] as? String
             
             if rijksregisterNr == nil {
@@ -283,7 +283,7 @@ struct MonitorSQL {
                 codeGerechtigde = 0
             }
             if lidNr == nil {
-                lidNr = 0
+                lidNr = ""
             }
             if linkFacebook == nil {
                 linkFacebook = ""
@@ -307,7 +307,7 @@ struct MonitorSQL {
             queryString.extend("gsm, ")
             queryString.extend("aansluitingsNr, ")
             queryString.extend("codeGerechtigde, ")
-            queryString.extend("lidNr, ")
+            queryString.extend("lidnummer, ")
             queryString.extend("linkFacebook")
             queryString.extend(")")
             queryString.extend(" VALUES ")
@@ -328,7 +328,7 @@ struct MonitorSQL {
             queryString.extend("'\(gsm)', ") //gsm - String
             queryString.extend("\(aansluitingsNr!), ") //aansluitingsNr - Int (geen '')!!
             queryString.extend("\(codeGerechtigde!), ") //codeGerechtigde - Int (geen '')!!
-            queryString.extend("\(lidNr!), ") //lidNr - Int (geen '')!!
+            queryString.extend("'\(lidNr)', ") //lidNr - String
             queryString.extend("'\(linkFacebook!)'") //linkFacebook - String
             
             queryString.extend(")")
@@ -521,6 +521,7 @@ struct MonitorSQL {
         monitorJSON.setValue(monitor.rijksregisterNr, forKey: "rijksregisterNr")
         monitorJSON.setValue(monitor.aansluitingsNr, forKey: "aansluitingsNr")
         monitorJSON.setValue(monitor.codeGerechtigde, forKey: "codeGerechtigde")
+        monitorJSON.setValue(monitor.lidNr, forKey: "lidnummer")
         
         if monitor.bus != nil {
             monitorJSON.setValue(monitor.bus, forKey: "bus")
@@ -532,8 +533,13 @@ struct MonitorSQL {
         
         monitorJSON.save()
         
+        deleteNieuweMonitor(monitor)
         createPFUser(monitor, wachtwoord: wachtwoord)
         logIn(monitor, wachtwoord: wachtwoord)
+    }
+    
+    static private func deleteNieuweMonitor(monitor: Monitor) {
+        NieuweMonitorSQL.deleteNieuweMonitor(monitor.lidNr!, rijksregisternummer: monitor.rijksregisterNr!, email: monitor.email!)
     }
     
     static private func createPFUser(monitor: Monitor, wachtwoord: String) {

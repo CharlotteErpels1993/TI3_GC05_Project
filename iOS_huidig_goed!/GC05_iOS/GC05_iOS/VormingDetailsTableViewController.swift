@@ -35,6 +35,13 @@ class VormingDetailsTableViewController: UITableViewController {
         betalingsWijzeLabel.text = String("Betalingswijze: \(vorming.betalingWijze!)")
         inbegrepenPrijsLabel.text = String("Inbegrepen in de prijs: \(vorming.inbegrepenPrijs!)")
         tipsLabel.text = vorming.tips
+        
+        var gebruikerPF = PFUser.currentUser()
+        var soort: String = gebruikerPF["soort"] as String
+        
+        if soort == "administrator" {
+            self.navigationItem.rightBarButtonItem = nil
+        }
     }
     
     override func viewDidAppear(animated: Bool) {

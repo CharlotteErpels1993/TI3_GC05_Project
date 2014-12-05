@@ -16,6 +16,7 @@
 
    <!-- />
 -->
+
     <EditText
         android:id="@+id/aansluitingsnummer"
 
@@ -60,12 +61,12 @@
         />
     <Button
         android:background="@drawable/button_shape"
+        android:textColor="@color/Rood"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/volgende"
         android:id="@+id/btn_volgendedeel3"
         android:layout_marginTop="8dp"
-        android:textColor="@color/Rood"
         android:layout_below="@id/aansluitingsNrOuder2"
         android:layout_alignParentStart="true" />
 

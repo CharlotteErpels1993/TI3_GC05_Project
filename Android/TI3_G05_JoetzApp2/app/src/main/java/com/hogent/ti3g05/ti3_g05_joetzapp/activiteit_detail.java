@@ -333,7 +333,7 @@ public class activiteit_detail extends Activity {
             verberg.setVisibility(View.GONE);
             //txtExtraInfo.setVisibility(View.VISIBLE);
 
-        } else if(ParseUser.getCurrentUser()!= null && ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("ouder")) {
+        } else if(ParseUser.getCurrentUser()!= null && (ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("ouder") || ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("administrator"))) {
             //ingelogd als ouder
             btnInschrijven.setVisibility(View.VISIBLE);
             btnmeerInfo.setVisibility(View.VISIBLE);

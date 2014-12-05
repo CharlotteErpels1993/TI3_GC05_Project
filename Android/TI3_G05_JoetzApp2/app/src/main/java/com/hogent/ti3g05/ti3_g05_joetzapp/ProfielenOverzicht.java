@@ -150,10 +150,10 @@ public class ProfielenOverzicht extends Activity /* implements SwipeRefreshLayou
                         map.setHuisnr((Number) monitor.get("nummer"));
                         if(monitor.get("lidNr") == null)
                         {
-                            map.setLidNummer(0);
+                            map.setLidNummer("0");
                         } else
                         {
-                            map.setLidNummer((Integer) monitor.get("lidNr"));
+                            map.setLidNummer((String) monitor.get("lidNr"));
                         }
                         map.setEmail((String) monitor.get("email"));
                         map.setGemeente((String) monitor.get("gemeente"));
@@ -172,6 +172,11 @@ public class ProfielenOverzicht extends Activity /* implements SwipeRefreshLayou
 
 
                         myDB.insertProfiel(map);
+
+                        if(ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("adminitrator"))
+                        {
+                            profielenSamen.add(map);
+                        }
 
                     }
                 }catch (ParseException e) {

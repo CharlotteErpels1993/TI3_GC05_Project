@@ -81,6 +81,13 @@ func checkPatternRijksregisterNr(rijksregisterNr: String) -> Bool {
     return true
 }
 
+func checkPatternLidnummer(lidnummer: String) -> Bool {
+    if countElements(lidnummer) == 5 {
+        return true
+    }
+    return false
+}
+
 func foutBoxOproepen(title: String, message: String, controller: UIViewController) {
     var foutBox: FoutBox = FoutBox(title: title, message: message)
     var alert = foutBox.alert

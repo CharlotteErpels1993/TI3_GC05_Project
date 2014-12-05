@@ -1,4 +1,4 @@
-package com.hogent.ti3g05.ti3_g05_joetzapp;
+﻿package com.hogent.ti3g05.ti3_g05_joetzapp;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,6 +8,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.parse.ParseUser;
 
 import java.util.Arrays;
 import java.util.List;
@@ -77,6 +79,18 @@ public class VormingDetail extends Activity {
         txtPeriodes.setText(periodesBuilder.toString());
 
         inschrijven = (Button) findViewById(R.id.btnInschrijvenVorming);
+        inschrijven.setTextColor(getResources().getColor(R.color.Rood));
+
+        if(ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("administrator"))
+        {
+            inschrijven.setVisibility(View.GONE);
+        }
+        else
+        {
+            inschrijven.setVisibility(View.VISIBLE);
+        }
+
+
         inschrijven.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

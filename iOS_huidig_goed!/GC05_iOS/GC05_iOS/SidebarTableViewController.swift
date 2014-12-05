@@ -42,10 +42,13 @@ class SidebarTableViewController: UITableViewController {
             var soort: String = gebruikerPF["soort"] as String
             if soort == "ouder" {
                 return 3
-            } else {
+            } else if soort == "monitor"{
                 return 6
-            } // else return 5 (JOETZ)
+            } else if soort == "administrator" {
+                return 5
+            }
         }
+        return 0
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -72,7 +75,9 @@ class SidebarTableViewController: UITableViewController {
                 cell!.textLabel?.text = self.arrayMonitor[indexPath.row]
             } else if soort == "ouder" {
                 cell!.textLabel?.text = self.arrayOuder[indexPath.row]
-            } // else if soort = JOETZ
+            } else if soort == "administrator" {
+                cell!.textLabel?.text = self.arrayJoetz[indexPath.row]
+            }
         }
         return cell!
     }
@@ -194,7 +199,48 @@ class SidebarTableViewController: UITableViewController {
                 
                 }
                 sideMenuController()?.setContentViewController(destViewController)
-            } // else if soort = JOETZ
+            } else if soort == "administrator" {
+                self.tableView.reloadInputViews()
+                switch indexPath.row {
+                case 0:
+                    hideSideMenuView()
+                    destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
+                    let alertController = UIAlertController(title: "Uitloggen", message: "Wilt u zeker uitloggen?", preferredStyle: .ActionSheet)
+                    
+                    let callAction = UIAlertAction(title: "Uitloggen", style: UIAlertActionStyle.Destructive, handler: {
+                        action in
+                        PFUser.logOut()
+                        destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
+                        self.sideMenuController()?.setContentViewController(destViewController)
+                        self.hideSideMenuView()
+                        }
+                    )
+                    alertController.addAction(callAction)
+                    
+                    let cancelAction = UIAlertAction(title: "Annuleer", style: .Default, handler: nil)
+                    alertController.addAction(cancelAction)
+                    
+                    presentViewController(alertController, animated: true, completion: nil)
+                    break
+                case 1:
+                    destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
+                    break
+                case 2:
+                    destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vormingen") as UIViewController
+                    break
+                case 3:
+                    destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Profielen") as UIViewController
+                    break
+                case 4:
+                    destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("NieuweMonitor") as UIViewController
+                    break
+                default:
+                    destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
+                    break
+                    
+                }
+                sideMenuController()?.setContentViewController(destViewController)
+            }
         }
     }
 

@@ -19,6 +19,8 @@
 		0F88A6C01A1F37C30094D457 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F88A6BF1A1F37C30094D457 /* libsqlite3.dylib */; };
 		0F88A6C31A1F3B840094D457 /* SwiftData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F88A6C21A1F3B840094D457 /* SwiftData.swift */; };
 		0F88A6C51A1F3BF20094D457 /* ParseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F88A6C41A1F3BF20094D457 /* ParseData.swift */; };
+		0F8FE2931A31B16100FDDA30 /* NieuweMonitorSQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8FE2921A31B16100FDDA30 /* NieuweMonitorSQL.swift */; };
+		0F8FE2951A31B42F00FDDA30 /* NieuweMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8FE2941A31B42F00FDDA30 /* NieuweMonitor.swift */; };
 		0F92E30D1A1368A10005C86C /* InschrijvenVakantie1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F92E30C1A1368A10005C86C /* InschrijvenVakantie1ViewController.swift */; };
 		0F92E30F1A13697B0005C86C /* InschrijvenVakantie2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F92E30E1A13697B0005C86C /* InschrijvenVakantie2ViewController.swift */; };
 		0F92E3111A136B240005C86C /* InschrijvenVakantie3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F92E3101A136B240005C86C /* InschrijvenVakantie3ViewController.swift */; };
@@ -79,6 +81,7 @@
 		A50740F81A1386D900D01900 /* AfbeeldingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50740F71A1386D900D01900 /* AfbeeldingCollectionViewCell.swift */; };
 		A512381B1A1630D1002242C6 /* SidebarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A512381A1A1630D1002242C6 /* SidebarTableViewController.swift */; };
 		A512381D1A16332D002242C6 /* MyNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A512381C1A16332D002242C6 /* MyNavigationController.swift */; };
+		A51AB06C1A31C57800D012F7 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A51AB06B1A31C57800D012F7 /* MessageUI.framework */; };
 		A52494261A251FC00055DEFF /* AnnuleerButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52494251A251FC00055DEFF /* AnnuleerButtons.swift */; };
 		A52976D11A1A0A5E00420FEE /* Klevertje.png in Resources */ = {isa = PBXBuildFile; fileRef = A52976D01A1A0A5E00420FEE /* Klevertje.png */; };
 		A543AA891A2C7AC000249B4A /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = A543AA881A2C7AC000249B4A /* menu.png */; };
@@ -133,6 +136,8 @@
 		0F88A6BF1A1F37C30094D457 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		0F88A6C21A1F3B840094D457 /* SwiftData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftData.swift; sourceTree = "<group>"; };
 		0F88A6C41A1F3BF20094D457 /* ParseData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseData.swift; sourceTree = "<group>"; };
+		0F8FE2921A31B16100FDDA30 /* NieuweMonitorSQL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NieuweMonitorSQL.swift; sourceTree = "<group>"; };
+		0F8FE2941A31B42F00FDDA30 /* NieuweMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NieuweMonitor.swift; sourceTree = "<group>"; };
 		0F92E30C1A1368A10005C86C /* InschrijvenVakantie1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InschrijvenVakantie1ViewController.swift; sourceTree = "<group>"; };
 		0F92E30E1A13697B0005C86C /* InschrijvenVakantie2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InschrijvenVakantie2ViewController.swift; sourceTree = "<group>"; };
 		0F92E3101A136B240005C86C /* InschrijvenVakantie3ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InschrijvenVakantie3ViewController.swift; sourceTree = "<group>"; };
@@ -198,6 +203,7 @@
 		A50740F71A1386D900D01900 /* AfbeeldingCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AfbeeldingCollectionViewCell.swift; sourceTree = "<group>"; };
 		A512381A1A1630D1002242C6 /* SidebarTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidebarTableViewController.swift; sourceTree = "<group>"; };
 		A512381C1A16332D002242C6 /* MyNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyNavigationController.swift; sourceTree = "<group>"; };
+		A51AB06B1A31C57800D012F7 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		A52494251A251FC00055DEFF /* AnnuleerButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnuleerButtons.swift; sourceTree = "<group>"; };
 		A52976D01A1A0A5E00420FEE /* Klevertje.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Klevertje.png; path = Images.xcassets/Klevertje.png; sourceTree = "<group>"; };
 		A543AA881A2C7AC000249B4A /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = menu.png; path = Images.xcassets/menu.png; sourceTree = "<group>"; };
@@ -234,6 +240,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A51AB06C1A31C57800D012F7 /* MessageUI.framework in Frameworks */,
 				0FA80B3A1A0135B1008DB343 /* SystemConfiguration.framework in Frameworks */,
 				0F88A6C01A1F37C30094D457 /* libsqlite3.dylib in Frameworks */,
 				1BD1A8261A0A63FE00F34AD3 /* Bolts.framework in Frameworks */,
@@ -278,6 +285,7 @@
 				0FD07EC61A23544A006A4E60 /* OuderSQL.swift */,
 				0FD07EC81A2354B5006A4E60 /* AfbeeldingSQL.swift */,
 				0F1E19DA1A2F93CC0035DB96 /* FavorietSQL.swift */,
+				0F8FE2921A31B16100FDDA30 /* NieuweMonitorSQL.swift */,
 			);
 			name = SQLite;
 			sourceTree = "<group>";
@@ -285,6 +293,7 @@
 		0FA80AF91A01350E008DB343 = {
 			isa = PBXGroup;
 			children = (
+				A51AB06B1A31C57800D012F7 /* MessageUI.framework */,
 				0F88A6BF1A1F37C30094D457 /* libsqlite3.dylib */,
 				1BD1A8231A0A63FD00F34AD3 /* Bolts.framework */,
 				1BD1A8241A0A63FE00F34AD3 /* Parse.framework */,
@@ -416,6 +425,7 @@
 				1BDDB9541A02D87F0007623D /* ContactpersoonNood.swift */,
 				1BDDB9561A02DD1E0007623D /* Gebruiker.swift */,
 				0F1E19DC1A2F9AF70035DB96 /* Favoriet.swift */,
+				0F8FE2941A31B42F00FDDA30 /* NieuweMonitor.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -602,6 +612,7 @@
 				0FD07EB91A234C41006A4E60 /* VoorkeurSQL.swift in Sources */,
 				1BDDB94B1A02D8380007623D /* InschrijvingVakantie.swift in Sources */,
 				1BDDB94F1A02D8630007623D /* Ouder.swift in Sources */,
+				0F8FE2951A31B42F00FDDA30 /* NieuweMonitor.swift in Sources */,
 				1B4D78511A02897500E823E2 /* Registratie3ViewController.swift in Sources */,
 				1BDDB94D1A02D84B0007623D /* Monitor.swift in Sources */,
 				A5049CAD1A2334510012D990 /* Reachability.swift in Sources */,
@@ -623,6 +634,7 @@
 				A5CEA07B1A13998900E14103 /* VormingenTableViewController.swift in Sources */,
 				A5A158341A1A6A7600FEF51D /* ProfielenTableViewController.swift in Sources */,
 				0FD07EBD1A234D44006A4E60 /* VormingSQL.swift in Sources */,
+				0F8FE2931A31B16100FDDA30 /* NieuweMonitorSQL.swift in Sources */,
 				0F4C2DCE1A1BE253008EDEA4 /* ActivityIndicatorViewController.swift in Sources */,
 				A50740F81A1386D900D01900 /* AfbeeldingCollectionViewCell.swift in Sources */,
 				0F88A6C51A1F3BF20094D457 /* ParseData.swift in Sources */,

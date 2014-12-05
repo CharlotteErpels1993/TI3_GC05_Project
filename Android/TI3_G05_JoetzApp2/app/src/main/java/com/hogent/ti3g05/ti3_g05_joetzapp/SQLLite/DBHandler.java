@@ -289,7 +289,7 @@ public class DBHandler extends SQLiteOpenHelper {
             monitor.setEmail(cursor.getString(4));
             monitor.setGemeente(cursor.getString(5));
             monitor.setGsmnr(cursor.getString(6));
-            monitor.setLidNummer(Integer.parseInt(cursor.getString(7)));
+            monitor.setLidNummer(cursor.getString(7));
             monitor.setLinkFacebook(cursor.getString(8));
             monitor.setNaam(cursor.getString(9));
             monitor.setHuisnr(Integer.parseInt(cursor.getString(10)));
