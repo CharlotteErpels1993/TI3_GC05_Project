@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-class InschrijvenVakantie2ViewController : ResponsiveTextFieldViewController {
+class InschrijvenVakantie2ViewController : /*ResponsiveTextFieldViewController*/ UIViewController {
     
     var inschrijvingVakantie: InschrijvingVakantie!
     var redColor: UIColor = UIColor.redColor()
