@@ -77,6 +77,7 @@
                 android:layout_below="@id/emailPLabel"
                 android:textAlignment="center"/>
 
+
             <!--<TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -158,6 +159,18 @@
                 android:id="@+id/naarprofiel"
                 />
 
+
+            <Button
+                android:background="@drawable/button_shape"
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:text="@string/emailSturen"
+                android:id="@+id/mail"
+                android:textColor="@color/Rood"
+                android:layout_marginTop="15dp"
+                android:layout_below="@id/facebookL"
+                android:layout_alignParentEnd="true" />
+
             <Button
                 android:background="@drawable/button_shape"
                 android:layout_width="170dp"
@@ -166,7 +179,7 @@
                 android:id="@+id/btnProfielEdit"
                 android:textColor="@color/Rood"
                 android:layout_marginTop="15dp"
-                android:layout_below="@id/facebookL"
+                android:layout_below="@id/mail"
                 android:layout_alignParentEnd="true" />
         </RelativeLayout>
 

@@ -105,6 +105,19 @@ public class ProfielDetail extends Activity {
         txtFacebook.setText(facebook);
         txtGsm.setText(gsm);
 
+        Button mail = (Button) findViewById(R.id.mail);
+
+        mail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Intent.ACTION_SEND);
+                i.setType("text/plain");
+                i.putExtra(Intent.EXTRA_EMAIL, new String[]{ email });
+                i.putExtra(Intent.EXTRA_SUBJECT, "onderwerp");
+                startActivity(i);
+            }
+        });
+
         ImageView naarProf = (ImageView)findViewById(R.id.naarprofiel);
 
         naarProf.setOnClickListener(new View.OnClickListener() {
