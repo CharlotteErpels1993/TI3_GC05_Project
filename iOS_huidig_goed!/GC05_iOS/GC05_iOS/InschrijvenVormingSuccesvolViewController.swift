@@ -8,23 +8,10 @@ class InschrijvenVormingSuccesvolViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        activityIndicatorView.startAnimating()
         
         ParseData.parseInschrijvingVormingToDatabase(inschrijvingVorming)
         self.navigationItem.setHidesBackButton(true, animated: true)
-        
-        activityIndicatorView.stopAnimating()
     }
-    
-    /*func parseInschrijvingVormingToDatabase() {
-        var inschrijvingVormingJSON = PFObject(className: "InschrijvingVorming")
-        
-        inschrijvingVormingJSON.setValue(inschrijvingVorming.periode, forKey: "periode")
-        inschrijvingVormingJSON.setValue(inschrijvingVorming.monitor?.id, forKey: "monitor")
-        inschrijvingVormingJSON.setValue(inschrijvingVorming.vorming?.id, forKey: "vorming")
-        
-        inschrijvingVormingJSON.save()
-    }*/
     
     @IBAction func gaTerugNaarOverzicht(sender: AnyObject) {
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
@@ -32,10 +19,4 @@ class InschrijvenVormingSuccesvolViewController: UIViewController {
         sideMenuController()?.setContentViewController(destViewController)
         hideSideMenuView()
     }
-    
-    /*@IBAction func terugNaarOverzicht(sender: AnyObject) {
-        performSegueWithIdentifier("ouderOverzicht", sender: self)
-    }*/
-    
-
 }

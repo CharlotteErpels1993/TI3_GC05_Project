@@ -8,7 +8,7 @@
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content">
-        <ImageView
+        <!--<ImageView
             android:id="@+id/profielFto"
             android:layout_width="250dp"
             android:layout_height="200dp"
@@ -16,32 +16,30 @@
             android:layout_centerHorizontal="true"
             android:src="@drawable/profielftoplaceholder"
             android:padding="1dp"
-            android:layout_marginEnd="10dp"/>
+            android:layout_marginEnd="10dp"/>-->
 
         <RelativeLayout
             android:id="@+id/lay"
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/profielFto">
+            android:layout_height="wrap_content">
+            <!--android:layout_below="@id/profielFto">-->
+
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_centerHorizontal="true"
                 android:layout_height="wrap_content"
                 android:id="@+id/achternaamPLabel"
                 android:layout_marginTop="8dp"
                 android:text="@string/famnaamHint"
-                android:textSize="25sp"/>
+                android:textSize="20sp"/>
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_centerHorizontal="true"
                 android:layout_height="wrap_content"
                 android:id="@+id/achternaamP"
                 android:layout_below="@+id/achternaamPLabel"
-                android:layout_marginTop="8dp"
-                android:textSize="25sp"/>
+                android:layout_marginTop="8dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -49,31 +47,27 @@
                 android:id="@+id/voornaamPLabel"
                 android:layout_below="@id/achternaamP"
                 android:text="@string/naamHint"
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:textAlignment="center"
-                android:layout_marginTop="8dp"
-                android:layout_centerHorizontal="true"/>
+                android:layout_marginTop="15dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/voornaamP"
                 android:layout_below="@id/voornaamPLabel"
-                android:textSize="25sp"
                 android:textAlignment="center"
-                android:layout_marginTop="8dp"
-                android:layout_centerHorizontal="true"/>
+                android:layout_marginTop="8dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/emailPLabel"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="15dp"
                 android:text="@string/EmailHint"
                 android:layout_below="@id/voornaamP"
                 android:textSize="20sp"
-                android:textAlignment="center"
-                android:layout_centerHorizontal="true"/>
+                android:textAlignment="center"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -81,9 +75,7 @@
                 android:id="@+id/emailP"
                 android:layout_marginTop="8dp"
                 android:layout_below="@id/emailPLabel"
-                android:textSize="20sp"
-                android:textAlignment="center"
-                android:layout_centerHorizontal="true"/>
+                android:textAlignment="center"/>
 
             <!--<TextView
                 android:layout_width="wrap_content"
@@ -132,34 +124,32 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/gsmPLabel"
                 android:text="@string/gsmHint"
+                android:textSize="20sp"
                 android:layout_below="@id/emailP"
-                android:layout_marginTop="8dp"
-                android:layout_centerHorizontal="true"/>
+                android:layout_marginTop="8dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/gsmP"
                 android:layout_below="@id/gsmPLabel"
-                android:layout_marginTop="8dp"
-                android:layout_centerHorizontal="true"/>
+                android:layout_marginTop="15dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:id="@+id/facebookLLabel"
+                android:textSize="20sp"
                 android:text="@string/facebookHint"
-                android:layout_below="@id/gsmP"
-                android:layout_centerHorizontal="true"/>
+                android:layout_below="@id/gsmP"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="15dp"
                 android:id="@+id/facebookL"
-                android:layout_below="@id/facebookLLabel"
-                android:layout_centerHorizontal="true"/>
+                android:layout_below="@id/facebookLLabel"/>
 
             <Button
                 android:background="@drawable/button_shape"
@@ -167,7 +157,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/btn_ProfielEdit"
                 android:id="@+id/btnProfielEdit"
-                android:layout_marginTop="8dp"
+                android:textColor="@color/Rood"
+                android:layout_marginTop="15dp"
                 android:layout_below="@id/facebookL"
                 android:layout_alignParentEnd="true" />
         </RelativeLayout>

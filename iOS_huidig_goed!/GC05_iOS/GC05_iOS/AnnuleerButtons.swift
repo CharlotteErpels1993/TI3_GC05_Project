@@ -37,14 +37,10 @@ func annuleerControllerVoorkeur(controller: UIViewController) {
 }
 
 func annuleerControllerInschrijvenVakantieVorming(controller: UIViewController) {
-    //let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-    //var destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
     let alertController = UIAlertController()
     
     let callAction = UIAlertAction(title: "Annuleer", style: UIAlertActionStyle.Destructive, handler: {
         action in
-        /*destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Inloggen") as UIViewController
-        controller.sideMenuController()?.setContentViewController(destViewController)*/
         controller.performSegueWithIdentifier("gaTerug", sender: controller)
         controller.hideSideMenuView()
         }

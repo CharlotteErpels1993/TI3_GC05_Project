@@ -219,9 +219,6 @@ class MonitorRegistratie3ViewController: UIViewController {
             monitor.telefoon = txtTelefoon.text
         }
     }
-    
-    
-    
 }
 
 

@@ -1,8 +1,7 @@
 import UIKit
 import QuartzCore
 
-class Registratie2ViewController: ResponsiveTextFieldViewController
-{
+class Registratie2ViewController: ResponsiveTextFieldViewController {
     @IBOutlet weak var txtVoornaam: UITextField!
     @IBOutlet weak var txtNaam: UITextField!
     @IBOutlet weak var txtStraat: UITextField!
@@ -32,7 +31,6 @@ class Registratie2ViewController: ResponsiveTextFieldViewController
         if segue.identifier == "volgende" {
             let registratie3ViewController = segue.destinationViewController as Registratie3ViewController
         
-            //nieuw: Charlotte
             setStatusTextFields()
             pasLayoutVeldenAan()
             
@@ -48,30 +46,6 @@ class Registratie2ViewController: ResponsiveTextFieldViewController
                 settenOptioneleGegevens()
                 registratie3ViewController.ouder = ouder
             }
-            
-        /*setStatusTextFields()
-        pasLayoutVeldenAan()
-        
-        if controleerRodeBordersAanwezig() == true {
-            foutBoxOproepen("Fout", "Gelieve de velden correct in te vullen!", self)
-        } else {
-            settenVerplichteGegevens()
-            settenOptioneleGegevens()
-            
-            if controleerGSMAlGeregisteerd() == true {
-                giveUITextFieldRedBorder(self.txtGsm)
-                let alertController = UIAlertController(title: "Fout", message: "Deze gsm bestaat al", preferredStyle: .Alert)
-                let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: {
-                    action in
-                    self.viewDidLoad()
-                })
-                alertController.addAction(okAction)
-                self.presentViewController(alertController, animated: true, completion: nil)
-                
-            } else {
-                registratie3ViewController.ouder = ouder
-            }
-        }*/
         } else if segue.identifier == "gaTerug" {
             let vakantiesViewController = segue.destinationViewController as VakantiesTableViewController
         }

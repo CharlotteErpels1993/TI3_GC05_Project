@@ -3,9 +3,6 @@ import UIKit
 class IndienenVoorkeurViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate{
     
     @IBOutlet weak var pickerView: UIPickerView!
-    @IBOutlet weak var buttonPeriode: UIButton!
-    
-    //@IBOutlet weak var txtViewPeriodes: UITextView!
     @IBOutlet weak var periodeLabel: UILabel!
     
     var vakanties: [Vakantie] = []
@@ -13,8 +10,6 @@ class IndienenVoorkeurViewController: UIViewController, UIPickerViewDataSource, 
     var voorkeur: Voorkeur = Voorkeur(id: "test")
     var vertrekdatumStr: String? = ""
     var terugkeerdatumStr: String? = ""
-    //var vorming: Vorming!
-    //var inschrijvingVorming: InschrijvingVorming = InschrijvingVorming(id: "test")
     
     @IBAction func gaTerugNaarOverzicht(sender: AnyObject) {
         annuleerControllerVoorkeur(self)
@@ -27,15 +22,12 @@ class IndienenVoorkeurViewController: UIViewController, UIPickerViewDataSource, 
         ParseData.vulVoorkeurTableOp()
         
         hideSideMenuView()
-        //periodeLabel.hidden = true
         
         var vakantiesResponse = ParseData.getAlleVakanties()
         
         if vakantiesResponse.1 == nil {
             self.vakanties = vakantiesResponse.0
         }
-        
-        //vakanties = ParseData.getAlleVakanties()
         
         for vakantie in vakanties {
             pickerData.append(vakantie.titel!)
@@ -45,8 +37,6 @@ class IndienenVoorkeurViewController: UIViewController, UIPickerViewDataSource, 
         vertrekdatumStr = vakantie.vertrekdatum.toS("dd/MM/yyyy")
         terugkeerdatumStr = vakantie.terugkeerdatum.toS("dd/MM/yyyy")
         periodeLabel.text = ("\(vertrekdatumStr!) - \(terugkeerdatumStr!)")
-        
-        //giveUITextViewDefaultBorder(txtViewPeriodes)
         
         pickerView.delegate = self
         pickerView.dataSource = self
@@ -93,11 +83,6 @@ class IndienenVoorkeurViewController: UIViewController, UIPickerViewDataSource, 
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let indienenVoorkeurSuccesvolViewController = segue.destinationViewController as IndienenVoorkeurSuccesvolViewController
-
-            /*var query = PFQuery(className: "Monitor")
-            query.whereKey("email", containsString: PFUser.currentUser().email)
-            var monitorPF = query.getFirstObject()
-            var monitor = Monitor(monitor: monitorPF)*/
             var monitor = ParseData.getMonitorWithEmail(PFUser.currentUser().email)
             
             self.voorkeur.monitor = monitor
@@ -127,22 +112,11 @@ class IndienenVoorkeurViewController: UIViewController, UIPickerViewDataSource, 
     
     func controleerAlIngeschreven() -> Bool {
         var voorkeuren: [Voorkeur] = []
-        
-        //voorkeuren = ParseData.getVoorkeurenVakantie(self.voorkeur)
-        
         var voorkeurenResponse = ParseData.getVoorkeurenVakantie(self.voorkeur)
         
         if voorkeurenResponse == nil {
-            //er zijn voorkeuren gevonden
             return true
         }
-        
-        
-        /*if voorkeuren.count > 0 {
-            return true
-            
-        }*/
-        
         return false
     }
 }

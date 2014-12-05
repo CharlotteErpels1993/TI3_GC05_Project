@@ -1,15 +1,8 @@
 import Foundation
 
-class Vorming: Activiteit
-{
+class Vorming: Activiteit {
     var periodes: [String]?
-    
-    var prijs: Double? /*{
-        willSet {
-            assert(checkPrijsValid(newValue!), "Prijs moet een geldig bedrag zijn!")
-        }
-    }*/
-    
+    var prijs: Double?
     var criteriaDeelnemers: String?
     var websiteLocatie: String?
     var tips: String?
@@ -20,18 +13,6 @@ class Vorming: Activiteit
     override init(id: String) {
         super.init(id: id)
     }
-    
-    /*init(vorming: PFObject) {
-        self.periodes = vorming["periodes"] as? [String]
-        self.prijs = vorming["prijs"] as? Double
-        self.criteriaDeelnemers = vorming["criteriaDeelnemers"] as? String
-        self.websiteLocatie = vorming["websiteLocatie"] as? String
-        self.tips = vorming["tips"] as? String
-        self.betalingWijze = vorming["betalingswijze"] as? String
-        //self.inbegrepenPrijs = vomring["in"]
-        super.init(activiteit: vorming)
-        
-    }*/
     
     init(id: String, titel: String, locatie: String, korteBeschrijving: String, periodes: [String], prijs: Double, criteriaDeelnemers: String, websiteLocatie: String, tips: String, betalingWijze: String) {
         

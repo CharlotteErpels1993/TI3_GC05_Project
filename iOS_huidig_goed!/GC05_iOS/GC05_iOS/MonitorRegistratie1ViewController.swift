@@ -6,9 +6,6 @@ class MonitorRegistratie1ViewController: UIViewController {
     @IBOutlet var txtRijksregisterNr: UITextField!
     @IBOutlet var txtEmail: UITextField!
     
-    var lidNummerAlToegevoegd: Bool = false
-    var rijksregisterNrAlToegevoegd: Bool = false
-    var emailAlToegevoegd: Bool = false
     var statusTextFields: [String: String] = [:]
     var redColor: UIColor = UIColor.redColor()
     var monitor: Monitor = Monitor(id: "test")
@@ -23,26 +20,31 @@ class MonitorRegistratie1ViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "volgende" {
+            
+            ParseData.deleteNieuweMonitorTable()
+            ParseData.vulNieuweMonitorTableOp()
+            
             let monitorRegistratie2ViewController = segue.destinationViewController as MonitorRegistratie2ViewController
             
             setStatusTextFields()
             pasLayoutVeldenAan()
             
             if controleerRodeBordersAanwezig() == true {
-                if lidNummerAlToegevoegd == false {
-                    foutBoxOproepen("Fout", "Dit lidnummer is nog niet toegevoegd door Joetz!", self)
-                } else if rijksregisterNrAlToegevoegd == false {
-                    foutBoxOproepen("Fout", "Dit rijksregisternummer is nog niet toegevoegd door Joetz!", self)
-                } else if emailAlToegevoegd == false {
-                    foutBoxOproepen("Fout", "Dit e-mailadres is nog niet toegevoegd door Joetz!", self)
-                } else {
-                    foutBoxOproepen("Fout", "Gelieve de velden correct in te vullen!", self)
-                }
+                foutBoxOproepen("Fout", "Gelieve de velden correct in te vullen!", self)
                 self.viewDidLoad()
-                
             } else {
-                settenGegevens()
-                monitorRegistratie2ViewController.monitor = self.monitor
+                
+                if controleerBestaandeCombinatie(txtLidNummer.text, rijksregisternummer: txtRijksregisterNr.text, email: txtEmail.text) == false {
+                    giveUITextFieldRedBorder(txtLidNummer)
+                    giveUITextFieldRedBorder(txtRijksregisterNr)
+                    giveUITextFieldRedBorder(txtEmail)
+                    
+                    foutBoxOproepen("Fout", "Er is geen bestaande combinatie van deze gegevens terug gevonden.\nIndien u zeker bent van de ingevoerde gegevens, gelieve Joetz te contacteren op joetz-west@joetz.be", self)
+                    
+                } else {
+                    settenGegevens()
+                    monitorRegistratie2ViewController.monitor = self.monitor
+                }
             }
             
         }
@@ -51,71 +53,57 @@ class MonitorRegistratie1ViewController: UIViewController {
     func setStatusTextFields() {
         if txtLidNummer.text.isEmpty {
             statusTextFields["lidNummer"] = "leeg"
-            lidNummerAlToegevoegd = false
         } else {
-            if !controleerGeldigheidNummer(txtLidNummer.text) {
-                statusTextFields["lidNummer"] = "ongeldig"
-            } else if controleerLidNummerAlToegevoegd(txtLidNummer.text.toInt()!) == true {
-                statusTextFields["lidNummer"] = "geldig"
-                self.lidNummerAlToegevoegd = true
-            } else {
-                statusTextFields["lidNummer"] = "ongeldig"
-            }
+            statusTextFields["lidNummer"] = "ingevuld"
         }
         
         if txtRijksregisterNr.text.isEmpty {
             statusTextFields["rijksregisterNr"] = "leeg"
-            self.rijksregisterNrAlToegevoegd = false
         } else {
-            if !checkPatternRijksregisterNr(txtRijksregisterNr.text) {
-                statusTextFields["rijksregisterNr"] = "ongeldig"
-                self.rijksregisterNrAlToegevoegd = false
-            } else {
-                if controleerRijksregisterNrAlToegevoegd(txtRijksregisterNr.text) == true {
-                    statusTextFields["rijksregisterNr"] = "geldig"
-                    self.rijksregisterNrAlToegevoegd = true
-                } else {
-                    statusTextFields["rijksregisterNr"] = "ongeldig"
-                    self.rijksregisterNrAlToegevoegd = false
-                }
-            }
+            statusTextFields["rijksregisterNr"] = "ingevuld"
         }
         
         if txtEmail.text.isEmpty {
             statusTextFields["email"] = "leeg"
-            emailAlToegevoegd = false
         } else {
-            if !checkPatternEmail(txtEmail.text) {
-                statusTextFields["email"] = "ongeldig"
-                emailAlToegevoegd = false
-            } else if controleerEmailAlToegevoegd(txtEmail.text) == true {
-                statusTextFields["email"] = "geldig"
-                emailAlToegevoegd = true
-            } else {
-                statusTextFields["email"] = "ongeldig"
-                emailAlToegevoegd = false
-            }
+            statusTextFields["email"] = "ingevuld"
         }
     }
     
     func pasLayoutVeldenAan() {
-        if statusTextFields["lidNummer"] == "leeg" || statusTextFields["lidNummer"] == "ongeldig" {
+        if statusTextFields["lidNummer"] == "leeg" {
             giveUITextFieldRedBorder(txtLidNummer)
         } else {
-            giveUITextFieldDefaultBorder(txtLidNummer)
+            if !checkPatternLidnummer(txtLidNummer.text) {
+                giveUITextFieldRedBorder(txtLidNummer)
+            } else {
+                giveUITextFieldDefaultBorder(txtLidNummer)
+            }
         }
         
-        if statusTextFields["rijksregisterNr"] == "leeg" || statusTextFields["rijksregisterNr"] == "ongeldig"{
+        if statusTextFields["rijksregisterNr"] == "leeg" {
             giveUITextFieldRedBorder(txtRijksregisterNr)
         } else {
-            giveUITextFieldDefaultBorder(txtRijksregisterNr)
+            if !checkPatternRijksregisterNr(txtRijksregisterNr.text) {
+                giveUITextFieldRedBorder(txtRijksregisterNr)
+            } else {
+                giveUITextFieldDefaultBorder(txtRijksregisterNr)
+            }
         }
         
-        if statusTextFields["email"] == "leeg" || statusTextFields["email"] == "ongeldig" {
+        if statusTextFields["email"] == "leeg" {
             giveUITextFieldRedBorder(txtEmail)
         } else {
-            giveUITextFieldDefaultBorder(txtEmail)
+            if !checkPatternEmail(txtEmail.text) {
+                giveUITextFieldRedBorder(txtEmail)
+            } else {
+                giveUITextFieldDefaultBorder(txtEmail)
+            }
         }
+    }
+    
+    func controleerBestaandeCombinatie(lidnummer: String, rijksregisternummer: String, email: String) -> Bool {
+        return ParseData.bestaatCombinatie(lidnummer, rijksregisternummer: rijksregisternummer, email: email)
     }
     
     func controleerRodeBordersAanwezig() -> Bool {
@@ -131,12 +119,12 @@ class MonitorRegistratie1ViewController: UIViewController {
     }
     
     func settenGegevens() {
-        monitor.lidNr = txtLidNummer.text.toInt()
+        monitor.lidNr = txtLidNummer.text
         monitor.rijksregisterNr = txtRijksregisterNr.text
         monitor.email = txtEmail.text
     }
     
-    func controleerLidNummerAlToegevoegd(lidNummer: Int) -> Bool {
+    /*func controleerLidNummer(lidNummer: String) -> Bool {
         return ParseData.lidNummerMonitorAlToegevoegd(lidNummer)
     }
     
@@ -146,5 +134,5 @@ class MonitorRegistratie1ViewController: UIViewController {
     
     func controleerEmailAlToegevoegd(email: String) -> Bool {
         return ParseData.emailMonitorAlToegevoegd(email)
-    }
+    }*/
 }

@@ -1,7 +1,6 @@
 import Foundation
 
-class Voorkeur
-{
+class Voorkeur {
     var id: String
     var data: String?
     var monitor: Monitor?

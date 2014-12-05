@@ -7,7 +7,6 @@ class InloggenViewController: ResponsiveTextFieldViewController {
     
     var statusTextFields: [String: String] = [:]
     var redColor: UIColor = UIColor.redColor()
-    var activityIndicator: UIActivityIndicatorView?
     
     @IBAction func toggle(sender: AnyObject) {
         toggleSideMenuView()
@@ -18,7 +17,6 @@ class InloggenViewController: ResponsiveTextFieldViewController {
         hideSideMenuView()
         txtEmail.autocorrectionType = UITextAutocorrectionType.No
         txtWachtwoord.autocorrectionType = UITextAutocorrectionType.No
-        self.activityIndicator = getActivityIndicatorView(self)
     }
     
     func checkPatternEmail(email: String) -> Bool {
@@ -101,6 +99,8 @@ class InloggenViewController: ResponsiveTextFieldViewController {
                 } else if type == "ouder" {
                     var ouder = ParseData.getOuderWithEmail(txtEmail.text)
                     performSegueWithIdentifier("ouderOverzicht", sender: self)
+                } else if type == "administrator" {
+                    performSegueWithIdentifier("administratorOverzicht", sender: self)
                 } else {
                     //column "soort" is niet ingevuld bij deze user in tabel User
                     //ERROR
@@ -122,7 +122,8 @@ class InloggenViewController: ResponsiveTextFieldViewController {
             let ouderOverzichtController = segue.destinationViewController as VakantiesTableViewController
         } else if segue.identifier == "overzichtMonitor" {
             let profielOverzichtController = segue.destinationViewController as EigenprofielMonitorTableViewController
-            profielOverzichtController.activityIndicator = self.activityIndicator
+        } else if segue.identifier == "administratorOverzicht" {
+            let overzichtAdministrator = segue.destinationViewController as VakantiesTableViewController
         } else {
             var alert = UIAlertController(title: "Fout", message: "U hebt niet alle velden ingevuld!", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Ga terug", style: UIAlertActionStyle.Default, handler: nil))

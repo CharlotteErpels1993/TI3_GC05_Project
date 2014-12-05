@@ -55,26 +55,24 @@ class InschrijvenVakantie4ViewController : ResponsiveTextFieldViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "volgende" {
-        let inschrijvenVakantie5ViewController = segue.destinationViewController as InschrijvenVakantie5ViewController
+            let inschrijvenVakantie5ViewController = segue.destinationViewController as InschrijvenVakantie5ViewController
     
-        if wilTweedeContactpersoon == true {
-            setStatusTextFields()
-            pasLayoutVeldenAan()
+            if wilTweedeContactpersoon == true {
+                setStatusTextFields()
+                pasLayoutVeldenAan()
         
-            if controleerRodeBordersAanwezig() == true {
-                foutBoxOproepen("Fout", "Gelieve de velden correct in te vullen!", self)
-            } else {
-                settenVerplichteGegevens()
+                if controleerRodeBordersAanwezig() == true {
+                    foutBoxOproepen("Fout", "Gelieve de velden correct in te vullen!", self)
+                } else {
+                    settenVerplichteGegevens()
                 
-                if statusTextFields["telefoon"] != "leeg" {
-                    contactpersoon2.telefoon = txtTelefoon.text
+                    if statusTextFields["telefoon"] != "leeg" {
+                        contactpersoon2.telefoon = txtTelefoon.text
+                    }
+                    inschrijvingVakantie.contactpersoon2 = contactpersoon2
+                    inschrijvenVakantie5ViewController.inschrijvingVakantie = inschrijvingVakantie
                 }
-                inschrijvingVakantie.contactpersoon2 = contactpersoon2
-                inschrijvenVakantie5ViewController.inschrijvingVakantie = inschrijvingVakantie
             }
-        }
-        //inschrijvenVakantie5ViewController.deelnemer = deelnemer
-        //inschrijvenVakantie5ViewController.contactpersoon1 = contactpersoon1
             inschrijvenVakantie5ViewController.inschrijvingVakantie = inschrijvingVakantie
         } else if segue.identifier == "gaTerug" {
             let vakantiesTableViewController = segue.destinationViewController as VakantiesTableViewController
