@@ -1,7 +1,7 @@
 import UIKit
 import QuartzCore
 
-class Registratie3ViewController: ResponsiveTextFieldViewController {
+class Registratie3ViewController: /*ResponsiveTextFieldViewController*/ UITableViewController {
     
     @IBOutlet weak var txtEmail: UITextField!
     @IBOutlet weak var txtWachtwoord: UITextField!
@@ -55,8 +55,6 @@ class Registratie3ViewController: ResponsiveTextFieldViewController {
                     foutBoxOproepen("Fout", "Wachtwoord en bevestig wachtwoord komen niet overeen.", self)
                 }
             }
-        } else if segue.identifier == "gaTerug" {
-            let vakantiesTableViewController = segue.destinationViewController as VakantiesTableViewController
         }
     }
     

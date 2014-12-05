@@ -937,7 +937,6 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                                 </state>
                                 <connections>
                                     <action selector="gaTerugNaarInloggen:" destination="8yj-Fc-LlM" eventType="touchUpInside" id="W02-0d-RUY"/>
-                                    <action selector="gaTerugNaarInloggen:" destination="w0S-HA-suc" eventType="touchUpInside" id="zWb-Qi-akT"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1060,7 +1059,6 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                                 </state>
                                 <connections>
                                     <action selector="gaTerugNaarInloggen:" destination="iwV-8Y-TX7" eventType="touchUpInside" id="3oU-67-nXb"/>
-                                    <action selector="gaTerugNaarInloggen:" destination="w0S-HA-suc" eventType="touchUpInside" id="W67-Gq-CIj"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1246,7 +1244,6 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                                 </state>
                                 <connections>
                                     <action selector="gaTerugNaarInloggen:" destination="Dtg-s5-zh1" eventType="touchUpInside" id="Zj3-cd-xf8"/>
-                                    <action selector="gaTerugNaarInloggen:" destination="w0S-HA-suc" eventType="touchUpInside" id="xFc-40-PvO"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -3883,7 +3880,15 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                             <outlet property="delegate" destination="3bm-Yn-N71" id="qaJ-nW-Fr8"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Registreren (2/3)" id="Bwd-07-Ca3"/>
+                    <navigationItem key="navigationItem" title="Registreren (2/3)" id="Bwd-07-Ca3">
+                        <barButtonItem key="backBarButtonItem" title="Terug" id="5D9-PA-AtW"/>
+                        <barButtonItem key="rightBarButtonItem" title="Volgende" id="egF-Dw-IME">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <segue destination="JYe-Hg-7e9" kind="show" identifier="volgende" id="GVP-zG-APO"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="txtBus" destination="upe-aW-XM1" id="Pml-Of-lql"/>
                         <outlet property="txtGemeente" destination="rOC-oQ-yjK" id="TcB-sm-Es2"/>
@@ -3900,116 +3905,165 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
             </objects>
             <point key="canvasLocation" x="2897" y="1106"/>
         </scene>
-        <!--Registreren-->
-        <scene sceneID="dth-mh-NbC">
+        <!--Registreren (3/3)-->
+        <scene sceneID="O6r-ws-vFP">
             <objects>
-                <viewController id="w0S-HA-suc" customClass="Registratie3ViewController" customModule="JOETZ" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="7gc-Cb-9dP"/>
-                        <viewControllerLayoutGuide type="bottom" id="XCc-2e-nXM"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="MaB-Lm-Qic">
+                <tableViewController id="JYe-Hg-7e9" customClass="Registratie3ViewController" customModule="JOETZ" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="MAJ-9s-aYD">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Vul de volgende gegevens in:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mbB-eL-1dg">
-                                <rect key="frame" x="16" y="74" width="224" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Wachtwoord: *" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KVD-77-46V">
-                                <rect key="frame" x="16" y="179" width="113" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email@email.com" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zbz-TI-f1b">
-                                <rect key="frame" x="16" y="138" width="568" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Bevestig wachtwoord: *" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yWf-vl-Uis">
-                                <rect key="frame" x="16" y="245" width="182" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eoq-1C-h6g">
-                                <rect key="frame" x="16" y="272" width="568" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XDv-uS-Fzx">
-                                <rect key="frame" x="16" y="207" width="568" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="E-mail: *" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6nT-CA-MLe">
-                                <rect key="frame" x="16" y="110" width="65" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8UF-HO-LKh">
-                                <rect key="frame" x="523" y="550" width="61" height="30"/>
-                                <state key="normal" title="Annuleer">
-                                    <color key="titleColor" red="0.90980392160000001" green="0.12941176469999999" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="gaTerugNaarInloggen:" destination="w0S-HA-suc" eventType="touchUpInside" id="1s5-6a-CLb"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* verplicht in te vullen" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ot-Nb-b9t">
-                                <rect key="frame" x="16" y="571" width="120" height="15"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="XDv-uS-Fzx" firstAttribute="leading" secondItem="MaB-Lm-Qic" secondAttribute="leadingMargin" id="5dm-2W-xWQ"/>
-                            <constraint firstItem="6nT-CA-MLe" firstAttribute="top" secondItem="mbB-eL-1dg" secondAttribute="bottom" constant="15.5" id="5vJ-8g-h44"/>
-                            <constraint firstItem="KVD-77-46V" firstAttribute="leading" secondItem="MaB-Lm-Qic" secondAttribute="leadingMargin" id="7NK-W3-UJ8"/>
-                            <constraint firstItem="XCc-2e-nXM" firstAttribute="top" secondItem="2Ot-Nb-b9t" secondAttribute="bottom" constant="14.5" id="BIh-bF-HYV"/>
-                            <constraint firstItem="eoq-1C-h6g" firstAttribute="leading" secondItem="MaB-Lm-Qic" secondAttribute="leadingMargin" id="LUz-hL-Vpl"/>
-                            <constraint firstItem="eoq-1C-h6g" firstAttribute="top" secondItem="yWf-vl-Uis" secondAttribute="bottom" constant="7" id="NOR-pt-kaj"/>
-                            <constraint firstItem="XDv-uS-Fzx" firstAttribute="trailing" secondItem="MaB-Lm-Qic" secondAttribute="trailingMargin" id="QhE-Xg-pK9"/>
-                            <constraint firstItem="mbB-eL-1dg" firstAttribute="top" secondItem="7gc-Cb-9dP" secondAttribute="bottom" constant="10" id="Qu4-q4-W6n"/>
-                            <constraint firstItem="XCc-2e-nXM" firstAttribute="top" secondItem="8UF-HO-LKh" secondAttribute="bottom" constant="20" id="RJ0-gY-cC9"/>
-                            <constraint firstItem="zbz-TI-f1b" firstAttribute="leading" secondItem="MaB-Lm-Qic" secondAttribute="leadingMargin" id="Tb4-Dq-2fw"/>
-                            <constraint firstItem="6nT-CA-MLe" firstAttribute="leading" secondItem="MaB-Lm-Qic" secondAttribute="leadingMargin" id="VeH-Zw-8zf"/>
-                            <constraint firstItem="XDv-uS-Fzx" firstAttribute="top" secondItem="KVD-77-46V" secondAttribute="bottom" constant="7" id="WlA-yJ-XHE"/>
-                            <constraint firstItem="eoq-1C-h6g" firstAttribute="trailing" secondItem="MaB-Lm-Qic" secondAttribute="trailingMargin" id="XiT-CU-yIq"/>
-                            <constraint firstItem="yWf-vl-Uis" firstAttribute="leading" secondItem="MaB-Lm-Qic" secondAttribute="leadingMargin" id="czd-H2-Brh"/>
-                            <constraint firstItem="yWf-vl-Uis" firstAttribute="top" secondItem="XDv-uS-Fzx" secondAttribute="bottom" constant="8" id="ga5-zb-hJ9"/>
-                            <constraint firstItem="zbz-TI-f1b" firstAttribute="top" secondItem="6nT-CA-MLe" secondAttribute="bottom" constant="8" id="gnw-zA-IjE"/>
-                            <constraint firstItem="2Ot-Nb-b9t" firstAttribute="leading" secondItem="MaB-Lm-Qic" secondAttribute="leadingMargin" id="gwx-5u-8jc"/>
-                            <constraint firstItem="KVD-77-46V" firstAttribute="top" secondItem="zbz-TI-f1b" secondAttribute="bottom" constant="11" id="kIZ-rY-Evu"/>
-                            <constraint firstItem="zbz-TI-f1b" firstAttribute="trailing" secondItem="MaB-Lm-Qic" secondAttribute="trailingMargin" id="lHE-Rs-8v7"/>
-                            <constraint firstItem="8UF-HO-LKh" firstAttribute="trailing" secondItem="MaB-Lm-Qic" secondAttribute="trailingMargin" id="r9e-sV-aFA"/>
-                            <constraint firstItem="mbB-eL-1dg" firstAttribute="leading" secondItem="MaB-Lm-Qic" secondAttribute="leadingMargin" id="sSj-eQ-25u"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Registreren" id="Sfz-uU-Y3L">
-                        <barButtonItem key="rightBarButtonItem" title="Voltooi" id="TgS-Sz-GiH">
+                        <sections>
+                            <tableViewSection id="8NO-XW-hI2">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="32" id="4DW-rE-Vvp">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4DW-rE-Vvp" id="PkN-bJ-Gur">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vul volgende gegevens in:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="URG-Ik-4VW">
+                                                    <rect key="frame" x="8" y="11" width="200" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="URG-Ik-4VW" firstAttribute="leading" secondItem="PkN-bJ-Gur" secondAttribute="leadingMargin" id="ldR-5T-oDS"/>
+                                                <constraint firstItem="URG-Ik-4VW" firstAttribute="top" secondItem="PkN-bJ-Gur" secondAttribute="topMargin" constant="3" id="xdi-E1-wbn"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="70" id="PdJ-ud-N0S">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PdJ-ud-N0S" id="c1D-Up-tLx">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email: *" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j2a-Sv-0eE">
+                                                    <rect key="frame" x="8" y="8" width="58" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2k0-iW-Jun">
+                                                    <rect key="frame" x="8" y="37" width="584" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="2k0-iW-Jun" firstAttribute="leading" secondItem="c1D-Up-tLx" secondAttribute="leadingMargin" id="2vo-fR-PxC"/>
+                                                <constraint firstItem="2k0-iW-Jun" firstAttribute="trailing" secondItem="c1D-Up-tLx" secondAttribute="trailingMargin" id="3nk-Te-lvf"/>
+                                                <constraint firstItem="2k0-iW-Jun" firstAttribute="top" secondItem="j2a-Sv-0eE" secondAttribute="bottom" constant="8" id="6CJ-a2-qbn"/>
+                                                <constraint firstItem="j2a-Sv-0eE" firstAttribute="top" secondItem="c1D-Up-tLx" secondAttribute="topMargin" id="Qd5-H4-6xx"/>
+                                                <constraint firstItem="j2a-Sv-0eE" firstAttribute="leading" secondItem="c1D-Up-tLx" secondAttribute="leadingMargin" id="i3y-3P-5OX"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="70" id="ZxQ-r6-RUd">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZxQ-r6-RUd" id="OwS-zc-7Nq">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wachtwoord: *" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eqN-l9-KXe">
+                                                    <rect key="frame" x="8" y="8" width="113" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JvY-u9-Iri">
+                                                    <rect key="frame" x="8" y="37" width="584" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="JvY-u9-Iri" firstAttribute="trailing" secondItem="OwS-zc-7Nq" secondAttribute="trailingMargin" id="1SS-NE-Bz9"/>
+                                                <constraint firstItem="JvY-u9-Iri" firstAttribute="leading" secondItem="OwS-zc-7Nq" secondAttribute="leadingMargin" id="dJc-eD-JfI"/>
+                                                <constraint firstItem="eqN-l9-KXe" firstAttribute="top" secondItem="OwS-zc-7Nq" secondAttribute="topMargin" id="ha3-J1-cmr"/>
+                                                <constraint firstItem="JvY-u9-Iri" firstAttribute="top" secondItem="eqN-l9-KXe" secondAttribute="bottom" constant="8" id="lqT-G2-f0J"/>
+                                                <constraint firstItem="eqN-l9-KXe" firstAttribute="leading" secondItem="OwS-zc-7Nq" secondAttribute="leadingMargin" id="wO2-Kv-4wL"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="70" id="Eba-s2-PsN">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Eba-s2-PsN" id="z4S-7v-PeR">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bevestig wachtwoord: *" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2DL-kO-bvw">
+                                                    <rect key="frame" x="8" y="8" width="182" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w0S-VN-aKH">
+                                                    <rect key="frame" x="8" y="37" width="584" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="w0S-VN-aKH" firstAttribute="leading" secondItem="z4S-7v-PeR" secondAttribute="leadingMargin" id="8iz-xw-xWB"/>
+                                                <constraint firstItem="w0S-VN-aKH" firstAttribute="top" secondItem="2DL-kO-bvw" secondAttribute="bottom" constant="8" id="B67-fd-4b6"/>
+                                                <constraint firstItem="2DL-kO-bvw" firstAttribute="leading" secondItem="z4S-7v-PeR" secondAttribute="leadingMargin" id="GDl-Oh-233"/>
+                                                <constraint firstItem="w0S-VN-aKH" firstAttribute="trailing" secondItem="z4S-7v-PeR" secondAttribute="trailingMargin" id="dgP-LP-P6T"/>
+                                                <constraint firstItem="2DL-kO-bvw" firstAttribute="top" secondItem="z4S-7v-PeR" secondAttribute="topMargin" id="zEy-zK-Lsi"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="GuG-cT-DQZ">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GuG-cT-DQZ" id="r2i-4W-zCN">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* verplicht in te vullen" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IDP-fw-ST9">
+                                                    <rect key="frame" x="8" y="26" width="138" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="63J-Mo-0Rb">
+                                                    <rect key="frame" x="531" y="7" width="61" height="30"/>
+                                                    <state key="normal" title="Annuleer">
+                                                        <color key="titleColor" red="0.90980392160000001" green="0.12941176469999999" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="63J-Mo-0Rb" firstAttribute="trailing" secondItem="r2i-4W-zCN" secondAttribute="trailingMargin" id="5bg-vN-Xxm"/>
+                                                <constraint firstItem="63J-Mo-0Rb" firstAttribute="top" secondItem="r2i-4W-zCN" secondAttribute="topMargin" constant="-1" id="J1n-BI-vN0"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="IDP-fw-ST9" secondAttribute="bottom" constant="-7.5" id="g1P-ZH-JDz"/>
+                                                <constraint firstItem="IDP-fw-ST9" firstAttribute="leading" secondItem="r2i-4W-zCN" secondAttribute="leadingMargin" id="npd-us-leb"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="JYe-Hg-7e9" id="ap7-Ft-ytR"/>
+                            <outlet property="delegate" destination="JYe-Hg-7e9" id="exp-YI-ftj"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Registreren (3/3)" id="roE-OJ-0l7">
+                        <barButtonItem key="rightBarButtonItem" title="Voltooi" id="rMI-GU-rkV">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <action selector="startIndicator:" destination="w0S-HA-suc" id="yGg-X0-9xR"/>
-                                <segue destination="69z-Tv-Va1" kind="show" identifier="voltooiRegistratie" id="qbT-aP-08U"/>
+                                <segue destination="69z-Tv-Va1" kind="show" identifier="voltooiRegistratie" id="wrK-E6-NUW"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="txtBevestigWachtwoord" destination="eoq-1C-h6g" id="9R7-5U-U3h"/>
-                        <outlet property="txtEmail" destination="zbz-TI-f1b" id="MO7-bM-hba"/>
-                        <outlet property="txtWachtwoord" destination="XDv-uS-Fzx" id="UNk-vu-p2Q"/>
+                        <outlet property="txtBevestigWachtwoord" destination="w0S-VN-aKH" id="t6U-6K-K9H"/>
+                        <outlet property="txtEmail" destination="2k0-iW-Jun" id="dVs-OK-eAV"/>
+                        <outlet property="txtWachtwoord" destination="JvY-u9-Iri" id="We3-ou-gcP"/>
                     </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ca8-jE-Hjf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eFW-Og-HKM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3587" y="1052"/>
+            <point key="canvasLocation" x="3584" y="1107"/>
         </scene>
         <!--Registratie voltooid-->
         <scene sceneID="W6m-of-VF8">
