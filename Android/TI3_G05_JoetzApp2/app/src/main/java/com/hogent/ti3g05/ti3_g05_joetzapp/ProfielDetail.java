@@ -67,7 +67,6 @@ public class ProfielDetail extends Activity {
 
         {
             btnProfielEdit = (Button) findViewById(R.id.btnProfielEdit);
-            btnProfielEdit.setTextColor(getResources().getColor(R.color.Rood));
             btnProfielEdit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
