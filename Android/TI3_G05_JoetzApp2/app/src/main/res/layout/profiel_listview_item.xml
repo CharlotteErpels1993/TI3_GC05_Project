@@ -16,7 +16,13 @@
         android:padding="1dp"
         android:src="@drawable/profielftoplaceholder"/>-->
 
-
+    <TextView
+        android:id="@+id/header"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
 
     <!--<TextView
         android:id="@+id/lidNr"

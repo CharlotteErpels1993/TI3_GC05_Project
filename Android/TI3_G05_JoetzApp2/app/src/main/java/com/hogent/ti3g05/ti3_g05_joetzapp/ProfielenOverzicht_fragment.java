@@ -31,6 +31,7 @@ import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 
@@ -197,7 +198,7 @@ public class ProfielenOverzicht_fragment extends Fragment /* implements SwipeRef
                     ob = query.find();
 
                     myDB.dropProfielen();
-                    for (ParseObject monitor : ob) {
+                    for (ParseObject monitor : ob) {//alle monitoren ophalen en opslaan
 
                         Monitor map = new Monitor();
                         map.setNaam((String) monitor.get("naam"));
@@ -243,6 +244,8 @@ public class ProfielenOverzicht_fragment extends Fragment /* implements SwipeRef
                     profielen = myDB.getProfielen();
 
                 }
+
+
                 if(ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("monitor")) {
                     try {
 
@@ -263,6 +266,7 @@ public class ProfielenOverzicht_fragment extends Fragment /* implements SwipeRef
                             alleIns.add(iv);
 
                         }
+
                         profielenMetZelfdeVorming.add(ingelogdeMonitor);
                         for (Monitor m : profielen) {
                             for (InschrijvingVorming inv : alleIns) {
@@ -273,38 +277,37 @@ public class ProfielenOverzicht_fragment extends Fragment /* implements SwipeRef
                                         break;
                                     }
                                 }
-
-
                             }
                             if (!profielenMetZelfdeVorming.contains(m)) {
                                 profielenAndere.add(m);
                             }
-
-                            /*
-                            Monitor map = new Monitor();
-                            map.setNaam((String) monitor.get("naam"));
-                            map.setVoornaam((String) monitor.get("voornaam"));
-                            map.setStraat((String) monitor.get("straat"));
-
-                            map.setPostcode((Integer) monitor.get("postcode"));
-                            map.setHuisnr((Number) monitor.get("nummer"));
-                            map.setLidNummer((Integer) monitor.get("lidNr"));
-                            map.setEmail((String) monitor.get("email"));
-                            map.setGemeente((String) monitor.get("gemeente"));
-                            map.setLinkFacebook((String) monitor.get("linkFacebook"));
-                            map.setGsm((String) monitor.get("telefoon"));
-                            map.setRijksregNr((String) monitor.get("rijksregisterNr"));
-
-
-                            profielen.add(map);*/
-
-
                         }
 
+                        //hieronder = enige duplicaten verwijderen
+                        profielenMetZelfdeVorming.remove(ingelogdeMonitor);
+                        HashSet<Monitor> hs = new HashSet<Monitor>();
+                        hs.addAll(profielenMetZelfdeVorming);
+                        profielenMetZelfdeVorming.clear();
+                        profielenMetZelfdeVorming.addAll(hs);
+
+                        Monitor eigenHeader = new Monitor();
+                        eigenHeader.setNaam("Eigen profiel");
+                        profielenSamen.add(eigenHeader);
+
+                        profielenSamen.add(ingelogdeMonitor);
+
+                        Monitor eersteHeader = new Monitor();
+                        eersteHeader.setNaam("Monitoren met dezelfde vorming");
+                        profielenSamen.add(eersteHeader);
+
+                        profielenSamen.addAll(profielenMetZelfdeVorming);
+
+                        Monitor tweedeHeader = new Monitor();
+                        tweedeHeader.setNaam("Resterende monitoren");
+                        profielenSamen.add(tweedeHeader);
 
                         // profielenSamen.addAll(profielenMetZelfdeVorming.size(),profielenAndere);
                         profielenSamen.addAll(profielenAndere);
-                        profielenSamen.addAll(0, profielenMetZelfdeVorming);
 
 
                     } catch (ParseException e) {

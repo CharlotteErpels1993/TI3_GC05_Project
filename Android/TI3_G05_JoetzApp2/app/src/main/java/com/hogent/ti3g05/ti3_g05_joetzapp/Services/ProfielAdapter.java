@@ -61,11 +61,12 @@ public class ProfielAdapter extends ArrayAdapter<Vorming> implements Filterable 
     public class ViewHolder {
         TextView naam;
         TextView voornaam;
-        TextView straat;
+        //TextView straat;
         TextView gemeente;
-        TextView lidNr;
-        TextView gsm;
-        TextView rijksregNr;
+        TextView header;
+        //TextView lidNr;
+        //TextView gsm;
+        //TextView rijksregNr;
     }
 
     @Override
@@ -86,6 +87,7 @@ public class ProfielAdapter extends ArrayAdapter<Vorming> implements Filterable 
 
             holder.naam = (TextView) view.findViewById(R.id.achternaam);
             holder.voornaam = (TextView) view.findViewById(R.id.voornaam);
+            holder.header = (TextView) view.findViewById(R.id.header);
             //holder.straat = (TextView) view.findViewById(R.id.straat);
             holder.gemeente = (TextView) view.findViewById(R.id.gemeente);
             //holder.lidNr = (TextView) view.findViewById(R.id.lidNr);
@@ -95,35 +97,47 @@ public class ProfielAdapter extends ArrayAdapter<Vorming> implements Filterable 
             holder = (ViewHolder) view.getTag();
         }
         //TODO geeft error bij getview bij sqlite
+        if (profielen.get(position).getEmail() == null){
+            holder.header.setVisibility(View.VISIBLE);
+            holder.naam.setVisibility(View.GONE);
+            holder.voornaam.setVisibility(View.GONE);
+            holder.gemeente.setVisibility(View.GONE);
 
-        holder.naam.setText(profielen.get(position).getNaam());
-        holder.voornaam.setText(profielen.get(position).getVoornaam());
+            holder.header.setText(profielen.get(position).getNaam());
+            return view;
+        }
+        else{
+            holder.header.setVisibility(View.GONE);
+            holder.naam.setText(profielen.get(position).getNaam());
+            holder.voornaam.setText(profielen.get(position).getVoornaam());
+            //holder.straat.setText(profielen.get(position).getStraat());
+            holder.gemeente.setText(profielen.get(position).getGemeente());
+            //holder.lidNr.setText(profielen.get(position).getLidNummer());
 
-        //holder.straat.setText(profielen.get(position).getStraat());
-        holder.gemeente.setText(profielen.get(position).getGemeente());
-        //holder.lidNr.setText(profielen.get(position).getLidNummer());
+            view.setOnClickListener(new OnClickListener() {
 
-        view.setOnClickListener(new OnClickListener() {
-
-            @Override
-            public void onClick(View arg0) {
-                Intent intent = new Intent(context, ProfielDetail.class);
-                intent.putExtra("naam",
-                        (profielen.get(position).getNaam()));
-                intent.putExtra("voornaam",
-                        (profielen.get(position).getVoornaam()));
+                @Override
+                public void onClick(View arg0) {
+                    Intent intent = new Intent(context, ProfielDetail.class);
+                    intent.putExtra("naam",
+                            (profielen.get(position).getNaam()));
+                    intent.putExtra("voornaam",
+                            (profielen.get(position).getVoornaam()));
                 /*intent.putExtra("straat", (profielen.get(position).getStraat()));
                 intent.putExtra("gemeente", (profielen.get(position).getGemeente()));
                 intent.putExtra("rijksregNr", profielen.get(position).getRijksregNr());
                 //intent.putExtra("lidNr", profielen.get(position).getLidNummer());*/
-                intent.putExtra("facebook", profielen.get(position).getLinkFacebook());
-                intent.putExtra("gsm", profielen.get(position).getGsmnr());
-                intent.putExtra("email", profielen.get(position).getEmail());
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(intent);
-            }
-        });
-        return view;
+                    intent.putExtra("facebook", profielen.get(position).getLinkFacebook());
+                    intent.putExtra("gsm", profielen.get(position).getGsmnr());
+                    intent.putExtra("email", profielen.get(position).getEmail());
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
+                }
+            });
+            return view;
+        }
+
+
     }
 
 
