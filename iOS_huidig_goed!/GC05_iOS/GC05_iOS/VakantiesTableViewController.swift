@@ -145,7 +145,33 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         cell.doelgroepLabel.layer.cornerRadius = 5.0
         cell.vakantieNaamLabel.text = vakantie.titel
         cell.doelgroepLabel.text! = " \(vakantie.minLeeftijd!) - \(vakantie.maxLeeftijd!) jaar "
+        
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if favoriet == true {
+            if editingStyle == UITableViewCellEditingStyle.Delete {
+                vakanties2.removeAtIndex(indexPath.row)
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+                var ouderResponse = ParseData.getOuderWithEmail(PFUser.currentUser().email)
+                var favorieteVakantie: Favoriet = Favoriet(id: "test")
+                if ouderResponse.1 == nil {
+                    favorieteVakantie.vakantie = vakanties[indexPath.row]
+                    favorieteVakantie.ouder = ouderResponse.0
+                }
+                //let selectedVakantie = vakanties[tableView.indexPathForSelectedRow()!.row]
+                ParseData.deleteFavorieteVakantie(favorieteVakantie)
+            }
+        }
+    }
+    
+    override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
+        if favoriet == true {
+            return .Delete
+        } else {
+            return .None
+        }
     }
     
     @IBAction func refresh(sender: UIRefreshControl) {
