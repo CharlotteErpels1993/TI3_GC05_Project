@@ -37,6 +37,7 @@ class VakantieDetailsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.toolbarHidden = false
         
         if PFUser.currentUser() != nil {
             var ouderResponse = ParseData.getOuderWithEmail(PFUser.currentUser().email)
@@ -131,20 +132,25 @@ class VakantieDetailsTableViewController: UITableViewController {
                     self.heartButton.hidden = true
                 }
             } else {
-                self.sectionToDelete = 7
+                self.sectionToDelete = 6
                 self.tableView.deleteSections(NSIndexSet(index: self.sectionToDelete), withRowAnimation: UITableViewRowAnimation.None)
                 self.navigationItem.rightBarButtonItem = nil
                 self.heartButton.hidden = true
             }
         } else {
-            self.sectionToDelete = 7
+            self.sectionToDelete = 6
             self.tableView.deleteSections(NSIndexSet(index: self.sectionToDelete), withRowAnimation: UITableViewRowAnimation.None)
             self.navigationItem.rightBarButtonItem = nil
             self.heartButton.hidden = true
         }
     }
+    @IBAction func openShareMenu(sender: AnyObject) {
+        var shareText = "Bekijk zeker en vast deze vakantie! \n \(vakantie.link!) \n -gedeeld via Joetz app"
+        let activityViewController = UIActivityViewController(activityItems: [shareText], applicationActivities: nil)
+        presentViewController(activityViewController, animated: true, completion: nil)
+    }
     
-    @IBAction func shareToTwitter(sender: AnyObject) {
+    /*@IBAction func shareToTwitter(sender: AnyObject) {
         var shareToTwitter : SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
         shareToTwitter.setInitialText("Bekijk zeker en vast deze vakantie! \n \(vakantie.link!) \n -gedeeld via Joetz app")
         self.presentViewController(shareToTwitter, animated: true, completion: nil)
@@ -154,7 +160,7 @@ class VakantieDetailsTableViewController: UITableViewController {
         var shareToFacebook : SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
         shareToFacebook.setInitialText("Bekijk zeker en vast deze vakantie! \n \(vakantie.link!) \n -gedeeld via Joetz app")
         self.presentViewController(shareToFacebook, animated: true, completion: nil)
-    }
+    }*/
     
     override func viewDidAppear(animated: Bool) {
         if PFUser.currentUser() == nil {
@@ -164,9 +170,9 @@ class VakantieDetailsTableViewController: UITableViewController {
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         if sectionToDelete == -1 {
-            return 8
-        } else {
             return 7
+        } else {
+            return 6
         }
     }
     
@@ -193,11 +199,11 @@ class VakantieDetailsTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 5 {
+        if section == 4 {
             return 3
-        } else if section == 6 {
+        } else if section == 5 {
             return 4
-        } else if section == 7 {
+        } else if section == 6 {
             if self.sectionToDelete == -1 {
                 return 5
             } else {

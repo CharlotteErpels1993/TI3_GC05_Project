@@ -6,6 +6,7 @@ class AfbeeldingenViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.toolbarHidden = true
         self.collectionView?.dataSource = self
         self.collectionView?.delegate = self
     }

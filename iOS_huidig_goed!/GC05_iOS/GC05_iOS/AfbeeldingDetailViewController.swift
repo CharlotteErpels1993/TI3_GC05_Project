@@ -9,6 +9,7 @@ class AfbeeldingDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.toolbarHidden = true
         
         var leftSwipe = UISwipeGestureRecognizer(target: self, action: ("handleSwipes:"))
         var rightSwipe = UISwipeGestureRecognizer(target: self, action: ("handleSwipes:"))

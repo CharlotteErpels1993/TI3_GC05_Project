@@ -19,6 +19,7 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         checkConnectie()
         ParseData.deleteFavorietTable()
         ParseData.vulFavorietTableOp()
+        self.navigationController?.toolbarHidden = true
         
         var responseVakanties: ([Vakantie], Int?)
         if PFUser.currentUser() != nil {
