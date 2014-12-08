@@ -187,19 +187,34 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VakantieNaam" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Rb-IM-edP">
-                                                    <rect key="frame" x="48" y="12" width="504" height="20.5"/>
+                                                    <rect key="frame" x="88" y="12" width="424" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" red="0.90980392160000001" green="0.12941176469999999" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="knO-th-iLQ">
+                                                    <rect key="frame" x="514" y="3" width="36" height="36"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="36" id="Q5v-r5-9ff"/>
+                                                        <constraint firstAttribute="width" constant="36" id="sPR-mg-edj"/>
+                                                    </constraints>
+                                                    <state key="normal" image="feedback.png">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <segue destination="mXu-bV-CsR" kind="show" id="kvx-0I-AHi"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailingMargin" secondItem="kOZ-V6-fCp" secondAttribute="trailing" constant="4" id="6t0-EK-0op"/>
+                                                <constraint firstItem="kOZ-V6-fCp" firstAttribute="leading" secondItem="knO-th-iLQ" secondAttribute="trailing" constant="8" id="7vr-Hx-ldf"/>
                                                 <constraint firstItem="5Rb-IM-edP" firstAttribute="leading" secondItem="2ZA-DK-r8I" secondAttribute="leadingMargin" constant="40" id="EIX-Bu-zJz"/>
                                                 <constraint firstItem="kOZ-V6-fCp" firstAttribute="top" secondItem="2ZA-DK-r8I" secondAttribute="topMargin" id="HMl-h9-f6L"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="5Rb-IM-edP" secondAttribute="trailing" constant="40" id="SLy-yt-AmF"/>
+                                                <constraint firstItem="knO-th-iLQ" firstAttribute="top" secondItem="2ZA-DK-r8I" secondAttribute="topMargin" constant="-5" id="KWD-g0-ALI"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="5Rb-IM-edP" secondAttribute="trailing" constant="80" id="SLy-yt-AmF"/>
                                                 <constraint firstItem="kOZ-V6-fCp" firstAttribute="trailing" secondItem="2ZA-DK-r8I" secondAttribute="trailingMargin" constant="-4" id="bFl-LG-xqx"/>
-                                                <constraint firstItem="5Rb-IM-edP" firstAttribute="leading" secondItem="2ZA-DK-r8I" secondAttribute="leadingMargin" constant="40" id="c9u-ae-XzL"/>
+                                                <constraint firstItem="5Rb-IM-edP" firstAttribute="leading" secondItem="2ZA-DK-r8I" secondAttribute="leadingMargin" constant="80" id="c9u-ae-XzL"/>
                                                 <constraint firstItem="kOZ-V6-fCp" firstAttribute="top" secondItem="2ZA-DK-r8I" secondAttribute="topMargin" id="j52-CJ-1Zi"/>
                                                 <constraint firstItem="5Rb-IM-edP" firstAttribute="top" secondItem="2ZA-DK-r8I" secondAttribute="topMargin" constant="4" id="m3C-fl-A25"/>
                                                 <constraint firstItem="5Rb-IM-edP" firstAttribute="top" secondItem="2ZA-DK-r8I" secondAttribute="topMargin" constant="4" id="wGF-da-dZc"/>
@@ -1399,7 +1414,52 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="poF-cv-4Bi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4135" y="336"/>
+            <point key="canvasLocation" x="3413" y="336"/>
+        </scene>
+        <!--Joetz Fun Factor-->
+        <scene sceneID="gYa-sf-k0p">
+            <objects>
+                <tableViewController id="mXu-bV-CsR" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="OVu-lA-GLF">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="DNq-pP-Fgv">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DNq-pP-Fgv" id="Rcq-I2-ga3">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="mXu-bV-CsR" id="cH4-6x-8VM"/>
+                            <outlet property="delegate" destination="mXu-bV-CsR" id="tCi-xD-AAY"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Joetz Fun Factor" id="umm-Ve-FKJ"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="whL-cg-Gyt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4065" y="330"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="wUf-Xp-cG9">
+            <objects>
+                <viewController id="Mys-iT-oCd" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gtT-Dw-0Ya"/>
+                        <viewControllerLayoutGuide type="bottom" id="ipo-eh-fk9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bNL-E1-5Vy">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5o-SQ-aWW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4724" y="327"/>
         </scene>
         <!--My Navigation Controller-->
         <scene sceneID="cC5-ea-HfQ">
@@ -5006,6 +5066,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
     <resources>
         <image name="Heart_Empty.png" width="999" height="928"/>
         <image name="Klevertje.png" width="615" height="427"/>
+        <image name="feedback.png" width="64" height="64"/>
         <image name="menu.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
