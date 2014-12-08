@@ -23,12 +23,12 @@ import java.util.Locale;
 
 public class FeedbackAdapter extends ArrayAdapter<Vakantie> implements Filterable {
 
-
     Context context;
     LayoutInflater inflater;
     ImageLoader imageLoader;
     private List<Feedback> feedback = null;
     private ArrayList<Feedback> arraylist;
+    private final String MAXIMALE_WAARDE = "5";
 
     public FeedbackAdapter(Context context,
                            List<Feedback> feedback) {
@@ -86,7 +86,7 @@ public class FeedbackAdapter extends ArrayAdapter<Vakantie> implements Filterabl
         holder.naamVakantie.setText(feedback.get(position).getVakantieNaam());
         holder.feedback.setText(feedback.get(position).getFeedback());
         holder.gebruiker.setText(feedback.get(position).getGebruiker());
-        holder.score.setText(feedback.get(position).getScore().toString());
+        holder.score.setText("Score: " + feedback.get(position).getScore().toString() + "/" + MAXIMALE_WAARDE);
         return view;
     }
 /*

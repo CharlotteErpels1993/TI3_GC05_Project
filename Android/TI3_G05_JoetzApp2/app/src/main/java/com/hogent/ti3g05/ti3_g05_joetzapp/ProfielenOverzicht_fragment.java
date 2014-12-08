@@ -289,8 +289,11 @@ public class ProfielenOverzicht_fragment extends Fragment /* implements SwipeRef
                         profielenMetZelfdeVorming.clear();
                         profielenMetZelfdeVorming.addAll(hs);
 
+                        //er worden 3 'monitoren' toegevoegd aan de lijst. Deze dienen enkel als header gebbruikt te worden. Kan niet op geklikt worden.
+                        //naam & voornaam wordt leeg gelaten, want null geeft een fout bij filtering
                         Monitor eigenHeader = new Monitor();
                         eigenHeader.setNaam("");
+                        eigenHeader.setVoornaam("");
                         eigenHeader.setMonitorId("Eigen profiel");
                         profielenSamen.add(eigenHeader);
 
@@ -298,6 +301,7 @@ public class ProfielenOverzicht_fragment extends Fragment /* implements SwipeRef
 
                         Monitor eersteHeader = new Monitor();
                         eersteHeader.setNaam("");
+                        eersteHeader.setVoornaam("");
                         eersteHeader.setMonitorId("Monitoren met dezelfde vorming");
                         profielenSamen.add(eersteHeader);
 
@@ -305,6 +309,7 @@ public class ProfielenOverzicht_fragment extends Fragment /* implements SwipeRef
 
                         Monitor tweedeHeader = new Monitor();
                         tweedeHeader.setNaam("");
+                        tweedeHeader.setVoornaam("");
                         tweedeHeader.setMonitorId("Resterende monitoren");
                         profielenSamen.add(tweedeHeader);
 
