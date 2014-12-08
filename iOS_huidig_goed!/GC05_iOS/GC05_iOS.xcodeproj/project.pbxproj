@@ -110,6 +110,7 @@
 		A5CB1FF91A35CCDD00A4178A /* GeefFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CB1FF81A35CCDD00A4178A /* GeefFeedbackViewController.swift */; };
 		A5CB1FFB1A35CD0000A4178A /* FeedbackSQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CB1FFA1A35CD0000A4178A /* FeedbackSQL.swift */; };
 		A5CB1FFD1A35D01200A4178A /* Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CB1FFC1A35D01200A4178A /* Feedback.swift */; };
+		A5CB1FFF1A35DAFE00A4178A /* FeedbackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CB1FFE1A35DAFE00A4178A /* FeedbackCell.swift */; };
 		A5CEA07B1A13998900E14103 /* VormingenTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CEA07A1A13998900E14103 /* VormingenTableViewController.swift */; };
 		A5CEA07D1A1399CA00E14103 /* VormingDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CEA07C1A1399CA00E14103 /* VormingDetailsTableViewController.swift */; };
 		A5CEA07F1A13ACDF00E14103 /* InschrijvenVormingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CEA07E1A13ACDF00E14103 /* InschrijvenVormingViewController.swift */; };
@@ -237,6 +238,7 @@
 		A5CB1FF81A35CCDD00A4178A /* GeefFeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeefFeedbackViewController.swift; sourceTree = "<group>"; };
 		A5CB1FFA1A35CD0000A4178A /* FeedbackSQL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackSQL.swift; sourceTree = "<group>"; };
 		A5CB1FFC1A35D01200A4178A /* Feedback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Feedback.swift; sourceTree = "<group>"; };
+		A5CB1FFE1A35DAFE00A4178A /* FeedbackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackCell.swift; sourceTree = "<group>"; };
 		A5CEA07A1A13998900E14103 /* VormingenTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VormingenTableViewController.swift; sourceTree = "<group>"; };
 		A5CEA07C1A1399CA00E14103 /* VormingDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VormingDetailsTableViewController.swift; sourceTree = "<group>"; };
 		A5CEA07E1A13ACDF00E14103 /* InschrijvenVormingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InschrijvenVormingViewController.swift; sourceTree = "<group>"; };
@@ -475,6 +477,7 @@
 			children = (
 				1BFC333F1A066A87009CA8EB /* VakantieCell.swift */,
 				A50740F71A1386D900D01900 /* AfbeeldingCollectionViewCell.swift */,
+				A5CB1FFE1A35DAFE00A4178A /* FeedbackCell.swift */,
 			);
 			name = "Custom cells";
 			sourceTree = "<group>";
@@ -665,6 +668,7 @@
 				A575A06A1A1633E500F6735A /* ENSideMenuNavigationController.swift in Sources */,
 				0F92E3151A1373E50005C86C /* InschrijvenVakantie5ViewController.swift in Sources */,
 				A5C6C4231A2F97E1004F5648 /* MonitorRegistratie3ViewController.swift in Sources */,
+				A5CB1FFF1A35DAFE00A4178A /* FeedbackCell.swift in Sources */,
 				1BDDB9571A02DD1E0007623D /* Gebruiker.swift in Sources */,
 				A512381D1A16332D002242C6 /* MyNavigationController.swift in Sources */,
 				1B39CF731A077C8F008DEC49 /* InloggenViewController.swift in Sources */,

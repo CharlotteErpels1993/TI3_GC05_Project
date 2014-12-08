@@ -175,6 +175,15 @@ class VakantieDetailsTableViewController: UITableViewController {
         }
     }
     
+    @IBAction func toonEnGeefFeedback(sender: AnyObject) {
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        var destViewController: FeedbackTableViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Feedback") as FeedbackTableViewController
+        destViewController.vakantieId = self.vakantie.id
+        sideMenuController()?.setContentViewController(destViewController)
+        hideSideMenuView()
+    }
+    
+    
     @IBAction func switchHeart(sender: AnyObject) {
         
         var favorieteVakantie: Favoriet = Favoriet(id: "test")

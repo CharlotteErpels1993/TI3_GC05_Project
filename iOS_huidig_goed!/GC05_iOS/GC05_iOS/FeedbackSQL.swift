@@ -2,7 +2,7 @@ import Foundation
 
 struct FeedbackSQL {
     static func createFeedbackTable() {
-        if let error = SD.createTable("Feedback", withColumnNamesAndTypes: ["objectId": .StringVal, "datum": .StringVal, "gebruiker": .StringVal, "goedgekeurd": .BoolVal, "waardering": .StringVal, "score": .IntVal])
+        if let error = SD.createTable("Feedback", withColumnNamesAndTypes: ["objectId": .StringVal, "datum": .StringVal, "gebruiker": .StringVal, "vakantie": .StringVal, "goedgekeurd": .BoolVal, "waardering": .StringVal, "score": .IntVal])
         {
             println("ERROR: error tijdens creatie van table Feedback")
         }
@@ -22,6 +22,7 @@ struct FeedbackSQL {
         var objectId: String = ""
         var datum: NSDate = NSDate()
         var gebruiker: String = ""
+        var vakantie: String = ""
         var goedgekeurd: Bool = false
         var waardering: String = ""
         var score: Int = 0
@@ -31,10 +32,9 @@ struct FeedbackSQL {
             queryString.removeAll(keepCapacity: true)
             
             objectId = feedback.objectId as String
-            /*ouder = favoriet["ouder"] as String
-            vakantie = favoriet["vakantie"] as String*/
-            datum = feedback["feedback"] as NSDate
+            datum = feedback["datum"] as NSDate
             gebruiker = feedback["gebruiker"] as String
+            vakantie = feedback["vakantie"] as String
             goedgekeurd = feedback["goedgekeurd"] as Bool
             waardering = feedback["waardering"] as String
             score = feedback["score"] as Int
@@ -44,6 +44,7 @@ struct FeedbackSQL {
             queryString.extend("objectId, ")
             queryString.extend("datum, ")
             queryString.extend("gebruiker, ")
+            queryString.extend("vakantie, ")
             queryString.extend("goedgekeurd, ")
             queryString.extend("waardering, ")
             queryString.extend("score")
@@ -54,6 +55,7 @@ struct FeedbackSQL {
             queryString.extend("'\(objectId)', ") //objectId - String
             queryString.extend("'\(datum)', ") //datum - String
             queryString.extend("'\(gebruiker)', ") //gebruiker - String
+            queryString.extend("'\(vakantie)', ") //vakantie - String
             queryString.extend("'\(goedgekeurd)', ") //goedgekeurd - Bool
             queryString.extend("'\(waardering)', ") //waardering - String
             queryString.extend("\(score)") // score - Int (geen '')!!
@@ -74,7 +76,6 @@ struct FeedbackSQL {
     }
     
     static func getAlleFeedback() -> ([Feedback], Int?) {
-        
         var feedbacken:[Feedback] = []
         var feedback: Feedback = Feedback(id: "test")
         
@@ -118,6 +119,12 @@ struct FeedbackSQL {
             var datumString = datum
             feedback.datum = datumString.toDate() as NSDate!
         }
+        if let gebruiker = row["gebruiker"]?.asString() {
+            feedback.gebruiker?.id = gebruiker
+        }
+        if let vakantie = row["vakantie"]?.asString() {
+            feedback.vakantie?.id = vakantie
+        }
         if let goedgekeurd = row["goedgekeurd"]?.asBool() {
             feedback.goedgekeurd = goedgekeurd
         }
@@ -139,11 +146,44 @@ struct FeedbackSQL {
         //favorietJSON.setValue(favoriet.vakantie?.id, forKey: "vakantie")
         feedbackJSON.setValue(feedback.datum, forKey: "datum")
         feedbackJSON.setValue(feedback.goedgekeurd, forKey: "goedgekeurd")
-        feedbackJSON.setValue(feedback.gebruiker?.id, forKey: "gebruiker")
+        feedbackJSON.setValue(feedback.gebruiker!.id, forKey: "gebruiker")
+        feedbackJSON.setValue(feedback.vakantie!.id, forKey: "vakantie")
         feedbackJSON.setValue(feedback.waardering, forKey: "waardering")
         feedbackJSON.setValue(feedback.score, forKey: "score")
         
         
         feedbackJSON.save()
+    }
+    
+    static func getAlleFeedbackMetVakantieId(vakantieId: String) -> ([Feedback], Int?){
+        var feedbacken: [Feedback] = []
+        var feedback: Feedback = Feedback(id: "test")
+        
+        var query = "SELECT * FROM Feedback WHERE vakantie = \(vakantieId)"
+        
+        let (resultSet, err) = SD.executeQuery(query)
+        
+        var response: ([Feedback], Int?)
+        var error: Int?
+        
+        if err != nil {
+            //there was an error during the query, handle it here
+        } else {
+            if resultSet.count == 0 {
+                error = 1
+            }
+            else {
+                error = nil
+                
+                for row in resultSet {
+                    feedback = getFeedback(row)
+                    feedbacken.append(feedback)
+                }
+            }
+        }
+        
+        //return afbeeldingen
+        response = (feedbacken, error)
+        return response
     }
 }

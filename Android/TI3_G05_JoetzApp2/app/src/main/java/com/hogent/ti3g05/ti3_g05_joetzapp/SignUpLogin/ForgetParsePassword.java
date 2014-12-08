@@ -29,19 +29,15 @@ public class ForgetParsePassword extends Activity{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.forgetpassword);
+        getActionBar().setTitle("Wachtwoord vergeten");
 		
 		et_forgetpassword = (EditText) findViewById(R.id.et_forgetpassword);
 		btn_submitforgetpassword = (Button) findViewById(R.id.btn_submitforgetpassword);
 
-
-        getActionBar().setTitle("Wachtwoord vergeten");
-
-        btn_submitforgetpassword.setTextColor(getResources().getColor(R.color.Rood));
 		btn_submitforgetpassword.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				
 				email = et_forgetpassword.getText().toString();
                 Toast.makeText(getApplicationContext(), "Mail wordt verstuurd", Toast.LENGTH_LONG).show();
 				checkEmailID();

@@ -40,15 +40,12 @@ public class Login extends Activity{
 	// Connection detector class
 	ConnectionDetector cd;
 
-   /* private boolean checkEmail(String email) {
-        return EMAIL_ADDRESS_PATTERN.matcher(email).matches();
-    }*/
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_login);
+        getActionBar().setTitle(getString(R.string.title_activity_Login));
 
         cd = new ConnectionDetector(getApplicationContext());
         //Calling ParseAnalytics to see Analytics of our app
@@ -64,9 +61,6 @@ public class Login extends Activity{
         mUserNameEditText = (EditText) findViewById(R.id.username);
         mPasswordEditText = (EditText) findViewById(R.id.password);
 
-        getActionBar().setTitle(getString(R.string.title_activity_Login));
-
-        btn_LoginIn.setTextColor(getResources().getColor(R.color.Rood));
 
         btn_LoginIn.setOnClickListener(new OnClickListener() {
 
@@ -77,7 +71,6 @@ public class Login extends Activity{
                 // check for Internet status
                 if (isInternetPresent) {
                     // Internet Connection is Present
-                    // make HTTP requests
                     attemptLogin();
                 } else {
                     // Internet connection is not present
@@ -88,8 +81,6 @@ public class Login extends Activity{
             }
         });
 
-        btn_SignUp.setTextColor(getResources().getColor(R.color.Rood));
-
         btn_SignUp.setOnClickListener(new OnClickListener() {
 
             @Override
@@ -98,8 +89,6 @@ public class Login extends Activity{
                 startActivity(in);
             }
         });
-
-        btn_ForgetPass.setTextColor(getResources().getColor(R.color.Rood));
 
         btn_ForgetPass.setOnClickListener(new OnClickListener() {
 
@@ -111,8 +100,6 @@ public class Login extends Activity{
                 overridePendingTransition(R.anim.right_in, R.anim.left_out);
             }
         });
-
-
 	}
 
 
@@ -162,6 +149,7 @@ public class Login extends Activity{
 		}
 	}
 
+    //waarden zijn niet leeg -> Parse probeert in te loggen
 	private void login(String lowerCase, String password) {
         ParseUser.logInInBackground(lowerCase, password, new LogInCallback() {
             @Override
@@ -184,6 +172,7 @@ public class Login extends Activity{
 
         overridePendingTransition(R.anim.left_in, R.anim.right_out);
 	}
+
 	protected void loginUnSuccessful() {
 		Toast.makeText(getApplicationContext(), getString(R.string.error_incorrectLogin), Toast.LENGTH_SHORT).show();
 	}
