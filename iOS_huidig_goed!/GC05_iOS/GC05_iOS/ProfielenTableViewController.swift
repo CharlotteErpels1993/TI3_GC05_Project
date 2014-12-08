@@ -69,6 +69,26 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
             self.tableView.deleteSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.None)
         }*/
         
+        /* NEW
+        if soort == "monitor" {
+            if monitorenZelfdeVorming.count == 0 {
+                sectionToDelete = 1
+            } else {
+                sectionToDelete = 0
+            }
+            self.tableView.deleteSections(NSIndexSet(index: sectionToDelete), withRowAnimation: UITableViewRowAnimation.None)
+        } else if soort == "administrator" {
+            sectionToDelete = 9
+            self.tableView.deleteSections(NSIndexSet(index: 1), withRowAnimation: UITableViewRowAnimation.None)
+            if monitoren2.count == 0 {
+                sectionToDelete == 9
+                self.tableView.deleteSections(NSIndexSet(index: 1), withRowAnimation: UITableViewRowAnimation.None)
+            }
+        } else {
+            sectionToDelete = -1
+            self.tableView.deleteSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.None)
+        }*/
+        
         if monitorenZelfdeVorming2.count == 0 {
             if soort == "administrator" {
                 sectionToDelete = 9
@@ -80,9 +100,10 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
             if soort == "administrator" {
                 sectionToDelete = 9
             } else {
-                sectionToDelete = 0
+                sectionToDelete = -1
+                self.tableView.deleteSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.None)
             }
-            self.tableView.deleteSections(NSIndexSet(index: sectionToDelete), withRowAnimation: UITableViewRowAnimation.None)
+            //self.tableView.deleteSections(NSIndexSet(index: sectionToDelete), withRowAnimation: UITableViewRowAnimation.None)
         } else {
             sectionToDelete = -1
         }
@@ -141,6 +162,18 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
         } else {
             return 2
         }
+        
+        /*if sectionToDelete == -1 {
+            return 2
+        } else if sectionToDelete == 1 {
+            return 2
+        } else if sectionToDelete == 0 {
+            
+        } else if sectionToDelete == 9 {
+            
+        } else {
+            return 2
+        }*/
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -214,12 +247,12 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
             cell.textLabel?.text = monitor.voornaam! + " " + monitor.naam!
             cell.detailTextLabel?.text = "Meer informatie"
         } else if self.sectionToDelete == -1 {
-            if indexPath.section == 0 {
+            if indexPath.section == 1 {
                 cell = tableView.dequeueReusableCellWithIdentifier("monitorCellZelfdeVorming", forIndexPath: indexPath) as UITableViewCell
                 let monitor = monitorenZelfdeVorming2[indexPath.row]
                 cell.textLabel?.text = monitor.voornaam! + " " + monitor.naam!
                 cell.detailTextLabel!.text = "Meer informatie"
-            } else if indexPath.section == 1 {
+            } else if indexPath.section == 2 {
                 cell = tableView.dequeueReusableCellWithIdentifier("monitorCell", forIndexPath: indexPath) as UITableViewCell
                 let monitor = monitoren2[indexPath.row]
                 cell.textLabel?.text = monitor.voornaam! + " " + monitor.naam!

@@ -7,7 +7,6 @@ class EigenprofielMonitorTableViewController: UITableViewController {
     @IBOutlet weak var email: UILabel!
     @IBOutlet weak var telefoon: UILabel!
     @IBOutlet weak var gsm: UILabel!
-    @IBOutlet weak var facebook: UILabel!
     
     var activityIndicator: UIActivityIndicatorView!
     
@@ -37,12 +36,6 @@ class EigenprofielMonitorTableViewController: UITableViewController {
         }
         
         gsm.text = monitor.gsm!
-        
-        if monitor.linkFacebook == "" {
-            facebook.text = "Nog niet ingevuld"
-        } else {
-            facebook.text = monitor.linkFacebook!
-        }
     }
     
     @IBAction func gaTerugNaarOverzichtMonitor(segue: UIStoryboardSegue) { }

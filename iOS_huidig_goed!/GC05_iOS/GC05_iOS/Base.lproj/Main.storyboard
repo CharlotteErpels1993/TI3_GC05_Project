@@ -160,7 +160,7 @@
                         <sections>
                             <tableViewSection id="rfv-fh-igZ">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="WN1-do-1Jz">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="WN1-do-1Jz">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WN1-do-1Jz" id="2ZA-DK-r8I">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -1923,41 +1923,6 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                                             </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="hED-r6-HHc">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hED-r6-HHc" id="17L-YD-O6M">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Facebook:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ac2-wL-SHw">
-                                                    <rect key="frame" x="8" y="11" width="83" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Facebook:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WoE-u2-xOa">
-                                                    <rect key="frame" x="97" y="11" width="495" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="WoE-u2-xOa" secondAttribute="trailing" id="1MO-Zr-Dz7"/>
-                                                <constraint firstItem="ac2-wL-SHw" firstAttribute="top" secondItem="17L-YD-O6M" secondAttribute="topMargin" constant="3" id="8rM-MR-9WG"/>
-                                                <constraint firstItem="WoE-u2-xOa" firstAttribute="trailing" secondItem="17L-YD-O6M" secondAttribute="trailingMargin" id="Dzd-ly-v53"/>
-                                                <constraint firstItem="WoE-u2-xOa" firstAttribute="leading" secondItem="17L-YD-O6M" secondAttribute="leadingMargin" constant="89" id="PmA-7Y-30e"/>
-                                                <constraint firstItem="ac2-wL-SHw" firstAttribute="leading" secondItem="17L-YD-O6M" secondAttribute="leadingMargin" id="jtd-aM-Mob"/>
-                                                <constraint firstItem="WoE-u2-xOa" firstAttribute="leading" secondItem="17L-YD-O6M" secondAttribute="leadingMargin" id="m5i-C3-Gsp"/>
-                                                <constraint firstItem="WoE-u2-xOa" firstAttribute="top" secondItem="17L-YD-O6M" secondAttribute="topMargin" constant="3" id="tNl-DK-w5M"/>
-                                            </constraints>
-                                            <variation key="default">
-                                                <mask key="constraints">
-                                                    <exclude reference="1MO-Zr-Dz7"/>
-                                                    <exclude reference="m5i-C3-Gsp"/>
-                                                </mask>
-                                            </variation>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="NA5-fI-NON">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NA5-fI-NON" id="AO8-2p-dew">
@@ -1992,9 +1957,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                     </tableView>
                     <navigationItem key="navigationItem" title="MonitorNaam" id="N5t-hT-km8"/>
                     <connections>
-                        <outlet property="btnVerstuurMail" destination="gyN-rW-0Lu" id="iSf-1J-VMv"/>
                         <outlet property="emailLabel" destination="qrG-fC-0at" id="1GK-OF-XQg"/>
-                        <outlet property="facebookLabel" destination="WoE-u2-xOa" id="kdY-po-1u6"/>
                         <outlet property="gsmLabel" destination="7Uv-YH-GOL" id="BHN-Nj-C07"/>
                         <outlet property="naamLabel" destination="LYC-78-gQG" id="avL-kG-wmf"/>
                         <outlet property="telefoonLabel" destination="jvT-n4-v2E" id="qRx-wc-TMR"/>
@@ -4117,12 +4080,6 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Facebook link:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z3u-lG-cAe">
-                                <rect key="frame" x="16" y="342.5" width="112" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Aw8-sv-3S2">
                                 <rect key="frame" x="149" y="114" width="435" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -4143,11 +4100,6 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HqP-Uv-9B5">
-                                <rect key="frame" x="16" y="371" width="568" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bewerk u gegevens:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bbg-68-a9h">
                                 <rect key="frame" x="16" y="72" width="155.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -4164,7 +4116,6 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="bbg-68-a9h" firstAttribute="top" secondItem="yPy-FH-5hL" secondAttribute="bottom" constant="8" id="2uE-VJ-Gxz"/>
-                            <constraint firstItem="HqP-Uv-9B5" firstAttribute="top" secondItem="z3u-lG-cAe" secondAttribute="bottom" constant="8" id="4Jr-tM-zfp"/>
                             <constraint firstItem="Aw8-sv-3S2" firstAttribute="leading" secondItem="OFM-q2-v5W" secondAttribute="trailing" constant="40" id="5SS-2O-2il"/>
                             <constraint firstItem="BkO-ho-YuC" firstAttribute="trailing" secondItem="AAs-zI-xjp" secondAttribute="trailingMargin" id="5Zg-lp-072"/>
                             <constraint firstItem="aQ1-IJ-lN7" firstAttribute="top" secondItem="OFM-q2-v5W" secondAttribute="bottom" constant="25.5" id="6Pm-uN-3Bg"/>
@@ -4181,15 +4132,11 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                             <constraint firstItem="pjR-1i-mXI" firstAttribute="leading" secondItem="AAs-zI-xjp" secondAttribute="leadingMargin" id="Ymh-Wo-rgo"/>
                             <constraint firstItem="Aw8-sv-3S2" firstAttribute="trailing" secondItem="AAs-zI-xjp" secondAttribute="trailingMargin" id="Zs6-OS-ncJ"/>
                             <constraint firstItem="bYt-Gy-erx" firstAttribute="leading" secondItem="AAs-zI-xjp" secondAttribute="leadingMargin" id="aXe-1q-CQx"/>
-                            <constraint firstItem="HqP-Uv-9B5" firstAttribute="trailing" secondItem="AAs-zI-xjp" secondAttribute="trailingMargin" id="bgN-rt-gso"/>
                             <constraint firstItem="1DH-g1-s7c" firstAttribute="top" secondItem="UDN-iK-7PX" secondAttribute="bottom" constant="8" id="btE-Zd-Q67"/>
                             <constraint firstItem="OFM-q2-v5W" firstAttribute="leading" secondItem="AAs-zI-xjp" secondAttribute="leadingMargin" id="c1d-DM-uIh"/>
                             <constraint firstItem="Aw8-sv-3S2" firstAttribute="top" secondItem="yPy-FH-5hL" secondAttribute="bottom" constant="50" id="caA-rk-6u7"/>
                             <constraint firstItem="1DH-g1-s7c" firstAttribute="trailing" secondItem="AAs-zI-xjp" secondAttribute="trailingMargin" id="hXM-Fd-TBb"/>
                             <constraint firstItem="EFO-BA-8dE" firstAttribute="leading" secondItem="aQ1-IJ-lN7" secondAttribute="trailing" constant="72" id="kTF-BG-BHY"/>
-                            <constraint firstItem="HqP-Uv-9B5" firstAttribute="leading" secondItem="AAs-zI-xjp" secondAttribute="leadingMargin" id="nTI-eL-Pf0"/>
-                            <constraint firstItem="z3u-lG-cAe" firstAttribute="leading" secondItem="AAs-zI-xjp" secondAttribute="leadingMargin" id="nWj-6l-nxJ"/>
-                            <constraint firstItem="z3u-lG-cAe" firstAttribute="top" secondItem="BkO-ho-YuC" secondAttribute="bottom" constant="8" id="qGY-CF-aYX"/>
                             <constraint firstItem="UDN-iK-7PX" firstAttribute="top" secondItem="aQ1-IJ-lN7" secondAttribute="bottom" constant="26.5" id="v4G-Bh-4sV"/>
                             <constraint firstItem="OFM-q2-v5W" firstAttribute="top" secondItem="bbg-68-a9h" secondAttribute="bottom" constant="24.5" id="vxx-VG-048"/>
                         </constraints>
@@ -4202,7 +4149,6 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="facebookTxt" destination="HqP-Uv-9B5" id="IaD-CV-DPy"/>
                         <outlet property="gsmTxt" destination="BkO-ho-YuC" id="C6d-EP-6jI"/>
                         <outlet property="naamTxt" destination="EFO-BA-8dE" id="EXk-wj-a7j"/>
                         <outlet property="telefoonTxt" destination="1DH-g1-s7c" id="0p4-Jg-WrV"/>
@@ -4575,43 +4521,6 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                                             </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="ezF-E1-zX5">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ezF-E1-zX5" id="AZc-lA-hdm">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Facebook:" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vWj-89-B1S">
-                                                    <rect key="frame" x="111" y="11" width="481" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Facebook:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sLh-Dd-dHI">
-                                                    <rect key="frame" x="8" y="11" width="83" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="sLh-Dd-dHI" firstAttribute="leading" secondItem="AZc-lA-hdm" secondAttribute="leadingMargin" id="326-j9-PKE"/>
-                                                <constraint firstItem="vWj-89-B1S" firstAttribute="leading" secondItem="AZc-lA-hdm" secondAttribute="leadingMargin" constant="103" id="FW1-pZ-MNZ"/>
-                                                <constraint firstItem="sLh-Dd-dHI" firstAttribute="top" secondItem="AZc-lA-hdm" secondAttribute="topMargin" constant="3" id="cbY-tZ-bzF"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="vWj-89-B1S" secondAttribute="trailing" id="fOT-5Q-pEV"/>
-                                                <constraint firstItem="vWj-89-B1S" firstAttribute="top" secondItem="AZc-lA-hdm" secondAttribute="topMargin" constant="3" id="gzW-vJ-AFz"/>
-                                                <constraint firstItem="vWj-89-B1S" firstAttribute="top" secondItem="AZc-lA-hdm" secondAttribute="topMargin" constant="3" id="oUl-fJ-S40"/>
-                                                <constraint firstItem="vWj-89-B1S" firstAttribute="leading" secondItem="AZc-lA-hdm" secondAttribute="leadingMargin" id="swg-9J-1VO"/>
-                                                <constraint firstItem="vWj-89-B1S" firstAttribute="trailing" secondItem="AZc-lA-hdm" secondAttribute="trailingMargin" id="zqJ-5e-BvZ"/>
-                                            </constraints>
-                                            <variation key="default">
-                                                <mask key="constraints">
-                                                    <exclude reference="fOT-5Q-pEV"/>
-                                                    <exclude reference="gzW-vJ-AFz"/>
-                                                    <exclude reference="swg-9J-1VO"/>
-                                                </mask>
-                                            </variation>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -4635,7 +4544,6 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                     </navigationItem>
                     <connections>
                         <outlet property="email" destination="gj3-Q6-SOS" id="wDo-gY-203"/>
-                        <outlet property="facebook" destination="vWj-89-B1S" id="4tY-Jd-UwS"/>
                         <outlet property="gsm" destination="9Q7-G8-Ytu" id="CRY-SI-4Lg"/>
                         <outlet property="naam" destination="EnH-Zp-8YU" id="D2y-vn-3bE"/>
                         <outlet property="telefoon" destination="kGV-0c-JMc" id="h4G-Gi-cjO"/>

@@ -7,7 +7,6 @@ class ProfielDetailsTableViewController: UITableViewController, MFMailComposeVie
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var telefoonLabel: UILabel!
     @IBOutlet weak var gsmLabel: UILabel!
-    @IBOutlet weak var facebookLabel: UILabel!
     
     var monitor: Monitor!
     
@@ -27,12 +26,6 @@ class ProfielDetailsTableViewController: UITableViewController, MFMailComposeVie
         }
         
         gsmLabel.text = monitor.gsm!
-        
-        if monitor.linkFacebook == "" {
-            facebookLabel.text = "Niet beschikbaar"
-        } else {
-            facebookLabel.text = monitor.linkFacebook!
-        }
     }
     
     @IBAction func verstuurMail(sender: AnyObject) {

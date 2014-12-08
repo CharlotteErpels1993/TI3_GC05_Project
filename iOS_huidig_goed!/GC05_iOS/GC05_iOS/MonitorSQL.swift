@@ -8,8 +8,7 @@ struct MonitorSQL {
                 /*"wachtwoord": .StringVal ,*/"voornaam": .StringVal, "naam": .StringVal,
                 "straat": .StringVal, "nummer": .IntVal, "bus": .StringVal, "postcode": .IntVal,
                 "gemeente": .StringVal, "telefoon": .StringVal, "gsm": .StringVal,
-                "aansluitingsNr": .IntVal, "codeGerechtigde": .IntVal, "lidnummer": .StringVal,
-                "linkFacebook": .StringVal])
+                "aansluitingsNr": .IntVal, "codeGerechtigde": .IntVal, "lidnummer": .StringVal])
         {
             println("ERROR: error tijdens creatie van table Monitor")
         }
@@ -78,10 +77,6 @@ struct MonitorSQL {
         monitor.gsm = monitorObject["gsm"] as? String
         monitor.aansluitingsNr = monitorObject["aansluitingsNr"] as? Int
         monitor.codeGerechtigde = monitorObject["codeGerechtigde"] as? Int
-        
-        if monitorObject["linkFacebook"] as? String != nil {
-            monitor.linkFacebook = monitorObject["linkFacebook"] as? String
-        }
         
         if monitorObject["lidNr"] as? String != nil {
             monitor.lidNr = monitorObject["lidnummer"] as? String
@@ -212,9 +207,6 @@ struct MonitorSQL {
         if let lidNr = row["lidnummer"]?.asString() {
             monitor.lidNr = lidNr
         }
-        if let linkFacebook = row["linkFacebook"]?.asString() {
-            monitor.linkFacebook = linkFacebook
-        }
         
         return monitor
     }
@@ -243,7 +235,6 @@ struct MonitorSQL {
         var aansluitingsNr: Int?
         var codeGerechtigde: Int?
         var lidNr: String?
-        var linkFacebook: String?
         
         for monitor in monitors {
             
@@ -265,7 +256,6 @@ struct MonitorSQL {
             aansluitingsNr = monitor["aansluitingsNr"] as? Int
             codeGerechtigde = monitor["codeGerechtigde"] as? Int
             lidNr = monitor["lidnummer"] as? String
-            linkFacebook = monitor["linkFacebook"] as? String
             
             if rijksregisterNr == nil {
                 rijksregisterNr = ""
@@ -284,9 +274,6 @@ struct MonitorSQL {
             }
             if lidNr == nil {
                 lidNr = ""
-            }
-            if linkFacebook == nil {
-                linkFacebook = ""
             }
             
             
@@ -307,8 +294,7 @@ struct MonitorSQL {
             queryString.extend("gsm, ")
             queryString.extend("aansluitingsNr, ")
             queryString.extend("codeGerechtigde, ")
-            queryString.extend("lidnummer, ")
-            queryString.extend("linkFacebook")
+            queryString.extend("lidnummer")
             queryString.extend(")")
             queryString.extend(" VALUES ")
             queryString.extend("(")
@@ -328,8 +314,7 @@ struct MonitorSQL {
             queryString.extend("'\(gsm)', ") //gsm - String
             queryString.extend("\(aansluitingsNr!), ") //aansluitingsNr - Int (geen '')!!
             queryString.extend("\(codeGerechtigde!), ") //codeGerechtigde - Int (geen '')!!
-            queryString.extend("'\(lidNr)', ") //lidNr - String
-            queryString.extend("'\(linkFacebook!)'") //linkFacebook - String
+            queryString.extend("'\(lidNr)'") //lidNr - String
             
             queryString.extend(")")
             
@@ -422,7 +407,6 @@ struct MonitorSQL {
         var monitorObject = query.getObjectWithId(monitor.id)
         
         var telefoon: String = ""
-        var linkFacebook: String = ""
         
         monitorObject["voornaam"] = monitor.voornaam
         monitorObject["naam"] = monitor.naam
@@ -430,10 +414,6 @@ struct MonitorSQL {
         
         if monitor.telefoon != nil {
             monitorObject["telefoon"] = monitor.telefoon
-        }
-        
-        if monitor.linkFacebook != nil {
-            monitorObject["linkFacebook"] = monitor.linkFacebook
         }
 
         monitorObject.save()

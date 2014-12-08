@@ -71,6 +71,7 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
     override func viewWillAppear(animated: Bool) {
         self.setNeedsStatusBarAppearanceUpdate()
         self.navigationController!.toolbarHidden = true
+        self.tableView.reloadData()
     }
     
     func checkConnectie() {

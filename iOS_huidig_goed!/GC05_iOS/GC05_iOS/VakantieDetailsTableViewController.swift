@@ -56,14 +56,6 @@ class VakantieDetailsTableViewController: UITableViewController {
                     self.favoriet = false
                 }
             }
-        
-            /*if ParseData.isFavorieteVakantie(favorieteVakantie) == true {
-                heartButton.setImage(self.imageHeartFull, forState: UIControlState.Normal)
-                self.favoriet = true
-            } else {
-                heartButton.setImage(self.imageHeartEmpty, forState: UIControlState.Normal)
-                self.favoriet = false
-            }*/
         }
         
         var responseImages: ([UIImage], Int?)

@@ -6,7 +6,6 @@ class ProfielBewerkenViewController: ResponsiveTextFieldViewController {
     @IBOutlet weak var naamTxt: UITextField!
     @IBOutlet weak var telefoonTxt: UITextField!
     @IBOutlet weak var gsmTxt: UITextField!
-    @IBOutlet weak var facebookTxt: UITextField!
     
     var monitor: Monitor?
     var statusTextFields: [String: String] = [:]
@@ -57,12 +56,6 @@ class ProfielBewerkenViewController: ResponsiveTextFieldViewController {
                 statusTextFields["telefoon"] = "geldig"
             }
         }
-        if facebookTxt.text.isEmpty {
-            statusTextFields["facebook"] = "leeg"
-        } else {
-            //TO DO: checken op pattern?
-            statusTextFields["facebook"] = "ingevuld"
-        }
         
         if gsmTxt.text.isEmpty {
             statusTextFields["gsm"] = "leeg"
@@ -98,12 +91,6 @@ class ProfielBewerkenViewController: ResponsiveTextFieldViewController {
         } else {
             giveUITextFieldDefaultBorder(gsmTxt)
         }
-        
-        if statusTextFields["facebook"] == "ongeldig"{
-            giveUITextFieldRedBorder(facebookTxt)
-        } else {
-            giveUITextFieldDefaultBorder(facebookTxt)
-        }
     }
     
     func controleerRodeBordersAanwezig() -> Bool {
@@ -114,8 +101,6 @@ class ProfielBewerkenViewController: ResponsiveTextFieldViewController {
         } else if CGColorEqualToColor(telefoonTxt.layer.borderColor, redColor.CGColor) {
             return true
         } else if CGColorEqualToColor(gsmTxt.layer.borderColor, redColor.CGColor) {
-            return true
-        } else if CGColorEqualToColor(facebookTxt.layer.borderColor, redColor.CGColor) {
             return true
         } else {
             return false
@@ -137,13 +122,6 @@ class ProfielBewerkenViewController: ResponsiveTextFieldViewController {
         } else {
             telefoonTxt.text = monitor!.telefoon
         }
-        
-        if monitor!.linkFacebook == "" {
-            facebookTxt.text = ""
-        } else {
-            facebookTxt.text = monitor!.linkFacebook
-        }
-        
     }
     
     func vulGegevensIn() {
@@ -151,6 +129,5 @@ class ProfielBewerkenViewController: ResponsiveTextFieldViewController {
         monitor?.naam = naamTxt.text
         monitor?.telefoon = telefoonTxt.text
         monitor?.gsm = gsmTxt.text
-        monitor?.linkFacebook = facebookTxt.text
     }
 }

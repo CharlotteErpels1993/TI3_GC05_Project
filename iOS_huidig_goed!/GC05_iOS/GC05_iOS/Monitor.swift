@@ -1,7 +1,6 @@
 import Foundation
 
 class Monitor: Gebruiker {
-    var linkFacebook: String?
     var lidNr: String?
     
     override init(id: String) {
@@ -12,14 +11,12 @@ class Monitor: Gebruiker {
         super.init(rijksregisterNr: rijksregisterNr, email: email, voornaam: voornaam, naam: naam, straat: straat, nummer: nummer, bus: bus, gemeente: gemeente, postcode: postcode, telefoon: telefoon, gsm: gsm, aansluitingsNr: aansluitingsNr, codeGerechtigde: codeGerechtigde)
     }
     
-    init(rijksregisterNr: String, email: String, voornaam: String, naam: String, straat: String, nummer: Int, bus: String, gemeente: String, postcode: Int, telefoon: String, gsm: String, aansluitingsNr: Int, codeGerechtigde: Int, linkFacebook: String, lidNr: String) {
-        self.linkFacebook = linkFacebook
+    init(rijksregisterNr: String, email: String, voornaam: String, naam: String, straat: String, nummer: Int, bus: String, gemeente: String, postcode: Int, telefoon: String, gsm: String, aansluitingsNr: Int, codeGerechtigde: Int, lidNr: String) {
         self.lidNr = lidNr
         super.init(rijksregisterNr: rijksregisterNr, email: email, voornaam: voornaam, naam: naam, straat: straat, nummer: nummer, bus: bus, gemeente: gemeente, postcode: postcode, telefoon: telefoon, gsm: gsm, aansluitingsNr: aansluitingsNr, codeGerechtigde: codeGerechtigde)
     }
     
-    init(id: String, rijksregisterNr: String, email: String, voornaam: String, naam: String, straat: String, nummer: Int, bus: String, gemeente: String, postcode: Int, telefoon: String, gsm: String, aansluitingsNr: Int, codeGerechtigde: Int, linkFacebook: String, lidNr: String) {
-        self.linkFacebook = linkFacebook
+    init(id: String, rijksregisterNr: String, email: String, voornaam: String, naam: String, straat: String, nummer: Int, bus: String, gemeente: String, postcode: Int, telefoon: String, gsm: String, aansluitingsNr: Int, codeGerechtigde: Int, lidNr: String) {
         self.lidNr = lidNr
         super.init(id: id, rijksregisterNr: rijksregisterNr, email: email, voornaam: voornaam, naam: naam, straat: straat, nummer: nummer, bus: bus, gemeente: gemeente, postcode: postcode, telefoon: telefoon, gsm: gsm, aansluitingsNr: aansluitingsNr, codeGerechtigde: codeGerechtigde)
     }
