@@ -2,8 +2,8 @@ import UIKit
 
 class SidebarTableViewController: UITableViewController {
     var selectedMenuItem : Int = 0
-    var arrayKind: [String] = ["Vakanties","Inloggen", "Registreren"]
-    var arrayOuder: [String] = ["Uitloggen", "Vakanties", "Favorieten"]
+    var arrayKind: [String] = ["Vakanties","Inloggen", "Registreren", "Feedback"]
+    var arrayOuder: [String] = ["Uitloggen", "Vakanties", "Favorieten", "Feedback"]
     var arrayMonitor: [String] = ["Uitloggen","Eigen profiel", "Vakanties",  "Vormingen", "Voorkeur vakantie", "Profielen"]
     var arrayJoetz: [String] = ["Uitloggen", "Vakanties", "Vormingen", "Profielen", "Nieuwe monitor"]
     var array: [String]?
@@ -35,13 +35,13 @@ class SidebarTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if PFUser.currentUser() == nil {
-            return 3
+            return 4
             
         } else {
             var gebruikerPF = PFUser.currentUser()
             var soort: String = gebruikerPF["soort"] as String
             if soort == "ouder" {
-                return 3
+                return 4
             } else if soort == "monitor"{
                 return 6
             } else if soort == "administrator" {
@@ -106,6 +106,9 @@ class SidebarTableViewController: UITableViewController {
                 break
             case 2:
                 destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Registreren") as UIViewController
+                break
+            case 3:
+                destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Feedback") as UIViewController
                 break
             default:
                 destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
@@ -192,6 +195,9 @@ class SidebarTableViewController: UITableViewController {
                     var destViewController2: VakantiesTableViewController = /*destViewController = */mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as VakantiesTableViewController
                     destViewController2.favoriet = true
                     destViewController = destViewController2
+                    break
+                case 3:
+                    destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Feedback") as UIViewController
                     break
                 default:
                     destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController

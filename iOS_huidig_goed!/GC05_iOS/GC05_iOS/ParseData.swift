@@ -404,6 +404,7 @@ struct /*class*/ ParseData {
         VoorkeurSQL.parseVoorkeurToDatabase(voorkeur)
     }
     
+    
     //AfbeeldingenTable
     static func getAfbeeldingenMetVakantieId(vakantieId: String) -> /*[UIImage]*/ ([UIImage], Int?) {
         //return AfbeeldingSQL.getAfbeeldingenMetVakantieId(vakantieId)
@@ -461,6 +462,16 @@ struct /*class*/ ParseData {
         return afbeeldingen[0]
     }
     
+    //FeedbackTable
+    static func getAlleFeedbackMetVakantieId(vakantieId: String) -> ([Feedback], Int?) {
+        return FeedbackSQL.getAlleFeedbackMetVakantieId(vakantieId)
+    }
+    
+    static func getAlleFeedback() -> ([Feedback], Int?) {
+        return FeedbackSQL.getAlleFeedback()
+    }
+    
+    //FavorietenTable
     static func getFavorieteVakanties(ouder: Ouder) -> ([Vakantie], Int?) {
         return FavorietSQL.getFavorieteVakanties(ouder)
     }
