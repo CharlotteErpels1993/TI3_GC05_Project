@@ -13,17 +13,26 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="@string/inschrijvenVak3_AlgemeneUitleg"/>
+
+        <TextView
+            android:id="@+id/extraInfoLabel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_below="@id/AlgemeneUitleg"
+            android:layout_marginTop="25dp"
+            android:text="@string/extra_Informatie" />
 
         <EditText
             android:id="@+id/ExtraInformatie"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="25dp"
-            android:layout_below="@id/AlgemeneUitleg"
+            android:layout_marginTop="8dp"
+            android:layout_below="@id/extraInfoLabel"
             android:inputType="textMultiLine"/>
             <!--android:lines="4" /> -->
 

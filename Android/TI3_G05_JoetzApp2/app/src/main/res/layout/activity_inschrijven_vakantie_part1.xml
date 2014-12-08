@@ -13,27 +13,44 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="@string/inschrijvenVak1_AlgemeneUitleg"/>
 
-        <EditText
-            android:id="@+id/VoornaamIns"
+        <TextView
+            android:id="@+id/NaamInsLabel"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="25dp"
             android:layout_below="@id/AlgemeneUitleg"
-            android:hint="@string/naamHint"/>
+            android:layout_marginTop="25dp"
+            android:textSize="20sp"
+            android:text="@string/famnaamHint" />
+
 
         <EditText
             android:id="@+id/NaamIns"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/VoornaamIns"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="25dp"
-            android:hint="@string/famnaamHint" />
+            android:layout_below="@id/NaamInsLabel"
+            android:layout_marginTop="8dp" />
+
+        <TextView
+            android:id="@+id/VoornaamInsLabel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_below="@id/NaamIns"
+            android:layout_marginTop="15dp"
+            android:text="@string/naamHint" />
+
+        <EditText
+            android:id="@+id/VoornaamIns"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_below="@id/VoornaamInsLabel"/>
+
+
 
 
         <!--<TextView
@@ -49,17 +66,18 @@
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/NaamIns"
+            android:layout_below="@id/VoornaamIns"
             android:layout_marginTop="40dp"
             android:textSize="15sp"
             android:layout_marginStart="5dp"/>
         <Button
             android:id="@+id/uitlegVoorData"
-            android:layout_width="wrap_content"
+            android:layout_width="175dp"
             android:layout_height="wrap_content"
             android:text="@string/label_geboorteDatum"
             android:onClick="showDatePickerDialog"
-            android:layout_below="@id/NaamIns"
+            android:textColor="@color/Rood"
+            android:layout_below="@id/VoornaamIns"
             android:layout_alignParentEnd="true"
             android:layout_alignEnd="@id/DateIns"
             android:layout_marginTop="25dp"
@@ -75,54 +93,93 @@
             android:textColor="@color/Rood"
             android:layout_marginStart="5dp"/>
 
-        <EditText
-            android:id="@+id/Straat"
-
+        <TextView
+            android:id="@+id/StraatInsLabel"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:textSize="20sp"
             android:layout_below="@id/ErrorDate"
+            android:layout_marginTop="15dp"
+            android:text="@string/straatHint" />
+
+        <EditText
+            android:id="@+id/Straat"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/StraatInsLabel"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="25dp"
-            android:hint="@string/straatHint" />
+            android:layout_marginTop="8dp" />
+
+        <TextView
+            android:id="@+id/huisnrInsLabel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_below="@id/Straat"
+            android:layout_marginTop="15dp"
+            android:text="@string/huisnrHint" />
 
         <EditText
             android:id="@+id/Huisnr"
             android:inputType="number"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/Straat"
+            android:layout_below="@id/huisnrInsLabel"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="25dp"
-            android:hint="@string/huisnrHint" />
+            android:layout_marginTop="8dp" />
+
+        <TextView
+            android:id="@+id/busnrInsLabel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_below="@id/Huisnr"
+            android:layout_marginTop="15dp"
+            android:text="@string/BusHint" />
 
         <EditText
             android:id="@+id/Bus"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/Huisnr"
+            android:layout_below="@id/busnrInsLabel"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="25dp"
-            android:hint="@string/BusHint" />
+            android:layout_marginTop="8dp" />
+
+        <TextView
+            android:id="@+id/gemeenteInsLabel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_below="@id/Bus"
+            android:layout_marginTop="15dp"
+            android:text="@string/gemeenteHint" />
 
         <EditText
             android:id="@+id/Gemeente"
-
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/Bus"
+            android:layout_below="@id/gemeenteInsLabel"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="25dp"
-            android:hint="@string/gemeenteHint" />
+            android:layout_marginTop="8dp" />
+
+        <TextView
+            android:id="@+id/postcodeInsLabel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_below="@id/Gemeente"
+            android:layout_marginTop="15dp"
+            android:text="@string/postcodeHint" />
 
         <EditText
             android:id="@+id/Postcode"
             android:inputType="number"
             android:layout_width="fill_parent"
+            android:maxLength="4"
             android:layout_height="wrap_content"
-            android:layout_below="@id/Gemeente"
+            android:layout_below="@id/postcodeInsLabel"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="25dp"
-            android:hint="@string/postcodeHint" />
+            android:layout_marginTop="8dp" />
 
 
         <Button

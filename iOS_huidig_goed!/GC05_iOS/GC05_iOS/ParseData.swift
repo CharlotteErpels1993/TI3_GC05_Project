@@ -49,6 +49,10 @@ struct /*class*/ ParseData {
         FavorietSQL.createFavorietTable()
     }
     
+    static private func createFeedbackTable() {
+        FeedbackSQL.createFeedbackTable()
+    }
+    
     static private func createAfbeeldingTable() {
         AfbeeldingSQL.createAfbeeldingTable()
     }
@@ -110,6 +114,18 @@ struct /*class*/ ParseData {
         }
         
         FavorietSQL.vulFavorietTableOp()
+    }
+    
+    static func vulFeedbackTableOp() {
+        
+        var response: ([String], Int?) = SD.existingTables()
+        
+        if response.1 == nil {
+            if !contains(response.0, "Feedback") {
+                createFeedbackTable()
+            }
+        }
+        FeedbackSQL.vulFeedbackTableOp()
     }
     
     static func vulInschrijvingVakantieTableOp() {
@@ -243,6 +259,17 @@ struct /*class*/ ParseData {
         }
     }
     
+    static func deleteFeedbackTable() {
+        
+        var response: ([String], Int?) = SD.existingTables()
+        
+        if response.1 == nil {
+            if contains(response.0, "Feedback") {
+                let err = SD.deleteTable("Feedback")
+            }
+        }
+    }
+    
     static func deleteFavorieteVakantie(favoriet: Favoriet) {
         FavorietSQL.deleteFavorieteVakantie(favoriet)
     }
@@ -347,6 +374,10 @@ struct /*class*/ ParseData {
     
     static func parseFavorietToDatabase(favoriet: Favoriet) {
         return FavorietSQL.parseFavorietToDatabase(favoriet)
+    }
+    
+    static func parseFeedbackToDatabase(feedback: Feedback) {
+        return FeedbackSQL.parseFeedbackToDatabase(feedback)
     }
     
     static func parseInschrijvingVakantieToDatabase(inschrijving: InschrijvingVakantie) {

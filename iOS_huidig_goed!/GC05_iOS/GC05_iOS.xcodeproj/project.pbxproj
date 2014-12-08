@@ -105,6 +105,11 @@
 		A5C6C4211A2F97BC004F5648 /* MonitorRegistratie2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C6C4201A2F97BC004F5648 /* MonitorRegistratie2ViewController.swift */; };
 		A5C6C4231A2F97E1004F5648 /* MonitorRegistratie3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C6C4221A2F97E0004F5648 /* MonitorRegistratie3ViewController.swift */; };
 		A5C6C4271A2F982A004F5648 /* MonitorRegistratieSuccesvolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C6C4261A2F982A004F5648 /* MonitorRegistratieSuccesvolViewController.swift */; };
+		A5CB1FF51A35B80300A4178A /* feedback.png in Resources */ = {isa = PBXBuildFile; fileRef = A5CB1FF41A35B80300A4178A /* feedback.png */; };
+		A5CB1FF71A35CCB300A4178A /* FeedbackTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CB1FF61A35CCB300A4178A /* FeedbackTableViewController.swift */; };
+		A5CB1FF91A35CCDD00A4178A /* GeefFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CB1FF81A35CCDD00A4178A /* GeefFeedbackViewController.swift */; };
+		A5CB1FFB1A35CD0000A4178A /* FeedbackSQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CB1FFA1A35CD0000A4178A /* FeedbackSQL.swift */; };
+		A5CB1FFD1A35D01200A4178A /* Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CB1FFC1A35D01200A4178A /* Feedback.swift */; };
 		A5CEA07B1A13998900E14103 /* VormingenTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CEA07A1A13998900E14103 /* VormingenTableViewController.swift */; };
 		A5CEA07D1A1399CA00E14103 /* VormingDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CEA07C1A1399CA00E14103 /* VormingDetailsTableViewController.swift */; };
 		A5CEA07F1A13ACDF00E14103 /* InschrijvenVormingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CEA07E1A13ACDF00E14103 /* InschrijvenVormingViewController.swift */; };
@@ -227,6 +232,11 @@
 		A5C6C4201A2F97BC004F5648 /* MonitorRegistratie2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitorRegistratie2ViewController.swift; sourceTree = "<group>"; };
 		A5C6C4221A2F97E0004F5648 /* MonitorRegistratie3ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitorRegistratie3ViewController.swift; sourceTree = "<group>"; };
 		A5C6C4261A2F982A004F5648 /* MonitorRegistratieSuccesvolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitorRegistratieSuccesvolViewController.swift; sourceTree = "<group>"; };
+		A5CB1FF41A35B80300A4178A /* feedback.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = feedback.png; path = Images.xcassets/feedback.png; sourceTree = "<group>"; };
+		A5CB1FF61A35CCB300A4178A /* FeedbackTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackTableViewController.swift; sourceTree = "<group>"; };
+		A5CB1FF81A35CCDD00A4178A /* GeefFeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeefFeedbackViewController.swift; sourceTree = "<group>"; };
+		A5CB1FFA1A35CD0000A4178A /* FeedbackSQL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackSQL.swift; sourceTree = "<group>"; };
+		A5CB1FFC1A35D01200A4178A /* Feedback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Feedback.swift; sourceTree = "<group>"; };
 		A5CEA07A1A13998900E14103 /* VormingenTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VormingenTableViewController.swift; sourceTree = "<group>"; };
 		A5CEA07C1A1399CA00E14103 /* VormingDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VormingDetailsTableViewController.swift; sourceTree = "<group>"; };
 		A5CEA07E1A13ACDF00E14103 /* InschrijvenVormingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InschrijvenVormingViewController.swift; sourceTree = "<group>"; };
@@ -286,6 +296,7 @@
 				0FD07EC81A2354B5006A4E60 /* AfbeeldingSQL.swift */,
 				0F1E19DA1A2F93CC0035DB96 /* FavorietSQL.swift */,
 				0F8FE2921A31B16100FDDA30 /* NieuweMonitorSQL.swift */,
+				A5CB1FFA1A35CD0000A4178A /* FeedbackSQL.swift */,
 			);
 			name = SQLite;
 			sourceTree = "<group>";
@@ -406,6 +417,8 @@
 				A5C6C4201A2F97BC004F5648 /* MonitorRegistratie2ViewController.swift */,
 				A5C6C4221A2F97E0004F5648 /* MonitorRegistratie3ViewController.swift */,
 				A5C6C4261A2F982A004F5648 /* MonitorRegistratieSuccesvolViewController.swift */,
+				A5CB1FF61A35CCB300A4178A /* FeedbackTableViewController.swift */,
+				A5CB1FF81A35CCDD00A4178A /* GeefFeedbackViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -426,6 +439,7 @@
 				1BDDB9561A02DD1E0007623D /* Gebruiker.swift */,
 				0F1E19DC1A2F9AF70035DB96 /* Favoriet.swift */,
 				0F8FE2941A31B42F00FDDA30 /* NieuweMonitor.swift */,
+				A5CB1FFC1A35D01200A4178A /* Feedback.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -476,6 +490,7 @@
 		A52976CD1A1A094900420FEE /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				A5CB1FF41A35B80300A4178A /* feedback.png */,
 				A59918591A2F79150055AAF1 /* Heart_Empty.png */,
 				A599185A1A2F79150055AAF1 /* Heart_Full.png */,
 				A543AA881A2C7AC000249B4A /* menu.png */,
@@ -570,6 +585,7 @@
 			files = (
 				A5E5B9831A2370DC0054960C /* LaunchScreen.xib in Resources */,
 				A599185B1A2F79150055AAF1 /* Heart_Empty.png in Resources */,
+				A5CB1FF51A35B80300A4178A /* feedback.png in Resources */,
 				0FA80B0D1A01350E008DB343 /* Main.storyboard in Resources */,
 				0FA80B0F1A01350E008DB343 /* Images.xcassets in Resources */,
 				A58126321A305B4300176187 /* facebook.png in Resources */,
@@ -595,6 +611,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5CB1FFB1A35CD0000A4178A /* FeedbackSQL.swift in Sources */,
 				0FD07EC11A234EBE006A4E60 /* DeelnemerSQL.swift in Sources */,
 				0F145EDF1A1CDE98003067EA /* ResponsiveTextFieldViewController.swift in Sources */,
 				A5CEA07F1A13ACDF00E14103 /* InschrijvenVormingViewController.swift in Sources */,
@@ -618,6 +635,7 @@
 				A5049CAD1A2334510012D990 /* Reachability.swift in Sources */,
 				0FD07EB51A2348DE006A4E60 /* VakantieSQL.swift in Sources */,
 				0FD07EC71A23544A006A4E60 /* OuderSQL.swift in Sources */,
+				A5CB1FF71A35CCB300A4178A /* FeedbackTableViewController.swift in Sources */,
 				A5CEA07D1A1399CA00E14103 /* VormingDetailsTableViewController.swift in Sources */,
 				0FA80B081A01350E008DB343 /* AppDelegate.swift in Sources */,
 				1BDDB9551A02D87F0007623D /* ContactpersoonNood.swift in Sources */,
@@ -654,12 +672,14 @@
 				1BDDB9431A02D0FB0007623D /* Vakantie.swift in Sources */,
 				1BDDB9451A02D3440007623D /* Activiteit.swift in Sources */,
 				1B39CF771A0795D9008DEC49 /* EigenprofielMonitorTableViewController.swift in Sources */,
+				A5CB1FF91A35CCDD00A4178A /* GeefFeedbackViewController.swift in Sources */,
 				0F2A819A1A091F7100F67A3B /* Regex.swift in Sources */,
 				0F1E19DD1A2F9AF70035DB96 /* Favoriet.swift in Sources */,
 				0F88A6C31A1F3B840094D457 /* SwiftData.swift in Sources */,
 				A5C6C41F1A2F9483004F5648 /* MonitorRegistratie1ViewController.swift in Sources */,
 				0FD07EC51A234FAB006A4E60 /* UserSQL.swift in Sources */,
 				0F1E19DB1A2F93CC0035DB96 /* FavorietSQL.swift in Sources */,
+				A5CB1FFD1A35D01200A4178A /* Feedback.swift in Sources */,
 				0F92E30D1A1368A10005C86C /* InschrijvenVakantie1ViewController.swift in Sources */,
 				A5C6C4271A2F982A004F5648 /* MonitorRegistratieSuccesvolViewController.swift in Sources */,
 				A59918601A2F819D0055AAF1 /* NieuweMonitorSuccesvolViewController.swift in Sources */,
