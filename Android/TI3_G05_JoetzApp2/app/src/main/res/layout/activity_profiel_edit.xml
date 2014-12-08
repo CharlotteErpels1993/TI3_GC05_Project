@@ -17,7 +17,7 @@ xmlns:android="http://schemas.android.com/apk/res/android">
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/naamHint"
+        android:text="@string/famnaamHint"
         android:layout_marginTop="25dp"
         android:layout_marginStart="10dp"
         android:id="@+id/labelVoorFamilienaam" />
@@ -34,7 +34,7 @@ xmlns:android="http://schemas.android.com/apk/res/android">
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:textAppearance="?android:attr/textAppearanceMedium"
-    android:text="@string/famnaamHint"
+    android:text="@string/naamHint"
     android:layout_marginTop="25dp"
     android:layout_marginStart="10dp"
     android:layout_below="@+id/Familienaam"
@@ -87,7 +87,7 @@ xmlns:android="http://schemas.android.com/apk/res/android">
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"/>
 
-    <TextView
+    <!--<TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
@@ -104,7 +104,7 @@ xmlns:android="http://schemas.android.com/apk/res/android">
         android:layout_height="wrap_content"
         android:layout_below="@id/labelVoorFacebook"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp" />
+        android:layout_marginTop="10dp" />-->
 
 
 
@@ -113,7 +113,7 @@ xmlns:android="http://schemas.android.com/apk/res/android">
         android:id="@+id/btnBevestigen"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/Facebook"
+        android:layout_below="@id/GSM"
         android:layout_marginTop="25dp"
         android:text="@string/submit" />
 

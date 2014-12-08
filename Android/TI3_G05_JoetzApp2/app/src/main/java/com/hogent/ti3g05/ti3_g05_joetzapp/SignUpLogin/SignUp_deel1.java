@@ -152,7 +152,7 @@ public class SignUp_deel1 extends Activity{
         if(!TextUtils.isEmpty(rijksregnr))
         {
             if (!rijksregnr.matches("[0-9]+") || rijksregnr.length() != 11){
-                rijksregisterNr.setError(getString(R.string.error_incorrect_rijksregisternummer));
+                rijksregisterNr.setError(getString(R.string.error_incorrect_rijksregnr));
                 focusView = rijksregisterNr;
                 cancel = true;
             }

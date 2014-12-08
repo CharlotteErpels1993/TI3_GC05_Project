@@ -103,7 +103,7 @@ public class ProfielAdapter extends ArrayAdapter<Vorming> implements Filterable 
             holder.voornaam.setVisibility(View.GONE);
             holder.gemeente.setVisibility(View.GONE);
 
-            holder.header.setText(profielen.get(position).getNaam());
+            holder.header.setText(profielen.get(position).getMonitorId());
             return view;
         }
         else{
@@ -127,7 +127,6 @@ public class ProfielAdapter extends ArrayAdapter<Vorming> implements Filterable 
                 intent.putExtra("gemeente", (profielen.get(position).getGemeente()));
                 intent.putExtra("rijksregNr", profielen.get(position).getRijksregNr());
                 //intent.putExtra("lidNr", profielen.get(position).getLidNummer());*/
-                    intent.putExtra("facebook", profielen.get(position).getLinkFacebook());
                     intent.putExtra("gsm", profielen.get(position).getGsmnr());
                     intent.putExtra("email", profielen.get(position).getEmail());
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -152,7 +151,7 @@ public class ProfielAdapter extends ArrayAdapter<Vorming> implements Filterable 
         {
             for (Monitor wp : arraylist)
             {
-                if (wp.getNaam().toLowerCase(Locale.getDefault()).contains(charText))
+                if (wp.getNaam().toLowerCase(Locale.getDefault()).contains(charText) || wp.getVoornaam().toLowerCase(Locale.getDefault()).contains(charText))
                 {
                     profielen.add(wp);
                 }

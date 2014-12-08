@@ -26,7 +26,6 @@ public class ProfielDetail extends Activity {
     String voornaam;
     String email;
     String gsm;
-    String facebook;
     /*String straat;
     String huisnr;
     String gemeente;
@@ -48,7 +47,6 @@ public class ProfielDetail extends Activity {
         naam = i.getStringExtra("naam");
         voornaam = i.getStringExtra("voornaam");
         email = i.getStringExtra("email");
-        facebook = i.getStringExtra("facebook");
         gsm = i.getStringExtra("gsm");
         /*straat = i.getStringExtra("straat");
         //huisnr = i.getStringExtra("huisnr");
@@ -63,13 +61,13 @@ public class ProfielDetail extends Activity {
         TextView txtNaam = (TextView) findViewById(R.id.achternaamP);
         final TextView txtVoornaam = (TextView) findViewById(R.id.voornaamP);
         TextView txtEmail = (TextView) findViewById(R.id.emailP);
-        TextView txtFacebook = (TextView)findViewById(R.id.facebookL);
 
         final TextView txtGsm = (TextView)findViewById(R.id.gsmP);
         if(ParseUser.getCurrentUser().getEmail().equals(email))
 
         {
             btnProfielEdit = (Button) findViewById(R.id.btnProfielEdit);
+            btnProfielEdit.setVisibility(View.VISIBLE);
             btnProfielEdit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -79,7 +77,6 @@ public class ProfielDetail extends Activity {
                         Intent inte = new Intent(getApplicationContext(), ProfielEdit.class);
                         inte.putExtra("naam", naam);
                         inte.putExtra("voornaam", voornaam);
-                        inte.putExtra("facebook", facebook);
                         inte.putExtra("gsm", gsm);
                         inte.putExtra("email", email);
                         startActivity(inte);
@@ -102,7 +99,6 @@ public class ProfielDetail extends Activity {
         txtNaam.setText(naam);
         txtVoornaam.setText(voornaam);
         txtEmail.setText(email);
-        txtFacebook.setText(facebook);
         txtGsm.setText(gsm);
 
         Button mail = (Button) findViewById(R.id.mail);
@@ -118,8 +114,7 @@ public class ProfielDetail extends Activity {
             }
         });
 
-        ImageView naarProf = (ImageView)findViewById(R.id.naarprofiel);
-
+        /*ImageView naarProf = (ImageView)findViewById(R.id.naarprofiel);
         naarProf.setVisibility(View.GONE);
         naarProf.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -127,7 +122,7 @@ public class ProfielDetail extends Activity {
                 Intent fb = getOpenFacebookIntent(getApplicationContext(), voornaam, naam);
                 startActivity(fb);
             }
-        });
+        });*/
         /*//txtmaxDeeln.setText(maxDeeln.toString());
         //txtLidNr.setText(lidNr);
         txtStraat.setText(straat);
@@ -136,7 +131,7 @@ public class ProfielDetail extends Activity {
 
     }
 
-    public static Intent getOpenFacebookIntent(Context context, String voornaam, String achternaam) {
+    /*public static Intent getOpenFacebookIntent(Context context, String voornaam, String achternaam) {
 
         try {
             context.getPackageManager().getPackageInfo("com.facebook.katana", 0);
@@ -146,7 +141,7 @@ public class ProfielDetail extends Activity {
         } catch (Exception e) {
             return new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/" + voornaam+"."+achternaam));
         }
-    }
+    }*/
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

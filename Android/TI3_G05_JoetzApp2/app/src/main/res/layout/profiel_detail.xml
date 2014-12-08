@@ -142,7 +142,7 @@
                 android:layout_below="@id/gsmPLabel"
                 android:layout_marginTop="8dp"/>
 
-            <TextView
+            <!--<TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
@@ -162,9 +162,9 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:src="@drawable/facebook"
-                android:layout_below="@id/facebookL"
+                android:layout_below="@id/gsmP"
                 android:id="@+id/naarprofiel"
-                />
+                />-->
 
 
             <Button
@@ -175,7 +175,7 @@
                 android:id="@+id/mail"
                 android:textColor="@color/Rood"
                 android:layout_marginTop="15dp"
-                android:layout_below="@id/facebookL"
+                android:layout_below="@id/gsmP"
                 android:layout_alignParentEnd="true" />
 
             <Button

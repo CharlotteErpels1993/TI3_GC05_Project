@@ -25,9 +25,8 @@ public class ProfielEdit extends Activity {
     String initieleVoornaam;
     String initieleEmail;
     String initieleGsm;
-    String initieleFacebook;
 
-    private EditText txtNaam, txtVoornaam, txtEmail, txtGSM, txtFacebook;
+    private EditText txtNaam, txtVoornaam, txtEmail, txtGSM;
     private View focusView = null;
 
     Boolean isInternetPresent = false;
@@ -43,7 +42,6 @@ public class ProfielEdit extends Activity {
         initieleNaam = i.getStringExtra("naam");
         initieleVoornaam = i.getStringExtra("voornaam");
         initieleEmail = i.getStringExtra("email");
-        initieleFacebook = i.getStringExtra("facebook");
         initieleGsm= i.getStringExtra("gsm");
 
         setTitle(initieleNaam + " " + initieleVoornaam);
@@ -52,7 +50,6 @@ public class ProfielEdit extends Activity {
         txtNaam = (EditText) findViewById(R.id.Familienaam);
         txtVoornaam = (EditText) findViewById(R.id.VoorNaam);
         txtEmail = (EditText) findViewById(R.id.Email);
-        txtFacebook = (EditText)findViewById(R.id.Facebook);
         txtGSM = (EditText)findViewById(R.id.GSM);
 
         Button btnBevestigen = (Button) findViewById(R.id.btnBevestigen);
@@ -73,7 +70,6 @@ public class ProfielEdit extends Activity {
         txtNaam.setText(initieleNaam);
         txtVoornaam.setText(initieleVoornaam);
         txtEmail.setText(initieleEmail);
-        txtFacebook.setText(initieleFacebook);
         txtGSM.setText(initieleGsm);
     }
 
@@ -81,16 +77,13 @@ public class ProfielEdit extends Activity {
         clearErrors();
         boolean cancel = false;
 
-        String naam, voornaam, email, gsm, facebook;
+        String naam, voornaam, email, gsm;
 
         // Store values at the time of the login attempt.
         naam = txtNaam.getText().toString();
         voornaam = txtVoornaam.getText().toString();
         email = txtEmail.getText().toString().toLowerCase();
         gsm = txtGSM.getText().toString();
-        facebook = txtFacebook.getText().toString();
-
-        //volgens UC is facebook niet verplicht in te vullen, mag dus leeg zijn
 
         if (TextUtils.isEmpty(gsm)) {
             txtGSM.setError(getString(R.string.error_field_required));
@@ -121,13 +114,13 @@ public class ProfielEdit extends Activity {
         if (cancel) {
             focusView.requestFocus();
         } else {
-            opslaan(naam, voornaam ,email, gsm, facebook);
+            opslaan(naam, voornaam ,email, gsm);
         }
     }
 
-    public void opslaan(String objnaam, String objvoornaam, String objemail, String objGSM, String objFB){
+    public void opslaan(String objnaam, String objvoornaam, String objemail, String objGSM){
         //eerst kijken of de gebruiker iets heeft gewijzigd, zo ja, sla alles op, zo niet, stuur direct door
-        if (isErIetsGewijzigd(objnaam, objvoornaam, objemail, objGSM, objFB)){
+        if (isErIetsGewijzigd(objnaam, objvoornaam, objemail, objGSM)){
             try{
                 ParseQuery<ParseObject> query = ParseQuery.getQuery("Monitor");
                 query.whereEqualTo("email", initieleEmail);
@@ -141,14 +134,13 @@ public class ProfielEdit extends Activity {
                 teVeranderenGebruiker.put("naam", objnaam);
                 teVeranderenGebruiker.put("voornaam", objvoornaam);
                 teVeranderenGebruiker.put("gsm", objGSM);
-                teVeranderenGebruiker.put("linkFacebook", objFB);
                 teVeranderenGebruiker.saveInBackground();
 
                 ParseUser.getCurrentUser().setEmail(objemail);
                 ParseUser.getCurrentUser().setUsername(objemail);
                 ParseUser.getCurrentUser().saveInBackground();
 
-                terugSturenNaarProfielDetail(objnaam, objvoornaam, objemail, objGSM, objFB);
+                terugSturenNaarProfielDetail(objnaam, objvoornaam, objemail, objGSM);
 
             }
             catch(ParseException e){
@@ -159,7 +151,7 @@ public class ProfielEdit extends Activity {
             }
         }
         else{
-            terugSturenNaarProfielDetail(objnaam, objvoornaam, objemail, objGSM, objFB);
+            terugSturenNaarProfielDetail(objnaam, objvoornaam, objemail, objGSM);
         }
 
     }
@@ -169,20 +161,18 @@ public class ProfielEdit extends Activity {
         txtVoornaam.setError(null);
         txtGSM.setError(null);
         txtEmail.setError(null);
-        txtFacebook.setError(null);
     }
 
-    public void terugSturenNaarProfielDetail(String objnaam, String objvoornaam, String objemail, String objGSM, String objFB){
+    public void terugSturenNaarProfielDetail(String objnaam, String objvoornaam, String objemail, String objGSM){
         Intent inte = new Intent(getApplicationContext(), ProfielDetail.class);
         inte.putExtra("naam", objnaam);
         inte.putExtra("voornaam", objvoornaam);
-        inte.putExtra("facebook", objFB);
         inte.putExtra("gsm", objGSM);
         inte.putExtra("email", objemail);
         startActivity(inte);
     }
 
-    public boolean isErIetsGewijzigd(String nieuweNaam, String nieuweVoornaam, String nieuweEmail, String nieuweGSM, String nieuweFB){
+    public boolean isErIetsGewijzigd(String nieuweNaam, String nieuweVoornaam, String nieuweEmail, String nieuweGSM){
         if (!nieuweNaam.equals(initieleNaam))
             return true;
         if (!nieuweVoornaam.equals(initieleVoornaam))
@@ -190,8 +180,6 @@ public class ProfielEdit extends Activity {
         if (!nieuweEmail.equals(initieleEmail))
             return true;
         if (!nieuweGSM.equals(initieleGsm))
-            return true;
-        if (!nieuweFB.equals(initieleFacebook))
             return true;
 
         return false;
@@ -209,7 +197,7 @@ public class ProfielEdit extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.backMenu2) {
-            terugSturenNaarProfielDetail(initieleNaam, initieleVoornaam, initieleEmail, initieleGsm, initieleFacebook);
+            terugSturenNaarProfielDetail(initieleNaam, initieleVoornaam, initieleEmail, initieleGsm);
         }
 
         return super.onOptionsItemSelected(item);

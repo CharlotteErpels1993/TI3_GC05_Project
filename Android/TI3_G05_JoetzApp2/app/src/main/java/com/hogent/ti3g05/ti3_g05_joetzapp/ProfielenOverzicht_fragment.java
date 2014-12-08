@@ -216,7 +216,6 @@ public class ProfielenOverzicht_fragment extends Fragment /* implements SwipeRef
                         }
                         map.setEmail((String) monitor.get("email"));
                         map.setGemeente((String) monitor.get("gemeente"));
-                        map.setLinkFacebook((String) monitor.get("linkFacebook"));
                         map.setGsmnr((String) monitor.get("gsm"));
                         map.setTelefoonnr((String) monitor.get("telefoon"));
                         map.setRijksregNr((String) monitor.get("rijksregisterNr"));
@@ -291,19 +290,22 @@ public class ProfielenOverzicht_fragment extends Fragment /* implements SwipeRef
                         profielenMetZelfdeVorming.addAll(hs);
 
                         Monitor eigenHeader = new Monitor();
-                        eigenHeader.setNaam("Eigen profiel");
+                        eigenHeader.setNaam("");
+                        eigenHeader.setMonitorId("Eigen profiel");
                         profielenSamen.add(eigenHeader);
 
                         profielenSamen.add(ingelogdeMonitor);
 
                         Monitor eersteHeader = new Monitor();
-                        eersteHeader.setNaam("Monitoren met dezelfde vorming");
+                        eersteHeader.setNaam("");
+                        eersteHeader.setMonitorId("Monitoren met dezelfde vorming");
                         profielenSamen.add(eersteHeader);
 
                         profielenSamen.addAll(profielenMetZelfdeVorming);
 
                         Monitor tweedeHeader = new Monitor();
-                        tweedeHeader.setNaam("Resterende monitoren");
+                        tweedeHeader.setNaam("");
+                        tweedeHeader.setMonitorId("Resterende monitoren");
                         profielenSamen.add(tweedeHeader);
 
                         // profielenSamen.addAll(profielenMetZelfdeVorming.size(),profielenAndere);
