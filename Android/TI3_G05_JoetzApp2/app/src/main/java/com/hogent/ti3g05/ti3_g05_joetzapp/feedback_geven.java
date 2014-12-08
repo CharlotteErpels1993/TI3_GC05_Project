@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -63,6 +65,10 @@ public class feedback_geven extends Activity {
         cd= new ConnectionDetector(feedback_geven.this);
         ingeven = (Button) findViewById(R.id.ingevenFeedback);
         ingeven.getResources().getColor(R.color.Rood);
+
+
+
+        setTitle("Funfactor");
 
         feedbackText = (EditText) findViewById(R.id.feedbackIng);
         scoreText = (EditText) findViewById(R.id.score);
@@ -201,6 +207,28 @@ public class feedback_geven extends Activity {
         feedbackText.setError(null);
         scoreText.setError(null);
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.back_2, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.backMenu2) {
+            Intent intent1 = new Intent(this, navBarMainScreen.class);
+            intent1.putExtra("naarfrag", "activiteit");
+            intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent1);
+
+            overridePendingTransition(R.anim.left_in, R.anim.right_out);
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
 }

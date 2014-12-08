@@ -9,6 +9,7 @@ import android.util.Log;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.FavorieteVakanties;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.FavorieteVakantie;
+import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Feedback;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Monitor;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vakantie;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vorming;
@@ -82,6 +83,12 @@ public class myDb {
 
     }
 
+    public void dropFeedback()
+    {
+        db.dropFeedback(db.getWritableDatabase());
+
+    }
+
 
 
     public void close()
@@ -143,6 +150,8 @@ public class myDb {
         return db.krijgVormingen(naam);
     }
 
+    //favorieten
+
     public long insertFavoriet(Vakantie favorieteVakantie)
     {
         return db.toevoegenGegevensFavoriet(favorieteVakantie);
@@ -156,6 +165,24 @@ public class myDb {
     public Vakantie getFavoriet(String naam)
     {
         return db.krijgFavorieten(naam);
+    }
+
+    //feedback
+
+    //vormingen
+    public long insertFeedback(Feedback feedback)
+    {
+        return db.toevoegenGegevensFeedback(feedback);
+    }
+
+    public List<Feedback> getFeedback()
+    {
+        return db.krijgFeedback();
+    }
+
+    public Feedback getFeedback(String naam)
+    {
+        return db.krijgFeedback(naam);
     }
 
 }

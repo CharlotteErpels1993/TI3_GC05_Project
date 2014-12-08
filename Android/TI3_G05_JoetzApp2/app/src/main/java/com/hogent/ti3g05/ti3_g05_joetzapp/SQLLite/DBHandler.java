@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.FavorieteVakantie;
+import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Feedback;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Monitor;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vakantie;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vorming;
@@ -17,6 +18,7 @@ import java.util.List;
 
 import static com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.Constants.COLUMN_VAKANTIEID;
 import static com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.Constants.TABLE_FAVORIETEN;
+import static com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.Constants.TABLE_FEEDBACK;
 import static com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.Constants.TABLE_PROFIELEN;
 import static com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.Constants.TABLE_VAKANTIE;
 import static com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.Constants.TABLE_VORMINGEN;
@@ -72,6 +74,14 @@ public class DBHandler extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(CREATE_VORMINGEN_TABLE);
     }
 
+    public void onCreateFeedback(SQLiteDatabase sqLiteDatabase) {
+
+        String CREATE_FEEDBACK_TABLE = "CREATE TABLE " + TABLE_FEEDBACK + "(" +Constants.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +Constants.COLUMN_FEEDBACK + " TEXT," + Constants.COLUMN_SCORE + " NUMERIC," + Constants.COLUMN_VAKANTIENAAMF + " TEXT," +
+                Constants.COLUMN_VAKANTIEID + " TEXT," + Constants.COLUMN_GEBRUIKERID + " TEXT," + Constants.COLUMN_GEBRUIKER + " TEXT," +Constants.COLUMN_GOEDGEKEURD + " NUMERIC"+ ")";
+
+        sqLiteDatabase.execSQL(CREATE_FEEDBACK_TABLE);
+    }
+
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
@@ -84,6 +94,8 @@ public class DBHandler extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_PROFIELEN);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_VORMINGEN);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_FAVORIETEN);
+
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_FEEDBACK);
         onCreate(sqLiteDatabase);
 
     }
@@ -92,6 +104,12 @@ public class DBHandler extends SQLiteOpenHelper {
     {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_VAKANTIE);
         onCreateVakantie(db);
+    }
+
+    public void dropFeedback(SQLiteDatabase db)
+    {
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_FEEDBACK);
+        onCreateFeedback(db);
     }
 
     public void dropVormingen(SQLiteDatabase db)
@@ -500,6 +518,88 @@ public class DBHandler extends SQLiteOpenHelper {
         cursor.close();
         db.close();
         return vakantie;
+
+    }
+
+
+
+    //FEEDBACK
+    public Long toevoegenGegevensFeedback(Feedback feedback)
+    {
+        ContentValues values = new ContentValues();
+        values.put(Constants.COLUMN_FEEDBACK, feedback.getFeedback()); //1
+        values.put(Constants.COLUMN_SCORE, Integer.parseInt(feedback.getScore().toString())); //2
+        values.put(Constants.COLUMN_VAKANTIENAAMF, feedback.getVakantieNaam()); //3
+        values.put(Constants.COLUMN_VAKANTIEID, feedback.getVakantieId()); //4
+
+        values.put(Constants.COLUMN_GEBRUIKERID,feedback.getGebruikerId()); //5
+        values.put(Constants.COLUMN_GEBRUIKER, feedback.getGebruiker()); //6
+
+        if(feedback.getGoedgekeurd())
+            values.put(Constants.COLUMN_GOEDGEKEURD, 1);
+       else
+            values.put(Constants.COLUMN_GOEDGEKEURD, 0);
+
+
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Long id = db.insert(TABLE_FEEDBACK, null, values);
+        db.close();
+
+        return id;
+
+    }
+
+    public List<Feedback> krijgFeedback()
+    {
+        List<Feedback> feedback = new ArrayList<Feedback>();
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT * FROM " + TABLE_FEEDBACK;
+        Cursor c = db.rawQuery(query,null);
+        c.moveToFirst();
+        while(!c.isAfterLast())
+        {
+            Feedback f = krijgFeedback(c.getString(3));
+            feedback.add(f);
+            c.moveToNext();
+        }
+        c.close();
+        return feedback;
+    }
+
+    public Feedback krijgFeedback(String vakantienaam)
+    {
+        String query = "Select * FROM " + TABLE_FEEDBACK + " WHERE " + Constants.COLUMN_VAKANTIENAAMF + " = \"" + vakantienaam + "\"";
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        Feedback feedback = new Feedback();
+
+        if(cursor.moveToFirst())
+        {
+            cursor.moveToFirst();
+            feedback.setFeedback(cursor.getString(1));
+            feedback.setScore(Integer.parseInt(cursor.getString(2)));
+            feedback.setVakantieNaam(cursor.getString(3));
+            feedback.setVakantieId(cursor.getString(4));
+            feedback.setGebruikerId(cursor.getString(5));
+            feedback.setGebruiker(cursor.getString(6));
+            if(Integer.parseInt(cursor.getString(7)) == 1)
+            {
+                feedback.setGoedgekeurd(true);
+            } else
+                feedback.setGoedgekeurd(false);
+
+
+        } else
+        {
+            feedback = null;
+        }
+        cursor.close();
+        db.close();
+        return feedback;
 
     }
 }

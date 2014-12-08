@@ -68,5 +68,18 @@ public class Constants {
 
     public static final String TABLE_FAVORIETEN = "favorieten";
     public static final String COLUMN_VAKANTIEID = "vakantieID";
-    public static final String COLUMN_OUDERID = "ouderID";
+
+    //Feedback
+
+    public static final String TABLE_FEEDBACK = "feedback";
+    public static final String COLUMN_FEEDBACK = "feedback";
+    public static final String COLUMN_SCORE = "score";
+    public static final String COLUMN_VAKANTIENAAMF = "vakantienaam";
+    //vakantieID
+    public static final String COLUMN_GEBRUIKERID = "gebruikerId";
+    public static final String COLUMN_GEBRUIKER = "gebruiker";
+    public static final String COLUMN_GOEDGEKEURD = "goedgekeurd";
+
+
+
 }

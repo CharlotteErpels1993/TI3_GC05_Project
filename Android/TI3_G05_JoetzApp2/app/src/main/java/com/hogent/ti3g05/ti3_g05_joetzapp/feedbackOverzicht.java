@@ -81,12 +81,12 @@ public class feedbackOverzicht extends Fragment {
         if (isInternetPresent) {
             //Toast.makeText(getActivity(), "internet", Toast.LENGTH_SHORT).show();
             new RemoteDataTask().execute();
-        }/*
+        }
         else {
             //Toast.makeText(getActivity(), "geen internet", Toast.LENGTH_SHORT).show();
-            feedback = myDB.getFeedback();
+            feedbackList = myDB.getFeedback();
 
-            adapter = new FeedbackAdapter(rootView.getContext(), feedback);
+            adapter = new FeedbackAdapter(rootView.getContext(), feedbackList);
             // Binds the Adapter to the ListView
             listview.setAdapter(adapter);
 
@@ -102,8 +102,8 @@ public class feedbackOverzicht extends Fragment {
                     String text = filtertext.getText().toString().toLowerCase(Locale.getDefault());
                     adapter.filter(text);
                 }
-            });*/
-        //}
+            });
+        }
 
 
         return rootView;
@@ -187,7 +187,7 @@ public class feedbackOverzicht extends Fragment {
                 ParseQuery<ParseObject> queryFeedback = new ParseQuery<ParseObject>(
                         "Feedback");
                 ob2 = queryFeedback.find();
-                myDB.drop();
+                myDB.dropFeedback();
                 if (ob2.isEmpty()) {
                     Toast.makeText(getActivity(), "Nog geen funfactor gegeven.", Toast.LENGTH_SHORT).show();
                 } else {
@@ -210,7 +210,7 @@ public class feedbackOverzicht extends Fragment {
 
                         for (ParseObject ouder : ob3) {
                             if (feedback.get("gebruiker").toString().equals(ouder.getObjectId())) {
-                                map.setGebruiker((String) ouder.get("email"));
+                                map.setGebruiker(ouder.get("voornaam") +" "+ ouder.get("naam"));
                             }
 
 
@@ -218,7 +218,7 @@ public class feedbackOverzicht extends Fragment {
 
                         for (ParseObject monitor : ob4) {
                             if (feedback.get("gebruiker").toString().equals(monitor.getObjectId())) {
-                                map.setGebruiker((String) monitor.get("email"));
+                                map.setGebruiker(monitor.get("voornaam") + " " + monitor.get("naam"));
                             }
 
 
@@ -227,6 +227,8 @@ public class feedbackOverzicht extends Fragment {
                         if (map.getGoedgekeurd()) {
                             feedbackList.add(map);
                         }
+
+                        myDB.insertFeedback(map);
 
                     }
 
