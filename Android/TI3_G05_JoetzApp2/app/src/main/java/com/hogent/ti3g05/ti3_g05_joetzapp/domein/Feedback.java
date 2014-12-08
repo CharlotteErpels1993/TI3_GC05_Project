@@ -6,7 +6,7 @@ package com.hogent.ti3g05.ti3_g05_joetzapp.domein;
 public class Feedback {
 
     private String feedback;
-    private int score;
+    private Number score;
     private String vakantieNaam;
     private String vakantieId;
     private String gebruikerId;
@@ -43,7 +43,7 @@ public class Feedback {
         return feedback;
     }
 
-    public int getScore() {
+    public Number getScore() {
         return score;
     }
 
@@ -55,7 +55,7 @@ public class Feedback {
         return vakantieId;
     }
 
-    public void setScore(int score) {
+    public void setScore(Number score) {
         this.score = score;
     }
 

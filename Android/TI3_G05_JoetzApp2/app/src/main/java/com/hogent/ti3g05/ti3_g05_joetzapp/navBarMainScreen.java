@@ -24,6 +24,7 @@ import android.widget.Toast;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
 import com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.Login;
 import com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.SignUp_deel1;
+import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Feedback;
 import com.parse.ParseUser;
 
 
@@ -84,6 +85,10 @@ public class navBarMainScreen extends Activity {
             {
                 fragment = new FavorieteVakanties();
             }
+            else if(frag.toLowerCase().startsWith("feedback"))
+            {
+                fragment = new feedbackOverzicht();
+            }
         }
         else
         {
@@ -110,6 +115,10 @@ public class navBarMainScreen extends Activity {
             else if(afkomstig.toString().toLowerCase().startsWith("favoriet"))
             {
                 fragment = new FavorieteVakanties();
+            }
+            else if(afkomstig.toString().toLowerCase().startsWith("feedback"))
+            {
+                fragment = new feedbackOverzicht();
             }
         }
 
@@ -392,20 +401,45 @@ public class navBarMainScreen extends Activity {
                 break;
 
             case 7:
-                if(ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("administrator"))
+                if(ParseUser.getCurrentUser()!= null)
                 {
-                    Intent intent8 = new Intent(navBarMainScreen.this, LidnummerToevoegen.class
-                    );
-                    startActivity(intent8);
-                }
-                else
+                    if(ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("administrator"))
+                    {
+                        Intent intent8 = new Intent(navBarMainScreen.this, LidnummerToevoegen.class
+                        );
+                        startActivity(intent8);
+                    }
+                    else
+                    {
+                        Intent intent9 = new Intent(navBarMainScreen.this, navBarMainScreen.class);
+                        fragment = new feedbackOverzicht();
+
+                        refreshFragment(position);
+
+                        intent9.putExtra("frag", fragment.toString());
+                        startActivity(intent9);
+                    }
+                } else
                 {
-                    Toast.makeText(this, "U hebt niet de juiste bevoegdheid om dit te bekijken", Toast.LENGTH_SHORT).show();
-                    Intent intent1 = new Intent(navBarMainScreen.this, navBarMainScreen.class
-                    );
+                    Intent intent9 = new Intent(navBarMainScreen.this, navBarMainScreen.class);
+                    fragment = new feedbackOverzicht();
+
                     refreshFragment(position);
-                    startActivity(intent1);
+
+                    intent9.putExtra("frag", fragment.toString());
+                    startActivity(intent9);
                 }
+
+                break;
+            case 8:
+                Intent intent9 = new Intent(navBarMainScreen.this, navBarMainScreen.class);
+                fragment = new feedbackOverzicht();
+
+                refreshFragment(position);
+
+                intent9.putExtra("frag", fragment.toString());
+                startActivity(intent9);
+
                 break;
 
             default:
@@ -473,6 +507,10 @@ public class navBarMainScreen extends Activity {
                 else if(fragment.toString().toLowerCase().startsWith("favoriet"))
                 {
                     fragment = new FavorieteVakanties();
+                }
+                else if(fragment.toString().toLowerCase().startsWith("feedback"))
+                {
+                    fragment = new feedbackOverzicht();
                 }
 
                 FragmentManager fragmentManager = getFragmentManager();

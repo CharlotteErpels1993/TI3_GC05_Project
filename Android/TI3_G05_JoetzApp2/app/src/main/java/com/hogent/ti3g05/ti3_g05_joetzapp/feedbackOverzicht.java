@@ -45,6 +45,9 @@ public class feedbackOverzicht extends Fragment {
 
 
     private List<ParseObject> ob2;
+    private List<ParseObject> ob3;
+
+    private List<ParseObject> ob4;
     private myDb myDB;
     Feedback map;
     private ProgressDialog mProgressDialog;
@@ -78,7 +81,7 @@ public class feedbackOverzicht extends Fragment {
         if (isInternetPresent) {
             //Toast.makeText(getActivity(), "internet", Toast.LENGTH_SHORT).show();
             new RemoteDataTask().execute();
-        }
+        }/*
         else {
             //Toast.makeText(getActivity(), "geen internet", Toast.LENGTH_SHORT).show();
             feedback = myDB.getFeedback();
@@ -99,8 +102,8 @@ public class feedbackOverzicht extends Fragment {
                     String text = filtertext.getText().toString().toLowerCase(Locale.getDefault());
                     adapter.filter(text);
                 }
-            });
-        }
+            });*/
+        //}
 
 
         return rootView;
@@ -161,7 +164,6 @@ public class feedbackOverzicht extends Fragment {
             feedback = new ArrayList<Feedback>();
 
 
-
             try {
 
                 String vakantieId;
@@ -173,40 +175,68 @@ public class feedbackOverzicht extends Fragment {
                 query.orderByAscending("vertrekdatum");
                 ob = query.find();
 
+                ParseQuery<ParseObject> queryOuder = new ParseQuery<ParseObject>(
+                        "Ouder");
+                ob3 = queryOuder.find();
+
+                ParseQuery<ParseObject> queryMonitor = new ParseQuery<ParseObject>(
+                        "Monitor");
+                ob4 = queryMonitor.find();
+
+
                 ParseQuery<ParseObject> queryFeedback = new ParseQuery<ParseObject>(
-                        "Vakantie");
-                queryFeedback.orderByAscending("vertrekdatum");
+                        "Feedback");
                 ob2 = queryFeedback.find();
                 myDB.drop();
-                for (ParseObject feedback : ob2) {
-                    map = new Feedback();
-                    map.setVakantieId((String)feedback.get("vakantie"));
-                    map.setFeedback((String)feedback.get("waardering"));
-                    map.setScore((Integer)feedback.get("score"));
-                    map.setGebruikerId((String)feedback.get("gebruiker"));
-                    map.setGoedgekeurd((Boolean)feedback.get("goedgekeurd"));
+                if (ob2.isEmpty()) {
+                    Toast.makeText(getActivity(), "Nog geen funfactor gegeven.", Toast.LENGTH_SHORT).show();
+                } else {
 
 
-                    for (ParseObject vakantie : ob) {
-                        if(map.getVakantieId().equals(vakantie.getObjectId()))
-                        {
-                            map.setVakantieNaam((String)vakantie.get("titel"));
+                    for (ParseObject feedback : ob2) {
+                        map = new Feedback();
+                        map.setVakantieId((String) feedback.get("vakantie"));
+                        map.setFeedback((String) feedback.get("waardering"));
+                        map.setScore((Number) feedback.get("score"));
+                        map.setGebruikerId((String) feedback.get("gebruiker"));
+                        map.setGoedgekeurd((Boolean) feedback.get("goedgekeurd"));
+
+
+                        for (ParseObject vakantie : ob) {
+                            if (feedback.get("vakantie").toString().equals(vakantie.getObjectId())) {
+                                map.setVakantieNaam((String) vakantie.get("titel"));
+                            }
                         }
 
+                        for (ParseObject ouder : ob3) {
+                            if (feedback.get("gebruiker").toString().equals(ouder.getObjectId())) {
+                                map.setGebruiker((String) ouder.get("email"));
+                            }
 
+
+                        }
+
+                        for (ParseObject monitor : ob4) {
+                            if (feedback.get("gebruiker").toString().equals(monitor.getObjectId())) {
+                                map.setGebruiker((String) monitor.get("email"));
+                            }
+
+
+                        }
+
+                    }
+                    if (map.getGoedgekeurd()) {
+                        feedback.add(map);
                     }
                 }
 
+                }catch(ParseException e){
 
+                    Log.e("Error", e.getMessage());
+                    e.printStackTrace();
 
+                }
 
-            } catch (ParseException e) {
-
-                Log.e("Error", e.getMessage());
-                e.printStackTrace();
-            }/* catch (java.text.ParseException e) {
-                e.printStackTrace();
-            }*/
 
             return null;
         }
@@ -219,7 +249,7 @@ public class feedbackOverzicht extends Fragment {
             //ArrayAdapter<Profile> profileAdapter = new ArrayAdapter<Profile>(context, resource, profiles)
             //ArrayAdapter<Vakantie> vakantieAdapter = new ArrayAdapter<Vakantie>(activiteit_overzicht.this, R.layout.listview_item , vakanties);
 
-            adapter = new ListViewAdapter(rootView.getContext(), vakanties);
+            adapter = new FeedbackAdapter(rootView.getContext(), feedback);
             // Binds the Adapter to the ListView
             listview.setAdapter(adapter);
             // Close the progressdialog
@@ -243,7 +273,7 @@ public class feedbackOverzicht extends Fragment {
             });
         }
     }
-
+/*
     public boolean onCreateOptionsMenu(Menu menu) {
         getActivity().getMenuInflater().inflate(R.menu.menu_inschrijven_vakantie_part1, menu);
         return true;
@@ -268,5 +298,5 @@ public class feedbackOverzicht extends Fragment {
         }
         return super.onOptionsItemSelected(item);
     }
-
+*/
 }

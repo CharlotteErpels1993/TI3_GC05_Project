@@ -21,9 +21,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-/**
- * Created by Gebruiker on 8/12/2014.
- */
 public class FeedbackAdapter extends ArrayAdapter<Vakantie> implements Filterable {
 
 
@@ -88,8 +85,8 @@ public class FeedbackAdapter extends ArrayAdapter<Vakantie> implements Filterabl
         }
         holder.naamVakantie.setText(feedback.get(position).getVakantieNaam());
         holder.feedback.setText(feedback.get(position).getFeedback());
-
-        holder.score.setText(feedback.get(position).getScore());
+        holder.gebruiker.setText(feedback.get(position).getGebruiker());
+        holder.score.setText(feedback.get(position).getScore().toString());
         return view;
     }
 /*
