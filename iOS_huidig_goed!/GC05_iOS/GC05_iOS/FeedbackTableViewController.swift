@@ -3,7 +3,6 @@ import UIKit
 class FeedbackTableViewController: UITableViewController, UISearchBarDelegate, UISearchDisplayDelegate {
     
     @IBOutlet var zoekbar: UISearchBar!
-    @IBOutlet var addButton: UIBarButtonItem!
     
     var feedbacken: [Feedback] = []
     var feedbacken2: [Feedback] = []

@@ -201,6 +201,9 @@
                                                     <state key="normal" image="feedback.png">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="toonEnGeefFeedback:" destination="q35-qh-mtC" eventType="touchUpInside" id="vVR-eq-dFS"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -1493,7 +1496,6 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                         </connections>
                     </refreshControl>
                     <connections>
-                        <outlet property="addButton" destination="gjn-b1-qhX" id="8kG-zZ-VbK"/>
                         <outlet property="zoekbar" destination="5fv-qC-zQH" id="XAb-Pu-QOF"/>
                     </connections>
                 </tableViewController>
