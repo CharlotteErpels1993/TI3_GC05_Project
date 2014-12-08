@@ -151,7 +151,7 @@ namespace Joetz.Controllers
 
 
 
-        protected async void btnUpload_Click(object sender, EventArgs e, MaakMonitorenAanModel model)
+        protected async void btnUpload_Click(object sender, EventArgs e)
         {
             
             //this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
@@ -178,16 +178,17 @@ namespace Joetz.Controllers
             jobApplication["applicantResumeFile"] = file;
             await jobApplication.SaveAsync();
         */
-            string fileName = "C:\\test.xlsx";
+            string fileName = @"C:\test.xlsx";
             string connectionString = String.Format(@"Provider=Microsoft.ACE.OLEDB.12.0;" +
                                       "Data Source={0};Extended Properties='Excel 12.0;HDR=YES;IMEX=0'", fileName);
             using (OleDbConnection cn = new OleDbConnection(connectionString))
             {
                 cn.Open();
-                OleDbCommand cmd = new OleDbCommand("SELECT Column1, Column2, Column3, Column4, Column5, Column6, Column7, Column8, Column9, Column10, Column11, Column12, Cloumn13, Column14, Column15 From [Sheet1$]", cn);
+                OleDbCommand cmd = new OleDbCommand("SELECT * From [Sheet1$]", cn);
                 OleDbDataReader rd = cmd.ExecuteReader();
                 while (rd.Read())
                 {
+                    Console.WriteLine("in loop");
                /*
                     Console.WriteLine("Loop");
                     Console.WriteLine(rd.GetString(0));
@@ -212,6 +213,9 @@ namespace Joetz.Controllers
                     monitor["voornaam"] = rd.GetString(15);
                     await monitor.SaveAsync();
                 }
+                Console.WriteLine("uit while");
+
+                //evt hardcoded waarden sturen en zeggen dat het op diie manier excel zou moeten uploaden en dan monitor aanmaakt op basis van die gegevens
             }
         }
    }

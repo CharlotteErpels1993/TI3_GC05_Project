@@ -1,11 +1,11 @@
 ﻿html {
-    background-color: #E82123;
+    background-color: #fff;
     margin: 0;
     padding: 0;
 }
 
 body {
-    background-color: #E82123;
+    background-color: #fff;
     border-top: solid 10px #000;
     color: #333;
     font-size: .85em;
@@ -209,17 +209,16 @@ ul#menu {
 ----------------------------------------------------------*/
 /* featured */
 .featured {
-    background-color: #E82123;
+    background-color: #fff;
 }
 
     .featured .content-wrapper {
         background-color: #7ac0da;
-        background-image: -ms-linear-gradient(left, #E82123 0%, #E82123 100%);
-        background-image: -o-linear-gradient(left, #E82123 0%, #E82123 100%);
-        
-        background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #E82123), color-stop(1, #E82123));
-        background-image: -webkit-linear-gradient(left, #E82123 0%, #E82123 100%);
-        background-image: linear-gradient(left, #E82123 0%,#E82123 100%);
+        background-image: -ms-linear-gradient(left, #7ac0da 0%, #a4d4e6 100%);
+        background-image: -o-linear-gradient(left, #7ac0da 0%, #a4d4e6 100%);
+        background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #7ac0da), color-stop(1, #a4d4e6));
+        background-image: -webkit-linear-gradient(left, #7ac0da 0%, #a4d4e6 100%);
+        background-image: linear-gradient(left, #7ac0da 0%, #a4d4e6 100%);
         color: #3e5667;
         padding: 20px 40px 30px 40px;
     }
