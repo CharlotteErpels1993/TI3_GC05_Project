@@ -222,11 +222,12 @@ class VakantieDetailsTableViewController: UITableViewController {
             }
         } else if segue.identifier == "korteBeschrijvingVakantie" {
             let extraTekstViewController = segue.destinationViewController as ExtraTekstViewController
-            extraTekstViewController.tekst = vakantie.korteBeschrijving
+            extraTekstViewController.tekst = self.vakantie.korteBeschrijving!
+            extraTekstViewController.naam = self.vakantie.titel!
             extraTekstViewController.type = 1
         } else if segue.identifier == "inbegrepenPrijs" {
             let extraTekstViewController = segue.destinationViewController as ExtraTekstViewController
-            extraTekstViewController.tekst = vakantie.inbegrepenPrijs
+            extraTekstViewController.tekst = self.vakantie.inbegrepenPrijs!
             extraTekstViewController.type = 2
         } else if segue.identifier == "inschrijven" {
             let inschrijvenVakantie1ViewController = segue.destinationViewController as InschrijvenVakantie1ViewController

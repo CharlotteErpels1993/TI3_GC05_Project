@@ -55,19 +55,20 @@ class VormingDetailsTableViewController: UITableViewController {
             inschrijvenVormingViewController.pickerData = vorming.periodes!
         } else if segue.identifier == "korteBeschrijvingVorming" {
             let extraTekstViewController = segue.destinationViewController as ExtraTekstViewController
-            extraTekstViewController.tekst = vorming.korteBeschrijving
+            extraTekstViewController.tekst = self.vorming.korteBeschrijving!
+            extraTekstViewController.naam = self.vorming.titel!
             extraTekstViewController.type = 1
         } else if segue.identifier == "criteriaVorming" {
             let extraTekstViewController = segue.destinationViewController as ExtraTekstViewController
-            extraTekstViewController.tekst = vorming.criteriaDeelnemers
+            extraTekstViewController.tekst = self.vorming.criteriaDeelnemers!
             extraTekstViewController.type = 3
         } else if segue.identifier == "betalingsWijzeVorming" {
             let extraTekstViewController = segue.destinationViewController as ExtraTekstViewController
-            extraTekstViewController.tekst = vorming.betalingWijze
+            extraTekstViewController.tekst = self.vorming.betalingWijze!
             extraTekstViewController.type = 4
         } else if segue.identifier == "inbegrepenPrijs" {
             let extraTekstViewController = segue.destinationViewController as ExtraTekstViewController
-            extraTekstViewController.tekst = vorming.inbegrepenPrijs
+            extraTekstViewController.tekst = self.vorming.inbegrepenPrijs!
             extraTekstViewController.type = 2
         } else if segue.identifier == "periodes" {
             let extraTekstViewController = segue.destinationViewController as ExtraTekstViewController
