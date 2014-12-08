@@ -14,12 +14,22 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         toggleSideMenuView()
     }
     
+    /*override func prefersStatusBarHidden() -> Bool {
+        self.navigationController!.setToolbarHidden(true, animated: true)
+        return true
+    }*/
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setNeedsStatusBarAppearanceUpdate()
+        self.navigationController!.toolbarHidden = true
+        //self.navigationController!.setToolbarHidden(true, animated: true)
         checkConnectie()
         ParseData.deleteFavorietTable()
         ParseData.vulFavorietTableOp()
-        self.navigationController?.toolbarHidden = true
+        //self.navigationController!.toolbarHidden = true
+        //self.navigationController
         
         var responseVakanties: ([Vakantie], Int?)
         if PFUser.currentUser() != nil {
@@ -56,6 +66,11 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
             self.navigationItem.setHidesBackButton(true, animated: true)
             self.navigationItem.rightBarButtonItem = nil   
         }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        self.setNeedsStatusBarAppearanceUpdate()
+        self.navigationController!.toolbarHidden = true
     }
     
     func checkConnectie() {
@@ -121,6 +136,7 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
             let vakantieDetailsController = segue.destinationViewController as VakantieDetailsTableViewController
             let selectedVakantie = vakanties[tableView.indexPathForSelectedRow()!.row]
             vakantieDetailsController.vakantie = selectedVakantie as Vakantie
+            vakantieDetailsController.hidesBottomBarWhenPushed = true
         } else if segue.identifier == "inloggen" {
             let inloggenViewController = segue.destinationViewController as InloggenViewController
         }

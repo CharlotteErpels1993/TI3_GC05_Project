@@ -37,7 +37,8 @@ class VakantieDetailsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.toolbarHidden = false
+        self.setNeedsStatusBarAppearanceUpdate()
+        self.navigationController!.toolbarHidden = false
         
         if PFUser.currentUser() != nil {
             var ouderResponse = ParseData.getOuderWithEmail(PFUser.currentUser().email)
@@ -144,6 +145,12 @@ class VakantieDetailsTableViewController: UITableViewController {
             self.heartButton.hidden = true
         }
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        self.setNeedsStatusBarAppearanceUpdate()
+        self.navigationController!.toolbarHidden = false
+    }
+    
     @IBAction func openShareMenu(sender: AnyObject) {
         var shareText = "Bekijk zeker en vast deze vakantie! \n \(vakantie.link!) \n -gedeeld via Joetz app"
         let activityViewController = UIActivityViewController(activityItems: [shareText], applicationActivities: nil)
@@ -220,18 +227,24 @@ class VakantieDetailsTableViewController: UITableViewController {
             if self.images.count != 0 {
                 bekijkAfbeeldingViewController.images = self.images
             }
+            bekijkAfbeeldingViewController.hidesBottomBarWhenPushed = true
         } else if segue.identifier == "korteBeschrijvingVakantie" {
             let extraTekstViewController = segue.destinationViewController as ExtraTekstViewController
             extraTekstViewController.tekst = self.vakantie.korteBeschrijving!
             extraTekstViewController.naam = self.vakantie.titel!
             extraTekstViewController.type = 1
+            extraTekstViewController.hidesBottomBarWhenPushed = true
         } else if segue.identifier == "inbegrepenPrijs" {
             let extraTekstViewController = segue.destinationViewController as ExtraTekstViewController
             extraTekstViewController.tekst = self.vakantie.inbegrepenPrijs!
             extraTekstViewController.type = 2
+            extraTekstViewController.hidesBottomBarWhenPushed = true
         } else if segue.identifier == "inschrijven" {
             let inschrijvenVakantie1ViewController = segue.destinationViewController as InschrijvenVakantie1ViewController
             inschrijvenVakantie1ViewController.vakantie = vakantie
+            inschrijvenVakantie1ViewController.hidesBottomBarWhenPushed = true
         }
     }
+    
+    
 }

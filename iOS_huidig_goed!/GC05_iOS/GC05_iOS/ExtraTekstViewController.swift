@@ -10,6 +10,9 @@ class ExtraTekstViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setNeedsStatusBarAppearanceUpdate()
+
+        //self.navigationController!.toolbarHidden = true
         self.korteBeschrijving?.text = tekst
         
         switch type {
@@ -37,5 +40,10 @@ class ExtraTekstViewController: UIViewController {
         default:
             self.navigationController?.title = " "
         }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        self.setNeedsStatusBarAppearanceUpdate()
+        self.navigationController!.toolbarHidden = true
     }
 }
