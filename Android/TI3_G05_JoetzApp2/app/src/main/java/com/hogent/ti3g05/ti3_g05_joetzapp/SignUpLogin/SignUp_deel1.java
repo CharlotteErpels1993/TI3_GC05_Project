@@ -27,20 +27,15 @@ import com.parse.ParseQuery;
 import java.util.List;
 
 public class SignUp_deel1 extends Activity{
-
     private RadioGroup rg = null;
+    private EditText rijksregisterNr;
 
-    EditText rijksregisterNr;
-    Button lidnummerJa;
-
-
+    private String rijksregnr;
 
     // flag for Internet connection status
     Boolean isInternetPresent = false;
     // Connection detector class
     ConnectionDetector cd;
-
-    String rijksregnr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +49,6 @@ public class SignUp_deel1 extends Activity{
         getActionBar().setTitle(getString(R.string.title_activity_Register));
 
         rijksregisterNr = (EditText) findViewById(R.id.rijksRegNrRegistreren);
-
         rijksregisterNr.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
@@ -63,7 +57,6 @@ public class SignUp_deel1 extends Activity{
                 }
             }
         });
-
 
         TextView tekst = (TextView) findViewById(R.id.txtWaarschuwingMonitor);
         tekst.setOnClickListener(new OnClickListener() {
@@ -91,8 +84,6 @@ public class SignUp_deel1 extends Activity{
 
         });
 
-
-
         RadioButton rb2 = (RadioButton) findViewById(R.id.radioButtonNee);
         rb2.setOnClickListener(new OnClickListener() {
             @Override
@@ -108,8 +99,7 @@ public class SignUp_deel1 extends Activity{
             }
         });
 
-        lidnummerJa = (Button) findViewById(R.id.lidnrJa);
-
+        Button lidnummerJa = (Button) findViewById(R.id.lidnrJa);
         lidnummerJa.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -130,7 +120,7 @@ public class SignUp_deel1 extends Activity{
         inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
-
+    //Controleer of het RRN ingevuld is en geldig is, zo niet -> foutmelding geven en niet doorgaan naar volgend scherm
     private boolean controleRijksregnr()
     {
         clearErrors();
@@ -230,7 +220,7 @@ public class SignUp_deel1 extends Activity{
 
 
         if (cancel) {
-            // There was an error; don't attempt login and focus the first
+            // There was an error; don't attempt to continue and focus the first
             // form field with an error.
             focusView.requestFocus();
             rg.clearCheck();
@@ -241,8 +231,8 @@ public class SignUp_deel1 extends Activity{
         }
     }
 
+    //Ga door naar stap 2 van inschrijven. Je geeft RRN mee en of de gebruiker lid is van BM
     private void jaOpslaanRijksregNr() {
-
         Intent intentJa = new Intent(getApplicationContext(), SignUp_deel2.class);
         intentJa.putExtra("lidVanBondMoyson", "true");
         intentJa.putExtra("rijksregisternr", rijksregnr);
@@ -252,6 +242,7 @@ public class SignUp_deel1 extends Activity{
 
     }
 
+    //Ga door naar stap 2 van inschrijven. Je geeft RRN mee en of de gebruiker lid is van BM
     private void neeOpslaanRijksregNr() {
         Intent intentNee = new Intent(getApplicationContext(), SignUp_deel3.class);
         intentNee.putExtra("lidVanBondMoyson", "false");
@@ -261,8 +252,8 @@ public class SignUp_deel1 extends Activity{
         overridePendingTransition(R.anim.right_in, R.anim.left_out);
     }
 
+    //Ga door naar stap 2 van inschrijven als Monitor. Je geeft RRN en confirmatie v lidnr mee
     private void lidnrJa() {
-
         Intent intentLidnr = new Intent(getApplicationContext(), SignUp_deel2.class);
         intentLidnr.putExtra("lidnrja", "true");
         intentLidnr.putExtra("rijksregisternr", rijksregnr);
@@ -273,7 +264,7 @@ public class SignUp_deel1 extends Activity{
     }
 
 
-
+    //error verbergen, wordt opgeroepen elke keer de gebruiker opnieuw verder probeert te gaan
     private void clearErrors(){
         rijksregisterNr.setError(null);
     }

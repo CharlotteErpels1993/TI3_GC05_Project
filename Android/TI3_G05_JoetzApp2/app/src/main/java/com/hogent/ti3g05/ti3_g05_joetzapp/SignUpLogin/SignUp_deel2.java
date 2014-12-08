@@ -17,14 +17,10 @@ import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
 import com.hogent.ti3g05.ti3_g05_joetzapp.R;
 
 public class SignUp_deel2 extends Activity{
-
     private EditText aansluitingsnummer;
-
     private EditText codeGerechtigde;
     private EditText aansluitingsNrOuder2;
-    String rijksRegNr;
-
-
+    private String rijksRegNr;
 
 
     // flag for Internet connection status
@@ -45,44 +41,35 @@ public class SignUp_deel2 extends Activity{
         codeGerechtigde = (EditText) findViewById(R.id.codeGerechtigde);
         aansluitingsNrOuder2 = (EditText) findViewById(R.id.aansluitingsNrOuder2);
 
-        Button volgendeButton = (Button) findViewById(R.id.btn_volgendedeel3);
-
-
         getActionBar().setTitle(getString(R.string.title_activity_Register));
 
+        Button volgendeButton = (Button) findViewById(R.id.btn_volgendedeel3);
         volgendeButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                isInternetPresent = cd.isConnectingToInternet();
-                        if (isInternetPresent) {
-                            // Internet Connection is Present
-                            // make HTTP requests
-                            opslaanAansluitingsnummer();
-                        } else
-                            Toast.makeText(getApplicationContext(), getString(R.string.error_no_internet), Toast.LENGTH_SHORT).show();
-                        //showAlertDialog(getApplicationContext(), "No Internet Connection",
-                        //"You don't have internet connection.", false);
+            isInternetPresent = cd.isConnectingToInternet();
+                if (isInternetPresent) {
+                    // Internet Connection is Present
+                    opslaanAansluitingsnummer();
+                } else
+                    Toast.makeText(getApplicationContext(), getString(R.string.error_no_internet), Toast.LENGTH_SHORT).show();
             }
         });
-
     }
 
-
-
+    //controleren of de textvakken correct zijn ingevuld. Zo niet -> foutmelding & niet doorgaan
     private void opslaanAansluitingsnummer(){
         clearErrors();
 
         boolean cancel = false;
         View focusView = null;
 
-        // Store values at the time of the login attempt.
+        // Store values at the time of the onClick event.
         String aansluitingsnummerString = aansluitingsnummer.getText().toString();
         String codeGerechtigdeStr = codeGerechtigde.getText().toString();
         String aansluitingsNrOuder2Str = aansluitingsNrOuder2.getText().toString();
 
-
-
-        // Check for a valid email address.
+        //aansluitingsnr moet ingevuld zijn en 10 karakters lang zijn
         if (TextUtils.isEmpty(aansluitingsnummerString)) {
             aansluitingsnummer.setError(getString(R.string.error_field_required));
             focusView = aansluitingsnummer;
@@ -93,6 +80,7 @@ public class SignUp_deel2 extends Activity{
             focusView = aansluitingsnummer;
             cancel = true;
         }
+
         if (TextUtils.isEmpty(codeGerechtigdeStr)) {
             codeGerechtigde.setError(getString(R.string.error_field_required));
             focusView = codeGerechtigde;
@@ -106,20 +94,18 @@ public class SignUp_deel2 extends Activity{
                 focusView = aansluitingsNrOuder2;
                 cancel = true;
             }
-
         }
 
-        if (cancel) {
-            // There was an error; don't attempt login and focus the first
-            // form field with an error.
+        if (cancel) { //error
             focusView.requestFocus();
-        } else {
+        } else { //geen error -> doorgaan naar volgend scherm
            opslaan(aansluitingsnummerString, codeGerechtigdeStr, aansluitingsNrOuder2Str);
 
         }
 
     }
 
+    //User gaf geen foute input en mag dus door naar volgende stap v inschrijven. Waarden van dit en vorig scherm moeten meegegeven worden
     private void opslaan(String aansluitingsnummerString, String codeGerechtigdeStr, String aansluitingsNrOuder2Str) {
         Intent intent = new Intent(getApplicationContext(), SignUp_deel3.class);
         Bundle extras = getIntent().getExtras();
