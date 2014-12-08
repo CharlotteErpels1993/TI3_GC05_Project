@@ -31,6 +31,8 @@
             android:id="@+id/feedbackIng"
             android:layout_marginTop="8dp"
             android:layout_below="@id/Feedbacklabel"
+            android:maxLength="300"
+            android:inputType="textMultiLine"
             android:layout_height="wrap_content" />
 
         <TextView

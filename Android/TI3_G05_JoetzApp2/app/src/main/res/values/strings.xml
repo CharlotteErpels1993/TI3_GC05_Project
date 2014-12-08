@@ -177,5 +177,7 @@ De smaak te pakken? Wacht dan niet te lang en boek een onvergetelijke JOETZ-vaka
     <string name="feedback">Waardering</string>
     <string name="score">Punten op 5</string>
     <string name="vakantie">Vakantie</string>
+    <string name="error_incorrect_feedback">De feedback mag maar 300 characters lang zijn</string>
+    <string name="error_incorrect_score">Geef een score van 1 tot 5</string>
 
 </resources>

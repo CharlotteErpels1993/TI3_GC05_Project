@@ -252,13 +252,8 @@ public class activiteit_detail extends Activity {
         });
 
         ImageView feedback = (ImageView) findViewById(R.id.Feedback);
+        feedback.setVisibility(View.GONE);
 
-        feedback.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent  = new Intent(activiteit_detail.this, feedback_geven.class);
-            }
-        });
         if (afbeelding1im.getVisibility() == View.VISIBLE) {
             afbeelding1im.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -315,6 +310,16 @@ public class activiteit_detail extends Activity {
             Toast.makeText(getApplicationContext(), pe.getMessage(), Toast.LENGTH_SHORT).show();
         }
 
+        feedback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent  = new Intent(activiteit_detail.this, feedback_geven.class);
+                intent.putExtra("vakantie", naam);
+                intent.putExtra("vakantieId", activiteitID);
+                startActivity(intent);
+            }
+        });
+
 
         txtNaam.setText(naam);
         txtLocatie.setText(locatie);
@@ -349,6 +354,7 @@ public class activiteit_detail extends Activity {
             txtExtraInfo.setVisibility(View.GONE);
             //toon normale prijs
             txtPrijs.setVisibility(View.VISIBLE);
+            feedback.setVisibility(View.VISIBLE);
             prijs = i.getStringExtra("prijs");
             txtPrijs.setText("€" + prijs);
             if (!(prijs.contains(".") || prijs.contains(","))) {
@@ -392,6 +398,7 @@ public class activiteit_detail extends Activity {
             btnmeerInfo.setVisibility(View.VISIBLE);
             verberg.setVisibility(View.GONE);
             txtExtraInfo.setVisibility(View.GONE);
+            feedback.setVisibility(View.VISIBLE);
             //toon normale prijs
             txtPrijs.setVisibility(View.VISIBLE);
             prijs = i.getStringExtra("prijs");
