@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        style="@style/LoginFormContainer"
+        android:finishOnTaskLaunch="true">
+        <TextView
+            android:id="@+id/vakantienaamLabel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/vakantie"/>
+        <TextView
+            android:id="@+id/vakantienaamFeedback"
+            android:layout_below="@id/vakantienaamLabel"
+            android:layout_marginTop="8dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:id="@+id/Feedbacklabel"
+            android:layout_below="@id/vakantienaamFeedback"
+            android:text="@string/feedback"/>
+        <EditText
+            android:layout_width="fill_parent"
+            android:id="@+id/feedbackIng"
+            android:layout_marginTop="8dp"
+            android:layout_below="@id/Feedbacklabel"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:id="@+id/scoreLabel"
+            android:layout_marginTop="8dp"
+        android:text="@string/score"
+            android:layout_below="@id/feedbackIng"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/score"
+            android:inputType="number"
+            android:layout_below="@id/scoreLabel"/>
+
+        <Button
+            android:layout_width="fill_parent"
+            android:background="@drawable/button_shape"
+            android:layout_below="@id/score"
+            android:id="@+id/ingevenFeedback"
+            android:layout_marginTop="8dp"
+            android:text="@string/ingeven"
+            android:layout_height="wrap_content" />
+</RelativeLayout>
+    </ScrollView>

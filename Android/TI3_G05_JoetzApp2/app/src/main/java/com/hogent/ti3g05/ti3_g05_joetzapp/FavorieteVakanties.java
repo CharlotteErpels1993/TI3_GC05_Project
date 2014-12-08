@@ -313,7 +313,29 @@ public class FavorieteVakanties extends Fragment{
                 // Close the progressdialog
                 mProgressDialog.dismiss();
                 //swipeLayout.setRefreshing(false);
+/*
+                SwipeDismissListViewTouchListener touchListener =
+                        new SwipeDismissListViewTouchListener(
+                                listview,
+                                new SwipeDismissListViewTouchListener.DismissCallbacks() {
+                                    @Override
+                                    public boolean canDismiss(int position) {
+                                        return true;
+                                    }
 
+                                    @Override
+                                    public void onDismiss(ListView listView, int[] reverseSortedPositions) {
+                                        for (int position : reverseSortedPositions) {
+                                            adapter.remove(adapter.getItem(position));
+                                        }
+                                        adapter.notifyDataSetChanged();
+                                    }
+                                });
+                listview.setOnTouchListener(touchListener);
+
+
+                listview.setOnScrollListener(touchListener.makeScrollListener());
+*/
                 filtertext.addTextChangedListener(new TextWatcher() {
                     @Override
                     public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {                }

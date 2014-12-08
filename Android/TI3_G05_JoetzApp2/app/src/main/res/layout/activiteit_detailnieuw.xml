@@ -47,6 +47,7 @@
 
 
 
+
     <ImageView
         android:id="@+id/share"
         android:layout_width="50dp"
@@ -63,6 +64,16 @@
         android:layout_marginTop="8dp"
         android:src="@drawable/twitter"
         android:layout_toEndOf="@id/share"/>
+
+    <ImageView
+        android:layout_width="50dp"
+        android:id="@+id/Feedback"
+        android:layout_alignEnd="@id/titel"
+        android:layout_below="@id/titel"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/feedbackbeter"/>
+
 
 
 

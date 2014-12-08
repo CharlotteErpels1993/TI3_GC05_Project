@@ -251,6 +251,14 @@ public class activiteit_detail extends Activity {
             }
         });
 
+        ImageView feedback = (ImageView) findViewById(R.id.Feedback);
+
+        feedback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent  = new Intent(activiteit_detail.this, feedback_geven.class);
+            }
+        });
         if (afbeelding1im.getVisibility() == View.VISIBLE) {
             afbeelding1im.setOnClickListener(new View.OnClickListener() {
                 @Override

@@ -170,5 +170,9 @@ De smaak te pakken? Wacht dan niet te lang en boek een onvergetelijke JOETZ-vaka
     <string name="error_email_used">Dit email adres is reeds toegevoegd</string>
     <string name="error_invalid_lidnummer">Ongeldig lidnummer</string>
     <string name="emailSturen">Stuur email</string>
+    <string name="ingeven">Feedback ingeven</string>
+    <string name="feedback">Waardering</string>
+    <string name="score">Punten op 5</string>
+    <string name="vakantie">Vakantie</string>
 
 </resources>

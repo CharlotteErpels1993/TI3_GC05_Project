@@ -120,6 +120,9 @@
             android:label="@string/title_activity_profiel_edit" >
         </activity>
 
+        <activity android:name=".feedback_geven"
+            android:theme="@style/CustomActionBarTheme"/>
+
         <activity android:name=".LidnummerToevoegen"
 
             android:theme="@style/CustomActionBarTheme"/>

@@ -298,6 +298,8 @@ public class LidnummerToevoegen extends Activity {
             nieuweMonitor.saveInBackground();
 
             signUpMsg("Lidnummer toegevoegd.");
+
+
             Intent in = new Intent(getApplicationContext(), navBarMainScreen.class);
             startActivity(in);
         }
