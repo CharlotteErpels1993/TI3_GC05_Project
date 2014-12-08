@@ -64,6 +64,9 @@ public class feedback_geven extends Activity {
         ingeven = (Button) findViewById(R.id.ingevenFeedback);
         ingeven.getResources().getColor(R.color.Rood);
 
+        feedbackText = (EditText) findViewById(R.id.feedbackIng);
+        scoreText = (EditText) findViewById(R.id.score);
+
         isInternetPresent = cd.isConnectingToInternet();
         if (isInternetPresent) {
             try {
@@ -129,6 +132,8 @@ public class feedback_geven extends Activity {
 
     public void valideerGegevens(String feedback, String score)
     {
+        clearErrors();
+        cancel = false;
 
         if (TextUtils.isEmpty(feedback)) {
             feedbackText.setError(getString(R.string.error_field_required));
@@ -154,6 +159,8 @@ public class feedback_geven extends Activity {
                 cancel = true;
             }
         }
+
+
         if (cancel) {
             // There was an error; don't attempt login and focus the first
             // form field with an error.
@@ -176,17 +183,24 @@ public class feedback_geven extends Activity {
         feedbackObject.put("vakantie", vakantieId);
         feedbackObject.put("waardering", feedback);
         feedbackObject.put("gebruiker", gebruiker);
-        feedbackObject.put("score", score);
+        feedbackObject.put("score", Integer.parseInt(score));
         feedbackObject.put("goedgekeurd", false);
 
             feedbackObject.save();
 
-            Toast.makeText(feedback_geven.this, "feedback is succesvol geregistreerd", Toast.LENGTH_SHORT);
+            Toast.makeText(feedback_geven.this, "feedback is succesvol geregistreerd", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(feedback_geven.this, navBarMainScreen.class);
             startActivity(intent);
+
         } catch (com.parse.ParseException e) {
             e.printStackTrace();
         }
+    }
+
+    private void clearErrors(){
+        feedbackText.setError(null);
+        scoreText.setError(null);
+
     }
 
 }

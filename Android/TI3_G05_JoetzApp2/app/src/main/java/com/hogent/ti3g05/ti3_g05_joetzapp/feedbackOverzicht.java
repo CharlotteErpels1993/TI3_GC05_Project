@@ -53,7 +53,7 @@ public class feedbackOverzicht extends Fragment {
     private ProgressDialog mProgressDialog;
     private View rootView;
     private FeedbackAdapter adapter;
-    private List<Feedback> feedback = null;
+    private List<Feedback> feedbackList = null;
     private EditText filtertext;
 
     Boolean isInternetPresent = false;
@@ -161,7 +161,7 @@ public class feedbackOverzicht extends Fragment {
         @Override
         protected Void doInBackground(Void... params) {
             // Create the array
-            feedback = new ArrayList<Feedback>();
+            feedbackList = new ArrayList<Feedback>();
 
 
             try {
@@ -224,10 +224,12 @@ public class feedbackOverzicht extends Fragment {
 
                         }
 
+                        if (map.getGoedgekeurd()) {
+                            feedbackList.add(map);
+                        }
+
                     }
-                    if (map.getGoedgekeurd()) {
-                        feedback.add(map);
-                    }
+
                 }
 
                 }catch(ParseException e){
@@ -249,7 +251,7 @@ public class feedbackOverzicht extends Fragment {
             //ArrayAdapter<Profile> profileAdapter = new ArrayAdapter<Profile>(context, resource, profiles)
             //ArrayAdapter<Vakantie> vakantieAdapter = new ArrayAdapter<Vakantie>(activiteit_overzicht.this, R.layout.listview_item , vakanties);
 
-            adapter = new FeedbackAdapter(rootView.getContext(), feedback);
+            adapter = new FeedbackAdapter(rootView.getContext(), feedbackList);
             // Binds the Adapter to the ListView
             listview.setAdapter(adapter);
             // Close the progressdialog
