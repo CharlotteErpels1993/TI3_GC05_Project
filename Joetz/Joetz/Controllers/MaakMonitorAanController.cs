@@ -9,7 +9,9 @@ using System.Web.Mvc;
 using System;
 using System.Configuration;
 using Joetz.Models;
+using System.Windows;
 using Microsoft.Office.Interop.Excel;
+using Parse;
 
 namespace Joetz.Controllers
 {
@@ -119,11 +121,12 @@ namespace Joetz.Controllers
         //private OpenFileDialog openFileDialog1;
         /*private File
 
-         * vindt openfiledialog niet => andere oplossing of missende extensie?
+         /* vindt openfiledialog niet => andere oplossing of missende extensie?*/
 
-        private void btnUpload_Click(object sender, EventArgs e, MaakMonitorenAanModel model)
+       /* private void btnUpload_Click(object sender, EventArgs e, MaakMonitorenAanModel model)
         {
-            
+           
+
            /* OpenFileDialog openFileDialog1 = new OpenFileDialog();
             
             openFileDialog1.InitialDirectory = @"C:\";
@@ -144,14 +147,14 @@ namespace Joetz.Controllers
             {
                 model.fileNaam = openFileDialog1.FileName;
             }*/
-    /*    }
+       //}
 
 
 
-        /*protected void btnUpload_Click(object sender, EventArgs e, MaakMonitorenAanModel model)
+        protected async void btnUpload_Click(object sender, EventArgs e, MaakMonitorenAanModel model)
         {
             
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            //this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
 
            /* Microsoft.Office.Core.FileDialog fd =
             this.Application.get_FileDialog(Microsoft.Office.Core.MsoFileDialogType.msoFileDialogOpen);
@@ -169,24 +172,47 @@ namespace Joetz.Controllers
             browsedFile.Filter = "XML Files (*.xml,*.xls,*.xlsx,*.xlsm,*.xlsb)"+
                 "|*.xml*.xls,*.xlsx,*.xlsm,*.xlsb|All files (*.*)|*.*";
             browsedFile.ShowDialog();
-
-            string fileName = 
+          * 
+          *  var jobApplication = new ParseObject("Monitor");
+            jobApplication["aansluitingsNr"] = "";
+            jobApplication["applicantResumeFile"] = file;
+            await jobApplication.SaveAsync();
+        */
+            string fileName = "C:\\test.xlsx";
             string connectionString = String.Format(@"Provider=Microsoft.ACE.OLEDB.12.0;" +
                                       "Data Source={0};Extended Properties='Excel 12.0;HDR=YES;IMEX=0'", fileName);
             using (OleDbConnection cn = new OleDbConnection(connectionString))
             {
                 cn.Open();
-                OleDbCommand cmd = new OleDbCommand("SELECT Column1, Column2, Column3 From [Sheet1$]", cn);
+                OleDbCommand cmd = new OleDbCommand("SELECT Column1, Column2, Column3, Column4, Column5, Column6, Column7, Column8, Column9, Column10, Column11, Column12, Cloumn13, Column14, Column15 From [Sheet1$]", cn);
                 OleDbDataReader rd = cmd.ExecuteReader();
                 while (rd.Read())
                 {
+               /*
                     Console.WriteLine("Loop");
                     Console.WriteLine(rd.GetString(0));
                     Console.WriteLine(rd.GetString(1));
                     Console.WriteLine(rd.GetString(2));
-                    Console.WriteLine();
+                    Console.WriteLine();*/
+                    var monitor = new ParseObject("Monitor");
+                    monitor["aansluitingsNr"] = rd.GetString(0);
+                    monitor["codeGerechtigde"] = rd.GetString(2);
+
+                    monitor["email"] = rd.GetString(3);
+                    monitor["gemeente"] = rd.GetString(4);
+                    monitor["gsm"] = rd.GetString(5);
+                    monitor["lidnummer"] = rd.GetString(7);
+
+                    monitor["linkFacebook"] = rd.GetString(8);
+                    monitor["naam"] = rd.GetString(9);
+                    monitor["nummer"] = rd.GetString(10);
+                    monitor["postcode"] = rd.GetString(11);
+                    monitor["rijksregisterNr"] = rd.GetString(12);
+                    monitor["straat"] = rd.GetString(13);
+                    monitor["voornaam"] = rd.GetString(15);
+                    await monitor.SaveAsync();
                 }
             }
-        }*/
+        }
    }
 }
