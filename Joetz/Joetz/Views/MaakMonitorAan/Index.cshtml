@@ -1,0 +1,25 @@
+﻿@model Joetz.Models.MaakMonitorenAanModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div>
+   <h4>Select a file to upload:</h4>
+    @Html.TextBoxFor(m => m.fileNaam)
+                
+
+    <button id="UploadButton"
+        title ="Upload"
+       
+        onclick="UploadButton_Click"
+        runat="server">
+    </button>    
+
+   <hr />
+
+   <Label id="UploadStatusLabel"
+       runat="server">
+   </Label>        
+</div>
