@@ -64,7 +64,6 @@ public class feedback_geven extends Activity {
 
         cd= new ConnectionDetector(feedback_geven.this);
         ingeven = (Button) findViewById(R.id.ingevenFeedback);
-        ingeven.getResources().getColor(R.color.Rood);
 
 
 

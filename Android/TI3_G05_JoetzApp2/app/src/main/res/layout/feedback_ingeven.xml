@@ -7,23 +7,28 @@
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         style="@style/LoginFormContainer"
         android:finishOnTaskLaunch="true">
-        <TextView
+        <!--<TextView
             android:id="@+id/vakantienaamLabel"
             android:layout_width="fill_parent"
+            android:layout_marginTop="5dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_height="wrap_content"
-            android:text="@string/vakantie"/>
+            android:text="@string/vakantie"/>-->
         <TextView
             android:id="@+id/vakantienaamFeedback"
-            android:layout_below="@id/vakantienaamLabel"
             android:layout_marginTop="8dp"
+            android:textColor="@color/Rood"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textStyle="bold"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content" />
 
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="15dp"
             android:id="@+id/Feedbacklabel"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_below="@id/vakantienaamFeedback"
             android:text="@string/feedback"/>
         <EditText
@@ -38,14 +43,16 @@
         <TextView
             android:layout_width="fill_parent"
             android:id="@+id/scoreLabel"
-            android:layout_marginTop="8dp"
-        android:text="@string/score"
+            android:layout_marginTop="15dp"
+            android:text="@string/score"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_below="@id/feedbackIng"
             android:layout_height="wrap_content" />
 
         <EditText
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:id="@+id/score"
             android:inputType="number"
             android:layout_below="@id/scoreLabel"/>
@@ -55,7 +62,8 @@
             android:background="@drawable/button_shape"
             android:layout_below="@id/score"
             android:id="@+id/ingevenFeedback"
-            android:layout_marginTop="8dp"
+            android:textColor="@color/Rood"
+            android:layout_marginTop="15dp"
             android:text="@string/ingeven"
             android:layout_height="wrap_content" />
 </RelativeLayout>
