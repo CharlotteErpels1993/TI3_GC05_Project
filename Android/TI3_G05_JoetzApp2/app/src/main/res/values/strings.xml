@@ -83,8 +83,9 @@ Mail Joetz met uw voornaam, naam, e-mailadres, rijksregisternummer, adresgegeven
     <string name="error_invalid_password">wachtwoord is te kort</string>
     <string name="error_invalid_confirm_password">wachtwoorden komen niet overeen</string>
     <string name="dialog_ingeschreven_melding">U heeft zich succesvol ingeschreven.</string>
-    <string name="btnCPtoevoegen">Contactpersoon toevoegen</string>
+    <string name="btnCPtoevoegen">Extra contactpersoon toevoegen</string>
     <string name="btnCPVerwijderen">Extra contactpersoon verwijderen</string>
+    <string name="extra_Informatie">Extra Informatie</string>
 
     <string-array name="items">
         <item>Vakanties</item>
@@ -115,8 +116,8 @@ Mail Joetz met uw voornaam, naam, e-mailadres, rijksregisternummer, adresgegeven
     <string name="meerInfo">Meer info</string>
     <string name="minderInfo">Minder info</string>
     <string name="vakantieDetailTitel">Vakantie</string>
-    <string name="inschrijvenVak1_AlgemeneUitleg">Gelieve de gevens van de deelnemer in te voeren.</string>
     <string name="label_geboorteDatum">Geboortedatum</string>
+    <string name="inschrijvenVak1_AlgemeneUitleg">Gelieve de gegevens van de deelnemer in te voeren.</string>
     <string name="inschrijvenVak2_AlgemeneUitleg">Gelieve de gegevens in te vullen van een contactpersoon in geval van nood. U kan ervoor kiezen om een tweede contactpersoon toe te voegen</string>
     <string name="inschrijvenVak3_AlgemeneUitleg">Indien er nog extra info is, waar de leiding van op de hoogte moet zijn, kan u dit hier invullen. Bijvoorbeeld allergieën, ziekte, &#8230;</string>
     <string name="ok">OK</string>

@@ -22,6 +22,7 @@ public class InschrijvenVakantiePart2 extends Activity {
 
     private String voornaam, naam, telefoon, gsm;
     private String voornaamExtra, naamExtra, telefoonExtra, gsmExtra;
+    private RelativeLayout layout;
 
     private Button btnVolgende, btnCPextra;
     private boolean cancel = false;
@@ -49,7 +50,6 @@ public class InschrijvenVakantiePart2 extends Activity {
         txtGSMExtra = (EditText) findViewById(R.id.GsmContactPersoonExtra);
 
         btnVolgende = (Button)findViewById(R.id.btnNaarDeel3V);
-        btnVolgende.setTextColor(getResources().getColor(R.color.Rood));
         btnVolgende.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -66,27 +66,20 @@ public class InschrijvenVakantiePart2 extends Activity {
             }
         });
 
+        layout = (RelativeLayout) findViewById(R.id.layout_ExtraCP);
         btnCPextra = (Button) findViewById(R.id.btnExtraCP);
-        btnCPextra.setTextColor(getResources().getColor(R.color.Rood));
         btnCPextra.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
 
                 extraCPZichtbaar = !extraCPZichtbaar; //indien true -> false en omgekeerd
                 if (extraCPZichtbaar){ //velden zijn zichtbaar
-                    txtVoornaamExtra.setVisibility(View.VISIBLE);
-                    txtNaamExtra.setVisibility(View.VISIBLE);
-                    txtTelefoonExtra.setVisibility(View.VISIBLE);
-                    txtGSMExtra.setVisibility(View.VISIBLE);
+                    layout.setVisibility(View.VISIBLE);
 
                     btnCPextra.setText(getString(R.string.btnCPVerwijderen));
                 }
                 else{//velden zijn onzichtbaar
-                    txtVoornaamExtra.setVisibility(View.GONE);
-                    txtNaamExtra.setVisibility(View.GONE);
-                    txtTelefoonExtra.setVisibility(View.GONE);
-                    txtGSMExtra.setVisibility(View.GONE);
-
+                    layout.setVisibility(View.GONE);
                     btnCPextra.setText(getString(R.string.btnCPtoevoegen));
                 }
             }
