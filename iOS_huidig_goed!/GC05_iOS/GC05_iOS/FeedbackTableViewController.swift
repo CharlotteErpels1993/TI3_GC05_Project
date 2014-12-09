@@ -4,6 +4,7 @@ class FeedbackTableViewController: UITableViewController, UISearchBarDelegate, U
     
     @IBOutlet var zoekbar: UISearchBar!
     
+    @IBOutlet var addButton: UIBarButtonItem!
     var feedbacken: [Feedback] = []
     var feedbacken2: [Feedback] = []
     var vakantieId: String?
@@ -37,6 +38,10 @@ class FeedbackTableViewController: UITableViewController, UISearchBarDelegate, U
         feedbacken2.sort({ $0.vakantie!.titel < (String($1.score!)) })
         
         if vakantieId == nil {
+            self.navigationItem.rightBarButtonItem = nil
+        }
+        
+        if PFUser.currentUser() == nil {
             self.navigationItem.rightBarButtonItem = nil
         }
         
@@ -84,6 +89,7 @@ class FeedbackTableViewController: UITableViewController, UISearchBarDelegate, U
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "add" {
             let geefFeedbackViewController = segue.destinationViewController as GeefFeedbackViewController
+            geefFeedbackViewController.vakantie = self.vakantieId
         }
     }
     

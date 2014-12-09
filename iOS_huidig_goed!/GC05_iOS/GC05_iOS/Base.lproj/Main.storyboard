@@ -581,6 +581,7 @@
                         <outlet property="basisprijsLabel" destination="aGO-yv-kHP" id="pOK-xU-LlH"/>
                         <outlet property="bondMoysonPrijsLabel" destination="7z2-hp-SZc" id="Nv9-9A-gpS"/>
                         <outlet property="doelgroepLabel" destination="YGY-Ah-WIL" id="aTD-at-if3"/>
+                        <outlet property="feebackButton" destination="knO-th-iLQ" id="eIm-k5-bas"/>
                         <outlet property="formuleLabel" destination="6av-Pr-Xva" id="wwY-K1-Pyx"/>
                         <outlet property="heartButton" destination="kOZ-V6-fCp" id="HMK-6U-EUa"/>
                         <outlet property="inbegrepenPrijs" destination="IYN-I1-jdf" id="pvx-Er-Czr"/>
@@ -1476,6 +1477,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Joetz Fun Factor" id="umm-Ve-FKJ">
+                        <barButtonItem key="backBarButtonItem" title="Terug" id="n7j-GN-MJI"/>
                         <barButtonItem key="leftBarButtonItem" image="menu.png" id="saY-r7-XgC">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -1496,6 +1498,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                         </connections>
                     </refreshControl>
                     <connections>
+                        <outlet property="addButton" destination="gjn-b1-qhX" id="DjF-Mp-JoS"/>
                         <outlet property="zoekbar" destination="5fv-qC-zQH" id="XAb-Pu-QOF"/>
                     </connections>
                 </tableViewController>
@@ -1503,7 +1506,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
             </objects>
             <point key="canvasLocation" x="4877" y="330"/>
         </scene>
-        <!--Geef Feedback View Controller-->
+        <!--Geef feedback-->
         <scene sceneID="U2V-qo-4kY">
             <objects>
                 <tableViewController id="f0a-8k-9lX" customClass="GeefFeedbackViewController" customModule="JOETZ" customModuleProvider="target" sceneMemberID="viewController">
@@ -1592,7 +1595,14 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                             <outlet property="delegate" destination="f0a-8k-9lX" id="Q5f-6x-Mu1"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="eLK-Rk-q4O"/>
+                    <navigationItem key="navigationItem" title="Geef feedback" id="eLK-Rk-q4O">
+                        <barButtonItem key="rightBarButtonItem" title="Indienen" id="Gpl-bf-AxU">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <segue destination="vyM-yU-cE6" kind="show" identifier="indienen" id="f7I-8D-KXr"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="scorePickerView" destination="MgX-5Q-rOQ" id="SMF-vj-JU2"/>
                         <outlet property="txtFeedback" destination="E7l-vk-Drm" id="Pfv-G4-QtG"/>
@@ -1601,6 +1611,60 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZDn-pG-Z2N" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5531" y="330"/>
+        </scene>
+        <!--Feedback succesvol-->
+        <scene sceneID="dkt-dm-4h6">
+            <objects>
+                <viewController id="vyM-yU-cE6" customClass="GeefFeedbackSuccesvolViewController" customModule="JOETZ" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="B7m-ed-oqy"/>
+                        <viewControllerLayoutGuide type="bottom" id="4Ji-6Y-NtX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="p5f-Dm-85T">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Uw feedback is succesvol ingediend" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NbT-yH-G7M">
+                                <rect key="frame" x="16" y="280" width="568" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="en wordt goedgekeurd door het Joetz team." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9yw-K6-H1r">
+                                <rect key="frame" x="16" y="308" width="568" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l6E-2Y-xhm">
+                                <rect key="frame" x="16" y="330" width="568" height="30"/>
+                                <state key="normal" title="Ga terug naar overzicht">
+                                    <color key="titleColor" red="0.90980392160000001" green="0.12941176469999999" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="gaTerugNaarOverzichtVakanties:" destination="vyM-yU-cE6" eventType="touchUpInside" id="uUB-dm-PWc"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="NbT-yH-G7M" secondAttribute="centerY" constant="9.75" id="6hT-Jh-grF"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="9yw-K6-H1r" secondAttribute="trailing" id="7iR-vA-H13"/>
+                            <constraint firstItem="9yw-K6-H1r" firstAttribute="leading" secondItem="p5f-Dm-85T" secondAttribute="leadingMargin" id="ElL-Rh-7BS"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="NbT-yH-G7M" secondAttribute="trailing" id="KZ5-PN-rfm"/>
+                            <constraint firstItem="NbT-yH-G7M" firstAttribute="leading" secondItem="p5f-Dm-85T" secondAttribute="leadingMargin" id="ONz-xI-XHa"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="l6E-2Y-xhm" secondAttribute="trailing" id="VDk-DI-et1"/>
+                            <constraint firstItem="l6E-2Y-xhm" firstAttribute="top" secondItem="9yw-K6-H1r" secondAttribute="bottom" constant="1.5" id="Vn8-OW-xvc"/>
+                            <constraint firstItem="l6E-2Y-xhm" firstAttribute="leading" secondItem="p5f-Dm-85T" secondAttribute="leadingMargin" id="eT7-X9-ckg"/>
+                            <constraint firstItem="9yw-K6-H1r" firstAttribute="top" secondItem="NbT-yH-G7M" secondAttribute="bottom" constant="8" id="zzC-X9-uNl"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Feedback succesvol" id="dJO-Cv-VL0"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1YI-Jy-LfV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6185" y="332"/>
         </scene>
         <!--My Navigation Controller-->
         <scene sceneID="cC5-ea-HfQ">

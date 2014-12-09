@@ -6,8 +6,8 @@ class VakantieDetailsTableViewController: UITableViewController {
     @IBOutlet weak var afbeelding1: UIImageView!
     @IBOutlet weak var afbeelding2: UIImageView!
     @IBOutlet weak var afbeelding3: UIImageView!
-    
-    
+
+    @IBOutlet var feebackButton: UIButton!
     @IBOutlet var heartButton: UIButton!
     @IBOutlet var vakantieNaamLabel: UILabel!
     @IBOutlet weak var korteBeschrijvingLabel: UILabel!

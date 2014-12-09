@@ -117,6 +117,7 @@
 		A5E5B9831A2370DC0054960C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5E5B9811A2370DC0054960C /* LaunchScreen.xib */; };
 		A5E5B9851A23712B0054960C /* joetz.png in Resources */ = {isa = PBXBuildFile; fileRef = A5E5B9841A23712B0054960C /* joetz.png */; };
 		A5E8A6871A13AE1400DA861A /* InschrijvenVormingSuccesvolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E8A6861A13AE1400DA861A /* InschrijvenVormingSuccesvolViewController.swift */; };
+		A5EF7F6D1A36F52600543C3C /* GeefFeedbackSuccesvolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EF7F6C1A36F52600543C3C /* GeefFeedbackSuccesvolViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -245,6 +246,7 @@
 		A5E5B9821A2370DC0054960C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		A5E5B9841A23712B0054960C /* joetz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = joetz.png; path = Images.xcassets/joetz.png; sourceTree = "<group>"; };
 		A5E8A6861A13AE1400DA861A /* InschrijvenVormingSuccesvolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InschrijvenVormingSuccesvolViewController.swift; sourceTree = "<group>"; };
+		A5EF7F6C1A36F52600543C3C /* GeefFeedbackSuccesvolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeefFeedbackSuccesvolViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -421,6 +423,7 @@
 				A5C6C4261A2F982A004F5648 /* MonitorRegistratieSuccesvolViewController.swift */,
 				A5CB1FF61A35CCB300A4178A /* FeedbackTableViewController.swift */,
 				A5CB1FF81A35CCDD00A4178A /* GeefFeedbackViewController.swift */,
+				A5EF7F6C1A36F52600543C3C /* GeefFeedbackSuccesvolViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -616,6 +619,7 @@
 			files = (
 				A5CB1FFB1A35CD0000A4178A /* FeedbackSQL.swift in Sources */,
 				0FD07EC11A234EBE006A4E60 /* DeelnemerSQL.swift in Sources */,
+				A5EF7F6D1A36F52600543C3C /* GeefFeedbackSuccesvolViewController.swift in Sources */,
 				0F145EDF1A1CDE98003067EA /* ResponsiveTextFieldViewController.swift in Sources */,
 				A5CEA07F1A13ACDF00E14103 /* InschrijvenVormingViewController.swift in Sources */,
 				0FD07EC91A2354B5006A4E60 /* AfbeeldingSQL.swift in Sources */,
