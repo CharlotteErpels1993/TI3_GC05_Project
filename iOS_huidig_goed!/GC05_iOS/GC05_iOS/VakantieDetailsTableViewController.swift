@@ -244,6 +244,9 @@ class VakantieDetailsTableViewController: UITableViewController {
             let inschrijvenVakantie1ViewController = segue.destinationViewController as InschrijvenVakantie1ViewController
             inschrijvenVakantie1ViewController.vakantie = vakantie
             inschrijvenVakantie1ViewController.hidesBottomBarWhenPushed = true
+        } else if segue.identifier == "toonFeedback" {
+            let feedbackTableViewController = segue.destinationViewController as FeedbackTableViewController
+            feedbackTableViewController.vakantieId = self.vakantie.id
         }
     }
     
