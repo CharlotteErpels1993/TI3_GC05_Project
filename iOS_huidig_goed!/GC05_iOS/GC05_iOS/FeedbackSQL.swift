@@ -129,10 +129,17 @@ struct FeedbackSQL {
         if let gebruikerId = row["gebruiker"]?.asString() {
             feedback.gebruiker?.id = gebruikerId
             
+            ParseData.deleteOuderTable()
+            ParseData.vulOuderTableOp()
+            
             var responseOuder = OuderSQL.getOuder(gebruikerId)
             
             if responseOuder.1 != nil {
                 //het is geen ouder
+                
+                ParseData.deleteMonitorTable()
+                ParseData.vulMonitorTableOp()
+                
                 var responseMonitor = MonitorSQL.getMonitor(gebruikerId)
                 
                 if responseMonitor.1 == nil {
@@ -150,6 +157,7 @@ struct FeedbackSQL {
         }
         if let vakantieId = row["vakantie"]?.asString() {
             feedback.vakantie?.id = vakantieId
+            
             var responseVakantie = VakantieSQL.getVakantie(vakantieId)
             
             if responseVakantie.1 == nil {
