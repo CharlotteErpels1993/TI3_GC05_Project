@@ -574,4 +574,55 @@ struct MonitorSQL {
         
         return true
     }
+    
+    static func getMonitor(monitorId: String) -> /*[Vakantie]*/ (Monitor, Int?) {
+        
+        var monitor: Monitor = Monitor(id: monitorId)
+        
+        let (resultSet, err) = SD.executeQuery("SELECT * FROM Monitor WHERE objectId = ?", withArgs: [monitorId])
+        
+        var response: (Monitor, Int?)
+        var error: Int?
+        
+        if err != nil
+        {
+            println("ERROR: error tijdens ophalen van bepaalde monitor met objectId uit table Monitor")
+        }
+        else
+        {
+            if resultSet.count == 0 {
+                error = 1
+            }
+            else {
+                error = nil
+                
+                monitor = getMonitor(resultSet[0])
+            }
+            
+        }
+        
+        response = (monitor, error)
+        return response
+    }
+    
+    static func getGebruiker(monitor: Monitor) -> Gebruiker {
+        var gebruiker: Gebruiker = Gebruiker(id: "test")
+        
+        gebruiker.id = monitor.id
+        gebruiker.rijksregisterNr = monitor.rijksregisterNr
+        gebruiker.email = monitor.email
+        gebruiker.voornaam = monitor.voornaam
+        gebruiker.naam = monitor.naam
+        gebruiker.straat = monitor.straat
+        gebruiker.nummer = monitor.nummer
+        gebruiker.bus = monitor.bus
+        gebruiker.gemeente = monitor.gemeente
+        gebruiker.postcode = monitor.postcode
+        gebruiker.gsm = monitor.gsm
+        gebruiker.telefoon = monitor.telefoon
+        gebruiker.aansluitingsNr = monitor.aansluitingsNr
+        gebruiker.codeGerechtigde = monitor.codeGerechtigde
+        
+        return gebruiker
+    }
 }

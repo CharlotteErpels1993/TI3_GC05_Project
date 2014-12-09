@@ -322,6 +322,27 @@ struct OuderSQL {
         }
     }
     
+    static func getGebruiker(ouder: Ouder) -> Gebruiker {
+        var gebruiker: Gebruiker = Gebruiker(id: "test")
+
+        gebruiker.id = ouder.id
+        gebruiker.rijksregisterNr = ouder.rijksregisterNr
+        gebruiker.email = ouder.email
+        gebruiker.voornaam = ouder.voornaam
+        gebruiker.naam = ouder.naam
+        gebruiker.straat = ouder.straat
+        gebruiker.nummer = ouder.nummer
+        gebruiker.bus = ouder.bus
+        gebruiker.gemeente = ouder.gemeente
+        gebruiker.postcode = ouder.postcode
+        gebruiker.gsm = ouder.gsm
+        gebruiker.telefoon = ouder.telefoon
+        gebruiker.aansluitingsNr = ouder.aansluitingsNr
+        gebruiker.codeGerechtigde = ouder.codeGerechtigde
+        
+        return gebruiker
+    }
+    
     static func parseOuderToDatabase(ouder: Ouder, wachtwoord: String) {
         var ouderJSON = PFObject(className: "Ouder")
         
@@ -380,4 +401,33 @@ struct OuderSQL {
         PFUser.logInWithUsername(ouder.email, password: wachtwoord)
     }
     
+    static func getOuder(ouderId: String) -> /*[Vakantie]*/ (Ouder, Int?) {
+        
+        var ouder: Ouder = Ouder(id: ouderId)
+        
+        let (resultSet, err) = SD.executeQuery("SELECT * FROM Ouder WHERE objectId = ?", withArgs: [ouderId])
+        
+        var response: (Ouder, Int?)
+        var error: Int?
+        
+        if err != nil
+        {
+            println("ERROR: error tijdens ophalen van bepaalde ouder met objectId uit table Ouder")
+        }
+        else
+        {
+            if resultSet.count == 0 {
+                error = 1
+            }
+            else {
+                error = nil
+                
+                ouder = getOuder(resultSet[0])
+            }
+            
+        }
+        
+        response = (ouder, error)
+        return response
+    }
 }

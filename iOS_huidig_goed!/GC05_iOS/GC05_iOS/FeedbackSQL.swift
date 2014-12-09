@@ -52,25 +52,30 @@ struct FeedbackSQL {
             queryString.extend(" VALUES ")
             queryString.extend("(")
             
-            queryString.extend("'\(objectId)', ") //objectId - String
-            queryString.extend("'\(datum)', ") //datum - String
-            queryString.extend("'\(gebruiker)', ") //gebruiker - String
-            queryString.extend("'\(vakantie)', ") //vakantie - String
-            queryString.extend("'\(goedgekeurd)', ") //goedgekeurd - Bool
-            queryString.extend("'\(waardering)', ") //waardering - String
-            queryString.extend("\(score)") // score - Int (geen '')!!
+            queryString.extend("?, ") //objectId - String
+            queryString.extend("?, ") //datum - String
+            queryString.extend("?, ") //gebruiker - String
+            queryString.extend("?, ") //vakantie - String
+            queryString.extend("?, ") //goedgekeurd - Bool
+            queryString.extend("?, ") //waardering - String
+            queryString.extend("?") // score - Int (geen '')!!
             
             queryString.extend(")")
             
+            if let err = SD.executeChange(queryString, withArgs: [objectId, datum, gebruiker, vakantie, goedgekeurd, waardering, score])
+            {
+                println("ERROR: error tijdens toevoegen van nieuwe feedback in table Feedback")
+            }
             
-            if let err = SD.executeChange(queryString)
+            
+            /*if let err = SD.executeChange(queryString)
             {
                 println("ERROR: error tijdens toevoegen van nieuwe Feedback in table Feedback")
             }
             else
             {
                 //no error, the row was inserted successfully
-            }
+            }*/
             
         }
     }
@@ -111,6 +116,8 @@ struct FeedbackSQL {
     
     static func getFeedback(row: SD.SDRow) -> Feedback {
         var feedback: Feedback = Feedback(id: "test")
+        var vakantie: Vakantie = Vakantie(id: "test")
+        var gebruiker: Gebruiker = Gebruiker(id: "test")
         
         if let objectId = row["objectId"]?.asString() {
             feedback.id = objectId
@@ -119,11 +126,35 @@ struct FeedbackSQL {
             var datumString = datum
             feedback.datum = datumString.toDate() as NSDate!
         }
-        if let gebruiker = row["gebruiker"]?.asString() {
-            feedback.gebruiker?.id = gebruiker
+        if let gebruikerId = row["gebruiker"]?.asString() {
+            feedback.gebruiker?.id = gebruikerId
+            
+            var responseOuder = OuderSQL.getOuder(gebruikerId)
+            
+            if responseOuder.1 != nil {
+                //het is geen ouder
+                var responseMonitor = MonitorSQL.getMonitor(gebruikerId)
+                
+                if responseMonitor.1 == nil {
+                    //het is een monitor
+                    feedback.gebruiker = MonitorSQL.getGebruiker(responseMonitor.0)
+                } else {
+                    //er is geen gebruiker met dit id teruggevonden
+                    println("ERROR: er is geen gebruiker met dit id teruggevonden in FeedbackSQL")
+                }
+            }
+            else {
+                //het is een ouder
+                feedback.gebruiker = OuderSQL.getGebruiker(responseOuder.0)
+            }
         }
-        if let vakantie = row["vakantie"]?.asString() {
-            feedback.vakantie?.id = vakantie
+        if let vakantieId = row["vakantie"]?.asString() {
+            feedback.vakantie?.id = vakantieId
+            var responseVakantie = VakantieSQL.getVakantie(vakantieId)
+            
+            if responseVakantie.1 == nil {
+                feedback.vakantie = responseVakantie.0
+            }
         }
         if let goedgekeurd = row["goedgekeurd"]?.asBool() {
             feedback.goedgekeurd = goedgekeurd

@@ -178,6 +178,37 @@ struct VakantieSQL {
         response = (vakanties, error)
         return response
     }
+   
+    static func getVakantie(vakantieId: String) -> /*[Vakantie]*/ (Vakantie, Int?) {
+        
+        var vakantie: Vakantie = Vakantie(id: vakantieId)
+        
+        let (resultSet, err) = SD.executeQuery("SELECT * FROM Vakantie WHERE objectId = ?", withArgs: [vakantieId])
+        
+        var response: (Vakantie, Int?)
+        var error: Int?
+        
+        if err != nil
+        {
+            println("ERROR: error tijdens ophalen van bepaalde vakantie met objectId uit table Vakantie")
+        }
+        else
+        {
+            if resultSet.count == 0 {
+                error = 1
+            }
+            else {
+                error = nil
+                
+                vakantie = getVakantie(resultSet[0])
+            }
+            
+        }
+        
+        response = (vakantie, error)
+        return response
+    }
+    
     
     static func getVakantie(row: SD.SDRow) -> Vakantie {
         var vakantie: Vakantie = Vakantie(id: "test")
