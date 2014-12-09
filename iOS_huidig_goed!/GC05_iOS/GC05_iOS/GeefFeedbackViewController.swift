@@ -14,6 +14,9 @@ class GeefFeedbackViewController: UITableViewController, UIPickerViewDataSource,
         super.viewDidLoad()
         hideSideMenuView()
         
+        tableView.estimatedRowHeight = 44.0
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
         scorePickerView.delegate = self
         scorePickerView.dataSource = self
         scorePickerView.reloadAllComponents()

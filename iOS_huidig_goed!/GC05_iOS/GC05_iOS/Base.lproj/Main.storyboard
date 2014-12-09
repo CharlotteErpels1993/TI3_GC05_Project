@@ -202,7 +202,7 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="toonEnGeefFeedback:" destination="q35-qh-mtC" eventType="touchUpInside" id="vVR-eq-dFS"/>
+                                                        <segue destination="mXu-bV-CsR" kind="show" id="kLO-a6-7kx"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -566,9 +566,6 @@
                         <barButtonItem key="backBarButtonItem" title="Terug" id="4W1-Mx-eUU"/>
                         <barButtonItem key="rightBarButtonItem" title="Inschrijven" id="CV8-59-j9a">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <segue destination="1th-E5-fug" kind="show" identifier="inschrijven" id="6VP-wk-8iK"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -1437,19 +1434,19 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VakantieNaam" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="88" translatesAutoresizingMaskIntoConstraints="NO" id="VVm-G1-tfp">
-                                            <rect key="frame" x="8" y="8" width="113" height="20.5"/>
+                                            <rect key="frame" x="8" y="8" width="584" height="20.5"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <color key="textColor" red="0.90980392160000001" green="0.12941176469999999" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feedback" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JJw-qN-CGb">
-                                            <rect key="frame" x="8" y="36" width="76" height="20.5"/>
+                                            <rect key="frame" x="8" y="36" width="584" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Rf-3f-wSW">
-                                            <rect key="frame" x="547" y="58" width="45" height="21"/>
+                                            <rect key="frame" x="547" y="58.5" width="45" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
@@ -1457,12 +1454,21 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="JJw-qN-CGb" firstAttribute="leading" secondItem="Rcq-I2-ga3" secondAttribute="leadingMargin" id="07Q-qC-BwY"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="JJw-qN-CGb" secondAttribute="trailing" id="07S-JB-iXW"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="6Rf-3f-wSW" secondAttribute="bottom" constant="0.5" id="2Te-Ri-T9a"/>
                                         <constraint firstItem="VVm-G1-tfp" firstAttribute="leading" secondItem="Rcq-I2-ga3" secondAttribute="leadingMargin" id="ACU-rL-I04"/>
                                         <constraint firstItem="JJw-qN-CGb" firstAttribute="top" secondItem="VVm-G1-tfp" secondAttribute="bottom" constant="7.5" id="XJG-MU-9q5"/>
                                         <constraint firstItem="6Rf-3f-wSW" firstAttribute="trailing" secondItem="Rcq-I2-ga3" secondAttribute="trailingMargin" id="Y6U-er-hr2"/>
+                                        <constraint firstItem="6Rf-3f-wSW" firstAttribute="top" secondItem="JJw-qN-CGb" secondAttribute="bottom" constant="2" id="iXQ-li-iLb"/>
                                         <constraint firstItem="VVm-G1-tfp" firstAttribute="top" secondItem="Rcq-I2-ga3" secondAttribute="topMargin" id="og1-xY-4yG"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="VVm-G1-tfp" secondAttribute="trailing" id="r6S-5x-4HZ"/>
+                                        <constraint firstItem="6Rf-3f-wSW" firstAttribute="trailing" secondItem="Rcq-I2-ga3" secondAttribute="trailingMargin" id="znJ-8L-bgV"/>
                                     </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="Y6U-er-hr2"/>
+                                        </mask>
+                                    </variation>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="feedback" destination="JJw-qN-CGb" id="RO0-Y5-SiG"/>
@@ -1478,12 +1484,6 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                     </tableView>
                     <navigationItem key="navigationItem" title="Joetz Fun Factor" id="umm-Ve-FKJ">
                         <barButtonItem key="backBarButtonItem" title="Terug" id="n7j-GN-MJI"/>
-                        <barButtonItem key="leftBarButtonItem" image="menu.png" id="saY-r7-XgC">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <action selector="toggle:" destination="mXu-bV-CsR" id="WCL-hw-Kwa"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="gjn-b1-qhX">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -5297,6 +5297,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
         <image name="menu.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="kLO-a6-7kx"/>
         <segue reference="quD-W8-2tt"/>
         <segue reference="n6i-tz-46X"/>
         <segue reference="9Je-LH-R9J"/>

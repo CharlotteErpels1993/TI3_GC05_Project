@@ -3,15 +3,16 @@ import UIKit
 class FeedbackTableViewController: UITableViewController, UISearchBarDelegate, UISearchDisplayDelegate {
     
     @IBOutlet var zoekbar: UISearchBar!
-    
     @IBOutlet var addButton: UIBarButtonItem!
+    @IBOutlet var menu: UIBarButtonItem!
+    
     var feedbacken: [Feedback] = []
     var feedbacken2: [Feedback] = []
     var vakantieId: String?
     
-    @IBAction func toggle(sender: AnyObject) {
+    /*@IBAction func toggle(sender: AnyObject) {
         toggleSideMenuView()
-    }
+    }*/
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,9 +38,10 @@ class FeedbackTableViewController: UITableViewController, UISearchBarDelegate, U
         feedbacken2.sort({ $0.vakantie!.titel < (String($1.score!)) })
         feedbacken2.sort({ $0.vakantie!.titel < (String($1.score!)) })
         
-        if vakantieId == nil {
+        if vakantieId == nil  {
             self.navigationItem.rightBarButtonItem = nil
-        }
+            setMenuToggleBarButtonItem()
+        } 
         
         if PFUser.currentUser() == nil {
             self.navigationItem.rightBarButtonItem = nil
@@ -109,6 +111,16 @@ class FeedbackTableViewController: UITableViewController, UISearchBarDelegate, U
         cell.score.text = "\(feedback.score!)/5"
         
         return cell
+    }
+    
+    func setMenuToggleBarButtonItem() {
+        var rightImage: UIImage = UIImage(named: "menu")!
+        var rightItem: UIBarButtonItem = UIBarButtonItem(image: rightImage, style: UIBarButtonItemStyle.Plain, target: self, action: "toggle")
+        self.navigationItem.leftBarButtonItem = rightItem
+    }
+    
+    func toggle() {
+        toggleSideMenuView()
     }
     
     @IBAction func refresh(sender: UIRefreshControl) {
