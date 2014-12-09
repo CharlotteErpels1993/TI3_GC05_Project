@@ -243,6 +243,8 @@
 		A5CEA07A1A13998900E14103 /* VormingenTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VormingenTableViewController.swift; sourceTree = "<group>"; };
 		A5CEA07C1A1399CA00E14103 /* VormingDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VormingDetailsTableViewController.swift; sourceTree = "<group>"; };
 		A5CEA07E1A13ACDF00E14103 /* InschrijvenVormingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InschrijvenVormingViewController.swift; sourceTree = "<group>"; };
+		A5DB300A1A3783EA0054C6FB /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		A5DB300B1A3783EA0054C6FB /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Main.strings; sourceTree = "<group>"; };
 		A5E5B9821A2370DC0054960C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		A5E5B9841A23712B0054960C /* joetz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = joetz.png; path = Images.xcassets/joetz.png; sourceTree = "<group>"; };
 		A5E8A6861A13AE1400DA861A /* InschrijvenVormingSuccesvolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InschrijvenVormingSuccesvolViewController.swift; sourceTree = "<group>"; };
@@ -570,7 +572,6 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
 			);
 			mainGroup = 0FA80AF91A01350E008DB343;
@@ -727,6 +728,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				0FA80B0C1A01350E008DB343 /* Base */,
+				A5DB300B1A3783EA0054C6FB /* nl */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -735,6 +737,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				A5E5B9821A2370DC0054960C /* Base */,
+				A5DB300A1A3783EA0054C6FB /* nl */,
 			);
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";
