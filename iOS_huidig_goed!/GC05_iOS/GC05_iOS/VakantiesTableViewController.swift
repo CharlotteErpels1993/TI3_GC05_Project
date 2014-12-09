@@ -39,12 +39,15 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
                     responseVakanties = ParseData.getAlleVakanties()
                 } else  {
                     responseVakanties = ParseData.getFavorieteVakanties(ouderResponse.0)
+                    self.navigationItem.title = "Favorieten"
                 }
             } else {
                 responseVakanties = ParseData.getAlleVakanties()
+                self.navigationItem.title = "Vakanties"
             }
         } else {
             responseVakanties = ParseData.getAlleVakanties()
+            self.navigationItem.title = "Vakanties"
         }
         
         if responseVakanties.1 == nil {
@@ -53,6 +56,9 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
             self.tableView.reloadData()
         } else {
             foutBoxOproepen("Oeps", "Er zijn geen vakanties als favoriet geselecteerd.", self)
+            vakanties2 = []
+            vakanties = []
+            self.tableView.reloadData()
         }
     
         self.vakanties2.sort({ (String($0.minLeeftijd)) < $1.titel})
@@ -71,6 +77,7 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
     override func viewWillAppear(animated: Bool) {
         self.setNeedsStatusBarAppearanceUpdate()
         self.navigationController!.toolbarHidden = true
+        refresh(self.refreshControl!)
         self.tableView.reloadData()
     }
     

@@ -17,6 +17,8 @@ class FeedbackTableViewController: UITableViewController, UISearchBarDelegate, U
     override func viewDidLoad() {
         super.viewDidLoad()
         hideSideMenuView()
+        self.setNeedsStatusBarAppearanceUpdate()
+        self.navigationController!.toolbarHidden = true
         
         ParseData.deleteFeedbackTable()
         ParseData.vulFeedbackTableOp()
