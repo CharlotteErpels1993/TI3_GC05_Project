@@ -7,11 +7,16 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System;
+using System.ComponentModel.DataAnnotations;
 using System.Configuration;
+using System.Net.Http;
 using Joetz.Models;
 using System.Windows;
-using Microsoft.Office.Interop.Excel;
+//using Microsoft.Office.Interop.Excel;
 using Parse;
+using Microsoft.Win32;
+using Microsoft.VisualBasic;
+using Gat.Controls;
 
 namespace Joetz.Controllers
 {
@@ -31,6 +36,80 @@ namespace Joetz.Controllers
                 return RedirectToAction("Index", "Home");
             }
         }
+
+        [HttpPost]
+        public ActionResult Index(HttpPostedFileBase file_uploader)
+        {
+
+            string fileName;
+            string destinationPath;
+
+            if (file_uploader != null)
+            {
+                fileName = string.Empty;
+                destinationPath = string.Empty;
+
+                List<FileUploadModel> uploadFileModel = new List<FileUploadModel>();
+
+                fileName = Path.GetFileName(file_uploader.FileName);
+                destinationPath = Path.Combine(Server.MapPath("~/"), fileName);
+                file_uploader.SaveAs(destinationPath);
+                uploadFileModel.Add(new FileUploadModel { FileName = fileName, FilePath = destinationPath });
+                Session["fileUploader"] = uploadFileModel;
+
+                //FileResult fileResult = File(new FileStream(Server.MapPath("~/MyFiles/" + fileName), FileMode.Open), "application/octetstream", fileName);
+
+                string connectionString = String.Format(@"Provider=Microsoft.ACE.OLEDB.12.0;" +
+                                      "Data Source={0};Extended Properties='Excel 12.0;HDR=YES;IMEX=0'", fileName);
+            
+                using (OleDbConnection cn = new OleDbConnection(connectionString))
+                {
+                    cn.Open();
+                    OleDbCommand cmd = new OleDbCommand("SELECT * From [Sheet1$]", cn);
+                    OleDbDataReader rd = cmd.ExecuteReader();
+
+                    int tellerEersteRij = 0;
+
+                    while (rd.Read())
+                    {
+                        
+                        Console.WriteLine("in loop");
+               /*
+                    Console.WriteLine("Loop");
+                    Console.WriteLine(rd.GetString(0));
+                    Console.WriteLine(rd.GetString(1));
+                    Console.WriteLine(rd.GetString(2));
+                    Console.WriteLine();*/
+
+                        var monitor = new ParseObject("Monitor");
+                        monitor["email"] = rd.GetString(1);
+                        monitor["rijksregisterNr"] = rd.GetString(2);
+                        monitor["voornaam"] = rd.GetString(3);
+                        monitor["naam"] = rd.GetString(4);
+                        monitor["straat"] = rd.GetString(5);
+                        monitor["nummer"] = rd.GetInt32(6);
+                        //monitor["bus"] = rd.GetString(7);
+                        monitor["postcode"] = rd.GetInt32(8);
+                        monitor["gemeente"] = rd.GetString(9);
+                        monitor["gsm"] = rd.GetString(10);
+                        //monitor["telefoon"] = rd.GetString(11);
+                        //monitor["aansluitingsNr"] = rd.GetInt32(12);
+                        //monitor["codeGerechtigde"] = rd.GetInt32(13);
+                        monitor["lidnummer"] = rd.GetString(10);
+                    
+                        monitor.SaveAsync();
+                    }
+                    Console.WriteLine("uit while");
+                }
+            }
+
+
+
+
+            return View();
+
+        }
+
 
         //
         // GET: /MaakMonitorAan/Details/5
@@ -118,6 +197,218 @@ namespace Joetz.Controllers
             }
         }
 
+        [HttpPost]
+        public void UploadFile(Object sender, EventArgs e)
+        {
+            HttpResponseMessage result = null;
+            var httpRequest = HttpContext.Request;
+            
+            
+
+            if (httpRequest.Files.Count > 0)
+            {
+                var files = new List<string>();
+
+                foreach (string file in httpRequest.Files)
+                {
+                    var postedFile = httpRequest.Files[file];
+                    /*var filePath = HttpContext.Server.MapPath("~/" + postedFile.FileName);
+                    postedFile.SaveAs(filePath);*/
+                    readExcelFile(postedFile);
+
+                }
+            }
+        }
+
+        private void readExcelFile(HttpPostedFileBase file)
+        {
+            string conStr = "";
+
+            string fileName = Path.GetFileName(file.FileName);
+            string extension = Path.GetExtension(file.FileName);
+            string folderPath = ConfigurationManager.AppSettings["folderPath"];
+            string filePath = Server.MapPath(folderPath + fileName);
+            string hasHeader = "yes";
+
+            switch (extension)
+            {
+                case ".xls": //Excel 97-03
+                    conStr = ConfigurationManager.ConnectionStrings["xls"].ConnectionString;
+                    break;
+                case ".xlsx": //Excel 07
+                    conStr = ConfigurationManager.ConnectionStrings["xlsx"].ConnectionString;
+                    break;
+            }
+
+            conStr = String.Format(conStr, filePath, hasHeader);
+            
+            OleDbConnection connExcel = new OleDbConnection(conStr);
+            OleDbCommand cmdExcel = new OleDbCommand();
+            OleDbDataAdapter oda = new OleDbDataAdapter();
+            DataTable dt = new DataTable();
+
+            cmdExcel.Connection = connExcel;
+
+            //Get the name of First Sheet
+            connExcel.Open();
+
+            System.Type typeString = System.Type.GetType("System.String");
+            System.Type typeInt = System.Type.GetType("System.Int32");
+
+            string[] columnNames = new string[14]
+            {
+                "email", 
+                "rijksregisterNr", 
+                "voornaam", 
+                "achternaam",
+                "straat",
+                "nummer",
+                "bus",
+                "postcode",
+                "gemeente",
+                "gsm",
+                "telefoon",
+                "aansluitingsNr",
+                "codeGerechtigde",
+                "lidNr"
+            };
+
+
+
+            System.Type[] columnTypes = new System.Type[14]
+            {
+                typeString, 
+                typeString, 
+                typeString, 
+                typeString,
+                typeString,
+                typeInt,
+                typeString,
+                typeInt,
+                typeString,
+                typeString,
+                typeString,
+                typeInt,
+                typeInt,
+                typeString
+            };
+
+            for (int i = 0; i < 14; i++)
+            {
+                dt.Columns.Add(columnNames[i], columnTypes[i]);
+            }
+
+            DataTable dtExcelSchema = connExcel.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
+
+            string SheetName = dtExcelSchema.Rows[0]["TABLE_NAME"].ToString();
+
+            connExcel.Close();
+
+            //Read Data from First Sheet
+            connExcel.Open();
+            cmdExcel.CommandText = "SELECT * From [" + SheetName + "]";
+            oda.SelectCommand = cmdExcel;
+            oda.Fill(dt);
+            connExcel.Close();
+
+            var monitors = new List<ParseObject>();
+
+            ParseObject monitor = new ParseObject("Monitor");
+
+            foreach (DataRow row in dt.Rows)
+            {
+                monitor["email"] = row["email"] as string;
+                monitor["rijksregisterNr"] = row["rijksregisterNr"] as string;
+                monitor["voornaam"] = row["voornaam"] as string;
+                monitor["naam"] = row["achternaam"] as string;
+                monitor["nummer"] = row["nummer"];
+                monitor["postcode"] = row["postcode"];
+                monitor["gemeente"] = row["gemeente"] as string;
+                monitor["gsm"] = row["gsm"] as string;
+                monitor["aansluitingsNr"] = row["aansluitingsNr"];
+                monitor["codeGerechtigde"] = row["codeGerechtigde"];
+                monitor["lidNr"] = row["lidNr"] as string;
+
+                if (row["bus"] == null)
+                {
+                    monitor["bus"] = "";
+                }
+                else
+                {
+                    monitor["bus"] = row["bus"] as string;
+                }
+
+                if (row["telefoon"] == null)
+                {
+                    monitor["telefoon"] = "";
+                }
+                else
+                {
+                    monitor["telefoon"] = row["telefoon"] as string;
+                }
+                monitor.SaveAsync();
+            }
+
+            //Bind Data to GridView
+            //GridView1.Caption = Path.GetFileName(FilePath);
+            //GridView1.DataSource = dt;
+            //GridView1.DataBind();
+        }
+
+        /*public void OpenFileDialog(object sender, EventArgs ea)
+        {
+            //Initializing Open Dialog
+            OpenDialogView openDialog = new OpenDialogView();
+            OpenDialogViewModel vm = (OpenDialogViewModel) openDialog.DataContext;
+            
+            //Adding file filter
+            vm.AddFileFilterExtension(".xls");
+
+            string filePath = "";
+
+            //Show dialog and take result into account
+            bool? result = vm.Show();
+            if (result == true)
+            {
+                //Get selected file path
+                filePath = vm.SelectedFilePath;
+            }
+            else
+            {
+                filePath = string.Empty;
+            }
+
+            //Setting the Date format by using predefined date format
+            vm.DateFormat = OpenDialogViewModel.ISO8601_DateFormat;
+
+            //Setting folder dialog
+            vm.IsDirectoryChooser = true;
+            vm.Show();
+
+            //Setting save dialog
+            vm.IsDirectoryChooser = false;
+            vm.IsSaveDialog = true;
+
+            //Customize UI Texts
+            vm.CancelText = "Annuleer";
+            vm.Caption = "Caption";
+            vm.DateFormat = "yy_MM_dd HH:mm:ss";
+            vm.DateText = "DateTime";
+            vm.FileFilterText = "File extension";
+            vm.FileNameText = "File path";
+            vm.NameText = "File";
+            vm.SaveText = "Store";
+            vm.SizeText = "Length";
+            vm.TypeText = "File Type";
+
+            //Setting window properties
+            
+            //Show
+            vm.Show();
+
+        }*/
+
+
         //private OpenFileDialog openFileDialog1;
         /*private File
 
@@ -148,6 +439,7 @@ namespace Joetz.Controllers
                 model.fileNaam = openFileDialog1.FileName;
             }*/
        //}
+
 
 
 
