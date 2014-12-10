@@ -83,6 +83,7 @@
 		A512381D1A16332D002242C6 /* MyNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A512381C1A16332D002242C6 /* MyNavigationController.swift */; };
 		A51AB06C1A31C57800D012F7 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A51AB06B1A31C57800D012F7 /* MessageUI.framework */; };
 		A52494261A251FC00055DEFF /* AnnuleerButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52494251A251FC00055DEFF /* AnnuleerButtons.swift */; };
+		A524D7FE1A3875ED005157D4 /* GeefFeedback1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A524D7FD1A3875ED005157D4 /* GeefFeedback1ViewController.swift */; };
 		A52976D11A1A0A5E00420FEE /* Klevertje.png in Resources */ = {isa = PBXBuildFile; fileRef = A52976D01A1A0A5E00420FEE /* Klevertje.png */; };
 		A543AA891A2C7AC000249B4A /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = A543AA881A2C7AC000249B4A /* menu.png */; };
 		A54E1B9E1A125E7C00C6BB95 /* ExtraTekstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54E1B9D1A125E7C00C6BB95 /* ExtraTekstViewController.swift */; };
@@ -107,7 +108,7 @@
 		A5C6C4271A2F982A004F5648 /* MonitorRegistratieSuccesvolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C6C4261A2F982A004F5648 /* MonitorRegistratieSuccesvolViewController.swift */; };
 		A5CB1FF51A35B80300A4178A /* feedback.png in Resources */ = {isa = PBXBuildFile; fileRef = A5CB1FF41A35B80300A4178A /* feedback.png */; };
 		A5CB1FF71A35CCB300A4178A /* FeedbackTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CB1FF61A35CCB300A4178A /* FeedbackTableViewController.swift */; };
-		A5CB1FF91A35CCDD00A4178A /* GeefFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CB1FF81A35CCDD00A4178A /* GeefFeedbackViewController.swift */; };
+		A5CB1FF91A35CCDD00A4178A /* GeefFeedback2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CB1FF81A35CCDD00A4178A /* GeefFeedback2ViewController.swift */; };
 		A5CB1FFB1A35CD0000A4178A /* FeedbackSQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CB1FFA1A35CD0000A4178A /* FeedbackSQL.swift */; };
 		A5CB1FFD1A35D01200A4178A /* Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CB1FFC1A35D01200A4178A /* Feedback.swift */; };
 		A5CB1FFF1A35DAFE00A4178A /* FeedbackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CB1FFE1A35DAFE00A4178A /* FeedbackCell.swift */; };
@@ -212,6 +213,7 @@
 		A512381C1A16332D002242C6 /* MyNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyNavigationController.swift; sourceTree = "<group>"; };
 		A51AB06B1A31C57800D012F7 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		A52494251A251FC00055DEFF /* AnnuleerButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnuleerButtons.swift; sourceTree = "<group>"; };
+		A524D7FD1A3875ED005157D4 /* GeefFeedback1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeefFeedback1ViewController.swift; sourceTree = "<group>"; };
 		A52976D01A1A0A5E00420FEE /* Klevertje.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Klevertje.png; path = Images.xcassets/Klevertje.png; sourceTree = "<group>"; };
 		A543AA881A2C7AC000249B4A /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = menu.png; path = Images.xcassets/menu.png; sourceTree = "<group>"; };
 		A54E1B9D1A125E7C00C6BB95 /* ExtraTekstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtraTekstViewController.swift; sourceTree = "<group>"; };
@@ -236,7 +238,7 @@
 		A5C6C4261A2F982A004F5648 /* MonitorRegistratieSuccesvolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitorRegistratieSuccesvolViewController.swift; sourceTree = "<group>"; };
 		A5CB1FF41A35B80300A4178A /* feedback.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = feedback.png; path = Images.xcassets/feedback.png; sourceTree = "<group>"; };
 		A5CB1FF61A35CCB300A4178A /* FeedbackTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackTableViewController.swift; sourceTree = "<group>"; };
-		A5CB1FF81A35CCDD00A4178A /* GeefFeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeefFeedbackViewController.swift; sourceTree = "<group>"; };
+		A5CB1FF81A35CCDD00A4178A /* GeefFeedback2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeefFeedback2ViewController.swift; sourceTree = "<group>"; };
 		A5CB1FFA1A35CD0000A4178A /* FeedbackSQL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackSQL.swift; sourceTree = "<group>"; };
 		A5CB1FFC1A35D01200A4178A /* Feedback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Feedback.swift; sourceTree = "<group>"; };
 		A5CB1FFE1A35DAFE00A4178A /* FeedbackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackCell.swift; sourceTree = "<group>"; };
@@ -424,8 +426,9 @@
 				A5C6C4221A2F97E0004F5648 /* MonitorRegistratie3ViewController.swift */,
 				A5C6C4261A2F982A004F5648 /* MonitorRegistratieSuccesvolViewController.swift */,
 				A5CB1FF61A35CCB300A4178A /* FeedbackTableViewController.swift */,
-				A5CB1FF81A35CCDD00A4178A /* GeefFeedbackViewController.swift */,
+				A5CB1FF81A35CCDD00A4178A /* GeefFeedback2ViewController.swift */,
 				A5EF7F6C1A36F52600543C3C /* GeefFeedbackSuccesvolViewController.swift */,
+				A524D7FD1A3875ED005157D4 /* GeefFeedback1ViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -621,6 +624,7 @@
 				A5CB1FFB1A35CD0000A4178A /* FeedbackSQL.swift in Sources */,
 				0FD07EC11A234EBE006A4E60 /* DeelnemerSQL.swift in Sources */,
 				A5EF7F6D1A36F52600543C3C /* GeefFeedbackSuccesvolViewController.swift in Sources */,
+				A524D7FE1A3875ED005157D4 /* GeefFeedback1ViewController.swift in Sources */,
 				0F145EDF1A1CDE98003067EA /* ResponsiveTextFieldViewController.swift in Sources */,
 				A5CEA07F1A13ACDF00E14103 /* InschrijvenVormingViewController.swift in Sources */,
 				0FD07EC91A2354B5006A4E60 /* AfbeeldingSQL.swift in Sources */,
@@ -681,7 +685,7 @@
 				1BDDB9431A02D0FB0007623D /* Vakantie.swift in Sources */,
 				1BDDB9451A02D3440007623D /* Activiteit.swift in Sources */,
 				1B39CF771A0795D9008DEC49 /* EigenprofielMonitorTableViewController.swift in Sources */,
-				A5CB1FF91A35CCDD00A4178A /* GeefFeedbackViewController.swift in Sources */,
+				A5CB1FF91A35CCDD00A4178A /* GeefFeedback2ViewController.swift in Sources */,
 				0F2A819A1A091F7100F67A3B /* Regex.swift in Sources */,
 				0F1E19DD1A2F9AF70035DB96 /* Favoriet.swift in Sources */,
 				0F88A6C31A1F3B840094D457 /* SwiftData.swift in Sources */,
