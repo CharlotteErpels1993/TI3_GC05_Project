@@ -3,7 +3,7 @@ using Parse;
 
 namespace Joetz.Models.Domain
 {
-    interface IVormingRepository
+    public interface IVormingRepository
     {
         Vorming GetVorming(ParseObject vormingObject);
         Vorming FindBy(string vormingId);
