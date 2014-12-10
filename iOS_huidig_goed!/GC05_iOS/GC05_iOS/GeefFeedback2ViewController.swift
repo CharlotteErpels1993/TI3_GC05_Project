@@ -17,6 +17,11 @@ class GeefFeedback2ViewController: UITableViewController, UIPickerViewDataSource
         
         self.navigationItem.title = self.titel
         
+        var grayColor: UIColor = UIColor.grayColor()
+        txtFeedback.layer.borderColor = grayColor.CGColor
+        txtFeedback.layer.borderWidth = 1.0
+        txtFeedback.layer.cornerRadius = 5.0
+        
         scorePickerView.delegate = self
         scorePickerView.dataSource = self
         scorePickerView.reloadAllComponents()
@@ -48,15 +53,41 @@ class GeefFeedback2ViewController: UITableViewController, UIPickerViewDataSource
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let geefFeedbackSuccesvolViewController = segue.destinationViewController as GeefFeedbackSuccesvolViewController
-        var gebruiker = PFUser.currentUser()
-        //feedback.datum = NSDate()
-        //feedback.gebruiker = gebruiker as PFUser
-        //feedback.vakantie!.id = self.vakantie
+        var gebruiker = getGebruiker(PFUser.currentUser().email)
+        feedback = Feedback(id: "test")
+        
+        feedback.datum = NSDate()
+        feedback.gebruiker = gebruiker
+        feedback.vakantie = self.vakantie
         if self.score == nil {
             self.score = scores[0]
         }
-        //feedback.score = self.score
-        //feedback.waardering = self.txtFeedback.text
-        //geefFeedbackSuccesvolViewController.feedback = self.feedback
+        feedback.score = self.score
+        feedback.waardering = self.txtFeedback.text
+        feedback.goedgekeurd = false
+        geefFeedbackSuccesvolViewController.feedback = self.feedback
+    }
+    
+    func getGebruiker(email: String) -> Gebruiker {
+        ParseData.deleteOuderTable()
+        ParseData.vulOuderTableOp()
+        var gebruiker: Gebruiker!
+        
+        var responseOuder = OuderSQL.getOuderWithEmail(email)
+        
+        if responseOuder.1 != nil {
+            ParseData.deleteMonitorTable()
+            ParseData.vulMonitorTableOp()
+            var responseMonitor = MonitorSQL.getMonitorWithEmail(email)
+            if responseMonitor.1 == nil {
+                gebruiker = MonitorSQL.getGebruiker(responseMonitor.0)
+            } else {
+                println("ERROR: er is geen gebruiker met dit id teruggevonden in FeedbackSQL")
+            }
+        }
+        else {
+            gebruiker = OuderSQL.getGebruiker(responseOuder.0)
+        }
+        return gebruiker
     }
 }

@@ -83,8 +83,9 @@ struct FeedbackSQL {
     static func getAlleFeedback() -> ([Feedback], Int?) {
         var feedbacken:[Feedback] = []
         var feedback: Feedback = Feedback(id: "test")
+        var trueBool: Bool = true
         
-        let (resultSet, err) = SD.executeQuery("SELECT * FROM Feedback")
+        let (resultSet, err) = SD.executeQuery("SELECT * FROM Feedback WHERE goedgekeurd = ?", withArgs: [trueBool])
         
         var response: ([Feedback], Int?)
         var error: Int?

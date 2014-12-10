@@ -532,7 +532,7 @@ struct /*class*/ ParseData {
         return response
     }
     
-    static func getMonitorWithEmail(email: String) -> Monitor {
+    static func getMonitorWithEmail(email: String) -> /*Monitor*/ (Monitor, Int?) {
         return MonitorSQL.getMonitorWithEmail(email)
     }
     

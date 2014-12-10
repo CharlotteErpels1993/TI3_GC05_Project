@@ -15,7 +15,10 @@ class ProfielBewerkenViewController: ResponsiveTextFieldViewController {
         ParseData.deleteMonitorTable()
         ParseData.vulMonitorTableOp()
         
-        monitor = ParseData.getMonitorWithEmail(PFUser.currentUser().email)
+        var monitorResponse = ParseData.getMonitorWithEmail(PFUser.currentUser().email)
+        if monitorResponse.1 == nil {
+            monitor = monitorResponse.0
+        }
         
         setStatusTextFields()
         pasLayoutVeldenAan()
@@ -111,7 +114,10 @@ class ProfielBewerkenViewController: ResponsiveTextFieldViewController {
         super.viewDidLoad()
         hideSideMenuView()
     
-        self.monitor = ParseData.getMonitorWithEmail(PFUser.currentUser().email)
+        var monitorResponse = ParseData.getMonitorWithEmail(PFUser.currentUser().email)
+        if monitorResponse.1 == nil {
+            self.monitor = monitorResponse.0
+        }
         
         voornaamTxt.text = monitor!.voornaam
         naamTxt.text = monitor!.naam
