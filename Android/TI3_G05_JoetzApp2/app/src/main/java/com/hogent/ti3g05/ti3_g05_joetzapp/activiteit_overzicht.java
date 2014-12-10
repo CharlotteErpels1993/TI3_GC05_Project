@@ -66,77 +66,49 @@ public class activiteit_overzicht extends Fragment /*implements SwipeRefreshLayo
         getActivity().getActionBar().setTitle("Vakanties");
 
 
-        //swipeLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_container);
-        //onCreateSwipeToRefresh(swipeLayout);
-/*
-        ActionBar mActionBar = getActivity().getActionBar();
-        mActionBar.setDisplayShowHomeEnabled(false);
-        mActionBar.setDisplayShowTitleEnabled(false);
-        LayoutInflater mInflater = LayoutInflater.from(rootView.getContext());
-
-        View mCustomView = mInflater.inflate(R.layout.actionbar_layout, null);
-        TextView mTitleTextView = (TextView) mCustomView.findViewById(R.id.title_text);
-        mTitleTextView.setText("Vakanties");
-
-        ImageButton imageButton = (ImageButton) mCustomView
-                .findViewById(R.id.imageButton);
-        imageButton.setOnClickListener(new OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                isInternetPresent = cd.isConnectingToInternet();
-
-                if (isInternetPresent) {
-                    // Internet Connection is Present
-                    // make HTTP requests
-                    new RemoteDataTask().execute();
-                }
-                else{
-                    // Internet connection is not present
-                    // Ask user to connect to Internet
-                    Toast.makeText(getActivity(), getString(R.string.error_no_internet), Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-
-        mActionBar.setCustomView(mCustomView);
-        mActionBar.setDisplayShowCustomEnabled(true);
-
-*/
 
         cd = new ConnectionDetector(rootView.getContext());
         myDB = new myDb(rootView.getContext());
         myDB.open();
         isInternetPresent = cd.isConnectingToInternet();
-        if (isInternetPresent) {
+        if(/*savedInstanceState!=null*/getActivity().getIntent().getStringExtra("herladen")!= null && getActivity().getIntent().getStringExtra("herladen").toLowerCase().equals("nee"))
+        {
+            getVakanties();
+        }
+         else if (isInternetPresent) {
             //Toast.makeText(getActivity(), "internet", Toast.LENGTH_SHORT).show();
             new RemoteDataTask().execute();
         }
         else {
-            //Toast.makeText(getActivity(), "geen internet", Toast.LENGTH_SHORT).show();
-            vakanties = myDB.getVakanties();
-            adapter = new ListViewAdapter(rootView.getContext(), vakanties);
-            // Binds the Adapter to the ListView
-            listview.setAdapter(adapter);
-
-            filtertext.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {                }
-
-                @Override
-                public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {                }
-
-                @Override
-                public void afterTextChanged(Editable editable) {
-                    String text = filtertext.getText().toString().toLowerCase(Locale.getDefault());
-                    adapter.filter(text);
-                }
-            });
+          getVakanties();
         }
 
 
         return rootView;
     }
+     public void getVakanties()
+     {
+         //Toast.makeText(getActivity(), "geen internet", Toast.LENGTH_SHORT).show();
+         vakanties = myDB.getVakanties();
+         adapter = new ListViewAdapter(rootView.getContext(), vakanties);
+         // Binds the Adapter to the ListView
+         listview.setAdapter(adapter);
+
+         filtertext.addTextChangedListener(new TextWatcher() {
+             @Override
+             public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {                }
+
+             @Override
+             public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {                }
+
+             @Override
+             public void afterTextChanged(Editable editable) {
+                 String text = filtertext.getText().toString().toLowerCase(Locale.getDefault());
+                 adapter.filter(text);
+             }
+         });
+     }
+
    /* private void onCreateSwipeToRefresh(SwipeRefreshLayout refreshLayout) {
 
         //refreshLayout.setOnRefreshListener(this);

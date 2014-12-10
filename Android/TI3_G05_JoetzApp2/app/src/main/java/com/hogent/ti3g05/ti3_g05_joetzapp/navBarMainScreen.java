@@ -96,13 +96,14 @@ public class navBarMainScreen extends Activity {
         }
 
 
-        Intent afkomstig = getIntent();
+    /*    Intent afkomstig = getIntent();
 
         if(afkomstig != null)
         {
             if(afkomstig.toString().toLowerCase().startsWith("activiteit"))
             {
                 fragment = new activiteit_overzicht();
+
             }
             else if(afkomstig.toString().toLowerCase().startsWith("vorming"))
             {
@@ -120,7 +121,7 @@ public class navBarMainScreen extends Activity {
             {
                 fragment = new feedbackOverzicht();
             }
-        }
+        }*/
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigationbar);
@@ -275,7 +276,6 @@ public class navBarMainScreen extends Activity {
                 {
                     Intent intent1 = new Intent(navBarMainScreen.this, navBarMainScreen.class);
                     fragment = new ProfielenOverzicht_fragment();
-
                     refreshFragment(position);
 
                     intent1.putExtra("frag", fragment.toString());
@@ -289,6 +289,9 @@ public class navBarMainScreen extends Activity {
                     Toast.makeText(this,"U hebt niet de juiste bevoegdheid om dit te bekijken.", Toast.LENGTH_SHORT).show();
                     Intent intent1 = new Intent(navBarMainScreen.this, navBarMainScreen.class
                     );
+                    intent1.putExtra("herladen", "nee");
+
+                    intent1.putExtra("frag", fragment.toString());
                     refreshFragment(position);
                     startActivity(intent1);
                 }
@@ -301,6 +304,10 @@ public class navBarMainScreen extends Activity {
                     Toast.makeText(this, "U hebt niet de juiste bevoegdheid om dit te bekijken.", Toast.LENGTH_SHORT).show();
                     Intent intent1 = new Intent(navBarMainScreen.this, navBarMainScreen.class
                     );
+
+                    intent1.putExtra("herladen", "nee");
+
+                    intent1.putExtra("frag", fragment.toString());
                     refreshFragment(position);
                     startActivity(intent1); }
                 else{
@@ -313,6 +320,7 @@ public class navBarMainScreen extends Activity {
                         refreshFragment(position);
 
                         intent3.putExtra("frag", fragment.toString());
+
                         startActivity(intent3);
                         break;
 
@@ -320,6 +328,10 @@ public class navBarMainScreen extends Activity {
                         Toast.makeText(this, "U hebt niet de juiste bevoegdheid om dit te bekijken.", Toast.LENGTH_SHORT).show();
                         Intent intent1 = new Intent(navBarMainScreen.this, navBarMainScreen.class
                         );
+
+                        intent1.putExtra("herladen", "nee");
+
+                        intent1.putExtra("frag", fragment.toString());
                         refreshFragment(position);
                         startActivity(intent1);
                     }
@@ -339,6 +351,10 @@ public class navBarMainScreen extends Activity {
                             Toast.makeText(this, "U hebt niet de juiste bevoegdheid om dit te bekijken.", Toast.LENGTH_SHORT).show();
                             Intent intent1 = new Intent(navBarMainScreen.this, navBarMainScreen.class
                             );
+
+                            intent1.putExtra("herladen", "nee");
+
+                            intent1.putExtra("frag", fragment.toString());
                             refreshFragment(position);
                             startActivity(intent1);
                         }
@@ -346,6 +362,10 @@ public class navBarMainScreen extends Activity {
                         Intent intent1 = new Intent(navBarMainScreen.this, navBarMainScreen.class
                         );
                         Toast.makeText(this, "U hebt niet de juiste bevoegdheid om dit te bekijken.", Toast.LENGTH_SHORT).show();
+
+                    intent1.putExtra("herladen", "nee");
+
+                    intent1.putExtra("frag", fragment.toString());
                         refreshFragment(position);
                         startActivity(intent1);
                     }
@@ -375,6 +395,10 @@ public class navBarMainScreen extends Activity {
                     Toast.makeText(this, "U hebt niet de juiste bevoegdheid om dit te bekijken", Toast.LENGTH_SHORT).show();
                     Intent intent1 = new Intent(navBarMainScreen.this, navBarMainScreen.class
                     );
+
+                    intent1.putExtra("herladen", "nee");
+
+                    intent1.putExtra("frag", fragment.toString());
                     refreshFragment(position);
                     startActivity(intent1);
                 }

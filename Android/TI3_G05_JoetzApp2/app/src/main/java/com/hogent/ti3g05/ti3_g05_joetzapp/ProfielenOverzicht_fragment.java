@@ -309,7 +309,7 @@ public class ProfielenOverzicht_fragment extends Fragment /* implements SwipeRef
                         Toast.makeText(getActivity(), "Fout bij ophalen vormingen", Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    profielenSamen = profielen;
+                    profielenSamen = alleProfielenUitParse;
 
 
                 }
