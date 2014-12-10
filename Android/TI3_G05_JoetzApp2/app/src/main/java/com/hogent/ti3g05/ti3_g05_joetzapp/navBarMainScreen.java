@@ -532,6 +532,10 @@ public class navBarMainScreen extends Activity {
                 // Ask user to connect to Internet
                 Toast.makeText(navBarMainScreen.this, getString(R.string.error_no_internet), Toast.LENGTH_SHORT).show();
             }
+        } else if(id == R.id.menu_voegFeedbackToe)
+        {
+            Intent intentFeedback = new Intent(navBarMainScreen.this, feedback_geven.class);
+            startActivity(intentFeedback);
         }
         return super.onOptionsItemSelected(item);
     }
@@ -546,6 +550,15 @@ public class navBarMainScreen extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_inschrijven_vakantie_part1, menu);
+        if(fragment != null && fragment.toString().toLowerCase().startsWith("feedback")&&ParseUser.getCurrentUser()!=null)
+        {
+            MenuItem item = menu.findItem(R.id.menu_voegFeedbackToe);
+            item.setVisible(true);
+        }
+        else{
+            MenuItem item = menu.findItem(R.id.menu_voegFeedbackToe);
+            item.setVisible(false);
+        }
 
         return true;
     }

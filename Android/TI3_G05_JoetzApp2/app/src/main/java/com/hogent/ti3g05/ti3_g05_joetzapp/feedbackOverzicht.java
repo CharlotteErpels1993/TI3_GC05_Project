@@ -198,9 +198,9 @@ public class feedbackOverzicht extends Fragment {
 
                         if (map.getGoedgekeurd()) {
                             feedbackList.add(map);
+                            myDB.insertFeedback(map);
                         }
 
-                        myDB.insertFeedback(map);
 
                     }
 
