@@ -271,3 +271,10 @@ C:\Users\Charlotte\Documents\GitHub\TI3_GC05_Project\Joetz\Joetz\bin\Gat.Control
 C:\Users\Charlotte\Documents\GitHub\TI3_GC05_Project\Joetz\Joetz\bin\Kesoft.Windows.Forms.Common.dll
 C:\Users\Charlotte\Documents\GitHub\TI3_GC05_Project\Joetz\Joetz\bin\Kesoft.Windows.Forms.Panels.dll
 C:\Users\Charlotte\Documents\GitHub\TI3_GC05_Project\Joetz\Joetz\bin\Kesoft.Windows.Forms.Panels.xml
+C:\Users\Charlotte\Documents\GitHub\TI3_GC05_Project\Joetz\Joetz\bin\Ninject.dll
+C:\Users\Charlotte\Documents\GitHub\TI3_GC05_Project\Joetz\Joetz\bin\Ninject.Web.Common.dll
+C:\Users\Charlotte\Documents\GitHub\TI3_GC05_Project\Joetz\Joetz\bin\Ninject.Web.Mvc.dll
+C:\Users\Charlotte\Documents\GitHub\TI3_GC05_Project\Joetz\Joetz\bin\WebActivatorEx.dll
+C:\Users\Charlotte\Documents\GitHub\TI3_GC05_Project\Joetz\Joetz\bin\Ninject.xml
+C:\Users\Charlotte\Documents\GitHub\TI3_GC05_Project\Joetz\Joetz\bin\Ninject.Web.Common.xml
+C:\Users\Charlotte\Documents\GitHub\TI3_GC05_Project\Joetz\Joetz\bin\Ninject.Web.Mvc.xml
