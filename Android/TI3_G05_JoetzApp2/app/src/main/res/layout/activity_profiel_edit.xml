@@ -62,6 +62,7 @@ xmlns:android="http://schemas.android.com/apk/res/android">
     <EditText
         android:id="@+id/Email"
         android:layout_width="fill_parent"
+        android:inputType="textEmailAddress"
         android:layout_height="wrap_content"
         android:layout_below="@id/labelVoorEmail"
         android:layout_centerHorizontal="true"
@@ -113,6 +114,7 @@ xmlns:android="http://schemas.android.com/apk/res/android">
         android:id="@+id/btnBevestigen"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/Rood"
         android:layout_below="@id/GSM"
         android:layout_marginTop="25dp"
         android:text="@string/submit" />

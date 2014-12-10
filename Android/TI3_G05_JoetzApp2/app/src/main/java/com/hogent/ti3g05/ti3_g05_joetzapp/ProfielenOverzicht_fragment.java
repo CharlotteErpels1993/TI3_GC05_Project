@@ -1,17 +1,13 @@
 package com.hogent.ti3g05.ti3_g05_joetzapp;
 
-import android.app.Activity;
 import android.app.Fragment;
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -22,7 +18,6 @@ import android.widget.Toast;
 import com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.myDb;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ProfielAdapter;
-import com.hogent.ti3g05.ti3_g05_joetzapp.Services.VormingAdapter;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.InschrijvingVorming;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Monitor;
 import com.parse.ParseException;
@@ -38,17 +33,14 @@ import java.util.Locale;
 
 public class ProfielenOverzicht_fragment extends Fragment /* implements SwipeRefreshLayout.OnRefreshListener*/ {
     private ListView listview;
-    private List<ParseObject> ob;
-    private List<ParseObject> obVorming;
     private ProgressDialog mProgressDialog;
     private ProfielAdapter adapter;
-    private List<Monitor> profielen = null;
+    private List<Monitor> alleProfielenUitParse = null;
     private List<Monitor> profielenMetZelfdeVorming = null;
     private List<Monitor> profielenAndere = null;
     private List<Monitor> profielenSamen = null;
     private EditText filtertext;
     private myDb myDB;
-    private Button refresh;
     private List<InschrijvingVorming> inschrijvingVormingen = new ArrayList<InschrijvingVorming>();
     private List<InschrijvingVorming> alleIns = new ArrayList<InschrijvingVorming>();
 
@@ -86,8 +78,8 @@ public class ProfielenOverzicht_fragment extends Fragment /* implements SwipeRef
         }
         else {
             //Toast.makeText(getActivity(), "geen internet", Toast.LENGTH_SHORT).show();
-            profielen = myDB.getProfielen();
-            adapter = new ProfielAdapter(rootView.getContext(), profielen);
+            alleProfielenUitParse = myDB.getProfielen();
+            adapter = new ProfielAdapter(rootView.getContext(), alleProfielenUitParse);
             // Binds the Adapter to the ListView
             listview.setAdapter(adapter);
 
@@ -181,24 +173,24 @@ public class ProfielenOverzicht_fragment extends Fragment /* implements SwipeRef
         @Override
         protected Void doInBackground(Void... params) {
             // Create the array
-            profielen = new ArrayList<Monitor>();
+            alleProfielenUitParse = new ArrayList<Monitor>();
             profielenAndere = new ArrayList<Monitor>();
             profielenMetZelfdeVorming = new ArrayList<Monitor>();
             profielenSamen = new ArrayList<Monitor>();
+
             isInternetPresent = cd.isConnectingToInternet();
             if(isInternetPresent) {
 
                 try {
-                    // Locate the class table named "vakantie" in Parse.com
+                    // Locate the class table named "Monitor" in Parse.com
                     ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(
                             "Monitor");
-                    // Locate the column named "vertrekdatum" in Parse.com and order list
-                    // by ascending
+                    // Locate the column named "naam" in Parse.com and order list
                     query.orderByAscending("naam");
-                    ob = query.find();
+                    List<ParseObject> lijstMetMonitoren = query.find();
 
                     myDB.dropProfielen();
-                    for (ParseObject monitor : ob) {//alle monitoren ophalen en opslaan
+                    for (ParseObject monitor : lijstMetMonitoren) {//alle monitoren ophalen en opslaan
 
                         Monitor map = new Monitor();
                         map.setNaam((String) monitor.get("naam"));
@@ -230,7 +222,7 @@ public class ProfielenOverzicht_fragment extends Fragment /* implements SwipeRef
                         }
 
 
-                        profielen.add(map);
+                        alleProfielenUitParse.add(map);
 
 
                         myDB.insertProfiel(map);
@@ -240,7 +232,7 @@ public class ProfielenOverzicht_fragment extends Fragment /* implements SwipeRef
                     Log.e("Error", e.getMessage());
                     e.printStackTrace();
 
-                    profielen = myDB.getProfielen();
+                    alleProfielenUitParse = myDB.getProfielen();
 
                 }
 
@@ -253,9 +245,9 @@ public class ProfielenOverzicht_fragment extends Fragment /* implements SwipeRef
                         // Locate the column named "vertrekdatum" in Parse.com and order list
                         // by ascending
                         //queryVorming.orderByAscending("monitor");
-                        obVorming = queryVorming.find();
+                        List<ParseObject> lijstInschrijvingenVorming = queryVorming.find();
                         InschrijvingVorming iv;
-                        for (ParseObject inschrVorming : obVorming) {
+                        for (ParseObject inschrVorming : lijstInschrijvingenVorming) {
                             iv = new InschrijvingVorming();
                             iv.setMonitor((String) inschrVorming.get("monitor"));
                             iv.setVorming((String) inschrVorming.get("vorming"));
@@ -267,7 +259,7 @@ public class ProfielenOverzicht_fragment extends Fragment /* implements SwipeRef
                         }
 
                         profielenMetZelfdeVorming.add(ingelogdeMonitor);
-                        for (Monitor m : profielen) {
+                        for (Monitor m : alleProfielenUitParse) {
                             for (InschrijvingVorming inv : alleIns) {
                                 for (InschrijvingVorming invm : inschrijvingVormingen) {
 
@@ -332,10 +324,7 @@ public class ProfielenOverzicht_fragment extends Fragment /* implements SwipeRef
         @Override
         protected void onPostExecute(Void result) {
             // Locate the listview in listview_main.xml
-            // Pass the results into ListViewAdapter.java
-            //adapter = new ListViewAdapter(activiteit_overzicht.this, vakanties);
-            //ArrayAdapter<Profile> profileAdapter = new ArrayAdapter<Profile>(context, resource, profiles)
-            //ArrayAdapter<Vakantie> vakantieAdapter = new ArrayAdapter<Vakantie>(activiteit_overzicht.this, R.layout.listview_item , vakanties);
+            // Pass the results into ProfielAdapter.java
 
             adapter = new ProfielAdapter(rootView.getContext(), profielenSamen);
             // Binds the Adapter to the ListView

@@ -1,17 +1,13 @@
 package com.hogent.ti3g05.ti3_g05_joetzapp;
 
-import android.app.Activity;
 import android.app.Fragment;
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -19,7 +15,6 @@ import android.widget.ListView;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.myDb;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
-import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ListViewAdapter;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.VormingAdapter;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vorming;
 import com.parse.ParseException;
@@ -33,32 +28,30 @@ import java.util.Locale;
 public class Vormingen_Overzicht_Fragment extends Fragment /*implements SwipeRefreshLayout.OnRefreshListener*/ {
 
     private ListView listview;
-    private List<ParseObject> ob;
     private ProgressDialog mProgressDialog;
     private VormingAdapter adapter;
     private myDb myDB;
     private List<Vorming> vormingen = null;
-    private EditText filtertext;
+    private EditText et_filtertext;
     // SwipeRefreshLayout swipeLayout;
     // flag for Internet connection status
-    Boolean isInternetPresent = false;
+    private Boolean isInternetPresent = false;
     // Connection detector class
-    ConnectionDetector cd;
+    private ConnectionDetector cd;
     private View rootView;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         rootView = inflater.inflate(R.layout.vorming_overzicht, container, false);
 
+        getActivity().getActionBar().setTitle("Vormingen");
 
         listview = (ListView) rootView.findViewById(R.id.listViewv);
-        filtertext = (EditText) rootView.findViewById(R.id.filtertextv);
+        et_filtertext = (EditText) rootView.findViewById(R.id.filtertextv);
         //swipeLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_container);
         //onCreateSwipeToRefresh(swipeLayout);
-        getActivity().getActionBar().setTitle("Vormingen");
 
         cd = new ConnectionDetector(rootView.getContext());
         myDB = new myDb(rootView.getContext());
@@ -75,7 +68,7 @@ public class Vormingen_Overzicht_Fragment extends Fragment /*implements SwipeRef
             // Binds the Adapter to the ListView
             listview.setAdapter(adapter);
 
-            filtertext.addTextChangedListener(new TextWatcher() {
+            et_filtertext.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {                }
 
@@ -84,7 +77,7 @@ public class Vormingen_Overzicht_Fragment extends Fragment /*implements SwipeRef
 
                 @Override
                 public void afterTextChanged(Editable editable) {
-                    String text = filtertext.getText().toString().toLowerCase(Locale.getDefault());
+                    String text = et_filtertext.getText().toString().toLowerCase(Locale.getDefault());
                     adapter.filter(text);
                 }
             });
@@ -95,7 +88,7 @@ public class Vormingen_Overzicht_Fragment extends Fragment /*implements SwipeRef
 
 
 
-    // RemoteDataTask AsyncTask
+    // 'Laden' schermpje tonen
     private class RemoteDataTask extends AsyncTask<Void, Void, Void> {
         @Override
         protected void onPreExecute() {
@@ -120,6 +113,7 @@ public class Vormingen_Overzicht_Fragment extends Fragment /*implements SwipeRef
             mProgressDialog.show();
         }
 
+        //lijst van Vormingen ophalen in de achtergrond en tonen via de custom adapter. Kan eventueel onderbroken worden
         @Override
         protected Void doInBackground(Void... params) {
             // Create the array
@@ -132,11 +126,11 @@ public class Vormingen_Overzicht_Fragment extends Fragment /*implements SwipeRef
                     // Locate the column named "vertrekdatum" in Parse.com and order list
                     // by ascending
                     query.orderByAscending("prijs");
-                    ob = query.find();
+                    List<ParseObject> lijstVormingen = query.find();
 
 
                     myDB.dropVormingen();
-                    for (ParseObject vorming : ob) {
+                    for (ParseObject vorming : lijstVormingen) {
 
                         Vorming map = new Vorming();
                         map.setBetalingswijze((String) vorming.get("betalingswijze"));
@@ -155,41 +149,6 @@ public class Vormingen_Overzicht_Fragment extends Fragment /*implements SwipeRef
                         vormingen.add(map);
 
                         myDB.insertVorming(map);
-
-
-                   /* isInternetPresent = cd.isConnectingToInternet();
-                    if (isInternetPresent) {
-                        try {
-                            // Locate the class table named "vakantie" in Parse.com
-                            ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(
-                                    "Vorming");
-                            // Locate the column named "vertrekdatum" in Parse.com and order list
-                            // by ascending
-                            query.orderByAscending("prijs");
-                            ob = query.find();
-                            myDB.dropVormingen();
-                            for (ParseObject vorming : ob) {
-                                Vorming map = new Vorming();
-                                //String prijs = vakantie.get("basisPrijs").toString();
-                                map.setBetalingswijze((String) vorming.get("betalingswijze"));
-                                map.setLocatie((String) vorming.get("locatie"));
-                                map.setCriteriaDeelnemers((String) vorming.get("criteriaDeelnemer"));
-                                map.setKorteBeschrijving((String) vorming.get("korteBeschrijving"));
-                                // map.setPeriodes((Date) vorming.get("periodes"));
-                                map.setPrijs((Integer) vorming.get("prijs"));
-                                map.setTips((String) vorming.get("tips"));
-                                map.setTitel((String) vorming.get("titel"));
-                                map.setWebsiteLocatie((String) vorming.get("websiteLocatie"));
-                                vormingen.add(map);
-                                myDB.insertVorming(map);
-                            }
-                        } catch (ParseException e) {
-                            Log.e("Error", e.getMessage());
-                            e.printStackTrace();
-                        }
-                    } else {
-                        vormingen = myDB.getVormingen();
-                    }*/
 
                     }
                 } catch (ParseException e) {
@@ -218,7 +177,7 @@ public class Vormingen_Overzicht_Fragment extends Fragment /*implements SwipeRef
 
             //swipeLayout.setRefreshing(false);
 
-            filtertext.addTextChangedListener(new TextWatcher() {
+            et_filtertext.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {                }
 
@@ -227,7 +186,7 @@ public class Vormingen_Overzicht_Fragment extends Fragment /*implements SwipeRef
 
                 @Override
                 public void afterTextChanged(Editable editable) {
-                    String text = filtertext.getText().toString().toLowerCase(Locale.getDefault());
+                    String text = et_filtertext.getText().toString().toLowerCase(Locale.getDefault());
                     adapter.filter(text);
                 }
             });

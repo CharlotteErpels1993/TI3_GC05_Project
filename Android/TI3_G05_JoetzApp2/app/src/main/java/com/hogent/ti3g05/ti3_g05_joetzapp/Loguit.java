@@ -1,30 +1,16 @@
 package com.hogent.ti3g05.ti3_g05_joetzapp;
 
 import android.app.Activity;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.ActionBarDrawerToggle;
-import android.support.v4.widget.DrawerLayout;
 import android.view.View;
-import android.webkit.WebViewFragment;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import com.parse.ParseUser;
 
-/**
- * Created by Gebruiker on 14/11/2014.
- */
+
 public class Loguit extends Activity {
-
-    private Button loguitButton;
-    private Button terugButton;
-
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,10 +21,9 @@ public class Loguit extends Activity {
 
         getActionBar().setTitle("Loguit");
 
-        loguitButton = (Button) findViewById(R.id.btnLogUit);
-        terugButton = (Button) findViewById(R.id.btnTerug);
+        Button loguitButton = (Button) findViewById(R.id.btnLogUit);
+        Button terugButton = (Button) findViewById(R.id.btnTerug);
 
-        loguitButton.setTextColor(getResources().getColor(R.color.darkRed));
         loguitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -51,7 +36,6 @@ public class Loguit extends Activity {
             }
         });
 
-        terugButton.setTextColor(getResources().getColor(R.color.darkRed));
         terugButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

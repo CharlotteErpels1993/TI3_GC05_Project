@@ -1,38 +1,24 @@
 package com.hogent.ti3g05.ti3_g05_joetzapp;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
 import com.parse.ParseUser;
 
-//UC: naam en voornaam van de monitor, emailadres, gsm nummer en eventueel link naar facebookprofiel.
+//UC: naam en voornaam van de monitor, emailadres, gsm nummer.
 public class ProfielDetail extends Activity {
     String naam;
     String voornaam;
     String email;
     String gsm;
-    /*String straat;
-    String huisnr;
-    String gemeente;
-    String postcode;
-    String lidNr;
-    String rijksregisterNr;*/
-    private Button btnProfielEdit;
 
     Boolean isInternetPresent = false;
     ConnectionDetector cd;
@@ -59,14 +45,13 @@ public class ProfielDetail extends Activity {
         cd = new ConnectionDetector(getApplicationContext());
 
         TextView txtNaam = (TextView) findViewById(R.id.achternaamP);
-        final TextView txtVoornaam = (TextView) findViewById(R.id.voornaamP);
+        TextView txtVoornaam = (TextView) findViewById(R.id.voornaamP);
         TextView txtEmail = (TextView) findViewById(R.id.emailP);
+        TextView txtGsm = (TextView)findViewById(R.id.gsmP);
 
-        final TextView txtGsm = (TextView)findViewById(R.id.gsmP);
         if(ParseUser.getCurrentUser().getEmail().equals(email))
-
         {
-            btnProfielEdit = (Button) findViewById(R.id.btnProfielEdit);
+            Button btnProfielEdit = (Button) findViewById(R.id.btnProfielEdit);
             btnProfielEdit.setVisibility(View.VISIBLE);
             btnProfielEdit.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -88,12 +73,6 @@ public class ProfielDetail extends Activity {
                 }
             });
         }
-
-
-        /*final TextView txtStraat = (TextView) findViewById(R.id.straatP);
-        final TextView txtGemeente = (TextView)findViewById(R.id.gemeenteP);
-        TextView txtLidNr = (TextView)findViewById(R.id.lidNr);
-        final TextView txtRijksregNr = (TextView)findViewById(R.id.RijksRegNrP);*/
 
 
         txtNaam.setText(naam);
