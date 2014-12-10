@@ -534,7 +534,7 @@ public class navBarMainScreen extends Activity {
             }
         } else if(id == R.id.menu_voegFeedbackToe)
         {
-            Intent intentFeedback = new Intent(navBarMainScreen.this, feedback_geven.class);
+            Intent intentFeedback = new Intent(navBarMainScreen.this, feedback_geven_vakantie_kiezen.class);
             startActivity(intentFeedback);
         }
         return super.onOptionsItemSelected(item);

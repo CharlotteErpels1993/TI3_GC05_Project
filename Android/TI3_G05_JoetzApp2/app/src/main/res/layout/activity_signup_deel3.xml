@@ -102,12 +102,12 @@
 
 
     <Button
-        android:background="@drawable/button_shape"
         android:id="@+id/btnNaarDeel4"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/GsmSignu"
         android:layout_marginTop="25dp"
+        android:background="@drawable/button_shape"
         android:textColor="@color/Rood"
         android:text="@string/volgende" />
 
