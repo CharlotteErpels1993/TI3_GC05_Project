@@ -1,19 +1,15 @@
 package com.hogent.ti3g05.ti3_g05_joetzapp.Services;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Filterable;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.hogent.ti3g05.ti3_g05_joetzapp.ImageLoader;
 import com.hogent.ti3g05.ti3_g05_joetzapp.R;
-import com.hogent.ti3g05.ti3_g05_joetzapp.activiteit_detail;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Feedback;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vakantie;
 
@@ -23,12 +19,12 @@ import java.util.Locale;
 
 public class FeedbackAdapter extends ArrayAdapter<Vakantie> implements Filterable {
 
-    Context context;
-    LayoutInflater inflater;
-    ImageLoader imageLoader;
+    private Context context;
+    private LayoutInflater inflater;
+    //private ImageLoader imageLoader;
     private List<Feedback> feedback = null;
     private ArrayList<Feedback> arraylist;
-    private final String MAXIMALE_WAARDE = "5";
+    private final String MAXIMALE_SCORE = "5";
 
     public FeedbackAdapter(Context context,
                            List<Feedback> feedback) {
@@ -42,17 +38,17 @@ public class FeedbackAdapter extends ArrayAdapter<Vakantie> implements Filterabl
         inflater = LayoutInflater.from(context);
         this.arraylist = new ArrayList<Feedback>();
         this.arraylist.addAll(feedback);
-        imageLoader = new ImageLoader(context);
+        //imageLoader = new ImageLoader(context);
     }
 
 
 
 
     public class ViewHolder {
-        TextView naamVakantie;
-        TextView feedback;
-        TextView score;
-        TextView gebruiker;
+        TextView tv_naamVakantie;
+        TextView tv_feedback;
+        TextView tv_score;
+        TextView tv_gebruiker;
     }
 
     @Override
@@ -75,18 +71,18 @@ public class FeedbackAdapter extends ArrayAdapter<Vakantie> implements Filterabl
         if (view == null) {
             holder = new ViewHolder();
             view = inflater.inflate(R.layout.feedback_list_item, null);
-            holder.naamVakantie = (TextView) view.findViewById(R.id.vakantienaamFeedbackOverzicht);
-            holder.feedback = (TextView) view.findViewById(R.id.feedbackOverzicht);
-            holder.score = (TextView) view.findViewById(R.id.scoreOverzicht);
-            holder.gebruiker = (TextView) view.findViewById(R.id.gebruikerOverzicht);
+            holder.tv_naamVakantie = (TextView) view.findViewById(R.id.vakantienaamFeedbackOverzicht);
+            holder.tv_feedback = (TextView) view.findViewById(R.id.feedbackOverzicht);
+            holder.tv_score = (TextView) view.findViewById(R.id.scoreOverzicht);
+            holder.tv_gebruiker = (TextView) view.findViewById(R.id.gebruikerOverzicht);
             view.setTag(holder);
         } else {
             holder = (ViewHolder) view.getTag();
         }
-        holder.naamVakantie.setText(feedback.get(position).getVakantieNaam());
-        holder.feedback.setText(feedback.get(position).getFeedback());
-        holder.gebruiker.setText(feedback.get(position).getGebruiker());
-        holder.score.setText("Score: " + feedback.get(position).getScore().toString() + "/" + MAXIMALE_WAARDE);
+        holder.tv_naamVakantie.setText(feedback.get(position).getVakantieNaam());
+        holder.tv_feedback.setText(feedback.get(position).getFeedback());
+        holder.tv_gebruiker.setText(feedback.get(position).getGebruiker());
+        holder.tv_score.setText("Score: " + feedback.get(position).getScore().toString() + "/" + MAXIMALE_SCORE);
         return view;
     }
 /*

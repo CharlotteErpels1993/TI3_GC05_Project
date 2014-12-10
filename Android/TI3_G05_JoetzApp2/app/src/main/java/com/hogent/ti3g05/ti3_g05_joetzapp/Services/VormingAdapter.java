@@ -6,33 +6,24 @@ import java.util.Locale;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
-import android.widget.Filter;
 import android.widget.Filterable;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.ImageLoader;
 import com.hogent.ti3g05.ti3_g05_joetzapp.R;
 import com.hogent.ti3g05.ti3_g05_joetzapp.VormingDetail;
-import com.hogent.ti3g05.ti3_g05_joetzapp.activiteit_detail;
-import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vakantie;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vorming;
-import com.parse.ParseUser;
-
-import org.w3c.dom.Text;
 
 public class VormingAdapter extends ArrayAdapter<Vorming> implements Filterable {
 
-    Context context;
-    LayoutInflater inflater;
-    ImageLoader imageLoader;
+    private Context context;
+    private LayoutInflater inflater;
+    //private ImageLoader imageLoader;
     private List<Vorming> vormingen = null;
     private ArrayList<Vorming> arraylist;
 
@@ -49,19 +40,19 @@ public class VormingAdapter extends ArrayAdapter<Vorming> implements Filterable 
         inflater = LayoutInflater.from(context);
         this.arraylist = new ArrayList<Vorming>();
         this.arraylist.addAll(vormingen);
-        imageLoader = new ImageLoader(context);
+        //imageLoader = new ImageLoader(context);
     }
 
 
 
 
     public class ViewHolder {
-        TextView titel;
-        TextView locatie;
+        TextView tv_titel;
+        TextView tv_locatie;
         //TextView criteriaDeelnemer;
         //TextView prijs;
         //TextView tips;
-        TextView websiteLocatie;
+        TextView tv_websiteLocatie;
     }
 
     @Override
@@ -84,22 +75,22 @@ public class VormingAdapter extends ArrayAdapter<Vorming> implements Filterable 
         if (view == null) {
             holder = new ViewHolder();
             view = inflater.inflate(R.layout.list_view_item_vorming, null);
-            holder.titel = (TextView) view.findViewById(R.id.titelV);
-            holder.locatie = (TextView) view.findViewById(R.id.locatieV);
+            holder.tv_titel = (TextView) view.findViewById(R.id.titelV);
+            holder.tv_locatie = (TextView) view.findViewById(R.id.locatieV);
             //holder.criteriaDeelnemer = (TextView) view.findViewById(R.id.criteriaDeelnemer);
             //holder.tips = (TextView) view.findViewById(R.id.tips);
             //holder.prijs = (TextView) view.findViewById(R.id.prijsV);
-            holder.websiteLocatie = (TextView) view.findViewById(R.id.websiteLocatie);
+            holder.tv_websiteLocatie = (TextView) view.findViewById(R.id.websiteLocatie);
             view.setTag(holder);
         } else {
             holder = (ViewHolder) view.getTag();
         }
-        holder.titel.setText(vormingen.get(position).getTitel());
-        holder.locatie.setText(vormingen.get(position).getLocatie());
+        holder.tv_titel.setText(vormingen.get(position).getTitel());
+        holder.tv_locatie.setText(vormingen.get(position).getLocatie());
         //holder.prijs.setText("€ " + vormingen.get(position).getPrijs().toString());
         //holder.criteriaDeelnemer.setText(vormingen.get(position).getCriteriaDeelnemers());
         //holder.tips.setText(vormingen.get(position).getTips());
-        holder.websiteLocatie.setText(vormingen.get(position).getWebsiteLocatie());
+        holder.tv_websiteLocatie.setText(vormingen.get(position).getWebsiteLocatie());
 
         view.setOnClickListener(new OnClickListener() {
 

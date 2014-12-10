@@ -6,36 +6,24 @@ import java.util.Locale;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
-import android.widget.Filter;
 import android.widget.Filterable;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.hogent.ti3g05.ti3_g05_joetzapp.ImageLoader;
 import com.hogent.ti3g05.ti3_g05_joetzapp.ProfielDetail;
 import com.hogent.ti3g05.ti3_g05_joetzapp.R;
-import com.hogent.ti3g05.ti3_g05_joetzapp.VormingDetail;
-import com.hogent.ti3g05.ti3_g05_joetzapp.activiteit_detail;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Monitor;
-import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vakantie;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vorming;
-import com.parse.ParseUser;
-
-import org.w3c.dom.Text;
 
 public class ProfielAdapter extends ArrayAdapter<Vorming> implements Filterable {
 
-    Context context;
-    LayoutInflater inflater;
-    ImageLoader imageLoader;
+    private Context context;
+    private LayoutInflater inflater;
+    //private ImageLoader imageLoader;
     private List<Monitor> profielen = null;
     private ArrayList<Monitor> arraylist;
 
@@ -52,18 +40,18 @@ public class ProfielAdapter extends ArrayAdapter<Vorming> implements Filterable 
         inflater = LayoutInflater.from(context);
         this.arraylist = new ArrayList<Monitor>();
         this.arraylist.addAll(profielen);
-        imageLoader = new ImageLoader(context);
+        //imageLoader = new ImageLoader(context);
     }
 
 
 
 
     public class ViewHolder {
-        TextView naam;
-        TextView voornaam;
+        TextView tv_naam;
+        TextView tv_voornaam;
         //TextView straat;
-        TextView gemeente;
-        TextView header;
+        TextView tv_gemeente;
+        TextView tv_header;
         //TextView lidNr;
         //TextView gsm;
         //TextView rijksregNr;
@@ -85,11 +73,11 @@ public class ProfielAdapter extends ArrayAdapter<Vorming> implements Filterable 
             holder = new ViewHolder();
             view = inflater.inflate(R.layout.profiel_listview_item, null);
 
-            holder.naam = (TextView) view.findViewById(R.id.achternaam);
-            holder.voornaam = (TextView) view.findViewById(R.id.voornaam);
-            holder.header = (TextView) view.findViewById(R.id.header);
+            holder.tv_naam = (TextView) view.findViewById(R.id.achternaam);
+            holder.tv_voornaam = (TextView) view.findViewById(R.id.voornaam);
+            holder.tv_header= (TextView) view.findViewById(R.id.header);
             //holder.straat = (TextView) view.findViewById(R.id.straat);
-            holder.gemeente = (TextView) view.findViewById(R.id.gemeente);
+            holder.tv_gemeente = (TextView) view.findViewById(R.id.gemeente);
             //holder.lidNr = (TextView) view.findViewById(R.id.lidNr);
 
             view.setTag(holder);
@@ -98,20 +86,20 @@ public class ProfielAdapter extends ArrayAdapter<Vorming> implements Filterable 
         }
         //TODO geeft error bij getview bij sqlite
         if (profielen.get(position).getEmail() == null){
-            holder.header.setVisibility(View.VISIBLE);
-            holder.naam.setVisibility(View.GONE);
-            holder.voornaam.setVisibility(View.GONE);
-            holder.gemeente.setVisibility(View.GONE);
+            holder.tv_header.setVisibility(View.VISIBLE);
+            holder.tv_naam.setVisibility(View.GONE);
+            holder.tv_voornaam.setVisibility(View.GONE);
+            holder.tv_gemeente.setVisibility(View.GONE);
 
-            holder.header.setText(profielen.get(position).getMonitorId());
+            holder.tv_header.setText(profielen.get(position).getMonitorId());
             return view;
         }
         else{
-            holder.header.setVisibility(View.GONE);
-            holder.naam.setText(profielen.get(position).getNaam());
-            holder.voornaam.setText(profielen.get(position).getVoornaam());
+            holder.tv_header.setVisibility(View.GONE);
+            holder.tv_naam.setText(profielen.get(position).getNaam());
+            holder.tv_voornaam.setText(profielen.get(position).getVoornaam());
             //holder.straat.setText(profielen.get(position).getStraat());
-            holder.gemeente.setText(profielen.get(position).getGemeente());
+            holder.tv_gemeente.setText(profielen.get(position).getGemeente());
             //holder.lidNr.setText(profielen.get(position).getLidNummer());
 
             view.setOnClickListener(new OnClickListener() {

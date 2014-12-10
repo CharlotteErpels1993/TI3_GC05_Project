@@ -23,9 +23,9 @@ import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vakantie;
 
 public class ListViewAdapter extends ArrayAdapter<Vakantie> implements Filterable {
 
-    Context context;
-    LayoutInflater inflater;
-    ImageLoader imageLoader;
+    private Context context;
+    private LayoutInflater inflater;
+    private ImageLoader imageLoader;
     private List<Vakantie> vakanties = null;
     private ArrayList<Vakantie> arraylist;
 
@@ -48,13 +48,13 @@ public class ListViewAdapter extends ArrayAdapter<Vakantie> implements Filterabl
 
 
     public class ViewHolder {
-        TextView naamVakantie;
-        TextView locatie;
-        TextView vertrekdatum;
-        TextView terugdatum;
-        TextView prijs;
-        ImageView vakantiefto;
-        TextView doelgroep;
+        TextView et_naamVakantie;
+        TextView et_locatie;
+        //TextView et_vertrekdatum;
+        //TextView et_terugdatum;
+        //TextView et_prijs;
+        ImageView et_vakantiefto;
+        TextView et_doelgroep;
     }
 
     @Override
@@ -77,24 +77,24 @@ public class ListViewAdapter extends ArrayAdapter<Vakantie> implements Filterabl
         if (view == null) {
             holder = new ViewHolder();
             view = inflater.inflate(R.layout.listview_item_nieuwe_layout, null);
-            holder.naamVakantie = (TextView) view.findViewById(R.id.naam);
-            holder.locatie = (TextView) view.findViewById(R.id.locatie);
-            holder.vertrekdatum = (TextView) view.findViewById(R.id.vertrekdatum);
-            holder.terugdatum = (TextView) view.findViewById(R.id.terugdatum);
-            holder.vakantiefto = (ImageView) view.findViewById(R.id.afbeelding);
-            holder.prijs = (TextView) view.findViewById(R.id.prijs);
-            holder.doelgroep = (TextView) view.findViewById(R.id.doelgroep);
+            holder.et_naamVakantie = (TextView) view.findViewById(R.id.naam);
+            holder.et_locatie = (TextView) view.findViewById(R.id.locatie);
+            //holder.et_vertrekdatum = (TextView) view.findViewById(R.id.vertrekdatum);
+            //holder.et_terugdatum = (TextView) view.findViewById(R.id.terugdatum);
+            holder.et_vakantiefto = (ImageView) view.findViewById(R.id.afbeelding);
+            //holder.et_prijs = (TextView) view.findViewById(R.id.prijs);
+            holder.et_doelgroep = (TextView) view.findViewById(R.id.doelgroep);
             view.setTag(holder);
         } else {
             holder = (ViewHolder) view.getTag();
         }
-        holder.naamVakantie.setText(vakanties.get(position).getNaamVakantie());
-        holder.locatie.setText(vakanties.get(position).getLocatie());
+        holder.et_naamVakantie.setText(vakanties.get(position).getNaamVakantie());
+        holder.et_locatie.setText(vakanties.get(position).getLocatie());
 
-        holder.doelgroep.setText(vakanties.get(position).getMinDoelgroep() + " - " + vakanties.get(position).getMaxDoelgroep() + " jaar");
+        holder.et_doelgroep.setText(vakanties.get(position).getMinDoelgroep() + " - " + vakanties.get(position).getMaxDoelgroep() + " jaar");
 
 
-        imageLoader.DisplayImage(vakanties.get(position).getFoto1(),  holder.vakantiefto);
+        imageLoader.DisplayImage(vakanties.get(position).getFoto1(),  holder.et_vakantiefto);
 
         view.setOnClickListener(new OnClickListener() {
 
@@ -126,7 +126,7 @@ public class ListViewAdapter extends ArrayAdapter<Vakantie> implements Filterabl
                 intent.putExtra("BMledenPrijs", (vakanties.get(position).getBondMoysonLedenPrijs()).toString());
                 intent.putExtra("SterPrijs1Ouder", (vakanties.get(position).getSterPrijs1Ouder()).toString());
                 intent.putExtra("SterPrijs2Ouders", (vakanties.get(position).getSterPrijs2Ouder()).toString());
-                intent.putExtra("link", (vakanties.get(position).getLink().toString()));
+                intent.putExtra("link", (vakanties.get(position).getLink()));
 
                 String keyVoorIntent;
                 ArrayList<String> lijstFotos = vakanties.get(position).getFotos();
