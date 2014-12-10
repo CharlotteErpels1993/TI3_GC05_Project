@@ -92,15 +92,14 @@ public class ProfielAdapter extends ArrayAdapter<Vorming> implements Filterable 
             holder.tv_gemeente.setVisibility(View.GONE);
 
             holder.tv_header.setText(profielen.get(position).getMonitorId());
+            view.setOnClickListener(null);
             return view;
         }
         else{
             holder.tv_header.setVisibility(View.GONE);
             holder.tv_naam.setText(profielen.get(position).getNaam());
             holder.tv_voornaam.setText(profielen.get(position).getVoornaam());
-            //holder.straat.setText(profielen.get(position).getStraat());
             holder.tv_gemeente.setText(profielen.get(position).getGemeente());
-            //holder.lidNr.setText(profielen.get(position).getLidNummer());
 
             view.setOnClickListener(new OnClickListener() {
 
@@ -111,10 +110,6 @@ public class ProfielAdapter extends ArrayAdapter<Vorming> implements Filterable 
                             (profielen.get(position).getNaam()));
                     intent.putExtra("voornaam",
                             (profielen.get(position).getVoornaam()));
-                /*intent.putExtra("straat", (profielen.get(position).getStraat()));
-                intent.putExtra("gemeente", (profielen.get(position).getGemeente()));
-                intent.putExtra("rijksregNr", profielen.get(position).getRijksregNr());
-                //intent.putExtra("lidNr", profielen.get(position).getLidNummer());*/
                     intent.putExtra("gsm", profielen.get(position).getGsmnr());
                     intent.putExtra("email", profielen.get(position).getEmail());
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
