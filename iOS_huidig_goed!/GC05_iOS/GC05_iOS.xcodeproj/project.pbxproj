@@ -75,6 +75,8 @@
 		1BDDB9571A02DD1E0007623D /* Gebruiker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDDB9561A02DD1E0007623D /* Gebruiker.swift */; };
 		1BFB1E591A0C0A6400E7B53F /* NieuwWachtwoordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFB1E581A0C0A6400E7B53F /* NieuwWachtwoordViewController.swift */; };
 		1BFC33401A066A87009CA8EB /* VakantieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFC333F1A066A87009CA8EB /* VakantieCell.swift */; };
+		A502AAC71A38AA82004CF227 /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = A502AAC61A38AA82004CF227 /* menu.png */; };
+		A502AAC91A38AA9E004CF227 /* mail.png in Resources */ = {isa = PBXBuildFile; fileRef = A502AAC81A38AA9E004CF227 /* mail.png */; };
 		A503E0EC1A1A7778000A9908 /* ProfielBewerkenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A503E0EB1A1A7778000A9908 /* ProfielBewerkenViewController.swift */; };
 		A5049CAD1A2334510012D990 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5049CAC1A2334510012D990 /* Reachability.swift */; };
 		A50740F61A1384EA00D01900 /* AfbeeldingenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50740F51A1384EA00D01900 /* AfbeeldingenViewController.swift */; };
@@ -85,7 +87,6 @@
 		A52494261A251FC00055DEFF /* AnnuleerButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52494251A251FC00055DEFF /* AnnuleerButtons.swift */; };
 		A524D7FE1A3875ED005157D4 /* GeefFeedback1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A524D7FD1A3875ED005157D4 /* GeefFeedback1ViewController.swift */; };
 		A52976D11A1A0A5E00420FEE /* Klevertje.png in Resources */ = {isa = PBXBuildFile; fileRef = A52976D01A1A0A5E00420FEE /* Klevertje.png */; };
-		A543AA891A2C7AC000249B4A /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = A543AA881A2C7AC000249B4A /* menu.png */; };
 		A54E1B9E1A125E7C00C6BB95 /* ExtraTekstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54E1B9D1A125E7C00C6BB95 /* ExtraTekstViewController.swift */; };
 		A55321DF1A1C8258005146F8 /* SuccesvolNieuwWachtwoordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55321DE1A1C8258005146F8 /* SuccesvolNieuwWachtwoordViewController.swift */; };
 		A575A0691A1633E500F6735A /* ENSideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575A0671A1633E500F6735A /* ENSideMenu.swift */; };
@@ -205,6 +206,8 @@
 		1BDDB9561A02DD1E0007623D /* Gebruiker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gebruiker.swift; sourceTree = "<group>"; };
 		1BFB1E581A0C0A6400E7B53F /* NieuwWachtwoordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NieuwWachtwoordViewController.swift; sourceTree = "<group>"; };
 		1BFC333F1A066A87009CA8EB /* VakantieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VakantieCell.swift; sourceTree = "<group>"; };
+		A502AAC61A38AA82004CF227 /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = menu.png; path = Images.xcassets/menu.png; sourceTree = "<group>"; };
+		A502AAC81A38AA9E004CF227 /* mail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mail.png; path = Images.xcassets/mail.png; sourceTree = "<group>"; };
 		A503E0EB1A1A7778000A9908 /* ProfielBewerkenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfielBewerkenViewController.swift; sourceTree = "<group>"; };
 		A5049CAC1A2334510012D990 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		A50740F51A1384EA00D01900 /* AfbeeldingenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AfbeeldingenViewController.swift; sourceTree = "<group>"; };
@@ -215,7 +218,6 @@
 		A52494251A251FC00055DEFF /* AnnuleerButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnuleerButtons.swift; sourceTree = "<group>"; };
 		A524D7FD1A3875ED005157D4 /* GeefFeedback1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeefFeedback1ViewController.swift; sourceTree = "<group>"; };
 		A52976D01A1A0A5E00420FEE /* Klevertje.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Klevertje.png; path = Images.xcassets/Klevertje.png; sourceTree = "<group>"; };
-		A543AA881A2C7AC000249B4A /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = menu.png; path = Images.xcassets/menu.png; sourceTree = "<group>"; };
 		A54E1B9D1A125E7C00C6BB95 /* ExtraTekstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtraTekstViewController.swift; sourceTree = "<group>"; };
 		A55321DE1A1C8258005146F8 /* SuccesvolNieuwWachtwoordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuccesvolNieuwWachtwoordViewController.swift; sourceTree = "<group>"; };
 		A575A0671A1633E500F6735A /* ENSideMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENSideMenu.swift; sourceTree = "<group>"; };
@@ -501,10 +503,11 @@
 		A52976CD1A1A094900420FEE /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				A502AAC81A38AA9E004CF227 /* mail.png */,
+				A502AAC61A38AA82004CF227 /* menu.png */,
 				A5CB1FF41A35B80300A4178A /* feedback.png */,
 				A59918591A2F79150055AAF1 /* Heart_Empty.png */,
 				A599185A1A2F79150055AAF1 /* Heart_Full.png */,
-				A543AA881A2C7AC000249B4A /* menu.png */,
 				A5E5B9841A23712B0054960C /* joetz.png */,
 				A52976D01A1A0A5E00420FEE /* Klevertje.png */,
 				A58126301A305B4300176187 /* facebook.png */,
@@ -595,13 +598,14 @@
 			files = (
 				A5E5B9831A2370DC0054960C /* LaunchScreen.xib in Resources */,
 				A599185B1A2F79150055AAF1 /* Heart_Empty.png in Resources */,
+				A502AAC91A38AA9E004CF227 /* mail.png in Resources */,
 				A5CB1FF51A35B80300A4178A /* feedback.png in Resources */,
 				0FA80B0D1A01350E008DB343 /* Main.storyboard in Resources */,
 				0FA80B0F1A01350E008DB343 /* Images.xcassets in Resources */,
 				A58126321A305B4300176187 /* facebook.png in Resources */,
-				A543AA891A2C7AC000249B4A /* menu.png in Resources */,
 				A52976D11A1A0A5E00420FEE /* Klevertje.png in Resources */,
 				A58126331A305B4300176187 /* twitter.png in Resources */,
+				A502AAC71A38AA82004CF227 /* menu.png in Resources */,
 				A5E5B9851A23712B0054960C /* joetz.png in Resources */,
 				A599185C1A2F79150055AAF1 /* Heart_Full.png in Resources */,
 			);

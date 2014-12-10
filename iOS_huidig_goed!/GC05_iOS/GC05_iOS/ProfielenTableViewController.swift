@@ -295,6 +295,8 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
             performSegueWithIdentifier("toonProfiel1", sender: indexPath)
         }else if indexPath.section == 3 {
             performSegueWithIdentifier("toonProfiel2", sender: indexPath)
+        } else if indexPath.section == 0 {
+            performSegueWithIdentifier("toonProfiel3", sender: indexPath)
         }
     }
     
@@ -307,6 +309,9 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
             selectedMonitor = monitorenZelfdeVorming2[tableView.indexPathForSelectedRow()!.row]
         } else if segue.identifier == "toonProfiel2" {
             selectedMonitor = monitoren2[tableView.indexPathForSelectedRow()!.row]
+        } else if segue.identifier == "toonProfiel3" {
+            selectedMonitor = self.ingelogdeMonitor
+            monitorDetailsController.eigenProfiel = true
         }
         
         monitorDetailsController.monitor = selectedMonitor! as Monitor

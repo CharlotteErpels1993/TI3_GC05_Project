@@ -121,7 +121,8 @@ class InloggenViewController: ResponsiveTextFieldViewController {
         } else if segue.identifier == "ouderOverzicht" {
             let ouderOverzichtController = segue.destinationViewController as VakantiesTableViewController
         } else if segue.identifier == "overzichtMonitor" {
-            let profielOverzichtController = segue.destinationViewController as EigenprofielMonitorTableViewController
+            //let profielOverzichtController = segue.destinationViewController as EigenprofielMonitorTableViewController
+            let vormingenTableViewController = segue.destinationViewController as VormingenTableViewController
         } else if segue.identifier == "administratorOverzicht" {
             let overzichtAdministrator = segue.destinationViewController as VakantiesTableViewController
         } else {
