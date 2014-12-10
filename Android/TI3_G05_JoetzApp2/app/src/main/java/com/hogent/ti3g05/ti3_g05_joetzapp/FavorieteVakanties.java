@@ -1,6 +1,5 @@
 package com.hogent.ti3g05.ti3_g05_joetzapp;
 
-import android.app.Activity;
 import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
@@ -11,14 +10,11 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.myDb;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
@@ -31,47 +27,32 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-/**
- * Created by Gebruiker on 3/12/2014.
- */
 public class FavorieteVakanties extends Fragment{
 
     // opgeslagen id's ophalen en daarmee vakanties ophalen en weergeven zoals bij vakantie overzicht,
     // bij geen vakanties zet in tabel => geen favorieten gevonden, wil je vakanties bekijken? ja => naar overzicht vakanties
 
-
-        private ListView listview;
-        private List<ParseObject> ob;
-
-
-    private List<ParseObject> obOuder;
-    private List<ParseObject> obFav;
-
+    private ListView listview;
 
     private List<FavorieteVakantie> favorieten = null;
 
-        private Button refresh;
-
-        private myDb myDB;
-        Vakantie map;
-        private ProgressDialog mProgressDialog;
-        private ArrayList<String> images = new ArrayList<String>();
-        private View rootView;
-        private ListViewAdapter adapter;
-        private List<Vakantie> vakanties = null;
+    private myDb myDB;
+    private Vakantie map;
+    private ProgressDialog mProgressDialog;
+    private View rootView;
+    private ListViewAdapter adapter;
+    private List<Vakantie> vakanties = null;
     private List<Vakantie> vakantiesAllemaal = null;
-        private EditText filtertext;
-        SwipeRefreshLayout swipeLayout;
+    private EditText filtertext;
 
-        Boolean isInternetPresent = false;
-        // Connection detector class
-        ConnectionDetector cd;
+    private boolean isInternetPresent = false;
+    // Connection detector class
+    private ConnectionDetector cd;
 
 
 
@@ -185,7 +166,7 @@ public class FavorieteVakanties extends Fragment{
                     ParseQuery<ParseObject> queryOuder = new ParseQuery<ParseObject>(
                             "Ouder");
 
-                    obOuder = queryOuder.find();
+                    List<ParseObject> obOuder = queryOuder.find();
 
                     for (ParseObject ouder : obOuder) {
 
@@ -198,11 +179,11 @@ public class FavorieteVakanties extends Fragment{
 
                     //favorieten ophalen
                     List<FavorieteVakantie> favorieten = new ArrayList<FavorieteVakantie>();
-                    FavorieteVakantie fav = null;
+                    FavorieteVakantie fav;
 
                     ParseQuery<ParseObject> favorietenquery = new ParseQuery<ParseObject>("Favoriet");
                     favorietenquery.orderByAscending("vakantie");
-                    obFav = favorietenquery.find();
+                    List<ParseObject> obFav = favorietenquery.find();
 
                     myDB.dropFavorieten();
                     for(ParseObject favoriet : obFav)
@@ -226,8 +207,8 @@ public class FavorieteVakanties extends Fragment{
                     ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(
                             "Vakantie");
                     query.orderByAscending("vertrekdatum");
-                    ob = query.find();
-                    for (ParseObject vakantie : ob) {
+                    List<ParseObject> qryLijstVakanties = query.find();
+                    for (ParseObject vakantie : qryLijstVakanties) {
                         map = new Vakantie();
 
 
@@ -267,8 +248,6 @@ public class FavorieteVakanties extends Fragment{
                         map.setFotos(afbeeldingenLijst);
 
                         vakantiesAllemaal.add(map);
-
-
 
                     }
 

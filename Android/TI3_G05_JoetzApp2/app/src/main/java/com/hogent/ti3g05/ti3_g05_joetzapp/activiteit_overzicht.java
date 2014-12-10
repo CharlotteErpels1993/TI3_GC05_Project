@@ -1,6 +1,5 @@
 package com.hogent.ti3g05.ti3_g05_joetzapp;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -38,23 +37,19 @@ import com.parse.ParseQuery;
 public class activiteit_overzicht extends Fragment /*implements SwipeRefreshLayout.OnRefreshListener*/ {
 
     private ListView listview;
-    private List<ParseObject> ob;
-
-    private Button refresh;
 
     private myDb myDB;
-    Vakantie map;
+    private Vakantie map;
     private ProgressDialog mProgressDialog;
     private ArrayList<String> images = new ArrayList<String>();
     private View rootView;
     private ListViewAdapter adapter;
     private List<Vakantie> vakanties = null;
     private EditText filtertext;
-    SwipeRefreshLayout swipeLayout;
 
-    Boolean isInternetPresent = false;
+    private Boolean isInternetPresent = false;
     // Connection detector class
-    ConnectionDetector cd;
+    private ConnectionDetector cd;
 
 
 
@@ -108,8 +103,6 @@ public class activiteit_overzicht extends Fragment /*implements SwipeRefreshLayo
         mActionBar.setDisplayShowCustomEnabled(true);
 
 */
-
-
 
         cd = new ConnectionDetector(rootView.getContext());
         myDB = new myDb(rootView.getContext());
@@ -214,9 +207,9 @@ public class activiteit_overzicht extends Fragment /*implements SwipeRefreshLayo
                 ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(
                         "Vakantie");
                 query.orderByAscending("vertrekdatum");
-                ob = query.find();
+                List<ParseObject> lijstMetVakanties = query.find();
                 myDB.drop();
-                for (ParseObject vakantie : ob) {
+                for (ParseObject vakantie : lijstMetVakanties) {
                     map = new Vakantie();
 
                     //String prijs = vakantie.get("basisPrijs").toString();

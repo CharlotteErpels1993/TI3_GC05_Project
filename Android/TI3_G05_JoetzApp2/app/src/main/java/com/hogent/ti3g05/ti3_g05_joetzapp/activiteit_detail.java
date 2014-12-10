@@ -34,36 +34,16 @@ import java.util.ArrayList;
 
 public class activiteit_detail extends Activity {
 
-    String naam;
-    String locatie;
-    String vertrekdatum;
-    String terugdatum;
-    String formule;
-    String maxDeeln;
-    String periode;
-    String vervoer;
-    String prijs;
-    String beschrijving;
-    ImageLoader imageLoader = new ImageLoader(this);
-    String maxDoelgroep;
-    String minDoelgroep;
-    String afbeelding1;
-    String afbeelding2;
-    String afbeelding3;
-    String bmLedenPrijs;
-    String sterPrijs1Ouder;
-    String sterPrijs2Ouders;
-    String inbegrepenInPrijs;
-    String activiteitID;
-    ArrayList<String> fotos = new ArrayList<String>();
-    String link;
+    private String naam, locatie, vertrekdatum, terugdatum, formule, maxDeeln, periode, vervoer, prijs, beschrijving;
+    private ImageLoader imageLoader = new ImageLoader(this);
+    private String maxDoelgroep, minDoelgroep, afbeelding1, afbeelding2, afbeelding3, bmLedenPrijs, sterPrijs1Ouder, sterPrijs2Ouders;
+    private String inbegrepenInPrijs, activiteitID;
+    private ArrayList<String> fotos = new ArrayList<String>();
+    private String link;
 
-    Button btnInschrijven;
-    Button btnmeerInfo;
-    Button btnminderInfo;
+    private Button btnInschrijven, btnmeerInfo, btnminderInfo;
 
-    ImageView favoImage;
-    ImageView deleteImage;
+    private ImageView favoImage, deleteImage;
 
     private List<ParseObject> ob;
     private List<ParseObject> obF;
@@ -114,24 +94,24 @@ public class activiteit_detail extends Activity {
 
         setTitle(getString(R.string.vakantieDetailTitel));
 
-        final TextView txtNaam = (TextView) findViewById(R.id.titel);
-        final TextView txtLocatie = (TextView) findViewById(R.id.locatiev);
-        final TextView txtDoelgr = (TextView) findViewById(R.id.doelgroepv);
-        final TextView txtformule = (TextView) findViewById(R.id.formule);
-        final TextView txtmaxDeeln = (TextView) findViewById(R.id.maxDeelnemers);
-        final TextView txtPeriode = (TextView) findViewById(R.id.periode);
-        final TextView txtVervoer = (TextView) findViewById(R.id.vervoer);
-        final TextView txtPrijs = (TextView) findViewById(R.id.basisprijs);
-        final TextView txtBeschrijving = (TextView) findViewById(R.id.beschrijving);
-        final TextView txtVertrekDatum = (TextView) findViewById(R.id.vertrekdatum);
-        final TextView txtTerugkeerDatum = (TextView) findViewById(R.id.terugkeerdatum);
-        final TextView txtInbegrepenInPrijs = (TextView) findViewById(R.id.inbegrepenInPrijs);
-        final TextView txtBMledenPrijs = (TextView) findViewById(R.id.bondMoysonLedenPrijs);
-        final TextView txtSterPrijs1Ouder = (TextView) findViewById(R.id.sterPrijs1Ouder);
-        final TextView txtSterPrijs2Ouders = (TextView) findViewById(R.id.sterPrijs2Ouders);
+        TextView txtNaam = (TextView) findViewById(R.id.titel);
+        TextView txtLocatie = (TextView) findViewById(R.id.locatiev);
+        TextView txtDoelgr = (TextView) findViewById(R.id.doelgroepv);
+        TextView txtformule = (TextView) findViewById(R.id.formule);
+        TextView txtmaxDeeln = (TextView) findViewById(R.id.maxDeelnemers);
+        TextView txtPeriode = (TextView) findViewById(R.id.periode);
+        TextView txtVervoer = (TextView) findViewById(R.id.vervoer);
+        TextView txtPrijs = (TextView) findViewById(R.id.basisprijs);
+        TextView txtBeschrijving = (TextView) findViewById(R.id.beschrijving);
+        TextView txtVertrekDatum = (TextView) findViewById(R.id.vertrekdatum);
+        TextView txtTerugkeerDatum = (TextView) findViewById(R.id.terugkeerdatum);
+        TextView txtInbegrepenInPrijs = (TextView) findViewById(R.id.inbegrepenInPrijs);
+        TextView txtBMledenPrijs = (TextView) findViewById(R.id.bondMoysonLedenPrijs);
+        TextView txtSterPrijs1Ouder = (TextView) findViewById(R.id.sterPrijs1Ouder);
+        TextView txtSterPrijs2Ouders = (TextView) findViewById(R.id.sterPrijs2Ouders);
+        TextView labelBM = (TextView) findViewById(R.id.ledenPrijsLabel);
+        TextView txtExtraInfo = (TextView) findViewById(R.id.ExtraInformatie);
         final RelativeLayout verberg = (RelativeLayout) findViewById(R.id.verberg2);
-        final TextView labelBM = (TextView) findViewById(R.id.ledenPrijsLabel);
-        final TextView txtExtraInfo = (TextView) findViewById(R.id.ExtraInformatie);
 
         btnInschrijven = (Button) findViewById(R.id.btnInschrijvenV);
         btnmeerInfo = (Button) findViewById(R.id.btnMeerInfo);
@@ -153,7 +133,6 @@ public class activiteit_detail extends Activity {
             }
         });
 
-        btnInschrijven.setTextColor(getResources().getColor(R.color.Rood));
         btnInschrijven.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -172,7 +151,6 @@ public class activiteit_detail extends Activity {
 
         final Animation fadeOutAnimation = AnimationUtils.loadAnimation(this, R.anim.fadeout);
 
-        btnmeerInfo.setTextColor(getResources().getColor(R.color.Rood));
         btnmeerInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -212,7 +190,6 @@ public class activiteit_detail extends Activity {
                 deleteFavoriet();
             }
         });
-        btnminderInfo.setTextColor(getResources().getColor(R.color.Rood));
         btnminderInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
