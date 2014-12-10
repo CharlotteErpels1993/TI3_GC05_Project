@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 using Joetz.Models.DAL;
 using Joetz.Models.Domain;
@@ -19,11 +20,16 @@ namespace Joetz.Controllers
             this.vakantieRepository = vakantieRepository;
         }
 
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
             var vakantiesTask = vakantieRepository.FindAll();
-            IEnumerable<Vakantie> vakanties = vakantiesTask.Result;
+            IEnumerable<Vakantie> vakanties = await vakantiesTask;
             return View(vakanties);
+        }
+
+        public ActionResult Create()
+        {
+            return View(new Vakantie());
         }
 
     }

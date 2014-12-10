@@ -21,8 +21,9 @@ namespace Joetz.Models.Domain
         public int MaxLeeftijd { get; set; }
         public int MaxAantalDeelnemers { get; set; }
 
-        public Vakantie(string id) : base(id)
+        public Vakantie() : base()
         {
+            Id = "";
             VertrekDatum = new DateTime();
             TerugkeerDatum = new DateTime();
             AantalDagenNachten = "";

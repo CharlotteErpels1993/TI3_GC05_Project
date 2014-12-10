@@ -10,7 +10,7 @@ namespace Joetz.Models.DAL
     {
         public Vakantie GetVakantie(ParseObject vakantieObject)
         {
-            Vakantie vakantie = new Vakantie("test");
+            Vakantie vakantie = new Vakantie();
 
             vakantie.Id = vakantieObject.ObjectId;
             vakantie.Titel = vakantieObject.Get<string>("titel");
@@ -35,7 +35,7 @@ namespace Joetz.Models.DAL
 
         }
 
-        public async Task<IList<Vakantie>> FindAll()
+        public async Task<ICollection<Vakantie>> FindAll()
         {
             var query = from v in ParseObject.GetQuery("Vakantie")
                         orderby v.Get<string>("titel") ascending
@@ -43,7 +43,7 @@ namespace Joetz.Models.DAL
 
             IEnumerable<ParseObject> objects = await query.FindAsync();
 
-            IList<Vakantie> vakanties = new Vakantie[] { };
+            ICollection<Vakantie> vakanties = new List<Vakantie>();
             Vakantie vakantie;
 
             foreach (ParseObject vakantieObject in objects)
@@ -62,49 +62,6 @@ namespace Joetz.Models.DAL
 
             var vakantie = GetVakantie(vakantieObject);
             return vakantie;
-        }
-
-        /*public async Task<[ParseObject]> FindAll()
-        {
-            var query = from v in ParseObject.GetQuery("Vakantie")
-                        orderby v.Get<string>("titel") ascending
-                        select v;
-
-            IEnumerable<ParseObject> objects =  await query.FindAsync().Result();
-
-             IList<Vakantie> vakanties = new Vakantie[]{};
-            Vakantie vakantie;
-
-            //foreach (ParseObject vakantieObject in vakantieObjects)
-            //{
-            //    vakantie = GetVakantie(vakantieObject);
-            //    vakanties.Add(vakantie);
-            //}
-        }*/
-
-         public IList<Vakantie> FindAllVakanties()
-        {
-           /* var query = ParseObject.GetQuery("Vakantie");
-            Task<IEnumerable<ParseObject>> objects = query.FindAsync();
-            //IEnumerable<ParseObject> objects2 = objects.
-            var vakantieObjects = query.FindAsync().Result;*/
-
-            var query = from v in ParseObject.GetQuery("Vakantie")
-                        orderby v.Get<string>("titel") ascending 
-                        select v;
-
-            //IEnumerable<ParseObject> results = query.FindAsync();
-
-            IList<Vakantie> vakanties = new Vakantie[]{};
-            Vakantie vakantie;
-
-            //foreach (ParseObject vakantieObject in vakantieObjects)
-            //{
-            //    vakantie = GetVakantie(vakantieObject);
-            //    vakanties.Add(vakantie);
-            //}
-
-            return vakanties;
         }
 
         public void Add(Vakantie vakantie)

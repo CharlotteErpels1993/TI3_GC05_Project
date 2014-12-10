@@ -7,9 +7,9 @@
         public string Locatie { get; set; }
         public string KorteBeschrijving { get; set; }
 
-        public Activiteit(string id)
+        public Activiteit()
         {
-            Id = id;
+            Id = "";
             Titel = "";
             Locatie = "";
             KorteBeschrijving = "";
