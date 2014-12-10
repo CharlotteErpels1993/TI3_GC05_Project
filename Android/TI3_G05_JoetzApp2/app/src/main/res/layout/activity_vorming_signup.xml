@@ -26,6 +26,7 @@
         android:id="@+id/btnInschrijven"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/Rood"
         android:layout_marginTop="20dp"
         android:layout_below="@+id/spnDataVorming"
         android:text="@string/inschrijven" />

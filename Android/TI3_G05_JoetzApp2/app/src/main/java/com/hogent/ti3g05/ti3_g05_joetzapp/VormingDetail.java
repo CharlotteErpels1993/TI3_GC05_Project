@@ -26,7 +26,6 @@ public class VormingDetail extends Activity {
     String inbegrepenInPrijs;
     String objectId;
     List<String> periodes;
-    private Button inschrijven;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -51,11 +50,11 @@ public class VormingDetail extends Activity {
         setTitle(titel);
 
         TextView txtTitel = (TextView) findViewById(R.id.titelVD);
-        final TextView txtLocatie = (TextView) findViewById(R.id.locatieVD);
-        final TextView txtbetalingswijze = (TextView) findViewById(R.id.betalingswijzeVD);
-        final TextView txtCriteriaDeelnemer = (TextView)findViewById(R.id.criteriaDeelnemerVD);
+        TextView txtLocatie = (TextView) findViewById(R.id.locatieVD);
+        TextView txtbetalingswijze = (TextView) findViewById(R.id.betalingswijzeVD);
+        TextView txtCriteriaDeelnemer = (TextView)findViewById(R.id.criteriaDeelnemerVD);
         TextView txtkorteBeschrijving = (TextView)findViewById(R.id.beschrijvingVD);
-        final TextView txtTips = (TextView)findViewById(R.id.tipsVD);
+        TextView txtTips = (TextView)findViewById(R.id.tipsVD);
         TextView txtPrijs = (TextView) findViewById(R.id.prijs);
         TextView txtInbegrepenInPrijs = (TextView) findViewById(R.id.inbegrepenInPrijs);
         TextView txtWebsite = (TextView) findViewById(R.id.websiteLocatieVD);
@@ -77,8 +76,7 @@ public class VormingDetail extends Activity {
         }
         txtPeriodes.setText(periodesBuilder.toString());
 
-        inschrijven = (Button) findViewById(R.id.btnInschrijvenVorming);
-        inschrijven.setTextColor(getResources().getColor(R.color.Rood));
+        Button inschrijven = (Button) findViewById(R.id.btnInschrijvenVorming);
 
         if(ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("administrator"))
         {
@@ -88,7 +86,6 @@ public class VormingDetail extends Activity {
         {
             inschrijven.setVisibility(View.VISIBLE);
         }
-
 
         inschrijven.setOnClickListener(new View.OnClickListener() {
             @Override
