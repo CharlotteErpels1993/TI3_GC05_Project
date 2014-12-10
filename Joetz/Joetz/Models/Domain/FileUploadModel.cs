@@ -1,4 +1,4 @@
-﻿namespace Joetz.Models
+﻿namespace Joetz.Models.Domain
 {
     public class FileUploadModel
     {

@@ -226,8 +226,12 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
-    <Compile Include="Models\FileUploadModel.cs" />
-    <Compile Include="Models\MaakMonitorenAanModel.cs" />
+    <Compile Include="Models\DAL\VakantieRepository.cs" />
+    <Compile Include="Models\Domain\Activiteit.cs" />
+    <Compile Include="Models\Domain\FileUploadModel.cs" />
+    <Compile Include="Models\Domain\IVakantieRepository.cs" />
+    <Compile Include="Models\Domain\MaakMonitorenAanModel.cs" />
+    <Compile Include="Models\Domain\Vakantie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
