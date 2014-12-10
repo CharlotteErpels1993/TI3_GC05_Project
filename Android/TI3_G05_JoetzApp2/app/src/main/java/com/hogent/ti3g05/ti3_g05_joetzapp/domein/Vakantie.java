@@ -1,6 +1,5 @@
 package com.hogent.ti3g05.ti3_g05_joetzapp.domein;
 
-
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -9,7 +8,7 @@ public class Vakantie extends Activiteit{
     private String aantalDagenNachten, link;
     private String vervoerswijze, formule;
     private Number basisprijs, bondMoysonLedenPrijs, sterPrijs1Ouder, sterPrijs2Ouder;
-    private Number korting, maxDoelgroep, minDoelgroep;
+    private Number maxDoelgroep, minDoelgroep;
     private String inbegrepenInPrijs;
     private String doelGroep;
     private Number maxAantalDeelnemers;
@@ -17,8 +16,6 @@ public class Vakantie extends Activiteit{
     private String prijsStr;
     private String periode;
     private String vakantieID;
-    private String locatie;
-    private String korteBeschrijving;
     private String vertrekDatumString, terugDatumString;
     private ArrayList< String> fotos = new ArrayList<String>();
 
@@ -39,28 +36,12 @@ public class Vakantie extends Activiteit{
     public void setTerugDatumString(String terugDatumString){this.terugDatumString = terugDatumString;}
     public String getTerugDatumString(){return terugDatumString;}
 
-    public void setLocatie(String locatie){this.locatie = locatie;}
-    public String getLocatie() {return locatie;}
-
-    public void setKorteBeschrijving(String korteBeschrijving){this.korteBeschrijving = korteBeschrijving;}
-    public String getKorteBeschrijving(){return korteBeschrijving;}
 
 
 
     public void setLink(String link){this.link = link;}
     public String getLink(){return link;}
 
-
-    /*public String toString(){
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(getVertrekDatum());
-        String objvertrekDatum = cal.get(Calendar.DAY_OF_MONTH) + "/" + cal.get(Calendar.MONTH) + "/" + cal.get(Calendar.YEAR);
-        cal.setTime(getTerugkeerDatum());
-        String objterugkeerDatum = cal.get(Calendar.DAY_OF_MONTH) + "/" + cal.get(Calendar.MONTH) + "/" + cal.get(Calendar.YEAR);
-        return getNaamVakantie() + " - " + getLocatie() + "\n" +
-                objvertrekDatum +
-                " - " + objterugkeerDatum;
-    }*/
 
     public ArrayList< String> getFotos(){return fotos;}
     public void setFotos(ArrayList< String> fotos){this.fotos = fotos;}
@@ -123,14 +104,6 @@ public class Vakantie extends Activiteit{
 
     public void setBondMoysonLedenPrijs(Number bondMoysonLedenPrijs) {
         this.bondMoysonLedenPrijs = bondMoysonLedenPrijs;
-    }
-
-    public Number getKorting() {
-        return korting;
-    }
-
-    public void setKorting(int korting) {
-        this.korting = korting;
     }
 
     public String getDoelGroep() {
