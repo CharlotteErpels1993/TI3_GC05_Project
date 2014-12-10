@@ -17,6 +17,7 @@ using Parse;
 using Microsoft.Win32;
 using Microsoft.VisualBasic;
 using Gat.Controls;
+using Joetz.Models.Domain;
 
 namespace Joetz.Controllers
 {
@@ -49,7 +50,7 @@ namespace Joetz.Controllers
                 fileName = string.Empty;
                 destinationPath = string.Empty;
 
-                List<FileUploadModel> uploadFileModel = new List<FileUploadModel>();
+                List<Joetz.Models.Domain.FileUploadModel> uploadFileModel = new List<FileUploadModel>();
 
                 fileName = Path.GetFileName(file_uploader.FileName);
                 destinationPath = Path.Combine(Server.MapPath("~/"), fileName);

@@ -1,13 +1,15 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Parse;
 
 namespace Joetz.Models.Domain
 {
     public interface IVakantieRepository
     {
         Vakantie FindBy(string vakantieId);
-        IQueryable<Vakantie> FindAll();
+        IList<Vakantie> FindAll();
         void Add(Vakantie vakantie);
         void Delete(Vakantie vakantie);
-        void SaveChanges();
+        Vakantie GetVakantie(ParseObject vakantieObject);
     }
 }

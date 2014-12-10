@@ -23,7 +23,6 @@ namespace Joetz.Models.Domain
 
         public Vakantie(string id) : base(id)
         {
-            base.Id = id;
             VertrekDatum = new DateTime();
             TerugkeerDatum = new DateTime();
             AantalDagenNachten = "";

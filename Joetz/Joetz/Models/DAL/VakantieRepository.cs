@@ -1,5 +1,5 @@
-﻿using System.Data.Entity;
-using System.Linq;
+﻿using System;
+using System.Collections.Generic;
 using Joetz.Models.Domain;
 using Parse;
 
@@ -7,51 +7,90 @@ namespace Joetz.Models.DAL
 {
     public class VakantieRepository: IVakantieRepository
     {
-        //private context????
-        private DbSet<ParseObject> vakantiesObjects;
-        private DbSet<Vakantie> vakanties; 
+        public Vakantie GetVakantie(ParseObject vakantieObject)
+        {
+            Vakantie vakantie = new Vakantie("test");
+
+            vakantie.Id = vakantieObject.ObjectId;
+            vakantie.Titel = vakantieObject.Get<string>("titel");
+            vakantie.Locatie = vakantieObject.Get<string>("locatie");
+            vakantie.KorteBeschrijving = vakantieObject.Get<string>("korteBeschrijving");
+            vakantie.AantalDagenNachten = vakantieObject.Get<string>("aantalDagenNachten");
+            vakantie.BasisPrijs = vakantieObject.Get<Double>("basisPrijs");
+            vakantie.BondMoysonLedenPrijs = vakantieObject.Get<Double>("bondMoysonLedenPrijs");
+            vakantie.Formule = vakantieObject.Get<string>("formule");
+            vakantie.InbegrepenPrijs = vakantieObject.Get<string>("inbegrepenPrijs");
+            vakantie.Link = vakantieObject.Get<string>("link");
+            vakantie.MaxAantalDeelnemers = vakantieObject.Get<int>("maxAantalDeelnemers");
+            vakantie.MinLeeftijd = vakantieObject.Get<int>("minLeeftijd");
+            vakantie.MaxLeeftijd = vakantieObject.Get<int>("maxLeeftijd");
+            vakantie.SterPrijs1Ouder = vakantieObject.Get<Double>("sterPrijs1ouder");
+            vakantie.SterPrijs2Ouders = vakantieObject.Get<Double>("sterPrijs2ouders");
+            vakantie.TerugkeerDatum = vakantieObject.Get<DateTime>("terugkeerdatum");
+            vakantie.VertrekDatum = vakantieObject.Get<DateTime>("vertrekdatum");
+            vakantie.Vervoerwijze = vakantieObject.Get<string>("vervoerwijze");
+
+            return vakantie;
+
+        }
 
         public Vakantie FindBy(string vakantieId)
         {
-            return vakanties.Find(vakantieId);
+            var query = ParseObject.GetQuery("Vakantie").WhereEqualTo("objectId", vakantieId);
+            ParseObject vakantieObject = query.FirstAsync().Result;
+
+            var vakantie = GetVakantie(vakantieObject);
+            return vakantie;
         }
 
-        public IQueryable<Vakantie> FindAll()
+        public IList<Vakantie> FindAll()
         {
-            return vakanties.OrderBy(v => v.Titel);
+            var query = ParseObject.GetQuery("Vakantie");
+            IEnumerable<ParseObject> vakantieObjects = query.FindAsync().Result;
+
+            IList<Vakantie> vakanties = new Vakantie[]{};
+            Vakantie vakantie;
+
+            foreach (ParseObject vakantieObject in vakantieObjects)
+            {
+                vakantie = GetVakantie(vakantieObject);
+                vakanties.Add(vakantie);
+            }
+
+            return vakanties;
         }
 
         public void Add(Vakantie vakantie)
         {
-            ParseObject v = new ParseObject("Vakantie");
+            ParseObject vakantieObject = new ParseObject("Vakantie");
 
-            v["titel"] = vakantie.Titel;
-            v["aantalDagenNachten"] = vakantie.AantalDagenNachten;
-            v["basisprijs"] = vakantie.BasisPrijs;
-            v["locatie"] = vakantie.Locatie;
-            v["korteBeschrijving"] = vakantie.KorteBeschrijving;
-            v["vertrekdatum"] = vakantie.VertrekDatum;
-            v["terugkeerdatum"] = vakantie.TerugkeerDatum;
-            v["vervoerwijze"] = vakantie.Vervoerwijze;
-            v["formule"] = vakantie.Formule;
-            v["link"] = vakantie.Link;
-            v["basisprijs"] = vakantie.BasisPrijs;
-            v["bondMoysonLedenPrijs"] = vakantie.BondMoysonLedenPrijs;
-            v["sterPrijs1Ouder"] = vakantie.SterPrijs1Ouder;
-            v["sterPrijs2Ouders"] = vakantie.SterPrijs2Ouders;
+            vakantieObject["titel"] = vakantie.Titel;
+            vakantieObject["locatie"] = vakantie.Locatie;
+            vakantieObject["korteBeschrijving"] = vakantie.KorteBeschrijving;
+            vakantieObject["aantalDagenNachten"] = vakantie.AantalDagenNachten;
+            vakantieObject["basisPrijs"] = vakantie.BasisPrijs;
+            vakantieObject["bondMoysonLedenPrijs"] = vakantie.BondMoysonLedenPrijs;
+            vakantieObject["formule"] = vakantie.Formule;
+            vakantieObject["inbegrepenPrijs"] = vakantie.InbegrepenPrijs;
+            vakantieObject["link"] = vakantie.Link;
+            vakantieObject["maxAantalDeelnemers"] = vakantie.MaxAantalDeelnemers;
+            vakantieObject["minLeeftijd"] = vakantie.MinLeeftijd;
+            vakantieObject["maxLeeftijd"] = vakantie.MaxLeeftijd;
+            vakantieObject["sterPrijs1ouder"] = vakantie.SterPrijs1Ouder;
+            vakantieObject["sterPrijs2ouders"] = vakantie.SterPrijs2Ouders;
+            vakantieObject["terugkeerdatum"] = vakantie.TerugkeerDatum;
+            vakantieObject["vertrekdatum"] = vakantie.VertrekDatum;
+            vakantieObject["vervoerwijze"] = vakantie.Vervoerwijze;
 
-
-            vakanties.Add(vakantie);
+            vakantieObject.SaveAsync();
         }
 
         public void Delete(Vakantie vakantie)
         {
-            vakanties.Remove(vakantie);
-        }
+            var query = ParseObject.GetQuery("Vakantie").WhereEqualTo("objectId", vakantie.Id);
+            ParseObject vakantieObject = query.FirstAsync().Result;
 
-        public void SaveChanges()
-        {
-            
+            vakantieObject.DeleteAsync();
         }
     }
 }
