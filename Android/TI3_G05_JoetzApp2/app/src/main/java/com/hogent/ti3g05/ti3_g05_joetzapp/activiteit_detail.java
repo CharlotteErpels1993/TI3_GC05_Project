@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -395,6 +394,7 @@ public class activiteit_detail extends Activity {
             }
         } else if (ParseUser.getCurrentUser()!=null && ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("monitor"))
         {
+            btnInschrijven.setVisibility(View.GONE);
             btnmeerInfo.setVisibility(View.VISIBLE);
             verberg.setVisibility(View.GONE);
             txtExtraInfo.setVisibility(View.GONE);

@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.text.format.Time;
 import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.Calendar;
@@ -92,7 +91,7 @@ public /*static*/ class CustomDatePicker extends DialogFragment
         jaar.setText(""+year);
 
         dag.setText(""+dayOfMonth);
-        System.out.println("enetring on populate Set");
+        System.out.println("entering on populate Set");
 
     }
 

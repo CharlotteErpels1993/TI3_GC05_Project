@@ -63,13 +63,13 @@
             android:layout_marginLeft="8dp"/>-->
         <TextView
             android:id="@+id/DateIns"
-
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/VoornaamIns"
             android:layout_marginTop="40dp"
             android:textSize="15sp"
             android:layout_marginStart="5dp"/>
+
         <Button
             android:id="@+id/uitlegVoorData"
             android:layout_width="175dp"
@@ -92,6 +92,7 @@
             android:textSize="15sp"
             android:textColor="@color/Rood"
             android:layout_marginStart="5dp"/>
+
 
         <TextView
             android:id="@+id/StraatInsLabel"
@@ -188,6 +189,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/Postcode"
             android:layout_marginTop="25dp"
+            android:textColor="@color/Rood"
             android:text="@string/volgende"
             android:background="@drawable/button_shape"/>
 
