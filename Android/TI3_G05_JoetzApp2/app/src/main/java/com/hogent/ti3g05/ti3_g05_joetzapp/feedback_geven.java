@@ -7,13 +7,8 @@ import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ExpandableListView;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,17 +17,9 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
-import org.w3c.dom.Text;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
-/**
- * Created by Gebruiker on 8/12/2014.
- */
+
 public class feedback_geven extends Activity {
 
     private String vakantie;
@@ -42,20 +29,16 @@ public class feedback_geven extends Activity {
     private EditText feedbackText;
     private EditText scoreText;
 
-    TextView vakantieNaam;
-
 
     private boolean cancel = false;
     private View focusView = null;
     // flag for Internet connection status
-    Boolean isInternetPresent = false;
+    private Boolean isInternetPresent = false;
     // Connection detector class
-    ConnectionDetector cd;
+    private ConnectionDetector cd;
 
-
-    Button ingeven;
-    private List<ParseObject> ob;
-    private List<ParseObject> ob2;
+    private List<ParseObject> lijstMetParseOuders;
+    private List<ParseObject> lijstMetParseMonitoren;
 
 
     public void onCreate(Bundle savedInstanceState) {
@@ -63,8 +46,7 @@ public class feedback_geven extends Activity {
         setContentView(R.layout.feedback_ingeven);
 
         cd= new ConnectionDetector(feedback_geven.this);
-        ingeven = (Button) findViewById(R.id.ingevenFeedback);
-
+        Button ingeven = (Button) findViewById(R.id.ingevenFeedback);
 
 
         setTitle("Funfactor");
@@ -75,28 +57,23 @@ public class feedback_geven extends Activity {
         isInternetPresent = cd.isConnectingToInternet();
         if (isInternetPresent) {
             try {
+                String emailToLookFor = ParseUser.getCurrentUser().getEmail();
 
                 // Locate the class table named "Ouder" in Parse.com
-                ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(
-                        "Ouder");
+                ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Ouder");
+                lijstMetParseOuders = query.find();
+                for (ParseObject ouder : lijstMetParseOuders) {
 
-                ob = query.find();
-
-                for (ParseObject ouder : ob) {
-
-                    if (ouder.get("email").equals(ParseUser.getCurrentUser().getEmail())) {
+                    if (ouder.get("email").equals(emailToLookFor)) {
                         gebruiker = ouder.getObjectId();
                     }
                 }
 
-                ParseQuery<ParseObject> query2 = new ParseQuery<ParseObject>(
-                        "Monitor");
+                ParseQuery<ParseObject> query2 = new ParseQuery<ParseObject>("Monitor");
+                lijstMetParseMonitoren = query2.find();
+                for (ParseObject monitor : lijstMetParseMonitoren) {
 
-                ob2 = query2.find();
-
-                for (ParseObject monitor : ob2) {
-
-                    if (monitor.get("email").equals(ParseUser.getCurrentUser().getEmail())) {
+                    if (monitor.get("email").equals(emailToLookFor)) {
                         gebruiker = monitor.getObjectId();
                     }
                 }
@@ -117,21 +94,16 @@ public class feedback_geven extends Activity {
             vakantieId = extras.getString("vakantieId");
         }
 
-        vakantieNaam = (TextView) findViewById(R.id.vakantienaamFeedback);
+        TextView vakantieNaam = (TextView) findViewById(R.id.vakantienaamFeedback);
         vakantieNaam.setText(vakantie);
         ingeven.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String feedback;
-                String score;
-
-                feedback = feedbackText.getText().toString();
-                score = scoreText.getText().toString();
+                String feedback = feedbackText.getText().toString();
+                String score = scoreText.getText().toString();
                 valideerGegevens(feedback, score);
             }
         });
-
-
 
     }
 
@@ -174,15 +146,11 @@ public class feedback_geven extends Activity {
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             opslaan(feedback, score);
-            //Toast.makeText(getApplicationContext(), "Opgeslagen", Toast.LENGTH_SHORT).show();
-
         }
     }
 
     public  void opslaan(String feedback, String score)
     {
-
-        try {
         ParseObject feedbackObject = new ParseObject("Feedback");
 
         feedbackObject.put("vakantie", vakantieId);
@@ -191,15 +159,13 @@ public class feedback_geven extends Activity {
         feedbackObject.put("score", Integer.parseInt(score));
         feedbackObject.put("goedgekeurd", false);
 
-            feedbackObject.save();
+        feedbackObject.saveInBackground();
 
-            Toast.makeText(feedback_geven.this, "feedback is succesvol geregistreerd", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(feedback_geven.this, navBarMainScreen.class);
-            startActivity(intent);
+        Toast.makeText(feedback_geven.this, "feedback is succesvol geregistreerd", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(feedback_geven.this, navBarMainScreen.class);
+        startActivity(intent);
 
-        } catch (com.parse.ParseException e) {
-            e.printStackTrace();
-        }
+
     }
 
     private void clearErrors(){

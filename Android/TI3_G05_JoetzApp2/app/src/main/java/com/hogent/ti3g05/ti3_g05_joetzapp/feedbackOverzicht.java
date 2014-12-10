@@ -5,16 +5,12 @@ import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -22,45 +18,36 @@ import android.widget.Toast;
 import com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.myDb;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.FeedbackAdapter;
-import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ListViewAdapter;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Feedback;
-import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vakantie;
 import com.parse.ParseException;
-import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-/**
- * Created by Gebruiker on 8/12/2014.
- */
+
 public class feedbackOverzicht extends Fragment {
 
     private ListView listview;
-    private List<ParseObject> ob;
 
+    private List<ParseObject> lijstMetParseVakanties;
+    private List<ParseObject> lijstMetParseFeedback;
+    private List<ParseObject> lijstMetParseOuders;
+    private List<ParseObject> lijstMetParseMonitoren;
 
-    private List<ParseObject> ob2;
-    private List<ParseObject> ob3;
-
-    private List<ParseObject> ob4;
     private myDb myDB;
-    Feedback map;
+    private Feedback map;
     private ProgressDialog mProgressDialog;
     private View rootView;
     private FeedbackAdapter adapter;
     private List<Feedback> feedbackList = null;
     private EditText filtertext;
 
-    Boolean isInternetPresent = false;
+    private Boolean isInternetPresent = false;
     // Connection detector class
-    ConnectionDetector cd;
-
-
+    private ConnectionDetector cd;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -163,37 +150,26 @@ public class feedbackOverzicht extends Fragment {
             // Create the array
             feedbackList = new ArrayList<Feedback>();
 
-
             try {
 
-                String vakantieId;
-                String vakantieNaam;
-
-                // Locate the class table named "vakantie" in Parse.com
-                ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(
-                        "Vakantie");
-                query.orderByAscending("vertrekdatum");
-                ob = query.find();
-
-                ParseQuery<ParseObject> queryOuder = new ParseQuery<ParseObject>(
-                        "Ouder");
-                ob3 = queryOuder.find();
-
-                ParseQuery<ParseObject> queryMonitor = new ParseQuery<ParseObject>(
-                        "Monitor");
-                ob4 = queryMonitor.find();
-
-
-                ParseQuery<ParseObject> queryFeedback = new ParseQuery<ParseObject>(
-                        "Feedback");
-                ob2 = queryFeedback.find();
+                ParseQuery<ParseObject> queryFeedback = new ParseQuery<ParseObject>("Feedback");
+                lijstMetParseFeedback = queryFeedback.find();
                 myDB.dropFeedback();
-                if (ob2.isEmpty()) {
+                if (lijstMetParseFeedback.isEmpty()) {
                     Toast.makeText(getActivity(), "Nog geen funfactor gegeven.", Toast.LENGTH_SHORT).show();
                 } else {
 
+                    ParseQuery<ParseObject> qryVakantiesOphalen = new ParseQuery<ParseObject>( "Vakantie");
+                    qryVakantiesOphalen.orderByAscending("vertrekdatum");
+                    lijstMetParseVakanties = qryVakantiesOphalen.find();
 
-                    for (ParseObject feedback : ob2) {
+                    ParseQuery<ParseObject> queryOuder = new ParseQuery<ParseObject>("Ouder");
+                    lijstMetParseOuders = queryOuder.find();
+
+                    ParseQuery<ParseObject> queryMonitor = new ParseQuery<ParseObject>( "Monitor");
+                    lijstMetParseMonitoren = queryMonitor.find();
+
+                    for (ParseObject feedback : lijstMetParseFeedback) {
                         map = new Feedback();
                         map.setVakantieId((String) feedback.get("vakantie"));
                         map.setFeedback((String) feedback.get("waardering"));
@@ -202,26 +178,22 @@ public class feedbackOverzicht extends Fragment {
                         map.setGoedgekeurd((Boolean) feedback.get("goedgekeurd"));
 
 
-                        for (ParseObject vakantie : ob) {
+                        for (ParseObject vakantie : lijstMetParseVakanties) {
                             if (feedback.get("vakantie").toString().equals(vakantie.getObjectId())) {
                                 map.setVakantieNaam((String) vakantie.get("titel"));
                             }
                         }
 
-                        for (ParseObject ouder : ob3) {
+                        for (ParseObject ouder : lijstMetParseOuders) {
                             if (feedback.get("gebruiker").toString().equals(ouder.getObjectId())) {
                                 map.setGebruiker(ouder.get("voornaam") +" "+ ouder.get("naam"));
                             }
-
-
                         }
 
-                        for (ParseObject monitor : ob4) {
+                        for (ParseObject monitor : lijstMetParseMonitoren) {
                             if (feedback.get("gebruiker").toString().equals(monitor.getObjectId())) {
                                 map.setGebruiker(monitor.get("voornaam") + " " + monitor.get("naam"));
                             }
-
-
                         }
 
                         if (map.getGoedgekeurd()) {
