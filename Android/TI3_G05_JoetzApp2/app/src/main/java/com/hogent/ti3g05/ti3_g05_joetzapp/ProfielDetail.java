@@ -134,6 +134,8 @@ public class ProfielDetail extends Activity {
         if (id == R.id.backMenu2) {
             Intent intent1 = new Intent(this, navBarMainScreen.class);
             intent1.putExtra("naarfrag", "profiel");
+
+            intent1.putExtra("herladen", "nee");
             intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent1);
 

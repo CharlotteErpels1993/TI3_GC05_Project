@@ -298,43 +298,13 @@ public class ProfielenOverzicht extends Activity /* implements SwipeRefreshLayou
     }
 
 
-   @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.back, menu);
-        return true;
-    }
 
-
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.backMenu) {
-            Intent intent1 = new Intent(this, navBarMainScreen.class);
-            startActivity(intent1);
-
-            overridePendingTransition(R.anim.left_in, R.anim.right_out);
-        }
-        if (id == R.id.menu_load) {
-            isInternetPresent = cd.isConnectingToInternet();
-            if (isInternetPresent) {
-                // Internet Connection is Present
-                // make HTTP requests
-                new RemoteDataTask().execute();
-            }
-            else{
-                // Internet connection is not present
-                // Ask user to connect to Internet
-                Toast.makeText(ProfielenOverzicht.this, getString(R.string.error_no_internet), Toast.LENGTH_SHORT).show();
-            }
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
     @Override
     public void onBackPressed() {
         Intent setIntent = new Intent(ProfielenOverzicht.this, navBarMainScreen.class);
         setIntent.addCategory(Intent.CATEGORY_HOME);
+        setIntent.putExtra("herladen", "nee");
+        setIntent.putExtra("naarfrag", "activiteit");
         setIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(setIntent);
     }

@@ -60,23 +60,24 @@ public class activiteit_overzicht extends Fragment /*implements SwipeRefreshLayo
         rootView = inflater.inflate(R.layout.activiteit_overzichtnieuw, container, false);
 
 
+
         listview = (ListView) rootView.findViewById(R.id.listView);
         filtertext = (EditText) rootView.findViewById(R.id.filtertext);
 
         getActivity().getActionBar().setTitle("Vakanties");
 
 
-
         cd = new ConnectionDetector(rootView.getContext());
         myDB = new myDb(rootView.getContext());
         myDB.open();
         isInternetPresent = cd.isConnectingToInternet();
-        if(/*savedInstanceState!=null*/getActivity().getIntent().getStringExtra("herladen")!= null && getActivity().getIntent().getStringExtra("herladen").toLowerCase().equals("nee"))
+        if(getActivity().getIntent().getStringExtra("herladen")!= null && getActivity().getIntent().getStringExtra("herladen").toLowerCase().equals("nee"))
         {
             getVakanties();
         }
          else if (isInternetPresent) {
             //Toast.makeText(getActivity(), "internet", Toast.LENGTH_SHORT).show();
+
             new RemoteDataTask().execute();
         }
         else {
@@ -282,31 +283,6 @@ public class activiteit_overzicht extends Fragment /*implements SwipeRefreshLayo
                 }
             });
         }
-    }
-
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getActivity().getMenuInflater().inflate(R.menu.menu_inschrijven_vakantie_part1, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.menu_loadVak) {
-            isInternetPresent = cd.isConnectingToInternet();
-
-            if (isInternetPresent) {
-                // Internet Connection is Present
-                // make HTTP requests
-                new RemoteDataTask().execute();
-            }
-            else{
-                // Internet connection is not present
-                // Ask user to connect to Internet
-                Toast.makeText(getActivity(), getString(R.string.error_no_internet), Toast.LENGTH_SHORT).show();
-            }
-        }
-        return super.onOptionsItemSelected(item);
     }
 
 

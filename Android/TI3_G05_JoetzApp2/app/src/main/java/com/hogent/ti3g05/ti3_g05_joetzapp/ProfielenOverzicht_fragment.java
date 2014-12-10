@@ -72,79 +72,45 @@ public class ProfielenOverzicht_fragment extends Fragment /* implements SwipeRef
         myDB = new myDb(rootView.getContext());
         myDB.open();
         isInternetPresent = cd.isConnectingToInternet();
+        if(getActivity().getIntent().getStringExtra("herladen")!= null && getActivity().getIntent().getStringExtra("herladen").toLowerCase().equals("nee"))
+        {
+            getProfielen();
+        }
         if (isInternetPresent) {
             //Toast.makeText(getActivity(), "internet", Toast.LENGTH_SHORT).show();
             new RemoteDataTask().execute();
         }
         else {
-            //Toast.makeText(getActivity(), "geen internet", Toast.LENGTH_SHORT).show();
-            alleProfielenUitParse = myDB.getProfielen();
-            adapter = new ProfielAdapter(rootView.getContext(), alleProfielenUitParse);
-            // Binds the Adapter to the ListView
-            listview.setAdapter(adapter);
-
-            filtertext.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {                }
-
-                @Override
-                public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {                }
-
-                @Override
-                public void afterTextChanged(Editable editable) {
-                    String text = filtertext.getText().toString().toLowerCase(Locale.getDefault());
-                    adapter.filter(text);
-                }
-            });
+        getProfielen();
         }
+
 
         return rootView;
     }
-    /*
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
 
-        // Get the view from listview_main.xml
-        setContentView(R.layout.activiteit_overzichtnieuw);
-        setTitle("Monitoren");
-        // Execute RemoteDataTask AsyncTask
-        filtertext = (EditText) findViewById(R.id.filtertext);
-        cd = new ConnectionDetector(getApplicationContext());
-        myDB = new myDb(this);
-        myDB.open();
+    public void getProfielen()
+    {
+        //Toast.makeText(getActivity(), "geen internet", Toast.LENGTH_SHORT).show();
+        alleProfielenUitParse = myDB.getProfielen();
+        adapter = new ProfielAdapter(rootView.getContext(), alleProfielenUitParse);
+        // Binds the Adapter to the ListView
+        listview.setAdapter(adapter);
 
+        filtertext.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {                }
 
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {                }
 
-        /*swipeLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_container);
-        onCreateSwipeToRefresh(swipeLayout);*/
-
-        //new RemoteDataTask().execute();
-   // }
-
-   /* private void onCreateSwipeToRefresh(SwipeRefreshLayout refreshLayout) {
-
-        refreshLayout.setOnRefreshListener(this);
-
-        refreshLayout.setColorScheme(
-                android.R.color.holo_blue_light,
-                android.R.color.holo_orange_light,
-                android.R.color.holo_green_light,
-                android.R.color.holo_red_light);
+            @Override
+            public void afterTextChanged(Editable editable) {
+                String text = filtertext.getText().toString().toLowerCase(Locale.getDefault());
+                adapter.filter(text);
+            }
+        });
 
     }
-    @Override
-    public void onRefresh() {
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-
-
-                new RemoteDataTask().execute();
-
-            }
-        }, 1000);
-    }*/
 
 
     // RemoteDataTask AsyncTask

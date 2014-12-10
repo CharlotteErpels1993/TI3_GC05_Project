@@ -14,10 +14,13 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.webkit.WebViewFragment;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -51,6 +54,8 @@ public class navBarMainScreen extends Activity {
     Boolean isInternetPresent = false;
     // Connection detector class
     ConnectionDetector cd;
+
+    private FrameLayout fragLayout;
 
 
     @SuppressLint("NewApi")
@@ -95,33 +100,7 @@ public class navBarMainScreen extends Activity {
             fragment = new activiteit_overzicht();
         }
 
-
-    /*    Intent afkomstig = getIntent();
-
-        if(afkomstig != null)
-        {
-            if(afkomstig.toString().toLowerCase().startsWith("activiteit"))
-            {
-                fragment = new activiteit_overzicht();
-
-            }
-            else if(afkomstig.toString().toLowerCase().startsWith("vorming"))
-            {
-                fragment = new Vormingen_Overzicht_Fragment();
-            }
-            else if(afkomstig.toString().toLowerCase().startsWith("profiel"))
-            {
-                fragment = new ProfielenOverzicht_fragment();
-            }
-            else if(afkomstig.toString().toLowerCase().startsWith("favoriet"))
-            {
-                fragment = new FavorieteVakanties();
-            }
-            else if(afkomstig.toString().toLowerCase().startsWith("feedback"))
-            {
-                fragment = new feedbackOverzicht();
-            }
-        }*/
+        fragLayout = (FrameLayout) findViewById(R.id.content_frame);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigationbar);
@@ -224,21 +203,23 @@ public class navBarMainScreen extends Activity {
                 // Getting reference to the FragmentManager
                 FragmentManager fragmentManager = getFragmentManager();
 
-                if(ParseUser.getCurrentUser() != null)
-                {
-                    // Creating a fragment transaction
-                    FragmentTransaction ft = fragmentManager.beginTransaction();
+                // Creating a fragment transaction
+                    fragmentManager.beginTransaction().replace(R.id.content_frame, rFragment).commit();
 
                     // Adding a fragment to the fragment transaction
-                    ft.replace(R.id.content_frame, rFragment);
+                    //ft.replace();
 
                     // Committing the transaction
-                    ft.commit();
-                }
+                   // ft.commit();
 
 
                 // Closing the drawer
+                final Animation fadeInAnimation = AnimationUtils.loadAnimation(navBarMainScreen.this, R.anim.fadein);
+
+                //fragLayout.startAnimation(fadeInAnimation);
+                mDrawerLayout.startAnimation(fadeInAnimation);
                 mDrawerLayout.closeDrawer(mDrawerList);
+
 
             }
         });
@@ -252,8 +233,9 @@ public class navBarMainScreen extends Activity {
             case 0:
 
                 Intent intent = new Intent(navBarMainScreen.this, navBarMainScreen.class);
+
                 fragment = new activiteit_overzicht();
-                refreshFragment(position);
+               // refreshFragment(position);
 
                 intent.putExtra("frag", fragment.toString());
                 startActivity(intent);
@@ -263,7 +245,7 @@ public class navBarMainScreen extends Activity {
                 Intent intent9 = new Intent(navBarMainScreen.this, navBarMainScreen.class);
                 fragment = new feedbackOverzicht();
 
-                refreshFragment(position);
+                //refreshFragment(position);
 
                 intent9.putExtra("frag", fragment.toString());
                 startActivity(intent9);
@@ -276,7 +258,7 @@ public class navBarMainScreen extends Activity {
                 {
                     Intent intent1 = new Intent(navBarMainScreen.this, navBarMainScreen.class);
                     fragment = new ProfielenOverzicht_fragment();
-                    refreshFragment(position);
+                    //refreshFragment(position);
 
                     intent1.putExtra("frag", fragment.toString());
                     startActivity(intent1);
@@ -292,7 +274,7 @@ public class navBarMainScreen extends Activity {
                     intent1.putExtra("herladen", "nee");
 
                     intent1.putExtra("frag", fragment.toString());
-                    refreshFragment(position);
+                   // refreshFragment(position);
                     startActivity(intent1);
                 }
 
@@ -308,7 +290,7 @@ public class navBarMainScreen extends Activity {
                     intent1.putExtra("herladen", "nee");
 
                     intent1.putExtra("frag", fragment.toString());
-                    refreshFragment(position);
+                    //refreshFragment(position);
                     startActivity(intent1); }
                 else{
                     if (ParseUser.getCurrentUser() != null && !ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("ouder"))
@@ -332,7 +314,7 @@ public class navBarMainScreen extends Activity {
                         intent1.putExtra("herladen", "nee");
 
                         intent1.putExtra("frag", fragment.toString());
-                        refreshFragment(position);
+                       // refreshFragment(position);
                         startActivity(intent1);
                     }
                 }
@@ -355,7 +337,7 @@ public class navBarMainScreen extends Activity {
                             intent1.putExtra("herladen", "nee");
 
                             intent1.putExtra("frag", fragment.toString());
-                            refreshFragment(position);
+                            //refreshFragment(position);
                             startActivity(intent1);
                         }
                     } else {
@@ -366,7 +348,7 @@ public class navBarMainScreen extends Activity {
                     intent1.putExtra("herladen", "nee");
 
                     intent1.putExtra("frag", fragment.toString());
-                        refreshFragment(position);
+                       // refreshFragment(position);
                         startActivity(intent1);
                     }
                 break;
@@ -385,7 +367,7 @@ public class navBarMainScreen extends Activity {
                     Intent intent7 = new Intent(navBarMainScreen.this, navBarMainScreen.class);
                     fragment = new FavorieteVakanties();
 
-                    refreshFragment(position);
+                   // refreshFragment(position);
 
                     intent7.putExtra("frag", fragment.toString());
                     startActivity(intent7);
@@ -399,7 +381,7 @@ public class navBarMainScreen extends Activity {
                     intent1.putExtra("herladen", "nee");
 
                     intent1.putExtra("frag", fragment.toString());
-                    refreshFragment(position);
+                   // refreshFragment(position);
                     startActivity(intent1);
                 }
                 break;
@@ -478,12 +460,12 @@ public class navBarMainScreen extends Activity {
     {
         if(fragment != null)
         {
-            FragmentManager fragmentManager = getFragmentManager();
+           /* FragmentManager fragmentManager = getFragmentManager();
             fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
-
+*//*
             mDrawerList.setItemChecked(position, true);
             mDrawerList.setSelection(position);
-            //setTitle("vakanties");
+            //setTitle("vakanties");*/
             mDrawerLayout.closeDrawer(mDrawerList);
 
         } else
@@ -540,6 +522,9 @@ public class navBarMainScreen extends Activity {
                 fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
 
                 setTitle(fragment.getId());
+                final Animation fadeInAnimation = AnimationUtils.loadAnimation(this, R.anim.fadein);
+
+                mDrawerLayout.startAnimation(fadeInAnimation);
                 mDrawerLayout.closeDrawer(mDrawerList);
 
             } else {
@@ -554,44 +539,18 @@ public class navBarMainScreen extends Activity {
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
-/*
-        menu.findItem(R.id.inloggen).setVisible(!drawerOpen);
 
-        if (ParseUser.getCurrentUser() == null){
-            //gebruiker is niet ingelogd
-            menu.findItem(R.id.inloggen).setVisible(true);
-            menu.findItem(R.id.regisreren).setVisible(true);
-            menu.findItem(R.id.uitloggen).setVisible(false);
-        }
-        else{
-            //gebruiker is ingelogd.
-            menu.findItem(R.id.inloggen).setVisible(false);
-            menu.findItem(R.id.regisreren).setVisible(false);
-            menu.findItem(R.id.uitloggen).setVisible(true);
-        }
-*/
         return super.onPrepareOptionsMenu(menu);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_inschrijven_vakantie_part1, menu);
-/*
-        if (ParseUser.getCurrentUser() == null){
-            //gebruiker is niet ingelogd
-            menu.findItem(R.id.inloggen).setVisible(true);
-            menu.findItem(R.id.regisreren).setVisible(true);
-            menu.findItem(R.id.uitloggen).setVisible(false);
-        }
-        else{
-            //gebruiker is ingelogd.
-            menu.findItem(R.id.inloggen).setVisible(false);
-            menu.findItem(R.id.regisreren).setVisible(false);
-            menu.findItem(R.id.uitloggen).setVisible(true);
-        }*/
 
         return true;
     }
+
+
 
     @Override
     public void onBackPressed() {

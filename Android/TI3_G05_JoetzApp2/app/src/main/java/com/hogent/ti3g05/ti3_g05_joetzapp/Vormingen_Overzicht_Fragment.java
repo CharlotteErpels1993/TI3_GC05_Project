@@ -57,35 +57,45 @@ public class Vormingen_Overzicht_Fragment extends Fragment /*implements SwipeRef
         myDB = new myDb(rootView.getContext());
         myDB.open();
         isInternetPresent = cd.isConnectingToInternet();
+
+        if(getActivity().getIntent().getStringExtra("herladen")!= null && getActivity().getIntent().getStringExtra("herladen").toLowerCase().equals("nee"))
+        {
+            getVormingen();
+        }
+
         if (isInternetPresent) {
             //Toast.makeText(getActivity(), "internet", Toast.LENGTH_SHORT).show();
             new RemoteDataTask().execute();
         }
         else {
-            //Toast.makeText(getActivity(), "geen internet", Toast.LENGTH_SHORT).show();
-            vormingen = myDB.getVormingen();
-            adapter = new VormingAdapter(rootView.getContext(), vormingen);
-            // Binds the Adapter to the ListView
-            listview.setAdapter(adapter);
-
-            et_filtertext.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {                }
-
-                @Override
-                public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {                }
-
-                @Override
-                public void afterTextChanged(Editable editable) {
-                    String text = et_filtertext.getText().toString().toLowerCase(Locale.getDefault());
-                    adapter.filter(text);
-                }
-            });
+            getVormingen();
         }
 
         return rootView;
     }
 
+    public void getVormingen()
+    {
+        //Toast.makeText(getActivity(), "geen internet", Toast.LENGTH_SHORT).show();
+        vormingen = myDB.getVormingen();
+        adapter = new VormingAdapter(rootView.getContext(), vormingen);
+        // Binds the Adapter to the ListView
+        listview.setAdapter(adapter);
+
+        et_filtertext.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {                }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {                }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                String text = et_filtertext.getText().toString().toLowerCase(Locale.getDefault());
+                adapter.filter(text);
+            }
+        });
+    }
 
 
     // 'Laden' schermpje tonen
