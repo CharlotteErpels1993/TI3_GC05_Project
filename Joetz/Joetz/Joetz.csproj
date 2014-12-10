@@ -370,6 +370,8 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\MaakMonitorAan\Index.cshtml" />
     <Content Include="Views\Vakantie\Index.cshtml" />
+    <Content Include="Views\Vakantie\Create.cshtml" />
+    <Content Include="Views\Vakantie\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

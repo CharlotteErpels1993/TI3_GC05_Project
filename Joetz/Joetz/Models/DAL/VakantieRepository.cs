@@ -17,11 +17,11 @@ namespace Joetz.Models.DAL
             vakantie.Locatie = vakantieObject.Get<string>("locatie");
             vakantie.KorteBeschrijving = vakantieObject.Get<string>("korteBeschrijving");
             vakantie.AantalDagenNachten = vakantieObject.Get<string>("aantalDagenNachten");
+            vakantie.Link = vakantieObject.Get<string>("link");
             vakantie.BasisPrijs = vakantieObject.Get<Double>("basisPrijs");
             vakantie.BondMoysonLedenPrijs = vakantieObject.Get<Double>("bondMoysonLedenPrijs");
             vakantie.Formule = vakantieObject.Get<string>("formule");
             vakantie.InbegrepenPrijs = vakantieObject.Get<string>("inbegrepenPrijs");
-            vakantie.Link = vakantieObject.Get<string>("link");
             vakantie.MaxAantalDeelnemers = vakantieObject.Get<int>("maxAantalDeelnemers");
             vakantie.MinLeeftijd = vakantieObject.Get<int>("minLeeftijd");
             vakantie.MaxLeeftijd = vakantieObject.Get<int>("maxLeeftijd");
@@ -55,10 +55,10 @@ namespace Joetz.Models.DAL
             return vakanties;
         }
 
-        public Vakantie FindBy(string vakantieId)
+        public async Task<Vakantie> FindBy(string vakantieId)
         {
             var query = ParseObject.GetQuery("Vakantie").WhereEqualTo("objectId", vakantieId);
-            ParseObject vakantieObject = query.FirstAsync().Result;
+            ParseObject vakantieObject = await query.FirstAsync();
 
             var vakantie = GetVakantie(vakantieObject);
             return vakantie;
@@ -75,8 +75,8 @@ namespace Joetz.Models.DAL
             vakantieObject["basisPrijs"] = vakantie.BasisPrijs;
             vakantieObject["bondMoysonLedenPrijs"] = vakantie.BondMoysonLedenPrijs;
             vakantieObject["formule"] = vakantie.Formule;
-            vakantieObject["inbegrepenPrijs"] = vakantie.InbegrepenPrijs;
             vakantieObject["link"] = vakantie.Link;
+            vakantieObject["inbegrepenPrijs"] = vakantie.InbegrepenPrijs;
             vakantieObject["maxAantalDeelnemers"] = vakantie.MaxAantalDeelnemers;
             vakantieObject["minLeeftijd"] = vakantie.MinLeeftijd;
             vakantieObject["maxLeeftijd"] = vakantie.MaxLeeftijd;
@@ -95,6 +95,11 @@ namespace Joetz.Models.DAL
             ParseObject vakantieObject = query.FirstAsync().Result;
 
             vakantieObject.DeleteAsync();
+        }
+
+        public void Update(Vakantie vakantie)
+        {
+            throw new NotImplementedException();
         }
     }
 }
