@@ -204,14 +204,12 @@ public class ProfielenOverzicht_fragment extends Fragment /* implements SwipeRef
                         map.setNaam((String) monitor.get("naam"));
                         map.setVoornaam((String) monitor.get("voornaam"));
                         map.setStraat((String) monitor.get("straat"));
-                        map.setMonitorId( monitor.getObjectId());
+                        map.setMonitorId(monitor.getObjectId());
                         map.setPostcode((Integer) monitor.get("postcode"));
                         map.setHuisnr((Number) monitor.get("nummer"));
-                        if(monitor.get("lidNr") == null)
-                        {
+                        if (monitor.get("lidNr") == null) {
                             map.setLidNummer("0");
-                        } else
-                        {
+                        } else {
                             map.setLidNummer(monitor.get("lidNr").toString());
                         }
                         map.setEmail((String) monitor.get("email"));
@@ -221,10 +219,8 @@ public class ProfielenOverzicht_fragment extends Fragment /* implements SwipeRef
                         map.setRijksregNr((String) monitor.get("rijksregisterNr"));
 
 
-                        if(map.getEmail() != null)
-                        {
-                            if (map.getEmail().equals(ParseUser.getCurrentUser().getEmail()))
-                            {
+                        if (map.getEmail() != null) {
+                            if (map.getEmail().equals(ParseUser.getCurrentUser().getEmail())) {
                                 ingelogdeMonitor = map;
                             }
                         }
@@ -236,7 +232,7 @@ public class ProfielenOverzicht_fragment extends Fragment /* implements SwipeRef
                         myDB.insertProfiel(map);
 
                     }
-                }catch (ParseException e) {
+                } catch (ParseException e) {
                     Log.e("Error", e.getMessage());
                     e.printStackTrace();
 
@@ -245,7 +241,7 @@ public class ProfielenOverzicht_fragment extends Fragment /* implements SwipeRef
                 }
 
 
-                if(ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("monitor")) {
+                if (ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("monitor")) {
                     try {
 
                         ParseQuery<ParseObject> queryVorming = new ParseQuery<ParseObject>(
@@ -320,10 +316,12 @@ public class ProfielenOverzicht_fragment extends Fragment /* implements SwipeRef
                     } catch (ParseException e) {
                         Toast.makeText(getActivity(), "Fout bij ophalen vormingen", Toast.LENGTH_SHORT).show();
                     }
+                } else {
+                    profielenSamen = profielen;
+
+
                 }
-
-
-            } else {
+            }else {
                 profielenSamen = myDB.getProfielen();
             }
             return null;

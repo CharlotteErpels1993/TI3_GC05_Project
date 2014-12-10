@@ -259,8 +259,19 @@ public class navBarMainScreen extends Activity {
                 break;
 
             case 1:
+                Intent intent9 = new Intent(navBarMainScreen.this, navBarMainScreen.class);
+                fragment = new feedbackOverzicht();
 
-                if(ParseUser.getCurrentUser()!=null)
+                refreshFragment(position);
+
+                intent9.putExtra("frag", fragment.toString());
+                startActivity(intent9);
+
+                break;
+
+            case 2:
+
+                if(ParseUser.getCurrentUser()!=null && ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("monitor"))
                 {
                     Intent intent1 = new Intent(navBarMainScreen.this, navBarMainScreen.class);
                     fragment = new ProfielenOverzicht_fragment();
@@ -285,7 +296,7 @@ public class navBarMainScreen extends Activity {
                 break;
 
 
-            case 2:
+            case 3:
                 if(ParseUser.getCurrentUser() == null ) {
                     Toast.makeText(this, "U hebt niet de juiste bevoegdheid om dit te bekijken.", Toast.LENGTH_SHORT).show();
                     Intent intent1 = new Intent(navBarMainScreen.this, navBarMainScreen.class
@@ -293,7 +304,7 @@ public class navBarMainScreen extends Activity {
                     refreshFragment(position);
                     startActivity(intent1); }
                 else{
-                    if (ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("monitor") || ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("administrator"))
+                    if (ParseUser.getCurrentUser() != null && !ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("ouder"))
 
                     {
                         Intent intent3 = new Intent(navBarMainScreen.this, navBarMainScreen.class);
@@ -317,10 +328,10 @@ public class navBarMainScreen extends Activity {
 
                 break;
 
-            case 3:
+            case 4:
                 if (isInternetPresent) {
-                    if (ParseUser.getCurrentUser() != null) {
-                        if (ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("monitor")) {
+
+                        if (ParseUser.getCurrentUser() != null && ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("monitor")) {
                             Intent intent2 = new Intent(navBarMainScreen.this, IndienenVoorkeurVakantie.class
                             );
                             startActivity(intent2);
@@ -338,40 +349,9 @@ public class navBarMainScreen extends Activity {
                         refreshFragment(position);
                         startActivity(intent1);
                     }
-                } else
-                {
-                    Toast.makeText(this, "U hebt niet de juiste bevoegdheid om dit te bekijken", Toast.LENGTH_SHORT).show();
-                    Intent intent1 = new Intent(navBarMainScreen.this, navBarMainScreen.class
-                    );
-                    refreshFragment(position);
-                    startActivity(intent1);
-                }
                 break;
-            case 4:
 
-                Intent intent3 = new Intent(navBarMainScreen.this, about.class
-                );
-                startActivity(intent3);
-
-                break;
             case 5:
-
-                Intent intent4 = null;
-                if(ParseUser.getCurrentUser() != null)
-                {
-                    intent4 = new Intent(navBarMainScreen.this, Loguit.class
-                    );
-                }
-                else
-                {
-                    intent4 = new Intent(navBarMainScreen.this, Login.class
-                    );
-                }
-
-                startActivity(intent4);
-
-                break;
-            case 6:
 
                 if(ParseUser.getCurrentUser() == null)
                 {
@@ -390,7 +370,7 @@ public class navBarMainScreen extends Activity {
                     intent7.putExtra("frag", fragment.toString());
                     startActivity(intent7);
                     break;
-                } else if(ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("monitor"))
+                } else
                 {
                     Toast.makeText(this, "U hebt niet de juiste bevoegdheid om dit te bekijken", Toast.LENGTH_SHORT).show();
                     Intent intent1 = new Intent(navBarMainScreen.this, navBarMainScreen.class
@@ -400,7 +380,35 @@ public class navBarMainScreen extends Activity {
                 }
                 break;
 
+            case 6:
+
+                Intent intent4;
+                if(ParseUser.getCurrentUser() != null)
+                {
+                    intent4 = new Intent(navBarMainScreen.this, Loguit.class
+                    );
+                }
+                else
+                {
+                    intent4 = new Intent(navBarMainScreen.this, Login.class
+                    );
+                }
+
+                startActivity(intent4);
+
+                break;
+
             case 7:
+
+                Intent intent3 = new Intent(navBarMainScreen.this, about.class
+                );
+                startActivity(intent3);
+
+                break;
+
+
+
+          /*  case 7:
                 if(ParseUser.getCurrentUser()!= null)
                 {
                     if(ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("administrator"))
@@ -411,18 +419,18 @@ public class navBarMainScreen extends Activity {
                     }
                     else
                     {
-                        Intent intent9 = new Intent(navBarMainScreen.this, navBarMainScreen.class);
-                        fragment = new feedbackOverzicht();
+                        Intent intent7 = new Intent(navBarMainScreen.this, navBarMainScreen.class);
+                        fragment = new activiteit_overzicht();
 
                         refreshFragment(position);
 
-                        intent9.putExtra("frag", fragment.toString());
-                        startActivity(intent9);
+                        intent7.putExtra("frag", fragment.toString());
+                        startActivity(intent7);
                     }
                 } else
                 {
                     Intent intent9 = new Intent(navBarMainScreen.this, navBarMainScreen.class);
-                    fragment = new feedbackOverzicht();
+                    fragment = new activiteit_overzicht();
 
                     refreshFragment(position);
 
@@ -431,16 +439,7 @@ public class navBarMainScreen extends Activity {
                 }
 
                 break;
-            case 8:
-                Intent intent9 = new Intent(navBarMainScreen.this, navBarMainScreen.class);
-                fragment = new feedbackOverzicht();
-
-                refreshFragment(position);
-
-                intent9.putExtra("frag", fragment.toString());
-                startActivity(intent9);
-
-                break;
+*/
 
             default:
                 break;

@@ -155,7 +155,7 @@ public class Login extends Activity{
             @Override
             public void done(ParseUser user, ParseException e) {
                 if(e == null){
-                    loginSuccessful();
+                    loginSuccessful(user);
                 }
                 else{
                     loginUnSuccessful();
@@ -164,10 +164,14 @@ public class Login extends Activity{
         });
 	}
 
-	protected void loginSuccessful() {
+	protected void loginSuccessful(ParseUser user) {
         Toast.makeText(getApplicationContext(), getString(R.string.updatingReport), Toast.LENGTH_SHORT).show();
+        Intent in =  new Intent(Login.this,navBarMainScreen.class);
+        if(user.get("soort").toString().toLowerCase().equals("monitor"))
+        {
+            in.putExtra("frag", "profielen");
+        }
 
-		Intent in =  new Intent(Login.this,navBarMainScreen.class);
 		startActivity(in);
 
         overridePendingTransition(R.anim.left_in, R.anim.right_out);

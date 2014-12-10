@@ -89,26 +89,25 @@ Mail Joetz met uw voornaam, naam, e-mailadres, rijksregisternummer, adresgegeven
 
     <string-array name="items">
         <item>Vakanties</item>
+        <item>Joetz Funfactor</item>
         <item>Profielen</item>
         <item>Vormingen</item>
         <item>Indienen voorkeur</item>
-        <item>Over Joetz</item>
-        <item>Inloggen</item>
         <item>Registreren</item>
-        <item>Joetz Funfactor</item>
-
+        <item>Inloggen</item>
+        <item>Over Joetz</item>
     </string-array>
 
     <string-array name="itemsIngelogged">
         <item>Vakanties</item>
+        <item>Joetz funfactor</item>
         <item>Profielen</item>
-       <item>Vormingen</item>
+        <item>Vormingen</item>
         <item>Indienen voorkeur</item>
-        <item>Over Joetz</item>
-        <item>Uitloggen</item>
         <item>Favoriete vakanties</item>
         <item>Lidnummer toevoegen</item>
-        <item>Joetz funfactor</item>
+        <item>Uitloggen</item>
+        <item>Over Joetz</item>
     </string-array>
 
 

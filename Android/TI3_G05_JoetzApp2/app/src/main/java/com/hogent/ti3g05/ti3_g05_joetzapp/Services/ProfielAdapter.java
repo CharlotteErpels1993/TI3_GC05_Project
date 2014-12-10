@@ -93,6 +93,7 @@ public class ProfielAdapter extends ArrayAdapter<Vorming> implements Filterable 
 
             holder.tv_header.setText(profielen.get(position).getMonitorId());
             view.setOnClickListener(null);
+
             return view;
         }
         else{

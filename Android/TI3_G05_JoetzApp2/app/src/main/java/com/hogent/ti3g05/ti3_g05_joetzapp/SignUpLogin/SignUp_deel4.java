@@ -17,6 +17,7 @@ import java.util.List;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
 import com.hogent.ti3g05.ti3_g05_joetzapp.R;
 import com.hogent.ti3g05.ti3_g05_joetzapp.navBarMainScreen;
+import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
@@ -336,8 +337,16 @@ public class SignUp_deel4 extends Activity{
             });
 
             signUpMsg("Account aangemaakt.");
-            Intent in = new Intent(getApplicationContext(), navBarMainScreen.class);
-            startActivity(in);
+                ParseUser.logInInBackground(username, mPassword, new LogInCallback() {
+                    @Override
+                    public void done(ParseUser user, ParseException e) {
+                        if(e == null){
+                            Intent in = new Intent(getApplicationContext(), navBarMainScreen.class);
+                            startActivity(in);
+                        }
+                    }
+                });
+
             }
     }
 
