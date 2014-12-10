@@ -2,7 +2,6 @@ package com.hogent.ti3g05.ti3_g05_joetzapp;
 
 import android.app.Application;
 import com.parse.Parse;
-import com.parse.ParseObject;
 import com.parse.ParseUser;
 
 public class MyParseApplication extends Application {

@@ -24,7 +24,6 @@ import android.widget.Toast;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
 import com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.Login;
 import com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.SignUp_deel1;
-import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Feedback;
 import com.parse.ParseUser;
 
 
@@ -356,7 +355,7 @@ public class navBarMainScreen extends Activity {
                 break;
             case 5:
 
-                Intent intent4 = null;
+                Intent intent4;
                 if(ParseUser.getCurrentUser() != null)
                 {
                     intent4 = new Intent(navBarMainScreen.this, Loguit.class
