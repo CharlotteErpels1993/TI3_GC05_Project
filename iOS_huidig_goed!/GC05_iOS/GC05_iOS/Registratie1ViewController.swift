@@ -26,10 +26,10 @@ class Registratie1ViewController: /*ResponsiveTextFieldViewController*/ UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         hideSideMenuView()
-        self.txtRijksregisterNr.text = ""
+        /*self.txtRijksregisterNr.text = ""
         self.txtCodeGerechtigde.text = ""
         self.txtAansluitingsNr.text = ""
-        self.txtAansluitingsNrTweedeOuder.text = ""
+        self.txtAansluitingsNrTweedeOuder.text = ""*/
         self.navigationItem.setHidesBackButton(true, animated: true)
         
         ParseData.deleteOuderTable()
@@ -44,28 +44,10 @@ class Registratie1ViewController: /*ResponsiveTextFieldViewController*/ UITableV
             buttonNummers.hidden = false
             viewDidLoad()
             self.tableView.reloadData()
-            /*lblAansluitingsNr.hidden = false
-            lblCodeGerechtigde.hidden = false
-            lblAansluitingsNrTweedeOuder.hidden = false
-            txtAansluitingsNr.hidden = false
-            txtCodeGerechtigde.hidden = false
-            txtAansluitingsNrTweedeOuder.hidden = false
-            buttonNummers.hidden = false
-            buttonRegisterenMonitor.hidden = false
-            labelVerplichtInTevullen.hidden = false*/
         } else {
             gebruikerIsLid = false
             self.tableView.deleteSections(NSIndexSet(index: 1), withRowAnimation: UITableViewRowAnimation.None)
             buttonNummers.hidden = true
-            /*lblAansluitingsNr.hidden = true
-            lblCodeGerechtigde.hidden = true
-            lblAansluitingsNrTweedeOuder.hidden = true
-            txtAansluitingsNr.hidden = true
-            txtCodeGerechtigde.hidden = true
-            txtAansluitingsNrTweedeOuder.hidden = true
-            buttonNummers.hidden = true
-            buttonRegisterenMonitor.hidden = true
-            labelVerplichtInTevullen.hidden = true*/
         }
         
     }
@@ -125,8 +107,10 @@ class Registratie1ViewController: /*ResponsiveTextFieldViewController*/ UITableV
         } else {
             if !controleerGeldigheidNummer(txtAansluitingsNr.text) {
                 statusTextFields["aansluitingsNr"] = "ongeldig"
+                txtAansluitingsNr.text = ""
             } else if !checkPatternAansluitingsNr(txtAansluitingsNr.text.toInt()!) {
                 statusTextFields["aansluitingsNr"] = "ongeldig"
+                txtAansluitingsNr.text = ""
             } else {
                 statusTextFields["aansluitingsNr"] = "geldig"
             }
@@ -137,8 +121,10 @@ class Registratie1ViewController: /*ResponsiveTextFieldViewController*/ UITableV
         } else {
             if !controleerGeldigheidNummer(txtCodeGerechtigde.text) {
                 statusTextFields["codeGerechtigde"] = "ongeldig"
+                txtCodeGerechtigde.text = ""
             } else if !checkPatternCodeGerechtigde(txtCodeGerechtigde.text.toInt()!) {
                 statusTextFields["codeGerechtigde"] = "ongeldig"
+                txtCodeGerechtigde.text = ""
             } else {
                 statusTextFields["codeGerechtigde"] = "geldig"
             }
@@ -151,10 +137,12 @@ class Registratie1ViewController: /*ResponsiveTextFieldViewController*/ UITableV
             if !checkPatternRijksregisterNr(txtRijksregisterNr.text) {
                 statusTextFields["rijksregisterNr"] = "ongeldig"
                 self.rijksregisterNrAlGeregistreerd = false
+                txtRijksregisterNr.text = ""
             } else {
                 if controleerRijksregisterNummerAlGeregisteerd() == true {
                     statusTextFields["rijksregisterNr"] = "al geregistreerd"
                     self.rijksregisterNrAlGeregistreerd = true
+                    txtRijksregisterNr.text = ""
                 } else {
                     statusTextFields["rijksregisterNr"] = "geldig"
                     self.rijksregisterNrAlGeregistreerd = false
@@ -167,8 +155,10 @@ class Registratie1ViewController: /*ResponsiveTextFieldViewController*/ UITableV
         } else {
             if !controleerGeldigheidNummer(txtAansluitingsNrTweedeOuder.text) {
                 statusTextFields["aansluitingsNrTweedeOuder"] = "ongeldig"
+                txtAansluitingsNrTweedeOuder.text = ""
             } else if !checkPatternAansluitingsNr(txtAansluitingsNrTweedeOuder.text.toInt()!) {
                 statusTextFields["aansluitingsNrTweedeOuder"] = "ongeldig"
+                txtAansluitingsNrTweedeOuder.text = ""
             } else {
                 statusTextFields["aansluitingsNrTweedeOuder"] = "geldig"
             }
@@ -229,7 +219,7 @@ class Registratie1ViewController: /*ResponsiveTextFieldViewController*/ UITableV
             ouder.aansluitingsNr = txtAansluitingsNr.text.toInt()!
             ouder.codeGerechtigde = txtCodeGerechtigde.text.toInt()!
             
-            if statusTextFields["aansluitingsNrTweedeouder"] != "leeg" {
+            if statusTextFields["aansluitingsNrTweedeOuder"] != "leeg" {
                 ouder.aansluitingsNrTweedeOuder = txtAansluitingsNrTweedeOuder.text.toInt()!
             }
         }
