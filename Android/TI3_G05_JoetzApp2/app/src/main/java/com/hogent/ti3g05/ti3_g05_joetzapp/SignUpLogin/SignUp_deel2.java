@@ -17,31 +17,31 @@ import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
 import com.hogent.ti3g05.ti3_g05_joetzapp.R;
 
 public class SignUp_deel2 extends Activity{
-    private EditText aansluitingsnummer;
-    private EditText codeGerechtigde;
-    private EditText aansluitingsNrOuder2;
+    private EditText et_aansluitingsnummer;
+    private EditText et_codeGerechtigde;
+    private EditText et_aansluitingsNrOuder2;
     private String rijksRegNr;
 
 
     // flag for Internet connection status
-    Boolean isInternetPresent = false;
+    private Boolean isInternetPresent = false;
     // Connection detector class
-    ConnectionDetector cd;
+    private ConnectionDetector cd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_signup_deel2);
+
+        getActionBar().setTitle(getString(R.string.title_activity_Register));
 
         // creating connection detector class instance
         cd = new ConnectionDetector(getApplicationContext());
 
-        aansluitingsnummer = (EditText) findViewById(R.id.aansluitingsnummer);
-        codeGerechtigde = (EditText) findViewById(R.id.codeGerechtigde);
-        aansluitingsNrOuder2 = (EditText) findViewById(R.id.aansluitingsNrOuder2);
+        et_aansluitingsnummer = (EditText) findViewById(R.id.aansluitingsnummer);
+        et_codeGerechtigde = (EditText) findViewById(R.id.codeGerechtigde);
+        et_aansluitingsNrOuder2 = (EditText) findViewById(R.id.aansluitingsNrOuder2);
 
-        getActionBar().setTitle(getString(R.string.title_activity_Register));
 
         Button volgendeButton = (Button) findViewById(R.id.btn_volgendedeel3);
         volgendeButton.setOnClickListener(new OnClickListener() {
@@ -65,33 +65,33 @@ public class SignUp_deel2 extends Activity{
         View focusView = null;
 
         // Store values at the time of the onClick event.
-        String aansluitingsnummerString = aansluitingsnummer.getText().toString();
-        String codeGerechtigdeStr = codeGerechtigde.getText().toString();
-        String aansluitingsNrOuder2Str = aansluitingsNrOuder2.getText().toString();
+        String aansluitingsnummerString = et_aansluitingsnummer.getText().toString();
+        String codeGerechtigdeStr = et_codeGerechtigde.getText().toString();
+        String aansluitingsNrOuder2Str = et_aansluitingsNrOuder2.getText().toString();
 
         //aansluitingsnr moet ingevuld zijn en 10 karakters lang zijn
         if (TextUtils.isEmpty(aansluitingsnummerString)) {
-            aansluitingsnummer.setError(getString(R.string.error_field_required));
-            focusView = aansluitingsnummer;
+            et_aansluitingsnummer.setError(getString(R.string.error_field_required));
+            focusView = et_aansluitingsnummer;
             cancel = true;
         } else if(aansluitingsnummerString.length() != 10)
         {
-            aansluitingsnummer.setError(getString(R.string.error_incorrect_aansluitingsnr));
-            focusView = aansluitingsnummer;
+            et_aansluitingsnummer.setError(getString(R.string.error_incorrect_aansluitingsnr));
+            focusView = et_aansluitingsnummer;
             cancel = true;
         }
 
         if (TextUtils.isEmpty(codeGerechtigdeStr)) {
-            codeGerechtigde.setError(getString(R.string.error_field_required));
-            focusView = codeGerechtigde;
+            et_codeGerechtigde.setError(getString(R.string.error_field_required));
+            focusView = et_codeGerechtigde;
             cancel = true;
         }
 
         if (!TextUtils.isEmpty(aansluitingsNrOuder2Str)) {
             if( aansluitingsNrOuder2Str.length() != 10)
             {
-                aansluitingsNrOuder2.setError(getString(R.string.error_incorrect_aansluitingsnr));
-                focusView = aansluitingsNrOuder2;
+                et_aansluitingsNrOuder2.setError(getString(R.string.error_incorrect_aansluitingsnr));
+                focusView = et_aansluitingsNrOuder2;
                 cancel = true;
             }
         }
@@ -134,7 +134,7 @@ public class SignUp_deel2 extends Activity{
     }
 
     private void clearErrors(){
-        aansluitingsnummer.setError(null); codeGerechtigde.setError(null);
+        et_aansluitingsnummer.setError(null); et_codeGerechtigde.setError(null);
     }
 
     @Override

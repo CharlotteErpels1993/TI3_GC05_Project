@@ -136,6 +136,14 @@ public class Gebruiker {
 
     }
 
+    public static boolean isDitEenGeldigRRN(String objRijksregisterNR){
+        String eerste9cijfers, laatste2;
+        eerste9cijfers = objRijksregisterNR.substring(0, 9);
+        laatste2 = objRijksregisterNR.substring(9, 11);
+        int restNaDeling = Integer.parseInt(eerste9cijfers) % 97;
+        int controleGetal = 97 - restNaDeling;
+        return controleGetal == Integer.parseInt(laatste2);
+    }
 
 
 }

@@ -37,9 +37,9 @@ public class SignUp_deel3 extends Activity{
     private View focusView = null;
 
 	// flag for Internet connection status
-    Boolean isInternetPresent = false;
+    private Boolean isInternetPresent = false;
     // Connection detector class
-    ConnectionDetector cd;
+    private ConnectionDetector cd;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -271,7 +271,6 @@ public class SignUp_deel3 extends Activity{
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.back_2, menu);
         return true;
     }

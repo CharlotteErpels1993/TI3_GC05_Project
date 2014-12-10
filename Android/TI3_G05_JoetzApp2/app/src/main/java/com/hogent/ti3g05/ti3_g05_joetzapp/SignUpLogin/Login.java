@@ -20,9 +20,9 @@ import com.parse.ParseException;
 import com.parse.ParseUser;
 
 public class Login extends Activity{
-	Button btn_LoginIn = null;
-	Button btn_SignUp = null;
-	Button btn_ForgetPass = null;
+    private Button btn_LoginIn = null;
+    private Button btn_SignUp = null;
+    private Button btn_ForgetPass = null;
 	private EditText mUserNameEditText;
 	private EditText mPasswordEditText;
    /* public final Pattern EMAIL_ADDRESS_PATTERN = Pattern.compile(
@@ -36,9 +36,9 @@ public class Login extends Activity{
     );*/
 
 	// flag for Internet connection status
-	Boolean isInternetPresent = true;
+    private Boolean isInternetPresent = true;
 	// Connection detector class
-	ConnectionDetector cd;
+    private ConnectionDetector cd;
 
 
 	@Override
@@ -47,11 +47,11 @@ public class Login extends Activity{
         setContentView(R.layout.activity_login);
         getActionBar().setTitle(getString(R.string.title_activity_Login));
 
+        // creating connection detector class instance
         cd = new ConnectionDetector(getApplicationContext());
         //Calling ParseAnalytics to see Analytics of our app
         //ParseAnalytics.trackAppOpened(getIntent());
 
-        // creating connection detector class instance
         //cd = new ConnectionDetector(getApplicationContext());
 
         btn_LoginIn = (Button) findViewById(R.id.btn_login);

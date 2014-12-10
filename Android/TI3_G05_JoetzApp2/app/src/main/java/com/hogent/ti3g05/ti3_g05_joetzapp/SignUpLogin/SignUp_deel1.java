@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
 import com.hogent.ti3g05.ti3_g05_joetzapp.R;
+import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Gebruiker;
 import com.hogent.ti3g05.ti3_g05_joetzapp.navBarMainScreen;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -28,28 +29,29 @@ import java.util.List;
 
 public class SignUp_deel1 extends Activity{
     private RadioGroup rg = null;
-    private EditText rijksregisterNr;
+    private EditText et_rijksregisterNr;
 
     private String rijksregnr;
 
     // flag for Internet connection status
-    Boolean isInternetPresent = false;
+    private Boolean isInternetPresent = false;
     // Connection detector class
-    ConnectionDetector cd;
+    private ConnectionDetector cd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_signup_deel1);
+
+        getActionBar().setTitle(getString(R.string.title_activity_Register));
+
 
         cd = new ConnectionDetector(getApplicationContext());
         rg = (RadioGroup) findViewById(R.id.radioGroup);
         rg.clearCheck();
-        getActionBar().setTitle(getString(R.string.title_activity_Register));
 
-        rijksregisterNr = (EditText) findViewById(R.id.rijksRegNrRegistreren);
-        rijksregisterNr.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        et_rijksregisterNr = (EditText) findViewById(R.id.rijksRegNrRegistreren);
+        et_rijksregisterNr.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (!hasFocus) {
@@ -128,13 +130,13 @@ public class SignUp_deel1 extends Activity{
         boolean cancel = false;
         View focusView = null;
 
-        rijksregnr = rijksregisterNr.getText().toString();
+        rijksregnr = et_rijksregisterNr.getText().toString();
         // Internet Connection is Present
         // make HTTP requests
 
         if (TextUtils.isEmpty(rijksregnr)) {
-            rijksregisterNr.setError(getString(R.string.error_field_required));
-            focusView = rijksregisterNr;
+            et_rijksregisterNr.setError(getString(R.string.error_field_required));
+            focusView = et_rijksregisterNr;
             cancel = true;
         }
 
@@ -142,13 +144,15 @@ public class SignUp_deel1 extends Activity{
         if(!TextUtils.isEmpty(rijksregnr))
         {
             if (!rijksregnr.matches("[0-9]+") || rijksregnr.length() != 11){
-                rijksregisterNr.setError(getString(R.string.error_incorrect_rijksregnr));
-                focusView = rijksregisterNr;
+                et_rijksregisterNr.setError(getString(R.string.error_incorrect_rijksregnr));
+                focusView = et_rijksregisterNr;
                 cancel = true;
             }
             else
             {
-                int rest;
+                boolean geldigRRN = Gebruiker.isDitEenGeldigRRN(rijksregnr);
+
+                /*int rest;
 
                 int tecontrolerenGetal;
                 String tecontrolerenCijfers = "";
@@ -159,7 +163,7 @@ public class SignUp_deel1 extends Activity{
 
                 //TODO na 1999 controle; moet dan met 2 beginnen :/
 
-                if(eerste2 < 14  /*> 99*/ )
+                if(eerste2 < 14  ) //>99
                 {
                     tecontrolerenCijfers = "2";
                 }
@@ -174,48 +178,50 @@ public class SignUp_deel1 extends Activity{
 
                rest = tecontrolerenGetal % 97;
 
-
                 int controle = rest + laatste2;
+                */
 
-                if(controle < 97)
+                if(geldigRRN == false)
                 {
-                    rijksregisterNr.setError(getString(R.string.error_incorrect_rijksregisternummer));
-                    focusView = rijksregisterNr;
+                    et_rijksregisterNr.setError(getString(R.string.error_incorrect_rijksregisternummer));
+                    focusView = et_rijksregisterNr;
                     cancel = true;
                 }
+                else{
+                    //hieronder wordt gekeken of het RRN reeds bestaat in DB. Zo ja -> fout
+                    //Dit gebeurt enkel wanneer we zeker zijn dat het RRN geldig is, om onnodige DB requests te vermijden
+                    ParseQuery<ParseObject> query = ParseQuery.getQuery("Ouder");
+                    query.whereEqualTo("rijksregisterNr", rijksregnr);
+                    try{
+                        List<ParseObject> lijstObjecten = query.find();
+                        if (lijstObjecten.size() > 0){
+                            et_rijksregisterNr.setError(getString(R.string.error_occupied_rijksregnr));
+                            focusView = et_rijksregisterNr;
+                            cancel = true;
+                        }
+                    }
+                    catch(ParseException e){
+                        Toast.makeText(SignUp_deel1.this,getString(R.string.error_generalException), Toast.LENGTH_SHORT).show();
+                        cancel = true;
+                    }
+                    ParseQuery<ParseObject> query2 = ParseQuery.getQuery("Monitor");
+                    query2.whereEqualTo("rijksregisterNr", rijksregnr);
+                    try{
+                        List<ParseObject> lijstObjecten = query2.find();
+                        if (lijstObjecten.size() > 0){
+                            et_rijksregisterNr.setError(getString(R.string.error_occupied_rijksregnr));
+                            focusView = et_rijksregisterNr;
+                            cancel = true;
+                        }
+                    }
+                    catch(ParseException e){
+                        Toast.makeText(SignUp_deel1.this,getString(R.string.error_generalException), Toast.LENGTH_SHORT).show();
+                        cancel = true;
+                    }
+                }//einde if statement
 
-                ParseQuery<ParseObject> query = ParseQuery.getQuery("Ouder");
-                query.whereEqualTo("rijksregisterNr", rijksregnr);
-                try{
-                    List<ParseObject> lijstObjecten = query.find();
-                    if (lijstObjecten.size() > 0){
-                        rijksregisterNr.setError(getString(R.string.error_occupied_rijksregnr));
-                        focusView = rijksregisterNr;
-                        cancel = true;
-                    }
-                }
-                catch(ParseException e){
-                    Toast.makeText(SignUp_deel1.this,getString(R.string.error_generalException), Toast.LENGTH_SHORT).show();
-                    cancel = true;
-                }
-                ParseQuery<ParseObject> query2 = ParseQuery.getQuery("Monitor");
-                query2.whereEqualTo("rijksregisterNr", rijksregnr);
-                try{
-                    List<ParseObject> lijstObjecten = query2.find();
-                    if (lijstObjecten.size() > 0){
-                        rijksregisterNr.setError(getString(R.string.error_occupied_rijksregnr));
-                        focusView = rijksregisterNr;
-                        cancel = true;
-                    }
-                }
-                catch(ParseException e){
-                    Toast.makeText(SignUp_deel1.this,getString(R.string.error_generalException), Toast.LENGTH_SHORT).show();
-                    cancel = true;
-                }
 
             }
-
-
         }
 
 
@@ -235,7 +241,7 @@ public class SignUp_deel1 extends Activity{
     private void jaOpslaanRijksregNr() {
         Intent intentJa = new Intent(getApplicationContext(), SignUp_deel2.class);
         intentJa.putExtra("lidVanBondMoyson", "true");
-        intentJa.putExtra("rijksregisternr", rijksregnr);
+        intentJa.putExtra("et_rijksregisterNr", rijksregnr);
         startActivity(intentJa);
 
         overridePendingTransition(R.anim.right_in, R.anim.left_out);
@@ -246,7 +252,7 @@ public class SignUp_deel1 extends Activity{
     private void neeOpslaanRijksregNr() {
         Intent intentNee = new Intent(getApplicationContext(), SignUp_deel3.class);
         intentNee.putExtra("lidVanBondMoyson", "false");
-        intentNee.putExtra("rijksregisternr", rijksregnr);
+        intentNee.putExtra("et_rijksregisterNr", rijksregnr);
         startActivity(intentNee);
 
         overridePendingTransition(R.anim.right_in, R.anim.left_out);
@@ -256,7 +262,7 @@ public class SignUp_deel1 extends Activity{
     private void lidnrJa() {
         Intent intentLidnr = new Intent(getApplicationContext(), SignUp_deel2.class);
         intentLidnr.putExtra("lidnrja", "true");
-        intentLidnr.putExtra("rijksregisternr", rijksregnr);
+        intentLidnr.putExtra("et_rijksregisterNr", rijksregnr);
         startActivity(intentLidnr);
 
         overridePendingTransition(R.anim.right_in, R.anim.left_out);
@@ -266,7 +272,7 @@ public class SignUp_deel1 extends Activity{
 
     //error verbergen, wordt opgeroepen elke keer de gebruiker opnieuw verder probeert te gaan
     private void clearErrors(){
-        rijksregisterNr.setError(null);
+        et_rijksregisterNr.setError(null);
     }
 
     @Override

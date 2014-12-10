@@ -33,17 +33,16 @@ public class SignUp_deel4 extends Activity{
     private boolean cancel = false;
     private View focusView = null;
 
-    boolean lidnrJuist;
-    String rijksregisternummer;
+    private boolean lidnrJuist;
+    private String rijksregisternummer;
 
 	// flag for Internet connection status
-    Boolean isInternetPresent = false;
+    private boolean isInternetPresent = false;
     // Connection detector class
-    ConnectionDetector cd;
+    private ConnectionDetector cd;
 
-    private EditText lidnummer;
-
-    String lidnrJa;
+    private EditText lidnummerEditText;
+    private String lidnrJa;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -64,8 +63,8 @@ public class SignUp_deel4 extends Activity{
 
         if(lidnrJa != null && lidnrJa.equals("true"))
         {
-            lidnummer = (EditText) findViewById(R.id.lidnrSignup);
-            lidnummer.setVisibility(View.VISIBLE);
+            lidnummerEditText = (EditText) findViewById(R.id.lidnrSignup);
+            lidnummerEditText.setVisibility(View.VISIBLE);
         }
 
         Button mCreateAccountButton = (Button) findViewById(R.id.btnCreateAccount);
@@ -91,14 +90,14 @@ public class SignUp_deel4 extends Activity{
         String mEmail = mEmailEditText.getText().toString();
         String mPassword = mPasswordEditText.getText().toString();
         String mConfirmPassword = mConfirmPasswordEditText.getText().toString();
-        String lidnr= lidnummer.getText().toString();
+        String lidnr= lidnummerEditText.getText().toString();
 
         if(lidnrJa != null && lidnrJa.equals("true"))
         {
             if(TextUtils.isEmpty((lidnr)))
             {
-                lidnummer.setError(getString(R.string.error_field_required));
-                focusView = lidnummer;
+                lidnummerEditText.setError(getString(R.string.error_field_required));
+                focusView = lidnummerEditText;
                 cancel = true;
             }
 
@@ -119,8 +118,8 @@ public class SignUp_deel4 extends Activity{
 
             if(!lidnrJuist)
             {
-                lidnummer.setError(getString(R.string.error_incorrect_lidnr));
-                focusView = lidnummer;
+                lidnummerEditText.setError(getString(R.string.error_incorrect_lidnr));
+                focusView = lidnummerEditText;
                 cancel = true;
             }
 

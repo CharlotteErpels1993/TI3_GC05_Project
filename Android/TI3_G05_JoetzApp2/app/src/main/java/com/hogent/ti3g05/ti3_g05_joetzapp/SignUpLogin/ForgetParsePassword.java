@@ -20,9 +20,9 @@ import android.widget.Toast;
 import java.util.List;
 
 public class ForgetParsePassword extends Activity{
-	EditText et_forgetpassword = null;
-	Button btn_submitforgetpassword = null;
-	String email = null;
+    private EditText et_forgetpassword = null;
+    private Button btn_submitforgetpassword = null;
+    private String email = null;
 	
 	
 	@Override
@@ -39,15 +39,14 @@ public class ForgetParsePassword extends Activity{
 			@Override
 			public void onClick(View v) {
 				email = et_forgetpassword.getText().toString();
-                Toast.makeText(getApplicationContext(), "Mail wordt verstuurd", Toast.LENGTH_LONG).show();
 				checkEmailID();
-				
 				
 			}
 		});
 		
 	}
-	
+
+    //kijk of het Email ingevuld & geldig is. Zo ja, kijk of het email in de DB voor komt. Zo ja -> Password reset van Parse
 	protected void checkEmailID() {
 
         if (TextUtils.isEmpty(email)) {
@@ -70,6 +69,7 @@ public class ForgetParsePassword extends Activity{
 
 	}
 
+    //Password Reset methode van Parse zelf. Gebruiker krijgt auto. mail om zijn PW te resetten
 	public void forgotPassword(String email) {
 		//postEvent(new UserForgotPasswordStartEvent());
 		ParseUser.requestPasswordResetInBackground(email, new UserForgotPasswordCallback());
