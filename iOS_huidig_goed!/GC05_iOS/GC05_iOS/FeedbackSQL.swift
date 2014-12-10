@@ -193,36 +193,4 @@ struct FeedbackSQL {
         
         feedbackJSON.save()
     }
-    
-    static func getAlleFeedbackMetVakantieId(vakantieId: String) -> ([Feedback], Int?){
-        var feedbacken: [Feedback] = []
-        var feedback: Feedback = Feedback(id: "test")
-        
-        var query = "SELECT * FROM Feedback WHERE vakantie = \(vakantieId)"
-        
-        let (resultSet, err) = SD.executeQuery(query)
-        
-        var response: ([Feedback], Int?)
-        var error: Int?
-        
-        if err != nil {
-            //there was an error during the query, handle it here
-        } else {
-            if resultSet.count == 0 {
-                error = 1
-            }
-            else {
-                error = nil
-                
-                for row in resultSet {
-                    feedback = getFeedback(row)
-                    feedbacken.append(feedback)
-                }
-            }
-        }
-        
-        //return afbeeldingen
-        response = (feedbacken, error)
-        return response
-    }
 }

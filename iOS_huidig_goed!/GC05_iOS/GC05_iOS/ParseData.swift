@@ -463,10 +463,6 @@ struct /*class*/ ParseData {
     }
     
     //FeedbackTable
-    static func getAlleFeedbackMetVakantieId(vakantieId: String) -> ([Feedback], Int?) {
-        return FeedbackSQL.getAlleFeedbackMetVakantieId(vakantieId)
-    }
-    
     static func getAlleFeedback() -> ([Feedback], Int?) {
         return FeedbackSQL.getAlleFeedback()
     }
