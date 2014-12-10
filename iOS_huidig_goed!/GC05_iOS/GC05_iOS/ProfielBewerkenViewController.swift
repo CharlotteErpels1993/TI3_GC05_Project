@@ -1,6 +1,6 @@
 import UIKit
 
-class ProfielBewerkenViewController: ResponsiveTextFieldViewController {
+class ProfielBewerkenViewController: UIViewController {
     
     @IBOutlet weak var voornaamTxt: UITextField!
     @IBOutlet weak var naamTxt: UITextField!
@@ -11,11 +11,14 @@ class ProfielBewerkenViewController: ResponsiveTextFieldViewController {
     var statusTextFields: [String: String] = [:]
     var redColor: UIColor = UIColor.redColor()
     
-    @IBAction func opslaan(sender: AnyObject) {
+    /*@IBAction func opslaan(sender: AnyObject) {
         ParseData.deleteMonitorTable()
         ParseData.vulMonitorTableOp()
         
-        monitor = ParseData.getMonitorWithEmail(PFUser.currentUser().email)
+        var monitorResponse = ParseData.getMonitorWithEmail(PFUser.currentUser().email)
+        if monitorResponse.1 == nil {
+            monitor = monitorResponse.0
+        }
         
         setStatusTextFields()
         pasLayoutVeldenAan()
@@ -26,12 +29,16 @@ class ProfielBewerkenViewController: ResponsiveTextFieldViewController {
             vulGegevensIn()
             ParseData.updateMonitor(self.monitor!)
             
-            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            var destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Profiel") as UIViewController
+            performSegueWithIdentifier("opslaan", sender: self)
+            
+            /*let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            var destViewController: ProfielDetailsTableViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Profiel") as ProfielDetailsTableViewController
+            destViewController.monitor = self.monitor
+            destViewController.eigenProfiel = true
             sideMenuController()?.setContentViewController(destViewController)
-            hideSideMenuView()
+            hideSideMenuView()*/
         }
-    }
+    }*/
     
     func setStatusTextFields() {
         if voornaamTxt.text.isEmpty {
@@ -111,7 +118,10 @@ class ProfielBewerkenViewController: ResponsiveTextFieldViewController {
         super.viewDidLoad()
         hideSideMenuView()
     
-        self.monitor = ParseData.getMonitorWithEmail(PFUser.currentUser().email)
+        var monitorResponse = ParseData.getMonitorWithEmail(PFUser.currentUser().email)
+        if monitorResponse.1 == nil {
+            self.monitor = monitorResponse.0
+        }
         
         voornaamTxt.text = monitor!.voornaam
         naamTxt.text = monitor!.naam
@@ -129,5 +139,30 @@ class ProfielBewerkenViewController: ResponsiveTextFieldViewController {
         monitor?.naam = naamTxt.text
         monitor?.telefoon = telefoonTxt.text
         monitor?.gsm = gsmTxt.text
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "opslaan" {
+            let profielDetailsViewController = segue.destinationViewController as ProfielDetailsTableViewController
+            ParseData.deleteMonitorTable()
+            ParseData.vulMonitorTableOp()
+            
+            var monitorResponse = ParseData.getMonitorWithEmail(PFUser.currentUser().email)
+            if monitorResponse.1 == nil {
+                monitor = monitorResponse.0
+            }
+            
+            setStatusTextFields()
+            pasLayoutVeldenAan()
+            
+            if controleerRodeBordersAanwezig() == true {
+                foutBoxOproepen("Fout", "Gelieve de velden correct in te vullen!", self)
+            } else {
+                vulGegevensIn()
+                ParseData.updateMonitor(self.monitor!)
+                profielDetailsViewController.monitor = self.monitor
+                profielDetailsViewController.eigenProfiel = true
+            }
+        }
     }
 }

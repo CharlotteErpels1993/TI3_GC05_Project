@@ -21,6 +21,7 @@
         android:background="@drawable/button_shape"
         android:layout_width="fill_parent"
         android:layout_marginTop="8dp"
+        android:textColor="@color/Rood"
         android:text="@string/volgende"
         android:id="@+id/BevestigVoorkeur"
         android:layout_height="wrap_content" />

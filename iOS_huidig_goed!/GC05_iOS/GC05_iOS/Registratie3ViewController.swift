@@ -62,9 +62,11 @@ class Registratie3ViewController: /*ResponsiveTextFieldViewController*/ UITableV
             if !checkPatternEmail(txtEmail.text) {
                 statusTextFields["email"] = "ongeldig"
                 emailAlGeregistreerd = false
+                txtEmail.text = ""
             } else if controleerEmailAlGeregisteerd() == true {
                 statusTextFields["email"] = "al geregistreerd"
                 emailAlGeregistreerd = true
+                txtEmail.text = ""
             } else {
                 statusTextFields["email"] = "geldig"
                 emailAlGeregistreerd = false

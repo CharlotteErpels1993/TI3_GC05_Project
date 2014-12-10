@@ -46,8 +46,10 @@ class InschrijvenVormingViewController: UIViewController, UIPickerViewDataSource
             ParseData.deleteInschrijvingVormingTable()
             ParseData.vulInschrijvingVormingTableOp()
             
-            var monitor = ParseData.getMonitorWithEmail(PFUser.currentUser().email)
-            inschrijvingVorming.monitor = monitor
+            var monitorResponse = ParseData.getMonitorWithEmail(PFUser.currentUser().email)
+            if monitorResponse.1 == nil {
+                inschrijvingVorming.monitor = monitorResponse.0
+            }
             
             inschrijvingVorming.vorming = vorming
             

@@ -7,7 +7,7 @@ class VakantieDetailsTableViewController: UITableViewController {
     @IBOutlet weak var afbeelding2: UIImageView!
     @IBOutlet weak var afbeelding3: UIImageView!
 
-    @IBOutlet var feebackButton: UIButton!
+    @IBOutlet var feedbackButton: UIButton!
     @IBOutlet var heartButton: UIButton!
     @IBOutlet var vakantieNaamLabel: UILabel!
     @IBOutlet weak var korteBeschrijvingLabel: UILabel!
@@ -129,12 +129,14 @@ class VakantieDetailsTableViewController: UITableViewController {
                 self.tableView.deleteSections(NSIndexSet(index: self.sectionToDelete), withRowAnimation: UITableViewRowAnimation.None)
                 self.navigationItem.rightBarButtonItem = nil
                 self.heartButton.hidden = true
+                self.feedbackButton.hidden = true
             }
         } else {
             self.sectionToDelete = 6
             self.tableView.deleteSections(NSIndexSet(index: self.sectionToDelete), withRowAnimation: UITableViewRowAnimation.None)
             self.navigationItem.rightBarButtonItem = nil
             self.heartButton.hidden = true
+            self.feedbackButton.hidden = true
         }
     }
     
@@ -244,9 +246,10 @@ class VakantieDetailsTableViewController: UITableViewController {
             let inschrijvenVakantie1ViewController = segue.destinationViewController as InschrijvenVakantie1ViewController
             inschrijvenVakantie1ViewController.vakantie = vakantie
             inschrijvenVakantie1ViewController.hidesBottomBarWhenPushed = true
-        } else if segue.identifier == "toonFeedback" {
-            let feedbackTableViewController = segue.destinationViewController as FeedbackTableViewController
-            feedbackTableViewController.vakantieId = self.vakantie.id
+        } else if segue.identifier == "geefFeedback" {
+            let geefFeedback2TableViewController = segue.destinationViewController as GeefFeedback2ViewController
+            geefFeedback2TableViewController.vakantie = vakantie
+            geefFeedback2TableViewController.titel = "Geef Feedback"
         }
     }
     

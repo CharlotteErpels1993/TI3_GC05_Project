@@ -13,7 +13,6 @@ import android.widget.Toast;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
-import com.parse.ParseUser;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -22,21 +21,12 @@ import java.util.List;
 
 
 public class InschrijvenVakantiePart3 extends Activity {
-
-    private EditText editExtraInformatie;
-
-    private String extraInformatie;
-
-    private List<ParseObject> ob2;
-
-    private List<ParseObject> ob;
-    private List<ParseObject> ob3;
-    private Button btnVolgende;
+    private EditText et_ExtraInformatie;
 
     // flag for Internet connection status
-    Boolean isInternetPresent = false;
+    private Boolean isInternetPresent = false;
     // Connection detector class
-    ConnectionDetector cd;
+    private ConnectionDetector cd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,10 +35,9 @@ public class InschrijvenVakantiePart3 extends Activity {
         cd = new ConnectionDetector(getApplicationContext());
 
         getActionBar().setTitle("Inschrijven vakantie");
-        editExtraInformatie = (EditText) findViewById(R.id.ExtraInformatie);
+        et_ExtraInformatie = (EditText) findViewById(R.id.ExtraInformatie);
 
-        btnVolgende = (Button)findViewById(R.id.btnNaarDeel4V);
-        btnVolgende.setTextColor(getResources().getColor(R.color.Rood));
+        Button btnVolgende = (Button)findViewById(R.id.btnNaarDeel4V);
         btnVolgende.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -91,7 +80,7 @@ public class InschrijvenVakantiePart3 extends Activity {
         Toast.makeText(getApplicationContext(), getString(R.string.loading_message), Toast.LENGTH_SHORT).show();
 
 
-        String dag = null, maand = null, jaar = null, voornaam = null, naam = null, straat = null, huisnr = null, bus = null, gemeente = null, postcode = null,
+        String datum = null, voornaam = null, naam = null, straat = null, huisnr = null, bus = null, gemeente = null, postcode = null,
                 voornaamCP = null, naamCP = null, telefoonCP = null, gsmCP = null, objectId = null,
                 voornaamCPextra = null, naamCPextra = null, telefoonCPextra = null, gsmCPextra = null;
         Bundle extras = getIntent().getExtras();
@@ -104,7 +93,7 @@ public class InschrijvenVakantiePart3 extends Activity {
             bus = extras.getString("bus");
             gemeente = extras.getString("gemeente");
             postcode = extras.getString("postcode");
-            jaar = extras.getString("jaar");
+            datum = extras.getString("datum");
 
             voornaamCP = extras.getString("voornaamCP");
             naamCP = extras.getString("naamCP");
@@ -116,9 +105,9 @@ public class InschrijvenVakantiePart3 extends Activity {
             gsmCPextra = extras.getString("gsmCPExtra");
         }
 
-        extraInformatie = editExtraInformatie.getText().toString();
+        String extraInformatie = et_ExtraInformatie.getText().toString();
 
-        inschrijvingOpslaan(objectId, voornaam, naam, straat, huisnr,  bus, gemeente, postcode, voornaamCP, naamCP, telefoonCP, gsmCP,voornaamCPextra, naamCPextra, telefoonCPextra, gsmCPextra, extraInformatie, jaar);
+        inschrijvingOpslaan(objectId, voornaam, naam, straat, huisnr,  bus, gemeente, postcode, voornaamCP, naamCP, telefoonCP, gsmCP,voornaamCPextra, naamCPextra, telefoonCPextra, gsmCPextra, extraInformatie, datum);
        /* if (){
             Toast.makeText(getApplicationContext(), getString(R.string.dialog_ingeschreven_melding), Toast.LENGTH_LONG).show();
             startActivity(in);
@@ -132,12 +121,12 @@ public class InschrijvenVakantiePart3 extends Activity {
 
     public void inschrijvingOpslaan(String activiteitID, String voornaam, String naam, String straat, String huisnr, String bus, String gemeente, String postcode,
                                     String voornaamCP, String naamCP, String telefoonCP, String gsmCP,
-                                    String voornaamCPextra, String naamCPextra, String telefoonCPextra, String gsmCPextra, String extraInfo,  String jaar){
+                                    String voornaamCPextra, String naamCPextra, String telefoonCPextra, String gsmCPextra, String extraInfo,  String datum){
 
         SimpleDateFormat formatter = new SimpleDateFormat("MMM dd, yyyy");
         Date date = null;
         try {
-            date = formatter.parse(jaar);
+            date = formatter.parse(datum);
         } catch (ParseException e) {
             Toast.makeText(InschrijvenVakantiePart3.this, "Fout bij datum omzetten",Toast.LENGTH_SHORT).show();
         }
@@ -154,8 +143,8 @@ public class InschrijvenVakantiePart3 extends Activity {
                         "Deelnemer");
 
                 querry.orderByAscending("naam");
-                ob = querry.find();
-                for (ParseObject deelnemer : ob) {
+                List<ParseObject> lijstVdeelnemers = querry.find();
+                for (ParseObject deelnemer : lijstVdeelnemers) {
                     if (deelnemer.get("naam").equals(naam) && deelnemer.get("voornaam").equals(voornaam)) {
                         deelnemerId = deelnemer.getObjectId();
 
@@ -184,12 +173,12 @@ public class InschrijvenVakantiePart3 extends Activity {
             }
 
 
-                ParseQuery<ParseObject> queryV = new ParseQuery<ParseObject>(
+                ParseQuery<ParseObject> qryContactPersoonInNood = new ParseQuery<ParseObject>(
                         "ContactpersoonNood");
 
-                queryV.orderByAscending("naam");
-                ob2 = queryV.find();
-                for (ParseObject contactp : ob2) {
+            qryContactPersoonInNood.orderByAscending("naam");
+                List<ParseObject> lijstContactPersoonInNood = qryContactPersoonInNood.find();
+                for (ParseObject contactp : lijstContactPersoonInNood) {
                     if (contactp.get("naam").equals(naamCP) && contactp.get("voornaam").equals(voornaamCP)) {
                         //Toast.makeText(InschrijvenVakantiePart3.this, "U heeft zich al ingeschreven voor deze vorming.", Toast.LENGTH_LONG).show();
                         //return false;
@@ -218,8 +207,8 @@ public class InschrijvenVakantiePart3 extends Activity {
                     "InschrijvingVakantie");
 
 
-            ob3 = queryI.find();
-            for (ParseObject ins : ob3) {
+            List<ParseObject> lijstInschrijvingenVakantie = queryI.find();
+            for (ParseObject ins : lijstInschrijvingenVakantie) {
                 if (ins.get("contactpersoon1").equals(contactpersoonId) && ins.get("deelnemer").equals(deelnemerId)) {
 
                     vakantieId =(String) ins.get("vakantie");

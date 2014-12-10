@@ -17,7 +17,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ListViewAdapter;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vakantie;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -31,23 +30,19 @@ import java.util.List;
 
 public class IndienenVoorkeurVakantie extends Activity implements AdapterView.OnItemSelectedListener {
 
-    private ListViewAdapter adapter;
     private ArrayList<String> vakantienamen = null;
     private List<Vakantie> vakanties = null;
     private String[] array;
     private ProgressDialog mProgressDialog;
-    private List<ParseObject> ob;
-    Vakantie map;
-    TextView periodeVakantie;
+    private List<ParseObject> lijstMetParseObjecten;
+    private Vakantie map;
+    private TextView periodeVakantie;
 
     private View focusView = null;
 
-
     private boolean cancel = false;
-    private String periodes;
 
-    private Button btnVolgende;
-    Spinner spinner;
+    private Spinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,10 +52,9 @@ public class IndienenVoorkeurVakantie extends Activity implements AdapterView.On
 
         spinner = (Spinner) findViewById( R.id.spinnerVakanties );
         spinner.setOnItemSelectedListener(this);
-        btnVolgende = (Button) findViewById(R.id.BevestigVoorkeur);
+        Button btnVolgende = (Button) findViewById(R.id.BevestigVoorkeur);
 
         getActionBar().setTitle("Kies uw vakantie");
-        btnVolgende.setTextColor(getResources().getColor(R.color.Rood));
         btnVolgende.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -115,8 +109,8 @@ public class IndienenVoorkeurVakantie extends Activity implements AdapterView.On
                         "Vakantie");
 
                 query.orderByAscending("vertrekdatum");
-                ob = query.find();
-                for (ParseObject vakantie : ob) {
+                lijstMetParseObjecten = query.find();
+                for (ParseObject vakantie : lijstMetParseObjecten) {
 
                     map = new Vakantie();
 
@@ -265,8 +259,8 @@ public class IndienenVoorkeurVakantie extends Activity implements AdapterView.On
                     "Monitor");
 
             query.orderByAscending("naam");
-            ob = query.find();
-            for (ParseObject monitor : ob) {
+            lijstMetParseObjecten = query.find();
+            for (ParseObject monitor : lijstMetParseObjecten) {
                 if(monitor.get("email").equals(ParseUser.getCurrentUser().getEmail()))
                 {
                     monitorId =monitor.getObjectId();
@@ -283,8 +277,8 @@ public class IndienenVoorkeurVakantie extends Activity implements AdapterView.On
                     "Voorkeur");
 
             query.orderByAscending("vakantie");
-            ob = query.find();
-            for (ParseObject voorkeur : ob) {
+            lijstMetParseObjecten = query.find();
+            for (ParseObject voorkeur : lijstMetParseObjecten) {
                 if(voorkeur.get("monitor").equals(monitorId) && voorkeur.get("vakantie").equals(vakantie.getVakantieID()))
                 {
                     Toast.makeText(IndienenVoorkeurVakantie.this, "U heeft al voorkeuren ingediend voor deze vakantie" , Toast.LENGTH_LONG).show();

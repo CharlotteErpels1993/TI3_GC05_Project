@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -23,20 +22,12 @@ import java.util.List;
 
 
 public class VormingSignup extends Activity {
-    private Button btnInschrijven;
     private Spinner spnDataInschrijven;
 
-    Boolean isInternetPresent = false;
-
-    private List<ParseObject> ob;
-
-    private List<ParseObject> ob2;
-    ConnectionDetector cd;
-    private List<String> periodes;
+    private ConnectionDetector cd;
+    private Boolean isInternetPresent = false;
 
     private String vormingID;
-
-    private String vormingInsID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,19 +35,18 @@ public class VormingSignup extends Activity {
         setContentView(R.layout.activity_vorming_signup);
         cd = new ConnectionDetector(getApplicationContext());
 
-        spnDataInschrijven = (Spinner) findViewById(R.id.spnDataVorming);
 
         Intent i = getIntent();
         String[] voorlopigePeriodes = i.getStringArrayExtra("periodes");
-        periodes = Arrays.asList(voorlopigePeriodes);
+        List<String> periodes = Arrays.asList(voorlopigePeriodes);
         vormingID = i.getStringExtra("objectId");
 
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, periodes);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spnDataInschrijven = (Spinner) findViewById(R.id.spnDataVorming);
         spnDataInschrijven.setAdapter(dataAdapter);
 
-        btnInschrijven = (Button) findViewById(R.id.btnInschrijven);
-        btnInschrijven.setTextColor(getResources().getColor(R.color.Rood));
+        Button btnInschrijven = (Button) findViewById(R.id.btnInschrijven);
         btnInschrijven.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -69,7 +59,6 @@ public class VormingSignup extends Activity {
                     // make HTTP requests
                     if(opslaanGegevens())
                     {
-
                         Toast.makeText(getApplicationContext(), getString(R.string.dialog_ingeschreven_melding), Toast.LENGTH_SHORT).show();
                         Intent in = new Intent(getApplicationContext(),Vormingen_Overzicht.class);
                         startActivity(in);
@@ -81,16 +70,14 @@ public class VormingSignup extends Activity {
                     Toast.makeText(getApplicationContext(), getString(R.string.error_no_internet), Toast.LENGTH_SHORT).show();
                 }
 
-                //Intent in = new Intent(getApplicationContext(),SignUp_deel4.class);
-                //startActivity(in);
-
             }
         });
 
     }
 
+    //alle gegevens worden opgeslagen en doorgestuurd naar de DB.
+    // Indien alles is gelukt -> return true en ga door naar volgend scherm Indien er een fout is gebeurd -> return false;
     public boolean opslaanGegevens(){
-
         //3 gegevens nodig, objectID van Monitor, objectID van Vorming & geselecteerde data.
         String emailToLookFor = ParseUser.getCurrentUser().getEmail();
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Monitor");
@@ -98,12 +85,10 @@ public class VormingSignup extends Activity {
 
         String monitorId = null;
         try{
-                ParseQuery<ParseObject> querry = new ParseQuery<ParseObject>(
-                        "Monitor");
-
+            ParseQuery<ParseObject> querry = new ParseQuery<ParseObject>("Monitor");
             querry.orderByAscending("naam");
-            ob = querry.find();
-            for (ParseObject monitor : ob) {
+            List<ParseObject> lijstMonitoren = querry.find();
+            for (ParseObject monitor : lijstMonitoren) {
                 if(monitor.get("email").equals(ParseUser.getCurrentUser().getEmail()))
                 {
                     monitorId = monitor.getObjectId();
@@ -114,8 +99,8 @@ public class VormingSignup extends Activity {
                     "InschrijvingVorming");
 
             queryV.orderByAscending("monitor");
-            ob2 = queryV.find();
-            for (ParseObject vormingIns : ob2) {
+            List<ParseObject> lijstInschrijvingVormingen = queryV.find();
+            for (ParseObject vormingIns : lijstInschrijvingVormingen) {
                 if(vormingIns.get("monitor").equals(monitorId) && vormingIns.get("vorming").equals(vormingID) && vormingIns.get("periode").equals(String.valueOf(spnDataInschrijven.getSelectedItem())))
                 {
                     Toast.makeText(VormingSignup.this, "U heeft zich al ingeschreven voor deze vorming." , Toast.LENGTH_LONG).show();
@@ -150,9 +135,7 @@ public class VormingSignup extends Activity {
             return false;
         }
 
-
-
-}
+    }
 
 
     @Override

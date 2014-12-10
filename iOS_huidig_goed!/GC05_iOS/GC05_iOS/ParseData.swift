@@ -463,10 +463,6 @@ struct /*class*/ ParseData {
     }
     
     //FeedbackTable
-    static func getAlleFeedbackMetVakantieId(vakantieId: String) -> ([Feedback], Int?) {
-        return FeedbackSQL.getAlleFeedbackMetVakantieId(vakantieId)
-    }
-    
     static func getAlleFeedback() -> ([Feedback], Int?) {
         return FeedbackSQL.getAlleFeedback()
     }
@@ -536,7 +532,7 @@ struct /*class*/ ParseData {
         return response
     }
     
-    static func getMonitorWithEmail(email: String) -> Monitor {
+    static func getMonitorWithEmail(email: String) -> /*Monitor*/ (Monitor, Int?) {
         return MonitorSQL.getMonitorWithEmail(email)
     }
     

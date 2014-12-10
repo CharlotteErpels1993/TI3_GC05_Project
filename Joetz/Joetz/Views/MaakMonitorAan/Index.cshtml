@@ -1,24 +1,58 @@
-﻿@model Joetz.Models.MaakMonitorenAanModel
+﻿@*@model Joetz.Models.FileUploadModel
+
+@{
+    ViewBag.Title = "FileUpload";
+}
+
+<h2>File Upload</h2>
+
+@using (@Html.BeginForm("Index", "MaakMonitorAan", FormMethod.Post, new { @id = "form1", @enctype = "multipart/form-data" }))
+{
+    <table>
+        <tr>
+            <td>
+                <input type="file" name="file_Uploader" />
+            </td>
+            <td>
+                <input type="submit" id="bttn_Upload" value="Upload" />
+            </td>
+        </tr>
+    </table>
+}*@
+
+@*@model Joetz.Models.MaakMonitorenAanModel*@
+
+@model Joetz.Models.FileUploadModel
 
 @{
     ViewBag.Title = "Index";
 }
 
+@using (Html.BeginForm("Index", "MaakMonitorAan", FormMethod.Post, new { @id = "form1", @enctype = "multipart/form-data" }))
+{
+    <div>
+        <h4>Select a file to upload:</h4>
+        @*@Html.TextBoxFor(m => m.fileNaam)*@
 
-<div>
-   <h4>Select a file to upload:</h4>
-    @Html.TextBoxFor(m => m.fileNaam)
-                
+        <input name="file_uploader" type="file" @*accept=".xls"*@ />
 
-    <button id="UploadButton"
-        name ="Uploaden"
-        onclick="UploadButton_Click"
-        runat="server">
-    </button>    
+        <br/>
 
-   <hr />
+        <input type="submit" id="bttn_Upload" value="UploadFile"/>
 
-   <Label id="UploadStatusLabel"
-       runat="server">
-   </Label>        
-</div>
+        @*<input type="submit" value="UploadFile"/>*@
+
+
+        @*<button id="UploadButton"
+                name ="Uploaden"
+                onclick="UploadButton_Click"
+                runat="server">
+            </button>    *@
+
+        <hr />
+
+        <Label id="UploadStatusLabel"
+               runat="server">
+        </Label>
+    </div>
+}

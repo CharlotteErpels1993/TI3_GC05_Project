@@ -83,8 +83,12 @@ class IndienenVoorkeurViewController: UIViewController, UIPickerViewDataSource, 
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let indienenVoorkeurSuccesvolViewController = segue.destinationViewController as IndienenVoorkeurSuccesvolViewController
-            var monitor = ParseData.getMonitorWithEmail(PFUser.currentUser().email)
-            
+            var monitorResponse = ParseData.getMonitorWithEmail(PFUser.currentUser().email)
+            var monitor: Monitor = Monitor(id: "test")
+            if monitorResponse.1 == nil {
+                monitor = monitorResponse.0
+            }
+        
             self.voorkeur.monitor = monitor
             
             if self.voorkeur.vakantie == nil {

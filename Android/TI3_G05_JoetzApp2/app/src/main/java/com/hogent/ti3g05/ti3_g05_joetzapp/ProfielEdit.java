@@ -21,7 +21,8 @@ import java.util.List;
 
 
 public class ProfielEdit extends Activity {
-    String initieleNaam;//Email wordt op voorhand op geslagen, want ParseUser klasse moet in dat geval ook gewijzigd worden.
+    //gegevens worden in het begin opgeslagen, om te kijken of er wijzigingen waren
+    String initieleNaam;
     String initieleVoornaam;
     String initieleEmail;
     String initieleGsm;
@@ -53,7 +54,6 @@ public class ProfielEdit extends Activity {
         txtGSM = (EditText)findViewById(R.id.GSM);
 
         Button btnBevestigen = (Button) findViewById(R.id.btnBevestigen);
-        btnBevestigen.setTextColor(getResources().getColor(R.color.Rood));
         btnBevestigen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -90,7 +90,6 @@ public class ProfielEdit extends Activity {
             focusView = txtGSM;
             cancel = true;
         }else{
-            //TODO: Moet een nieuw GSM nummer geldig zijn?
             if (!gsm.matches("[0-9]+") || gsm.length() != 10){
                 txtGSM.setError(getString(R.string.error_incorrect_gsm));
                 focusView = txtGSM;

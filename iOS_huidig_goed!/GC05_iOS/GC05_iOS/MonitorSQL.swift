@@ -85,24 +85,32 @@ struct MonitorSQL {
         return monitor
     }
     
-    static func getMonitorWithEmail(email: String) -> Monitor {
+    static func getMonitorWithEmail(email: String) -> /*Monitor*/ (Monitor, Int?) {
         
         //nieuw: Charlotte
         var query = PFQuery(className: "Monitor")
         query.whereKey("email", equalTo: email)
         
+        var response: (Monitor, Int?)
+        var error: Int?
+        
         var monitorObject = query.getFirstObject()
         
-        var monitor: Monitor
+        var monitor: Monitor = Monitor(id: "test")
         
         if monitorObject == nil {
             //ERROR, mag normaal gezien nooit gebeuren door voorgaande controles (MonitorSQL.getMonitorWithEmail)
-            monitor = Monitor(id: "test")
+            //monitor = Monitor(id: "test")
+            error = 1
         } else {
+            error = nil
             monitor = getMonitor(monitorObject)
         }
         
-        return monitor
+        //return monitor
+        
+        response = (monitor, error)
+        return response
         
         
         /*var monitors: [Monitor] = []
@@ -350,7 +358,7 @@ struct MonitorSQL {
                 for row in resultSet {
                     monitor = getMonitor(row)
                     
-                    if monitor.id != aangemeldeMonitor.id {
+                    if monitor.id != aangemeldeMonitor.0.id {
                         monitors.append(monitor)
                     }
                     

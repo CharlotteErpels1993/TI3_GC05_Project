@@ -4,46 +4,38 @@ class FeedbackTableViewController: UITableViewController, UISearchBarDelegate, U
     
     @IBOutlet var zoekbar: UISearchBar!
     @IBOutlet var addButton: UIBarButtonItem!
-    @IBOutlet var menu: UIBarButtonItem!
     
     var feedbacken: [Feedback] = []
     var feedbacken2: [Feedback] = []
-    var vakantieId: String?
+    //var vakantieId: String?
     
-    /*@IBAction func toggle(sender: AnyObject) {
+    @IBAction func toggle(sender: AnyObject) {
         toggleSideMenuView()
-    }*/
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         hideSideMenuView()
+        
+        self.tableView.estimatedRowHeight = 44.0
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        
         self.setNeedsStatusBarAppearanceUpdate()
         self.navigationController!.toolbarHidden = true
         
         ParseData.deleteFeedbackTable()
         ParseData.vulFeedbackTableOp()
-        var feedbackenResponse: ([Feedback], Int?)
-        if vakantieId == nil {
-            feedbackenResponse = ParseData.getAlleFeedback()
-        } else {
-            feedbackenResponse = ParseData.getAlleFeedbackMetVakantieId(self.vakantieId!)
-        }
+        var feedbackenResponse = ParseData.getAlleFeedback()
         
         if feedbackenResponse.1 == nil {
             self.feedbacken = feedbackenResponse.0
             self.feedbacken2 = self.feedbacken
             self.tableView.reloadData()
+            feedbacken2.sort({ $0.vakantie!.titel < (String($1.score!)) })
+            feedbacken2.sort({ $0.vakantie!.titel < (String($1.score!)) })
         } else {
             foutBoxOproepen("Oeps", "Er is nog geen feedback.", self)
         }
-        
-        feedbacken2.sort({ $0.vakantie!.titel < (String($1.score!)) })
-        feedbacken2.sort({ $0.vakantie!.titel < (String($1.score!)) })
-        
-        if vakantieId == nil  {
-            self.navigationItem.rightBarButtonItem = nil
-            setMenuToggleBarButtonItem()
-        } 
         
         if PFUser.currentUser() == nil {
             self.navigationItem.rightBarButtonItem = nil
@@ -51,6 +43,12 @@ class FeedbackTableViewController: UITableViewController, UISearchBarDelegate, U
         
         zoekbar.showsScopeBar = true
         zoekbar.delegate = self
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        self.setNeedsStatusBarAppearanceUpdate()
+        self.navigationController!.toolbarHidden = true
+        self.tableView.reloadData()
     }
     
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
@@ -92,8 +90,8 @@ class FeedbackTableViewController: UITableViewController, UISearchBarDelegate, U
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "add" {
-            let geefFeedbackViewController = segue.destinationViewController as GeefFeedbackViewController
-            geefFeedbackViewController.vakantie = self.vakantieId
+            let geefFeedback1ViewController = segue.destinationViewController as GeefFeedback1ViewController
+            //geefFeedbackViewController.vakantie = self.vakantieId
         }
     }
     
@@ -115,7 +113,7 @@ class FeedbackTableViewController: UITableViewController, UISearchBarDelegate, U
         return cell
     }
     
-    func setMenuToggleBarButtonItem() {
+    /*func setMenuToggleBarButtonItem() {
         var rightImage: UIImage = UIImage(named: "menu")!
         var rightItem: UIBarButtonItem = UIBarButtonItem(image: rightImage, style: UIBarButtonItemStyle.Plain, target: self, action: "toggle")
         self.navigationItem.leftBarButtonItem = rightItem
@@ -123,7 +121,7 @@ class FeedbackTableViewController: UITableViewController, UISearchBarDelegate, U
     
     func toggle() {
         toggleSideMenuView()
-    }
+    }*/
     
     @IBAction func refresh(sender: UIRefreshControl) {
         var parseData = ParseData()

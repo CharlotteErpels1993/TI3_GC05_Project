@@ -8,8 +8,6 @@ class InschrijvenVakantie5ViewController : /*ResponsiveTextFieldViewController*/
     var inschrijvingVakantie: InschrijvingVakantie!
 
     @IBOutlet weak var switchExtraInfo: UISwitch!
-    
-    
     @IBOutlet weak var txtViewExtraInfo: UITextView!
     
     @IBAction func switched(sender: UISwitch) {

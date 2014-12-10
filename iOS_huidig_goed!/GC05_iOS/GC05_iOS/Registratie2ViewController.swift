@@ -24,7 +24,6 @@ class Registratie2ViewController: /*ResponsiveTextFieldViewController*/ UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.txtGsm.text = ""
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -78,8 +77,10 @@ class Registratie2ViewController: /*ResponsiveTextFieldViewController*/ UITableV
         } else {
             if !controleerGeldigheidNummer(txtNummer.text) {
                 statusTextFields["nummer"] = "ongeldig"
+                txtNummer.text = ""
             } else if !checkPatternNummer(txtNummer.text.toInt()!) {
                 statusTextFields["nummer"] = "ongeldig"
+                txtNummer.text = ""
             } else {
                 statusTextFields["nummer"] = "geldig"
             }
@@ -104,8 +105,10 @@ class Registratie2ViewController: /*ResponsiveTextFieldViewController*/ UITableV
         } else {
             if !controleerGeldigheidNummer(txtPostcode.text) {
                 statusTextFields["postcode"] = "ongeldig"
+                txtPostcode.text = ""
             } else if !checkPatternPostcode(txtPostcode.text.toInt()!) {
                 statusTextFields["postcode"] = "ongeldig"
+                txtPostcode.text = ""
             } else {
                 statusTextFields["postcode"] = "geldig"
             }
@@ -116,6 +119,7 @@ class Registratie2ViewController: /*ResponsiveTextFieldViewController*/ UITableV
         } else {
             if !checkPatternTelefoon(txtTelefoon.text) {
                 statusTextFields["telefoon"] = "ongeldig"
+                txtTelefoon.text = ""
             } else {
                 statusTextFields["telefoon"] = "geldig"
             }
@@ -128,8 +132,10 @@ class Registratie2ViewController: /*ResponsiveTextFieldViewController*/ UITableV
             if !checkPatternGsm(txtGsm.text) {
                 statusTextFields["gsm"] = "ongeldig"
                 gsmAlGeregistreerd = false
+                txtGsm.text = ""
             } else if controleerGSMAlGeregisteerd() == true {
                 statusTextFields["gsm"] = "al geregistreerd"
+                txtGsm.text = ""
                 gsmAlGeregistreerd = true
             } else {
                 statusTextFields["gsm"] = "geldig"

@@ -13,7 +13,6 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
-import com.parse.ParseUser;
 
 
 public class InschrijvenVakantiePart2 extends Activity {
@@ -22,7 +21,7 @@ public class InschrijvenVakantiePart2 extends Activity {
 
     private String voornaam, naam, telefoon, gsm;
     private String voornaamExtra, naamExtra, telefoonExtra, gsmExtra;
-    private RelativeLayout layout;
+    private RelativeLayout layoutvoorExtraCP;
 
     private Button btnVolgende, btnCPextra;
     private boolean cancel = false;
@@ -30,9 +29,9 @@ public class InschrijvenVakantiePart2 extends Activity {
     private boolean extraCPZichtbaar = false;
 
     // flag for Internet connection status
-    Boolean isInternetPresent = false;
+    private Boolean isInternetPresent = false;
     // Connection detector class
-    ConnectionDetector cd;
+    private ConnectionDetector cd;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,7 +65,7 @@ public class InschrijvenVakantiePart2 extends Activity {
             }
         });
 
-        layout = (RelativeLayout) findViewById(R.id.layout_ExtraCP);
+        layoutvoorExtraCP = (RelativeLayout) findViewById(R.id.layout_ExtraCP);
         btnCPextra = (Button) findViewById(R.id.btnExtraCP);
         btnCPextra.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -74,12 +73,12 @@ public class InschrijvenVakantiePart2 extends Activity {
 
                 extraCPZichtbaar = !extraCPZichtbaar; //indien true -> false en omgekeerd
                 if (extraCPZichtbaar){ //velden zijn zichtbaar
-                    layout.setVisibility(View.VISIBLE);
+                    layoutvoorExtraCP.setVisibility(View.VISIBLE);
 
                     btnCPextra.setText(getString(R.string.btnCPVerwijderen));
                 }
                 else{//velden zijn onzichtbaar
-                    layout.setVisibility(View.GONE);
+                    layoutvoorExtraCP.setVisibility(View.GONE);
                     btnCPextra.setText(getString(R.string.btnCPtoevoegen));
                 }
             }
@@ -139,12 +138,12 @@ public class InschrijvenVakantiePart2 extends Activity {
         }
 
 
-            if (!TextUtils.isEmpty(telefoon) && (!telefoon.matches("[0-9]+") || telefoon.length() != 9)){
+        if (!TextUtils.isEmpty(telefoon) && (!telefoon.matches("[0-9]+") || telefoon.length() != 9)){
 
-                txtTelefoon.setError(getString(R.string.error_incorrect_tel));
-                focusView = txtTelefoon;
-                cancel = true;
-            }
+            txtTelefoon.setError(getString(R.string.error_incorrect_tel));
+            focusView = txtTelefoon;
+            cancel = true;
+        }
 
 
         if (TextUtils.isEmpty(naam)) {
@@ -186,9 +185,7 @@ public class InschrijvenVakantiePart2 extends Activity {
             String gemeente = extras.getString("gemeente");
             String postcode = extras.getString("postcode");
             String objectId = extras.getString("objectId");
-            String jaar = extras.getString("jaar");
-            String maand = extras.getString("maand");
-            String dag = extras.getString("dag");
+            String datum = extras.getString("datum");
             in.putExtra("voornaam", voornaam);
             in.putExtra("naam", naam);
             in.putExtra("straat", straat);
@@ -197,7 +194,7 @@ public class InschrijvenVakantiePart2 extends Activity {
             in.putExtra("gemeente", gemeente);
             in.putExtra("postcode", postcode);
             in.putExtra("objectId", objectId);
-            in.putExtra("jaar", jaar);
+            in.putExtra("datum", datum);
 
         }
 

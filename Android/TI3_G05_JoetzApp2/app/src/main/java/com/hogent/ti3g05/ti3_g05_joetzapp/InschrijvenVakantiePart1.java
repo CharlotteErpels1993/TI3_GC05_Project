@@ -25,27 +25,25 @@ public class InschrijvenVakantiePart1 extends FragmentActivity {
 
     private EditText txtVoornaam, txtNaam, txtStraat, txtHuisnr, txtBus, txtGemeente, txtPostcode;
 
-    private String maandI, datum ,voornaam, naam, straat, huisnr, bus, gemeente, postcode;
-    private Date geboorteDatum;
+    private String maandI, datum ,voornaam, naam, straat, huisnr, bus, gemeente, postcode, objectID;
     private String maxdoelgroep, mindoelgroep;
 
-    private TextView dag;
-    private TextView maand;
-    private TextView jaar;
+    private TextView tv_dag;
+    private TextView tv_maand;
+    private TextView tv_jaar;
     private Button btnVolgende;
 
-    private TextView errorDate;
+    private TextView tv_errorDate;
 
     private TextView gebDatum;
     private boolean cancel = false;
     private View focusView = null;
 
     // flag for Internet connection status
-    Boolean isInternetPresent = false;
+    private Boolean isInternetPresent = false;
     // Connection detector class
-    ConnectionDetector cd;
-    Calendar cal = Calendar.getInstance();
-    Date now = new Date();
+    private ConnectionDetector cd;
+    private Calendar cal = Calendar.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +51,11 @@ public class InschrijvenVakantiePart1 extends FragmentActivity {
         setContentView(R.layout.activity_inschrijven_vakantie_part1);
 
         cd = new ConnectionDetector(getApplicationContext());
+
+        Intent i = getIntent();
+        mindoelgroep = i.getStringExtra("mindoelgroep");
+        maxdoelgroep = i.getStringExtra("maxdoelgroep");
+        objectID =  i.getStringExtra("objectId");
 
         txtVoornaam = (EditText) findViewById(R.id.VoornaamIns);
         txtNaam = (EditText) findViewById(R.id.NaamIns);
@@ -62,15 +65,14 @@ public class InschrijvenVakantiePart1 extends FragmentActivity {
         txtGemeente = (EditText) findViewById(R.id.Gemeente);
         txtPostcode = (EditText) findViewById(R.id.Postcode);
         gebDatum = (TextView) findViewById(R.id.DateIns);
-        dag = (TextView) findViewById(R.id.dagIns);
-        jaar = (TextView) findViewById(R.id.jaarIns);
-        maand = (TextView) findViewById(R.id.maandIns);
-        errorDate = (TextView) findViewById(R.id.ErrorDate);
-        errorDate.setVisibility(View.GONE);
+        tv_dag = (TextView) findViewById(R.id.dagIns);
+        tv_jaar = (TextView) findViewById(R.id.jaarIns);
+        tv_maand = (TextView) findViewById(R.id.maandIns);
+        tv_errorDate = (TextView) findViewById(R.id.ErrorDate);
+        tv_errorDate.setVisibility(View.GONE);
 
         getActionBar().setTitle("Inschrijven vakantie");
         btnVolgende = (Button)findViewById(R.id.btnNaarDeel2Vak);
-        btnVolgende.setTextColor(getResources().getColor(R.color.Rood));
         btnVolgende.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -130,10 +132,7 @@ public class InschrijvenVakantiePart1 extends FragmentActivity {
         gemeente = txtGemeente.getText().toString();
         postcode = txtPostcode.getText().toString();
         datum = gebDatum.getText().toString();
-        maandI = maand.getText().toString();
-        Intent i = getIntent();
-        mindoelgroep = i.getStringExtra("mindoelgroep");
-        maxdoelgroep = i.getStringExtra("maxdoelgroep");
+        maandI = tv_maand.getText().toString();
 
 
 
@@ -160,51 +159,59 @@ public class InschrijvenVakantiePart1 extends FragmentActivity {
             cancel = true;
         }
 
-        SimpleDateFormat formatter = new SimpleDateFormat("MMM dd, yyyy");
-        Date date = null;
-        try {
-            date = formatter.parse(maandI);
-
-        } catch (ParseException e) {
-            Toast.makeText(InschrijvenVakantiePart1.this, "Fout bij datum omzetten",Toast.LENGTH_SHORT).show();
-        }
-
-        cal.setTime(date);
-        int year = cal.get(Calendar.YEAR);
-        int month = cal.get(Calendar.MONTH);
-        int day = cal.get(Calendar.DAY_OF_MONTH);
-
-        int age = getAge(year, month, day);
-
-        if(age < Integer.parseInt(mindoelgroep) || age > Integer.parseInt(maxdoelgroep))
+        if(gebDatum.getText().equals(""))
         {
-            gebDatum.setError("De leeftijd valt niet binnen de doelgroep");
+            gebDatum.setError(getString(R.string.error_field_required));
             focusView = gebDatum;
-            errorDate.setText("De leeftijd valt niet binnen de doelgroep");
-            errorDate.setVisibility(View.VISIBLE);
+            tv_errorDate.setText(getString(R.string.error_field_required));
+            tv_errorDate.setVisibility(View.VISIBLE);
             cancel = true;
         }
+        else{
+            SimpleDateFormat formatter = new SimpleDateFormat("MMM dd, yyyy");
+            Date date = null;
+            try {
+                date = formatter.parse(maandI);
+
+            } catch (ParseException e) {
+                Toast.makeText(InschrijvenVakantiePart1.this, "Fout bij datum omzetten",Toast.LENGTH_SHORT).show();
+            }
+
+            cal.setTime(date);
+            int year = cal.get(Calendar.YEAR);
+            int month = cal.get(Calendar.MONTH);
+            int day = cal.get(Calendar.DAY_OF_MONTH);
+
+            int age = getAge(year, month, day);
+
+            if(age < Integer.parseInt(mindoelgroep) || age > Integer.parseInt(maxdoelgroep))
+            {
+                gebDatum.setError("De leeftijd valt niet binnen de doelgroep");
+                focusView = gebDatum;
+                tv_errorDate.setText("De leeftijd valt niet binnen de doelgroep");
+                tv_errorDate.setVisibility(View.VISIBLE);
+                cancel = true;
+            }
+        }
+
 
         if (TextUtils.isEmpty(huisnr)) {
             txtHuisnr.setError(getString(R.string.error_field_required));
             focusView = txtHuisnr;
             cancel = true;
         }
-        if (!huisnr.matches("[0-9]+") && huisnr.length() >= 1){
-            txtHuisnr.setError(getString(R.string.error_incorrect_huisnr));
-            focusView = txtHuisnr;
-            cancel = true;
+        else{
+            if (!huisnr.matches("[0-9]+") && huisnr.length() >= 1){
+                txtHuisnr.setError(getString(R.string.error_incorrect_huisnr));
+                focusView = txtHuisnr;
+                cancel = true;
+            }
         }
+
 
         if (TextUtils.isEmpty(straat)) {
             txtStraat.setError(getString(R.string.error_field_required));
             focusView = txtStraat;
-            cancel = true;
-        }
-
-        if (TextUtils.isEmpty(naam)) {
-            txtNaam.setError(getString(R.string.error_field_required));
-            focusView = txtNaam;
             cancel = true;
         }
 
@@ -214,10 +221,9 @@ public class InschrijvenVakantiePart1 extends FragmentActivity {
             cancel = true;
         }
 
-        if(gebDatum.getText().equals(""))
-        {
-            gebDatum.setError(getString(R.string.error_field_required));
-            focusView = gebDatum;
+        if (TextUtils.isEmpty(naam)) {
+            txtNaam.setError(getString(R.string.error_field_required));
+            focusView = txtNaam;
             cancel = true;
         }
 
@@ -246,8 +252,8 @@ public class InschrijvenVakantiePart1 extends FragmentActivity {
         in.putExtra("bus", bus);
         in.putExtra("gemeente", gemeente);
         in.putExtra("postcode", postcode);
-        in.putExtra("objectId", getIntent().getStringExtra("objectId"));
-        in.putExtra("jaar", maandI);
+        in.putExtra("objectId", objectID);
+        in.putExtra("datum", maandI);
 
         startActivity(in);
 
@@ -264,7 +270,7 @@ public class InschrijvenVakantiePart1 extends FragmentActivity {
         txtGemeente.setError(null);
         txtPostcode.setError(null);
         gebDatum.setError(null);
-        errorDate.setVisibility(View.GONE);
+        tv_errorDate.setVisibility(View.GONE);
     }
 
     public int getAge(int DOByear, int DOBmonth, int DOBday) {

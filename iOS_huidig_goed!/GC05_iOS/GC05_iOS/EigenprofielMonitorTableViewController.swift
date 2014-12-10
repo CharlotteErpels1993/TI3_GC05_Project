@@ -21,7 +21,11 @@ class EigenprofielMonitorTableViewController: UITableViewController {
         tableView.estimatedRowHeight = 44.0
         tableView.rowHeight = UITableViewAutomaticDimension
         
-        var monitor = ParseData.getMonitorWithEmail(PFUser.currentUser().email)
+        var monitorResponse = ParseData.getMonitorWithEmail(PFUser.currentUser().email)
+        var monitor: Monitor = Monitor(id: "test")
+        if monitorResponse.1 == nil {
+            monitor = monitorResponse.0
+        }
         
         self.navigationItem.setHidesBackButton(true, animated: true)
         navigationItem.title = "Welkom \(monitor.voornaam!)"
