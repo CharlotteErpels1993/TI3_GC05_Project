@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<Joetz.Models.Domain.Vakantie>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Vakanties";
 }
 
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Voeg een nieuwe vakantie toe", "Create")
 </p>
 <table>
     <tr>
@@ -23,9 +23,9 @@
             @Html.DisplayFor(modelItem => item.Titel)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Bewerken", "Edit", new { id=item.Id }) |
             @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Verwijderen", "Delete", new { id=item.Id })
         </td>
     </tr>
 }

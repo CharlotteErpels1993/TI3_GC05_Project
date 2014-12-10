@@ -13,7 +13,7 @@ namespace Joetz.Models.Domain
         public string Tips { get; set; }
         public string WebsiteLocatie { get; set; }
 
-        public Vorming(string id) : base(id)
+        public Vorming() : base()
         {
             Betalingswijze = "";
             CriteriaDeelnemers = "";

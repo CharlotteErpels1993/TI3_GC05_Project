@@ -9,7 +9,7 @@ namespace Joetz.Models.DAL
     {
         public Vorming GetVorming(ParseObject vormingObject)
         {
-            Vorming vorming = new Vorming("test");
+            Vorming vorming = new Vorming();
 
             vorming.Id = vormingObject.ObjectId;
             vorming.Titel = vormingObject.Get<string>("titel");

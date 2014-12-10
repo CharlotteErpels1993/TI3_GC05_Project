@@ -1,0 +1,164 @@
+﻿@model Joetz.Models.Domain.Vakantie
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Vakantie</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Titel)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Titel)
+            @Html.ValidationMessageFor(model => model.Titel)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.KorteBeschrijving)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.KorteBeschrijving)
+            @Html.ValidationMessageFor(model => model.KorteBeschrijving)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.VertrekDatum)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.VertrekDatum)
+            @Html.ValidationMessageFor(model => model.VertrekDatum)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TerugkeerDatum)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TerugkeerDatum)
+            @Html.ValidationMessageFor(model => model.TerugkeerDatum)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AantalDagenNachten)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.AantalDagenNachten)
+            @Html.ValidationMessageFor(model => model.AantalDagenNachten)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Vervoerwijze)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Vervoerwijze)
+            @Html.ValidationMessageFor(model => model.Vervoerwijze)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Formule)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Formule)
+            @Html.ValidationMessageFor(model => model.Formule)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.BasisPrijs)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.BasisPrijs)
+            @Html.ValidationMessageFor(model => model.BasisPrijs)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.BondMoysonLedenPrijs)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.BondMoysonLedenPrijs)
+            @Html.ValidationMessageFor(model => model.BondMoysonLedenPrijs)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SterPrijs1Ouder)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SterPrijs1Ouder)
+            @Html.ValidationMessageFor(model => model.SterPrijs1Ouder)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SterPrijs2Ouders)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SterPrijs2Ouders)
+            @Html.ValidationMessageFor(model => model.SterPrijs2Ouders)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.InbegrepenPrijs)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.InbegrepenPrijs)
+            @Html.ValidationMessageFor(model => model.InbegrepenPrijs)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MinLeeftijd)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MinLeeftijd)
+            @Html.ValidationMessageFor(model => model.MinLeeftijd)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MaxLeeftijd)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MaxLeeftijd)
+            @Html.ValidationMessageFor(model => model.MaxLeeftijd)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MaxAantalDeelnemers)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MaxAantalDeelnemers)
+            @Html.ValidationMessageFor(model => model.MaxAantalDeelnemers)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Locatie)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Locatie)
+            @Html.ValidationMessageFor(model => model.Locatie)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Link)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Link)
+            @Html.ValidationMessageFor(model => model.Link)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

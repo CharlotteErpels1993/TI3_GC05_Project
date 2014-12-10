@@ -98,3 +98,10 @@ C:\Users\Charlotte\Documents\GitHub\TI3_GC05_Project\Joetz\Joetz.Tests\bin\Debug
 C:\Users\Charlotte\Documents\GitHub\TI3_GC05_Project\Joetz\Joetz.Tests\bin\Debug\Kesoft.Windows.Forms.Common.dll
 C:\Users\Charlotte\Documents\GitHub\TI3_GC05_Project\Joetz\Joetz.Tests\bin\Debug\Kesoft.Windows.Forms.Panels.dll
 C:\Users\Charlotte\Documents\GitHub\TI3_GC05_Project\Joetz\Joetz.Tests\bin\Debug\Kesoft.Windows.Forms.Panels.xml
+C:\Users\Charlotte\Documents\GitHub\TI3_GC05_Project\Joetz\Joetz.Tests\bin\Debug\Ninject.dll
+C:\Users\Charlotte\Documents\GitHub\TI3_GC05_Project\Joetz\Joetz.Tests\bin\Debug\Ninject.Web.Common.dll
+C:\Users\Charlotte\Documents\GitHub\TI3_GC05_Project\Joetz\Joetz.Tests\bin\Debug\Ninject.Web.Mvc.dll
+C:\Users\Charlotte\Documents\GitHub\TI3_GC05_Project\Joetz\Joetz.Tests\bin\Debug\WebActivatorEx.dll
+C:\Users\Charlotte\Documents\GitHub\TI3_GC05_Project\Joetz\Joetz.Tests\bin\Debug\Ninject.xml
+C:\Users\Charlotte\Documents\GitHub\TI3_GC05_Project\Joetz\Joetz.Tests\bin\Debug\Ninject.Web.Common.xml
+C:\Users\Charlotte\Documents\GitHub\TI3_GC05_Project\Joetz\Joetz.Tests\bin\Debug\Ninject.Web.Mvc.xml
