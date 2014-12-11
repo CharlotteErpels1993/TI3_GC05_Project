@@ -42,7 +42,7 @@ class VakantieDetailsTableViewController: UITableViewController {
         
         if PFUser.currentUser() != nil {
             var ouderResponse = ParseData.getOuderWithEmail(PFUser.currentUser().email)
-            var monitorResponse = ParseData.getOuderWithEmail(PFUser.currentUser().email)
+            var monitorResponse = ParseData.getMonitorWithEmail(PFUser.currentUser().email)
             var favorieteVakantie: Favoriet = Favoriet(id: "test")
         
             if ouderResponse.1 == nil {

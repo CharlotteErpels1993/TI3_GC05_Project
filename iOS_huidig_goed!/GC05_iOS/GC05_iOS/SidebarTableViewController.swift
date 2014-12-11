@@ -124,7 +124,7 @@ class SidebarTableViewController: UITableViewController {
                 switch indexPath.row {
                 case 0:
                     hideSideMenuView()
-                    destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Profiel") as UIViewController
+                    destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vormingen") as UIViewController
                     let alertController = UIAlertController(title: "Uitloggen", message: "Wilt u zeker uitloggen?", preferredStyle: .ActionSheet)
                     
                     let callAction = UIAlertAction(title: "Uitloggen", style: UIAlertActionStyle.Destructive, handler: {
