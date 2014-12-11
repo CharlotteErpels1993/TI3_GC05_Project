@@ -38,7 +38,7 @@ namespace Joetz.Controllers
             if (ModelState.IsValid)
             {
                 vakantieRepository.Add(vakantie);
-                TempData["Info"] = "Vakantie " + vakantie.Titel + " is gecreëerd";
+                TempData["Info"] = "Vakantie " + vakantie.Titel + " is toegevoegd";
                 return RedirectToAction("Index");    
             }
             return View(vakantie);

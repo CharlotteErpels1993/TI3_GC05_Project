@@ -235,6 +235,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MaakMonitorAanController.cs" />
     <Compile Include="Controllers\VakantieController.cs" />
+    <Compile Include="Controllers\VormingController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -386,6 +387,8 @@
     <Content Include="Views\Vakantie\Index.cshtml" />
     <Content Include="Views\Vakantie\Create.cshtml" />
     <Content Include="Views\Vakantie\Delete.cshtml" />
+    <Content Include="Views\Vorming\Index.cshtml" />
+    <Content Include="Views\Vorming\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

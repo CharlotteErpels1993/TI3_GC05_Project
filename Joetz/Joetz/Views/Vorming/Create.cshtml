@@ -1,0 +1,84 @@
+﻿@model Joetz.Models.Domain.Vorming
+
+@{
+    ViewBag.Title = "Nieuwe vorming";
+}
+
+<form role="form">
+    <div class="page-header">
+        <h1>@ViewBag.Title</h1>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">Algemeen</div>
+        <div class="container">
+            <br />
+            <div class="form-group">
+                <label for="inputTitel">@Html.LabelFor(model => model.Titel)</label>
+                <input type="text" class="form-control" id="inputTitel" style="width: 97%" />
+                @Html.ValidationMessageFor(model => model.Titel)
+            </div>
+            <div class="form-group">
+                <label for="inputKorteBeschrijving">@Html.LabelFor(model => model.KorteBeschrijving)</label>
+                <textarea class="form-control" rows="3" id="inputKorteBeschrijving" style="width: 97%">
+                </textarea>
+                @Html.ValidationMessageFor(model => model.KorteBeschrijving)
+            </div>
+            <div class="form-group">
+                <label for="inputCriteriaDeelnemers">
+                    @Html.LabelFor(model => model.CriteriaDeelnemers)
+                </label>
+                <textarea class="form-control" rows="3" id="inputCriteriaDeelnemers" style="width: 97%">
+                </textarea>
+                @Html.ValidationMessageFor(model => model.CriteriaDeelnemers)
+            </div>
+            <div class="form-group">
+                <label for="inputPeriodes">@Html.LabelFor(model => model.Periodes)</label>
+                <textarea class="form-control" rows="3" id="inputPeriodes" style="width: 97%">
+                </textarea>
+                @Html.ValidationMessageFor(model => model.Periodes)
+            </div>
+            <div class="form-group">
+                <label for="inputLocatie">@Html.LabelFor(model => model.Locatie)</label>
+                <input type="text" class="form-control" id="inputLocatie" style="width: 97%"/>
+                @Html.ValidationMessageFor(model => model.Locatie)
+            </div>
+            <div class="form-group">
+                <label for="inputTips">@Html.LabelFor(model => model.Tips)</label>
+                <textarea class="form-control" rows="3" id="inputTips" style="width: 97%"></textarea>
+                @Html.ValidationMessageFor(model => model.Tips)
+            </div>
+            <div class="form-group">
+                <label for="inputPrijs">@Html.LabelFor(model => model.Prijs)
+                </label>
+                <input type="text" class="form-control" id="inputPrijs" style="width: 97%"/>
+                @Html.ValidationMessageFor(model => model.Prijs)
+            </div>
+            <div class="form-group">
+                <label for="inputInbegrepenPrijs">@Html.LabelFor(model => model.InbegrepenPrijs)</label>
+                <textarea class="form-control" rows="3" id="inputInbegrepenPrijs" style="width: 97%"></textarea>
+                @Html.ValidationMessageFor(model => model.InbegrepenPrijs)
+            </div>
+            <div class="form-group">
+                <label for="inputBetalingswijze">@Html.LabelFor(model => model.Betalingswijze)</label>
+                <textarea class="form-control" rows="3" id="inputBetalingswijze" style="width: 97%"></textarea>
+                @Html.ValidationMessageFor(model => model.Betalingswijze)
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <button type="submit" class="btn btn-default">
+            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+            Toevoegen
+        </button><br/><br/>
+    </div>
+</form>
+<div class="container">
+    <br />
+    @Html.ActionLink("Terug naar overzicht vakanties", "Index", "Vakantie")<br /><br />
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

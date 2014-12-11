@@ -11,5 +11,6 @@ namespace Joetz.Models.Domain
         Task<ICollection<Vorming>>  FindAll();
         void Add(Vorming vorming);
         void Delete(Vorming vorming);
+        void Update(Vorming vorming);
     }
 }

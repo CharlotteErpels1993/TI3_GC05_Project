@@ -81,5 +81,10 @@ namespace Joetz.Models.DAL
 
             vormingObject.DeleteAsync();
         }
+
+        public void Update(Vorming vorming)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
