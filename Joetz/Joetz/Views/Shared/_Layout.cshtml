@@ -35,7 +35,8 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <!--active class!!!!-->
-                <li class="active"><a href="#">Home<span class="sr-only">(current)</span></a></li>
+                @*<li class="active"><a href="#">Home<span class="sr-only">(current)</span></a></li>*@
+                <li>@Html.ActionLink("Home", "Index", "Home")</li>
                 <li>@Html.ActionLink("Vakanties", "Index", "Vakantie")</li>
                 <li>@Html.ActionLink("Vormingen", "Index", "Vorming")</li>
                 <li>@Html.ActionLink("Monitoren", "Index", "Monitor")</li>
