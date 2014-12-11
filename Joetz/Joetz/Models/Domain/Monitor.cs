@@ -1,7 +1,5 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using System.Dynamic;
-using NetOffice;
 
 namespace Joetz.Models.Domain
 {

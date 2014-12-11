@@ -64,7 +64,7 @@ namespace Joetz.Models.DAL
             return vakantie;
         }
 
-        public void Add(Vakantie vakantie)
+        public async void Add(Vakantie vakantie)
         {
             ParseObject vakantieObject = new ParseObject("Vakantie");
 
@@ -86,15 +86,15 @@ namespace Joetz.Models.DAL
             vakantieObject["vertrekdatum"] = vakantie.VertrekDatum;
             vakantieObject["vervoerwijze"] = vakantie.Vervoerwijze;
 
-            vakantieObject.SaveAsync();
+            await vakantieObject.SaveAsync();
         }
 
-        public void Delete(Vakantie vakantie)
+        public async void Delete(Vakantie vakantie)
         {
             var query = ParseObject.GetQuery("Vakantie").WhereEqualTo("objectId", vakantie.Id);
-            ParseObject vakantieObject = query.FirstAsync().Result;
+            ParseObject vakantieObject = await query.FirstAsync();
 
-            vakantieObject.DeleteAsync();
+            await vakantieObject.DeleteAsync();
         }
 
         public void Update(Vakantie vakantie)

@@ -56,7 +56,7 @@ namespace Joetz.Models.DAL
             return vormingen;
         }
 
-        public void Add(Vorming vorming)
+        public async void Add(Vorming vorming)
         {
             ParseObject vormingObject = new ParseObject("Vorming");
 
@@ -71,15 +71,15 @@ namespace Joetz.Models.DAL
             vormingObject["tips"] = vorming.Tips;
             vormingObject["websiteLocatie"] = vorming.WebsiteLocatie;
 
-            vormingObject.SaveAsync();
+            await vormingObject.SaveAsync();
         }
 
-        public void Delete(Vorming vorming)
+        public async void Delete(Vorming vorming)
         {
             var query = ParseObject.GetQuery("Vorming").WhereEqualTo("objectId", vorming.Id);
-            ParseObject vormingObject = query.FirstAsync().Result;
+            ParseObject vormingObject = await query.FirstAsync();
 
-            vormingObject.DeleteAsync();
+            await vormingObject.DeleteAsync();
         }
 
         public void Update(Vorming vorming)
