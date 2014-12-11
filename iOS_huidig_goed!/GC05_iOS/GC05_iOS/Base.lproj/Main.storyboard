@@ -1575,9 +1575,9 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
-                            <tableViewSection headerTitle="Section-2" id="de7-2v-3Mh">
+                            <tableViewSection id="de7-2v-3Mh">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="188" id="uPw-uw-klk">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="128" id="uPw-uw-klk">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uPw-uw-klk" id="r4P-V0-aLP">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -1588,24 +1588,120 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SfQ-Jp-fMy">
-                                                    <rect key="frame" x="8" y="28" width="584" height="162"/>
-                                                </pickerView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pp4-Ss-GlF">
+                                                    <rect key="frame" x="8" y="39" width="584" height="64"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jON-Hi-NBB">
+                                                            <rect key="frame" x="143" y="0.0" width="55" height="55"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="55" id="Cfv-qw-P10"/>
+                                                                <constraint firstAttribute="width" constant="55" id="GLk-rI-unE"/>
+                                                            </constraints>
+                                                            <state key="normal" title="Button" image="star2.png">
+                                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </state>
+                                                            <connections>
+                                                                <action selector="klikopSter1:" destination="f0a-8k-9lX" eventType="touchUpInside" id="BbE-ce-eNR"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="boz-Be-EUt">
+                                                            <rect key="frame" x="204" y="0.0" width="55" height="55"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="55" id="IXy-aH-Bfe"/>
+                                                                <constraint firstAttribute="width" constant="55" id="sSK-Oh-2gE"/>
+                                                            </constraints>
+                                                            <state key="normal" title="Button" image="star2.png">
+                                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </state>
+                                                            <connections>
+                                                                <action selector="klikopSter2:" destination="f0a-8k-9lX" eventType="touchUpInside" id="578-0h-S6n"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kzc-vb-ecn">
+                                                            <rect key="frame" x="265" y="0.0" width="55" height="55"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="55" id="KF9-d1-R89"/>
+                                                                <constraint firstAttribute="width" constant="55" id="yLU-xF-1pN"/>
+                                                            </constraints>
+                                                            <state key="normal" title="Button" image="star2.png">
+                                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </state>
+                                                            <connections>
+                                                                <action selector="klikopSter3:" destination="f0a-8k-9lX" eventType="touchUpInside" id="ou1-Qa-Gmu"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WKY-b4-P8w">
+                                                            <rect key="frame" x="326" y="0.0" width="55" height="55"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="55" id="5Qg-w9-gAs"/>
+                                                                <constraint firstAttribute="height" constant="55" id="YFc-zb-KXi"/>
+                                                            </constraints>
+                                                            <state key="normal" title="Button" image="star2.png">
+                                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </state>
+                                                            <connections>
+                                                                <action selector="klikopSter4:" destination="f0a-8k-9lX" eventType="touchUpInside" id="wwH-ZO-cvU"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OKx-ct-rzl">
+                                                            <rect key="frame" x="387" y="1" width="55" height="55"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="55" id="dtO-oc-7e8"/>
+                                                                <constraint firstAttribute="height" constant="55" id="hdG-9I-1Uq"/>
+                                                            </constraints>
+                                                            <state key="normal" title="Button" image="star2.png">
+                                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </state>
+                                                            <connections>
+                                                                <action selector="klikopSter5:" destination="f0a-8k-9lX" eventType="touchUpInside" id="euu-Jg-Xr8"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstItem="WKY-b4-P8w" firstAttribute="top" secondItem="Pp4-Ss-GlF" secondAttribute="top" id="0d3-tX-9AX"/>
+                                                        <constraint firstItem="OKx-ct-rzl" firstAttribute="leading" secondItem="WKY-b4-P8w" secondAttribute="trailing" constant="6" id="0pX-dg-0Im"/>
+                                                        <constraint firstAttribute="centerY" secondItem="kzc-vb-ecn" secondAttribute="centerY" constant="4.5" id="5dI-av-qFK"/>
+                                                        <constraint firstItem="jON-Hi-NBB" firstAttribute="top" secondItem="Pp4-Ss-GlF" secondAttribute="top" id="B0v-Kr-DH6"/>
+                                                        <constraint firstItem="boz-Be-EUt" firstAttribute="top" secondItem="Pp4-Ss-GlF" secondAttribute="top" id="JqQ-gs-JDJ"/>
+                                                        <constraint firstItem="WKY-b4-P8w" firstAttribute="leading" secondItem="kzc-vb-ecn" secondAttribute="trailing" constant="6" id="Qvm-xV-xPl"/>
+                                                        <constraint firstAttribute="centerX" secondItem="kzc-vb-ecn" secondAttribute="centerX" constant="-0.5" id="UWI-1f-g2z"/>
+                                                        <constraint firstItem="OKx-ct-rzl" firstAttribute="leading" secondItem="WKY-b4-P8w" secondAttribute="trailing" constant="8" id="Ubs-aE-Qh0"/>
+                                                        <constraint firstItem="OKx-ct-rzl" firstAttribute="top" secondItem="Pp4-Ss-GlF" secondAttribute="top" constant="1" id="VPF-2U-muc"/>
+                                                        <constraint firstItem="kzc-vb-ecn" firstAttribute="leading" secondItem="boz-Be-EUt" secondAttribute="trailing" constant="6" id="Vmh-2q-eKE"/>
+                                                        <constraint firstItem="boz-Be-EUt" firstAttribute="leading" secondItem="jON-Hi-NBB" secondAttribute="trailing" constant="8" id="euR-QP-r3C"/>
+                                                        <constraint firstItem="kzc-vb-ecn" firstAttribute="top" secondItem="Pp4-Ss-GlF" secondAttribute="top" id="jNl-ka-xy7"/>
+                                                        <constraint firstItem="WKY-b4-P8w" firstAttribute="leading" secondItem="kzc-vb-ecn" secondAttribute="trailing" constant="8" id="rTE-Bj-nG1"/>
+                                                        <constraint firstItem="kzc-vb-ecn" firstAttribute="leading" secondItem="boz-Be-EUt" secondAttribute="trailing" constant="8" id="sDu-9j-USV"/>
+                                                        <constraint firstItem="jON-Hi-NBB" firstAttribute="leading" secondItem="Pp4-Ss-GlF" secondAttribute="leading" constant="139" id="vR2-W4-sai"/>
+                                                        <constraint firstItem="boz-Be-EUt" firstAttribute="leading" secondItem="jON-Hi-NBB" secondAttribute="trailing" constant="6" id="zPc-wV-x1F"/>
+                                                    </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="vR2-W4-sai"/>
+                                                            <exclude reference="euR-QP-r3C"/>
+                                                            <exclude reference="jNl-ka-xy7"/>
+                                                            <exclude reference="sDu-9j-USV"/>
+                                                            <exclude reference="rTE-Bj-nG1"/>
+                                                            <exclude reference="Ubs-aE-Qh0"/>
+                                                        </mask>
+                                                    </variation>
+                                                </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="SfQ-Jp-fMy" secondAttribute="bottom" id="4za-0h-gWb"/>
-                                                <constraint firstItem="SfQ-Jp-fMy" firstAttribute="leading" secondItem="r4P-V0-aLP" secondAttribute="leadingMargin" id="G2d-Sk-Yu9"/>
+                                                <constraint firstItem="Pp4-Ss-GlF" firstAttribute="leading" secondItem="r4P-V0-aLP" secondAttribute="leadingMargin" id="IvQ-TA-EHf"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="45D-Zd-ALe" secondAttribute="trailing" id="MB0-Hv-w8n"/>
                                                 <constraint firstItem="45D-Zd-ALe" firstAttribute="top" secondItem="r4P-V0-aLP" secondAttribute="topMargin" constant="3" id="Rs5-BG-O7J"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="SfQ-Jp-fMy" secondAttribute="trailing" id="SOX-bW-HHP"/>
-                                                <constraint firstItem="SfQ-Jp-fMy" firstAttribute="top" secondItem="r4P-V0-aLP" secondAttribute="topMargin" constant="30" id="dc3-Ks-MKp"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Pp4-Ss-GlF" secondAttribute="bottom" constant="16.5" id="aR6-9w-yix"/>
+                                                <constraint firstItem="Pp4-Ss-GlF" firstAttribute="top" secondItem="r4P-V0-aLP" secondAttribute="topMargin" constant="31" id="nJh-vm-CAS"/>
+                                                <constraint firstItem="Pp4-Ss-GlF" firstAttribute="trailing" secondItem="r4P-V0-aLP" secondAttribute="trailingMargin" id="rRZ-P7-6z7"/>
                                                 <constraint firstItem="45D-Zd-ALe" firstAttribute="leading" secondItem="r4P-V0-aLP" secondAttribute="leadingMargin" id="y8H-YP-hiw"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Section-3" id="yzC-St-8Rm">
+                            <tableViewSection id="yzC-St-8Rm">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="138" id="gsk-QV-fYB">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -1618,8 +1714,8 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TnP-J6-6lj">
-                                                    <rect key="frame" x="8" y="34" width="584" height="96"/>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TnP-J6-6lj">
+                                                    <rect key="frame" x="8" y="33" width="584" height="96"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1654,7 +1750,11 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="scorePickerView" destination="SfQ-Jp-fMy" id="X0a-Nf-8oG"/>
+                        <outlet property="ster1" destination="jON-Hi-NBB" id="vDj-Nf-kWG"/>
+                        <outlet property="ster2" destination="boz-Be-EUt" id="SRe-LU-iJo"/>
+                        <outlet property="ster3" destination="kzc-vb-ecn" id="uMi-pw-Yel"/>
+                        <outlet property="ster4" destination="WKY-b4-P8w" id="sSV-HK-0sR"/>
+                        <outlet property="ster5" destination="OKx-ct-rzl" id="X46-Bb-ekQ"/>
                         <outlet property="txtFeedback" destination="TnP-J6-6lj" id="yu6-LT-0FQ"/>
                     </connections>
                 </tableViewController>
@@ -5440,6 +5540,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
         <image name="Klevertje.png" width="615" height="427"/>
         <image name="feedback.png" width="64" height="64"/>
         <image name="menu.png" width="64" height="64"/>
+        <image name="star2.png" width="1125" height="1125"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="xe1-I8-Pkw"/>
