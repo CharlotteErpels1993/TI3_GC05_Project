@@ -248,6 +248,7 @@
     <Compile Include="Models\Domain\IVakantieRepository.cs" />
     <Compile Include="Models\Domain\IVormingRepository.cs" />
     <Compile Include="Models\Domain\MaakMonitorenAanModel.cs" />
+    <Compile Include="Models\Domain\Monitor.cs" />
     <Compile Include="Models\Domain\Vakantie.cs" />
     <Compile Include="Models\Domain\Vorming.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -389,6 +390,7 @@
     <Content Include="Views\Vakantie\Delete.cshtml" />
     <Content Include="Views\Vorming\Index.cshtml" />
     <Content Include="Views\Vorming\Create.cshtml" />
+    <Content Include="Views\Vorming\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
