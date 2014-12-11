@@ -23,7 +23,7 @@ func annuleerControllerVoorkeur(controller: UIViewController) {
     
     let callAction = UIAlertAction(title: "Annuleer", style: UIAlertActionStyle.Destructive, handler: {
         action in
-        var destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Profiel") as UIViewController
+        var destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vormingen") as UIViewController
         controller.sideMenuController()?.setContentViewController(destViewController)
         controller.hideSideMenuView()
         }

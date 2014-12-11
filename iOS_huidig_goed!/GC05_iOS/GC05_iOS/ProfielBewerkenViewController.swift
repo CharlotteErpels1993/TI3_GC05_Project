@@ -15,6 +15,7 @@ class ProfielBewerkenViewController: UITableViewController {
     var monitor: Monitor!
     var statusTextFields: [String: String] = [:]
     var redColor: UIColor = UIColor.redColor()
+    var gaVerder:Bool = false
     
     /*@IBAction func opslaan(sender: AnyObject) {
         ParseData.deleteMonitorTable()
@@ -47,6 +48,8 @@ class ProfielBewerkenViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.hidesBackButton = true
+        
         voornaamTxt.text = monitor.voornaam
         naamTxt.text = monitor.naam
         straatTxt.text = monitor.straat
@@ -56,6 +59,28 @@ class ProfielBewerkenViewController: UITableViewController {
         postcodeTxt.text = String(monitor.postcode!)
         telefoonTxt.text = monitor.telefoon
         gsmTxt.text = monitor.gsm
+
+        //self.navigationItem.leftItemsSupplementBackButton = true
+        var barBack = UIBarButtonItem(title: "Terug", style: UIBarButtonItemStyle.Plain, target: self, action: "terug")
+        self.navigationItem.leftBarButtonItem = barBack
+    }
+    
+    func terug() {
+        let alertController = UIAlertController(title: "Profiel bewerken", message: "U gaat verder zonder het opslaan van uw gegevens. Als u verder gaat, gaan uw gewijzigde gegevens verloren.", preferredStyle: .ActionSheet)
+            
+        let callAction = UIAlertAction(title: "Sla niet op", style: UIAlertActionStyle.Destructive, handler: {
+            action in
+                self.gaVerder = true
+                self.performSegueWithIdentifier("opslaan", sender: self)
+            }
+        )
+        
+        alertController.addAction(callAction)
+            
+        let cancelAction = UIAlertAction(title: "Annuleer", style: .Default, handler: nil)
+        alertController.addAction(cancelAction)
+            
+        presentViewController(alertController, animated: true, completion: nil)
     }
     
     
@@ -249,25 +274,31 @@ class ProfielBewerkenViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "opslaan" {
             let profielDetailsViewController = segue.destinationViewController as ProfielDetailsTableViewController
-            ParseData.deleteMonitorTable()
-            ParseData.vulMonitorTableOp()
             
-            var monitorResponse = ParseData.getMonitorWithEmail(PFUser.currentUser().email)
-            if monitorResponse.1 == nil {
-                monitor = monitorResponse.0
-            }
-            
-            setStatusTextFields()
-            pasLayoutVeldenAan()
-            
-            if controleerRodeBordersAanwezig() == true {
-                foutBoxOproepen("Fout", "Gelieve de velden correct in te vullen!", self)
-            } else {
-                settenVerplichteGegevens()
-                settenOptioneleGegevens()
-                ParseData.updateMonitor(self.monitor!)
+            if self.gaVerder == true {
                 profielDetailsViewController.monitor = self.monitor
                 profielDetailsViewController.eigenProfiel = true
+            } else {
+                ParseData.deleteMonitorTable()
+                ParseData.vulMonitorTableOp()
+                
+                var monitorResponse = ParseData.getMonitorWithEmail(PFUser.currentUser().email)
+                if monitorResponse.1 == nil {
+                    monitor = monitorResponse.0
+                }
+                
+                setStatusTextFields()
+                pasLayoutVeldenAan()
+                
+                if controleerRodeBordersAanwezig() == true {
+                    foutBoxOproepen("Fout", "Gelieve de velden correct in te vullen!", self)
+                } else {
+                    settenVerplichteGegevens()
+                    settenOptioneleGegevens()
+                    ParseData.updateMonitor(self.monitor!)
+                    profielDetailsViewController.monitor = self.monitor
+                    profielDetailsViewController.eigenProfiel = true
+                }
             }
         }
     }
