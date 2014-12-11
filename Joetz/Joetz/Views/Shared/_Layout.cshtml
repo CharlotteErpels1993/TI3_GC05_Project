@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Parse
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -37,14 +38,24 @@
                 <!--active class!!!!-->
                 @*<li class="active"><a href="#">Home<span class="sr-only">(current)</span></a></li>*@
                 <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                <li>@Html.ActionLink("Vakanties", "Index", "Vakantie")</li>
-                <li>@Html.ActionLink("Vormingen", "Index", "Vorming")</li>
+                @*<li>@Html.ActionLink("Vakanties", "Index", "Vakantie")</li>*@
+                @*<li>@Html.ActionLink("Vormingen", "Index", "Vorming")</li>
                 <li>@Html.ActionLink("Monitoren", "Index", "Monitor")</li>
-                <li>@Html.ActionLink("Feedback", "Index", "Feedback")</li>
+                <li>@Html.ActionLink("Feedback", "Index", "Feedback")</li>*@
             </ul>
-            @*<ul class="nav navbar-nav navbar-right">
-                    @Html.Partial("_LoginPartial")
-                </ul>*@
+            <ul class="nav navbar-nav navbar-right">
+                @*@{
+                    if (ParseUser.CurrentUser == null)
+                    {
+                        <li>@Html.ActionLink("Inloggen", "Login", "Account")</li>
+                    }
+                    else
+                    {
+                        <li>Welkom, @ParseUser.CurrentUser.Email</li>
+                    }
+                }*@
+                @*@Html.Partial("_LoginPartial")*@
+            </ul>
         </div>
     </div>
 </nav>
