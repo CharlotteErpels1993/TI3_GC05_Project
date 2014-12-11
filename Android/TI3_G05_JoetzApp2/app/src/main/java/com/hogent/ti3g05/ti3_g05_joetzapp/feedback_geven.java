@@ -17,6 +17,9 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 
@@ -151,6 +154,11 @@ public class feedback_geven extends Activity {
 
     public  void opslaan(String feedback, String score)
     {
+
+
+        Date dateVandaag = new Date();
+
+
         ParseObject feedbackObject = new ParseObject("Feedback");
 
         feedbackObject.put("vakantie", vakantieId);
@@ -158,6 +166,7 @@ public class feedback_geven extends Activity {
         feedbackObject.put("gebruiker", gebruiker);
         feedbackObject.put("score", Integer.parseInt(score));
         feedbackObject.put("goedgekeurd", false);
+        feedbackObject.put("datum", dateVandaag);
 
         feedbackObject.saveInBackground();
 
