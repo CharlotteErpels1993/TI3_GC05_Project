@@ -4,7 +4,35 @@
     ViewBag.Title = "Log in";
 }
 
-<hgroup class="title">
+<head>
+    <script src="//www.parsecdn.com/js/parse-1.3.2.min.js"></script>
+</head>
+
+<section id="loginForm">
+    <div class="container">
+        <br/><br/>
+        <form role="form">
+            <h2>Inloggen</h2>
+            <div class="form-group">
+                <label for="inputEmail">@Html.LabelFor(model => model.Email)</label>
+                <input type="email" class="form-control" id="inputEmail"/>
+                @Html.ValidationMessageFor(model => model.Email)
+            </div>
+            <div class="form-group">
+                <label for="inputPassword">@Html.LabelFor(model => model.Wachtwoord)</label>
+                <input type="password" class="form-control" id="inputPassword"/>
+                @Html.ValidationMessageFor(model => model.Wachtwoord)
+            </div>
+            <div class="form-group">
+                <button type="submit">Log in</button>
+            </div>
+        </form>
+    </div>
+</section>
+
+
+
+@*<hgroup class="title">
     <h1>@ViewBag.Title.</h1>
 </hgroup>
 <head>
@@ -35,7 +63,7 @@
     </fieldset>
  
 }
-</section>
+</section>*@
 
 
 
