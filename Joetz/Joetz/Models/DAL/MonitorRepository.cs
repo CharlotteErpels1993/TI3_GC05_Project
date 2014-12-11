@@ -6,7 +6,7 @@ using Parse;
 
 namespace Joetz.Models.DAL
 {
-    public class MonitorRepository
+    public class MonitorRepository : IMonitorRepository
     {
         public Monitor GetMonitor(ParseObject monitorObject)
         {

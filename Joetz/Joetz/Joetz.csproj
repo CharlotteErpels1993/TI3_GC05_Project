@@ -234,6 +234,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MaakMonitorAanController.cs" />
+    <Compile Include="Controllers\MonitorController.cs" />
     <Compile Include="Controllers\VakantieController.cs" />
     <Compile Include="Controllers\VormingController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
