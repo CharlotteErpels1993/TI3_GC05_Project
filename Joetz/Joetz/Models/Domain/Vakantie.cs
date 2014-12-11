@@ -10,13 +10,13 @@ namespace Joetz.Models.Domain
         [Display(Name = "Vertrek")]
         [Required(ErrorMessage = "{0} is verplicht")]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime VertrekDatum { get; set; }
 
         [Display(Name = "Terug")]
         [Required(ErrorMessage = "{0} is verplicht")]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime TerugkeerDatum { get; set; }
 
         [Display(Name = "Verblijf")]
@@ -35,7 +35,7 @@ namespace Joetz.Models.Domain
         [StringLength(50, ErrorMessage = "{0} is te lang.")]
         public string Formule { get; set; }
 
-        [Display(Name = "Website logies")]
+        [Display(Name = "Link vakantie website Joetz")]
         [DataType(DataType.Url)]
         //[DataType(DataType.MultilineText)]
         public string Link { get; set; }
