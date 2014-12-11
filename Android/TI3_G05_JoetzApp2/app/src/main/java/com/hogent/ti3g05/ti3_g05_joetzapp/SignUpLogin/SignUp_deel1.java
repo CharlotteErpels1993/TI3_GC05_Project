@@ -101,20 +101,7 @@ public class SignUp_deel1 extends Activity{
             }
         });
 
-        Button lidnummerJa = (Button) findViewById(R.id.lidnrJa);
-        lidnummerJa.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                isInternetPresent = cd.isConnectingToInternet();
-                if (isInternetPresent) {
-                    if(controleRijksregnr())
-                    {
-                        lidnrJa();
-                    }
-                } else
-                    Toast.makeText(getApplicationContext(), getString(R.string.error_no_internet), Toast.LENGTH_SHORT).show();
-            }
-        });
+
     }
 
     public void hideKeyboard(View view) {
@@ -241,7 +228,7 @@ public class SignUp_deel1 extends Activity{
     private void jaOpslaanRijksregNr() {
         Intent intentJa = new Intent(getApplicationContext(), SignUp_deel2.class);
         intentJa.putExtra("lidVanBondMoyson", "true");
-        intentJa.putExtra("et_rijksregisterNr", rijksregnr);
+        intentJa.putExtra("rijksregisternr", rijksregnr);
         startActivity(intentJa);
 
         overridePendingTransition(R.anim.right_in, R.anim.left_out);
@@ -252,22 +239,12 @@ public class SignUp_deel1 extends Activity{
     private void neeOpslaanRijksregNr() {
         Intent intentNee = new Intent(getApplicationContext(), SignUp_deel3.class);
         intentNee.putExtra("lidVanBondMoyson", "false");
-        intentNee.putExtra("et_rijksregisterNr", rijksregnr);
+        intentNee.putExtra("rijksregisternr", rijksregnr);
         startActivity(intentNee);
 
         overridePendingTransition(R.anim.right_in, R.anim.left_out);
     }
 
-    //Ga door naar stap 2 van inschrijven als Monitor. Je geeft RRN en confirmatie v lidnr mee
-    private void lidnrJa() {
-        Intent intentLidnr = new Intent(getApplicationContext(), SignUp_deel2.class);
-        intentLidnr.putExtra("lidnrja", "true");
-        intentLidnr.putExtra("et_rijksregisterNr", rijksregnr);
-        startActivity(intentLidnr);
-
-        overridePendingTransition(R.anim.right_in, R.anim.left_out);
-
-    }
 
 
     //error verbergen, wordt opgeroepen elke keer de gebruiker opnieuw verder probeert te gaan

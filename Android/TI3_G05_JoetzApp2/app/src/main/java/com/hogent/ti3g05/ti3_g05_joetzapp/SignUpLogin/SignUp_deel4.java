@@ -42,8 +42,6 @@ public class SignUp_deel4 extends Activity{
     // Connection detector class
     private ConnectionDetector cd;
 
-    private EditText lidnummerEditText;
-    private String lidnrJa;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -59,14 +57,8 @@ public class SignUp_deel4 extends Activity{
 		mConfirmPasswordEditText = (EditText) findViewById(R.id.etPasswordConfirm);
 
         Intent in = getIntent();
-        lidnrJa = in.getStringExtra("lidnrja");
         rijksregisternummer = in.getStringExtra("rijksregisternr");
 
-        if(lidnrJa != null && lidnrJa.equals("true"))
-        {
-            lidnummerEditText = (EditText) findViewById(R.id.lidnrSignup);
-            lidnummerEditText.setVisibility(View.VISIBLE);
-        }
 
         Button mCreateAccountButton = (Button) findViewById(R.id.btnCreateAccount);
 		mCreateAccountButton.setOnClickListener(new OnClickListener() {
@@ -91,40 +83,7 @@ public class SignUp_deel4 extends Activity{
         String mEmail = mEmailEditText.getText().toString();
         String mPassword = mPasswordEditText.getText().toString();
         String mConfirmPassword = mConfirmPasswordEditText.getText().toString();
-        String lidnr= lidnummerEditText.getText().toString();
 
-        if(lidnrJa != null && lidnrJa.equals("true"))
-        {
-            if(TextUtils.isEmpty((lidnr)))
-            {
-                lidnummerEditText.setError(getString(R.string.error_field_required));
-                focusView = lidnummerEditText;
-                cancel = true;
-            }
-
-            //check of het opgegeven LidNR juist is = of het in de DB voor komt
-            ParseQuery<ParseObject> query = ParseQuery.getQuery("NieuweMonitor");
-            query.whereEqualTo("email", mEmail);
-            try{
-                List<ParseObject> lijstObjecten = query.find();
-                for (ParseObject obj : lijstObjecten)
-                {
-                    lidnrJuist = obj.get("email").equals(mEmail) && obj.get("lidnummer").equals(lidnr) && obj.get("rijksregisternummer").equals(rijksregisternummer);
-                }
-            }
-            catch(ParseException e){
-                signUpMsg(getString(R.string.error_generalException));
-                cancel = true;
-            }
-
-            if(!lidnrJuist)
-            {
-                lidnummerEditText.setError(getString(R.string.error_incorrect_lidnr));
-                focusView = lidnummerEditText;
-                cancel = true;
-            }
-
-        }
 
 		// Check for a valid confirm password.
 		if (TextUtils.isEmpty(mConfirmPassword)) {
@@ -158,10 +117,10 @@ public class SignUp_deel4 extends Activity{
 			cancel = true;
 		}
 
-        if(lidnrJa != null && lidnrJa.equals("true"))
-        {
-            //het opgegevens email adres moet uniek zijn, mag nog niet in de DB voorkomen.
-            ParseQuery<ParseObject> query = ParseQuery.getQuery("Monitor");
+
+        //het opgegevens email adres moet uniek zijn, mag nog niet in de DB voorkomen.
+
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Ouder");
             query.whereEqualTo("email", mEmail);
             try{
                 List<ParseObject> lijstObjecten = query.find();
@@ -175,25 +134,7 @@ public class SignUp_deel4 extends Activity{
                 signUpMsg(getString(R.string.error_generalException));
                 cancel = true;
             }
-        }
-        else
-        {
-            //check if email adress is already used.
-            ParseQuery<ParseObject> query = ParseQuery.getQuery("Ouder");
-            query.whereEqualTo("email", mEmail);
-            try{
-                List<ParseObject> lijstObjecten = query.find();
-                if (lijstObjecten.size() > 0){
-                    mEmailEditText.setError("Dit e-mail adres is reeds in gebruik.");
-                    focusView = mEmailEditText;
-                    cancel = true;
-                }
-            }
-            catch(ParseException e){
-                signUpMsg(getString(R.string.error_generalException));
-                cancel = true;
-            }
-        }
+
 
 
 		if (cancel) {
@@ -243,55 +184,6 @@ public class SignUp_deel4 extends Activity{
             telefoon = extras.getString("telefoon");
             gsm = extras.getString("gsm");
         }
-
-            if (lidnrJa != null && lidnrJa.equals("true")) {
-                ParseObject gebruiker = new ParseObject("Monitor");
-                gebruiker.put("email", mEmail);
-
-                try {
-                    if (aansluitingsnr != null && !aansluitingsnr.equals(""))
-                        gebruiker.put("aansluitingsNr", Double.parseDouble(aansluitingsnr));
-                    gebruiker.put("voornaam", voornaam);
-                    gebruiker.put("naam", naam);
-                    gebruiker.put("straat", straat);
-                    gebruiker.put("nummer", Integer.parseInt(huisnr));
-                    if (bus != null && !bus.equals(""))
-                        gebruiker.put("bus", bus);
-                    gebruiker.put("gemeente", gemeente);
-                    gebruiker.put("postcode", Integer.parseInt(postcode));
-                    gebruiker.put("rijksregisterNr", rijksregisternummer);
-                    gebruiker.put("telefoon", telefoon);
-                    gebruiker.put("gsm", gsm);
-
-                    if (codeGerechtigde != null && !codeGerechtigde.equals(""))
-                        gebruiker.put("codeGerechtigde", Double.parseDouble(codeGerechtigde));
-                } catch (NumberFormatException nfe) {
-                    Toast.makeText(getApplicationContext(), getString(R.string.error_generalException), Toast.LENGTH_SHORT).show();
-                }
-
-                gebruiker.saveInBackground();
-
-                ParseUser user = new ParseUser();
-                user.setUsername(username);
-                user.setPassword(mPassword);
-                user.setEmail(mEmail);
-                user.put("soort", "monitor");
-                user.signUpInBackground(new SignUpCallback() {
-                    @Override
-                    public void done(ParseException e) {
-                        if (e != null) {
-                            // Sign up didn't succeed. Look at the ParseException
-                            // to figure out what went wrong
-                            signUpMsg(getString(R.string.error_generalException));
-                        }
-                    }
-                });
-                signUpMsg("Account aangemaakt.");
-                Intent in = new Intent(getApplicationContext(), navBarMainScreen.class);
-                startActivity(in);
-            }
-        else
-            {
                 ParseObject gebruiker = new ParseObject("Ouder");
                 gebruiker.put("email", mEmail);
 
@@ -340,14 +232,12 @@ public class SignUp_deel4 extends Activity{
                 ParseUser.logInInBackground(username, mPassword, new LogInCallback() {
                     @Override
                     public void done(ParseUser user, ParseException e) {
-                        if(e == null){
-                            Intent in = new Intent(getApplicationContext(), navBarMainScreen.class);
-                            startActivity(in);
-                        }
+
+                        Intent in = new Intent(getApplicationContext(), navBarMainScreen.class);
+                        startActivity(in);
                     }
                 });
 
-            }
     }
 
 	protected void signUpMsg(String msg) {

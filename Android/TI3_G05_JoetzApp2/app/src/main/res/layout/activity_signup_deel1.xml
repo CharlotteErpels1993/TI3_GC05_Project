@@ -54,17 +54,6 @@
         android:layout_below="@+id/radioGroup"
         android:layout_centerHorizontal="true" />
 
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:id="@+id/lidnrJa"
-        android:background="@drawable/button_shape"
-        android:textColor="@color/Rood"
-        android:text="@string/lidnummerja"
-        android:layout_below="@id/txtWaarschuwingMonitor"/>
-
-
 
 
 

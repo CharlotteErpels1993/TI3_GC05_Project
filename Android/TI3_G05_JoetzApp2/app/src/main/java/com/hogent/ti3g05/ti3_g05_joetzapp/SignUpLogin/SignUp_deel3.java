@@ -219,11 +219,7 @@ public class SignUp_deel3 extends Activity{
             String BMnr = extras.getString("aansluitingsnr");
             String codeGerechtigde = extras.getString("codeGerechtigde");
             String aansluitingsNrOuder2 = extras.getString("aansluitingsnrOuder2");
-            String lidnrja = extras.getString("lidnrja");
-            if(lidnrja != null && lidnrja.equals("true"))
-            {
-                in.putExtra("lidnrja", lidnrja);
-            }
+
             in.putExtra("lidVanBondMoyson", lidBM);
             in.putExtra("aansluitingsnr", BMnr);
             in.putExtra("codeGerechtigde", codeGerechtigde);

@@ -111,9 +111,6 @@ public class SignUp_deel2 extends Activity{
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             String value = extras.getString("lidVanBondMoyson");
-            String lidnrja = extras.getString("lidnrja");
-            if(lidnrja != null && lidnrja.equals("true"))
-                intent.putExtra("lidnrja", lidnrja);
             rijksRegNr = extras.getString("rijksregisternr");
             intent.putExtra("lidVanBondMoyson", value);
             intent.putExtra("rijksregisternr", rijksRegNr);
