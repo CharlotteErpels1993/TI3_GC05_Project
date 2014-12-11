@@ -600,7 +600,7 @@
             </objects>
             <point key="canvasLocation" x="1372" y="336"/>
         </scene>
-        <!--Afbeeldingen View Controller-->
+        <!--Afbeeldingen-->
         <scene sceneID="gLX-2k-qOk">
             <objects>
                 <collectionViewController id="QZS-H4-CBZ" customClass="AfbeeldingenViewController" customModule="JOETZ" customModuleProvider="target" sceneMemberID="viewController">
@@ -695,7 +695,7 @@
                             <outlet property="delegate" destination="QZS-H4-CBZ" id="Olg-aa-gto"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="Dd7-I6-rhL">
+                    <navigationItem key="navigationItem" title="Afbeeldingen" id="Dd7-I6-rhL">
                         <barButtonItem key="backBarButtonItem" title="Terug" id="m0M-u4-OnI"/>
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
@@ -1570,7 +1570,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
         <scene sceneID="U2V-qo-4kY">
             <objects>
                 <tableViewController id="f0a-8k-9lX" customClass="GeefFeedback2ViewController" customModule="JOETZ" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="hK9-ee-F9w">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="hK9-ee-F9w">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

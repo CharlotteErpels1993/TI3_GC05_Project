@@ -467,6 +467,10 @@ struct /*class*/ ParseData {
         return FeedbackSQL.getAlleFeedback()
     }
     
+    static func getFeedbackFromVakantie(vakantie: Vakantie) -> ([Feedback], Int?) {
+        return FeedbackSQL.getFeedbackFromVakantie(vakantie)
+    }
+    
     //FavorietenTable
     /*static func getFavorieteVakanties(ouder: Ouder) -> ([Vakantie], Int?) {
         return FavorietSQL.getFavorieteVakanties(ouder)
