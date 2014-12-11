@@ -277,3 +277,4 @@ C:\Users\Charlotte\Documents\GitHub\TI3_GC05_Project\Joetz\Joetz\bin\zh-Hant\Sys
 C:\Users\Charlotte\Documents\GitHub\TI3_GC05_Project\Joetz\Joetz\obj\Debug\Joetz.csproj.ResolveComReference.cache
 C:\Users\Charlotte\Documents\GitHub\TI3_GC05_Project\Joetz\Joetz\obj\Debug\Joetz.dll
 C:\Users\Charlotte\Documents\GitHub\TI3_GC05_Project\Joetz\Joetz\obj\Debug\Joetz.pdb
+C:\Users\Charlotte\Documents\GitHub\TI3_GC05_Project\Joetz\Joetz\obj\Debug\Joetz.csprojResolveAssemblyReference.cache
