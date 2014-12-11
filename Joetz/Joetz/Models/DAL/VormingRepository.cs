@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Joetz.Models.Domain;
 using Parse;
 
@@ -26,24 +27,27 @@ namespace Joetz.Models.DAL
             return vorming;
         }
 
-        public Vorming FindBy(string vormingId)
+        public async Task<Vorming> FindBy(string vormingId)
         {
             var query = ParseObject.GetQuery("Vorming").WhereEqualTo("objectId", vormingId);
-            ParseObject vormingObject = query.FirstAsync().Result;
+            ParseObject vormingObject = await query.FirstAsync();
 
             var vorming = GetVorming(vormingObject);
             return vorming;
         }
 
-        public IList<Vorming> FindAll()
+        public async Task<ICollection<Vorming>> FindAll()
         {
-            var query = ParseObject.GetQuery("Vorming");
-            IEnumerable<ParseObject> vormingObjects = query.FindAsync().Result;
+            var query = from v in ParseObject.GetQuery("Vorming")
+                        orderby v.Get<string>("titel") ascending
+                        select v;
 
-            IList<Vorming> vormingen = new Vorming[] { };
+            IEnumerable<ParseObject> objects = await query.FindAsync();
+
+            ICollection<Vorming> vormingen = new List<Vorming>();
             Vorming vorming;
 
-            foreach (ParseObject vormingObject in vormingObjects)
+            foreach (ParseObject vormingObject in objects)
             {
                 vorming = GetVorming(vormingObject);
                 vormingen.Add(vorming);
