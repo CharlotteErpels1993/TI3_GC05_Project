@@ -45,22 +45,8 @@ class ProfielDetailsTableViewController: UITableViewController, MFMailComposeVie
         gsmLabel.text = monitor.gsm!
         
         if eigenProfiel == false {
-            // BEWERKEN
-            //var rightImage: UIImage = UIImage(named: "menu")!
-            /*var rightItem: UIBarButtonItem = UIBarButtonItem(title: "Bewerken", style: UIBarButtonItemStyle.Plain, target: self, action: "profielBewerken")
-            self.navigationItem.rightBarButtonItem = rightItem*/
-        //} else {
-            // MAIL
-            /*var imageView = UIImageView(frame: CGRectMake(0, 0, 35, 35)) // set as you want
-            var image = UIImage(named: "mail")
-            imageView.image = image*/
             self.navigationItem.rightBarButtonItem = nil
             var rightImage: UIImage = UIImage(named: "mail")!
-            //var buttonFrame: CGRect = rightImage.frame;
-            //buttonFrame.size = CGSizeMake(150, 70);
-            //rightImage.
-            //var image = UIImage(named: "mail")
-            //rightImage.
             var rightItem: UIBarButtonItem = UIBarButtonItem(image: rightImage, style: UIBarButtonItemStyle.Plain, target: self, action: "verstuurMail")
             self.navigationItem.rightBarButtonItem = rightItem
         }
@@ -74,19 +60,6 @@ class ProfielDetailsTableViewController: UITableViewController, MFMailComposeVie
             self.showSendMailErrorAlert()
         }
     }
-    
-    /*func profielBewerken() {
-        performSegueWithIdentifier("bewerkProfiel", sender: self)
-    }*/
-    
-    /*@IBAction func verstuurMail(sender: AnyObject) {
-        let mailComposeViewController = configuredMailComposeViewController()
-        if MFMailComposeViewController.canSendMail() {
-            self.presentViewController(mailComposeViewController, animated: true, completion: nil)
-        } else {
-            self.showSendMailErrorAlert()
-        }
-    }*/
     
     func configuredMailComposeViewController() -> MFMailComposeViewController {
         let mailComposerVC = MFMailComposeViewController()
@@ -114,7 +87,6 @@ class ProfielDetailsTableViewController: UITableViewController, MFMailComposeVie
     }
     
     override func viewDidAppear(animated: Bool) {
-        //self.tableView.reloadData()
         viewDidLoad()
     }
     
