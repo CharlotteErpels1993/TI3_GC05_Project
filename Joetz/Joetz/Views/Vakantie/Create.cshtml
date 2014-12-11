@@ -4,7 +4,10 @@
     ViewBag.Title = "Nieuwe vakantie";
 }
 
-<form role="form">
+@using (Html.BeginForm("Create", "Vakantie", FormMethod.Post, new {role = "form"}))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
     <div class="page-header">
         <br/>
         <h1>@ViewBag.Title</h1>
@@ -16,48 +19,48 @@
             <br/>
             <div class="form-group">
                 <label for="inputTitel">@Html.LabelFor(model => model.Titel)</label>
-                <input type="text" class="form-control" id="inputTitel" style="width: 97%"/>
+                @Html.TextBoxFor(model => model.Titel, new { @class = "form-control", id = "inputTitel", style="width: 97%", rows = "3" })
                 @Html.ValidationMessageFor(model => model.Titel)
             </div>
             <div class="form-group">
                 <label for="inputKorteBeschrijving">@Html.LabelFor(model => model.KorteBeschrijving)</label>
-                <textarea class="form-control" rows="3" id="inputKorteBeschrijving" style="width: 97%"></textarea>
+                @Html.TextAreaFor(model => model.KorteBeschrijving, new { @class = "form-control", id = "inputKorteBeschrijving", style = "width: 97%" })
                 @Html.ValidationMessageFor(model => model.KorteBeschrijving)
             </div>
             <div class="form-group">
                 <label for="inputVervoerwijze">@Html.LabelFor(model => model.Vervoerwijze)</label>
-                <input type="text" class="form-control" id="inputVervoerwijze" style="width: 97%"/>
+                @Html.TextBoxFor(model => model.Vervoerwijze, new { @class = "form-control", id = "inputVervoerwijze", style = "width: 97%" })
                 @Html.ValidationMessageFor(model => model.Vervoerwijze)
             </div>
             <div class="form-group">
                 <label for="inputFormule">@Html.LabelFor(model => model.Formule)</label>
-                <input type="text" class="form-control" id="inputFormule" style="width: 97%"/>
+                @Html.TextBoxFor(model => model.Formule, new { @class = "form-control", id = "inputFormule", style = "width: 97%" })
                 @Html.ValidationMessageFor(model => model.Formule)
             </div>
             <div class="form-group">
                 <label for="inputMinLeeftijd">@Html.LabelFor(model => model.MinLeeftijd)</label>
-                <input type="number" class="form-control" id="inputMinLeeftijd" style="width: 97%"/>
+                @Html.TextBoxFor(model => model.MinLeeftijd, new { @class = "form-control", id = "inputMinLeeftijd", style = "width: 97%", type = "number" })
                 @Html.ValidationMessageFor(model => model.MinLeeftijd)
             </div>
             <div class="form-group">
                 <label for="inputMaxLeeftijd">@Html.LabelFor(model => model.MaxLeeftijd)</label>
-                <input type="number" class="form-control" id="inputMaxLeeftijd" style="width: 97%"/>
+                @Html.TextBoxFor(model => model.MaxLeeftijd, new { @class = "form-control", id = "inputMaxLeeftijd", style = "width: 97%", type = "number" })
                 @Html.ValidationMessageFor(model => model.MaxLeeftijd)
             </div>
             <div class="form-group">
                 <label for="inputMaxAantalDeelnemers">@Html.LabelFor(model => model.MaxAantalDeelnemers)
                 </label>
-                <input type="number" class="form-control" id="inputMaxAantalDeelnemers" style="width: 97%"/>
+                @Html.TextBoxFor(model => model.MaxAantalDeelnemers, new { @class = "form-control", id = "inputMaxAantalDeelnemers", style = "width: 97%", type = "number" })
                 @Html.ValidationMessageFor(model => model.MaxAantalDeelnemers)
             </div>
             <div class="form-group">
                 <label for="inputLocatie">@Html.LabelFor(model => model.Locatie)</label>
-                <input type="text" class="form-control" id="inputLocatie" style="width: 97%"/>
+                @Html.TextBoxFor(model => model.Locatie, new { @class = "form-control", id = "inputLocatie", style = "width: 97%" })
                 @Html.ValidationMessageFor(model => model.Locatie)
             </div>
             <div class="form-group">
                 <label for="inputLinkWebsite">@Html.LabelFor(model => model.Link)</label>
-                <input type="url" class="form-control" id="inputLinkWebsite" style="width: 97%"/>
+                @Html.TextBoxFor(model => model.Link, new { @class = "form-control", id = "inputLinkWebsite", style = "width: 97%" })
                 @Html.ValidationMessageFor(model => model.Link)
             </div>
         </div>
@@ -69,20 +72,20 @@
             <br/>
             <div class="form-group">
                 <label for="inputVertrekdatum">@Html.LabelFor(model => model.VertrekDatum)</label>
-                <input type="date" class="form-control" id="inputVertrekdatum" placeholder="dd/mm/jjjj"
-                       style="width: 97%"/>
+                @Html.TextBoxFor(model => model.VertrekDatum, new { @class = "form-control", 
+               id = "inputVertrekdatum", style = "width: 97%", placeholder = "dd/mm/yyyy", type = "date"})
                 @Html.ValidationMessageFor(model => model.VertrekDatum)
             </div>
             <div class="form-group">
                 <label for="inputTerugkeerdatum">@Html.LabelFor(model => model.TerugkeerDatum)</label>
-                <input type="date" class="form-control" id="inputTerugkeerdatum" placeholder="dd/mm/jjjj"
-                       style="width: 97%"/>
+                @Html.TextBoxFor(model => model.TerugkeerDatum, new { @class = "form-control", 
+                    id = "inputTerugkeerdatum", style = "width: 97%", 
+                    placeholder = "dd/mm/yyyy", type = "date" })
                 @Html.ValidationMessageFor(model => model.TerugkeerDatum)
             </div>
             <div class="form-group">
                 <label for="inputAantalDagenNachten">@Html.LabelFor(model => model.AantalDagenNachten)</label>
-                <input type="text" class="form-control" id="inputAantalDagenNachten"
-                       placeholder="# dagen, # nachten" style="width: 97%"/>
+                @Html.TextBoxFor(model => model.AantalDagenNachten, new { @class = "form-control", id = "inputAantalDagenNachten", style = "width: 97%" })
                 @Html.ValidationMessageFor(model => model.AantalDagenNachten)
             </div>
         </div>
@@ -94,30 +97,29 @@
             <br/>
             <div class="form-group">
                 <label for="inputBasisprijs">@Html.LabelFor(model => model.BasisPrijs)</label>
-                <input type="text" class="form-control" id="inputBasisprijs" style="width: 97%"/>
+                @Html.TextBoxFor(model => model.BasisPrijs, new { @class = "form-control", id = "inputBasisprijs", style = "width: 97%" })
                 @Html.ValidationMessageFor(model => model.BasisPrijs)
             </div>
             <div class="form-group">
                 <label for="inputBondMoysonLedenPrijs">
                     @Html.LabelFor(model => model.BondMoysonLedenPrijs)
                 </label>
-                <input type="text" class="form-control" id="inputBondMoysonLedenPrijs" style="width: 97%"/>
+                @Html.TextBoxFor(model => model.BondMoysonLedenPrijs, new { @class = "form-control", id = "inputBondMoysonLedenPrijs", style = "width: 97%" })
                 @Html.ValidationMessageFor(model => model.BondMoysonLedenPrijs)
             </div>
             <div class="form-group">
                 <label for="inputSterprijs1ouder">@Html.LabelFor(model => model.SterPrijs1Ouder)</label>
-                <input type="text" class="form-control" id="inputSterprijs1ouder" style="width: 97%"/>
+                @Html.TextBoxFor(model => model.SterPrijs1Ouder, new { @class = "form-control", id = "inputSterprijs1ouder", style = "width: 97%" })
                 @Html.ValidationMessageFor(model => model.SterPrijs1Ouder)
             </div>
             <div class="form-group">
                 <label for="inputSterprijs2ouders">@Html.LabelFor(model => model.SterPrijs2Ouders)</label>
-                <input type="text" class="form-control" id="inputSterprijs2ouders" style="width: 97%"/>
+                @Html.TextBoxFor(model => model.SterPrijs2Ouders, new { @class = "form-control", id = "inputSterprijs2ouders", style = "width: 97%" })
                 @Html.ValidationMessageFor(model => model.SterPrijs2Ouders)
             </div>
             <div class="form-group">
                 <label for="inputInbegrepenPrijs">@Html.LabelFor(model => model.InbegrepenPrijs)</label>
-                <textarea class="form-control" id="inputInbegrepenPrijs" rows="3" style="width: 97%">
-                </textarea>
+                @Html.TextAreaFor(model => model.KorteBeschrijving, new { @class = "form-control", @id = "inputInbegrepenPrijs", @style = "width: 97%", @rows = "3" })
                 @Html.ValidationMessageFor(model => model.InbegrepenPrijs)
             </div>
         </div>
@@ -128,7 +130,7 @@
             Toevoegen
         </button><br/><br/>
     </div>
-</form>
+}
 <div class="container">
     <br/>
     @Html.ActionLink("Terug naar overzicht vakanties", "Index", "Vakantie")<br/><br/>
