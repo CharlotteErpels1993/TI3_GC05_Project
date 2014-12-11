@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -122,6 +123,10 @@ public class InschrijvenVakantiePart3 extends Activity {
     public void inschrijvingOpslaan(String activiteitID, String voornaam, String naam, String straat, String huisnr, String bus, String gemeente, String postcode,
                                     String voornaamCP, String naamCP, String telefoonCP, String gsmCP,
                                     String voornaamCPextra, String naamCPextra, String telefoonCPextra, String gsmCPextra, String extraInfo,  String datum){
+        String ouderID = idVanOuderOphalen();
+        if (ouderID == null){
+            return;
+        }
 
         SimpleDateFormat formatter = new SimpleDateFormat("MMM dd, yyyy");
         Date date = null;
@@ -135,7 +140,7 @@ public class InschrijvenVakantiePart3 extends Activity {
             ParseObject inschrijving = new ParseObject("InschrijvingVakantie");
             ParseObject deeln = new ParseObject("Deelnemer");
 
-           String deelnemerId = null;
+            String deelnemerId = null;
             String contactpersoonId = null;
             String vakantieId = null;
 
@@ -231,11 +236,12 @@ public class InschrijvenVakantiePart3 extends Activity {
                 }
                 inschrijving.put("vakantie", activiteitID);
                 inschrijving.put("extraInformatie" , extraInfo);
+                inschrijving.put("ouder", ouderID);
                 inschrijving.put("contactpersoon1", contactpersoonId);
                 if (gsmCPextra != null)
                     inschrijving.put("contactpersoon2", deelnExtra.getObjectId());
                 inschrijving.put("deelnemer", deelnemerId);
-                inschrijving.save(); //thread hoeft niet te wachten op het opslaan van Inschrijving object, op de rest wel
+                inschrijving.saveInBackground(); //thread hoeft niet te wachten op het opslaan van Inschrijving object, op de rest wel -> hier saveInBackground zodat app mag verder gaan
 
                 Intent in = new Intent(getApplicationContext(),navBarMainScreen.class);
                 Toast.makeText(getApplicationContext(), getString(R.string.dialog_ingeschreven_melding), Toast.LENGTH_LONG).show();
@@ -256,6 +262,29 @@ public class InschrijvenVakantiePart3 extends Activity {
         catch(Exception e){
             //return false;
             Toast.makeText(getApplicationContext(), "Er is een fout opgetreden. Onze excuses voor het ongemak.", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    public String idVanOuderOphalen(){
+        String emailToLookFor = ParseUser.getCurrentUser().getEmail();
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Ouder");
+        query.whereEqualTo("email", emailToLookFor);
+
+        try{
+            List<ParseObject> lijstOuders = query.find();
+            if (lijstOuders.size() != 1){ //er mag slechts 1 record in het resultaat zitten, want email moet uniek zijn
+                Toast.makeText(getApplicationContext(), "Er is iets fout gelopen. Onze excuses voor het ongemak.", Toast.LENGTH_SHORT).show();
+                return null;
+            }
+            else{//er is slechts 1 gebruiker in de Monitor tabel, zoals het hoort.
+                return lijstOuders.get(0).getObjectId();
+
+            }
+        }
+        catch(com.parse.ParseException e){
+            return null;
+
         }
 
     }
