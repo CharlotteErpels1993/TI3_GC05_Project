@@ -21,6 +21,8 @@ class InschrijvenVakantie1ViewController : /*ResponsiveTextFieldViewController*/
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setNeedsStatusBarAppearanceUpdate()
+        self.navigationController!.toolbarHidden = true
         ParseData.deleteInschrijvingVakantieTable()
         ParseData.vulInschrijvingVakantieTableOp()
     }

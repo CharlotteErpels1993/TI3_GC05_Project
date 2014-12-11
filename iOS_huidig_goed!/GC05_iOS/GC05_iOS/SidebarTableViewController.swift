@@ -13,7 +13,7 @@ class SidebarTableViewController: UITableViewController {
         super.viewDidLoad()
         
         // Customize apperance of table view
-        tableView.contentInset = UIEdgeInsetsMake(64.0, 0, 0, 0) //
+        tableView.contentInset = UIEdgeInsetsMake(70, 0, 0, 0) //
         tableView.separatorStyle = .None
         tableView.backgroundColor = UIColor.clearColor()
         tableView.scrollsToTop = false
@@ -59,7 +59,7 @@ class SidebarTableViewController: UITableViewController {
             cell!.backgroundColor = UIColor.clearColor()
             cell!.textLabel?.textColor = UIColor.darkGrayColor()
             let selectedBackgroundView = UIView(frame: CGRectMake(0, 0, cell!.frame.size.width, cell!.frame.size.height))
-            selectedBackgroundView.backgroundColor = UIColor.grayColor().colorWithAlphaComponent(0.2)
+            selectedBackgroundView.backgroundColor = UIColor.clearColor().colorWithAlphaComponent(0.2)
             cell!.selectedBackgroundView = selectedBackgroundView
         }
         
@@ -82,9 +82,9 @@ class SidebarTableViewController: UITableViewController {
         return cell!
     }
     
-    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    /*override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 50.0
-    }
+    }*/
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.row == selectedMenuItem {

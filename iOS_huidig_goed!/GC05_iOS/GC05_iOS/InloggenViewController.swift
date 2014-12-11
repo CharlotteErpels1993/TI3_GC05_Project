@@ -15,6 +15,8 @@ class InloggenViewController: ResponsiveTextFieldViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         hideSideMenuView()
+        self.setNeedsStatusBarAppearanceUpdate()
+        self.navigationController!.toolbarHidden = true
         txtEmail.autocorrectionType = UITextAutocorrectionType.No
         txtWachtwoord.autocorrectionType = UITextAutocorrectionType.No
     }
