@@ -42,11 +42,12 @@ class VakantieDetailsTableViewController: UITableViewController {
         
         if PFUser.currentUser() != nil {
             var ouderResponse = ParseData.getOuderWithEmail(PFUser.currentUser().email)
+            var monitorResponse = ParseData.getOuderWithEmail(PFUser.currentUser().email)
             var favorieteVakantie: Favoriet = Favoriet(id: "test")
         
             if ouderResponse.1 == nil {
-                favorieteVakantie.ouder = ouderResponse.0
-                favorieteVakantie.vakantie = self.vakantie
+                favorieteVakantie.gebruiker = ouderResponse.0
+                /*favorieteVakantie.vakantie = self.vakantie
                 
                 if ParseData.isFavorieteVakantie(favorieteVakantie) == true {
                     heartButton.setImage(self.imageHeartFull, forState: UIControlState.Normal)
@@ -54,7 +55,18 @@ class VakantieDetailsTableViewController: UITableViewController {
                 } else {
                     heartButton.setImage(self.imageHeartEmpty, forState: UIControlState.Normal)
                     self.favoriet = false
-                }
+                }*/
+            } else {
+                favorieteVakantie.gebruiker = monitorResponse.0
+            }
+            favorieteVakantie.vakantie = self.vakantie
+            
+            if ParseData.isFavorieteVakantie(favorieteVakantie) == true {
+                heartButton.setImage(self.imageHeartFull, forState: UIControlState.Normal)
+                self.favoriet = true
+            } else {
+                heartButton.setImage(self.imageHeartEmpty, forState: UIControlState.Normal)
+                self.favoriet = false
             }
         }
         
@@ -128,7 +140,6 @@ class VakantieDetailsTableViewController: UITableViewController {
                 self.sectionToDelete = 6
                 self.tableView.deleteSections(NSIndexSet(index: self.sectionToDelete), withRowAnimation: UITableViewRowAnimation.None)
                 self.navigationItem.rightBarButtonItem = nil
-                self.heartButton.hidden = true
                 self.feedbackButton.hidden = true
             }
         } else {
@@ -190,9 +201,12 @@ class VakantieDetailsTableViewController: UITableViewController {
         
         var favorieteVakantie: Favoriet = Favoriet(id: "test")
         var ouderResponse = ParseData.getOuderWithEmail(PFUser.currentUser().email)
+        var monitorResponse = ParseData.getMonitorWithEmail(PFUser.currentUser().email)
         
         if ouderResponse.1 == nil {
-            favorieteVakantie.ouder = ouderResponse.0
+            favorieteVakantie.gebruiker = ouderResponse.0
+        } else {
+            favorieteVakantie.gebruiker = monitorResponse.0
         }
         
         favorieteVakantie.vakantie = self.vakantie

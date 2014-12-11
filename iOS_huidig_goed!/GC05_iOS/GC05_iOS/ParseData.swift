@@ -468,8 +468,11 @@ struct /*class*/ ParseData {
     }
     
     //FavorietenTable
-    static func getFavorieteVakanties(ouder: Ouder) -> ([Vakantie], Int?) {
+    /*static func getFavorieteVakanties(ouder: Ouder) -> ([Vakantie], Int?) {
         return FavorietSQL.getFavorieteVakanties(ouder)
+    }*/
+    static func getFavorieteVakanties(gebruiker: Gebruiker) -> ([Vakantie], Int?) {
+        return FavorietSQL.getFavorieteVakanties(gebruiker)
     }
     
     //InschrijvingenVakantieTable

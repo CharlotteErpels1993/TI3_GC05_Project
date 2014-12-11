@@ -34,11 +34,19 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         var responseVakanties: ([Vakantie], Int?)
         if PFUser.currentUser() != nil {
             var ouderResponse = ParseData.getOuderWithEmail(PFUser.currentUser().email)
+            var monitorResponse = ParseData.getMonitorWithEmail(PFUser.currentUser().email)
             if ouderResponse.1 == nil {
                 if favoriet == false {
                     responseVakanties = ParseData.getAlleVakanties()
                 } else  {
                     responseVakanties = ParseData.getFavorieteVakanties(ouderResponse.0)
+                    self.navigationItem.title = "Favorieten"
+                }
+            } else if monitorResponse.1 == nil {
+                if favoriet == false {
+                    responseVakanties = ParseData.getAlleVakanties()
+                } else  {
+                    responseVakanties = ParseData.getFavorieteVakanties(monitorResponse.0)
                     self.navigationItem.title = "Favorieten"
                 }
             } else {
@@ -180,10 +188,14 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
                 vakanties2.removeAtIndex(indexPath.row)
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
                 var ouderResponse = ParseData.getOuderWithEmail(PFUser.currentUser().email)
+                var monitorResponse = ParseData.getOuderWithEmail(PFUser.currentUser().email)
                 var favorieteVakantie: Favoriet = Favoriet(id: "test")
                 if ouderResponse.1 == nil {
                     favorieteVakantie.vakantie = vakanties[indexPath.row]
-                    favorieteVakantie.ouder = ouderResponse.0
+                    favorieteVakantie.gebruiker = ouderResponse.0
+                } else if monitorResponse.1 == nil {
+                    favorieteVakantie.vakantie = vakanties[indexPath.row]
+                    favorieteVakantie.gebruiker = monitorResponse.0
                 }
                 //let selectedVakantie = vakanties[tableView.indexPathForSelectedRow()!.row]
                 ParseData.deleteFavorieteVakantie(favorieteVakantie)
