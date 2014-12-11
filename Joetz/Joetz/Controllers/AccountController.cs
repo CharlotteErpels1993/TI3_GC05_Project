@@ -60,15 +60,15 @@ namespace Joetz.Controllers
             {
                 if(model.Email.Equals("joetz-west@joetz.be"))
                 {
-
-                ParseUser user = await ParseUser.LogInAsync(model.Email, model.Wachtwoord);
-                // Login was successful.
-                //return RedirectToLocal(returnUrl);
-                return RedirectToAction("Index", "Home");
+                    ParseUser user = await ParseUser.LogInAsync(model.Email, model.Wachtwoord);
+                    // Login was successful.
+                    //return RedirectToLocal(returnUrl);
+                    return RedirectToAction("Index", "Home");
                 }
-                else{
+                else
+                {
                     ModelState.AddModelError("", "U heeft niet de juiste bevoegdheid om dit te doen");
-                return View(model);
+                    return View(model);
                 }
             }
             catch (Exception e)
