@@ -7,6 +7,7 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
     var vakanties2: [Vakantie] = []
     var redColor: UIColor = UIColor(red: CGFloat(232/255.0), green: CGFloat(33/255.0), blue: CGFloat(35/255.0), alpha: CGFloat(1.0))
     var favoriet: Bool = false
+    var score: [Double] = []
     
     @IBOutlet weak var zoekbar: UISearchBar!
     
@@ -14,22 +15,16 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         toggleSideMenuView()
     }
     
-    /*override func prefersStatusBarHidden() -> Bool {
-        self.navigationController!.setToolbarHidden(true, animated: true)
-        return true
-    }*/
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setNeedsStatusBarAppearanceUpdate()
         self.navigationController!.toolbarHidden = true
-        //self.navigationController!.setToolbarHidden(true, animated: true)
         checkConnectie()
         ParseData.deleteFavorietTable()
         ParseData.vulFavorietTableOp()
-        //self.navigationController!.toolbarHidden = true
-        //self.navigationController
+        ParseData.deleteFeedbackTable()
+        ParseData.vulFeedbackTableOp()
         
         var responseVakanties: ([Vakantie], Int?)
         if PFUser.currentUser() != nil {
@@ -87,6 +82,65 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         self.navigationController!.toolbarHidden = true
         refresh(self.refreshControl!)
         self.tableView.reloadData()
+    }
+    
+    func gemiddeldeFeedback(vakantie: Vakantie) -> Double {
+        var feedbackResponse = ParseData.getFeedbackFromVakantie(vakantie)
+        var scores: [Int] = []
+        var sum = 0
+        
+        if feedbackResponse.1 == nil {
+            for feed in feedbackResponse.0 {
+                scores.append(feed.score!)
+            }
+        }
+        
+        for score in scores {
+            sum += score
+        }
+        
+        var gemiddelde: Double = Double(sum) / Double(scores.count)
+        return ceil(gemiddelde)
+    }
+    
+    func zetAantalSterrenGemiddeldeFeedback(vakantie: Vakantie, ster1: UIButton, ster2: UIButton, ster3: UIButton, ster4: UIButton, ster5: UIButton) {
+        var gemiddeldeFeedbackScore: Double = gemiddeldeFeedback(vakantie)
+        var starGevuld: UIImage = UIImage(named: "star")!
+        var starLeeg: UIImage = UIImage(named: "star2")!
+        
+        if gemiddeldeFeedbackScore == 1 {
+            ster1.setImage(starGevuld, forState: UIControlState.Normal)
+            ster2.setImage(starLeeg, forState: UIControlState.Normal)
+            ster3.setImage(starLeeg, forState: UIControlState.Normal)
+            ster4.setImage(starLeeg, forState: UIControlState.Normal)
+            ster5.setImage(starLeeg, forState: UIControlState.Normal)
+        } else if gemiddeldeFeedbackScore == 2 {
+            ster1.setImage(starGevuld, forState: UIControlState.Normal)
+            ster2.setImage(starGevuld, forState: UIControlState.Normal)
+            ster3.setImage(starLeeg, forState: UIControlState.Normal)
+            ster4.setImage(starLeeg, forState: UIControlState.Normal)
+            ster5.setImage(starLeeg, forState: UIControlState.Normal)
+        } else if gemiddeldeFeedbackScore == 3 {
+            ster1.setImage(starGevuld, forState: UIControlState.Normal)
+            ster2.setImage(starGevuld, forState: UIControlState.Normal)
+            ster3.setImage(starGevuld, forState: UIControlState.Normal)
+            ster4.setImage(starLeeg, forState: UIControlState.Normal)
+            ster5.setImage(starLeeg, forState: UIControlState.Normal)
+        } else if gemiddeldeFeedbackScore == 4 {
+            ster1.setImage(starGevuld, forState: UIControlState.Normal)
+            ster2.setImage(starGevuld, forState: UIControlState.Normal)
+            ster3.setImage(starGevuld, forState: UIControlState.Normal)
+            ster4.setImage(starGevuld, forState: UIControlState.Normal)
+            ster5.setImage(starLeeg, forState: UIControlState.Normal)
+        } else if gemiddeldeFeedbackScore == 5 {
+            ster1.setImage(starGevuld, forState: UIControlState.Normal)
+            ster2.setImage(starGevuld, forState: UIControlState.Normal)
+            ster3.setImage(starGevuld, forState: UIControlState.Normal)
+            ster4.setImage(starGevuld, forState: UIControlState.Normal)
+            ster5.setImage(starGevuld, forState: UIControlState.Normal)
+        }
+        
+        score.append(gemiddeldeFeedbackScore)
     }
     
     func checkConnectie() {
@@ -152,6 +206,7 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
             let vakantieDetailsController = segue.destinationViewController as VakantieDetailsTableViewController
             let selectedVakantie = vakanties[tableView.indexPathForSelectedRow()!.row]
             vakantieDetailsController.vakantie = selectedVakantie as Vakantie
+            vakantieDetailsController.score = self.score[tableView.indexPathForSelectedRow()!.row]
             vakantieDetailsController.hidesBottomBarWhenPushed = true
         } else if segue.identifier == "inloggen" {
             let inloggenViewController = segue.destinationViewController as InloggenViewController
@@ -178,7 +233,7 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         cell.doelgroepLabel.layer.cornerRadius = 5.0
         cell.vakantieNaamLabel.text = vakantie.titel
         cell.doelgroepLabel.text! = " \(vakantie.minLeeftijd!) - \(vakantie.maxLeeftijd!) jaar "
-        
+        zetAantalSterrenGemiddeldeFeedback(vakantie, ster1: cell.ster1, ster2: cell.ster2, ster3: cell.ster3, ster4: cell.ster4, ster5: cell.ster5)
         return cell
     }
     
@@ -197,7 +252,6 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
                     favorieteVakantie.vakantie = vakanties[indexPath.row]
                     favorieteVakantie.gebruiker = monitorResponse.0
                 }
-                //let selectedVakantie = vakanties[tableView.indexPathForSelectedRow()!.row]
                 ParseData.deleteFavorieteVakantie(favorieteVakantie)
             }
         }

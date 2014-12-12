@@ -54,7 +54,7 @@ De smaak te pakken? Wacht dan niet te lang en boek een onvergetelijke JOETZ-vaka
         <scene sceneID="RQL-0y-cO4">
             <objects>
                 <tableViewController storyboardIdentifier="Vakanties" id="xj6-b1-6XR" customClass="VakantiesTableViewController" customModule="JOETZ" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="337" sectionHeaderHeight="22" sectionFooterHeight="22" id="xxD-Ib-aLY">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="366" sectionHeaderHeight="22" sectionFooterHeight="22" id="xxD-Ib-aLY">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -64,7 +64,7 @@ De smaak te pakken? Wacht dan niet te lang en boek een onvergetelijke JOETZ-vaka
                             <textInputTraits key="textInputTraits"/>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="vakantieCell" selectionStyle="default" indentationWidth="1" reuseIdentifier="vakantieCell" id="u8I-xk-xAt" customClass="VakantieCell" customModule="JOETZ" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="vakantieCell" selectionStyle="default" indentationWidth="1" reuseIdentifier="vakantieCell" rowHeight="366" id="u8I-xk-xAt" customClass="VakantieCell" customModule="JOETZ" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="u8I-xk-xAt" id="P3a-47-5bl">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -76,7 +76,7 @@ De smaak te pakken? Wacht dan niet te lang en boek een onvergetelijke JOETZ-vaka
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PaK-Rf-VG9">
-                                            <rect key="frame" x="13" y="8" width="574" height="240"/>
+                                            <rect key="frame" x="13" y="8" width="574" height="240.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="285" id="0Oy-0X-jfj"/>
                                                 <constraint firstAttribute="height" constant="245" id="gE4-lt-FYP"/>
@@ -101,39 +101,101 @@ De smaak te pakken? Wacht dan niet te lang en boek een onvergetelijke JOETZ-vaka
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Klik voor meer info" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ya7-iN-w7k">
-                                            <rect key="frame" x="486" y="316" width="112" height="16"/>
+                                            <rect key="frame" x="486" y="345" width="112" height="16"/>
                                             <fontDescription key="fontDescription" type="italicSystem" pointSize="13"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bLL-Ma-IF1">
+                                            <rect key="frame" x="11" y="331" width="30" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="30" id="8cg-8O-tFt"/>
+                                                <constraint firstAttribute="height" constant="30" id="V9H-Z4-v8T"/>
+                                            </constraints>
+                                            <state key="normal" title="Button" image="star.png">
+                                                <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dwf-BM-Nrr">
+                                            <rect key="frame" x="43" y="331" width="30" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="30" id="3N3-zI-3sK"/>
+                                                <constraint firstAttribute="height" constant="30" id="Oe5-8T-kdj"/>
+                                            </constraints>
+                                            <state key="normal" title="Button" image="star.png">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tU7-UA-jlw">
+                                            <rect key="frame" x="75" y="331" width="30" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="4lZ-aP-e1h"/>
+                                                <constraint firstAttribute="width" constant="30" id="FEZ-hK-u1z"/>
+                                            </constraints>
+                                            <state key="normal" title="Button" image="star.png">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xb7-B6-V3G">
+                                            <rect key="frame" x="107" y="331" width="30" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="N2b-WR-n9V"/>
+                                                <constraint firstAttribute="width" constant="30" id="Vk1-32-Xg1"/>
+                                            </constraints>
+                                            <state key="normal" title="Button" image="star.png">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3DK-gr-Ywx">
+                                            <rect key="frame" x="139" y="331" width="30" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="30" id="EyF-Ko-xCm"/>
+                                                <constraint firstAttribute="height" constant="30" id="Uth-4s-FqH"/>
+                                            </constraints>
+                                            <state key="normal" title="Button" image="star.png">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                        </button>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="bottomMargin" secondItem="ukk-ej-Mho" secondAttribute="bottom" constant="24" id="0VQ-AA-JO5"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="ukk-ej-Mho" secondAttribute="bottom" constant="53" id="0VQ-AA-JO5"/>
                                         <constraint firstItem="PaK-Rf-VG9" firstAttribute="top" secondItem="P3a-47-5bl" secondAttribute="topMargin" id="3mm-qU-ZkP"/>
                                         <constraint firstItem="ukk-ej-Mho" firstAttribute="top" secondItem="q1S-ad-fX9" secondAttribute="bottom" constant="29.5" id="58S-E0-bA1"/>
                                         <constraint firstItem="Eae-8F-4Z1" firstAttribute="top" secondItem="q1S-ad-fX9" secondAttribute="bottom" constant="2.5" id="7Id-Fl-qn3"/>
                                         <constraint firstItem="Eae-8F-4Z1" firstAttribute="top" secondItem="ukk-ej-Mho" secondAttribute="bottom" constant="7.5" id="Aqw-5x-rOU"/>
                                         <constraint firstItem="ukk-ej-Mho" firstAttribute="leading" secondItem="Eae-8F-4Z1" secondAttribute="trailing" id="EqA-Ji-UZw"/>
+                                        <constraint firstItem="Eae-8F-4Z1" firstAttribute="top" secondItem="q1S-ad-fX9" secondAttribute="bottom" constant="2.5" id="FpE-4c-UUM"/>
                                         <constraint firstItem="q1S-ad-fX9" firstAttribute="leading" secondItem="P3a-47-5bl" secondAttribute="leadingMargin" constant="293" id="H8N-0a-DzQ"/>
                                         <constraint firstItem="ukk-ej-Mho" firstAttribute="leading" secondItem="PaK-Rf-VG9" secondAttribute="trailing" constant="8" id="HtJ-UY-baU"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="Ya7-iN-w7k" secondAttribute="bottom" constant="-3.5" id="Jw2-Uv-dS3"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="PaK-Rf-VG9" secondAttribute="trailing" constant="5" id="K9t-Ke-MtL"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="xb7-B6-V3G" secondAttribute="bottom" constant="-3.5" id="KG2-8c-ir5"/>
                                         <constraint firstItem="q1S-ad-fX9" firstAttribute="leading" secondItem="PaK-Rf-VG9" secondAttribute="trailing" constant="8" id="KhE-HA-cEH"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="3DK-gr-Ywx" secondAttribute="bottom" constant="-3.5" id="NF0-ni-Vzm"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="tU7-UA-jlw" secondAttribute="bottom" constant="-3.5" id="Ole-cj-Ajh"/>
                                         <constraint firstItem="q1S-ad-fX9" firstAttribute="top" secondItem="P3a-47-5bl" secondAttribute="topMargin" id="Opb-FT-3ni"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="PaK-Rf-VG9" secondAttribute="bottom" constant="80.5" id="Ql2-uL-Rdj"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="PaK-Rf-VG9" secondAttribute="bottom" constant="109" id="Ql2-uL-Rdj"/>
+                                        <constraint firstItem="3DK-gr-Ywx" firstAttribute="leading" secondItem="xb7-B6-V3G" secondAttribute="trailing" constant="2" id="Tbz-aS-kaj"/>
                                         <constraint firstItem="Eae-8F-4Z1" firstAttribute="top" secondItem="ukk-ej-Mho" secondAttribute="bottom" constant="-20.5" id="UXF-w8-Gxh"/>
+                                        <constraint firstItem="xb7-B6-V3G" firstAttribute="leading" secondItem="tU7-UA-jlw" secondAttribute="trailing" constant="2" id="a89-6h-7r1"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="ukk-ej-Mho" secondAttribute="trailing" constant="0.5" id="bLm-7a-Mpk"/>
                                         <constraint firstItem="Ya7-iN-w7k" firstAttribute="leading" secondItem="P3a-47-5bl" secondAttribute="leadingMargin" constant="472" id="cDp-1h-QpI"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="q1S-ad-fX9" secondAttribute="trailing" id="cQK-5J-5xQ"/>
                                         <constraint firstItem="ukk-ej-Mho" firstAttribute="top" secondItem="q1S-ad-fX9" secondAttribute="bottom" constant="7.5" id="d4Z-jg-75X"/>
+                                        <constraint firstItem="Dwf-BM-Nrr" firstAttribute="leading" secondItem="bLL-Ma-IF1" secondAttribute="trailing" constant="2" id="e7U-cP-IMX"/>
                                         <constraint firstItem="q1S-ad-fX9" firstAttribute="top" secondItem="PaK-Rf-VG9" secondAttribute="bottom" constant="7" id="ezV-dK-mcG"/>
                                         <constraint firstItem="Eae-8F-4Z1" firstAttribute="leading" secondItem="PaK-Rf-VG9" secondAttribute="trailing" constant="8" id="fQh-Cr-gWO"/>
                                         <constraint firstItem="Eae-8F-4Z1" firstAttribute="leading" secondItem="P3a-47-5bl" secondAttribute="leadingMargin" id="hjm-kg-BAJ"/>
+                                        <constraint firstItem="bLL-Ma-IF1" firstAttribute="leading" secondItem="P3a-47-5bl" secondAttribute="leadingMargin" constant="3" id="hkN-gk-LFE"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="q1S-ad-fX9" secondAttribute="trailing" id="i2U-lV-g5x"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Dwf-BM-Nrr" secondAttribute="bottom" constant="-3.5" id="jdi-Wk-XJE"/>
+                                        <constraint firstItem="tU7-UA-jlw" firstAttribute="leading" secondItem="Dwf-BM-Nrr" secondAttribute="trailing" constant="2" id="k2C-rR-0IB"/>
                                         <constraint firstItem="PaK-Rf-VG9" firstAttribute="leading" secondItem="P3a-47-5bl" secondAttribute="leadingMargin" constant="5" id="kAZ-Ww-bJC"/>
                                         <constraint firstItem="ukk-ej-Mho" firstAttribute="leading" secondItem="P3a-47-5bl" secondAttribute="leadingMargin" constant="471" id="oKF-j9-dcg"/>
                                         <constraint firstItem="q1S-ad-fX9" firstAttribute="leading" secondItem="P3a-47-5bl" secondAttribute="leadingMargin" id="s4O-qN-YxI"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="Ya7-iN-w7k" secondAttribute="trailing" constant="-6" id="s5I-vN-AbE"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="bLL-Ma-IF1" secondAttribute="bottom" constant="-3.5" id="vG6-yi-TIF"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Dwf-BM-Nrr" secondAttribute="trailing" constant="512" id="wYK-ps-LTU"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="Eae-8F-4Z1" secondAttribute="trailing" constant="100" id="xC4-I4-ezP"/>
                                     </constraints>
                                     <variation key="default">
@@ -143,14 +205,16 @@ De smaak te pakken? Wacht dan niet te lang en boek een onvergetelijke JOETZ-vaka
                                             <exclude reference="Opb-FT-3ni"/>
                                             <exclude reference="i2U-lV-g5x"/>
                                             <exclude reference="Aqw-5x-rOU"/>
+                                            <exclude reference="FpE-4c-UUM"/>
                                             <exclude reference="UXF-w8-Gxh"/>
                                             <exclude reference="fQh-Cr-gWO"/>
-                                            <exclude reference="cDp-1h-QpI"/>
+                                            <exclude reference="wYK-ps-LTU"/>
                                             <exclude reference="58S-E0-bA1"/>
                                             <exclude reference="EqA-Ji-UZw"/>
                                             <exclude reference="HtJ-UY-baU"/>
                                             <exclude reference="d4Z-jg-75X"/>
                                             <exclude reference="oKF-j9-dcg"/>
+                                            <exclude reference="cDp-1h-QpI"/>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
@@ -158,6 +222,11 @@ De smaak te pakken? Wacht dan niet te lang en boek een onvergetelijke JOETZ-vaka
                                     <outlet property="afbeelding" destination="PaK-Rf-VG9" id="nsm-gO-qQq"/>
                                     <outlet property="doelgroepLabel" destination="ukk-ej-Mho" id="KOi-B4-JwJ"/>
                                     <outlet property="locatieLabel" destination="Eae-8F-4Z1" id="Y68-60-sNO"/>
+                                    <outlet property="ster1" destination="bLL-Ma-IF1" id="AVj-2j-V77"/>
+                                    <outlet property="ster2" destination="Dwf-BM-Nrr" id="zNl-i0-EXu"/>
+                                    <outlet property="ster3" destination="tU7-UA-jlw" id="SqP-Ql-Or8"/>
+                                    <outlet property="ster4" destination="xb7-B6-V3G" id="ikv-Tj-RpM"/>
+                                    <outlet property="ster5" destination="3DK-gr-Ywx" id="Z40-of-LAy"/>
                                     <outlet property="vakantieNaamLabel" destination="q1S-ad-fX9" id="y2M-1e-Am6"/>
                                     <segue destination="q35-qh-mtC" kind="show" identifier="toonVakantie" id="laN-Ih-sVW"/>
                                 </connections>
@@ -188,7 +257,7 @@ De smaak te pakken? Wacht dan niet te lang en boek een onvergetelijke JOETZ-vaka
                     </refreshControl>
                     <connections>
                         <outlet property="view" destination="xxD-Ib-aLY" id="vqA-FM-3Jv"/>
-                        <outlet property="zoekbar" destination="RlW-AC-mYB" id="7KL-cF-nD3"/>
+                        <outlet property="zoekbar" destination="RlW-AC-mYB" id="dQL-XS-bvh"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FgJ-yq-mEZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -279,9 +348,9 @@ De smaak te pakken? Wacht dan niet te lang en boek een onvergetelijke JOETZ-vaka
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection id="9hz-vW-mdA">
+                            <tableViewSection id="wQg-5K-TaR">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="94" id="GwE-Mt-Y7W">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="95" id="GwE-Mt-Y7W">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GwE-Mt-Y7W" id="dTc-9b-H7l">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -370,6 +439,92 @@ De smaak te pakken? Wacht dan niet te lang en boek een onvergetelijke JOETZ-vaka
                                         <connections>
                                             <segue destination="QZS-H4-CBZ" kind="show" identifier="afbeeldingen" id="JiE-d6-cxk"/>
                                         </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="67" id="GWR-wz-5Um">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GWR-wz-5Um" id="Cf1-0c-uTm">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bRg-Gu-ik0">
+                                                    <rect key="frame" x="285" y="27" width="30" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="30" id="8yr-Vh-BDU"/>
+                                                        <constraint firstAttribute="height" constant="30" id="FJk-PZ-Go4"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button" image="star.png">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JrN-Le-r32">
+                                                    <rect key="frame" x="215" y="27" width="30" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="30" id="YeC-Vb-myh"/>
+                                                        <constraint firstAttribute="height" constant="30" id="mKh-V7-eBM"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button" image="star.png">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rb9-xu-EWZ">
+                                                    <rect key="frame" x="320" y="27" width="30" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="7iI-dl-Ljc"/>
+                                                        <constraint firstAttribute="width" constant="30" id="mNP-ss-ACi"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button" image="star.png">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1mT-UU-j8W">
+                                                    <rect key="frame" x="355" y="27" width="30" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="30" id="CJl-tM-Oe8"/>
+                                                        <constraint firstAttribute="height" constant="30" id="oi4-Ka-bHS"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button" image="star.png">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WRJ-ew-tZa">
+                                                    <rect key="frame" x="250" y="27" width="30" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="gdo-Jm-gYX"/>
+                                                        <constraint firstAttribute="width" constant="30" id="xqG-zn-pMG"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button" image="star.png">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Joetz fun factor:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q0h-WT-Yi6">
+                                                    <rect key="frame" x="8" y="8" width="125" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="WRJ-ew-tZa" firstAttribute="top" secondItem="Cf1-0c-uTm" secondAttribute="topMargin" constant="19" id="50s-6H-2By"/>
+                                                <constraint firstItem="rb9-xu-EWZ" firstAttribute="leading" secondItem="bRg-Gu-ik0" secondAttribute="trailing" constant="5" id="7JM-wJ-o7F"/>
+                                                <constraint firstItem="bRg-Gu-ik0" firstAttribute="leading" secondItem="WRJ-ew-tZa" secondAttribute="trailing" constant="5" id="7vX-4V-TKS"/>
+                                                <constraint firstItem="rb9-xu-EWZ" firstAttribute="top" secondItem="Cf1-0c-uTm" secondAttribute="topMargin" constant="19" id="7wl-8a-w1G"/>
+                                                <constraint firstItem="WRJ-ew-tZa" firstAttribute="top" secondItem="Cf1-0c-uTm" secondAttribute="topMargin" constant="-3" id="AJP-yc-dsX"/>
+                                                <constraint firstItem="WRJ-ew-tZa" firstAttribute="leading" secondItem="Cf1-0c-uTm" secondAttribute="leadingMargin" id="BGD-Us-Sd5"/>
+                                                <constraint firstItem="JrN-Le-r32" firstAttribute="top" secondItem="Cf1-0c-uTm" secondAttribute="topMargin" constant="19" id="LN2-ul-F1t"/>
+                                                <constraint firstItem="WRJ-ew-tZa" firstAttribute="leading" secondItem="JrN-Le-r32" secondAttribute="trailing" constant="5" id="O8a-S7-8gY"/>
+                                                <constraint firstAttribute="centerX" secondItem="bRg-Gu-ik0" secondAttribute="centerX" id="OS1-5I-iWR"/>
+                                                <constraint firstItem="1mT-UU-j8W" firstAttribute="top" secondItem="Cf1-0c-uTm" secondAttribute="topMargin" constant="19" id="VEu-Kf-LSm"/>
+                                                <constraint firstItem="q0h-WT-Yi6" firstAttribute="top" secondItem="Cf1-0c-uTm" secondAttribute="topMargin" id="ebV-pr-A5P"/>
+                                                <constraint firstItem="1mT-UU-j8W" firstAttribute="leading" secondItem="rb9-xu-EWZ" secondAttribute="trailing" constant="5" id="kh3-Pi-moh"/>
+                                                <constraint firstAttribute="centerY" secondItem="bRg-Gu-ik0" secondAttribute="centerY" constant="-8.5" id="oeb-rA-lHh"/>
+                                                <constraint firstItem="q0h-WT-Yi6" firstAttribute="leading" secondItem="Cf1-0c-uTm" secondAttribute="leadingMargin" id="tzT-4h-mRi"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="AJP-yc-dsX"/>
+                                                    <exclude reference="BGD-Us-Sd5"/>
+                                                </mask>
+                                            </variation>
+                                        </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -634,6 +789,11 @@ De smaak te pakken? Wacht dan niet te lang en boek een onvergetelijke JOETZ-vaka
                         <outlet property="korteBeschrijvingLabel" destination="c4b-zC-cDK" id="hPJ-Sm-VXF"/>
                         <outlet property="locatieLabel" destination="gQQ-Ww-DKf" id="qL8-CM-oPF"/>
                         <outlet property="maxAantalDeelnemersLabel" destination="q5p-DG-HWl" id="8Tf-75-WU1"/>
+                        <outlet property="ster1" destination="JrN-Le-r32" id="pRh-aI-4CC"/>
+                        <outlet property="ster2" destination="WRJ-ew-tZa" id="Hxy-7Q-Cn3"/>
+                        <outlet property="ster3" destination="bRg-Gu-ik0" id="dSR-sw-OdK"/>
+                        <outlet property="ster4" destination="rb9-xu-EWZ" id="qyi-kf-hyT"/>
+                        <outlet property="ster5" destination="1mT-UU-j8W" id="87M-fH-tDU"/>
                         <outlet property="sterPrijs2Label" destination="Mrx-x2-RlI" id="diu-vM-sg6"/>
                         <outlet property="sterprijs1Label" destination="Dqi-r0-7gm" id="HoV-EP-F2n"/>
                         <outlet property="vakantieNaamLabel" destination="5Rb-IM-edP" id="6hW-GA-GIv"/>
@@ -5608,6 +5768,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
         <image name="Klevertje.png" width="615" height="427"/>
         <image name="feedback.png" width="64" height="64"/>
         <image name="menu.png" width="64" height="64"/>
+        <image name="star.png" width="1125" height="1125"/>
         <image name="star2.png" width="1125" height="1125"/>
     </resources>
     <inferredMetricsTieBreakers>
