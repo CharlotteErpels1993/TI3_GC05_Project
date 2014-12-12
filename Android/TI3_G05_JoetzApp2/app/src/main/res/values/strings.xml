@@ -150,8 +150,10 @@ Een kindervakantie is in de eerste plaats <b>natuurlijk ambiance, vriendschap en
 JOETZ heeft ook voor <b>jongeren</b> heel wat in de aanbieding. Je kunt kiezen uit een hele reeks buitenlandse vakanties. En of je nu fun of actie zoekt, JOETZ heeft het allemaal. <b>Vanaf 18</b> kan iedereen die door de reismicrobe gebeten is, met JOETZ mee op <b>inleefreis</b> om zo een land te ontdekken als gast in plaats van als toerist.
 De smaak te pakken? Wacht dan niet te lang en boek een onvergetelijke JOETZ-vakantie!</string>
     <string name="title_activity_inschrijving_signup">InschrijvingSignup</string>
+    <string name="maintitle_Inschrijven_Vorming">Inschrijven vorming</string>
     <string name="infolabel_vormingInschrijven">Gelieve een datum te selecteren waarop u de vorming wilt bijwonen.</string>
     <string name="title_activity_vorming_signup">VormingSignup</string>
+    <string name="error_duplicateSignupVorming">U heeft zich al ingeschreven voor deze vorming.</string>
     <string name="periodesHint">Vul hier uw periodes in</string>
     <string name="doorgeven_message">Uw gegevens worden doorgestuurd. Even geduld aub.</string>
     <string name="SuccesvolDoorgegeven">Uw periodes zijn succesvol doorgegeven.</string>
