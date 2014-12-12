@@ -3032,7 +3032,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
             </objects>
             <point key="canvasLocation" x="1792" y="4020"/>
         </scene>
-        <!--Indienen Voorkeur Succesvol View Controller-->
+        <!--Voorkeur succesvol ingediend-->
         <scene sceneID="y4T-Hc-EZY">
             <objects>
                 <viewController id="a6c-ZB-4eV" customClass="IndienenVoorkeurSuccesvolViewController" customModule="JOETZ" customModuleProvider="target" sceneMemberID="viewController">
@@ -3045,7 +3045,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="U heeft succesvol uw voorkeur ingediend!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kDW-hq-QtZ">
-                                <rect key="frame" x="140" y="290" width="321" height="21"/>
+                                <rect key="frame" x="16" y="289.5" width="568" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -3076,9 +3076,11 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                             <constraint firstAttribute="trailingMargin" secondItem="rJd-H7-4j2" secondAttribute="trailing" id="H0N-2G-eIB"/>
                             <constraint firstAttribute="centerX" secondItem="Y3D-b9-iCG" secondAttribute="centerX" id="H65-7Q-6p4"/>
                             <constraint firstItem="rJd-H7-4j2" firstAttribute="top" secondItem="Y3D-b9-iCG" secondAttribute="bottom" constant="-1" id="Of0-XR-ZVB"/>
+                            <constraint firstItem="kDW-hq-QtZ" firstAttribute="leading" secondItem="4LX-k5-Obl" secondAttribute="leadingMargin" id="SIA-3r-v8G"/>
                             <constraint firstAttribute="centerY" secondItem="kDW-hq-QtZ" secondAttribute="centerY" constant="0.5" id="ULQ-tM-OEe"/>
                             <constraint firstAttribute="centerX" secondItem="kDW-hq-QtZ" secondAttribute="centerX" id="W19-C4-er1"/>
                             <constraint firstAttribute="centerY" secondItem="kDW-hq-QtZ" secondAttribute="centerY" constant="0.25" id="bxJ-ld-fUB"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="kDW-hq-QtZ" secondAttribute="trailing" id="jZ6-0P-eCS"/>
                             <constraint firstAttribute="trailingMargin" secondItem="kDW-hq-QtZ" secondAttribute="trailing" id="sZI-TJ-pAx"/>
                             <constraint firstItem="rJd-H7-4j2" firstAttribute="top" secondItem="Y3D-b9-iCG" secondAttribute="bottom" constant="-0.5" id="sv0-Nb-C7g"/>
                         </constraints>
@@ -3094,7 +3096,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="sfj-ta-wgL"/>
+                    <navigationItem key="navigationItem" title="Voorkeur succesvol ingediend" id="sfj-ta-wgL"/>
                     <connections>
                         <outlet property="activityIndicatorView" destination="Y3D-b9-iCG" id="puS-am-tgC"/>
                     </connections>
@@ -3156,6 +3158,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="zoekbar" destination="Cis-Fw-Ccu" id="5EL-bh-fCN"/>
                     </connections>
@@ -3481,7 +3484,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
             </objects>
             <point key="canvasLocation" x="3310" y="3306"/>
         </scene>
-        <!--Inschrijven Vorming Succesvol View Controller-->
+        <!--Inschrijving succesvol-->
         <scene sceneID="Anh-fn-7Ev">
             <objects>
                 <viewController id="ZYZ-vO-yCv" customClass="InschrijvenVormingSuccesvolViewController" customModule="JOETZ" customModuleProvider="target" sceneMemberID="viewController">
@@ -3525,7 +3528,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                             <constraint firstAttribute="centerX" secondItem="R5M-SR-7ia" secondAttribute="centerX" id="u2A-l7-yo4"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="04K-dE-ZTa"/>
+                    <navigationItem key="navigationItem" title="Inschrijving succesvol" id="04K-dE-ZTa"/>
                     <connections>
                         <outlet property="activityIndicatorView" destination="R5M-SR-7ia" id="xOx-RK-8p6"/>
                     </connections>
@@ -3560,15 +3563,15 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                                 </date>
                                 <locale key="locale" localeIdentifier="nl_BE"/>
                             </datePicker>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Mf-ew-jA5">
-                                <rect key="frame" x="523" y="518" width="61" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Mf-ew-jA5">
+                                <rect key="frame" x="523" y="562" width="61" height="30"/>
                                 <state key="normal" title="Annuleer">
                                     <color key="titleColor" red="0.90980392160000001" green="0.12941176469999999" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="annuleer:" destination="JG9-Yc-TEg" eventType="touchUpInside" id="hQl-e4-EhZ"/>
-                                    <segue destination="KPW-Yw-0RU" kind="unwind" identifier="gaTerug" unwindAction="gaTerugNaarOverzichtVakanties:" id="lls-9J-x11"/>
+                                    <segue destination="KPW-Yw-0RU" kind="unwind" identifier="gaTerug" unwindAction="gaTerugNaarOverzichtVakanties:" id="MGc-KB-OyI"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -3612,7 +3615,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                         <sections>
                             <tableViewSection id="1Mm-Ru-Gm0">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="TyN-Io-qkQ">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="57" id="TyN-Io-qkQ">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TyN-Io-qkQ" id="prD-0J-QVm">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -3625,10 +3628,20 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="ea4-kP-3su" firstAttribute="trailing" secondItem="prD-0J-QVm" secondAttribute="trailingMargin" id="P2Q-u1-LwC"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="ea4-kP-3su" secondAttribute="trailing" id="SKe-7j-8Gv"/>
+                                                <constraint firstItem="ea4-kP-3su" firstAttribute="top" secondItem="prD-0J-QVm" secondAttribute="topMargin" constant="3" id="WyC-hT-Bje"/>
                                                 <constraint firstItem="ea4-kP-3su" firstAttribute="leading" secondItem="prD-0J-QVm" secondAttribute="leadingMargin" id="iAp-MA-FTb"/>
                                                 <constraint firstItem="ea4-kP-3su" firstAttribute="top" secondItem="prD-0J-QVm" secondAttribute="topMargin" constant="3" id="xl6-kb-jB4"/>
+                                                <constraint firstItem="ea4-kP-3su" firstAttribute="leading" secondItem="prD-0J-QVm" secondAttribute="leadingMargin" id="xmj-Pm-lh6"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="SKe-7j-8Gv"/>
+                                                    <exclude reference="iAp-MA-FTb"/>
+                                                    <exclude reference="xl6-kb-jB4"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="NO3-1P-L2q">
@@ -3637,7 +3650,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Voornaam: *" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mvk-GT-IyG">
-                                                    <rect key="frame" x="8" y="11" width="94" height="21"/>
+                                                    <rect key="frame" x="8" y="11" width="93.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -3663,7 +3676,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Naam: *" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aoi-xE-ylx">
-                                                    <rect key="frame" x="8" y="11" width="61" height="21"/>
+                                                    <rect key="frame" x="8" y="11" width="61" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -3754,6 +3767,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                                                     </state>
                                                     <connections>
                                                         <action selector="annuleer:" destination="8Yj-Ve-dEZ" eventType="touchUpInside" id="SAd-Yb-oP5"/>
+                                                        <segue destination="Wbx-gv-WjW" kind="unwind" identifier="gaTerug" unwindAction="gaTerugNaarOverzichtVakanties:" id="WCG-Qw-jyf"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -3790,6 +3804,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c2d-O6-7rd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Wbx-gv-WjW" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="969" y="2561"/>
         </scene>
@@ -3847,7 +3862,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Oeq-K6-im0">
-                                                    <rect key="frame" x="139" y="7" width="453" height="30"/>
+                                                    <rect key="frame" x="139" y="8" width="453" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
@@ -3856,7 +3871,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                                                 <constraint firstItem="4S2-ru-706" firstAttribute="top" secondItem="j2e-Se-0FM" secondAttribute="topMargin" constant="3" id="CaA-sq-2sI"/>
                                                 <constraint firstItem="Oeq-K6-im0" firstAttribute="leading" secondItem="j2e-Se-0FM" secondAttribute="leadingMargin" constant="131" id="Nn9-rV-VIa"/>
                                                 <constraint firstItem="Oeq-K6-im0" firstAttribute="trailing" secondItem="j2e-Se-0FM" secondAttribute="trailingMargin" id="Pkb-UJ-UE0"/>
-                                                <constraint firstItem="Oeq-K6-im0" firstAttribute="top" secondItem="j2e-Se-0FM" secondAttribute="topMargin" constant="-1" id="h3L-jY-nSX"/>
+                                                <constraint firstItem="Oeq-K6-im0" firstAttribute="top" secondItem="j2e-Se-0FM" secondAttribute="topMargin" id="h3L-jY-nSX"/>
                                                 <constraint firstItem="4S2-ru-706" firstAttribute="leading" secondItem="j2e-Se-0FM" secondAttribute="leadingMargin" id="yDu-hN-38l"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -3962,6 +3977,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                                                     </state>
                                                     <connections>
                                                         <action selector="annuleer:" destination="YqF-di-ama" eventType="touchUpInside" id="cJq-cT-Vnf"/>
+                                                        <segue destination="mGF-RG-3Jr" kind="unwind" identifier="gaTerug" unwindAction="gaTerugNaarOverzichtVakanties:" id="lur-ae-ZOr"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -4000,6 +4016,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="inZ-0b-YyF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="mGF-RG-3Jr" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1619" y="2558"/>
         </scene>
@@ -4035,7 +4052,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                                 </state>
                                 <connections>
                                     <action selector="annuleer:" destination="C57-CL-LAn" eventType="touchUpInside" id="XY7-YX-QKh"/>
-                                    <segue destination="una-oL-4nC" kind="unwind" identifier="gaTerug" unwindAction="gaTerugNaarOverzichtVakanties:" id="Gpd-FD-Uqh"/>
+                                    <segue destination="una-oL-4nC" kind="unwind" identifier="gaTerug" unwindAction="gaTerugNaarOverzichtVakanties:" id="eHu-JH-vt0"/>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eaN-yk-YyH">
@@ -4104,20 +4121,14 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="wxc-Wv-cQk">
-                                <rect key="frame" x="281" y="281" width="37" height="37"/>
-                                <color key="color" red="0.9794921875" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="wxc-Wv-cQk" secondAttribute="centerX" id="HCJ-GX-874"/>
                             <constraint firstItem="aKZ-2H-F1N" firstAttribute="top" secondItem="X2Y-UH-TaC" secondAttribute="bottom" constant="-3" id="LOo-4W-Cl9"/>
                             <constraint firstAttribute="centerY" secondItem="X2Y-UH-TaC" secondAttribute="centerY" id="MyI-9N-fkU"/>
                             <constraint firstAttribute="centerX" secondItem="aKZ-2H-F1N" secondAttribute="centerX" constant="-0.5" id="PEr-4h-sYr"/>
                             <constraint firstAttribute="centerX" secondItem="X2Y-UH-TaC" secondAttribute="centerX" id="SlV-Sq-NUb"/>
                             <constraint firstItem="aKZ-2H-F1N" firstAttribute="top" secondItem="X2Y-UH-TaC" secondAttribute="bottom" constant="-3" id="Tid-0x-pq0"/>
-                            <constraint firstAttribute="centerY" secondItem="wxc-Wv-cQk" secondAttribute="centerY" id="rod-jj-He7"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -4126,9 +4137,6 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Inschrijven voltooid" id="Bvl-aw-a1o"/>
-                    <connections>
-                        <outlet property="activityIndicatorView" destination="wxc-Wv-cQk" id="Pof-vv-soB"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xo0-Wj-Nhv" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="104-sA-mof" userLabel="Exit" sceneMemberID="exit"/>
@@ -4304,7 +4312,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="70" id="M7T-JF-0qb">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="75" id="M7T-JF-0qb">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="M7T-JF-0qb" id="vbL-sr-i2N">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -5547,6 +5555,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                                                     </state>
                                                     <connections>
                                                         <action selector="annuleer:" destination="1th-E5-fug" eventType="touchUpInside" id="6qb-2F-MWd"/>
+                                                        <segue destination="dtu-eI-s3m" kind="unwind" identifier="gaTerug" unwindAction="gaTerugNaarOverzichtVakanties:" id="o3b-nN-fQW"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -5587,6 +5596,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="50h-bn-rQx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="dtu-eI-s3m" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-415" y="2555"/>
         </scene>
