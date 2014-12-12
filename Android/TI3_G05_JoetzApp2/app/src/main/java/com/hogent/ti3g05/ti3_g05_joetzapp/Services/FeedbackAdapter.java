@@ -63,6 +63,8 @@ public class FeedbackAdapter extends ArrayAdapter<Vakantie> implements Filterabl
         return position;
     }
 
+    //Maakt een holder aan voor de view, zodat er minder overhead komt en de view niet steeds herladen moet worden, Hier wordt alles ingevuld op de juiste plaats
+    //De juiste gegevens worden opgehaald door de positie, de view wordt ingevuld
     public View getView(final int position, View view, ViewGroup parent) {
         final ViewHolder holder;
         if (view == null) {
@@ -84,7 +86,7 @@ public class FeedbackAdapter extends ArrayAdapter<Vakantie> implements Filterabl
     }
 
 
-
+    //Filtert de lijst van feedback door gebruik te maken van de meegegeven zoekcharacters
     public void filter(String charText) {
         charText = charText.toLowerCase(Locale.getDefault());
         feedbackLijst.clear();
