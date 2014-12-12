@@ -11,11 +11,6 @@
 		0F145EDF1A1CDE98003067EA /* ResponsiveTextFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F145EDE1A1CDE98003067EA /* ResponsiveTextFieldViewController.swift */; };
 		0F1E19DB1A2F93CC0035DB96 /* FavorietSQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1E19DA1A2F93CC0035DB96 /* FavorietSQL.swift */; };
 		0F1E19DD1A2F9AF70035DB96 /* Favoriet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1E19DC1A2F9AF70035DB96 /* Favoriet.swift */; };
-		0F246E731A3B352800463A88 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F246E721A3B352800463A88 /* Bolts.framework */; };
-		0F246E751A3B353000463A88 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F246E741A3B353000463A88 /* Parse.framework */; };
-		0F246E771A3B353800463A88 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F246E761A3B353800463A88 /* ParseCrashReporting.framework */; };
-		0F246E791A3B354000463A88 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F246E781A3B354000463A88 /* ParseFacebookUtils.framework */; };
-		0F246E7B1A3B354600463A88 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F246E7A1A3B354600463A88 /* ParseUI.framework */; };
 		0F265EFA1A137CD1003F2699 /* InschrijvenVakantieSuccesvolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F265EF91A137CD1003F2699 /* InschrijvenVakantieSuccesvolViewController.swift */; };
 		0F2A819A1A091F7100F67A3B /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2A81991A091F7100F67A3B /* Regex.swift */; };
 		0F4C2DCE1A1BE253008EDEA4 /* ActivityIndicatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4C2DCD1A1BE253008EDEA4 /* ActivityIndicatorViewController.swift */; };
@@ -45,6 +40,11 @@
 		0FA80B361A01359F008DB343 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FA80B351A01359F008DB343 /* Security.framework */; };
 		0FA80B381A0135A8008DB343 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FA80B371A0135A8008DB343 /* StoreKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		0FA80B3A1A0135B1008DB343 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FA80B391A0135B1008DB343 /* SystemConfiguration.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		0FB957861A3B3F0800C4BCC5 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FB957851A3B3F0800C4BCC5 /* Bolts.framework */; };
+		0FB957881A3B3F1500C4BCC5 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FB957871A3B3F1500C4BCC5 /* Parse.framework */; };
+		0FB9578A1A3B3F1F00C4BCC5 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FB957891A3B3F1F00C4BCC5 /* ParseCrashReporting.framework */; };
+		0FB9578C1A3B3F2800C4BCC5 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FB9578B1A3B3F2800C4BCC5 /* ParseFacebookUtils.framework */; };
+		0FB9578E1A3B3F3200C4BCC5 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FB9578D1A3B3F3200C4BCC5 /* ParseUI.framework */; };
 		0FD07EB51A2348DE006A4E60 /* VakantieSQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD07EB41A2348DE006A4E60 /* VakantieSQL.swift */; };
 		0FD07EB71A234A2E006A4E60 /* MonitorSQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD07EB61A234A2E006A4E60 /* MonitorSQL.swift */; };
 		0FD07EB91A234C41006A4E60 /* VoorkeurSQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD07EB81A234C41006A4E60 /* VoorkeurSQL.swift */; };
@@ -142,11 +142,6 @@
 		0F145EDE1A1CDE98003067EA /* ResponsiveTextFieldViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponsiveTextFieldViewController.swift; sourceTree = "<group>"; };
 		0F1E19DA1A2F93CC0035DB96 /* FavorietSQL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavorietSQL.swift; sourceTree = "<group>"; };
 		0F1E19DC1A2F9AF70035DB96 /* Favoriet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Favoriet.swift; sourceTree = "<group>"; };
-		0F246E721A3B352800463A88 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
-		0F246E741A3B353000463A88 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
-		0F246E761A3B353800463A88 /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
-		0F246E781A3B354000463A88 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
-		0F246E7A1A3B354600463A88 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		0F265EF91A137CD1003F2699 /* InschrijvenVakantieSuccesvolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InschrijvenVakantieSuccesvolViewController.swift; sourceTree = "<group>"; };
 		0F2A81991A091F7100F67A3B /* Regex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
 		0F4C2DCD1A1BE253008EDEA4 /* ActivityIndicatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorViewController.swift; sourceTree = "<group>"; };
@@ -181,6 +176,11 @@
 		0FA80B371A0135A8008DB343 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		0FA80B391A0135B1008DB343 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		0FA80B3D1A0135FF008DB343 /* GC05_iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GC05_iOS-Bridging-Header.h"; sourceTree = "<group>"; };
+		0FB957851A3B3F0800C4BCC5 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "parse-library-1/Bolts.framework"; sourceTree = "<group>"; };
+		0FB957871A3B3F1500C4BCC5 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "parse-library-1/Parse.framework"; sourceTree = "<group>"; };
+		0FB957891A3B3F1F00C4BCC5 /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseCrashReporting.framework; path = "parse-library-1/ParseCrashReporting.framework"; sourceTree = "<group>"; };
+		0FB9578B1A3B3F2800C4BCC5 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseFacebookUtils.framework; path = "parse-library-1/ParseFacebookUtils.framework"; sourceTree = "<group>"; };
+		0FB9578D1A3B3F3200C4BCC5 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseUI.framework; path = "parse-library-1/ParseUI.framework"; sourceTree = "<group>"; };
 		0FD07EB41A2348DE006A4E60 /* VakantieSQL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VakantieSQL.swift; sourceTree = "<group>"; };
 		0FD07EB61A234A2E006A4E60 /* MonitorSQL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitorSQL.swift; sourceTree = "<group>"; };
 		0FD07EB81A234C41006A4E60 /* VoorkeurSQL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoorkeurSQL.swift; sourceTree = "<group>"; };
@@ -271,21 +271,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				A51AB06C1A31C57800D012F7 /* MessageUI.framework in Frameworks */,
-				0F246E771A3B353800463A88 /* ParseCrashReporting.framework in Frameworks */,
+				0FB9578A1A3B3F1F00C4BCC5 /* ParseCrashReporting.framework in Frameworks */,
 				0FA80B3A1A0135B1008DB343 /* SystemConfiguration.framework in Frameworks */,
 				0F88A6C01A1F37C30094D457 /* libsqlite3.dylib in Frameworks */,
 				0FA80B381A0135A8008DB343 /* StoreKit.framework in Frameworks */,
 				0FA80B361A01359F008DB343 /* Security.framework in Frameworks */,
 				0FA80B341A013595008DB343 /* QuartzCore.framework in Frameworks */,
 				0FA80B321A01358B008DB343 /* MobileCoreServices.framework in Frameworks */,
-				0F246E731A3B352800463A88 /* Bolts.framework in Frameworks */,
-				0F246E7B1A3B354600463A88 /* ParseUI.framework in Frameworks */,
+				0FB957861A3B3F0800C4BCC5 /* Bolts.framework in Frameworks */,
+				0FB9578E1A3B3F3200C4BCC5 /* ParseUI.framework in Frameworks */,
 				0FA80B301A013557008DB343 /* libz.dylib in Frameworks */,
 				0FA80B2E1A01354A008DB343 /* CoreLocation.framework in Frameworks */,
-				0F246E751A3B353000463A88 /* Parse.framework in Frameworks */,
+				0FB957881A3B3F1500C4BCC5 /* Parse.framework in Frameworks */,
 				0FA80B2C1A01353E008DB343 /* CoreGraphics.framework in Frameworks */,
 				0FA80B2A1A013533008DB343 /* CFNetwork.framework in Frameworks */,
-				0F246E791A3B354000463A88 /* ParseFacebookUtils.framework in Frameworks */,
+				0FB9578C1A3B3F2800C4BCC5 /* ParseFacebookUtils.framework in Frameworks */,
 				0FA80B281A01352B008DB343 /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -326,11 +326,11 @@
 		0FA80AF91A01350E008DB343 = {
 			isa = PBXGroup;
 			children = (
-				0F246E7A1A3B354600463A88 /* ParseUI.framework */,
-				0F246E781A3B354000463A88 /* ParseFacebookUtils.framework */,
-				0F246E761A3B353800463A88 /* ParseCrashReporting.framework */,
-				0F246E741A3B353000463A88 /* Parse.framework */,
-				0F246E721A3B352800463A88 /* Bolts.framework */,
+				0FB9578D1A3B3F3200C4BCC5 /* ParseUI.framework */,
+				0FB9578B1A3B3F2800C4BCC5 /* ParseFacebookUtils.framework */,
+				0FB957891A3B3F1F00C4BCC5 /* ParseCrashReporting.framework */,
+				0FB957871A3B3F1500C4BCC5 /* Parse.framework */,
+				0FB957851A3B3F0800C4BCC5 /* Bolts.framework */,
 				A51AB06B1A31C57800D012F7 /* MessageUI.framework */,
 				0F88A6BF1A1F37C30094D457 /* libsqlite3.dylib */,
 				0FA80B391A0135B1008DB343 /* SystemConfiguration.framework */,
@@ -859,16 +859,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"/Users/charlotteerpels/Downloads/parse-library-1",
-					"/Volumes/HDD/Downloads/parse-library-1.4.2",
-					/Volumes/HDD/Documenten,
-					"/TI3_GC05_Project/iOS/parse-library-1.4.2",
-					"$(PROJECT_DIR)/parse-library-1.4.2",
-					"$(PROJECT_DIR)/parse-library-1-3",
-					"$(PROJECT_DIR)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "/Users/charlotteerpels/TI3_GC05_Project/iOS_huidig_goed!/GC05_iOS/parse-library-1";
 				INFOPLIST_FILE = GC05_iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -888,16 +879,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"/Users/charlotteerpels/Downloads/parse-library-1",
-					"/Volumes/HDD/Downloads/parse-library-1.4.2",
-					/Volumes/HDD/Documenten,
-					"/TI3_GC05_Project/iOS/parse-library-1.4.2",
-					"$(PROJECT_DIR)/parse-library-1.4.2",
-					"$(PROJECT_DIR)/parse-library-1-3",
-					"$(PROJECT_DIR)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "/Users/charlotteerpels/TI3_GC05_Project/iOS_huidig_goed!/GC05_iOS/parse-library-1";
 				INFOPLIST_FILE = GC05_iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
