@@ -17,6 +17,8 @@ class GeefFeedback2ViewController: UITableViewController/*, UIPickerViewDataSour
     var titel: String?
     var legeSter: UIImage = UIImage(named: "star2")!
     var volleSter: UIImage = UIImage(named: "star")!
+    var statusTextFields: [String: String] = [:]
+    var redColor: UIColor = UIColor.redColor()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,10 +28,12 @@ class GeefFeedback2ViewController: UITableViewController/*, UIPickerViewDataSour
         
         self.navigationItem.title = self.titel
         
-        var grayColor: UIColor = UIColor.grayColor()
+        giveUITextViewDefaultBorder(txtFeedback)
+        
+        /*var grayColor: UIColor = UIColor.grayColor()
         txtFeedback.layer.borderColor = grayColor.CGColor
         txtFeedback.layer.borderWidth = 1.0
-        txtFeedback.layer.cornerRadius = 5.0
+        txtFeedback.layer.cornerRadius = 5.0*/
         
         //scorePickerView.delegate = self
         //scorePickerView.dataSource = self
@@ -114,13 +118,26 @@ class GeefFeedback2ViewController: UITableViewController/*, UIPickerViewDataSour
         var gebruiker = getGebruiker(PFUser.currentUser().email)
         feedback = Feedback(id: "test")
         
-        feedback.datum = NSDate()
-        feedback.gebruiker = gebruiker
-        feedback.vakantie = self.vakantie
-        feedback.score = self.score
-        feedback.waardering = self.txtFeedback.text
-        feedback.goedgekeurd = false
-        geefFeedbackSuccesvolViewController.feedback = self.feedback
+        setStatusTextFields()
+        pasLayoutVeldenAan()
+        
+        if self.score == 0 {
+            foutBoxOproepen("Fout", "Gelieve een geldige score te geven! (1 t.e.m. 5)", self)
+            self.viewDidLoad()
+        } else {
+            if controleerRodeBordersAanwezig() == true {
+                foutBoxOproepen("Fout", "Gelieve het veld feedback in te vullen!", self)
+                self.viewDidLoad()
+            } else {
+                feedback.datum = NSDate()
+                feedback.gebruiker = gebruiker
+                feedback.vakantie = self.vakantie
+                feedback.score = self.score
+                feedback.waardering = self.txtFeedback.text
+                feedback.goedgekeurd = false
+                geefFeedbackSuccesvolViewController.feedback = self.feedback
+            }
+        }
     }
     
     func getGebruiker(email: String) -> Gebruiker {
@@ -145,4 +162,29 @@ class GeefFeedback2ViewController: UITableViewController/*, UIPickerViewDataSour
         }
         return gebruiker
     }
+    
+    func setStatusTextFields() {
+        if txtFeedback.text.isEmpty {
+            statusTextFields["feedback"] = "leeg"
+        } else {
+            statusTextFields["feedback"] = "ingevuld"
+        }
+    }
+    
+    func pasLayoutVeldenAan() {
+        if statusTextFields["feedback"] == "leeg" {
+            giveUITextViewRedBorder(txtFeedback)
+        } else {
+            giveUITextViewDefaultBorder(txtFeedback)
+        }
+    }
+    
+    func controleerRodeBordersAanwezig() -> Bool {
+        if CGColorEqualToColor(txtFeedback.layer.borderColor, redColor.CGColor) {
+            return true
+        } else {
+            return false
+        }
+    }
+    
 }
