@@ -8,9 +8,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-  
-        // dit in de plaats van hieronder in de functie?
-        Parse.setApplicationId("a3jgklEb2rHZYcgqDezLfqSP6i1C2u4eVV8R03YS", clientKey: "3ZguW3kx5J6PuieccT7ypJ5ZvYhwX08ESKL8cDNX")
+                
+        Parse.setApplicationId("a3jgklEb2rHZYcgqDezLfqSP6i1C2u4eVV8R03YS", clientKey:
+            "3ZguW3kx5J6PuieccT7ypJ5ZvYhwX08ESKL8cDNX")
+        
+        
         
         /*if !Reachability.isConnectedToNetwork() {
             var response: ([String], Int?) = SD.existingTables()

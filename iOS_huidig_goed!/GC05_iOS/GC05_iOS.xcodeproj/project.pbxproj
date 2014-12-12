@@ -11,6 +11,11 @@
 		0F145EDF1A1CDE98003067EA /* ResponsiveTextFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F145EDE1A1CDE98003067EA /* ResponsiveTextFieldViewController.swift */; };
 		0F1E19DB1A2F93CC0035DB96 /* FavorietSQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1E19DA1A2F93CC0035DB96 /* FavorietSQL.swift */; };
 		0F1E19DD1A2F9AF70035DB96 /* Favoriet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1E19DC1A2F9AF70035DB96 /* Favoriet.swift */; };
+		0F246E731A3B352800463A88 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F246E721A3B352800463A88 /* Bolts.framework */; };
+		0F246E751A3B353000463A88 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F246E741A3B353000463A88 /* Parse.framework */; };
+		0F246E771A3B353800463A88 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F246E761A3B353800463A88 /* ParseCrashReporting.framework */; };
+		0F246E791A3B354000463A88 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F246E781A3B354000463A88 /* ParseFacebookUtils.framework */; };
+		0F246E7B1A3B354600463A88 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F246E7A1A3B354600463A88 /* ParseUI.framework */; };
 		0F265EFA1A137CD1003F2699 /* InschrijvenVakantieSuccesvolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F265EF91A137CD1003F2699 /* InschrijvenVakantieSuccesvolViewController.swift */; };
 		0F2A819A1A091F7100F67A3B /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2A81991A091F7100F67A3B /* Regex.swift */; };
 		0F4C2DCE1A1BE253008EDEA4 /* ActivityIndicatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4C2DCD1A1BE253008EDEA4 /* ActivityIndicatorViewController.swift */; };
@@ -59,9 +64,6 @@
 		1B4D784F1A02893700E823E2 /* Registratie2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4D784E1A02893700E823E2 /* Registratie2ViewController.swift */; };
 		1B4D78511A02897500E823E2 /* Registratie3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4D78501A02897500E823E2 /* Registratie3ViewController.swift */; };
 		1B4D78531A028A8B00E823E2 /* RegistratieSuccesvolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4D78521A028A8B00E823E2 /* RegistratieSuccesvolViewController.swift */; };
-		1BD1A8261A0A63FE00F34AD3 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BD1A8231A0A63FD00F34AD3 /* Bolts.framework */; };
-		1BD1A8271A0A63FE00F34AD3 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BD1A8241A0A63FE00F34AD3 /* Parse.framework */; };
-		1BD1A8281A0A63FE00F34AD3 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BD1A8251A0A63FE00F34AD3 /* ParseFacebookUtils.framework */; };
 		1BDDB9431A02D0FB0007623D /* Vakantie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDDB9421A02D0FB0007623D /* Vakantie.swift */; };
 		1BDDB9451A02D3440007623D /* Activiteit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDDB9441A02D3440007623D /* Activiteit.swift */; };
 		1BDDB9471A02D8240007623D /* Vorming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDDB9461A02D8240007623D /* Vorming.swift */; };
@@ -140,6 +142,11 @@
 		0F145EDE1A1CDE98003067EA /* ResponsiveTextFieldViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponsiveTextFieldViewController.swift; sourceTree = "<group>"; };
 		0F1E19DA1A2F93CC0035DB96 /* FavorietSQL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavorietSQL.swift; sourceTree = "<group>"; };
 		0F1E19DC1A2F9AF70035DB96 /* Favoriet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Favoriet.swift; sourceTree = "<group>"; };
+		0F246E721A3B352800463A88 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		0F246E741A3B353000463A88 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		0F246E761A3B353800463A88 /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
+		0F246E781A3B354000463A88 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
+		0F246E7A1A3B354600463A88 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		0F265EF91A137CD1003F2699 /* InschrijvenVakantieSuccesvolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InschrijvenVakantieSuccesvolViewController.swift; sourceTree = "<group>"; };
 		0F2A81991A091F7100F67A3B /* Regex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
 		0F4C2DCD1A1BE253008EDEA4 /* ActivityIndicatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorViewController.swift; sourceTree = "<group>"; };
@@ -193,9 +200,6 @@
 		1B4D784E1A02893700E823E2 /* Registratie2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Registratie2ViewController.swift; sourceTree = "<group>"; };
 		1B4D78501A02897500E823E2 /* Registratie3ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Registratie3ViewController.swift; sourceTree = "<group>"; };
 		1B4D78521A028A8B00E823E2 /* RegistratieSuccesvolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistratieSuccesvolViewController.swift; sourceTree = "<group>"; };
-		1BD1A8231A0A63FD00F34AD3 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "parse-library-1.4.2/Bolts.framework"; sourceTree = "<group>"; };
-		1BD1A8241A0A63FE00F34AD3 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "parse-library-1.4.2/Parse.framework"; sourceTree = "<group>"; };
-		1BD1A8251A0A63FE00F34AD3 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseFacebookUtils.framework; path = "parse-library-1.4.2/ParseFacebookUtils.framework"; sourceTree = "<group>"; };
 		1BDDB9421A02D0FB0007623D /* Vakantie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vakantie.swift; sourceTree = "<group>"; };
 		1BDDB9441A02D3440007623D /* Activiteit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Activiteit.swift; sourceTree = "<group>"; };
 		1BDDB9461A02D8240007623D /* Vorming.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vorming.swift; sourceTree = "<group>"; };
@@ -267,19 +271,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				A51AB06C1A31C57800D012F7 /* MessageUI.framework in Frameworks */,
+				0F246E771A3B353800463A88 /* ParseCrashReporting.framework in Frameworks */,
 				0FA80B3A1A0135B1008DB343 /* SystemConfiguration.framework in Frameworks */,
 				0F88A6C01A1F37C30094D457 /* libsqlite3.dylib in Frameworks */,
-				1BD1A8261A0A63FE00F34AD3 /* Bolts.framework in Frameworks */,
-				1BD1A8271A0A63FE00F34AD3 /* Parse.framework in Frameworks */,
-				1BD1A8281A0A63FE00F34AD3 /* ParseFacebookUtils.framework in Frameworks */,
 				0FA80B381A0135A8008DB343 /* StoreKit.framework in Frameworks */,
 				0FA80B361A01359F008DB343 /* Security.framework in Frameworks */,
 				0FA80B341A013595008DB343 /* QuartzCore.framework in Frameworks */,
 				0FA80B321A01358B008DB343 /* MobileCoreServices.framework in Frameworks */,
+				0F246E731A3B352800463A88 /* Bolts.framework in Frameworks */,
+				0F246E7B1A3B354600463A88 /* ParseUI.framework in Frameworks */,
 				0FA80B301A013557008DB343 /* libz.dylib in Frameworks */,
 				0FA80B2E1A01354A008DB343 /* CoreLocation.framework in Frameworks */,
+				0F246E751A3B353000463A88 /* Parse.framework in Frameworks */,
 				0FA80B2C1A01353E008DB343 /* CoreGraphics.framework in Frameworks */,
 				0FA80B2A1A013533008DB343 /* CFNetwork.framework in Frameworks */,
+				0F246E791A3B354000463A88 /* ParseFacebookUtils.framework in Frameworks */,
 				0FA80B281A01352B008DB343 /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -320,11 +326,13 @@
 		0FA80AF91A01350E008DB343 = {
 			isa = PBXGroup;
 			children = (
+				0F246E7A1A3B354600463A88 /* ParseUI.framework */,
+				0F246E781A3B354000463A88 /* ParseFacebookUtils.framework */,
+				0F246E761A3B353800463A88 /* ParseCrashReporting.framework */,
+				0F246E741A3B353000463A88 /* Parse.framework */,
+				0F246E721A3B352800463A88 /* Bolts.framework */,
 				A51AB06B1A31C57800D012F7 /* MessageUI.framework */,
 				0F88A6BF1A1F37C30094D457 /* libsqlite3.dylib */,
-				1BD1A8231A0A63FD00F34AD3 /* Bolts.framework */,
-				1BD1A8241A0A63FE00F34AD3 /* Parse.framework */,
-				1BD1A8251A0A63FE00F34AD3 /* ParseFacebookUtils.framework */,
 				0FA80B391A0135B1008DB343 /* SystemConfiguration.framework */,
 				0FA80B371A0135A8008DB343 /* StoreKit.framework */,
 				0FA80B351A01359F008DB343 /* Security.framework */,
@@ -858,6 +866,8 @@
 					/Volumes/HDD/Documenten,
 					"/TI3_GC05_Project/iOS/parse-library-1.4.2",
 					"$(PROJECT_DIR)/parse-library-1.4.2",
+					"$(PROJECT_DIR)/parse-library-1-3",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = GC05_iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
@@ -885,6 +895,8 @@
 					/Volumes/HDD/Documenten,
 					"/TI3_GC05_Project/iOS/parse-library-1.4.2",
 					"$(PROJECT_DIR)/parse-library-1.4.2",
+					"$(PROJECT_DIR)/parse-library-1-3",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = GC05_iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
