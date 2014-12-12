@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 import com.parse.ParseUser;
 
-
+//Laat de gebruiker uitloggen
 public class Loguit extends Activity {
 
 
@@ -27,10 +27,11 @@ public class Loguit extends Activity {
         loguitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //Bij het klikken op de knop wordt de gebruiker uitgelogd en doorgestuurd naar het overzicht van de vakanties
                 ParseUser.logOut();
                 Toast.makeText(getApplicationContext(), "U bent uitgelogd", Toast.LENGTH_SHORT).show();
 
-                Intent intent1 = new Intent(Loguit.this, navBarMainScreen.class); //navBarMainScreen
+                Intent intent1 = new Intent(Loguit.this, navBarMainScreen.class);
                 startActivity(intent1);
 
             }
@@ -39,7 +40,7 @@ public class Loguit extends Activity {
         terugButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent1 = new Intent(Loguit.this, navBarMainScreen.class); //navBarMainScreen
+                Intent intent1 = new Intent(Loguit.this, navBarMainScreen.class);
                 startActivity(intent1);
 
             }

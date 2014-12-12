@@ -1,7 +1,6 @@
 package com.hogent.ti3g05.ti3_g05_joetzapp;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -10,15 +9,11 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -26,17 +21,11 @@ import android.widget.Toast;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.myDb;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
-import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ListViewAdapter;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.VormingAdapter;
-import com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.Login;
-import com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.SignUp_deel1;
-import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vakantie;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vorming;
 import com.parse.ParseException;
-import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
-import com.parse.ParseUser;
 
 public class Vormingen_Overzicht extends Activity /*implements SwipeRefreshLayout.OnRefreshListener*/ {
 

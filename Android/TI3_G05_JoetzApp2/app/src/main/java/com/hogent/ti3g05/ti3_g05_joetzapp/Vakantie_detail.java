@@ -17,7 +17,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
-import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
@@ -29,11 +28,12 @@ import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
 
-//ingelogde gebr:      titel, korte beschr, periode, locatie, inbegrepen in prijs, doelgroep (met geboortejaren), max aantal deelnemers,
-//                     vervoerswijze, formule, prijs (basisprijs, BM prijs & sterprijs) kortingen, gegevens contactpersoon inschrijving & algemene voorwaarden
-//niet-ingelogde gebr: titel, korte beschr, periode, locatie, inbegrepen in prijs, doelgroep (met geboortejaren), max aantal deelnemers
+//ouder:      titel, korte beschr, periode, locatie, inbegrepen in prijs, doelgroep (met geboortejaren), max aantal deelnemers,
+//                          vervoerswijze, formule, prijs (basisprijs, BM prijs & sterprijs) kortingen, gegevens contactpersoon inschrijving & algemene voorwaarden
+//kind en monitor: titel, korte beschr, periode, locatie, inbegrepen in prijs, doelgroep (met geboortejaren), max aantal deelnemers
 
-public class activiteit_detail extends Activity {
+//Geeft een detailscherm van de vakantie met de juiste informatie per gebruiker
+public class Vakantie_detail extends Activity {
 
     private String naam, locatie, vertrekdatum, terugdatum, formule, maxDeeln, periode, vervoer, prijs, beschrijving;
     private ImageLoader imageLoader = new ImageLoader(this);
@@ -64,6 +64,8 @@ public class activiteit_detail extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //inflateexceprion
         setContentView(R.layout.activiteit_detailnieuw);
 
 
@@ -137,7 +139,7 @@ public class activiteit_detail extends Activity {
         btnInschrijven.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent3 = new Intent(activiteit_detail.this, InschrijvenVakantiePart1.class);
+                Intent intent3 = new Intent(Vakantie_detail.this, InschrijvenVakantiePart1.class);
                 intent3.putExtra("objectId", activiteitID);
                 intent3.putExtra("maxdoelgroep", maxDoelgroep);
                 intent3.putExtra("mindoelgroep", minDoelgroep);
@@ -235,7 +237,7 @@ public class activiteit_detail extends Activity {
             afbeelding1im.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent1 = new Intent(activiteit_detail.this, afbeeldingUItvergroot.class);
+                    Intent intent1 = new Intent(Vakantie_detail.this, afbeeldingUItvergroot.class);
 
                     intent1.putExtra("afbeelding", afbeelding1);
                     startActivity(intent1);
@@ -248,7 +250,7 @@ public class activiteit_detail extends Activity {
             afbeelding2im.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent1 = new Intent(activiteit_detail.this, afbeeldingUItvergroot.class);
+                    Intent intent1 = new Intent(Vakantie_detail.this, afbeeldingUItvergroot.class);
 
                     intent1.putExtra("afbeelding", afbeelding2);
                     startActivity(intent1);
@@ -261,7 +263,7 @@ public class activiteit_detail extends Activity {
             afbeelding3im.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent1 = new Intent(activiteit_detail.this, afbeeldingUItvergroot.class);
+                    Intent intent1 = new Intent(Vakantie_detail.this, afbeeldingUItvergroot.class);
 
                     intent1.putExtra("afbeelding", afbeelding3);
                     startActivity(intent1);
@@ -290,7 +292,7 @@ public class activiteit_detail extends Activity {
         feedback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent  = new Intent(activiteit_detail.this, feedback_geven.class);
+                Intent intent  = new Intent(Vakantie_detail.this, feedback_geven.class);
                 intent.putExtra("vakantie", naam);
                 intent.putExtra("vakantieId", activiteitID);
                 startActivity(intent);
@@ -321,7 +323,7 @@ public class activiteit_detail extends Activity {
             txtInbegrepenInPrijs.setVisibility(View.GONE);
             btnmeerInfo.setVisibility(View.GONE);
             verberg.setVisibility(View.GONE);
-            if(ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("monitor"))
+            if(ParseUser.getCurrentUser()!= null && ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("monitor"))
                 txtExtraInfo.setVisibility(View.GONE);
             else
                 txtExtraInfo.setVisibility(View.VISIBLE);
@@ -543,11 +545,11 @@ public class activiteit_detail extends Activity {
                 favoriet.put("vakantie", activiteitID);
                 favoriet.put("gebruiker", ingelogdeGebruiker);
                 favoriet.save();
-                Toast.makeText(activiteit_detail.this, "Favoriet toegevoegd!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Vakantie_detail.this, "Favoriet toegevoegd!", Toast.LENGTH_SHORT).show();
                 favoImage.setVisibility(View.GONE);
                 deleteImage.setVisibility(View.VISIBLE);
             } else {
-                Toast.makeText(activiteit_detail.this, "Is reeds favoriet.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Vakantie_detail.this, "Is reeds favoriet.", Toast.LENGTH_SHORT).show();
             }
 
         } catch (ParseException e) {
@@ -626,7 +628,7 @@ public class activiteit_detail extends Activity {
         for (ParseObject fav : obD) {
             if (fav.get("vakantie").equals(activiteitID) && fav.get("gebruiker").equals(ingelogdeGebruiker)) {
                 fav.delete();
-                Toast.makeText(activiteit_detail.this, "vakantie is verwijderd van favorieten", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Vakantie_detail.this, "vakantie is verwijderd van favorieten", Toast.LENGTH_SHORT).show();
                 deleteImage.setVisibility(View.GONE);
                 favoImage.setVisibility(View.VISIBLE);
 

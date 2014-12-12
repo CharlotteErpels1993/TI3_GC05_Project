@@ -18,19 +18,15 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
-import org.w3c.dom.Text;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-
+//Geeft de ingelogde gebruiker de mogelijkheid om feedback toe te voegen over een vakantie
 public class feedback_geven extends Activity {
 
     private String vakantie;
     private String vakantieId;
-    private String gebruiker;
+    private String gebruiker = null;
 
     private EditText feedbackText;
     private TextView error;
@@ -38,9 +34,7 @@ public class feedback_geven extends Activity {
 
     private boolean cancel = false;
     private View focusView = null;
-    // flag for Internet connection status
     private Boolean isInternetPresent = false;
-    // Connection detector class
     private ConnectionDetector cd;
     private RatingBar ratingBar;
     private List<ParseObject> lijstMetParseOuders;
@@ -60,31 +54,35 @@ public class feedback_geven extends Activity {
 
         error = (TextView)findViewById(R.id.Error);
         feedbackText = (EditText) findViewById(R.id.feedbackIng);
-       // scoreText = (EditText) findViewById(R.id.score);
 
         isInternetPresent = cd.isConnectingToInternet();
+        //Kijkt of er internet aanwezig is, zoja haal de gebruikerId op van de ingelogde gebruiker
         if (isInternetPresent) {
             try {
-                String emailToLookFor = ParseUser.getCurrentUser().getEmail();
+                String emailOmNaarTeZoeken = ParseUser.getCurrentUser().getEmail();
 
-                // Locate the class table named "Ouder" in Parse.com
+                // Kijk eerst in ouder, als hier het emailadres van de ingelogde gebruiker niet gevonden is, kijk dan in de monitor tabel
                 ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Ouder");
                 lijstMetParseOuders = query.find();
                 for (ParseObject ouder : lijstMetParseOuders) {
 
-                    if (ouder.get("email").equals(emailToLookFor)) {
+                    if (ouder.get("email").equals(emailOmNaarTeZoeken)) {
                         gebruiker = ouder.getObjectId();
                     }
                 }
 
-                ParseQuery<ParseObject> query2 = new ParseQuery<ParseObject>("Monitor");
-                lijstMetParseMonitoren = query2.find();
-                for (ParseObject monitor : lijstMetParseMonitoren) {
+                if(gebruiker == null)
+                {
+                    ParseQuery<ParseObject> query2 = new ParseQuery<ParseObject>("Monitor");
+                    lijstMetParseMonitoren = query2.find();
+                    for (ParseObject monitor : lijstMetParseMonitoren) {
 
-                    if (monitor.get("email").equals(emailToLookFor)) {
-                        gebruiker = monitor.getObjectId();
+                        if (monitor.get("email").equals(emailOmNaarTeZoeken)) {
+                            gebruiker = monitor.getObjectId();
+                        }
                     }
                 }
+
             } catch (com.parse.ParseException e) {
                 e.printStackTrace();
             }
@@ -98,6 +96,7 @@ public class feedback_geven extends Activity {
         Bundle extras = getIntent().getExtras();
         if(extras != null)
         {
+            //haal de vakantie op en het id van de vorige activiteit
             vakantie = extras.getString("vakantie");
             vakantieId = extras.getString("vakantieId");
         }
@@ -107,15 +106,27 @@ public class feedback_geven extends Activity {
         ingeven.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String feedback = feedbackText.getText().toString();
-                String score = (String.valueOf(ratingBar.getRating()));
-                //score = String.valueOf(Math.floor(ratingBar.getRating()));
-                valideerGegevens(feedback, score);
+
+                //Bij het drukken op de knop kijk of er internet is, zoja haal de rating op van de ratingbar en controleer de ingegeven waarden
+                //Zoneen geef een gepaste melding
+                if(isInternetPresent)
+                {
+                    String feedback = feedbackText.getText().toString();
+                    String score = (String.valueOf(ratingBar.getRating()));
+                    valideerGegevens(feedback, score);
+                }
+                else
+                {
+                    Toast.makeText(getApplicationContext(), getString(R.string.error_no_internet), Toast.LENGTH_SHORT).show();
+
+                }
+
             }
         });
 
     }
 
+    //valideer de waarden
     public void valideerGegevens(String feedback, String score)
     {
         clearErrors();
@@ -147,16 +158,15 @@ public class feedback_geven extends Activity {
 
 
         if (cancel) {
-            // There was an error; don't attempt login and focus the first
-            // form field with an error.
+
             focusView.requestFocus();
         } else {
-            // Show a progress spinner, and kick off a background task to
-            // perform the user login attempt.
+
             opslaan(feedback, score);
         }
     }
 
+    //Sla de feedback op in de tabel in parse en stuur de gebruiker met de juiste melding door naar het vakantieoverzicht
     public  void opslaan(String feedback, String score)
     {
         Date dateVandaag = new Date();
@@ -185,7 +195,6 @@ public class feedback_geven extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.back_2, menu);
         return true;
     }

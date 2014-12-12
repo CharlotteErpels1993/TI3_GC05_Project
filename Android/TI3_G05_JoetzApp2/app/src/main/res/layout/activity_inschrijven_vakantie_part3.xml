@@ -27,7 +27,7 @@
             android:text="@string/extra_Informatie" />
 
         <EditText
-            android:id="@+id/ExtraInformatie"
+            android:id="@+id/ExtraInformatieIns"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"

@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -27,7 +26,6 @@ import android.widget.Toast;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
 import com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.Login;
 import com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.SignUp_deel1;
-import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Feedback;
 import com.parse.ParseUser;
 
 
@@ -76,7 +74,7 @@ public class navBarMainScreen extends Activity {
             }
             if(frag.toLowerCase().startsWith("activiteit"))
             {
-                fragment = new activiteit_overzicht();
+                fragment = new Vakantie_overzicht();
             }
             else if(frag.toLowerCase().startsWith("vorming"))
             {
@@ -92,12 +90,12 @@ public class navBarMainScreen extends Activity {
             }
             else if(frag.toLowerCase().startsWith("feedback"))
             {
-                fragment = new feedbackOverzicht();
+                fragment = new feedback_overzicht();
             }
         }
         else
         {
-            fragment = new activiteit_overzicht();
+            fragment = new Vakantie_overzicht();
         }
 
         fragLayout = (FrameLayout) findViewById(R.id.content_frame);
@@ -234,7 +232,7 @@ public class navBarMainScreen extends Activity {
 
                 Intent intent = new Intent(navBarMainScreen.this, navBarMainScreen.class);
 
-                fragment = new activiteit_overzicht();
+                fragment = new Vakantie_overzicht();
                // refreshFragment(position);
 
                 intent.putExtra("frag", fragment.toString());
@@ -243,7 +241,7 @@ public class navBarMainScreen extends Activity {
 
             case 1:
                 Intent intent9 = new Intent(navBarMainScreen.this, navBarMainScreen.class);
-                fragment = new feedbackOverzicht();
+                fragment = new feedback_overzicht();
 
                 //refreshFragment(position);
 
@@ -499,7 +497,7 @@ public class navBarMainScreen extends Activity {
 
                 if(fragment.toString().toLowerCase().startsWith("activiteit"))
                 {
-                    fragment = new activiteit_overzicht();
+                    fragment = new Vakantie_overzicht();
                 }
                 else if(fragment.toString().toLowerCase().startsWith("vorming"))
                 {
@@ -515,7 +513,7 @@ public class navBarMainScreen extends Activity {
                 }
                 else if(fragment.toString().toLowerCase().startsWith("feedback"))
                 {
-                    fragment = new feedbackOverzicht();
+                    fragment = new feedback_overzicht();
                 }
 
                 FragmentManager fragmentManager = getFragmentManager();
@@ -534,7 +532,7 @@ public class navBarMainScreen extends Activity {
             }
         } else if(id == R.id.menu_voegFeedbackToe)
         {
-            Intent intentFeedback = new Intent(navBarMainScreen.this, feedback_geven_vakantie_kiezen.class);
+            Intent intentFeedback = new Intent(navBarMainScreen.this, feedbac_geven_vakantie_kiezen.class);
             startActivity(intentFeedback);
         }
         return super.onOptionsItemSelected(item);
@@ -573,6 +571,7 @@ public class navBarMainScreen extends Activity {
             return;
         }
 
+        //Geeft ng fout, toont steeds message bij teruggaan
         this.doubleBackToExitPressedOnce = true;
         Toast.makeText(this,"Ben je zeker dat je de app wil sluiten?",Toast.LENGTH_SHORT).show();
 

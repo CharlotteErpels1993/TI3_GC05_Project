@@ -12,18 +12,15 @@ import android.widget.ImageView;
 
 import com.parse.ParseUser;
 
-/**
- * Created by Gebruiker on 7/11/2014.
- */
+//geeft de geselecteerde afbeelding vergroot weer
 public class afbeeldingUItvergroot extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Get the view from listview_main.xml
         setContentView(R.layout.afbeelding_uitvergroot);
         setTitle("");
-        // Execute RemoteDataTask AsyncTask
+
         ImageView im = (ImageView)findViewById(R.id.afbvergroot);
 
         Intent i = getIntent();

@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
+//geeft een tekstje weer over joetz
 public class about extends Activity {
 
 
@@ -25,6 +26,7 @@ public class about extends Activity {
         naarAanbod.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //Bij het klikken op de afbeelding ga naar het vakantieoverzicht
                 Intent intent1 = new Intent(about.this, navBarMainScreen.class
                 );
                 startActivity(intent1);

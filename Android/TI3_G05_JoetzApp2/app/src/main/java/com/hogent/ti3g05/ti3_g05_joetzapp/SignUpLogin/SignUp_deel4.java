@@ -18,13 +18,14 @@ import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
 import com.hogent.ti3g05.ti3_g05_joetzapp.R;
 import com.hogent.ti3g05.ti3_g05_joetzapp.navBarMainScreen;
 import com.parse.LogInCallback;
+import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
-
+//Stap 4 van registreren
 public class SignUp_deel4 extends Activity{
 
 	private EditText mEmailEditText; 
@@ -49,7 +50,7 @@ public class SignUp_deel4 extends Activity{
 		setContentView(R.layout.activity_signup_deel4);
         getActionBar().setTitle(getString(R.string.title_activity_Register));
 
-		// creating connection detector class instance
+
         cd = new ConnectionDetector(getApplicationContext());
 
 		mEmailEditText = (EditText) findViewById(R.id.etEmail);
@@ -64,6 +65,7 @@ public class SignUp_deel4 extends Activity{
 		mCreateAccountButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
+                //Bij het klikken op de knop wordt gecontroleerd of er internet is, zoja, controleer gegevens
             isInternetPresent = cd.isConnectingToInternet();
             if (isInternetPresent) {
                 // Internet Connection is Present
@@ -173,7 +175,6 @@ public class SignUp_deel4 extends Activity{
             codeGerechtigde = extras.getString("codeGerechtigde");
             aansluitingsnrOuder2 = extras.getString("aansluitingsnrOuder2");
             aansluitingsnr = extras.getString("aansluitingsnr");
-            //String lidBondMoyson = extras.getString("lidVanBondMoyson");
             voornaam = extras.getString("voornaam");
             naam = extras.getString("naam");
             straat = extras.getString("straat");

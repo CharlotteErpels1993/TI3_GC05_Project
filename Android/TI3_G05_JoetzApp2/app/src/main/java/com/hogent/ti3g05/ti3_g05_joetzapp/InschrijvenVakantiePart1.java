@@ -20,7 +20,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-
+//Biedt de ouder de mogelijkheid tot inschrijven in een vakantie,
+// stap 1
 public class InschrijvenVakantiePart1 extends FragmentActivity {
 
     private EditText txtVoornaam, txtNaam, txtStraat, txtHuisnr, txtBus, txtGemeente, txtPostcode;
@@ -28,9 +29,7 @@ public class InschrijvenVakantiePart1 extends FragmentActivity {
     private String maandI, datum ,voornaam, naam, straat, huisnr, bus, gemeente, postcode, objectID;
     private String maxdoelgroep, mindoelgroep;
 
-    private TextView tv_dag;
     private TextView tv_maand;
-    private TextView tv_jaar;
     private Button btnVolgende;
 
     private TextView tv_errorDate;
@@ -39,9 +38,7 @@ public class InschrijvenVakantiePart1 extends FragmentActivity {
     private boolean cancel = false;
     private View focusView = null;
 
-    // flag for Internet connection status
     private Boolean isInternetPresent = false;
-    // Connection detector class
     private ConnectionDetector cd;
     private Calendar cal = Calendar.getInstance();
 
@@ -65,8 +62,6 @@ public class InschrijvenVakantiePart1 extends FragmentActivity {
         txtGemeente = (EditText) findViewById(R.id.Gemeente);
         txtPostcode = (EditText) findViewById(R.id.Postcode);
         gebDatum = (TextView) findViewById(R.id.DateIns);
-        tv_dag = (TextView) findViewById(R.id.dagIns);
-        tv_jaar = (TextView) findViewById(R.id.jaarIns);
         tv_maand = (TextView) findViewById(R.id.maandIns);
         tv_errorDate = (TextView) findViewById(R.id.ErrorDate);
         tv_errorDate.setVisibility(View.GONE);
@@ -76,16 +71,14 @@ public class InschrijvenVakantiePart1 extends FragmentActivity {
         btnVolgende.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //Bij het klikken op de knop controleer of er internet aanwezig is, zoja controleer de gegevens
+                //Zoneen toon een gepaste melding
                 isInternetPresent = cd.isConnectingToInternet();
 
                 if (isInternetPresent) {
-                    // Internet Connection is Present
-                    // make HTTP requests
                     controlerenOpfouten();
                 }
                 else{
-                    // Internet connection is not present
-                    // Ask user to connect to Internet
                     Toast.makeText(getApplicationContext(), getString(R.string.error_no_internet), Toast.LENGTH_SHORT).show();
                 }
             }
@@ -94,36 +87,18 @@ public class InschrijvenVakantiePart1 extends FragmentActivity {
     }
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.back_2, menu);
-        return true;
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.backMenu2) {
-            Intent intent1 = new Intent(this, navBarMainScreen.class);
-            startActivity(intent1);
-
-            overridePendingTransition(R.anim.left_in, R.anim.right_out);
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
+    //Toon de datepicker dialoog
     public void showDatePickerDialog(View v) {
         DialogFragment newFragment = new CustomDatePicker();
         newFragment.show(getSupportFragmentManager(), "datePicker");
     }
 
+    //Controleer de ingegeven waarden en sla deze op indien juist
     public void controlerenOpfouten(){
         clearErrors();
         cancel = false;
 
-        // Store values at the time of the login attempt.
         voornaam = txtVoornaam.getText().toString().toLowerCase();
         naam = txtNaam.getText().toString().toLowerCase();
         straat = txtStraat.getText().toString();
@@ -168,6 +143,7 @@ public class InschrijvenVakantiePart1 extends FragmentActivity {
             cancel = true;
         }
         else{
+            //Zet de datum in het juiste formaat voor opslag
             SimpleDateFormat formatter = new SimpleDateFormat("MMM dd, yyyy");
             Date date = null;
             try {
@@ -184,6 +160,7 @@ public class InschrijvenVakantiePart1 extends FragmentActivity {
 
             int age = getAge(year, month, day);
 
+            //Controleer of de geboortedatum binnen de doelgroep valt
             if(age < Integer.parseInt(mindoelgroep) || age > Integer.parseInt(maxdoelgroep))
             {
                 gebDatum.setError("De leeftijd valt niet binnen de doelgroep");
@@ -228,18 +205,15 @@ public class InschrijvenVakantiePart1 extends FragmentActivity {
         }
 
         if (cancel) {
-            // There was an error; don't attempt login and focus the first
-            // form field with an error.
             focusView.requestFocus();
         } else {
-            // Show a progress spinner, and kick off a background task to
-            // perform the user login attempt.
+
             opslaan(voornaam ,naam, straat, huisnr, bus, gemeente, postcode);
-            //Toast.makeText(getApplicationContext(), "Opgeslagen", Toast.LENGTH_SHORT).show();
 
         }
     }
 
+    //Sla de gegevens op en stuur deze door naar de volgende stap
     private void opslaan(String voornaam,String naam, String straat, String huisnr, String bus, String gemeente, String postcode) {
         Toast.makeText(getApplicationContext(), getString(R.string.loading_message), Toast.LENGTH_SHORT).show();
 
@@ -261,6 +235,7 @@ public class InschrijvenVakantiePart1 extends FragmentActivity {
 
     }
 
+    //Verwijder de error's
     private void clearErrors(){
         txtVoornaam.setError(null);
         txtNaam.setError(null);
@@ -273,6 +248,7 @@ public class InschrijvenVakantiePart1 extends FragmentActivity {
         tv_errorDate.setVisibility(View.GONE);
     }
 
+    //Controle of de leeftijd binnen de doelgroep valt
     public int getAge(int DOByear, int DOBmonth, int DOBday) {
 
         int age;
@@ -293,5 +269,24 @@ public class InschrijvenVakantiePart1 extends FragmentActivity {
             }
         }
         return age;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.back_2, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.backMenu2) {
+            Intent intent1 = new Intent(this, navBarMainScreen.class);
+            startActivity(intent1);
+
+            overridePendingTransition(R.anim.left_in, R.anim.right_out);
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

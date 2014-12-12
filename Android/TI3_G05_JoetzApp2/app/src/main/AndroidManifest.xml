@@ -55,7 +55,7 @@
          -->
 
         <activity
-            android:name="com.hogent.ti3g05.ti3_g05_joetzapp.activiteit_detail"
+            android:name=".Vakantie_detail"
             android:label="@string/title_activity_activiteit_detail"
             android:theme="@style/CustomActionBarTheme">
         </activity>
@@ -77,14 +77,14 @@
             android:theme="@style/CustomActionBarTheme"/>
         <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.ForgetParsePassword"
             android:theme="@style/CustomActionBarTheme"/>
-        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.afbeeldingUItvergroot"
+        <activity android:name=".afbeeldingUItvergroot"
             android:theme="@style/CustomActionBarTheme"/>
-        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.InschrijvenVakantiePart1"
+        <activity android:name=".InschrijvenVakantiePart1"
             android:theme="@style/CustomActionBarTheme"/>
-        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.InschrijvenVakantiePart2"
+        <activity android:name=".InschrijvenVakantiePart2"
             android:theme="@style/CustomActionBarTheme">
         </activity>
-        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.InschrijvenVakantiePart3"
+        <activity android:name=".InschrijvenVakantiePart3"
             android:theme="@style/CustomActionBarTheme">
         </activity>
         <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.Vormingen_Overzicht"
@@ -97,7 +97,7 @@
             android:theme="@style/CustomActionBarTheme"/>
         <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.Loguit"
             android:theme="@style/CustomActionBarTheme"/>
-        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.about"
+        <activity android:name=".about"
             android:theme="@style/CustomActionBarTheme"/>
         <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.IndienenVoorkeurVakantie"
             android:theme="@style/CustomActionBarTheme"/>
@@ -116,7 +116,7 @@
             android:theme="@style/CustomActionBarTheme"
             android:label="@string/title_activity_profiel_edit" >
         </activity>
-        <activity android:name=".feedback_geven_vakantie_kiezen"
+        <activity android:name=".feedbac_geven_vakantie_kiezen"
             android:theme="@style/CustomActionBarTheme"/>
 
         <activity android:name=".feedback_geven"

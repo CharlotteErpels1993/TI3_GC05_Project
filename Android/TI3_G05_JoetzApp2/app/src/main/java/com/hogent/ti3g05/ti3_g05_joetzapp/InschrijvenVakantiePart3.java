@@ -24,9 +24,7 @@ import java.util.List;
 public class InschrijvenVakantiePart3 extends Activity {
     private EditText et_ExtraInformatie;
 
-    // flag for Internet connection status
     private Boolean isInternetPresent = false;
-    // Connection detector class
     private ConnectionDetector cd;
 
     @Override
@@ -36,20 +34,19 @@ public class InschrijvenVakantiePart3 extends Activity {
         cd = new ConnectionDetector(getApplicationContext());
 
         getActionBar().setTitle("Inschrijven vakantie");
-        et_ExtraInformatie = (EditText) findViewById(R.id.ExtraInformatie);
+        et_ExtraInformatie = (EditText) findViewById(R.id.ExtraInformatieIns);
 
         Button btnVolgende = (Button)findViewById(R.id.btnNaarDeel4V);
         btnVolgende.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //Controleer of er verbinding is met het internet, zoja haal alle gegevens op van de vorige stappen
                 isInternetPresent = cd.isConnectingToInternet();
 
                 if (isInternetPresent) {
-                    doorsturenNaarDeel4();
+                    slaGegevensOp();
                 }
                 else{
-                    // Internet connection is not present
-                    // Ask user to connect to Internet
                     Toast.makeText(getApplicationContext(), getString(R.string.error_no_internet), Toast.LENGTH_SHORT).show();
                 }
             }
@@ -57,27 +54,8 @@ public class InschrijvenVakantiePart3 extends Activity {
 
     }
 
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.back_2, menu);
-        return true;
-    }
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.backMenu2) {
-            Intent intent1 = new Intent(this, navBarMainScreen.class);
-            startActivity(intent1);
-
-            overridePendingTransition(R.anim.left_in, R.anim.right_out);
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    public void doorsturenNaarDeel4(){
+    //Haal de gegevens op uit de vorige stappen
+    public void slaGegevensOp(){
         Toast.makeText(getApplicationContext(), getString(R.string.loading_message), Toast.LENGTH_SHORT).show();
 
 
@@ -109,17 +87,10 @@ public class InschrijvenVakantiePart3 extends Activity {
         String extraInformatie = et_ExtraInformatie.getText().toString();
 
         inschrijvingOpslaan(objectId, voornaam, naam, straat, huisnr,  bus, gemeente, postcode, voornaamCP, naamCP, telefoonCP, gsmCP,voornaamCPextra, naamCPextra, telefoonCPextra, gsmCPextra, extraInformatie, datum);
-       /* if (){
-            Toast.makeText(getApplicationContext(), getString(R.string.dialog_ingeschreven_melding), Toast.LENGTH_LONG).show();
-            startActivity(in);
-
-            overridePendingTransition(R.anim.right_in, R.anim.left_out);
-        }else{
-            Toast.makeText(getApplicationContext(), "Er is een fout opgetreden. Onze excuses voor het ongemak.", Toast.LENGTH_SHORT).show();
-        }*/
 
     }
 
+    //Sla de gegevens op in de database
     public void inschrijvingOpslaan(String activiteitID, String voornaam, String naam, String straat, String huisnr, String bus, String gemeente, String postcode,
                                     String voornaamCP, String naamCP, String telefoonCP, String gsmCP,
                                     String voornaamCPextra, String naamCPextra, String telefoonCPextra, String gsmCPextra, String extraInfo,  String datum){
@@ -153,10 +124,6 @@ public class InschrijvenVakantiePart3 extends Activity {
                     if (deelnemer.get("naam").equals(naam) && deelnemer.get("voornaam").equals(voornaam)) {
                         deelnemerId = deelnemer.getObjectId();
 
-                        //Toast.makeText(InschrijvenVakantiePart3.this, deelnemerId, Toast.LENGTH_LONG).show();
-                        //inscchrijvingVakantie = (String) deelnemer.get("inschrijvingVakantie");
-
-                        //wordt opgevuld
                     }
 
                 }
@@ -185,13 +152,9 @@ public class InschrijvenVakantiePart3 extends Activity {
                 List<ParseObject> lijstContactPersoonInNood = qryContactPersoonInNood.find();
                 for (ParseObject contactp : lijstContactPersoonInNood) {
                     if (contactp.get("naam").equals(naamCP) && contactp.get("voornaam").equals(voornaamCP)) {
-                        //Toast.makeText(InschrijvenVakantiePart3.this, "U heeft zich al ingeschreven voor deze vorming.", Toast.LENGTH_LONG).show();
-                        //return false;
 
                         contactpersoonId = contactp.getObjectId();
-                        //Toast.makeText(InschrijvenVakantiePart3.this, contactpersoonId, Toast.LENGTH_LONG).show();
 
-                        //wordt opgevuld
 
                     }
 
@@ -217,7 +180,6 @@ public class InschrijvenVakantiePart3 extends Activity {
                 if (ins.get("contactpersoon1").equals(contactpersoonId) && ins.get("deelnemer").equals(deelnemerId)) {
 
                     vakantieId =(String) ins.get("vakantie");
-                    //Toast.makeText(InschrijvenVakantiePart3.this, vakantieId, Toast.LENGTH_LONG).show();
 
                 }
 
@@ -241,7 +203,7 @@ public class InschrijvenVakantiePart3 extends Activity {
                 if (gsmCPextra != null)
                     inschrijving.put("contactpersoon2", deelnExtra.getObjectId());
                 inschrijving.put("deelnemer", deelnemerId);
-                inschrijving.saveInBackground(); //thread hoeft niet te wachten op het opslaan van Inschrijving object, op de rest wel -> hier saveInBackground zodat app mag verder gaan
+                inschrijving.saveInBackground();
 
                 Intent in = new Intent(getApplicationContext(),navBarMainScreen.class);
                 Toast.makeText(getApplicationContext(), getString(R.string.dialog_ingeschreven_melding), Toast.LENGTH_LONG).show();
@@ -255,17 +217,14 @@ public class InschrijvenVakantiePart3 extends Activity {
 
             }
 
-
-
-            //return true;
         }
         catch(Exception e){
-            //return false;
             Toast.makeText(getApplicationContext(), "Er is een fout opgetreden. Onze excuses voor het ongemak.", Toast.LENGTH_SHORT).show();
         }
 
     }
 
+    //haal de id op van de ouder
     public String idVanOuderOphalen(){
         String emailToLookFor = ParseUser.getCurrentUser().getEmail();
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Ouder");
@@ -273,11 +232,11 @@ public class InschrijvenVakantiePart3 extends Activity {
 
         try{
             List<ParseObject> lijstOuders = query.find();
-            if (lijstOuders.size() != 1){ //er mag slechts 1 record in het resultaat zitten, want email moet uniek zijn
+            if (lijstOuders.size() != 1){
                 Toast.makeText(getApplicationContext(), "Er is iets fout gelopen. Onze excuses voor het ongemak.", Toast.LENGTH_SHORT).show();
                 return null;
             }
-            else{//er is slechts 1 gebruiker in de Monitor tabel, zoals het hoort.
+            else{
                 return lijstOuders.get(0).getObjectId();
 
             }
@@ -287,6 +246,24 @@ public class InschrijvenVakantiePart3 extends Activity {
 
         }
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.back_2, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.backMenu2) {
+            Intent intent1 = new Intent(this, navBarMainScreen.class);
+            startActivity(intent1);
+
+            overridePendingTransition(R.anim.left_in, R.anim.right_out);
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
 

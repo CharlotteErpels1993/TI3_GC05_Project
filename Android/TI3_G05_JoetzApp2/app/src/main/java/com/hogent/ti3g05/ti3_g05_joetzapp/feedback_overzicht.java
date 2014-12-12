@@ -4,7 +4,6 @@ import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -27,18 +26,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-
-public class feedbackOverzicht extends Fragment {
+//Geeft een overzicht weer van feedback
+public class feedback_overzicht extends Fragment {
 
     private ListView listview;
 
     private List<ParseObject> lijstMetParseVakanties;
     private List<ParseObject> lijstMetParseFeedback;
-    private List<ParseObject> lijstMetParseOuders;
-    private List<ParseObject> lijstMetParseMonitoren;
 
     private myDb myDB;
-    private Feedback map;
+    private Feedback feedback;
     private ProgressDialog mProgressDialog;
     private View rootView;
     private FeedbackAdapter adapter;
@@ -46,7 +43,6 @@ public class feedbackOverzicht extends Fragment {
     private EditText filtertext;
 
     private Boolean isInternetPresent = false;
-    // Connection detector class
     private ConnectionDetector cd;
 
     @Override
@@ -64,17 +60,15 @@ public class feedbackOverzicht extends Fragment {
         cd = new ConnectionDetector(rootView.getContext());
         myDB = new myDb(rootView.getContext());
         myDB.open();
+        //als internet aanwezig is haal alle feedbacks op, zoneen haal alle feedbacks op uit de locale database
         isInternetPresent = cd.isConnectingToInternet();
         if (isInternetPresent) {
-            //Toast.makeText(getActivity(), "internet", Toast.LENGTH_SHORT).show();
             new RemoteDataTask().execute();
         }
         else {
-            //Toast.makeText(getActivity(), "geen internet", Toast.LENGTH_SHORT).show();
             feedbackList = myDB.getFeedback();
 
             adapter = new FeedbackAdapter(rootView.getContext(), feedbackList);
-            // Binds the Adapter to the ListView
             listview.setAdapter(adapter);
 
             filtertext.addTextChangedListener(new TextWatcher() {
@@ -95,43 +89,16 @@ public class feedbackOverzicht extends Fragment {
 
         return rootView;
     }
-   /* private void onCreateSwipeToRefresh(SwipeRefreshLayout refreshLayout) {
 
-        //refreshLayout.setOnRefreshListener(this);
-
-        refreshLayout.setColorScheme(
-                android.R.color.holo_blue_light,
-                android.R.color.holo_orange_light,
-                android.R.color.holo_green_light,
-                android.R.color.holo_red_light);
-
-    }*/
-
-    public void onRefresh() {
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-
-
-                new RemoteDataTask().execute();
-
-            }
-        }, 1000);
-    }
-
-
-    // RemoteDataTask AsyncTask
+    // Asynchrone taak om feedbacks op te halen
     private class RemoteDataTask extends AsyncTask<Void, Void, Void> {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            // Create a progressdialog
             mProgressDialog = new ProgressDialog(getActivity());
 
-            // Set progressdialog title
             mProgressDialog.setTitle("Ophalen van funFactoren.");
 
-            // Set progressdialog message
             mProgressDialog.setMessage("Aan het laden...");
             try {
                 mProgressDialog.setIndeterminate(true);
@@ -141,13 +108,14 @@ public class feedbackOverzicht extends Fragment {
                 mProgressDialog.setIndeterminate(false);
             }
 
+            //Toon de dialoog
             mProgressDialog.show();
 
         }
 
+        //Haal alle feedbacks op
         @Override
         protected Void doInBackground(Void... params) {
-            // Create the array
             feedbackList = new ArrayList<Feedback>();
 
             try {
@@ -163,30 +131,28 @@ public class feedbackOverzicht extends Fragment {
                     qryVakantiesOphalen.orderByAscending("vertrekdatum");
                     lijstMetParseVakanties = qryVakantiesOphalen.find();
 
-                    for (ParseObject feedback : lijstMetParseFeedback) {
-                        map = new Feedback();
-                        map.setVakantieId((String) feedback.get("vakantie"));
-                        map.setFeedback((String) feedback.get("waardering"));
-                        map.setScore((Number) feedback.get("score"));
-                        map.setGebruikerId((String) feedback.get("gebruiker"));
-                        map.setGoedgekeurd((Boolean) feedback.get("goedgekeurd"));
+                    for (ParseObject f : lijstMetParseFeedback) {
+                        feedback = new Feedback();
+                        feedback.setVakantieId((String) f.get("vakantie"));
+                        feedback.setFeedback((String) f.get("waardering"));
+                        feedback.setScore((Number) f.get("score"));
+                        feedback.setGebruikerId((String) f.get("gebruiker"));
+                        feedback.setGoedgekeurd((Boolean) f.get("goedgekeurd"));
 
 
                         for (ParseObject vakantie : lijstMetParseVakanties) {
-                            if (feedback.get("vakantie").toString().equals(vakantie.getObjectId())) {
-                                map.setVakantieNaam((String) vakantie.get("titel"));
+                            if (f.get("vakantie").toString().equals(vakantie.getObjectId())) {
+                                feedback.setVakantieNaam((String) vakantie.get("titel"));
                             }
                         }
-                        if (map.getGoedgekeurd()) {
-                            feedbackList.add(map);
-                            myDB.insertFeedback(map);
+                        if (feedback.getGoedgekeurd()) {
+                            feedbackList.add(feedback);
+                            myDB.insertFeedback(feedback);
                         }
-
 
                     }
 
                 }
-
                 }catch(ParseException e){
 
                     Log.e("Error", e.getMessage());
@@ -201,15 +167,14 @@ public class feedbackOverzicht extends Fragment {
         @Override
         protected void onPostExecute(Void result) {
 
+            //geeft de feedbacklijst door aan de adapter om deze juist weer te geven
             adapter = new FeedbackAdapter(rootView.getContext(), feedbackList);
-            // Binds the Adapter to the ListView
+            // De adapter aan de listview binden
             listview.setAdapter(adapter);
-            // Close the progressdialog
+            // Sluit de dialoog
             mProgressDialog.dismiss();
 
-
-            //swipeLayout.setRefreshing(false);
-
+            // Filter de feedbacklijst
             filtertext.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {                }

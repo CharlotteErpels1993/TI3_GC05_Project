@@ -16,16 +16,14 @@ import android.widget.Toast;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
 import com.hogent.ti3g05.ti3_g05_joetzapp.R;
 
+//stap 2 van registreren, enkel voor leden van bons moyson
 public class SignUp_deel2 extends Activity{
     private EditText et_aansluitingsnummer;
     private EditText et_codeGerechtigde;
     private EditText et_aansluitingsNrOuder2;
     private String rijksRegNr;
 
-
-    // flag for Internet connection status
     private Boolean isInternetPresent = false;
-    // Connection detector class
     private ConnectionDetector cd;
 
     @Override
@@ -44,32 +42,31 @@ public class SignUp_deel2 extends Activity{
 
 
         Button volgendeButton = (Button) findViewById(R.id.btn_volgendedeel3);
+        //Bij het klikken op de knop, controleer of er internet aanwezig is, zoja controleer het aansluitingsnummer
         volgendeButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
             isInternetPresent = cd.isConnectingToInternet();
                 if (isInternetPresent) {
                     // Internet Connection is Present
-                    opslaanAansluitingsnummer();
+                    controleerGegevens();
                 } else
                     Toast.makeText(getApplicationContext(), getString(R.string.error_no_internet), Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    //controleren of de textvakken correct zijn ingevuld. Zo niet -> foutmelding & niet doorgaan
-    private void opslaanAansluitingsnummer(){
+    //controleren of de ingegeven waarden correct zijn (en ingevuld), zoja sla de gegevens op
+    private void controleerGegevens(){
         clearErrors();
 
         boolean cancel = false;
         View focusView = null;
 
-        // Store values at the time of the onClick event.
         String aansluitingsnummerString = et_aansluitingsnummer.getText().toString();
         String codeGerechtigdeStr = et_codeGerechtigde.getText().toString();
         String aansluitingsNrOuder2Str = et_aansluitingsNrOuder2.getText().toString();
 
-        //aansluitingsnr moet ingevuld zijn en 10 karakters lang zijn
         if (TextUtils.isEmpty(aansluitingsnummerString)) {
             et_aansluitingsnummer.setError(getString(R.string.error_field_required));
             focusView = et_aansluitingsnummer;
@@ -96,23 +93,22 @@ public class SignUp_deel2 extends Activity{
             }
         }
 
-        if (cancel) { //error
+        if (cancel) {
             focusView.requestFocus();
-        } else { //geen error -> doorgaan naar volgend scherm
+        } else {
+            //alles is correct, sla de gegevens op
            opslaan(aansluitingsnummerString, codeGerechtigdeStr, aansluitingsNrOuder2Str);
 
         }
 
     }
 
-    //User gaf geen foute input en mag dus door naar volgende stap v inschrijven. Waarden van dit en vorig scherm moeten meegegeven worden
+    //De waarden worden doorgestuurd naar de volgende stap en de gebruiker gaat door naar stap 3
     private void opslaan(String aansluitingsnummerString, String codeGerechtigdeStr, String aansluitingsNrOuder2Str) {
         Intent intent = new Intent(getApplicationContext(), SignUp_deel3.class);
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            String value = extras.getString("lidVanBondMoyson");
             rijksRegNr = extras.getString("rijksregisternr");
-            intent.putExtra("lidVanBondMoyson", value);
             intent.putExtra("rijksregisternr", rijksRegNr);
 
         }
@@ -130,6 +126,8 @@ public class SignUp_deel2 extends Activity{
         overridePendingTransition(R.anim.right_in, R.anim.left_out);
     }
 
+
+    //error verbergen, wordt opgeroepen elke keer de gebruiker opnieuw verder probeert te gaan
     private void clearErrors(){
         et_aansluitingsnummer.setError(null); et_codeGerechtigde.setError(null);
     }
