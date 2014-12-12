@@ -54,7 +54,7 @@ De smaak te pakken? Wacht dan niet te lang en boek een onvergetelijke JOETZ-vaka
         <scene sceneID="RQL-0y-cO4">
             <objects>
                 <tableViewController storyboardIdentifier="Vakanties" id="xj6-b1-6XR" customClass="VakantiesTableViewController" customModule="JOETZ" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="337" sectionHeaderHeight="22" sectionFooterHeight="22" id="xxD-Ib-aLY">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="366" sectionHeaderHeight="22" sectionFooterHeight="22" id="xxD-Ib-aLY">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -64,7 +64,7 @@ De smaak te pakken? Wacht dan niet te lang en boek een onvergetelijke JOETZ-vaka
                             <textInputTraits key="textInputTraits"/>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="vakantieCell" selectionStyle="default" indentationWidth="1" reuseIdentifier="vakantieCell" id="u8I-xk-xAt" customClass="VakantieCell" customModule="JOETZ" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="vakantieCell" selectionStyle="default" indentationWidth="1" reuseIdentifier="vakantieCell" rowHeight="366" id="u8I-xk-xAt" customClass="VakantieCell" customModule="JOETZ" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="u8I-xk-xAt" id="P3a-47-5bl">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -76,7 +76,7 @@ De smaak te pakken? Wacht dan niet te lang en boek een onvergetelijke JOETZ-vaka
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PaK-Rf-VG9">
-                                            <rect key="frame" x="13" y="8" width="574" height="240"/>
+                                            <rect key="frame" x="13" y="8" width="574" height="240.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="285" id="0Oy-0X-jfj"/>
                                                 <constraint firstAttribute="height" constant="245" id="gE4-lt-FYP"/>
@@ -101,37 +101,83 @@ De smaak te pakken? Wacht dan niet te lang en boek een onvergetelijke JOETZ-vaka
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Klik voor meer info" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ya7-iN-w7k">
-                                            <rect key="frame" x="486" y="316" width="112" height="16"/>
+                                            <rect key="frame" x="486" y="345" width="112" height="16"/>
                                             <fontDescription key="fontDescription" type="italicSystem" pointSize="13"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.png" translatesAutoresizingMaskIntoConstraints="NO" id="eX9-dG-ozO">
+                                            <rect key="frame" x="8" y="324.5" width="30" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="Zzp-Su-9Qj"/>
+                                                <constraint firstAttribute="width" constant="30" id="eJh-gM-vhH"/>
+                                            </constraints>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.png" translatesAutoresizingMaskIntoConstraints="NO" id="sOQ-mo-XQ0">
+                                            <rect key="frame" x="40" y="324.5" width="30" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="30" id="3WS-gb-dMT"/>
+                                                <constraint firstAttribute="height" constant="30" id="e2g-ZM-Khh"/>
+                                            </constraints>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.png" translatesAutoresizingMaskIntoConstraints="NO" id="dQz-0E-aGp">
+                                            <rect key="frame" x="72" y="324.5" width="30" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="glP-Ru-G4h"/>
+                                                <constraint firstAttribute="width" constant="30" id="o7m-W1-A25"/>
+                                            </constraints>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.png" translatesAutoresizingMaskIntoConstraints="NO" id="wF9-6f-cCF">
+                                            <rect key="frame" x="104" y="324.5" width="30" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="BmF-vH-Kn6"/>
+                                                <constraint firstAttribute="width" constant="30" id="aDC-hg-MaB"/>
+                                            </constraints>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.png" translatesAutoresizingMaskIntoConstraints="NO" id="GBT-Fk-T1b">
+                                            <rect key="frame" x="136" y="324.5" width="30" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="Fux-zF-SuH"/>
+                                                <constraint firstAttribute="width" constant="30" id="USf-mk-sHw"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="bottomMargin" secondItem="ukk-ej-Mho" secondAttribute="bottom" constant="24" id="0VQ-AA-JO5"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="ukk-ej-Mho" secondAttribute="bottom" constant="53" id="0VQ-AA-JO5"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="GBT-Fk-T1b" secondAttribute="bottom" constant="3" id="2Vx-jQ-U6e"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="dQz-0E-aGp" secondAttribute="bottom" constant="3" id="3jf-on-Ays"/>
                                         <constraint firstItem="PaK-Rf-VG9" firstAttribute="top" secondItem="P3a-47-5bl" secondAttribute="topMargin" id="3mm-qU-ZkP"/>
                                         <constraint firstItem="ukk-ej-Mho" firstAttribute="top" secondItem="q1S-ad-fX9" secondAttribute="bottom" constant="29.5" id="58S-E0-bA1"/>
+                                        <constraint firstItem="sOQ-mo-XQ0" firstAttribute="leading" secondItem="eX9-dG-ozO" secondAttribute="trailing" constant="2" id="6ZY-C7-PHb"/>
                                         <constraint firstItem="Eae-8F-4Z1" firstAttribute="top" secondItem="q1S-ad-fX9" secondAttribute="bottom" constant="2.5" id="7Id-Fl-qn3"/>
                                         <constraint firstItem="Eae-8F-4Z1" firstAttribute="top" secondItem="ukk-ej-Mho" secondAttribute="bottom" constant="7.5" id="Aqw-5x-rOU"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="eX9-dG-ozO" secondAttribute="bottom" constant="3" id="B4l-4d-v63"/>
+                                        <constraint firstItem="dQz-0E-aGp" firstAttribute="leading" secondItem="sOQ-mo-XQ0" secondAttribute="trailing" constant="2" id="EfD-25-f73"/>
                                         <constraint firstItem="ukk-ej-Mho" firstAttribute="leading" secondItem="Eae-8F-4Z1" secondAttribute="trailing" id="EqA-Ji-UZw"/>
+                                        <constraint firstItem="Eae-8F-4Z1" firstAttribute="top" secondItem="q1S-ad-fX9" secondAttribute="bottom" constant="2.5" id="FpE-4c-UUM"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="wF9-6f-cCF" secondAttribute="bottom" constant="3" id="H6j-Sn-MCo"/>
                                         <constraint firstItem="q1S-ad-fX9" firstAttribute="leading" secondItem="P3a-47-5bl" secondAttribute="leadingMargin" constant="293" id="H8N-0a-DzQ"/>
                                         <constraint firstItem="ukk-ej-Mho" firstAttribute="leading" secondItem="PaK-Rf-VG9" secondAttribute="trailing" constant="8" id="HtJ-UY-baU"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="Ya7-iN-w7k" secondAttribute="bottom" constant="-3.5" id="Jw2-Uv-dS3"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="PaK-Rf-VG9" secondAttribute="trailing" constant="5" id="K9t-Ke-MtL"/>
                                         <constraint firstItem="q1S-ad-fX9" firstAttribute="leading" secondItem="PaK-Rf-VG9" secondAttribute="trailing" constant="8" id="KhE-HA-cEH"/>
                                         <constraint firstItem="q1S-ad-fX9" firstAttribute="top" secondItem="P3a-47-5bl" secondAttribute="topMargin" id="Opb-FT-3ni"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="PaK-Rf-VG9" secondAttribute="bottom" constant="80.5" id="Ql2-uL-Rdj"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="PaK-Rf-VG9" secondAttribute="bottom" constant="109" id="Ql2-uL-Rdj"/>
+                                        <constraint firstItem="wF9-6f-cCF" firstAttribute="leading" secondItem="dQz-0E-aGp" secondAttribute="trailing" constant="2" id="UCl-tp-ftW"/>
                                         <constraint firstItem="Eae-8F-4Z1" firstAttribute="top" secondItem="ukk-ej-Mho" secondAttribute="bottom" constant="-20.5" id="UXF-w8-Gxh"/>
+                                        <constraint firstItem="GBT-Fk-T1b" firstAttribute="leading" secondItem="wF9-6f-cCF" secondAttribute="trailing" constant="2" id="Yw1-h7-wEW"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="ukk-ej-Mho" secondAttribute="trailing" constant="0.5" id="bLm-7a-Mpk"/>
                                         <constraint firstItem="Ya7-iN-w7k" firstAttribute="leading" secondItem="P3a-47-5bl" secondAttribute="leadingMargin" constant="472" id="cDp-1h-QpI"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="q1S-ad-fX9" secondAttribute="trailing" id="cQK-5J-5xQ"/>
                                         <constraint firstItem="ukk-ej-Mho" firstAttribute="top" secondItem="q1S-ad-fX9" secondAttribute="bottom" constant="7.5" id="d4Z-jg-75X"/>
+                                        <constraint firstItem="eX9-dG-ozO" firstAttribute="leading" secondItem="P3a-47-5bl" secondAttribute="leadingMargin" id="dEd-If-LsF"/>
                                         <constraint firstItem="q1S-ad-fX9" firstAttribute="top" secondItem="PaK-Rf-VG9" secondAttribute="bottom" constant="7" id="ezV-dK-mcG"/>
                                         <constraint firstItem="Eae-8F-4Z1" firstAttribute="leading" secondItem="PaK-Rf-VG9" secondAttribute="trailing" constant="8" id="fQh-Cr-gWO"/>
                                         <constraint firstItem="Eae-8F-4Z1" firstAttribute="leading" secondItem="P3a-47-5bl" secondAttribute="leadingMargin" id="hjm-kg-BAJ"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="q1S-ad-fX9" secondAttribute="trailing" id="i2U-lV-g5x"/>
                                         <constraint firstItem="PaK-Rf-VG9" firstAttribute="leading" secondItem="P3a-47-5bl" secondAttribute="leadingMargin" constant="5" id="kAZ-Ww-bJC"/>
                                         <constraint firstItem="ukk-ej-Mho" firstAttribute="leading" secondItem="P3a-47-5bl" secondAttribute="leadingMargin" constant="471" id="oKF-j9-dcg"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="sOQ-mo-XQ0" secondAttribute="bottom" constant="3" id="owC-JW-HOr"/>
                                         <constraint firstItem="q1S-ad-fX9" firstAttribute="leading" secondItem="P3a-47-5bl" secondAttribute="leadingMargin" id="s4O-qN-YxI"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="Ya7-iN-w7k" secondAttribute="trailing" constant="-6" id="s5I-vN-AbE"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="Eae-8F-4Z1" secondAttribute="trailing" constant="100" id="xC4-I4-ezP"/>
@@ -143,14 +189,15 @@ De smaak te pakken? Wacht dan niet te lang en boek een onvergetelijke JOETZ-vaka
                                             <exclude reference="Opb-FT-3ni"/>
                                             <exclude reference="i2U-lV-g5x"/>
                                             <exclude reference="Aqw-5x-rOU"/>
+                                            <exclude reference="FpE-4c-UUM"/>
                                             <exclude reference="UXF-w8-Gxh"/>
                                             <exclude reference="fQh-Cr-gWO"/>
-                                            <exclude reference="cDp-1h-QpI"/>
                                             <exclude reference="58S-E0-bA1"/>
                                             <exclude reference="EqA-Ji-UZw"/>
                                             <exclude reference="HtJ-UY-baU"/>
                                             <exclude reference="d4Z-jg-75X"/>
                                             <exclude reference="oKF-j9-dcg"/>
+                                            <exclude reference="cDp-1h-QpI"/>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
@@ -158,6 +205,11 @@ De smaak te pakken? Wacht dan niet te lang en boek een onvergetelijke JOETZ-vaka
                                     <outlet property="afbeelding" destination="PaK-Rf-VG9" id="nsm-gO-qQq"/>
                                     <outlet property="doelgroepLabel" destination="ukk-ej-Mho" id="KOi-B4-JwJ"/>
                                     <outlet property="locatieLabel" destination="Eae-8F-4Z1" id="Y68-60-sNO"/>
+                                    <outlet property="ster1" destination="eX9-dG-ozO" id="Roi-2i-JVW"/>
+                                    <outlet property="ster2" destination="sOQ-mo-XQ0" id="JL4-0i-dW4"/>
+                                    <outlet property="ster3" destination="dQz-0E-aGp" id="y85-TZ-eGp"/>
+                                    <outlet property="ster4" destination="wF9-6f-cCF" id="gc7-Lu-f5v"/>
+                                    <outlet property="ster5" destination="GBT-Fk-T1b" id="YvZ-Vh-gE0"/>
                                     <outlet property="vakantieNaamLabel" destination="q1S-ad-fX9" id="y2M-1e-Am6"/>
                                     <segue destination="q35-qh-mtC" kind="show" identifier="toonVakantie" id="laN-Ih-sVW"/>
                                 </connections>
@@ -188,7 +240,7 @@ De smaak te pakken? Wacht dan niet te lang en boek een onvergetelijke JOETZ-vaka
                     </refreshControl>
                     <connections>
                         <outlet property="view" destination="xxD-Ib-aLY" id="vqA-FM-3Jv"/>
-                        <outlet property="zoekbar" destination="RlW-AC-mYB" id="7KL-cF-nD3"/>
+                        <outlet property="zoekbar" destination="RlW-AC-mYB" id="dQL-XS-bvh"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FgJ-yq-mEZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -279,9 +331,9 @@ De smaak te pakken? Wacht dan niet te lang en boek een onvergetelijke JOETZ-vaka
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection id="9hz-vW-mdA">
+                            <tableViewSection id="wQg-5K-TaR">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="94" id="GwE-Mt-Y7W">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="95" id="GwE-Mt-Y7W">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GwE-Mt-Y7W" id="dTc-9b-H7l">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -370,6 +422,70 @@ De smaak te pakken? Wacht dan niet te lang en boek een onvergetelijke JOETZ-vaka
                                         <connections>
                                             <segue destination="QZS-H4-CBZ" kind="show" identifier="afbeeldingen" id="JiE-d6-cxk"/>
                                         </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="67" id="GWR-wz-5Um">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GWR-wz-5Um" id="Cf1-0c-uTm">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Joetz fun factor:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q0h-WT-Yi6">
+                                                    <rect key="frame" x="8" y="8" width="125" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.png" translatesAutoresizingMaskIntoConstraints="NO" id="5gC-gC-TMd">
+                                                    <rect key="frame" x="280" y="23.5" width="40" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="QYg-D7-AWl"/>
+                                                        <constraint firstAttribute="width" constant="40" id="b6g-3P-hCU"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.png" translatesAutoresizingMaskIntoConstraints="NO" id="GmU-ad-JLT">
+                                                    <rect key="frame" x="232" y="23.5" width="40" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="HwJ-5W-uHv"/>
+                                                        <constraint firstAttribute="width" constant="40" id="sZc-nk-HBn"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.png" translatesAutoresizingMaskIntoConstraints="NO" id="qaB-pF-uYQ">
+                                                    <rect key="frame" x="184" y="23.5" width="40" height="40"/>
+                                                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="ZNy-4F-nDp"/>
+                                                        <constraint firstAttribute="width" constant="40" id="qvQ-m5-C8l"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.png" translatesAutoresizingMaskIntoConstraints="NO" id="Jnt-u8-Bzb">
+                                                    <rect key="frame" x="328" y="23.5" width="40" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="40" id="FmA-U0-l86"/>
+                                                        <constraint firstAttribute="height" constant="40" id="sji-ey-7uk"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.png" translatesAutoresizingMaskIntoConstraints="NO" id="f7V-B5-uDM">
+                                                    <rect key="frame" x="376" y="23.5" width="40" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="0tJ-wr-okB"/>
+                                                        <constraint firstAttribute="width" constant="40" id="Iww-Mm-JNZ"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="GmU-ad-JLT" secondAttribute="bottom" constant="-5" id="9Yc-LU-wjY"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Jnt-u8-Bzb" secondAttribute="bottom" constant="-5" id="AJ4-BP-iPZ"/>
+                                                <constraint firstItem="f7V-B5-uDM" firstAttribute="leading" secondItem="Jnt-u8-Bzb" secondAttribute="trailing" constant="8" id="AWY-r8-tyk"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="qaB-pF-uYQ" secondAttribute="bottom" constant="-5" id="Psl-lX-i3Y"/>
+                                                <constraint firstItem="GmU-ad-JLT" firstAttribute="leading" secondItem="qaB-pF-uYQ" secondAttribute="trailing" constant="8" id="UOj-QG-gJE"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="f7V-B5-uDM" secondAttribute="bottom" constant="-5" id="W8j-jT-KFg"/>
+                                                <constraint firstItem="5gC-gC-TMd" firstAttribute="leading" secondItem="GmU-ad-JLT" secondAttribute="trailing" constant="8" id="Zpe-TN-eXj"/>
+                                                <constraint firstAttribute="centerY" secondItem="5gC-gC-TMd" secondAttribute="centerY" constant="-10.25" id="e8k-dq-sjd"/>
+                                                <constraint firstItem="q0h-WT-Yi6" firstAttribute="top" secondItem="Cf1-0c-uTm" secondAttribute="topMargin" id="ebV-pr-A5P"/>
+                                                <constraint firstItem="Jnt-u8-Bzb" firstAttribute="leading" secondItem="5gC-gC-TMd" secondAttribute="trailing" constant="8" id="kg0-nM-soN"/>
+                                                <constraint firstAttribute="centerX" secondItem="5gC-gC-TMd" secondAttribute="centerX" id="taP-GW-rDr"/>
+                                                <constraint firstItem="q0h-WT-Yi6" firstAttribute="leading" secondItem="Cf1-0c-uTm" secondAttribute="leadingMargin" id="tzT-4h-mRi"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -634,6 +750,11 @@ De smaak te pakken? Wacht dan niet te lang en boek een onvergetelijke JOETZ-vaka
                         <outlet property="korteBeschrijvingLabel" destination="c4b-zC-cDK" id="hPJ-Sm-VXF"/>
                         <outlet property="locatieLabel" destination="gQQ-Ww-DKf" id="qL8-CM-oPF"/>
                         <outlet property="maxAantalDeelnemersLabel" destination="q5p-DG-HWl" id="8Tf-75-WU1"/>
+                        <outlet property="ster1" destination="qaB-pF-uYQ" id="lAu-qx-HhH"/>
+                        <outlet property="ster2" destination="GmU-ad-JLT" id="1dj-cv-rc3"/>
+                        <outlet property="ster3" destination="5gC-gC-TMd" id="mnH-wn-T3r"/>
+                        <outlet property="ster4" destination="Jnt-u8-Bzb" id="zla-ZX-NuI"/>
+                        <outlet property="ster5" destination="f7V-B5-uDM" id="PQ8-Ep-iJn"/>
                         <outlet property="sterPrijs2Label" destination="Mrx-x2-RlI" id="diu-vM-sg6"/>
                         <outlet property="sterprijs1Label" destination="Dqi-r0-7gm" id="HoV-EP-F2n"/>
                         <outlet property="vakantieNaamLabel" destination="5Rb-IM-edP" id="6hW-GA-GIv"/>
@@ -1759,10 +1880,9 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TnP-J6-6lj">
-                                                    <rect key="frame" x="8" y="33" width="584" height="96"/>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TnP-J6-6lj">
+                                                    <rect key="frame" x="8" y="34" width="584" height="96"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
@@ -2912,7 +3032,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
             </objects>
             <point key="canvasLocation" x="1792" y="4020"/>
         </scene>
-        <!--Indienen Voorkeur Succesvol View Controller-->
+        <!--Voorkeur succesvol ingediend-->
         <scene sceneID="y4T-Hc-EZY">
             <objects>
                 <viewController id="a6c-ZB-4eV" customClass="IndienenVoorkeurSuccesvolViewController" customModule="JOETZ" customModuleProvider="target" sceneMemberID="viewController">
@@ -2925,7 +3045,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="U heeft succesvol uw voorkeur ingediend!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kDW-hq-QtZ">
-                                <rect key="frame" x="140" y="290" width="321" height="21"/>
+                                <rect key="frame" x="16" y="289.5" width="568" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -2956,9 +3076,11 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                             <constraint firstAttribute="trailingMargin" secondItem="rJd-H7-4j2" secondAttribute="trailing" id="H0N-2G-eIB"/>
                             <constraint firstAttribute="centerX" secondItem="Y3D-b9-iCG" secondAttribute="centerX" id="H65-7Q-6p4"/>
                             <constraint firstItem="rJd-H7-4j2" firstAttribute="top" secondItem="Y3D-b9-iCG" secondAttribute="bottom" constant="-1" id="Of0-XR-ZVB"/>
+                            <constraint firstItem="kDW-hq-QtZ" firstAttribute="leading" secondItem="4LX-k5-Obl" secondAttribute="leadingMargin" id="SIA-3r-v8G"/>
                             <constraint firstAttribute="centerY" secondItem="kDW-hq-QtZ" secondAttribute="centerY" constant="0.5" id="ULQ-tM-OEe"/>
                             <constraint firstAttribute="centerX" secondItem="kDW-hq-QtZ" secondAttribute="centerX" id="W19-C4-er1"/>
                             <constraint firstAttribute="centerY" secondItem="kDW-hq-QtZ" secondAttribute="centerY" constant="0.25" id="bxJ-ld-fUB"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="kDW-hq-QtZ" secondAttribute="trailing" id="jZ6-0P-eCS"/>
                             <constraint firstAttribute="trailingMargin" secondItem="kDW-hq-QtZ" secondAttribute="trailing" id="sZI-TJ-pAx"/>
                             <constraint firstItem="rJd-H7-4j2" firstAttribute="top" secondItem="Y3D-b9-iCG" secondAttribute="bottom" constant="-0.5" id="sv0-Nb-C7g"/>
                         </constraints>
@@ -2974,7 +3096,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="sfj-ta-wgL"/>
+                    <navigationItem key="navigationItem" title="Voorkeur succesvol ingediend" id="sfj-ta-wgL"/>
                     <connections>
                         <outlet property="activityIndicatorView" destination="Y3D-b9-iCG" id="puS-am-tgC"/>
                     </connections>
@@ -3036,6 +3158,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="zoekbar" destination="Cis-Fw-Ccu" id="5EL-bh-fCN"/>
                     </connections>
@@ -3361,7 +3484,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
             </objects>
             <point key="canvasLocation" x="3310" y="3306"/>
         </scene>
-        <!--Inschrijven Vorming Succesvol View Controller-->
+        <!--Inschrijving succesvol-->
         <scene sceneID="Anh-fn-7Ev">
             <objects>
                 <viewController id="ZYZ-vO-yCv" customClass="InschrijvenVormingSuccesvolViewController" customModule="JOETZ" customModuleProvider="target" sceneMemberID="viewController">
@@ -3405,7 +3528,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                             <constraint firstAttribute="centerX" secondItem="R5M-SR-7ia" secondAttribute="centerX" id="u2A-l7-yo4"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="04K-dE-ZTa"/>
+                    <navigationItem key="navigationItem" title="Inschrijving succesvol" id="04K-dE-ZTa"/>
                     <connections>
                         <outlet property="activityIndicatorView" destination="R5M-SR-7ia" id="xOx-RK-8p6"/>
                     </connections>
@@ -3440,15 +3563,15 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                                 </date>
                                 <locale key="locale" localeIdentifier="nl_BE"/>
                             </datePicker>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Mf-ew-jA5">
-                                <rect key="frame" x="523" y="518" width="61" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Mf-ew-jA5">
+                                <rect key="frame" x="523" y="562" width="61" height="30"/>
                                 <state key="normal" title="Annuleer">
                                     <color key="titleColor" red="0.90980392160000001" green="0.12941176469999999" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="annuleer:" destination="JG9-Yc-TEg" eventType="touchUpInside" id="hQl-e4-EhZ"/>
-                                    <segue destination="KPW-Yw-0RU" kind="unwind" identifier="gaTerug" unwindAction="gaTerugNaarOverzichtVakanties:" id="lls-9J-x11"/>
+                                    <segue destination="KPW-Yw-0RU" kind="unwind" identifier="gaTerug" unwindAction="gaTerugNaarOverzichtVakanties:" id="MGc-KB-OyI"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -3492,7 +3615,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                         <sections>
                             <tableViewSection id="1Mm-Ru-Gm0">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="TyN-Io-qkQ">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="57" id="TyN-Io-qkQ">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TyN-Io-qkQ" id="prD-0J-QVm">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -3505,10 +3628,20 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="ea4-kP-3su" firstAttribute="trailing" secondItem="prD-0J-QVm" secondAttribute="trailingMargin" id="P2Q-u1-LwC"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="ea4-kP-3su" secondAttribute="trailing" id="SKe-7j-8Gv"/>
+                                                <constraint firstItem="ea4-kP-3su" firstAttribute="top" secondItem="prD-0J-QVm" secondAttribute="topMargin" constant="3" id="WyC-hT-Bje"/>
                                                 <constraint firstItem="ea4-kP-3su" firstAttribute="leading" secondItem="prD-0J-QVm" secondAttribute="leadingMargin" id="iAp-MA-FTb"/>
                                                 <constraint firstItem="ea4-kP-3su" firstAttribute="top" secondItem="prD-0J-QVm" secondAttribute="topMargin" constant="3" id="xl6-kb-jB4"/>
+                                                <constraint firstItem="ea4-kP-3su" firstAttribute="leading" secondItem="prD-0J-QVm" secondAttribute="leadingMargin" id="xmj-Pm-lh6"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="SKe-7j-8Gv"/>
+                                                    <exclude reference="iAp-MA-FTb"/>
+                                                    <exclude reference="xl6-kb-jB4"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="NO3-1P-L2q">
@@ -3517,7 +3650,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Voornaam: *" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mvk-GT-IyG">
-                                                    <rect key="frame" x="8" y="11" width="94" height="21"/>
+                                                    <rect key="frame" x="8" y="11" width="93.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -3543,7 +3676,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Naam: *" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aoi-xE-ylx">
-                                                    <rect key="frame" x="8" y="11" width="61" height="21"/>
+                                                    <rect key="frame" x="8" y="11" width="61" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -3634,6 +3767,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                                                     </state>
                                                     <connections>
                                                         <action selector="annuleer:" destination="8Yj-Ve-dEZ" eventType="touchUpInside" id="SAd-Yb-oP5"/>
+                                                        <segue destination="Wbx-gv-WjW" kind="unwind" identifier="gaTerug" unwindAction="gaTerugNaarOverzichtVakanties:" id="WCG-Qw-jyf"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -3670,6 +3804,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c2d-O6-7rd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Wbx-gv-WjW" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="969" y="2561"/>
         </scene>
@@ -3727,7 +3862,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Oeq-K6-im0">
-                                                    <rect key="frame" x="139" y="7" width="453" height="30"/>
+                                                    <rect key="frame" x="139" y="8" width="453" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
@@ -3736,7 +3871,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                                                 <constraint firstItem="4S2-ru-706" firstAttribute="top" secondItem="j2e-Se-0FM" secondAttribute="topMargin" constant="3" id="CaA-sq-2sI"/>
                                                 <constraint firstItem="Oeq-K6-im0" firstAttribute="leading" secondItem="j2e-Se-0FM" secondAttribute="leadingMargin" constant="131" id="Nn9-rV-VIa"/>
                                                 <constraint firstItem="Oeq-K6-im0" firstAttribute="trailing" secondItem="j2e-Se-0FM" secondAttribute="trailingMargin" id="Pkb-UJ-UE0"/>
-                                                <constraint firstItem="Oeq-K6-im0" firstAttribute="top" secondItem="j2e-Se-0FM" secondAttribute="topMargin" constant="-1" id="h3L-jY-nSX"/>
+                                                <constraint firstItem="Oeq-K6-im0" firstAttribute="top" secondItem="j2e-Se-0FM" secondAttribute="topMargin" id="h3L-jY-nSX"/>
                                                 <constraint firstItem="4S2-ru-706" firstAttribute="leading" secondItem="j2e-Se-0FM" secondAttribute="leadingMargin" id="yDu-hN-38l"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -3842,6 +3977,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                                                     </state>
                                                     <connections>
                                                         <action selector="annuleer:" destination="YqF-di-ama" eventType="touchUpInside" id="cJq-cT-Vnf"/>
+                                                        <segue destination="mGF-RG-3Jr" kind="unwind" identifier="gaTerug" unwindAction="gaTerugNaarOverzichtVakanties:" id="lur-ae-ZOr"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -3880,6 +4016,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="inZ-0b-YyF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="mGF-RG-3Jr" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1619" y="2558"/>
         </scene>
@@ -3915,7 +4052,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                                 </state>
                                 <connections>
                                     <action selector="annuleer:" destination="C57-CL-LAn" eventType="touchUpInside" id="XY7-YX-QKh"/>
-                                    <segue destination="una-oL-4nC" kind="unwind" identifier="gaTerug" unwindAction="gaTerugNaarOverzichtVakanties:" id="Gpd-FD-Uqh"/>
+                                    <segue destination="una-oL-4nC" kind="unwind" identifier="gaTerug" unwindAction="gaTerugNaarOverzichtVakanties:" id="eHu-JH-vt0"/>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eaN-yk-YyH">
@@ -3984,20 +4121,14 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="wxc-Wv-cQk">
-                                <rect key="frame" x="281" y="281" width="37" height="37"/>
-                                <color key="color" red="0.9794921875" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="wxc-Wv-cQk" secondAttribute="centerX" id="HCJ-GX-874"/>
                             <constraint firstItem="aKZ-2H-F1N" firstAttribute="top" secondItem="X2Y-UH-TaC" secondAttribute="bottom" constant="-3" id="LOo-4W-Cl9"/>
                             <constraint firstAttribute="centerY" secondItem="X2Y-UH-TaC" secondAttribute="centerY" id="MyI-9N-fkU"/>
                             <constraint firstAttribute="centerX" secondItem="aKZ-2H-F1N" secondAttribute="centerX" constant="-0.5" id="PEr-4h-sYr"/>
                             <constraint firstAttribute="centerX" secondItem="X2Y-UH-TaC" secondAttribute="centerX" id="SlV-Sq-NUb"/>
                             <constraint firstItem="aKZ-2H-F1N" firstAttribute="top" secondItem="X2Y-UH-TaC" secondAttribute="bottom" constant="-3" id="Tid-0x-pq0"/>
-                            <constraint firstAttribute="centerY" secondItem="wxc-Wv-cQk" secondAttribute="centerY" id="rod-jj-He7"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -4006,9 +4137,6 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Inschrijven voltooid" id="Bvl-aw-a1o"/>
-                    <connections>
-                        <outlet property="activityIndicatorView" destination="wxc-Wv-cQk" id="Pof-vv-soB"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xo0-Wj-Nhv" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="104-sA-mof" userLabel="Exit" sceneMemberID="exit"/>
@@ -4184,7 +4312,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="70" id="M7T-JF-0qb">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="75" id="M7T-JF-0qb">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="M7T-JF-0qb" id="vbL-sr-i2N">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -5427,6 +5555,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                                                     </state>
                                                     <connections>
                                                         <action selector="annuleer:" destination="1th-E5-fug" eventType="touchUpInside" id="6qb-2F-MWd"/>
+                                                        <segue destination="dtu-eI-s3m" kind="unwind" identifier="gaTerug" unwindAction="gaTerugNaarOverzichtVakanties:" id="o3b-nN-fQW"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -5467,6 +5596,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="50h-bn-rQx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="dtu-eI-s3m" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-415" y="2555"/>
         </scene>
@@ -5608,6 +5738,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
         <image name="Klevertje.png" width="615" height="427"/>
         <image name="feedback.png" width="64" height="64"/>
         <image name="menu.png" width="64" height="64"/>
+        <image name="star.png" width="1125" height="1125"/>
         <image name="star2.png" width="1125" height="1125"/>
     </resources>
     <inferredMetricsTieBreakers>

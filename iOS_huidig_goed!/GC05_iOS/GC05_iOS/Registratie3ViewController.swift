@@ -35,6 +35,7 @@ class Registratie3ViewController: /*ResponsiveTextFieldViewController*/ UITableV
             if controleerRodeBordersAanwezig() == true {
                 if emailAlGeregistreerd == true {
                     foutBoxOproepen("Fout", "Dit e-mailadres (\(txtEmail.text)) is al geregistreerd bij ons!", self)
+                    self.txtEmail.text = ""
                 } else {
                     foutBoxOproepen("Fout", "Gelieve de velden correct in te vullen!", self)
                 }
@@ -62,11 +63,11 @@ class Registratie3ViewController: /*ResponsiveTextFieldViewController*/ UITableV
             if !checkPatternEmail(txtEmail.text) {
                 statusTextFields["email"] = "ongeldig"
                 emailAlGeregistreerd = false
-                txtEmail.text = ""
+                //txtEmail.text = ""
             } else if controleerEmailAlGeregisteerd() == true {
                 statusTextFields["email"] = "al geregistreerd"
                 emailAlGeregistreerd = true
-                txtEmail.text = ""
+                //txtEmail.text = ""
             } else {
                 statusTextFields["email"] = "geldig"
                 emailAlGeregistreerd = false

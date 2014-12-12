@@ -54,14 +54,10 @@
 		1B10A3BD1A02622C008E225F /* VakantiesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B10A3BC1A02622C008E225F /* VakantiesTableViewController.swift */; };
 		1B1792851A0272D300C4F82B /* VakantieDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1792841A0272D300C4F82B /* VakantieDetailsTableViewController.swift */; };
 		1B39CF731A077C8F008DEC49 /* InloggenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B39CF721A077C8F008DEC49 /* InloggenViewController.swift */; };
-		1B39CF771A0795D9008DEC49 /* EigenprofielMonitorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B39CF761A0795D9008DEC49 /* EigenprofielMonitorTableViewController.swift */; };
 		1B4D784B1A0277F100E823E2 /* Registratie1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4D784A1A0277F100E823E2 /* Registratie1ViewController.swift */; };
 		1B4D784F1A02893700E823E2 /* Registratie2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4D784E1A02893700E823E2 /* Registratie2ViewController.swift */; };
 		1B4D78511A02897500E823E2 /* Registratie3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4D78501A02897500E823E2 /* Registratie3ViewController.swift */; };
 		1B4D78531A028A8B00E823E2 /* RegistratieSuccesvolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4D78521A028A8B00E823E2 /* RegistratieSuccesvolViewController.swift */; };
-		1BD1A8261A0A63FE00F34AD3 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BD1A8231A0A63FD00F34AD3 /* Bolts.framework */; };
-		1BD1A8271A0A63FE00F34AD3 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BD1A8241A0A63FE00F34AD3 /* Parse.framework */; };
-		1BD1A8281A0A63FE00F34AD3 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BD1A8251A0A63FE00F34AD3 /* ParseFacebookUtils.framework */; };
 		1BDDB9431A02D0FB0007623D /* Vakantie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDDB9421A02D0FB0007623D /* Vakantie.swift */; };
 		1BDDB9451A02D3440007623D /* Activiteit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDDB9441A02D3440007623D /* Activiteit.swift */; };
 		1BDDB9471A02D8240007623D /* Vorming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDDB9461A02D8240007623D /* Vorming.swift */; };
@@ -117,6 +113,11 @@
 		A5CEA07B1A13998900E14103 /* VormingenTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CEA07A1A13998900E14103 /* VormingenTableViewController.swift */; };
 		A5CEA07D1A1399CA00E14103 /* VormingDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CEA07C1A1399CA00E14103 /* VormingDetailsTableViewController.swift */; };
 		A5CEA07F1A13ACDF00E14103 /* InschrijvenVormingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CEA07E1A13ACDF00E14103 /* InschrijvenVormingViewController.swift */; };
+		A5CEAA131A3B4B3000C330D3 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5CEAA0E1A3B4B3000C330D3 /* Bolts.framework */; };
+		A5CEAA141A3B4B3000C330D3 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5CEAA0F1A3B4B3000C330D3 /* Parse.framework */; };
+		A5CEAA151A3B4B3000C330D3 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5CEAA101A3B4B3000C330D3 /* ParseCrashReporting.framework */; };
+		A5CEAA161A3B4B3000C330D3 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5CEAA111A3B4B3000C330D3 /* ParseFacebookUtils.framework */; };
+		A5CEAA171A3B4B3000C330D3 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5CEAA121A3B4B3000C330D3 /* ParseUI.framework */; };
 		A5D15CB41A39F28400B11206 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = A5D15CB21A39F28400B11206 /* star.png */; };
 		A5D15CB51A39F28400B11206 /* star2.png in Resources */ = {isa = PBXBuildFile; fileRef = A5D15CB31A39F28400B11206 /* star2.png */; };
 		A5E5B9831A2370DC0054960C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5E5B9811A2370DC0054960C /* LaunchScreen.xib */; };
@@ -188,14 +189,10 @@
 		1B10A3BC1A02622C008E225F /* VakantiesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VakantiesTableViewController.swift; sourceTree = "<group>"; };
 		1B1792841A0272D300C4F82B /* VakantieDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VakantieDetailsTableViewController.swift; sourceTree = "<group>"; };
 		1B39CF721A077C8F008DEC49 /* InloggenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InloggenViewController.swift; sourceTree = "<group>"; };
-		1B39CF761A0795D9008DEC49 /* EigenprofielMonitorTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EigenprofielMonitorTableViewController.swift; sourceTree = "<group>"; };
 		1B4D784A1A0277F100E823E2 /* Registratie1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Registratie1ViewController.swift; sourceTree = "<group>"; };
 		1B4D784E1A02893700E823E2 /* Registratie2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Registratie2ViewController.swift; sourceTree = "<group>"; };
 		1B4D78501A02897500E823E2 /* Registratie3ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Registratie3ViewController.swift; sourceTree = "<group>"; };
 		1B4D78521A028A8B00E823E2 /* RegistratieSuccesvolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistratieSuccesvolViewController.swift; sourceTree = "<group>"; };
-		1BD1A8231A0A63FD00F34AD3 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "parse-library-1.4.2/Bolts.framework"; sourceTree = "<group>"; };
-		1BD1A8241A0A63FE00F34AD3 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "parse-library-1.4.2/Parse.framework"; sourceTree = "<group>"; };
-		1BD1A8251A0A63FE00F34AD3 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseFacebookUtils.framework; path = "parse-library-1.4.2/ParseFacebookUtils.framework"; sourceTree = "<group>"; };
 		1BDDB9421A02D0FB0007623D /* Vakantie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vakantie.swift; sourceTree = "<group>"; };
 		1BDDB9441A02D3440007623D /* Activiteit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Activiteit.swift; sourceTree = "<group>"; };
 		1BDDB9461A02D8240007623D /* Vorming.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vorming.swift; sourceTree = "<group>"; };
@@ -251,6 +248,11 @@
 		A5CEA07A1A13998900E14103 /* VormingenTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VormingenTableViewController.swift; sourceTree = "<group>"; };
 		A5CEA07C1A1399CA00E14103 /* VormingDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VormingDetailsTableViewController.swift; sourceTree = "<group>"; };
 		A5CEA07E1A13ACDF00E14103 /* InschrijvenVormingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InschrijvenVormingViewController.swift; sourceTree = "<group>"; };
+		A5CEAA0E1A3B4B3000C330D3 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "parse-library-1/Bolts.framework"; sourceTree = "<group>"; };
+		A5CEAA0F1A3B4B3000C330D3 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "parse-library-1/Parse.framework"; sourceTree = "<group>"; };
+		A5CEAA101A3B4B3000C330D3 /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseCrashReporting.framework; path = "parse-library-1/ParseCrashReporting.framework"; sourceTree = "<group>"; };
+		A5CEAA111A3B4B3000C330D3 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseFacebookUtils.framework; path = "parse-library-1/ParseFacebookUtils.framework"; sourceTree = "<group>"; };
+		A5CEAA121A3B4B3000C330D3 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseUI.framework; path = "parse-library-1/ParseUI.framework"; sourceTree = "<group>"; };
 		A5D15CB21A39F28400B11206 /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = star.png; path = Images.xcassets/star.png; sourceTree = "<group>"; };
 		A5D15CB31A39F28400B11206 /* star2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = star2.png; path = Images.xcassets/star2.png; sourceTree = "<group>"; };
 		A5DB300A1A3783EA0054C6FB /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -266,12 +268,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5CEAA131A3B4B3000C330D3 /* Bolts.framework in Frameworks */,
+				A5CEAA141A3B4B3000C330D3 /* Parse.framework in Frameworks */,
+				A5CEAA151A3B4B3000C330D3 /* ParseCrashReporting.framework in Frameworks */,
+				A5CEAA161A3B4B3000C330D3 /* ParseFacebookUtils.framework in Frameworks */,
+				A5CEAA171A3B4B3000C330D3 /* ParseUI.framework in Frameworks */,
 				A51AB06C1A31C57800D012F7 /* MessageUI.framework in Frameworks */,
 				0FA80B3A1A0135B1008DB343 /* SystemConfiguration.framework in Frameworks */,
 				0F88A6C01A1F37C30094D457 /* libsqlite3.dylib in Frameworks */,
-				1BD1A8261A0A63FE00F34AD3 /* Bolts.framework in Frameworks */,
-				1BD1A8271A0A63FE00F34AD3 /* Parse.framework in Frameworks */,
-				1BD1A8281A0A63FE00F34AD3 /* ParseFacebookUtils.framework in Frameworks */,
 				0FA80B381A0135A8008DB343 /* StoreKit.framework in Frameworks */,
 				0FA80B361A01359F008DB343 /* Security.framework in Frameworks */,
 				0FA80B341A013595008DB343 /* QuartzCore.framework in Frameworks */,
@@ -320,11 +324,13 @@
 		0FA80AF91A01350E008DB343 = {
 			isa = PBXGroup;
 			children = (
+				A5CEAA0E1A3B4B3000C330D3 /* Bolts.framework */,
+				A5CEAA0F1A3B4B3000C330D3 /* Parse.framework */,
+				A5CEAA101A3B4B3000C330D3 /* ParseCrashReporting.framework */,
+				A5CEAA111A3B4B3000C330D3 /* ParseFacebookUtils.framework */,
+				A5CEAA121A3B4B3000C330D3 /* ParseUI.framework */,
 				A51AB06B1A31C57800D012F7 /* MessageUI.framework */,
 				0F88A6BF1A1F37C30094D457 /* libsqlite3.dylib */,
-				1BD1A8231A0A63FD00F34AD3 /* Bolts.framework */,
-				1BD1A8241A0A63FE00F34AD3 /* Parse.framework */,
-				1BD1A8251A0A63FE00F34AD3 /* ParseFacebookUtils.framework */,
 				0FA80B391A0135B1008DB343 /* SystemConfiguration.framework */,
 				0FA80B371A0135A8008DB343 /* StoreKit.framework */,
 				0FA80B351A01359F008DB343 /* Security.framework */,
@@ -406,7 +412,6 @@
 				1B4D78501A02897500E823E2 /* Registratie3ViewController.swift */,
 				1B4D78521A028A8B00E823E2 /* RegistratieSuccesvolViewController.swift */,
 				1B39CF721A077C8F008DEC49 /* InloggenViewController.swift */,
-				1B39CF761A0795D9008DEC49 /* EigenprofielMonitorTableViewController.swift */,
 				1BFB1E581A0C0A6400E7B53F /* NieuwWachtwoordViewController.swift */,
 				A54E1B9D1A125E7C00C6BB95 /* ExtraTekstViewController.swift */,
 				0F92E30C1A1368A10005C86C /* InschrijvenVakantie1ViewController.swift */,
@@ -700,7 +705,6 @@
 				1BDDB9491A02D82D0007623D /* InschrijvingVorming.swift in Sources */,
 				1BDDB9431A02D0FB0007623D /* Vakantie.swift in Sources */,
 				1BDDB9451A02D3440007623D /* Activiteit.swift in Sources */,
-				1B39CF771A0795D9008DEC49 /* EigenprofielMonitorTableViewController.swift in Sources */,
 				A5CB1FF91A35CCDD00A4178A /* GeefFeedback2ViewController.swift in Sources */,
 				0F2A819A1A091F7100F67A3B /* Regex.swift in Sources */,
 				0F1E19DD1A2F9AF70035DB96 /* Favoriet.swift in Sources */,
@@ -852,12 +856,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"/Users/charlotteerpels/Downloads/parse-library-1",
-					"/Volumes/HDD/Downloads/parse-library-1.4.2",
-					/Volumes/HDD/Documenten,
-					"/TI3_GC05_Project/iOS/parse-library-1.4.2",
-					"$(PROJECT_DIR)/parse-library-1.4.2",
+					"/Volumes/HDD/Documenten/TI3_GC05_Project/iOS_huidig_goed!/GC05_iOS/parse-library-1",
+					"/Users/charlotteerpels/TI3_GC05_Project/iOS_huidig_goed!/GC05_iOS/parse-library-1",
+					"$(PROJECT_DIR)/parse-library-1",
 				);
 				INFOPLIST_FILE = GC05_iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
@@ -879,12 +880,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"/Users/charlotteerpels/Downloads/parse-library-1",
-					"/Volumes/HDD/Downloads/parse-library-1.4.2",
-					/Volumes/HDD/Documenten,
-					"/TI3_GC05_Project/iOS/parse-library-1.4.2",
-					"$(PROJECT_DIR)/parse-library-1.4.2",
+					"/Volumes/HDD/Documenten/TI3_GC05_Project/iOS_huidig_goed!/GC05_iOS/parse-library-1",
+					"/Users/charlotteerpels/TI3_GC05_Project/iOS_huidig_goed!/GC05_iOS/parse-library-1",
+					"$(PROJECT_DIR)/parse-library-1",
 				);
 				INFOPLIST_FILE = GC05_iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
