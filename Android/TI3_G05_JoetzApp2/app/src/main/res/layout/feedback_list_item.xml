@@ -14,16 +14,9 @@
         android:layout_height="wrap_content"/>
 
     <TextView
-        android:id="@+id/gebruikerOverzicht"
-        android:textSize="15sp"
-        android:layout_below="@id/vakantienaamFeedbackOverzicht"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/gebruikerOverzicht"
+        android:layout_below="@id/vakantienaamFeedbackOverzicht"
         android:id="@+id/scoreOverzicht"/>
 
     <TextView

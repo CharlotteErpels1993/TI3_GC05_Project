@@ -163,12 +163,6 @@ public class feedbackOverzicht extends Fragment {
                     qryVakantiesOphalen.orderByAscending("vertrekdatum");
                     lijstMetParseVakanties = qryVakantiesOphalen.find();
 
-                    ParseQuery<ParseObject> queryOuder = new ParseQuery<ParseObject>("Ouder");
-                    lijstMetParseOuders = queryOuder.find();
-
-                    ParseQuery<ParseObject> queryMonitor = new ParseQuery<ParseObject>( "Monitor");
-                    lijstMetParseMonitoren = queryMonitor.find();
-
                     for (ParseObject feedback : lijstMetParseFeedback) {
                         map = new Feedback();
                         map.setVakantieId((String) feedback.get("vakantie"));
@@ -183,19 +177,6 @@ public class feedbackOverzicht extends Fragment {
                                 map.setVakantieNaam((String) vakantie.get("titel"));
                             }
                         }
-
-                        for (ParseObject ouder : lijstMetParseOuders) {
-                            if (feedback.get("gebruiker").toString().equals(ouder.getObjectId())) {
-                                map.setGebruiker(ouder.get("voornaam") +" "+ ouder.get("naam"));
-                            }
-                        }
-
-                        for (ParseObject monitor : lijstMetParseMonitoren) {
-                            if (feedback.get("gebruiker").toString().equals(monitor.getObjectId())) {
-                                map.setGebruiker(monitor.get("voornaam") + " " + monitor.get("naam"));
-                            }
-                        }
-
                         if (map.getGoedgekeurd()) {
                             feedbackList.add(map);
                             myDB.insertFeedback(map);
@@ -219,11 +200,6 @@ public class feedbackOverzicht extends Fragment {
 
         @Override
         protected void onPostExecute(Void result) {
-            // Locate the listview in listview_main.xml
-            // Pass the results into ListViewAdapter.java
-            //adapter = new ListViewAdapter(activiteit_overzicht.this, vakanties);
-            //ArrayAdapter<Profile> profileAdapter = new ArrayAdapter<Profile>(context, resource, profiles)
-            //ArrayAdapter<Vakantie> vakantieAdapter = new ArrayAdapter<Vakantie>(activiteit_overzicht.this, R.layout.listview_item , vakanties);
 
             adapter = new FeedbackAdapter(rootView.getContext(), feedbackList);
             // Binds the Adapter to the ListView
@@ -249,30 +225,5 @@ public class feedbackOverzicht extends Fragment {
             });
         }
     }
-/*
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getActivity().getMenuInflater().inflate(R.menu.menu_inschrijven_vakantie_part1, menu);
-        return true;
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.menu_loadVak) {
-            isInternetPresent = cd.isConnectingToInternet();
-
-            if (isInternetPresent) {
-                // Internet Connection is Present
-                // make HTTP requests
-                new RemoteDataTask().execute();
-            }
-            else{
-                // Internet connection is not present
-                // Ask user to connect to Internet
-                Toast.makeText(getActivity(), getString(R.string.error_no_internet), Toast.LENGTH_SHORT).show();
-            }
-        }
-        return super.onOptionsItemSelected(item);
-    }
-*/
 }

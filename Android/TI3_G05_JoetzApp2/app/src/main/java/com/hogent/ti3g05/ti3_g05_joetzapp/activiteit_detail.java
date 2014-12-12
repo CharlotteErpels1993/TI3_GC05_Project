@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
+import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
@@ -309,7 +310,7 @@ public class activiteit_detail extends Activity {
         txtTerugkeerDatum.setText(terugdatum);
         txtInbegrepenInPrijs.setText(inbegrepenInPrijs);
 
-        if (ParseUser.getCurrentUser() == null) {
+        if (ParseUser.getCurrentUser() == null || (ParseUser.getCurrentUser()!= null && ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("monitor"))) {
             //niet ingelogd
             btnInschrijven.setVisibility(View.GONE);
             txtPrijs.setVisibility(View.GONE);
@@ -320,7 +321,10 @@ public class activiteit_detail extends Activity {
             txtInbegrepenInPrijs.setVisibility(View.GONE);
             btnmeerInfo.setVisibility(View.GONE);
             verberg.setVisibility(View.GONE);
-            //txtExtraInfo.setVisibility(View.VISIBLE);
+            if(ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("monitor"))
+                txtExtraInfo.setVisibility(View.GONE);
+            else
+                txtExtraInfo.setVisibility(View.VISIBLE);
 
         } else if(ParseUser.getCurrentUser()!= null && (ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("ouder") || ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("administrator"))) {
             //ingelogd als ouder
