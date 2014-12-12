@@ -5,6 +5,51 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--Wat is JOETZ?-->
+        <scene sceneID="L35-kk-R7a">
+            <objects>
+                <viewController storyboardIdentifier="About" id="awZ-At-bww" customClass="WatIsJoetzViewController" customModule="JOETZ" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="sA0-7B-daF"/>
+                        <viewControllerLayoutGuide type="bottom" id="OWi-PF-xZM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="NjG-kX-KIx">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="z8b-bu-Tbo">
+                                <rect key="frame" x="16" y="28" width="568" height="552"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Verlang je ook al naar de vakantie? Dan presenteren we je graag de kinder- en jongerenvakanties 2014 van JOETZ.
+Dankzij onze selectie van de uiterst verzorgde verblijfplaatsen en de begeleiding door ervaren monitoren die allemaal een opleiding hebben genoten die erkend wordt door de Vlaamse overheid, kan JOETZ opnieuw duizenden kinderen en jongeren de vakantie van hun leven bieden.
+Een kindervakantie is in de eerste plaats natuurlijk ambiance, vriendschap en plezier. Daarom gaat er bij JOETZ heel veel aandacht naar spel, animatie, sport en daguitstappen. Samen met gezonde maaltijden en hygiëne zijn dat voor ons essentiële ingrediënten om onbezorgde, kwaliteitsvolle vakanties te garanderen.
+JOETZ heeft ook voor jongeren heel wat in de aanbieding. Je kunt kiezen uit een hele reeks buitenlandse vakanties. En of je nu fun of actie zoekt, JOETZ heeft het allemaal. Vanaf 18 kan iedereen die door de reismicrobe gebeten is, met JOETZ mee op inleefreis om zo een land te ontdekken als gast in plaats van als toerist.
+De smaak te pakken? Wacht dan niet te lang en boek een onvergetelijke JOETZ-vakantie!</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="z8b-bu-Tbo" firstAttribute="trailing" secondItem="NjG-kX-KIx" secondAttribute="trailingMargin" id="1x8-o4-oOZ"/>
+                            <constraint firstItem="z8b-bu-Tbo" firstAttribute="leading" secondItem="NjG-kX-KIx" secondAttribute="leadingMargin" id="KkE-et-7Js"/>
+                            <constraint firstItem="z8b-bu-Tbo" firstAttribute="top" secondItem="sA0-7B-daF" secondAttribute="bottom" constant="8" id="Rrv-PH-qlz"/>
+                            <constraint firstItem="OWi-PF-xZM" firstAttribute="top" secondItem="z8b-bu-Tbo" secondAttribute="bottom" constant="20" id="X1m-qJ-CyD"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Wat is JOETZ?" id="tSc-oK-SIv">
+                        <barButtonItem key="leftBarButtonItem" image="menu.png" width="55" id="TIN-DC-ex5">
+                            <inset key="imageInsets" minX="-4" minY="25" maxX="46" maxY="19"/>
+                            <connections>
+                                <action selector="toggle:" destination="awZ-At-bww" id="wcJ-js-Mnq"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IK0-8S-GEM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2189" y="-371"/>
+        </scene>
         <!--Vakanties-->
         <scene sceneID="RQL-0y-cO4">
             <objects>
@@ -5533,6 +5578,29 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zfs-va-btB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4065" y="330"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="fUR-Bq-dmc">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dU6-h5-oex" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="Yxe-Wm-m5P">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.90980392160000001" green="0.12941176469999999" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="awZ-At-bww" kind="relationship" relationship="rootViewController" id="6Zd-pE-Bl1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E58-kL-ZZy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1377" y="-371"/>
         </scene>
     </scenes>
     <resources>
