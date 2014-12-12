@@ -10,7 +10,7 @@
     <string name="orText">of</string>
     <string name="createAccount">Registreer</string>
     <string name="emailHint">Email</string>
-    <string name="passwordHint">wachtwoord</string>
+    <string name="passwordHint">Wachtwoord</string>
     <string name="confirmPasswordHint">bevestig wachtwoord</string>
     <string name="title_activity_launcher">LauncherActivity</string>
     <string name="changing_fragments">Changing Fragments</string>
