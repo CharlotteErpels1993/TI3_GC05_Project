@@ -10,6 +10,8 @@ class GeefFeedback1ViewController: UIViewController, UIPickerViewDataSource, UIP
     override func viewDidLoad() {
         super.viewDidLoad()
         hideSideMenuView()
+        self.setNeedsStatusBarAppearanceUpdate()
+        self.navigationController!.toolbarHidden = true
         
         var vakantiesResponse = ParseData.getAlleVakanties()
         if vakantiesResponse.1 == nil {
@@ -19,6 +21,11 @@ class GeefFeedback1ViewController: UIViewController, UIPickerViewDataSource, UIP
         vakantiePickerView.delegate = self
         vakantiePickerView.dataSource = self
         vakantiePickerView.reloadAllComponents()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        self.setNeedsStatusBarAppearanceUpdate()
+        self.navigationController!.toolbarHidden = false
     }
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {

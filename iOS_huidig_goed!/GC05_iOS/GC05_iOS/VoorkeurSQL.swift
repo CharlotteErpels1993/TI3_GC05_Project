@@ -79,7 +79,7 @@ struct VoorkeurSQL {
         queryString.extend("SELECT * FROM Voorkeur ")
         queryString.extend("WHERE monitor = ? ")
         queryString.extend("AND ")
-        queryString.extend("vakantie = ? ")
+        queryString.extend("vakantie = ?")
         //queryString.extend("AND ")
         //queryString.extend("periode = ?")
         

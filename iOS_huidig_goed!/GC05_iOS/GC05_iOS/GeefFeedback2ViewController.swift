@@ -11,7 +11,7 @@ class GeefFeedback2ViewController: UITableViewController/*, UIPickerViewDataSour
     @IBOutlet weak var ster5: UIButton!
     
     //var scores: [Int] = [1, 2, 3, 4, 5]
-    var score: Int?
+    var score: Int = 0
     var feedback: Feedback!
     var vakantie: Vakantie!
     var titel: String?
@@ -21,6 +21,8 @@ class GeefFeedback2ViewController: UITableViewController/*, UIPickerViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         hideSideMenuView()
+        self.setNeedsStatusBarAppearanceUpdate()
+        self.navigationController!.toolbarHidden = true
         
         self.navigationItem.title = self.titel
         

@@ -80,6 +80,41 @@ struct FeedbackSQL {
         }
     }
     
+    static func getFeedbackFromVakantie(vakantie: Vakantie) -> ([Feedback], Int?) {
+        var feedbacken: [Feedback] = []
+        var feedback: Feedback = Feedback(id: "test")
+        var trueBool: Bool = true
+        
+        let (resultSet, err) = SD.executeQuery("SELECT * FROM Feedback WHERE goedgekeurd = ? AND vakantie = ?", withArgs: [trueBool, vakantie.id])
+        
+        var response: ([Feedback], Int?)
+        var error: Int?
+        
+        if err != nil
+        {
+            println("ERROR: error tijdens ophalen van alle feedback uit table Feedback")
+        }
+        else
+        {
+            if resultSet.count == 0 {
+                error = 1
+            }
+            else {
+                error = nil
+                
+                for row in resultSet {
+                    feedback = getFeedback(row)
+                    feedbacken.append(feedback)
+                }
+                
+            }
+            
+        }
+        
+        response = (feedbacken, error)
+        return response
+    }
+    
     static func getAlleFeedback() -> ([Feedback], Int?) {
         var feedbacken:[Feedback] = []
         var feedback: Feedback = Feedback(id: "test")
@@ -177,6 +212,8 @@ struct FeedbackSQL {
         
         return feedback
     }
+    
+    
     
     static func parseFeedbackToDatabase(feedback: Feedback) {
         var feedbackJSON = PFObject(className: "Feedback")

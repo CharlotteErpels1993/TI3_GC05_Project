@@ -2,10 +2,10 @@ import UIKit
 
 class SidebarTableViewController: UITableViewController {
     var selectedMenuItem : Int = 0
-    var arrayKind: [String] = ["Vakanties","Inloggen", "Registreren", "Feedback"]
-    var arrayOuder: [String] = ["Uitloggen", "Vakanties", "Favorieten", "Feedback"]
-    var arrayMonitor: [String] = ["Uitloggen", "Vakanties", "Favoriete vakanties",  "Vormingen", "Voorkeur vakantie", "Profielen"]
-    var arrayJoetz: [String] = ["Uitloggen", "Vakanties", "Vormingen", "Profielen", "Nieuwe monitor"]
+    var arrayKind: [String] = ["Vakanties","Inloggen", "Registreren", "Feedback", "Wat is JOETZ?"]
+    var arrayOuder: [String] = ["Uitloggen", "Vakanties", "Favorieten", "Feedback", "Wat is JOETZ?"]
+    var arrayMonitor: [String] = ["Uitloggen", "Vakanties", "Favoriete vakanties",  "Vormingen", "Voorkeur vakantie", "Profielen", "Wat is JOETZ?"]
+    var arrayJoetz: [String] = ["Uitloggen", "Vakanties", "Vormingen", "Profielen", "Nieuwe monitor", "Wat is JOETZ?"]
     var array: [String]?
     
     
@@ -35,17 +35,17 @@ class SidebarTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if PFUser.currentUser() == nil {
-            return 4
+            return 5
             
         } else {
             var gebruikerPF = PFUser.currentUser()
             var soort: String = gebruikerPF["soort"] as String
             if soort == "ouder" {
-                return 4
-            } else if soort == "monitor"{
-                return 6
-            } else if soort == "administrator" {
                 return 5
+            } else if soort == "monitor"{
+                return 7
+            } else if soort == "administrator" {
+                return 6
             }
         }
         return 0
@@ -110,6 +110,9 @@ class SidebarTableViewController: UITableViewController {
             case 3:
                 destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Feedback") as UIViewController
                 break
+            case 4:
+                destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("About") as UIViewController
+                break
             default:
                 destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
                 
@@ -163,6 +166,9 @@ class SidebarTableViewController: UITableViewController {
                 case 5:
                     destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Profielen") as UIViewController
                     break
+                case 6:
+                    destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("About") as UIViewController
+                    break
                 default:
                     destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vormingen") as UIViewController
                     break
@@ -204,6 +210,9 @@ class SidebarTableViewController: UITableViewController {
                 case 3:
                     destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Feedback") as UIViewController
                     break
+                case 4:
+                    destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("About") as UIViewController
+                    break
                 default:
                     destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
                     break
@@ -244,6 +253,9 @@ class SidebarTableViewController: UITableViewController {
                     break
                 case 4:
                     destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("NieuweMonitor") as UIViewController
+                    break
+                case 5:
+                    destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("About") as UIViewController
                     break
                 default:
                     destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController

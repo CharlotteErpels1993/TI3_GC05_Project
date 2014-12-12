@@ -19,6 +19,7 @@ class VakantieDetailsTableViewController: UITableViewController {
     @IBOutlet weak var maxAantalDeelnemersLabel: UILabel!
     @IBOutlet weak var vervoerwijzeLabel: UILabel!
     @IBOutlet weak var formuleLabel: UILabel!
+    @IBOutlet weak var funFactorLabel: UILabel!
     
     @IBOutlet weak var basisprijsLabel: UILabel!
     @IBOutlet weak var bondMoysonPrijsLabel: UILabel!
@@ -105,6 +106,8 @@ class VakantieDetailsTableViewController: UITableViewController {
         maxAantalDeelnemersLabel.text! = String("Max aantal deelnemers: \(vakantie.maxAantalDeelnemers!)")
         vervoerwijzeLabel.text! = String("Vervoerwijze: \(vakantie.vervoerwijze!)")
         formuleLabel.text! = String("Formule: \(vakantie.formule!)")
+        //var gemiddeldeFeedbackScore: Double = gemiddeldeFeedback()
+        //funFactorLabel.text! = String("\(gemiddeldeFeedbackScore)")
         
         var euroSymbol: String = "€"
         
@@ -154,6 +157,25 @@ class VakantieDetailsTableViewController: UITableViewController {
     override func viewWillAppear(animated: Bool) {
         self.setNeedsStatusBarAppearanceUpdate()
         self.navigationController!.toolbarHidden = false
+    }
+    
+    func gemiddeldeFeedback() -> Double {
+        var feedbackResponse = ParseData.getFeedbackFromVakantie(self.vakantie)
+        var scores: [Int] = []
+        var sum = 0
+        
+        if feedbackResponse.1 == nil {
+            for feed in feedbackResponse.0 {
+                scores.append(feed.score!)
+            }
+        }
+        
+        for score in scores {
+            sum += score
+        }
+        
+        var gemiddelde: Double = Double(sum) / Double(scores.count)
+        return ceil(gemiddelde)
     }
     
     @IBAction func openShareMenu(sender: AnyObject) {
