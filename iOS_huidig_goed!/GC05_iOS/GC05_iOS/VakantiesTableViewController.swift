@@ -103,41 +103,41 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         return ceil(gemiddelde)
     }
     
-    func zetAantalSterrenGemiddeldeFeedback(vakantie: Vakantie, ster1: UIButton, ster2: UIButton, ster3: UIButton, ster4: UIButton, ster5: UIButton) {
+    func zetAantalSterrenGemiddeldeFeedback(vakantie: Vakantie, ster1: UIImageView, ster2: UIImageView, ster3: UIImageView, ster4: UIImageView, ster5: UIImageView) {
         var gemiddeldeFeedbackScore: Double = gemiddeldeFeedback(vakantie)
         var starGevuld: UIImage = UIImage(named: "star")!
         var starLeeg: UIImage = UIImage(named: "star2")!
         
         if gemiddeldeFeedbackScore == 1 {
-            ster1.setImage(starGevuld, forState: UIControlState.Normal)
-            ster2.setImage(starLeeg, forState: UIControlState.Normal)
-            ster3.setImage(starLeeg, forState: UIControlState.Normal)
-            ster4.setImage(starLeeg, forState: UIControlState.Normal)
-            ster5.setImage(starLeeg, forState: UIControlState.Normal)
+            ster1.image = starGevuld
+            ster2.image = starLeeg
+            ster3.image = starLeeg
+            ster4.image = starLeeg
+            ster5.image = starLeeg
         } else if gemiddeldeFeedbackScore == 2 {
-            ster1.setImage(starGevuld, forState: UIControlState.Normal)
-            ster2.setImage(starGevuld, forState: UIControlState.Normal)
-            ster3.setImage(starLeeg, forState: UIControlState.Normal)
-            ster4.setImage(starLeeg, forState: UIControlState.Normal)
-            ster5.setImage(starLeeg, forState: UIControlState.Normal)
+            ster1.image = starGevuld
+            ster2.image = starGevuld
+            ster3.image = starLeeg
+            ster4.image = starLeeg
+            ster5.image = starLeeg
         } else if gemiddeldeFeedbackScore == 3 {
-            ster1.setImage(starGevuld, forState: UIControlState.Normal)
-            ster2.setImage(starGevuld, forState: UIControlState.Normal)
-            ster3.setImage(starGevuld, forState: UIControlState.Normal)
-            ster4.setImage(starLeeg, forState: UIControlState.Normal)
-            ster5.setImage(starLeeg, forState: UIControlState.Normal)
+            ster1.image = starGevuld
+            ster2.image = starGevuld
+            ster3.image = starGevuld
+            ster4.image = starLeeg
+            ster5.image = starLeeg
         } else if gemiddeldeFeedbackScore == 4 {
-            ster1.setImage(starGevuld, forState: UIControlState.Normal)
-            ster2.setImage(starGevuld, forState: UIControlState.Normal)
-            ster3.setImage(starGevuld, forState: UIControlState.Normal)
-            ster4.setImage(starGevuld, forState: UIControlState.Normal)
-            ster5.setImage(starLeeg, forState: UIControlState.Normal)
+            ster1.image = starGevuld
+            ster2.image = starGevuld
+            ster3.image = starGevuld
+            ster4.image = starGevuld
+            ster5.image = starLeeg
         } else if gemiddeldeFeedbackScore == 5 {
-            ster1.setImage(starGevuld, forState: UIControlState.Normal)
-            ster2.setImage(starGevuld, forState: UIControlState.Normal)
-            ster3.setImage(starGevuld, forState: UIControlState.Normal)
-            ster4.setImage(starGevuld, forState: UIControlState.Normal)
-            ster5.setImage(starGevuld, forState: UIControlState.Normal)
+            ster1.image = starGevuld
+            ster2.image = starGevuld
+            ster3.image = starGevuld
+            ster4.image = starGevuld
+            ster5.image = starGevuld
         }
         
         score.append(gemiddeldeFeedbackScore)

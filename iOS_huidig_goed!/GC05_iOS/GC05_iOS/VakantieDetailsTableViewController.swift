@@ -20,12 +20,11 @@ class VakantieDetailsTableViewController: UITableViewController {
     @IBOutlet weak var vervoerwijzeLabel: UILabel!
     @IBOutlet weak var formuleLabel: UILabel!
     
-    @IBOutlet weak var ster1: UIButton!
-    @IBOutlet weak var ster2: UIButton!
-    @IBOutlet weak var ster3: UIButton!
-    @IBOutlet weak var ster4: UIButton!
-    @IBOutlet weak var ster5: UIButton!
-    
+    @IBOutlet weak var ster1: UIImageView!
+    @IBOutlet weak var ster2: UIImageView!
+    @IBOutlet weak var ster3: UIImageView!
+    @IBOutlet weak var ster4: UIImageView!
+    @IBOutlet weak var ster5: UIImageView!
     
     @IBOutlet weak var basisprijsLabel: UILabel!
     @IBOutlet weak var bondMoysonPrijsLabel: UILabel!
@@ -192,35 +191,35 @@ class VakantieDetailsTableViewController: UITableViewController {
         var starLeeg: UIImage = UIImage(named: "star2")!
         
         if self.score == 1 {
-            self.ster1.setImage(starGevuld, forState: UIControlState.Normal)
-            self.ster2.setImage(starLeeg, forState: UIControlState.Normal)
-            self.ster3.setImage(starLeeg, forState: UIControlState.Normal)
-            self.ster4.setImage(starLeeg, forState: UIControlState.Normal)
-            self.ster5.setImage(starLeeg, forState: UIControlState.Normal)
+            ster1.image = starGevuld
+            ster2.image = starLeeg
+            ster3.image = starLeeg
+            ster4.image = starLeeg
+            ster5.image = starLeeg
         } else if self.score == 2 {
-            self.ster1.setImage(starGevuld, forState: UIControlState.Normal)
-            self.ster2.setImage(starGevuld, forState: UIControlState.Normal)
-            self.ster3.setImage(starLeeg, forState: UIControlState.Normal)
-            self.ster4.setImage(starLeeg, forState: UIControlState.Normal)
-            self.ster5.setImage(starLeeg, forState: UIControlState.Normal)
+            ster1.image = starGevuld
+            ster2.image = starGevuld
+            ster3.image = starLeeg
+            ster4.image = starLeeg
+            ster5.image = starLeeg
         } else if self.score == 3 {
-            self.ster1.setImage(starGevuld, forState: UIControlState.Normal)
-            self.ster2.setImage(starGevuld, forState: UIControlState.Normal)
-            self.ster3.setImage(starGevuld, forState: UIControlState.Normal)
-            self.ster4.setImage(starLeeg, forState: UIControlState.Normal)
-            self.ster5.setImage(starLeeg, forState: UIControlState.Normal)
+            ster1.image = starGevuld
+            ster2.image = starGevuld
+            ster3.image = starGevuld
+            ster4.image = starLeeg
+            ster5.image = starLeeg
         } else if self.score == 4 {
-            self.ster1.setImage(starGevuld, forState: UIControlState.Normal)
-            self.ster2.setImage(starGevuld, forState: UIControlState.Normal)
-            self.ster3.setImage(starGevuld, forState: UIControlState.Normal)
-            self.ster4.setImage(starGevuld, forState: UIControlState.Normal)
-            self.ster5.setImage(starLeeg, forState: UIControlState.Normal)
+            ster1.image = starGevuld
+            ster2.image = starGevuld
+            ster3.image = starGevuld
+            ster4.image = starGevuld
+            ster5.image = starLeeg
         } else if self.score == 5 {
-            self.ster1.setImage(starGevuld, forState: UIControlState.Normal)
-            self.ster2.setImage(starGevuld, forState: UIControlState.Normal)
-            self.ster3.setImage(starGevuld, forState: UIControlState.Normal)
-            self.ster4.setImage(starGevuld, forState: UIControlState.Normal)
-            self.ster5.setImage(starGevuld, forState: UIControlState.Normal)
+            ster1.image = starGevuld
+            ster2.image = starGevuld
+            ster3.image = starGevuld
+            ster4.image = starGevuld
+            ster5.image = starGevuld
         }
     }
     
