@@ -49,22 +49,40 @@
             android:layout_below="@id/feedbackIng"
             android:layout_height="wrap_content" />
 
-        <EditText
+   <!--     <EditText
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:id="@+id/score"
             android:inputType="number"
-            android:layout_below="@id/scoreLabel"/>
+            android:layout_below="@id/scoreLabel"/>-->
+
+        <RatingBar
+            android:stepSize="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="8dp"
+            android:id="@+id/ratingBar"
+            android:layout_below="@id/scoreLabel" />
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/Rood"
+            android:id="@+id/Error"
+            android:layout_marginBottom="8dp"
+            android:layout_below="@id/ratingBar"/>
 
         <Button
             android:layout_width="fill_parent"
             android:background="@drawable/button_shape"
-            android:layout_below="@id/score"
+            android:layout_below="@id/ratingBar"
             android:id="@+id/ingevenFeedback"
             android:textColor="@color/Rood"
             android:layout_marginTop="15dp"
             android:text="@string/ingeven"
             android:layout_height="wrap_content" />
-</RelativeLayout>
+
+
+    </RelativeLayout>
     </ScrollView>

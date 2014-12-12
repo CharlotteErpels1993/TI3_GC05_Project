@@ -49,7 +49,7 @@ public class activiteit_detail extends Activity {
     private List<ParseObject> obF;
 
     private List<ParseObject> obD;
-    private String ingelogdeOuder = "";
+    private String ingelogdeGebruiker = "";
     //SwipeRefreshLayout swipeLayout;
 
     // flag for Internet connection status
@@ -168,11 +168,11 @@ public class activiteit_detail extends Activity {
         favoImage.setVisibility(View.GONE);
 
         if (ParseUser.getCurrentUser() != null) {
-            if (ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("ouder") && !controleerReedsFavoriet()) {
+            if (!ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("administrator") && !controleerReedsFavoriet()) {
                 favoImage.setVisibility(View.VISIBLE);
 
 
-            } else if(ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("ouder") && controleerReedsFavoriet()) {
+            } else if(!ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("administrator") && controleerReedsFavoriet()) {
                 deleteImage.setVisibility(View.VISIBLE);
             }
         }
@@ -537,7 +537,7 @@ public class activiteit_detail extends Activity {
             ParseObject favoriet = new ParseObject("Favoriet");
             if (!controleerReedsFavoriet()) {
                 favoriet.put("vakantie", activiteitID);
-                favoriet.put("ouder", ingelogdeOuder);
+                favoriet.put("gebruiker", ingelogdeGebruiker);
                 favoriet.save();
                 Toast.makeText(activiteit_detail.this, "Favoriet toegevoegd!", Toast.LENGTH_SHORT).show();
                 favoImage.setVisibility(View.GONE);
@@ -557,19 +557,38 @@ public class activiteit_detail extends Activity {
             ParseObject favoriet = new ParseObject("Favoriet");
 
 
+            if(ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("ouder"))
             // Locate the class table named "vakantie" in Parse.com
-            ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(
-                    "Ouder");
+            {
+                ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(
+                        "Ouder");
 
-            ob = query.find();
+                ob = query.find();
 
-            for (ParseObject ouder : ob) {
+                for (ParseObject ouder : ob) {
 
-                if (ouder.get("email").equals(ParseUser.getCurrentUser().getEmail())) {
-                    ingelogdeOuder = ouder.getObjectId();
+                    if (ouder.get("email").equals(ParseUser.getCurrentUser().getEmail())) {
+                        ingelogdeGebruiker = ouder.getObjectId();
+                    }
+
+
                 }
+            }
+            else if(ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("monitor"))
+            {
+                ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(
+                        "Monitor");
+
+                ob = query.find();
+
+                for (ParseObject monitor : ob) {
+
+                    if (monitor.get("email").equals(ParseUser.getCurrentUser().getEmail())) {
+                        ingelogdeGebruiker = monitor.getObjectId();
+                    }
 
 
+                }
             }
 
             ParseQuery<ParseObject> query2 = new ParseQuery<ParseObject>(
@@ -580,7 +599,7 @@ public class activiteit_detail extends Activity {
 
             String favId = null;
             for (ParseObject fav : obF) {
-                if (fav.get("vakantie").equals(activiteitID) && fav.get("ouder").equals(ingelogdeOuder)) {
+                if (fav.get("vakantie").equals(activiteitID) && fav.get("gebruiker").equals(ingelogdeGebruiker)) {
                     favId = fav.getObjectId();
                     return true;
                 }
@@ -601,7 +620,7 @@ public class activiteit_detail extends Activity {
 
 
         for (ParseObject fav : obD) {
-            if (fav.get("vakantie").equals(activiteitID) && fav.get("ouder").equals(ingelogdeOuder)) {
+            if (fav.get("vakantie").equals(activiteitID) && fav.get("gebruiker").equals(ingelogdeGebruiker)) {
                 fav.delete();
                 Toast.makeText(activiteit_detail.this, "vakantie is verwijderd van favorieten", Toast.LENGTH_SHORT).show();
                 deleteImage.setVisibility(View.GONE);

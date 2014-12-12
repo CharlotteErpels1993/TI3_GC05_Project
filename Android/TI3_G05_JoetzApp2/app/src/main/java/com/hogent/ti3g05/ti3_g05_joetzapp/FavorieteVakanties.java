@@ -160,8 +160,12 @@ public class FavorieteVakanties extends Fragment{
                 // Create the array
                 vakanties = new ArrayList<Vakantie>();
                 vakantiesAllemaal = new ArrayList<Vakantie>();
-                String ingelogdeOuder = "";
+                String ingelogdeGebruiker = "";
                 try {
+
+                    if(ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("ouder"))
+                    {
+
 
                     ParseQuery<ParseObject> queryOuder = new ParseQuery<ParseObject>(
                             "Ouder");
@@ -171,10 +175,23 @@ public class FavorieteVakanties extends Fragment{
                     for (ParseObject ouder : obOuder) {
 
                         if (ouder.get("email").equals(ParseUser.getCurrentUser().getEmail())) {
-                            ingelogdeOuder = ouder.getObjectId();
+                            ingelogdeGebruiker = ouder.getObjectId();
                         }
+                    }
+                    }
+                    else if(ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("monitor")) {
+                        ParseQuery<ParseObject> queryMonitor = new ParseQuery<ParseObject>(
+                                "Monitor");
 
+                        List<ParseObject> obMonitor = queryMonitor.find();
 
+                        for (ParseObject monitor : obMonitor) {
+
+                            if (monitor.get("email").equals(ParseUser.getCurrentUser().getEmail())) {
+                                ingelogdeGebruiker = monitor.getObjectId();
+                            }
+
+                        }
                     }
 
                     //favorieten ophalen
@@ -191,7 +208,7 @@ public class FavorieteVakanties extends Fragment{
                         fav = new FavorieteVakantie();
 
                         fav.setVakantieID((String)favoriet.get("vakantie"));
-                        fav.setOuderID((String) favoriet.get("ouder"));
+                        fav.setOuderID((String) favoriet.get("gebruiker"));
 
                         favorieten.add(fav);
                     }
@@ -255,7 +272,7 @@ public class FavorieteVakanties extends Fragment{
                     {
                         for(Vakantie vakantie: vakantiesAllemaal)
                         {
-                            if(favorieteVakantie.getVakantieID().equals(vakantie.getVakantieID()) && favorieteVakantie.getOuderID().equals(ingelogdeOuder))
+                            if(favorieteVakantie.getVakantieID().equals(vakantie.getVakantieID()) && favorieteVakantie.getOuderID().equals(ingelogdeGebruiker))
                             {
                                 vakanties.add(vakantie);
                                 myDB.insertFavoriet(vakantie);

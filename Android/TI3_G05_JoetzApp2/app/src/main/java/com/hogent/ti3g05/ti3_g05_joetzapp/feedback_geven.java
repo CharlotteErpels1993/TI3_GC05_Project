@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,6 +17,8 @@ import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
+
+import org.w3c.dom.Text;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -30,7 +33,7 @@ public class feedback_geven extends Activity {
     private String gebruiker;
 
     private EditText feedbackText;
-    private EditText scoreText;
+    private TextView error;
 
 
     private boolean cancel = false;
@@ -39,7 +42,7 @@ public class feedback_geven extends Activity {
     private Boolean isInternetPresent = false;
     // Connection detector class
     private ConnectionDetector cd;
-
+    private RatingBar ratingBar;
     private List<ParseObject> lijstMetParseOuders;
     private List<ParseObject> lijstMetParseMonitoren;
 
@@ -52,10 +55,12 @@ public class feedback_geven extends Activity {
         Button ingeven = (Button) findViewById(R.id.ingevenFeedback);
 
 
+        ratingBar = (RatingBar) findViewById(R.id.ratingBar);
         setTitle("Funfactor");
 
+        error = (TextView)findViewById(R.id.Error);
         feedbackText = (EditText) findViewById(R.id.feedbackIng);
-        scoreText = (EditText) findViewById(R.id.score);
+       // scoreText = (EditText) findViewById(R.id.score);
 
         isInternetPresent = cd.isConnectingToInternet();
         if (isInternetPresent) {
@@ -103,7 +108,8 @@ public class feedback_geven extends Activity {
             @Override
             public void onClick(View view) {
                 String feedback = feedbackText.getText().toString();
-                String score = scoreText.getText().toString();
+                String score = (String.valueOf(ratingBar.getRating()));
+                //score = String.valueOf(Math.floor(ratingBar.getRating()));
                 valideerGegevens(feedback, score);
             }
         });
@@ -129,13 +135,12 @@ public class feedback_geven extends Activity {
 
         if(TextUtils.isEmpty(score))
         {
-            scoreText.setError(getString(R.string.error_field_required));
-            focusView = scoreText;
+            error.setText("Moet ingevuld worden");
             cancel = true;
         }else{
-            if (Integer.parseInt(score) > 5){
-                scoreText.setError(getString(R.string.error_incorrect_score));
-                focusView = scoreText;
+            if ((int)Double.parseDouble(score)== 0){
+
+                error.setText("Moet ingevuld worden");
                 cancel = true;
             }
         }
@@ -154,17 +159,13 @@ public class feedback_geven extends Activity {
 
     public  void opslaan(String feedback, String score)
     {
-
-
         Date dateVandaag = new Date();
-
-
         ParseObject feedbackObject = new ParseObject("Feedback");
 
         feedbackObject.put("vakantie", vakantieId);
         feedbackObject.put("waardering", feedback);
         feedbackObject.put("gebruiker", gebruiker);
-        feedbackObject.put("score", Integer.parseInt(score));
+        feedbackObject.put("score", (int)Double.parseDouble(score));
         feedbackObject.put("goedgekeurd", false);
         feedbackObject.put("datum", dateVandaag);
 
@@ -179,7 +180,6 @@ public class feedback_geven extends Activity {
 
     private void clearErrors(){
         feedbackText.setError(null);
-        scoreText.setError(null);
 
     }
 

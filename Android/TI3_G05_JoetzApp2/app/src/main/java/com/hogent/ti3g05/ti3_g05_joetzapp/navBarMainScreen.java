@@ -361,7 +361,7 @@ public class navBarMainScreen extends Activity {
                     );
                     startActivity(intent5);
                 }
-                else if(ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("ouder"))
+                else if(!ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("administrator"))
                 {
 
                     Intent intent7 = new Intent(navBarMainScreen.this, navBarMainScreen.class);
