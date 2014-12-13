@@ -524,7 +524,7 @@ public class Vakantie_detail extends Activity {
         int id = item.getItemId();
         if (id == R.id.backMenu2) {
             Intent intent1 = new Intent(this, navBarMainScreen.class);
-            intent1.putExtra("naarfrag", "activiteit");
+            intent1.putExtra("naarfrag", "vakantie");
             intent1.putExtra("herladen", "nee");
             intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent1);
@@ -628,7 +628,7 @@ public class Vakantie_detail extends Activity {
         for (ParseObject fav : obD) {
             if (fav.get("vakantie").equals(activiteitID) && fav.get("gebruiker").equals(ingelogdeGebruiker)) {
                 fav.delete();
-                Toast.makeText(Vakantie_detail.this, "vakantie is verwijderd van favorieten", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Vakantie_detail.this, "vakantie is verwijderd uit favorieten", Toast.LENGTH_SHORT).show();
                 deleteImage.setVisibility(View.GONE);
                 favoImage.setVisibility(View.VISIBLE);
 
