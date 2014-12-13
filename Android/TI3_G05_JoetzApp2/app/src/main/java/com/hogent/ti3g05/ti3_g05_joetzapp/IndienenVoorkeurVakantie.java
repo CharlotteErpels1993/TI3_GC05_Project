@@ -74,6 +74,7 @@ public class IndienenVoorkeurVakantie extends Activity implements AdapterView.On
                 }
             }
         });
+        isInternetPresent = cd.isConnectingToInternet();
         if(isInternetPresent)
         {
 

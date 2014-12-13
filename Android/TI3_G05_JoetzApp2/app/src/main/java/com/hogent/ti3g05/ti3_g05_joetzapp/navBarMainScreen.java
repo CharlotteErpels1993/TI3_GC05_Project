@@ -72,7 +72,7 @@ public class navBarMainScreen extends Activity {
             {
                 frag = getIntent().getStringExtra("naarfrag");
             }
-            if(frag.toLowerCase().startsWith("activiteit"))
+            if(frag.toLowerCase().startsWith("vakantie"))
             {
                 fragment = new Vakantie_overzicht();
             }
