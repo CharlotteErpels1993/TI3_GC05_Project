@@ -25,6 +25,9 @@ import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -190,11 +193,10 @@ public class FavorieteVakanties extends Fragment{
 
                     ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(
                             "Vakantie");
-                    query.orderByAscending("vertrekdatum");
+                    query.orderByAscending("titel");
                     List<ParseObject> qryLijstVakanties = query.find();
                     for (ParseObject v : qryLijstVakanties) {
                         vakantie = new Vakantie();
-
 
                         vakantie.setNaamVakantie((String) v.get("titel"));
                         vakantie.setVakantieID(v.getObjectId());
@@ -233,6 +235,7 @@ public class FavorieteVakanties extends Fragment{
 
                     }
 
+
                     for(FavorieteVakantie favorieteVakantie : favorieten)
                     {
                         for(Vakantie vakantie: vakantiesAllemaal)
@@ -253,6 +256,7 @@ public class FavorieteVakanties extends Fragment{
                 }
 
                 return null;
+
             }
 
             @Override

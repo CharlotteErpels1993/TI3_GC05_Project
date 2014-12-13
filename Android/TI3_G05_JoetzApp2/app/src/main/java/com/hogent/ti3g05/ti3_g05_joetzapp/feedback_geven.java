@@ -204,7 +204,8 @@ public class feedback_geven extends Activity {
         int id = item.getItemId();
         if (id == R.id.backMenu2) {
             Intent intent1 = new Intent(this, navBarMainScreen.class);
-            intent1.putExtra("naarfrag", "activiteit");
+            intent1.putExtra("naarfrag", "feedback");
+            intent1.putExtra("herladen","nee");
             intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent1);
 
@@ -214,4 +215,13 @@ public class feedback_geven extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent setIntent = new Intent(feedback_geven.this, navBarMainScreen.class);
+        setIntent.putExtra("naarfrag","feedback");
+        setIntent.putExtra("herladen","nee");
+        setIntent.addCategory(Intent.CATEGORY_HOME);
+        setIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(setIntent);
+    }
 }

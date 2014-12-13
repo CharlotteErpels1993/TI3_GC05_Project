@@ -54,6 +54,14 @@ public class about extends Activity {
 
         return super.onOptionsItemSelected(item);
     }
-
+    @Override
+    public void onBackPressed() {
+        Intent setIntent = new Intent(about.this, navBarMainScreen.class);
+        setIntent.putExtra("naarfrag","vakantie");
+        setIntent.putExtra("herladen","nee");
+        setIntent.addCategory(Intent.CATEGORY_HOME);
+        setIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(setIntent);
+    }
 
 }

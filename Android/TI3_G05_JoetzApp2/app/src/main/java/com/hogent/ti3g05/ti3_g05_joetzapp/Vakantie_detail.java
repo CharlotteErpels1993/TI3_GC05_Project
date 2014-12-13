@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.InflateException;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -61,8 +62,31 @@ public class Vakantie_detail extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activiteit_detailnieuw);
+        try {
+            setContentView(R.layout.activiteit_detailnieuw);
+        }catch (OutOfMemoryError e)
+        {
+            Intent intent1 = new Intent(this, navBarMainScreen.class);
+            intent1.putExtra("naarfrag", "vakantie");
+            intent1.putExtra("herladen", "nee");
+            intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            Toast.makeText(getApplicationContext(),"Er is iets foutgelopen, onze excuses voor het ongemak.",Toast.LENGTH_SHORT);
+            startActivity(intent1);
 
+            overridePendingTransition(R.anim.left_in, R.anim.right_out);
+        }
+        catch (InflateException ex)
+        {
+
+            Intent intent1 = new Intent(this, navBarMainScreen.class);
+            intent1.putExtra("naarfrag", "vakantie");
+            intent1.putExtra("herladen", "nee");
+            intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            Toast.makeText(getApplicationContext(),"Er is iets foutgelopen, onze excuses voor het ongemak.",Toast.LENGTH_SHORT);
+            startActivity(intent1);
+
+            overridePendingTransition(R.anim.left_in, R.anim.right_out);
+        }
 
         Intent i = getIntent();
         naam = i.getStringExtra("naam");
@@ -233,7 +257,7 @@ public class Vakantie_detail extends Activity {
                 @Override
                 public void onClick(View view) {
                     Intent intent1 = new Intent(Vakantie_detail.this, afbeeldingUItvergroot.class);
-
+                    setIntentParameters(intent1);
                     intent1.putExtra("afbeelding", afbeelding1);
                     startActivity(intent1);
 
@@ -246,7 +270,7 @@ public class Vakantie_detail extends Activity {
                 @Override
                 public void onClick(View view) {
                     Intent intent1 = new Intent(Vakantie_detail.this, afbeeldingUItvergroot.class);
-
+                    setIntentParameters(intent1);
                     intent1.putExtra("afbeelding", afbeelding2);
                     startActivity(intent1);
 
@@ -259,7 +283,7 @@ public class Vakantie_detail extends Activity {
                 @Override
                 public void onClick(View view) {
                     Intent intent1 = new Intent(Vakantie_detail.this, afbeeldingUItvergroot.class);
-
+                    setIntentParameters(intent1);
                     intent1.putExtra("afbeelding", afbeelding3);
                     startActivity(intent1);
 
@@ -281,7 +305,7 @@ public class Vakantie_detail extends Activity {
             cal.setTime(terugkDate);
             terugdatum = cal.get(Calendar.DAY_OF_MONTH) + "/" + cal.get(Calendar.MONTH) + "/" + cal.get(Calendar.YEAR);
         } catch (java.text.ParseException pe) {
-            Toast.makeText(getApplicationContext(), pe.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), pe.getMessage(), Toast.LENGTH_SHORT);
         }
 
         feedback.setOnClickListener(new View.OnClickListener() {
@@ -445,14 +469,41 @@ public class Vakantie_detail extends Activity {
         }
 
     }
+    //geeft de parameters mee om van afbeeldingactivity naar detail terug te gaan
+    public void setIntentParameters(Intent intent1)
+    {
+        intent1.putExtra("naam",naam);
+        intent1.putExtra("locatie",locatie);
+        intent1.putExtra("vertrekdatum",vertrekdatum);
+        intent1.putExtra("terugdatum", terugdatum);
+        intent1.putExtra("vervoer", vervoer);
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.back_2, menu);
-        return true;
+        intent1.putExtra("prijs", prijs);
+        intent1.putExtra("maxdoelgroep", maxDoelgroep);
+        intent1.putExtra("mindoelgroep", minDoelgroep);
+        intent1.putExtra("formule", formule);
+        intent1.putExtra("maxAantalDeelnemers", maxDeeln);
+        intent1.putExtra("periode", periode);
+        intent1.putExtra("beschrijving", beschrijving);
+        intent1.putExtra("InbegrepenInPrijs", inbegrepenInPrijs);
+        intent1.putExtra("objectId", activiteitID);
+        intent1.putExtra("link", link);
+        intent1.putExtra("prijs", prijs);
+
+
+        intent1.putExtra("BMledenPrijs",bmLedenPrijs);
+        intent1.putExtra("SterPrijs1Ouder", sterPrijs1Ouder);
+        intent1.putExtra("SterPrijs2Ouders", sterPrijs2Ouders);
+
+
+        String keyVoorIntent;
+        ArrayList<String> lijstFotos = fotos;
+        int lijstFotosLengte = lijstFotos.size()-1;
+        for (int i = 0; i <= lijstFotosLengte; i++){
+            keyVoorIntent = "foto" + i;
+            intent1.putExtra(keyVoorIntent, lijstFotos.get(i));
+        }
     }
-
     public void shareFacebook() {
         isInternetPresent = cd.isConnectingToInternet();
 
@@ -512,21 +563,7 @@ public class Vakantie_detail extends Activity {
 
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.backMenu2) {
-            Intent intent1 = new Intent(this, navBarMainScreen.class);
-            intent1.putExtra("naarfrag", "vakantie");
-            intent1.putExtra("herladen", "nee");
-            intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent1);
 
-            overridePendingTransition(R.anim.left_in, R.anim.right_out);
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 
 
     public void toevoegenAanFavorieten() {
@@ -630,5 +667,29 @@ public class Vakantie_detail extends Activity {
     } catch (ParseException e) {
         e.printStackTrace();
     }
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.back_2, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.backMenu2) {
+            Intent intent1 = new Intent(this, navBarMainScreen.class);
+            intent1.putExtra("naarfrag", "vakantie");
+            intent1.putExtra("herladen", "nee");
+            intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent1);
+
+            overridePendingTransition(R.anim.left_in, R.anim.right_out);
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

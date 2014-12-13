@@ -289,4 +289,14 @@ public class InschrijvenVakantiePart1 extends FragmentActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent setIntent = new Intent(InschrijvenVakantiePart1.this, navBarMainScreen.class);
+        setIntent.putExtra("naarfrag","vakantie");
+        setIntent.putExtra("herladen","nee");
+        setIntent.addCategory(Intent.CATEGORY_HOME);
+        setIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(setIntent);
+    }
 }

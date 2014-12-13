@@ -3,11 +3,13 @@ package com.hogent.ti3g05.ti3_g05_joetzapp;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.InflateException;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.parse.ParseUser;
 
@@ -31,8 +33,32 @@ public class VormingDetail extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        try
+        {
         setContentView(R.layout.vorming_detail);
+        }catch (OutOfMemoryError e)
+        {
+            Intent intent1 = new Intent(this, navBarMainScreen.class);
+            intent1.putExtra("naarfrag", "vorming");
+            intent1.putExtra("herladen", "nee");
+            intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            Toast.makeText(getApplicationContext(), "Er is iets foutgelopen, onze excuses voor het ongemak.", Toast.LENGTH_SHORT);
+            startActivity(intent1);
 
+            overridePendingTransition(R.anim.left_in, R.anim.right_out);
+        }
+        catch (InflateException ex)
+        {
+
+            Intent intent1 = new Intent(this, navBarMainScreen.class);
+            intent1.putExtra("naarfrag", "vorming");
+            intent1.putExtra("herladen", "nee");
+            intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            Toast.makeText(getApplicationContext(),"Er is iets foutgelopen, onze excuses voor het ongemak.",Toast.LENGTH_SHORT);
+            startActivity(intent1);
+
+            overridePendingTransition(R.anim.left_in, R.anim.right_out);
+        }
 
         Intent i = getIntent();
         titel = i.getStringExtra("titel");
@@ -122,6 +148,16 @@ public class VormingDetail extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent setIntent = new Intent(VormingDetail.this, navBarMainScreen.class);
+        setIntent.putExtra("naarfrag","vorming");
+        setIntent.putExtra("herladen","nee");
+        setIntent.addCategory(Intent.CATEGORY_HOME);
+        setIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(setIntent);
     }
 
 }

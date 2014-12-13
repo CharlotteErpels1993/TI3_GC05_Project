@@ -209,5 +209,8 @@ public class ProfielEdit extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-
+    @Override
+    public void onBackPressed() {
+       terugSturenNaarProfielDetail(initieleNaam,initieleVoornaam,initieleEmail,initieleGsm);
+    }
 }

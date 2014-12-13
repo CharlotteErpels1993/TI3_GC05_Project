@@ -479,7 +479,7 @@ public class navBarMainScreen extends Activity {
                 // Internet Connection is Present
                 // make HTTP requests
 
-                if(fragment.toString().toLowerCase().startsWith("activiteit"))
+                if(fragment.toString().toLowerCase().startsWith("vakantie"))
                 {
                     fragment = new Vakantie_overzicht();
                 }
