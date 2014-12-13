@@ -230,6 +230,7 @@ public class IndienenVoorkeurVakantie extends Activity implements AdapterView.On
 
 
     //Sla de voorkeur op met de bijhorende monitorId
+    //Controleer ook of deze gebruiker nog geen voorkeur heeft doorgegeven voor deze vakantie
     public boolean opslaanVoorkeur(Vakantie vakantie, String periodes)
     {
         String monitorId = null;

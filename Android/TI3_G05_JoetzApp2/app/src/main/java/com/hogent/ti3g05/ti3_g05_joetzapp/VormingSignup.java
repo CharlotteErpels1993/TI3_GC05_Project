@@ -73,6 +73,7 @@ public class VormingSignup extends Activity {
     }
 
     //Sla de gegevens op in de database, als de gegevens correct opgeslagen zijn geef true terug
+    //Kijk of de gebruiker nog niet is ingeschreven voor deze vorming
     public boolean opslaanGegevens(){
         String geselecteerdeData = String.valueOf(spnDataInschrijven.getSelectedItem());
         String monitorId;

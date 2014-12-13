@@ -91,6 +91,7 @@ public class InschrijvenVakantiePart3 extends Activity {
     }
 
     //Sla de gegevens op in de database
+    //Controleer ook of deze gebruiker nog niet is ingeschreven voor deze vakantie
     public void inschrijvingOpslaan(String activiteitID, String voornaam, String naam, String straat, String huisnr, String bus, String gemeente, String postcode,
                                     String voornaamCP, String naamCP, String telefoonCP, String gsmCP,
                                     String voornaamCPextra, String naamCPextra, String telefoonCPextra, String gsmCPextra, String extraInfo,  String datum){

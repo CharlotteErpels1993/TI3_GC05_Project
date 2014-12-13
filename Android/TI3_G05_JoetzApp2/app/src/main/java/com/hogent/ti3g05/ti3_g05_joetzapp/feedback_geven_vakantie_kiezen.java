@@ -22,7 +22,7 @@ import java.util.Date;
 import java.util.List;
 
 //Indien de gebruiker vanuit het feedbackoverzicht feedback wenst toe te voegen moet deze eerst een vakantie kiezen
-public class feedbac_geven_vakantie_kiezen extends Activity {
+public class feedback_geven_vakantie_kiezen extends Activity {
 
     private Spinner spinner;
     private List<Vakantie> vakanties;
@@ -77,7 +77,7 @@ public class feedbac_geven_vakantie_kiezen extends Activity {
                 vakantie=vak;
             }
         }
-        Intent intentFeedback = new Intent(feedbac_geven_vakantie_kiezen.this, feedback_geven.class);
+        Intent intentFeedback = new Intent(feedback_geven_vakantie_kiezen.this, feedback_geven.class);
 
         //Geef de nodige gegevens door naar de volgende stap
         intentFeedback.putExtra("vakantie", vakantie.getNaamVakantie());
@@ -157,7 +157,7 @@ public class feedbac_geven_vakantie_kiezen extends Activity {
                 vakantieArray[i] = vakantienamen.get(i);
             }
 
-            ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(feedbac_geven_vakantie_kiezen.this, android.R.layout.simple_spinner_item,vakantieArray);
+            ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(feedback_geven_vakantie_kiezen.this, android.R.layout.simple_spinner_item,vakantieArray);
             spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             spinner.setAdapter(spinnerArrayAdapter);
 

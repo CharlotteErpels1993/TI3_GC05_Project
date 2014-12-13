@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -517,7 +516,7 @@ public class navBarMainScreen extends Activity {
             }
         } else if(id == R.id.menu_voegFeedbackToe)
         {
-            Intent intentFeedback = new Intent(navBarMainScreen.this, feedbac_geven_vakantie_kiezen.class);
+            Intent intentFeedback = new Intent(navBarMainScreen.this, feedback_geven_vakantie_kiezen.class);
             startActivity(intentFeedback);
         }
         return super.onOptionsItemSelected(item);
