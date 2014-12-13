@@ -4349,19 +4349,19 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="75" id="M7T-JF-0qb">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="78" id="M7T-JF-0qb">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="M7T-JF-0qb" id="vbL-sr-i2N">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bent u lid van de socialisistiche mutualiteit?" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eQy-Cb-StI">
-                                                    <rect key="frame" x="8" y="11" width="584" height="20.5"/>
+                                                    <rect key="frame" x="8" y="11" width="584" height="21.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VWM-zS-cQN">
-                                                    <rect key="frame" x="8" y="38" width="51" height="31"/>
+                                                    <rect key="frame" x="8" y="39" width="51" height="31"/>
                                                     <connections>
                                                         <action selector="switched:" destination="e2l-il-uEx" eventType="valueChanged" id="B72-Pk-e02"/>
                                                     </connections>
@@ -4373,6 +4373,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                                                 <constraint firstItem="eQy-Cb-StI" firstAttribute="leading" secondItem="vbL-sr-i2N" secondAttribute="leadingMargin" id="O3E-uT-yDC"/>
                                                 <constraint firstItem="VWM-zS-cQN" firstAttribute="top" secondItem="eQy-Cb-StI" secondAttribute="bottom" constant="6.5" id="Rgb-CP-43A"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="eQy-Cb-StI" secondAttribute="trailing" id="nKv-zM-SEY"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="VWM-zS-cQN" secondAttribute="bottom" id="w2Y-uE-Zbd"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>

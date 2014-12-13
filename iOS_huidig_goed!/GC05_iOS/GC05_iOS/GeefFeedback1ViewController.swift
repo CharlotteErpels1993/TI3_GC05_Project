@@ -25,7 +25,7 @@ class GeefFeedback1ViewController: UIViewController, UIPickerViewDataSource, UIP
     
     override func viewDidAppear(animated: Bool) {
         self.setNeedsStatusBarAppearanceUpdate()
-        self.navigationController!.toolbarHidden = false
+        self.navigationController!.toolbarHidden = true
     }
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
@@ -47,6 +47,11 @@ class GeefFeedback1ViewController: UIViewController, UIPickerViewDataSource, UIP
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "geefFeedback" {
             let geefFeedback2ViewController = segue.destinationViewController as GeefFeedback2ViewController
+            
+            if vakantie == nil {
+                vakantie = self.vakanties[0]
+            }
+            
             geefFeedback2ViewController.vakantie = self.vakantie
             geefFeedback2ViewController.feedback = self.feedback
         }
