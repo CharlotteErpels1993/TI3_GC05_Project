@@ -11,7 +11,7 @@
     <string name="createAccount">Registreer</string>
     <string name="emailHint">Email</string>
     <string name="passwordHint">Wachtwoord</string>
-    <string name="confirmPasswordHint">bevestig wachtwoord</string>
+    <string name="confirmPasswordHint">Bevestig wachtwoord</string>
     <string name="title_activity_launcher">LauncherActivity</string>
     <string name="changing_fragments">Changing Fragments</string>
     <string name="title_activity_create_account">Registreer</string>
@@ -159,7 +159,7 @@ De smaak te pakken? Wacht dan niet te lang en boek een onvergetelijke JOETZ-vaka
     <string name="SuccesvolDoorgegeven">Uw periodes zijn succesvol doorgegeven.</string>
     <string name="btn_ProfielEdit">Profiel wijzigen</string>
     <string name="refresh">Refresh</string>
-    <string name="aanlsuitingsnummerhintOuder2">Eventueel aansluitingsnummer van ouder 2.</string>
+    <string name="aanlsuitingsnummerhintOuder2">Eventueel aansluitingsnummer van tweede ouder.</string>
     <string name="KlikVoorMeerInfo">selecteer voor meer info</string>
     <string name="BMsticker">Bond Moyson sticker</string>
     <string name="vakantieDetailExtraInformatie">U bekijkt momenteel beperkte informatie van de vakantie. Indien u extra informatie, zoals de prijs wilt bekijken of een inschrijving uitvoeren, gelieve u te registeren/in te loggen.</string>

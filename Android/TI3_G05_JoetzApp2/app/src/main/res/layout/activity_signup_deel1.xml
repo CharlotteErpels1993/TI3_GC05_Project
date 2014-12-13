@@ -3,13 +3,22 @@
     android:layout_height="fill_parent"
     android:finishOnTaskLaunch="true">
 
+    <TextView
+        android:id="@+id/signupRijksRegisterNummerLabel"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/rijksregnr"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_alignParentTop="true"
+        />
 
     <EditText
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/rijksregnr"
-        android:layout_alignParentTop="true"
         android:inputType="number"
+        android:layout_marginTop="8dp"
+        android:layout_below="@+id/signupRijksRegisterNummerLabel"
         android:id="@+id/rijksRegNrRegistreren"/>
 
     <TextView
@@ -19,7 +28,7 @@
         android:text="@string/bondMoyson"
         android:id="@+id/textViewLid"
         android:layout_below="@id/rijksRegNrRegistreren"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:layout_alignParentStart="true"/>
 
     <RadioGroup
