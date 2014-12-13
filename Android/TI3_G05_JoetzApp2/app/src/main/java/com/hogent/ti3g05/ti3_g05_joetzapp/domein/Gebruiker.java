@@ -137,6 +137,9 @@ public class Gebruiker {
     }
 
     public static boolean isDitEenGeldigRijksregisternummer(String objRijksregisternummer){
+        if (objRijksregisternummer.startsWith("0") || objRijksregisternummer.startsWith("1") || objRijksregisternummer.startsWith("2")){
+            objRijksregisternummer = "2" + objRijksregisternummer;
+        }
         String eerste9cijfers, laatste2;
         eerste9cijfers = objRijksregisternummer.substring(0, 9);
         laatste2 = objRijksregisternummer.substring(9, 11);

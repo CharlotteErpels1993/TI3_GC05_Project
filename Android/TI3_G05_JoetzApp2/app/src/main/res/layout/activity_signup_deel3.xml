@@ -8,63 +8,124 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/LoginFormContainer">
 
+    <TextView
+        android:id="@+id/signupVoornaamLabel"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/naamHint"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_alignParentTop="true"
+        />
+
     <EditText
         android:id="@+id/VoornaamSignu"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/signupVoornaamLabel"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
-        android:hint="@string/naamHint"/>
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:id="@+id/signupNaamLabel"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/famnaamHint"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_below="@+id/VoornaamSignu"
+        />
 
     <EditText
         android:id="@+id/NaamSignu"
-
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/VoornaamSignu"
+        android:layout_below="@id/signupNaamLabel"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
-        android:hint="@string/famnaamHint" />
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:id="@+id/signupStraatLabel"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/straatHint"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_below="@+id/NaamSignu"
+        />
 
     <EditText
         android:id="@+id/StraatSignu"
-
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/NaamSignu"
+        android:layout_below="@id/signupStraatLabel"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
-        android:hint="@string/straatHint" />
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:id="@+id/signupHuisnrLabel"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/huisnrHint"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_below="@+id/StraatSignu"
+        />
 
     <EditText
         android:id="@+id/HuisnrSignu"
         android:inputType="number"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/StraatSignu"
+        android:layout_below="@id/signupHuisnrLabel"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
-        android:hint="@string/huisnrHint" />
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:id="@+id/signupBusLabel"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/BusHint"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_below="@+id/HuisnrSignu"
+        />
 
     <EditText
         android:id="@+id/BusSignu"
-        android:inputType="number"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/HuisnrSignu"
+        android:layout_below="@id/signupBusLabel"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
-        android:hint="@string/BusHint" />
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:id="@+id/signupGemeenteLabel"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/gemeenteHint"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_below="@+id/BusSignu"
+        />
 
     <EditText
         android:id="@+id/GemeenteSignu"
-
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/BusSignu"
+        android:layout_below="@id/signupGemeenteLabel"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
-        android:hint="@string/gemeenteHint" />
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:id="@+id/signupPostcodeLabel"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/postcodeHint"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_below="@+id/GemeenteSignu"
+        />
 
     <EditText
         android:id="@+id/PostcodeSignu"
@@ -72,10 +133,19 @@
         android:layout_width="fill_parent"
         android:maxLength="4"
         android:layout_height="wrap_content"
-        android:layout_below="@id/GemeenteSignu"
+        android:layout_below="@id/signupPostcodeLabel"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
-        android:hint="@string/postcodeHint" />
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:id="@+id/signupTelefoonLabel"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/telefoonHint"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_below="@+id/PostcodeSignu"
+        />
 
     <EditText
         android:id="@+id/TelefoonSignu"
@@ -83,10 +153,19 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:maxLength="9"
-        android:layout_below="@id/PostcodeSignu"
+        android:layout_below="@id/signupTelefoonLabel"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
-        android:hint="@string/telefoonHint" />
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:id="@+id/signupGSMLabel"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/gsmHint"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_below="@+id/TelefoonSignu"
+        />
 
     <EditText
         android:id="@+id/GsmSignu"
@@ -94,10 +173,9 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:maxLength="10"
-        android:layout_below="@id/TelefoonSignu"
+        android:layout_below="@id/signupGSMLabel"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
-        android:hint="@string/gsmHint" />
+        android:layout_marginTop="10dp" />
 
 
 

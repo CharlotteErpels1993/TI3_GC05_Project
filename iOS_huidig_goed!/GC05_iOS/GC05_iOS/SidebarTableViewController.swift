@@ -2,9 +2,9 @@ import UIKit
 
 class SidebarTableViewController: UITableViewController {
     var selectedMenuItem : Int = 0
-    var arrayKind: [String] = ["Vakanties","Inloggen", "Registreren", "Feedback", "Wat is JOETZ?"]
-    var arrayOuder: [String] = ["Uitloggen", "Vakanties", "Favorieten", "Feedback", "Wat is JOETZ?"]
-    var arrayMonitor: [String] = ["Uitloggen", "Vakanties", "Favoriete vakanties",  "Vormingen", "Voorkeur vakantie", "Profielen", "Wat is JOETZ?"]
+    var arrayKind: [String] = ["Vakanties","Inloggen", "Registreren", "Fun factor", "Wat is JOETZ?"]
+    var arrayOuder: [String] = ["Uitloggen", "Vakanties", "Favorieten", "Fun factor", "Wat is JOETZ?"]
+    var arrayMonitor: [String] = ["Uitloggen", "Vakanties", "Favoriete vakanties", "Fun Factor",  "Vormingen", "Voorkeur vakantie", "Profielen", "Wat is JOETZ?"]
     var arrayJoetz: [String] = ["Uitloggen", "Vakanties", "Vormingen", "Profielen", "Nieuwe monitor", "Wat is JOETZ?"]
     var array: [String]?
     
@@ -43,7 +43,7 @@ class SidebarTableViewController: UITableViewController {
             if soort == "ouder" {
                 return 5
             } else if soort == "monitor"{
-                return 7
+                return 8
             } else if soort == "administrator" {
                 return 6
             }
@@ -158,15 +158,18 @@ class SidebarTableViewController: UITableViewController {
                     destViewController = destViewController2
                     break
                 case 3:
-                    destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vormingen") as UIViewController
+                    destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Feedback") as UIViewController
                     break
                 case 4:
-                    destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Voorkeur") as UIViewController
+                    destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vormingen") as UIViewController
                     break
                 case 5:
-                    destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Profielen") as UIViewController
+                    destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Voorkeur") as UIViewController
                     break
                 case 6:
+                    destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Profielen") as UIViewController
+                    break
+                case 7:
                     destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("About") as UIViewController
                     break
                 default:

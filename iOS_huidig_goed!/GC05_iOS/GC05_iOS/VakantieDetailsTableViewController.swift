@@ -148,7 +148,6 @@ class VakantieDetailsTableViewController: UITableViewController {
                 self.sectionToDelete = 6
                 self.tableView.deleteSections(NSIndexSet(index: self.sectionToDelete), withRowAnimation: UITableViewRowAnimation.None)
                 self.navigationItem.rightBarButtonItem = nil
-                self.feedbackButton.hidden = true
             }
         } else {
             self.sectionToDelete = 6
