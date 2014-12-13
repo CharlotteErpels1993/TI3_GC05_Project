@@ -2,8 +2,8 @@ import UIKit
 
 class SidebarTableViewController: UITableViewController {
     var selectedMenuItem : Int = 0
-    var arrayKind: [String] = ["Vakanties","Inloggen", "Registreren", "Feedback", "Wat is JOETZ?"]
-    var arrayOuder: [String] = ["Uitloggen", "Vakanties", "Favorieten", "Feedback", "Wat is JOETZ?"]
+    var arrayKind: [String] = ["Vakanties","Inloggen", "Registreren", "Fun factor", "Wat is JOETZ?"]
+    var arrayOuder: [String] = ["Uitloggen", "Vakanties", "Favorieten", "Fun factor", "Wat is JOETZ?"]
     var arrayMonitor: [String] = ["Uitloggen", "Vakanties", "Favoriete vakanties",  "Vormingen", "Voorkeur vakantie", "Profielen", "Wat is JOETZ?"]
     var arrayJoetz: [String] = ["Uitloggen", "Vakanties", "Vormingen", "Profielen", "Nieuwe monitor", "Wat is JOETZ?"]
     var array: [String]?

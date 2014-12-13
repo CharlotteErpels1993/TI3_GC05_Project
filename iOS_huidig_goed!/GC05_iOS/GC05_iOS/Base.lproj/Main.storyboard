@@ -17,8 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="z8b-bu-Tbo">
-                                <rect key="frame" x="16" y="28" width="568" height="552"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="z8b-bu-Tbo">
+                                <rect key="frame" x="16" y="132" width="568" height="448"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Verlang je ook al naar de vakantie? Dan presenteren we je graag de kinder- en jongerenvakanties 2014 van JOETZ.
 Dankzij onze selectie van de uiterst verzorgde verblijfplaatsen en de begeleiding door ervaren monitoren die allemaal een opleiding hebben genoten die erkend wordt door de Vlaamse overheid, kan JOETZ opnieuw duizenden kinderen en jongeren de vakantie van hun leven bieden.
@@ -28,14 +28,51 @@ De smaak te pakken? Wacht dan niet te lang en boek een onvergetelijke JOETZ-vaka
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fp2-KC-RyL">
+                                <rect key="frame" x="16" y="72" width="175" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="43" id="4yL-IT-vMX"/>
+                                    <constraint firstAttribute="width" constant="175" id="77i-0E-nCG"/>
+                                    <constraint firstAttribute="width" constant="344" id="aGz-pF-W0Y"/>
+                                    <constraint firstAttribute="height" constant="60" id="hpk-vx-cON"/>
+                                    <constraint firstAttribute="height" constant="43" id="lgV-Yy-cXG"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="facebook_button.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="4yL-IT-vMX"/>
+                                        <exclude reference="aGz-pF-W0Y"/>
+                                        <exclude reference="lgV-Yy-cXG"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="likeOnFacebook" destination="awZ-At-bww" eventType="touchUpInside" id="fc2-NE-zT1"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="z8b-bu-Tbo" firstAttribute="trailing" secondItem="NjG-kX-KIx" secondAttribute="trailingMargin" id="1x8-o4-oOZ"/>
+                            <constraint firstItem="fp2-KC-RyL" firstAttribute="leading" secondItem="NjG-kX-KIx" secondAttribute="leadingMargin" id="Ab4-xG-CGz"/>
+                            <constraint firstItem="z8b-bu-Tbo" firstAttribute="top" secondItem="fp2-KC-RyL" secondAttribute="bottom" id="CXu-kT-Iyx"/>
+                            <constraint firstItem="z8b-bu-Tbo" firstAttribute="top" secondItem="fp2-KC-RyL" secondAttribute="bottom" constant="8" id="K6t-mF-vVs"/>
                             <constraint firstItem="z8b-bu-Tbo" firstAttribute="leading" secondItem="NjG-kX-KIx" secondAttribute="leadingMargin" id="KkE-et-7Js"/>
-                            <constraint firstItem="z8b-bu-Tbo" firstAttribute="top" secondItem="sA0-7B-daF" secondAttribute="bottom" constant="8" id="Rrv-PH-qlz"/>
+                            <constraint firstItem="fp2-KC-RyL" firstAttribute="top" secondItem="sA0-7B-daF" secondAttribute="bottom" constant="8" id="Lpi-dU-Kvk"/>
                             <constraint firstItem="OWi-PF-xZM" firstAttribute="top" secondItem="z8b-bu-Tbo" secondAttribute="bottom" constant="20" id="X1m-qJ-CyD"/>
+                            <constraint firstItem="fp2-KC-RyL" firstAttribute="leading" secondItem="NjG-kX-KIx" secondAttribute="leadingMargin" id="b9j-rp-ALR"/>
+                            <constraint firstItem="fp2-KC-RyL" firstAttribute="top" secondItem="sA0-7B-daF" secondAttribute="bottom" constant="8" id="hEs-4M-Zax"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="fp2-KC-RyL" secondAttribute="trailing" constant="224" id="k2R-ol-HfO"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Lpi-dU-Kvk"/>
+                                <exclude reference="b9j-rp-ALR"/>
+                                <exclude reference="k2R-ol-HfO"/>
+                                <exclude reference="K6t-mF-vVs"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Wat is JOETZ?" id="tSc-oK-SIv">
                         <barButtonItem key="leftBarButtonItem" image="menu.png" width="55" id="TIN-DC-ex5">
@@ -3086,13 +3123,13 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="Dt7-7o-NBH"/>
+                                <exclude reference="ULQ-tM-OEe"/>
+                                <exclude reference="sZI-TJ-pAx"/>
                                 <exclude reference="0Kq-f6-GVC"/>
                                 <exclude reference="8fj-VR-U7W"/>
                                 <exclude reference="9es-26-tZ0"/>
                                 <exclude reference="Of0-XR-ZVB"/>
-                                <exclude reference="Dt7-7o-NBH"/>
-                                <exclude reference="ULQ-tM-OEe"/>
-                                <exclude reference="sZI-TJ-pAx"/>
                             </mask>
                         </variation>
                     </view>
@@ -3444,7 +3481,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                                 <rect key="frame" x="0.0" y="117" width="600" height="162"/>
                                 <color key="tintColor" red="0.90980392160000001" green="0.12941176469999999" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                             </pickerView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cLx-Za-Wc7">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cLx-Za-Wc7">
                                 <rect key="frame" x="523" y="562" width="61" height="30"/>
                                 <state key="normal" title="Annuleer">
                                     <color key="titleColor" red="0.90980392160000001" green="0.12941176469999999" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -5736,6 +5773,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
     <resources>
         <image name="Heart_Empty.png" width="999" height="928"/>
         <image name="Klevertje.png" width="615" height="427"/>
+        <image name="facebook_button.png" width="1024" height="312"/>
         <image name="feedback.png" width="64" height="64"/>
         <image name="menu.png" width="64" height="64"/>
         <image name="star.png" width="1125" height="1125"/>
