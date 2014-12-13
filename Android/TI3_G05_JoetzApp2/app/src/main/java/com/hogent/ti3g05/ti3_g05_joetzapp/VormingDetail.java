@@ -14,6 +14,7 @@ import com.parse.ParseUser;
 import java.util.Arrays;
 import java.util.List;
 
+//Geeft de mogelijkheid om naar de detailpagina van een vorming te gaan
 public class VormingDetail extends Activity {
     String titel;
     String locatie;
@@ -78,6 +79,7 @@ public class VormingDetail extends Activity {
 
         Button inschrijven = (Button) findViewById(R.id.btnInschrijvenVorming);
 
+        //Enkel een monitor kan zich inschrijven, anders verberg je de knop
         if(ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("administrator"))
         {
             inschrijven.setVisibility(View.GONE);
@@ -90,6 +92,7 @@ public class VormingDetail extends Activity {
         inschrijven.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //Bij klikken op de knop stuur de gebruiker met de nodige gegevens door naar de inschrijvingpagina
                 Intent inte = new Intent(getApplicationContext(), VormingSignup.class);
                 inte.putExtra("periodes", periodes.toArray(new String[periodes.size()]));
                 inte.putExtra("objectId", objectId);

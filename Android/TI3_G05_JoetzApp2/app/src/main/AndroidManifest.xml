@@ -87,13 +87,9 @@
         <activity android:name=".InschrijvenVakantiePart3"
             android:theme="@style/CustomActionBarTheme">
         </activity>
-        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.Vormingen_Overzicht"
-            android:theme="@style/CustomActionBarTheme"/>
         <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.VormingDetail"
             android:theme="@style/CustomActionBarTheme"/>
         <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.ProfielDetail"
-            android:theme="@style/CustomActionBarTheme"/>
-        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.ProfielenOverzicht"
             android:theme="@style/CustomActionBarTheme"/>
         <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.Loguit"
             android:theme="@style/CustomActionBarTheme"/>
@@ -101,11 +97,6 @@
             android:theme="@style/CustomActionBarTheme"/>
         <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.IndienenVoorkeurVakantie"
             android:theme="@style/CustomActionBarTheme"/>
-        <activity
-            android:name="com.hogent.ti3g05.ti3_g05_joetzapp.SuccesvolDoorgegeven"
-            android:theme="@style/CustomActionBarTheme"
-            android:label="@string/title_activity_inschrijving_signup" >
-        </activity>
         <activity
             android:name="com.hogent.ti3g05.ti3_g05_joetzapp.VormingSignup"
             android:theme="@style/CustomActionBarTheme"

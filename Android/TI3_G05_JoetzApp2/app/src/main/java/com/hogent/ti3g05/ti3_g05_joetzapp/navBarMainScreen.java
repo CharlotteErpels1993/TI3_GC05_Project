@@ -28,29 +28,26 @@ import com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.Login;
 import com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.SignUp_deel1;
 import com.parse.ParseUser;
 
-
+//Maakt de navigatiebar aan, is tevens ook de mainactivity, alle andere activiteiten zullen als fragment hierin worden ingesteld
 public class navBarMainScreen extends Activity {
 
     private Fragment fragment;
 
     private boolean doubleBackToExitPressedOnce = false;
-    // Within which the entire activity is enclosed
+
     private DrawerLayout mDrawerLayout;
 
-    // ListView represents Navigation Drawer
+    // De navigatiebar
     private ListView mDrawerList;
 
-    // ActionBarDrawerToggle indicates the presence of Navigation Drawer in the action bar
+    // geeft de aanwezigheid aan van de navigatiebar in de actionbar
     private ActionBarDrawerToggle mDrawerToggle;
 
-    // Title of the action bar
     private String mTitle = "";
 
     private String[] menuItems;
 
-    // flag for Internet connection status
     Boolean isInternetPresent = false;
-    // Connection detector class
     ConnectionDetector cd;
 
     private FrameLayout fragLayout;
@@ -58,8 +55,10 @@ public class navBarMainScreen extends Activity {
 
     @SuppressLint("NewApi")
     @Override
+    //Maakt de navbar aan en toont het juiste fragment
     protected void onCreate(Bundle savedInstanceState) {
 
+        //Om naar de juiste fragmenten te gaan worden deze meegegeven als parameter aan de intent
         Bundle extra = getIntent().getExtras();
         if(extra != null)
         {
@@ -75,22 +74,31 @@ public class navBarMainScreen extends Activity {
             if(frag.toLowerCase().startsWith("vakantie"))
             {
                 fragment = new Vakantie_overzicht();
+
+                mTitle = "Vakanties";
             }
             else if(frag.toLowerCase().startsWith("vorming"))
             {
                 fragment = new Vormingen_Overzicht_Fragment();
+
+                mTitle = "Vormingen";
             }
             else if (frag.toLowerCase().startsWith("profiel"))
             {
                 fragment = new ProfielenOverzicht_fragment();
+                mTitle = "Monitoren";
+
             }
             else if(frag.toLowerCase().startsWith("favoriet"))
             {
                 fragment = new FavorieteVakanties();
+
+                mTitle = "Favoriete vakanties";
             }
             else if(frag.toLowerCase().startsWith("feedback"))
             {
                 fragment = new feedback_overzicht();
+                mTitle = "Joetz funfactor";
             }
         }
         else
@@ -107,11 +115,12 @@ public class navBarMainScreen extends Activity {
         cd = new ConnectionDetector(getApplicationContext());
 
 
+        //Vervang in de content_frame het fragment
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
 
 
-        // Getting reference to the DrawerLayout
+
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
         mDrawerList = (ListView) findViewById(R.id.drawer_list);
@@ -123,14 +132,14 @@ public class navBarMainScreen extends Activity {
                 R.drawable.menu, R.string.drawer_open,
                 R.string.drawer_close) {
 
-            /** Called when drawer is closed */
+            //Als de navbar gesloten wordt
             public void onDrawerClosed(View view) {
                 getActionBar().setTitle(mTitle);
                 invalidateOptionsMenu();
 
             }
 
-            /** Called when a drawer is opened */
+            //Als de navbar geopend wordt
             public void onDrawerOpened(View drawerView) {
                 getActionBar().setTitle("");
                 invalidateOptionsMenu();
@@ -138,13 +147,12 @@ public class navBarMainScreen extends Activity {
 
         };
 
-        // Setting DrawerToggle on DrawerLayout
+        //Drawertoggle linken aan de navbar
         mDrawerLayout.setDrawerListener(mDrawerToggle);
 
-        //ArrayAdapter<String> adapter = new ArrayAdapter<String>(getBaseContext(),
-                //R.layout.activity_drawer_layout_item, getResources().getStringArray(R.array.items));
         ArrayAdapter<String> adapter = null;
 
+        //Toon de juiste gegevens in de navbar op basis van de gebruiker
         if (ParseUser.getCurrentUser() != null)
         {
             adapter = new ArrayAdapter<String>(getBaseContext(),
@@ -156,16 +164,14 @@ public class navBarMainScreen extends Activity {
                     R.layout.activity_drawer_layout_item, getResources().getStringArray(R.array.items));
         }
 
-        // Setting the adapter on mDrawerList
+        //Adatper meegeven aan de narvbar
         mDrawerList.setAdapter(adapter);
 
-        // Enabling Home button
         getActionBar().setHomeButtonEnabled(true);
 
-        // Enabling Up navigation
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
-        // Setting item click listener for the listview mDrawerList
+        // Als een item aangeklikt wordt op de navbar zal deze functie worden aangeroepen en die toont dan de juiste gegevens door een andere functie aan te roepen
         mDrawerList.setOnItemClickListener(new OnItemClickListener() {
 
             @Override
@@ -182,39 +188,27 @@ public class navBarMainScreen extends Activity {
 
                     menuItems = getResources().getStringArray(R.array.items);
                 }
-                // Getting an array of rivers
 
-                // Currently selected river
+                //Het geselecteerde item
                 mTitle = menuItems[position];
 
-                // Creating a fragment object
+                //Fragment object aanmaken
                 WebViewFragment rFragment = new WebViewFragment();
 
-                // Passing selected item information to fragment
+                // De geselecteerde info doorgeven aan het fragment
                 Bundle data = new Bundle();
                 data.putInt("position", position);
                 getUrl(position);
 
                 rFragment.setArguments(data);
 
-
-                // Getting reference to the FragmentManager
                 FragmentManager fragmentManager = getFragmentManager();
 
-                // Creating a fragment transaction
                     fragmentManager.beginTransaction().replace(R.id.content_frame, rFragment).commit();
 
-                    // Adding a fragment to the fragment transaction
-                    //ft.replace();
-
-                    // Committing the transaction
-                   // ft.commit();
-
-
-                // Closing the drawer
+                // Navbar sluiten
                 final Animation fadeInAnimation = AnimationUtils.loadAnimation(navBarMainScreen.this, R.anim.fadein);
 
-                //fragLayout.startAnimation(fadeInAnimation);
                 mDrawerLayout.startAnimation(fadeInAnimation);
                 mDrawerLayout.closeDrawer(mDrawerList);
 
@@ -223,40 +217,38 @@ public class navBarMainScreen extends Activity {
         });
     }
 
+    //Het juiste fragment of de juiste handelingen uitvoeren bij selectie van een item
     protected void getUrl(int position) {
         isInternetPresent = cd.isConnectingToInternet();
 
         switch (position) {
 
+            //VakantieOverzicht, toegankelijk voor iedereen
             case 0:
 
                 Intent intent = new Intent(navBarMainScreen.this, navBarMainScreen.class);
 
                 fragment = new Vakantie_overzicht();
-               // refreshFragment(position);
 
                 intent.putExtra("frag", fragment.toString());
                 startActivity(intent);
                 break;
-
+            //FeedbackOverzicht, toegankelijj voor iedereen
             case 1:
                 Intent intent9 = new Intent(navBarMainScreen.this, navBarMainScreen.class);
                 fragment = new feedback_overzicht();
-
-                //refreshFragment(position);
 
                 intent9.putExtra("frag", fragment.toString());
                 startActivity(intent9);
 
                 break;
-
+            //ProfielenOverzicht, Toegankelijk voor monitoren en administrator
             case 2:
 
                 if(ParseUser.getCurrentUser()!=null && ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("monitor"))
                 {
                     Intent intent1 = new Intent(navBarMainScreen.this, navBarMainScreen.class);
                     fragment = new ProfielenOverzicht_fragment();
-                    //refreshFragment(position);
 
                     intent1.putExtra("frag", fragment.toString());
                     startActivity(intent1);
@@ -272,13 +264,13 @@ public class navBarMainScreen extends Activity {
                     intent1.putExtra("herladen", "nee");
 
                     intent1.putExtra("frag", fragment.toString());
-                   // refreshFragment(position);
+
                     startActivity(intent1);
                 }
 
                 break;
 
-
+            //VormingOverzicht, toegankelijk voor monitoren en administrator
             case 3:
                 if(ParseUser.getCurrentUser() == null ) {
                     Toast.makeText(this, "U hebt niet de juiste bevoegdheid om dit te bekijken.", Toast.LENGTH_SHORT).show();
@@ -288,7 +280,6 @@ public class navBarMainScreen extends Activity {
                     intent1.putExtra("herladen", "nee");
 
                     intent1.putExtra("frag", fragment.toString());
-                    //refreshFragment(position);
                     startActivity(intent1); }
                 else{
                     if (ParseUser.getCurrentUser() != null && !ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("ouder"))
@@ -296,9 +287,6 @@ public class navBarMainScreen extends Activity {
                     {
                         Intent intent3 = new Intent(navBarMainScreen.this, navBarMainScreen.class);
                         fragment = new Vormingen_Overzicht_Fragment();
-
-                        refreshFragment(position);
-
                         intent3.putExtra("frag", fragment.toString());
 
                         startActivity(intent3);
@@ -312,14 +300,12 @@ public class navBarMainScreen extends Activity {
                         intent1.putExtra("herladen", "nee");
 
                         intent1.putExtra("frag", fragment.toString());
-                       // refreshFragment(position);
                         startActivity(intent1);
                     }
                 }
-                refreshFragment(position);
 
                 break;
-
+            //IndienenVoorkeurVakantie, enkel toegankelijk voor monitoren
             case 4:
                 if (isInternetPresent) {
 
@@ -335,7 +321,7 @@ public class navBarMainScreen extends Activity {
                             intent1.putExtra("herladen", "nee");
 
                             intent1.putExtra("frag", fragment.toString());
-                            //refreshFragment(position);
+
                             startActivity(intent1);
                         }
                     } else {
@@ -346,11 +332,11 @@ public class navBarMainScreen extends Activity {
                     intent1.putExtra("herladen", "nee");
 
                     intent1.putExtra("frag", fragment.toString());
-                       // refreshFragment(position);
                         startActivity(intent1);
                     }
                 break;
-
+            //Stuurt de gebruiker naar registreren indien de gebruiker niet ingelogged is
+            //Stuurt de gebruiker, (monitor en ouder) door naar favorietenOverzicht indien ingelogged
             case 5:
 
                 if(ParseUser.getCurrentUser() == null)
@@ -365,8 +351,6 @@ public class navBarMainScreen extends Activity {
                     Intent intent7 = new Intent(navBarMainScreen.this, navBarMainScreen.class);
                     fragment = new FavorieteVakanties();
 
-                   // refreshFragment(position);
-
                     intent7.putExtra("frag", fragment.toString());
                     startActivity(intent7);
                     break;
@@ -377,13 +361,13 @@ public class navBarMainScreen extends Activity {
                     );
 
                     intent1.putExtra("herladen", "nee");
-
                     intent1.putExtra("frag", fragment.toString());
-                   // refreshFragment(position);
+
                     startActivity(intent1);
                 }
                 break;
-
+            //Stuurt de gebruiker naar login als deze niet ingelogged is
+            //Indien de gebruiker ingelogged is wordt deze doorgestuurd naar uitloggen
             case 6:
 
                 Intent intent4;
@@ -401,7 +385,7 @@ public class navBarMainScreen extends Activity {
                 startActivity(intent4);
 
                 break;
-
+            //Stuurt de gebruiker door naar het scherm met meer info over joetz
             case 7:
 
                 Intent intent3 = new Intent(navBarMainScreen.this, about.class
@@ -454,7 +438,7 @@ public class navBarMainScreen extends Activity {
 
 
 
-    protected void refreshFragment(int position)
+  /*  protected void refreshFragment(int position)
     {
         if(fragment != null)
         {
@@ -464,13 +448,13 @@ public class navBarMainScreen extends Activity {
             mDrawerList.setItemChecked(position, true);
             mDrawerList.setSelection(position);
             //setTitle("vakanties");*/
-            mDrawerLayout.closeDrawer(mDrawerList);
+       /*     mDrawerLayout.closeDrawer(mDrawerList);
 
         } else
         {
             Log.e("Error", "Error in het maken van fragment");
         }
-    }
+    }*/
 
 
 
@@ -488,6 +472,7 @@ public class navBarMainScreen extends Activity {
 
         int id = item.getItemId();
 
+        //Herlaad de lijst op basis van het fragment
         if (id == R.id.menu_loadVak) {
             isInternetPresent = cd.isConnectingToInternet();
 

@@ -29,7 +29,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 
-
+//Geeft een overzicht van alle monitoren
 public class ProfielenOverzicht_fragment extends Fragment /* implements SwipeRefreshLayout.OnRefreshListener*/ {
     private ListView listview;
     private ProgressDialog mProgressDialog;
@@ -44,11 +44,7 @@ public class ProfielenOverzicht_fragment extends Fragment /* implements SwipeRef
     private List<InschrijvingVorming> alleIns = new ArrayList<InschrijvingVorming>();
 
     private Monitor ingelogdeMonitor = new Monitor();
-    //SwipeRefreshLayout swipeLayout;
-
-    // flag for Internet connection status
     Boolean isInternetPresent = false;
-    // Connection detector class
     ConnectionDetector cd;
 
 
@@ -63,37 +59,35 @@ public class ProfielenOverzicht_fragment extends Fragment /* implements SwipeRef
 
         listview = (ListView) rootView.findViewById(R.id.listViewp);
         filtertext = (EditText) rootView.findViewById(R.id.filtertextp);
-        //swipeLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_container);
-        //onCreateSwipeToRefresh(swipeLayout);
+
         getActivity().getActionBar().setTitle("Profielen");
 
         cd = new ConnectionDetector(rootView.getContext());
         myDB = new myDb(rootView.getContext());
         myDB.open();
+        //Kijk of er internet aanwezig is, zoja haal de monitoren op, zoneen haal de gegevens op uit de locale database
         isInternetPresent = cd.isConnectingToInternet();
         if(getActivity().getIntent().getStringExtra("herladen")!= null && getActivity().getIntent().getStringExtra("herladen").toLowerCase().equals("nee"))
         {
             getProfielen();
         }
+
         if (isInternetPresent) {
-            //Toast.makeText(getActivity(), "internet", Toast.LENGTH_SHORT).show();
-            new RemoteDataTask().execute();
+             new RemoteDataTask().execute();
         }
         else {
         getProfielen();
         }
 
-
         return rootView;
     }
 
+    //Haal de profielen op uit de locale database
     public void getProfielen()
     {
-        //Toast.makeText(getActivity(), "geen internet", Toast.LENGTH_SHORT).show();
         alleProfielenUitParse = myDB.getProfielen();
         adapter = new ProfielAdapter(rootView.getContext(), alleProfielenUitParse);
-        // Binds the Adapter to the ListView
-        listview.setAdapter(adapter);
+       listview.setAdapter(adapter);
 
         filtertext.addTextChangedListener(new TextWatcher() {
             @Override
@@ -112,16 +106,15 @@ public class ProfielenOverzicht_fragment extends Fragment /* implements SwipeRef
     }
 
 
-    // RemoteDataTask AsyncTask
+    // Asynchrone taak om monitoren op te halen
     private class RemoteDataTask extends AsyncTask<Void, Void, Void> {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            // Create a progressdialog
             mProgressDialog = new ProgressDialog(getActivity());
-            // Set progressdialog title
+
             mProgressDialog.setTitle("Ophalen van profielen.");
-            // Set progressdialog message
+
             mProgressDialog.setMessage("Aan het laden...");
             try {
                 mProgressDialog.setIndeterminate(true);
@@ -131,13 +124,13 @@ public class ProfielenOverzicht_fragment extends Fragment /* implements SwipeRef
                 mProgressDialog.setIndeterminate(false);
             }
 
-            // Show progressdialog
+            // Toon dialoog
             mProgressDialog.show();
         }
 
+        //Haal de gegevens op en stop deze in de locale database Doorgeven aan de adapter om weer te geven.
         @Override
         protected Void doInBackground(Void... params) {
-            // Create the array
             alleProfielenUitParse = new ArrayList<Monitor>();
             profielenAndere = new ArrayList<Monitor>();
             profielenMetZelfdeVorming = new ArrayList<Monitor>();
@@ -147,15 +140,13 @@ public class ProfielenOverzicht_fragment extends Fragment /* implements SwipeRef
             if(isInternetPresent) {
 
                 try {
-                    // Locate the class table named "Monitor" in Parse.com
-                    ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(
+                   ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(
                             "Monitor");
-                    // Locate the column named "naam" in Parse.com and order list
                     query.orderByAscending("naam");
                     List<ParseObject> lijstMetMonitoren = query.find();
 
                     myDB.dropProfielen();
-                    for (ParseObject monitor : lijstMetMonitoren) {//alle monitoren ophalen en opslaan
+                    for (ParseObject monitor : lijstMetMonitoren) {
 
                         Monitor map = new Monitor();
                         map.setNaam((String) monitor.get("naam"));
@@ -182,9 +173,7 @@ public class ProfielenOverzicht_fragment extends Fragment /* implements SwipeRef
                             }
                         }
 
-
                         alleProfielenUitParse.add(map);
-
 
                         myDB.insertProfiel(map);
 
@@ -197,15 +186,12 @@ public class ProfielenOverzicht_fragment extends Fragment /* implements SwipeRef
 
                 }
 
-
                 if (ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("monitor")) {
                     try {
 
+                        //Sorteer de gegevens om juist weer te geven met de bijhorende headers
                         ParseQuery<ParseObject> queryVorming = new ParseQuery<ParseObject>(
                                 "InschrijvingVorming");
-                        // Locate the column named "vertrekdatum" in Parse.com and order list
-                        // by ascending
-                        //queryVorming.orderByAscending("monitor");
                         List<ParseObject> lijstInschrijvingenVorming = queryVorming.find();
                         InschrijvingVorming iv;
                         for (ParseObject inschrVorming : lijstInschrijvingenVorming) {
@@ -235,7 +221,7 @@ public class ProfielenOverzicht_fragment extends Fragment /* implements SwipeRef
                             }
                         }
 
-                        //hieronder = enige duplicaten verwijderen
+                        //Verwijder duplicaten
                         profielenMetZelfdeVorming.remove(ingelogdeMonitor);
                         HashSet<Monitor> hs = new HashSet<Monitor>();
                         hs.addAll(profielenMetZelfdeVorming);
@@ -286,17 +272,14 @@ public class ProfielenOverzicht_fragment extends Fragment /* implements SwipeRef
 
         @Override
         protected void onPostExecute(Void result) {
-            // Locate the listview in listview_main.xml
-            // Pass the results into ProfielAdapter.java
 
             adapter = new ProfielAdapter(rootView.getContext(), profielenSamen);
-            // Binds the Adapter to the ListView
+
             listview.setAdapter(adapter);
-            // Close the progressdialog
+
             mProgressDialog.dismiss();
 
-            //swipeLayout.setRefreshing(false);
-
+            //Filter de profielen
             filtertext.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {                }

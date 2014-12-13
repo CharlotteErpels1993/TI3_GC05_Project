@@ -51,11 +51,7 @@ public class Vakantie_detail extends Activity {
 
     private List<ParseObject> obD;
     private String ingelogdeGebruiker = "";
-    //SwipeRefreshLayout swipeLayout;
-
-    // flag for Internet connection status
     Boolean isInternetPresent = false;
-    // Connection detector class
     ConnectionDetector cd;
 
 
@@ -65,7 +61,6 @@ public class Vakantie_detail extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //inflateexceprion
         setContentView(R.layout.activiteit_detailnieuw);
 
 
@@ -425,8 +420,6 @@ public class Vakantie_detail extends Activity {
         }
 
 
-        // Capture position and set results to the ImageView
-        // Passes flag images URL into ImageLoader.class
         int aantalAfbeeldingen = fotos.size();
         if (!fotos.isEmpty()) {
             afbeelding1im.setVisibility(View.VISIBLE);

@@ -121,6 +121,7 @@ public class FavorieteVakanties extends Fragment{
 
             }
 
+            //Haal de gegevens op en stop deze in de locale database Doorgeven aan de adapter om weer te geven.
             @Override
             protected Void doInBackground(Void... params) {
                 vakanties = new ArrayList<Vakantie>();

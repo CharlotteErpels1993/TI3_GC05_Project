@@ -19,9 +19,9 @@ import com.parse.ParseUser;
 
 import java.util.List;
 
-
+//Geeft de mogelijkheid om eigen profiel te bewerken
 public class ProfielEdit extends Activity {
-    //gegevens worden in het begin opgeslagen, om te kijken of er wijzigingen waren
+
     String initieleNaam;
     String initieleVoornaam;
     String initieleEmail;
@@ -57,6 +57,8 @@ public class ProfielEdit extends Activity {
         btnBevestigen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //Bij het klikken op de knop kijk of er internet aanwezig is, zoja controleer de gegevens
+                //Zoneen toon een gepaste melding
                 isInternetPresent = cd.isConnectingToInternet();
 
                 if (isInternetPresent) {
@@ -73,13 +75,13 @@ public class ProfielEdit extends Activity {
         txtGSM.setText(initieleGsm);
     }
 
+    //Controleer de waarden, indien geen fouten sla de gegevens op
     public void controleIngevuld(){
         clearErrors();
         boolean cancel = false;
 
         String naam, voornaam, email, gsm;
 
-        // Store values at the time of the login attempt.
         naam = txtNaam.getText().toString();
         voornaam = txtVoornaam.getText().toString();
         email = txtEmail.getText().toString().toLowerCase();
@@ -113,12 +115,14 @@ public class ProfielEdit extends Activity {
         if (cancel) {
             focusView.requestFocus();
         } else {
+
             opslaan(naam, voornaam ,email, gsm);
         }
     }
 
+    //eerst kijken of de gebruiker iets heeft gewijzigd, zo ja, sla alles op, zo niet, stuur direct door
     public void opslaan(String objnaam, String objvoornaam, String objemail, String objGSM){
-        //eerst kijken of de gebruiker iets heeft gewijzigd, zo ja, sla alles op, zo niet, stuur direct door
+
         if (isErIetsGewijzigd(objnaam, objvoornaam, objemail, objGSM)){
             try{
                 ParseQuery<ParseObject> query = ParseQuery.getQuery("Monitor");
@@ -155,6 +159,7 @@ public class ProfielEdit extends Activity {
 
     }
 
+    //Verwijder de error's
     public void clearErrors(){
         txtNaam.setError(null);
         txtVoornaam.setError(null);
@@ -162,6 +167,7 @@ public class ProfielEdit extends Activity {
         txtEmail.setError(null);
     }
 
+    //Stuurt de gebruiker terug naar de detailpagina
     public void terugSturenNaarProfielDetail(String objnaam, String objvoornaam, String objemail, String objGSM){
         Intent inte = new Intent(getApplicationContext(), ProfielDetail.class);
         inte.putExtra("naam", objnaam);
@@ -171,6 +177,7 @@ public class ProfielEdit extends Activity {
         startActivity(inte);
     }
 
+    //Kijkt of er gegevens gewijzigd werden
     public boolean isErIetsGewijzigd(String nieuweNaam, String nieuweVoornaam, String nieuweEmail, String nieuweGSM){
         if (!nieuweNaam.equals(initieleNaam))
             return true;
@@ -202,10 +209,5 @@ public class ProfielEdit extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    protected void onDestroy()
-    {
-        super.onDestroy();
-        ParseUser.logOut();
-    }
+
 }

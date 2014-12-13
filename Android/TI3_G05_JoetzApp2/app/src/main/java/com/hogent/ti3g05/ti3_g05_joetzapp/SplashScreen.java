@@ -7,9 +7,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 
-/**
- * Created by Gebruiker on 30/11/2014.
- */
+//Geeft de afbeelding weer bij het opstarten van de applicatie
 public class SplashScreen extends Activity {
 
     // Splash screen timer

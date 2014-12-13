@@ -13,7 +13,7 @@ import android.widget.Toast;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
 import com.parse.ParseUser;
 
-//UC: naam en voornaam van de monitor, emailadres, gsm nummer.
+//Geeft een detail van een aangeklikte monitor
 public class ProfielDetail extends Activity {
     String naam;
     String voornaam;
@@ -51,11 +51,14 @@ public class ProfielDetail extends Activity {
 
         if(ParseUser.getCurrentUser().getEmail().equals(email))
         {
+            //Indien de gebruiker zijn eigen profiel selecteert kan hij deze bewerken
             Button btnProfielEdit = (Button) findViewById(R.id.btnProfielEdit);
             btnProfielEdit.setVisibility(View.VISIBLE);
             btnProfielEdit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    //Als op de knop geklikt wordt kijk of er internet is, zoja stuur de gebruiker door naar het bewerken van zijn profiel
+                    //Zoneen geef een gepaste boodschap
                     isInternetPresent = cd.isConnectingToInternet();
 
                     if (isInternetPresent) {
@@ -74,7 +77,6 @@ public class ProfielDetail extends Activity {
             });
         }
 
-
         txtNaam.setText(naam);
         txtVoornaam.setText(voornaam);
         txtEmail.setText(email);
@@ -85,6 +87,7 @@ public class ProfielDetail extends Activity {
         mail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //Bij het klikken op de knop wordt de mail applicatie geopend en kan de gebruiker een mail sturen naar het email adres
                 Intent i = new Intent(Intent.ACTION_SEND);
                 i.setType("text/plain");
                 i.putExtra(Intent.EXTRA_EMAIL, new String[]{ email });
@@ -123,7 +126,6 @@ public class ProfielDetail extends Activity {
     }*/
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.back_2, menu);
         return true;
     }
@@ -134,7 +136,6 @@ public class ProfielDetail extends Activity {
         if (id == R.id.backMenu2) {
             Intent intent1 = new Intent(this, navBarMainScreen.class);
             intent1.putExtra("naarfrag", "profiel");
-
             intent1.putExtra("herladen", "nee");
             intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent1);

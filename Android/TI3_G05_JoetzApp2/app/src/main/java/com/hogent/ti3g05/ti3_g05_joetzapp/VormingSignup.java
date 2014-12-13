@@ -19,6 +19,7 @@ import com.parse.ParseUser;
 import java.util.Arrays;
 import java.util.List;
 
+//Geeft de gebruiker de mogelijkheid om zich in te schrijven in een vorming
 public class VormingSignup extends Activity {
     private Spinner spnDataInschrijven;
 
@@ -49,24 +50,21 @@ public class VormingSignup extends Activity {
         btnInschrijven.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // get Internet status
+                // Kijk of er internet aanwezig is, zoja sla de gegevens op, zonee toon een gepaste melding
                 isInternetPresent = cd.isConnectingToInternet();
-                // check for Internet status
 
                 if (isInternetPresent) {
-                    // Internet Connection is Present
-                    // make HTTP requests
                     if(opslaanGegevens())
                     {
                         Toast.makeText(getApplicationContext(), getString(R.string.dialog_ingeschreven_melding), Toast.LENGTH_SHORT).show();
                         Intent in = new Intent(getApplicationContext(),navBarMainScreen.class);
-                        //TODO: gebruiker doorsturen naar Vormingen i p v Vakanties
+
+                        in.putExtra("naarfrag", "vorming");
+                        in.putExtra("herladen", "nee");
                         startActivity(in);
                     }
                 }
                 else{
-                    // Internet connection is not present
-                    // Ask user to connect to Internet
                     Toast.makeText(getApplicationContext(), getString(R.string.error_no_internet), Toast.LENGTH_SHORT).show();
                 }
             }
@@ -74,13 +72,10 @@ public class VormingSignup extends Activity {
 
     }
 
-    //alle gegevens worden opgeslagen en doorgestuurd naar de DB.
-    // Indien alles is gelukt -> return true en ga door naar volgend scherm Indien er een fout is gebeurd -> return false;
+    //Sla de gegevens op in de database, als de gegevens correct opgeslagen zijn geef true terug
     public boolean opslaanGegevens(){
-        //3 gegevens nodig, objectID van Monitor, objectID van Vorming & geselecteerde data.
         String geselecteerdeData = String.valueOf(spnDataInschrijven.getSelectedItem());
         String monitorId;
-        //vormingID werd in OnCreate reeds gedefinieerd
 
         String emailToLookFor = ParseUser.getCurrentUser().getEmail();
         try{
@@ -91,7 +86,7 @@ public class VormingSignup extends Activity {
                 Toast.makeText(getApplicationContext(), getString(R.string.error_generalException), Toast.LENGTH_SHORT).show();
                 return false;
             }
-            else{//er is slechts 1 gebruiker in de Monitor tabel, zoals het hoort.
+            else{
                 monitorId = lijstObjecten.get(0).getObjectId();
             }
 
@@ -101,8 +96,7 @@ public class VormingSignup extends Activity {
             queryVanInschrijvingen.whereEqualTo("periode", geselecteerdeData);
             List<ParseObject> lijstInschrijvingVormingen = queryVanInschrijvingen.find();
             if (lijstInschrijvingVormingen.size() > 0){
-                //de combinatie van een gelijke monitorID, vormingID en periode zorgt voor een error
-                Toast.makeText(VormingSignup.this, getString(R.string.error_duplicateSignupVorming) , Toast.LENGTH_LONG).show();
+                 Toast.makeText(VormingSignup.this, getString(R.string.error_duplicateSignupVorming) , Toast.LENGTH_LONG).show();
                 return false;
             }
 
@@ -123,7 +117,6 @@ public class VormingSignup extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.back_2, menu);
         return true;
     }
