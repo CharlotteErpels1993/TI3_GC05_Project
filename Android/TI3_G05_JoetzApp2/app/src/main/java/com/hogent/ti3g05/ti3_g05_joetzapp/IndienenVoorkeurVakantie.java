@@ -9,6 +9,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -55,7 +57,9 @@ public class IndienenVoorkeurVakantie extends Activity implements AdapterView.On
 
         spinner = (Spinner) findViewById( R.id.spinnerVakanties );
         spinner.setOnItemSelectedListener(this);
-        Button btnVolgende = (Button) findViewById(R.id.BevestigVoorkeur);
+        final Button btnVolgende = (Button) findViewById(R.id.BevestigVoorkeur);
+
+        final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.alpha);
 
         cd = new ConnectionDetector(this);
         getActionBar().setTitle("Kies uw vakantie");
@@ -63,6 +67,7 @@ public class IndienenVoorkeurVakantie extends Activity implements AdapterView.On
             //Bij het klikken op de knop kijk of er internet aanwezig is, zoja dien de voorkeur in, zoneen geef de gepaste melding
             @Override
             public void onClick(View view) {
+                btnVolgende.startAnimation(animAlpha);
                 if(isInternetPresent)
                 {
                     indienenVoorkeur();

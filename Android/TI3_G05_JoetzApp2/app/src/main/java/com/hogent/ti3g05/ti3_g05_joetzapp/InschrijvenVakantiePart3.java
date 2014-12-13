@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -36,10 +38,13 @@ public class InschrijvenVakantiePart3 extends Activity {
         getActionBar().setTitle("Inschrijven vakantie");
         et_ExtraInformatie = (EditText) findViewById(R.id.ExtraInformatieIns);
 
-        Button btnVolgende = (Button)findViewById(R.id.btnNaarDeel4V);
+        final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.alpha);
+
+        final Button btnVolgende = (Button)findViewById(R.id.btnNaarDeel4V);
         btnVolgende.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                btnVolgende.startAnimation(animAlpha);
                 //Controleer of er verbinding is met het internet, zoja haal alle gegevens op van de vorige stappen
                 isInternetPresent = cd.isConnectingToInternet();
 

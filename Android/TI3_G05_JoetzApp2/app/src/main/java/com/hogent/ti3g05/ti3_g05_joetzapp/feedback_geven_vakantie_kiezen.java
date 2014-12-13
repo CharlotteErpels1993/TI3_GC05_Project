@@ -8,6 +8,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -41,14 +43,17 @@ public class feedback_geven_vakantie_kiezen extends Activity {
         setContentView(R.layout.feedback_geven_vakantie_kiezen);
 
         spinner = (Spinner) findViewById( R.id.spinnerFeedbackVakanties );
-        Button btnVolgende = (Button) findViewById(R.id.KiesVakantie);
+        final Button btnVolgende = (Button) findViewById(R.id.KiesVakantie);
         cd= new ConnectionDetector(this);
+
+        final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.alpha);
 
         isInternetPresent = cd.isConnectingToInternet();
         getActionBar().setTitle("Kies een vakantie");
         btnVolgende.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                btnVolgende.startAnimation(animAlpha);
                 if (isInternetPresent) {
                     //Controleer of er internet aanwezig is haal de vakanties op
                     gaVerder();

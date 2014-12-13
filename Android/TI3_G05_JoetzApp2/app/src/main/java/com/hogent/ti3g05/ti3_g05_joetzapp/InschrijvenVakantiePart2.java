@@ -7,6 +7,8 @@ import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
@@ -39,6 +41,9 @@ public class InschrijvenVakantiePart2 extends Activity {
         cd = new ConnectionDetector(getApplicationContext());
 
         getActionBar().setTitle("Inschrijven vakantie");
+
+        final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.alpha);
+
         txtVoornaam = (EditText) findViewById(R.id.VoornaamContactPersoonIns);
         txtNaam = (EditText) findViewById(R.id.NaamContactPersoon);
         txtTelefoon = (EditText) findViewById(R.id.TelefoonContactPersoon);
@@ -52,6 +57,7 @@ public class InschrijvenVakantiePart2 extends Activity {
         btnVolgende.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                btnVolgende.startAnimation(animAlpha);
                 //Controleer of er internet aanwezig is, zoja controleer de ingegeven waarden, zoneen toon de gepaste melding
                 isInternetPresent = cd.isConnectingToInternet();
 
@@ -69,6 +75,7 @@ public class InschrijvenVakantiePart2 extends Activity {
         btnCPextra.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
+                btnCPextra.startAnimation(animAlpha);
                 //Geeft de mogelijkheid om een 2de contactpersoon in geval van nood toe te voegen
 
                 extraCPZichtbaar = !extraCPZichtbaar;

@@ -7,6 +7,8 @@ import android.view.InflateException;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,6 +29,8 @@ public class ProfielDetail extends Activity {
     @Override
     public void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.alpha);
+
         try
         {
         setContentView(R.layout.profiel_detail);
@@ -77,11 +81,12 @@ public class ProfielDetail extends Activity {
         if(ParseUser.getCurrentUser().getEmail().equals(email))
         {
             //Indien de gebruiker zijn eigen profiel selecteert kan hij deze bewerken
-            Button btnProfielEdit = (Button) findViewById(R.id.btnProfielEdit);
+            final Button btnProfielEdit = (Button) findViewById(R.id.btnProfielEdit);
             btnProfielEdit.setVisibility(View.VISIBLE);
             btnProfielEdit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    btnProfielEdit.startAnimation(animAlpha);
                     //Als op de knop geklikt wordt kijk of er internet is, zoja stuur de gebruiker door naar het bewerken van zijn profiel
                     //Zoneen geef een gepaste boodschap
                     isInternetPresent = cd.isConnectingToInternet();
@@ -107,11 +112,12 @@ public class ProfielDetail extends Activity {
         txtEmail.setText(email);
         txtGsm.setText(gsm);
 
-        Button mail = (Button) findViewById(R.id.mail);
+        final Button mail = (Button) findViewById(R.id.mail);
 
         mail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mail.startAnimation(animAlpha);
                 //Bij het klikken op de knop wordt de mail applicatie geopend en kan de gebruiker een mail sturen naar het email adres
                 Intent i = new Intent(Intent.ACTION_SEND);
                 i.setType("text/plain");

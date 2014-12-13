@@ -9,6 +9,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -31,6 +33,8 @@ public class SignUp_deel2 extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup_deel2);
 
+        final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.alpha);
+
         getActionBar().setTitle(getString(R.string.title_activity_Register));
 
         // creating connection detector class instance
@@ -41,11 +45,12 @@ public class SignUp_deel2 extends Activity{
         et_aansluitingsNrOuder2 = (EditText) findViewById(R.id.aansluitingsNrOuder2);
 
 
-        Button volgendeButton = (Button) findViewById(R.id.btn_volgendedeel3);
+        final Button volgendeButton = (Button) findViewById(R.id.btn_volgendedeel3);
         //Bij het klikken op de knop, controleer of er internet aanwezig is, zoja controleer het aansluitingsnummer
         volgendeButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
+                volgendeButton.startAnimation(animAlpha);
             isInternetPresent = cd.isConnectingToInternet();
                 if (isInternetPresent) {
                     // Internet Connection is Present

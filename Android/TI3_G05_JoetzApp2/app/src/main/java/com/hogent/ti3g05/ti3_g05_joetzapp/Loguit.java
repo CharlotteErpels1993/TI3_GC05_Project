@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -23,11 +25,14 @@ public class Loguit extends Activity {
 
         getActionBar().setTitle("Loguit");
 
-        Button loguitButton = (Button) findViewById(R.id.btnLogUit);
+        final Button loguitButton = (Button) findViewById(R.id.btnLogUit);
+        final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.alpha);
+
 
         loguitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                loguitButton.startAnimation(animAlpha);
                 //Bij het klikken op de knop wordt de gebruiker uitgelogd en doorgestuurd naar het overzicht van de vakanties
                 ParseUser.logOut();
                 Toast.makeText(getApplicationContext(), "U bent uitgelogd", Toast.LENGTH_SHORT).show();

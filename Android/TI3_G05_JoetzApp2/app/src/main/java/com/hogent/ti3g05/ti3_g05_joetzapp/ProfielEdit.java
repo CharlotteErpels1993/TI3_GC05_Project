@@ -7,6 +7,8 @@ import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -39,6 +41,8 @@ public class ProfielEdit extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profiel_edit);
 
+        final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.alpha);
+
         Intent i = getIntent();
         initieleNaam = i.getStringExtra("naam");
         initieleVoornaam = i.getStringExtra("voornaam");
@@ -53,10 +57,11 @@ public class ProfielEdit extends Activity {
         txtEmail = (EditText) findViewById(R.id.Email);
         txtGSM = (EditText)findViewById(R.id.GSM);
 
-        Button btnBevestigen = (Button) findViewById(R.id.btnBevestigen);
+        final Button btnBevestigen = (Button) findViewById(R.id.btnBevestigen);
         btnBevestigen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                btnBevestigen.startAnimation(animAlpha);
                 //Bij het klikken op de knop kijk of er internet aanwezig is, zoja controleer de gegevens
                 //Zoneen toon een gepaste melding
                 isInternetPresent = cd.isConnectingToInternet();

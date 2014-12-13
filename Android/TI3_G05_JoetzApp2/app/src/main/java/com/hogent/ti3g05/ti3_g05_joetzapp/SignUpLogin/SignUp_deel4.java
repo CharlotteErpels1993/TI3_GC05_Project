@@ -9,6 +9,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -50,6 +52,7 @@ public class SignUp_deel4 extends Activity{
 		setContentView(R.layout.activity_signup_deel4);
         getActionBar().setTitle(getString(R.string.title_activity_Register));
 
+        final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.alpha);
 
         cd = new ConnectionDetector(getApplicationContext());
 
@@ -61,10 +64,11 @@ public class SignUp_deel4 extends Activity{
         rijksregisternummer = in.getStringExtra("rijksregisternr");
 
 
-        Button mCreateAccountButton = (Button) findViewById(R.id.btnCreateAccount);
+        final Button mCreateAccountButton = (Button) findViewById(R.id.btnCreateAccount);
 		mCreateAccountButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
+                mCreateAccountButton.startAnimation(animAlpha);
                 //Bij het klikken op de knop wordt gecontroleerd of er internet is, zoja, controleer gegevens
             isInternetPresent = cd.isConnectingToInternet();
             if (isInternetPresent) {

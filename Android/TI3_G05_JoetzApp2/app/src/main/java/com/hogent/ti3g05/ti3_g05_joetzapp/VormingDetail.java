@@ -7,6 +7,8 @@ import android.view.InflateException;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,6 +35,8 @@ public class VormingDetail extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.alpha);
+
         try
         {
         setContentView(R.layout.vorming_detail);
@@ -103,7 +107,7 @@ public class VormingDetail extends Activity {
         }
         txtPeriodes.setText(periodesBuilder.toString());
 
-        Button inschrijven = (Button) findViewById(R.id.btnInschrijvenVorming);
+        final Button inschrijven = (Button) findViewById(R.id.btnInschrijvenVorming);
 
         //Enkel een monitor kan zich inschrijven, anders verberg je de knop
         if(ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("administrator"))
@@ -118,6 +122,7 @@ public class VormingDetail extends Activity {
         inschrijven.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                inschrijven.startAnimation(animAlpha);
                 //Bij klikken op de knop stuur de gebruiker met de nodige gegevens door naar de inschrijvingpagina
                 Intent inte = new Intent(getApplicationContext(), VormingSignup.class);
                 inte.putExtra("periodes", periodes.toArray(new String[periodes.size()]));

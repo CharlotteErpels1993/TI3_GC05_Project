@@ -8,6 +8,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -63,10 +65,12 @@ public class Login extends Activity{
         mPasswordEditText = (EditText) findViewById(R.id.password);
 
 
+        final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.alpha);
         btn_LoginIn.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View v) {
+                btn_LoginIn.startAnimation(animAlpha);
                 //Controleer of er internet is, zoja ga door naar de controle van de inloggegevens
                 isInternetPresent = cd.isConnectingToInternet();
                 if (isInternetPresent) {
@@ -82,6 +86,7 @@ public class Login extends Activity{
 
             @Override
             public void onClick(View v) {
+                btn_SignUp.startAnimation(animAlpha);
                 //Bij het klikken op deze knop wordt de gebruiker doorgestuurd naar de activiteit registreren
                 Intent in = new Intent(Login.this, SignUp_deel1.class);
                 startActivity(in);
@@ -92,6 +97,7 @@ public class Login extends Activity{
 
             @Override
             public void onClick(View v) {
+                btn_ForgetPass.startAnimation(animAlpha);
                 //Bij het klikken op deze knop wordt de gebruiker doorgestuurd naar de activiteit wachtwoordvergeten
                 Intent in = new Intent(Login.this, ForgetParsePassword.class);
                 startActivity(in);

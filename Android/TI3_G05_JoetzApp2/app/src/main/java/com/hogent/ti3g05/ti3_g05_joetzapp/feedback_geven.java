@@ -7,6 +7,8 @@ import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RatingBar;
@@ -46,8 +48,9 @@ public class feedback_geven extends Activity {
         setContentView(R.layout.feedback_ingeven);
 
         cd= new ConnectionDetector(feedback_geven.this);
-        Button ingeven = (Button) findViewById(R.id.ingevenFeedback);
+        final Button ingeven = (Button) findViewById(R.id.ingevenFeedback);
 
+        final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.alpha);
 
         ratingBar = (RatingBar) findViewById(R.id.ratingBar);
         setTitle("Funfactor");
@@ -107,6 +110,7 @@ public class feedback_geven extends Activity {
             @Override
             public void onClick(View view) {
 
+                ingeven.startAnimation(animAlpha);
                 //Bij het drukken op de knop kijk of er internet is, zoja haal de rating op van de ratingbar en controleer de ingegeven waarden
                 //Zoneen geef een gepaste melding
                 if(isInternetPresent)

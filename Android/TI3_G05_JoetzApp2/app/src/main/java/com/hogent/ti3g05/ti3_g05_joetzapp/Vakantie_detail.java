@@ -61,6 +61,7 @@ public class Vakantie_detail extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.alpha);
 
         try {
             setContentView(R.layout.activiteit_detailnieuw);
@@ -158,6 +159,7 @@ public class Vakantie_detail extends Activity {
         btnInschrijven.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                btnInschrijven.startAnimation(animAlpha);
                 Intent intent3 = new Intent(Vakantie_detail.this, InschrijvenVakantiePart1.class);
                 intent3.putExtra("objectId", activiteitID);
                 intent3.putExtra("maxdoelgroep", maxDoelgroep);

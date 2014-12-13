@@ -8,6 +8,8 @@ import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -48,6 +50,8 @@ public class InschrijvenVakantiePart1 extends FragmentActivity {
         setContentView(R.layout.activity_inschrijven_vakantie_part1);
 
         cd = new ConnectionDetector(getApplicationContext());
+        final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.alpha);
+
 
         Intent i = getIntent();
         mindoelgroep = i.getStringExtra("mindoelgroep");
@@ -71,6 +75,7 @@ public class InschrijvenVakantiePart1 extends FragmentActivity {
         btnVolgende.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                btnVolgende.startAnimation(animAlpha);
                 //Bij het klikken op de knop controleer of er internet aanwezig is, zoja controleer de gegevens
                 //Zoneen toon een gepaste melding
                 isInternetPresent = cd.isConnectingToInternet();

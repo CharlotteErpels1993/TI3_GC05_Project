@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -33,6 +35,8 @@ public class VormingSignup extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vorming_signup);
         cd = new ConnectionDetector(getApplicationContext());
+        final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.alpha);
+
 
         getActionBar().setTitle(getString(R.string.maintitle_Inschrijven_Vorming));
 
@@ -46,10 +50,11 @@ public class VormingSignup extends Activity {
         spnDataInschrijven = (Spinner) findViewById(R.id.spnDataVorming);
         spnDataInschrijven.setAdapter(dataAdapter);
 
-        Button btnInschrijven = (Button) findViewById(R.id.btnInschrijven);
+        final Button btnInschrijven = (Button) findViewById(R.id.btnInschrijven);
         btnInschrijven.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                btnInschrijven.startAnimation(animAlpha);
                 // Kijk of er internet aanwezig is, zoja sla de gegevens op, zonee toon een gepaste melding
                 isInternetPresent = cd.isConnectingToInternet();
 

@@ -9,6 +9,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -47,8 +49,9 @@ public class SignUp_deel3 extends Activity{
         getActionBar().setTitle(getString(R.string.title_activity_Register));
 
 		cd = new ConnectionDetector(getApplicationContext());
-		
-		voornaamText = (EditText) findViewById(R.id.VoornaamSignu);
+        final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.alpha);
+
+        voornaamText = (EditText) findViewById(R.id.VoornaamSignu);
 		naamText = (EditText) findViewById(R.id.NaamSignu);
 		straatText = (EditText) findViewById(R.id.StraatSignu);
         huisnrText = (EditText) findViewById(R.id.HuisnrSignu);
@@ -58,12 +61,15 @@ public class SignUp_deel3 extends Activity{
         gsmText = (EditText) findViewById(R.id.GsmSignu);
         busText = (EditText) findViewById(R.id.BusSignu);
 
-        Button volgendeButton = (Button) findViewById(R.id.btnNaarDeel4);
+        final Button volgendeButton = (Button) findViewById(R.id.btnNaarDeel4);
 		volgendeButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                volgendeButton.startAnimation(animAlpha);
                 //Bij het klikken op de knop wordt gecontroleerd of er internet aanwezig is, zoja, controleer de ingevulde gegevens
                 isInternetPresent = cd.isConnectingToInternet();
+
                 if (isInternetPresent) {
                     controleerGegevens();
                 }
