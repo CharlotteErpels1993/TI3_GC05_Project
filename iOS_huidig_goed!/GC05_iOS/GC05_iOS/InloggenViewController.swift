@@ -1,7 +1,7 @@
 import UIKit
 import QuartzCore
 
-class InloggenViewController: ResponsiveTextFieldViewController {
+class InloggenViewController: UIViewController {
     @IBOutlet weak var txtEmail: UITextField!
     @IBOutlet weak var txtWachtwoord: UITextField!
     
