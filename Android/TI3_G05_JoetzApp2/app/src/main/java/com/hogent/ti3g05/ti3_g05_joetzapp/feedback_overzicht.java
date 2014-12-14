@@ -122,6 +122,7 @@ public class feedback_overzicht extends Fragment {
             try {
 
                 ParseQuery<ParseObject> queryFeedback = new ParseQuery<ParseObject>("Feedback");
+                queryFeedback.orderByAscending("vakantie");
                 lijstMetParseFeedback = queryFeedback.find();
                 myDB.dropFeedback();
                 if (lijstMetParseFeedback.isEmpty()) {
