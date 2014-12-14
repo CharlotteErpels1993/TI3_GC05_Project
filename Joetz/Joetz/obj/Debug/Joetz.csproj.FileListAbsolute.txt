@@ -278,3 +278,24 @@ C:\Users\Charlotte\Documents\GitHub\TI3_GC05_Project\Joetz\Joetz\bin\WebActivato
 C:\Users\Charlotte\Documents\GitHub\TI3_GC05_Project\Joetz\Joetz\bin\Ninject.xml
 C:\Users\Charlotte\Documents\GitHub\TI3_GC05_Project\Joetz\Joetz\bin\Ninject.Web.Common.xml
 C:\Users\Charlotte\Documents\GitHub\TI3_GC05_Project\Joetz\Joetz\bin\Ninject.Web.Mvc.xml
+C:\Users\Gebruiker\Documents\Hogent\Semester1 20142015\TI3_GC05_Project\Joetz\Joetz\bin\EntityFramework.SqlServer.dll
+C:\Users\Gebruiker\Documents\Hogent\Semester1 20142015\TI3_GC05_Project\Joetz\Joetz\bin\ExcelApi.dll
+C:\Users\Gebruiker\Documents\Hogent\Semester1 20142015\TI3_GC05_Project\Joetz\Joetz\bin\Gat.Controls.OpenDialog.dll
+C:\Users\Gebruiker\Documents\Hogent\Semester1 20142015\TI3_GC05_Project\Joetz\Joetz\bin\Kesoft.Windows.Forms.Common.dll
+C:\Users\Gebruiker\Documents\Hogent\Semester1 20142015\TI3_GC05_Project\Joetz\Joetz\bin\Kesoft.Windows.Forms.Panels.dll
+C:\Users\Gebruiker\Documents\Hogent\Semester1 20142015\TI3_GC05_Project\Joetz\Joetz\bin\NetOffice.dll
+C:\Users\Gebruiker\Documents\Hogent\Semester1 20142015\TI3_GC05_Project\Joetz\Joetz\bin\Ninject.dll
+C:\Users\Gebruiker\Documents\Hogent\Semester1 20142015\TI3_GC05_Project\Joetz\Joetz\bin\Ninject.Web.Common.dll
+C:\Users\Gebruiker\Documents\Hogent\Semester1 20142015\TI3_GC05_Project\Joetz\Joetz\bin\Ninject.Web.Mvc.dll
+C:\Users\Gebruiker\Documents\Hogent\Semester1 20142015\TI3_GC05_Project\Joetz\Joetz\bin\OfficeApi.dll
+C:\Users\Gebruiker\Documents\Hogent\Semester1 20142015\TI3_GC05_Project\Joetz\Joetz\bin\VBIDEApi.dll
+C:\Users\Gebruiker\Documents\Hogent\Semester1 20142015\TI3_GC05_Project\Joetz\Joetz\bin\WebActivatorEx.dll
+C:\Users\Gebruiker\Documents\Hogent\Semester1 20142015\TI3_GC05_Project\Joetz\Joetz\bin\EntityFramework.SqlServer.xml
+C:\Users\Gebruiker\Documents\Hogent\Semester1 20142015\TI3_GC05_Project\Joetz\Joetz\bin\ExcelApi.xml
+C:\Users\Gebruiker\Documents\Hogent\Semester1 20142015\TI3_GC05_Project\Joetz\Joetz\bin\Kesoft.Windows.Forms.Panels.xml
+C:\Users\Gebruiker\Documents\Hogent\Semester1 20142015\TI3_GC05_Project\Joetz\Joetz\bin\NetOffice.xml
+C:\Users\Gebruiker\Documents\Hogent\Semester1 20142015\TI3_GC05_Project\Joetz\Joetz\bin\Ninject.xml
+C:\Users\Gebruiker\Documents\Hogent\Semester1 20142015\TI3_GC05_Project\Joetz\Joetz\bin\Ninject.Web.Common.xml
+C:\Users\Gebruiker\Documents\Hogent\Semester1 20142015\TI3_GC05_Project\Joetz\Joetz\bin\Ninject.Web.Mvc.xml
+C:\Users\Gebruiker\Documents\Hogent\Semester1 20142015\TI3_GC05_Project\Joetz\Joetz\bin\OfficeApi.xml
+C:\Users\Gebruiker\Documents\Hogent\Semester1 20142015\TI3_GC05_Project\Joetz\Joetz\bin\VBIDEApi.xml
