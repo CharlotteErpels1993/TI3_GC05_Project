@@ -23,6 +23,7 @@ public class afbeeldingUItvergroot extends Activity {
     private String inbegrepenInPrijs, activiteitID;
     private ArrayList<String> fotos = new ArrayList<String>();
     private String link;
+    private String gemiddeldeScore;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -54,6 +55,9 @@ public class afbeeldingUItvergroot extends Activity {
         bmLedenPrijs = i.getStringExtra("BMledenPrijs");
         sterPrijs1Ouder = i.getStringExtra("SterPrijs1Ouder");
         sterPrijs2Ouders = i.getStringExtra("SterPrijs2Ouders");
+
+        gemiddeldeScore = i.getStringExtra("gemiddeldeScore");
+
 
 
         //afbeeldingen ophalen met een while-lus, die stopt als de nieuwe afbeelding null is, want we weten niet zeker of
@@ -118,6 +122,7 @@ public class afbeeldingUItvergroot extends Activity {
         intent1.putExtra("SterPrijs1Ouder", sterPrijs1Ouder);
         intent1.putExtra("SterPrijs2Ouders", sterPrijs2Ouders);
 
+        intent1.putExtra("gemiddeldeScore",gemiddeldeScore);
 
         String keyVoorIntent;
         ArrayList<String> lijstFotos = fotos;
