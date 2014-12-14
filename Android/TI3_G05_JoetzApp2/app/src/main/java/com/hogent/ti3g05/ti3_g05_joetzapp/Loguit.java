@@ -23,7 +23,7 @@ public class Loguit extends Activity {
         setContentView(R.layout.activity_logout);
 
 
-        getActionBar().setTitle("Loguit");
+        getActionBar().setTitle(getString(R.string.Uitloggen));
 
         final Button loguitButton = (Button) findViewById(R.id.btnLogUit);
         final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.alpha);
@@ -35,7 +35,7 @@ public class Loguit extends Activity {
                 loguitButton.startAnimation(animAlpha);
                 //Bij het klikken op de knop wordt de gebruiker uitgelogd en doorgestuurd naar het overzicht van de vakanties
                 ParseUser.logOut();
-                Toast.makeText(getApplicationContext(), "U bent uitgelogd", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), getString(R.string.meldingUitgelogd), Toast.LENGTH_SHORT).show();
 
                 Intent intent1 = new Intent(Loguit.this, navBarMainScreen.class);
                 startActivity(intent1);

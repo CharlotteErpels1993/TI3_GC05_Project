@@ -121,8 +121,10 @@ Mail Joetz met uw voornaam, naam, e-mailadres, rijksregisternummer, adresgegeven
     <string name="inschrijvenVak2_AlgemeneUitleg">Gelieve de gegevens in te vullen van een contactpersoon in geval van nood. U kan ervoor kiezen om een tweede contactpersoon toe te voegen</string>
     <string name="inschrijvenVak3_AlgemeneUitleg">Indien er nog extra info is, waar de leiding van op de hoogte moet zijn, kan u dit hier invullen. Bijvoorbeeld allergieën, ziekte, &#8230;</string>
     <string name="ok">OK</string>
-    <string name="logoutText">Weet u zeker dat u wilt uitloggen?</string>
-    <string name="Uitloggen">uitloggen</string>
+    <string name="logoutText">Bent u zeker dat u zich wilt uitloggen?</string>
+    <string name="uitlegBijUitloggen">Als u de app afsluit, zal u automatisch uitgelogd worden. Dit is om te voorkomen dat andere personen uw account gebruiken.</string>
+    <string name="Uitloggen">Uitloggen</string>
+    <string name="meldingUitgelogd">U bent uitgelogd</string>
     <string name="inschrijven">Inschrijven</string>
     <string name="beschrijving">Beschrijving</string>
     <string name="doelgroep">Doelgroep</string>
