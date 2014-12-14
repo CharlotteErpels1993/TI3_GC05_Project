@@ -21,6 +21,7 @@ import android.widget.ListView;
 import com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.myDb;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ListViewAdapter;
+import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Feedback;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vakantie;
 import com.parse.ParseException;
 import com.parse.ParseFile;
@@ -71,7 +72,7 @@ public class Vakantie_overzicht extends Fragment {
         }
         //Kijkt of er internet is, indien ja haalt hij de gegevens op uit de database van parse online,
         //Zoneen, dan worden de gegevens opgehaald uit de locale database
-        else if (isInternetPresent) {
+        else if (isInternetPresent ||(getActivity().getIntent().getStringExtra("refresh")!= null && getActivity().getIntent().getStringExtra("refresh").toLowerCase().equals("ja"))) {
             new RemoteDataTask().execute();
         }
         else {
@@ -143,15 +144,45 @@ public class Vakantie_overzicht extends Fragment {
                 afbeeldingenQuery.orderByAscending("vakantie");
                 lijstAfbeeldingen = afbeeldingenQuery.find();
 
-                // Locate the class table named "vakantie" in Parse.com
                 ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(
                         "Vakantie");
                 query.orderByAscending("vertrekdatum");
                 List<ParseObject> lijstMetVakanties = query.find();
+
+                ParseQuery<ParseObject> queryFeedback = new ParseQuery<ParseObject>(
+                        "Feedback");
+                queryFeedback.orderByAscending("vakantie");
+
+                int totaalScore = 0 ;
+                int aantal = 0;
+                int gemiddeldeScore = 0;
+                List<ParseObject> lijstFeedback = queryFeedback.find();
+
                 //Maak de locale database klaar om alle vakanties erin te stoppen
                 myDB.dropVakanties();
                 for (ParseObject v : lijstMetVakanties) {
                     vakantie = new Vakantie();
+
+                    for(ParseObject f: lijstFeedback)
+                    {
+                        Feedback feedback = new Feedback();
+                        feedback.setVakantieId((String) f.get("vakantie"));
+                        feedback.setFeedback((String) f.get("waardering"));
+                        feedback.setScore((Number) f.get("score"));
+                        feedback.setGebruikerId((String) f.get("gebruiker"));
+                        feedback.setGoedgekeurd((Boolean) f.get("goedgekeurd"));
+
+                        if(f.get("vakantie").equals(v.getObjectId()) && feedback.getGoedgekeurd())
+                        {
+                            aantal += 1;
+                            totaalScore+= (Integer)f.get("score");
+                        }
+                    }
+                    if(aantal!=0)
+                    {
+
+                         gemiddeldeScore = totaalScore/aantal;
+                    }
 
                     //String prijs = vakantie.get("basisPrijs").toString();
                     vakantie.setNaamVakantie((String) v.get("titel"));
@@ -173,10 +204,11 @@ public class Vakantie_overzicht extends Fragment {
                         vakantie.setSterPrijs1Ouder((Number) v.get("sterPrijs1ouder"));
                     if (v.get("sterPrijs2ouders") != null)
                         vakantie.setSterPrijs2Ouder((Number) v.get("sterPrijs2ouders"));
-                    //TODO gegevens contactpersoon vakantie
+
                     vakantie.setMaxDoelgroep((Integer)v.get("maxLeeftijd"));
                     vakantie.setMinDoelgroep((Integer)v.get("minLeeftijd"));
                     vakantie.setLink((String)v.get("link"));
+                    vakantie.setGemiddeldeRating((gemiddeldeScore));
 
                     ArrayList< String> afbeeldingenLijst = new ArrayList<String>();
                     for (ParseObject afbeelding : lijstAfbeeldingen) {

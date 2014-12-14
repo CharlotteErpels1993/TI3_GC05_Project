@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Filterable;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -53,6 +54,7 @@ public class ListViewAdapter extends ArrayAdapter<Vakantie> implements Filterabl
         TextView et_locatie;
         ImageView et_vakantiefto;
         TextView et_doelgroep;
+        RatingBar gemiddeldeScore;
     }
 
 
@@ -83,6 +85,7 @@ public class ListViewAdapter extends ArrayAdapter<Vakantie> implements Filterabl
             holder.et_vakantiefto = (ImageView) view.findViewById(R.id.afbeelding);
             //holder.et_prijs = (TextView) view.findViewById(R.id.prijs);
             holder.et_doelgroep = (TextView) view.findViewById(R.id.doelgroep);
+            holder.gemiddeldeScore = (RatingBar) view.findViewById(R.id.gemiddeldeRating);
             view.setTag(holder);
         } else {
             holder = (ViewHolder) view.getTag();
@@ -91,7 +94,7 @@ public class ListViewAdapter extends ArrayAdapter<Vakantie> implements Filterabl
         holder.et_locatie.setText(vakanties.get(position).getLocatie());
 
         holder.et_doelgroep.setText(vakanties.get(position).getMinDoelgroep() + " - " + vakanties.get(position).getMaxDoelgroep() + " jaar");
-
+        holder.gemiddeldeScore.setRating(vakanties.get(position).getGemiddeldeRating());
 
         imageLoader.DisplayImage(vakanties.get(position).getFoto1(),  holder.et_vakantiefto);
 
@@ -128,7 +131,7 @@ public class ListViewAdapter extends ArrayAdapter<Vakantie> implements Filterabl
                 intent.putExtra("SterPrijs1Ouder", (vakanties.get(position).getSterPrijs1Ouder()).toString());
                 intent.putExtra("SterPrijs2Ouders", (vakanties.get(position).getSterPrijs2Ouder()).toString());
                 intent.putExtra("link", (vakanties.get(position).getLink()));
-
+                intent.putExtra("gemiddeldeScore",String.valueOf(vakanties.get(position).getGemiddeldeRating()));
                 String keyVoorIntent;
                 ArrayList<String> lijstFotos = vakanties.get(position).getFotos();
                 int lijstFotosLengte = lijstFotos.size()-1;

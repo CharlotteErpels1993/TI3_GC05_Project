@@ -230,6 +230,7 @@ public class navBarMainScreen extends Activity {
                 fragment = new Vakantie_overzicht();
 
                 intent.putExtra("frag", fragment.toString());
+                intent.putExtra("refresh", "ja");
                 startActivity(intent);
                 break;
             //FeedbackOverzicht, toegankelijj voor iedereen
@@ -238,6 +239,7 @@ public class navBarMainScreen extends Activity {
                 fragment = new feedback_overzicht();
 
                 intent9.putExtra("frag", fragment.toString());
+                intent9.putExtra("refresh", "ja");
                 startActivity(intent9);
 
                 break;
@@ -250,6 +252,7 @@ public class navBarMainScreen extends Activity {
                     fragment = new ProfielenOverzicht_fragment();
 
                     intent1.putExtra("frag", fragment.toString());
+                    intent1.putExtra("refresh", "ja");
                     startActivity(intent1);
 
                     break;
@@ -261,6 +264,7 @@ public class navBarMainScreen extends Activity {
                     Intent intent1 = new Intent(navBarMainScreen.this, navBarMainScreen.class
                     );
                     intent1.putExtra("herladen", "nee");
+                    intent1.putExtra("refresh", "ja");
 
                     intent1.putExtra("frag", fragment.toString());
 
@@ -277,6 +281,7 @@ public class navBarMainScreen extends Activity {
                     );
 
                     intent1.putExtra("herladen", "nee");
+                    intent1.putExtra("refresh", "ja");
 
                     intent1.putExtra("frag", fragment.toString());
                     startActivity(intent1); }
@@ -287,6 +292,7 @@ public class navBarMainScreen extends Activity {
                         Intent intent3 = new Intent(navBarMainScreen.this, navBarMainScreen.class);
                         fragment = new Vormingen_Overzicht_Fragment();
                         intent3.putExtra("frag", fragment.toString());
+                        intent3.putExtra("refresh", "ja");
 
                         startActivity(intent3);
                         break;
@@ -297,6 +303,7 @@ public class navBarMainScreen extends Activity {
                         );
 
                         intent1.putExtra("herladen", "nee");
+                        intent1.putExtra("refresh", "ja");
 
                         intent1.putExtra("frag", fragment.toString());
                         startActivity(intent1);
@@ -318,6 +325,7 @@ public class navBarMainScreen extends Activity {
                             );
 
                             intent1.putExtra("herladen", "nee");
+                            intent1.putExtra("refresh", "ja");
 
                             intent1.putExtra("frag", fragment.toString());
 
@@ -329,6 +337,7 @@ public class navBarMainScreen extends Activity {
                         Toast.makeText(this, "U hebt niet de juiste bevoegdheid om dit te bekijken.", Toast.LENGTH_SHORT).show();
 
                     intent1.putExtra("herladen", "nee");
+                    intent1.putExtra("refresh", "ja");
 
                     intent1.putExtra("frag", fragment.toString());
                         startActivity(intent1);
@@ -351,6 +360,7 @@ public class navBarMainScreen extends Activity {
                     fragment = new FavorieteVakanties();
 
                     intent7.putExtra("frag", fragment.toString());
+                    intent7.putExtra("refresh", "ja");
                     startActivity(intent7);
                     break;
                 } else
@@ -360,6 +370,7 @@ public class navBarMainScreen extends Activity {
                     );
 
                     intent1.putExtra("herladen", "nee");
+                    intent1.putExtra("refresh", "ja");
                     intent1.putExtra("frag", fragment.toString());
 
                     startActivity(intent1);
@@ -481,33 +492,59 @@ public class navBarMainScreen extends Activity {
 
                 if(fragment.toString().toLowerCase().startsWith("vakantie"))
                 {
+                    Intent intent = new Intent(navBarMainScreen.this,navBarMainScreen.class);
+
+                    intent.putExtra("herladen", "ja");
+                    intent.putExtra("refresh", "ja");
                     fragment = new Vakantie_overzicht();
+                    intent.putExtra("frag", fragment.toString());
+                    startActivity(intent);
                 }
                 else if(fragment.toString().toLowerCase().startsWith("vorming"))
-                {
+                {Intent intent = new Intent(navBarMainScreen.this,navBarMainScreen.class);
+
+                    intent.putExtra("herladen", "ja");
+                    intent.putExtra("refresh", "ja");
                     fragment = new Vormingen_Overzicht_Fragment();
+                    intent.putExtra("frag", fragment.toString());
+                    startActivity(intent);
                 }
                 else if (fragment.toString().toLowerCase().startsWith("profiel"))
-                {
+                {Intent intent = new Intent(navBarMainScreen.this,navBarMainScreen.class);
+
+                    intent.putExtra("herladen", "ja");
+                    intent.putExtra("refresh", "ja");
                     fragment = new ProfielenOverzicht_fragment();
+                    intent.putExtra("frag", fragment.toString());
+                    startActivity(intent);
                 }
                 else if(fragment.toString().toLowerCase().startsWith("favoriet"))
-                {
+                {Intent intent = new Intent(navBarMainScreen.this,navBarMainScreen.class);
+
+                    intent.putExtra("herladen", "ja");
+                    intent.putExtra("refresh", "ja");
                     fragment = new FavorieteVakanties();
+                    intent.putExtra("frag", fragment.toString());
+                    startActivity(intent);
                 }
                 else if(fragment.toString().toLowerCase().startsWith("feedback"))
-                {
+                {Intent intent = new Intent(navBarMainScreen.this,navBarMainScreen.class);
+
+                    intent.putExtra("herladen", "ja");
+                    intent.putExtra("refresh", "ja");
                     fragment = new feedback_overzicht();
+                    intent.putExtra("frag", fragment.toString());
+                    startActivity(intent);
                 }
 
-                FragmentManager fragmentManager = getFragmentManager();
+               /* FragmentManager fragmentManager = getFragmentManager();
                 fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
 
                 setTitle(fragment.getId());
                 final Animation fadeInAnimation = AnimationUtils.loadAnimation(this, R.anim.fadein);
 
                 mDrawerLayout.startAnimation(fadeInAnimation);
-                mDrawerLayout.closeDrawer(mDrawerList);
+                mDrawerLayout.closeDrawer(mDrawerList);*/
 
             } else {
                 // Internet connection is not present

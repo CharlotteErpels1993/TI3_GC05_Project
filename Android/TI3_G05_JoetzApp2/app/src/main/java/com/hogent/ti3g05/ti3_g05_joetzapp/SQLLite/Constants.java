@@ -30,6 +30,7 @@ public class Constants {
     public static final String COLUMN_BMLEDENPRIJS = "BMLedenPrijs";
     public static final String COLUMN_STERPRIJSOUDER1 = "sterPrijsOuder1";
     public static final String COLUMN_STERPRIJS2OUDERS = "sterPrijs2Ouder";
+    public static final String COLUMN_GEMIDDELDERATING = "gemiddeldeRating";
 
     //Constanten voor de profielen
     public static final String TABLE_PROFIELEN = "monitor";

@@ -23,6 +23,8 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
+import org.w3c.dom.Text;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -42,6 +44,7 @@ public class Vakantie_detail extends Activity {
     private String inbegrepenInPrijs, activiteitID;
     private ArrayList<String> fotos = new ArrayList<String>();
     private String link;
+    private String gemiddeldeScore;
 
     private Button btnInschrijven, btnmeerInfo, btnminderInfo;
 
@@ -71,7 +74,7 @@ public class Vakantie_detail extends Activity {
             intent1.putExtra("naarfrag", "vakantie");
             intent1.putExtra("herladen", "nee");
             intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            Toast.makeText(getApplicationContext(),"Er is iets foutgelopen, onze excuses voor het ongemak.",Toast.LENGTH_SHORT);
+            Toast.makeText(getApplicationContext(), "Er is iets foutgelopen, onze excuses voor het ongemak.", Toast.LENGTH_SHORT);
             startActivity(intent1);
 
             overridePendingTransition(R.anim.left_in, R.anim.right_out);
@@ -83,7 +86,7 @@ public class Vakantie_detail extends Activity {
             intent1.putExtra("naarfrag", "vakantie");
             intent1.putExtra("herladen", "nee");
             intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            Toast.makeText(getApplicationContext(),"Er is iets foutgelopen, onze excuses voor het ongemak.",Toast.LENGTH_SHORT);
+            Toast.makeText(getApplicationContext(), "Er is iets foutgelopen, onze excuses voor het ongemak.", Toast.LENGTH_SHORT);
             startActivity(intent1);
 
             overridePendingTransition(R.anim.left_in, R.anim.right_out);
@@ -104,6 +107,7 @@ public class Vakantie_detail extends Activity {
         inbegrepenInPrijs = i.getStringExtra("InbegrepenInPrijs");
         activiteitID = i.getStringExtra("objectId");
         link = i.getStringExtra("link");
+        gemiddeldeScore = i.getStringExtra("gemiddeldeScore");
 
         //afbeeldingen ophalen met een while-lus, die stopt als de nieuwe afbeelding null is, want we weten niet zeker of
         String huidigeAfbeelding = i.getStringExtra("foto0");
@@ -135,6 +139,9 @@ public class Vakantie_detail extends Activity {
         TextView labelBM = (TextView) findViewById(R.id.ledenPrijsLabel);
         TextView txtExtraInfo = (TextView) findViewById(R.id.ExtraInformatie);
         final RelativeLayout verberg = (RelativeLayout) findViewById(R.id.verberg2);
+        TextView score = (TextView)findViewById(R.id.score);
+
+        score.setText(gemiddeldeScore + "/5");
 
         btnInschrijven = (Button) findViewById(R.id.btnInschrijvenV);
         btnmeerInfo = (Button) findViewById(R.id.btnMeerInfo);
@@ -497,6 +504,8 @@ public class Vakantie_detail extends Activity {
         intent1.putExtra("SterPrijs1Ouder", sterPrijs1Ouder);
         intent1.putExtra("SterPrijs2Ouders", sterPrijs2Ouders);
 
+        intent1.putExtra("gemiddeldeScore",gemiddeldeScore);
+
 
         String keyVoorIntent;
         ArrayList<String> lijstFotos = fotos;
@@ -685,6 +694,7 @@ public class Vakantie_detail extends Activity {
         if (id == R.id.backMenu2) {
             Intent intent1 = new Intent(this, navBarMainScreen.class);
             intent1.putExtra("naarfrag", "vakantie");
+            intent1.putExtra("refresh", "ja");
             intent1.putExtra("herladen", "nee");
             intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent1);

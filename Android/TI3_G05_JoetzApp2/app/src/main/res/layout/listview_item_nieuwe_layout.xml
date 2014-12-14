@@ -40,11 +40,17 @@
         android:layout_marginBottom="5dp"
         android:layout_alignParentEnd="true"
         android:layout_below="@id/locatie"/>
+    <RatingBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/gemiddeldeRating"
+        android:isIndicator="true"
+        android:layout_below="@id/doelgroep"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/doelgroep"
+        android:layout_below="@id/gemiddeldeRating"
         android:text="@string/KlikVoorMeerInfo"
         android:layout_marginBottom="15dp"
         android:textSize="12sp"

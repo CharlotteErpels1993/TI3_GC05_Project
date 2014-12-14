@@ -16,6 +16,7 @@ import java.awt.font.NumericShaper;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.Constants.COLUMN_GEMIDDELDERATING;
 import static com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.Constants.COLUMN_VAKANTIEID;
 import static com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.Constants.TABLE_FAVORIETEN;
 import static com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.Constants.TABLE_FEEDBACK;
@@ -40,7 +41,7 @@ public class DBHandler extends SQLiteOpenHelper {
                 Constants.COLUMN_TERUGDATUM + " TEXT," + Constants.COLUMN_PRIJS + " NUMERIC," + Constants.COLUMN_AFBEELDING1 + " TEXT," +Constants.COLUMN_AFBEELDING2 + " TEXT," +Constants.COLUMN_AFBEELDING3 + " TEXT," +
                 Constants.COLUMN_MAXDOELGROEP + " TEXT," + Constants.COLUMN_MINDOELGROEP + " TEXT," + Constants.COLUMN_BESCHRIJVING + " TEXT," + Constants.COLUMN_PERIODE + " TEXT," + Constants.COLUMN_VERVOER + " TEXT," +
                 Constants.COLUMN_FORMULE + " TEXT," + Constants.COLUMN_MAXDEELNEMERS + " NUMERIC," + Constants.COLUMN_INBEGREPENINPRIJS + " TEXT," + Constants.COLUMN_BMLEDENPRIJS + " NUMERIC," +
-                Constants.COLUMN_STERPRIJSOUDER1 + " NUMERIC," + Constants.COLUMN_STERPRIJS2OUDERS + " NUMERIC" + ")";
+                Constants.COLUMN_STERPRIJSOUDER1 + " NUMERIC," + Constants.COLUMN_STERPRIJS2OUDERS + " NUMERIC, " + COLUMN_GEMIDDELDERATING +" NUMERIC" + ")";
 
         sqLiteDatabase.execSQL(CREATE_VAKANTIE_TABLE);
 
@@ -64,7 +65,7 @@ public class DBHandler extends SQLiteOpenHelper {
                 Constants.COLUMN_TERUGDATUM + " TEXT," + Constants.COLUMN_PRIJS + " NUMERIC," + Constants.COLUMN_AFBEELDING1 + " TEXT," +Constants.COLUMN_AFBEELDING2 + " TEXT," +Constants.COLUMN_AFBEELDING3 + " TEXT," +
                 Constants.COLUMN_MAXDOELGROEP + " TEXT," + Constants.COLUMN_MINDOELGROEP + " TEXT," + Constants.COLUMN_BESCHRIJVING + " TEXT," + Constants.COLUMN_PERIODE + " TEXT," + Constants.COLUMN_VERVOER + " TEXT," +
                 Constants.COLUMN_FORMULE + " TEXT," + Constants.COLUMN_MAXDEELNEMERS + " NUMERIC," + Constants.COLUMN_INBEGREPENINPRIJS + " TEXT," + Constants.COLUMN_BMLEDENPRIJS + " NUMERIC," +
-                Constants.COLUMN_STERPRIJSOUDER1 + " NUMERIC," + Constants.COLUMN_STERPRIJS2OUDERS + " NUMERIC, " + COLUMN_VAKANTIEID + " TEXT )";
+                Constants.COLUMN_STERPRIJSOUDER1 + " NUMERIC," + Constants.COLUMN_STERPRIJS2OUDERS + " NUMERIC, " + COLUMN_VAKANTIEID + " TEXT, " + COLUMN_GEMIDDELDERATING+" NUMERIC)";
 
         sqLiteDatabase.execSQL(CREATE_FAVORIETEN_TABLE);
     }
@@ -179,6 +180,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
         values.put(Constants.COLUMN_STERPRIJSOUDER1,(Double) vakantie.getSterPrijs1Ouder());
         values.put(Constants.COLUMN_STERPRIJS2OUDERS,(Double) vakantie.getSterPrijs2Ouder());
+        values.put(Constants.COLUMN_GEMIDDELDERATING, vakantie.getGemiddeldeRating());
         SQLiteDatabase db = this.getWritableDatabase();
 
         Long id = db.insert(TABLE_VAKANTIE, null, values);
@@ -240,6 +242,7 @@ public class DBHandler extends SQLiteOpenHelper {
             vakantie.setBondMoysonLedenPrijs(Double.parseDouble(cursor.getString(17)));
             vakantie.setSterPrijs1Ouder(Double.parseDouble(cursor.getString(18)));
             vakantie.setSterPrijs2Ouder(Double.parseDouble(cursor.getString(19)));
+            vakantie.setGemiddeldeRating(Integer.parseInt(cursor.getString(20)));
         } else
         {
             vakantie = null;
@@ -473,7 +476,7 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put(Constants.COLUMN_STERPRIJSOUDER1,(Double) favorieteVakantie.getSterPrijs1Ouder()); //18
         values.put(Constants.COLUMN_STERPRIJS2OUDERS,(Double) favorieteVakantie.getSterPrijs2Ouder()); //19
         values.put(Constants.COLUMN_VAKANTIEID, favorieteVakantie.getActiviteitID()); //20
-
+        values.put(Constants.COLUMN_GEMIDDELDERATING, favorieteVakantie.getGemiddeldeRating());
         SQLiteDatabase db = this.getWritableDatabase();
 
         Long id = db.insert(TABLE_FAVORIETEN, null, values);
@@ -536,6 +539,7 @@ public class DBHandler extends SQLiteOpenHelper {
             vakantie.setSterPrijs1Ouder(Double.parseDouble(cursor.getString(18)));
             vakantie.setSterPrijs2Ouder(Double.parseDouble(cursor.getString(19)));
             vakantie.setVakantieID(cursor.getString(20));
+            vakantie.setGemiddeldeRating(Integer.parseInt(cursor.getString(21)));
         } else
         {
             vakantie = null;
