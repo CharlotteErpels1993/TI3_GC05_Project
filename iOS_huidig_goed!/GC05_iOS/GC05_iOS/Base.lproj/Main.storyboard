@@ -18,24 +18,33 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="z8b-bu-Tbo">
-                                <rect key="frame" x="16" y="132" width="568" height="448"/>
+                                <rect key="frame" x="16" y="232" width="568" height="348"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">Verlang je ook al naar de vakantie? Dan presenteren we je graag de kinder- en jongerenvakanties 2014 van JOETZ.
+                                <mutableString key="text">Verlang je ook al naar de vakantie? Dan presenteren we je graag de kinder- en jongerenvakanties 2014 van JOETZ.
 Dankzij onze selectie van de uiterst verzorgde verblijfplaatsen en de begeleiding door ervaren monitoren die allemaal een opleiding hebben genoten die erkend wordt door de Vlaamse overheid, kan JOETZ opnieuw duizenden kinderen en jongeren de vakantie van hun leven bieden.
 Een kindervakantie is in de eerste plaats natuurlijk ambiance, vriendschap en plezier. Daarom gaat er bij JOETZ heel veel aandacht naar spel, animatie, sport en daguitstappen. Samen met gezonde maaltijden en hygiëne zijn dat voor ons essentiële ingrediënten om onbezorgde, kwaliteitsvolle vakanties te garanderen.
 JOETZ heeft ook voor jongeren heel wat in de aanbieding. Je kunt kiezen uit een hele reeks buitenlandse vakanties. En of je nu fun of actie zoekt, JOETZ heeft het allemaal. Vanaf 18 kan iedereen die door de reismicrobe gebeten is, met JOETZ mee op inleefreis om zo een land te ontdekken als gast in plaats van als toerist.
-De smaak te pakken? Wacht dan niet te lang en boek een onvergetelijke JOETZ-vakantie!</string>
+De smaak te pakken? Wacht dan niet te lang en boek een onvergetelijke JOETZ-vakantie!</mutableString>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="joetz.png" translatesAutoresizingMaskIntoConstraints="NO" id="0Z7-hW-qPl">
+                                <rect key="frame" x="201" y="64" width="198" height="135"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="135" id="4qD-z0-Gtl"/>
+                                    <constraint firstAttribute="width" constant="198" id="tfK-Rj-jLy"/>
+                                </constraints>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fp2-KC-RyL">
-                                <rect key="frame" x="16" y="72" width="198" height="60"/>
+                                <rect key="frame" x="456" y="194" width="128" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="43" id="4yL-IT-vMX"/>
-                                    <constraint firstAttribute="width" constant="198" id="77i-0E-nCG"/>
+                                    <constraint firstAttribute="width" constant="128" id="77i-0E-nCG"/>
+                                    <constraint firstAttribute="width" constant="128" id="7I5-gp-lMg"/>
                                     <constraint firstAttribute="width" constant="344" id="aGz-pF-W0Y"/>
-                                    <constraint firstAttribute="height" constant="60" id="hpk-vx-cON"/>
+                                    <constraint firstAttribute="height" constant="38" id="hpk-vx-cON"/>
                                     <constraint firstAttribute="height" constant="43" id="lgV-Yy-cXG"/>
+                                    <constraint firstAttribute="height" constant="38" id="yKd-d5-CLm"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="facebook_button.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -43,7 +52,9 @@ De smaak te pakken? Wacht dan niet te lang en boek een onvergetelijke JOETZ-vaka
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="4yL-IT-vMX"/>
+                                        <exclude reference="77i-0E-nCG"/>
                                         <exclude reference="aGz-pF-W0Y"/>
+                                        <exclude reference="hpk-vx-cON"/>
                                         <exclude reference="lgV-Yy-cXG"/>
                                     </mask>
                                 </variation>
@@ -55,22 +66,47 @@ De smaak te pakken? Wacht dan niet te lang en boek een onvergetelijke JOETZ-vaka
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="z8b-bu-Tbo" firstAttribute="trailing" secondItem="NjG-kX-KIx" secondAttribute="trailingMargin" id="1x8-o4-oOZ"/>
-                            <constraint firstItem="fp2-KC-RyL" firstAttribute="leading" secondItem="NjG-kX-KIx" secondAttribute="leadingMargin" id="Ab4-xG-CGz"/>
-                            <constraint firstItem="z8b-bu-Tbo" firstAttribute="top" secondItem="fp2-KC-RyL" secondAttribute="bottom" id="CXu-kT-Iyx"/>
+                            <constraint firstItem="fp2-KC-RyL" firstAttribute="leading" secondItem="NjG-kX-KIx" secondAttribute="leadingMargin" constant="440" id="Ab4-xG-CGz"/>
+                            <constraint firstItem="z8b-bu-Tbo" firstAttribute="top" secondItem="fp2-KC-RyL" secondAttribute="bottom" constant="-2" id="CXu-kT-Iyx"/>
+                            <constraint firstItem="fp2-KC-RyL" firstAttribute="trailing" secondItem="NjG-kX-KIx" secondAttribute="trailingMargin" id="EiW-oB-7jk"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="0Z7-hW-qPl" secondAttribute="trailing" constant="185" id="GOr-cg-Ayk"/>
+                            <constraint firstItem="z8b-bu-Tbo" firstAttribute="top" secondItem="fp2-KC-RyL" secondAttribute="bottom" id="HzC-48-LHa"/>
                             <constraint firstItem="z8b-bu-Tbo" firstAttribute="top" secondItem="fp2-KC-RyL" secondAttribute="bottom" constant="8" id="K6t-mF-vVs"/>
+                            <constraint firstItem="fp2-KC-RyL" firstAttribute="leading" secondItem="0Z7-hW-qPl" secondAttribute="trailing" constant="57" id="KQo-W3-Ib3"/>
                             <constraint firstItem="z8b-bu-Tbo" firstAttribute="leading" secondItem="NjG-kX-KIx" secondAttribute="leadingMargin" id="KkE-et-7Js"/>
                             <constraint firstItem="fp2-KC-RyL" firstAttribute="top" secondItem="sA0-7B-daF" secondAttribute="bottom" constant="8" id="Lpi-dU-Kvk"/>
+                            <constraint firstItem="fp2-KC-RyL" firstAttribute="top" secondItem="sA0-7B-daF" secondAttribute="bottom" constant="114" id="OzU-Cv-Z4T"/>
+                            <constraint firstItem="z8b-bu-Tbo" firstAttribute="top" secondItem="fp2-KC-RyL" secondAttribute="bottom" constant="9" id="RZO-E3-k07"/>
+                            <constraint firstItem="0Z7-hW-qPl" firstAttribute="top" secondItem="sA0-7B-daF" secondAttribute="bottom" id="UGs-3L-pAe"/>
                             <constraint firstItem="OWi-PF-xZM" firstAttribute="top" secondItem="z8b-bu-Tbo" secondAttribute="bottom" constant="20" id="X1m-qJ-CyD"/>
+                            <constraint firstItem="0Z7-hW-qPl" firstAttribute="leading" secondItem="NjG-kX-KIx" secondAttribute="leadingMargin" constant="185" id="aiz-Y7-KAK"/>
                             <constraint firstItem="fp2-KC-RyL" firstAttribute="leading" secondItem="NjG-kX-KIx" secondAttribute="leadingMargin" id="b9j-rp-ALR"/>
-                            <constraint firstItem="fp2-KC-RyL" firstAttribute="top" secondItem="sA0-7B-daF" secondAttribute="bottom" constant="8" id="hEs-4M-Zax"/>
+                            <constraint firstItem="z8b-bu-Tbo" firstAttribute="top" secondItem="0Z7-hW-qPl" secondAttribute="bottom" constant="33" id="dzf-gW-mZY"/>
+                            <constraint firstItem="fp2-KC-RyL" firstAttribute="trailing" secondItem="NjG-kX-KIx" secondAttribute="trailingMargin" id="gju-DJ-OVn"/>
+                            <constraint firstAttribute="centerX" secondItem="0Z7-hW-qPl" secondAttribute="centerX" id="j62-DF-1xZ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="fp2-KC-RyL" secondAttribute="trailing" constant="224" id="k2R-ol-HfO"/>
+                            <constraint firstItem="z8b-bu-Tbo" firstAttribute="top" secondItem="fp2-KC-RyL" secondAttribute="bottom" constant="8" id="pDY-ZV-QLy"/>
+                            <constraint firstItem="fp2-KC-RyL" firstAttribute="trailing" secondItem="NjG-kX-KIx" secondAttribute="trailingMargin" id="r0u-Ak-c5B"/>
+                            <constraint firstItem="fp2-KC-RyL" firstAttribute="trailing" secondItem="NjG-kX-KIx" secondAttribute="trailingMargin" id="uFg-8v-N60"/>
+                            <constraint firstAttribute="centerY" secondItem="0Z7-hW-qPl" secondAttribute="centerY" constant="168.5" id="wI8-Mr-e6F"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="Lpi-dU-Kvk"/>
-                                <exclude reference="b9j-rp-ALR"/>
-                                <exclude reference="k2R-ol-HfO"/>
+                                <exclude reference="GOr-cg-Ayk"/>
+                                <exclude reference="aiz-Y7-KAK"/>
+                                <exclude reference="CXu-kT-Iyx"/>
                                 <exclude reference="K6t-mF-vVs"/>
+                                <exclude reference="RZO-E3-k07"/>
+                                <exclude reference="pDY-ZV-QLy"/>
+                                <exclude reference="Ab4-xG-CGz"/>
+                                <exclude reference="KQo-W3-Ib3"/>
+                                <exclude reference="Lpi-dU-Kvk"/>
+                                <exclude reference="OzU-Cv-Z4T"/>
+                                <exclude reference="b9j-rp-ALR"/>
+                                <exclude reference="gju-DJ-OVn"/>
+                                <exclude reference="k2R-ol-HfO"/>
+                                <exclude reference="r0u-Ak-c5B"/>
+                                <exclude reference="uFg-8v-N60"/>
                             </mask>
                         </variation>
                     </view>
@@ -5759,6 +5795,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
         <image name="Klevertje.png" width="615" height="427"/>
         <image name="facebook_button.png" width="1024" height="312"/>
         <image name="feedback.png" width="64" height="64"/>
+        <image name="joetz.png" width="1993" height="951"/>
         <image name="menu.png" width="64" height="64"/>
         <image name="star.png" width="1125" height="1125"/>
         <image name="star2.png" width="1125" height="1125"/>
