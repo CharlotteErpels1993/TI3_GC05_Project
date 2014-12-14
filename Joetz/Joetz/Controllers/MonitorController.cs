@@ -38,17 +38,22 @@ namespace Joetz.Controllers
         [HttpPost]
         public ActionResult Index(HttpPostedFileBase file)
         {
-            // Verify that the user selected a file
+            // Zeker zijn dat gebruiker bestand heeft geselecteerd
             if (file != null && file.ContentLength > 0)
             {
-                // extract only the fielname
-                var fileName = Path.GetFileName(file.FileName);
-                // store the file inside ~/App_Data/uploads folder
-                var path = Path.Combine(Server.MapPath("~/App_Data/uploads/"), fileName);
-                file.SaveAs(path);
+                //file name ophalen
+                string fileName = Path.GetFileName(file.FileName);
+                if (fileName.EndsWith(".xlsx") || (fileName.EndsWith(".xls"))) //enkel gewoon Excel bestand wordt aanvaard.
+                {
+                    // store the file inside ~/App_Data/uploads folder
+                    var path = Path.Combine(Server.MapPath("~/App_Data/uploads/"), fileName);
+                    file.SaveAs(path);
+                    
+                    // redirect back to the index action to show the form once again
+                    return RedirectToAction("Index");
+                }
             }
-            // redirect back to the index action to show the form once again
-            return RedirectToAction("Index");
+            return View();
         }
 
         //public ActionResult Create()

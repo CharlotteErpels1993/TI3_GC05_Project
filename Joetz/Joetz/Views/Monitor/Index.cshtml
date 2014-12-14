@@ -9,13 +9,12 @@
     </div>
     <div class="container">
         <h6>
-            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-            Klik hier om een monitoren bestand up te loaden
-            <!-- @Html.ActionLink("Voeg een nieuwe vakantie toe", "Create", "Vakantie")-->
+            U kan een Excel bestand uploaden om meerdere monitoren toe te voegen aan uw databank. 
             <br /><br />
             @using (Html.BeginForm("Index", "Monitor", FormMethod.Post, new { enctype = "multipart/form-data" }))
             {
-                <input type="file" name="file" value="Bestand kiezen"  />
+                <input type="file" name="file" value="Bestand kiezen" 
+                       accept="application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" />
                 <br />
                 <input type="submit" value="Bevestigen" />
             }
