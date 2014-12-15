@@ -405,8 +405,11 @@ struct LocalDatastore {
             pfObject = getFavorietObject(object as Favoriet)
         }
         
-        pfObject.pin()
-        pfObject.saveEventually()
+        if Reachability.isConnectedToNetwork() == true {
+            pfObject.save()
+        } else {
+            pfObject.saveEventually()
+        }
     }
 
     static func getFavorietObject(favoriet: Favoriet) -> PFObject {
@@ -426,7 +429,6 @@ struct LocalDatastore {
         if aantalOuders != 0 {
             return true
         } else {
-            LocalDatastore.getTableReady("Monitor")
             var queryMonitor = self.makeQuery("Monitor", local: true, queryConstraints: ["rijksregisterNr": rijksregisternummer])
             
             var aantalMonitors = queryMonitor.countObjects()
@@ -436,6 +438,102 @@ struct LocalDatastore {
             }
             return false
         }
+    }
+
+    static func isGsmAlGeregistreerd(gsm: String) -> Bool {
+        var queryOuder = self.makeQuery("Ouder", local: true, queryConstraints: ["gsm": gsm])
+        
+        var aantalOuders = queryOuder.countObjects()
+        
+        if aantalOuders != 0 {
+            return true
+        } else {
+            var queryMonitor = self.makeQuery("Monitor", local: true, queryConstraints: ["gsm": gsm])
+            
+            var aantalMonitors = queryMonitor.countObjects()
+            
+            if aantalMonitors != 0 {
+                return true
+            }
+            return false
+        }
+    }
+    
+    static func isEmailAlGeregistreerd(email: String) -> Bool {
+        var queryOuder = self.makeQuery("Ouder", local: true, queryConstraints: ["email": email])
+        
+        var aantalOuders = queryOuder.countObjects()
+        
+        if aantalOuders != 0 {
+            return true
+        } else {
+            var queryMonitor = self.makeQuery("Monitor", local: true, queryConstraints: ["email": email])
+            
+            var aantalMonitors = queryMonitor.countObjects()
+            
+            if aantalMonitors != 0 {
+                return true
+            }
+            return false
+        }
+    }
+    
+    static func pinOuder(ouder: Ouder, wachtwoord: String) {
+        var object = PFObject(className: "Ouder")
+        
+        object.setValue(ouder.email, forKey: "email")
+        object.setValue(ouder.voornaam, forKey: "voornaam")
+        object.setValue(ouder.naam, forKey: "naam")
+        object.setValue(ouder.straat, forKey: "straat")
+        object.setValue(ouder.nummer, forKey: "nummer")
+        object.setValue(ouder.postcode, forKey: "postcode")
+        object.setValue(ouder.gemeente, forKey: "gemeente")
+        object.setValue(ouder.gsm, forKey: "gsm")
+        object.setValue(ouder.rijksregisterNr, forKey: "rijksregisterNr")
+        
+        if ouder.aansluitingsNr != nil {
+            object.setValue(ouder.aansluitingsNr, forKey: "aansluitingsNr")
+            object.setValue(ouder.codeGerechtigde, forKey: "codeGerechtigde")
+            
+            if ouder.aansluitingsNrTweedeOuder != nil {
+                object.setValue(ouder.aansluitingsNrTweedeOuder, forKey: "aansluitingsNrTweedeOuder")
+            }
+        }
+        
+        if ouder.bus != nil {
+            object.setValue(ouder.bus, forKey: "bus")
+        }
+        
+        if ouder.telefoon != nil {
+            object.setValue(ouder.telefoon, forKey: "telefoon")
+        }
+        
+        if Reachability.isConnectedToNetwork() == true {
+            object.save()
+        } else {
+            object.saveEventually()
+        }
+
+        createPFUser(ouder, wachtwoord: wachtwoord)
+        logIn(ouder, wachtwoord: wachtwoord)
+    }
+    
+    static private func createPFUser(ouder: Ouder, wachtwoord: String) {
+        var user = PFUser()
+        user.username = ouder.email
+        user.password = wachtwoord
+        user.email = ouder.email
+        user["soort"] = "ouder"
+        
+        if Reachability.isConnectedToNetwork() == true {
+            user.signUp()
+        } else {
+            user.saveEventually()
+        }
+    }
+    
+    static private func logIn(ouder: Ouder, wachtwoord: String) {
+        PFUser.logInWithUsername(ouder.email, password: wachtwoord)
     }
 
 }

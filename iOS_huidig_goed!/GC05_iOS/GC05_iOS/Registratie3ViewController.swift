@@ -34,7 +34,7 @@ class Registratie3ViewController: /*ResponsiveTextFieldViewController*/ UITableV
             
             if controleerRodeBordersAanwezig() == true {
                 if emailAlGeregistreerd == true {
-                    foutBoxOproepen("Fout", "Dit e-mailadres (\(txtEmail.text)) is al geregistreerd bij ons!", self)
+                    foutBoxOproepen("Fout", "Dit e-mailadres is al geregistreerd bij ons!", self)
                     self.txtEmail.text = ""
                 } else {
                     foutBoxOproepen("Fout", "Gelieve de velden correct in te vullen!", self)
@@ -128,7 +128,8 @@ class Registratie3ViewController: /*ResponsiveTextFieldViewController*/ UITableV
     }
     
     func controleerEmailAlGeregisteerd() -> Bool {
-        return ParseData.getEmail(self.txtEmail.text)
+        //return ParseData.getEmail(self.txtEmail.text)
+        return LocalDatastore.isEmailAlGeregistreerd(self.txtEmail.text)
     }
     
 }
