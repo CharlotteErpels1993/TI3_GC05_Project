@@ -563,7 +563,7 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put(Constants.COLUMN_GEBRUIKERID,feedback.getGebruikerId()); //5
         values.put(Constants.COLUMN_GEBRUIKER, feedback.getGebruiker()); //6
 
-        if(feedback.getGoedgekeurd() == true)
+        if(feedback.getGoedgekeurd())
             values.put(Constants.COLUMN_GOEDGEKEURD, 1);
        else values.put(Constants.COLUMN_GOEDGEKEURD, 0);
 

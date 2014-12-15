@@ -9,7 +9,7 @@
     <string name="cancel">Annuleren</string>
     <string name="orText">of</string>
     <string name="createAccount">Registreer</string>
-    <string name="emailHint">Email</string>
+    <string name="emailHint">E-mail</string>
     <string name="passwordHint">Wachtwoord</string>
     <string name="confirmPasswordHint">Bevestig wachtwoord</string>
     <string name="title_activity_launcher">LauncherActivity</string>
@@ -17,9 +17,10 @@
     <string name="title_activity_create_account">Registreer</string>
     <string name="menu_settings">opties</string>
     <string name="title_activity_main">Activiteiten</string>
-    <string name="emailingeven">Geef uw email in</string>
+    <string name="emailingeven">Geef uw e-mail in</string>
     <string name="back">Terug</string>
     <string name="button_logout">Uitloggen</string>
+    <string name="confirmationSignup">Account aangemaakt.</string>
 
 
     <!-- Strings related to Main screen -->
@@ -33,7 +34,7 @@
     <string name="title_activity_profiel_detail">profiel_detail</string>
     <string name="title_activity_profiel_edit">profiel_edit</string>
     <string name="updatingReport">U bent ingelogd</string>
-    <string name="confirm_registry">Email is niet gevonden. Wilt u een nieuwe gebruiker aanmaken?</string>
+    <string name="confirm_registry">E-mail is niet gevonden. Wilt u een nieuwe gebruiker aanmaken?</string>
     <string name="nee">Nee</string>
     <string name="ja">Ja</string>
     <string name="menu_forgot_password">Wachtwoord vergeten</string>
@@ -61,6 +62,8 @@
     <string name="error_incorrect_rijksregnr">Rijksregisternummer is niet geldig (11 cijfers, geen spaties of speciale tekens)</string>
     <string name="error_incorrect_rijksregisternummer">Ongeldig rijksregisternummer</string>
     <string name="error_occupied_rijksregnr">Dit rijksregisternummer is reeds in gebruik.</string>
+    <string name="error_occupied_gsm">Dit gsm-nummer is reeds in gebruik.</string>
+    <string name="error_occupied_email">Dit e-mail adres is reeds in gebruik.</string>
     <string name="error_incorrect_huisnr">Huisnummer is niet geldig (moet numeriek zijn)</string>
     <string name="signup_melding_monitor">U schrijft zich momenteel in als ouder/voogd. Wilt u zich inschrijven als monitor?
 Mail Joetz met uw voornaam, naam, e-mailadres, rijksregisternummer, adresgegevens, gsm en eventueel uw telefoonnummer.
@@ -73,7 +76,7 @@ Mail Joetz met uw voornaam, naam, e-mailadres, rijksregisternummer, adresgegeven
     <string name="error_invalid_email">Ongeldig e-mailadres</string>
     <string name="error_incorrect_aansluitingsnr">Ongeldig aansluitingsnummer (precies 10 cijfers, geen spaties of speciale tekens)</string>
     <string name="error_incorrect_lidnr">Ongeldig lidnummer</string>
-    <string name="error_incorrectLogin">Email of wachtwoord is ongeldig</string>
+    <string name="error_incorrectLogin">E-mail of wachtwoord is ongeldig</string>
     <string name="error_generalException">Er is iets fout gelopen. Onze excuses voor het ongemak.</string>
     <string name="passwordForgottenEmailSent">Er werd een mail gestuurd om uw wachtwoord opnieuw in te stellen.</string>
     <string name="passwordForgottenEmailFailed">Ons systeem kon geen mail sturen. Onze excuses voor het ongemak.</string>
@@ -169,12 +172,12 @@ De smaak te pakken? Wacht dan niet te lang en boek een onvergetelijke JOETZ-vaka
     <string name="lidnummer">Geef uw lidnummer in</string>
     <string name="lidnummerBeheerder">Geef het lidnummer in</string>
     <string name="voegLidnrToe">Voeg lidnummer toe</string>
-    <string name="emailToegvoegenLidnr">Geef het email van de monitor in</string>
+    <string name="emailToegvoegenLidnr">Geef het e-mail van de monitor in</string>
     <string name="rijksregnrToevoegenLidnr">Geef het rijksregisternummer in</string>
     <string name="error_lidnr_used">Lidnummer bestaat reeds</string>
-    <string name="error_email_used">Dit email adres is reeds toegevoegd</string>
+    <string name="error_email_used">Dit e-mail adres is reeds toegevoegd</string>
     <string name="error_invalid_lidnummer">Ongeldig lidnummer</string>
-    <string name="emailSturen">Stuur email</string>
+    <string name="emailSturen">Stuur e-mail</string>
     <string name="ingeven">Feedback ingeven</string>
     <string name="feedback">Waardering</string>
     <string name="score">Punten op 5</string>

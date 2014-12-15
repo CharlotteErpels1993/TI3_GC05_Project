@@ -130,7 +130,7 @@ public class RegistrerenDeel4 extends Activity{
             try{
                 List<ParseObject> lijstObjecten = query.find();
                 if (lijstObjecten.size() > 0){
-                    mEmailEditText.setError("Dit e-mail adres is reeds in gebruik.");
+                    mEmailEditText.setError(getString(R.string.error_occupied_email));
                     focusView = mEmailEditText;
                     cancel = true;
                 }
@@ -232,7 +232,7 @@ public class RegistrerenDeel4 extends Activity{
                 }
             });
 
-            signUpMsg("Account aangemaakt.");
+            signUpMsg(getString(R.string.confirmationSignup));
                 ParseUser.logInInBackground(username, mPassword, new LogInCallback() {
                     @Override
                     public void done(ParseUser user, ParseException e) {

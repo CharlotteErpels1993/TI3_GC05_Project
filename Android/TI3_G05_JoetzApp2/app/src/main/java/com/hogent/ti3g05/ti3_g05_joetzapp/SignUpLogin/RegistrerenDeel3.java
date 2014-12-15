@@ -166,7 +166,7 @@ public class RegistrerenDeel3 extends Activity{
         try{
             List<ParseObject> ouders = queryOuder.find();
             if (ouders.size() > 0){
-                gsmText.setError("Dit gsm-nummer is reeds in gebruik.");
+                gsmText.setError(getString(R.string.error_occupied_gsm));
                 focusView = gsmText;
                 cancel = true;
             }
@@ -180,7 +180,7 @@ public class RegistrerenDeel3 extends Activity{
         try{
             List<ParseObject> monitoren = queryMonitoren.find();
             if (monitoren.size() > 0){
-                gsmText.setError("Dit gsm-nummer is reeds in gebruik.");
+                gsmText.setError(getString(R.string.error_occupied_gsm));
                 focusView = gsmText;
                 cancel = true;
             }
