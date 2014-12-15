@@ -1,7 +1,7 @@
 import UIKit
 import QuartzCore
 
-class Registratie1ViewController: /*ResponsiveTextFieldViewController*/ UITableViewController {
+class Registratie1ViewController: /*ResponsiveTextFieldViewController*/ UITableViewController, UITextFieldDelegate {
     var ouder: Ouder! = Ouder(id: "test")
     var gebruikerIsLid: Bool? = true
     var foutBox: FoutBox? = nil
@@ -17,6 +17,10 @@ class Registratie1ViewController: /*ResponsiveTextFieldViewController*/ UITableV
     @IBOutlet weak var buttonNummers: UIButton!
     
     @IBAction func toggle(sender: AnyObject) {
+        txtAansluitingsNr.resignFirstResponder()
+        txtCodeGerechtigde.resignFirstResponder()
+        txtRijksregisterNr.resignFirstResponder()
+        txtAansluitingsNrTweedeOuder.resignFirstResponder()
         toggleSideMenuView()
     }
     @IBAction func gaTerugNaarInloggen(sender: AnyObject) {
@@ -36,6 +40,11 @@ class Registratie1ViewController: /*ResponsiveTextFieldViewController*/ UITableV
         ParseData.vulOuderTableOp()
         ParseData.deleteMonitorTable()
         ParseData.vulMonitorTableOp()
+        
+        txtAansluitingsNr.delegate = self
+        txtCodeGerechtigde.delegate = self
+        txtRijksregisterNr.delegate = self
+        txtAansluitingsNrTweedeOuder.delegate = self
     }
     
     @IBAction func switched(sender: UISwitch) {
@@ -229,6 +238,11 @@ class Registratie1ViewController: /*ResponsiveTextFieldViewController*/ UITableV
     
     func controleerRijksregisterNummerAlGeregisteerd() -> Bool {
         return ParseData.getRijksregisterNummers(self.txtRijksregisterNr.text)
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
 

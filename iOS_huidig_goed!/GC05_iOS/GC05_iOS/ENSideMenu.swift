@@ -29,7 +29,7 @@ enum ENSideMenuPosition : Int {
 }
 
 extension UIViewController {
-    
+
     public func toggleSideMenuView () {
         sideMenuController()?.sideMenu?.toggleMenu()
     }
@@ -71,7 +71,7 @@ extension UIViewController {
     }
 }
 
-class ENSideMenu : NSObject {
+class ENSideMenu : NSObject, UITextFieldDelegate {
     
     internal var menuWidth : CGFloat = 160.0 {
         didSet {

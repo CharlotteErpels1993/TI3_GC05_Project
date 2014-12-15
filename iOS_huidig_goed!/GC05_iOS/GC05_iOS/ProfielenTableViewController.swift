@@ -12,6 +12,7 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
     @IBOutlet weak var zoekbar: UISearchBar!
     
     @IBAction func toggle(sender: AnyObject) {
+        searchBarCancelButtonClicked(zoekbar)
         toggleSideMenuView()
     }
     
@@ -123,6 +124,7 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
     }
     
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        hideSideMenuView()
         setTitleCancelButton(searchBar)
         zoekGefilterdeMonitoren(searchBar.text)
     }
@@ -146,6 +148,7 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        hideSideMenuView()
         searchBar.showsCancelButton = true
         setTitleCancelButton(searchBar)
         zoekGefilterdeMonitoren(searchText.lowercaseString)

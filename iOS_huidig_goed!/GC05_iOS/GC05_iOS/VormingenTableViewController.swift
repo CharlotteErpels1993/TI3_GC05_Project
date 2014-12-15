@@ -6,6 +6,7 @@ class VormingenTableViewController: UITableViewController, UISearchBarDelegate, 
     var vormingen2: [Vorming] = []
     
     @IBAction func toggle(sender: AnyObject) {
+        searchBarCancelButtonClicked(zoekbar)
         toggleSideMenuView()
     }
     
@@ -38,6 +39,7 @@ class VormingenTableViewController: UITableViewController, UISearchBarDelegate, 
     }
     
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        hideSideMenuView()
         setTitleCancelButton(searchBar)
         zoekGefilterdeVormingen(searchBar.text)
     }
@@ -61,6 +63,7 @@ class VormingenTableViewController: UITableViewController, UISearchBarDelegate, 
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        hideSideMenuView()
         searchBar.showsCancelButton = true
         setTitleCancelButton(searchBar)
         zoekGefilterdeVormingen(searchText.lowercaseString)

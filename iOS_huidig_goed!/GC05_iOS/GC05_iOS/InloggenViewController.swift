@@ -1,7 +1,7 @@
 import UIKit
 import QuartzCore
 
-class InloggenViewController: UIViewController {
+class InloggenViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var txtEmail: UITextField!
     @IBOutlet weak var txtWachtwoord: UITextField!
     
@@ -9,6 +9,8 @@ class InloggenViewController: UIViewController {
     var redColor: UIColor = UIColor.redColor()
     
     @IBAction func toggle(sender: AnyObject) {
+        txtEmail.resignFirstResponder()
+        txtWachtwoord.resignFirstResponder()
         toggleSideMenuView()
     }
     
@@ -19,6 +21,9 @@ class InloggenViewController: UIViewController {
         self.navigationController!.toolbarHidden = true
         txtEmail.autocorrectionType = UITextAutocorrectionType.No
         txtWachtwoord.autocorrectionType = UITextAutocorrectionType.No
+        
+        txtEmail.delegate = self
+        txtWachtwoord.delegate = self
     }
     
     func checkPatternEmail(email: String) -> Bool {
@@ -140,5 +145,15 @@ class InloggenViewController: UIViewController {
         } else {
             return false
         }
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        if textField == txtEmail {
+            txtWachtwoord.becomeFirstResponder()
+        } else if textField == txtWachtwoord {
+            inloggen(self)
+            txtWachtwoord.resignFirstResponder()
+        }
+        return true
     }
 }
