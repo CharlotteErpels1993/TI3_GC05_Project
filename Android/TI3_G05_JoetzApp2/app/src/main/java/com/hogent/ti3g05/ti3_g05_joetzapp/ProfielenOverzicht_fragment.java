@@ -14,7 +14,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.MyDb;
+import com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.myDb;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ProfielAdapter;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.InschrijvingVorming;
@@ -39,7 +39,7 @@ public class ProfielenOverzicht_fragment extends Fragment /* implements SwipeRef
     private List<Monitor> profielenAndere = null;
     private List<Monitor> profielenSamen = null;
     private EditText filtertext;
-    private MyDb myDB;
+    private myDb myDB;
     private List<InschrijvingVorming> inschrijvingVormingen = new ArrayList<InschrijvingVorming>();
     private List<InschrijvingVorming> alleIns = new ArrayList<InschrijvingVorming>();
 
@@ -63,7 +63,7 @@ public class ProfielenOverzicht_fragment extends Fragment /* implements SwipeRef
         getActivity().getActionBar().setTitle("Profielen");
 
         cd = new ConnectionDetector(rootView.getContext());
-        myDB = new MyDb(rootView.getContext());
+        myDB = new myDb(rootView.getContext());
         myDB.open();
         //Kijk of er internet aanwezig is, zoja haal de monitoren op, zoneen haal de gegevens op uit de locale database
         isInternetPresent = cd.isConnectingToInternet();

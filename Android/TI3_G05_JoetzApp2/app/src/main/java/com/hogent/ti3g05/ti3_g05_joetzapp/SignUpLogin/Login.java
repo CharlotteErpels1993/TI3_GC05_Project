@@ -228,6 +228,8 @@ public class Login extends Activity{
         if (id == R.id.backMenu2) {
             Intent intent1 = new Intent(this, navBarMainScreen.class);
             startActivity(intent1);
+            intent1.putExtra("naarfrag", "vakantie");
+            intent1.putExtra("herladen", "nee");
 
             overridePendingTransition(R.anim.left_in, R.anim.right_out);
         }

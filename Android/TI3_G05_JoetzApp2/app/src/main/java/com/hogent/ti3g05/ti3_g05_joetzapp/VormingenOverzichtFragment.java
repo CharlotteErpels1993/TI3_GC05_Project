@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ListView;
 
-import com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.MyDb;
+import com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.myDb;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.VormingAdapter;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vorming;
@@ -31,7 +31,7 @@ public class VormingenOverzichtFragment extends Fragment  {
     private ListView listview;
     private ProgressDialog mProgressDialog;
     private VormingAdapter adapter;
-    private MyDb myDB;
+    private myDb myDB;
     private List<Vorming> vormingen = null;
     private EditText et_filtertext;
     private Boolean isInternetPresent = false;
@@ -50,7 +50,7 @@ public class VormingenOverzichtFragment extends Fragment  {
         et_filtertext = (EditText) rootView.findViewById(R.id.filtertextv);
 
         cd = new ConnectionDetector(rootView.getContext());
-        myDB = new MyDb(rootView.getContext());
+        myDB = new myDb(rootView.getContext());
         myDB.open();
         isInternetPresent = cd.isConnectingToInternet();
         //indien er internet aanwezig is haal vormingen op, anders haal de vormingen uit de locale database
