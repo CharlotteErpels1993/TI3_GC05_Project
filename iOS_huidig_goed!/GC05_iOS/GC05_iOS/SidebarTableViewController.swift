@@ -124,7 +124,7 @@ class SidebarTableViewController: UITableViewController, UITextFieldDelegate {
             var gebruikerPF = PFUser.currentUser()
             var soort: String = gebruikerPF["soort"] as String
             if soort == "monitor" {
-                self.tableView.reloadData()
+                //self.tableView.reloadData()
                 switch indexPath.row {
                 case 0:
                     hideSideMenuView()
