@@ -12,6 +12,7 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
     @IBOutlet weak var zoekbar: UISearchBar!
     
     @IBAction func toggle(sender: AnyObject) {
+        searchBarCancelButtonClicked(zoekbar)
         toggleSideMenuView()
     }
     
@@ -285,6 +286,7 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
     }
     
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        hideSideMenuView()
         setTitleCancelButton(searchBar)
         zoekGefilterdeVakanties(searchBar.text)
     }
@@ -308,6 +310,7 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        hideSideMenuView()
         searchBar.showsCancelButton = true
         setTitleCancelButton(searchBar)
         zoekGefilterdeVakanties(searchText.lowercaseString)
