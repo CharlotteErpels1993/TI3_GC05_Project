@@ -26,7 +26,7 @@ import java.util.List;
 import java.util.Locale;
 
 //Geeft een overzicht van de vormingen weer
-public class Vormingen_Overzicht_Fragment extends Fragment  {
+public class VormingenOverzichtFragment extends Fragment  {
 
     private ListView listview;
     private ProgressDialog mProgressDialog;

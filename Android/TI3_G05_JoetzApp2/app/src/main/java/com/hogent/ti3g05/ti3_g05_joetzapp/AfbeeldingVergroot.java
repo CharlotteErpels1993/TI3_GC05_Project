@@ -1,18 +1,11 @@
 package com.hogent.ti3g05.ti3_g05_joetzapp;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ImageView;
-
-import com.parse.ParseUser;
 
 import java.util.ArrayList;
 
@@ -97,7 +90,7 @@ public class AfbeeldingVergroot extends Activity {
     //Stuurt de gebruiker terig naar detailscherm en geeft juiste gegevens mee
     public void terugNaarDetail()
     {
-        Intent intent1 = new Intent(this, Vakantie_detail.class);
+        Intent intent1 = new Intent(this, VakantieDetail.class);
         intent1.putExtra("naam",naam);
         intent1.putExtra("locatie",locatie);
         intent1.putExtra("vertrekdatum",vertrekdatum);

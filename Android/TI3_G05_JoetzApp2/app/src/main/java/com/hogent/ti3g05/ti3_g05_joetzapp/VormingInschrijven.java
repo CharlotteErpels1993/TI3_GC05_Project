@@ -22,7 +22,7 @@ import java.util.Arrays;
 import java.util.List;
 
 //Geeft de gebruiker de mogelijkheid om zich in te schrijven in een vorming
-public class VormingSignup extends Activity {
+public class VormingInschrijven extends Activity {
     private Spinner spnDataInschrijven;
 
     private ConnectionDetector cd;
@@ -102,7 +102,7 @@ public class VormingSignup extends Activity {
             queryVanInschrijvingen.whereEqualTo("periode", geselecteerdeData);
             List<ParseObject> lijstInschrijvingVormingen = queryVanInschrijvingen.find();
             if (lijstInschrijvingVormingen.size() > 0){
-                 Toast.makeText(VormingSignup.this, getString(R.string.error_duplicateSignupVorming) , Toast.LENGTH_LONG).show();
+                 Toast.makeText(VormingInschrijven.this, getString(R.string.error_duplicateSignupVorming) , Toast.LENGTH_LONG).show();
                 return false;
             }
 
@@ -145,7 +145,7 @@ public class VormingSignup extends Activity {
 
     @Override
     public void onBackPressed() {
-        Intent setIntent = new Intent(VormingSignup.this, navBarMainScreen.class);
+        Intent setIntent = new Intent(VormingInschrijven.this, navBarMainScreen.class);
         setIntent.putExtra("naarfrag","vorming");
         setIntent.putExtra("herladen","nee");
         setIntent.addCategory(Intent.CATEGORY_HOME);

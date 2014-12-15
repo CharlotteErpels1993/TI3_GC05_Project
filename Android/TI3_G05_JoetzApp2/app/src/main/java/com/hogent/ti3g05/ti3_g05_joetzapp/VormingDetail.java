@@ -124,7 +124,7 @@ public class VormingDetail extends Activity {
             public void onClick(View view) {
                 inschrijven.startAnimation(animAlpha);
                 //Bij klikken op de knop stuur de gebruiker met de nodige gegevens door naar de inschrijvingpagina
-                Intent inte = new Intent(getApplicationContext(), VormingSignup.class);
+                Intent inte = new Intent(getApplicationContext(), VormingInschrijven.class);
                 inte.putExtra("periodes", periodes.toArray(new String[periodes.size()]));
                 inte.putExtra("objectId", objectId);
                 startActivity(inte);

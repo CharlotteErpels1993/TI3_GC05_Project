@@ -34,7 +34,7 @@ import java.util.ArrayList;
 //kind en monitor: titel, korte beschr, periode, locatie, inbegrepen in prijs, doelgroep (met geboortejaren), max aantal deelnemers
 
 //Geeft een detailscherm van de vakantie met de juiste informatie per gebruiker
-public class Vakantie_detail extends Activity {
+public class VakantieDetail extends Activity {
 
     private String naam, locatie, vertrekdatum, terugdatum, formule, maxDeeln, periode, vervoer, prijs, beschrijving;
     private ImageLoader imageLoader = new ImageLoader(this);
@@ -165,7 +165,7 @@ public class Vakantie_detail extends Activity {
             @Override
             public void onClick(View view) {
                 btnInschrijven.startAnimation(animAlpha);
-                Intent intent3 = new Intent(Vakantie_detail.this, InschrijvenVakantieDeel1.class);
+                Intent intent3 = new Intent(VakantieDetail.this, InschrijvenVakantieDeel1.class);
                 intent3.putExtra("objectId", activiteitID);
                 intent3.putExtra("maxdoelgroep", maxDoelgroep);
                 intent3.putExtra("mindoelgroep", minDoelgroep);
@@ -263,7 +263,7 @@ public class Vakantie_detail extends Activity {
             afbeelding1im.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent1 = new Intent(Vakantie_detail.this, AfbeeldingVergroot.class);
+                    Intent intent1 = new Intent(VakantieDetail.this, AfbeeldingVergroot.class);
                     setIntentParameters(intent1);
                     intent1.putExtra("afbeelding", afbeelding1);
                     startActivity(intent1);
@@ -276,7 +276,7 @@ public class Vakantie_detail extends Activity {
             afbeelding2im.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent1 = new Intent(Vakantie_detail.this, AfbeeldingVergroot.class);
+                    Intent intent1 = new Intent(VakantieDetail.this, AfbeeldingVergroot.class);
                     setIntentParameters(intent1);
                     intent1.putExtra("afbeelding", afbeelding2);
                     startActivity(intent1);
@@ -289,7 +289,7 @@ public class Vakantie_detail extends Activity {
             afbeelding3im.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent1 = new Intent(Vakantie_detail.this, AfbeeldingVergroot.class);
+                    Intent intent1 = new Intent(VakantieDetail.this, AfbeeldingVergroot.class);
                     setIntentParameters(intent1);
                     intent1.putExtra("afbeelding", afbeelding3);
                     startActivity(intent1);
@@ -318,7 +318,7 @@ public class Vakantie_detail extends Activity {
         feedback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent  = new Intent(Vakantie_detail.this, FeedbackGeven.class);
+                Intent intent  = new Intent(VakantieDetail.this, FeedbackGeven.class);
                 intent.putExtra("vakantie", naam);
                 intent.putExtra("vakantieId", activiteitID);
                 startActivity(intent);
@@ -584,11 +584,11 @@ public class Vakantie_detail extends Activity {
                 favoriet.put("vakantie", activiteitID);
                 favoriet.put("gebruiker", ingelogdeGebruiker);
                 favoriet.save();
-                Toast.makeText(Vakantie_detail.this, "Favoriet toegevoegd!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(VakantieDetail.this, "Favoriet toegevoegd!", Toast.LENGTH_SHORT).show();
                 favoImage.setVisibility(View.GONE);
                 deleteImage.setVisibility(View.VISIBLE);
             } else {
-                Toast.makeText(Vakantie_detail.this, "Is reeds favoriet.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(VakantieDetail.this, "Is reeds favoriet.", Toast.LENGTH_SHORT).show();
             }
 
         } catch (ParseException e) {
@@ -667,7 +667,7 @@ public class Vakantie_detail extends Activity {
         for (ParseObject fav : obD) {
             if (fav.get("vakantie").equals(activiteitID) && fav.get("gebruiker").equals(ingelogdeGebruiker)) {
                 fav.delete();
-                Toast.makeText(Vakantie_detail.this, "vakantie is verwijderd uit favorieten", Toast.LENGTH_SHORT).show();
+                Toast.makeText(VakantieDetail.this, "vakantie is verwijderd uit favorieten", Toast.LENGTH_SHORT).show();
                 deleteImage.setVisibility(View.GONE);
                 favoImage.setVisibility(View.VISIBLE);
 

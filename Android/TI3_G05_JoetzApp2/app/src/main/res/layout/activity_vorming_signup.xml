@@ -5,7 +5,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:finishOnTaskLaunch="true"
-    tools:context="com.hogent.ti3g05.ti3_g05_joetzapp.VormingSignup">
+    tools:context="com.hogent.ti3g05.ti3_g05_joetzapp.VormingInschrijven">
 
     <TextView
         android:layout_width="fill_parent"

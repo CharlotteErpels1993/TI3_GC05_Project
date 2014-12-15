@@ -72,13 +72,13 @@ public class navBarMainScreen extends Activity {
             }
             if(frag.toLowerCase().startsWith("vakantie"))
             {
-                fragment = new Vakantie_overzicht();
+                fragment = new VakantieOverzicht();
 
                 mTitle = "Vakanties";
             }
             else if(frag.toLowerCase().startsWith("vorming"))
             {
-                fragment = new Vormingen_Overzicht_Fragment();
+                fragment = new VormingenOverzichtFragment();
 
                 mTitle = "Vormingen";
             }
@@ -102,7 +102,7 @@ public class navBarMainScreen extends Activity {
         }
         else
         {
-            fragment = new Vakantie_overzicht();
+            fragment = new VakantieOverzicht();
         }
 
         fragLayout = (FrameLayout) findViewById(R.id.content_frame);
@@ -227,7 +227,7 @@ public class navBarMainScreen extends Activity {
 
                 Intent intent = new Intent(navBarMainScreen.this, navBarMainScreen.class);
 
-                fragment = new Vakantie_overzicht();
+                fragment = new VakantieOverzicht();
 
                 intent.putExtra("frag", fragment.toString());
                 intent.putExtra("refresh", "ja");
@@ -290,7 +290,7 @@ public class navBarMainScreen extends Activity {
 
                     {
                         Intent intent3 = new Intent(navBarMainScreen.this, navBarMainScreen.class);
-                        fragment = new Vormingen_Overzicht_Fragment();
+                        fragment = new VormingenOverzichtFragment();
                         intent3.putExtra("frag", fragment.toString());
                         intent3.putExtra("refresh", "ja");
 
@@ -496,7 +496,7 @@ public class navBarMainScreen extends Activity {
 
                     intent.putExtra("herladen", "ja");
                     intent.putExtra("refresh", "ja");
-                    fragment = new Vakantie_overzicht();
+                    fragment = new VakantieOverzicht();
                     intent.putExtra("frag", fragment.toString());
                     startActivity(intent);
                 }
@@ -505,7 +505,7 @@ public class navBarMainScreen extends Activity {
 
                     intent.putExtra("herladen", "ja");
                     intent.putExtra("refresh", "ja");
-                    fragment = new Vormingen_Overzicht_Fragment();
+                    fragment = new VormingenOverzichtFragment();
                     intent.putExtra("frag", fragment.toString());
                     startActivity(intent);
                 }

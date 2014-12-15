@@ -19,7 +19,7 @@ import android.widget.Toast;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.ImageLoader;
 import com.hogent.ti3g05.ti3_g05_joetzapp.R;
-import com.hogent.ti3g05.ti3_g05_joetzapp.Vakantie_detail;
+import com.hogent.ti3g05.ti3_g05_joetzapp.VakantieDetail;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vakantie;
 
 //Deze klasse zal de vakantie gegevens op de juiste plaats zetten en de juiste gegevens weergeven en doorgeven
@@ -104,7 +104,7 @@ public class VakantieAdapter extends ArrayAdapter<Vakantie> implements Filterabl
             public void onClick(View arg0) {
 
                 //Geeft de nodige gegevens mee bij het klikken op een item in de lijst, dit verwijst door naar de detail pagina
-                Intent intent = new Intent(context, Vakantie_detail.class);
+                Intent intent = new Intent(context, VakantieDetail.class);
                 intent.putExtra("naam", (vakanties.get(position).getNaamVakantie()));
                 intent.putExtra("locatie", (vakanties.get(position).getLocatie()));
                 if(vakanties.get(position).getVertrekDatum() == null || vakanties.get(position).getTerugkeerDatum() == null)

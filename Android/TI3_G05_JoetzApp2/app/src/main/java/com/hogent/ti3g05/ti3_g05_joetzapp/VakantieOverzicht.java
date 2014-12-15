@@ -29,7 +29,7 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
 //Toont een lijst van vakanties
-public class Vakantie_overzicht extends Fragment {
+public class VakantieOverzicht extends Fragment {
 
     private ListView listview;
 
