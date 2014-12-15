@@ -18,13 +18,13 @@ import java.util.List;
 
 import static com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.Constants.TABLE_VAKANTIE;
 //Laag tussen databasehandler en de klassen die de locale database gebruiken
-public class myDb {
+public class SqliteDatabase {
 
     protected DBHandler db;
     private final Context context;
     private SQLiteDatabase sqLiteDatabase;
 
-    public myDb(Context context) {
+    public SqliteDatabase(Context context) {
         this.context = context;
         db = new DBHandler(context);
     }

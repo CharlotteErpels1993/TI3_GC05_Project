@@ -14,7 +14,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.myDb;
+import com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.SqliteDatabase;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ProfielAdapter;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.InschrijvingVorming;
@@ -39,7 +39,7 @@ public class ProfielenOverzicht_fragment extends Fragment /* implements SwipeRef
     private List<Monitor> profielenAndere = null;
     private List<Monitor> profielenSamen = null;
     private EditText filtertext;
-    private myDb myDB;
+    private SqliteDatabase sqliteDatabase;
     private List<InschrijvingVorming> inschrijvingVormingen = new ArrayList<InschrijvingVorming>();
     private List<InschrijvingVorming> alleIns = new ArrayList<InschrijvingVorming>();
 
@@ -63,8 +63,8 @@ public class ProfielenOverzicht_fragment extends Fragment /* implements SwipeRef
         getActivity().getActionBar().setTitle("Profielen");
 
         cd = new ConnectionDetector(rootView.getContext());
-        myDB = new myDb(rootView.getContext());
-        myDB.open();
+        sqliteDatabase = new SqliteDatabase(rootView.getContext());
+        sqliteDatabase.open();
         //Kijk of er internet aanwezig is, zoja haal de monitoren op, zoneen haal de gegevens op uit de locale database
         isInternetPresent = cd.isConnectingToInternet();
         if(getActivity().getIntent().getStringExtra("herladen")!= null && getActivity().getIntent().getStringExtra("herladen").toLowerCase().equals("nee"))
@@ -85,7 +85,7 @@ public class ProfielenOverzicht_fragment extends Fragment /* implements SwipeRef
     //Haal de profielen op uit de locale database
     public void getProfielen()
     {
-        alleProfielenUitParse = myDB.getProfielen();
+        alleProfielenUitParse = sqliteDatabase.getProfielen();
         adapter = new ProfielAdapter(rootView.getContext(), alleProfielenUitParse);
        listview.setAdapter(adapter);
 
@@ -145,7 +145,7 @@ public class ProfielenOverzicht_fragment extends Fragment /* implements SwipeRef
                     query.orderByAscending("naam");
                     List<ParseObject> lijstMetMonitoren = query.find();
 
-                    myDB.dropProfielen();
+                    sqliteDatabase.dropProfielen();
                     for (ParseObject monitor : lijstMetMonitoren) {
 
                         Monitor map = new Monitor();
@@ -175,14 +175,14 @@ public class ProfielenOverzicht_fragment extends Fragment /* implements SwipeRef
 
                         alleProfielenUitParse.add(map);
 
-                        myDB.insertProfiel(map);
+                        sqliteDatabase.insertProfiel(map);
 
                     }
                 } catch (ParseException e) {
                     Log.e("Error", e.getMessage());
                     e.printStackTrace();
 
-                    alleProfielenUitParse = myDB.getProfielen();
+                    alleProfielenUitParse = sqliteDatabase.getProfielen();
 
                 }
 
@@ -265,7 +265,7 @@ public class ProfielenOverzicht_fragment extends Fragment /* implements SwipeRef
 
                 }
             }else {
-                profielenSamen = myDB.getProfielen();
+                profielenSamen = sqliteDatabase.getProfielen();
             }
             return null;
         }

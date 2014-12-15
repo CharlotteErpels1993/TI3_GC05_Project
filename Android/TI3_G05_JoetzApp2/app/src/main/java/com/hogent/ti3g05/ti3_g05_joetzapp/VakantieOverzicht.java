@@ -18,7 +18,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ListView;
 
-import com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.myDb;
+import com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.SqliteDatabase;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.VakantieAdapter;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Feedback;
@@ -33,7 +33,7 @@ public class VakantieOverzicht extends Fragment {
 
     private ListView listview;
 
-    private myDb myDB;
+    private SqliteDatabase sqliteDatabase;
     private Vakantie vakantie;
     private ProgressDialog mProgressDialog;
     private ArrayList<String> images = new ArrayList<String>();
@@ -62,8 +62,8 @@ public class VakantieOverzicht extends Fragment {
 
 
         cd = new ConnectionDetector(rootView.getContext());
-        myDB = new myDb(rootView.getContext());
-        myDB.open();
+        sqliteDatabase = new SqliteDatabase(rootView.getContext());
+        sqliteDatabase.open();
         isInternetPresent = cd.isConnectingToInternet();
         //kijkt of het scherm al eens is geladen, en gebruikt dan de locale database, dit voorkomt teveel overhead
         if(getActivity().getIntent().getStringExtra("herladen")!= null && getActivity().getIntent().getStringExtra("herladen").toLowerCase().equals("nee"))
@@ -86,7 +86,7 @@ public class VakantieOverzicht extends Fragment {
      public void getVakanties()
      {
          //Toast.makeText(getActivity(), "geen internet", Toast.LENGTH_SHORT).show();
-         vakanties = myDB.getVakanties();
+         vakanties = sqliteDatabase.getVakanties();
          adapter = new VakantieAdapter(rootView.getContext(), vakanties);
          // Binds the Adapter to the ListView
          listview.setAdapter(adapter);
@@ -159,7 +159,7 @@ public class VakantieOverzicht extends Fragment {
                 List<ParseObject> lijstFeedback = queryFeedback.find();
 
                 //Maak de locale database klaar om alle vakanties erin te stoppen
-                myDB.dropVakanties();
+                sqliteDatabase.dropVakanties();
                 for (ParseObject v : lijstMetVakanties) {
                     vakantie = new Vakantie();
 
@@ -224,7 +224,7 @@ public class VakantieOverzicht extends Fragment {
 
                         vakanties.add(vakantie);
                     //Voeg de vakantie toe aan de locale database
-                    myDB.insertVakantie(vakantie);
+                    sqliteDatabase.insertVakantie(vakantie);
 
                  }
 

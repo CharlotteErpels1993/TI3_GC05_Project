@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ListView;
 
-import com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.myDb;
+import com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.SqliteDatabase;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.VakantieAdapter;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.FavorieteVakantie;
@@ -36,7 +36,7 @@ public class FavorieteVakanties extends Fragment{
 
     private List<FavorieteVakantie> favorieten = null;
 
-    private myDb myDB;
+    private SqliteDatabase sqliteDatabase;
     private Vakantie vakantie;
     private ProgressDialog mProgressDialog;
     private View rootView;
@@ -64,8 +64,8 @@ public class FavorieteVakanties extends Fragment{
 
 
             cd = new ConnectionDetector(rootView.getContext());
-            myDB = new myDb(rootView.getContext());
-            myDB.open();
+            sqliteDatabase = new SqliteDatabase(rootView.getContext());
+            sqliteDatabase.open();
 
             //controleert ofer internet is, zoja, haal de gegevens op uit de database in parse, online
             //Zoneen, haal de gegevens op uit de locale database
@@ -74,7 +74,7 @@ public class FavorieteVakanties extends Fragment{
                 new RemoteDataTask().execute();
             }
             else {
-                vakanties = myDB.getFavorieten();
+                vakanties = sqliteDatabase.getFavorieten();
                 adapter = new VakantieAdapter(rootView.getContext(), vakanties);
                 listview.setAdapter(adapter);
 
@@ -169,7 +169,7 @@ public class FavorieteVakanties extends Fragment{
                     favorietenquery.orderByAscending("vakantie");
                     List<ParseObject> obFav = favorietenquery.find();
 
-                    myDB.dropFavorieten();
+                    sqliteDatabase.dropFavorieten();
                     for(ParseObject favoriet : obFav)
                     {
                         fav = new FavorieteVakantie();
@@ -241,7 +241,7 @@ public class FavorieteVakanties extends Fragment{
                             {
                                 //Voeg de goedgekeurde vakanties toe aan de locale database en aan de favorietenlijst
                                 vakanties.add(vakantie);
-                                myDB.insertFavoriet(vakantie);
+                                sqliteDatabase.insertFavoriet(vakantie);
                             }
                         }
                     }

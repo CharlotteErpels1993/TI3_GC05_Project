@@ -14,7 +14,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.myDb;
+import com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.SqliteDatabase;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.FeedbackAdapter;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Feedback;
@@ -34,7 +34,7 @@ public class FeedbackOverzicht extends Fragment {
     private List<ParseObject> lijstMetParseVakanties;
     private List<ParseObject> lijstMetParseFeedback;
 
-    private myDb myDB;
+    private SqliteDatabase sqliteDatabase;
     private Feedback feedback;
     private ProgressDialog mProgressDialog;
     private View rootView;
@@ -58,15 +58,15 @@ public class FeedbackOverzicht extends Fragment {
         getActivity().getActionBar().setTitle("Joetz funfactor");
 
         cd = new ConnectionDetector(rootView.getContext());
-        myDB = new myDb(rootView.getContext());
-        myDB.open();
+        sqliteDatabase = new SqliteDatabase(rootView.getContext());
+        sqliteDatabase.open();
         //als internet aanwezig is haal alle feedbacks op, zoneen haal alle feedbacks op uit de locale database
         isInternetPresent = cd.isConnectingToInternet();
         if (isInternetPresent) {
             new RemoteDataTask().execute();
         }
         else {
-            feedbackList = myDB.getFeedback();
+            feedbackList = sqliteDatabase.getFeedback();
 
             adapter = new FeedbackAdapter(rootView.getContext(), feedbackList);
             listview.setAdapter(adapter);
@@ -124,7 +124,7 @@ public class FeedbackOverzicht extends Fragment {
                 ParseQuery<ParseObject> queryFeedback = new ParseQuery<ParseObject>("Feedback");
                 queryFeedback.orderByAscending("vakantie");
                 lijstMetParseFeedback = queryFeedback.find();
-                myDB.dropFeedback();
+                sqliteDatabase.dropFeedback();
                 if (lijstMetParseFeedback.isEmpty()) {
                     Toast.makeText(getActivity(), "Nog geen funfactor gegeven.", Toast.LENGTH_SHORT).show();
                 } else {
@@ -149,7 +149,7 @@ public class FeedbackOverzicht extends Fragment {
                         }
                         if (feedback.getGoedgekeurd()) {
                             feedbackList.add(feedback);
-                            myDB.insertFeedback(feedback);
+                            sqliteDatabase.insertFeedback(feedback);
                         }
 
                     }

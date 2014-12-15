@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ListView;
 
-import com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.myDb;
+import com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.SqliteDatabase;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.VormingAdapter;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vorming;
@@ -31,7 +31,7 @@ public class VormingenOverzichtFragment extends Fragment  {
     private ListView listview;
     private ProgressDialog mProgressDialog;
     private VormingAdapter adapter;
-    private myDb myDB;
+    private SqliteDatabase sqliteDatabase;
     private List<Vorming> vormingen = null;
     private EditText et_filtertext;
     private Boolean isInternetPresent = false;
@@ -50,8 +50,8 @@ public class VormingenOverzichtFragment extends Fragment  {
         et_filtertext = (EditText) rootView.findViewById(R.id.filtertextv);
 
         cd = new ConnectionDetector(rootView.getContext());
-        myDB = new myDb(rootView.getContext());
-        myDB.open();
+        sqliteDatabase = new SqliteDatabase(rootView.getContext());
+        sqliteDatabase.open();
         isInternetPresent = cd.isConnectingToInternet();
         //indien er internet aanwezig is haal vormingen op, anders haal de vormingen uit de locale database
         if(getActivity().getIntent().getStringExtra("herladen")!= null && getActivity().getIntent().getStringExtra("herladen").toLowerCase().equals("nee"))
@@ -72,7 +72,7 @@ public class VormingenOverzichtFragment extends Fragment  {
     //Haal de ormingen uit de locale database
     public void getVormingen()
     {
-        vormingen = myDB.getVormingen();
+        vormingen = sqliteDatabase.getVormingen();
         adapter = new VormingAdapter(rootView.getContext(), vormingen);
         listview.setAdapter(adapter);
 
@@ -128,7 +128,7 @@ public class VormingenOverzichtFragment extends Fragment  {
                     List<ParseObject> lijstVormingen = query.find();
 
 
-                    myDB.dropVormingen();
+                    sqliteDatabase.dropVormingen();
                     for (ParseObject vorming : lijstVormingen) {
 
                         Vorming map = new Vorming();
@@ -147,7 +147,7 @@ public class VormingenOverzichtFragment extends Fragment  {
 
                         vormingen.add(map);
 
-                        myDB.insertVorming(map);
+                        sqliteDatabase.insertVorming(map);
 
                     }
                 } catch (ParseException e) {
