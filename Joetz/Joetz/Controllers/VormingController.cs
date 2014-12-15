@@ -76,5 +76,12 @@ namespace Joetz.Controllers
             vormingRepository.Delete(vorming);
             return RedirectToAction("Index");
         }
+
+        public async Task<ActionResult> Details(string id)
+        {
+            var vormingTask = vormingRepository.FindBy(id);
+            Vorming vorming = await vormingTask;
+            return View("Details", vorming);
+        }
     }
 }

@@ -97,9 +97,12 @@ namespace Joetz.Models.DAL
             await vakantieObject.DeleteAsync();
         }
 
-        public void Update(Vakantie vakantie)
+        public async void Update(Vakantie vakantie)
         {
-            throw new NotImplementedException();
+            var query = ParseObject.GetQuery("Vakantie").WhereEqualTo("objectId", vakantie.Id);
+            ParseObject vakantieObject = await query.FirstAsync();
+
+            await vakantieObject.SaveAsync();
         }
     }
 }

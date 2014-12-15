@@ -1,49 +1,35 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using System.Web.Mvc;
-using Joetz.Models.DAL;
+﻿using Joetz.Models.DAL;
 using Joetz.Models.Domain;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Web;
+using System.Web.Mvc;
 
 namespace Joetz.Controllers
 {
-    public class VakantieController : Controller
+    public class FeedbackController : Controller
     {
-        private IVakantieRepository vakantieRepository;
+        private IFeedbackRepository feedbackRepository;
 
-        public VakantieController()
+        public FeedbackController()
         {
-            this.vakantieRepository = new VakantieRepository();
+            this.feedbackRepository = new FeedbackRepository();
         }
 
-        public VakantieController(IVakantieRepository vakantieRepository)
+        public FeedbackController(IFeedbackRepository feedbackRepository)
         {
-            this.vakantieRepository = vakantieRepository;
+            this.feedbackRepository = feedbackRepository;
         }
 
         public async Task<ActionResult> Index()
         {
-            var vakantiesTask = vakantieRepository.FindAll();
-            IEnumerable<Vakantie> vakanties = await vakantiesTask;
-            return View(vakanties);
+            var feedbackTask = feedbackRepository.FindAll();
+            IEnumerable<Feedback> feedback = await feedbackTask;
+            return View(feedback);
         }
-
-        public ActionResult Create()
-        {
-            return View(new Vakantie());
-        }
-
-        [HttpPost]
-        public ActionResult Create(Vakantie vakantie)
-        {
-            if (ModelState.IsValid)
-            {
-                vakantieRepository.Add(vakantie);
-                TempData["Info"] = "Vakantie " + vakantie.Titel + " is toegevoegd";
-                return RedirectToAction("Index");    
-            }
-            return View(vakantie);
-        }
-
+/*
         public async Task<ActionResult> Edit(string id)
         {
             var vakantieTask = vakantieRepository.FindBy(id);
@@ -82,7 +68,6 @@ namespace Joetz.Controllers
             var vakantieTask = vakantieRepository.FindBy(id);
             Vakantie vakantie = await vakantieTask;
             return View("Details", vakantie);
-        }
-
+        }*/
     }
 }
