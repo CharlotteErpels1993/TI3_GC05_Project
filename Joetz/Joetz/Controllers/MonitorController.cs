@@ -3,8 +3,10 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using System.Web;
 using System.IO;
+using System;
 using Joetz.Models.DAL;
 using Joetz.Models.Domain;
+using System.Text;
 
 namespace Joetz.Controllers
 {
@@ -46,8 +48,33 @@ namespace Joetz.Controllers
                 if (fileName.EndsWith(".xlsx") || (fileName.EndsWith(".xls"))) //enkel gewoon Excel bestand wordt aanvaard.
                 {
                     // store the file inside ~/App_Data/uploads folder
-                    var path = Path.Combine(Server.MapPath("~/App_Data/uploads/"), fileName);
+                    string path = Path.Combine(Server.MapPath("~/App_Data/uploads/"), fileName);
                     file.SaveAs(path);
+                    // Get file info
+                    int contentLength = file.ContentLength;
+                    string contentType = file.ContentType;
+
+
+                    // Get file data
+                    byte[] data = new byte[] { };
+                    using (var binaryReader = new BinaryReader(file.InputStream))
+                    {
+                        data = binaryReader.ReadBytes(file.ContentLength);
+                    }
+                    string resultaat;
+                    using (FileStream fs = System.IO.File.Open(path, FileMode.OpenOrCreate))
+                    using (BinaryReader reader = new BinaryReader(fs))
+                    {
+                        UTF8Encoding temp = new UTF8Encoding(true);
+
+                        while (fs.Read(data, 0, data.Length) > 0)
+                        {
+                            string a = reader.ReadInt32(data);
+                            resultaat = temp.GetString(data);
+                            Console.WriteLine(temp.GetString(data));                            
+                        }
+                    }
+
                     
                     // redirect back to the index action to show the form once again
                     return RedirectToAction("Index");
