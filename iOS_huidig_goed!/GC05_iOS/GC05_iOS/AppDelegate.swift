@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         LocalDatastore.getTableReady("Feedback")
         LocalDatastore.getTableReady("Ouder")
         LocalDatastore.getTableReady("Favoriet")
-        
+        LocalDatastore.getTableReady("Monitor")
         
         
         /*if Reachability.isConnectedToNetwork() {

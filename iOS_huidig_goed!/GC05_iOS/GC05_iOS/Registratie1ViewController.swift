@@ -49,11 +49,6 @@ class Registratie1ViewController: /*ResponsiveTextFieldViewController*/ UITableV
             txtRijksregisterNr.resignFirstResponder()
         }
         
-        //ParseData.deleteOuderTable()
-        //ParseData.vulOuderTableOp()
-        //ParseData.deleteMonitorTable()
-        //ParseData.vulMonitorTableOp()
-        
         txtAansluitingsNr.delegate = self
         txtCodeGerechtigde.delegate = self
         txtRijksregisterNr.delegate = self
@@ -71,7 +66,6 @@ class Registratie1ViewController: /*ResponsiveTextFieldViewController*/ UITableV
             self.tableView.deleteSections(NSIndexSet(index: 1), withRowAnimation: UITableViewRowAnimation.None)
             buttonNummers.hidden = true
         }
-        
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -101,7 +95,6 @@ class Registratie1ViewController: /*ResponsiveTextFieldViewController*/ UITableV
         return 0
     }
     
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "volgende" {
             let registratie2ViewController = segue.destinationViewController as Registratie2ViewController
@@ -110,7 +103,7 @@ class Registratie1ViewController: /*ResponsiveTextFieldViewController*/ UITableV
             
             if controleerRodeBordersAanwezig() == true {
                 if rijksregisterNrAlGeregistreerd == true {
-                    foutBoxOproepen("Fout", "Dit rijksregisternummer (\(self.txtRijksregisterNr.text)) is al geregistreerd!", self)
+                    foutBoxOproepen("Fout", "Dit rijksregisternummer is al geregistreerd!", self)
                     self.txtRijksregisterNr.text = ""
                 } else {
                     foutBoxOproepen("Fout", "Gelieve de velden correct in te vullen!", self)
@@ -246,19 +239,14 @@ class Registratie1ViewController: /*ResponsiveTextFieldViewController*/ UITableV
                 ouder.aansluitingsNrTweedeOuder = txtAansluitingsNrTweedeOuder.text.toInt()!
             }
         }
-        
     }
     
     func controleerRijksregisterNummerAlGeregisteerd() -> Bool {
-        //return ParseData.getRijksregisterNummers(self.txtRijksregisterNr.text)
         return LocalDatastore.isRijksregisternummerAlGeregistreerd(self.txtRijksregisterNr.text)
     }
-    
-    
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
 }
-

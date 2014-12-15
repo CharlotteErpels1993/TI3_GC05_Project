@@ -124,7 +124,7 @@ struct LocalDatastore {
     
     static func getVakantie(vakantieObject: PFObject) -> Vakantie {
         var vakantie: Vakantie = Vakantie(id: vakantieObject.objectId)
-    
+        
         vakantie.titel = vakantieObject["titel"] as? String
         vakantie.locatie = vakantieObject["locatie"] as? String
         vakantie.korteBeschrijving = vakantieObject["korteBeschrijving"] as? String
@@ -142,7 +142,7 @@ struct LocalDatastore {
         vakantie.minLeeftijd = vakantieObject["minLeeftijd"] as Int
         vakantie.maxLeeftijd = vakantieObject["maxLeeftijd"] as? Int
         vakantie.maxAantalDeelnemers = vakantieObject["maxAantalDeelnemers"] as? Int
-    
+        
         return vakantie
     }
     
@@ -158,7 +158,6 @@ struct LocalDatastore {
         var ouder = self.getOuderFromFeedback(gebruikerId)
         
         if ouder == nil {
-            self.getTableReady("Monitor")
             monitor = self.getMonitorFromFeedback(gebruikerId)!
         }
         
@@ -285,7 +284,7 @@ struct LocalDatastore {
         
         return afbeeldingen[0]
     }
-
+    
     static func printError(methode: String, tableName: String) {
         var error: String = ""
         
@@ -309,7 +308,7 @@ struct LocalDatastore {
         
         println(error)
     }
-
+    
     static func getGebruikerWithEmail(email: String, tableName: String) -> Gebruiker {
         var query = PFQuery(className: tableName)
         
@@ -393,7 +392,7 @@ struct LocalDatastore {
         
         return objecten
     }
-
+    
     static func parseLocalObject(object: AnyObject, tableName: String) {
         
         var pfObject: PFObject
@@ -405,10 +404,13 @@ struct LocalDatastore {
             pfObject = getFavorietObject(object as Favoriet)
         }
         
-        pfObject.pin()
-        pfObject.saveEventually()
+        if Reachability.isConnectedToNetwork() == true {
+            pfObject.save()
+        } else {
+            pfObject.saveEventually()
+        }
     }
-
+    
     static func getFavorietObject(favoriet: Favoriet) -> PFObject {
         var object: PFObject = PFObject(className: "Favoriet")
         
@@ -426,7 +428,6 @@ struct LocalDatastore {
         if aantalOuders != 0 {
             return true
         } else {
-            LocalDatastore.getTableReady("Monitor")
             var queryMonitor = self.makeQuery("Monitor", local: true, queryConstraints: ["rijksregisterNr": rijksregisternummer])
             
             var aantalMonitors = queryMonitor.countObjects()
@@ -437,7 +438,243 @@ struct LocalDatastore {
             return false
         }
     }
-
+    
+    static func isGsmAlGeregistreerd(gsm: String) -> Bool {
+        var queryOuder = self.makeQuery("Ouder", local: true, queryConstraints: ["gsm": gsm])
+        
+        var aantalOuders = queryOuder.countObjects()
+        
+        if aantalOuders != 0 {
+            return true
+        } else {
+            var queryMonitor = self.makeQuery("Monitor", local: true, queryConstraints: ["gsm": gsm])
+            
+            var aantalMonitors = queryMonitor.countObjects()
+            
+            if aantalMonitors != 0 {
+                return true
+            }
+            return false
+        }
+    }
+    
+    static func isEmailAlGeregistreerd(email: String) -> Bool {
+        var queryOuder = self.makeQuery("Ouder", local: true, queryConstraints: ["email": email])
+        
+        var aantalOuders = queryOuder.countObjects()
+        
+        if aantalOuders != 0 {
+            return true
+        } else {
+            var queryMonitor = self.makeQuery("Monitor", local: true, queryConstraints: ["email": email])
+            
+            var aantalMonitors = queryMonitor.countObjects()
+            
+            if aantalMonitors != 0 {
+                return true
+            }
+            return false
+        }
+    }
+    
+    static func pinOuder(ouder: Ouder, wachtwoord: String) {
+        var object = PFObject(className: "Ouder")
+        
+        object.setValue(ouder.email, forKey: "email")
+        object.setValue(ouder.voornaam, forKey: "voornaam")
+        object.setValue(ouder.naam, forKey: "naam")
+        object.setValue(ouder.straat, forKey: "straat")
+        object.setValue(ouder.nummer, forKey: "nummer")
+        object.setValue(ouder.postcode, forKey: "postcode")
+        object.setValue(ouder.gemeente, forKey: "gemeente")
+        object.setValue(ouder.gsm, forKey: "gsm")
+        object.setValue(ouder.rijksregisterNr, forKey: "rijksregisterNr")
+        
+        if ouder.aansluitingsNr != nil {
+            object.setValue(ouder.aansluitingsNr, forKey: "aansluitingsNr")
+            object.setValue(ouder.codeGerechtigde, forKey: "codeGerechtigde")
+            
+            if ouder.aansluitingsNrTweedeOuder != nil {
+                object.setValue(ouder.aansluitingsNrTweedeOuder, forKey: "aansluitingsNrTweedeOuder")
+            }
+        }
+        
+        if ouder.bus != nil {
+            object.setValue(ouder.bus, forKey: "bus")
+        }
+        
+        if ouder.telefoon != nil {
+            object.setValue(ouder.telefoon, forKey: "telefoon")
+        }
+        
+        if Reachability.isConnectedToNetwork() == true {
+            object.save()
+        } else {
+            object.saveEventually()
+        }
+        
+        createPFUser(ouder, wachtwoord: wachtwoord)
+        logIn(ouder, wachtwoord: wachtwoord)
+    }
+    
+    static private func createPFUser(ouder: Ouder, wachtwoord: String) {
+        var user = PFUser()
+        user.username = ouder.email
+        user.password = wachtwoord
+        user.email = ouder.email
+        user["soort"] = "ouder"
+        
+        if Reachability.isConnectedToNetwork() == true {
+            user.signUp()
+        } else {
+            user.saveEventually()
+        }
+    }
+    
+    static private func logIn(ouder: Ouder, wachtwoord: String) {
+        PFUser.logInWithUsername(ouder.email, password: wachtwoord)
+    }
+    
+    static func deleteFavorieteVakantie(favoriet: Favoriet) {
+        var queryConstraints: [String: String] = [:]
+        
+        queryConstraints["vakantie"] = favoriet.vakantie?.id
+        queryConstraints["gebruiker"] = favoriet.gebruiker?.id
+        
+        var query = self.makeQuery("Favoriet", local: true, queryConstraints: queryConstraints)
+        
+        var object = query.getFirstObject()
+        object.unpin()
+        
+        if Reachability.isConnectedToNetwork() == true {
+            object.delete()
+        } else {
+            object.deleteEventually()
+        }
+    }
+    
+    static func bestaatInschrijvingVakantieAl(inschrijving: InschrijvingVakantie) -> Bool {
+        
+        var bestaatDeelnemerAl = self.bestaatDeelnemerAl(inschrijving.deelnemer!)
+        
+        if bestaatDeelnemerAl == true {
+            var deelnemerObject = getDeelnemerWithId(inschrijving.deelnemer!)
+            
+            if self.bestaatInschrijvingAlLocal(deelnemerObject.objectId, inschrijving: inschrijving) == true {
+                return true
+            }
+        }
+        
+        return false
+    }
+    
+    static func bestaatDeelnemerAl(deelnemer: Deelnemer) -> Bool {
+        
+        var queryConstraints: [String: String] = [:]
+        
+        queryConstraints["voornaam"] = deelnemer.voornaam
+        queryConstraints["naam"] = deelnemer.naam
+        
+        var query = self.makeQuery("Deelnemer", local: true, queryConstraints: queryConstraints)
+        
+        var count = query.countObjects()
+        
+        if count == 0 {
+            return false
+        }
+        return true
+    }
+    
+    static func getDeelnemerWithId(deelnemer: Deelnemer) -> PFObject {
+        
+        var queryConstraints: [String: String] = [:]
+        
+        queryConstraints["voornaam"] = deelnemer.voornaam
+        queryConstraints["naam"] = deelnemer.naam
+        
+        var query = self.makeQuery("Deelnemer", local: true, queryConstraints: queryConstraints)
+        
+        return query.getFirstObject()
+    }
+    
+    static func bestaatInschrijvingAlLocal(deelnemerId: String, inschrijving: InschrijvingVakantie) -> Bool
+    {
+        var queryConstraints: [String: String] = [:]
+        
+        queryConstraints["deelnemer"] = deelnemerId
+        queryConstraints["vakantie"] = inschrijving.vakantie?.id
+        queryConstraints["ouder"] = inschrijving.ouder?.id
+        
+        var query = self.makeQuery("InschrijvingVakantie", local: true, queryConstraints: queryConstraints)
+        
+        var count = query.countObjects()
+        
+        if count == 0 {
+            return false
+        }
+        return true
+    }
+    
+    static func getOuderWithEmail(email: String) -> Ouder {
+        
+        var queryConstraints: [String: String] = [:]
+        
+        queryConstraints["email"] = email
+        
+        var query = self.makeQuery("Ouder", local: true, queryConstraints: queryConstraints)
+        
+        var object = query.getFirstObject()
+        
+        return getOuder(object)
+    }
+    
+    static func getOuder(object: PFObject) -> Ouder {
+        var ouder: Ouder = Ouder(id: object.objectId)
+        
+        ouder.rijksregisterNr = object["rijksregisterNr"] as? String
+        ouder.email = object["email"] as? String
+        ouder.voornaam = object["voornaam"] as? String
+        ouder.naam = object["naam"] as? String
+        ouder.straat = object["straat"] as? String
+        ouder.nummer = object["nummer"] as? Int
+        
+        if object["bus"] != nil {
+            ouder.bus = object["bus"] as? String
+        } else {
+            ouder.bus = ""
+        }
+        
+        ouder.gemeente = object["gemeente"] as? String
+        ouder.postcode = object["postcode"] as? Int
+        
+        if object["telefoon"] != nil {
+            ouder.telefoon = object["telefoon"] as? String
+        } else {
+            ouder.telefoon = ""
+        }
+        
+        ouder.gsm = object["gsm"] as? String
+        
+        if object["aansluitingsNr"] != nil {
+            ouder.aansluitingsNr = object["aansluitingsNr"] as? Int
+        } else {
+            ouder.aansluitingsNr = 0
+        }
+        
+        if object["codeGerechtigde"] != nil {
+            ouder.codeGerechtigde = object["codeGerechtigde"] as? Int
+        } else {
+            ouder.codeGerechtigde = 0
+        }
+        
+        if object["aansluitingsNrTweedeOuder"] != nil {
+            ouder.aansluitingsNrTweedeOuder = object["aansluitingsNrTweedeOuder"] as? Int
+        } else {
+            ouder.aansluitingsNrTweedeOuder = 0
+        }
+        
+        return ouder
+    }
 }
 
 

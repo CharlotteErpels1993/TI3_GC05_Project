@@ -28,13 +28,39 @@ class Registratie3ViewController: /*ResponsiveTextFieldViewController*/ UITableV
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "voltooiRegistratie" {
             let registratieSuccesvolViewController = segue.destinationViewController as RegistratieSuccesvolViewController
+            
+            if Reachability.isConnectedToNetwork() == false {
+                var alert = UIAlertController(title: "Oeps.. U heeft geen internet", message: "U heeft internet nodig voor u te registeren. Ga naar instellingen om dit aan te passen.", preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "Annuleer", style: UIAlertActionStyle.Default, handler: nil))
+                alert.addAction(UIAlertAction(title: "Ga naar instellingen", style: .Default, handler: { action in
+                    switch action.style{
+                    default:
+                        UIApplication.sharedApplication().openURL(NSURL(string:UIApplicationOpenSettingsURLString)!);
+                    }
+                    
+                }))
+                alert.addAction(UIAlertAction(title: "Ga terug naar vakanties", style: .Default, handler: { action in
+                    switch action.style{
+                    default:
+                        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                        var destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
+                        self.sideMenuController()?.setContentViewController(destViewController)
+                        self.hideSideMenuView()                    }
+                    
+                }))
+                presentViewController(alert, animated: true, completion: nil)
+                txtBevestigWachtwoord.resignFirstResponder()
+                txtEmail.resignFirstResponder()
+                txtWachtwoord.resignFirstResponder()
+                
+            }
         
             setStatusTextFields()
             pasLayoutVeldenAan()
             
             if controleerRodeBordersAanwezig() == true {
                 if emailAlGeregistreerd == true {
-                    foutBoxOproepen("Fout", "Dit e-mailadres (\(txtEmail.text)) is al geregistreerd bij ons!", self)
+                    foutBoxOproepen("Fout", "Dit e-mailadres is al geregistreerd bij ons!", self)
                     self.txtEmail.text = ""
                 } else {
                     foutBoxOproepen("Fout", "Gelieve de velden correct in te vullen!", self)
@@ -128,7 +154,8 @@ class Registratie3ViewController: /*ResponsiveTextFieldViewController*/ UITableV
     }
     
     func controleerEmailAlGeregisteerd() -> Bool {
-        return ParseData.getEmail(self.txtEmail.text)
+        //return ParseData.getEmail(self.txtEmail.text)
+        return LocalDatastore.isEmailAlGeregistreerd(self.txtEmail.text)
     }
     
 }

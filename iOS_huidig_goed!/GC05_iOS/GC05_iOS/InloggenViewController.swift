@@ -2,7 +2,7 @@ import UIKit
 import QuartzCore
 
 class InloggenViewController: UIViewController, UITextFieldDelegate {
-    @IBOutlet weak var spinner: UIActivityIndicatorView!
+    
     @IBOutlet weak var txtEmail: UITextField!
     @IBOutlet weak var txtWachtwoord: UITextField!
     
@@ -17,7 +17,6 @@ class InloggenViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        spinner.hidden = true
         hideSideMenuView()
         self.setNeedsStatusBarAppearanceUpdate()
         self.navigationController!.toolbarHidden = true
@@ -95,8 +94,6 @@ class InloggenViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func inloggen(sender: AnyObject) {
-        spinner.startAnimating()
-        spinner.hidden = false
         var email: String = txtEmail.text
         var wachtwoord: String = txtWachtwoord.text
         
@@ -104,8 +101,6 @@ class InloggenViewController: UIViewController, UITextFieldDelegate {
         pasLayoutVeldenAan()
         
         if controleerRodeBordersAanwezig() == true {
-            spinner.stopAnimating()
-            spinner.hidden = true
             foutBoxOproepen("Fout", "Gelieve de velden correct in te vullen!", self)
             self.txtEmail.text = ""
             self.txtWachtwoord.text = ""
@@ -113,21 +108,19 @@ class InloggenViewController: UIViewController, UITextFieldDelegate {
             var user = PFUser.logInWithUsername(txtEmail.text, password: txtWachtwoord.text)
             
             if user == nil {
-                spinner.stopAnimating()
                 giveUITextFieldRedBorder(self.txtEmail)
                 giveUITextFieldRedBorder(self.txtWachtwoord)
                 txtEmail.text = ""
                 txtWachtwoord.text = ""
                 foutBoxOproepen("Fout", "Foutieve combinatie e-mail & wachtwoord", self)
-                spinner.hidden = true
             } else {
                 var type: String = user["soort"] as String
                 
                 if type == "monitor" {
-                    var monitor = ParseData.getMonitorWithEmail(txtEmail.text)
+                    //var monitor = ParseData.getMonitorWithEmail(txtEmail.text)
                     performSegueWithIdentifier("overzichtMonitor", sender: self)
                 } else if type == "ouder" {
-                    var ouder = ParseData.getOuderWithEmail(txtEmail.text)
+                    //var ouder = ParseData.getOuderWithEmail(txtEmail.text)
                     performSegueWithIdentifier("ouderOverzicht", sender: self)
                 } else if type == "administrator" {
                     performSegueWithIdentifier("administratorOverzicht", sender: self)
@@ -135,7 +128,6 @@ class InloggenViewController: UIViewController, UITextFieldDelegate {
                     //column "soort" is niet ingevuld bij deze user in tabel User
                     //ERROR
                 }
-                spinner.stopAnimating()
             }
         }
     }
