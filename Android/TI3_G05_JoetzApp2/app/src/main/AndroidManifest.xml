@@ -77,14 +77,14 @@
             android:theme="@style/CustomActionBarTheme"/>
         <activity android:name=".SignUpLogin.WachtwoordVergeten"
             android:theme="@style/CustomActionBarTheme"/>
-        <activity android:name=".afbeeldingUItvergroot"
+        <activity android:name=".AfbeeldingVergroot"
             android:theme="@style/CustomActionBarTheme"/>
-        <activity android:name=".InschrijvenVakantiePart1"
+        <activity android:name=".InschrijvenVakantieDeel1"
             android:theme="@style/CustomActionBarTheme"/>
-        <activity android:name=".InschrijvenVakantiePart2"
+        <activity android:name=".InschrijvenVakantieDeel2"
             android:theme="@style/CustomActionBarTheme">
         </activity>
-        <activity android:name=".InschrijvenVakantiePart3"
+        <activity android:name=".InschrijvenVakantieDeel3"
             android:theme="@style/CustomActionBarTheme">
         </activity>
         <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.VormingDetail"

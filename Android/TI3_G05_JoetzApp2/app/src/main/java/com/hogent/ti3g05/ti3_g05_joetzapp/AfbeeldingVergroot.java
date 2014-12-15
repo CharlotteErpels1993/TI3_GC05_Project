@@ -17,7 +17,7 @@ import com.parse.ParseUser;
 import java.util.ArrayList;
 
 //geeft de geselecteerde afbeelding vergroot weer
-public class afbeeldingUItvergroot extends Activity {
+public class AfbeeldingVergroot extends Activity {
     private String naam, locatie, vertrekdatum, terugdatum, formule, maxDeeln, periode, vervoer, prijs, beschrijving;
     private String maxDoelgroep, minDoelgroep, afbeelding1, afbeelding2, afbeelding3, bmLedenPrijs, sterPrijs1Ouder, sterPrijs2Ouders;
     private String inbegrepenInPrijs, activiteitID;

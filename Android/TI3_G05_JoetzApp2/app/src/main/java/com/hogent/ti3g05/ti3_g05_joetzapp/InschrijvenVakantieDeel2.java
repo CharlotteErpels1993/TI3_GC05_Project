@@ -18,7 +18,7 @@ import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
 
 
 //Stap 2 van het inschrijven
-public class InschrijvenVakantiePart2 extends Activity {
+public class InschrijvenVakantieDeel2 extends Activity {
     private EditText txtVoornaam, txtNaam, txtTelefoon, txtGSM;
     private EditText txtVoornaamExtra, txtNaamExtra, txtTelefoonExtra, txtGSMExtra;
 
@@ -156,7 +156,7 @@ public class InschrijvenVakantiePart2 extends Activity {
     //Sla de gegevens op en stuur deze door naar de volgende stap
     private void opslaan() {
         Toast.makeText(getApplicationContext(), getString(R.string.loading_message), Toast.LENGTH_SHORT).show();
-        Intent in = new Intent(getApplicationContext(),InschrijvenVakantiePart3.class);
+        Intent in = new Intent(getApplicationContext(),InschrijvenVakantieDeel3.class);
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {

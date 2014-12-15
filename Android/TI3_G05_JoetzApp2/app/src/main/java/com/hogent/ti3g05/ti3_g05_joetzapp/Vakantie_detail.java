@@ -165,7 +165,7 @@ public class Vakantie_detail extends Activity {
             @Override
             public void onClick(View view) {
                 btnInschrijven.startAnimation(animAlpha);
-                Intent intent3 = new Intent(Vakantie_detail.this, InschrijvenVakantiePart1.class);
+                Intent intent3 = new Intent(Vakantie_detail.this, InschrijvenVakantieDeel1.class);
                 intent3.putExtra("objectId", activiteitID);
                 intent3.putExtra("maxdoelgroep", maxDoelgroep);
                 intent3.putExtra("mindoelgroep", minDoelgroep);
@@ -263,7 +263,7 @@ public class Vakantie_detail extends Activity {
             afbeelding1im.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent1 = new Intent(Vakantie_detail.this, afbeeldingUItvergroot.class);
+                    Intent intent1 = new Intent(Vakantie_detail.this, AfbeeldingVergroot.class);
                     setIntentParameters(intent1);
                     intent1.putExtra("afbeelding", afbeelding1);
                     startActivity(intent1);
@@ -276,7 +276,7 @@ public class Vakantie_detail extends Activity {
             afbeelding2im.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent1 = new Intent(Vakantie_detail.this, afbeeldingUItvergroot.class);
+                    Intent intent1 = new Intent(Vakantie_detail.this, AfbeeldingVergroot.class);
                     setIntentParameters(intent1);
                     intent1.putExtra("afbeelding", afbeelding2);
                     startActivity(intent1);
@@ -289,7 +289,7 @@ public class Vakantie_detail extends Activity {
             afbeelding3im.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent1 = new Intent(Vakantie_detail.this, afbeeldingUItvergroot.class);
+                    Intent intent1 = new Intent(Vakantie_detail.this, AfbeeldingVergroot.class);
                     setIntentParameters(intent1);
                     intent1.putExtra("afbeelding", afbeelding3);
                     startActivity(intent1);

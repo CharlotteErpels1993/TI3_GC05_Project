@@ -23,7 +23,7 @@ import java.util.Date;
 import java.util.List;
 
 
-public class InschrijvenVakantiePart3 extends Activity {
+public class InschrijvenVakantieDeel3 extends Activity {
     private EditText et_ExtraInformatie;
 
     private Boolean isInternetPresent = false;
@@ -110,7 +110,7 @@ public class InschrijvenVakantiePart3 extends Activity {
         try {
             date = formatter.parse(datum);
         } catch (ParseException e) {
-            Toast.makeText(InschrijvenVakantiePart3.this, "Fout bij datum omzetten",Toast.LENGTH_SHORT).show();
+            Toast.makeText(InschrijvenVakantieDeel3.this, "Fout bij datum omzetten",Toast.LENGTH_SHORT).show();
         }
         try{
             ParseObject contactPers = new ParseObject("ContactpersoonNood");

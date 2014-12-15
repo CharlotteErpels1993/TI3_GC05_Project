@@ -24,7 +24,7 @@ import java.util.Date;
 
 //Biedt de ouder de mogelijkheid tot inschrijven in een vakantie,
 // stap 1
-public class InschrijvenVakantiePart1 extends FragmentActivity {
+public class InschrijvenVakantieDeel1 extends FragmentActivity {
 
     private EditText txtVoornaam, txtNaam, txtStraat, txtHuisnr, txtBus, txtGemeente, txtPostcode;
 
@@ -155,7 +155,7 @@ public class InschrijvenVakantiePart1 extends FragmentActivity {
                 date = formatter.parse(maandI);
 
             } catch (ParseException e) {
-                Toast.makeText(InschrijvenVakantiePart1.this, "Fout bij datum omzetten",Toast.LENGTH_SHORT).show();
+                Toast.makeText(InschrijvenVakantieDeel1.this, "Fout bij datum omzetten",Toast.LENGTH_SHORT).show();
             }
 
             cal.setTime(date);
@@ -222,7 +222,7 @@ public class InschrijvenVakantiePart1 extends FragmentActivity {
     private void opslaan(String voornaam,String naam, String straat, String huisnr, String bus, String gemeente, String postcode) {
         Toast.makeText(getApplicationContext(), getString(R.string.loading_message), Toast.LENGTH_SHORT).show();
 
-        Intent in = new Intent(getApplicationContext(),InschrijvenVakantiePart2.class);
+        Intent in = new Intent(getApplicationContext(),InschrijvenVakantieDeel2.class);
 
         in.putExtra("voornaam", voornaam);
         in.putExtra("naam", naam);
@@ -297,7 +297,7 @@ public class InschrijvenVakantiePart1 extends FragmentActivity {
 
     @Override
     public void onBackPressed() {
-        Intent setIntent = new Intent(InschrijvenVakantiePart1.this, navBarMainScreen.class);
+        Intent setIntent = new Intent(InschrijvenVakantieDeel1.this, navBarMainScreen.class);
         setIntent.putExtra("naarfrag","vakantie");
         setIntent.putExtra("herladen","nee");
         setIntent.addCategory(Intent.CATEGORY_HOME);
