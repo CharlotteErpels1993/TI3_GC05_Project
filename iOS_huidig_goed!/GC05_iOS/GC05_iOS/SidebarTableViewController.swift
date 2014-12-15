@@ -120,6 +120,7 @@ class SidebarTableViewController: UITableViewController, UITextFieldDelegate {
             }
             sideMenuController()?.setContentViewController(destViewController)
         } else {
+            
             var gebruikerPF = PFUser.currentUser()
             var soort: String = gebruikerPF["soort"] as String
             if soort == "monitor" {

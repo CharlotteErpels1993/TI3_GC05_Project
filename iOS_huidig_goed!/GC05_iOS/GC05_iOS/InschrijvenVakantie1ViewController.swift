@@ -23,6 +23,27 @@ class InschrijvenVakantie1ViewController : /*ResponsiveTextFieldViewController*/
         super.viewDidLoad()
         self.setNeedsStatusBarAppearanceUpdate()
         self.navigationController!.toolbarHidden = true
+        
+        if Reachability.isConnectedToNetwork() == false {
+            var alert = UIAlertController(title: "Oeps.. U heeft geen internet", message: "U heeft internet nodig voor u in te schrijven. Ga naar instellingen om dit aan te passen.", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Annuleer", style: UIAlertActionStyle.Default, handler: nil))
+            alert.addAction(UIAlertAction(title: "Ga naar instellingen", style: .Default, handler: { action in
+                switch action.style{
+                default:
+                    UIApplication.sharedApplication().openURL(NSURL(string:UIApplicationOpenSettingsURLString)!);
+                }
+                
+            }))
+            presentViewController(alert, animated: true, completion: nil)
+            txtVoornaam.resignFirstResponder()
+            txtStraat.resignFirstResponder()
+            txtPostcode.resignFirstResponder()
+            txtNummer.resignFirstResponder()
+            txtNaam.resignFirstResponder()
+            txtGemeente.resignFirstResponder()
+            txtBus.resignFirstResponder()
+        }
+        
         ParseData.deleteInschrijvingVakantieTable()
         ParseData.vulInschrijvingVakantieTableOp()
     }

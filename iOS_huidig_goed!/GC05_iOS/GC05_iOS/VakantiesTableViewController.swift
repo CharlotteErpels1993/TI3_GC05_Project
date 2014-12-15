@@ -34,11 +34,6 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
             self.navigationItem.title = "Vakanties"
         }
         
-        LocalDatastore.getTableInLocalDatastoreReady(tableName)
-        LocalDatastore.getTableInLocalDatastoreReady("Feedback")
-        LocalDatastore.getTableInLocalDatastoreReady("Afbeelding")
-        LocalDatastore.getTableInLocalDatastoreReady("Ouder")
-        
         if Reachability.isConnectedToNetwork() == false {
             //er is geen internet
             
@@ -55,12 +50,14 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
             } else {
                 //table is opgevuld
                 //opvullen
-                self.vakanties = LocalDatastore.getAllObjectsFromLocalDatastore(tableName) as [Vakantie]
+                self.vakanties = LocalDatastore.getLocalObjects("Vakantie") as [Vakantie]
+                //self.vakanties = LocalDatastore.getAllObjectsFromLocalDatastore(tableName) as [Vakantie]
                 self.vakanties2 = self.vakanties
                 self.tableView.reloadData()
             }
         } else {
-            self.vakanties = LocalDatastore.getAllObjectsFromLocalDatastore(tableName) as [Vakantie]
+            self.vakanties = LocalDatastore.getLocalObjects("Vakantie") as [Vakantie]
+            //self.vakanties = LocalDatastore.getAllObjectsFromLocalDatastore(tableName) as [Vakantie]
             self.vakanties2 = self.vakanties
             self.tableView.reloadData()
         }
@@ -170,8 +167,8 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
             self.tableView.reloadData()
         }*/
     
-        self.vakanties2.sort({ $0.minLeeftijd < $1.maxLeeftijd })
-        self.vakanties.sort({ $0.minLeeftijd < $1.maxLeeftijd})
+        self.vakanties2.sort({ $0.minLeeftijd < $1.minLeeftijd })
+        self.vakanties.sort({ $0.minLeeftijd < $1.minLeeftijd})
     
         hideSideMenuView()
         zoekbar.showsScopeBar = true
@@ -181,12 +178,13 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
             self.navigationItem.setHidesBackButton(true, animated: true)
             self.navigationItem.rightBarButtonItem = nil   
         }
+
     }
     
     override func viewWillAppear(animated: Bool) {
         self.setNeedsStatusBarAppearanceUpdate()
         self.navigationController!.toolbarHidden = true
-        refresh(self.refreshControl!)
+        //refresh(self.refreshControl!)
         self.tableView.reloadData()
     }
     
@@ -196,7 +194,8 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         var scores: [Int] = []
         var sum = 0
         
-        var feedbacks: [Feedback] = LocalDatastore.getAllObjectsFromLocalDatastore("Feedback") as [Feedback]
+        var feedbacks = LocalDatastore.getLocalObjects("Feedback") as [Feedback]
+        //var feedbacks: [Feedback] = LocalDatastore.getAllObjectsFromLocalDatastore("Feedback") as [Feedback]
         
         for feed in feedbacks {
             scores.append(feed.score!)
@@ -402,7 +401,11 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         ParseData.deleteAllTables()
         ParseData.createDatabase()*/
         
-        
+        LocalDatastore.getTableReady("Vakantie")
+        LocalDatastore.getTableReady("Afbeelding")
+        LocalDatastore.getTableReady("Feedback")
+        LocalDatastore.getTableReady("Ouder")
+        LocalDatastore.getTableReady("Favoriet")
         
         self.refreshControl?.endRefreshing()
         viewDidLoad()

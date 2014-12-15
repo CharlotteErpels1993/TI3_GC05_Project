@@ -1,6 +1,28 @@
 import Foundation
 
 struct LocalDatastore {
+    static func makeQuery(tableName: String, local: Bool, queryConstraints: [String: String]) -> PFQuery {
+        
+        var query = PFQuery(className: tableName)
+        
+        for queryConstraint in queryConstraints {
+            query = addQueryConstraint(query, columnName: queryConstraint.0, columnValue: queryConstraint.1)
+        }
+        
+        if local == true {
+            query.fromLocalDatastore()
+        }
+        
+        return query
+    }
+    
+    static func addQueryConstraint(query: PFQuery, columnName: String, columnValue: String) -> PFQuery
+    {
+        query.whereKey(columnName, equalTo: columnValue)
+        
+        return query
+    }
+    
     static func isEmptyInLocalDatastore(tableName: String) -> Bool {
         var query = PFQuery(className: tableName)
         
@@ -15,9 +37,9 @@ struct LocalDatastore {
         return false
     }
     
-    static func getTableInLocalDatastoreReady(tableName: String) {
+    static func getTableReady(tableName: String) {
         
-        var localTableIsEmpty: Bool = isEmptyInLocalDatastore(tableName)
+        var localTableIsEmpty: Bool = self.isEmptyInLocalDatastore(tableName)
         
         if localTableIsEmpty == true {
             if Reachability.isConnectedToNetwork() == true {
@@ -35,7 +57,7 @@ struct LocalDatastore {
     }
     
     static func fillTableInLocalDatastore(tableName: String) {
-        var query = PFQuery(className: tableName)
+        var query = makeQuery(tableName, local: false, queryConstraints: [:])
         
         var objects: [PFObject] = []
         
@@ -56,6 +78,7 @@ struct LocalDatastore {
     }
     
     static func fetchHuidigeObjectenInLocalDatastore(tableName: String) -> [PFObject] {
+        
         var query = PFQuery(className: tableName)
         
         query.fromLocalDatastore()
@@ -99,31 +122,6 @@ struct LocalDatastore {
         PFObject.unpinAll(objects)
     }
     
-    static func getAllObjectsFromLocalDatastore(tableName: String) -> [AnyObject] {
-        var objectsLocalDatastore: [PFObject] = []
-        
-        var objecten: [AnyObject] = []
-        var vakantie: Vakantie = Vakantie(id: "test")
-        var feedback: Feedback = Feedback(id: "test")
-        
-        var query = PFQuery(className: tableName)
-        query.fromLocalDatastore()
-        
-        objectsLocalDatastore = query.findObjects() as [PFObject]
-        
-        for objectLocalDatastore in objectsLocalDatastore {
-            if tableName == "Vakantie" {
-                vakantie = getVakantie(objectLocalDatastore)
-                objecten.append(vakantie)
-            } else if tableName == "Feedback" {
-                feedback = getFeedback(objectLocalDatastore)
-                objecten.append(feedback)
-            }
-        }
-        
-        return objecten
-    }
-    
     static func getVakantie(vakantieObject: PFObject) -> Vakantie {
         var vakantie: Vakantie = Vakantie(id: vakantieObject.objectId)
     
@@ -160,7 +158,7 @@ struct LocalDatastore {
         var ouder = self.getOuderFromFeedback(gebruikerId)
         
         if ouder == nil {
-            self.getTableInLocalDatastoreReady("Monitor")
+            self.getTableReady("Monitor")
             monitor = self.getMonitorFromFeedback(gebruikerId)!
         }
         
@@ -180,6 +178,7 @@ struct LocalDatastore {
     }
     
     static func getVakantieFromFeedback(vakantieId: String) -> Vakantie {
+        
         var query = PFQuery(className: "Vakantie")
         
         query.fromLocalDatastore()
@@ -309,6 +308,134 @@ struct LocalDatastore {
         error.extend(extraInfo)
         
         println(error)
+    }
+
+    static func getGebruikerWithEmail(email: String, tableName: String) -> Gebruiker {
+        var query = PFQuery(className: tableName)
+        
+        query.whereKey("email", equalTo: email)
+        
+        query.fromLocalDatastore()
+        
+        var object = query.getFirstObject()
+        
+        return self.getGebruiker(object)
+    }
+    
+    static func isFavorieteVakantie(favoriet: Favoriet) -> Bool {
+        var query = PFQuery(className: "Favoriet")
+        
+        query.whereKey("vakantie", equalTo: favoriet.vakantie?.id)
+        query.whereKey("gebruiker", equalTo: favoriet.gebruiker?.id)
+        
+        query.fromLocalDatastore()
+        
+        var count = query.countObjects()
+        
+        if count == 0 {
+            return false
+        }
+        return true
+    }
+    
+    static func getAfbeeldingenMetVakantie(vakantieId: String) -> [UIImage] {
+        var query = PFQuery(className: "Afbeelding")
+        
+        query.whereKey("vakantie", equalTo: vakantieId)
+        
+        query.fromLocalDatastore()
+        
+        var objects = query.findObjects() as [PFObject]
+        
+        var afbeeldingen: [UIImage] = []
+        var afbeeldingFile: PFFile
+        var afbeelding: UIImage
+        
+        for object in objects {
+            afbeeldingFile = object["afbeelding"] as PFFile
+            afbeelding = UIImage(data: afbeeldingFile.getData())!
+            afbeeldingen.append(afbeelding)
+        }
+        
+        return afbeeldingen
+    }
+    
+    static func getLocalObjects(tableName: String) -> [AnyObject] {
+        
+        var query = self.makeQuery(tableName, local: true, queryConstraints: [:])
+        
+        var localObjects = query.findObjects() as [PFObject]
+        
+        return getObjecten(localObjects, tableName: tableName)
+    }
+    
+    static func getLocalObjectsWithColumnConstraints(tableName: String, queryConstraints: [String: String]) -> [AnyObject] {
+        
+        var query = self.makeQuery(tableName, local: true, queryConstraints: queryConstraints)
+        
+        var localObjects = query.findObjects() as [PFObject]
+        
+        return self.getObjecten(localObjects, tableName: tableName)
+    }
+    
+    static func getObjecten(objects: [PFObject], tableName: String) -> [AnyObject] {
+        var objecten: [AnyObject] = []
+        
+        for object in objects {
+            if tableName == "Vakantie" {
+                var vakantie = getVakantie(object)
+                objecten.append(vakantie)
+            } else if tableName == "Feedback" {
+                var feedback = getFeedback(object)
+                objecten.append(feedback)
+            }
+        }
+        
+        return objecten
+    }
+
+    static func parseLocalObject(object: AnyObject, tableName: String) {
+        
+        var pfObject: PFObject
+        
+        if tableName == "Favoriet" {
+            pfObject = getFavorietObject(object as Favoriet)
+        } else {
+            //RANDOM GEKOZEN!
+            pfObject = getFavorietObject(object as Favoriet)
+        }
+        
+        pfObject.pin()
+        pfObject.saveEventually()
+    }
+
+    static func getFavorietObject(favoriet: Favoriet) -> PFObject {
+        var object: PFObject = PFObject(className: "Favoriet")
+        
+        object["vakantie"] = favoriet.vakantie?.id
+        object["gebruiker"] = favoriet.gebruiker?.id
+        
+        return object
+    }
+    
+    static func isRijksregisternummerAlGeregistreerd(rijksregisternummer: String) -> Bool {
+        var queryOuder = self.makeQuery("Ouder", local: true, queryConstraints: ["rijksregisterNr": rijksregisternummer])
+        
+        var aantalOuders = queryOuder.countObjects()
+        
+        if aantalOuders != 0 {
+            return true
+        } else {
+            LocalDatastore.getTableReady("Monitor")
+            var queryMonitor = self.makeQuery("Monitor", local: true, queryConstraints: ["rijksregisterNr": rijksregisternummer])
+            
+            var aantalMonitors = queryMonitor.countObjects()
+            
+            if aantalMonitors != 0 {
+                return true
+            }
+            return false
+        }
     }
 
 }

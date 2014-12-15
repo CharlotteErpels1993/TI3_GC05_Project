@@ -50,6 +50,19 @@ class ProfielBewerkenViewController: UITableViewController {
         super.viewDidLoad()
         self.navigationItem.hidesBackButton = true
         
+        if Reachability.isConnectedToNetwork() == false {
+            var alert = UIAlertController(title: "Oeps.. U heeft geen internet", message: "U heeft internet nodig om uw profiel te bewerken. Ga naar instellingen om dit aan te passen.", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Annuleer", style: UIAlertActionStyle.Default, handler: nil))
+            alert.addAction(UIAlertAction(title: "Ga naar instellingen", style: .Default, handler: { action in
+                switch action.style{
+                default:
+                    UIApplication.sharedApplication().openURL(NSURL(string:UIApplicationOpenSettingsURLString)!);
+                }
+                
+            }))
+            presentViewController(alert, animated: true, completion: nil)
+        }
+        
         voornaamTxt.text = monitor.voornaam
         naamTxt.text = monitor.naam
         straatTxt.text = monitor.straat

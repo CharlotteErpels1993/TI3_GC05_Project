@@ -4,7 +4,6 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -18,6 +17,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Bug van Parse
         //Er is een fix die samen met de volgende SDK release zal uitkomen
         Parse.enableLocalDatastore()
+        
+        
+        LocalDatastore.getTableReady("Vakantie")
+        LocalDatastore.getTableReady("Afbeelding")
+        LocalDatastore.getTableReady("Feedback")
+        LocalDatastore.getTableReady("Ouder")
+        LocalDatastore.getTableReady("Favoriet")
+        
+        
         
         /*if Reachability.isConnectedToNetwork() {
             //er is internet

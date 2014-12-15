@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -29,6 +29,12 @@
                         </mask>
                     </variation>
                 </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Even geduld aub, vakanties laden..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l10-R5-YOC">
+                    <rect key="frame" x="0.0" y="375.5" width="480" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -40,7 +46,12 @@
                 <constraint firstItem="8ie-xW-0ye" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" symbolic="YES" id="MfP-vx-nX0"/>
                 <constraint firstItem="4Al-fU-jDy" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="OD1-zV-fwx"/>
                 <constraint firstAttribute="centerX" secondItem="8ie-xW-0ye" secondAttribute="centerX" id="ZEH-qu-HZ9"/>
+                <constraint firstItem="l10-R5-YOC" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="cUb-Oo-oL2"/>
+                <constraint firstAttribute="bottom" secondItem="l10-R5-YOC" secondAttribute="bottom" constant="84" id="glX-Z0-aVJ"/>
+                <constraint firstAttribute="trailing" secondItem="l10-R5-YOC" secondAttribute="trailing" constant="92" id="h5d-Lq-DYB"/>
                 <constraint firstItem="4Al-fU-jDy" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="mFa-Mm-tW1"/>
+                <constraint firstItem="8ie-xW-0ye" firstAttribute="top" secondItem="l10-R5-YOC" secondAttribute="bottom" constant="43" id="pGo-Cv-EAv"/>
+                <constraint firstAttribute="trailing" secondItem="l10-R5-YOC" secondAttribute="trailing" id="qKS-AC-ZEb"/>
                 <constraint firstItem="4Al-fU-jDy" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="tEa-Nb-2yv"/>
                 <constraint firstAttribute="trailing" secondItem="4Al-fU-jDy" secondAttribute="trailing" constant="19" id="voA-44-xZv"/>
             </constraints>
@@ -51,6 +62,8 @@
                     <exclude reference="JSO-Wa-Htd"/>
                     <exclude reference="Kt7-fh-eqX"/>
                     <exclude reference="OD1-zV-fwx"/>
+                    <exclude reference="glX-Z0-aVJ"/>
+                    <exclude reference="h5d-Lq-DYB"/>
                 </mask>
             </variation>
             <point key="canvasLocation" x="548" y="455"/>

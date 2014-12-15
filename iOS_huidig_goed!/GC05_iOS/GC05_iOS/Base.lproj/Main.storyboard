@@ -2114,7 +2114,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hZK-bN-dtd">
-                                <rect key="frame" x="276" y="271.5" width="61" height="30"/>
+                                <rect key="frame" x="269" y="271" width="61" height="30"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Inloggen">
                                     <color key="titleColor" red="0.90980392160000001" green="0.12941176469999999" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -2156,7 +2156,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                             <constraint firstItem="vgN-OB-IWF" firstAttribute="leading" secondItem="omj-uN-gDv" secondAttribute="leadingMargin" id="Jfp-am-A1x"/>
                             <constraint firstAttribute="trailingMargin" secondItem="H0a-36-oYG" secondAttribute="trailing" constant="5" id="Nvm-e2-MTA"/>
                             <constraint firstItem="H0a-36-oYG" firstAttribute="leading" secondItem="omj-uN-gDv" secondAttribute="leadingMargin" id="Qfw-4W-WEJ"/>
-                            <constraint firstAttribute="centerX" secondItem="hZK-bN-dtd" secondAttribute="centerX" constant="-6.5" id="Smb-xy-ew6"/>
+                            <constraint firstAttribute="centerX" secondItem="hZK-bN-dtd" secondAttribute="centerX" constant="0.5" id="Smb-xy-ew6"/>
                             <constraint firstAttribute="trailingMargin" secondItem="IeG-wh-GGy" secondAttribute="trailing" constant="5" id="bcW-sZ-9jA"/>
                             <constraint firstItem="4pR-QD-gU1" firstAttribute="top" secondItem="d94-IW-Wd6" secondAttribute="bottom" constant="16" id="c9k-5L-XdF"/>
                             <constraint firstItem="GnE-q7-jzk" firstAttribute="top" secondItem="5QS-Qa-34g" secondAttribute="bottom" constant="278" id="euR-hv-bKE"/>

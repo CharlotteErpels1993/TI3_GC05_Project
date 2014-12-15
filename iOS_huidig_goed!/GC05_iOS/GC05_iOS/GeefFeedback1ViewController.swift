@@ -13,6 +13,19 @@ class GeefFeedback1ViewController: UIViewController, UIPickerViewDataSource, UIP
         self.setNeedsStatusBarAppearanceUpdate()
         self.navigationController!.toolbarHidden = true
         
+        if Reachability.isConnectedToNetwork() == false {
+            var alert = UIAlertController(title: "Oeps.. U heeft geen internet", message: "U heeft internet nodig om feedback te geven. Ga naar instellingen om dit aan te passen.", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Annuleer", style: UIAlertActionStyle.Default, handler: nil))
+            alert.addAction(UIAlertAction(title: "Ga naar instellingen", style: .Default, handler: { action in
+                switch action.style{
+                default:
+                    UIApplication.sharedApplication().openURL(NSURL(string:UIApplicationOpenSettingsURLString)!);
+                }
+                
+            }))
+            presentViewController(alert, animated: true, completion: nil)
+        }
+        
         var vakantiesResponse = ParseData.getAlleVakanties()
         if vakantiesResponse.1 == nil {
             self.vakanties = vakantiesResponse.0
