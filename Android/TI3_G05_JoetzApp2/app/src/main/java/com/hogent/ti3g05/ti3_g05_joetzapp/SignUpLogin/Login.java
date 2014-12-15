@@ -99,7 +99,7 @@ public class Login extends Activity{
             public void onClick(View v) {
                 btn_ForgetPass.startAnimation(animAlpha);
                 //Bij het klikken op deze knop wordt de gebruiker doorgestuurd naar de activiteit wachtwoordvergeten
-                Intent in = new Intent(Login.this, ForgetParsePassword.class);
+                Intent in = new Intent(Login.this, WachtwoordVergeten.class);
                 startActivity(in);
 
                 overridePendingTransition(R.anim.right_in, R.anim.left_out);

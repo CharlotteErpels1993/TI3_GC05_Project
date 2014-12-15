@@ -18,7 +18,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ListView;
 
-import com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.myDb;
+import com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.MyDb;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.VakantieAdapter;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Feedback;
@@ -33,7 +33,7 @@ public class Vakantie_overzicht extends Fragment {
 
     private ListView listview;
 
-    private myDb myDB;
+    private MyDb myDB;
     private Vakantie vakantie;
     private ProgressDialog mProgressDialog;
     private ArrayList<String> images = new ArrayList<String>();
@@ -62,7 +62,7 @@ public class Vakantie_overzicht extends Fragment {
 
 
         cd = new ConnectionDetector(rootView.getContext());
-        myDB = new myDb(rootView.getContext());
+        myDB = new MyDb(rootView.getContext());
         myDB.open();
         isInternetPresent = cd.isConnectingToInternet();
         //kijkt of het scherm al eens is geladen, en gebruikt dan de locale database, dit voorkomt teveel overhead

@@ -75,7 +75,7 @@
             android:theme="@style/CustomActionBarTheme"/>
         <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.Login"
             android:theme="@style/CustomActionBarTheme"/>
-        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.ForgetParsePassword"
+        <activity android:name=".SignUpLogin.WachtwoordVergeten"
             android:theme="@style/CustomActionBarTheme"/>
         <activity android:name=".afbeeldingUItvergroot"
             android:theme="@style/CustomActionBarTheme"/>

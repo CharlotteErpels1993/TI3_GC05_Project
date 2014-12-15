@@ -20,7 +20,7 @@ import android.widget.Toast;
 import java.util.List;
 
 //Deze klasse stuurt een mail om het wachtwoord van de gebruiker te resetten
-public class ForgetParsePassword extends Activity{
+public class WachtwoordVergeten extends Activity{
     private EditText et_forgetpassword = null;
     private Button btn_submitforgetpassword = null;
     private String email = null;
@@ -85,7 +85,7 @@ public class ForgetParsePassword extends Activity{
 		public void done(ParseException e) {
 			if (e == null) {
 				Toast.makeText(getApplicationContext(), getString(R.string.passwordForgottenEmailSent), Toast.LENGTH_LONG).show();
-                Intent intent1 = new Intent(ForgetParsePassword.this, Login.class);
+                Intent intent1 = new Intent(WachtwoordVergeten.this, Login.class);
                 startActivity(intent1);
 
                 overridePendingTransition(R.anim.left_in, R.anim.right_out);

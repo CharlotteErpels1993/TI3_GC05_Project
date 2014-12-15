@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ListView;
 
-import com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.myDb;
+import com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.MyDb;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.VakantieAdapter;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.FavorieteVakantie;
@@ -36,7 +36,7 @@ public class FavorieteVakanties extends Fragment{
 
     private List<FavorieteVakantie> favorieten = null;
 
-    private myDb myDB;
+    private MyDb myDB;
     private Vakantie vakantie;
     private ProgressDialog mProgressDialog;
     private View rootView;
@@ -64,7 +64,7 @@ public class FavorieteVakanties extends Fragment{
 
 
             cd = new ConnectionDetector(rootView.getContext());
-            myDB = new myDb(rootView.getContext());
+            myDB = new MyDb(rootView.getContext());
             myDB.open();
 
             //controleert ofer internet is, zoja, haal de gegevens op uit de database in parse, online

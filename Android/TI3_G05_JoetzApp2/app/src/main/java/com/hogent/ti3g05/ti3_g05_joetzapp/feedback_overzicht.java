@@ -14,7 +14,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.myDb;
+import com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.MyDb;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.FeedbackAdapter;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Feedback;
@@ -34,7 +34,7 @@ public class feedback_overzicht extends Fragment {
     private List<ParseObject> lijstMetParseVakanties;
     private List<ParseObject> lijstMetParseFeedback;
 
-    private myDb myDB;
+    private MyDb myDB;
     private Feedback feedback;
     private ProgressDialog mProgressDialog;
     private View rootView;
@@ -58,7 +58,7 @@ public class feedback_overzicht extends Fragment {
         getActivity().getActionBar().setTitle("Joetz funfactor");
 
         cd = new ConnectionDetector(rootView.getContext());
-        myDB = new myDb(rootView.getContext());
+        myDB = new MyDb(rootView.getContext());
         myDB.open();
         //als internet aanwezig is haal alle feedbacks op, zoneen haal alle feedbacks op uit de locale database
         isInternetPresent = cd.isConnectingToInternet();
