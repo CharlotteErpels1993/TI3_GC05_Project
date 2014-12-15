@@ -91,12 +91,13 @@ namespace Joetz.Models.DAL
             await vakantieObject.SaveAsync();
         }
         */
-        public async void Delete(Feedback feedback)
+        public async Task<bool> Delete(Feedback feedback)
         {
             var query = ParseObject.GetQuery("Feedback").WhereEqualTo("objectId", feedback.Id);
             ParseObject feedbackObject = await query.FirstAsync();
 
             await feedbackObject.DeleteAsync();
+            return true;
         }
 
         public async Task<Boolean> Update(Feedback feedback)

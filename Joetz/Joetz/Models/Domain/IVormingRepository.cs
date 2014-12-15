@@ -9,8 +9,8 @@ namespace Joetz.Models.Domain
         Vorming GetVorming(ParseObject vormingObject);
         Task<Vorming> FindBy(string vormingId);
         Task<ICollection<Vorming>>  FindAll();
-        void Add(Vorming vorming);
-        void Delete(Vorming vorming);
-        void Update(Vorming vorming);
+        Task<bool> Add(Vorming vorming);
+        Task<bool> Delete(Vorming vorming);
+        Task<bool> Update(Vorming vorming);
     }
 }

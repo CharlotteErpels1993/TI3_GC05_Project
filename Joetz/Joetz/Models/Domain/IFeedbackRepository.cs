@@ -12,7 +12,7 @@ namespace Joetz.Models.Domain
     {
         Task<Feedback> FindBy(string feedbackId);
         Task<ICollection<Feedback>> FindAll();
-        void Delete(Feedback vakantie);
+        Task<bool> Delete(Feedback vakantie);
         Task<Feedback> GetFeedback(ParseObject feedbackObject);
         Task<Boolean> Update(Feedback feedback);
     }

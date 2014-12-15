@@ -33,11 +33,11 @@ namespace Joetz.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(Vorming vorming)
+        public async Task<ActionResult> Create(Vorming vorming)
         {
             if (ModelState.IsValid)
             {
-                vormingRepository.Add(vorming);
+                await vormingRepository.Add(vorming);
                 TempData["Info"] = "Vorming " + vorming.Titel + " is toegevoegd";
                 return RedirectToAction("Index");
             }
@@ -48,16 +48,13 @@ namespace Joetz.Controllers
         {
             var vormingTask = vormingRepository.FindBy(id);
             Vorming vorming = await vormingTask;
-            return View("Create", vorming);
+            return View(vorming);
         }
 
         [HttpPost]
-        public async Task<ActionResult> Edit(string id, FormCollection formValues)
+        public async Task<ActionResult> Edit(Vorming v)
         {
-            var vormingTask = vormingRepository.FindBy(id);
-            Vorming vorming = await vormingTask;
-            UpdateModel(vorming, formValues.ToValueProvider());
-            vormingRepository.Update(vorming);
+            await vormingRepository.Update(v);
             return RedirectToAction("Index");
         }
 
@@ -73,7 +70,7 @@ namespace Joetz.Controllers
         {
             var vormingTask = vormingRepository.FindBy(id);
             Vorming vorming = await vormingTask;
-            vormingRepository.Delete(vorming);
+            await vormingRepository.Delete(vorming);
             return RedirectToAction("Index");
         }
 

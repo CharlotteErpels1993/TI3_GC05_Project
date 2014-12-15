@@ -19,7 +19,8 @@ namespace Joetz.Models.DAL
             vorming.Betalingswijze = vormingObject.Get<string>("betalingswijze");
             vorming.CriteriaDeelnemers = vormingObject.Get<string>("criteriaDeelnemers");
             vorming.InbegrepenPrijs = vormingObject.Get<string>("inbegrepenInPrijs");
-            //vorming.Periodes = vormingObject.Get<string>("periodes"); IS ARRAY!!!!!
+            var Periodes = vormingObject.Get<IList<string>>("periodes");
+            vorming.Periodes = Periodes;
             vorming.Prijs = vormingObject.Get<Double>("prijs");
             vorming.Tips = vormingObject.Get<string>("tips");
             vorming.WebsiteLocatie = vormingObject.Get<string>("websiteLocatie");
@@ -56,7 +57,7 @@ namespace Joetz.Models.DAL
             return vormingen;
         }
 
-        public async void Add(Vorming vorming)
+        public async Task<bool> Add(Vorming vorming)
         {
             ParseObject vormingObject = new ParseObject("Vorming");
 
@@ -66,25 +67,45 @@ namespace Joetz.Models.DAL
             vormingObject["betalingswijze"] = vorming.Betalingswijze;
             vormingObject["criteriaDeelnemers"] = vorming.CriteriaDeelnemers;
             vormingObject["inbegrepenInPrijs"] = vorming.InbegrepenPrijs;
-            //vormingObject["periodes"] = vorming.Periodes; IS ARRAY!!!!!
+            string[] periodes = vorming.Periodes.ToString().Split(new Char[] {',', '.', ':', '\t' });
+            vormingObject["periodes"] = periodes;
             vormingObject["prijs"] = vorming.Prijs;
             vormingObject["tips"] = vorming.Tips;
             vormingObject["websiteLocatie"] = vorming.WebsiteLocatie;
 
             await vormingObject.SaveAsync();
+
+            return true;
         }
 
-        public async void Delete(Vorming vorming)
+        public async Task<bool> Delete(Vorming vorming)
         {
             var query = ParseObject.GetQuery("Vorming").WhereEqualTo("objectId", vorming.Id);
             ParseObject vormingObject = await query.FirstAsync();
 
             await vormingObject.DeleteAsync();
+            return true;
         }
 
-        public void Update(Vorming vorming)
+        public async Task<bool> Update(Vorming vorming)
         {
-            throw new NotImplementedException();
+            var query = ParseObject.GetQuery("Vorming").WhereEqualTo("objectId", vorming.Id);
+            ParseObject vormingObject = await query.FirstAsync();
+
+            vormingObject["titel"] = vorming.Titel;
+            vormingObject["locatie"] = vorming.Locatie;
+            vormingObject["korteBeschrijving"] = vorming.KorteBeschrijving;
+            vormingObject["betalingswijze"] = vorming.Betalingswijze;
+            vormingObject["criteriaDeelnemers"] = vorming.CriteriaDeelnemers;
+            vormingObject["inbegrepenInPrijs"] = vorming.InbegrepenPrijs;
+            //vormingObject["periodes"] = vorming.Periodes;
+            vormingObject["prijs"] = vorming.Prijs;
+            vormingObject["tips"] = vorming.Tips;
+            vormingObject["websiteLocatie"] = vorming.WebsiteLocatie;
+
+            await vormingObject.SaveAsync();
+
+            return true;
         }
     }
 }

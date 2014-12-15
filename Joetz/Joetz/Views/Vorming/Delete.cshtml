@@ -3,7 +3,10 @@
 @{
     ViewBag.Title = "Verwijderen vorming";
 }
-
+@using (Html.BeginForm("Delete", "Vorming", FormMethod.Post, new {role = "form"}))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
 <div class="container">
     <div class="well">
         <br/>
@@ -22,5 +25,6 @@
             @Html.ActionLink("Terug naar overzicht vormingen", "Index", "Vorming")
         </div>
     </form>
-
+    
 </div>
+}
