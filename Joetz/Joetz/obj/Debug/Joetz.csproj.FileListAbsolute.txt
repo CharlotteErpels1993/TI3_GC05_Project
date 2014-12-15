@@ -409,3 +409,6 @@ C:\Users\Gilles De Vylder\School\project\android project\TI3_GC05_Project\Joetz\
 C:\Users\Gilles De Vylder\School\project\android project\TI3_GC05_Project\Joetz\Joetz\bin\ru\System.Spatial.resources.dll
 C:\Users\Gilles De Vylder\School\project\android project\TI3_GC05_Project\Joetz\Joetz\bin\zh-Hans\System.Spatial.resources.dll
 C:\Users\Gilles De Vylder\School\project\android project\TI3_GC05_Project\Joetz\Joetz\bin\zh-Hant\System.Spatial.resources.dll
+C:\Users\Gilles De Vylder\School\project\android project\TI3_GC05_Project\Joetz\Joetz\bin\Excel.dll
+C:\Users\Gilles De Vylder\School\project\android project\TI3_GC05_Project\Joetz\Joetz\bin\ICSharpCode.SharpZipLib.dll
+C:\Users\Gilles De Vylder\School\project\android project\TI3_GC05_Project\Joetz\Joetz\bin\Excel.pdb

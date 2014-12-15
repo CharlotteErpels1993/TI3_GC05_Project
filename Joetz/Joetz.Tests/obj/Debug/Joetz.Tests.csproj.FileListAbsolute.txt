@@ -206,3 +206,6 @@ C:\Users\Gilles De Vylder\School\project\android project\TI3_GC05_Project\Joetz\
 C:\Users\Gilles De Vylder\School\project\android project\TI3_GC05_Project\Joetz\Joetz.Tests\obj\Debug\Joetz.Tests.csprojResolveAssemblyReference.cache
 C:\Users\Gilles De Vylder\School\project\android project\TI3_GC05_Project\Joetz\Joetz.Tests\obj\Debug\Joetz.Tests.dll
 C:\Users\Gilles De Vylder\School\project\android project\TI3_GC05_Project\Joetz\Joetz.Tests\obj\Debug\Joetz.Tests.pdb
+C:\Users\Gilles De Vylder\School\project\android project\TI3_GC05_Project\Joetz\Joetz.Tests\bin\Debug\Excel.dll
+C:\Users\Gilles De Vylder\School\project\android project\TI3_GC05_Project\Joetz\Joetz.Tests\bin\Debug\ICSharpCode.SharpZipLib.dll
+C:\Users\Gilles De Vylder\School\project\android project\TI3_GC05_Project\Joetz\Joetz.Tests\bin\Debug\Excel.pdb
