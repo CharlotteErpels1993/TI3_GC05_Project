@@ -12,7 +12,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
-import com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.SignUp_deel1;
+import com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.RegistrerenDeel1;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Gebruiker;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -271,7 +271,7 @@ public class LidnummerToevoegen extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.backMenu2) {
-            Intent intent1 = new Intent(this, SignUp_deel1.class);
+            Intent intent1 = new Intent(this, RegistrerenDeel1.class);
             startActivity(intent1);
 
             overridePendingTransition(R.anim.left_in, R.anim.right_out);

@@ -20,7 +20,6 @@ import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
 import com.hogent.ti3g05.ti3_g05_joetzapp.R;
 import com.hogent.ti3g05.ti3_g05_joetzapp.navBarMainScreen;
 import com.parse.LogInCallback;
-import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
@@ -28,7 +27,7 @@ import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
 //Stap 4 van registreren
-public class SignUp_deel4 extends Activity{
+public class RegistrerenDeel4 extends Activity{
 
 	private EditText mEmailEditText; 
 	private EditText mPasswordEditText;
@@ -257,7 +256,7 @@ public class SignUp_deel4 extends Activity{
 
     @Override
     public void onBackPressed() {
-        Intent setIntent = new Intent(SignUp_deel4.this, navBarMainScreen.class);
+        Intent setIntent = new Intent(RegistrerenDeel4.this, navBarMainScreen.class);
         setIntent.addCategory(Intent.CATEGORY_HOME);
         setIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(setIntent);
@@ -273,7 +272,7 @@ public class SignUp_deel4 extends Activity{
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.backMenu2) {
-            Intent intent1 = new Intent(this, SignUp_deel1.class);
+            Intent intent1 = new Intent(this, RegistrerenDeel1.class);
             startActivity(intent1);
 
             overridePendingTransition(R.anim.left_in, R.anim.right_out);

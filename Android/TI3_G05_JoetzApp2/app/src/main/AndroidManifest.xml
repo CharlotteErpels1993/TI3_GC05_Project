@@ -65,13 +65,13 @@
             android:name="com.hogent.ti3g05.ti3_g05_joetzapp.FavorieteVakanties"
             android:theme="@style/CustomActionBarTheme" >
         </activity>-->
-        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.SignUp_deel1"
+        <activity android:name=".SignUpLogin.RegistrerenDeel1"
             android:theme="@style/CustomActionBarTheme"/>
-        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.SignUp_deel2"
+        <activity android:name=".SignUpLogin.RegistrerenDeel2"
             android:theme="@style/CustomActionBarTheme"/>
-        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.SignUp_deel3"
+        <activity android:name=".SignUpLogin.RegistrerenDeel3"
             android:theme="@style/CustomActionBarTheme"/>
-        <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.SignUp_deel4"
+        <activity android:name=".SignUpLogin.RegistrerenDeel4"
             android:theme="@style/CustomActionBarTheme"/>
         <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.Login"
             android:theme="@style/CustomActionBarTheme"/>

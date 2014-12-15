@@ -10,7 +10,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -28,7 +27,7 @@ import com.parse.ParseQuery;
 import java.util.List;
 
 //Eerste deel van het registreren
-public class SignUp_deel1 extends Activity{
+public class RegistrerenDeel1 extends Activity{
     private RadioGroup rg = null;
     private EditText et_rijksregisterNr;
 
@@ -158,7 +157,7 @@ public class SignUp_deel1 extends Activity{
                             cancel = true;
                         }
                     } catch (ParseException e) {
-                        Toast.makeText(SignUp_deel1.this, getString(R.string.error_generalException), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegistrerenDeel1.this, getString(R.string.error_generalException), Toast.LENGTH_SHORT).show();
                         cancel = true;
                     }
                     ParseQuery<ParseObject> query2 = ParseQuery.getQuery("Monitor");
@@ -171,7 +170,7 @@ public class SignUp_deel1 extends Activity{
                             cancel = true;
                         }
                     } catch (ParseException e) {
-                        Toast.makeText(SignUp_deel1.this, getString(R.string.error_generalException), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegistrerenDeel1.this, getString(R.string.error_generalException), Toast.LENGTH_SHORT).show();
                         cancel = true;
                     }
                 }
@@ -193,7 +192,7 @@ public class SignUp_deel1 extends Activity{
     //Stuurt de gebruiker naar de volgende stap (stap 2 aangezien deze lid is van bond moyson
     // en geeft het rijksregisternummer mee
     private void jaOpslaanRijksregNr() {
-        Intent intentJa = new Intent(getApplicationContext(), SignUp_deel2.class);
+        Intent intentJa = new Intent(getApplicationContext(), RegistrerenDeel2.class);
         intentJa.putExtra("rijksregisternr", rijksregnr);
         startActivity(intentJa);
 
@@ -204,7 +203,7 @@ public class SignUp_deel1 extends Activity{
     //Stuurt de gebruiker naar de volgende stap (stap 3 aangezien deze geen lid is van bond moyson)
     // en geeft het rijksregisternummer mee
     private void neeOpslaanRijksregNr() {
-        Intent intentNee = new Intent(getApplicationContext(), SignUp_deel3.class);
+        Intent intentNee = new Intent(getApplicationContext(), RegistrerenDeel3.class);
         intentNee.putExtra("rijksregisternr", rijksregnr);
         startActivity(intentNee);
 

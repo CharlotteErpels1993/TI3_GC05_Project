@@ -19,7 +19,7 @@ import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
 import com.hogent.ti3g05.ti3_g05_joetzapp.R;
 
 //stap 2 van registreren, enkel voor leden van bons moyson
-public class SignUp_deel2 extends Activity{
+public class RegistrerenDeel2 extends Activity{
     private EditText et_aansluitingsnummer;
     private EditText et_codeGerechtigde;
     private EditText et_aansluitingsNrOuder2;
@@ -110,7 +110,7 @@ public class SignUp_deel2 extends Activity{
 
     //De waarden worden doorgestuurd naar de volgende stap en de gebruiker gaat door naar stap 3
     private void opslaan(String aansluitingsnummerString, String codeGerechtigdeStr, String aansluitingsNrOuder2Str) {
-        Intent intent = new Intent(getApplicationContext(), SignUp_deel3.class);
+        Intent intent = new Intent(getApplicationContext(), RegistrerenDeel3.class);
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             rijksRegNr = extras.getString("rijksregisternr");
@@ -147,7 +147,7 @@ public class SignUp_deel2 extends Activity{
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.backMenu2) {
-            Intent intent1 = new Intent(this, SignUp_deel1.class);
+            Intent intent1 = new Intent(this, RegistrerenDeel1.class);
             startActivity(intent1);
 
             overridePendingTransition(R.anim.left_in, R.anim.right_out);

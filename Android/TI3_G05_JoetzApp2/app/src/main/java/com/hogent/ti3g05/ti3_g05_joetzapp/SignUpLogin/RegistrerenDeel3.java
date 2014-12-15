@@ -23,7 +23,7 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
 //stap 3 van registreren
-public class SignUp_deel3 extends Activity{
+public class RegistrerenDeel3 extends Activity{
 
 	private EditText voornaamText;
 	private EditText naamText;
@@ -172,7 +172,7 @@ public class SignUp_deel3 extends Activity{
             }
         }
         catch(ParseException e){
-            Toast.makeText(SignUp_deel3.this,getString(R.string.error_generalException), Toast.LENGTH_SHORT).show();
+            Toast.makeText(RegistrerenDeel3.this,getString(R.string.error_generalException), Toast.LENGTH_SHORT).show();
             cancel = true;
         }
         ParseQuery<ParseObject> queryMonitoren = ParseQuery.getQuery("Monitor");
@@ -186,7 +186,7 @@ public class SignUp_deel3 extends Activity{
             }
         }
         catch(ParseException e){
-            Toast.makeText(SignUp_deel3.this,getString(R.string.error_generalException), Toast.LENGTH_SHORT).show();
+            Toast.makeText(RegistrerenDeel3.this,getString(R.string.error_generalException), Toast.LENGTH_SHORT).show();
             cancel = true;
         }
 
@@ -203,7 +203,7 @@ public class SignUp_deel3 extends Activity{
     private void opslaan(String voornaam,String naam, String straat, String huisnr, String gemeente, String postcode, String telefoon, String gsm, String bus) {
         Toast.makeText(getApplicationContext(), getString(R.string.loading_message), Toast.LENGTH_SHORT).show();
 
-        Intent in = new Intent(getApplicationContext(),SignUp_deel4.class);
+        Intent in = new Intent(getApplicationContext(),RegistrerenDeel4.class);
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -258,7 +258,7 @@ public class SignUp_deel3 extends Activity{
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.backMenu2) {
-            Intent intent1 = new Intent(this, SignUp_deel1.class);
+            Intent intent1 = new Intent(this, RegistrerenDeel1.class);
             startActivity(intent1);
 
             overridePendingTransition(R.anim.left_in, R.anim.right_out);

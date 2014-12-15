@@ -15,7 +15,7 @@ import android.widget.ListView;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.myDb;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
-import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ListViewAdapter;
+import com.hogent.ti3g05.ti3_g05_joetzapp.Services.VakantieAdapter;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.FavorieteVakantie;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vakantie;
 import com.parse.ParseException;
@@ -25,9 +25,6 @@ import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -43,7 +40,7 @@ public class FavorieteVakanties extends Fragment{
     private Vakantie vakantie;
     private ProgressDialog mProgressDialog;
     private View rootView;
-    private ListViewAdapter adapter;
+    private VakantieAdapter adapter;
     private List<Vakantie> vakanties = null;
     private List<Vakantie> vakantiesAllemaal = null;
     private EditText filtertext;
@@ -78,7 +75,7 @@ public class FavorieteVakanties extends Fragment{
             }
             else {
                 vakanties = myDB.getFavorieten();
-                adapter = new ListViewAdapter(rootView.getContext(), vakanties);
+                adapter = new VakantieAdapter(rootView.getContext(), vakanties);
                 listview.setAdapter(adapter);
 
                 filtertext.addTextChangedListener(new TextWatcher() {
@@ -262,7 +259,7 @@ public class FavorieteVakanties extends Fragment{
             @Override
             protected void onPostExecute(Void result) {
                 //Geef de favorieten mee aan de adapter om deze juist weer te geven
-                adapter = new ListViewAdapter(rootView.getContext(), vakanties);
+                adapter = new VakantieAdapter(rootView.getContext(), vakanties);
                 // de adapter aan de listview binden
                 listview.setAdapter(adapter);
                 // Dialoog sluiten

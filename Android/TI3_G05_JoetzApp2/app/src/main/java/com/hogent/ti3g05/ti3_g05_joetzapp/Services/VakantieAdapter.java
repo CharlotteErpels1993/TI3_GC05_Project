@@ -23,7 +23,7 @@ import com.hogent.ti3g05.ti3_g05_joetzapp.Vakantie_detail;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vakantie;
 
 //Deze klasse zal de vakantie gegevens op de juiste plaats zetten en de juiste gegevens weergeven en doorgeven
-public class ListViewAdapter extends ArrayAdapter<Vakantie> implements Filterable {
+public class VakantieAdapter extends ArrayAdapter<Vakantie> implements Filterable {
 
     private Context context;
     private LayoutInflater inflater;
@@ -31,7 +31,7 @@ public class ListViewAdapter extends ArrayAdapter<Vakantie> implements Filterabl
     private List<Vakantie> vakanties = null;
     private ArrayList<Vakantie> vakantieArrayList;
 
-    public ListViewAdapter(Context context,
+    public VakantieAdapter(Context context,
                            List<Vakantie> vakanties) {
         super(context, R.layout.listview_item);
         this.context = context;

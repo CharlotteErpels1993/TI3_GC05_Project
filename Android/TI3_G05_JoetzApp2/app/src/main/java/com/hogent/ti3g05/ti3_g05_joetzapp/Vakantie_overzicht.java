@@ -20,7 +20,7 @@ import android.widget.ListView;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.myDb;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
-import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ListViewAdapter;
+import com.hogent.ti3g05.ti3_g05_joetzapp.Services.VakantieAdapter;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Feedback;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vakantie;
 import com.parse.ParseException;
@@ -38,7 +38,7 @@ public class Vakantie_overzicht extends Fragment {
     private ProgressDialog mProgressDialog;
     private ArrayList<String> images = new ArrayList<String>();
     private View rootView;
-    private ListViewAdapter adapter;
+    private VakantieAdapter adapter;
     private List<Vakantie> vakanties = null;
     private EditText filtertext;
 
@@ -87,7 +87,7 @@ public class Vakantie_overzicht extends Fragment {
      {
          //Toast.makeText(getActivity(), "geen internet", Toast.LENGTH_SHORT).show();
          vakanties = myDB.getVakanties();
-         adapter = new ListViewAdapter(rootView.getContext(), vakanties);
+         adapter = new VakantieAdapter(rootView.getContext(), vakanties);
          // Binds the Adapter to the ListView
          listview.setAdapter(adapter);
 
@@ -240,7 +240,7 @@ public class Vakantie_overzicht extends Fragment {
         @Override
         protected void onPostExecute(Void result) {
             //Steek de vakanties in de adapter om zo in de juiste velden weer te geven
-            adapter = new ListViewAdapter(rootView.getContext(), vakanties);
+            adapter = new VakantieAdapter(rootView.getContext(), vakanties);
             // de adapter aan de listview binden
             listview.setAdapter(adapter);
             // Dialoog sluiten

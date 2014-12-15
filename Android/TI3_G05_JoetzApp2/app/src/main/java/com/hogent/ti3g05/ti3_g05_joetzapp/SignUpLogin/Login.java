@@ -88,7 +88,7 @@ public class Login extends Activity{
             public void onClick(View v) {
                 btn_SignUp.startAnimation(animAlpha);
                 //Bij het klikken op deze knop wordt de gebruiker doorgestuurd naar de activiteit registreren
-                Intent in = new Intent(Login.this, SignUp_deel1.class);
+                Intent in = new Intent(Login.this, RegistrerenDeel1.class);
                 startActivity(in);
             }
         });

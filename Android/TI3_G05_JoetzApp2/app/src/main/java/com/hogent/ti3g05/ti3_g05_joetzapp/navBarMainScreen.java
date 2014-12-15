@@ -24,7 +24,7 @@ import android.widget.Toast;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
 import com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.Login;
-import com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.SignUp_deel1;
+import com.hogent.ti3g05.ti3_g05_joetzapp.SignUpLogin.RegistrerenDeel1;
 import com.parse.ParseUser;
 
 //Maakt de navigatiebar aan, is tevens ook de mainactivity, alle andere activiteiten zullen als fragment hierin worden ingesteld
@@ -349,7 +349,7 @@ public class navBarMainScreen extends Activity {
 
                 if(ParseUser.getCurrentUser() == null)
                 {
-                    Intent intent5 = new Intent(navBarMainScreen.this, SignUp_deel1.class
+                    Intent intent5 = new Intent(navBarMainScreen.this, RegistrerenDeel1.class
                     );
                     startActivity(intent5);
                 }
