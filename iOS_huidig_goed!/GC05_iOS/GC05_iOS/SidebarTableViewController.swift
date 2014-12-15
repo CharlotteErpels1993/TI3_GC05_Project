@@ -158,7 +158,7 @@ class SidebarTableViewController: UITableViewController, UITextFieldDelegate {
 
                     var destViewController2: VakantiesTableViewController = /*destViewController = */mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as VakantiesTableViewController
                     destViewController2.favoriet = true
-                    destViewController2.activityIndicatorView = activityIndicatorView
+                    //destViewController2.activityIndicatorView = activityIndicatorView
                     destViewController = destViewController2
                     break
                 case 3:
