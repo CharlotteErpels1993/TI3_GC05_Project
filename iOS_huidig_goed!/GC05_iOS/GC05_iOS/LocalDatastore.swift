@@ -417,6 +417,27 @@ struct LocalDatastore {
         
         return object
     }
+    
+    static func isRijksregisternummerAlGeregistreerd(rijksregisternummer: String) -> Bool {
+        var queryOuder = self.makeQuery("Ouder", local: true, queryConstraints: ["rijksregisterNr": rijksregisternummer])
+        
+        var aantalOuders = queryOuder.countObjects()
+        
+        if aantalOuders != 0 {
+            return true
+        } else {
+            LocalDatastore.getTableReady("Monitor")
+            var queryMonitor = self.makeQuery("Monitor", local: true, queryConstraints: ["rijksregisterNr": rijksregisternummer])
+            
+            var aantalMonitors = queryMonitor.countObjects()
+            
+            if aantalMonitors != 0 {
+                return true
+            }
+            return false
+        }
+    }
+
 }
 
 

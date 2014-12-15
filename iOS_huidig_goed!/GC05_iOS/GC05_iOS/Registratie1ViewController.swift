@@ -49,10 +49,10 @@ class Registratie1ViewController: /*ResponsiveTextFieldViewController*/ UITableV
             txtRijksregisterNr.resignFirstResponder()
         }
         
-        ParseData.deleteOuderTable()
-        ParseData.vulOuderTableOp()
-        ParseData.deleteMonitorTable()
-        ParseData.vulMonitorTableOp()
+        //ParseData.deleteOuderTable()
+        //ParseData.vulOuderTableOp()
+        //ParseData.deleteMonitorTable()
+        //ParseData.vulMonitorTableOp()
         
         txtAansluitingsNr.delegate = self
         txtCodeGerechtigde.delegate = self
@@ -250,8 +250,11 @@ class Registratie1ViewController: /*ResponsiveTextFieldViewController*/ UITableV
     }
     
     func controleerRijksregisterNummerAlGeregisteerd() -> Bool {
-        return ParseData.getRijksregisterNummers(self.txtRijksregisterNr.text)
+        //return ParseData.getRijksregisterNummers(self.txtRijksregisterNr.text)
+        return LocalDatastore.isRijksregisternummerAlGeregistreerd(self.txtRijksregisterNr.text)
     }
+    
+    
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
