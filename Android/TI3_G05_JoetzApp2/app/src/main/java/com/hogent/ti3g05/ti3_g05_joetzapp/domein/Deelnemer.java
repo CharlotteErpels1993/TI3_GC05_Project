@@ -2,10 +2,8 @@ package com.hogent.ti3g05.ti3_g05_joetzapp.domein;
 
 import java.util.Date;
 
-/**
- * Created by Gilles De Vylder on 29/10/2014.
- */
-public class Deelnemer { //link naar ouder? Of ligt dat niet vast?
+
+public class Deelnemer {
 
     private double rijksregisternummer;
     private String naam, voornaam;
