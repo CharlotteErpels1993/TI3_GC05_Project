@@ -124,7 +124,7 @@ struct LocalDatastore {
     
     static func getVakantie(vakantieObject: PFObject) -> Vakantie {
         var vakantie: Vakantie = Vakantie(id: vakantieObject.objectId)
-    
+        
         vakantie.titel = vakantieObject["titel"] as? String
         vakantie.locatie = vakantieObject["locatie"] as? String
         vakantie.korteBeschrijving = vakantieObject["korteBeschrijving"] as? String
@@ -142,7 +142,7 @@ struct LocalDatastore {
         vakantie.minLeeftijd = vakantieObject["minLeeftijd"] as Int
         vakantie.maxLeeftijd = vakantieObject["maxLeeftijd"] as? Int
         vakantie.maxAantalDeelnemers = vakantieObject["maxAantalDeelnemers"] as? Int
-    
+        
         return vakantie
     }
     
@@ -158,7 +158,6 @@ struct LocalDatastore {
         var ouder = self.getOuderFromFeedback(gebruikerId)
         
         if ouder == nil {
-            self.getTableReady("Monitor")
             monitor = self.getMonitorFromFeedback(gebruikerId)!
         }
         
@@ -285,7 +284,7 @@ struct LocalDatastore {
         
         return afbeeldingen[0]
     }
-
+    
     static func printError(methode: String, tableName: String) {
         var error: String = ""
         
@@ -309,7 +308,7 @@ struct LocalDatastore {
         
         println(error)
     }
-
+    
     static func getGebruikerWithEmail(email: String, tableName: String) -> Gebruiker {
         var query = PFQuery(className: tableName)
         
@@ -393,7 +392,7 @@ struct LocalDatastore {
         
         return objecten
     }
-
+    
     static func parseLocalObject(object: AnyObject, tableName: String) {
         
         var pfObject: PFObject
@@ -411,7 +410,7 @@ struct LocalDatastore {
             pfObject.saveEventually()
         }
     }
-
+    
     static func getFavorietObject(favoriet: Favoriet) -> PFObject {
         var object: PFObject = PFObject(className: "Favoriet")
         
@@ -439,7 +438,7 @@ struct LocalDatastore {
             return false
         }
     }
-
+    
     static func isGsmAlGeregistreerd(gsm: String) -> Bool {
         var queryOuder = self.makeQuery("Ouder", local: true, queryConstraints: ["gsm": gsm])
         
@@ -513,7 +512,7 @@ struct LocalDatastore {
         } else {
             object.saveEventually()
         }
-
+        
         createPFUser(ouder, wachtwoord: wachtwoord)
         logIn(ouder, wachtwoord: wachtwoord)
     }
@@ -535,7 +534,25 @@ struct LocalDatastore {
     static private func logIn(ouder: Ouder, wachtwoord: String) {
         PFUser.logInWithUsername(ouder.email, password: wachtwoord)
     }
-
+    
+    static func deleteFavorieteVakantie(favoriet: Favoriet) {
+        var queryConstraints: [String: String] = [:]
+        
+        queryConstraints["vakantie"] = favoriet.vakantie?.id
+        queryConstraints["gebruiker"] = favoriet.gebruiker?.id
+        
+        var query = self.makeQuery("Favoriet", local: true, queryConstraints: queryConstraints)
+        
+        var object = query.getFirstObject()
+        object.unpin()
+        
+        if Reachability.isConnectedToNetwork() == true {
+            object.delete()
+        } else {
+            object.deleteEventually()
+        }
+    }
+    
 }
 
 
