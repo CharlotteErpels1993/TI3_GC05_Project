@@ -45,12 +45,18 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Excel">
+      <HintPath>..\packages\ExcelDataReader.2.1.2.3\lib\net45\Excel.dll</HintPath>
+    </Reference>
     <Reference Include="ExcelApi">
       <HintPath>..\packages\NetOffice.Excel.1.7.2.0\lib\net45\ExcelApi.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="Gat.Controls.OpenDialog">
       <HintPath>..\packages\OpenDialog.1.1.1\lib\net45\Gat.Controls.OpenDialog.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
     <Reference Include="Kesoft.Windows.Forms.Common">
       <HintPath>..\packages\Kesoft.Windows.Forms.Common.1.0.6.0\lib\net35\Kesoft.Windows.Forms.Common.dll</HintPath>

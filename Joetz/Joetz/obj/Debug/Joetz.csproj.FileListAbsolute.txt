@@ -300,3 +300,6 @@ C:\Users\Gebruiker\Documents\Hogent\Semester1 20142015\TI3_GC05_Project\Joetz\Jo
 C:\Users\Gebruiker\Documents\Hogent\Semester1 20142015\TI3_GC05_Project\Joetz\Joetz\bin\OfficeApi.xml
 C:\Users\Gebruiker\Documents\Hogent\Semester1 20142015\TI3_GC05_Project\Joetz\Joetz\bin\VBIDEApi.xml
 C:\Users\Gebruiker\Documents\Hogent\Semester1 20142015\TI3_GC05_Project\Joetz\Joetz\bin\Joetz.dll.config
+C:\Users\Gebruiker\Documents\Hogent\Semester1 20142015\TI3_GC05_Project\Joetz\Joetz\bin\Excel.dll
+C:\Users\Gebruiker\Documents\Hogent\Semester1 20142015\TI3_GC05_Project\Joetz\Joetz\bin\ICSharpCode.SharpZipLib.dll
+C:\Users\Gebruiker\Documents\Hogent\Semester1 20142015\TI3_GC05_Project\Joetz\Joetz\bin\Excel.pdb

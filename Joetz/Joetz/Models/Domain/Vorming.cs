@@ -24,7 +24,7 @@ namespace Joetz.Models.Domain
         [Display(Name = "Periodes")]
         [Required(ErrorMessage = "{0} is verplicht")]
         [DataType(DataType.MultilineText)]
-        public string[] Periodes { get; set; }
+        public IList<string> Periodes { get; set; }
 
         [Display(Name = "Prijs")]
         [Required(ErrorMessage = "{0} is verplicht")]
@@ -50,7 +50,7 @@ namespace Joetz.Models.Domain
             CriteriaDeelnemers = "";
             Locatie = "";
             InbegrepenPrijs = "";
-            Periodes = new string[5];
+            Periodes = new List<String>();
             Prijs = 0.0;
             Tips = "";
             WebsiteLocatie = "";
