@@ -29,45 +29,46 @@ namespace Joetz.Controllers
             IEnumerable<Feedback> feedback = await feedbackTask;
             return View(feedback);
         }
-/*
+
         public async Task<ActionResult> Edit(string id)
         {
-            var vakantieTask = vakantieRepository.FindBy(id);
-            Vakantie vakantie = await vakantieTask;
-            return View("Create", vakantie);
-        }
-
-        [HttpPost]
-        public async Task<ActionResult> Edit(string id, FormCollection formValues)
-        {
-            var vakantieTask = vakantieRepository.FindBy(id);
-            Vakantie vakantie = await vakantieTask;
-            UpdateModel(vakantie, formValues.ToValueProvider());
-            vakantieRepository.Update(vakantie);
+            var feedbackTask = feedbackRepository.FindBy(id);
+            Feedback feedback = await feedbackTask;
+            await feedbackRepository.Update(feedback);
             return RedirectToAction("Index");
         }
+        /*
+                [HttpPost]
+                public async Task<ActionResult> Edit(string id, FormCollection formValues)
+                {
+                    var vakantieTask = vakantieRepository.FindBy(id);
+                    Vakantie vakantie = await vakantieTask;
+                    UpdateModel(vakantie, formValues.ToValueProvider());
+                    vakantieRepository.Update(vakantie);
+                    return RedirectToAction("Index");
+                }
+                /*
+                public async Task<ActionResult> Delete(string id)
+                {
+                    var vakantieTask = vakantieRepository.FindBy(id);
+                    Vakantie vakantie = await vakantieTask;
+                    return View(vakantie);
+                }
 
-        public async Task<ActionResult> Delete(string id)
-        {
-            var vakantieTask = vakantieRepository.FindBy(id);
-            Vakantie vakantie = await vakantieTask;
-            return View(vakantie);
-        }
-
-        [HttpPost, ActionName("Delete")]
-        public async Task<ActionResult> DeleteConfirmed(string id)
-        {
-            var vakantieTask = vakantieRepository.FindBy(id);
-            Vakantie vakantie = await vakantieTask;
-            vakantieRepository.Delete(vakantie);
-            return RedirectToAction("Index");
-        }
-
+                [HttpPost, ActionName("Delete")]
+                public async Task<ActionResult> DeleteConfirmed(string id)
+                {
+                    var vakantieTask = vakantieRepository.FindBy(id);
+                    Vakantie vakantie = await vakantieTask;
+                    vakantieRepository.Delete(vakantie);
+                    return RedirectToAction("Index");
+                }
+                */
         public async Task<ActionResult> Details(string id)
         {
-            var vakantieTask = vakantieRepository.FindBy(id);
-            Vakantie vakantie = await vakantieTask;
-            return View("Details", vakantie);
-        }*/
+            var feedbackTask = feedbackRepository.FindBy(id);
+            Feedback feedback = await feedbackTask;
+            return View("Details", feedback);
+        }
     }
 }

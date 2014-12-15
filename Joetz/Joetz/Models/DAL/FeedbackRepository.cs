@@ -8,29 +8,32 @@ namespace Joetz.Models.DAL
 {
     public class FeedbackRepository: IFeedbackRepository
     {
-        public Feedback GetFeedback(ParseObject feedbackObject)
+        private IVakantieRepository vakantieRepository = new VakantieRepository();
+        public async Task<Feedback> GetFeedback(ParseObject feedbackObject)
         {
             
             Feedback feedback = new Feedback();
 
             feedback.Id = feedbackObject.ObjectId;
             feedback.Waardering = feedbackObject.Get<string>("waardering");
-            feedback.Goedgekeurd = feedbackObject.Get<string>("goedgekeurd");
+            feedback.Goedgekeurd = feedbackObject.Get<Boolean>("goedgekeurd");
             feedback.Vakantie = feedbackObject.Get<string>("vakantie");
-            feedback.Score = feedbackObject.Get<string>("score");
+            feedback.Score = feedbackObject.Get<int>("score");
+            feedback.Datum = feedbackObject.Get<DateTime>("datum");
             feedback.Gebruiker = feedbackObject.Get<string>("gebruiker");
-            feedback.VakantieNaam = FindByVakantie(feedbackObject.ObjectId).ToString();
+            var vak = FindByVakantie(feedback.Vakantie);
+            Vakantie v = await vak;
+            feedback.VakantieNaam = v.Titel;
 
             return feedback;
 
         }
-        public async Task<String> FindByVakantie(string vakantieId)
+        public async Task<Vakantie> FindByVakantie(string vakantieId)
         {
             var query = ParseObject.GetQuery("Vakantie").WhereEqualTo("objectId", vakantieId);
             ParseObject vakantieObject = await query.FirstAsync();
 
-            var vakantienaam = vakantieObject.Get<string>("titel");
-            return vakantienaam;
+            return vakantieRepository.GetVakantie(vakantieObject);
         }
 
 
@@ -47,7 +50,7 @@ namespace Joetz.Models.DAL
 
             foreach (ParseObject feedbackObject in objects)
             {
-                feedback = GetFeedback(feedbackObject);
+                feedback = await GetFeedback(feedbackObject);
                 feedbackLijst.Add(feedback);
             }
 
@@ -59,7 +62,7 @@ namespace Joetz.Models.DAL
             var query = ParseObject.GetQuery("Feedback").WhereEqualTo("objectId", feedbackId);
             ParseObject feedbackObject = await query.FirstAsync();
 
-            var feedback = GetFeedback(feedbackObject);
+            var feedback = await GetFeedback(feedbackObject);
             return feedback;
         }
 /*
@@ -96,13 +99,21 @@ namespace Joetz.Models.DAL
             await feedbackObject.DeleteAsync();
         }
 
-        public async void Update(Feedback feedback)
+        public async Task<Boolean> Update(Feedback feedback)
         {
             var query = ParseObject.GetQuery("Feedback").WhereEqualTo("objectId", feedback.Id);
             ParseObject feedbackObject = await query.FirstAsync();
-
-            feedbackObject["goedgekeurd"] = feedback.Goedgekeurd;
+            if(feedback.Goedgekeurd)
+            {
+                feedbackObject["goedgekeurd"] = false;
+            }
+            else
+            {
+                feedbackObject["goedgekeurd"] = true;
+            }
+            
             await feedbackObject.SaveAsync();
+            return true;
         }
     }
 }

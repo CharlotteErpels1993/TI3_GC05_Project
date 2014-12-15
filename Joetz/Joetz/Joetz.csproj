@@ -427,6 +427,7 @@
     <Content Include="Views\Vakantie\Details.cshtml" />
     <Content Include="Views\Feedback\Index.cshtml" />
     <Content Include="Views\Vorming\Details.cshtml" />
+    <Content Include="Views\Feedback\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\uploads\" />

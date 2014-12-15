@@ -15,6 +15,8 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Titel)
                 </th>
+                <th>Score</th>
+                <th>vakantie</th>
                 <th>Acties</th>
             </tr>
         </thead>
@@ -31,14 +33,25 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.VakantieNaam)
                         </td>
-
-                    <td>
+                    
                         <!--GLYPHICONS!!!!-->
+                        @if (item.Goedgekeurd)
+                        {
+                            <td>
+                                <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+                                @Html.ActionLink("Details", "Details", new { id = item.Id })
+                            </td>
+                        }
+                        @if(!item.Goedgekeurd){
+                    <td>
                         <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                         @Html.ActionLink("Goedkeuren", "Edit", new { id = item.Id }) |
                         <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
-                        @Html.ActionLink("Details", "Details", new { id = item.Id })
+                            @Html.ActionLink("Details", "Details", new { id = item.Id })
+                       
                     </td>
+                    }
+                                
                 </tr>
             }
         </tbody>

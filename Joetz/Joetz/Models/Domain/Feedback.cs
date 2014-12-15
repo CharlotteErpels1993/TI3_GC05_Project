@@ -11,19 +11,24 @@ namespace Joetz.Models.Domain
         public string Waardering { get; set; }
 
         [Display(Name = "Goedgekeurd")]
-        public String Goedgekeurd { get; set; }
+        public Boolean Goedgekeurd { get; set; }
 
         [Display(Name = "vakantie")]
         public string Vakantie { get; set; }
 
         [Display(Name = "Score")]
-        public string Score { get; set; }
+        public int Score { get; set; }
 
         [Display(Name = "Gebruiker")]
         public string Gebruiker { get; set; }
 
         [Display(Name = "vakantienaam")]
         public String VakantieNaam { get; set; }
+
+        [Display(Name = "Datum")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime Datum { get; set; }
 
        
         public Feedback() : base()
@@ -33,8 +38,9 @@ namespace Joetz.Models.Domain
             Vakantie = "";
             VakantieNaam = "";
             Gebruiker = "";
-            Score = "";
-            Goedgekeurd = "";
+            Score = 0;
+            Datum = new DateTime();
+            Goedgekeurd = false;
         }
     }
 }

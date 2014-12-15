@@ -4,7 +4,7 @@
     ViewBag.Title = "Detail";
 }
 
-@using (Html.BeginForm("Create", "Vakantie", FormMethod.Post, new {role = "form"}))
+@using (Html.BeginForm("Details", "Vakantie", FormMethod.Post, new {role = "form"}))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
