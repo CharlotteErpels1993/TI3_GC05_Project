@@ -46,7 +46,7 @@ public class VormingDetail extends Activity {
             intent1.putExtra("naarfrag", "vorming");
             intent1.putExtra("herladen", "nee");
             intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            Toast.makeText(getApplicationContext(), "Er is iets foutgelopen, onze excuses voor het ongemak.", Toast.LENGTH_SHORT);
+            Toast.makeText(getApplicationContext(), getString(R.string.error_generalException), Toast.LENGTH_SHORT).show();
             startActivity(intent1);
 
             overridePendingTransition(R.anim.left_in, R.anim.right_out);
@@ -58,7 +58,7 @@ public class VormingDetail extends Activity {
             intent1.putExtra("naarfrag", "vorming");
             intent1.putExtra("herladen", "nee");
             intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            Toast.makeText(getApplicationContext(),"Er is iets foutgelopen, onze excuses voor het ongemak.",Toast.LENGTH_SHORT);
+            Toast.makeText(getApplicationContext(),getString(R.string.error_generalException),Toast.LENGTH_SHORT).show();
             startActivity(intent1);
 
             overridePendingTransition(R.anim.left_in, R.anim.right_out);

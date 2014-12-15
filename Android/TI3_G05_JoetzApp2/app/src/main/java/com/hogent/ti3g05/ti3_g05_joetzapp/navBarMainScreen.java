@@ -74,30 +74,30 @@ public class navBarMainScreen extends Activity {
             {
                 fragment = new VakantieOverzicht();
 
-                mTitle = "Vakanties";
+                mTitle = getString(R.string.mainTitlePart1);
             }
             else if(frag.toLowerCase().startsWith("vorming"))
             {
                 fragment = new VormingenOverzichtFragment();
 
-                mTitle = "Vormingen";
+                mTitle = getString(R.string.mainTitlePart4);
             }
             else if (frag.toLowerCase().startsWith("profiel"))
             {
                 fragment = new ProfielenOverzicht_fragment();
-                mTitle = "Monitoren";
+                mTitle = getString(R.string.mainTitlePart3);
 
             }
             else if(frag.toLowerCase().startsWith("favoriet"))
             {
                 fragment = new FavorieteVakanties();
 
-                mTitle = "Favoriete vakanties";
+                mTitle = getString(R.string.mainTitlePart5);
             }
             else if(frag.toLowerCase().startsWith("feedback"))
             {
                 fragment = new FeedbackOverzicht();
-                mTitle = "Joetz funfactor";
+                mTitle = getString(R.string.mainTitlePart2);
             }
         }
         else
@@ -260,7 +260,7 @@ public class navBarMainScreen extends Activity {
                 }
                 else
                 {
-                    Toast.makeText(this,"U hebt niet de juiste bevoegdheid om dit te bekijken.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this,getString(R.string.lblAccess_denied), Toast.LENGTH_SHORT).show();
                     Intent intent1 = new Intent(navBarMainScreen.this, navBarMainScreen.class
                     );
                     intent1.putExtra("herladen", "nee");
@@ -276,7 +276,7 @@ public class navBarMainScreen extends Activity {
             //VormingOverzicht, toegankelijk voor monitoren en administrator
             case 3:
                 if(ParseUser.getCurrentUser() == null ) {
-                    Toast.makeText(this, "U hebt niet de juiste bevoegdheid om dit te bekijken.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, getString(R.string.lblAccess_denied), Toast.LENGTH_SHORT).show();
                     Intent intent1 = new Intent(navBarMainScreen.this, navBarMainScreen.class
                     );
 
@@ -298,7 +298,7 @@ public class navBarMainScreen extends Activity {
                         break;
 
                     } else {
-                        Toast.makeText(this, "U hebt niet de juiste bevoegdheid om dit te bekijken.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, getString(R.string.lblAccess_denied), Toast.LENGTH_SHORT).show();
                         Intent intent1 = new Intent(navBarMainScreen.this, navBarMainScreen.class
                         );
 
@@ -320,7 +320,7 @@ public class navBarMainScreen extends Activity {
                             );
                             startActivity(intent2);
                         } else {
-                            Toast.makeText(this, "U hebt niet de juiste bevoegdheid om dit te bekijken.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(this, getString(R.string.lblAccess_denied), Toast.LENGTH_SHORT).show();
                             Intent intent1 = new Intent(navBarMainScreen.this, navBarMainScreen.class
                             );
 
@@ -334,7 +334,7 @@ public class navBarMainScreen extends Activity {
                     } else {
                         Intent intent1 = new Intent(navBarMainScreen.this, navBarMainScreen.class
                         );
-                        Toast.makeText(this, "U hebt niet de juiste bevoegdheid om dit te bekijken.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this,getString(R.string.lblAccess_denied), Toast.LENGTH_SHORT).show();
 
                     intent1.putExtra("herladen", "nee");
                     intent1.putExtra("refresh", "ja");
@@ -365,7 +365,7 @@ public class navBarMainScreen extends Activity {
                     break;
                 } else
                 {
-                    Toast.makeText(this, "U hebt niet de juiste bevoegdheid om dit te bekijken", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, getString(R.string.lblAccess_denied), Toast.LENGTH_SHORT).show();
                     Intent intent1 = new Intent(navBarMainScreen.this, navBarMainScreen.class
                     );
 
@@ -594,7 +594,7 @@ public class navBarMainScreen extends Activity {
 
         //Geeft ng fout, toont steeds message bij teruggaan
         this.doubleBackToExitPressedOnce = true;
-        Toast.makeText(this,"Ben je zeker dat je de app wil sluiten?",Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,getString(R.string.lblCancelDoubleCheck),Toast.LENGTH_SHORT).show();
 
         new Handler().postDelayed(new Runnable() {
 

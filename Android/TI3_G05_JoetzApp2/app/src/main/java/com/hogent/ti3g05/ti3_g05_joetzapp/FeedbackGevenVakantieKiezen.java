@@ -49,7 +49,7 @@ public class FeedbackGevenVakantieKiezen extends Activity {
         final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.alpha);
 
         isInternetPresent = cd.isConnectingToInternet();
-        getActionBar().setTitle("Kies een vakantie");
+        getActionBar().setTitle(getString(R.string.label_Vakantie_Kiezen));
         btnVolgende.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

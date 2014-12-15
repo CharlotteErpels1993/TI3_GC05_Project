@@ -93,6 +93,12 @@ Mail Joetz met uw voornaam, naam, e-mailadres, rijksregisternummer, adresgegeven
     <string name="btnCPVerwijderen">Extra contactpersoon verwijderen</string>
     <string name="extra_Informatie">Extra Informatie</string>
 
+    <string name="mainTitlePart1">Vakanties</string>
+    <string name="mainTitlePart2">JOETZ Funfactor</string>
+    <string name="mainTitlePart3">Monitoren</string>
+    <string name="mainTitlePart4">Vormingen</string>
+    <string name="mainTitlePart5">Favoriete vakanties</string>
+
     <string-array name="items">
         <item>Vakanties</item>
         <item>Joetz Funfactor</item>
@@ -116,13 +122,13 @@ Mail Joetz met uw voornaam, naam, e-mailadres, rijksregisternummer, adresgegeven
     </string-array>
 
 
+    <string name="title_About">Over JOETZ</string>
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
     <string name="title_activity_tester_list_item">TesterListItem</string>
     <string name="meerInfo">Meer info</string>
     <string name="minderInfo">Minder info</string>
     <string name="mainTitle_Funfactor">JOETZ funfactor</string>
-    <string name=""></string>
     <string name="vakantieDetailTitel">Vakantie</string>
     <string name="label_geboorteDatum">Geboortedatum</string>
     <string name="inschrijvenVak1_AlgemeneUitleg">Gelieve de gegevens van de deelnemer in te voeren.</string>
@@ -196,6 +202,22 @@ De smaak te pakken? Wacht dan niet te lang en boek een onvergetelijke JOETZ-vaka
     <string name="loadingMSG_vakanties">Vakanties ophalen</string>
     <string name="message_no_feedback">Nog geen funfactor gegeven.</string>
     <string name="loadingMSG_feedback">Feedback ophalen</string>
+    <string name="loadingMSG_profielen">Profielen ophalen</string>
+    <string name="loadingMSG_vormingen">Vormingen ophalen</string>
     <string name="label_Vakantie_Kiezen">Kies een vakantie</string>
+    <string name="lblAccess_denied">U heeft niet de juiste bevoegdheid om dit te bekijken.</string>
+    <string name="lblCancelDoubleCheck">Bent u zeker dat u de app wilt afsluiten?</string>
+    <string name="profielHeaderEen">Eigen profiel</string>
+    <string name="profielHeaderTwee">Monitoren met dezelfde vorming</string>
+    <string name="profielHeaderDrie">Resterende monitoren</string>
+    <string name="vakantieAantalPersonen"> personen</string>
+    <string name="vakantieAantalJaar"> jaar</string>
+    <string name="FaveConfirmed">Favoriet toegevoegd</string>
+    <string name="FaveAlreadydone">U heeft deze vakantie reeds toegevoegd</string>
+    <string name="FaveUndone">U heeft deze vakantie verwijderd uit uw favorieten</string>
+    <string name="vak_labelBM">Prijs voor leden van Bond Moyson: €</string>
+    <string name="vak_labelSter1Ouder">Prijs voor leden waarvan 1 ouder deel is van BM: €</string>
+    <string name="vak_labelSter2Ouders">Prijs voor leden waarvan 2 ouders deel zijn van BM: €</string>
+
 
 </resources>

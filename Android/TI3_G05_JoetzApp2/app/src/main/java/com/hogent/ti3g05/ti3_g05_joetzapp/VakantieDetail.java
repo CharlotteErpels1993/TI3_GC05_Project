@@ -72,7 +72,7 @@ public class VakantieDetail extends Activity {
             intent1.putExtra("naarfrag", "vakantie");
             intent1.putExtra("herladen", "nee");
             intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            Toast.makeText(getApplicationContext(), "Er is iets foutgelopen, onze excuses voor het ongemak.", Toast.LENGTH_SHORT);
+            Toast.makeText(getApplicationContext(), getString(R.string.error_generalException), Toast.LENGTH_SHORT).show();
             startActivity(intent1);
 
             overridePendingTransition(R.anim.left_in, R.anim.right_out);
@@ -84,7 +84,7 @@ public class VakantieDetail extends Activity {
             intent1.putExtra("naarfrag", "vakantie");
             intent1.putExtra("herladen", "nee");
             intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            Toast.makeText(getApplicationContext(), "Er is iets foutgelopen, onze excuses voor het ongemak.", Toast.LENGTH_SHORT);
+            Toast.makeText(getApplicationContext(), getString(R.string.error_generalException), Toast.LENGTH_SHORT).show();
             startActivity(intent1);
 
             overridePendingTransition(R.anim.left_in, R.anim.right_out);
@@ -312,7 +312,7 @@ public class VakantieDetail extends Activity {
             cal.setTime(terugkDate);
             terugdatum = cal.get(Calendar.DAY_OF_MONTH) + "/" + cal.get(Calendar.MONTH) + "/" + cal.get(Calendar.YEAR);
         } catch (java.text.ParseException pe) {
-            Toast.makeText(getApplicationContext(), pe.getMessage(), Toast.LENGTH_SHORT);
+            Toast.makeText(getApplicationContext(), pe.getMessage(), Toast.LENGTH_SHORT).show();
         }
 
         feedback.setOnClickListener(new View.OnClickListener() {
@@ -328,9 +328,9 @@ public class VakantieDetail extends Activity {
 
         txtNaam.setText(naam);
         txtLocatie.setText(locatie);
-        txtDoelgr.setText(minDoelgroep + " - " + maxDoelgroep + " jaar");
+        txtDoelgr.setText(minDoelgroep + " - " + maxDoelgroep + getString(R.string.vakantieAantalJaar));
         txtformule.setText(formule);
-        txtmaxDeeln.setText(maxDeeln + " personen");
+        txtmaxDeeln.setText(maxDeeln + getString(R.string.vakantieAantalPersonen));
         txtPeriode.setText(periode);
         txtVervoer.setText(vervoer);
         txtBeschrijving.setText(beschrijving);
@@ -377,7 +377,7 @@ public class VakantieDetail extends Activity {
             if (!bmLedenPrijs.equals("0")) {
                 txtBMledenPrijs.setVisibility(View.VISIBLE);
                 labelBM.setVisibility(View.VISIBLE);
-                txtBMledenPrijs.setText("Prijs voor leden van Bond Moyson: €" + bmLedenPrijs);
+                txtBMledenPrijs.setText(getString(R.string.vak_labelBM) + bmLedenPrijs);
                 if (!(bmLedenPrijs.contains(".") || bmLedenPrijs.contains(","))) {
                     txtBMledenPrijs.append(",00");
                 }
@@ -388,7 +388,7 @@ public class VakantieDetail extends Activity {
 
             if (!sterPrijs1Ouder.equals("0")) {
                 txtSterPrijs1Ouder.setVisibility(View.VISIBLE);
-                txtSterPrijs1Ouder.setText("Prijs voor leden waarvan 1 ouder deel is van BM: €" + sterPrijs1Ouder);
+                txtSterPrijs1Ouder.setText(getString(R.string.vak_labelSter1Ouder) + sterPrijs1Ouder);
                 if (!(sterPrijs1Ouder.contains(".") || sterPrijs1Ouder.contains(","))) {
                     txtSterPrijs1Ouder.append(",00");
                 }
@@ -396,7 +396,7 @@ public class VakantieDetail extends Activity {
 
             if (!sterPrijs2Ouders.equals("0")) {
                 txtSterPrijs2Ouders.setVisibility(View.VISIBLE);
-                txtSterPrijs2Ouders.setText("Prijs voor leden waarvan 2 ouders deel zijn van BM: €" + sterPrijs2Ouders);
+                txtSterPrijs2Ouders.setText(getString(R.string.vak_labelSter2Ouders) + sterPrijs2Ouders);
                 if (!(sterPrijs2Ouders.contains(".") || sterPrijs2Ouders.contains(","))) {
                     txtSterPrijs2Ouders.append(",00");
                 }
@@ -424,7 +424,7 @@ public class VakantieDetail extends Activity {
             if (!bmLedenPrijs.equals("0")) {
                 txtBMledenPrijs.setVisibility(View.VISIBLE);
                 labelBM.setVisibility(View.VISIBLE);
-                txtBMledenPrijs.setText("Prijs voor leden van Bond Moyson: €" + bmLedenPrijs);
+                txtBMledenPrijs.setText(getString(R.string.vak_labelBM) + bmLedenPrijs);
                 if (!(bmLedenPrijs.contains(".") || bmLedenPrijs.contains(","))) {
                     txtBMledenPrijs.append(",00");
                 }
@@ -435,7 +435,7 @@ public class VakantieDetail extends Activity {
 
             if (!sterPrijs1Ouder.equals("0")) {
                 txtSterPrijs1Ouder.setVisibility(View.VISIBLE);
-                txtSterPrijs1Ouder.setText("Prijs voor leden waarvan 1 ouder deel is van BM: €" + sterPrijs1Ouder);
+                txtSterPrijs1Ouder.setText(getString(R.string.vak_labelSter1Ouder) + sterPrijs1Ouder);
                 if (!(sterPrijs1Ouder.contains(".") || sterPrijs1Ouder.contains(","))) {
                     txtSterPrijs1Ouder.append(",00");
                 }
@@ -443,7 +443,7 @@ public class VakantieDetail extends Activity {
 
             if (!sterPrijs2Ouders.equals("0")) {
                 txtSterPrijs2Ouders.setVisibility(View.VISIBLE);
-                txtSterPrijs2Ouders.setText("Prijs voor leden waarvan 2 ouders deel zijn van BM: €" + sterPrijs2Ouders);
+                txtSterPrijs2Ouders.setText(getString(R.string.vak_labelSter2Ouders) + sterPrijs2Ouders);
                 if (!(sterPrijs2Ouders.contains(".") || sterPrijs2Ouders.contains(","))) {
                     txtSterPrijs2Ouders.append(",00");
                 }
@@ -584,11 +584,11 @@ public class VakantieDetail extends Activity {
                 favoriet.put("vakantie", activiteitID);
                 favoriet.put("gebruiker", ingelogdeGebruiker);
                 favoriet.save();
-                Toast.makeText(VakantieDetail.this, "Favoriet toegevoegd!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(VakantieDetail.this, getString(R.string.FaveConfirmed), Toast.LENGTH_SHORT).show();
                 favoImage.setVisibility(View.GONE);
                 deleteImage.setVisibility(View.VISIBLE);
             } else {
-                Toast.makeText(VakantieDetail.this, "Is reeds favoriet.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(VakantieDetail.this, getString(R.string.FaveAlreadydone), Toast.LENGTH_SHORT).show();
             }
 
         } catch (ParseException e) {
@@ -667,7 +667,7 @@ public class VakantieDetail extends Activity {
         for (ParseObject fav : obD) {
             if (fav.get("vakantie").equals(activiteitID) && fav.get("gebruiker").equals(ingelogdeGebruiker)) {
                 fav.delete();
-                Toast.makeText(VakantieDetail.this, "vakantie is verwijderd uit favorieten", Toast.LENGTH_SHORT).show();
+                Toast.makeText(VakantieDetail.this, getString(R.string.FaveUndone), Toast.LENGTH_SHORT).show();
                 deleteImage.setVisibility(View.GONE);
                 favoImage.setVisibility(View.VISIBLE);
 

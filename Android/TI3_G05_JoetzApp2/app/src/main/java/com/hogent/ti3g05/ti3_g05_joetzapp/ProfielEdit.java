@@ -152,10 +152,10 @@ public class ProfielEdit extends Activity {
 
             }
             catch(ParseException e){
-                Toast.makeText(getApplicationContext(), "Er is een fout opgetreden. Onze excuses voor het ongemak.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),getString(R.string.error_generalException), Toast.LENGTH_SHORT).show();
             }
             catch(Exception e){
-                Toast.makeText(getApplicationContext(), "Er is een fout opgetreden. Onze excuses voor het ongemak.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), getString(R.string.error_generalException), Toast.LENGTH_SHORT).show();
             }
         }
         else{
