@@ -66,7 +66,6 @@ class Registratie1ViewController: /*ResponsiveTextFieldViewController*/ UITableV
             self.tableView.deleteSections(NSIndexSet(index: 1), withRowAnimation: UITableViewRowAnimation.None)
             buttonNummers.hidden = true
         }
-        
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -95,7 +94,6 @@ class Registratie1ViewController: /*ResponsiveTextFieldViewController*/ UITableV
         }
         return 0
     }
-    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "volgende" {
@@ -241,19 +239,14 @@ class Registratie1ViewController: /*ResponsiveTextFieldViewController*/ UITableV
                 ouder.aansluitingsNrTweedeOuder = txtAansluitingsNrTweedeOuder.text.toInt()!
             }
         }
-        
     }
     
     func controleerRijksregisterNummerAlGeregisteerd() -> Bool {
-        //return ParseData.getRijksregisterNummers(self.txtRijksregisterNr.text)
         return LocalDatastore.isRijksregisternummerAlGeregistreerd(self.txtRijksregisterNr.text)
     }
-    
-    
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
 }
-
