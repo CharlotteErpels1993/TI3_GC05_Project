@@ -76,5 +76,22 @@ namespace Joetz.Controllers
             vakantieRepository.Delete(vakantie);
             return RedirectToAction("Index");
         }
+
+        public async Task<ActionResult> Details(string id)
+        {
+            var vakantieTask = vakantieRepository.FindBy(id);
+            Vakantie vakantie = await vakantieTask;
+            return View("Details", vakantie);
+        }
+
+      /*  [HttpPost]
+        public async Task<ActionResult> Edit(string id, FormCollection formValues)
+        {
+            var vakantieTask = vakantieRepository.FindBy(id);
+            Vakantie vakantie = await vakantieTask;
+            UpdateModel(vakantie, formValues.ToValueProvider());
+            vakantieRepository.Update(vakantie);
+            return RedirectToAction("Index");
+        }*/
     }
 }

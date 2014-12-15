@@ -420,6 +420,7 @@
     <Content Include="Views\Vorming\Create.cshtml" />
     <Content Include="Views\Vorming\Delete.cshtml" />
     <Content Include="Views\Monitor\Index.cshtml" />
+    <Content Include="Views\Vakantie\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\uploads\" />
