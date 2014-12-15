@@ -52,12 +52,12 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
             } else {
                 //table is opgevuld
                 //opvullen
-                self.vakanties = LocalDatastore.getLocalObjects("Vakantie") as [Vakantie]
+                self.vakanties = LocalDatastore.getLocalObjects(tableName) as [Vakantie]
                 self.vakanties2 = self.vakanties
                 self.tableView.reloadData()
             }
         } else {
-            self.vakanties = LocalDatastore.getLocalObjects("Vakantie") as [Vakantie]
+            self.vakanties = LocalDatastore.getLocalObjects(tableName) as [Vakantie]
             self.vakanties2 = self.vakanties
             self.tableView.reloadData()
         }
@@ -283,19 +283,6 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
                     favorieteVakantie.gebruiker = monitor
                 }
                 LocalDatastore.deleteFavorieteVakantie(favorieteVakantie)
-                
-                //WERKEND Stefanie
-                /*var ouderResponse = ParseData.getOuderWithEmail(PFUser.currentUser().email)
-                var monitorResponse = ParseData.getOuderWithEmail(PFUser.currentUser().email)
-                var favorieteVakantie: Favoriet = Favoriet(id: "test")
-                if ouderResponse.1 == nil {
-                    favorieteVakantie.vakantie = vakanties[indexPath.row]
-                    favorieteVakantie.gebruiker = ouderResponse.0
-                } else if monitorResponse.1 == nil {
-                    favorieteVakantie.vakantie = vakanties[indexPath.row]
-                    favorieteVakantie.gebruiker = monitorResponse.0
-                }
-                ParseData.deleteFavorieteVakantie(favorieteVakantie)*/
             }
         }
     }

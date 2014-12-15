@@ -553,6 +553,128 @@ struct LocalDatastore {
         }
     }
     
+    static func bestaatInschrijvingVakantieAl(inschrijving: InschrijvingVakantie) -> Bool {
+        
+        var bestaatDeelnemerAl = self.bestaatDeelnemerAl(inschrijving.deelnemer!)
+        
+        if bestaatDeelnemerAl == true {
+            var deelnemerObject = getDeelnemerWithId(inschrijving.deelnemer!)
+            
+            if self.bestaatInschrijvingAlLocal(deelnemerObject.objectId, inschrijving: inschrijving) == true {
+                return true
+            }
+        }
+        
+        return false
+    }
+    
+    static func bestaatDeelnemerAl(deelnemer: Deelnemer) -> Bool {
+        
+        var queryConstraints: [String: String] = [:]
+        
+        queryConstraints["voornaam"] = deelnemer.voornaam
+        queryConstraints["naam"] = deelnemer.naam
+        
+        var query = self.makeQuery("Deelnemer", local: true, queryConstraints: queryConstraints)
+        
+        var count = query.countObjects()
+        
+        if count == 0 {
+            return false
+        }
+        return true
+    }
+    
+    static func getDeelnemerWithId(deelnemer: Deelnemer) -> PFObject {
+        
+        var queryConstraints: [String: String] = [:]
+        
+        queryConstraints["voornaam"] = deelnemer.voornaam
+        queryConstraints["naam"] = deelnemer.naam
+        
+        var query = self.makeQuery("Deelnemer", local: true, queryConstraints: queryConstraints)
+        
+        return query.getFirstObject()
+    }
+    
+    static func bestaatInschrijvingAlLocal(deelnemerId: String, inschrijving: InschrijvingVakantie) -> Bool
+    {
+        var queryConstraints: [String: String] = [:]
+        
+        queryConstraints["deelnemer"] = deelnemerId
+        queryConstraints["vakantie"] = inschrijving.vakantie?.id
+        queryConstraints["ouder"] = inschrijving.ouder?.id
+        
+        var query = self.makeQuery("InschrijvingVakantie", local: true, queryConstraints: queryConstraints)
+        
+        var count = query.countObjects()
+        
+        if count == 0 {
+            return false
+        }
+        return true
+    }
+    
+    static func getOuderWithEmail(email: String) -> Ouder {
+        
+        var queryConstraints: [String: String] = [:]
+        
+        queryConstraints["email"] = email
+        
+        var query = self.makeQuery("Ouder", local: true, queryConstraints: queryConstraints)
+        
+        var object = query.getFirstObject()
+        
+        return getOuder(object)
+    }
+    
+    static func getOuder(object: PFObject) -> Ouder {
+        var ouder: Ouder = Ouder(id: object.objectId)
+        
+        ouder.rijksregisterNr = object["rijksregisterNr"] as? String
+        ouder.email = object["email"] as? String
+        ouder.voornaam = object["voornaam"] as? String
+        ouder.naam = object["naam"] as? String
+        ouder.straat = object["straat"] as? String
+        ouder.nummer = object["nummer"] as? Int
+        
+        if object["bus"] != nil {
+            ouder.bus = object["bus"] as? String
+        } else {
+            ouder.bus = ""
+        }
+        
+        ouder.gemeente = object["gemeente"] as? String
+        ouder.postcode = object["postcode"] as? Int
+        
+        if object["telefoon"] != nil {
+            ouder.telefoon = object["telefoon"] as? String
+        } else {
+            ouder.telefoon = ""
+        }
+        
+        ouder.gsm = object["gsm"] as? String
+        
+        if object["aansluitingsNr"] != nil {
+            ouder.aansluitingsNr = object["aansluitingsNr"] as? Int
+        } else {
+            ouder.aansluitingsNr = 0
+        }
+        
+        if object["codeGerechtigde"] != nil {
+            ouder.codeGerechtigde = object["codeGerechtigde"] as? Int
+        } else {
+            ouder.codeGerechtigde = 0
+        }
+        
+        if object["aansluitingsNrTweedeOuder"] != nil {
+            ouder.aansluitingsNrTweedeOuder = object["aansluitingsNrTweedeOuder"] as? Int
+        } else {
+            ouder.aansluitingsNrTweedeOuder = 0
+        }
+        
+        return ouder
+    }
 }
 
 
