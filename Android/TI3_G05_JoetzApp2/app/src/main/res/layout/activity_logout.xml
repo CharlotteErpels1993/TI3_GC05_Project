@@ -6,24 +6,39 @@
 
     <TextView
         android:id="@+id/uitlogText"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
+        android:layout_alignParentTop="true"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_marginTop="30dp"
+        android:textAlignment="center"
+        android:gravity="center_horizontal"
         android:text="@string/logoutText"
-        android:layout_marginStart="60dp"
         />
+
+    <TextView
+        android:id="@+id/lblUitlegVoorUitloggen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/uitlogText"
+        android:layout_marginTop="15dp"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center"
+        android:gravity="center_horizontal"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/uitlegBijUitloggen"/>
 
     <Button
         android:id="@+id/btnLogUit"
-        android:layout_width="150dp"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/Rood"
-        android:layout_below="@id/uitlogText"
-        android:layout_marginTop="40dp"
+        android:layout_below="@id/lblUitlegVoorUitloggen"
+        android:layout_marginTop="30dp"
         android:background="@drawable/button_shape"
         android:text="@string/Uitloggen" />
-
+<!--
     <Button
         android:id="@+id/btnTerug"
         android:layout_width="150dp"
@@ -34,5 +49,5 @@
         android:layout_below="@id/uitlogText"
         android:layout_marginTop="40dp"
         android:text="@string/back" />
-
+-->
 </RelativeLayout>

@@ -1,15 +1,21 @@
 import UIKit
 
-class ProfielBewerkenViewController: UIViewController {
+class ProfielBewerkenViewController: UITableViewController {
     
     @IBOutlet weak var voornaamTxt: UITextField!
     @IBOutlet weak var naamTxt: UITextField!
+    @IBOutlet weak var straatTxt: UITextField!
+    @IBOutlet weak var nummerTxt: UITextField!
+    @IBOutlet weak var busTxt: UITextField!
+    @IBOutlet weak var postcodeTxt: UITextField!
+    @IBOutlet weak var gemeenteTxt: UITextField!
     @IBOutlet weak var telefoonTxt: UITextField!
     @IBOutlet weak var gsmTxt: UITextField!
     
-    var monitor: Monitor?
+    var monitor: Monitor!
     var statusTextFields: [String: String] = [:]
     var redColor: UIColor = UIColor.redColor()
+    var gaVerder:Bool = false
     
     /*@IBAction func opslaan(sender: AnyObject) {
         ParseData.deleteMonitorTable()
@@ -40,6 +46,44 @@ class ProfielBewerkenViewController: UIViewController {
         }
     }*/
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.navigationItem.hidesBackButton = true
+        
+        voornaamTxt.text = monitor.voornaam
+        naamTxt.text = monitor.naam
+        straatTxt.text = monitor.straat
+        nummerTxt.text = String(monitor.nummer!)
+        busTxt.text = monitor!.bus
+        gemeenteTxt.text = monitor.gemeente
+        postcodeTxt.text = String(monitor.postcode!)
+        telefoonTxt.text = monitor.telefoon
+        gsmTxt.text = monitor.gsm
+
+        //self.navigationItem.leftItemsSupplementBackButton = true
+        var barBack = UIBarButtonItem(title: "Terug", style: UIBarButtonItemStyle.Plain, target: self, action: "terug")
+        self.navigationItem.leftBarButtonItem = barBack
+    }
+    
+    func terug() {
+        let alertController = UIAlertController(title: "Profiel bewerken", message: "U gaat verder zonder het opslaan van uw gegevens. Als u verder gaat, gaan uw gewijzigde gegevens verloren.", preferredStyle: .ActionSheet)
+            
+        let callAction = UIAlertAction(title: "Sla niet op", style: UIAlertActionStyle.Destructive, handler: {
+            action in
+                self.gaVerder = true
+                self.performSegueWithIdentifier("opslaan", sender: self)
+            }
+        )
+        
+        alertController.addAction(callAction)
+            
+        let cancelAction = UIAlertAction(title: "Annuleer", style: .Default, handler: nil)
+        alertController.addAction(cancelAction)
+            
+        presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    
     func setStatusTextFields() {
         if voornaamTxt.text.isEmpty {
             statusTextFields["voornaam"] = "leeg"
@@ -54,11 +98,62 @@ class ProfielBewerkenViewController: UIViewController {
             //TO DO: checken op pattern?
             statusTextFields["naam"] = "ingevuld"
         }
+        
+        if straatTxt.text.isEmpty {
+            statusTextFields["straat"] = "leeg"
+        } else {
+            //TO DO: checken op pattern?
+            statusTextFields["straat"] = "ingevuld"
+        }
+        
+        if nummerTxt.text.isEmpty {
+            statusTextFields["nummer"] = "leeg"
+        } else {
+            if !controleerGeldigheidNummer(nummerTxt.text) {
+                statusTextFields["nummer"] = "ongeldig"
+                nummerTxt.text = ""
+            } else if !checkPatternNummer(nummerTxt.text.toInt()!) {
+                statusTextFields["nummer"] = "ongeldig"
+                nummerTxt.text = ""
+            } else {
+                statusTextFields["nummer"] = "geldig"
+            }
+        }
+        
+        if busTxt.text.isEmpty {
+            statusTextFields["bus"] = "leeg"
+        } else {
+            //TO DO: checken op pattern?
+            statusTextFields["bus"] = "ingevuld"
+        }
+        
+        if gemeenteTxt.text.isEmpty {
+            statusTextFields["gemeente"] = "leeg"
+        } else {
+            //TO DO: checken op pattern?
+            statusTextFields["gemeente"] = "ingevuld"
+        }
+        
+        if postcodeTxt.text.isEmpty {
+            statusTextFields["postcode"] = "leeg"
+        } else {
+            if !controleerGeldigheidNummer(postcodeTxt.text) {
+                statusTextFields["postcode"] = "ongeldig"
+                postcodeTxt.text = ""
+            } else if !checkPatternPostcode(postcodeTxt.text.toInt()!) {
+                statusTextFields["postcode"] = "ongeldig"
+                postcodeTxt.text = ""
+            } else {
+                statusTextFields["postcode"] = "geldig"
+            }
+        }
+        
         if telefoonTxt.text.isEmpty {
             statusTextFields["telefoon"] = "leeg"
         } else {
             if !checkPatternTelefoon(telefoonTxt.text) {
                 statusTextFields["telefoon"] = "ongeldig"
+                telefoonTxt.text = ""
             } else {
                 statusTextFields["telefoon"] = "geldig"
             }
@@ -69,6 +164,7 @@ class ProfielBewerkenViewController: UIViewController {
         } else {
             if !checkPatternGsm(gsmTxt.text) {
                 statusTextFields["gsm"] = "ongeldig"
+                gsmTxt.text = ""
             } else {
                 statusTextFields["gsm"] = "geldig"
             }
@@ -87,13 +183,44 @@ class ProfielBewerkenViewController: UIViewController {
         } else {
             giveUITextFieldDefaultBorder(naamTxt)
         }
+        
+        if statusTextFields["straat"] == "leeg" {
+            giveUITextFieldRedBorder(straatTxt)
+        } else {
+            giveUITextFieldDefaultBorder(straatTxt)
+        }
+        
+        if statusTextFields["nummer"] == "leeg" || statusTextFields["nummer"] == "ongeldig"{
+            giveUITextFieldRedBorder(nummerTxt)
+        } else {
+            giveUITextFieldDefaultBorder(nummerTxt)
+        }
+        
+        if statusTextFields["bus"] == "ongeldig"{
+            giveUITextFieldRedBorder(busTxt)
+        } else {
+            giveUITextFieldDefaultBorder(busTxt)
+        }
+        
+        if statusTextFields["gemeente"] == "leeg" {
+            giveUITextFieldRedBorder(gemeenteTxt)
+        } else {
+            giveUITextFieldDefaultBorder(gemeenteTxt)
+        }
+        
+        if statusTextFields["postcode"] == "leeg" || statusTextFields["postcode"] == "ongeldig"{
+            giveUITextFieldRedBorder(postcodeTxt)
+        } else {
+            giveUITextFieldDefaultBorder(postcodeTxt)
+        }
+        
         if statusTextFields["telefoon"] == "ongeldig"{
             giveUITextFieldRedBorder(telefoonTxt)
         } else {
             giveUITextFieldDefaultBorder(telefoonTxt)
         }
         
-        if statusTextFields["gsm"] == "leeg" || statusTextFields["gsm"] == "ongeldig"{
+        if statusTextFields["gsm"] == "leeg" || statusTextFields["gsm"] == "ongeldig" || statusTextFields["gsm"] == "al geregistreerd" {
             giveUITextFieldRedBorder(gsmTxt)
         } else {
             giveUITextFieldDefaultBorder(gsmTxt)
@@ -105,6 +232,16 @@ class ProfielBewerkenViewController: UIViewController {
             return true
         } else if CGColorEqualToColor(naamTxt.layer.borderColor, redColor.CGColor) {
             return true
+        } else if CGColorEqualToColor(straatTxt.layer.borderColor, redColor.CGColor) {
+            return true
+        } else if CGColorEqualToColor(nummerTxt.layer.borderColor, redColor.CGColor) {
+            return true
+        } else if CGColorEqualToColor(busTxt.layer.borderColor, redColor.CGColor) {
+            return true
+        } else if CGColorEqualToColor(gemeenteTxt.layer.borderColor, redColor.CGColor) {
+            return true
+        } else if CGColorEqualToColor(postcodeTxt.layer.borderColor, redColor.CGColor) {
+            return true
         } else if CGColorEqualToColor(telefoonTxt.layer.borderColor, redColor.CGColor) {
             return true
         } else if CGColorEqualToColor(gsmTxt.layer.borderColor, redColor.CGColor) {
@@ -114,54 +251,54 @@ class ProfielBewerkenViewController: UIViewController {
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        hideSideMenuView()
-    
-        var monitorResponse = ParseData.getMonitorWithEmail(PFUser.currentUser().email)
-        if monitorResponse.1 == nil {
-            self.monitor = monitorResponse.0
-        }
-        
-        voornaamTxt.text = monitor!.voornaam
-        naamTxt.text = monitor!.naam
-        gsmTxt.text = monitor!.gsm
-        
-        if monitor!.telefoon == "" {
-            telefoonTxt.text = ""
-        } else {
-            telefoonTxt.text = monitor!.telefoon
-        }
+    func settenVerplichteGegevens() {
+        monitor!.voornaam = voornaamTxt.text
+        monitor!.naam = naamTxt.text
+        monitor!.straat = straatTxt.text
+        monitor!.nummer = nummerTxt.text.toInt()
+        monitor!.gemeente = gemeenteTxt.text
+        monitor!.postcode = postcodeTxt.text.toInt()
+        monitor!.gsm = gsmTxt.text
     }
     
-    func vulGegevensIn() {
-        monitor?.voornaam = voornaamTxt.text
-        monitor?.naam = naamTxt.text
-        monitor?.telefoon = telefoonTxt.text
-        monitor?.gsm = gsmTxt.text
+    func settenOptioneleGegevens() {
+        if statusTextFields["bus"] != "leeg" {
+            monitor!.bus = busTxt.text
+        }
+        
+        if statusTextFields["telefoon"] != "leeg" {
+            monitor!.telefoon = telefoonTxt.text
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "opslaan" {
             let profielDetailsViewController = segue.destinationViewController as ProfielDetailsTableViewController
-            ParseData.deleteMonitorTable()
-            ParseData.vulMonitorTableOp()
             
-            var monitorResponse = ParseData.getMonitorWithEmail(PFUser.currentUser().email)
-            if monitorResponse.1 == nil {
-                monitor = monitorResponse.0
-            }
-            
-            setStatusTextFields()
-            pasLayoutVeldenAan()
-            
-            if controleerRodeBordersAanwezig() == true {
-                foutBoxOproepen("Fout", "Gelieve de velden correct in te vullen!", self)
-            } else {
-                vulGegevensIn()
-                ParseData.updateMonitor(self.monitor!)
+            if self.gaVerder == true {
                 profielDetailsViewController.monitor = self.monitor
                 profielDetailsViewController.eigenProfiel = true
+            } else {
+                ParseData.deleteMonitorTable()
+                ParseData.vulMonitorTableOp()
+                
+                var monitorResponse = ParseData.getMonitorWithEmail(PFUser.currentUser().email)
+                if monitorResponse.1 == nil {
+                    monitor = monitorResponse.0
+                }
+                
+                setStatusTextFields()
+                pasLayoutVeldenAan()
+                
+                if controleerRodeBordersAanwezig() == true {
+                    foutBoxOproepen("Fout", "Gelieve de velden correct in te vullen!", self)
+                } else {
+                    settenVerplichteGegevens()
+                    settenOptioneleGegevens()
+                    ParseData.updateMonitor(self.monitor!)
+                    profielDetailsViewController.monitor = self.monitor
+                    profielDetailsViewController.eigenProfiel = true
+                }
             }
         }
     }

@@ -36,6 +36,7 @@ class Registratie2ViewController: /*ResponsiveTextFieldViewController*/ UITableV
             if controleerRodeBordersAanwezig() == true {
                 if gsmAlGeregistreerd == true {
                     foutBoxOproepen("Fout", "Deze GSM-nummer (\(self.txtGsm.text)) is al geregistreerd bij ons!", self)
+                    self.txtGsm.text = ""
                 } else {
                     foutBoxOproepen("Fout", "Gelieve de velden correct in te vullen!", self)
                 }
@@ -132,10 +133,10 @@ class Registratie2ViewController: /*ResponsiveTextFieldViewController*/ UITableV
             if !checkPatternGsm(txtGsm.text) {
                 statusTextFields["gsm"] = "ongeldig"
                 gsmAlGeregistreerd = false
-                txtGsm.text = ""
+                //txtGsm.text = ""
             } else if controleerGSMAlGeregisteerd() == true {
                 statusTextFields["gsm"] = "al geregistreerd"
-                txtGsm.text = ""
+                //txtGsm.text = ""
                 gsmAlGeregistreerd = true
             } else {
                 statusTextFields["gsm"] = "geldig"

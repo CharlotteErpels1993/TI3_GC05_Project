@@ -9,6 +9,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -20,7 +22,7 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
-
+//stap 3 van registreren
 public class SignUp_deel3 extends Activity{
 
 	private EditText voornaamText;
@@ -36,9 +38,7 @@ public class SignUp_deel3 extends Activity{
     private boolean cancel = false;
     private View focusView = null;
 
-	// flag for Internet connection status
     private Boolean isInternetPresent = false;
-    // Connection detector class
     private ConnectionDetector cd;
 	
 	@Override
@@ -48,10 +48,10 @@ public class SignUp_deel3 extends Activity{
 
         getActionBar().setTitle(getString(R.string.title_activity_Register));
 
-		// creating connection detector class instance
 		cd = new ConnectionDetector(getApplicationContext());
-		
-		voornaamText = (EditText) findViewById(R.id.VoornaamSignu);
+        final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.alpha);
+
+        voornaamText = (EditText) findViewById(R.id.VoornaamSignu);
 		naamText = (EditText) findViewById(R.id.NaamSignu);
 		straatText = (EditText) findViewById(R.id.StraatSignu);
         huisnrText = (EditText) findViewById(R.id.HuisnrSignu);
@@ -61,27 +61,26 @@ public class SignUp_deel3 extends Activity{
         gsmText = (EditText) findViewById(R.id.GsmSignu);
         busText = (EditText) findViewById(R.id.BusSignu);
 
-        Button volgendeButton = (Button) findViewById(R.id.btnNaarDeel4);
+        final Button volgendeButton = (Button) findViewById(R.id.btnNaarDeel4);
 		volgendeButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                // get Internet status
+
+                volgendeButton.startAnimation(animAlpha);
+                //Bij het klikken op de knop wordt gecontroleerd of er internet aanwezig is, zoja, controleer de ingevulde gegevens
                 isInternetPresent = cd.isConnectingToInternet();
-                // check for Internet status
+
                 if (isInternetPresent) {
-                    // Internet Connection is Present
-                    opslaanGeg();
+                    controleerGegevens();
                 }
                 else{
-                    // Internet connection is not present
-                    // Ask user to connect to Internet
                     Toast.makeText(getApplicationContext(), getString(R.string.error_no_internet), Toast.LENGTH_SHORT).show();
                 }
             }
         });
 	}
-
-	private void opslaanGeg(){
+    //De ingevulde gegevens worden gecontroleerd, als deze ingevuld zijn en correct sla de gegevens op
+	private void controleerGegevens(){
 		clearErrors();
         cancel = false;
 
@@ -96,8 +95,7 @@ public class SignUp_deel3 extends Activity{
         String telefoon = telefoonText.getText().toString();
         String gsm = gsmText.getText().toString();
 
-        //hieronder wordt gecontroleerd of alles ingevuld is & eventueel numeriek is.
-        //Omgekeerde volgorde, zodat de user naar het eerste verkeerde veld wordt gestuurd.
+        //hieronder wordt gecontroleerd of alles ingevuld is en in het juiste formaat
         if (TextUtils.isEmpty(gsm)) {
             gsmText.setError(getString(R.string.error_field_required));
             focusView = gsmText;
@@ -162,13 +160,12 @@ public class SignUp_deel3 extends Activity{
             cancel = true;
         }
 
-        //hieronder wordt er gekeken of het opgegeven GSM nummer uniek is, zo niet -> foutmelding
-        //Het gsm nummer moet uniek zijn, zowel voor monitoren als voor ouders
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("Ouder");
-        query.whereEqualTo("gsm", gsm);
+        //Haal de gegevens op en kijk of dit nummer uniek is het gsm nummer moet uniek zijn
+        ParseQuery<ParseObject> queryOuder = ParseQuery.getQuery("Ouder");
+        queryOuder.whereEqualTo("gsm", gsm);
         try{
-            List<ParseObject> lijstObjecten = query.find();
-            if (lijstObjecten.size() > 0){
+            List<ParseObject> ouders = queryOuder.find();
+            if (ouders.size() > 0){
                 gsmText.setError("Dit gsm-nummer is reeds in gebruik.");
                 focusView = gsmText;
                 cancel = true;
@@ -178,11 +175,11 @@ public class SignUp_deel3 extends Activity{
             Toast.makeText(SignUp_deel3.this,getString(R.string.error_generalException), Toast.LENGTH_SHORT).show();
             cancel = true;
         }
-        ParseQuery<ParseObject> query2 = ParseQuery.getQuery("Monitor");
-        query2.whereEqualTo("gsm", gsm);
+        ParseQuery<ParseObject> queryMonitoren = ParseQuery.getQuery("Monitor");
+        queryMonitoren.whereEqualTo("gsm", gsm);
         try{
-            List<ParseObject> lijstObjecten = query2.find();
-            if (lijstObjecten.size() > 0){
+            List<ParseObject> monitoren = queryMonitoren.find();
+            if (monitoren.size() > 0){
                 gsmText.setError("Dit gsm-nummer is reeds in gebruik.");
                 focusView = gsmText;
                 cancel = true;
@@ -194,19 +191,15 @@ public class SignUp_deel3 extends Activity{
         }
 
 		if (cancel) {
-			// There was an error; don't attempt login and focus the first
-			// form field with an error.
 			focusView.requestFocus();
 		} else {
-			// Show a progress spinner, and kick off a background task to
-			// perform the user login attempt.
             opslaan(voornaam ,naam, straat, huisnr, gemeente, postcode, telefoon, gsm, bus);
 
 		}
 
 	}
 
-    //alle gegevens waren correct -> gegevens doorgeven naar volgend scherm
+    //Geeft alle gegevens door naar de juiste pagina
     private void opslaan(String voornaam,String naam, String straat, String huisnr, String gemeente, String postcode, String telefoon, String gsm, String bus) {
         Toast.makeText(getApplicationContext(), getString(R.string.loading_message), Toast.LENGTH_SHORT).show();
 
@@ -214,17 +207,11 @@ public class SignUp_deel3 extends Activity{
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            String lidBM = extras.getString("lidVanBondMoyson");
             String rijksregnr = extras.getString("rijksregisternr");
             String BMnr = extras.getString("aansluitingsnr");
             String codeGerechtigde = extras.getString("codeGerechtigde");
             String aansluitingsNrOuder2 = extras.getString("aansluitingsnrOuder2");
-            String lidnrja = extras.getString("lidnrja");
-            if(lidnrja != null && lidnrja.equals("true"))
-            {
-                in.putExtra("lidnrja", lidnrja);
-            }
-            in.putExtra("lidVanBondMoyson", lidBM);
+
             in.putExtra("aansluitingsnr", BMnr);
             in.putExtra("codeGerechtigde", codeGerechtigde);
             in.putExtra("aansluitingsnrOuder2", aansluitingsNrOuder2);
@@ -247,6 +234,8 @@ public class SignUp_deel3 extends Activity{
 
     }
 
+
+    //error verbergen, wordt opgeroepen elke keer de gebruiker opnieuw verder probeert te gaan
 	private void clearErrors(){ 
 		voornaamText.setError(null);
 		naamText.setError(null);
@@ -259,15 +248,6 @@ public class SignUp_deel3 extends Activity{
         gsmText.setError(null);
 	}
 
-   /* private boolean isValidRijksregisternr(String rrn){
-        String eerste9cijfers, laatste2;
-        eerste9cijfers = rrn.substring(0, 9);
-        laatste2 = rrn.substring(9, 11);
-        int restNaDeling = Integer.parseInt(eerste9cijfers) % 97;
-        int controleGetal = 97 - restNaDeling;
-        return controleGetal == Integer.parseInt(laatste2);
-
-    }*/
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

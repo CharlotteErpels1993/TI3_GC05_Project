@@ -234,19 +234,24 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MaakMonitorAanController.cs" />
+    <Compile Include="Controllers\MonitorController.cs" />
     <Compile Include="Controllers\VakantieController.cs" />
+    <Compile Include="Controllers\VormingController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\DAL\MonitorRepository.cs" />
     <Compile Include="Models\DAL\VakantieRepository.cs" />
     <Compile Include="Models\DAL\VormingRepository.cs" />
     <Compile Include="Models\Domain\Activiteit.cs" />
     <Compile Include="Models\Domain\FileUploadModel.cs" />
+    <Compile Include="Models\Domain\IMonitorRepository.cs" />
     <Compile Include="Models\Domain\IVakantieRepository.cs" />
     <Compile Include="Models\Domain\IVormingRepository.cs" />
     <Compile Include="Models\Domain\MaakMonitorenAanModel.cs" />
+    <Compile Include="Models\Domain\Monitor.cs" />
     <Compile Include="Models\Domain\Vakantie.cs" />
     <Compile Include="Models\Domain\Vorming.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -313,6 +318,31 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Images\Joetz\Carousel\Act aug 1 %28900 x 604%29.jpg" />
+    <Content Include="Images\Joetz\Carousel\bos1 %28900 x 675%29.jpg" />
+    <Content Include="Images\Joetz\Carousel\bos2 %28900 x 675%29.jpg" />
+    <Content Include="Images\Joetz\Carousel\splash1 %28900 x 675%29.jpg" />
+    <Content Include="Images\Joetz\Vakanties\AA1.JPG" />
+    <Content Include="Images\Joetz\Vakanties\AA2.JPG" />
+    <Content Include="Images\Joetz\Vakanties\Act aug 1.jpg" />
+    <Content Include="Images\Joetz\Vakanties\Act aug 2.jpg" />
+    <Content Include="Images\Joetz\Logos\BondMoyson_WV_logo_hor_rgb.jpg" />
+    <Content Include="Images\Joetz\Logos\BondMoyson_WV_logo_ver_rgb.jpg" />
+    <Content Include="Images\Joetz\Vakanties\bos1.JPG" />
+    <Content Include="Images\Joetz\Vakanties\bos2.JPG" />
+    <Content Include="Images\Joetz\Vakanties\bos3.JPG" />
+    <Content Include="Images\Joetz\Vakanties\hv1.jpg" />
+    <Content Include="Images\Joetz\Vakanties\hv2.JPG" />
+    <Content Include="Images\Joetz\Vakanties\hv3.JPG" />
+    <Content Include="Images\Joetz\Vakanties\hv4.JPG" />
+    <Content Include="Images\Joetz\Logos\Joetz_partnervanBM.jpg" />
+    <Content Include="Images\Joetz\Vakanties\kb1.JPG" />
+    <Content Include="Images\Joetz\Vakanties\kb2.JPG" />
+    <Content Include="Images\Joetz\Vakanties\kook1.JPG" />
+    <Content Include="Images\Joetz\Vakanties\kook2.JPG" />
+    <Content Include="Images\Joetz\Vakanties\kook3.JPG" />
+    <Content Include="Images\Joetz\Vakanties\splash1.jpg" />
+    <Content Include="Images\Joetz\Vakanties\splash2.JPG" />
     <Content Include="Resources\ChevronDown.png" />
     <Content Include="Resources\ChevronUp.png" />
     <Content Include="Resources\closePanel.png" />
@@ -386,9 +416,13 @@
     <Content Include="Views\Vakantie\Index.cshtml" />
     <Content Include="Views\Vakantie\Create.cshtml" />
     <Content Include="Views\Vakantie\Delete.cshtml" />
+    <Content Include="Views\Vorming\Index.cshtml" />
+    <Content Include="Views\Vorming\Create.cshtml" />
+    <Content Include="Views\Vorming\Delete.cshtml" />
+    <Content Include="Views\Monitor\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="App_Data\uploads\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

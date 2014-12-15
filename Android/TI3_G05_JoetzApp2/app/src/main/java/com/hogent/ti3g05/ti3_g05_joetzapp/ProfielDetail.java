@@ -3,9 +3,12 @@ package com.hogent.ti3g05.ti3_g05_joetzapp;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.InflateException;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -13,7 +16,7 @@ import android.widget.Toast;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
 import com.parse.ParseUser;
 
-//UC: naam en voornaam van de monitor, emailadres, gsm nummer.
+//Geeft een detail van een aangeklikte monitor
 public class ProfielDetail extends Activity {
     String naam;
     String voornaam;
@@ -26,8 +29,34 @@ public class ProfielDetail extends Activity {
     @Override
     public void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.profiel_detail);
+        final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.alpha);
 
+        try
+        {
+        setContentView(R.layout.profiel_detail);
+        }catch (OutOfMemoryError e)
+        {
+            Intent intent1 = new Intent(this, navBarMainScreen.class);
+            intent1.putExtra("naarfrag", "profiel");
+            intent1.putExtra("herladen", "nee");
+            intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            Toast.makeText(getApplicationContext(),"Er is iets foutgelopen, onze excuses voor het ongemak.",Toast.LENGTH_SHORT);
+            startActivity(intent1);
+
+            overridePendingTransition(R.anim.left_in, R.anim.right_out);
+        }
+        catch (InflateException ex)
+        {
+
+            Intent intent1 = new Intent(this, navBarMainScreen.class);
+            intent1.putExtra("naarfrag", "profiel");
+            intent1.putExtra("herladen", "nee");
+            intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            Toast.makeText(getApplicationContext(),"Er is iets foutgelopen, onze excuses voor het ongemak.",Toast.LENGTH_SHORT);
+            startActivity(intent1);
+
+            overridePendingTransition(R.anim.left_in, R.anim.right_out);
+        }
 
         Intent i = getIntent();
         naam = i.getStringExtra("naam");
@@ -51,11 +80,15 @@ public class ProfielDetail extends Activity {
 
         if(ParseUser.getCurrentUser().getEmail().equals(email))
         {
-            Button btnProfielEdit = (Button) findViewById(R.id.btnProfielEdit);
+            //Indien de gebruiker zijn eigen profiel selecteert kan hij deze bewerken
+            final Button btnProfielEdit = (Button) findViewById(R.id.btnProfielEdit);
             btnProfielEdit.setVisibility(View.VISIBLE);
             btnProfielEdit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    btnProfielEdit.startAnimation(animAlpha);
+                    //Als op de knop geklikt wordt kijk of er internet is, zoja stuur de gebruiker door naar het bewerken van zijn profiel
+                    //Zoneen geef een gepaste boodschap
                     isInternetPresent = cd.isConnectingToInternet();
 
                     if (isInternetPresent) {
@@ -74,17 +107,18 @@ public class ProfielDetail extends Activity {
             });
         }
 
-
         txtNaam.setText(naam);
         txtVoornaam.setText(voornaam);
         txtEmail.setText(email);
         txtGsm.setText(gsm);
 
-        Button mail = (Button) findViewById(R.id.mail);
+        final Button mail = (Button) findViewById(R.id.mail);
 
         mail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mail.startAnimation(animAlpha);
+                //Bij het klikken op de knop wordt de mail applicatie geopend en kan de gebruiker een mail sturen naar het email adres
                 Intent i = new Intent(Intent.ACTION_SEND);
                 i.setType("text/plain");
                 i.putExtra(Intent.EXTRA_EMAIL, new String[]{ email });
@@ -123,7 +157,6 @@ public class ProfielDetail extends Activity {
     }*/
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.back_2, menu);
         return true;
     }
@@ -134,7 +167,6 @@ public class ProfielDetail extends Activity {
         if (id == R.id.backMenu2) {
             Intent intent1 = new Intent(this, navBarMainScreen.class);
             intent1.putExtra("naarfrag", "profiel");
-
             intent1.putExtra("herladen", "nee");
             intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent1);
@@ -143,6 +175,17 @@ public class ProfielDetail extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        Intent setIntent = new Intent(ProfielDetail.this, navBarMainScreen.class);
+        setIntent.putExtra("naarfrag","profiel");
+        setIntent.putExtra("herladen","nee");
+        setIntent.addCategory(Intent.CATEGORY_HOME);
+        setIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(setIntent);
     }
 
 }

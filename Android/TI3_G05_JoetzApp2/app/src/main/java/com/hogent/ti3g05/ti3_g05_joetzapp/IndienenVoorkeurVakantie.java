@@ -9,6 +9,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -17,6 +19,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vakantie;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -28,14 +31,14 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
+//Geeft de monitor de gelegenheid om een voorkeur in te dienen
 public class IndienenVoorkeurVakantie extends Activity implements AdapterView.OnItemSelectedListener {
 
     private ArrayList<String> vakantienamen = null;
     private List<Vakantie> vakanties = null;
-    private String[] array;
-    private ProgressDialog mProgressDialog;
+    private String[] vakantieArray;
     private List<ParseObject> lijstMetParseObjecten;
-    private Vakantie map;
+    private Vakantie vakantie;
     private TextView periodeVakantie;
 
     private View focusView = null;
@@ -43,6 +46,8 @@ public class IndienenVoorkeurVakantie extends Activity implements AdapterView.On
     private boolean cancel = false;
 
     private Spinner spinner;
+    private Boolean isInternetPresent = false;
+    private ConnectionDetector cd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,33 +57,43 @@ public class IndienenVoorkeurVakantie extends Activity implements AdapterView.On
 
         spinner = (Spinner) findViewById( R.id.spinnerVakanties );
         spinner.setOnItemSelectedListener(this);
-        Button btnVolgende = (Button) findViewById(R.id.BevestigVoorkeur);
+        final Button btnVolgende = (Button) findViewById(R.id.BevestigVoorkeur);
 
+        final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.alpha);
+
+        cd = new ConnectionDetector(this);
         getActionBar().setTitle("Kies uw vakantie");
         btnVolgende.setOnClickListener(new View.OnClickListener() {
+            //Bij het klikken op de knop kijk of er internet aanwezig is, zoja dien de voorkeur in, zoneen geef de gepaste melding
             @Override
             public void onClick(View view) {
-                indienenVoorkeur();
-            }
-        });
-        //periodesVoorkeur.setBackgroundResource(R.drawable.drawable);
-       /* periodesVoorkeur.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (!hasFocus) {
-                    hideKeyboard(v);
+                btnVolgende.startAnimation(animAlpha);
+                if(isInternetPresent)
+                {
+                    indienenVoorkeur();
+                }
+                else
+                {
+                    Toast.makeText(getApplicationContext(), getString(R.string.error_no_internet), Toast.LENGTH_SHORT).show();
+
                 }
             }
-        });*/
-        new RemoteDataTask().execute();
+        });
+        isInternetPresent = cd.isConnectingToInternet();
+        if(isInternetPresent)
+        {
+
+            new RemoteDataTask().execute();
+        }
+        else
+        {
+            Toast.makeText(getApplicationContext(), getString(R.string.error_no_internet), Toast.LENGTH_SHORT).show();
+
+        }
 
     }
 
-    public void hideKeyboard(View view) {
-        InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
-        inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
-    }
-
+   //Plaatst de juiste periode van de vakantie in de textview
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         periodeVakantie.setText(vakanties.get(i).getPeriode());
@@ -90,7 +105,7 @@ public class IndienenVoorkeurVakantie extends Activity implements AdapterView.On
     }
 
 
-    // RemoteDataTask AsyncTask
+    // Asynchrone taak om vakanties op te halen
     private class RemoteDataTask extends AsyncTask<Void, Void, Void> {
         @Override
         protected void onPreExecute() {
@@ -99,47 +114,45 @@ public class IndienenVoorkeurVakantie extends Activity implements AdapterView.On
 
         @Override
         protected Void doInBackground(Void... params) {
-            // Create the array
             vakanties = new ArrayList<Vakantie>();
             vakantienamen = new ArrayList<String>();
 
             try {
-                // Locate the class table named "vakantie" in Parse.com
                 ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(
                         "Vakantie");
 
                 query.orderByAscending("vertrekdatum");
                 lijstMetParseObjecten = query.find();
-                for (ParseObject vakantie : lijstMetParseObjecten) {
+                for (ParseObject v : lijstMetParseObjecten) {
 
-                    map = new Vakantie();
+                    vakantie = new Vakantie();
 
                     //String prijs = vakantie.get("basisPrijs").toString();
-                    map.setNaamVakantie((String) vakantie.get("titel"));
+                    vakantie.setNaamVakantie((String) v.get("titel"));
 
-                    map.setLocatie((String) vakantie.get("locatie"));
-                    map.setKorteBeschrijving((String) vakantie.get("korteBeschrijving"));
-                    map.setDoelGroep((String) vakantie.get("doelgroep"));
-                    map.setBasisprijs((Number) vakantie.get("basisPrijs"));
-                    map.setMaxAantalDeelnemers((Number) vakantie.get("maxAantalDeelnemers"));
-                    map.setPeriode((String) vakantie.get("aantalDagenNachten"));
-                    map.setFormule((String) vakantie.get("formule"));
-                    map.setVervoerswijze((String) vakantie.get("vervoerwijze"));
-                    map.setVertrekDatum((Date) vakantie.get("vertrekdatum"));
-                    map.setTerugkeerDatum((Date) vakantie.get("terugkeerdatum"));
-                    map.setInbegrepenInPrijs((String) vakantie.get("inbegrepenPrijs"));
+                    vakantie.setLocatie((String) v.get("locatie"));
+                    vakantie.setKorteBeschrijving((String) v.get("korteBeschrijving"));
+                    vakantie.setDoelGroep((String) v.get("doelgroep"));
+                    vakantie.setBasisprijs((Number) v.get("basisPrijs"));
+                    vakantie.setMaxAantalDeelnemers((Number) v.get("maxAantalDeelnemers"));
+                    vakantie.setPeriode((String) v.get("aantalDagenNachten"));
+                    vakantie.setFormule((String) v.get("formule"));
+                    vakantie.setVervoerswijze((String) v.get("vervoerwijze"));
+                    vakantie.setVertrekDatum((Date) v.get("vertrekdatum"));
+                    vakantie.setTerugkeerDatum((Date) v.get("terugkeerdatum"));
+                    vakantie.setInbegrepenInPrijs((String) v.get("inbegrepenPrijs"));
 
-                    map.setVakantieID(vakantie.getObjectId());
-                    if (vakantie.get("bondMoysonLedenPrijs") != null)
-                        map.setBondMoysonLedenPrijs((Number) vakantie.get("bondMoysonLedenPrijs"));
-                    if (vakantie.get("sterPrijs1ouder") != null)
-                        map.setSterPrijs1Ouder((Number) vakantie.get("sterPrijs1ouder"));
-                    if (vakantie.get("sterPrijs2ouders") != null)
-                        map.setSterPrijs2Ouder((Number) vakantie.get("sterPrijs2ouders"));
+                    vakantie.setVakantieID(v.getObjectId());
+                    if (v.get("bondMoysonLedenPrijs") != null)
+                        vakantie.setBondMoysonLedenPrijs((Number) v.get("bondMoysonLedenPrijs"));
+                    if (v.get("sterPrijs1ouder") != null)
+                        vakantie.setSterPrijs1Ouder((Number) v.get("sterPrijs1ouder"));
+                    if (v.get("sterPrijs2ouders") != null)
+                        vakantie.setSterPrijs2Ouder((Number) v.get("sterPrijs2ouders"));
 
 
-                    vakanties.add(map);
-                    vakantienamen.add(map.getNaamVakantie());
+                    vakanties.add(vakantie);
+                    vakantienamen.add(vakantie.getNaamVakantie());
 
                 }
 
@@ -153,17 +166,16 @@ public class IndienenVoorkeurVakantie extends Activity implements AdapterView.On
 
         @Override
         protected void onPostExecute(Void result) {
+            //Toon de vakanties in de spinner
 
-            // Binds the Adapter to the ListView
-
-            array = new String[vakantienamen.size()];
+            vakantieArray = new String[vakantienamen.size()];
             int vakantienamenLengte = vakantienamen.size();
             for(int i = 0 ;i < vakantienamenLengte; i++)
             {
-                array[i] = vakantienamen.get(i);
+                vakantieArray[i] = vakantienamen.get(i);
             }
 
-            ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(IndienenVoorkeurVakantie.this, android.R.layout.simple_spinner_item,array);
+            ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(IndienenVoorkeurVakantie.this, android.R.layout.simple_spinner_item,vakantieArray);
             spinnerArrayAdapter.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item );
             periodeVakantie.setText(vakanties.get(0).getPeriode());
 
@@ -196,61 +208,34 @@ public class IndienenVoorkeurVakantie extends Activity implements AdapterView.On
         return super.onOptionsItemSelected(item);
     }
 
+    //Haal de geselecteerde waarde uit de spinner en sla deze op
     public void indienenVoorkeur(){
-
-
         String periodes;
-
         periodes = periodeVakantie.getText().toString();
-
-        Iterator<Vakantie> vakantieIt = vakanties.iterator();
         Vakantie vakantie = new Vakantie();
-
-         for(Vakantie vak : vakanties)//while(vakantieIt.hasNext())
+         for(Vakantie vak : vakanties)
          {
 
-             //Toast.makeText(IndienenVoorkeurVakantie.this, spinner.getSelectedItem().toString(), Toast.LENGTH_LONG).show();
              if(spinner.getSelectedItem().toString().equals(vak.getNaamVakantie()))
              {
                  vakantie=vak;
              }
          }
-        controlerenOpfouten(vakantie, periodes);
-
-    }
-
-    public void controlerenOpfouten(Vakantie v,String periodes){
-        //clearErrors();
-        cancel = false;
         Intent in = new Intent(getApplicationContext(),navBarMainScreen.class);
 
-        // Store values at the time of the login attempt.
+        if (opslaanVoorkeur(vakantie ,periodes)){
 
-
-
-        if (cancel) {
-            // There was an error; don't attempt login and focus the first
-            // form field with an error.
-            focusView.requestFocus();
-        } else {
-            // Show a progress spinner, and kick off a background task to
-            // perform the user login attempt.
-            Toast.makeText(getApplicationContext(), getString(R.string.doorgeven_message), Toast.LENGTH_SHORT).show();
-
-            if (opslaanVoorkeur(v ,periodes)){
-
-                startActivity(in);
-                overridePendingTransition(R.anim.right_in, R.anim.left_out);
-                Toast.makeText(IndienenVoorkeurVakantie.this, "Uw voorkeur is succesvol doorgegeven", Toast.LENGTH_SHORT).show();
-            }else{
-                Toast.makeText(getApplicationContext(), "Er is een fout opgetreden. Onze excuses voor het ongemak.", Toast.LENGTH_SHORT).show();
-            }
-            //Toast.makeText(getApplicationContext(), "Opgeslagen", Toast.LENGTH_SHORT).show();
-
+            startActivity(in);
+            overridePendingTransition(R.anim.right_in, R.anim.left_out);
+            Toast.makeText(IndienenVoorkeurVakantie.this, "Uw voorkeur is succesvol doorgegeven", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(getApplicationContext(), "Er is een fout opgetreden. Onze excuses voor het ongemak.", Toast.LENGTH_SHORT).show();
         }
     }
 
 
+    //Sla de voorkeur op met de bijhorende monitorId
+    //Controleer ook of deze gebruiker nog geen voorkeur heeft doorgegeven voor deze vakantie
     public boolean opslaanVoorkeur(Vakantie vakantie, String periodes)
     {
         String monitorId = null;
@@ -294,7 +279,6 @@ public class IndienenVoorkeurVakantie extends Activity implements AdapterView.On
         try{
             ParseObject voorkeurVakantie = new ParseObject("Voorkeur");
             voorkeurVakantie.put("monitor", monitorId);
-            //voorkeurVakantie.put("periodes" , periodes);
             voorkeurVakantie.put("vakantie" , vakantie.getVakantieID());
 
             voorkeurVakantie.saveInBackground();
@@ -306,6 +290,16 @@ public class IndienenVoorkeurVakantie extends Activity implements AdapterView.On
             return false;
         }
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent setIntent = new Intent(IndienenVoorkeurVakantie.this, navBarMainScreen.class);
+        setIntent.putExtra("naarfrag","vakantie");
+        setIntent.putExtra("herladen","nee");
+        setIntent.addCategory(Intent.CATEGORY_HOME);
+        setIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(setIntent);
     }
 
 }

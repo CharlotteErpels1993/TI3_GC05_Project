@@ -25,6 +25,7 @@ import com.hogent.ti3g05.ti3_g05_joetzapp.Services.FileCache;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.MemoryCache;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.Utils;
 
+//Om de afbeeldingen weer te geven
 public class ImageLoader {
 
     MemoryCache memoryCache = new MemoryCache();
@@ -41,6 +42,7 @@ public class ImageLoader {
     }
 
 
+    //Dit geeft de images weer door de url en geeft deze weer in de imageview
     public void DisplayImage(String url, ImageView imageView) {
         imageViews.put(imageView, url);
         Bitmap bitmap = memoryCache.get(url);
@@ -51,11 +53,13 @@ public class ImageLoader {
         }
     }
 
+    //Plaatst de foto even in een wachtrij
     private void queuePhoto(String url, ImageView imageView) {
         PhotoToLoad p = new PhotoToLoad(url, imageView);
         executorService.submit(new PhotosLoader(p));
     }
 
+    //Url omzetten en afbeelding weergeven
     private Bitmap getBitmap(String url) {
         File f = fileCache.getFile(url);
 
@@ -87,7 +91,7 @@ public class ImageLoader {
         }
     }
 
-    // Decodes image and scales it to reduce memory consumption
+    // Decodes de afbeelding en schaalt het om geheugen verbruik te verkleinen
     private Bitmap decodeFile(File f) {
         try {
             // Decode image size
@@ -124,7 +128,7 @@ public class ImageLoader {
         return null;
     }
 
-    // Task for the queue
+    // Taak voor in de wachtrij
     private class PhotoToLoad {
         public String url;
         public ImageView imageView;

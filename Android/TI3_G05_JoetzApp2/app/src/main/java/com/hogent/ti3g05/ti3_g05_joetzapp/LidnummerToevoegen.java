@@ -153,7 +153,7 @@ public class LidnummerToevoegen extends Activity {
             }
             else{
                 //RRN is correct formaat, kijken of het ook geldig is
-                boolean geldigRRN = Gebruiker.isDitEenGeldigRRN(rijksregisternummer);
+                boolean geldigRRN = Gebruiker.isDitEenGeldigRijksregisternummer(rijksregisternummer);
                 if (!geldigRRN){
                     et_rijksregisternr.setError(getString(R.string.error_incorrect_rijksregisternummer));
                     focusView = et_rijksregisternr;

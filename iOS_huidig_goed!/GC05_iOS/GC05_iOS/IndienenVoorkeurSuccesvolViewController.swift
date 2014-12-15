@@ -8,7 +8,7 @@ class IndienenVoorkeurSuccesvolViewController: UIViewController {
     
     @IBAction func gaTerugNaarOverzicht(sender: AnyObject) {
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        var destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Profiel") as UIViewController
+        var destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vormingen") as UIViewController
         sideMenuController()?.setContentViewController(destViewController)
         hideSideMenuView()
     }

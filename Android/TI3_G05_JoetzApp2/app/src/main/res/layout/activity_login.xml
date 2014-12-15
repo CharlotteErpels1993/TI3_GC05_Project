@@ -6,19 +6,38 @@
     android:finishOnTaskLaunch="true"
     >
 
-    <EditText
-        android:id="@+id/username"
-        android:hint="@string/emailHint"
+    <TextView
+        android:id="@+id/usernameLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/emailHint"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        />
+
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:layout_marginTop="8dp"
         android:maxLines="1"
         android:singleLine="true" />
+
+    <TextView
+        android:id="@+id/passwordLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/passwordHint"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        />
 
     <EditText
         android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/passwordHint"
+        android:layout_marginTop="8dp"
         android:imeActionId="@+id/login"
         android:imeOptions="actionUnspecified"
         android:inputType="textPassword"
@@ -32,7 +51,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="10dp"
         android:text="@string/signIn" />
 
     <Button
@@ -42,7 +61,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="10dp"
         android:text="@string/createAccount" />
 
     <Button
@@ -51,7 +70,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/Rood"
         android:background="@drawable/button_shape"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="10dp"
         android:text="@string/forgetPass" />
 
 

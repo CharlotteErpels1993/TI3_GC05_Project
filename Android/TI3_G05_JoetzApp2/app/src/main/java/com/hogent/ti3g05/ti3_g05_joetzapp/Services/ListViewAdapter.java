@@ -13,21 +13,23 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Filterable;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.ImageLoader;
 import com.hogent.ti3g05.ti3_g05_joetzapp.R;
-import com.hogent.ti3g05.ti3_g05_joetzapp.activiteit_detail;
+import com.hogent.ti3g05.ti3_g05_joetzapp.Vakantie_detail;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vakantie;
 
+//Deze klasse zal de vakantie gegevens op de juiste plaats zetten en de juiste gegevens weergeven en doorgeven
 public class ListViewAdapter extends ArrayAdapter<Vakantie> implements Filterable {
 
     private Context context;
     private LayoutInflater inflater;
     private ImageLoader imageLoader;
     private List<Vakantie> vakanties = null;
-    private ArrayList<Vakantie> arraylist;
+    private ArrayList<Vakantie> vakantieArrayList;
 
     public ListViewAdapter(Context context,
                            List<Vakantie> vakanties) {
@@ -39,8 +41,8 @@ public class ListViewAdapter extends ArrayAdapter<Vakantie> implements Filterabl
         }
         this.vakanties = vakanties;
         inflater = LayoutInflater.from(context);
-        this.arraylist = new ArrayList<Vakantie>();
-        this.arraylist.addAll(vakanties);
+        this.vakantieArrayList = new ArrayList<Vakantie>();
+        this.vakantieArrayList.addAll(vakanties);
         imageLoader = new ImageLoader(context);
     }
 
@@ -50,28 +52,27 @@ public class ListViewAdapter extends ArrayAdapter<Vakantie> implements Filterabl
     public class ViewHolder {
         TextView et_naamVakantie;
         TextView et_locatie;
-        //TextView et_vertrekdatum;
-        //TextView et_terugdatum;
-        //TextView et_prijs;
         ImageView et_vakantiefto;
         TextView et_doelgroep;
+        RatingBar gemiddeldeScore;
     }
 
+
+    //Geeft het aantal vakanties terug
     @Override
     public int getCount() {
         return vakanties.size();
     }
 
-   /* @Override
-    public Object getItem(int position) {
-        return vakanties.get(position);
-    }*/
 
+    //Geeft het juiste item terug op basis van de positie
     @Override
     public long getItemId(int position) {
         return position;
     }
 
+    //Maakt een holder aan voor de view, zodat er minder overhead komt en de view niet steeds herladen moet worden, Hier wordt alles ingevuld op de juiste plaats
+    //De juiste gegevens worden opgehaald door de positie, de view wordt ingevuld
     public View getView(final int position, View view, ViewGroup parent) {
         final ViewHolder holder;
         if (view == null) {
@@ -84,6 +85,7 @@ public class ListViewAdapter extends ArrayAdapter<Vakantie> implements Filterabl
             holder.et_vakantiefto = (ImageView) view.findViewById(R.id.afbeelding);
             //holder.et_prijs = (TextView) view.findViewById(R.id.prijs);
             holder.et_doelgroep = (TextView) view.findViewById(R.id.doelgroep);
+            holder.gemiddeldeScore = (RatingBar) view.findViewById(R.id.gemiddeldeRating);
             view.setTag(holder);
         } else {
             holder = (ViewHolder) view.getTag();
@@ -92,7 +94,7 @@ public class ListViewAdapter extends ArrayAdapter<Vakantie> implements Filterabl
         holder.et_locatie.setText(vakanties.get(position).getLocatie());
 
         holder.et_doelgroep.setText(vakanties.get(position).getMinDoelgroep() + " - " + vakanties.get(position).getMaxDoelgroep() + " jaar");
-
+        holder.gemiddeldeScore.setRating(vakanties.get(position).getGemiddeldeRating());
 
         imageLoader.DisplayImage(vakanties.get(position).getFoto1(),  holder.et_vakantiefto);
 
@@ -100,7 +102,9 @@ public class ListViewAdapter extends ArrayAdapter<Vakantie> implements Filterabl
 
             @Override
             public void onClick(View arg0) {
-                Intent intent = new Intent(context, activiteit_detail.class);
+
+                //Geeft de nodige gegevens mee bij het klikken op een item in de lijst, dit verwijst door naar de detail pagina
+                Intent intent = new Intent(context, Vakantie_detail.class);
                 intent.putExtra("naam", (vakanties.get(position).getNaamVakantie()));
                 intent.putExtra("locatie", (vakanties.get(position).getLocatie()));
                 if(vakanties.get(position).getVertrekDatum() == null || vakanties.get(position).getTerugkeerDatum() == null)
@@ -127,7 +131,7 @@ public class ListViewAdapter extends ArrayAdapter<Vakantie> implements Filterabl
                 intent.putExtra("SterPrijs1Ouder", (vakanties.get(position).getSterPrijs1Ouder()).toString());
                 intent.putExtra("SterPrijs2Ouders", (vakanties.get(position).getSterPrijs2Ouder()).toString());
                 intent.putExtra("link", (vakanties.get(position).getLink()));
-
+                intent.putExtra("gemiddeldeScore",String.valueOf(vakanties.get(position).getGemiddeldeRating()));
                 String keyVoorIntent;
                 ArrayList<String> lijstFotos = vakanties.get(position).getFotos();
                 int lijstFotosLengte = lijstFotos.size()-1;
@@ -144,16 +148,16 @@ public class ListViewAdapter extends ArrayAdapter<Vakantie> implements Filterabl
     }
 
 
-
+    //Filtert de lijst van vakanties door gebruik te maken van de meegegeven zoekcharacters
     public void filter(String charText) {
         charText = charText.toLowerCase(Locale.getDefault());
         vakanties.clear();
         if (charText.length() == 0) {
-            vakanties.addAll(arraylist);
+            vakanties.addAll(vakantieArrayList);
         }
         else
         {
-            for (Vakantie wp : arraylist)
+            for (Vakantie wp : vakantieArrayList)
             {
                 if (wp.getLocatie().toLowerCase(Locale.getDefault()).contains(charText) || wp.getNaamVakantie().toLowerCase(Locale.getDefault()).contains(charText))
                 {

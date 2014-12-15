@@ -25,7 +25,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-public class Vormingen_Overzicht_Fragment extends Fragment /*implements SwipeRefreshLayout.OnRefreshListener*/ {
+//Geeft een overzicht van de vormingen weer
+public class Vormingen_Overzicht_Fragment extends Fragment  {
 
     private ListView listview;
     private ProgressDialog mProgressDialog;
@@ -33,10 +34,7 @@ public class Vormingen_Overzicht_Fragment extends Fragment /*implements SwipeRef
     private myDb myDB;
     private List<Vorming> vormingen = null;
     private EditText et_filtertext;
-    // SwipeRefreshLayout swipeLayout;
-    // flag for Internet connection status
     private Boolean isInternetPresent = false;
-    // Connection detector class
     private ConnectionDetector cd;
     private View rootView;
 
@@ -50,21 +48,18 @@ public class Vormingen_Overzicht_Fragment extends Fragment /*implements SwipeRef
 
         listview = (ListView) rootView.findViewById(R.id.listViewv);
         et_filtertext = (EditText) rootView.findViewById(R.id.filtertextv);
-        //swipeLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_container);
-        //onCreateSwipeToRefresh(swipeLayout);
 
         cd = new ConnectionDetector(rootView.getContext());
         myDB = new myDb(rootView.getContext());
         myDB.open();
         isInternetPresent = cd.isConnectingToInternet();
-
+        //indien er internet aanwezig is haal vormingen op, anders haal de vormingen uit de locale database
         if(getActivity().getIntent().getStringExtra("herladen")!= null && getActivity().getIntent().getStringExtra("herladen").toLowerCase().equals("nee"))
         {
             getVormingen();
         }
 
         if (isInternetPresent) {
-            //Toast.makeText(getActivity(), "internet", Toast.LENGTH_SHORT).show();
             new RemoteDataTask().execute();
         }
         else {
@@ -74,12 +69,11 @@ public class Vormingen_Overzicht_Fragment extends Fragment /*implements SwipeRef
         return rootView;
     }
 
+    //Haal de ormingen uit de locale database
     public void getVormingen()
     {
-        //Toast.makeText(getActivity(), "geen internet", Toast.LENGTH_SHORT).show();
         vormingen = myDB.getVormingen();
         adapter = new VormingAdapter(rootView.getContext(), vormingen);
-        // Binds the Adapter to the ListView
         listview.setAdapter(adapter);
 
         et_filtertext.addTextChangedListener(new TextWatcher() {
@@ -98,16 +92,15 @@ public class Vormingen_Overzicht_Fragment extends Fragment /*implements SwipeRef
     }
 
 
-    // 'Laden' schermpje tonen
+    //Asynchrone taak om de vormingen op te halen
     private class RemoteDataTask extends AsyncTask<Void, Void, Void> {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            // Create a progressdialog
             mProgressDialog = new ProgressDialog(getActivity());
-            // Set progressdialog title
+
             mProgressDialog.setTitle("Ophalen van vormingen.");
-            // Set progressdialog message
+
             mProgressDialog.setMessage("Aan het laden...");
             try{
                 mProgressDialog.setIndeterminate(true);
@@ -119,22 +112,18 @@ public class Vormingen_Overzicht_Fragment extends Fragment /*implements SwipeRef
                 mProgressDialog.setIndeterminate(false);
             }
 
-            // Show progressdialog
+            //Toon dialoog
             mProgressDialog.show();
         }
 
-        //lijst van Vormingen ophalen in de achtergrond en tonen via de custom adapter. Kan eventueel onderbroken worden
+        //Ophalen van vormingen en opslaan in locale database. Doorgeven aan de adapter om weer te geven.
         @Override
         protected Void doInBackground(Void... params) {
-            // Create the array
             vormingen = new ArrayList<Vorming>();
 
                 try {
-                    // Locate the class table named "vakantie" in Parse.com
                     ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(
                             "Vorming");
-                    // Locate the column named "vertrekdatum" in Parse.com and order list
-                    // by ascending
                     query.orderByAscending("prijs");
                     List<ParseObject> lijstVormingen = query.find();
 
@@ -172,21 +161,12 @@ public class Vormingen_Overzicht_Fragment extends Fragment /*implements SwipeRef
 
         @Override
         protected void onPostExecute(Void result) {
-            // Locate the listview in listview_main.xml
-            //listview = (ListView) findViewById(R.id.listView);
-            // Pass the results into ListViewAdapter.java
-            //adapter = new ListViewAdapter(activiteit_overzicht.this, vakanties);
-            //ArrayAdapter<Profile> profileAdapter = new ArrayAdapter<Profile>(context, resource, profiles)
-            //ArrayAdapter<Vakantie> vakantieAdapter = new ArrayAdapter<Vakantie>(activiteit_overzicht.this, R.layout.listview_item , vakanties);
 
             adapter = new VormingAdapter(rootView.getContext(), vormingen);
-            // Binds the Adapter to the ListView
             listview.setAdapter(adapter);
-            // Close the progressdialog
             mProgressDialog.dismiss();
 
-            //swipeLayout.setRefreshing(false);
-
+            //Filter de vormingen
             et_filtertext.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {                }

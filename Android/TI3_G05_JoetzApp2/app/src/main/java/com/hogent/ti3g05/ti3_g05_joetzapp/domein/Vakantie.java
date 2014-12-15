@@ -18,11 +18,21 @@ public class Vakantie extends Activiteit{
     private String vakantieID;
     private String vertrekDatumString, terugDatumString;
     private ArrayList< String> fotos = new ArrayList<String>();
+    private int gemiddeldeRating;
 
     public Vakantie(){
         super();
 
     }
+
+    public int getGemiddeldeRating() {
+        return gemiddeldeRating;
+    }
+
+    public void setGemiddeldeRating(int gemiddeldeRating) {
+        this.gemiddeldeRating = gemiddeldeRating;
+    }
+
 
     public void setMaxDoelgroep(int maxDoelgroep){this.maxDoelgroep = maxDoelgroep;}
     public Number getMaxDoelgroep(){return maxDoelgroep;}

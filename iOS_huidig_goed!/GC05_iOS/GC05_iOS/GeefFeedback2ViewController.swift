@@ -1,33 +1,46 @@
 import UIKit
 
-class GeefFeedback2ViewController: UITableViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+class GeefFeedback2ViewController: UITableViewController/*, UIPickerViewDataSource, UIPickerViewDelegate*/ {
     
-    @IBOutlet var scorePickerView: UIPickerView!
+   // @IBOutlet var scorePickerView: UIPickerView!
     @IBOutlet var txtFeedback: UITextView!
+    @IBOutlet weak var ster1: UIButton!
+    @IBOutlet weak var ster2: UIButton!
+    @IBOutlet weak var ster3: UIButton!
+    @IBOutlet weak var ster4: UIButton!
+    @IBOutlet weak var ster5: UIButton!
     
-    var scores: [Int] = [1, 2, 3, 4, 5]
-    var score: Int?
+    //var scores: [Int] = [1, 2, 3, 4, 5]
+    var score: Int = 0
     var feedback: Feedback!
     var vakantie: Vakantie!
     var titel: String?
+    var legeSter: UIImage = UIImage(named: "star2")!
+    var volleSter: UIImage = UIImage(named: "star")!
+    var statusTextFields: [String: String] = [:]
+    var redColor: UIColor = UIColor.redColor()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         hideSideMenuView()
+        self.setNeedsStatusBarAppearanceUpdate()
+        self.navigationController!.toolbarHidden = true
         
         self.navigationItem.title = self.titel
         
-        var grayColor: UIColor = UIColor.grayColor()
+        giveUITextViewDefaultBorder(txtFeedback)
+        
+        /*var grayColor: UIColor = UIColor.grayColor()
         txtFeedback.layer.borderColor = grayColor.CGColor
         txtFeedback.layer.borderWidth = 1.0
-        txtFeedback.layer.cornerRadius = 5.0
+        txtFeedback.layer.cornerRadius = 5.0*/
         
-        scorePickerView.delegate = self
-        scorePickerView.dataSource = self
-        scorePickerView.reloadAllComponents()
+        //scorePickerView.delegate = self
+        //scorePickerView.dataSource = self
+        //scorePickerView.reloadAllComponents()
     }
     
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    /*func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
     }
     
@@ -41,7 +54,56 @@ class GeefFeedback2ViewController: UITableViewController, UIPickerViewDataSource
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
             self.score = scores[row]
+    }*/
+    
+    @IBAction func klikopSter1(sender: AnyObject) {
+        ster1.setImage(volleSter, forState: UIControlState.Normal)
+        ster2.setImage(legeSter, forState: UIControlState.Normal)
+        ster3.setImage(legeSter, forState: UIControlState.Normal)
+        ster4.setImage(legeSter, forState: UIControlState.Normal)
+        ster5.setImage(legeSter, forState: UIControlState.Normal)
+        self.score = 1
     }
+    
+    @IBAction func klikopSter2(sender: AnyObject) {
+        ster1.setImage(volleSter, forState: UIControlState.Normal)
+        ster2.setImage(volleSter, forState: UIControlState.Normal)
+        ster3.setImage(legeSter, forState: UIControlState.Normal)
+        ster4.setImage(legeSter, forState: UIControlState.Normal)
+        ster5.setImage(legeSter, forState: UIControlState.Normal)
+        self.score = 2
+    }
+    
+    @IBAction func klikopSter3(sender: AnyObject) {
+        ster1.setImage(volleSter, forState: UIControlState.Normal)
+        ster2.setImage(volleSter, forState: UIControlState.Normal)
+        ster3.setImage(volleSter, forState: UIControlState.Normal)
+        ster4.setImage(legeSter, forState: UIControlState.Normal)
+        ster5.setImage(legeSter, forState: UIControlState.Normal)
+        self.score = 3
+    }
+    
+    
+    @IBAction func klikopSter4(sender: AnyObject) {
+        ster1.setImage(volleSter, forState: UIControlState.Normal)
+        ster2.setImage(volleSter, forState: UIControlState.Normal)
+        ster3.setImage(volleSter, forState: UIControlState.Normal)
+        ster4.setImage(volleSter, forState: UIControlState.Normal)
+        ster5.setImage(legeSter, forState: UIControlState.Normal)
+        self.score = 4
+    }
+    
+    @IBAction func klikopSter5(sender: AnyObject) {
+        ster1.setImage(volleSter, forState: UIControlState.Normal)
+        ster2.setImage(volleSter, forState: UIControlState.Normal)
+        ster3.setImage(volleSter, forState: UIControlState.Normal)
+        ster4.setImage(volleSter, forState: UIControlState.Normal)
+        ster5.setImage(volleSter, forState: UIControlState.Normal)
+        self.score = 5
+    }
+    
+    
+    
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 2
@@ -56,16 +118,26 @@ class GeefFeedback2ViewController: UITableViewController, UIPickerViewDataSource
         var gebruiker = getGebruiker(PFUser.currentUser().email)
         feedback = Feedback(id: "test")
         
-        feedback.datum = NSDate()
-        feedback.gebruiker = gebruiker
-        feedback.vakantie = self.vakantie
-        if self.score == nil {
-            self.score = scores[0]
+        setStatusTextFields()
+        pasLayoutVeldenAan()
+        
+        if self.score == 0 {
+            foutBoxOproepen("Fout", "Gelieve een geldige score te geven! (1 t.e.m. 5)", self)
+            self.viewDidLoad()
+        } else {
+            if controleerRodeBordersAanwezig() == true {
+                foutBoxOproepen("Fout", "Gelieve het veld feedback in te vullen!", self)
+                self.viewDidLoad()
+            } else {
+                feedback.datum = NSDate()
+                feedback.gebruiker = gebruiker
+                feedback.vakantie = self.vakantie
+                feedback.score = self.score
+                feedback.waardering = self.txtFeedback.text
+                feedback.goedgekeurd = false
+                geefFeedbackSuccesvolViewController.feedback = self.feedback
+            }
         }
-        feedback.score = self.score
-        feedback.waardering = self.txtFeedback.text
-        feedback.goedgekeurd = false
-        geefFeedbackSuccesvolViewController.feedback = self.feedback
     }
     
     func getGebruiker(email: String) -> Gebruiker {
@@ -90,4 +162,29 @@ class GeefFeedback2ViewController: UITableViewController, UIPickerViewDataSource
         }
         return gebruiker
     }
+    
+    func setStatusTextFields() {
+        if txtFeedback.text.isEmpty {
+            statusTextFields["feedback"] = "leeg"
+        } else {
+            statusTextFields["feedback"] = "ingevuld"
+        }
+    }
+    
+    func pasLayoutVeldenAan() {
+        if statusTextFields["feedback"] == "leeg" {
+            giveUITextViewRedBorder(txtFeedback)
+        } else {
+            giveUITextViewDefaultBorder(txtFeedback)
+        }
+    }
+    
+    func controleerRodeBordersAanwezig() -> Bool {
+        if CGColorEqualToColor(txtFeedback.layer.borderColor, redColor.CGColor) {
+            return true
+        } else {
+            return false
+        }
+    }
+    
 }

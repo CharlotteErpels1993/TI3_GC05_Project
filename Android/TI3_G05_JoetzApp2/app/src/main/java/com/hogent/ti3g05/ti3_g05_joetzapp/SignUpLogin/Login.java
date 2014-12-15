@@ -8,6 +8,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -19,6 +21,7 @@ import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 
+//Deze klasse zal de gebruiker inloggen
 public class Login extends Activity{
     private Button btn_LoginIn = null;
     private Button btn_SignUp = null;
@@ -62,19 +65,17 @@ public class Login extends Activity{
         mPasswordEditText = (EditText) findViewById(R.id.password);
 
 
+        final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.alpha);
         btn_LoginIn.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                // get Internet status
+                btn_LoginIn.startAnimation(animAlpha);
+                //Controleer of er internet is, zoja ga door naar de controle van de inloggegevens
                 isInternetPresent = cd.isConnectingToInternet();
-                // check for Internet status
                 if (isInternetPresent) {
-                    // Internet Connection is Present
                     attemptLogin();
                 } else {
-                    // Internet connection is not present
-                    // Ask user to connect to Internet
                     Toast.makeText(getApplicationContext(), getString(R.string.error_no_internet), Toast.LENGTH_SHORT).show();
                 }
 
@@ -85,6 +86,8 @@ public class Login extends Activity{
 
             @Override
             public void onClick(View v) {
+                btn_SignUp.startAnimation(animAlpha);
+                //Bij het klikken op deze knop wordt de gebruiker doorgestuurd naar de activiteit registreren
                 Intent in = new Intent(Login.this, SignUp_deel1.class);
                 startActivity(in);
             }
@@ -94,6 +97,8 @@ public class Login extends Activity{
 
             @Override
             public void onClick(View v) {
+                btn_ForgetPass.startAnimation(animAlpha);
+                //Bij het klikken op deze knop wordt de gebruiker doorgestuurd naar de activiteit wachtwoordvergeten
                 Intent in = new Intent(Login.this, ForgetParsePassword.class);
                 startActivity(in);
 
@@ -102,7 +107,7 @@ public class Login extends Activity{
         });
 	}
 
-
+    //Controleert de logingegevens
 	public void attemptLogin() {
 		clearErrors();
 
@@ -114,14 +119,14 @@ public class Login extends Activity{
 		View focusView = null;
 
 
-		// Check for a valid password.
+		// Kijk of het wachtwoord klopt
 		if (TextUtils.isEmpty(password)) {
 			mPasswordEditText.setError(getString(R.string.error_field_required));
 			focusView = mPasswordEditText;
 			cancel = true;
 		}
 
-		// Check for a valid email address.
+		// Kijk of het email adres geldig is
         if (TextUtils.isEmpty(username)) {
             mUserNameEditText.setError(getString(R.string.error_field_required));
             focusView = mUserNameEditText;
@@ -140,16 +145,15 @@ public class Login extends Activity{
         }*/
 
 		if (cancel) {
-			// There was an error; don't attempt login and focus the first
-			// form field with an error.
+
 			focusView.requestFocus();
 		} else {
-			// perform the user login attempt.
+			// Log de gebruiker in
 			login(username.toLowerCase(), password);
 		}
 	}
 
-    //waarden zijn niet leeg -> Parse probeert in te loggen
+    //Als de logingegevens juist zijn wordt de gebruiker ingelogged
 	private void login(String lowerCase, String password) {
         ParseUser.logInInBackground(lowerCase, password, new LogInCallback() {
             @Override
@@ -164,6 +168,7 @@ public class Login extends Activity{
         });
 	}
 
+    //Toont een gepaste melding en stuurt de gebruiker door naar de juiste pagina
 	protected void loginSuccessful(ParseUser user) {
         Toast.makeText(getApplicationContext(), getString(R.string.updatingReport), Toast.LENGTH_SHORT).show();
         Intent in =  new Intent(Login.this,navBarMainScreen.class);
@@ -177,10 +182,13 @@ public class Login extends Activity{
         overridePendingTransition(R.anim.left_in, R.anim.right_out);
 	}
 
+    //Geeft een gepaste melding indien de gebruiker niet ingelogd kon worden
 	protected void loginUnSuccessful() {
 		Toast.makeText(getApplicationContext(), getString(R.string.error_incorrectLogin), Toast.LENGTH_SHORT).show();
 	}
 
+
+    //error verbergen, wordt opgeroepen elke keer de gebruiker opnieuw verder probeert te gaan
 	private void clearErrors(){
 		mUserNameEditText.setError(null);
 		mPasswordEditText.setError(null);

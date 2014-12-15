@@ -4,15 +4,12 @@ import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
@@ -28,21 +25,22 @@ import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+//Haalt de favoriete vakanties van de gebruiker op engeeft deze weer
 public class FavorieteVakanties extends Fragment{
-
-    // opgeslagen id's ophalen en daarmee vakanties ophalen en weergeven zoals bij vakantie overzicht,
-    // bij geen vakanties zet in tabel => geen favorieten gevonden, wil je vakanties bekijken? ja => naar overzicht vakanties
 
     private ListView listview;
 
     private List<FavorieteVakantie> favorieten = null;
 
     private myDb myDB;
-    private Vakantie map;
+    private Vakantie vakantie;
     private ProgressDialog mProgressDialog;
     private View rootView;
     private ListViewAdapter adapter;
@@ -51,7 +49,6 @@ public class FavorieteVakanties extends Fragment{
     private EditText filtertext;
 
     private boolean isInternetPresent = false;
-    // Connection detector class
     private ConnectionDetector cd;
 
 
@@ -73,6 +70,8 @@ public class FavorieteVakanties extends Fragment{
             myDB = new myDb(rootView.getContext());
             myDB.open();
 
+            //controleert ofer internet is, zoja, haal de gegevens op uit de database in parse, online
+            //Zoneen, haal de gegevens op uit de locale database
             isInternetPresent = cd.isConnectingToInternet();
             if (isInternetPresent) {
                 new RemoteDataTask().execute();
@@ -80,7 +79,6 @@ public class FavorieteVakanties extends Fragment{
             else {
                 vakanties = myDB.getFavorieten();
                 adapter = new ListViewAdapter(rootView.getContext(), vakanties);
-                // Binds the Adapter to the ListView
                 listview.setAdapter(adapter);
 
                 filtertext.addTextChangedListener(new TextWatcher() {
@@ -101,43 +99,17 @@ public class FavorieteVakanties extends Fragment{
 
             return rootView;
         }
-   /* private void onCreateSwipeToRefresh(SwipeRefreshLayout refreshLayout) {
-
-        //refreshLayout.setOnRefreshListener(this);
-
-        refreshLayout.setColorScheme(
-                android.R.color.holo_blue_light,
-                android.R.color.holo_orange_light,
-                android.R.color.holo_green_light,
-                android.R.color.holo_red_light);
-
-    }*/
-
-        public void onRefresh() {
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
 
 
-                    new RemoteDataTask().execute();
-
-                }
-            }, 1000);
-        }
-
-
-        // RemoteDataTask AsyncTask
+        // Asnynchrone taak om favorieten op te halen
         private class RemoteDataTask extends AsyncTask<Void, Void, Void> {
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
-                // Create a progressdialog
                 mProgressDialog = new ProgressDialog(getActivity());
 
-                // Set progressdialog title
                 mProgressDialog.setTitle("Ophalen van vakanties.");
 
-                // Set progressdialog message
                 mProgressDialog.setMessage("Aan het laden...");
                 try{
                     mProgressDialog.setIndeterminate(true);
@@ -147,21 +119,23 @@ public class FavorieteVakanties extends Fragment{
                 {
                     mProgressDialog.setIndeterminate(false);
                 }
-
-                //Show progressdialog
-
-
+                //Toon dialoog
                 mProgressDialog.show();
 
             }
 
+            //Haal de gegevens op en stop deze in de locale database Doorgeven aan de adapter om weer te geven.
             @Override
             protected Void doInBackground(Void... params) {
-                // Create the array
                 vakanties = new ArrayList<Vakantie>();
                 vakantiesAllemaal = new ArrayList<Vakantie>();
-                String ingelogdeOuder = "";
+                String ingelogdeGebruiker = "";
+                //Haal de favoriete vakanties op van de ingelogde gebruiker
                 try {
+
+                    if(ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("ouder"))
+                    {
+
 
                     ParseQuery<ParseObject> queryOuder = new ParseQuery<ParseObject>(
                             "Ouder");
@@ -171,10 +145,23 @@ public class FavorieteVakanties extends Fragment{
                     for (ParseObject ouder : obOuder) {
 
                         if (ouder.get("email").equals(ParseUser.getCurrentUser().getEmail())) {
-                            ingelogdeOuder = ouder.getObjectId();
+                            ingelogdeGebruiker = ouder.getObjectId();
                         }
+                    }
+                    }
+                    else if(ParseUser.getCurrentUser().get("soort").toString().toLowerCase().equals("monitor")) {
+                        ParseQuery<ParseObject> queryMonitor = new ParseQuery<ParseObject>(
+                                "Monitor");
 
+                        List<ParseObject> obMonitor = queryMonitor.find();
 
+                        for (ParseObject monitor : obMonitor) {
+
+                            if (monitor.get("email").equals(ParseUser.getCurrentUser().getEmail())) {
+                                ingelogdeGebruiker = monitor.getObjectId();
+                            }
+
+                        }
                     }
 
                     //favorieten ophalen
@@ -191,7 +178,7 @@ public class FavorieteVakanties extends Fragment{
                         fav = new FavorieteVakantie();
 
                         fav.setVakantieID((String)favoriet.get("vakantie"));
-                        fav.setOuderID((String) favoriet.get("ouder"));
+                        fav.setOuderID((String) favoriet.get("gebruiker"));
 
                         favorieten.add(fav);
                     }
@@ -206,115 +193,81 @@ public class FavorieteVakanties extends Fragment{
 
                     ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(
                             "Vakantie");
-                    query.orderByAscending("vertrekdatum");
+                    query.orderByAscending("titel");
                     List<ParseObject> qryLijstVakanties = query.find();
-                    for (ParseObject vakantie : qryLijstVakanties) {
-                        map = new Vakantie();
+                    for (ParseObject v : qryLijstVakanties) {
+                        vakantie = new Vakantie();
 
-
-                        //String prijs = vakantie.get("basisPrijs").toString();
-                        map.setNaamVakantie((String) vakantie.get("titel"));
-                        map.setVakantieID(vakantie.getObjectId());
-                        map.setLocatie((String) vakantie.get("locatie"));
-                        map.setKorteBeschrijving((String) vakantie.get("korteBeschrijving"));
-                        map.setDoelGroep((String) vakantie.get("doelgroep"));
-                        map.setBasisprijs((Number) vakantie.get("basisPrijs"));
-                        map.setMaxAantalDeelnemers((Number) vakantie.get("maxAantalDeelnemers"));
-                        map.setPeriode((String) vakantie.get("aantalDagenNachten"));
-                        map.setFormule((String) vakantie.get("formule"));
-                        map.setVervoerswijze((String) vakantie.get("vervoerwijze"));
-                        map.setVertrekDatum((Date) vakantie.get("vertrekdatum"));
-                        map.setTerugkeerDatum((Date) vakantie.get("terugkeerdatum"));
-                        map.setInbegrepenInPrijs((String) vakantie.get("inbegrepenPrijs"));
-                        if (vakantie.get("bondMoysonLedenPrijs") != null)
-                            map.setBondMoysonLedenPrijs((Number) vakantie.get("bondMoysonLedenPrijs"));
-                        if (vakantie.get("sterPrijs1ouder") != null)
-                            map.setSterPrijs1Ouder((Number) vakantie.get("sterPrijs1ouder"));
-                        if (vakantie.get("sterPrijs2ouders") != null)
-                            map.setSterPrijs2Ouder((Number) vakantie.get("sterPrijs2ouders"));
+                        vakantie.setNaamVakantie((String) v.get("titel"));
+                        vakantie.setVakantieID(v.getObjectId());
+                        vakantie.setLocatie((String) v.get("locatie"));
+                        vakantie.setKorteBeschrijving((String) v.get("korteBeschrijving"));
+                        vakantie.setDoelGroep((String) v.get("doelgroep"));
+                        vakantie.setBasisprijs((Number) v.get("basisPrijs"));
+                        vakantie.setMaxAantalDeelnemers((Number) v.get("maxAantalDeelnemers"));
+                        vakantie.setPeriode((String) v.get("aantalDagenNachten"));
+                        vakantie.setFormule((String) v.get("formule"));
+                        vakantie.setVervoerswijze((String) v.get("vervoerwijze"));
+                        vakantie.setVertrekDatum((Date) v.get("vertrekdatum"));
+                        vakantie.setTerugkeerDatum((Date) v.get("terugkeerdatum"));
+                        vakantie.setInbegrepenInPrijs((String) v.get("inbegrepenPrijs"));
+                        if (v.get("bondMoysonLedenPrijs") != null)
+                            vakantie.setBondMoysonLedenPrijs((Number) v.get("bondMoysonLedenPrijs"));
+                        if (v.get("sterPrijs1ouder") != null)
+                            vakantie.setSterPrijs1Ouder((Number) v.get("sterPrijs1ouder"));
+                        if (v.get("sterPrijs2ouders") != null)
+                            vakantie.setSterPrijs2Ouder((Number) v.get("sterPrijs2ouders"));
                         //TODO gegevens contactpersoon vakantie
-                        map.setMaxDoelgroep((Integer)vakantie.get("maxLeeftijd"));
-                        map.setMinDoelgroep((Integer)vakantie.get("minLeeftijd"));
+                        vakantie.setMaxDoelgroep((Integer)v.get("maxLeeftijd"));
+                        vakantie.setMinDoelgroep((Integer)v.get("minLeeftijd"));
 
                         ArrayList< String> afbeeldingenLijst = new ArrayList<String>();
                         for (ParseObject afbeelding : lijstAfbeeldingen) {
                             String vakantieID = (String) afbeelding.get("vakantie");
-                            if (vakantieID.equals(vakantie.getObjectId())){
-                                //de huidige afbeelding hoort bij de huidige vakantie
+                            if (vakantieID.equals(v.getObjectId())){
                                 ParseFile image = (ParseFile)afbeelding.get("afbeelding");
                                 afbeeldingenLijst.add(image.getUrl());
                             }
                         }
-                        map.setFotos(afbeeldingenLijst);
+                        vakantie.setFotos(afbeeldingenLijst);
 
-                        vakantiesAllemaal.add(map);
+                        vakantiesAllemaal.add(vakantie);
 
                     }
+
 
                     for(FavorieteVakantie favorieteVakantie : favorieten)
                     {
                         for(Vakantie vakantie: vakantiesAllemaal)
                         {
-                            if(favorieteVakantie.getVakantieID().equals(vakantie.getVakantieID()) && favorieteVakantie.getOuderID().equals(ingelogdeOuder))
+                            if(favorieteVakantie.getVakantieID().equals(vakantie.getVakantieID()) && favorieteVakantie.getOuderID().equals(ingelogdeGebruiker))
                             {
+                                //Voeg de goedgekeurde vakanties toe aan de locale database en aan de favorietenlijst
                                 vakanties.add(vakantie);
                                 myDB.insertFavoriet(vakantie);
                             }
                         }
                     }
 
-
-
-
                 } catch (ParseException e) {
 
                     Log.e("Error", e.getMessage());
                     e.printStackTrace();
-                }/* catch (java.text.ParseException e) {
-                e.printStackTrace();
-            }*/
+                }
 
                 return null;
+
             }
 
             @Override
             protected void onPostExecute(Void result) {
-                // Locate the listview in listview_main.xml
-                // Pass the results into ListViewAdapter.java
-                //adapter = new ListViewAdapter(activiteit_overzicht.this, vakanties);
-                //ArrayAdapter<Profile> profileAdapter = new ArrayAdapter<Profile>(context, resource, profiles)
-                //ArrayAdapter<Vakantie> vakantieAdapter = new ArrayAdapter<Vakantie>(activiteit_overzicht.this, R.layout.listview_item , vakanties);
-
-
+                //Geef de favorieten mee aan de adapter om deze juist weer te geven
                 adapter = new ListViewAdapter(rootView.getContext(), vakanties);
-                // Binds the Adapter to the ListView
+                // de adapter aan de listview binden
                 listview.setAdapter(adapter);
-                // Close the progressdialog
+                // Dialoog sluiten
                 mProgressDialog.dismiss();
-                //swipeLayout.setRefreshing(false);
-/*
-                SwipeDismissListViewTouchListener touchListener =
-                        new SwipeDismissListViewTouchListener(
-                                listview,
-                                new SwipeDismissListViewTouchListener.DismissCallbacks() {
-                                    @Override
-                                    public boolean canDismiss(int position) {
-                                        return true;
-                                    }
-
-                                    @Override
-                                    public void onDismiss(ListView listView, int[] reverseSortedPositions) {
-                                        for (int position : reverseSortedPositions) {
-                                            adapter.remove(adapter.getItem(position));
-                                        }
-                                        adapter.notifyDataSetChanged();
-                                    }
-                                });
-                listview.setOnTouchListener(touchListener);
-
-
-                listview.setOnScrollListener(touchListener.makeScrollListener());
-*/
+               //filter de favorieten
                 filtertext.addTextChangedListener(new TextWatcher() {
                     @Override
                     public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {                }

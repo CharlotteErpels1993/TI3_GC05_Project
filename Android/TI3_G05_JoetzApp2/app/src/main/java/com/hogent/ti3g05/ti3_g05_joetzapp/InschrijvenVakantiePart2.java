@@ -7,6 +7,8 @@ import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
@@ -15,6 +17,7 @@ import android.widget.Toast;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
 
 
+//Stap 2 van het inschrijven
 public class InschrijvenVakantiePart2 extends Activity {
     private EditText txtVoornaam, txtNaam, txtTelefoon, txtGSM;
     private EditText txtVoornaamExtra, txtNaamExtra, txtTelefoonExtra, txtGSMExtra;
@@ -28,10 +31,9 @@ public class InschrijvenVakantiePart2 extends Activity {
     private View focusView = null;
     private boolean extraCPZichtbaar = false;
 
-    // flag for Internet connection status
     private Boolean isInternetPresent = false;
-    // Connection detector class
     private ConnectionDetector cd;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +41,9 @@ public class InschrijvenVakantiePart2 extends Activity {
         cd = new ConnectionDetector(getApplicationContext());
 
         getActionBar().setTitle("Inschrijven vakantie");
+
+        final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.alpha);
+
         txtVoornaam = (EditText) findViewById(R.id.VoornaamContactPersoonIns);
         txtNaam = (EditText) findViewById(R.id.NaamContactPersoon);
         txtTelefoon = (EditText) findViewById(R.id.TelefoonContactPersoon);
@@ -52,14 +57,14 @@ public class InschrijvenVakantiePart2 extends Activity {
         btnVolgende.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                btnVolgende.startAnimation(animAlpha);
+                //Controleer of er internet aanwezig is, zoja controleer de ingegeven waarden, zoneen toon de gepaste melding
                 isInternetPresent = cd.isConnectingToInternet();
 
                 if (isInternetPresent) {
                     controlerenOpfouten();
                 }
                 else{
-                    // Internet connection is not present
-                    // Ask user to connect to Internet
                     Toast.makeText(getApplicationContext(), getString(R.string.error_no_internet), Toast.LENGTH_SHORT).show();
                 }
             }
@@ -70,14 +75,16 @@ public class InschrijvenVakantiePart2 extends Activity {
         btnCPextra.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
+                btnCPextra.startAnimation(animAlpha);
+                //Geeft de mogelijkheid om een 2de contactpersoon in geval van nood toe te voegen
 
-                extraCPZichtbaar = !extraCPZichtbaar; //indien true -> false en omgekeerd
-                if (extraCPZichtbaar){ //velden zijn zichtbaar
+                extraCPZichtbaar = !extraCPZichtbaar;
+                if (extraCPZichtbaar){
                     layoutvoorExtraCP.setVisibility(View.VISIBLE);
 
                     btnCPextra.setText(getString(R.string.btnCPVerwijderen));
                 }
-                else{//velden zijn onzichtbaar
+                else{
                     layoutvoorExtraCP.setVisibility(View.GONE);
                     btnCPextra.setText(getString(R.string.btnCPtoevoegen));
                 }
@@ -87,31 +94,11 @@ public class InschrijvenVakantiePart2 extends Activity {
     }
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.back_2, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.backMenu2) {
-            Intent intent1 = new Intent(this, navBarMainScreen.class);
-            startActivity(intent1);
-
-            overridePendingTransition(R.anim.left_in, R.anim.right_out);
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
+    //controleer de ingegeven waarden en indien geen fout sla deze op
     public void controlerenOpfouten(){
         clearErrors();
         cancel = false;
 
-        // Store values at the time of the login attempt.
         voornaam = txtVoornaam.getText().toString().toLowerCase();
         naam = txtNaam.getText().toString().toLowerCase();
         telefoon = txtTelefoon.getText().toString();
@@ -159,18 +146,14 @@ public class InschrijvenVakantiePart2 extends Activity {
         }
 
         if (cancel) {
-            // There was an error; don't attempt login and focus the first
-            // form field with an error.
             focusView.requestFocus();
         } else {
-            // Show a progress spinner, and kick off a background task to
-            // perform the user login attempt.
             opslaan();
-            //Toast.makeText(getApplicationContext(), "Opgeslagen", Toast.LENGTH_SHORT).show();
 
         }
     }
 
+    //Sla de gegevens op en stuur deze door naar de volgende stap
     private void opslaan() {
         Toast.makeText(getApplicationContext(), getString(R.string.loading_message), Toast.LENGTH_SHORT).show();
         Intent in = new Intent(getApplicationContext(),InschrijvenVakantiePart3.class);
@@ -214,6 +197,7 @@ public class InschrijvenVakantiePart2 extends Activity {
         overridePendingTransition(R.anim.right_in, R.anim.left_out);
     }
 
+    //Indien de extracontactpersoon is aangeklikt controleer of deze correct zijn
     public void checkOfExtraVeldenZijnIngevuld(){
         if (TextUtils.isEmpty(gsmExtra)) {
             txtGSMExtra.setError(getString(R.string.error_field_required));
@@ -246,6 +230,7 @@ public class InschrijvenVakantiePart2 extends Activity {
         }
     }
 
+    //verwijder de error's
     private void clearErrors(){
         txtVoornaam.setError(null);
         txtNaam.setError(null);
@@ -259,5 +244,23 @@ public class InschrijvenVakantiePart2 extends Activity {
         }
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.back_2, menu);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.backMenu2) {
+            Intent intent1 = new Intent(this, navBarMainScreen.class);
+            startActivity(intent1);
+
+            overridePendingTransition(R.anim.left_in, R.anim.right_out);
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 }

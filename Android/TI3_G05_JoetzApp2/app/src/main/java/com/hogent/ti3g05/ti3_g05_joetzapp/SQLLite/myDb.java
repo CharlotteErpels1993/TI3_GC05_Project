@@ -17,10 +17,7 @@ import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vorming;
 import java.util.List;
 
 import static com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.Constants.TABLE_VAKANTIE;
-
-/**
- * Created by Gebruiker on 17/11/2014.
- */
+//Laag tussen databasehandler en de klassen die de locale database gebruiken
 public class myDb {
 
     protected DBHandler db;
@@ -60,9 +57,9 @@ public class myDb {
 
     public void creerFavorieten(){db.onCreateFavorieten(db.getWritableDatabase());}
 
-    public void drop()
+    public void dropVakanties()
     {
-       db.drop(db.getWritableDatabase());
+       db.dropVakanties(db.getWritableDatabase());
 
     }
 

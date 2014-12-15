@@ -19,18 +19,13 @@ import com.hogent.ti3g05.ti3_g05_joetzapp.R;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Monitor;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vorming;
 
+//Deze klasse zal de profielen in de lijst goed weergeven en de juiste gegevens doorgeven naar profieldetail
 public class ProfielAdapter extends ArrayAdapter<Vorming> implements Filterable {
 
     private Context context;
     private LayoutInflater inflater;
-    //private ImageLoader imageLoader;
     private List<Monitor> profielen = null;
-    private ArrayList<Monitor> arraylist;
-
-
-    public ProfielAdapter(Context context, int resource) {
-        super(context, resource);
-    }
+    private ArrayList<Monitor> profielenArrayList;
 
     public ProfielAdapter(Context context,
                           List<Monitor> profielen) {
@@ -38,35 +33,31 @@ public class ProfielAdapter extends ArrayAdapter<Vorming> implements Filterable 
         this.context = context;
         this.profielen = profielen;
         inflater = LayoutInflater.from(context);
-        this.arraylist = new ArrayList<Monitor>();
-        this.arraylist.addAll(profielen);
-        //imageLoader = new ImageLoader(context);
+        this.profielenArrayList = new ArrayList<Monitor>();
+        this.profielenArrayList.addAll(profielen);
     }
-
-
-
 
     public class ViewHolder {
         TextView tv_naam;
         TextView tv_voornaam;
-        //TextView straat;
         TextView tv_gemeente;
         TextView tv_header;
-        //TextView lidNr;
-        //TextView gsm;
-        //TextView rijksregNr;
     }
 
+    //geeft het aantal monitoren terug
     @Override
     public int getCount() {
         return profielen.size();
     }
 
+    //Geeft de juiste gegevens terug op basis van de meegegeven positie
     @Override
     public long getItemId(int position) {
         return position;
     }
 
+    //Maakt een holder aan voor de view, zodat er minder overhead komt en de view niet steeds herladen moet worden, Hier wordt alles ingevuld op de juiste plaats
+    //De juiste gegevens worden opgehaald door de positie, de view wordt ingevuld
     public View getView(final int position, View view, ViewGroup parent) {
         final ViewHolder holder;
         if (view == null) {
@@ -76,15 +67,12 @@ public class ProfielAdapter extends ArrayAdapter<Vorming> implements Filterable 
             holder.tv_naam = (TextView) view.findViewById(R.id.achternaam);
             holder.tv_voornaam = (TextView) view.findViewById(R.id.voornaam);
             holder.tv_header= (TextView) view.findViewById(R.id.header);
-            //holder.straat = (TextView) view.findViewById(R.id.straat);
             holder.tv_gemeente = (TextView) view.findViewById(R.id.gemeente);
-            //holder.lidNr = (TextView) view.findViewById(R.id.lidNr);
 
             view.setTag(holder);
         } else {
             holder = (ViewHolder) view.getTag();
         }
-        //TODO geeft error bij getview bij sqlite
         if (profielen.get(position).getEmail() == null){
             holder.tv_header.setVisibility(View.VISIBLE);
             holder.tv_naam.setVisibility(View.GONE);
@@ -106,6 +94,7 @@ public class ProfielAdapter extends ArrayAdapter<Vorming> implements Filterable 
 
                 @Override
                 public void onClick(View arg0) {
+                    //Geeft de juiste gegevens mee naar het detail van het profiel
                     Intent intent = new Intent(context, ProfielDetail.class);
                     intent.putExtra("naam",
                             (profielen.get(position).getNaam()));
@@ -124,16 +113,16 @@ public class ProfielAdapter extends ArrayAdapter<Vorming> implements Filterable 
     }
 
 
-
+    //Filtert de lijst van profielen door gebruik te maken van de meegegeven zoekcharacters
     public void filter(String charText) {
         charText = charText.toLowerCase(Locale.getDefault());
         profielen.clear();
         if (charText.length() == 0) {
-            profielen.addAll(arraylist);
+            profielen.addAll(profielenArrayList);
         }
         else
         {
-            for (Monitor wp : arraylist)
+            for (Monitor wp : profielenArrayList)
             {
                 if (wp.getNaam().toLowerCase(Locale.getDefault()).contains(charText) || wp.getVoornaam().toLowerCase(Locale.getDefault()).contains(charText))
                 {

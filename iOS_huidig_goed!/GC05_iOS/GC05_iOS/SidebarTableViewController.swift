@@ -2,10 +2,10 @@ import UIKit
 
 class SidebarTableViewController: UITableViewController {
     var selectedMenuItem : Int = 0
-    var arrayKind: [String] = ["Vakanties","Inloggen", "Registreren", "Feedback"]
-    var arrayOuder: [String] = ["Uitloggen", "Vakanties", "Favorieten", "Feedback"]
-    var arrayMonitor: [String] = ["Uitloggen", "Vakanties",  "Vormingen", "Voorkeur vakantie", "Profielen"]
-    var arrayJoetz: [String] = ["Uitloggen", "Vakanties", "Vormingen", "Profielen", "Nieuwe monitor"]
+    var arrayKind: [String] = ["Vakanties","Inloggen", "Registreren", "Fun factor", "Wat is JOETZ?"]
+    var arrayOuder: [String] = ["Uitloggen", "Vakanties", "Favorieten", "Fun factor", "Wat is JOETZ?"]
+    var arrayMonitor: [String] = ["Uitloggen", "Vakanties", "Favoriete vakanties", "Fun Factor",  "Vormingen", "Voorkeur vakantie", "Profielen", "Wat is JOETZ?"]
+    var arrayJoetz: [String] = ["Uitloggen", "Vakanties", "Vormingen", "Profielen", "Nieuwe monitor", "Wat is JOETZ?"]
     var array: [String]?
     
     
@@ -13,7 +13,7 @@ class SidebarTableViewController: UITableViewController {
         super.viewDidLoad()
         
         // Customize apperance of table view
-        tableView.contentInset = UIEdgeInsetsMake(64.0, 0, 0, 0) //
+        tableView.contentInset = UIEdgeInsetsMake(70, 0, 0, 0) //
         tableView.separatorStyle = .None
         tableView.backgroundColor = UIColor.clearColor()
         tableView.scrollsToTop = false
@@ -35,17 +35,17 @@ class SidebarTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if PFUser.currentUser() == nil {
-            return 4
+            return 5
             
         } else {
             var gebruikerPF = PFUser.currentUser()
             var soort: String = gebruikerPF["soort"] as String
             if soort == "ouder" {
-                return 4
+                return 5
             } else if soort == "monitor"{
-                return 5
+                return 8
             } else if soort == "administrator" {
-                return 5
+                return 6
             }
         }
         return 0
@@ -59,7 +59,7 @@ class SidebarTableViewController: UITableViewController {
             cell!.backgroundColor = UIColor.clearColor()
             cell!.textLabel?.textColor = UIColor.darkGrayColor()
             let selectedBackgroundView = UIView(frame: CGRectMake(0, 0, cell!.frame.size.width, cell!.frame.size.height))
-            selectedBackgroundView.backgroundColor = UIColor.grayColor().colorWithAlphaComponent(0.2)
+            selectedBackgroundView.backgroundColor = UIColor.clearColor().colorWithAlphaComponent(0.2)
             cell!.selectedBackgroundView = selectedBackgroundView
         }
         
@@ -82,9 +82,9 @@ class SidebarTableViewController: UITableViewController {
         return cell!
     }
     
-    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    /*override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 50.0
-    }
+    }*/
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.row == selectedMenuItem {
@@ -110,6 +110,9 @@ class SidebarTableViewController: UITableViewController {
             case 3:
                 destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Feedback") as UIViewController
                 break
+            case 4:
+                destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("About") as UIViewController
+                break
             default:
                 destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
                 
@@ -124,7 +127,7 @@ class SidebarTableViewController: UITableViewController {
                 switch indexPath.row {
                 case 0:
                     hideSideMenuView()
-                    destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Profiel") as UIViewController
+                    destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vormingen") as UIViewController
                     let alertController = UIAlertController(title: "Uitloggen", message: "Wilt u zeker uitloggen?", preferredStyle: .ActionSheet)
                     
                     let callAction = UIAlertAction(title: "Uitloggen", style: UIAlertActionStyle.Destructive, handler: {
@@ -150,13 +153,24 @@ class SidebarTableViewController: UITableViewController {
                     destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
                     break
                 case 2:
-                    destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vormingen") as UIViewController
+                    var destViewController2: VakantiesTableViewController = /*destViewController = */mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as VakantiesTableViewController
+                    destViewController2.favoriet = true
+                    destViewController = destViewController2
                     break
                 case 3:
-                    destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Voorkeur") as UIViewController
+                    destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Feedback") as UIViewController
                     break
                 case 4:
+                    destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vormingen") as UIViewController
+                    break
+                case 5:
+                    destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Voorkeur") as UIViewController
+                    break
+                case 6:
                     destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Profielen") as UIViewController
+                    break
+                case 7:
+                    destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("About") as UIViewController
                     break
                 default:
                     destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vormingen") as UIViewController
@@ -199,6 +213,9 @@ class SidebarTableViewController: UITableViewController {
                 case 3:
                     destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Feedback") as UIViewController
                     break
+                case 4:
+                    destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("About") as UIViewController
+                    break
                 default:
                     destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
                     break
@@ -239,6 +256,9 @@ class SidebarTableViewController: UITableViewController {
                     break
                 case 4:
                     destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("NieuweMonitor") as UIViewController
+                    break
+                case 5:
+                    destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("About") as UIViewController
                     break
                 default:
                     destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController

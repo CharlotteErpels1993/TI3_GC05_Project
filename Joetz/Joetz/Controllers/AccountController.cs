@@ -25,9 +25,9 @@ namespace Joetz.Controllers
         // GET: /Account/Login
 
         [AllowAnonymous]
-        public ActionResult Login(string returnUrl)
+        public ActionResult Login(/*string returnUrl*/)
         {
-            ViewBag.ReturnUrl = returnUrl;
+            //ViewBag.ReturnUrl = returnUrl;
             return View();
         }
 
@@ -54,21 +54,21 @@ namespace Joetz.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginModel model, string returnUrl)
+        public async Task<ActionResult> Login(LoginModel model/*, string returnUrl*/)
         {
             try
             {
                 if(model.Email.Equals("joetz-west@joetz.be"))
                 {
-
-                ParseUser user = await ParseUser.LogInAsync(model.Email, model.Wachtwoord);
-                // Login was successful.
-                //return RedirectToLocal(returnUrl);
-                return RedirectToAction("Index", "MaakMonitorAan");
+                    ParseUser user = await ParseUser.LogInAsync(model.Email, model.Wachtwoord);
+                    // Login was successful.
+                    //return RedirectToLocal(returnUrl);
+                    return RedirectToAction("Index", "Home");
                 }
-                else{
+                else
+                {
                     ModelState.AddModelError("", "U heeft niet de juiste bevoegdheid om dit te doen");
-                return View(model);
+                    return View(model);
                 }
             }
             catch (Exception e)

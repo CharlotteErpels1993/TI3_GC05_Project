@@ -11,24 +11,20 @@ import android.widget.TextView;
 import java.util.Calendar;
 import java.util.Date;
 
-public /*static*/ class CustomDatePicker extends DialogFragment
+//Geeft een dialoog weer om een datum te kiezen
+public class CustomDatePicker extends DialogFragment
         implements DatePickerDialog.OnDateSetListener {
 
     private int mYear;
     private int mMonth;
     private int mDay;
-    private Date date;
     private int maxYear;
     private int maxMonth, maxDay;
 
-    public int getDay(){return mDay;}
 
-    public int getYear(){return mYear;}
-
-    public int getMonth(){return mMonth;}
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        // Use the current date as the default date in the picker
+        // Default datum geselecteerd is de huidige datum
         final Calendar c = Calendar.getInstance();
 
         Time today = new Time(Time.getCurrentTimezone());
@@ -45,12 +41,11 @@ public /*static*/ class CustomDatePicker extends DialogFragment
         Date maxDate = new Date(maxYear, maxMonth, maxDay);
         DatePickerDialog dialog = new DatePickerDialog(getActivity(), this, year, month, day);
         dialog.getDatePicker().setMaxDate(now.getTime());
-        // Create a new instance of DatePickerDialog and return it
         return dialog;
     }
 
+    //Haalt de datum op die de gebruiker heeft geselecteerd
     public void onDateSet(DatePicker view, int year, int month, int day) {
-        // Do something with the date chosen by the user
         mYear=year;
         mMonth=month;
         mDay=day;
@@ -58,7 +53,8 @@ public /*static*/ class CustomDatePicker extends DialogFragment
         onPopulateSet(year, month + 1, day);
 
     }
-    // set the selected date in the edit text
+
+    //Laat de geselecteerde datum zien in een textview
     private void onPopulateSet(int year, int i, int dayOfMonth) {
         TextView et_setDate;
         TextView datum;
@@ -87,7 +83,6 @@ public /*static*/ class CustomDatePicker extends DialogFragment
         int dagGe = dayOfMonth+1;
         et_setDate.setText(maandStr + " " + dayOfMonth + ", " + year);
         datum.setText(maandStr + " " + dagGe + ", " + year);
-        //datum.setText((""+i));
         jaar.setText(""+year);
 
         dag.setText(""+dayOfMonth);

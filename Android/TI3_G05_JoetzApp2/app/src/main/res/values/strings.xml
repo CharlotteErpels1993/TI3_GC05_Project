@@ -10,8 +10,8 @@
     <string name="orText">of</string>
     <string name="createAccount">Registreer</string>
     <string name="emailHint">Email</string>
-    <string name="passwordHint">wachtwoord</string>
-    <string name="confirmPasswordHint">bevestig wachtwoord</string>
+    <string name="passwordHint">Wachtwoord</string>
+    <string name="confirmPasswordHint">Bevestig wachtwoord</string>
     <string name="title_activity_launcher">LauncherActivity</string>
     <string name="changing_fragments">Changing Fragments</string>
     <string name="title_activity_create_account">Registreer</string>
@@ -105,7 +105,6 @@ Mail Joetz met uw voornaam, naam, e-mailadres, rijksregisternummer, adresgegeven
         <item>Vormingen</item>
         <item>Indienen voorkeur</item>
         <item>Favoriete vakanties</item>
-        <item>Lidnummer toevoegen</item>
         <item>Uitloggen</item>
         <item>Over Joetz</item>
     </string-array>
@@ -122,8 +121,10 @@ Mail Joetz met uw voornaam, naam, e-mailadres, rijksregisternummer, adresgegeven
     <string name="inschrijvenVak2_AlgemeneUitleg">Gelieve de gegevens in te vullen van een contactpersoon in geval van nood. U kan ervoor kiezen om een tweede contactpersoon toe te voegen</string>
     <string name="inschrijvenVak3_AlgemeneUitleg">Indien er nog extra info is, waar de leiding van op de hoogte moet zijn, kan u dit hier invullen. Bijvoorbeeld allergieën, ziekte, &#8230;</string>
     <string name="ok">OK</string>
-    <string name="logoutText">Weet u zeker dat u wilt uitloggen?</string>
-    <string name="Uitloggen">uitloggen</string>
+    <string name="logoutText">Bent u zeker dat u zich wilt uitloggen?</string>
+    <string name="uitlegBijUitloggen">Als u de app afsluit, zal u automatisch uitgelogd worden. Dit is om te voorkomen dat andere personen uw account gebruiken.</string>
+    <string name="Uitloggen">Uitloggen</string>
+    <string name="meldingUitgelogd">U bent uitgelogd</string>
     <string name="inschrijven">Inschrijven</string>
     <string name="beschrijving">Beschrijving</string>
     <string name="doelgroep">Doelgroep</string>
@@ -151,14 +152,16 @@ Een kindervakantie is in de eerste plaats <b>natuurlijk ambiance, vriendschap en
 JOETZ heeft ook voor <b>jongeren</b> heel wat in de aanbieding. Je kunt kiezen uit een hele reeks buitenlandse vakanties. En of je nu fun of actie zoekt, JOETZ heeft het allemaal. <b>Vanaf 18</b> kan iedereen die door de reismicrobe gebeten is, met JOETZ mee op <b>inleefreis</b> om zo een land te ontdekken als gast in plaats van als toerist.
 De smaak te pakken? Wacht dan niet te lang en boek een onvergetelijke JOETZ-vakantie!</string>
     <string name="title_activity_inschrijving_signup">InschrijvingSignup</string>
+    <string name="maintitle_Inschrijven_Vorming">Inschrijven vorming</string>
     <string name="infolabel_vormingInschrijven">Gelieve een datum te selecteren waarop u de vorming wilt bijwonen.</string>
     <string name="title_activity_vorming_signup">VormingSignup</string>
+    <string name="error_duplicateSignupVorming">U heeft zich al ingeschreven voor deze vorming.</string>
     <string name="periodesHint">Vul hier uw periodes in</string>
     <string name="doorgeven_message">Uw gegevens worden doorgestuurd. Even geduld aub.</string>
     <string name="SuccesvolDoorgegeven">Uw periodes zijn succesvol doorgegeven.</string>
     <string name="btn_ProfielEdit">Profiel wijzigen</string>
     <string name="refresh">Refresh</string>
-    <string name="aanlsuitingsnummerhintOuder2">Eventueel aansluitingsnummer van ouder 2.</string>
+    <string name="aanlsuitingsnummerhintOuder2">Eventueel aansluitingsnummer van tweede ouder.</string>
     <string name="KlikVoorMeerInfo">selecteer voor meer info</string>
     <string name="BMsticker">Bond Moyson sticker</string>
     <string name="vakantieDetailExtraInformatie">U bekijkt momenteel beperkte informatie van de vakantie. Indien u extra informatie, zoals de prijs wilt bekijken of een inschrijving uitvoeren, gelieve u te registeren/in te loggen.</string>

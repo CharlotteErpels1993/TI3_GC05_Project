@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Parse
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -35,29 +36,43 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <!--active class!!!!-->
-                <li class="active"><a href="#">Home<span class="sr-only">(current)</span></a></li>
+                @*<li class="active"><a href="#">Home<span class="sr-only">(current)</span></a></li>*@
+                <li>@Html.ActionLink("Home", "Index", "Home")</li>
                 <li>@Html.ActionLink("Vakanties", "Index", "Vakantie")</li>
                 <li>@Html.ActionLink("Vormingen", "Index", "Vorming")</li>
                 <li>@Html.ActionLink("Monitoren", "Index", "Monitor")</li>
                 <li>@Html.ActionLink("Feedback", "Index", "Feedback")</li>
             </ul>
-            @*<ul class="nav navbar-nav navbar-right">
-                    @Html.Partial("_LoginPartial")
-                </ul>*@
+            <ul class="nav navbar-nav navbar-right">
+                @{
+                    if (ParseUser.CurrentUser == null)
+                    {
+                        <li>@Html.ActionLink("Inloggen", "Login", "Account")</li>
+                    }
+                    else
+                    {
+                        <li><p class="navbar-text navbar-right">Ingelogd als @ParseUser.CurrentUser.Email</p></li>
+                        //TODO: uitlog knop
+                    }
+                }
+                @*@Html.Partial("_LoginPartial")*@
+            </ul>
         </div>
     </div>
 </nav>
 
-    @RenderSection("featured", required: false)
-    <section class="content-wrapper main-content clear-fix">
-        @RenderBody()
-    </section>
+@RenderSection("featured", required: false)
+<section class="container">
+    @RenderBody()
+</section>
+
 
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="../../Scripts/bootstrap.min.js"></script>
+<script src="../../Scripts/bootstrap.min.js"></script>
+    @RenderSection("scripts", required: false)
 </body>
 </html>
 

@@ -17,28 +17,27 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+//Deze klasse zal ervoor zorgen dat alle gegevens van feedback op de juiste plaatsen worden getoond en omgezet zullen worden naar de juiste formaten.
 public class FeedbackAdapter extends ArrayAdapter<Vakantie> implements Filterable {
 
     private Context context;
     private LayoutInflater inflater;
-    //private ImageLoader imageLoader;
-    private List<Feedback> feedback = null;
-    private ArrayList<Feedback> arraylist;
+    private List<Feedback> feedbackLijst = null;
+    private ArrayList<Feedback> feedbackArrayList;
     private final String MAXIMALE_SCORE = "5";
 
     public FeedbackAdapter(Context context,
-                           List<Feedback> feedback) {
+                           List<Feedback> feedbackLijst) {
         super(context, R.layout.listview_item);
         this.context = context;
-        if(feedback == null || feedback.isEmpty())
+        if(feedbackLijst == null || feedbackLijst.isEmpty())
         {
             Toast.makeText(context, "Er is nog geen feedback", Toast.LENGTH_LONG).show();
         }
-        this.feedback = feedback;
+        this.feedbackLijst = feedbackLijst;
         inflater = LayoutInflater.from(context);
-        this.arraylist = new ArrayList<Feedback>();
-        this.arraylist.addAll(feedback);
-        //imageLoader = new ImageLoader(context);
+        this.feedbackArrayList = new ArrayList<Feedback>();
+        this.feedbackArrayList.addAll(feedbackLijst);
     }
 
 
@@ -48,24 +47,24 @@ public class FeedbackAdapter extends ArrayAdapter<Vakantie> implements Filterabl
         TextView tv_naamVakantie;
         TextView tv_feedback;
         TextView tv_score;
-        TextView tv_gebruiker;
+        //TextView tv_gebruiker;
     }
 
+    //deze methode geeft het aantal elementen in de lijst terug
     @Override
     public int getCount() {
-        return feedback.size();
+        return feedbackLijst.size();
     }
 
-   /* @Override
-    public Object getItem(int position) {
-        return vakanties.get(position);
-    }*/
 
+    //Hiermee kan je de overeenkomstige id van het item vinden door middel van de parameter positie
     @Override
     public long getItemId(int position) {
         return position;
     }
 
+    //Maakt een holder aan voor de view, zodat er minder overhead komt en de view niet steeds herladen moet worden, Hier wordt alles ingevuld op de juiste plaats
+    //De juiste gegevens worden opgehaald door de positie, de view wordt ingevuld
     public View getView(final int position, View view, ViewGroup parent) {
         final ViewHolder holder;
         if (view == null) {
@@ -74,80 +73,33 @@ public class FeedbackAdapter extends ArrayAdapter<Vakantie> implements Filterabl
             holder.tv_naamVakantie = (TextView) view.findViewById(R.id.vakantienaamFeedbackOverzicht);
             holder.tv_feedback = (TextView) view.findViewById(R.id.feedbackOverzicht);
             holder.tv_score = (TextView) view.findViewById(R.id.scoreOverzicht);
-            holder.tv_gebruiker = (TextView) view.findViewById(R.id.gebruikerOverzicht);
+            //holder.tv_gebruiker = (TextView) view.findViewById(R.id.gebruikerOverzicht);
             view.setTag(holder);
         } else {
             holder = (ViewHolder) view.getTag();
         }
-        holder.tv_naamVakantie.setText(feedback.get(position).getVakantieNaam());
-        holder.tv_feedback.setText(feedback.get(position).getFeedback());
-        holder.tv_gebruiker.setText(feedback.get(position).getGebruiker());
-        holder.tv_score.setText("Score: " + feedback.get(position).getScore().toString() + "/" + MAXIMALE_SCORE);
+        holder.tv_naamVakantie.setText(feedbackLijst.get(position).getVakantieNaam());
+        holder.tv_feedback.setText(feedbackLijst.get(position).getFeedback());
+       // holder.tv_gebruiker.setText(feedbackLijst.get(position).getGebruiker());
+        holder.tv_score.setText("Score: " + feedbackLijst.get(position).getScore().toString() + "/" + MAXIMALE_SCORE);
         return view;
     }
-/*
-        view.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View arg0) {
-                Intent intent = new Intent(context, activiteit_detail.class);
-                intent.putExtra("naam", (vakanties.get(position).getNaamVakantie()));
-                intent.putExtra("locatie", (vakanties.get(position).getLocatie()));
-                if(vakanties.get(position).getVertrekDatum() == null || vakanties.get(position).getTerugkeerDatum() == null)
-                {
-                    intent.putExtra("vertrekdatum", (vakanties.get(position).getVertrekDatumString()));
-                    intent.putExtra("terugdatum", (vakanties.get(position).getTerugDatumString()));
-                }
-                else
-                {
-                    intent.putExtra("vertrekdatum", (vakanties.get(position).getVertrekDatum()).toString());
-                    intent.putExtra("terugdatum", (vakanties.get(position).getTerugkeerDatum()).toString());
-                }
-                intent.putExtra("prijs", vakanties.get(position).getBasisprijs().toString());
-                intent.putExtra("maxdoelgroep", (vakanties.get(position).getMaxDoelgroep()).toString());
-                intent.putExtra("mindoelgroep", vakanties.get(position).getMinDoelgroep().toString());
-                intent.putExtra("objectId", vakanties.get(position).getVakantieID());
-                intent.putExtra("beschrijving", vakanties.get(position).getKorteBeschrijving());
-                intent.putExtra("periode", vakanties.get(position).getPeriode());
-                intent.putExtra("vervoer", vakanties.get(position).getVervoerswijze());
-                intent.putExtra("formule", vakanties.get(position).getFormule());
-                intent.putExtra("maxAantalDeelnemers",(vakanties.get(position).getMaxAantalDeelnemers()).toString());
-                intent.putExtra("InbegrepenInPrijs", (vakanties.get(position).getInbegrepenInPrijs()));
-                intent.putExtra("BMledenPrijs", (vakanties.get(position).getBondMoysonLedenPrijs()).toString());
-                intent.putExtra("SterPrijs1Ouder", (vakanties.get(position).getSterPrijs1Ouder()).toString());
-                intent.putExtra("SterPrijs2Ouders", (vakanties.get(position).getSterPrijs2Ouder()).toString());
-                intent.putExtra("link", (vakanties.get(position).getLink().toString()));
-
-                String keyVoorIntent;
-                ArrayList<String> lijstFotos = vakanties.get(position).getFotos();
-                int lijstFotosLengte = lijstFotos.size()-1;
-                for (int i = 0; i <= lijstFotosLengte; i++){
-                    keyVoorIntent = "foto" + i;
-                    intent.putExtra(keyVoorIntent, lijstFotos.get(i));
-                }
-
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(intent);
-            }
-        });
-        return view;
-    }
-*/
 
 
+    //Filtert de lijst van feedback door gebruik te maken van de meegegeven zoekcharacters
     public void filter(String charText) {
         charText = charText.toLowerCase(Locale.getDefault());
-        feedback.clear();
+        feedbackLijst.clear();
         if (charText.length() == 0) {
-            feedback.addAll(arraylist);
+            feedbackLijst.addAll(feedbackArrayList);
         }
         else
         {
-            for (Feedback wp : arraylist)
+            for (Feedback wp : feedbackArrayList)
             {
                 if (wp.getVakantieNaam().toLowerCase(Locale.getDefault()).contains(charText))
                 {
-                    feedback.add(wp);
+                    feedbackLijst.add(wp);
                 }
             }
         }

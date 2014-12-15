@@ -1,7 +1,7 @@
 import UIKit
 import QuartzCore
 
-class InloggenViewController: ResponsiveTextFieldViewController {
+class InloggenViewController: UIViewController {
     @IBOutlet weak var txtEmail: UITextField!
     @IBOutlet weak var txtWachtwoord: UITextField!
     
@@ -15,6 +15,8 @@ class InloggenViewController: ResponsiveTextFieldViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         hideSideMenuView()
+        self.setNeedsStatusBarAppearanceUpdate()
+        self.navigationController!.toolbarHidden = true
         txtEmail.autocorrectionType = UITextAutocorrectionType.No
         txtWachtwoord.autocorrectionType = UITextAutocorrectionType.No
     }

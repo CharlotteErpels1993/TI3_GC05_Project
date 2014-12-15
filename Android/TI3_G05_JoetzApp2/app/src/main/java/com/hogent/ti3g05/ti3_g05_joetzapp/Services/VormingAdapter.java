@@ -18,14 +18,13 @@ import com.hogent.ti3g05.ti3_g05_joetzapp.ImageLoader;
 import com.hogent.ti3g05.ti3_g05_joetzapp.R;
 import com.hogent.ti3g05.ti3_g05_joetzapp.VormingDetail;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vorming;
-
+//Deze klasse zal de juiste gegevens weergeven in het vormingoverzicht en de juiste gegevens doorgeven naar het vormingdetail
 public class VormingAdapter extends ArrayAdapter<Vorming> implements Filterable {
 
     private Context context;
     private LayoutInflater inflater;
-    //private ImageLoader imageLoader;
     private List<Vorming> vormingen = null;
-    private ArrayList<Vorming> arraylist;
+    private ArrayList<Vorming> vormingArrayList;
 
 
     public VormingAdapter(Context context, int resource) {
@@ -38,9 +37,8 @@ public class VormingAdapter extends ArrayAdapter<Vorming> implements Filterable 
         this.context = context;
         this.vormingen = vormingen;
         inflater = LayoutInflater.from(context);
-        this.arraylist = new ArrayList<Vorming>();
-        this.arraylist.addAll(vormingen);
-        //imageLoader = new ImageLoader(context);
+        this.vormingArrayList = new ArrayList<Vorming>();
+        this.vormingArrayList.addAll(vormingen);
     }
 
 
@@ -49,27 +47,24 @@ public class VormingAdapter extends ArrayAdapter<Vorming> implements Filterable 
     public class ViewHolder {
         TextView tv_titel;
         TextView tv_locatie;
-        //TextView criteriaDeelnemer;
-        //TextView prijs;
-        //TextView tips;
         TextView tv_websiteLocatie;
     }
 
+    //geeft het aantal vormingen terug
     @Override
     public int getCount() {
         return vormingen.size();
     }
 
-   /* @Override
-    public Object getItem(int position) {
-        return vakanties.get(position);
-    }*/
 
+    //Geeft het juiste item weer doormiddel van de meegegeven positie
     @Override
     public long getItemId(int position) {
         return position;
     }
 
+    //Maakt een holder aan voor de view, zodat er minder overhead komt en de view niet steeds herladen moet worden, Hier wordt alles ingevuld op de juiste plaats
+    //De juiste gegevens worden opgehaald door de positie, de view wordt ingevuld
     public View getView(final int position, View view, ViewGroup parent) {
         final ViewHolder holder;
         if (view == null) {
@@ -96,6 +91,7 @@ public class VormingAdapter extends ArrayAdapter<Vorming> implements Filterable 
 
             @Override
             public void onClick(View arg0) {
+                //Geeft de juiste gegevens door naar de detail activity van de vorming
                 Intent intent = new Intent(context, VormingDetail.class);
                 intent.putExtra("titel", (vormingen.get(position).getTitel()));
                 intent.putExtra("locatie", (vormingen.get(position).getLocatie()));
@@ -117,16 +113,16 @@ public class VormingAdapter extends ArrayAdapter<Vorming> implements Filterable 
     }
 
 
-
+    //Filtert de lijst van vormingen door gebruik te maken van de meegegeven zoekcharacters
     public void filter(String charText) {
         charText = charText.toLowerCase(Locale.getDefault());
         vormingen.clear();
         if (charText.length() == 0) {
-            vormingen.addAll(arraylist);
+            vormingen.addAll(vormingArrayList);
         }
         else
         {
-            for (Vorming wp : arraylist)
+            for (Vorming wp : vormingArrayList)
             {
                 if (wp.getLocatie().toLowerCase(Locale.getDefault()).contains(charText))
                 {

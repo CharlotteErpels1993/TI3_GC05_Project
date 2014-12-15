@@ -1,6 +1,73 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+
+<!-- Carousel
+    ================================================== -->
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+        <li data-target="#myCarousel" data-slide-to="3"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+        <div class="item active">
+            <img src="~/Images/Joetz/Carousel/Act aug 1 (900 x 604).jpg" alt="First slide" class="img-responsive"/>
+            @*<img src="~/Images/Joetz/Vakanties/Act aug 1.jpg" alt="First slide" class="img-responsive"/>*@
+            @*<img src="data:image/gif;base64,R0lGODlhAQABAIAAAFVVVQAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Third slide">*@
+            <div class="container">
+                <div class="carousel-caption">
+                    <h1>Joetz</h1>
+                    <p>Partner van Bond Moyson</p>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <img src="~/Images/Joetz/Carousel/bos1 (900 x 675).jpg" alt="Second slide" class="img-responsive"/>
+            @*<img src="~/Images/Joetz/Vakanties/bos1.JPG" alt="Second slide" class="img-responsive"/>*@
+            @*<img src="data:image/gif;base64,R0lGODlhAQABAIAAAFVVVQAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Third slide">*@
+            <div class="container">
+                <div class="carousel-caption">
+                    <h1>Joetz</h1>
+                    <p>Partner van Bond Moyson</p>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <img src="~/Images/Joetz/Carousel/bos2 (900 x 675).jpg" alt="Third slide" class="img-responsive"/>
+            @*<img src="~/Images/Joetz/Vakanties/bos2.JPG" alt="Third slide" class="img-responsive" />*@
+            <div class="container">
+                <div class="carousel-caption">
+                    <h1>Joetz</h1>
+                    <p>Partner van Bond Moyson</p>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <img src="~/Images/Joetz/Carousel/splash1 (900 x 675).jpg" alt="Fourth slide" class="img-responsive"/>
+            @*<img src="~/Images/Joetz/Vakanties/splash1.jpg" alt="Fourth slide" class="img-responsive"/>*@
+            <div class="container">
+                <div class="carousel-caption">
+                    <h1>Joetz</h1>
+                    <p>Partner van Bond Moyson</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div><!-- /.carousel -->
+
+
+
 @section featured {
     <section class="featured">
         <div class="content-wrapper">

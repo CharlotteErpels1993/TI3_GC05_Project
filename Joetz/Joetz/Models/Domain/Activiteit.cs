@@ -6,7 +6,7 @@ namespace Joetz.Models.Domain
     {
         public string Id { get; set; }
 
-        [Display(Name = "Titel vakantie")]
+        [Display(Name = "Titel")]
         [Required(ErrorMessage = "{0} is verplicht")]
         [StringLength(50, ErrorMessage = "{0} is te lang.")]
         public string Titel { get; set; }

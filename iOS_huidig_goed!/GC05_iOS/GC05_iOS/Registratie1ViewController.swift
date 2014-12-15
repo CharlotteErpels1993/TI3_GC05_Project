@@ -89,6 +89,7 @@ class Registratie1ViewController: /*ResponsiveTextFieldViewController*/ UITableV
             if controleerRodeBordersAanwezig() == true {
                 if rijksregisterNrAlGeregistreerd == true {
                     foutBoxOproepen("Fout", "Dit rijksregisternummer (\(self.txtRijksregisterNr.text)) is al geregistreerd!", self)
+                    self.txtRijksregisterNr.text = ""
                 } else {
                     foutBoxOproepen("Fout", "Gelieve de velden correct in te vullen!", self)
                 }
@@ -137,12 +138,12 @@ class Registratie1ViewController: /*ResponsiveTextFieldViewController*/ UITableV
             if !checkPatternRijksregisterNr(txtRijksregisterNr.text) {
                 statusTextFields["rijksregisterNr"] = "ongeldig"
                 self.rijksregisterNrAlGeregistreerd = false
-                txtRijksregisterNr.text = ""
+                //txtRijksregisterNr.text = ""
             } else {
                 if controleerRijksregisterNummerAlGeregisteerd() == true {
                     statusTextFields["rijksregisterNr"] = "al geregistreerd"
                     self.rijksregisterNrAlGeregistreerd = true
-                    txtRijksregisterNr.text = ""
+                    //txtRijksregisterNr.text = ""
                 } else {
                     statusTextFields["rijksregisterNr"] = "geldig"
                     self.rijksregisterNrAlGeregistreerd = false

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Parse;
 
 namespace Joetz.Models.Domain
@@ -6,9 +7,10 @@ namespace Joetz.Models.Domain
     public interface IVormingRepository
     {
         Vorming GetVorming(ParseObject vormingObject);
-        Vorming FindBy(string vormingId);
-        IList<Vorming> FindAll();
+        Task<Vorming> FindBy(string vormingId);
+        Task<ICollection<Vorming>>  FindAll();
         void Add(Vorming vorming);
         void Delete(Vorming vorming);
+        void Update(Vorming vorming);
     }
 }

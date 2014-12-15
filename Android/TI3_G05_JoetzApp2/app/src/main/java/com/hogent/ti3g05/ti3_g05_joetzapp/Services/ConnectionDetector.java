@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
+//Deze klasse zal de aanwezigheid van het internet controleren op het toestel
 public class ConnectionDetector {
 	
 	private Context _context;
@@ -12,7 +13,7 @@ public class ConnectionDetector {
 	public ConnectionDetector(Context context){
 		this._context = context;
 	}
-
+    //Deze methode zal controleren of het toestel met het internet verbonden is
 	public boolean isConnectingToInternet(){
 		ConnectivityManager connectivity = (ConnectivityManager) _context.getSystemService(Context.CONNECTIVITY_SERVICE);
         connected= false;

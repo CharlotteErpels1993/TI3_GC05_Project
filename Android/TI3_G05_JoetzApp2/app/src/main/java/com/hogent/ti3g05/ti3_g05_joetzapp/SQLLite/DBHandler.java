@@ -16,6 +16,7 @@ import java.awt.font.NumericShaper;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.Constants.COLUMN_GEMIDDELDERATING;
 import static com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.Constants.COLUMN_VAKANTIEID;
 import static com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.Constants.TABLE_FAVORIETEN;
 import static com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.Constants.TABLE_FEEDBACK;
@@ -23,6 +24,7 @@ import static com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.Constants.TABLE_PROFIEL
 import static com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.Constants.TABLE_VAKANTIE;
 import static com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.Constants.TABLE_VORMINGEN;
 
+//Maakt de locale database aan en doet hier de bewerkingen op
 public class DBHandler extends SQLiteOpenHelper {
 
 
@@ -33,17 +35,19 @@ public class DBHandler extends SQLiteOpenHelper {
 
     }
 
+    //creëert de vakantietabel in de locale database
     public void onCreateVakantie(SQLiteDatabase sqLiteDatabase) {
         String CREATE_VAKANTIE_TABLE = "CREATE TABLE " + TABLE_VAKANTIE + "(" +Constants.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +Constants.COLUMN_VAKANTIENAAM + " TEXT," + Constants.COLUMN_LOCATIE + " TEXT," + Constants.COLUMN_VERTREKDATUM + " TEXT," +
                 Constants.COLUMN_TERUGDATUM + " TEXT," + Constants.COLUMN_PRIJS + " NUMERIC," + Constants.COLUMN_AFBEELDING1 + " TEXT," +Constants.COLUMN_AFBEELDING2 + " TEXT," +Constants.COLUMN_AFBEELDING3 + " TEXT," +
                 Constants.COLUMN_MAXDOELGROEP + " TEXT," + Constants.COLUMN_MINDOELGROEP + " TEXT," + Constants.COLUMN_BESCHRIJVING + " TEXT," + Constants.COLUMN_PERIODE + " TEXT," + Constants.COLUMN_VERVOER + " TEXT," +
                 Constants.COLUMN_FORMULE + " TEXT," + Constants.COLUMN_MAXDEELNEMERS + " NUMERIC," + Constants.COLUMN_INBEGREPENINPRIJS + " TEXT," + Constants.COLUMN_BMLEDENPRIJS + " NUMERIC," +
-                Constants.COLUMN_STERPRIJSOUDER1 + " NUMERIC," + Constants.COLUMN_STERPRIJS2OUDERS + " NUMERIC" + ")";
+                Constants.COLUMN_STERPRIJSOUDER1 + " NUMERIC," + Constants.COLUMN_STERPRIJS2OUDERS + " NUMERIC, " + COLUMN_GEMIDDELDERATING +" NUMERIC" + ")";
 
         sqLiteDatabase.execSQL(CREATE_VAKANTIE_TABLE);
 
     }
 
+    //Creëert de profielentabel in de locale database
     public void onCreateProfielen(SQLiteDatabase sqLiteDatabase) {
 
         String CREATE_PROFIELEN_TABLE = "CREATE TABLE " + TABLE_PROFIELEN + "(" +Constants.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +Constants.COLUMN_AANSLUITINGSNUMMER + " NUMERIC," + Constants.COLUMN_BUS + " TEXT," + Constants.COLUMN_CODEGERECHTIGDE + " NUMERIC," +
@@ -54,17 +58,19 @@ public class DBHandler extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(CREATE_PROFIELEN_TABLE);
     }
 
+    //Creëert de favorietentabel in de locale database
     public void onCreateFavorieten(SQLiteDatabase sqLiteDatabase) {
 
         String CREATE_FAVORIETEN_TABLE = "CREATE TABLE " + TABLE_FAVORIETEN + "(" +Constants.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +Constants.COLUMN_VAKANTIENAAM + " TEXT," + Constants.COLUMN_LOCATIE + " TEXT," + Constants.COLUMN_VERTREKDATUM + " TEXT," +
                 Constants.COLUMN_TERUGDATUM + " TEXT," + Constants.COLUMN_PRIJS + " NUMERIC," + Constants.COLUMN_AFBEELDING1 + " TEXT," +Constants.COLUMN_AFBEELDING2 + " TEXT," +Constants.COLUMN_AFBEELDING3 + " TEXT," +
                 Constants.COLUMN_MAXDOELGROEP + " TEXT," + Constants.COLUMN_MINDOELGROEP + " TEXT," + Constants.COLUMN_BESCHRIJVING + " TEXT," + Constants.COLUMN_PERIODE + " TEXT," + Constants.COLUMN_VERVOER + " TEXT," +
                 Constants.COLUMN_FORMULE + " TEXT," + Constants.COLUMN_MAXDEELNEMERS + " NUMERIC," + Constants.COLUMN_INBEGREPENINPRIJS + " TEXT," + Constants.COLUMN_BMLEDENPRIJS + " NUMERIC," +
-                Constants.COLUMN_STERPRIJSOUDER1 + " NUMERIC," + Constants.COLUMN_STERPRIJS2OUDERS + " NUMERIC, " + COLUMN_VAKANTIEID + " TEXT )";
+                Constants.COLUMN_STERPRIJSOUDER1 + " NUMERIC," + Constants.COLUMN_STERPRIJS2OUDERS + " NUMERIC, " + COLUMN_VAKANTIEID + " TEXT, " + COLUMN_GEMIDDELDERATING+" NUMERIC)";
 
         sqLiteDatabase.execSQL(CREATE_FAVORIETEN_TABLE);
     }
 
+    //Creëert de vormingentabel in de locale database
     public void onCreateVormingen(SQLiteDatabase sqLiteDatabase) {
 
         String CREATE_VORMINGEN_TABLE = "CREATE TABLE " + TABLE_VORMINGEN + "(" +Constants.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +Constants.COLUMN_BETALINGSWIJZE + " TEXT," + Constants.COLUMN_CRITERIADEELNEMER + " TEXT," + Constants.COLUMN_INBEGREPENINPRIJSV + " TEXT," +
@@ -74,6 +80,8 @@ public class DBHandler extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(CREATE_VORMINGEN_TABLE);
     }
 
+
+    //Creëert de feedbacktabel in de locale database
     public void onCreateFeedback(SQLiteDatabase sqLiteDatabase) {
 
         String CREATE_FEEDBACK_TABLE = "CREATE TABLE " + TABLE_FEEDBACK + "(" +Constants.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +Constants.COLUMN_FEEDBACK + " TEXT," + Constants.COLUMN_SCORE + " NUMERIC," + Constants.COLUMN_VAKANTIENAAMF + " TEXT," +
@@ -100,24 +108,28 @@ public class DBHandler extends SQLiteOpenHelper {
 
     }
 
-    public void drop(SQLiteDatabase db)
+    //Verwijderd de volledige vakantietabel en maakt deze opnieuw aan
+    public void dropVakanties(SQLiteDatabase db)
     {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_VAKANTIE);
         onCreateVakantie(db);
     }
 
+    //Verwijderd de volledige feedbacktabel en maakt deze opnieuw aan
     public void dropFeedback(SQLiteDatabase db)
     {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_FEEDBACK);
         onCreateFeedback(db);
     }
 
+    //Verwijderd de volledige vormingentabel en maakt deze opnieuw aan
     public void dropVormingen(SQLiteDatabase db)
     {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_VORMINGEN);
         onCreateVormingen(db);
     }
 
+    //Verwijderd de volledige profielentabel en maakt deze opnieuw aan
     public void dropProfielen(SQLiteDatabase db)
     {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_PROFIELEN);
@@ -125,15 +137,15 @@ public class DBHandler extends SQLiteOpenHelper {
 
     }
 
+    //Verwijderd de volledige favorietentabel en maakt deze opnieuw aan
     public void dropFavorieten(SQLiteDatabase db)
     {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_FAVORIETEN);
         onCreateFavorieten(db);
 
     }
-
-
-
+    //Logica voor vakantietabel
+    //Voegt de gegevens van de doorgegeven vakantie toe aan de vakantietabel
     public Long toevoegenGegevensVakantie(Vakantie vakantie)
     {
         ContentValues values = new ContentValues();
@@ -168,6 +180,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
         values.put(Constants.COLUMN_STERPRIJSOUDER1,(Double) vakantie.getSterPrijs1Ouder());
         values.put(Constants.COLUMN_STERPRIJS2OUDERS,(Double) vakantie.getSterPrijs2Ouder());
+        values.put(Constants.COLUMN_GEMIDDELDERATING, vakantie.getGemiddeldeRating());
         SQLiteDatabase db = this.getWritableDatabase();
 
         Long id = db.insert(TABLE_VAKANTIE, null, values);
@@ -177,6 +190,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
     }
 
+    //Haalt alle vakanties op uit de vakantietabel
     public List<Vakantie> krijgAlleVakanties()
     {
         List<Vakantie> vakanties = new ArrayList<Vakantie>();
@@ -186,6 +200,7 @@ public class DBHandler extends SQLiteOpenHelper {
         c.moveToFirst();
         while(!c.isAfterLast())
         {
+            //overloop de vakanties en haal alle juiste gegevens op van die vakantie
             Vakantie v = krijgVakanties(c.getString(1));
             vakanties.add(v);
             c.moveToNext();
@@ -194,6 +209,7 @@ public class DBHandler extends SQLiteOpenHelper {
         return vakanties;
     }
 
+    //Haalt een bepaalde vakantie op uit de vakantietabel
     public Vakantie krijgVakanties(String vakantienaam)
     {
         String query = "Select * FROM " + TABLE_VAKANTIE + " WHERE " + Constants.COLUMN_VAKANTIENAAM + " = \"" + vakantienaam + "\"";
@@ -226,6 +242,7 @@ public class DBHandler extends SQLiteOpenHelper {
             vakantie.setBondMoysonLedenPrijs(Double.parseDouble(cursor.getString(17)));
             vakantie.setSterPrijs1Ouder(Double.parseDouble(cursor.getString(18)));
             vakantie.setSterPrijs2Ouder(Double.parseDouble(cursor.getString(19)));
+            vakantie.setGemiddeldeRating(Integer.parseInt(cursor.getString(20)));
         } else
         {
             vakantie = null;
@@ -235,10 +252,8 @@ public class DBHandler extends SQLiteOpenHelper {
         return vakantie;
     }
 
-   /* public long toevoegenGegevensVakantie(ContentValues nieuweVakantie) {
-        return 0;
-    }*/
-
+    //Logica voor profielentabel
+    //Voegt de gegevens van de doorgegeven monitor toe aan de profielentabel
     public Long toevoegenGegevensMonitor(Monitor monitor)
     {
         ContentValues values = new ContentValues();
@@ -272,6 +287,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
     }
 
+    //Haalt een lijst van profielen op uit de profielentabel
     public List<Monitor> krijgProfielen()
     {
         List<Monitor> profielen = new ArrayList<Monitor>();
@@ -281,6 +297,7 @@ public class DBHandler extends SQLiteOpenHelper {
         c.moveToFirst();
         while(!c.isAfterLast())
         {
+            //overloop de profielen en haal alle juiste gegevens op van de monitor
             Monitor v = krijgProfielen(c.getString(9));
             profielen.add(v);
             c.moveToNext();
@@ -289,6 +306,7 @@ public class DBHandler extends SQLiteOpenHelper {
         return profielen;
     }
 
+    //Haalt een bepaalde monitor op uit de profielentabel
     public Monitor krijgProfielen(String profielnaam)
     {
         String query = "Select * FROM " + TABLE_PROFIELEN + " WHERE " + Constants.COLUMN_NAAM + " = \"" + profielnaam + "\"";
@@ -326,6 +344,8 @@ public class DBHandler extends SQLiteOpenHelper {
         return monitor;
     }
 
+    //Logica voor vormingtabel
+    //Voegt de gegevens van de doorgegeven vorming toe aan de vormingentabel
     public Long toevoegenGegevensVorming(Vorming vorming)
     {
         String periodesStr = "";
@@ -360,6 +380,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
     }
 
+    //Haalt een lijst van vormingen op uit de vormingentabel
     public List<Vorming> krijgVormingen()
     {
         List<Vorming> vormingen = new ArrayList<Vorming>();
@@ -369,6 +390,7 @@ public class DBHandler extends SQLiteOpenHelper {
         c.moveToFirst();
         while(!c.isAfterLast())
         {
+            //overloop de vormingen en haal alle juiste gegevens op van die vorming
             Vorming v = krijgVormingen(c.getString(9));
             vormingen.add(v);
             c.moveToNext();
@@ -377,6 +399,7 @@ public class DBHandler extends SQLiteOpenHelper {
         return vormingen;
     }
 
+    //Haalt een bepaalde vorming op uit de vormingentabel
     public Vorming krijgVormingen(String vormingTitel)
     {
         String query = "Select * FROM " + TABLE_VORMINGEN + " WHERE " + Constants.COLUMN_TITEL + " = \"" + vormingTitel + "\"";
@@ -415,6 +438,8 @@ public class DBHandler extends SQLiteOpenHelper {
         return vorming;
     }
 
+    //Logica voor favorietentabel
+    //Voegt de gegevens van de doorgegeven vakantie toe aan de favorietentabel
     public Long toevoegenGegevensFavoriet(Vakantie favorieteVakantie)
     {
         ContentValues values = new ContentValues();
@@ -451,7 +476,7 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put(Constants.COLUMN_STERPRIJSOUDER1,(Double) favorieteVakantie.getSterPrijs1Ouder()); //18
         values.put(Constants.COLUMN_STERPRIJS2OUDERS,(Double) favorieteVakantie.getSterPrijs2Ouder()); //19
         values.put(Constants.COLUMN_VAKANTIEID, favorieteVakantie.getActiviteitID()); //20
-
+        values.put(Constants.COLUMN_GEMIDDELDERATING, favorieteVakantie.getGemiddeldeRating());
         SQLiteDatabase db = this.getWritableDatabase();
 
         Long id = db.insert(TABLE_FAVORIETEN, null, values);
@@ -461,6 +486,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
     }
 
+    //Haalt een lijst van favorieten op uit de favorietentabel
     public List<Vakantie> krijgFavorieten()
     {
         List<Vakantie> favorieten = new ArrayList<Vakantie>();
@@ -470,6 +496,7 @@ public class DBHandler extends SQLiteOpenHelper {
         c.moveToFirst();
         while(!c.isAfterLast())
         {
+            //overloop de favorieten en haal alle juiste gegevens op van de vakantie
             Vakantie f = krijgFavorieten(c.getString(1));
             favorieten.add(f);
             c.moveToNext();
@@ -478,6 +505,7 @@ public class DBHandler extends SQLiteOpenHelper {
         return favorieten;
     }
 
+    //Haalt een bepaalde vakantie op uit de favorietentabel
     public Vakantie krijgFavorieten(String vakantienaam)
     {
         String query = "Select * FROM " + TABLE_FAVORIETEN + " WHERE " + Constants.COLUMN_VAKANTIENAAM + " = \"" + vakantienaam + "\"";
@@ -511,6 +539,7 @@ public class DBHandler extends SQLiteOpenHelper {
             vakantie.setSterPrijs1Ouder(Double.parseDouble(cursor.getString(18)));
             vakantie.setSterPrijs2Ouder(Double.parseDouble(cursor.getString(19)));
             vakantie.setVakantieID(cursor.getString(20));
+            vakantie.setGemiddeldeRating(Integer.parseInt(cursor.getString(21)));
         } else
         {
             vakantie = null;
@@ -521,9 +550,8 @@ public class DBHandler extends SQLiteOpenHelper {
 
     }
 
-
-
-    //FEEDBACK
+    //Logica voor feedbacktabel
+    //Voegt de gegevens van de doorgegeven feedback toe aan de feedbacktabel
     public Long toevoegenGegevensFeedback(Feedback feedback)
     {
         ContentValues values = new ContentValues();
@@ -550,6 +578,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
     }
 
+    //Haalt een lijst van feedback op uit de feedbacktabel
     public List<Feedback> krijgFeedback()
     {
         List<Feedback> feedback = new ArrayList<Feedback>();
@@ -559,6 +588,7 @@ public class DBHandler extends SQLiteOpenHelper {
         c.moveToFirst();
         while(!c.isAfterLast())
         {
+        //overloop de feedbacktabel en haal alle juiste gegevens op van die feedback
             Feedback f = krijgFeedback(c.getString(3));
             feedback.add(f);
             c.moveToNext();
@@ -567,6 +597,7 @@ public class DBHandler extends SQLiteOpenHelper {
         return feedback;
     }
 
+    //Haalt een bepaalde feedback op uit de feedbacktabel
     public Feedback krijgFeedback(String vakantienaam)
     {
         String query = "Select * FROM " + TABLE_FEEDBACK + " WHERE " + Constants.COLUMN_VAKANTIENAAMF + " = \"" + vakantienaam + "\"";

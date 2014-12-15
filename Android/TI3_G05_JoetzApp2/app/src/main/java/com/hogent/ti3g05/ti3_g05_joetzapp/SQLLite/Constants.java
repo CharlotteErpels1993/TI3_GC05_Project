@@ -1,14 +1,13 @@
 package com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite;
 
-/**
- * Created by Gebruiker on 17/11/2014.
- */
+
+//Alle constante namen die gebruikt zullen worden in de locale database
 public class Constants {
 
     public static final int DATABASE_VERSION = 2;
     public static final String DATABASE_NAAM = "joetz.db";
 
-    //vakanties
+    //Constanten voor de vakanties
     public static final String TABLE_VAKANTIE = "vakantie";
 
     public static final String COLUMN_ID = "_id";
@@ -31,8 +30,9 @@ public class Constants {
     public static final String COLUMN_BMLEDENPRIJS = "BMLedenPrijs";
     public static final String COLUMN_STERPRIJSOUDER1 = "sterPrijsOuder1";
     public static final String COLUMN_STERPRIJS2OUDERS = "sterPrijs2Ouder";
+    public static final String COLUMN_GEMIDDELDERATING = "gemiddeldeRating";
 
-    //profielen
+    //Constanten voor de profielen
     public static final String TABLE_PROFIELEN = "monitor";
     public static final String COLUMN_AANSLUITINGSNUMMER = "aansluitingsNr";
     public static final String COLUMN_BUS = "bus";
@@ -50,7 +50,7 @@ public class Constants {
     public static final String COLUMN_TELEFOON = "telefoon";
     public static final String COLUMN_VOORNAAM = "voornaam";
 
-    //vormingen
+    //Constanten voor de vormingen
 
     public static final String TABLE_VORMINGEN = "vorming";
     public static final String COLUMN_BETALINGSWIJZE = "betalingswijze";
@@ -64,18 +64,18 @@ public class Constants {
     public static final String COLUMN_TITEL = "titel";
     public static final String COLUMN_WEBSITELOCATIE = "websiteLocatie";
 
-    //favorieten
+    //Constanten voor de favorieten
 
     public static final String TABLE_FAVORIETEN = "favorieten";
     public static final String COLUMN_VAKANTIEID = "vakantieID";
 
-    //Feedback
+    //Constanten voor de Feedback
 
     public static final String TABLE_FEEDBACK = "feedback";
     public static final String COLUMN_FEEDBACK = "feedback";
     public static final String COLUMN_SCORE = "score";
     public static final String COLUMN_VAKANTIENAAMF = "vakantienaam";
-    //vakantieID
+    
     public static final String COLUMN_GEBRUIKERID = "gebruikerId";
     public static final String COLUMN_GEBRUIKER = "gebruiker";
     public static final String COLUMN_GOEDGEKEURD = "goedgekeurd";

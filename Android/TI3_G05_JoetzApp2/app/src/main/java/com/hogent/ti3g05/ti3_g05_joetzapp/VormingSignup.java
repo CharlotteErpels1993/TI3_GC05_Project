@@ -6,13 +6,14 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
-import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
@@ -20,7 +21,7 @@ import com.parse.ParseUser;
 import java.util.Arrays;
 import java.util.List;
 
-
+//Geeft de gebruiker de mogelijkheid om zich in te schrijven in een vorming
 public class VormingSignup extends Activity {
     private Spinner spnDataInschrijven;
 
@@ -34,7 +35,10 @@ public class VormingSignup extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vorming_signup);
         cd = new ConnectionDetector(getApplicationContext());
+        final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.alpha);
 
+
+        getActionBar().setTitle(getString(R.string.maintitle_Inschrijven_Vorming));
 
         Intent i = getIntent();
         String[] voorlopigePeriodes = i.getStringArrayExtra("periodes");
@@ -46,101 +50,79 @@ public class VormingSignup extends Activity {
         spnDataInschrijven = (Spinner) findViewById(R.id.spnDataVorming);
         spnDataInschrijven.setAdapter(dataAdapter);
 
-        Button btnInschrijven = (Button) findViewById(R.id.btnInschrijven);
+        final Button btnInschrijven = (Button) findViewById(R.id.btnInschrijven);
         btnInschrijven.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // get Internet status
+                btnInschrijven.startAnimation(animAlpha);
+                // Kijk of er internet aanwezig is, zoja sla de gegevens op, zonee toon een gepaste melding
                 isInternetPresent = cd.isConnectingToInternet();
-                // check for Internet status
 
                 if (isInternetPresent) {
-                    // Internet Connection is Present
-                    // make HTTP requests
                     if(opslaanGegevens())
                     {
                         Toast.makeText(getApplicationContext(), getString(R.string.dialog_ingeschreven_melding), Toast.LENGTH_SHORT).show();
-                        Intent in = new Intent(getApplicationContext(),Vormingen_Overzicht.class);
+                        Intent in = new Intent(getApplicationContext(),navBarMainScreen.class);
+
+                        in.putExtra("naarfrag", "vorming");
+                        in.putExtra("herladen", "nee");
                         startActivity(in);
                     }
                 }
                 else{
-                    // Internet connection is not present
-                    // Ask user to connect to Internet
                     Toast.makeText(getApplicationContext(), getString(R.string.error_no_internet), Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
 
     }
 
-    //alle gegevens worden opgeslagen en doorgestuurd naar de DB.
-    // Indien alles is gelukt -> return true en ga door naar volgend scherm Indien er een fout is gebeurd -> return false;
+    //Sla de gegevens op in de database, als de gegevens correct opgeslagen zijn geef true terug
+    //Kijk of de gebruiker nog niet is ingeschreven voor deze vorming
     public boolean opslaanGegevens(){
-        //3 gegevens nodig, objectID van Monitor, objectID van Vorming & geselecteerde data.
+        String geselecteerdeData = String.valueOf(spnDataInschrijven.getSelectedItem());
+        String monitorId;
+
         String emailToLookFor = ParseUser.getCurrentUser().getEmail();
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("Monitor");
-        query.whereEqualTo("email", emailToLookFor);
-
-        String monitorId = null;
         try{
-            ParseQuery<ParseObject> querry = new ParseQuery<ParseObject>("Monitor");
-            querry.orderByAscending("naam");
-            List<ParseObject> lijstMonitoren = querry.find();
-            for (ParseObject monitor : lijstMonitoren) {
-                if(monitor.get("email").equals(ParseUser.getCurrentUser().getEmail()))
-                {
-                    monitorId = monitor.getObjectId();
-                }
-
-            }
-            ParseQuery<ParseObject> queryV = new ParseQuery<ParseObject>(
-                    "InschrijvingVorming");
-
-            queryV.orderByAscending("monitor");
-            List<ParseObject> lijstInschrijvingVormingen = queryV.find();
-            for (ParseObject vormingIns : lijstInschrijvingVormingen) {
-                if(vormingIns.get("monitor").equals(monitorId) && vormingIns.get("vorming").equals(vormingID) && vormingIns.get("periode").equals(String.valueOf(spnDataInschrijven.getSelectedItem())))
-                {
-                    Toast.makeText(VormingSignup.this, "U heeft zich al ingeschreven voor deze vorming." , Toast.LENGTH_LONG).show();
-                    return false;
-                }
-
-            }
-        }
-        catch(Exception e){
-            Toast.makeText(this,"fout bij ophalen monitoren",Toast.LENGTH_LONG).show();
-        }
-        try{
-            List<ParseObject> lijstObjecten = query.find();
-            if (lijstObjecten.size() != 1){
-                Toast.makeText(getApplicationContext(), "Er is iets fout gelopen. Onze excuses voor het ongemak.", Toast.LENGTH_SHORT).show();
+            ParseQuery<ParseObject> queryVanMonitor = ParseQuery.getQuery("Monitor");
+            queryVanMonitor.whereEqualTo("email", emailToLookFor);
+            List<ParseObject> lijstObjecten = queryVanMonitor.find();
+            if (lijstObjecten.isEmpty()){
+                Toast.makeText(getApplicationContext(), getString(R.string.error_generalException), Toast.LENGTH_SHORT).show();
                 return false;
             }
-            else{//er is slechts 1 gebruiker in de Monitor tabel, zoals het hoort.
-                String monitorID = lijstObjecten.get(0).getObjectId();
-                ParseObject nieuweVorming = new ParseObject("InschrijvingVorming");
-
-                nieuweVorming.put("vorming", vormingID);
-                nieuweVorming.put("monitor", monitorID);
-                nieuweVorming.put("periode", String.valueOf(spnDataInschrijven.getSelectedItem()) );
-                nieuweVorming.saveInBackground();
-                return true;
-
+            else{
+                monitorId = lijstObjecten.get(0).getObjectId();
             }
+
+            ParseQuery<ParseObject> queryVanInschrijvingen = new ParseQuery<ParseObject>("InschrijvingVorming");
+            queryVanInschrijvingen.whereEqualTo("monitor", monitorId);
+            queryVanInschrijvingen.whereEqualTo("vorming", vormingID);
+            queryVanInschrijvingen.whereEqualTo("periode", geselecteerdeData);
+            List<ParseObject> lijstInschrijvingVormingen = queryVanInschrijvingen.find();
+            if (lijstInschrijvingVormingen.size() > 0){
+                 Toast.makeText(VormingSignup.this, getString(R.string.error_duplicateSignupVorming) , Toast.LENGTH_LONG).show();
+                return false;
+            }
+
+            ParseObject nieuweVorming = new ParseObject("InschrijvingVorming");
+            nieuweVorming.put("vorming", vormingID);
+            nieuweVorming.put("monitor", monitorId);
+            nieuweVorming.put("periode", geselecteerdeData );
+            nieuweVorming.saveInBackground();
+            return true;
         }
-        catch(ParseException e){
-            Toast.makeText(getApplicationContext(), "Er is iets fout gelopen. Onze excuses voor het ongemak.", Toast.LENGTH_SHORT).show();
-            return false;
+        catch(Exception e){
+            Toast.makeText(this,getString(R.string.error_generalException),Toast.LENGTH_LONG).show();
         }
 
+        return false;
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.back_2, menu);
         return true;
     }
@@ -150,6 +132,8 @@ public class VormingSignup extends Activity {
         int id = item.getItemId();
         if (id == R.id.backMenu2) {
             Intent intent1 = new Intent(this, navBarMainScreen.class);
+            intent1.putExtra("naarfrag","vorming");
+            intent1.putExtra("herladen","nee");
             intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent1);
 
@@ -157,6 +141,16 @@ public class VormingSignup extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent setIntent = new Intent(VormingSignup.this, navBarMainScreen.class);
+        setIntent.putExtra("naarfrag","vorming");
+        setIntent.putExtra("herladen","nee");
+        setIntent.addCategory(Intent.CATEGORY_HOME);
+        setIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(setIntent);
     }
 
 
