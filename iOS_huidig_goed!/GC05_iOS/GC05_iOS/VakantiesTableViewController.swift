@@ -55,12 +55,14 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
             } else {
                 //table is opgevuld
                 //opvullen
-                self.vakanties = LocalDatastore.getAllObjectsFromLocalDatastore(tableName) as [Vakantie]
+                self.vakanties = LocalDatastore.getLocalObjects("Vakantie") as [Vakantie]
+                //self.vakanties = LocalDatastore.getAllObjectsFromLocalDatastore(tableName) as [Vakantie]
                 self.vakanties2 = self.vakanties
                 self.tableView.reloadData()
             }
         } else {
-            self.vakanties = LocalDatastore.getAllObjectsFromLocalDatastore(tableName) as [Vakantie]
+            self.vakanties = LocalDatastore.getLocalObjects("Vakantie") as [Vakantie]
+            //self.vakanties = LocalDatastore.getAllObjectsFromLocalDatastore(tableName) as [Vakantie]
             self.vakanties2 = self.vakanties
             self.tableView.reloadData()
         }
@@ -196,7 +198,8 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         var scores: [Int] = []
         var sum = 0
         
-        var feedbacks: [Feedback] = LocalDatastore.getAllObjectsFromLocalDatastore("Feedback") as [Feedback]
+        var feedbacks = LocalDatastore.getLocalObjects("Feedback") as [Feedback]
+        //var feedbacks: [Feedback] = LocalDatastore.getAllObjectsFromLocalDatastore("Feedback") as [Feedback]
         
         for feed in feedbacks {
             scores.append(feed.score!)
