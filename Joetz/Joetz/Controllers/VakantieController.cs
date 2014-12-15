@@ -33,11 +33,11 @@ namespace Joetz.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(Vakantie vakantie)
+        public async Task<ActionResult> Create(Vakantie vakantie)
         {
             if (ModelState.IsValid)
             {
-                vakantieRepository.Add(vakantie);
+                await vakantieRepository.Add(vakantie);
                 TempData["Info"] = "Vakantie " + vakantie.Titel + " is toegevoegd";
                 return RedirectToAction("Index");    
             }
@@ -48,16 +48,14 @@ namespace Joetz.Controllers
         {
             var vakantieTask = vakantieRepository.FindBy(id);
             Vakantie vakantie = await vakantieTask;
-            return View("Create", vakantie);
+            return View(vakantie);
         }
 
         [HttpPost]
-        public async Task<ActionResult> Edit(string id, FormCollection formValues)
+        public async Task<ActionResult> Edit(Vakantie v)
         {
-            var vakantieTask = vakantieRepository.FindBy(id);
-            Vakantie vakantie = await vakantieTask;
-            UpdateModel(vakantie, formValues.ToValueProvider());
-            vakantieRepository.Update(vakantie);
+            
+            await vakantieRepository.Update(v);
             return RedirectToAction("Index");
         }
 
@@ -73,7 +71,7 @@ namespace Joetz.Controllers
         {
             var vakantieTask = vakantieRepository.FindBy(id);
             Vakantie vakantie = await vakantieTask;
-            vakantieRepository.Delete(vakantie);
+            await vakantieRepository.Delete(vakantie);
             return RedirectToAction("Index");
         }
 

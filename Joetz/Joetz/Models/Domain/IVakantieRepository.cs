@@ -8,9 +8,9 @@ namespace Joetz.Models.Domain
     {
         Task<Vakantie> FindBy(string vakantieId);
         Task<ICollection<Vakantie>> FindAll();
-        void Add(Vakantie vakantie);
-        void Delete(Vakantie vakantie);
+        Task<bool> Add(Vakantie vakantie);
+        Task<bool> Delete(Vakantie vakantie);
         Vakantie GetVakantie(ParseObject vakantieObject);
-        void Update(Vakantie vakantie);
+        Task<bool> Update(Vakantie vakantie);
     }
 }

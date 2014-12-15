@@ -11,7 +11,7 @@ namespace Joetz.Models.Domain
         [StringLength(50, ErrorMessage = "{0} is te lang.")]
         public string Titel { get; set; }
 
-        [Display(Name = "Logies")]
+        [Display(Name = "Locatie")]
         [Required(ErrorMessage = "{0} is verplicht")]
         [StringLength(50, ErrorMessage = "{0} is te lang.")]
         [DataType(DataType.MultilineText)]

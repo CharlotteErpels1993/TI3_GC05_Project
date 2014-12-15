@@ -3,9 +3,13 @@
 @{
     ViewBag.Title = "Verwijderen vakantie";
 }
-
+@using (Html.BeginForm("Delete", "Vakantie", FormMethod.Post, new {role = "form"}))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
 <div class="container">
     <div class="well">
+        <br/>
         <h2>@ViewBag.Title</h2>
         <h4>Weet je zeker dat je de vakantie @Model.Titel wil verwijderen?</h4>
     </div>
@@ -23,6 +27,7 @@
     </form>
     
 </div>
+}
 
 @*<h2>@ViewBag.Title</h2>
 

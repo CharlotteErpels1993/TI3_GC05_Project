@@ -64,7 +64,7 @@ namespace Joetz.Models.DAL
             return vakantie;
         }
 
-        public async void Add(Vakantie vakantie)
+        public async Task<bool> Add(Vakantie vakantie)
         {
             ParseObject vakantieObject = new ParseObject("Vakantie");
 
@@ -87,22 +87,46 @@ namespace Joetz.Models.DAL
             vakantieObject["vervoerwijze"] = vakantie.Vervoerwijze;
 
             await vakantieObject.SaveAsync();
+
+            return true;
         }
 
-        public async void Delete(Vakantie vakantie)
+        public async Task<bool> Delete(Vakantie vakantie)
         {
             var query = ParseObject.GetQuery("Vakantie").WhereEqualTo("objectId", vakantie.Id);
             ParseObject vakantieObject = await query.FirstAsync();
 
             await vakantieObject.DeleteAsync();
+
+            return true;
         }
 
-        public async void Update(Vakantie vakantie)
+        public async Task<bool> Update(Vakantie vakantie)
         {
             var query = ParseObject.GetQuery("Vakantie").WhereEqualTo("objectId", vakantie.Id);
             ParseObject vakantieObject = await query.FirstAsync();
 
+            vakantieObject["titel"] = vakantie.Titel;
+            vakantieObject["locatie"] = vakantie.Locatie;
+            vakantieObject["korteBeschrijving"] = vakantie.KorteBeschrijving;
+            vakantieObject["aantalDagenNachten"] = vakantie.AantalDagenNachten;
+            vakantieObject["basisPrijs"] = vakantie.BasisPrijs;
+            vakantieObject["bondMoysonLedenPrijs"] = vakantie.BondMoysonLedenPrijs;
+            vakantieObject["formule"] = vakantie.Formule;
+            vakantieObject["link"] = vakantie.Link;
+            vakantieObject["inbegrepenPrijs"] = vakantie.InbegrepenPrijs;
+            vakantieObject["maxAantalDeelnemers"] = vakantie.MaxAantalDeelnemers;
+            vakantieObject["minLeeftijd"] = vakantie.MinLeeftijd;
+            vakantieObject["maxLeeftijd"] = vakantie.MaxLeeftijd;
+            vakantieObject["sterPrijs1ouder"] = vakantie.SterPrijs1Ouder;
+            vakantieObject["sterPrijs2ouders"] = vakantie.SterPrijs2Ouders;
+            vakantieObject["terugkeerdatum"] = vakantie.TerugkeerDatum;
+            vakantieObject["vertrekdatum"] = vakantie.VertrekDatum;
+            vakantieObject["vervoerwijze"] = vakantie.Vervoerwijze;
+
             await vakantieObject.SaveAsync();
+
+            return true;
         }
     }
 }
