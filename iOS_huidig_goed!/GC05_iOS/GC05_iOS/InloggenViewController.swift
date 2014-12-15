@@ -117,10 +117,10 @@ class InloggenViewController: UIViewController, UITextFieldDelegate {
                 var type: String = user["soort"] as String
                 
                 if type == "monitor" {
-                    var monitor = ParseData.getMonitorWithEmail(txtEmail.text)
+                    //var monitor = ParseData.getMonitorWithEmail(txtEmail.text)
                     performSegueWithIdentifier("overzichtMonitor", sender: self)
                 } else if type == "ouder" {
-                    var ouder = ParseData.getOuderWithEmail(txtEmail.text)
+                    //var ouder = ParseData.getOuderWithEmail(txtEmail.text)
                     performSegueWithIdentifier("ouderOverzicht", sender: self)
                 } else if type == "administrator" {
                     performSegueWithIdentifier("administratorOverzicht", sender: self)

@@ -49,13 +49,6 @@ class Registratie1ViewController: /*ResponsiveTextFieldViewController*/ UITableV
             txtRijksregisterNr.resignFirstResponder()
         }
         
-        //ParseData.deleteOuderTable()
-        //ParseData.vulOuderTableOp()
-        //ParseData.deleteMonitorTable()
-        //ParseData.vulMonitorTableOp()
-        
-        LocalDatastore.getTableReady("Monitor")
-        
         txtAansluitingsNr.delegate = self
         txtCodeGerechtigde.delegate = self
         txtRijksregisterNr.delegate = self
