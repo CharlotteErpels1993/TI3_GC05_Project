@@ -675,6 +675,65 @@ struct LocalDatastore {
         
         return ouder
     }
+    
+    static func parseDeelnemerToDatabase(deelnemer: Deelnemer) -> String {
+        var object = PFObject(className: "Deelnemer")
+        
+        object.setValue(deelnemer.voornaam, forKey: "voornaam")
+        object.setValue(deelnemer.naam, forKey: "naam")
+        object.setValue(deelnemer.geboortedatum, forKey: "geboortedatum")
+        object.setValue(deelnemer.straat, forKey: "straat")
+        object.setValue(deelnemer.nummer, forKey: "nummer")
+        object.setValue(deelnemer.gemeente, forKey: "gemeente")
+        object.setValue(deelnemer.postcode, forKey: "postcode")
+        
+        if deelnemer.bus != nil {
+            object.setValue(deelnemer.bus, forKey: "bus")
+        }
+        
+        object.save()
+        object.fetch()
+        
+        return object.objectId
+    }
+
+    static func parseContactpersoonNoodToDatabase(contactpersoon: ContactpersoonNood) -> String {
+        var object = PFObject(className: "ContactpersoonNood")
+        
+        object.setValue(contactpersoon.voornaam, forKey: "voornaam")
+        object.setValue(contactpersoon.naam, forKey: "naam")
+        object.setValue(contactpersoon.gsm, forKey: "gsm")
+        
+        if contactpersoon.telefoon != nil {
+            object.setValue(contactpersoon.telefoon, forKey: "telefoon")
+        }
+        
+        object.save()
+        object.fetch()
+        
+        return object.objectId
+    }
+    
+    static func parseInschrijvingVakantieToDatabase(inschrijving: InschrijvingVakantie) {
+        var object = PFObject(className: "InschrijvingVakantie")
+        
+        object.setValue(inschrijving.vakantie?.id, forKey: "vakantie")
+        object.setValue(inschrijving.ouder?.id, forKey: "ouder")
+        object.setValue(inschrijving.deelnemer?.id, forKey: "deelnemer")
+        object.setValue(inschrijving.contactpersoon1?.id, forKey: "contactpersoon1")
+        
+        
+        if inschrijving.extraInfo != "" {
+            object.setValue(inschrijving.extraInfo, forKey: "extraInformatie")
+        }
+        
+        if inschrijving.contactpersoon2 != nil {
+            object.setValue(inschrijving.contactpersoon2?.id, forKey: "contactpersoon2")
+        }
+        
+        object.save()
+    }
+
 }
 
 
