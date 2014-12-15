@@ -19,8 +19,11 @@ namespace Joetz.Models.DAL
             vorming.Betalingswijze = vormingObject.Get<string>("betalingswijze");
             vorming.CriteriaDeelnemers = vormingObject.Get<string>("criteriaDeelnemers");
             vorming.InbegrepenPrijs = vormingObject.Get<string>("inbegrepenInPrijs");
-            var Periodes = vormingObject.Get<IList<string>>("periodes");
-            vorming.Periodes = Periodes;
+            vorming.InbegrepenPrijs = vormingObject.Get<string>("inbegrepenInPrijs");
+            IList<string> periodes = vormingObject.Get<IList<string>>("periodes");
+            string[] array = new string[periodes.Count];
+            periodes.CopyTo(array, 0);
+            vorming.Periodes = array;
             vorming.Prijs = vormingObject.Get<Double>("prijs");
             vorming.Tips = vormingObject.Get<string>("tips");
             vorming.WebsiteLocatie = vormingObject.Get<string>("websiteLocatie");

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Text;
 
 namespace Joetz.Models.Domain
 {
@@ -25,6 +26,20 @@ namespace Joetz.Models.Domain
         [Required(ErrorMessage = "{0} is verplicht")]
         [DataType(DataType.MultilineText)]
         public IList<string> Periodes { get; set; }
+
+        public string PeriodesInStringVorm
+        {
+            get
+            {
+                StringBuilder sb = new StringBuilder();
+                foreach (string obj in Periodes)
+                {
+                    sb.Append("* " + obj + Environment.NewLine);
+                }
+                return sb.ToString();
+            }
+        }
+
 
         [Display(Name = "Prijs")]
         [Required(ErrorMessage = "{0} is verplicht")]

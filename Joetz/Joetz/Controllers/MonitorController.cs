@@ -5,7 +5,7 @@ using System.Web;
 using System.IO;
 using Joetz.Models.DAL;
 using Joetz.Models.Domain;
-using Excel;
+//using Excel;
 
 namespace Joetz.Controllers
 {
@@ -40,7 +40,7 @@ namespace Joetz.Controllers
         public async Task<ActionResult> Index(HttpPostedFileBase file)
         {
             // Zeker zijn dat gebruiker bestand heeft geselecteerd
-            if (file != null && file.ContentLength > 0)
+            /*if (file != null && file.ContentLength > 0)
             {
                 //file name ophalen
                 string fileName = Path.GetFileName(file.FileName);
@@ -87,8 +87,8 @@ namespace Joetz.Controllers
                         }
                     } // the using */
                     // redirect back to the index action to show the form once again
-                return RedirectToAction("Index");
-                }
+                /*return RedirectToAction("Index");
+                }*/
             return View();
         }
 
