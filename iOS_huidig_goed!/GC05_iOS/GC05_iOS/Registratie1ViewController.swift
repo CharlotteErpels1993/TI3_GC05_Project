@@ -103,7 +103,7 @@ class Registratie1ViewController: /*ResponsiveTextFieldViewController*/ UITableV
             
             if controleerRodeBordersAanwezig() == true {
                 if rijksregisterNrAlGeregistreerd == true {
-                    foutBoxOproepen("Fout", "Dit rijksregisternummer is al geregistreerd!", self)
+                    foutBoxOproepen("Fout", "Dit rijksregisternummer (\(self.txtRijksregisterNr.text!)) is al geregistreerd!", self)
                     self.txtRijksregisterNr.text = ""
                 } else {
                     foutBoxOproepen("Fout", "Gelieve de velden correct in te vullen!", self)

@@ -11,11 +11,36 @@ class NieuwWachtwoordViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "nieuwWachtwoord2" {
             nieuwWachtwoord()
+        } else if segue.identifier == "gaTerugNaarInloggen" {
+            let inloggenViewController = segue.destinationViewController as InloggenViewController
         }
     }
     
     func nieuwWachtwoord() {
         var email = emailAdresTxt.text
+        
+        if Reachability.isConnectedToNetwork() == false {
+            var alert = UIAlertController(title: "Oeps.. U heeft geen internet", message: "U heeft internet nodig voor u te registeren. Ga naar instellingen om dit aan te passen.", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Annuleer", style: UIAlertActionStyle.Default, handler: nil))
+            alert.addAction(UIAlertAction(title: "Ga naar instellingen", style: .Default, handler: { action in
+                switch action.style{
+                default:
+                    UIApplication.sharedApplication().openURL(NSURL(string:UIApplicationOpenSettingsURLString)!);
+                }
+                
+            }))
+            alert.addAction(UIAlertAction(title: "Ga terug naar Inloggen", style: .Default, handler: { action in
+                switch action.style{
+                default:
+                    self.performSegueWithIdentifier("gaTerugNaarInloggen", sender: self)
+            }
+                
+            }))
+            presentViewController(alert, animated: true, completion: nil)
+            emailAdresTxt.resignFirstResponder()
+            
+        }
+        
         if (email != nil && isValidEmail(email) && isValidEmailInDatabase(email)) {
             PFUser.requestPasswordResetForEmail(email)
         } else {

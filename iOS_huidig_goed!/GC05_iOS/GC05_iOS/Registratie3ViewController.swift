@@ -60,7 +60,7 @@ class Registratie3ViewController: /*ResponsiveTextFieldViewController*/ UITableV
             
             if controleerRodeBordersAanwezig() == true {
                 if emailAlGeregistreerd == true {
-                    foutBoxOproepen("Fout", "Dit e-mailadres is al geregistreerd bij ons!", self)
+                    foutBoxOproepen("Fout", "Dit e-mailadres (\(self.txtEmail.text!)) is al geregistreerd bij ons!", self)
                     self.txtEmail.text = ""
                 } else {
                     foutBoxOproepen("Fout", "Gelieve de velden correct in te vullen!", self)

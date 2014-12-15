@@ -4176,9 +4176,11 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                     <navigationItem key="navigationItem" title="Wachtwoord vergeten" id="2Ha-qn-9LR"/>
                     <connections>
                         <outlet property="emailAdresTxt" destination="VoK-Ur-kLA" id="mXw-bk-AVE"/>
+                        <segue destination="6kG-CK-f6v" kind="unwind" identifier="gaTerugNaarInloggen" unwindAction="gaTerugNaarInloggen:" id="0Xm-zw-cJb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="91n-zZ-7sd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="6kG-CK-f6v" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1369" y="1885"/>
         </scene>
