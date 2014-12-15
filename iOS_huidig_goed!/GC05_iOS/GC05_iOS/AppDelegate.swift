@@ -40,9 +40,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         
-        /*if PFUser.currentUser() != nil {
+        if PFUser.currentUser() != nil {
             PFUser.logOut()
-        }*/
+        }
         
         //ParseData.deleteAllTables()
         /*if Reachability.isConnectedToNetwork() {

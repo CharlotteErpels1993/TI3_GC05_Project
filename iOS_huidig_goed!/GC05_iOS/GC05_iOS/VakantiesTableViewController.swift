@@ -170,8 +170,8 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
             self.tableView.reloadData()
         }*/
     
-        self.vakanties2.sort({ (String($0.minLeeftijd)) < $1.titel})
-        self.vakanties.sort({ (String($0.minLeeftijd)) < $1.titel})
+        self.vakanties2.sort({ $0.minLeeftijd < $1.maxLeeftijd })
+        self.vakanties.sort({ $0.minLeeftijd < $1.maxLeeftijd})
     
         hideSideMenuView()
         zoekbar.showsScopeBar = true

@@ -3,7 +3,7 @@ func getActivityIndicatorView(controller: UIViewController) -> UIActivityIndicat
     
     activityIndicator.color = UIColor.redColor()
     activityIndicator.center = controller.view.center
-    activityIndicator.startAnimating()
+    //activityIndicator.startAnimating()
     controller.view.addSubview(activityIndicator)
     
     return activityIndicator

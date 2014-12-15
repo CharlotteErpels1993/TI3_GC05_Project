@@ -94,7 +94,6 @@ class SidebarTableViewController: UITableViewController, UITextFieldDelegate {
         
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         var destViewController: UIViewController
-        var activityIndicatorView: UIActivityIndicatorView!
         
         if PFUser.currentUser() == nil {
             self.tableView.reloadData()
@@ -154,11 +153,8 @@ class SidebarTableViewController: UITableViewController, UITextFieldDelegate {
                     destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
                     break
                 case 2:
-                    activityIndicatorView = getActivityIndicatorView(self)
-
                     var destViewController2: VakantiesTableViewController = /*destViewController = */mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as VakantiesTableViewController
                     destViewController2.favoriet = true
-                    //destViewController2.activityIndicatorView = activityIndicatorView
                     destViewController = destViewController2
                     break
                 case 3:
