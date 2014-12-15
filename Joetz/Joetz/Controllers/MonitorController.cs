@@ -53,7 +53,9 @@ namespace Joetz.Controllers
                     IList<Monitor> monitorern = new List<Monitor>();
 
                     IExcelDataReader reader = ExcelReaderFactory.CreateOpenXmlReader(file.InputStream);
-                    
+
+                    reader.Read();
+
                         while(reader.Read()) //14 kolommen +-
                         {
                             m.Aansluitingsnummer = reader.GetInt32(0);
