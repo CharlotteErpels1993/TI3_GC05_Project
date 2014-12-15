@@ -52,7 +52,7 @@ struct LocalDatastore {
         
         var onlineObjects = self.getAllObjectsParse(tableName)
         
-        self.unpinOldObjects(onlineObjects, tableName: tableName)
+        //self.unpinOldObjects(onlineObjects, tableName: tableName)
     }
     
     static func fetchHuidigeObjectenInLocalDatastore(tableName: String) -> [PFObject] {
