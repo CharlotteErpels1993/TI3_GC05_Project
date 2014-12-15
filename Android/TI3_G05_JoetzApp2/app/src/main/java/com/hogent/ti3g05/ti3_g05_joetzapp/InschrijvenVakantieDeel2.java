@@ -40,7 +40,7 @@ public class InschrijvenVakantieDeel2 extends Activity {
         setContentView(R.layout.activity_inschrijven_vakantie_part2);
         cd = new ConnectionDetector(getApplicationContext());
 
-        getActionBar().setTitle("Inschrijven vakantie");
+        getActionBar().setTitle(R.string.title_activity_inschrijven);
 
         final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.alpha);
 

@@ -55,7 +55,7 @@ public class FeedbackOverzicht extends Fragment {
         listview = (ListView) rootView.findViewById(R.id.listView);
         filtertext = (EditText) rootView.findViewById(R.id.filtertext);
 
-        getActivity().getActionBar().setTitle("Joetz funfactor");
+        getActivity().getActionBar().setTitle(getString(R.string.mainTitle_Funfactor));
 
         cd = new ConnectionDetector(rootView.getContext());
         sqliteDatabase = new SqliteDatabase(rootView.getContext());
@@ -97,9 +97,9 @@ public class FeedbackOverzicht extends Fragment {
             super.onPreExecute();
             mProgressDialog = new ProgressDialog(getActivity());
 
-            mProgressDialog.setTitle("Ophalen van funFactoren.");
+            mProgressDialog.setTitle(getString(R.string.loadingMSG_feedback));
 
-            mProgressDialog.setMessage("Aan het laden...");
+            mProgressDialog.setMessage(getString(R.string.loading_message));
             try {
                 mProgressDialog.setIndeterminate(true);
                 mProgressDialog.setIndeterminateDrawable(rootView.getResources().getDrawable(R.drawable.my_animation));
@@ -126,7 +126,7 @@ public class FeedbackOverzicht extends Fragment {
                 lijstMetParseFeedback = queryFeedback.find();
                 sqliteDatabase.dropFeedback();
                 if (lijstMetParseFeedback.isEmpty()) {
-                    Toast.makeText(getActivity(), "Nog geen funfactor gegeven.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), getString(R.string.message_no_feedback), Toast.LENGTH_SHORT).show();
                 } else {
 
                     ParseQuery<ParseObject> qryVakantiesOphalen = new ParseQuery<ParseObject>( "Vakantie");

@@ -70,7 +70,7 @@ public class InschrijvenVakantieDeel1 extends FragmentActivity {
         tv_errorDate = (TextView) findViewById(R.id.ErrorDate);
         tv_errorDate.setVisibility(View.GONE);
 
-        getActionBar().setTitle("Inschrijven vakantie");
+        getActionBar().setTitle(getString(R.string.title_activity_inschrijven));
         btnVolgende = (Button)findViewById(R.id.btnNaarDeel2Vak);
         btnVolgende.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -155,7 +155,7 @@ public class InschrijvenVakantieDeel1 extends FragmentActivity {
                 date = formatter.parse(maandI);
 
             } catch (ParseException e) {
-                Toast.makeText(InschrijvenVakantieDeel1.this, "Fout bij datum omzetten",Toast.LENGTH_SHORT).show();
+                Toast.makeText(InschrijvenVakantieDeel1.this, getString(R.string.error_generalException),Toast.LENGTH_SHORT).show();
             }
 
             cal.setTime(date);
@@ -168,9 +168,9 @@ public class InschrijvenVakantieDeel1 extends FragmentActivity {
             //Controleer of de geboortedatum binnen de doelgroep valt
             if(age < Integer.parseInt(mindoelgroep) || age > Integer.parseInt(maxdoelgroep))
             {
-                gebDatum.setError("De leeftijd valt niet binnen de doelgroep");
+                gebDatum.setError(getString(R.string.error_incorrecte_leeftijd));
                 focusView = gebDatum;
-                tv_errorDate.setText("De leeftijd valt niet binnen de doelgroep");
+                tv_errorDate.setText(getString(R.string.error_incorrecte_leeftijd));
                 tv_errorDate.setVisibility(View.VISIBLE);
                 cancel = true;
             }

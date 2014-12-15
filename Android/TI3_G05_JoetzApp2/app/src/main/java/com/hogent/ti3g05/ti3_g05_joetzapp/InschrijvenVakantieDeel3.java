@@ -35,7 +35,7 @@ public class InschrijvenVakantieDeel3 extends Activity {
         setContentView(R.layout.activity_inschrijven_vakantie_part3);
         cd = new ConnectionDetector(getApplicationContext());
 
-        getActionBar().setTitle("Inschrijven vakantie");
+        getActionBar().setTitle(getString(R.string.title_activity_inschrijven));
         et_ExtraInformatie = (EditText) findViewById(R.id.ExtraInformatieIns);
 
         final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.alpha);
@@ -110,7 +110,7 @@ public class InschrijvenVakantieDeel3 extends Activity {
         try {
             date = formatter.parse(datum);
         } catch (ParseException e) {
-            Toast.makeText(InschrijvenVakantieDeel3.this, "Fout bij datum omzetten",Toast.LENGTH_SHORT).show();
+            Toast.makeText(InschrijvenVakantieDeel3.this, getString(R.string.error_generalException),Toast.LENGTH_SHORT).show();
         }
         try{
             ParseObject contactPers = new ParseObject("ContactpersoonNood");
@@ -219,13 +219,13 @@ public class InschrijvenVakantieDeel3 extends Activity {
             }
             else
             {
-                    Toast.makeText(getApplicationContext(), "U bent al ingeschreven voor deze vakantie", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), getString(R.string.error_occupied_inschrVak), Toast.LENGTH_SHORT).show();
 
             }
 
         }
         catch(Exception e){
-            Toast.makeText(getApplicationContext(), "Er is een fout opgetreden. Onze excuses voor het ongemak.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), getString(R.string.error_generalException), Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -239,7 +239,7 @@ public class InschrijvenVakantieDeel3 extends Activity {
         try{
             List<ParseObject> lijstOuders = query.find();
             if (lijstOuders.size() != 1){
-                Toast.makeText(getApplicationContext(), "Er is iets fout gelopen. Onze excuses voor het ongemak.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), getString(R.string.error_generalException), Toast.LENGTH_SHORT).show();
                 return null;
             }
             else{

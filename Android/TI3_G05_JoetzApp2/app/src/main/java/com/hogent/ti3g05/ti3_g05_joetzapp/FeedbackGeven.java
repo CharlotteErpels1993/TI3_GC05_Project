@@ -53,7 +53,7 @@ public class FeedbackGeven extends Activity {
         final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.alpha);
 
         ratingBar = (RatingBar) findViewById(R.id.ratingBar);
-        setTitle("Funfactor");
+        setTitle(getString(R.string.mainTitle_Funfactor));
 
         error = (TextView)findViewById(R.id.Error);
         feedbackText = (EditText) findViewById(R.id.feedbackIng);
@@ -150,12 +150,12 @@ public class FeedbackGeven extends Activity {
 
         if(TextUtils.isEmpty(score))
         {
-            error.setText("Moet ingevuld worden");
+            error.setText(getString(R.string.error_field_required));
             cancel = true;
         }else{
             if ((int)Double.parseDouble(score)== 0){
 
-                error.setText("Moet ingevuld worden");
+                error.setText(getString(R.string.error_field_required));
                 cancel = true;
             }
         }

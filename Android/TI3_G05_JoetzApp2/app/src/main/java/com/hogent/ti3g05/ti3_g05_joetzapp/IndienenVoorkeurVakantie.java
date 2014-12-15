@@ -62,7 +62,7 @@ public class IndienenVoorkeurVakantie extends Activity implements AdapterView.On
         final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.alpha);
 
         cd = new ConnectionDetector(this);
-        getActionBar().setTitle("Kies uw vakantie");
+        getActionBar().setTitle(getString(R.string.label_Vakantie_Kiezen));
         btnVolgende.setOnClickListener(new View.OnClickListener() {
             //Bij het klikken op de knop kijk of er internet aanwezig is, zoja dien de voorkeur in, zoneen geef de gepaste melding
             @Override
@@ -227,9 +227,9 @@ public class IndienenVoorkeurVakantie extends Activity implements AdapterView.On
 
             startActivity(in);
             overridePendingTransition(R.anim.right_in, R.anim.left_out);
-            Toast.makeText(IndienenVoorkeurVakantie.this, "Uw voorkeur is succesvol doorgegeven", Toast.LENGTH_SHORT).show();
+            Toast.makeText(IndienenVoorkeurVakantie.this, getString(R.string.dialog_voorkeur_complete), Toast.LENGTH_SHORT).show();
         }else{
-            Toast.makeText(getApplicationContext(), "Er is een fout opgetreden. Onze excuses voor het ongemak.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), getString(R.string.error_generalException), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -254,7 +254,7 @@ public class IndienenVoorkeurVakantie extends Activity implements AdapterView.On
             }
         }
         catch(Exception e){
-            Toast.makeText(this,"fout bij ophalen monitoren",Toast.LENGTH_LONG).show();
+            Toast.makeText(this,getString(R.string.error_generalException),Toast.LENGTH_LONG).show();
             return false;
         }
         try{
@@ -266,14 +266,14 @@ public class IndienenVoorkeurVakantie extends Activity implements AdapterView.On
             for (ParseObject voorkeur : lijstMetParseObjecten) {
                 if(voorkeur.get("monitor").equals(monitorId) && voorkeur.get("vakantie").equals(vakantie.getVakantieID()))
                 {
-                    Toast.makeText(IndienenVoorkeurVakantie.this, "U heeft al voorkeuren ingediend voor deze vakantie" , Toast.LENGTH_LONG).show();
+                    Toast.makeText(IndienenVoorkeurVakantie.this, getString(R.string.dialog_voorkeur_occupied) , Toast.LENGTH_LONG).show();
                     return false;
                 }
 
             }
         }
         catch(Exception e){
-            Toast.makeText(this,"fout bij ophalen voorkeuren",Toast.LENGTH_LONG).show();
+            Toast.makeText(this,getString(R.string.error_generalException),Toast.LENGTH_LONG).show();
             return false;
         }
         try{
@@ -286,7 +286,7 @@ public class IndienenVoorkeurVakantie extends Activity implements AdapterView.On
             return true;
         }
         catch(Exception e){
-            Toast.makeText(this,"fout bij opslaan",Toast.LENGTH_LONG).show();
+            Toast.makeText(this,getString(R.string.error_generalException),Toast.LENGTH_LONG).show();
             return false;
         }
 

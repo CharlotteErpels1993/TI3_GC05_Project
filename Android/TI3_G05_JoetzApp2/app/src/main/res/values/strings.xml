@@ -28,7 +28,7 @@
     <string name="title_activity_Login">Inloggen</string>
     <string name="title_activity_Register">Registreren</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_inschrijven">InschrijvenActivity</string>
+    <string name="title_activity_inschrijven">Inschrijven vakantie</string>
     <string name="title_activity_activiteit_detail">activiteit_detail</string>
     <string name="title_activity_activiteit_overzicht">activiteit_overzicht</string>
     <string name="title_activity_profiel_detail">profiel_detail</string>
@@ -86,6 +86,9 @@ Mail Joetz met uw voornaam, naam, e-mailadres, rijksregisternummer, adresgegeven
     <string name="error_invalid_password">wachtwoord is te kort</string>
     <string name="error_invalid_confirm_password">wachtwoorden komen niet overeen</string>
     <string name="dialog_ingeschreven_melding">U heeft zich succesvol ingeschreven.</string>
+    <string name="dialog_Lidnr_Toegevoegd">Lidnummer toegevoegd</string>
+    <string name="dialog_voorkeur_complete">Uw voorkeur werd succesvol doorgegeven.</string>
+    <string name="dialog_voorkeur_occupied">U heeft al een voorkeur ingediend voor deze vakantie.</string>
     <string name="btnCPtoevoegen">Extra contactpersoon toevoegen</string>
     <string name="btnCPVerwijderen">Extra contactpersoon verwijderen</string>
     <string name="extra_Informatie">Extra Informatie</string>
@@ -118,6 +121,8 @@ Mail Joetz met uw voornaam, naam, e-mailadres, rijksregisternummer, adresgegeven
     <string name="title_activity_tester_list_item">TesterListItem</string>
     <string name="meerInfo">Meer info</string>
     <string name="minderInfo">Minder info</string>
+    <string name="mainTitle_Funfactor">JOETZ funfactor</string>
+    <string name=""></string>
     <string name="vakantieDetailTitel">Vakantie</string>
     <string name="label_geboorteDatum">Geboortedatum</string>
     <string name="inschrijvenVak1_AlgemeneUitleg">Gelieve de gegevens van de deelnemer in te voeren.</string>
@@ -149,6 +154,7 @@ Mail Joetz met uw voornaam, naam, e-mailadres, rijksregisternummer, adresgegeven
     <string name="sterPrijsOuder1">De sterprijs voor 1 ouder</string>
     <string name="sterPrijs2Ouders">De sterprijs voor 2 ouders</string>
     <string name="forgetPass">Wachtwoord vergeten</string>
+    <string name="error_occupied_inschrVak">U heeft zich al ingeschreven voor deze vakantie.</string>
     <string name="joetzAbout">Verlang je ook al naar de vakantie? Dan presenteren we je graag de <b>kinder- en jongerenvakanties 2014</b> van JOETZ.
 Dankzij onze selectie van de <b>uiterst verzorgde verblijfplaatsen en de begeleiding door ervaren monitoren</b> die allemaal een opleiding hebben genoten die erkend wordt door de Vlaamse overheid, kan JOETZ opnieuw duizenden kinderen en jongeren de vakantie van hun leven bieden.
 Een kindervakantie is in de eerste plaats <b>natuurlijk ambiance, vriendschap en plezier.</b> Daarom gaat er bij JOETZ heel veel aandacht naar <b>spel, animatie, sport en daguitstappen.</b> Samen met <b>gezonde maaltijden en hygiëne</b> zijn dat voor ons essentiële ingrediënten om onbezorgde, kwaliteitsvolle vakanties te garanderen.
@@ -171,9 +177,11 @@ De smaak te pakken? Wacht dan niet te lang en boek een onvergetelijke JOETZ-vaka
     <string name="lidnummerja">Ik heb een lidnummer</string>
     <string name="lidnummer">Geef uw lidnummer in</string>
     <string name="lidnummerBeheerder">Geef het lidnummer in</string>
+    <string name="error_incorrecte_leeftijd">De leeftijd valt niet binnen de doelgroep"</string>
     <string name="voegLidnrToe">Voeg lidnummer toe</string>
     <string name="emailToegvoegenLidnr">Geef het e-mail van de monitor in</string>
     <string name="rijksregnrToevoegenLidnr">Geef het rijksregisternummer in</string>
+    <string name="label_add_lidnr">Lidnummer toevoegen</string>
     <string name="error_lidnr_used">Lidnummer bestaat reeds</string>
     <string name="error_email_used">Dit e-mail adres is reeds toegevoegd</string>
     <string name="error_invalid_lidnummer">Ongeldig lidnummer</string>
@@ -182,7 +190,12 @@ De smaak te pakken? Wacht dan niet te lang en boek een onvergetelijke JOETZ-vaka
     <string name="feedback">Waardering</string>
     <string name="score">Punten op 5</string>
     <string name="vakantie">Vakantie</string>
+    <string name="title_Fav_vakanties">Favoriete vakanties</string>
     <string name="error_incorrect_feedback">De feedback mag maar 300 characters lang zijn</string>
     <string name="error_incorrect_score">Geef een score van 1 tot 5</string>
+    <string name="loadingMSG_vakanties">Vakanties ophalen</string>
+    <string name="message_no_feedback">Nog geen funfactor gegeven.</string>
+    <string name="loadingMSG_feedback">Feedback ophalen</string>
+    <string name="label_Vakantie_Kiezen">Kies een vakantie</string>
 
 </resources>
