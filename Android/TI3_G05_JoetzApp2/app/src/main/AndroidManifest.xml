@@ -93,7 +93,7 @@
             android:theme="@style/CustomActionBarTheme"/>
         <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.Loguit"
             android:theme="@style/CustomActionBarTheme"/>
-        <activity android:name=".about"
+        <activity android:name=".Over"
             android:theme="@style/CustomActionBarTheme"/>
         <activity android:name="com.hogent.ti3g05.ti3_g05_joetzapp.IndienenVoorkeurVakantie"
             android:theme="@style/CustomActionBarTheme"/>

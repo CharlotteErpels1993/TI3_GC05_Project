@@ -398,7 +398,7 @@ public class navBarMainScreen extends Activity {
             //Stuurt de gebruiker door naar het scherm met meer info over joetz
             case 7:
 
-                Intent intent3 = new Intent(navBarMainScreen.this, about.class
+                Intent intent3 = new Intent(navBarMainScreen.this, Over.class
                 );
                 startActivity(intent3);
 
