@@ -18,6 +18,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Er is een fix die samen met de volgende SDK release zal uitkomen
         Parse.enableLocalDatastore()
         
+        
+        LocalDatastore.getTableReady("Vakantie")
+        LocalDatastore.getTableReady("Afbeelding")
+        LocalDatastore.getTableReady("Feedback")
+        LocalDatastore.getTableReady("Ouder")
+        LocalDatastore.getTableReady("Favoriet")
+        
+        
+        
         /*if Reachability.isConnectedToNetwork() {
             //er is internet
             if isEmptyInLocalDataStore("Vakantie") == true {

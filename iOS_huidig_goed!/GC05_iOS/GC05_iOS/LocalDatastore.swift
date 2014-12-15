@@ -37,7 +37,7 @@ struct LocalDatastore {
         return false
     }
     
-    static func getTableInLocalDatastoreReady(tableName: String) {
+    static func getTableReady(tableName: String) {
         
         var localTableIsEmpty: Bool = self.isEmptyInLocalDatastore(tableName)
         
@@ -158,7 +158,7 @@ struct LocalDatastore {
         var ouder = self.getOuderFromFeedback(gebruikerId)
         
         if ouder == nil {
-            self.getTableInLocalDatastoreReady("Monitor")
+            self.getTableReady("Monitor")
             monitor = self.getMonitorFromFeedback(gebruikerId)!
         }
         

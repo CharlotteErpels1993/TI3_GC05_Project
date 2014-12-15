@@ -34,11 +34,6 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
             self.navigationItem.title = "Vakanties"
         }
         
-        LocalDatastore.getTableInLocalDatastoreReady(tableName)
-        LocalDatastore.getTableInLocalDatastoreReady("Feedback")
-        LocalDatastore.getTableInLocalDatastoreReady("Afbeelding")
-        LocalDatastore.getTableInLocalDatastoreReady("Ouder")
-        
         if Reachability.isConnectedToNetwork() == false {
             //er is geen internet
             
@@ -189,7 +184,7 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
     override func viewWillAppear(animated: Bool) {
         self.setNeedsStatusBarAppearanceUpdate()
         self.navigationController!.toolbarHidden = true
-        refresh(self.refreshControl!)
+        //refresh(self.refreshControl!)
         self.tableView.reloadData()
     }
     
@@ -406,7 +401,11 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         ParseData.deleteAllTables()
         ParseData.createDatabase()*/
         
-        
+        LocalDatastore.getTableReady("Vakantie")
+        LocalDatastore.getTableReady("Afbeelding")
+        LocalDatastore.getTableReady("Feedback")
+        LocalDatastore.getTableReady("Ouder")
+        LocalDatastore.getTableReady("Favoriet")
         
         self.refreshControl?.endRefreshing()
         viewDidLoad()

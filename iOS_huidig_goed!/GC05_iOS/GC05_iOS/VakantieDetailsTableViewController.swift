@@ -51,15 +51,15 @@ class VakantieDetailsTableViewController: UITableViewController {
         if PFUser.currentUser() != nil {
             var user: PFUser = PFUser.currentUser()
             var soort = user["soort"] as? String
-            LocalDatastore.getTableInLocalDatastoreReady("Favoriet")
+            //LocalDatastore.getTableReady("Favoriet")
             var favorieteVakantie: Favoriet = Favoriet(id: "test")
             
             if soort == "ouder" {
-                LocalDatastore.getTableInLocalDatastoreReady("Ouder")
+                //LocalDatastore.getTableReady("Ouder")
                 var ouder = LocalDatastore.getGebruikerWithEmail(PFUser.currentUser().email, tableName: "Ouder")
                 favorieteVakantie.gebruiker = ouder
             } else if soort == "monitor" {
-                LocalDatastore.getTableInLocalDatastoreReady("Monitor")
+                LocalDatastore.getTableReady("Monitor")
                 var monitor = LocalDatastore.getGebruikerWithEmail(PFUser.currentUser().email, tableName: "Monitor")
                 favorieteVakantie.gebruiker = monitor
             }
@@ -210,7 +210,7 @@ class VakantieDetailsTableViewController: UITableViewController {
     func gemiddeldeFeedback() -> Double {
         
         //Parse LocalDatastore Charlotte
-        LocalDatastore.getTableInLocalDatastoreReady("Feedback")
+        //LocalDatastore.getTableReady("Feedback")
         
         var scores: [Int] = []
         var sum = 0
@@ -344,10 +344,10 @@ class VakantieDetailsTableViewController: UITableViewController {
         var soort = user["soort"] as? String
         
         if soort == "ouder" {
-            LocalDatastore.getTableInLocalDatastoreReady("Ouder")
+            //LocalDatastore.getTableReady("Ouder")
             favorieteVakantie.gebruiker = LocalDatastore.getGebruikerWithEmail(user.email, tableName: "Ouder")
         } else if soort == "monitor" {
-            LocalDatastore.getTableInLocalDatastoreReady("Monitor")
+            //LocalDatastore.getTableReady("Monitor")
             favorieteVakantie.gebruiker = LocalDatastore.getGebruikerWithEmail(user.email, tableName: "Monitor")
         }
         
