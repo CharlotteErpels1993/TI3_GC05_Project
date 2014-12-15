@@ -172,8 +172,8 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
             self.tableView.reloadData()
         }*/
     
-        self.vakanties2.sort({ $0.minLeeftijd < $1.maxLeeftijd })
-        self.vakanties.sort({ $0.minLeeftijd < $1.maxLeeftijd})
+        self.vakanties2.sort({ $0.minLeeftijd < $1.minLeeftijd })
+        self.vakanties.sort({ $0.minLeeftijd < $1.minLeeftijd})
     
         hideSideMenuView()
         zoekbar.showsScopeBar = true
@@ -183,6 +183,7 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
             self.navigationItem.setHidesBackButton(true, animated: true)
             self.navigationItem.rightBarButtonItem = nil   
         }
+
     }
     
     override func viewWillAppear(animated: Bool) {
