@@ -2114,7 +2114,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hZK-bN-dtd">
-                                <rect key="frame" x="276" y="271.5" width="61" height="30"/>
+                                <rect key="frame" x="269" y="271" width="61" height="30"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Inloggen">
                                     <color key="titleColor" red="0.90980392160000001" green="0.12941176469999999" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -2139,10 +2139,15 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="go" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                             </textField>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="JbP-Ii-sZ9">
+                                <rect key="frame" x="282" y="303" width="37" height="37"/>
+                                <color key="color" red="0.90980392160000001" green="0.12941176469999999" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="H0a-36-oYG" firstAttribute="top" secondItem="vgN-OB-IWF" secondAttribute="bottom" constant="6" id="101-Qq-ZUA"/>
+                            <constraint firstAttribute="centerX" secondItem="JbP-Ii-sZ9" secondAttribute="centerX" constant="-0.5" id="38n-vZ-nms"/>
                             <constraint firstItem="H0a-36-oYG" firstAttribute="top" secondItem="vgN-OB-IWF" secondAttribute="bottom" constant="8.5" id="3r2-tf-Xop"/>
                             <constraint firstItem="vgN-OB-IWF" firstAttribute="top" secondItem="IeG-wh-GGy" secondAttribute="bottom" constant="14" id="6vz-dg-Vkl"/>
                             <constraint firstItem="GnE-q7-jzk" firstAttribute="leading" secondItem="omj-uN-gDv" secondAttribute="leadingMargin" id="9vo-gX-NSn"/>
@@ -2156,13 +2161,16 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                             <constraint firstItem="vgN-OB-IWF" firstAttribute="leading" secondItem="omj-uN-gDv" secondAttribute="leadingMargin" id="Jfp-am-A1x"/>
                             <constraint firstAttribute="trailingMargin" secondItem="H0a-36-oYG" secondAttribute="trailing" constant="5" id="Nvm-e2-MTA"/>
                             <constraint firstItem="H0a-36-oYG" firstAttribute="leading" secondItem="omj-uN-gDv" secondAttribute="leadingMargin" id="Qfw-4W-WEJ"/>
-                            <constraint firstAttribute="centerX" secondItem="hZK-bN-dtd" secondAttribute="centerX" constant="-6.5" id="Smb-xy-ew6"/>
+                            <constraint firstAttribute="centerX" secondItem="hZK-bN-dtd" secondAttribute="centerX" constant="0.5" id="Smb-xy-ew6"/>
+                            <constraint firstItem="JbP-Ii-sZ9" firstAttribute="leading" secondItem="hZK-bN-dtd" secondAttribute="trailing" constant="15" id="Tvz-4f-yve"/>
                             <constraint firstAttribute="trailingMargin" secondItem="IeG-wh-GGy" secondAttribute="trailing" constant="5" id="bcW-sZ-9jA"/>
                             <constraint firstItem="4pR-QD-gU1" firstAttribute="top" secondItem="d94-IW-Wd6" secondAttribute="bottom" constant="16" id="c9k-5L-XdF"/>
                             <constraint firstItem="GnE-q7-jzk" firstAttribute="top" secondItem="5QS-Qa-34g" secondAttribute="bottom" constant="278" id="euR-hv-bKE"/>
                             <constraint firstItem="d94-IW-Wd6" firstAttribute="top" secondItem="5QS-Qa-34g" secondAttribute="bottom" constant="36" id="iua-GL-P10"/>
                             <constraint firstItem="GnE-q7-jzk" firstAttribute="top" secondItem="H0a-36-oYG" secondAttribute="bottom" constant="40" id="lhU-kh-YcT"/>
                             <constraint firstItem="IeG-wh-GGy" firstAttribute="top" secondItem="4pR-QD-gU1" secondAttribute="bottom" constant="9" id="mzi-ap-e6R"/>
+                            <constraint firstAttribute="centerY" secondItem="JbP-Ii-sZ9" secondAttribute="centerY" constant="-21.5" id="pGr-qM-9AD"/>
+                            <constraint firstItem="JbP-Ii-sZ9" firstAttribute="top" secondItem="H0a-36-oYG" secondAttribute="bottom" constant="14" id="pNH-ID-Buy"/>
                             <constraint firstItem="4pR-QD-gU1" firstAttribute="leading" secondItem="omj-uN-gDv" secondAttribute="leadingMargin" id="s5Y-uY-rkp"/>
                             <constraint firstItem="hZK-bN-dtd" firstAttribute="top" secondItem="H0a-36-oYG" secondAttribute="bottom" constant="8" id="s7e-i0-4xA"/>
                             <constraint firstAttribute="trailingMargin" secondItem="H0a-36-oYG" secondAttribute="trailing" constant="5" id="sL2-AN-6vW"/>
@@ -2188,6 +2196,8 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                                 <exclude reference="Nvm-e2-MTA"/>
                                 <exclude reference="AjT-jy-NaQ"/>
                                 <exclude reference="euR-hv-bKE"/>
+                                <exclude reference="Tvz-4f-yve"/>
+                                <exclude reference="pNH-ID-Buy"/>
                             </mask>
                         </variation>
                     </view>
@@ -2203,6 +2213,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="spinner" destination="JbP-Ii-sZ9" id="HZh-Gz-yVo"/>
                         <outlet property="txtEmail" destination="IeG-wh-GGy" id="8QJ-qK-Ic8"/>
                         <outlet property="txtWachtwoord" destination="H0a-36-oYG" id="UT2-G7-0dY"/>
                         <segue destination="xj6-b1-6XR" kind="show" identifier="ouderOverzicht" id="xe1-I8-Pkw"/>
