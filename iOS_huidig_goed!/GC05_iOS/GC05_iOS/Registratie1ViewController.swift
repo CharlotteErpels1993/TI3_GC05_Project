@@ -30,11 +30,24 @@ class Registratie1ViewController: /*ResponsiveTextFieldViewController*/ UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         hideSideMenuView()
-        /*self.txtRijksregisterNr.text = ""
-        self.txtCodeGerechtigde.text = ""
-        self.txtAansluitingsNr.text = ""
-        self.txtAansluitingsNrTweedeOuder.text = ""*/
         self.navigationItem.setHidesBackButton(true, animated: true)
+        
+        if Reachability.isConnectedToNetwork() == false {
+            var alert = UIAlertController(title: "Oeps.. U heeft geen internet", message: "U heeft internet nodig voor u te registeren. Ga naar instellingen om dit aan te passen.", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Annuleer", style: UIAlertActionStyle.Default, handler: nil))
+            alert.addAction(UIAlertAction(title: "Ga naar instellingen", style: .Default, handler: { action in
+                switch action.style{
+                default:
+                    UIApplication.sharedApplication().openURL(NSURL(string:UIApplicationOpenSettingsURLString)!);
+                }
+                
+            }))
+            presentViewController(alert, animated: true, completion: nil)
+            txtAansluitingsNr.resignFirstResponder()
+            txtAansluitingsNrTweedeOuder.resignFirstResponder()
+            txtCodeGerechtigde.resignFirstResponder()
+            txtRijksregisterNr.resignFirstResponder()
+        }
         
         ParseData.deleteOuderTable()
         ParseData.vulOuderTableOp()
