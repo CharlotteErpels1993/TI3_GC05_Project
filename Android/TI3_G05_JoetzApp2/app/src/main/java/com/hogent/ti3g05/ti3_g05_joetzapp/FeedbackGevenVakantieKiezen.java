@@ -26,7 +26,7 @@ import java.util.Date;
 import java.util.List;
 
 //Indien de gebruiker vanuit het feedbackoverzicht feedback wenst toe te voegen moet deze eerst een vakantie kiezen
-public class feedback_geven_vakantie_kiezen extends Activity {
+public class FeedbackGevenVakantieKiezen extends Activity {
 
     private Spinner spinner;
     private List<Vakantie> vakanties;
@@ -84,7 +84,7 @@ public class feedback_geven_vakantie_kiezen extends Activity {
                 vakantie=vak;
             }
         }
-        Intent intentFeedback = new Intent(feedback_geven_vakantie_kiezen.this, feedback_geven.class);
+        Intent intentFeedback = new Intent(FeedbackGevenVakantieKiezen.this, FeedbackGeven.class);
 
         //Geef de nodige gegevens door naar de volgende stap
         intentFeedback.putExtra("vakantie", vakantie.getNaamVakantie());
@@ -164,7 +164,7 @@ public class feedback_geven_vakantie_kiezen extends Activity {
                 vakantieArray[i] = vakantienamen.get(i);
             }
 
-            ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(feedback_geven_vakantie_kiezen.this, android.R.layout.simple_spinner_item,vakantieArray);
+            ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(FeedbackGevenVakantieKiezen.this, android.R.layout.simple_spinner_item,vakantieArray);
             spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             spinner.setAdapter(spinnerArrayAdapter);
 
@@ -195,7 +195,7 @@ public class feedback_geven_vakantie_kiezen extends Activity {
     }
     @Override
     public void onBackPressed() {
-        Intent setIntent = new Intent(feedback_geven_vakantie_kiezen.this, navBarMainScreen.class);
+        Intent setIntent = new Intent(FeedbackGevenVakantieKiezen.this, navBarMainScreen.class);
         setIntent.putExtra("naarfrag","feedback");
         setIntent.putExtra("herladen","nee");
         setIntent.addCategory(Intent.CATEGORY_HOME);

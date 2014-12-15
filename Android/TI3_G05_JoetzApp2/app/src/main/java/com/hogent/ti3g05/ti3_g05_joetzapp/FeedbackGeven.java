@@ -24,7 +24,7 @@ import java.util.Date;
 import java.util.List;
 
 //Geeft de ingelogde gebruiker de mogelijkheid om feedback toe te voegen over een vakantie
-public class feedback_geven extends Activity {
+public class FeedbackGeven extends Activity {
 
     private String vakantie;
     private String vakantieId;
@@ -47,7 +47,7 @@ public class feedback_geven extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.feedback_ingeven);
 
-        cd= new ConnectionDetector(feedback_geven.this);
+        cd= new ConnectionDetector(FeedbackGeven.this);
         final Button ingeven = (Button) findViewById(R.id.ingevenFeedback);
 
         final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.alpha);
@@ -185,8 +185,8 @@ public class feedback_geven extends Activity {
 
         feedbackObject.saveInBackground();
 
-        Toast.makeText(feedback_geven.this, "feedback is succesvol geregistreerd", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(feedback_geven.this, navBarMainScreen.class);
+        Toast.makeText(FeedbackGeven.this, "feedback is succesvol geregistreerd", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(FeedbackGeven.this, navBarMainScreen.class);
         startActivity(intent);
 
 
@@ -221,7 +221,7 @@ public class feedback_geven extends Activity {
 
     @Override
     public void onBackPressed() {
-        Intent setIntent = new Intent(feedback_geven.this, navBarMainScreen.class);
+        Intent setIntent = new Intent(FeedbackGeven.this, navBarMainScreen.class);
         setIntent.putExtra("naarfrag","feedback");
         setIntent.putExtra("herladen","nee");
         setIntent.addCategory(Intent.CATEGORY_HOME);

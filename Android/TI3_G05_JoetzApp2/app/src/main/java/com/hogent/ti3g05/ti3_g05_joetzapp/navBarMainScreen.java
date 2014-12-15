@@ -96,7 +96,7 @@ public class navBarMainScreen extends Activity {
             }
             else if(frag.toLowerCase().startsWith("feedback"))
             {
-                fragment = new feedback_overzicht();
+                fragment = new FeedbackOverzicht();
                 mTitle = "Joetz funfactor";
             }
         }
@@ -236,7 +236,7 @@ public class navBarMainScreen extends Activity {
             //FeedbackOverzicht, toegankelijj voor iedereen
             case 1:
                 Intent intent9 = new Intent(navBarMainScreen.this, navBarMainScreen.class);
-                fragment = new feedback_overzicht();
+                fragment = new FeedbackOverzicht();
 
                 intent9.putExtra("frag", fragment.toString());
                 intent9.putExtra("refresh", "ja");
@@ -532,7 +532,7 @@ public class navBarMainScreen extends Activity {
 
                     intent.putExtra("herladen", "ja");
                     intent.putExtra("refresh", "ja");
-                    fragment = new feedback_overzicht();
+                    fragment = new FeedbackOverzicht();
                     intent.putExtra("frag", fragment.toString());
                     startActivity(intent);
                 }
@@ -553,7 +553,7 @@ public class navBarMainScreen extends Activity {
             }
         } else if(id == R.id.menu_voegFeedbackToe)
         {
-            Intent intentFeedback = new Intent(navBarMainScreen.this, feedback_geven_vakantie_kiezen.class);
+            Intent intentFeedback = new Intent(navBarMainScreen.this, FeedbackGevenVakantieKiezen.class);
             startActivity(intentFeedback);
         }
         return super.onOptionsItemSelected(item);

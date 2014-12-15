@@ -27,7 +27,7 @@ import java.util.List;
 import java.util.Locale;
 
 //Geeft een overzicht weer van feedback
-public class feedback_overzicht extends Fragment {
+public class FeedbackOverzicht extends Fragment {
 
     private ListView listview;
 

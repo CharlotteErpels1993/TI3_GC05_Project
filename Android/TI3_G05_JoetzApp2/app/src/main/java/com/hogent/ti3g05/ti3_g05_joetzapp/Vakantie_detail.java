@@ -23,8 +23,6 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
-import org.w3c.dom.Text;
-
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -320,7 +318,7 @@ public class Vakantie_detail extends Activity {
         feedback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent  = new Intent(Vakantie_detail.this, feedback_geven.class);
+                Intent intent  = new Intent(Vakantie_detail.this, FeedbackGeven.class);
                 intent.putExtra("vakantie", naam);
                 intent.putExtra("vakantieId", activiteitID);
                 startActivity(intent);

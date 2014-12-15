@@ -107,10 +107,10 @@
             android:theme="@style/CustomActionBarTheme"
             android:label="@string/title_activity_profiel_edit" >
         </activity>
-        <activity android:name=".feedback_geven_vakantie_kiezen"
+        <activity android:name=".FeedbackGevenVakantieKiezen"
             android:theme="@style/CustomActionBarTheme"/>
 
-        <activity android:name=".feedback_geven"
+        <activity android:name=".FeedbackGeven"
             android:theme="@style/CustomActionBarTheme"/>
 
         <activity android:name=".LidnummerToevoegen"
