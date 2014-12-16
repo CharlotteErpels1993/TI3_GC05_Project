@@ -96,6 +96,27 @@ struct ParseToDatabase {
     }
     
     // schrijf een nieuwe vakantie inschrijving weg naar de database
+    static func parseInschrijvingVakantieToDatabase(inschrijving: InschrijvingVakantie) {
+        var inschrijvingJSON = PFObject(className: "InschrijvingVakantie")
+        
+        inschrijvingJSON.setValue(inschrijving.vakantie?.id, forKey: "vakantie")
+        inschrijvingJSON.setValue(inschrijving.ouder?.id, forKey: "ouder")
+        inschrijvingJSON.setValue(inschrijving.deelnemer?.id, forKey: "deelnemer")
+        inschrijvingJSON.setValue(inschrijving.contactpersoon1?.id, forKey: "contactpersoon1")
+        
+        
+        if inschrijving.extraInfo != "" {
+            inschrijvingJSON.setValue(inschrijving.extraInfo, forKey: "extraInformatie")
+        }
+        
+        if inschrijving.contactpersoon2 != nil {
+            inschrijvingJSON.setValue(inschrijving.contactpersoon2?.id, forKey: "contactpersoon2")
+        }
+        
+        inschrijvingJSON.save()
+    }
+    
+    // schrijf een nieuwe vorming inschrijving weg naar de database
     static func parseInschrijvingVormingToDatabase(inschrijving: InschrijvingVorming) {
         var inschrijvingJSON = PFObject(className: "InschrijvingVorming")
         
