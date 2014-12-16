@@ -153,29 +153,30 @@ public class VakantieOverzicht extends Fragment {
                         "Feedback");
                 queryFeedback.orderByAscending("vakantie");
 
-                int totaalScore = 0 ;
-                int aantal = 0;
-                int gemiddeldeScore = 0;
+
                 List<ParseObject> lijstFeedback = queryFeedback.find();
 
                 //Maak de locale database klaar om alle vakanties erin te stoppen
                 sqliteDatabase.dropVakanties();
+
                 for (ParseObject v : lijstMetVakanties) {
                     vakantie = new Vakantie();
+                    int totaalScore = 0 ;
+                    int aantal = 0;
+                    int gemiddeldeScore = 0;
 
                     for(ParseObject f: lijstFeedback)
                     {
                         Feedback feedback = new Feedback();
                         feedback.setVakantieId((String) f.get("vakantie"));
                         feedback.setFeedback((String) f.get("waardering"));
-                        feedback.setScore((Number) f.get("score"));
                         feedback.setGebruikerId((String) f.get("gebruiker"));
                         feedback.setGoedgekeurd((Boolean) f.get("goedgekeurd"));
 
                         if(f.get("vakantie").equals(v.getObjectId()) && feedback.getGoedgekeurd())
                         {
                             aantal += 1;
-                            totaalScore+= (Integer)f.get("score");
+                            totaalScore += (Integer)f.get("score");
                         }
                     }
                     if(aantal!=0)

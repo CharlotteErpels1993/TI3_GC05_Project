@@ -151,9 +151,7 @@ public class FeedbackOverzicht extends Fragment {
                             feedbackList.add(feedback);
                             sqliteDatabase.insertFeedback(feedback);
                         }
-
                     }
-
                 }
                 }catch(ParseException e){
 
@@ -161,8 +159,6 @@ public class FeedbackOverzicht extends Fragment {
                     e.printStackTrace();
 
                 }
-
-
             return null;
         }
 
