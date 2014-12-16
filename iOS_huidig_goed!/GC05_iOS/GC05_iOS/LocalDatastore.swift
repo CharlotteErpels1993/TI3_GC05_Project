@@ -7,7 +7,7 @@ struct LocalDatastore {
     //
     //
     //
-    //Parameters: 
+    //Parameters:
     //  - tableName: String - naam van de tabel waar de query moet op uitgevoerd worden
     //  - local: bool       - true als de query op de local datastore moet uitgevoerd worden
     //                      - false als de query op de online database van Parse.com moet uitgevoerd
@@ -15,15 +15,29 @@ struct LocalDatastore {
     //  - queryConstraints: - Dictionary[String: String]
     //                      - Eerste argument: naam van de column
     //                      - Tweede argument: variabele waarop moet vergeleken worden
-    // 
+    //
     //Return: een query met de opgegeven parameters
     //
-    static func makeQuery(tableName: String, local: Bool, queryConstraints: [String: String]) -> PFQuery {
-        
+    static private func makeQuery(tableName: String, local: Bool,
+        soortConstraints: [String: String] = [:], equalTo: [String: String] = [:],
+        notContainedIn: [String: [AnyObject]] = [:], notEqualTo: [String: String] = [:], containedIn: [String: [AnyObject]] = [:]) -> PFQuery
+    {
         var query = PFQuery(className: tableName)
         
-        for queryConstraint in queryConstraints {
-            query = addQueryConstraintEqualTo(query, columnName: queryConstraint.0, columnValue: queryConstraint.1)
+        for soortConstraint in soortConstraints {
+        
+            //soortConstraint.0 = column name
+            //soortConstraint.1 = soort constraint (equalTo of notContainedIn)
+            
+            if soortConstraint.1 == Constanten.CONSTRAINT_EQUALTO {
+                query = self.addQueryConstraintEqualTo(query, columnName: soortConstraint.0, columnValue: equalTo[soortConstraint.0]!)
+            } else if soortConstraint.1 == Constanten.CONSTRAINT_NOTCONTAINEDIN {
+                query = self.addQueryConstraintNotContainedIn(query, columnName: soortConstraint.0, columnValues: notContainedIn[soortConstraint.0]!)
+            } else if soortConstraint.1 == Constanten.CONSTRAINT_NOTEQUALTO {
+                query = self.addQueryConstraintNotEqualTo(query, columnName: soortConstraint.0, columnValue: notEqualTo[soortConstraint.0]!)
+            } else if soortConstraint.1 == Constanten.CONSTRAINT_CONTAINEDIN {
+                query = self.addQueryConstraintContainedIn(query, columnName: soortConstraint.0, columnValues: containedIn[soortConstraint.0]!)
+            }
         }
         
         if local == true {
@@ -33,14 +47,137 @@ struct LocalDatastore {
         return query
     }
     
-    static func addQueryConstraintEqualTo(query: PFQuery, columnName: String, columnValue: String) -> PFQuery
+    static private func addQueryConstraintEqualTo(query: PFQuery, columnName: String,
+        columnValue: String) -> PFQuery
     {
         query.whereKey(columnName, equalTo: columnValue)
-        
         return query
     }
     
-    static func isEmptyInLocalDatastore(tableName: String) -> Bool {
+    static private func addQueryConstraintNotContainedIn(query: PFQuery, columnName: String, columnValues: [AnyObject]) -> PFQuery
+    {
+        query.whereKey(columnName, notContainedIn: columnValues)
+        return query
+    }
+    
+    static private func addQueryConstraintNotEqualTo(query: PFQuery, columnName: String,
+        columnValue: String) -> PFQuery
+    {
+        query.whereKey(columnName, notEqualTo: columnValue)
+        return query
+    }
+    
+    static private func addQueryConstraintContainedIn(query: PFQuery, columnName: String, columnValues: [AnyObject]) -> PFQuery
+    {
+        query.whereKey(columnName, containedIn: columnValues)
+        return query
+    }
+    
+    static private func getObjecten(objects: [PFObject], tableName: String) -> [AnyObject] {
+        var objecten: [AnyObject] = []
+        
+        for object in objects {
+            if tableName == Constanten.TABLE_AFBEELDING {
+                var afbeelding = self.getAfbeelding(object)
+                objecten.append(afbeelding)
+            } else if tableName == Constanten.TABLE_VAKANTIE {
+                var vakantie = self.getVakantie(object)
+                objecten.append(vakantie)
+            } else if tableName == Constanten.TABLE_FEEDBACK {
+                var feedback = self.getFeedback(object)
+                objecten.append(feedback)
+            } else if tableName == Constanten.TABLE_VORMING {
+                var vorming = self.getVorming(object)
+                objecten.append(vorming)
+            } else if tableName == Constanten.TABLE_OUDER {
+                var ouder = self.getOuder(object)
+                objecten.append(ouder)
+            } else if tableName == Constanten.TABLE_MONITOR {
+                var monitor = self.getMonitor(object)
+                objecten.append(monitor)
+            } else if tableName == Constanten.TABLE_DEELNEMER {
+                var deelnemer = self.getDeelnemer(object)
+                objecten.append(deelnemer)
+            }
+        }
+        
+        return objecten
+    }
+    
+    static private func getObject(object: PFObject, tableName: String) -> AnyObject {
+        
+        if tableName == Constanten.TABLE_AFBEELDING {
+            return self.getAfbeelding(object)
+        } else if tableName == Constanten.TABLE_VAKANTIE {
+            return self.getVakantie(object)
+        } else if tableName == Constanten.TABLE_FEEDBACK {
+            return self.getFeedback(object)
+        } else if tableName == Constanten.TABLE_VORMING {
+            return self.getVorming(object)
+        } else if tableName == Constanten.TABLE_OUDER {
+            return self.getOuder(object)
+        } else if tableName == Constanten.TABLE_MONITOR {
+            return self.getMonitor(object)
+        } else if tableName == Constanten.TABLE_DEELNEMER{
+            return self.getDeelnemer(object)
+        } else {
+            //RANDOM GEKOZEN!!!!!
+            return self.getVorming(object)
+        }
+    }
+    
+    static func getLocalObjects(tableName: String) -> [AnyObject] {
+        
+        var query = self.makeQuery(tableName, local: true)
+        
+        var localObjects = query.findObjects() as [PFObject]
+        
+        return self.getObjecten(localObjects, tableName: tableName)
+    }
+    
+    static func getLocalObjectsWithColumnConstraints(tableName: String, soortConstraints: [String: String], equalToConstraints: [String: String] = [:], notContainedInConstraints: [String: [AnyObject]] = [:], notEqualToConstraints: [String: String] = [:], containedInConstraints: [String: [AnyObject]] = [:]) -> [AnyObject] {
+        
+        var query = self.makeQuery(tableName, local: true, soortConstraints: soortConstraints, equalTo: equalToConstraints, notContainedIn: notContainedInConstraints, notEqualTo: notEqualToConstraints, containedIn: containedInConstraints)
+        
+        var localObjects = query.findObjects() as [PFObject]
+        
+        return self.getObjecten(localObjects, tableName: tableName)
+    }
+    
+    static func getLocalObjectWithColumnConstraints(tableName: String, soortConstraints: [String: String], equalToConstraints: [String: String] = [:], notContainedInConstraints: [String: [AnyObject]] = [:], notEqualToConstraints: [String: String] = [:], containedInConstraints: [String: [AnyObject]] = [:]) -> AnyObject {
+        
+        var query = self.makeQuery(tableName, local: true, soortConstraints: soortConstraints, equalTo: equalToConstraints, notContainedIn: notContainedInConstraints, notEqualTo: notEqualToConstraints, containedIn: containedInConstraints)
+        
+        var localObject = query.getFirstObject()
+        
+        return self.getObject(localObject, tableName: tableName)
+    }
+    
+    static func bestaatLocalObjectWithConstraints(tableName: String, soortConstraints: [String: String], equalToConstraints: [String: String] = [:], notContainedInConstraints: [String: [AnyObject]] = [:], notEqualToConstraints: [String: String] = [:], containedInConstraints: [String: [AnyObject]] = [:]) -> Bool {
+        
+        var query = self.makeQuery(tableName, local: true, soortConstraints: soortConstraints, equalTo: equalToConstraints, notContainedIn: notContainedInConstraints)
+        
+        var count = query.countObjects()
+        
+        if count == 0 {
+            return false
+        }
+        return true
+    }
+    
+    static func bestaanLocalObjectsWithConstraints(tableName: String, soortConstraints: [String: String], equalToConstraints: [String: String] = [:], notContainedInConstraints: [String: [AnyObject]] = [:], notEqualToConstraints: [String: String] = [:], containedInConstraints: [String: [AnyObject]] = [:]) -> Bool {
+        
+        var query = self.makeQuery(tableName, local: true, soortConstraints: soortConstraints, equalTo: equalToConstraints, notContainedIn: notContainedInConstraints)
+        
+        var count = query.countObjects()
+        
+        if count == 0 {
+            return false
+        }
+        return true
+    }
+    
+    static func isEmpty(tableName: String) -> Bool {
         var query = PFQuery(className: tableName)
         
         query.fromLocalDatastore()
@@ -56,21 +193,22 @@ struct LocalDatastore {
     
     static func getTableReady(tableName: String) {
         
-        var localTableIsEmpty: Bool = self.isEmptyInLocalDatastore(tableName)
-        
-        if localTableIsEmpty == true {
-            if Reachability.isConnectedToNetwork() == true {
-                fillTableInLocalDatastore(tableName)
-            }
-        } else {
-            if Reachability.isConnectedToNetwork() == true {
-                updateObjectsInLocalDatastoreFromParse(tableName)
-            }
+        if Reachability.isConnectedToNetwork() == true {
+            self.unpinLocalObjects(tableName)
+            self.fillTable(tableName)
         }
     }
     
-    static func fillTableInLocalDatastore(tableName: String) {
-        var query = makeQuery(tableName, local: false, queryConstraints: [:])
+    static private func unpinLocalObjects(tableName: String) {
+        var query = self.makeQuery(tableName, local: true)
+        
+        var objects = query.findObjects() as [PFObject]
+        
+        PFObject.unpinAll(objects)
+    }
+    
+    static private func fillTable(tableName: String) {
+        var query = self.makeQuery(tableName, local: false)
         
         var objects: [PFObject] = []
         
@@ -79,196 +217,95 @@ struct LocalDatastore {
         PFObject.pinAll(objects)
     }
     
-    static func updateObjectsInLocalDatastoreFromParse(tableName: String) {
+    static private func getAfbeelding(object: PFObject) -> UIImage {
         
-        var localObjects = self.fetchHuidigeObjectenInLocalDatastore(tableName)
-        
-        pinNewObjects(localObjects, tableName: tableName)
-        
-        var onlineObjects = self.getAllObjectsParse(tableName)
-        
-        //self.unpinOldObjects(onlineObjects, tableName: tableName)
+        var imageFile = object["afbeelding"] as PFFile
+        var image = UIImage(data: imageFile.getData())!
+        return image
     }
     
-    static func fetchHuidigeObjectenInLocalDatastore(tableName: String) -> [PFObject] {
+    static private func getDeelnemer(object: PFObject) -> Deelnemer {
+        var deelnemer: Deelnemer = Deelnemer(id: object.objectId)
         
-        var query = PFQuery(className: tableName)
+        deelnemer.voornaam = object[Constanten.COLUMN_VOORNAAM] as? String
+        deelnemer.naam = object[Constanten.COLUMN_NAAM] as? String
+        deelnemer.straat = object[Constanten.COLUMN_STRAAT] as? String
+        deelnemer.nummer = object[Constanten.COLUMN_NUMMER] as? Int
         
-        query.fromLocalDatastore()
-        
-        var objects: [PFObject] = query.findObjects() as [PFObject]
-        
-        for object in objects {
-            object.fetch()
+        if object[Constanten.COLUMN_BUS] != nil {
+            deelnemer.bus = object[Constanten.COLUMN_BUS] as? String
+        } else {
+            deelnemer.bus = ""
         }
         
-        return objects
+        deelnemer.gemeente = object[Constanten.COLUMN_GEMEENTE] as? String
+        deelnemer.postcode = object[Constanten.COLUMN_POSTCODE] as? Int
+        deelnemer.geboortedatum = object[Constanten.COLUMN_GEBOORTEDATUM] as? NSDate
+        
+        return deelnemer
     }
     
-    static func pinNewObjects(localObjects: [PFObject], tableName: String) {
-        var query = PFQuery(className: tableName)
+    static private func getFeedback(object: PFObject) -> Feedback {
         
-        query.whereKey("objectId", notContainedIn: localObjects)
+        var feedback: Feedback = Feedback(id: object.objectId)
         
-        var objects = query.findObjects()
-        
-        PFObject.pinAll(objects)
-    }
-    
-    static func getAllObjectsParse(tableName: String) -> [PFObject] {
-        var query = PFQuery(className: tableName)
-        
-        var objects = query.findObjects() as [PFObject]
-        
-        return objects
-    }
-    
-    static func unpinOldObjects(onlineObjects: [PFObject], tableName: String) {
-        var query = PFQuery(className: tableName)
-        
-        query.whereKey("objectId", notContainedIn: onlineObjects)
-        
-        query.fromLocalDatastore()
-        
-        var objects = query.findObjects()
-        
-        PFObject.unpinAll(objects)
-    }
-    
-    static func getVakantie(vakantieObject: PFObject) -> Vakantie {
-        var vakantie: Vakantie = Vakantie(id: vakantieObject.objectId)
-        
-        vakantie.titel = vakantieObject["titel"] as? String
-        vakantie.locatie = vakantieObject["locatie"] as? String
-        vakantie.korteBeschrijving = vakantieObject["korteBeschrijving"] as? String
-        vakantie.vertrekdatum = vakantieObject["vertrekdatum"] as NSDate
-        vakantie.terugkeerdatum = vakantieObject["terugkeerdatum"] as NSDate
-        vakantie.aantalDagenNachten = vakantieObject["aantalDagenNachten"] as? String
-        vakantie.vervoerwijze = vakantieObject["vervoerwijze"] as? String
-        vakantie.formule = vakantieObject["formule"] as? String
-        vakantie.link = vakantieObject["link"] as? String
-        vakantie.basisprijs = vakantieObject["basisPrijs"] as? Double
-        vakantie.bondMoysonLedenPrijs = vakantieObject["bondMoysonLedenPrijs"] as? Double
-        vakantie.sterPrijs1ouder = vakantieObject["sterPrijs1ouder"] as? Double
-        vakantie.sterPrijs2ouders = vakantieObject["sterPrijs2ouders"] as? Double
-        vakantie.inbegrepenPrijs = vakantieObject["inbegrepenPrijs"] as? String
-        vakantie.minLeeftijd = vakantieObject["minLeeftijd"] as Int
-        vakantie.maxLeeftijd = vakantieObject["maxLeeftijd"] as? Int
-        vakantie.maxAantalDeelnemers = vakantieObject["maxAantalDeelnemers"] as? Int
-        
-        return vakantie
-    }
-    
-    static func getFeedback(feedbackObject: PFObject) -> Feedback {
-        
-        var feedback: Feedback = Feedback(id: feedbackObject.objectId)
-        
-        var vakantieId: String = feedbackObject["vakantie"] as String
-        var gebruikerId: String = feedbackObject["gebruiker"] as String
+        var vakantieId: String = object[Constanten.COLUMN_VAKANTIE] as String
+        var gebruikerId: String = object[Constanten.COLUMN_GEBRUIKER] as String
         var monitor: Gebruiker = Gebruiker(id: gebruikerId)
         
-        feedback.vakantie = self.getVakantieFromFeedback(vakantieId)
-        var ouder = self.getOuderFromFeedback(gebruikerId)
+        feedback.vakantie = self.getLocalObjectWithColumnConstraints(Constanten.TABLE_VAKANTIE, soortConstraints: [Constanten.COLUMN_VAKANTIE: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_VAKANTIE: vakantieId]) as? Vakantie
         
-        if ouder == nil {
-            monitor = self.getMonitorFromFeedback(gebruikerId)!
-        }
+        var bestaatOuder = self.bestaatLocalObjectWithConstraints(Constanten.TABLE_OUDER, soortConstraints: [Constanten.COLUMN_OBJECTID: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_OBJECTID: gebruikerId])
         
-        feedback.datum = feedbackObject["datum"] as? NSDate
-        feedback.goedgekeurd = feedbackObject["goedgekeurd"] as? Bool
-        
-        if ouder != nil {
-            feedback.gebruiker = ouder
+        if bestaatOuder == true {
+            feedback.gebruiker = self.getLocalObjectWithColumnConstraints(Constanten.TABLE_OUDER, soortConstraints: [Constanten.COLUMN_OBJECTID: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_OBJECTID: gebruikerId]) as Ouder
         } else {
-            feedback.gebruiker = monitor
+            feedback.gebruiker = self.getLocalObjectWithColumnConstraints(Constanten.TABLE_MONITOR, soortConstraints: [Constanten.COLUMN_OBJECTID: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_OBJECTID: gebruikerId]) as Monitor
         }
         
-        feedback.waardering = feedbackObject["waardering"] as? String
-        feedback.score = feedbackObject["score"] as? Int
+        feedback.datum = object[Constanten.COLUMN_DATUM] as? NSDate
+        feedback.goedgekeurd = object[Constanten.COLUMN_GOEDGEKEURD] as? Bool
+        feedback.waardering = object[Constanten.COLUMN_WAARDERING] as? String
+        feedback.score = object[Constanten.COLUMN_SCORE] as? Int
         
         return feedback
     }
     
-    static func getVakantieFromFeedback(vakantieId: String) -> Vakantie {
+    static private func getGebruiker(object: PFObject) -> Gebruiker {
+        var gebruiker: Gebruiker = Gebruiker(id: object.objectId)
         
-        var query = PFQuery(className: "Vakantie")
+        gebruiker.rijksregisterNr = object[Constanten.COLUMN_RIJKSREGISTERNUMMER] as? String
+        gebruiker.email = object[Constanten.COLUMN_EMAIL] as? String
+        gebruiker.voornaam = object[Constanten.COLUMN_VOORNAAM] as? String
+        gebruiker.naam = object[Constanten.COLUMN_NAAM] as? String
+        gebruiker.straat = object[Constanten.COLUMN_STRAAT] as? String
+        gebruiker.nummer = object[Constanten.COLUMN_NUMMER] as? Int
         
-        query.fromLocalDatastore()
-        
-        var vakantieObject = query.getObjectWithId(vakantieId)
-        
-        return self.getVakantie(vakantieObject)
-    }
-    
-    static func getOuderFromFeedback(ouderId: String) -> Gebruiker? {
-        
-        var query = PFQuery(className: "Ouder")
-        
-        query.whereKey("objectId", equalTo: ouderId)
-        query.fromLocalDatastore()
-        
-        var count = query.countObjects()
-        
-        if count == 0 {
-            return nil
-        } else {
-            var ouderObject = query.getFirstObject()
-            return self.getGebruiker(ouderObject)
-        }
-    }
-    
-    static func getMonitorFromFeedback(monitorId: String) -> Gebruiker? {
-        
-        var query = PFQuery(className: "Monitor")
-        
-        query.whereKey("objectId", equalTo: monitorId)
-        query.fromLocalDatastore()
-        
-        var count = query.countObjects()
-        
-        if count == 0 {
-            return nil
-        } else {
-            var monitorObject = query.getFirstObject()
-            return self.getGebruiker(monitorObject)
-        }
-    }
-    
-    static func getGebruiker(gebruikerObject: PFObject) -> Gebruiker {
-        var gebruiker: Gebruiker = Gebruiker(id: gebruikerObject.objectId)
-        
-        gebruiker.rijksregisterNr = gebruikerObject["rijksregisterNr"] as? String
-        gebruiker.email = gebruikerObject["email"] as? String
-        gebruiker.voornaam = gebruikerObject["voornaam"] as? String
-        gebruiker.naam = gebruikerObject["naam"] as? String
-        gebruiker.straat = gebruikerObject["straat"] as? String
-        gebruiker.nummer = gebruikerObject["nummer"] as? Int
-        
-        if gebruikerObject["bus"] != nil {
-            gebruiker.bus = gebruikerObject["bus"] as? String
+        if object[Constanten.COLUMN_BUS] != nil {
+            gebruiker.bus = object[Constanten.COLUMN_BUS] as? String
         } else {
             gebruiker.bus = ""
         }
         
-        gebruiker.gemeente = gebruikerObject["gemeente"] as? String
-        gebruiker.postcode = gebruikerObject["postcode"] as? Int
+        gebruiker.gemeente = object[Constanten.COLUMN_GEMEENTE] as? String
+        gebruiker.postcode = object[Constanten.COLUMN_POSTCODE] as? Int
         
-        if gebruikerObject["telefoon"] != nil {
-            gebruiker.telefoon = gebruikerObject["telefoon"] as? String
+        if object[Constanten.COLUMN_TELEFOON] != nil {
+            gebruiker.telefoon = object[Constanten.COLUMN_TELEFOON] as? String
         } else {
             gebruiker.telefoon = ""
         }
         
-        gebruiker.gsm = gebruikerObject["gsm"] as? String
+        gebruiker.gsm = object[Constanten.COLUMN_GSM] as? String
         
-        if gebruikerObject["aansluitingsNr"] != nil {
-            gebruiker.aansluitingsNr = gebruikerObject["aansluitingsNr"] as? Int
+        if object[Constanten.COLUMN_AANSLUITINGSNUMMER] != nil {
+            gebruiker.aansluitingsNr = object[Constanten.COLUMN_AANSLUITINGSNUMMER] as? Int
         } else {
             gebruiker.aansluitingsNr = 0
         }
         
-        if gebruikerObject["codeGerechtigde"] != nil {
-            gebruiker.codeGerechtigde = gebruikerObject["codeGerechtigde"] as? Int
+        if object[Constanten.COLUMN_CODEGERECHTIGDE] != nil {
+            gebruiker.codeGerechtigde = object[Constanten.COLUMN_CODEGERECHTIGDE] as? Int
         } else {
             gebruiker.codeGerechtigde = 0
         }
@@ -276,22 +313,170 @@ struct LocalDatastore {
         return gebruiker
     }
     
-    static func getAfbeelding(vakantieId: String) -> UIImage {
+    static private func getMonitor(object: PFObject) -> Monitor {
         
-        //var defaultImage: UIImage = UIImage(named: "joetzVakantie")!
+        var monitor = self.getGebruiker(object) as Monitor
         
-        var query = self.makeQuery("Afbeelding", local: true, queryConstraints: ["vakantie": vakantieId])
+        //var monitor: Monitor = Monitor(id: object.objectId)
+        
+        /*monitor.rijksregisterNr = object[Constanten.COLUMN_RIJKSREGISTERNUMMER] as? String
+        monitor.email = object[Constanten.COLUMN_EMAIL] as? String
+        monitor.voornaam = object[Constanten.COLUMN_VOORNAAM] as? String
+        monitor.naam = object[Constanten.COLUMN_NAAM] as? String
+        monitor.straat = object[Constanten.COLUMN_STRAAT] as? String
+        monitor.nummer = object[Constanten.COLUMN_NUMMER] as? Int
+        
+        if object[Constanten.COLUMN_BUS] != nil {
+            monitor.bus = object[Constanten.COLUMN_BUS] as? String
+        } else {
+            monitor.bus = ""
+        }
+        
+        monitor.gemeente = object[Constanten.COLUMN_GEMEENTE] as? String
+        monitor.postcode = object[Constanten.COLUMN_POSTCODE] as? Int
+        
+        if object[Constanten.COLUMN_TELEFOON] != nil {
+            monitor.telefoon = object[Constanten.COLUMN_TELEFOON] as? String
+        } else {
+            monitor.telefoon = ""
+        }
+        
+        monitor.gsm = object[Constanten.COLUMN_GSM] as? String
+        
+        if object[Constanten.COLUMN_AANSLUITINGSNUMMER] != nil {
+            monitor.aansluitingsNr = object[Constanten.COLUMN_AANSLUITINGSNUMMER] as? Int
+        } else {
+            monitor.aansluitingsNr = 0
+        }
+        
+        if object[Constanten.COLUMN_CODEGERECHTIGDE] != nil {
+            monitor.codeGerechtigde = object[Constanten.COLUMN_CODEGERECHTIGDE] as? Int
+        } else {
+            monitor.codeGerechtigde = 0
+        }*/
+        
+        if object[Constanten.COLUMN_LIDNUMMER] != nil {
+            monitor.lidNr = object[Constanten.COLUMN_LIDNUMMER] as? String
+        } else {
+            monitor.lidNr = ""
+        }
+        
+        return monitor
+    }
+    
+    static private func getOuder(object: PFObject) -> Ouder {
+        
+        var ouder = self.getGebruiker(object) as Ouder
+        
+        /*var ouder: Ouder = Ouder(id: object.objectId)
+        
+        ouder.rijksregisterNr = object[Constanten.COLUMN_RIJKSREGISTERNUMMER] as? String
+        ouder.email = object[Constanten.COLUMN_EMAIL] as? String
+        ouder.voornaam = object[Constanten.COLUMN_VOORNAAM] as? String
+        ouder.naam = object[Constanten.COLUMN_NAAM] as? String
+        ouder.straat = object[Constanten.COLUMN_STRAAT] as? String
+        ouder.nummer = object[Constanten.COLUMN_NUMMER] as? Int
+        
+        if object[Constanten.COLUMN_BUS] != nil {
+            ouder.bus = object[Constanten.COLUMN_BUS] as? String
+        } else {
+            ouder.bus = ""
+        }
+        
+        ouder.gemeente = object[Constanten.COLUMN_GEMEENTE] as? String
+        ouder.postcode = object[Constanten.COLUMN_POSTCODE] as? Int
+        
+        if object[Constanten.COLUMN_TELEFOON] != nil {
+            ouder.telefoon = object[Constanten.COLUMN_TELEFOON] as? String
+        } else {
+            ouder.telefoon = ""
+        }
+        
+        ouder.gsm = object[Constanten.COLUMN_GSM] as? String
+        
+        if object[Constanten.COLUMN_AANSLUITINGSNUMMER] != nil {
+            ouder.aansluitingsNr = object[Constanten.COLUMN_AANSLUITINGSNUMMER] as? Int
+        } else {
+            ouder.aansluitingsNr = 0
+        }
+        
+        if object[Constanten.COLUMN_CODEGERECHTIGDE] != nil {
+            ouder.codeGerechtigde = object[Constanten.COLUMN_CODEGERECHTIGDE] as? Int
+        } else {
+            ouder.codeGerechtigde = 0
+        }*/
+        
+        if object[Constanten.COLUMN_AANSLUITINGSNUMMERTWEEDEOUDER] != nil {
+            ouder.aansluitingsNrTweedeOuder = object[Constanten.COLUMN_AANSLUITINGSNUMMERTWEEDEOUDER] as? Int
+        } else {
+            ouder.aansluitingsNrTweedeOuder = 0
+        }
+        
+        return ouder
+    }
+    
+    static private func getVakantie(object: PFObject) -> Vakantie {
+        var vakantie: Vakantie = Vakantie(id: object.objectId)
+        
+        vakantie.titel = object[Constanten.COLUMN_TITEL] as? String
+        vakantie.locatie = object[Constanten.COLUMN_LOCATIE] as? String
+        vakantie.korteBeschrijving = object[Constanten.COLUMN_KORTEBESCHRIJVING] as? String
+        vakantie.vertrekdatum = object[Constanten.COLUMN_VERTREKDATUM] as NSDate
+        vakantie.terugkeerdatum = object[Constanten.COLUMN_TERUGKEERDATUM] as NSDate
+        vakantie.aantalDagenNachten = object[Constanten.COLUMN_AANTALDAGENNACHTEN] as? String
+        vakantie.vervoerwijze = object[Constanten.COLUMN_VERVOERWIJZE] as? String
+        vakantie.formule = object[Constanten.COLUMN_FORMULE] as? String
+        vakantie.link = object[Constanten.COLUMN_LINK] as? String
+        vakantie.basisprijs = object[Constanten.COLUMN_BASISPRIJS] as? Double
+        vakantie.bondMoysonLedenPrijs = object[Constanten.COLUMN_LINK] as? Double
+        vakantie.sterPrijs1ouder = object[Constanten.COLUMN_STERPRIJS1OUDER] as? Double
+        vakantie.sterPrijs2ouders = object[Constanten.COLUMN_STERPRIJS2OUDERS] as? Double
+        vakantie.inbegrepenPrijs = object[Constanten.COLUMN_INBEGREPENPRIJS] as? String
+        vakantie.minLeeftijd = object[Constanten.COLUMN_MINLEEFTIJD] as Int
+        vakantie.maxLeeftijd = object[Constanten.COLUMN_MAXLEEFTIJD] as? Int
+        vakantie.maxAantalDeelnemers = object[Constanten.COLUMN_MAXAANTALDEELNEMERS] as? Int
+        
+        return vakantie
+    }
+    
+    static func getVorming(object: PFObject) -> Vorming {
+        var vorming: Vorming = Vorming(id: object.objectId)
+        
+        vorming.titel = object[Constanten.COLUMN_TITEL] as? String
+        vorming.locatie = object[Constanten.COLUMN_LOCATIE] as? String
+        vorming.korteBeschrijving = object[Constanten.COLUMN_KORTEBESCHRIJVING] as? String
+        vorming.periodes = object[Constanten.COLUMN_PERIODES] as? Array
+        vorming.prijs = object[Constanten.COLUMN_PRIJS] as? Double
+        vorming.criteriaDeelnemers = object[Constanten.COLUMN_CRITERIADEELNEMERS] as? String
+        //vorming.websiteLocatie = object[Constanten.COLUMN_WEBSITELOCATIE] as? String
+        
+        if object[Constanten.COLUMN_WEBSITELOCATIE] != nil {
+            vorming.websiteLocatie = object[Constanten.COLUMN_WEBSITELOCATIE] as? String
+        } else {
+            vorming.websiteLocatie = ""
+        }
+        
+        vorming.tips = object[Constanten.COLUMN_TIPS] as? String
+        vorming.betalingWijze = object[Constanten.COLUMN_BETALINGSWIJZE] as? String
+        vorming.inbegrepenPrijs = object[Constanten.COLUMN_INBEGREPENPRIJS] as? String
+        
+        return vorming
+    }
+    
+    static func getHoofdAfbeelding(vakantieId: String) -> UIImage {
+        
+        var defaultImage: UIImage = UIImage(named: "joetzVakantie")!
+        
+        var query = self.makeQuery(Constanten.TABLE_AFBEELDING, local: true, soortConstraints: [Constanten.COLUMN_VAKANTIE: Constanten.CONSTRAINT_EQUALTO], equalTo: [Constanten.COLUMN_VAKANTIE: vakantieId])
         
         var count = query.countObjects()
         
-        /*if count == 0 {
+        if count == 0 {
             return defaultImage
-        } else {*/
+        } else {
             var imageObject = query.getFirstObject()
-            var imageFile = imageObject["afbeelding"] as PFFile
-            var image = UIImage(data: imageFile.getData())!
-            return image
-        //}
+            return self.getAfbeelding(imageObject)
+        }
         
         
         
@@ -316,150 +501,18 @@ struct LocalDatastore {
         return afbeeldingen[0]*/
     }
     
-    static func printError(methode: String, tableName: String) {
-        var error: String = ""
-        
-        error.extend("ERROR: class: LocalDatastore.swift, methode: ")
-        error.extend(methode)
-        error.extend(", table: ")
-        error.extend(tableName)
-        
-        println(error)
-    }
-    
-    static func printError(methode: String, tableName: String, extraInfo: String) {
-        var error: String = ""
-        
-        error.extend("ERROR: class: LocalDatastore.swift, methode: ")
-        error.extend(methode)
-        error.extend(", table: ")
-        error.extend(tableName)
-        error.extend(", extra info: ")
-        error.extend(extraInfo)
-        
-        println(error)
-    }
-    
-    static func getGebruikerWithEmail(email: String, tableName: String) -> Gebruiker {
-        var query = PFQuery(className: tableName)
-        
-        query.whereKey("email", equalTo: email)
-        
-        query.fromLocalDatastore()
-        
-        var object = query.getFirstObject()
-        
-        return self.getGebruiker(object)
-    }
-    
-    static func isFavorieteVakantie(favoriet: Favoriet) -> Bool {
-        var query = PFQuery(className: "Favoriet")
-        
-        query.whereKey("vakantie", equalTo: favoriet.vakantie?.id)
-        query.whereKey("gebruiker", equalTo: favoriet.gebruiker?.id)
-        
-        query.fromLocalDatastore()
-        
-        var count = query.countObjects()
-        
-        if count == 0 {
-            return false
-        }
-        return true
-    }
-    
-    static func getAfbeeldingenMetVakantie(vakantieId: String) -> [UIImage] {
-        var query = PFQuery(className: "Afbeelding")
-        
-        query.whereKey("vakantie", equalTo: vakantieId)
-        
-        query.fromLocalDatastore()
-        
-        var objects = query.findObjects() as [PFObject]
-        
-        var afbeeldingen: [UIImage] = []
-        var afbeeldingFile: PFFile
-        var afbeelding: UIImage
-        
-        for object in objects {
-            afbeeldingFile = object["afbeelding"] as PFFile
-            afbeelding = UIImage(data: afbeeldingFile.getData())!
-            afbeeldingen.append(afbeelding)
-        }
-        
-        return afbeeldingen
-    }
-    
-    static func getLocalObjects(tableName: String) -> [AnyObject] {
-        
-        var query = self.makeQuery(tableName, local: true, queryConstraints: [:])
-        
-        var localObjects = query.findObjects() as [PFObject]
-        
-        return getObjecten(localObjects, tableName: tableName)
-    }
-    
-    static func getLocalObjectsWithColumnConstraints(tableName: String, queryConstraints: [String: String]) -> [AnyObject] {
-        
-        var query = self.makeQuery(tableName, local: true, queryConstraints: queryConstraints)
-        
-        var localObjects = query.findObjects() as [PFObject]
-        
-        return self.getObjecten(localObjects, tableName: tableName)
-    }
-    
-    static func getObjecten(objects: [PFObject], tableName: String) -> [AnyObject] {
-        var objecten: [AnyObject] = []
-        
-        for object in objects {
-            if tableName == "Vakantie" {
-                var vakantie = getVakantie(object)
-                objecten.append(vakantie)
-            } else if tableName == "Feedback" {
-                var feedback = getFeedback(object)
-                objecten.append(feedback)
-            } else if tableName == "Vorming" {
-                var vorming = getVorming(object)
-                objecten.append(vorming)
-            }
-        }
-        
-        return objecten
-    }
-    
-    static func parseLocalObject(object: AnyObject, tableName: String) {
-        
-        var pfObject: PFObject
-        
-        if tableName == "Favoriet" {
-            pfObject = getFavorietObject(object as Favoriet)
-        } else {
-            //RANDOM GEKOZEN!
-            pfObject = getFavorietObject(object as Favoriet)
-        }
-        
-        if Reachability.isConnectedToNetwork() == true {
-            pfObject.save()
-        } else {
-            pfObject.saveEventually()
-        }
-    }
-    
-    static func getFavorietObject(favoriet: Favoriet) -> PFObject {
-        var object: PFObject = PFObject(className: "Favoriet")
-        
-        object["vakantie"] = favoriet.vakantie?.id
-        object["gebruiker"] = favoriet.gebruiker?.id
-        
-        return object
-    }
-    
     static func isRijksregisternummerAlGeregistreerd(rijksregisternummer: String) -> Bool {
-        var queryOuder = self.makeQuery("Ouder", local: true, queryConstraints: ["rijksregisterNr": rijksregisternummer])
+        var bestaatOuder = self.bestaatLocalObjectWithConstraints(Constanten.TABLE_OUDER, soortConstraints: [Constanten.COLUMN_RIJKSREGISTERNUMMER: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_RIJKSREGISTERNUMMER: rijksregisternummer])
         
-        var aantalOuders = queryOuder.countObjects()
+        var bestaatMonitor = self.bestaatLocalObjectWithConstraints(Constanten.TABLE_MONITOR, soortConstraints: [Constanten.COLUMN_RIJKSREGISTERNUMMER: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_RIJKSREGISTERNUMMER: rijksregisternummer])
         
-        if aantalOuders != 0 {
+        if bestaatOuder == true || bestaatMonitor == true {
+            return true
+        }
+        
+        return false
+        
+        /*if aantalOuders != 0 {
             return true
         } else {
             var queryMonitor = self.makeQuery("Monitor", local: true, queryConstraints: ["rijksregisterNr": rijksregisternummer])
@@ -470,11 +523,23 @@ struct LocalDatastore {
                 return true
             }
             return false
-        }
+        }*/
     }
     
     static func isGsmAlGeregistreerd(gsm: String) -> Bool {
-        var queryOuder = self.makeQuery("Ouder", local: true, queryConstraints: ["gsm": gsm])
+        
+        var bestaatOuder = self.bestaatLocalObjectWithConstraints(Constanten.TABLE_OUDER, soortConstraints: [Constanten.COLUMN_GSM: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_GSM: gsm])
+        
+        var bestaatMonitor = self.bestaatLocalObjectWithConstraints(Constanten.TABLE_MONITOR, soortConstraints: [Constanten.COLUMN_GSM: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_GSM: gsm])
+        
+        if bestaatOuder == true || bestaatMonitor == true {
+            return true
+        }
+        
+        return false
+        
+        
+        /*var queryOuder = self.makeQuery("Ouder", local: true, queryConstraints: ["gsm": gsm])
         
         var aantalOuders = queryOuder.countObjects()
         
@@ -489,11 +554,27 @@ struct LocalDatastore {
                 return true
             }
             return false
-        }
+        }*/
     }
     
     static func isEmailAlGeregistreerd(email: String) -> Bool {
-        var queryOuder = self.makeQuery("Ouder", local: true, queryConstraints: ["email": email])
+        
+        var bestaatOuder = self.bestaatLocalObjectWithConstraints(Constanten.TABLE_OUDER, soortConstraints: [Constanten.COLUMN_EMAIL: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_EMAIL: email])
+        
+        var bestaatMonitor = self.bestaatLocalObjectWithConstraints(Constanten.TABLE_MONITOR, soortConstraints: [Constanten.COLUMN_EMAIL: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_EMAIL: email])
+        
+        var bestaatAdministrator = self.bestaatLocalObjectWithConstraints(Constanten.TABLE_USER, soortConstraints: [Constanten.COLUMN_EMAIL: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_EMAIL: email])
+        
+        if bestaatOuder == true || bestaatMonitor == true || bestaatAdministrator == true {
+            return true
+        }
+        
+        return false
+        
+        
+        
+        
+        /*var queryOuder = self.makeQuery("Ouder", local: true, queryConstraints: ["email": email])
         
         var aantalOuders = queryOuder.countObjects()
         
@@ -508,448 +589,501 @@ struct LocalDatastore {
                 return true
             }
             return false
-        }
-    }
-    
-    static func pinOuder(ouder: Ouder, wachtwoord: String) {
-        var object = PFObject(className: "Ouder")
-        
-        object.setValue(ouder.email, forKey: "email")
-        object.setValue(ouder.voornaam, forKey: "voornaam")
-        object.setValue(ouder.naam, forKey: "naam")
-        object.setValue(ouder.straat, forKey: "straat")
-        object.setValue(ouder.nummer, forKey: "nummer")
-        object.setValue(ouder.postcode, forKey: "postcode")
-        object.setValue(ouder.gemeente, forKey: "gemeente")
-        object.setValue(ouder.gsm, forKey: "gsm")
-        object.setValue(ouder.rijksregisterNr, forKey: "rijksregisterNr")
-        
-        if ouder.aansluitingsNr != nil {
-            object.setValue(ouder.aansluitingsNr, forKey: "aansluitingsNr")
-            object.setValue(ouder.codeGerechtigde, forKey: "codeGerechtigde")
-            
-            if ouder.aansluitingsNrTweedeOuder != nil {
-                object.setValue(ouder.aansluitingsNrTweedeOuder, forKey: "aansluitingsNrTweedeOuder")
-            }
-        }
-        
-        if ouder.bus != nil {
-            object.setValue(ouder.bus, forKey: "bus")
-        }
-        
-        if ouder.telefoon != nil {
-            object.setValue(ouder.telefoon, forKey: "telefoon")
-        }
-        
-        if Reachability.isConnectedToNetwork() == true {
-            object.save()
-        } else {
-            object.saveEventually()
-        }
-        
-        createPFUser(ouder, wachtwoord: wachtwoord)
-        logIn(ouder, wachtwoord: wachtwoord)
-    }
-    
-    static private func createPFUser(ouder: Ouder, wachtwoord: String) {
-        var user = PFUser()
-        user.username = ouder.email
-        user.password = wachtwoord
-        user.email = ouder.email
-        user["soort"] = "ouder"
-        
-        if Reachability.isConnectedToNetwork() == true {
-            user.signUp()
-        } else {
-            user.saveEventually()
-        }
-    }
-    
-    static private func logIn(ouder: Ouder, wachtwoord: String) {
-        PFUser.logInWithUsername(ouder.email, password: wachtwoord)
+        }*/
     }
     
     static func deleteFavorieteVakantie(favoriet: Favoriet) {
-        var queryConstraints: [String: String] = [:]
+        var soortConstraints: [String: String] = [:]
+        soortConstraints[Constanten.COLUMN_VAKANTIE] = Constanten.CONSTRAINT_EQUALTO
+        soortConstraints[Constanten.COLUMN_GEBRUIKER] = Constanten.CONSTRAINT_EQUALTO
         
-        queryConstraints["vakantie"] = favoriet.vakantie?.id
-        queryConstraints["gebruiker"] = favoriet.gebruiker?.id
+        var equalToConstraints: [String: String] = [:]
+        equalToConstraints[Constanten.COLUMN_VAKANTIE] = favoriet.vakantie?.id
+        soortConstraints[Constanten.COLUMN_GEBRUIKER] = favoriet.gebruiker?.id
         
-        var query = self.makeQuery("Favoriet", local: true, queryConstraints: queryConstraints)
+        var query = self.makeQuery(Constanten.TABLE_FAVORIET, local: true, soortConstraints: soortConstraints, equalTo: equalToConstraints)
         
         var object = query.getFirstObject()
-        object.unpin()
         
         if Reachability.isConnectedToNetwork() == true {
             object.delete()
         } else {
             object.deleteEventually()
         }
+        
+        object.unpin()
     }
     
     static func bestaatInschrijvingVakantieAl(inschrijving: InschrijvingVakantie) -> Bool {
         
-        var bestaatDeelnemerAl = self.bestaatDeelnemerAl(inschrijving.deelnemer!)
+        var soortConstraintsDeelnemer: [String: String] = [:]
+        soortConstraintsDeelnemer[Constanten.COLUMN_VOORNAAM] = Constanten.CONSTRAINT_EQUALTO
+        soortConstraintsDeelnemer[Constanten.COLUMN_NAAM] = Constanten.CONSTRAINT_EQUALTO
         
-        if bestaatDeelnemerAl == true {
-            var deelnemerObject = getDeelnemerWithId(inschrijving.deelnemer!)
+        var equalToConstraintsDeelnemer: [String: String] = [:]
+        equalToConstraintsDeelnemer[Constanten.COLUMN_VOORNAAM] = inschrijving.deelnemer?.voornaam
+        soortConstraintsDeelnemer[Constanten.COLUMN_NAAM] = inschrijving.deelnemer?.naam
+        
+        var bestaatDeelnemer = self.bestaatLocalObjectWithConstraints(Constanten.TABLE_DEELNEMER, soortConstraints: soortConstraintsDeelnemer, equalToConstraints: equalToConstraintsDeelnemer)
+        
+        
+        
+        if bestaatDeelnemer == true {
+            var deelnemerObject = self.getLocalObjectWithColumnConstraints(Constanten.TABLE_DEELNEMER, soortConstraints: soortConstraintsDeelnemer, equalToConstraints: equalToConstraintsDeelnemer) as Deelnemer
             
-            if self.bestaatInschrijvingAlLocal(deelnemerObject.objectId, inschrijving: inschrijving) == true {
+            var soortConstraintsInschrijving: [String: String] = [:]
+            soortConstraintsInschrijving[Constanten.COLUMN_DEELNEMER] = Constanten.CONSTRAINT_EQUALTO
+            soortConstraintsInschrijving[Constanten.COLUMN_VAKANTIE] = Constanten.CONSTRAINT_EQUALTO
+            soortConstraintsInschrijving[Constanten.COLUMN_OUDER] = Constanten.CONSTRAINT_EQUALTO
+            
+            var equalToConstraintsInschrijving: [String: String] = [:]
+            equalToConstraintsInschrijving[Constanten.COLUMN_DEELNEMER] = deelnemerObject.id
+            equalToConstraintsInschrijving[Constanten.COLUMN_VAKANTIE] = inschrijving.vakantie?.id
+            equalToConstraintsInschrijving[Constanten.COLUMN_OUDER] = inschrijving.ouder?.id
+            
+            var bestaatInschrijving = self.bestaatLocalObjectWithConstraints(Constanten.TABLE_INSCHRIJVINGVAKANTIE, soortConstraints: soortConstraintsInschrijving, equalToConstraints: equalToConstraintsInschrijving)
+            
+            if bestaatInschrijving == true {
                 return true
             }
+            return false
         }
         
         return false
     }
     
-    static func bestaatDeelnemerAl(deelnemer: Deelnemer) -> Bool {
-        
-        var queryConstraints: [String: String] = [:]
-        
-        queryConstraints["voornaam"] = deelnemer.voornaam
-        queryConstraints["naam"] = deelnemer.naam
-        
-        var query = self.makeQuery("Deelnemer", local: true, queryConstraints: queryConstraints)
-        
-        var count = query.countObjects()
-        
-        if count == 0 {
-            return false
-        }
-        return true
-    }
     
-    static func getDeelnemerWithId(deelnemer: Deelnemer) -> PFObject {
-        
-        var queryConstraints: [String: String] = [:]
-        
-        queryConstraints["voornaam"] = deelnemer.voornaam
-        queryConstraints["naam"] = deelnemer.naam
-        
-        var query = self.makeQuery("Deelnemer", local: true, queryConstraints: queryConstraints)
-        
-        return query.getFirstObject()
-    }
     
-    static func bestaatInschrijvingAlLocal(deelnemerId: String, inschrijving: InschrijvingVakantie) -> Bool
-    {
-        var queryConstraints: [String: String] = [:]
-        
-        queryConstraints["deelnemer"] = deelnemerId
-        queryConstraints["vakantie"] = inschrijving.vakantie?.id
-        queryConstraints["ouder"] = inschrijving.ouder?.id
-        
-        var query = self.makeQuery("InschrijvingVakantie", local: true, queryConstraints: queryConstraints)
-        
-        var count = query.countObjects()
-        
-        if count == 0 {
-            return false
-        }
-        return true
-    }
     
-    static func getOuderWithEmail(email: String) -> Ouder {
-        
-        var queryConstraints: [String: String] = [:]
-        
-        queryConstraints["email"] = email
-        
-        var query = self.makeQuery("Ouder", local: true, queryConstraints: queryConstraints)
-        
-        var object = query.getFirstObject()
-        
-        return getOuder(object)
-    }
     
-    static func getMonitorWithEmail(email: String) -> Monitor {
-        
-        var queryConstraints: [String: String] = [:]
-        
-        queryConstraints["email"] = email
-        
-        var query = self.makeQuery("Monitor", local: true, queryConstraints: queryConstraints)
-        
-        var object = query.getFirstObject()
-        
-        return getMonitor(object)
-    }
-    
-    static func getOuder(object: PFObject) -> Ouder {
-        var ouder: Ouder = Ouder(id: object.objectId)
-        
-        ouder.rijksregisterNr = object["rijksregisterNr"] as? String
-        ouder.email = object["email"] as? String
-        ouder.voornaam = object["voornaam"] as? String
-        ouder.naam = object["naam"] as? String
-        ouder.straat = object["straat"] as? String
-        ouder.nummer = object["nummer"] as? Int
-        
-        if object["bus"] != nil {
-            ouder.bus = object["bus"] as? String
-        } else {
-            ouder.bus = ""
-        }
-        
-        ouder.gemeente = object["gemeente"] as? String
-        ouder.postcode = object["postcode"] as? Int
-        
-        if object["telefoon"] != nil {
-            ouder.telefoon = object["telefoon"] as? String
-        } else {
-            ouder.telefoon = ""
-        }
-        
-        ouder.gsm = object["gsm"] as? String
-        
-        if object["aansluitingsNr"] != nil {
-            ouder.aansluitingsNr = object["aansluitingsNr"] as? Int
-        } else {
-            ouder.aansluitingsNr = 0
-        }
-        
-        if object["codeGerechtigde"] != nil {
-            ouder.codeGerechtigde = object["codeGerechtigde"] as? Int
-        } else {
-            ouder.codeGerechtigde = 0
-        }
-        
-        if object["aansluitingsNrTweedeOuder"] != nil {
-            ouder.aansluitingsNrTweedeOuder = object["aansluitingsNrTweedeOuder"] as? Int
-        } else {
-            ouder.aansluitingsNrTweedeOuder = 0
-        }
-        
-        return ouder
-    }
-    
-    static func getMonitor(object: PFObject) -> Monitor {
-        var monitor: Monitor = Monitor(id: object.objectId)
-        
-        monitor.rijksregisterNr = object["rijksregisterNr"] as? String
-        monitor.email = object["email"] as? String
-        monitor.voornaam = object["voornaam"] as? String
-        monitor.naam = object["naam"] as? String
-        monitor.straat = object["straat"] as? String
-        monitor.nummer = object["nummer"] as? Int
-        
-        if object["bus"] != nil {
-            monitor.bus = object["bus"] as? String
-        } else {
-            monitor.bus = ""
-        }
-        
-        monitor.gemeente = object["gemeente"] as? String
-        monitor.postcode = object["postcode"] as? Int
-        
-        if object["telefoon"] != nil {
-            monitor.telefoon = object["telefoon"] as? String
-        } else {
-            monitor.telefoon = ""
-        }
-        
-        monitor.gsm = object["gsm"] as? String
-        
-        if object["aansluitingsNr"] != nil {
-            monitor.aansluitingsNr = object["aansluitingsNr"] as? Int
-        } else {
-            monitor.aansluitingsNr = 0
-        }
-        
-        if object["codeGerechtigde"] != nil {
-            monitor.codeGerechtigde = object["codeGerechtigde"] as? Int
-        } else {
-            monitor.codeGerechtigde = 0
-        }
-        
-        if object["lidnummer"] != nil {
-            monitor.lidNr = object["lidnummer"] as? String
-        } else {
-            monitor.lidNr = ""
-        }
-        
-        return monitor
-    }
-    
-    static func parseDeelnemerToDatabase(deelnemer: Deelnemer) -> String {
-        var object = PFObject(className: "Deelnemer")
-        
-        object.setValue(deelnemer.voornaam, forKey: "voornaam")
-        object.setValue(deelnemer.naam, forKey: "naam")
-        object.setValue(deelnemer.geboortedatum, forKey: "geboortedatum")
-        object.setValue(deelnemer.straat, forKey: "straat")
-        object.setValue(deelnemer.nummer, forKey: "nummer")
-        object.setValue(deelnemer.gemeente, forKey: "gemeente")
-        object.setValue(deelnemer.postcode, forKey: "postcode")
-        
-        if deelnemer.bus != nil {
-            object.setValue(deelnemer.bus, forKey: "bus")
-        }
-        
-        object.save()
-        object.fetch()
-        
-        return object.objectId
-    }
-
-    static func parseContactpersoonNoodToDatabase(contactpersoon: ContactpersoonNood) -> String {
-        var object = PFObject(className: "ContactpersoonNood")
-        
-        object.setValue(contactpersoon.voornaam, forKey: "voornaam")
-        object.setValue(contactpersoon.naam, forKey: "naam")
-        object.setValue(contactpersoon.gsm, forKey: "gsm")
-        
-        if contactpersoon.telefoon != nil {
-            object.setValue(contactpersoon.telefoon, forKey: "telefoon")
-        }
-        
-        object.save()
-        object.fetch()
-        
-        return object.objectId
-    }
-    
-    static func parseInschrijvingVakantieToDatabase(inschrijving: InschrijvingVakantie) {
-        var object = PFObject(className: "InschrijvingVakantie")
-        
-        object.setValue(inschrijving.vakantie?.id, forKey: "vakantie")
-        object.setValue(inschrijving.ouder?.id, forKey: "ouder")
-        object.setValue(inschrijving.deelnemer?.id, forKey: "deelnemer")
-        object.setValue(inschrijving.contactpersoon1?.id, forKey: "contactpersoon1")
-        
-        
-        if inschrijving.extraInfo != "" {
-            object.setValue(inschrijving.extraInfo, forKey: "extraInformatie")
-        }
-        
-        if inschrijving.contactpersoon2 != nil {
-            object.setValue(inschrijving.contactpersoon2?.id, forKey: "contactpersoon2")
-        }
-        
-        object.save()
-    }
-
-    static func getVorming(object: PFObject) -> Vorming {
-        var vorming: Vorming = Vorming(id: object.objectId)
-        
-        vorming.titel = object["titel"] as? String
-        vorming.locatie = object["locatie"] as? String
-        vorming.korteBeschrijving = object["korteBeschrijving"] as? String
-        vorming.periodes = object["periodes"] as? Array
-        vorming.prijs = object["prijs"] as? Double
-        vorming.criteriaDeelnemers = object["criteriaDeelnemers"] as? String
-        vorming.websiteLocatie = object["websiteLocatie"] as? String
-        
-        if object["websiteLocatie"] != nil {
-            vorming.websiteLocatie = object["websiteLocatie"] as? String
-        } else {
-            vorming.websiteLocatie = ""
-        }
-        
-        vorming.tips = object["tips"] as? String
-        vorming.betalingWijze = object["betalingswijze"] as? String
-        vorming.inbegrepenPrijs = object["inbegrepenInPrijs"] as? String
-        
-        return vorming
-    }
-    
-    static func getMonitorsMetDezelfdeVormingen(monitorId: String) -> [Monitor] {
-        
-        var vormingenIds = self.getVormingIdMetMonitorId(monitorId)
+    static func getMonitorenMetDezelfdeVormingen(monitorId: String) -> [Monitor] {
         
         var monitoren: [Monitor] = []
         
-        if vormingenIds.count != 0 {
-            //er zijn vormingen gevonden
-            var monitorIds = self.getMonitorsIdMetVormingId(vormingenIds)
+        var heeftMonitorVormingen = self.bestaanLocalObjectsWithConstraints(Constanten.TABLE_INSCHRIJVINGVORMING, soortConstraints: [Constanten.COLUMN_MONITOR: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_MONITOR: monitorId])
+        
+        if heeftMonitorVormingen == true {
             
-            if monitorIds.count != 0 {
-                //er zijn monitoren gevonden
+            var vormingenMonitor = self.getLocalObjectWithColumnConstraints(Constanten.TABLE_INSCHRIJVINGVORMING, soortConstraints: [Constanten.COLUMN_MONITOR: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_MONITOR: monitorId]) as [Vorming]
+            
+            var soortConstraintsAndereMonitoren: [String: String] = [:]
+            soortConstraintsAndereMonitoren[Constanten.COLUMN_VORMING] = Constanten.CONSTRAINT_CONTAINEDIN
+            soortConstraintsAndereMonitoren[Constanten.COLUMN_MONITOR] = Constanten.CONSTRAINT_NOTEQUALTO
+            
+            var mijnVormingenIds: [String] = []
+            
+            for vorming in vormingenMonitor {
+                mijnVormingenIds.append(vorming.id)
+            }
+            
+            var containedInConstraintsAndereMonitoren: [String: [AnyObject]] = [:]
+            containedInConstraintsAndereMonitoren[Constanten.COLUMN_VORMING] = mijnVormingenIds
+            
+            var notEqualToConstraintsAndereMonitoren: [String: String] = [:]
+            notEqualToConstraintsAndereMonitoren[Constanten.COLUMN_MONITOR] = monitorId
+            
+            var bestaanAndereMonitorenMetDezelfdeVormingen = self.bestaanLocalObjectsWithConstraints(Constanten.TABLE_INSCHRIJVINGVORMING, soortConstraints: soortConstraintsAndereMonitoren, equalToConstraints: notEqualToConstraintsAndereMonitoren, containedInConstraints: containedInConstraintsAndereMonitoren)
+            
+            
+            if bestaanAndereMonitorenMetDezelfdeVormingen == true {
+                monitoren = self.getLocalObjectsWithColumnConstraints(Constanten.TABLE_INSCHRIJVINGVORMING, soortConstraints: soortConstraintsAndereMonitoren, equalToConstraints: notEqualToConstraintsAndereMonitoren, containedInConstraints: containedInConstraintsAndereMonitoren) as [Monitor]
                 
-                for monitorId in monitorIds {
-                    var monitor = getMonitorMetId(monitorId)
-                    monitoren.append(monitor)
-                }
             }
         }
         
         return monitoren
     }
     
-    static func getMonitorMetId(monitorId: String) -> Monitor {
-        var query = PFQuery(className: "Monitor")
-        
-        query.fromLocalDatastore()
-        
-        var object = query.getObjectWithId(monitorId)
-        
-        return getMonitor(object)
-    }
-    
-    static func getVormingIdMetMonitorId(monitorId: String) -> [String] {
-        
-        var query = self.makeQuery("InschrijvingVorming", local: true, queryConstraints: ["monitor": monitorId])
-        
-        var objects = query.findObjects() as [PFObject]
-        
-        var vormingenIds: [String] = []
-        
-        for object in objects {
-            vormingenIds.append(object["vorming"] as String)
-        }
-        
-        return vormingenIds
-    }
-    
-    static func getMonitorsIdMetVormingId(vormingen: [String]) -> [String] {
-        
-        var monitorsId: [String] = []
-        
-        var query = PFQuery(className: "InschrijvingVorming")
-        
-        query.fromLocalDatastore()
-        
-        query.whereKey("vorming", containedIn: vormingen)
-        
-        var objects = query.findObjects() as [PFObject]
-        
-        for object in objects {
-            monitorsId.append(object["monitor"] as String)
-        }
-        
-        return monitorsId
-    }
     
     static func getAndereMonitoren(monitors: [Monitor]) -> [Monitor] {
         
-        var andereMonitoren: [Monitor] = []
-        var monitorenZelfdeVormingIds: [String] = []
-        
-        var huidigeMonitor = self.getMonitorWithEmail(PFUser.currentUser().email)
-        
-        for m in monitors {
-            monitorenZelfdeVormingIds.append(m.id!)
-        }
-        
-        var alleMonitoren = self.getLocalObjects("Monitor")
+        var zelfdeMonitorenIds: [String] = []
     
-        var query = PFQuery(className: "Monitor")
+        var andereMonitoren: [Monitor] = []
         
-        query.fromLocalDatastore()
-        query.whereKey("objectId", notContainedIn: monitorenZelfdeVormingIds)
-        query.whereKey("objectId", notEqualTo: huidigeMonitor.id)
+        var huidigeMonitor = self.getLocalObjectWithColumnConstraints(Constanten.TABLE_MONITOR, soortConstraints: [Constanten.COLUMN_EMAIL: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_EMAIL: PFUser.currentUser().email]) as Monitor
         
-        var objects = query.findObjects() as [PFObject]
         
-        for object in objects {
-            var monitor = getMonitor(object)
-            andereMonitoren.append(monitor)
+        zelfdeMonitorenIds.append(huidigeMonitor.id!)
+        
+        for monitor in monitors {
+            zelfdeMonitorenIds.append(monitor.id!)
         }
+        
+        
+    
+        var bestaanAndereMonitoren = self.bestaanLocalObjectsWithConstraints(Constanten.TABLE_INSCHRIJVINGVORMING, soortConstraints: [Constanten.COLUMN_MONITOR: Constanten.CONSTRAINT_NOTCONTAINEDIN], notContainedInConstraints: [Constanten.COLUMN_MONITOR: zelfdeMonitorenIds])
+        
+        
+        if bestaanAndereMonitoren == true {
+            andereMonitoren = self.getLocalObjectsWithColumnConstraints(Constanten.TABLE_INSCHRIJVINGVORMING, soortConstraints: [Constanten.COLUMN_MONITOR: Constanten.CONSTRAINT_NOTCONTAINEDIN], notContainedInConstraints: [Constanten.COLUMN_MONITOR: zelfdeMonitorenIds]) as [Monitor]
+        }
+
         
         return andereMonitoren
     }
 
+    /*static func getVakantieFromFeedback(vakantieId: String) -> Vakantie {
     
+    var query = PFQuery(className: "Vakantie")
+    
+    query.fromLocalDatastore()
+    
+    var vakantieObject = query.getObjectWithId(vakantieId)
+    
+    return self.getVakantie(vakantieObject)
+    }*/
+    
+    /*static func getOuderFromFeedback(ouderId: String) -> Gebruiker? {
+    
+    var query = PFQuery(className: "Ouder")
+    
+    query.whereKey("objectId", equalTo: ouderId)
+    query.fromLocalDatastore()
+    
+    var count = query.countObjects()
+    
+    if count == 0 {
+    return nil
+    } else {
+    var ouderObject = query.getFirstObject()
+    return self.getGebruiker(ouderObject)
+    }
+    }*/
+    
+    /*static func getMonitorFromFeedback(monitorId: String) -> Gebruiker? {
+    
+    var query = PFQuery(className: "Monitor")
+    
+    query.whereKey("objectId", equalTo: monitorId)
+    query.fromLocalDatastore()
+    
+    var count = query.countObjects()
+    
+    if count == 0 {
+    return nil
+    } else {
+    var monitorObject = query.getFirstObject()
+    return self.getGebruiker(monitorObject)
+    }
+    }*/
+    
+    /*static func getGebruikerWithEmail(email: String, tableName: String) -> Gebruiker {
+    var query = PFQuery(className: tableName)
+    
+    query.whereKey("email", equalTo: email)
+    
+    query.fromLocalDatastore()
+    
+    var object = query.getFirstObject()
+    
+    return self.getGebruiker(object)
+    }*/
+    
+    /*static func isFavorieteVakantie(favoriet: Favoriet) -> Bool {
+    var query = PFQuery(className: "Favoriet")
+    
+    query.whereKey("vakantie", equalTo: favoriet.vakantie?.id)
+    query.whereKey("gebruiker", equalTo: favoriet.gebruiker?.id)
+    
+    query.fromLocalDatastore()
+    
+    var count = query.countObjects()
+    
+    if count == 0 {
+    return false
+    }
+    return true
+    }*/
+    
+    /*static func getAfbeeldingenMetVakantie(vakantieId: String) -> [UIImage] {
+    var query = PFQuery(className: "Afbeelding")
+    
+    query.whereKey("vakantie", equalTo: vakantieId)
+    
+    query.fromLocalDatastore()
+    
+    var objects = query.findObjects() as [PFObject]
+    
+    var afbeeldingen: [UIImage] = []
+    var afbeeldingFile: PFFile
+    var afbeelding: UIImage
+    
+    for object in objects {
+    afbeeldingFile = object["afbeelding"] as PFFile
+    afbeelding = UIImage(data: afbeeldingFile.getData())!
+    afbeeldingen.append(afbeelding)
+    }
+    
+    return afbeeldingen
+    }*/
+    
+    /*static func parseLocalObject(tableName: String, object: AnyObject, wachtwoordOuder: String = "") {
+    
+    if tableName == Constanten.TABLE_OUDER {
+    ParseToDatabase.parseOuderToDatabase(object as Ouder, wachtwoord: wachtwoordOuder)
+    } else if tableName == Constanten.TABLE_DEELNEMER {
+    ParseToDatabase.parseDeelnemerToDatabase(object as Deelnemer)
+    }
+    
+    
+    
+    
+    if tableName == "Favoriet" {
+    pfObject = getFavorietObject(object as Favoriet)
+    } else {
+    //RANDOM GEKOZEN!
+    pfObject = getFavorietObject(object as Favoriet)
+    }
+    
+    if Reachability.isConnectedToNetwork() == true {
+    pfObject.save()
+    } else {
+    pfObject.saveEventually()
+    }
+    }*/
+    
+    /*static func getFavorietObject(favoriet: Favoriet) -> PFObject {
+    var object: PFObject = PFObject(className: "Favoriet")
+    
+    object["vakantie"] = favoriet.vakantie?.id
+    object["gebruiker"] = favoriet.gebruiker?.id
+    
+    return object
+    }*/
+    
+    /*static func pinOuder(ouder: Ouder, wachtwoord: String) {
+    var object = PFObject(className: "Ouder")
+    
+    object.setValue(ouder.email, forKey: "email")
+    object.setValue(ouder.voornaam, forKey: "voornaam")
+    object.setValue(ouder.naam, forKey: "naam")
+    object.setValue(ouder.straat, forKey: "straat")
+    object.setValue(ouder.nummer, forKey: "nummer")
+    object.setValue(ouder.postcode, forKey: "postcode")
+    object.setValue(ouder.gemeente, forKey: "gemeente")
+    object.setValue(ouder.gsm, forKey: "gsm")
+    object.setValue(ouder.rijksregisterNr, forKey: "rijksregisterNr")
+    
+    if ouder.aansluitingsNr != nil {
+    object.setValue(ouder.aansluitingsNr, forKey: "aansluitingsNr")
+    object.setValue(ouder.codeGerechtigde, forKey: "codeGerechtigde")
+    
+    if ouder.aansluitingsNrTweedeOuder != nil {
+    object.setValue(ouder.aansluitingsNrTweedeOuder, forKey: "aansluitingsNrTweedeOuder")
+    }
+    }
+    
+    if ouder.bus != nil {
+    object.setValue(ouder.bus, forKey: "bus")
+    }
+    
+    if ouder.telefoon != nil {
+    object.setValue(ouder.telefoon, forKey: "telefoon")
+    }
+    
+    if Reachability.isConnectedToNetwork() == true {
+    object.save()
+    } else {
+    object.saveEventually()
+    }
+    
+    createPFUser(ouder, wachtwoord: wachtwoord)
+    logIn(ouder, wachtwoord: wachtwoord)
+    }
+    
+    static private func createPFUser(ouder: Ouder, wachtwoord: String) {
+    var user = PFUser()
+    user.username = ouder.email
+    user.password = wachtwoord
+    user.email = ouder.email
+    user["soort"] = "ouder"
+    
+    if Reachability.isConnectedToNetwork() == true {
+    user.signUp()
+    } else {
+    user.saveEventually()
+    }
+    }
+    
+    static private func logIn(ouder: Ouder, wachtwoord: String) {
+    PFUser.logInWithUsername(ouder.email, password: wachtwoord)
+    }*/
+    
+    /*static func bestaatDeelnemerAl(deelnemer: Deelnemer) -> Bool {
+    
+    var queryConstraints: [String: String] = [:]
+    
+    queryConstraints["voornaam"] = deelnemer.voornaam
+    queryConstraints["naam"] = deelnemer.naam
+    
+    var query = self.makeQuery("Deelnemer", local: true, queryConstraints: queryConstraints)
+    
+    var count = query.countObjects()
+    
+    if count == 0 {
+    return false
+    }
+    return true
+    }*/
+    
+    /*static func getDeelnemerWithId(deelnemer: Deelnemer) -> PFObject {
+    
+    var queryConstraints: [String: String] = [:]
+    
+    queryConstraints["voornaam"] = deelnemer.voornaam
+    queryConstraints["naam"] = deelnemer.naam
+    
+    var query = self.makeQuery("Deelnemer", local: true, queryConstraints: queryConstraints)
+    
+    return query.getFirstObject()
+    }*/
+    
+    /*static func bestaatInschrijvingAlLocal(deelnemerId: String, inschrijving: InschrijvingVakantie) -> Bool
+    {
+    var queryConstraints: [String: String] = [:]
+    
+    queryConstraints["deelnemer"] = deelnemerId
+    queryConstraints["vakantie"] = inschrijving.vakantie?.id
+    queryConstraints["ouder"] = inschrijving.ouder?.id
+    
+    var query = self.makeQuery("InschrijvingVakantie", local: true, queryConstraints: queryConstraints)
+    
+    var count = query.countObjects()
+    
+    if count == 0 {
+    return false
+    }
+    return true
+    }*/
+    
+    /*static func getOuderWithEmail(email: String) -> Ouder {
+    
+    var queryConstraints: [String: String] = [:]
+    
+    queryConstraints["email"] = email
+    
+    var query = self.makeQuery("Ouder", local: true, queryConstraints: queryConstraints)
+    
+    var object = query.getFirstObject()
+    
+    return getOuder(object)
+    }
+    
+    static func getMonitorWithEmail(email: String) -> Monitor {
+    
+    var queryConstraints: [String: String] = [:]
+    
+    queryConstraints["email"] = email
+    
+    var query = self.makeQuery("Monitor", local: true, queryConstraints: queryConstraints)
+    
+    var object = query.getFirstObject()
+    
+    return getMonitor(object)
+    }
+    
+    static func parseDeelnemerToDatabase(deelnemer: Deelnemer) -> String {
+    var object = PFObject(className: "Deelnemer")
+    
+    object.setValue(deelnemer.voornaam, forKey: "voornaam")
+    object.setValue(deelnemer.naam, forKey: "naam")
+    object.setValue(deelnemer.geboortedatum, forKey: "geboortedatum")
+    object.setValue(deelnemer.straat, forKey: "straat")
+    object.setValue(deelnemer.nummer, forKey: "nummer")
+    object.setValue(deelnemer.gemeente, forKey: "gemeente")
+    object.setValue(deelnemer.postcode, forKey: "postcode")
+    
+    if deelnemer.bus != nil {
+    object.setValue(deelnemer.bus, forKey: "bus")
+    }
+    
+    object.save()
+    object.fetch()
+    
+    return object.objectId
+    }
+    
+    static func parseContactpersoonNoodToDatabase(contactpersoon: ContactpersoonNood) -> String {
+    var object = PFObject(className: "ContactpersoonNood")
+    
+    object.setValue(contactpersoon.voornaam, forKey: "voornaam")
+    object.setValue(contactpersoon.naam, forKey: "naam")
+    object.setValue(contactpersoon.gsm, forKey: "gsm")
+    
+    if contactpersoon.telefoon != nil {
+    object.setValue(contactpersoon.telefoon, forKey: "telefoon")
+    }
+    
+    object.save()
+    object.fetch()
+    
+    return object.objectId
+    }
+    
+    static func parseInschrijvingVakantieToDatabase(inschrijving: InschrijvingVakantie) {
+    var object = PFObject(className: "InschrijvingVakantie")
+    
+    object.setValue(inschrijving.vakantie?.id, forKey: "vakantie")
+    object.setValue(inschrijving.ouder?.id, forKey: "ouder")
+    object.setValue(inschrijving.deelnemer?.id, forKey: "deelnemer")
+    object.setValue(inschrijving.contactpersoon1?.id, forKey: "contactpersoon1")
+    
+    
+    if inschrijving.extraInfo != "" {
+    object.setValue(inschrijving.extraInfo, forKey: "extraInformatie")
+    }
+    
+    if inschrijving.contactpersoon2 != nil {
+    object.setValue(inschrijving.contactpersoon2?.id, forKey: "contactpersoon2")
+    }
+    
+    object.save()
+    }*/
+    
+    /*static func getMonitorMetId(monitorId: String) -> Monitor {
+    var query = PFQuery(className: "Monitor")
+    
+    query.fromLocalDatastore()
+    
+    var object = query.getObjectWithId(monitorId)
+    
+    return getMonitor(object)
+    }
+    
+    static func getVormingIdMetMonitorId(monitorId: String) -> [String] {
+    
+    var query = self.makeQuery("InschrijvingVorming", local: true, queryConstraints: ["monitor": monitorId])
+    
+    var objects = query.findObjects() as [PFObject]
+    
+    var vormingenIds: [String] = []
+    
+    for object in objects {
+    vormingenIds.append(object["vorming"] as String)
+    }
+    
+    return vormingenIds
+    }
+    
+    static func getMonitorsIdMetVormingId(vormingen: [String]) -> [String] {
+    
+    var monitorsId: [String] = []
+    
+    var query = PFQuery(className: "InschrijvingVorming")
+    
+    query.fromLocalDatastore()
+    
+    query.whereKey("vorming", containedIn: vormingen)
+    
+    var objects = query.findObjects() as [PFObject]
+    
+    for object in objects {
+    monitorsId.append(object["monitor"] as String)
+    }
+    
+    return monitorsId
+    }*/
 }
 
 

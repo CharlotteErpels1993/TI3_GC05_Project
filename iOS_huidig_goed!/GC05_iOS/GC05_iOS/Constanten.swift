@@ -13,6 +13,7 @@ struct Constanten {
     static let TABLE_OUDER: String = "Ouder"
     static let TABLE_VOORKEUR: String = "Voorkeur"
     static let TABLE_VORMING: String = "Vorming"
+    static let TABLE_USER: String = "User"
     
     // kolomnaam
     static let COLUMN_OBJECTID: String = "objectId"
@@ -71,4 +72,10 @@ struct Constanten {
     static let COLUMN_PRIJS: String = "prijs"
     static let COLUMN_TIPS: String = "tips"
     static let COLUMN_WEBSITELOCATIE: String = "websiteLocatie"
+    
+    // constraints
+    static let CONSTRAINT_EQUALTO: String = "equalTo"
+    static let CONSTRAINT_NOTCONTAINEDIN: String = "notContainedIn"
+    static let CONSTRAINT_NOTEQUALTO: String = "notEqualTo"
+    static let CONSTRAINT_CONTAINEDIN: String = "containedIn"
 }
