@@ -13,7 +13,6 @@ class ENSideMenuNavigationController: UINavigationController, ENSideMenuProtocol
     internal var sideMenu : ENSideMenu?
     internal var sideMenuAnimationType : ENSideMenuAnimation = .Default
     
-    
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +35,6 @@ class ENSideMenuNavigationController: UINavigationController, ENSideMenuProtocol
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     // MARK: - Navigation

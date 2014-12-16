@@ -521,14 +521,14 @@ struct MonitorSQL {
         
         monitorJSON.save()
         
-        deleteNieuweMonitor(monitor)
+        //deleteNieuweMonitor(monitor)
         createPFUser(monitor, wachtwoord: wachtwoord)
         logIn(monitor, wachtwoord: wachtwoord)
     }
     
-    static private func deleteNieuweMonitor(monitor: Monitor) {
+    /*static private func deleteNieuweMonitor(monitor: Monitor) {
         NieuweMonitorSQL.deleteNieuweMonitor(monitor.lidNr!, rijksregisternummer: monitor.rijksregisterNr!, email: monitor.email!)
-    }
+    }*/
     
     static private func createPFUser(monitor: Monitor, wachtwoord: String) {
         var user = PFUser()

@@ -82,10 +82,6 @@ class SidebarTableViewController: UITableViewController, UITextFieldDelegate {
         return cell!
     }
     
-    /*override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50.0
-    }*/
-    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.row == selectedMenuItem {
             hideSideMenuView()
@@ -124,7 +120,6 @@ class SidebarTableViewController: UITableViewController, UITextFieldDelegate {
             var gebruikerPF = PFUser.currentUser()
             var soort: String = gebruikerPF["soort"] as String
             if soort == "monitor" {
-                //self.tableView.reloadData()
                 switch indexPath.row {
                 case 0:
                     hideSideMenuView()
@@ -147,14 +142,11 @@ class SidebarTableViewController: UITableViewController, UITextFieldDelegate {
                     
                     presentViewController(alertController, animated: true, completion: nil)
                     break
-                /*case 1:
-                    destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Profiel") as UIViewController
-                    break*/
                 case 1:
                     destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
                     break
                 case 2:
-                    var destViewController2: VakantiesTableViewController = /*destViewController = */mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as VakantiesTableViewController
+                    var destViewController2: VakantiesTableViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as VakantiesTableViewController
                     destViewController2.isFavoriet = true
                     destViewController = destViewController2
                     break
@@ -207,7 +199,7 @@ class SidebarTableViewController: UITableViewController, UITextFieldDelegate {
                     destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
                     break
                 case 2:
-                    var destViewController2: VakantiesTableViewController = /*destViewController = */mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as VakantiesTableViewController
+                    var destViewController2: VakantiesTableViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as VakantiesTableViewController
                     destViewController2.isFavoriet = true
                     destViewController = destViewController2
                     break

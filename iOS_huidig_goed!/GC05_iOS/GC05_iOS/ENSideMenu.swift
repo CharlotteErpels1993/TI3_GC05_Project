@@ -159,16 +159,12 @@ class ENSideMenu : NSObject, UITextFieldDelegate {
             visualEffectView.autoresizingMask = .FlexibleHeight | .FlexibleWidth
             sideMenuContainerView.addSubview(visualEffectView)
         }
-        else {
-            // TODO: add blur for ios 7
-        }
     }
     
     private func toggleMenu (shouldOpen: Bool) {
         self.menuTableViewController.tableView.reloadData()
         isMenuOpen = shouldOpen
         if (bouncingEnabled) {
-            //self.menuTableViewController.tableView.reloadData()
             animator.removeAllBehaviors()
             
             var gravityDirectionX: CGFloat
@@ -207,9 +203,6 @@ class ENSideMenu : NSObject, UITextFieldDelegate {
             let menuViewBehavior = UIDynamicItemBehavior(items: [sideMenuContainerView])
             menuViewBehavior.elasticity = 0.25
             animator.addBehavior(menuViewBehavior)
-            
-            
-            
         }
         else {
             var destFrame :CGRect
@@ -271,9 +264,6 @@ class ENSideMenu : NSObject, UITextFieldDelegate {
     }
     
     internal func hideSideMenu () {
-
-                //self.menuTableViewController.tableView.reloadInputViews()
-
         if (isMenuOpen) {
             toggleMenu(false)
         }

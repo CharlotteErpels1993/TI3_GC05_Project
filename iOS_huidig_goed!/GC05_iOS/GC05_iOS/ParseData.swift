@@ -392,9 +392,9 @@ struct /*class*/ ParseData {
         MonitorSQL.parseMonitorToDatabase(monitor, wachtwoord: wachtwoord)
     }
     
-    static func parseNieuweMonitorToDatabase(nieuweMonitor: NieuweMonitor) {
+    /*static func parseNieuweMonitorToDatabase(nieuweMonitor: NieuweMonitor) {
         NieuweMonitorSQL.parseNieuweMonitorToDatabase(nieuweMonitor)
-    }
+    }*/
     
     static func parseOuderToDatabase(ouder: Ouder, wachtwoord: String) {
         OuderSQL.parseOuderToDatabase(ouder, wachtwoord: wachtwoord)
@@ -613,11 +613,11 @@ struct /*class*/ ParseData {
         return VoorkeurSQL.getVoorkeuren(monitorId, vakantieId: vakantieId)
     }
     
-    static func bestaatCombinatie(lidnummer: String, rijksregisternummer: String, email: String) -> Bool {
+    /*static func bestaatCombinatie(lidnummer: String, rijksregisternummer: String, email: String) -> Bool {
         return NieuweMonitorSQL.bestaatCombinatie(lidnummer, rijksregisternummer: rijksregisternummer, email: email)
-    }
+    }*/
     
-    static func rijksregisterNrMonitorAlToegevoegd(rijksregisterNr: String) -> Bool {
+    /*static func rijksregisterNrMonitorAlToegevoegd(rijksregisterNr: String) -> Bool {
         return MonitorSQL.getRijksregisterNummers(rijksregisterNr)
     }
     
@@ -647,6 +647,6 @@ struct /*class*/ ParseData {
     
     static func bestaatEmailNieuweMonitorAlMonitor(email: String) -> Bool {
         return MonitorSQL.bestaatEmailAl(email)
-    }
+    }*/
     
 }

@@ -63,7 +63,7 @@ struct NieuweMonitorSQL {
         }
     }
     
-    static func parseNieuweMonitorToDatabase(nieuweMonitor: NieuweMonitor) {
+    /*static func parseNieuweMonitorToDatabase(nieuweMonitor: NieuweMonitor) {
         var nieuweMonitorJSON = PFObject(className: "NieuweMonitor")
         
         nieuweMonitorJSON.setValue(nieuweMonitor.lidnummer, forKey: "lidnummer")
@@ -147,7 +147,7 @@ struct NieuweMonitorSQL {
         
         var nieuweMonitorObject = query.getFirstObject()
         nieuweMonitorObject.delete()
-    }
+    }*/
     
     static func bestaatLidnummerAl(lidnummer: String) -> Bool {
         
