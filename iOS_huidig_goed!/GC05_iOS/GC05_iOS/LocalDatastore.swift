@@ -622,7 +622,7 @@ struct LocalDatastore {
         
         var equalToConstraintsDeelnemer: [String: String] = [:]
         equalToConstraintsDeelnemer[Constanten.COLUMN_VOORNAAM] = inschrijving.deelnemer?.voornaam
-        soortConstraintsDeelnemer[Constanten.COLUMN_NAAM] = inschrijving.deelnemer?.naam
+        equalToConstraintsDeelnemer[Constanten.COLUMN_NAAM] = inschrijving.deelnemer?.naam
         
         var bestaatDeelnemer = self.bestaatLocalObjectWithConstraints(Constanten.TABLE_DEELNEMER, soortConstraints: soortConstraintsDeelnemer, equalToConstraints: equalToConstraintsDeelnemer)
         
@@ -729,6 +729,46 @@ struct LocalDatastore {
         return soort!
     }
 
+    static func bestaatInschrijvingVormingAl(inschrijving: InschrijvingVorming) -> Bool {
+        
+        var soortConstraints: [String: String] = [:]
+        soortConstraints[Constanten.COLUMN_MONITOR] = Constanten.CONSTRAINT_EQUALTO
+        soortConstraints[Constanten.COLUMN_VORMING] = Constanten.CONSTRAINT_EQUALTO
+        soortConstraints[Constanten.COLUMN_PERIODE] = Constanten.CONSTRAINT_EQUALTO
+        
+        var equalToConstraints: [String: String] = [:]
+        equalToConstraints[Constanten.COLUMN_MONITOR] = inschrijving.monitor?.id
+        soortConstraintsDeelnemer[Constanten.COLUMN_NAAM] = inschrijving.deelnemer?.naam
+        
+        var bestaatDeelnemer = self.bestaatLocalObjectWithConstraints(Constanten.TABLE_DEELNEMER, soortConstraints: soortConstraintsDeelnemer, equalToConstraints: equalToConstraintsDeelnemer)
+        
+        
+        
+        if bestaatDeelnemer == true {
+            var deelnemerObject = self.getLocalObjectWithColumnConstraints(Constanten.TABLE_DEELNEMER, soortConstraints: soortConstraintsDeelnemer, equalToConstraints: equalToConstraintsDeelnemer) as Deelnemer
+            
+            var soortConstraintsInschrijving: [String: String] = [:]
+            soortConstraintsInschrijving[Constanten.COLUMN_DEELNEMER] = Constanten.CONSTRAINT_EQUALTO
+            soortConstraintsInschrijving[Constanten.COLUMN_VAKANTIE] = Constanten.CONSTRAINT_EQUALTO
+            soortConstraintsInschrijving[Constanten.COLUMN_OUDER] = Constanten.CONSTRAINT_EQUALTO
+            
+            var equalToConstraintsInschrijving: [String: String] = [:]
+            equalToConstraintsInschrijving[Constanten.COLUMN_DEELNEMER] = deelnemerObject.id
+            equalToConstraintsInschrijving[Constanten.COLUMN_VAKANTIE] = inschrijving.vakantie?.id
+            equalToConstraintsInschrijving[Constanten.COLUMN_OUDER] = inschrijving.ouder?.id
+            
+            var bestaatInschrijving = self.bestaatLocalObjectWithConstraints(Constanten.TABLE_INSCHRIJVINGVAKANTIE, soortConstraints: soortConstraintsInschrijving, equalToConstraints: equalToConstraintsInschrijving)
+            
+            if bestaatInschrijving == true {
+                return true
+            }
+            return false
+        }
+        
+        return false
+    }
+
+    
     /*static func getVakantieFromFeedback(vakantieId: String) -> Vakantie {
     
     var query = PFQuery(className: "Vakantie")

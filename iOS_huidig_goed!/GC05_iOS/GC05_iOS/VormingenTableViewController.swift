@@ -56,17 +56,6 @@ class VormingenTableViewController: UITableViewController, UISearchBarDelegate, 
         vormingen2.sort({ $0.titel < $1.titel })
         vormingen.sort({ $0.titel < $1.titel })
         
-        /*var vormingenResponse = ParseData.getAlleVormingen()
-        
-        if vormingenResponse.1 == nil {
-            self.vormingen = vormingenResponse.0
-            self.vormingen2 = self.vormingen
-            self.tableView.reloadData()
-            
-            vormingen2.sort({ $0.titel < $1.titel })
-            vormingen.sort({ $0.titel < $1.titel })
-        }*/
-        
         zoekbar.showsScopeBar = true
         zoekbar.delegate = self
     }

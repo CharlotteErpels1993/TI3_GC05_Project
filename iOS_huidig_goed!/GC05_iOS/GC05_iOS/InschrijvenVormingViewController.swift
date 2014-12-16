@@ -56,7 +56,7 @@ class InschrijvenVormingViewController: UIViewController, UIPickerViewDataSource
             presentViewController(alert, animated: true, completion: nil)
         }
         
-        //ParseData.getAlleVormingen()
+        LocalDatastore.getTableReady(Constanten.TABLE_VAKANTIE)
         
         pickerView.delegate = self
         pickerView.dataSource = self
@@ -141,15 +141,9 @@ class InschrijvenVormingViewController: UIViewController, UIPickerViewDataSource
         if segue.identifier == "inschrijven" {
             let inschrijvenVormingSuccesvolViewController = segue.destinationViewController as InschrijvenVormingSuccesvolViewController
 
-            //ParseData.deleteInschrijvingVormingTable()
-            //ParseData.vulInschrijvingVormingTableOp()
+            var monitor = LocalDatastore.getLocalObjectWithColumnConstraints(Constanten.TABLE_MONITOR, soortConstraints: [Constanten.COLUMN_EMAIL: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_EMAIL: PFUser.currentUser().email]) as Monitor
             
-            /*var monitorResponse = ParseData.getMonitorWithEmail(PFUser.currentUser().email)
-            if monitorResponse.1 == nil {
-                inschrijvingVorming.monitor = monitorResponse.0
-            }*/
-            inschrijvingVorming.monitor = LocalDatastore.getMonitorWithEmail(PFUser.currentUser().email)
-            
+            inschrijvingVorming.monitor = monitor
             inschrijvingVorming.vorming = vorming
             
             if inschrijvingVorming.periode == nil {
@@ -189,12 +183,14 @@ class InschrijvenVormingViewController: UIViewController, UIPickerViewDataSource
     //Return: een bool true als de monitor al ingeschreven is, anders false
     //
     func controleerAlIngeschreven() -> Bool {
-        var inschrijvingen: [InschrijvingVorming] = []
+        
+        return true
+        /*var inschrijvingen: [InschrijvingVorming] = []
         inschrijvingen = ParseData.getInschrijvingenVorming(inschrijvingVorming)
         if inschrijvingen.count > 0 {
             return true
 
         }
-        return false
+        return false*/
     }
 }

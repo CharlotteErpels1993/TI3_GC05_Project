@@ -299,18 +299,10 @@ class InschrijvenVakantie1ViewController : UITableViewController {
         self.deelnemer.postcode = txtPostcode.text.toInt()!
         self.deelnemer.gemeente = txtGemeente.text
         self.inschrijvingVakantie.vakantie = self.vakantie
-    
-        var ouder = LocalDatastore.getOuderWithEmail(PFUser.currentUser().email)
-    
+
+        var ouder = LocalDatastore.getLocalObjectWithColumnConstraints(Constanten.TABLE_OUDER, soortConstraints: [Constanten.COLUMN_EMAIL: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_EMAIL: PFUser.currentUser().email]) as Ouder
+        
         self.inschrijvingVakantie.ouder = ouder
-        
-        /*var ouderResponse = ParseData.getOuderWithEmail(PFUser.currentUser().email)
-        
-        if ouderResponse.1 == nil {
-            self.inschrijvingVakantie.ouder = ouderResponse.0
-        } else {
-            println("ERROR: er is geen ouder teruggevonden in de database (Class: InschrijvenVakantie1ViewController)")
-        }*/
     }
     
     //

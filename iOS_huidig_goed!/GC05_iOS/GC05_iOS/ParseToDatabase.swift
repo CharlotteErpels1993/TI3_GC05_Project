@@ -3,34 +3,34 @@ import Foundation
 struct ParseToDatabase {
     
     // schrijf een nieuwe ouder bij het registeren weg naar de database
-    static func parseOuderToDatabase(ouder: Ouder, wachtwoord: String) {
-        var ouderJSON = PFObject(className: "Ouder")
+    static func parseOuder(ouder: Ouder, wachtwoord: String) {
+        var ouderJSON = PFObject(className: Constanten.TABLE_OUDER)
         
-        ouderJSON.setValue(ouder.email, forKey: "email")
-        ouderJSON.setValue(ouder.voornaam, forKey: "voornaam")
-        ouderJSON.setValue(ouder.naam, forKey: "naam")
-        ouderJSON.setValue(ouder.straat, forKey: "straat")
-        ouderJSON.setValue(ouder.nummer, forKey: "nummer")
-        ouderJSON.setValue(ouder.postcode, forKey: "postcode")
-        ouderJSON.setValue(ouder.gemeente, forKey: "gemeente")
-        ouderJSON.setValue(ouder.gsm, forKey: "gsm")
-        ouderJSON.setValue(ouder.rijksregisterNr, forKey: "rijksregisterNr")
+        ouderJSON.setValue(ouder.email, forKey: Constanten.COLUMN_EMAIL)
+        ouderJSON.setValue(ouder.voornaam, forKey: Constanten.COLUMN_VOORNAAM)
+        ouderJSON.setValue(ouder.naam, forKey: Constanten.COLUMN_NAAM)
+        ouderJSON.setValue(ouder.straat, forKey: Constanten.COLUMN_STRAAT)
+        ouderJSON.setValue(ouder.nummer, forKey: Constanten.COLUMN_NUMMER)
+        ouderJSON.setValue(ouder.postcode, forKey: Constanten.COLUMN_POSTCODE)
+        ouderJSON.setValue(ouder.gemeente, forKey: Constanten.COLUMN_GEMEENTE)
+        ouderJSON.setValue(ouder.gsm, forKey: Constanten.COLUMN_GSM)
+        ouderJSON.setValue(ouder.rijksregisterNr, forKey: Constanten.COLUMN_RIJKSREGISTERNUMMER)
         
         if ouder.aansluitingsNr != nil {
-            ouderJSON.setValue(ouder.aansluitingsNr, forKey: "aansluitingsNr")
-            ouderJSON.setValue(ouder.codeGerechtigde, forKey: "codeGerechtigde")
+            ouderJSON.setValue(ouder.aansluitingsNr, forKey: Constanten.COLUMN_AANSLUITINGSNUMMER)
+            ouderJSON.setValue(ouder.codeGerechtigde, forKey: Constanten.COLUMN_CODEGERECHTIGDE)
             
             if ouder.aansluitingsNrTweedeOuder != nil {
-                ouderJSON.setValue(ouder.aansluitingsNrTweedeOuder, forKey: "aansluitingsNrTweedeOuder")
+                ouderJSON.setValue(ouder.aansluitingsNrTweedeOuder, forKey: Constanten.COLUMN_AANSLUITINGSNUMMERTWEEDEOUDER)
             }
         }
         
         if ouder.bus != nil {
-            ouderJSON.setValue(ouder.bus, forKey: "bus")
+            ouderJSON.setValue(ouder.bus, forKey: Constanten.COLUMN_BUS)
         }
         
         if ouder.telefoon != nil {
-            ouderJSON.setValue(ouder.telefoon, forKey: "telefoon")
+            ouderJSON.setValue(ouder.telefoon, forKey: Constanten.COLUMN_TELEFOON)
         }
         
         ouderJSON.save()
@@ -56,19 +56,19 @@ struct ParseToDatabase {
     }
     
     // schrijf een nieuwe deelnemer weg naar de database
-    static func parseDeelnemerToDatabase(deelnemer: Deelnemer) -> String {
-        var deelnemerJSON = PFObject(className: "Deelnemer")
+    static func parseDeelnemer(deelnemer: Deelnemer) -> String {
+        var deelnemerJSON = PFObject(className: Constanten.TABLE_DEELNEMER)
         
-        deelnemerJSON.setValue(deelnemer.voornaam, forKey: "voornaam")
-        deelnemerJSON.setValue(deelnemer.naam, forKey: "naam")
-        deelnemerJSON.setValue(deelnemer.geboortedatum, forKey: "geboortedatum")
-        deelnemerJSON.setValue(deelnemer.straat, forKey: "straat")
-        deelnemerJSON.setValue(deelnemer.nummer, forKey: "nummer")
-        deelnemerJSON.setValue(deelnemer.gemeente, forKey: "gemeente")
-        deelnemerJSON.setValue(deelnemer.postcode, forKey: "postcode")
+        deelnemerJSON.setValue(deelnemer.voornaam, forKey: Constanten.COLUMN_VOORNAAM)
+        deelnemerJSON.setValue(deelnemer.naam, forKey: Constanten.COLUMN_NAAM)
+        deelnemerJSON.setValue(deelnemer.geboortedatum, forKey: Constanten.COLUMN_GEBOORTEDATUM)
+        deelnemerJSON.setValue(deelnemer.straat, forKey: Constanten.COLUMN_STRAAT)
+        deelnemerJSON.setValue(deelnemer.nummer, forKey: Constanten.COLUMN_NUMMER)
+        deelnemerJSON.setValue(deelnemer.gemeente, forKey: Constanten.COLUMN_GEMEENTE)
+        deelnemerJSON.setValue(deelnemer.postcode, forKey: Constanten.COLUMN_POSTCODE)
         
         if deelnemer.bus != nil {
-            deelnemerJSON.setValue(deelnemer.bus, forKey: "bus")
+            deelnemerJSON.setValue(deelnemer.bus, forKey: Constanten.COLUMN_BUS)
         }
         
         deelnemerJSON.save()
@@ -78,15 +78,15 @@ struct ParseToDatabase {
     }
     
     // schrijf een nieuwe contactpersoon in geval van nood weg naar de database
-    static func parseContactpersoonNoodToDatabase(contactpersoon: ContactpersoonNood) -> String {
-        var contactpersoonJSON = PFObject(className: "ContactpersoonNood")
+    static func parseContactpersoonNood(contactpersoon: ContactpersoonNood) -> String {
+        var contactpersoonJSON = PFObject(className: Constanten.TABLE_CONTACTPERSOON)
         
-        contactpersoonJSON.setValue(contactpersoon.voornaam, forKey: "voornaam")
-        contactpersoonJSON.setValue(contactpersoon.naam, forKey: "naam")
-        contactpersoonJSON.setValue(contactpersoon.gsm, forKey: "gsm")
+        contactpersoonJSON.setValue(contactpersoon.voornaam, forKey: Constanten.COLUMN_VOORNAAM)
+        contactpersoonJSON.setValue(contactpersoon.naam, forKey: Constanten.COLUMN_NAAM)
+        contactpersoonJSON.setValue(contactpersoon.gsm, forKey: Constanten.COLUMN_GSM)
         
         if contactpersoon.telefoon != nil {
-            contactpersoonJSON.setValue(contactpersoon.telefoon, forKey: "telefoon")
+            contactpersoonJSON.setValue(contactpersoon.telefoon, forKey: Constanten.COLUMN_TELEFOON)
         }
         
         contactpersoonJSON.save()
@@ -96,33 +96,45 @@ struct ParseToDatabase {
     }
     
     // schrijf een nieuwe vakantie inschrijving weg naar de database
-    static func parseInschrijvingVakantieToDatabase(inschrijving: InschrijvingVakantie) {
-        var inschrijvingJSON = PFObject(className: "InschrijvingVakantie")
+    static func parseInschrijvingVakantie(inschrijving: InschrijvingVakantie) {
+        var inschrijvingJSON = PFObject(className: Constanten.TABLE_INSCHRIJVINGVAKANTIE)
         
-        inschrijvingJSON.setValue(inschrijving.vakantie?.id, forKey: "vakantie")
-        inschrijvingJSON.setValue(inschrijving.ouder?.id, forKey: "ouder")
-        inschrijvingJSON.setValue(inschrijving.deelnemer?.id, forKey: "deelnemer")
-        inschrijvingJSON.setValue(inschrijving.contactpersoon1?.id, forKey: "contactpersoon1")
+        inschrijvingJSON.setValue(inschrijving.vakantie?.id, forKey: Constanten.COLUMN_VAKANTIE)
+        inschrijvingJSON.setValue(inschrijving.ouder?.id, forKey: Constanten.COLUMN_OUDER)
+        inschrijvingJSON.setValue(inschrijving.deelnemer?.id, forKey: Constanten.COLUMN_DEELNEMER)
+        inschrijvingJSON.setValue(inschrijving.contactpersoon1?.id, forKey: Constanten.COLUMN_CONTACTPERSOON1)
         
         
         if inschrijving.extraInfo != "" {
-            inschrijvingJSON.setValue(inschrijving.extraInfo, forKey: "extraInformatie")
+            inschrijvingJSON.setValue(inschrijving.extraInfo, forKey: Constanten.COLUMN_EXTRAINFORMATIE)
         }
         
         if inschrijving.contactpersoon2 != nil {
-            inschrijvingJSON.setValue(inschrijving.contactpersoon2?.id, forKey: "contactpersoon2")
+            inschrijvingJSON.setValue(inschrijving.contactpersoon2?.id, forKey: Constanten.COLUMN_CONTACTPERSOON2)
         }
         
         inschrijvingJSON.save()
     }
     
     // schrijf een nieuwe vorming inschrijving weg naar de database
-    static func parseInschrijvingVormingToDatabase(inschrijving: InschrijvingVorming) {
-        var inschrijvingJSON = PFObject(className: "InschrijvingVorming")
+    static func parseInschrijvingVorming(inschrijving: InschrijvingVorming) {
+        var inschrijvingJSON = PFObject(className: Constanten.TABLE_INSCHRIJVINGVORMING)
         
-        inschrijvingJSON.setValue(inschrijving.monitor?.id, forKey: "monitor")
-        inschrijvingJSON.setValue(inschrijving.vorming?.id, forKey: "vorming")
+        inschrijvingJSON.setValue(inschrijving.monitor?.id, forKey: Constanten.COLUMN_MONITOR)
+        inschrijvingJSON.setValue(inschrijving.vorming?.id, forKey: Constanten.COLUMN_VORMING)
         
         inschrijvingJSON.save()
     }
+
+    // schrijf een nieuwe favoriete vakantie weg naar de database
+    static func parseFavoriet(favoriet: Favoriet) {
+        var favorietJSON = PFObject(className: Constanten.TABLE_FAVORIET)
+        
+        favorietJSON.setValue(favoriet.vakantie?.id, forKey: Constanten.COLUMN_VAKANTIE)
+        favorietJSON.setValue(favoriet.gebruiker?.id, forKey: Constanten.COLUMN_GEBRUIKER)
+        
+        favorietJSON.save()
+    }
+
+
 }

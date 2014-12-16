@@ -130,9 +130,6 @@ class VakantieDetailsTableViewController: UITableViewController {
         var euroSymbol: String = "€"
         
         if PFUser.currentUser() != nil {
-            var gebruikerPF = PFUser.currentUser()
-            var soort: String = gebruikerPF["soort"] as String
-            
             if soort == "ouder" || soort == "administrator" {
                 self.sectionToDelete = -1
                 self.heartButton.hidden = false
@@ -285,9 +282,11 @@ class VakantieDetailsTableViewController: UITableViewController {
         var soort = user["soort"] as? String
         
         if soort == "ouder" {
-            favorieteVakantie.gebruiker = LocalDatastore.getGebruikerWithEmail(user.email, tableName: "Ouder")
+            var ouder = LocalDatastore.getLocalObjectWithColumnConstraints(Constanten.TABLE_OUDER, soortConstraints: [Constanten.COLUMN_EMAIL: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_EMAIL: PFUser.currentUser().email]) as Ouder
+            favorieteVakantie.gebruiker = ouder
         } else if soort == "monitor" {
-            favorieteVakantie.gebruiker = LocalDatastore.getGebruikerWithEmail(user.email, tableName: "Monitor")
+            var monitor = LocalDatastore.getLocalObjectWithColumnConstraints(Constanten.TABLE_MONITOR, soortConstraints: [Constanten.COLUMN_EMAIL: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_EMAIL: PFUser.currentUser().email]) as Monitor
+            favorieteVakantie.gebruiker = monitor
         }
         
         favorieteVakantie.vakantie = self.vakantie
@@ -295,11 +294,11 @@ class VakantieDetailsTableViewController: UITableViewController {
         if self.isFavoriet == false {
             self.isFavoriet = true
             heartButton.setImage(self.imageHeartFull, forState: UIControlState.Normal)
-            LocalDatastore.parseLocalObject(favorieteVakantie, tableName: "Favoriet")
+            ParseToDatabase.parseFavoriet(favorieteVakantie)
         } else {
             self.isFavoriet = false
             heartButton.setImage(self.imageHeartEmpty, forState: UIControlState.Normal)
-            ParseData.deleteFavorieteVakantie(favorieteVakantie)
+            LocalDatastore.deleteFavorieteVakantie(favorieteVakantie)
         }
     }
     

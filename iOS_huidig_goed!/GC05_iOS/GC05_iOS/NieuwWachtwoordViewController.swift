@@ -15,6 +15,7 @@ class NieuwWachtwoordViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         emailAdresTxt.text = ""
+        LocalDatastore.getTableReady("User")
     }
     
     //

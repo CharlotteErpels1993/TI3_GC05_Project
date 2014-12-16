@@ -19,12 +19,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.enableLocalDatastore()
         
         
-        LocalDatastore.getTableReady("Vakantie")
-        LocalDatastore.getTableReady("Afbeelding")
-        LocalDatastore.getTableReady("Feedback")
-        LocalDatastore.getTableReady("Ouder")
-        LocalDatastore.getTableReady("Favoriet")
-        LocalDatastore.getTableReady("Monitor")
+        LocalDatastore.getTableReady(Constanten.TABLE_VAKANTIE)
+        LocalDatastore.getTableReady(Constanten.TABLE_AFBEELDING)
+        LocalDatastore.getTableReady(Constanten.TABLE_FEEDBACK)
+        LocalDatastore.getTableReady(Constanten.TABLE_OUDER)
+        LocalDatastore.getTableReady(Constanten.TABLE_FAVORIET)
+        LocalDatastore.getTableReady(Constanten.TABLE_MONITOR)
         
         
         /*if Reachability.isConnectedToNetwork() {
