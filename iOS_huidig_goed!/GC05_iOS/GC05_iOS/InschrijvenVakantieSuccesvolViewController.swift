@@ -9,7 +9,7 @@ class InschrijvenVakantieSuccesvolViewController : UIViewController {
         super.viewDidLoad()
         
         //var deelnemerId = ParseData.parseDeelnemerToDatabase(inschrijvingVakantie.deelnemer!)
-        var deelnemerId = LocalDatastore.parseDeelnemerToDatabase(inschrijvingVakantie.deelnemer!)
+        //var deelnemerId = LocalDatastore.parseDeelnemerToDatabase(inschrijvingVakantie.deelnemer!)
         
         //var contactpersoon1Id = ParseData.parseContactpersoonNoodToDatabase(inschrijvingVakantie.contactpersoon1!)
         var contactpersoon1Id = LocalDatastore.parseContactpersoonNoodToDatabase(inschrijvingVakantie.contactpersoon1!)
