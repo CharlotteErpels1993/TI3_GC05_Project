@@ -9,13 +9,17 @@
         android:finishOnTaskLaunch="true">
 
         <TextView
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
+            android:textColor="@color/Rood"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_centerHorizontal="true"
+            android:textAppearance="?android:attr/textAppearanceLarge"
             android:id="@+id/vakantie"/>
 
         <TextView
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
+            android:textColor="@color/Rood"
+            android:layout_centerHorizontal="true"
             android:layout_height="wrap_content"
             android:id="@+id/minLeeftijd"
             android:textAppearance="?android:attr/textAppearanceMedium"

@@ -79,7 +79,7 @@ public class InschrijvenVakantieDeel1 extends FragmentActivity {
         minLeeftijd = (TextView) findViewById(R.id.minLeeftijd);
 
         vakantie.setText(vakantieNaam);
-        minLeeftijd.setText(mindoelgroep);
+        minLeeftijd.setText("Doelgroep " +mindoelgroep + " - " + maxdoelgroep);
 
         getActionBar().setTitle(getString(R.string.title_activity_inschrijven));
         btnVolgende = (Button)findViewById(R.id.btnNaarDeel2Vak);
