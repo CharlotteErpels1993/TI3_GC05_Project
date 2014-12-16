@@ -1,7 +1,7 @@
 import UIKit
 import QuartzCore
 
-class Registratie1ViewController: UITableViewController, UITextFieldDelegate {
+class Registratie1ViewController: UITableViewController {
     @IBOutlet weak var isLid: UISwitch!
     @IBOutlet weak var txtAansluitingsNr: UITextField!
     @IBOutlet weak var txtCodeGerechtigde: UITextField!
@@ -15,6 +15,17 @@ class Registratie1ViewController: UITableViewController, UITextFieldDelegate {
     var statusTextFields: [String: String] = [:]
     var rijksregisterNrAlGeregistreerd: Bool = false
     
+    //
+    //Naam: toggle
+    //
+    //Werking: - zorgt ervoor dat de side bar menu wordt weergegeven
+    //         - zorgt er ook voor dat alle toestenborden gesloten zijn
+    //
+    //Parameters:
+    //  - sender: AnyObject
+    //
+    //Return:
+    //
     @IBAction func toggle(sender: AnyObject) {
         txtAansluitingsNr.resignFirstResponder()
         txtCodeGerechtigde.resignFirstResponder()
@@ -22,10 +33,33 @@ class Registratie1ViewController: UITableViewController, UITextFieldDelegate {
         txtAansluitingsNrTweedeOuder.resignFirstResponder()
         toggleSideMenuView()
     }
+    
+    //
+    //Naam: gaTerugNaarInloggen
+    //
+    //Werking: - zorgt voor een unwind segue
+    //         - geeft ook een melding bij het verlaten van het scherm (of de gebruiker dit effectief wilt)
+    //
+    //Parameters:
+    //  - sender: AnyObject
+    //
+    //Return:
+    //
     @IBAction func gaTerugNaarInloggen(sender: AnyObject) {
         annuleerControllerRegistratie(self)
     }
     
+    //
+    //Naam: viewDidLoad
+    //
+    //Werking: - zorgt ervoor dat de side bar menu verborgen is
+    //         - zorgt ervoor dat de back bar button niet aanwezig is
+    //         - bekijkt of de gebruiker internet heeft, zoniet geeft hij een gepaste melding
+    //
+    //Parameters:
+    //
+    //Return:
+    //
     override func viewDidLoad() {
         super.viewDidLoad()
         hideSideMenuView()
@@ -47,13 +81,20 @@ class Registratie1ViewController: UITableViewController, UITextFieldDelegate {
             txtCodeGerechtigde.resignFirstResponder()
             txtRijksregisterNr.resignFirstResponder()
         }
-        
-        txtAansluitingsNr.delegate = self
-        txtCodeGerechtigde.delegate = self
-        txtRijksregisterNr.delegate = self
-        txtAansluitingsNrTweedeOuder.delegate = self
     }
     
+    //
+    //Naam: switched
+    //
+    //Werking: - bekijkt of de switch aan staat:
+    //              * zoja, velden worden getoond en buttons worden getoond
+    //              * zonee, wordt de gehele section verwijderd en buttons worden verborgen
+    //
+    //Parameters:
+    //  - sender: UISwitch
+    //
+    //Return:
+    //
     @IBAction func switched(sender: UISwitch) {
         if sender.on {
             gebruikerIsLid = true
@@ -67,6 +108,16 @@ class Registratie1ViewController: UITableViewController, UITextFieldDelegate {
         }
     }
     
+    //
+    //Naam: numbersOfSectionsInTableView
+    //
+    //Werking: - zorgt dat het aantal sections zich aanpast naargelang er een section wordt verwijderd
+    //
+    //Parameters:
+    //  - tableView: UITableView
+    //
+    //Return: een int met de hoeveelheid sections
+    //
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         if gebruikerIsLid == false {
             return 2
@@ -75,6 +126,17 @@ class Registratie1ViewController: UITableViewController, UITextFieldDelegate {
         }
     }
     
+    //
+    //Naam: tableView
+    //
+    //Werking: - zorgt dat het aantal rijen in een section aangepast wordt naargelang er een section wordt verwijderd
+    //
+    //Parameters:
+    //  - tableView: UITableView
+    //  - numbersOfRowsInSection section: Int
+    //
+    //Return: een int met de hoeveelheid rijen per section
+    //
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if gebruikerIsLid == false {
             if section == 0 {
@@ -94,6 +156,18 @@ class Registratie1ViewController: UITableViewController, UITextFieldDelegate {
         return 0
     }
     
+    //
+    //Naam: prepareForSegue
+    //
+    //Werking: - maakt de volgende view met opgegeven identifier (stelt soms attributen van de volgende view op)
+    //         - controleert ook eerste de ingevulde velden op geldigheid, zonee wordt er een foutmelding gegeven
+    //
+    //Parameters:
+    //  - segue: UIStoryboardSegue
+    //  - sender: AnyObject?
+    //
+    //Return:
+    //
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "volgende" {
             let registratie2ViewController = segue.destinationViewController as Registratie2ViewController
@@ -116,6 +190,18 @@ class Registratie1ViewController: UITableViewController, UITextFieldDelegate {
         } 
     }
     
+    //
+    //Naam: setStatusTextFields
+    //
+    //Werking: - zet de status van de text fields in
+    //              * controleert of de velden leeg zijn
+    //              * controleert of andere validatiemethoden geldig zijn
+    //              * wanneer een text field ongeldig is krijgt deze de status "leeg" of "ongeldig"
+    //
+    //Parameters:
+    //
+    //Return:
+    //
     func setStatusTextFields() {
         if txtAansluitingsNr.text.isEmpty {
             statusTextFields["aansluitingsNr"] = "leeg"
@@ -178,6 +264,16 @@ class Registratie1ViewController: UITableViewController, UITextFieldDelegate {
         }
     }
     
+    //
+    //Naam: pasLayoutVeldenAan
+    //
+    //Werking: - zorgt ervoor dat de text field, wanneer status "ongeldig" of "leeg" is, een rode border krijgt
+    //         - als deze status niet "leeg" of "ongeldig" is wordt deze border terug op default gezet
+    //
+    //Parameters:
+    //
+    //Return:
+    //
     func pasLayoutVeldenAan() {
         
         if statusTextFields["rijksregisterNr"] == "leeg" || statusTextFields["rijksregisterNr"] == "ongeldig" || statusTextFields["rijksregisterNr"] == "al geregistreerd" {
@@ -211,6 +307,15 @@ class Registratie1ViewController: UITableViewController, UITextFieldDelegate {
         }
     }
     
+    //
+    //Naam: controleerRodeBordersAanwezig
+    //
+    //Werking: - bekijkt of de text field borders een rode border hebben
+    //
+    //Parameters:
+    //
+    //Return: een bool true als er een rode border aanwezig is, anders false
+    //
     func controleerRodeBordersAanwezig() -> Bool {
         
         if CGColorEqualToColor(txtAansluitingsNr.layer.borderColor, redColor.CGColor) {
@@ -226,6 +331,15 @@ class Registratie1ViewController: UITableViewController, UITextFieldDelegate {
         }
     }
     
+    //
+    //Naam: settenOptioneleGegevens
+    //
+    //Werking: - afhankelijk van de status van de niet verplichte velden, worden de gegevens van de ouder ingesteld
+    //
+    //Parameters:
+    //
+    //Return:
+    //
     func settenOptioneleGegevens() {
         if gebruikerIsLid == true {
             ouder.aansluitingsNr = txtAansluitingsNr.text.toInt()!
@@ -237,12 +351,16 @@ class Registratie1ViewController: UITableViewController, UITextFieldDelegate {
         }
     }
     
+    //
+    //Naam: controleerRijksregisterNummerAlGeregistreerd
+    //
+    //Werking: - bekijkt in de databank of er al een ouder zich ingeschreven heeft met dat rijksregisternummer
+    //
+    //Parameters:
+    //
+    //Return: een bool true als het rijksregisternummer al geregistreerd is, anders false
+    //
     func controleerRijksregisterNummerAlGeregisteerd() -> Bool {
         return LocalDatastore.isRijksregisternummerAlGeregistreerd(self.txtRijksregisterNr.text)
-    }
-    
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
     }
 }
