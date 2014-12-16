@@ -55,7 +55,7 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
                     self.monitorenZelfdeVorming2 = self.monitorenZelfdeVorming
                 }
             } else {
-                var alleMonitoren = LocalDatastore.getLocalObjects("Monitor") as [Monitor]
+                var alleMonitoren = LocalDatastore.getLocalObjects(Constanten.TABLE_MONITOR) as [Monitor]
                 
                 if alleMonitoren.count != 0 {
                     for var i = 0; i < alleMonitoren.count; i += 1 {
@@ -327,7 +327,7 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
     
     @IBAction func refresh(sender: UIRefreshControl) {
         
-        LocalDatastore.getTableReady("Monitor")
+        LocalDatastore.getTableReady(Constanten.TABLE_MONITOR)
         
         self.refreshControl?.endRefreshing()
         viewDidLoad()

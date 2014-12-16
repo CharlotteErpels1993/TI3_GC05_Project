@@ -47,8 +47,8 @@ class InschrijvenVakantie1ViewController : /*ResponsiveTextFieldViewController*/
         /*ParseData.deleteInschrijvingVakantieTable()
         ParseData.vulInschrijvingVakantieTableOp()*/
         
-        LocalDatastore.getTableReady("InschrijvingVakantie")
-        LocalDatastore.getTableReady("Deelnemer")
+        LocalDatastore.getTableReady(Constanten.TABLE_INSCHRIJVINGVAKANTIE)
+        LocalDatastore.getTableReady(Constanten.TABLE_DEELNEMER)
     }
 
     @IBAction func annuleer(sender: AnyObject) {

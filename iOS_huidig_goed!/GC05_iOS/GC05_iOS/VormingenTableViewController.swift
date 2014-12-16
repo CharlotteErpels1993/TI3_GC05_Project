@@ -21,7 +21,7 @@ class VormingenTableViewController: UITableViewController, UISearchBarDelegate, 
         hideSideMenuView()
         
         
-        self.vormingen = LocalDatastore.getLocalObjects("Vorming") as [Vorming]
+        self.vormingen = LocalDatastore.getLocalObjects(Constanten.TABLE_VORMING) as [Vorming]
         self.vormingen2 = self.vormingen
         self.tableView.reloadData()
         
@@ -111,7 +111,7 @@ class VormingenTableViewController: UITableViewController, UISearchBarDelegate, 
     }
     
     @IBAction func refresh(sender: UIRefreshControl) {
-        LocalDatastore.getTableReady("Vorming")
+        LocalDatastore.getTableReady(Constanten.TABLE_VORMING)
         
         self.refreshControl?.endRefreshing()
         viewDidLoad()

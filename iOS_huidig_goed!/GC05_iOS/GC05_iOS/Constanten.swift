@@ -1,89 +1,74 @@
-//ALGEMEEN
-let REQUIRED: String = "required"
-let OPTIONAL: String = "optional"
-
-//TABLES
-let AFBEELDING_DB: String = "Afbeelding"
-let CONTACTPERSOON_NOOD_DB: String = "ContactpersoonNood"
-let DEELNEMER_DB: String = "Deelnemer"
-let FAVORIET_DB: String = "Favoriet"
-let FEEDBACK_DB: String = "Feedback"
-let INSCHRIJVING_VAKANTIE_DB: String = "InschrijvingVakantie"
-let INSCHRIJVING_VORMING_DB: String = "InschrijvingVorming"
-let MONITOR_DB: String = "Monitor"
-let OUDER_DB: String = "Ouder"
-let VAKANTIE_DB: String = "Vakantie"
-let VOORKEUR_DB: String = "Voorkeur"
-let VORMING_DB: String = "Vorming"
-
-//VARIABELEN VAKANTIE
-let OBJECT_ID_DB: String = "objectId"
-let TITEL_DB: String = "titel"
-let LOCATIE_DB: String = "locatie"
-let KORTE_BESCHRIJVING_DB: String = "korteBeschrijving"
-let VERTREK_DATUM_DB: String = "vertrekdatum"
-let TERUGKEER_DATUM_DB: String = "terugkeerdatum"
-let AANTAL_DAGEN_NACHTEN_DB: String = "aantalDagenNachten"
-let VERVOERWIJZE_DB: String = "vervoerwijze"
-let FORMULE_DB: String = "formule"
-let LINK_DB: String = "link"
-let BASIS_PRIJS_DB: String = "basisPrijs"
-let BOND_MOYSON_LEDEN_PRIJS_DB: String = "bondMoysonLedenPrijs"
-let STER_PRIJS_1_OUDER_DB: String = "sterPrijs1ouder"
-let STER_PRIJS_2_OUDERS_DB: String = "sterPrijs2ouders"
-let INBEGREPEN_PRIJS_DB: String = "inbegrepenPrijs"
-let MIN_LEEFTIJD_DB: String = "minLeeftijd"
-let MAX_LEEFTIJD_DB: String = "maxLeeftijd"
-let MAX_AANTAL_DEELNEMERS_DB: String = "maxAantalDeelnemers"
-
-//COLUMNS VAKANTIE
-let VAKANTIE_COLUMNS_DB: [String: SwiftData.DataType] =
-    [OBJECT_ID_DB: .StringVal,
-     TITEL_DB: .StringVal,
-     LOCATIE_DB: .StringVal,
-     KORTE_BESCHRIJVING_DB: .StringVal,
-     VERTREK_DATUM_DB: .StringVal,
-     TERUGKEER_DATUM_DB: .StringVal,
-     AANTAL_DAGEN_NACHTEN_DB: .StringVal,
-     VERVOERWIJZE_DB: .StringVal,
-     FORMULE_DB: .StringVal,
-     LINK_DB: .StringVal,
-     BASIS_PRIJS_DB: .DoubleVal,
-     BOND_MOYSON_LEDEN_PRIJS_DB: .DoubleVal,
-     STER_PRIJS_1_OUDER_DB: .DoubleVal,
-     STER_PRIJS_2_OUDERS_DB: .DoubleVal,
-     INBEGREPEN_PRIJS_DB: .StringVal,
-     MIN_LEEFTIJD_DB: .IntVal,
-     MAX_LEEFTIJD_DB: .IntVal,
-     MAX_AANTAL_DEELNEMERS_DB: .IntVal]
-
-//REQUIRED AND OPTIONAL VELDEN
-let VAKANTIE_VALUES: [String: String] =
-    [OBJECT_ID_DB: REQUIRED,
-     TITEL_DB: REQUIRED,
-     LOCATIE_DB: REQUIRED,
-     KORTE_BESCHRIJVING_DB: REQUIRED,
-     VERTREK_DATUM_DB: REQUIRED,
-     TERUGKEER_DATUM_DB: REQUIRED,
-     AANTAL_DAGEN_NACHTEN_DB: REQUIRED,
-     VERVOERWIJZE_DB: REQUIRED,
-     FORMULE_DB: REQUIRED,
-     LINK_DB: REQUIRED,
-     BASIS_PRIJS_DB: REQUIRED,
-     BOND_MOYSON_LEDEN_PRIJS_DB: OPTIONAL,
-     STER_PRIJS_1_OUDER_DB: OPTIONAL,
-     STER_PRIJS_2_OUDERS_DB: OPTIONAL,
-     INBEGREPEN_PRIJS_DB: REQUIRED,
-     MIN_LEEFTIJD_DB: REQUIRED,
-     MAX_LEEFTIJD_DB: REQUIRED,
-     MAX_AANTAL_DEELNEMERS_DB: REQUIRED]
-
-
-
-
-
-
-
-
-
-
+struct Constanten {
+    
+    // tabelnamen
+    static let TABLE_VAKANTIE: String = "Vakantie"
+    static let TABLE_AFBEELDING: String = "Afbeelding"
+    static let TABLE_CONTACTPERSOON: String = "Contactpersoon"
+    static let TABLE_DEELNEMER: String = "Deelnemer"
+    static let TABLE_FAVORIET: String = "Favoriet"
+    static let TABLE_FEEDBACK: String = "Feedback"
+    static let TABLE_INSCHRIJVINGVAKANTIE: String = "InschrijvingVakantie"
+    static let TABLE_INSCHRIJVINGVORMING: String = "InschrijvingVorming"
+    static let TABLE_MONITOR: String = "Monitor"
+    static let TABLE_OUDER: String = "Ouder"
+    static let TABLE_VOORKEUR: String = "Voorkeur"
+    static let TABLE_VORMING: String = "Vorming"
+    
+    // kolomnaam
+    static let COLUMN_OBJECTID: String = "objectId"
+    static let COLUMN_AFBEELDING: String = "afbeelding"
+    static let COLUMN_VAKANTIE: String = "vakantie"
+    static let COLUMN_GSM: String = "gsm"
+    static let COLUMN_NAAM: String = "naam"
+    static let COLUMN_TELEFOON: String = "telefoon"
+    static let COLUMN_VOORNAAM: String = "voornaam"
+    static let COLUMN_BUS: String = "bus"
+    static let COLUMN_GEBOORTEDATUM: String = "geboortedatum"
+    static let COLUMN_GEMEENTE: String = "gemeente"
+    static let COLUMN_NUMMER: String = "nummer"
+    static let COLUMN_POSTCODE: String = "postcode"
+    static let COLUMN_STRAAT: String = "straat"
+    static let COLUMN_GEBRUIKER: String = "gebruiker"
+    static let COLUMN_DATUM: String = "datum"
+    static let COLUMN_GOEDGEKEURD: String = "goedgekeurd"
+    static let COLUMN_WAARDERING: String = "waardering"
+    static let COLUMN_SCORE: String = "score"
+    static let COLUMN_CONTACTPERSOON1: String = "contactpersoon1"
+    static let COLUMN_CONTACTPERSOON2: String = "contactpersoon2"
+    static let COLUMN_DEELNEMER: String = "deelnemer"
+    static let COLUMN_EXTRAINFORMATIE: String = "extraInformatie"
+    static let COLUMN_OUDER: String = "ouder"
+    static let COLUMN_MONITOR: String = "monitor"
+    static let COLUMN_VORMING: String = "vorming"
+    static let COLUMN_PERIODE: String = "periode"
+    static let COLUMN_AANSLUITINGSNUMMER: String = "aansluitingsNr"
+    static let COLUMN_AANSLUITINGSNUMMERTWEEDEOUDER: String = "aansluitingsNrTweedeOuder"
+    static let COLUMN_LIDNUMMER: String = "lidnummer"
+    static let COLUMN_CODEGERECHTIGDE: String = "codeGerechtigde"
+    static let COLUMN_EMAIL: String = "email"
+    static let COLUMN_RIJKSREGISTERNUMMER: String = "rijksregisterNr"
+    static let COLUMN_TITEL: String = "titel"
+    static let COLUMN_VERTREKDATUM: String = "vertrekdatum"
+    static let COLUMN_TERUGKEERDATUM: String = "terugkeerdatum"
+    static let COLUMN_AANTALDAGENNACHTEN: String = "aantalDagenNachten"
+    static let COLUMN_BASISPRIJS: String = "basisPrijs"
+    static let COLUMN_BONDMOYSONLEDENPRIJS: String = "bondMoysonLedenPrijs"
+    static let COLUMN_MINLEEFTIJD: String = "minLeeftijd"
+    static let COLUMN_MAXLEEFTIJD: String = "maxLeeftijd"
+    static let COLUMN_FORMULE: String = "formule"
+    static let COLUMN_INBEGREPENPRIJS: String = "inbegrepenPrijs"
+    static let COLUMN_KORTEBESCHRIJVING: String = "korteBeschrijving"
+    static let COLUMN_LOCATIE: String = "locatie"
+    static let COLUMN_MAXAANTALDEELNEMERS: String = "maxAantalDeelnemers"
+    static let COLUMN_STERPRIJS1OUDER: String = "sterPrijs1ouder"
+    static let COLUMN_STERPRIJS2OUDERS: String = "sterPrijs2ouders"
+    static let COLUMN_VERVOERWIJZE: String = "vervoerwijze"
+    static let COLUMN_LINK: String = "link"
+    static let COLUMN_BETALINGSWIJZE: String = "betalingswijze"
+    static let COLUMN_CRITERIADEELNEMERS: String = "criteriaDeelnemers"
+    static let COLUMN_INBEGREPENINPRIJS: String = "inbegrepenInPrijs"
+    static let COLUMN_PERIODES: String = "periodes"
+    static let COLUMN_PRIJS: String = "prijs"
+    static let COLUMN_TIPS: String = "tips"
+    static let COLUMN_WEBSITELOCATIE: String = "websiteLocatie"
+}
