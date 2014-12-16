@@ -177,7 +177,7 @@ public class IndienenVoorkeurVakantie extends Activity implements AdapterView.On
 
             ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(IndienenVoorkeurVakantie.this, android.R.layout.simple_spinner_item,vakantieArray);
             spinnerArrayAdapter.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item );
-            periodeVakantie.setText(vakanties.get(0).getPeriode());
+            periodeVakantie.setText(vakanties.get(0).getVertrekDatum().toString() + " - " + vakanties.get(0).getTerugkeerDatum().toString());
 
 
             spinner.setAdapter(spinnerArrayAdapter);
@@ -227,7 +227,7 @@ public class IndienenVoorkeurVakantie extends Activity implements AdapterView.On
 
             startActivity(in);
             overridePendingTransition(R.anim.right_in, R.anim.left_out);
-            Toast.makeText(IndienenVoorkeurVakantie.this, getString(R.string.dialog_voorkeur_complete), Toast.LENGTH_SHORT).show();
+            Toast.makeText(IndienenVoorkeurVakantie.this, getString(R.string.dialog_voorkeur_complete), Toast.LENGTH_LONG).show();
         }else{
             Toast.makeText(getApplicationContext(), getString(R.string.error_generalException), Toast.LENGTH_SHORT).show();
         }

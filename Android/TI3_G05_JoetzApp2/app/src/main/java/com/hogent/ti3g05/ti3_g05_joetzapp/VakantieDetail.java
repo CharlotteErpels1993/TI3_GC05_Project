@@ -169,6 +169,7 @@ public class VakantieDetail extends Activity {
                 intent3.putExtra("objectId", activiteitID);
                 intent3.putExtra("maxdoelgroep", maxDoelgroep);
                 intent3.putExtra("mindoelgroep", minDoelgroep);
+                intent3.putExtra("vakantieNaam", naam);
                 startActivity(intent3);
 
                 overridePendingTransition(R.anim.right_in, R.anim.left_out);

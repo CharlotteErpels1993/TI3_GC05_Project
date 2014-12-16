@@ -17,6 +17,8 @@ import android.widget.Toast;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
 
+import org.w3c.dom.Text;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -29,12 +31,15 @@ public class InschrijvenVakantieDeel1 extends FragmentActivity {
     private EditText txtVoornaam, txtNaam, txtStraat, txtHuisnr, txtBus, txtGemeente, txtPostcode;
 
     private String maandI, datum ,voornaam, naam, straat, huisnr, bus, gemeente, postcode, objectID;
-    private String maxdoelgroep, mindoelgroep;
+    private String maxdoelgroep, mindoelgroep, vakantieNaam;
 
     private TextView tv_maand;
     private Button btnVolgende;
 
     private TextView tv_errorDate;
+
+    private TextView vakantie;
+    private TextView minLeeftijd;
 
     private TextView gebDatum;
     private boolean cancel = false;
@@ -57,6 +62,7 @@ public class InschrijvenVakantieDeel1 extends FragmentActivity {
         mindoelgroep = i.getStringExtra("mindoelgroep");
         maxdoelgroep = i.getStringExtra("maxdoelgroep");
         objectID =  i.getStringExtra("objectId");
+        vakantieNaam = i.getStringExtra("vakantieNaam");
 
         txtVoornaam = (EditText) findViewById(R.id.VoornaamIns);
         txtNaam = (EditText) findViewById(R.id.NaamIns);
@@ -69,6 +75,11 @@ public class InschrijvenVakantieDeel1 extends FragmentActivity {
         tv_maand = (TextView) findViewById(R.id.maandIns);
         tv_errorDate = (TextView) findViewById(R.id.ErrorDate);
         tv_errorDate.setVisibility(View.GONE);
+        vakantie = (TextView) findViewById(R.id.vakantie);
+        minLeeftijd = (TextView) findViewById(R.id.minLeeftijd);
+
+        vakantie.setText(vakantieNaam);
+        minLeeftijd.setText(mindoelgroep);
 
         getActionBar().setTitle(getString(R.string.title_activity_inschrijven));
         btnVolgende = (Button)findViewById(R.id.btnNaarDeel2Vak);

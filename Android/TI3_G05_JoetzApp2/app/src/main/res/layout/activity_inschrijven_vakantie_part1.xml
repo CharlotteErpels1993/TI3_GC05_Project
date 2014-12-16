@@ -9,7 +9,21 @@
         android:finishOnTaskLaunch="true">
 
         <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/vakantie"/>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/minLeeftijd"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_below="@id/vakantie"/>
+
+        <TextView
             android:id="@+id/AlgemeneUitleg"
+            android:layout_below="@id/minLeeftijd"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"

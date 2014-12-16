@@ -219,7 +219,7 @@ public class InschrijvenVakantieDeel3 extends Activity {
             }
             else
             {
-                    Toast.makeText(getApplicationContext(), getString(R.string.error_occupied_inschrVak), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), getString(R.string.error_occupied_inschrVak), Toast.LENGTH_LONG).show();
 
             }
 
