@@ -7,13 +7,35 @@ class FeedbackTableViewController: UITableViewController, UISearchBarDelegate, U
     
     var feedbacken: [Feedback] = []
     var feedbacken2: [Feedback] = []
-    //var vakantieId: String?
     
+    //
+    //Naam: toggle
+    //
+    //Werking: - zorgt ervoor dat de side bar menu wordt weergegeven
+    //         - zorgt er ook voor dat alle toestenborden gesloten zijn
+    //
+    //Parameters:
+    //  - sender: AnyObject
+    //
+    //Return:
+    //
     @IBAction func toggle(sender: AnyObject) {
         searchBarCancelButtonClicked(zoekbar)
         toggleSideMenuView()
     }
     
+    //
+    //Naam: viewDidLoad
+    //
+    //Werking: - zorgt ervoor dat de side bar menu verborgen is
+    //         - zorgt ervoor dat de cell een dynamische grootte heeft
+    //         - zorgt ervoor dat de tool bar verborgen is
+    //         - als de gebruiker nil is, wordt de right bar button item verborgen (feedback toevoegen)
+    //
+    //Parameters:
+    //
+    //Return:
+    //
     override func viewDidLoad() {
         super.viewDidLoad()
         hideSideMenuView()
@@ -24,11 +46,11 @@ class FeedbackTableViewController: UITableViewController, UISearchBarDelegate, U
         self.setNeedsStatusBarAppearanceUpdate()
         self.navigationController!.toolbarHidden = true
         
-        ParseData.deleteFeedbackTable()
-        ParseData.vulFeedbackTableOp()
-        var feedbackenResponse = ParseData.getAlleFeedback()
+        //ParseData.deleteFeedbackTable()
+        //ParseData.vulFeedbackTableOp()
+        //var feedbackenResponse = ParseData.getAlleFeedback()
         
-        if feedbackenResponse.1 == nil {
+        /*if feedbackenResponse.1 == nil {
             self.feedbacken = feedbackenResponse.0
             self.feedbacken2 = self.feedbacken
             self.tableView.reloadData()
@@ -36,7 +58,7 @@ class FeedbackTableViewController: UITableViewController, UISearchBarDelegate, U
             feedbacken2.sort({ $0.vakantie!.titel < (String($1.score!)) })
         } else {
             foutBoxOproepen("Oeps", "Er is nog geen feedback.", self)
-        }
+        }*/
         
         if PFUser.currentUser() == nil {
             self.navigationItem.rightBarButtonItem = nil
@@ -46,18 +68,52 @@ class FeedbackTableViewController: UITableViewController, UISearchBarDelegate, U
         zoekbar.delegate = self
     }
     
+    //
+    //Naam: viewDidAppear
+    //
+    //Werking: - zorgt ervoor dat de tool bar verborgen is
+    //         - herladen van de data
+    //
+    //Parameters:
+    //  - animated: Bool
+    //
+    //Return:
+    //
     override func viewDidAppear(animated: Bool) {
         self.setNeedsStatusBarAppearanceUpdate()
         self.navigationController!.toolbarHidden = true
         self.tableView.reloadData()
     }
     
+    //
+    //Naam: searchBarTextDidBeginEditing
+    //
+    //Werking: - zorgt ervoor dat de side bar menu wordt verborgen bij het klikken op de search bar
+    //         - zet de juiste titel bij annuleren
+    //         - roept de methode zoekGefilterde vakanties op
+    //
+    //Parameters:
+    //  - searchBar: UISearchBar
+    //
+    //Return:
+    //
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
         hideSideMenuView()
         setTitleCancelButton(searchBar)
         zoekGefilterdeFeedback(searchBar.text)
     }
     
+    //
+    //Naam: searchBarCancelButtonClicked
+    //
+    //Werking: - zorgt ervoor dat bij het klikken op annuleer de tekst weer leeg is
+    //         - zorgt ervoor dat het toetsenbord en de cancel button verdwijnt
+    //
+    //Parameters:
+    //  - searchBar: UISearchBar
+    //
+    //Return:
+    //
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
         searchBar.text = ""
         zoekGefilterdeFeedback(searchBar.text)
@@ -65,6 +121,16 @@ class FeedbackTableViewController: UITableViewController, UISearchBarDelegate, U
         searchBar.resignFirstResponder()
     }
     
+    //
+    //Naam: setTitleCancelButton
+    //
+    //Werking: - veranderd de "cancel" naar "annuleren"
+    //
+    //Parameters:
+    //  - searchBar: UISearchBar
+    //
+    //Return:
+    //
     func setTitleCancelButton(searchBar: UISearchBar) {
         searchBar.showsCancelButton = true
         var cancelButton: UIButton?
@@ -76,13 +142,16 @@ class FeedbackTableViewController: UITableViewController, UISearchBarDelegate, U
         cancelButton?.setTitle("Annuleer", forState: UIControlState.Normal)
     }
     
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        hideSideMenuView()
-        searchBar.showsCancelButton = true
-        setTitleCancelButton(searchBar)
-        zoekGefilterdeFeedback(searchText.lowercaseString)
-    }
-    
+    //
+    //Naam: zoekGefilterdeFeedback
+    //
+    //Werking: - filter naargelang de zoek tekst string in de titel van de feedback
+    //
+    //Parameters:
+    //  - zoek: String
+    //
+    //Return:
+    //
     func zoekGefilterdeFeedback(zoek: String) {
         feedbacken2 = feedbacken.filter { $0.vakantie!.titel!.lowercaseString.rangeOfString(zoek) != nil }
         if zoek.isEmpty {
@@ -91,21 +160,63 @@ class FeedbackTableViewController: UITableViewController, UISearchBarDelegate, U
         self.tableView.reloadData()
     }
     
+    //
+    //Naam: prepareForSegue
+    //
+    //Werking: - maakt de volgende view met opgegeven identifier (stelt soms attributen van de volgende view op)
+    //
+    //Parameters:
+    //  - segue: UIStoryboardSegue
+    //  - sender: AnyObject?
+    //
+    //Return:
+    //
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "add" {
             let geefFeedback1ViewController = segue.destinationViewController as GeefFeedback1ViewController
-            //geefFeedbackViewController.vakantie = self.vakantieId
         }
     }
     
+    //
+    //Naam: numbersOfSectionsInTableView
+    //
+    //Werking: - zorgt dat het aantal sections zich aanpast naargelang er een section wordt verwijderd
+    //
+    //Parameters:
+    //  - tableView: UITableView
+    //
+    //Return: een int met de hoeveelheid sections
+    //
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
+    //
+    //Naam: tableView
+    //
+    //Werking: - zorgt dat het aantal rijen in een section aangepast wordt naargelang er een section wordt verwijderd
+    //
+    //Parameters:
+    //  - tableView: UITableView
+    //  - numbersOfRowsInSection section: Int
+    //
+    //Return: een int met de hoeveelheid rijen per section
+    //
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return feedbacken2.count
     }
     
+    //
+    //Naam: tableView
+    //
+    //Werking: - zorgt ervoor dat elke cell wordt ingevuld met de juiste gegevens
+    //
+    //Parameters:
+    //  - tableView: UITableView
+    //  - cellForRowAtIndexPath indexPath: NSIndexPath
+    //
+    //Return: een UITableViewCell met de juiste ingevulde gegevens
+    //
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("feedbackCell", forIndexPath: indexPath) as FeedbackCell
         let feedback = feedbacken2[indexPath.row]
@@ -116,16 +227,16 @@ class FeedbackTableViewController: UITableViewController, UISearchBarDelegate, U
         return cell
     }
     
-    /*func setMenuToggleBarButtonItem() {
-        var rightImage: UIImage = UIImage(named: "menu")!
-        var rightItem: UIBarButtonItem = UIBarButtonItem(image: rightImage, style: UIBarButtonItemStyle.Plain, target: self, action: "toggle")
-        self.navigationItem.leftBarButtonItem = rightItem
-    }
-    
-    func toggle() {
-        toggleSideMenuView()
-    }*/
-    
+    //
+    //Naam: refresh
+    //
+    //Werking: - zorgt ervoor wanneer de gebruiker naar beneden scrolt de data opnieuw wordt herladen
+    //
+    //Parameters:
+    //  - sender: UIRefreshControl
+    //
+    //Return:
+    //
     @IBAction func refresh(sender: UIRefreshControl) {
         var parseData = ParseData()
         ParseData.deleteAllTables()

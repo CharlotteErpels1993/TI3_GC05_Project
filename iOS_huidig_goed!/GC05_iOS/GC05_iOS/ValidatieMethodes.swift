@@ -1,3 +1,13 @@
+//
+//Naam: checkPatternAansltuingsNr
+//
+//Werking: - bekijkt of het aansluitingsnummer voldoet aan de validatie
+//
+//Parameters:
+//  - aansluitingsNr: Int
+//
+//Return: een bool die true is als het aansluitinsgnummer voldoet aan de validatie, anders false
+//
 func checkPatternAansluitingsNr(aansluitingsNr: Int) -> Bool {
     var aansluitingsNrString: String = String(aansluitingsNr)
     
@@ -7,6 +17,16 @@ func checkPatternAansluitingsNr(aansluitingsNr: Int) -> Bool {
     return false
 }
 
+//
+//Naam: checkPatternCodeGerechtigde
+//
+//Werking: - bekijkt of de code gerechtigde voldoet aan de validatie
+//
+//Parameters:
+//  - codeGerechtigde: Int
+//
+//Return: een bool die true is als de code gerechtigde voldoet aan de validatie, anders false
+//
 func checkPatternCodeGerechtigde(codeGerechtigde: Int) -> Bool {
     var codeGerechtigdeString: String = String(codeGerechtigde)
     
@@ -16,6 +36,16 @@ func checkPatternCodeGerechtigde(codeGerechtigde: Int) -> Bool {
     return false
 }
 
+//
+//Naam: checkPatternNummer
+//
+//Werking: - bekijkt of de nummer voldoet aan de validatie
+//
+//Parameters:
+//  - nummer: Int
+//
+//Return: een bool die true is als de nummer voldoet aan de validatie, anders false
+//
 func checkPatternNummer(nummer: Int) -> Bool {
     if nummer <= 0 {
         return false
@@ -23,6 +53,16 @@ func checkPatternNummer(nummer: Int) -> Bool {
     return true
 }
 
+//
+//Naam: checkPatternCodePostcode
+//
+//Werking: - bekijkt of de postcode voldoet aan de validatie
+//
+//Parameters:
+//  - postcode: Int
+//
+//Return: een bool die true is als de postcode voldoet aan de validatie, anders false
+//
 func checkPatternPostcode(postcode: Int) -> Bool {
     if postcode < 1000 || postcode > 9992 {
         return false
@@ -30,6 +70,16 @@ func checkPatternPostcode(postcode: Int) -> Bool {
     return true
 }
 
+//
+//Naam: checkPatternGsm
+//
+//Werking: - bekijkt of de gsm voldoet aan de validatie
+//
+//Parameters:
+//  - gsm: String
+//
+//Return: een bool die true is als de gsm voldoet aan de validatie, anders false
+//
 func checkPatternGsm(gsm: String) -> Bool {
     if countElements(gsm) == 10 {
         return true
@@ -37,6 +87,16 @@ func checkPatternGsm(gsm: String) -> Bool {
     return false
 }
 
+//
+//Naam: checkPatternTelefoon
+//
+//Werking: - bekijkt of de telefoon voldoet aan de validatie
+//
+//Parameters:
+//  - telefoon: String
+//
+//Return: een bool die true is als de telefoon voldoet aan de validatie, anders false
+//
 func checkPatternTelefoon(telefoon: String) -> Bool {
     if countElements(telefoon) == 9 {
         return true
@@ -44,6 +104,16 @@ func checkPatternTelefoon(telefoon: String) -> Bool {
     return false
 }
 
+//
+//Naam: checkPatternRijksregisterNr
+//
+//Werking: - bekijkt of het rijksregisternummer voldoet aan de validatie
+//
+//Parameters:
+//  - rijksregisterNr: String
+//
+//Return: een bool die true is als het rijksregisternummer voldoet aan de validatie, anders false
+//
 func checkPatternRijksregisterNr(rijksregisterNr: String) -> Bool {
     var lengte: Int = countElements(rijksregisterNr)
     
@@ -81,6 +151,16 @@ func checkPatternRijksregisterNr(rijksregisterNr: String) -> Bool {
     return true
 }
 
+//
+//Naam: checkPatternLidnummer
+//
+//Werking: - bekijkt of het lidnummer voldoet aan de validatie
+//
+//Parameters:
+//  - lidnummer: String
+//
+//Return: een bool die true is als het lidnummer voldoet aan de validatie, anders false
+//
 func checkPatternLidnummer(lidnummer: String) -> Bool {
     if countElements(lidnummer) == 5 {
         return true
@@ -88,17 +168,50 @@ func checkPatternLidnummer(lidnummer: String) -> Bool {
     return false
 }
 
+//
+//Naam: foutBoxOproepen
+//
+//Werking: - stelt een foutbox op met de gegevens die m'n meekrijgt
+//
+//Parameters:
+//  - title: String
+//  - message: String
+//  - controller: UIViewController
+//
+//Return:
+//
 func foutBoxOproepen(title: String, message: String, controller: UIViewController) {
     var foutBox: FoutBox = FoutBox(title: title, message: message)
     var alert = foutBox.alert
     controller.presentViewController(alert, animated: true, completion: nil)
 }
 
+//
+//Naam: foutboxOproepen
+//
+//Werking: - toont de foutbox bovenop de view
+//
+//Parameters:
+//  - foutbox: Foutbox
+//  - controller: UIViewController
+//
+//Return:
+//
 func foutBoxOproepen(foutBox: FoutBox, controller: UIViewController) {
     var alert = foutBox.alert
     controller.presentViewController(alert, animated: true, completion: nil)
 }
 
+//
+//Naam: giveUITextFieldRedBorder
+//
+//Werking: - zorgt ervoor dat de text field een rode border krijgt
+//
+//Parameters:
+//  - textField: UITextField
+//
+//Return:
+//
 func giveUITextFieldRedBorder(textField: UITextField) {
     var redColor: UIColor = UIColor.redColor()
     textField.layer.borderColor = redColor.CGColor
@@ -106,6 +219,16 @@ func giveUITextFieldRedBorder(textField: UITextField) {
     textField.layer.cornerRadius = 5.0
 }
 
+//
+//Naam: giveUITextFieldRedBorder
+//
+//Werking: - zorgt ervoor dat de text field een default border krijgt
+//
+//Parameters:
+//  - textField: UITextField
+//
+//Return:
+//
 func giveUITextFieldDefaultBorder(textField: UITextField) {
     var defaultBorderColor: UIColor = UIColor(red: 182.0, green: 182.0, blue: 182.0, alpha: 0)
     textField.layer.borderColor = defaultBorderColor.CGColor
@@ -113,6 +236,16 @@ func giveUITextFieldDefaultBorder(textField: UITextField) {
     textField.layer.cornerRadius = 5.0
 }
 
+//
+//Naam: controleerGeldigheidNummer
+//
+//Werking: - bekijkt of de nummer effectief een nummer is (en geen letter)
+//
+//Parameters:
+//  - nummer: String
+//
+//Return: een bool die true is als het voldoet aan de validatie, anders false
+//
 func controleerGeldigheidNummer(nummer: String) -> Bool {
     var enkelNummers: Bool = false
     
@@ -144,6 +277,17 @@ func controleerGeldigheidNummer(nummer: String) -> Bool {
     return true
 }
 
+//
+//Naam: wachtwoordMath
+//
+//Werking: - controleert of wachtwoord en herhaalwachtwoord gelijk is
+//
+//Parameters:
+//  - wachtwoord: String
+//  - herhaalWachtwoord: String
+//
+//Return:
+//
 func wachtwoordenMatch(wachtwoord: String, herhaalWachtwoord: String) -> Bool {
     if wachtwoord == herhaalWachtwoord {
         return true
@@ -171,6 +315,16 @@ func checkPatternEmail(email: String) -> Bool {
     return false
 }
 
+//
+//Naam: giveUITextViewDefaultBorder
+//
+//Werking: - zorgt ervoor dat de text view een default border krijgt
+//
+//Parameters:
+//  - textField: UITextView
+//
+//Return:
+//
 func giveUITextViewDefaultBorder(textView: UITextView) {
     var grayColor: UIColor = UIColor.grayColor()
     textView.layer.borderColor = grayColor.CGColor
@@ -178,6 +332,16 @@ func giveUITextViewDefaultBorder(textView: UITextView) {
     textView.layer.cornerRadius = 5.0
 }
 
+//
+//Naam: giveUITextViewRedBorder
+//
+//Werking: - zorgt ervoor dat de text view een rode border krijgt
+//
+//Parameters:
+//  - textField: UITextView
+//
+//Return:
+//
 func giveUITextViewRedBorder(textView: UITextView) {
     var redColor: UIColor = UIColor.redColor()
     textView.layer.borderColor = redColor.CGColor
