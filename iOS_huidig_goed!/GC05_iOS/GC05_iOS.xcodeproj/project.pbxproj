@@ -348,7 +348,6 @@
 		0FA80B041A01350E008DB343 /* GC05_iOS */ = {
 			isa = PBXGroup;
 			children = (
-				A5049CAB1A23343E0012D990 /* InternetConnectionCheck */,
 				0F88A6C11A1F37C80094D457 /* SQLite */,
 				A503E0EF1A1A77EB000A9908 /* Custom cells */,
 				A503E0EE1A1A77D8000A9908 /* Hulp */,
@@ -463,6 +462,7 @@
 		A503E0EE1A1A77D8000A9908 /* Hulp */ = {
 			isa = PBXGroup;
 			children = (
+				A5049CAC1A2334510012D990 /* Reachability.swift */,
 				0F6254961A0CCBA300BDEF38 /* FoutBox.swift */,
 				0F05F22D1A13A73000CFE0A1 /* NSDateExtension.swift */,
 				0F2A81991A091F7100F67A3B /* Regex.swift */,
@@ -484,14 +484,6 @@
 				A5CB1FFE1A35DAFE00A4178A /* FeedbackCell.swift */,
 			);
 			name = "Custom cells";
-			sourceTree = "<group>";
-		};
-		A5049CAB1A23343E0012D990 /* InternetConnectionCheck */ = {
-			isa = PBXGroup;
-			children = (
-				A5049CAC1A2334510012D990 /* Reachability.swift */,
-			);
-			name = InternetConnectionCheck;
 			sourceTree = "<group>";
 		};
 		A52976CD1A1A094900420FEE /* Images */ = {
