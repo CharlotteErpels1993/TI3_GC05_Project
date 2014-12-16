@@ -11,19 +11,38 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
     
     @IBOutlet weak var zoekbar: UISearchBar!
     
+    //
+    //Naam: toggle
+    //
+    //Werking: - zorgt ervoor dat de side bar menu wordt weergegeven
+    //         - zorgt er ook voor dat alle toestenborden gesloten zijn
+    //
+    //Parameters:
+    //  - sender: AnyObject
+    //
+    //Return:
+    //
     @IBAction func toggle(sender: AnyObject) {
         searchBarCancelButtonClicked(zoekbar)
         toggleSideMenuView()
     }
     
+    //
+    //Naam: viewDidLoad
+    //
+    //Werking: - zorgt ervoor dat de side bar menu verborgen is
+    //         - haalt alle tabellen op (eigen profiel monitor, monitoren zelfde vorming en andere monitoren)
+    //         - sections worden aangepast naargelang... :
+    //              * er een administrator is ingelogd
+    //              * er geen monitoren zijn met dezelfde vorming
+    //
+    //Parameters:
+    //
+    //Return:
+    //
     override func viewDidLoad() {
         super.viewDidLoad()
         hideSideMenuView()
-        
-        /*var monitorResponse = MonitorSQL.getMonitorWithEmail(PFUser.currentUser().email)
-        if monitorResponse.1 == nil {
-            ingelogdeMonitor = monitorResponse.0
-        }*/
         
         self.ingelogdeMonitor = LocalDatastore.getMonitorWithEmail(PFUser.currentUser().email)
         
@@ -36,12 +55,7 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
         var soort = user["soort"] as String
         
         if soort == "monitor" {
-            //var monitorResponse = ParseData.getMonitorWithEmail(PFUser.currentUser().email)
-            
-            //var monitor = monitorResponse.0
             var monitor = LocalDatastore.getMonitorWithEmail(PFUser.currentUser().email)
-            
-            //var monitorenZelfdeVormingResponse = ParseData.getMonitorsMetDezelfdeVormingen(monitor.id!)
             var monitorenZelfdeVorming = LocalDatastore.getMonitorsMetDezelfdeVormingen(monitor.id!)
             
             if monitorenZelfdeVorming.count != 0 {
@@ -80,27 +94,6 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
             self.tableView.deleteSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.None)
         }
         
-        
-        /* NEW
-        if soort == "monitor" {
-            if monitorenZelfdeVorming.count == 0 {
-                sectionToDelete = 1
-            } else {
-                sectionToDelete = 0
-            }
-            self.tableView.deleteSections(NSIndexSet(index: sectionToDelete), withRowAnimation: UITableViewRowAnimation.None)
-        } else if soort == "administrator" {
-            sectionToDelete = 9
-            self.tableView.deleteSections(NSIndexSet(index: 1), withRowAnimation: UITableViewRowAnimation.None)
-            if monitoren2.count == 0 {
-                sectionToDelete == 9
-                self.tableView.deleteSections(NSIndexSet(index: 1), withRowAnimation: UITableViewRowAnimation.None)
-            }
-        } else {
-            sectionToDelete = -1
-            self.tableView.deleteSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.None)
-        }*/
-        
         if monitorenZelfdeVorming2.count == 0 {
             if soort == "administrator" {
                 sectionToDelete = 9
@@ -108,7 +101,6 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
                 sectionToDelete = 2
                 self.tableView.deleteSections(NSIndexSet(index: sectionToDelete), withRowAnimation: UITableViewRowAnimation.None)
             }
-            //self.tableView.deleteSections(NSIndexSet(index: sectionToDelete), withRowAnimation: UITableViewRowAnimation.None)
         } else if monitorenZelfdeVorming2.count != 0 {
             if soort == "administrator" {
                 sectionToDelete = 9
@@ -116,7 +108,6 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
                 sectionToDelete = -1
                 self.tableView.deleteSections(NSIndexSet(index: 1), withRowAnimation: UITableViewRowAnimation.None)
             }
-            //self.tableView.deleteSections(NSIndexSet(index: sectionToDelete), withRowAnimation: UITableViewRowAnimation.None)
         } else {
             sectionToDelete = -1
         }
@@ -128,12 +119,35 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
         zoekbar.delegate = self
     }
     
+    //
+    //Naam: searchBarTextDidBeginEditing
+    //
+    //Werking: - zorgt ervoor dat de side bar menu wordt verborgen bij het klikken op de search bar
+    //         - zet de juiste titel bij annuleren
+    //         - roept de methode zoekGefilterde vakanties op
+    //
+    //Parameters:
+    //  - searchBar: UISearchBar
+    //
+    //Return:
+    //
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
         hideSideMenuView()
         setTitleCancelButton(searchBar)
         zoekGefilterdeMonitoren(searchBar.text)
     }
     
+    //
+    //Naam: searchBarCancelButtonClicked
+    //
+    //Werking: - zorgt ervoor dat bij het klikken op annuleer de tekst weer leeg is
+    //         - zorgt ervoor dat het toetsenbord en de cancel button verdwijnt
+    //
+    //Parameters:
+    //  - searchBar: UISearchBar
+    //
+    //Return:
+    //
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
         searchBar.text = ""
         zoekGefilterdeMonitoren(searchBar.text)
@@ -141,6 +155,16 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
         searchBar.resignFirstResponder()
     }
     
+    //
+    //Naam: setTitleCancelButton
+    //
+    //Werking: - veranderd de "cancel" naar "annuleren"
+    //
+    //Parameters:
+    //  - searchBar: UISearchBar
+    //
+    //Return:
+    //
     func setTitleCancelButton(searchBar: UISearchBar) {
         searchBar.showsCancelButton = true
         var cancelButton: UIButton?
@@ -152,13 +176,16 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
         cancelButton?.setTitle("Annuleer", forState: UIControlState.Normal)
     }
     
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        hideSideMenuView()
-        searchBar.showsCancelButton = true
-        setTitleCancelButton(searchBar)
-        zoekGefilterdeMonitoren(searchText.lowercaseString)
-    }
-    
+    //
+    //Naam: zoekGefilterdeMonitoren
+    //
+    //Werking: - filter naargelang de zoek tekst string in de naam van de monitoren
+    //
+    //Parameters:
+    //  - zoek: String
+    //
+    //Return:
+    //
     func zoekGefilterdeMonitoren(zoek: String) {
         monitoren2 = monitoren.filter { ($0.naam!.lowercaseString.rangeOfString(zoek) != nil) || ($0.voornaam!.lowercaseString.rangeOfString(zoek)  != nil) }
         monitorenZelfdeVorming2 = monitorenZelfdeVorming.filter { ($0.naam!.lowercaseString.rangeOfString(zoek) != nil) || ($0.voornaam!.lowercaseString.rangeOfString(zoek)  != nil) }
@@ -169,6 +196,16 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
         self.tableView.reloadData()
     }
     
+    //
+    //Naam: numbersOfSectionsInTableView
+    //
+    //Werking: - zorgt dat het aantal sections zich aanpast naargelang er een section wordt verwijderd
+    //
+    //Parameters:
+    //  - tableView: UITableView
+    //
+    //Return: een int met de hoeveelheid sections
+    //
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         if sectionToDelete == -1 {
             return 4
@@ -177,20 +214,19 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
         } else {
             return 3
         }
-        
-        /*if sectionToDelete == -1 {
-            return 2
-        } else if sectionToDelete == 1 {
-            return 2
-        } else if sectionToDelete == 0 {
-            
-        } else if sectionToDelete == 9 {
-            
-        } else {
-            return 2
-        }*/
     }
     
+    //
+    //Naam: tableView
+    //
+    //Werking: - zorgt dat het aantal rijen in een section aangepast wordt naargelang er een section wordt verwijderd
+    //
+    //Parameters:
+    //  - tableView: UITableView
+    //  - numbersOfRowsInSection section: Int
+    //
+    //Return: een int met de hoeveelheid rijen per section
+    //
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if sectionToDelete == 0 {
             if section == 1 {
@@ -220,7 +256,17 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
         return 0
     }
     
-    
+    //
+    //Naam: tableView
+    //
+    //Werking: - zorgt ervoor dat elke section de gepaste header krijgt
+    //
+    //Parameters:
+    //  - tableView: UITableView
+    //  - titleForHeaderInSection section: Int
+    //
+    //Return: een titel voor een bepaalde section
+    //
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if sectionToDelete == 1 {
             if section == 0 {
@@ -253,6 +299,17 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
         return ("")
     }
     
+    //
+    //Naam: tableView
+    //
+    //Werking: - zorgt ervoor dat elke cell wordt ingevuld met de juiste gegevens
+    //
+    //Parameters:
+    //  - tableView: UITableView
+    //  - cellForRowAtIndexPath indexPath: NSIndexPath
+    //
+    //Return: een UITableViewCell met de juiste ingevulde gegevens
+    //
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         var cell: UITableViewCell!
@@ -267,7 +324,6 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
                 cell.detailTextLabel?.text = "Meer informatie"
             } else if indexPath.section == 0 {
                 cell = tableView.dequeueReusableCellWithIdentifier("eigenMonitorCell", forIndexPath: indexPath) as UITableViewCell
-                //let monitor = monitoren2[indexPath.row]
                 cell.textLabel?.text = self.ingelogdeMonitor.voornaam! + " " + self.ingelogdeMonitor.naam!
                 cell.detailTextLabel?.text = "Meer informatie"
             }
@@ -279,7 +335,6 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
         } else if self.sectionToDelete == -1 {
             if indexPath.section == 0 {
                 cell = tableView.dequeueReusableCellWithIdentifier("eigenMonitorCell", forIndexPath: indexPath) as UITableViewCell
-                //let monitor = monitoren2[indexPath.row]
                 cell.textLabel?.text = self.ingelogdeMonitor.voornaam! + " " + self.ingelogdeMonitor.naam!
                 cell.detailTextLabel?.text = "Meer informatie"
             } else if indexPath.section == 2 {
@@ -294,11 +349,10 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
                 cell.detailTextLabel?.text = "Meer informatie"
             }
         }
-        
         return cell
     }
     
-    override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+    /*override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.section == 2 {
             performSegueWithIdentifier("toonProfiel1", sender: indexPath)
         }else if indexPath.section == 3 {
@@ -306,10 +360,20 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
         } else if indexPath.section == 0 {
             performSegueWithIdentifier("toonProfiel3", sender: indexPath)
         }
-    }
+    }*/
     
+    //
+    //Naam: prepareForSegue
+    //
+    //Werking: - maakt de volgende view met opgegeven identifier (stelt soms attributen van de volgende view op)
+    //
+    //Parameters:
+    //  - segue: UIStoryboardSegue
+    //  - sender: AnyObject?
+    //
+    //Return:
+    //
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
         let monitorDetailsController = segue.destinationViewController as ProfielDetailsTableViewController
         var selectedMonitor: Monitor?
         
@@ -325,10 +389,18 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
         monitorDetailsController.monitor = selectedMonitor! as Monitor
     }
     
+    //
+    //Naam: refresh
+    //
+    //Werking: - zorgt ervoor wanneer de gebruiker naar beneden scrolt de data opnieuw wordt herladen
+    //
+    //Parameters:
+    //  - sender: UIRefreshControl
+    //
+    //Return:
+    //
     @IBAction func refresh(sender: UIRefreshControl) {
-        
         LocalDatastore.getTableReady(Constanten.TABLE_MONITOR)
-        
         self.refreshControl?.endRefreshing()
         viewDidLoad()
     }

@@ -11,10 +11,33 @@ class IndienenVoorkeurViewController: UIViewController, UIPickerViewDataSource, 
     var vertrekdatumStr: String? = ""
     var terugkeerdatumStr: String? = ""
     
+    //
+    //Naam: gaTerugNaarOverzicht
+    //
+    //Werking: - zorgt voor een unwind segue
+    //         - geeft ook een melding bij het verlaten van het scherm (of de gebruiker dit effectief wilt)
+    //
+    //Parameters:
+    //  - sender: AnyObject
+    //
+    //Return:
+    //
     @IBAction func gaTerugNaarOverzicht(sender: AnyObject) {
         annuleerControllerVoorkeur(self)
     }
 
+    //
+    //Naam: viewDidLoad
+    //
+    //Werking: - zorgt ervoor dat de side bar menu verborgen is
+    //         - laadt de voorkeur tabel in
+    //         - bekijkt of de gebruiker internet heeft, zoniet geeft hij een gepaste melding
+    //         - maak de pickerView al klaar
+    //
+    //Parameters:
+    //
+    //Return:
+    //
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -57,18 +80,63 @@ class IndienenVoorkeurViewController: UIViewController, UIPickerViewDataSource, 
         
     }
     
+    //
+    //Naam: numberOfComponentsInPickerView
+    //
+    //Werking: - zorgt ervoor dat het aantal componenten is ingevuld in de pickerView
+    //
+    //Parameters:
+    //  - pickerView: UIPickerView
+    //
+    //Return: het aantal componenten in de pickerView
+    //
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
     }
     
+    //
+    //Naam: pickerView
+    //
+    //Werking: - zorgt ervoor dat het aantal rijen in een component is ingevuld in de pickerView
+    //
+    //Parameters:
+    //  - pickerView: UIPickerView
+    //  - numberOfRowsInComponent component: Int
+    //
+    //Return: het aantal rijen in een component in de pickerView
+    //
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return pickerData.count
     }
     
+    //
+    //Naam: pickerView
+    //
+    //Werking: - zorgt ervoor dat de titel van de vakantie per component in de pickerView wordt ingevuld
+    //
+    //Parameters:
+    //  - pickerView: UIPickerView
+    //  - titleForRow row: Int
+    //  - forComponent component: Int
+    //
+    //Return: de titel van de vakantie per component
+    //
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
         return pickerData[row]
     }
     
+    //
+    //Naam: pickerView
+    //
+    //Werking: - geeft aan welke vakantie de gebruiker gekozen heeft
+    //
+    //Parameters:
+    //  - pickerView: UIPickerView
+    //  - didSelectRow row: Int
+    //  - inComponent component: Int
+    //
+    //Return:
+    //
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         var vakantieNaam = pickerData[row]
         
@@ -94,6 +162,19 @@ class IndienenVoorkeurViewController: UIViewController, UIPickerViewDataSource, 
         periodeLabel.text = ("\(vertrekdatumStr!) - \(terugkeerdatumStr!)")
     }
     
+    //
+    //Naam: prepareForSegue
+    //
+    //Werking: - maakt de volgende view met opgegeven identifier (stelt soms attributen van de volgende view op)
+    //         - controleert ook eerste de ingevulde velden op geldigheid, zonee wordt er een foutmelding gegeven
+    //         - controleert of de gebruiker al een voorkeur heeft ingediend voor dezelfde vakantie
+    //
+    //Parameters:
+    //  - segue: UIStoryboardSegue
+    //  - sender: AnyObject?
+    //
+    //Return:
+    //
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let indienenVoorkeurSuccesvolViewController = segue.destinationViewController as IndienenVoorkeurSuccesvolViewController
             var monitorResponse = ParseData.getMonitorWithEmail(PFUser.currentUser().email)
@@ -127,6 +208,15 @@ class IndienenVoorkeurViewController: UIViewController, UIPickerViewDataSource, 
 
     }
     
+    //
+    //Naam: controleerAlIngeschreven
+    //
+    //Werking: - bekijkt in de databank of er al een monitor een voorkeur heeft ingediend voor een bepaalde vakantie
+    //
+    //Parameters:
+    //
+    //Return: een bool true als de monitor al een voorkeur heeft ingediend voor een bepaalde vakantie
+    //
     func controleerAlIngeschreven() -> Bool {
         var voorkeuren: [Voorkeur] = []
         var voorkeurenResponse = ParseData.getVoorkeurenVakantie(self.voorkeur)

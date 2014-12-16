@@ -7,6 +7,16 @@ class AfbeeldingDetailViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
     
+    //
+    //Naam: viewDidLoad
+    //
+    //Werking: - zorgt ervoor dat de tool bar verborgen is
+    //         - zorgt voor het swipen tussen afbeeldingen (zowel links als rechts)
+    //
+    //Parameters:
+    //
+    //Return:
+    //
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.toolbarHidden = true
@@ -20,6 +30,18 @@ class AfbeeldingDetailViewController: UIViewController {
         imageView.image = image
     }
     
+    //
+    //Naam: handleSwipes
+    //
+    //Werking: - kijkt welke richting de sender heeft: 
+    //              * Links: de gebruiker mag swipen naar links zolang er afbeeldingen zijn
+    //              * Rechts: de gebruiker mag swipen naar rechts zolang er afbeeldingen zijn
+    //
+    //Parameters:
+    //  - sender: UISwipeGestureRecognizer
+    //
+    //Return:
+    //
     func handleSwipes(sender: UISwipeGestureRecognizer) {
         if sender.direction == .Left {
             if nummer != (images.count-1) {

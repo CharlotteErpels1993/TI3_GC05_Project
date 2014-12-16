@@ -5,22 +5,33 @@ class VormingDetailsTableViewController: UITableViewController {
 
     var vorming: Vorming!
     var euro: String = "€"
-    var fetchedResultController: NSFetchedResultsController = NSFetchedResultsController()
     
-    /*@IBOutlet weak var korteBeschrijvingLabel: UILabel!
-    @IBOutlet weak var criteriaDeelnemersLabel: UILabel!
-    @IBOutlet weak var locatieLabel: UILabel!
-    @IBOutlet weak var websiteLocatieLabel: UILabel!
-    @IBOutlet weak var prijsLabel: UILabel!
-    @IBOutlet weak var betalingsWijzeLabel: UILabel!
-    @IBOutlet weak var inbegrepenPrijsLabel: UILabel!
-    @IBOutlet weak var periodesLabel: UILabel!
-    @IBOutlet weak var tipsLabel: UILabel!*/
-    
+    //
+    //Naam: toggle
+    //
+    //Werking: - zorgt ervoor dat de side bar menu wordt weergegeven
+    //         - zorgt er ook voor dat alle toestenborden gesloten zijn
+    //
+    //Parameters:
+    //  - sender: AnyObject
+    //
+    //Return:
+    //
     @IBAction func toggle(sender: AnyObject) {
         toggleSideMenuView()
     }
     
+    //
+    //Naam: viewDidLoad
+    //
+    //Werking: - zorgt ervoor dat de side bar menu verborgen is
+    //         - zorgt ervoor dat de cell een dynamische grootte heeft
+    //         - als de ingelogde gebruiker een administrator is wordt de rechter bar button item verborgen
+    //
+    //Parameters:
+    //
+    //Return:
+    //
     override func viewDidLoad() {
         super.viewDidLoad()
         hideSideMenuView()
@@ -28,15 +39,6 @@ class VormingDetailsTableViewController: UITableViewController {
         self.tableView.rowHeight = UITableViewAutomaticDimension
         
         navigationItem.title = vorming.titel
-        
-        /*korteBeschrijvingLabel.text = vorming.korteBeschrijving
-        criteriaDeelnemersLabel.text = vorming.criteriaDeelnemers
-        locatieLabel.text = String("Locatie: \(vorming.locatie!)")
-        websiteLocatieLabel.text = ("Website locatie: \(vorming.websiteLocatie!)")
-        prijsLabel.text = String("Prijs: \(vorming.prijs!) " + euro)
-        betalingsWijzeLabel.text = String("Betalingswijze: \(vorming.betalingWijze!)")
-        inbegrepenPrijsLabel.text = String("Inbegrepen in de prijs: \(vorming.inbegrepenPrijs!)")*/
-        //tipsLabel.text = vorming.tips
         
         var user = PFUser.currentUser()
         var soort = user["soort"] as? String
@@ -46,10 +48,17 @@ class VormingDetailsTableViewController: UITableViewController {
         }
     }
     
-    override func viewDidAppear(animated: Bool) {
-        tableView.reloadData()
-    }
-    
+    //
+    //Naam: prepareForSegue
+    //
+    //Werking: - maakt de volgende view met opgegeven identifier (stelt soms attributen van de volgende view op)
+    //
+    //Parameters:
+    //  - segue: UIStoryboardSegue
+    //  - sender: AnyObject?
+    //
+    //Return:
+    //
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "inschrijven" {
             let inschrijvenVormingViewController = segue.destinationViewController as InschrijvenVormingViewController
@@ -73,28 +82,49 @@ class VormingDetailsTableViewController: UITableViewController {
             extraTekstViewController.tekst = self.vorming.tips!
             extraTekstViewController.type = 5
         }
-        /*} else if segue.identifier == "inbegrepenPrijs" {
-            let extraTekstViewController = segue.destinationViewController as ExtraTekstViewController
-            extraTekstViewController.tekst = self.vorming.inbegrepenPrijs!
-            extraTekstViewController.type = 2
-        }*/
-        /*} else if segue.identifier == "periodes" {
-            let extraTekstViewController = segue.destinationViewController as ExtraTekstViewController
-            extraTekstViewController.tekst = vorming.periodesToString(vorming.periodes!)
-            extraTekstViewController.type = 5
-        }*/
     }
     
+    //
+    //Naam: numbersOfSectionsInTableView
+    //
+    //Werking: - zorgt dat het aantal sections zich aanpast naargelang er een section wordt verwijderd
+    //
+    //Parameters:
+    //  - tableView: UITableView
+    //
+    //Return: een int met de hoeveelheid sections
+    //
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 9
     }
     
+    //
+    //Naam: tableView
+    //
+    //Werking: - zorgt dat het aantal rijen in een section aangepast wordt naargelang er een section wordt verwijderd
+    //
+    //Parameters:
+    //  - tableView: UITableView
+    //  - numbersOfRowsInSection section: Int
+    //
+    //Return: een int met de hoeveelheid rijen per section
+    //
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     
+    //
+    //Naam: tableView
+    //
+    //Werking: - zorgt ervoor dat elke cell wordt ingevuld met de juiste gegevens
+    //
+    //Parameters:
+    //  - tableView: UITableView
+    //  - cellForRowAtIndexPath indexPath: NSIndexPath
+    //
+    //Return: een UITableViewCell met de juiste ingevulde gegevens
+    //
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
         var cell: UITableViewCell!
         
         if indexPath.section == 0 {
@@ -125,10 +155,20 @@ class VormingDetailsTableViewController: UITableViewController {
             cell = tableView.dequeueReusableCellWithIdentifier("Tips", forIndexPath: indexPath) as UITableViewCell
             cell.textLabel?.text = vorming.tips!
         }
-        
         return cell
     }
     
+    //
+    //Naam: tableView
+    //
+    //Werking: - zorgt ervoor dat elke section de gepaste header krijgt
+    //
+    //Parameters:
+    //  - tableView: UITableView
+    //  - titleForHeaderInSection section: Int
+    //
+    //Return: een titel voor een bepaalde section
+    //
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0 {
             return ("Korte beschrijving")

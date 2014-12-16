@@ -5,6 +5,15 @@ class InschrijvenVakantieSuccesvolViewController : UIViewController {
     
     var inschrijvingVakantie: InschrijvingVakantie!
     
+    //
+    //Naam: viewDidLoad
+    //
+    //Werking: - zorgt ervoor dat de inschrijving van de vakantie naar de databank wordt weggeschreven
+    //
+    //Parameters:
+    //
+    //Return:
+    //
     override func viewDidLoad() {
         super.viewDidLoad()
         

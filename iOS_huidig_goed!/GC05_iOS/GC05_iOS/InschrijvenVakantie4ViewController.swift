@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 import QuartzCore
 
-class InschrijvenVakantie4ViewController : /*ResponsiveTextFieldViewController*/ UITableViewController {
+class InschrijvenVakantie4ViewController : UITableViewController {
     var wilTweedeContactpersoon: Bool! = true
     var inschrijvingVakantie: InschrijvingVakantie!
     var contactpersoon2: ContactpersoonNood! = ContactpersoonNood(id: "test")
@@ -16,7 +16,32 @@ class InschrijvenVakantie4ViewController : /*ResponsiveTextFieldViewController*/
     @IBOutlet weak var txtGsm: UITextField!
     @IBOutlet var labelVerplicht: UILabel!
     
+    //
+    //Naam: annuleer
+    //
+    //Werking: - zorgt ervoor wanneer de gebruiker op annuleer drukt, er een melding komt of de gebruiker zeker is van zijn beslissing
+    //
+    //Parameters:
+    //  - sender: AnyObject
+    //
+    //Return:
+    //
+    @IBAction func annuleer(sender: AnyObject) {
+        annuleerControllerInschrijvenVakantieVorming(self)
+    }
     
+    //
+    //Naam: switched
+    //
+    //Werking: - kijkt of de switch aan staat:
+    //              * switch aan: bool wilTweedeContactpersoon op true en toon labelVerplicht
+    //              * switch uit: bool wilTweedeContactpersoon op false en verberg labelVerplicht
+    //
+    //Parameters:
+    //  - sender: UISwitch
+    //
+    //Return:
+    //
     @IBAction func switched(sender: UISwitch) {
         if sender.on {
             wilTweedeContactpersoon = true
@@ -24,37 +49,40 @@ class InschrijvenVakantie4ViewController : /*ResponsiveTextFieldViewController*/
             viewDidLoad()
             self.tableView.reloadData()
             
-            /*lblVoornaam.hidden = false
-            lblNaam.hidden = false
-            lblTelefoon.hidden = false
-            lblGsm.hidden = false
-            
-            txtVoornaam.hidden = false
-            txtNaam.hidden = false
-            txtTelefoon.hidden = false
-            txtGsm.hidden = false*/
-            
         } else {
             wilTweedeContactpersoon = false
             self.tableView.deleteSections(NSIndexSet(index: 1), withRowAnimation: UITableViewRowAnimation.None)
             labelVerplicht.hidden = true
-            
-            /*lblVoornaam.hidden = true
-            lblNaam.hidden = true
-            lblTelefoon.hidden = true
-            lblGsm.hidden = true
-            
-            txtVoornaam.hidden = true
-            txtNaam.hidden = true
-            txtTelefoon.hidden = true
-            txtGsm.hidden = true*/
         }
     }
     
-    @IBAction func annuleer(sender: AnyObject) {
-        annuleerControllerInschrijvenVakantieVorming(self)
+    //
+    //Naam: viewDidLoad
+    //
+    //Werking: - geeft de text field een default border
+    //
+    //Parameters:
+    //
+    //Return:
+    //
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        giveUITextFieldDefaultBorder(txtVoornaam)
+        giveUITextFieldDefaultBorder(txtNaam)
+        giveUITextFieldDefaultBorder(txtTelefoon)
+        giveUITextFieldDefaultBorder(txtGsm)
     }
     
+    //
+    //Naam: numbersOfSectionsInTableView
+    //
+    //Werking: - zorgt dat het aantal sections zich aanpast naargelang de switch aan of uit staat
+    //
+    //Parameters:
+    //  - tableView: UITableView
+    //
+    //Return: een int met de hoeveelheid sections
+    //
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         if wilTweedeContactpersoon == false {
             return 2
@@ -63,6 +91,17 @@ class InschrijvenVakantie4ViewController : /*ResponsiveTextFieldViewController*/
         }
     }
     
+    //
+    //Naam: tableView
+    //
+    //Werking: - zorgt dat het aantal rijen in een section aangepast wordt naargelang de switch aan of uit staat
+    //
+    //Parameters:
+    //  - tableView: UITableView
+    //  - numbersOfRowsInSection section: Int
+    //
+    //Return: een int met de hoeveelheid rijen per section
+    //
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if wilTweedeContactpersoon == false {
             return 1
@@ -75,6 +114,18 @@ class InschrijvenVakantie4ViewController : /*ResponsiveTextFieldViewController*/
         }
     }
     
+    //
+    //Naam: prepareForSegue
+    //
+    //Werking: - maakt de volgende view met opgegeven identifier (stelt soms attributen van de volgende view op)
+    //         - controleert ook eerste de ingevulde velden op geldigheid, zonee wordt er een foutmelding gegeven
+    //
+    //Parameters:
+    //  - segue: UIStoryboardSegue
+    //  - sender: AnyObject?
+    //
+    //Return:
+    //
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "volgende" {
             let inschrijvenVakantie5ViewController = segue.destinationViewController as InschrijvenVakantie5ViewController
@@ -101,18 +152,28 @@ class InschrijvenVakantie4ViewController : /*ResponsiveTextFieldViewController*/
         }
     }
     
+    //
+    //Naam: setStatusTextFields
+    //
+    //Werking: - zet de status van de text fields in
+    //              * controleert of de velden leeg zijn
+    //              * controleert of andere validatiemethoden geldig zijn
+    //              * wanneer een text field ongeldig is krijgt deze de status "leeg" of "ongeldig"
+    //
+    //Parameters:
+    //
+    //Return:
+    //
     func setStatusTextFields() {
         if txtVoornaam.text.isEmpty {
             statusTextFields["voornaam"] = "leeg"
         } else {
-            //TO DO: checken op pattern?
             statusTextFields["voornaam"] = "ingevuld"
         }
         
         if txtNaam.text.isEmpty {
             statusTextFields["naam"] = "leeg"
         } else {
-            //TO DO: checken op pattern?
             statusTextFields["naam"] = "ingevuld"
         }
         
@@ -137,6 +198,16 @@ class InschrijvenVakantie4ViewController : /*ResponsiveTextFieldViewController*/
         }
     }
     
+    //
+    //Naam: pasLayoutVeldenAan
+    //
+    //Werking: - zorgt ervoor dat de text field, wanneer status "ongeldig" of "leeg" is, een rode border krijgt
+    //         - als deze status niet "leeg" of "ongeldig" is wordt deze border terug op default gezet
+    //
+    //Parameters:
+    //
+    //Return:
+    //
     func pasLayoutVeldenAan() {
         if statusTextFields["voornaam"] == "leeg" {
             giveUITextFieldRedBorder(txtVoornaam)
@@ -163,6 +234,15 @@ class InschrijvenVakantie4ViewController : /*ResponsiveTextFieldViewController*/
         }
     }
     
+    //
+    //Naam: controleerRodeBordersAanwezig
+    //
+    //Werking: - bekijkt of de text field borders een rode border hebben
+    //
+    //Parameters:
+    //
+    //Return: een bool true als er een rode border aanwezig is, anders false
+    //
     func controleerRodeBordersAanwezig() -> Bool {
         if CGColorEqualToColor(txtVoornaam.layer.borderColor, redColor.CGColor) {
             return true
@@ -177,6 +257,15 @@ class InschrijvenVakantie4ViewController : /*ResponsiveTextFieldViewController*/
         }
     }
     
+    //
+    //Naam: settenVerplichteGegevens
+    //
+    //Werking: - afhankelijk van de status van de verplichte velden, worden de gegevens van de contactpersoon2 ingesteld
+    //
+    //Parameters:
+    //
+    //Return:
+    //
     func settenVerplichteGegevens() {
         contactpersoon2.voornaam = txtVoornaam.text
         contactpersoon2.naam = txtNaam.text

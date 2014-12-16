@@ -17,35 +17,18 @@ class ProfielBewerkenViewController: UITableViewController {
     var redColor: UIColor = UIColor.redColor()
     var gaVerder:Bool = false
     
-    /*@IBAction func opslaan(sender: AnyObject) {
-        ParseData.deleteMonitorTable()
-        ParseData.vulMonitorTableOp()
-        
-        var monitorResponse = ParseData.getMonitorWithEmail(PFUser.currentUser().email)
-        if monitorResponse.1 == nil {
-            monitor = monitorResponse.0
-        }
-        
-        setStatusTextFields()
-        pasLayoutVeldenAan()
-        
-        if controleerRodeBordersAanwezig() == true {
-            foutBoxOproepen("Fout", "Gelieve de velden correct in te vullen!", self)
-        } else {
-            vulGegevensIn()
-            ParseData.updateMonitor(self.monitor!)
-            
-            performSegueWithIdentifier("opslaan", sender: self)
-            
-            /*let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            var destViewController: ProfielDetailsTableViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Profiel") as ProfielDetailsTableViewController
-            destViewController.monitor = self.monitor
-            destViewController.eigenProfiel = true
-            sideMenuController()?.setContentViewController(destViewController)
-            hideSideMenuView()*/
-        }
-    }*/
-    
+    //
+    //Naam: viewDidLoad
+    //
+    //Werking: - zorgt ervoor dat de back bar button niet aanwezig is
+    //         - bekijkt of de gebruiker internet heeft, zoniet geeft hij een gepaste melding
+    //         - vult alle velden in
+    //         - maakt een left bar button met de action terug (roept de methode terug() op)
+    //
+    //Parameters:
+    //
+    //Return:
+    //
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.hidesBackButton = true
@@ -78,6 +61,15 @@ class ProfielBewerkenViewController: UITableViewController {
         self.navigationItem.leftBarButtonItem = barBack
     }
     
+    //
+    //Naam: terug
+    //
+    //Werking: - zorgt ervoor wanneer de gebruiker op terug klik er eerst een melding wordt getoond dat er een melding wordt getoond
+    //
+    //Parameters:
+    //
+    //Return:
+    //
     func terug() {
         let alertController = UIAlertController(title: "Profiel bewerken", message: "U gaat verder zonder het opslaan van uw gegevens. Als u verder gaat, gaan uw gewijzigde gegevens verloren.", preferredStyle: .ActionSheet)
             
@@ -96,26 +88,34 @@ class ProfielBewerkenViewController: UITableViewController {
         presentViewController(alertController, animated: true, completion: nil)
     }
     
-    
+    //
+    //Naam: setStatusTextFields
+    //
+    //Werking: - zet de status van de text fields in
+    //              * controleert of de velden leeg zijn
+    //              * controleert of andere validatiemethoden geldig zijn
+    //              * wanneer een text field ongeldig is krijgt deze de status "leeg" of "ongeldig"
+    //
+    //Parameters:
+    //
+    //Return:
+    //
     func setStatusTextFields() {
         if voornaamTxt.text.isEmpty {
             statusTextFields["voornaam"] = "leeg"
         } else {
-            //TO DO: checken op pattern?
             statusTextFields["voornaam"] = "ingevuld"
         }
         
         if naamTxt.text.isEmpty {
             statusTextFields["naam"] = "leeg"
         } else {
-            //TO DO: checken op pattern?
             statusTextFields["naam"] = "ingevuld"
         }
         
         if straatTxt.text.isEmpty {
             statusTextFields["straat"] = "leeg"
         } else {
-            //TO DO: checken op pattern?
             statusTextFields["straat"] = "ingevuld"
         }
         
@@ -136,14 +136,12 @@ class ProfielBewerkenViewController: UITableViewController {
         if busTxt.text.isEmpty {
             statusTextFields["bus"] = "leeg"
         } else {
-            //TO DO: checken op pattern?
             statusTextFields["bus"] = "ingevuld"
         }
         
         if gemeenteTxt.text.isEmpty {
             statusTextFields["gemeente"] = "leeg"
         } else {
-            //TO DO: checken op pattern?
             statusTextFields["gemeente"] = "ingevuld"
         }
         
@@ -184,6 +182,16 @@ class ProfielBewerkenViewController: UITableViewController {
         }
     }
     
+    //
+    //Naam: pasLayoutVeldenAan
+    //
+    //Werking: - zorgt ervoor dat de text field, wanneer status "ongeldig" of "leeg" is, een rode border krijgt
+    //         - als deze status niet "leeg" of "ongeldig" is wordt deze border terug op default gezet
+    //
+    //Parameters:
+    //
+    //Return:
+    //
     func pasLayoutVeldenAan() {
         if statusTextFields["voornaam"] == "leeg" {
             giveUITextFieldRedBorder(voornaamTxt)
@@ -240,6 +248,15 @@ class ProfielBewerkenViewController: UITableViewController {
         }
     }
     
+    //
+    //Naam: controleerRodeBordersAanwezig
+    //
+    //Werking: - bekijkt of de text field borders een rode border hebben
+    //
+    //Parameters:
+    //
+    //Return: een bool true als er een rode border aanwezig is, anders false
+    //
     func controleerRodeBordersAanwezig() -> Bool {
         if CGColorEqualToColor(voornaamTxt.layer.borderColor, redColor.CGColor) {
             return true
@@ -264,6 +281,15 @@ class ProfielBewerkenViewController: UITableViewController {
         }
     }
     
+    //
+    //Naam: settenVerplichteGegevens
+    //
+    //Werking: - afhankelijk van de status van de verplichte velden, worden de gegevens van de monitor ingesteld
+    //
+    //Parameters:
+    //
+    //Return:
+    //
     func settenVerplichteGegevens() {
         monitor!.voornaam = voornaamTxt.text
         monitor!.naam = naamTxt.text
@@ -274,6 +300,15 @@ class ProfielBewerkenViewController: UITableViewController {
         monitor!.gsm = gsmTxt.text
     }
     
+    //
+    //Naam: settenOptioneleGegevens
+    //
+    //Werking: - afhankelijk van de status van de niet verplichte velden, worden de gegevens van de monitor ingesteld
+    //
+    //Parameters:
+    //
+    //Return:
+    //
     func settenOptioneleGegevens() {
         if statusTextFields["bus"] != "leeg" {
             monitor!.bus = busTxt.text
@@ -284,6 +319,18 @@ class ProfielBewerkenViewController: UITableViewController {
         }
     }
     
+    //
+    //Naam: prepareForSegue
+    //
+    //Werking: - maakt de volgende view met opgegeven identifier (stelt soms attributen van de volgende view op)
+    //         - controleert ook eerste de ingevulde velden op geldigheid, zonee wordt er een foutmelding gegeven
+    //
+    //Parameters:
+    //  - segue: UIStoryboardSegue
+    //  - sender: AnyObject?
+    //
+    //Return:
+    //
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "opslaan" {
             let profielDetailsViewController = segue.destinationViewController as ProfielDetailsTableViewController

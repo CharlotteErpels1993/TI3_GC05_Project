@@ -1,9 +1,6 @@
 import UIKit
 
 class InschrijvenVormingViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
-    
-    @IBOutlet weak var pickerView: UIPickerView!
-    
     var pickerData: [String] = []
     var vorming: Vorming!
     var inschrijvingVorming: InschrijvingVorming = InschrijvingVorming(id: "test")
@@ -11,12 +8,44 @@ class InschrijvenVormingViewController: UIViewController, UIPickerViewDataSource
     var periodesId: [String] = []
     var periode: String!
     
+    @IBOutlet weak var pickerView: UIPickerView!
+    
+    //
+    //Naam: annuleer
+    //
+    //Werking: - zorgt ervoor wanneer de gebruiker op annuleer drukt, er een melding komt of de gebruiker zeker is van zijn beslissing
+    //
+    //Parameters:
+    //  - sender: AnyObject
+    //
+    //Return:
+    //
+    @IBAction func annuleer(sender: AnyObject) {
+        annuleerControllerInschrijvenVakantieVorming(self)
+    }
+    
+    //
+    //Naam: viewDidLoad
+    //
+    //Werking: - haalt alle vormingen op
+    //         - bekijkt of de gebruiker internet heeft, zoniet geeft hij een gepaste melding
+    //
+    //Parameters:
+    //
+    //Return:
+    //
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if Reachability.isConnectedToNetwork() == false {
             var alert = UIAlertController(title: "Oeps.. U heeft geen internet", message: "U heeft internet nodig voor u in te schrijven. Ga naar instellingen om dit aan te passen.", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "Annuleer", style: UIAlertActionStyle.Default, handler: nil))
+            alert.addAction(UIAlertAction(title: "Ga terug", style: .Default, handler: { action in
+                switch action.style{
+                default:
+                    self.performSegueWithIdentifier("gaTerug", sender: self)
+                }
+                
+            }))
             alert.addAction(UIAlertAction(title: "Ga naar instellingen", style: .Default, handler: { action in
                 switch action.style{
                 default:
@@ -32,27 +61,82 @@ class InschrijvenVormingViewController: UIViewController, UIPickerViewDataSource
         pickerView.delegate = self
         pickerView.dataSource = self
     }
-    @IBAction func annuleer(sender: AnyObject) {
-        annuleerControllerInschrijvenVakantieVorming(self)
-    }
     
+    //
+    //Naam: numberOfComponentsInPickerView
+    //
+    //Werking: - zorgt ervoor dat het aantal componenten is ingevuld in de pickerView
+    //
+    //Parameters:
+    //  - pickerView: UIPickerView
+    //
+    //Return: het aantal componenten in de pickerView
+    //
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
     }
     
+    //
+    //Naam: pickerView
+    //
+    //Werking: - zorgt ervoor dat het aantal rijen in een component is ingevuld in de pickerView
+    //
+    //Parameters:
+    //  - pickerView: UIPickerView
+    //  - numberOfRowsInComponent component: Int
+    //
+    //Return: het aantal rijen in een component in de pickerView
+    //
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return pickerData.count
     }
     
+    //
+    //Naam: pickerView
+    //
+    //Werking: - zorgt ervoor dat de titel van de vorming per component in de pickerView wordt ingevuld
+    //
+    //Parameters:
+    //  - pickerView: UIPickerView
+    //  - titleForRow row: Int
+    //  - forComponent component: Int
+    //
+    //Return: de titel van de vorming per component
+    //
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
         return pickerData[row]
     }
     
+    //
+    //Naam: pickerView
+    //
+    //Werking: - geeft aan welke vorming de gebruiker gekozen heeft
+    //
+    //Parameters:
+    //  - pickerView: UIPickerView
+    //  - didSelectRow row: Int
+    //  - inComponent component: Int
+    //
+    //Return:
+    //
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         inschrijvingVorming.periode = pickerData[row]
         self.periode = pickerData[row]
     }
     
+    //
+    //Naam: prepareForSegue
+    //
+    //Werking: - maakt de volgende view met opgegeven identifier (stelt soms attributen van de volgende view op)
+    //         - controleert ook eerste de ingevulde velden op geldigheid, zonee wordt er een foutmelding gegeven
+    //         - controleert ook of de gebruiker al ingeschreven is op de gekozen vorming met dezelfde periode
+    //
+    //Parameters:
+    //  - segue: UIStoryboardSegue
+    //  - sender: AnyObject?
+    //
+    //Return:
+    //
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "inschrijven" {
             let inschrijvenVormingSuccesvolViewController = segue.destinationViewController as InschrijvenVormingSuccesvolViewController
@@ -94,6 +178,16 @@ class InschrijvenVormingViewController: UIViewController, UIPickerViewDataSource
         }
     }
     
+    
+    //
+    //Naam: controleerAlIngeschreven
+    //
+    //Werking: - bekijkt in de databank of de monitor al ingeschreven is voor deze vorming met dezelfde periode
+    //
+    //Parameters:
+    //
+    //Return: een bool true als de monitor al ingeschreven is, anders false
+    //
     func controleerAlIngeschreven() -> Bool {
         var inschrijvingen: [InschrijvingVorming] = []
         inschrijvingen = ParseData.getInschrijvingenVorming(inschrijvingVorming)
