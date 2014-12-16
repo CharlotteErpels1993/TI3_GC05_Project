@@ -54,16 +54,16 @@ class IndienenVoorkeurViewController: UIViewController, UIPickerViewDataSource, 
             presentViewController(alert, animated: true, completion: nil)
         }
         
-        //ParseData.deleteVoorkeurTable()
-        //ParseData.vulVoorkeurTableOp()
+        LocalDatastore.getTableReady(Constanten.TABLE_VOORKEUR)
         
         hideSideMenuView()
         
-        var vakantiesResponse = ParseData.getAlleVakanties()
+        //var vakantiesResponse = ParseData.getAlleVakanties()
+        var vakanties = LocalDatastore.getLocalObjects(Constanten.TABLE_VAKANTIE) as [Vakantie]
         
-        if vakantiesResponse.1 == nil {
+        /*if vakantiesResponse.1 == nil {
             self.vakanties = vakantiesResponse.0
-        }
+        }*/
         
         for vakantie in vakanties {
             pickerData.append(vakantie.titel!)
@@ -218,12 +218,15 @@ class IndienenVoorkeurViewController: UIViewController, UIPickerViewDataSource, 
     //Return: een bool true als de monitor al een voorkeur heeft ingediend voor een bepaalde vakantie
     //
     func controleerAlIngeschreven() -> Bool {
-        var voorkeuren: [Voorkeur] = []
+        
+        return LocalDatastore.bestaatVoorkeurAl(voorkeur)
+        
+        /*var voorkeuren: [Voorkeur] = []
         var voorkeurenResponse = ParseData.getVoorkeurenVakantie(self.voorkeur)
         
         if voorkeurenResponse == nil {
             return true
         }
-        return false
+        return false*/
     }
 }

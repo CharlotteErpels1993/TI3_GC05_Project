@@ -136,5 +136,14 @@ struct ParseToDatabase {
         favorietJSON.save()
     }
 
+    // schrijf een nieuwe voorkeur weg naar de database
+    static func parseVoorkeur(voorkeur: Voorkeur) {
+        var voorkeurJSON = PFObject(className: Constanten.TABLE_VOORKEUR)
+        
+        voorkeurJSON.setValue(voorkeur.monitor?.id, forKey: Constanten.COLUMN_MONITOR)
+        voorkeurJSON.setValue(voorkeur.vakantie?.id, forKey: Constanten.COLUMN_VAKANTIE)
+        
+        voorkeurJSON.save()
+    }
 
 }

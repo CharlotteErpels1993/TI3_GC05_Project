@@ -184,7 +184,7 @@ class InschrijvenVormingViewController: UIViewController, UIPickerViewDataSource
     //
     func controleerAlIngeschreven() -> Bool {
         
-        return true
+        return LocalDatastore.bestaatInschrijvingVormingAl(inschrijvingVorming)
         /*var inschrijvingen: [InschrijvingVorming] = []
         inschrijvingen = ParseData.getInschrijvingenVorming(inschrijvingVorming)
         if inschrijvingen.count > 0 {
