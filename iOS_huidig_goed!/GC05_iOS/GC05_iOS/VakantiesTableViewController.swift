@@ -10,28 +10,58 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
     
     @IBOutlet weak var zoekbar: UISearchBar!
     
+    //
+    //Naam: toggle
+    //
+    //Werking: - zorgt ervoor dat de side bar menu wordt weergegeven
+    //         - zorgt er ook voor dat alle toestenborden gesloten zijn
+    //
+    //Parameters:
+    //  - sender: AnyObject
+    //
+    //Return:
+    //
     @IBAction func toggle(sender: AnyObject) {
         searchBarCancelButtonClicked(zoekbar)
         toggleSideMenuView()
     }
     
+    //
+    //Naam: gaTerugNaarInloggen
+    //
+    //Werking: - zorgt voor een unwind segue
+    //
+    //Parameters:
+    //  - sender: AnyObject
+    //
+    //Return:
+    //
     @IBAction func gaTerugNaarOverzichtVakanties(segue: UIStoryboardSegue) {}
     
+    //
+    //Naam: viewDidLoad
+    //
+    //Werking: - zorgt ervoor dat de side bar menu verborgen is
+    //         - zorgt ervoor dat de tab bar niet aanwezig is
+    //         - bekijkt of de gebruiker internet heeft, zoniet geeft hij een gepaste melding
+    //         - bekijkt of de view wordt weergeven als favoriet of als vakanties
+    //              * als favoriet: titel veranderd naar favoriet en favorieten wordt opgehaald van de ingelogde gebruiker
+    //              * als vakanties: titel veranderd naar vakanties en vakanties wordt opgehaald 
+    //              * bij geen internet/wel internet steeds nog een gepast melding bij geen vakanties
+    //
+    //Parameters:
+    //
+    //Return:
+    //
     override func viewDidLoad() {
         super.viewDidLoad()
+        hideSideMenuView()
         self.setNeedsStatusBarAppearanceUpdate()
         self.navigationController!.toolbarHidden = true
         
-        if PFUser.currentUser() != nil {
-            self.navigationItem.setHidesBackButton(true, animated: true)
-            self.navigationItem.rightBarButtonItem = nil
-        }
-        
         if Reachability.isConnectedToNetwork() == false {
             var alert = UIAlertController(title: "Oeps..", message: "Je hebt geen internet verbinding. Ga naar instellingen om dit aan te passen.", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: { action in
-                exit(0)
-            }))
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil))
             alert.addAction(UIAlertAction(title: "Ga naar instellingen", style: .Default, handler: { action in
                 switch action.style{
                 default:
@@ -44,12 +74,12 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         
         if isFavoriet == true && PFUser.currentUser() != nil {
             self.navigationItem.title = "Favorieten"
-            self.vakanties = LocalDatastore.getLocalObjects("Favoriet") as [Vakantie]
+            self.vakanties = LocalDatastore.getLocalObjects(Constanten.TABLE_FAVORIET) as [Vakantie]
             
             foutBoxOproepen("Oeps...", "Er zijn geen vakanties geselecteerd als favorieten. Ga naar vakanties en selecteer een vakantie als favoriet door middel van op het hartje te klikken.", self)
         } else {
             self.navigationItem.title = "Vakanties"
-            self.vakanties = LocalDatastore.getLocalObjects("Vakantie") as [Vakantie]
+            self.vakanties = LocalDatastore.getLocalObjects(Constanten.TABLE_VAKANTIE) as [Vakantie]
             
             if vakanties.count == 0 && Reachability.isConnectedToNetwork() == false {
                 foutBoxOproepen("Oeps...", "Er zijn geen vakanties gevonden. Verbind met het internet om de nieuwste vakanties te bekijken.", self)
@@ -64,17 +94,38 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         self.vakanties2.sort({ $0.minLeeftijd < $1.minLeeftijd })
         self.vakanties.sort({ $0.minLeeftijd < $1.minLeeftijd})
     
-        hideSideMenuView()
         zoekbar.showsScopeBar = true
         zoekbar.delegate = self
     }
     
+    //
+    //Naam: viewWillAppear
+    //
+    //Werking: - zorgt ervoor dat de tab bar niet aanwezig is
+    //         - herlaadt de view
+    //
+    //Parameters:
+    //  - animated: Bool
+    //
+    //Return:
+    //
     override func viewWillAppear(animated: Bool) {
         self.setNeedsStatusBarAppearanceUpdate()
         self.navigationController!.toolbarHidden = true
         self.tableView.reloadData()
     }
     
+    //
+    //Naam: gemiddeldeFeedback
+    //
+    //Werking: - haalt de feedback op van de meegegeven vakantie
+    //         - berekent de gemiddelde score van feedback
+    //
+    //Parameters:
+    //  - vakantie: Vakantie
+    //
+    //Return: een nummer met de gemiddeldeFeedback van 1 vakantie
+    //
     func gemiddeldeFeedback(vakantie: Vakantie) -> Double {
         var feedbackScores: [Int] = []
         var sum = 0
@@ -93,6 +144,22 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         return ceil(gemiddelde)
     }
     
+    //
+    //Naam: zetAantalSterrenGemiddeldeFeedback
+    //
+    //Werking: - zet de sterren naargelang de gemiddelde feedback van 1 vakantie (door middel van de methode gemiddeldeFeedback)
+    //         - voegt de gemiddelde feedback ook toe aan de array feedbackScores (voor mee te geven naar vakantie detail)
+    //
+    //Parameters:
+    //  - vakantie: Vakantie
+    //  - ster1: UIImageView
+    //  - ster2: UIImageView
+    //  - ster3: UIImageView
+    //  - ster4: UIImageView
+    //  - ster5: UIImageView
+    //
+    //Return:
+    //
     func zetAantalSterrenGemiddeldeFeedback(vakantie: Vakantie, ster1: UIImageView, ster2: UIImageView, ster3: UIImageView, ster4: UIImageView, ster5: UIImageView) {
         var gemiddeldeFeedbackScore: Double = gemiddeldeFeedback(vakantie)
         var starGevuld: UIImage = UIImage(named: "star")!
@@ -139,12 +206,35 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         feedbackScores.append(gemiddeldeFeedbackScore)
     }
     
+    //
+    //Naam: searchBarTextDidBeginEditing
+    //
+    //Werking: - zorgt ervoor dat de side bar menu wordt verborgen bij het klikken op de search bar
+    //         - zet de juiste titel bij annuleren
+    //         - roept de methode zoekGefilterde vakanties op
+    //
+    //Parameters:
+    //  - searchBar: UISearchBar
+    //
+    //Return:
+    //
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
         hideSideMenuView()
         setTitleCancelButton(searchBar)
         zoekGefilterdeVakanties(searchBar.text)
     }
     
+    //
+    //Naam: searchBarCancelButtonClicked
+    //
+    //Werking: - zorgt ervoor dat bij het klikken op annuleer de tekst weer leeg is
+    //         - zorgt ervoor dat het toetsenbord en de cancel button verdwijnd
+    //
+    //Parameters:
+    //  - searchBar: UISearchBar
+    //
+    //Return:
+    //
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
         searchBar.text = ""
         zoekGefilterdeVakanties(searchBar.text)
@@ -152,6 +242,16 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         searchBar.resignFirstResponder()
     }
     
+    //
+    //Naam: setTitleCancelButton
+    //
+    //Werking: - veranderd de "cancel" naar "annuleren"
+    //
+    //Parameters:
+    //  - searchBar: UISearchBar
+    //
+    //Return:
+    //
     func setTitleCancelButton(searchBar: UISearchBar) {
         searchBar.showsCancelButton = true
         var cancelButton: UIButton?
@@ -163,13 +263,16 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         cancelButton?.setTitle("Annuleer", forState: UIControlState.Normal)
     }
     
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        hideSideMenuView()
-        searchBar.showsCancelButton = true
-        setTitleCancelButton(searchBar)
-        zoekGefilterdeVakanties(searchText.lowercaseString)
-    }
-    
+    //
+    //Naam: zoekGefilterdeVakanties
+    //
+    //Werking: - filter naargelang de zoek tekst string in de titel van de vakanties
+    //
+    //Parameters:
+    //  - zoek: String
+    //
+    //Return:
+    //
     func zoekGefilterdeVakanties(zoek: String) {
         vakanties2 = vakanties.filter { $0.titel!.lowercaseString.rangeOfString(zoek) != nil }
         if zoek.isEmpty {
@@ -178,6 +281,17 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         self.tableView.reloadData()
     }
     
+    //
+    //Naam: prepareForSegue
+    //
+    //Werking: - maakt de volgende view met opgegeven identifier (stelt soms attributen van de volgende view op)
+    //
+    //Parameters:
+    //  - segue: UIStoryboardSegue
+    //  - sender: AnyObject?
+    //
+    //Return:
+    //
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "toonVakantie" {
             let vakantieDetailsController = segue.destinationViewController as VakantieDetailsTableViewController
@@ -190,24 +304,52 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         }
     }
     
+    //
+    //Naam: numbersOfSectionsInTableView
+    //
+    //Werking: - zorgt dat het aantal sections zich aanpast naargelang er een section wordt verwijderd
+    //
+    //Parameters:
+    //  - tableView: UITableView
+    //
+    //Return: een int met de hoeveelheid sections
+    //
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
+    //
+    //Naam: tableView
+    //
+    //Werking: - zorgt dat het aantal rijen in een section aangepast wordt naargelang er een section wordt verwijderd
+    //
+    //Parameters:
+    //  - tableView: UITableView
+    //  - numbersOfRowsInSection section: Int
+    //
+    //Return: een int met de hoeveelheid rijen per section
+    //
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return vakanties2.count
     }
     
-    
+    //
+    //Naam: tableView
+    //
+    //Werking: - zorgt ervoor dat elke cell wordt ingevuld met de juiste gegevens
+    //
+    //Parameters:
+    //  - tableView: UITableView
+    //  - cellForRowAtIndexPath indexPath: NSIndexPath
+    //
+    //Return: een UITableViewCell met de juiste ingevulde gegevens
+    //
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("vakantieCell", forIndexPath: indexPath) as VakantieCell
         let vakantie = vakanties2[indexPath.row]
         
-        //Local Datastore
         var image = LocalDatastore.getAfbeelding(vakantie.id)
         
-        //WERKEND
-        //var image = ParseData.getAfbeeldingMetVakantieId(vakantie.id)
         cell.afbeelding.image = image
         cell.locatieLabel.text = vakantie.locatie
         cell.doelgroepLabel.layer.borderColor = self.redColor.CGColor
@@ -219,24 +361,37 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         return cell
     }
     
+    //
+    //Naam: tableView
+    //
+    //Werking: - zorgt ervoor wanneer de view wordt geladen als favoriet, de gebruiker de kans heeft op links de slide en zo de vakantie
+    //           te verwijderen
+    //         - delete de vakantie ook in de databank
+    //
+    //Parameters:
+    //  - tableView: UITableView
+    //  - commitEditingStyle editingStyle: UITableViewCellEditingStyle
+    //  - forRowAtIndexPath indexPath: NSIndexPath
+    //
+    //Return:
+    //
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if isFavoriet == true {
             if editingStyle == UITableViewCellEditingStyle.Delete {
                 vakanties2.removeAtIndex(indexPath.row)
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
                 
-                //Parse Local Datastore
                 var favorieteVakantie: Favoriet = Favoriet(id: "test")
                 var user = PFUser.currentUser()
                 var soort = user["soort"] as? String
                 
                 if soort == "ouder" {
                     favorieteVakantie.vakantie = vakanties[indexPath.row]
-                    var ouder = LocalDatastore.getGebruikerWithEmail(PFUser.currentUser().email, tableName: "Ouder")
+                    var ouder = LocalDatastore.getGebruikerWithEmail(PFUser.currentUser().email, tableName: Constanten.TABLE_OUDER)
                     favorieteVakantie.gebruiker = ouder
                 } else if soort == "monitor" {
                     favorieteVakantie.vakantie = vakanties[indexPath.row]
-                    var monitor = LocalDatastore.getGebruikerWithEmail(PFUser.currentUser().email, tableName: "Monitor")
+                    var monitor = LocalDatastore.getGebruikerWithEmail(PFUser.currentUser().email, tableName: Constanten.TABLE_MONITOR)
                     favorieteVakantie.gebruiker = monitor
                 }
                 LocalDatastore.deleteFavorieteVakantie(favorieteVakantie)
@@ -244,6 +399,18 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         }
     }
     
+    //
+    //Naam: tableView
+    //
+    //Werking: - zorgt ervoor wanneer de view wordt geladen als favoriet, de gebruiker de kans heeft op links de slide en zo de vakantie
+    //           te verwijderen
+    //
+    //Parameters:
+    //  - tableView: UITableView
+    //  - editingStyleForRowAtIndexPath indexPath: NSIndexPath
+    //
+    //Return: een UITableViewCellEditingStyle naargelang de view wordt geladen als favoriet of als vakantie
+    //
     override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
         if isFavoriet == true {
             return .Delete
@@ -252,16 +419,24 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         }
     }
     
+    //
+    //Naam: refresh
+    //
+    //Werking: - zorgt ervoor wanneer de gebruiker naar beneden scrolt de data opnieuw wordt herladen
+    //
+    //Parameters:
+    //  - sender: UIRefreshControl
+    //
+    //Return:
+    //
     @IBAction func refresh(sender: UIRefreshControl) {
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-        LocalDatastore.getTableReady("Vakantie")
-        LocalDatastore.getTableReady("Afbeelding")
-        LocalDatastore.getTableReady("Feedback")
-        LocalDatastore.getTableReady("Ouder")
-        LocalDatastore.getTableReady("Favoriet")
+        LocalDatastore.getTableReady(Constanten.TABLE_VAKANTIE)
+        LocalDatastore.getTableReady(Constanten.TABLE_AFBEELDING)
+        LocalDatastore.getTableReady(Constanten.TABLE_FEEDBACK)
+        LocalDatastore.getTableReady(Constanten.TABLE_OUDER)
+        LocalDatastore.getTableReady(Constanten.TABLE_FAVORIET)
         
         self.refreshControl?.endRefreshing()
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
         viewDidLoad()
     }
 }
