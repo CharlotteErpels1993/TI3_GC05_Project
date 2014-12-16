@@ -14,10 +14,30 @@ class Registratie3ViewController: UITableViewController {
     var emailAlGeregistreerd: Bool = false
     var wachtwoordOuder: String = ""
     
+    //
+    //Naam: gaTerugNaarInloggen
+    //
+    //Werking: - zorgt voor een unwind segue
+    //         - geeft ook een melding bij het verlaten van het scherm (of de gebruiker dit effectief wilt)
+    //
+    //Parameters:
+    //  - sender: AnyObject
+    //
+    //Return:
+    //
     @IBAction func gaTerugNaarInloggen(sender: AnyObject) {
         annuleerControllerRegistratie(self)
     }
     
+    //
+    //Naam: viewDidLoad
+    //
+    //Werking: - zorgt dat alle velden eerst leeg zijn voor het tonen van de view
+    //
+    //Parameters:
+    //
+    //Return:
+    //
     override func viewDidLoad() {
         super.viewDidLoad()
         self.txtEmail.text = ""
@@ -25,6 +45,19 @@ class Registratie3ViewController: UITableViewController {
         self.txtBevestigWachtwoord.text = ""
     }
     
+    //
+    //Naam: prepareForSegue
+    //
+    //Werking: - maakt de volgende view met opgegeven identifier (stelt soms attributen van de volgende view op)
+    //         - controleert ook eerste de ingevulde velden op geldigheid, zonee wordt er een foutmelding gegeven
+    //         - controleert of de gebruiker internet heeft, zo nee krijgt hij een melding
+    //
+    //Parameters:
+    //  - segue: UIStoryboardSegue
+    //  - sender: AnyObject?
+    //
+    //Return:
+    //
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "voltooiRegistratie" {
             let registratieSuccesvolViewController = segue.destinationViewController as RegistratieSuccesvolViewController
@@ -81,6 +114,18 @@ class Registratie3ViewController: UITableViewController {
         }
     }
     
+    //
+    //Naam: setStatusTextFields
+    //
+    //Werking: - zet de status van de text fields in
+    //              * controleert of de velden leeg zijn
+    //              * controleert of andere validatiemethoden geldig zijn
+    //              * wanneer een text field ongeldig is krijgt deze de status "leeg" of "ongeldig"
+    //
+    //Parameters:
+    //
+    //Return:
+    //
     func setStatusTextFields() {
         if txtEmail.text.isEmpty {
             statusTextFields["email"] = "leeg"
@@ -111,6 +156,16 @@ class Registratie3ViewController: UITableViewController {
         }
     }
     
+    //
+    //Naam: pasLayoutVeldenAan
+    //
+    //Werking: - zorgt ervoor dat de text field, wanneer status "ongeldig" of "leeg" is, een rode border krijgt
+    //         - als deze status niet "leeg" of "ongeldig" is wordt deze border terug op default gezet
+    //
+    //Parameters:
+    //
+    //Return:
+    //
     func pasLayoutVeldenAan() {
         if statusTextFields["email"] == "leeg" || statusTextFields["email"] == "ongeldig" || statusTextFields["email"] == "al geregistreerd" {
             giveUITextFieldRedBorder(txtEmail)
@@ -132,6 +187,15 @@ class Registratie3ViewController: UITableViewController {
         }
     }
     
+    //
+    //Naam: controleerRodeBordersAanwezig
+    //
+    //Werking: - bekijkt of de text field borders een rode border hebben
+    //
+    //Parameters:
+    //
+    //Return: een bool true als er een rode border aanwezig is, anders false
+    //
     func controleerRodeBordersAanwezig() -> Bool {
         if CGColorEqualToColor(txtEmail.layer.borderColor, redColor.CGColor) {
             return true
@@ -144,13 +208,30 @@ class Registratie3ViewController: UITableViewController {
         }
     }
     
+    //
+    //Naam: settenGegevens
+    //
+    //Werking: - afhankelijk van de status van de verplichte velden, worden de gegevens van de ouder ingesteld
+    //
+    //Parameters:
+    //
+    //Return:
+    //
     func settenGegevens() {
         ouder.email = txtEmail.text
         self.wachtwoordOuder = txtWachtwoord.text
     }
     
+    //
+    //Naam: controleerEmailAlGeregistreerd
+    //
+    //Werking: - bekijkt in de databank of er al een ouder zich ingeschreven heeft met die email
+    //
+    //Parameters:
+    //
+    //Return: een bool true als het emailadres al geregistreerd is, anders false
+    //
     func controleerEmailAlGeregisteerd() -> Bool {
-        //return ParseData.getEmail(self.txtEmail.text)
         return LocalDatastore.isEmailAlGeregistreerd(self.txtEmail.text)
     }
     
