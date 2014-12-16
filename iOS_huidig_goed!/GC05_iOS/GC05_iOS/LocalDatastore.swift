@@ -722,6 +722,12 @@ struct LocalDatastore {
         
         return andereMonitoren
     }
+    
+    static func getCurrentUserSoort() -> String {
+        var currentUser = PFUser.currentUser()
+        var soort = currentUser["soort"] as? String
+        return soort!
+    }
 
     /*static func getVakantieFromFeedback(vakantieId: String) -> Vakantie {
     

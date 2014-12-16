@@ -130,7 +130,7 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         var feedbackScores: [Int] = []
         var sum = 0
         
-        var arrayFeedback = LocalDatastore.getLocalObjectsWithColumnConstraints("Feedback", queryConstraints: ["vakantie": vakantie.id]) as [Feedback]
+        var arrayFeedback = LocalDatastore.getLocalObjectsWithColumnConstraints(Constanten.TABLE_FEEDBACK, soortConstraints: [Constanten.COLUMN_VAKANTIE: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_VAKANTIE: vakantie.id]) as [Feedback]
         
         for feedback in arrayFeedback {
             feedbackScores.append(feedback.score!)
@@ -348,7 +348,7 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         let cell = tableView.dequeueReusableCellWithIdentifier("vakantieCell", forIndexPath: indexPath) as VakantieCell
         let vakantie = vakanties2[indexPath.row]
         
-        var image = LocalDatastore.getAfbeelding(vakantie.id)
+        var image = LocalDatastore.getHoofdAfbeelding(vakantie.id)
         
         cell.afbeelding.image = image
         cell.locatieLabel.text = vakantie.locatie
@@ -387,11 +387,11 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
                 
                 if soort == "ouder" {
                     favorieteVakantie.vakantie = vakanties[indexPath.row]
-                    var ouder = LocalDatastore.getGebruikerWithEmail(PFUser.currentUser().email, tableName: Constanten.TABLE_OUDER)
+                    var ouder = LocalDatastore.getLocalObjectWithColumnConstraints(Constanten.TABLE_OUDER, soortConstraints: [Constanten.COLUMN_EMAIL: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_EMAIL: PFUser.currentUser().email]) as Ouder
                     favorieteVakantie.gebruiker = ouder
                 } else if soort == "monitor" {
                     favorieteVakantie.vakantie = vakanties[indexPath.row]
-                    var monitor = LocalDatastore.getGebruikerWithEmail(PFUser.currentUser().email, tableName: Constanten.TABLE_MONITOR)
+                    var monitor = LocalDatastore.getLocalObjectWithColumnConstraints(Constanten.TABLE_MONITOR, soortConstraints: [Constanten.COLUMN_EMAIL: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_EMAIL: PFUser.currentUser().email]) as Monitor
                     favorieteVakantie.gebruiker = monitor
                 }
                 LocalDatastore.deleteFavorieteVakantie(favorieteVakantie)
@@ -435,6 +435,7 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         LocalDatastore.getTableReady(Constanten.TABLE_FEEDBACK)
         LocalDatastore.getTableReady(Constanten.TABLE_OUDER)
         LocalDatastore.getTableReady(Constanten.TABLE_FAVORIET)
+        LocalDatastore.getTableReady(Constanten.TABLE_MONITOR)
         
         self.refreshControl?.endRefreshing()
         viewDidLoad()
