@@ -12,9 +12,7 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
     @IBOutlet weak var zoekbar: UISearchBar!
     
     @IBAction func toggle(sender: AnyObject) {
-        //searchBarCancelButtonClicked(zoekbar)
-        zoekbar.resignFirstResponder()
-        zoekbar.showsCancelButton = true
+        searchBarCancelButtonClicked(zoekbar)
         toggleSideMenuView()
     }
     

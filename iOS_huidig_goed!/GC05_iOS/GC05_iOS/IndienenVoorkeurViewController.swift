@@ -31,8 +31,8 @@ class IndienenVoorkeurViewController: UIViewController, UIPickerViewDataSource, 
             presentViewController(alert, animated: true, completion: nil)
         }
         
-        ParseData.deleteVoorkeurTable()
-        ParseData.vulVoorkeurTableOp()
+        //ParseData.deleteVoorkeurTable()
+        //ParseData.vulVoorkeurTableOp()
         
         hideSideMenuView()
         

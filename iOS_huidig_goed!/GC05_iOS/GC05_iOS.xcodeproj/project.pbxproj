@@ -94,8 +94,6 @@
 		A58126331A305B4300176187 /* twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = A58126311A305B4300176187 /* twitter.png */; };
 		A599185B1A2F79150055AAF1 /* Heart_Empty.png in Resources */ = {isa = PBXBuildFile; fileRef = A59918591A2F79150055AAF1 /* Heart_Empty.png */; };
 		A599185C1A2F79150055AAF1 /* Heart_Full.png in Resources */ = {isa = PBXBuildFile; fileRef = A599185A1A2F79150055AAF1 /* Heart_Full.png */; };
-		A599185E1A2F817B0055AAF1 /* NieuweMonitorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A599185D1A2F817B0055AAF1 /* NieuweMonitorViewController.swift */; };
-		A59918601A2F819D0055AAF1 /* NieuweMonitorSuccesvolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A599185F1A2F819D0055AAF1 /* NieuweMonitorSuccesvolViewController.swift */; };
 		A59F1A8E1A16B29700A17D09 /* AfbeeldingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59F1A8D1A16B29700A17D09 /* AfbeeldingDetailViewController.swift */; };
 		A5A158301A1A65B200FEF51D /* IndienenVoorkeurViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A1582F1A1A65B200FEF51D /* IndienenVoorkeurViewController.swift */; };
 		A5A158321A1A65E900FEF51D /* IndienenVoorkeurSuccesvolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A158311A1A65E900FEF51D /* IndienenVoorkeurSuccesvolViewController.swift */; };
@@ -103,10 +101,6 @@
 		A5A158361A1A6AAB00FEF51D /* ProfielDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A158351A1A6AAB00FEF51D /* ProfielDetailsTableViewController.swift */; };
 		A5A809DA1A40340B00DDCE69 /* ParseToDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A809D91A40340B00DDCE69 /* ParseToDatabase.swift */; };
 		A5B4C7641A31A5CD002A6F00 /* ValidatieMethodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B4C7631A31A5CD002A6F00 /* ValidatieMethodes.swift */; };
-		A5C6C41F1A2F9483004F5648 /* MonitorRegistratie1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C6C41E1A2F9483004F5648 /* MonitorRegistratie1ViewController.swift */; };
-		A5C6C4211A2F97BC004F5648 /* MonitorRegistratie2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C6C4201A2F97BC004F5648 /* MonitorRegistratie2ViewController.swift */; };
-		A5C6C4231A2F97E1004F5648 /* MonitorRegistratie3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C6C4221A2F97E0004F5648 /* MonitorRegistratie3ViewController.swift */; };
-		A5C6C4271A2F982A004F5648 /* MonitorRegistratieSuccesvolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C6C4261A2F982A004F5648 /* MonitorRegistratieSuccesvolViewController.swift */; };
 		A5CB1FF51A35B80300A4178A /* feedback.png in Resources */ = {isa = PBXBuildFile; fileRef = A5CB1FF41A35B80300A4178A /* feedback.png */; };
 		A5CB1FF71A35CCB300A4178A /* FeedbackTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CB1FF61A35CCB300A4178A /* FeedbackTableViewController.swift */; };
 		A5CB1FF91A35CCDD00A4178A /* GeefFeedback2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CB1FF81A35CCDD00A4178A /* GeefFeedback2ViewController.swift */; };
@@ -233,8 +227,6 @@
 		A58126311A305B4300176187 /* twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = twitter.png; path = Images.xcassets/twitter.png; sourceTree = "<group>"; };
 		A59918591A2F79150055AAF1 /* Heart_Empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Heart_Empty.png; path = Images.xcassets/Heart_Empty.png; sourceTree = "<group>"; };
 		A599185A1A2F79150055AAF1 /* Heart_Full.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Heart_Full.png; path = Images.xcassets/Heart_Full.png; sourceTree = "<group>"; };
-		A599185D1A2F817B0055AAF1 /* NieuweMonitorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NieuweMonitorViewController.swift; sourceTree = "<group>"; };
-		A599185F1A2F819D0055AAF1 /* NieuweMonitorSuccesvolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NieuweMonitorSuccesvolViewController.swift; sourceTree = "<group>"; };
 		A59F1A8D1A16B29700A17D09 /* AfbeeldingDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AfbeeldingDetailViewController.swift; sourceTree = "<group>"; };
 		A5A1582F1A1A65B200FEF51D /* IndienenVoorkeurViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndienenVoorkeurViewController.swift; sourceTree = "<group>"; };
 		A5A158311A1A65E900FEF51D /* IndienenVoorkeurSuccesvolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndienenVoorkeurSuccesvolViewController.swift; sourceTree = "<group>"; };
@@ -242,10 +234,6 @@
 		A5A158351A1A6AAB00FEF51D /* ProfielDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfielDetailsTableViewController.swift; sourceTree = "<group>"; };
 		A5A809D91A40340B00DDCE69 /* ParseToDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseToDatabase.swift; sourceTree = "<group>"; };
 		A5B4C7631A31A5CD002A6F00 /* ValidatieMethodes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidatieMethodes.swift; sourceTree = "<group>"; };
-		A5C6C41E1A2F9483004F5648 /* MonitorRegistratie1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitorRegistratie1ViewController.swift; sourceTree = "<group>"; };
-		A5C6C4201A2F97BC004F5648 /* MonitorRegistratie2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitorRegistratie2ViewController.swift; sourceTree = "<group>"; };
-		A5C6C4221A2F97E0004F5648 /* MonitorRegistratie3ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitorRegistratie3ViewController.swift; sourceTree = "<group>"; };
-		A5C6C4261A2F982A004F5648 /* MonitorRegistratieSuccesvolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitorRegistratieSuccesvolViewController.swift; sourceTree = "<group>"; };
 		A5CB1FF41A35B80300A4178A /* feedback.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = feedback.png; path = Images.xcassets/feedback.png; sourceTree = "<group>"; };
 		A5CB1FF61A35CCB300A4178A /* FeedbackTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackTableViewController.swift; sourceTree = "<group>"; };
 		A5CB1FF81A35CCDD00A4178A /* GeefFeedback2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeefFeedback2ViewController.swift; sourceTree = "<group>"; };
@@ -440,12 +428,6 @@
 				A5A158351A1A6AAB00FEF51D /* ProfielDetailsTableViewController.swift */,
 				A503E0EB1A1A7778000A9908 /* ProfielBewerkenViewController.swift */,
 				A55321DE1A1C8258005146F8 /* SuccesvolNieuwWachtwoordViewController.swift */,
-				A599185D1A2F817B0055AAF1 /* NieuweMonitorViewController.swift */,
-				A599185F1A2F819D0055AAF1 /* NieuweMonitorSuccesvolViewController.swift */,
-				A5C6C41E1A2F9483004F5648 /* MonitorRegistratie1ViewController.swift */,
-				A5C6C4201A2F97BC004F5648 /* MonitorRegistratie2ViewController.swift */,
-				A5C6C4221A2F97E0004F5648 /* MonitorRegistratie3ViewController.swift */,
-				A5C6C4261A2F982A004F5648 /* MonitorRegistratieSuccesvolViewController.swift */,
 				A5CB1FF61A35CCB300A4178A /* FeedbackTableViewController.swift */,
 				A5CB1FF81A35CCDD00A4178A /* GeefFeedback2ViewController.swift */,
 				A5EF7F6C1A36F52600543C3C /* GeefFeedbackSuccesvolViewController.swift */,
@@ -713,7 +695,6 @@
 				A503E0EC1A1A7778000A9908 /* ProfielBewerkenViewController.swift in Sources */,
 				A575A06A1A1633E500F6735A /* ENSideMenuNavigationController.swift in Sources */,
 				0F92E3151A1373E50005C86C /* InschrijvenVakantie5ViewController.swift in Sources */,
-				A5C6C4231A2F97E1004F5648 /* MonitorRegistratie3ViewController.swift in Sources */,
 				A5CB1FFF1A35DAFE00A4178A /* FeedbackCell.swift in Sources */,
 				1BDDB9571A02DD1E0007623D /* Gebruiker.swift in Sources */,
 				A512381D1A16332D002242C6 /* MyNavigationController.swift in Sources */,
@@ -725,22 +706,17 @@
 				0F2A819A1A091F7100F67A3B /* Regex.swift in Sources */,
 				0F1E19DD1A2F9AF70035DB96 /* Favoriet.swift in Sources */,
 				0F88A6C31A1F3B840094D457 /* SwiftData.swift in Sources */,
-				A5C6C41F1A2F9483004F5648 /* MonitorRegistratie1ViewController.swift in Sources */,
 				0FD07EC51A234FAB006A4E60 /* UserSQL.swift in Sources */,
 				0F1E19DB1A2F93CC0035DB96 /* FavorietSQL.swift in Sources */,
 				A5CB1FFD1A35D01200A4178A /* Feedback.swift in Sources */,
 				0F92E30D1A1368A10005C86C /* InschrijvenVakantie1ViewController.swift in Sources */,
-				A5C6C4271A2F982A004F5648 /* MonitorRegistratieSuccesvolViewController.swift in Sources */,
-				A59918601A2F819D0055AAF1 /* NieuweMonitorSuccesvolViewController.swift in Sources */,
 				A5B4C7641A31A5CD002A6F00 /* ValidatieMethodes.swift in Sources */,
 				0F92E3131A136BD00005C86C /* InschrijvenVakantie4ViewController.swift in Sources */,
 				A5A158321A1A65E900FEF51D /* IndienenVoorkeurSuccesvolViewController.swift in Sources */,
 				0F05F22E1A13A73000CFE0A1 /* NSDateExtension.swift in Sources */,
-				A599185E1A2F817B0055AAF1 /* NieuweMonitorViewController.swift in Sources */,
 				A575A0691A1633E500F6735A /* ENSideMenu.swift in Sources */,
 				1B1792851A0272D300C4F82B /* VakantieDetailsTableViewController.swift in Sources */,
 				1B4D784B1A0277F100E823E2 /* Registratie1ViewController.swift in Sources */,
-				A5C6C4211A2F97BC004F5648 /* MonitorRegistratie2ViewController.swift in Sources */,
 				A5A158301A1A65B200FEF51D /* IndienenVoorkeurViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

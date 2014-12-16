@@ -292,13 +292,14 @@ class ProfielBewerkenViewController: UITableViewController {
                 profielDetailsViewController.monitor = self.monitor
                 profielDetailsViewController.eigenProfiel = true
             } else {
-                ParseData.deleteMonitorTable()
-                ParseData.vulMonitorTableOp()
+                //ParseData.deleteMonitorTable()
+                //ParseData.vulMonitorTableOp()
                 
-                var monitorResponse = ParseData.getMonitorWithEmail(PFUser.currentUser().email)
+                /*var monitorResponse = ParseData.getMonitorWithEmail(PFUser.currentUser().email)
                 if monitorResponse.1 == nil {
                     monitor = monitorResponse.0
-                }
+                }*/
+                monitor = LocalDatastore.getMonitorWithEmail(PFUser.currentUser().email)
                 
                 setStatusTextFields()
                 pasLayoutVeldenAan()

@@ -5,7 +5,7 @@ class SidebarTableViewController: UITableViewController, UITextFieldDelegate {
     var arrayKind: [String] = ["Vakanties","Inloggen", "Registreren", "Fun factor", "Wat is JOETZ?"]
     var arrayOuder: [String] = ["Uitloggen", "Vakanties", "Favorieten", "Fun factor", "Wat is JOETZ?"]
     var arrayMonitor: [String] = ["Uitloggen", "Vakanties", "Favoriete vakanties", "Fun Factor",  "Vormingen", "Voorkeur vakantie", "Profielen", "Wat is JOETZ?"]
-    var arrayJoetz: [String] = ["Uitloggen", "Vakanties", "Vormingen", "Profielen", "Nieuwe monitor", "Wat is JOETZ?"]
+    var arrayJoetz: [String] = ["Uitloggen", "Vakanties", "Vormingen", "Profielen", "Wat is JOETZ?"]
     var array: [String]?
     
     
@@ -45,7 +45,7 @@ class SidebarTableViewController: UITableViewController, UITextFieldDelegate {
             } else if soort == "monitor"{
                 return 8
             } else if soort == "administrator" {
-                return 6
+                return 5
             }
         }
         return 0
@@ -256,9 +256,6 @@ class SidebarTableViewController: UITableViewController, UITextFieldDelegate {
                     destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Profielen") as UIViewController
                     break
                 case 4:
-                    destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("NieuweMonitor") as UIViewController
-                    break
-                case 5:
                     destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("About") as UIViewController
                     break
                 default:

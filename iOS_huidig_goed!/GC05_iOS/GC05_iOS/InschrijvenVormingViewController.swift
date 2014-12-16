@@ -27,7 +27,7 @@ class InschrijvenVormingViewController: UIViewController, UIPickerViewDataSource
             presentViewController(alert, animated: true, completion: nil)
         }
         
-        ParseData.getAlleVormingen()
+        //ParseData.getAlleVormingen()
         
         pickerView.delegate = self
         pickerView.dataSource = self
@@ -57,13 +57,14 @@ class InschrijvenVormingViewController: UIViewController, UIPickerViewDataSource
         if segue.identifier == "inschrijven" {
             let inschrijvenVormingSuccesvolViewController = segue.destinationViewController as InschrijvenVormingSuccesvolViewController
 
-            ParseData.deleteInschrijvingVormingTable()
-            ParseData.vulInschrijvingVormingTableOp()
+            //ParseData.deleteInschrijvingVormingTable()
+            //ParseData.vulInschrijvingVormingTableOp()
             
-            var monitorResponse = ParseData.getMonitorWithEmail(PFUser.currentUser().email)
+            /*var monitorResponse = ParseData.getMonitorWithEmail(PFUser.currentUser().email)
             if monitorResponse.1 == nil {
                 inschrijvingVorming.monitor = monitorResponse.0
-            }
+            }*/
+            inschrijvingVorming.monitor = LocalDatastore.getMonitorWithEmail(PFUser.currentUser().email)
             
             inschrijvingVorming.vorming = vorming
             
