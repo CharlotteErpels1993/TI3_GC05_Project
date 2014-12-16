@@ -1,12 +1,29 @@
 import Foundation
 
 struct LocalDatastore {
+    
+    //
+    //Function: makeQuery
+    //
+    //
+    //
+    //Parameters: 
+    //  - tableName: String - naam van de tabel waar de query moet op uitgevoerd worden
+    //  - local: bool       - true als de query op de local datastore moet uitgevoerd worden
+    //                      - false als de query op de online database van Parse.com moet uitgevoerd
+    //                        worden
+    //  - queryConstraints: - Dictionary[String: String]
+    //                      - Eerste argument: naam van de column
+    //                      - Tweede argument: variabele waarop moet vergeleken worden
+    // 
+    //Return: een query met de opgegeven parameters
+    //
     static func makeQuery(tableName: String, local: Bool, queryConstraints: [String: String]) -> PFQuery {
         
         var query = PFQuery(className: tableName)
         
         for queryConstraint in queryConstraints {
-            query = addQueryConstraint(query, columnName: queryConstraint.0, columnValue: queryConstraint.1)
+            query = addQueryConstraintEqualTo(query, columnName: queryConstraint.0, columnValue: queryConstraint.1)
         }
         
         if local == true {
@@ -16,7 +33,7 @@ struct LocalDatastore {
         return query
     }
     
-    static func addQueryConstraint(query: PFQuery, columnName: String, columnValue: String) -> PFQuery
+    static func addQueryConstraintEqualTo(query: PFQuery, columnName: String, columnValue: String) -> PFQuery
     {
         query.whereKey(columnName, equalTo: columnValue)
         
@@ -43,14 +60,10 @@ struct LocalDatastore {
         
         if localTableIsEmpty == true {
             if Reachability.isConnectedToNetwork() == true {
-                //table is leeg & wel internet
-                //table opvullen uit parse
                 fillTableInLocalDatastore(tableName)
             }
         } else {
             if Reachability.isConnectedToNetwork() == true {
-                //table is opgevuld & wel internet
-                //table updaten uit parse
                 updateObjectsInLocalDatastoreFromParse(tableName)
             }
         }
@@ -264,7 +277,25 @@ struct LocalDatastore {
     }
     
     static func getAfbeelding(vakantieId: String) -> UIImage {
-        var query = PFQuery(className: "Afbeelding")
+        
+        //var defaultImage: UIImage = UIImage(named: "joetzVakantie")!
+        
+        var query = self.makeQuery("Afbeelding", local: true, queryConstraints: ["vakantie": vakantieId])
+        
+        var count = query.countObjects()
+        
+        /*if count == 0 {
+            return defaultImage
+        } else {*/
+            var imageObject = query.getFirstObject()
+            var imageFile = imageObject["afbeelding"] as PFFile
+            var image = UIImage(data: imageFile.getData())!
+            return image
+        //}
+        
+        
+        
+        /*var query = PFQuery(className: "Afbeelding")
         query.whereKey("vakantie", equalTo: vakantieId)
         
         query.fromLocalDatastore()
@@ -282,7 +313,7 @@ struct LocalDatastore {
             afbeeldingen.append(afbeelding)
         }
         
-        return afbeeldingen[0]
+        return afbeeldingen[0]*/
     }
     
     static func printError(methode: String, tableName: String) {
@@ -387,6 +418,9 @@ struct LocalDatastore {
             } else if tableName == "Feedback" {
                 var feedback = getFeedback(object)
                 objecten.append(feedback)
+            } else if tableName == "Vorming" {
+                var vorming = getVorming(object)
+                objecten.append(vorming)
             }
         }
         
@@ -628,6 +662,19 @@ struct LocalDatastore {
         return getOuder(object)
     }
     
+    static func getMonitorWithEmail(email: String) -> Monitor {
+        
+        var queryConstraints: [String: String] = [:]
+        
+        queryConstraints["email"] = email
+        
+        var query = self.makeQuery("Monitor", local: true, queryConstraints: queryConstraints)
+        
+        var object = query.getFirstObject()
+        
+        return getMonitor(object)
+    }
+    
     static func getOuder(object: PFObject) -> Ouder {
         var ouder: Ouder = Ouder(id: object.objectId)
         
@@ -674,6 +721,54 @@ struct LocalDatastore {
         }
         
         return ouder
+    }
+    
+    static func getMonitor(object: PFObject) -> Monitor {
+        var monitor: Monitor = Monitor(id: object.objectId)
+        
+        monitor.rijksregisterNr = object["rijksregisterNr"] as? String
+        monitor.email = object["email"] as? String
+        monitor.voornaam = object["voornaam"] as? String
+        monitor.naam = object["naam"] as? String
+        monitor.straat = object["straat"] as? String
+        monitor.nummer = object["nummer"] as? Int
+        
+        if object["bus"] != nil {
+            monitor.bus = object["bus"] as? String
+        } else {
+            monitor.bus = ""
+        }
+        
+        monitor.gemeente = object["gemeente"] as? String
+        monitor.postcode = object["postcode"] as? Int
+        
+        if object["telefoon"] != nil {
+            monitor.telefoon = object["telefoon"] as? String
+        } else {
+            monitor.telefoon = ""
+        }
+        
+        monitor.gsm = object["gsm"] as? String
+        
+        if object["aansluitingsNr"] != nil {
+            monitor.aansluitingsNr = object["aansluitingsNr"] as? Int
+        } else {
+            monitor.aansluitingsNr = 0
+        }
+        
+        if object["codeGerechtigde"] != nil {
+            monitor.codeGerechtigde = object["codeGerechtigde"] as? Int
+        } else {
+            monitor.codeGerechtigde = 0
+        }
+        
+        if object["lidnummer"] != nil {
+            monitor.lidNr = object["lidnummer"] as? String
+        } else {
+            monitor.lidNr = ""
+        }
+        
+        return monitor
     }
     
     static func parseDeelnemerToDatabase(deelnemer: Deelnemer) -> String {
@@ -734,6 +829,127 @@ struct LocalDatastore {
         object.save()
     }
 
+    static func getVorming(object: PFObject) -> Vorming {
+        var vorming: Vorming = Vorming(id: object.objectId)
+        
+        vorming.titel = object["titel"] as? String
+        vorming.locatie = object["locatie"] as? String
+        vorming.korteBeschrijving = object["korteBeschrijving"] as? String
+        vorming.periodes = object["periodes"] as? Array
+        vorming.prijs = object["prijs"] as? Double
+        vorming.criteriaDeelnemers = object["criteriaDeelnemers"] as? String
+        vorming.websiteLocatie = object["websiteLocatie"] as? String
+        
+        if object["websiteLocatie"] != nil {
+            vorming.websiteLocatie = object["websiteLocatie"] as? String
+        } else {
+            vorming.websiteLocatie = ""
+        }
+        
+        vorming.tips = object["tips"] as? String
+        vorming.betalingWijze = object["betalingswijze"] as? String
+        vorming.inbegrepenPrijs = object["inbegrepenInPrijs"] as? String
+        
+        return vorming
+    }
+    
+    static func getMonitorsMetDezelfdeVormingen(monitorId: String) -> [Monitor] {
+        
+        var vormingenIds = self.getVormingIdMetMonitorId(monitorId)
+        
+        var monitoren: [Monitor] = []
+        
+        if vormingenIds.count != 0 {
+            //er zijn vormingen gevonden
+            var monitorIds = self.getMonitorsIdMetVormingId(vormingenIds)
+            
+            if monitorIds.count != 0 {
+                //er zijn monitoren gevonden
+                
+                for monitorId in monitorIds {
+                    var monitor = getMonitorMetId(monitorId)
+                    monitoren.append(monitor)
+                }
+            }
+        }
+        
+        return monitoren
+    }
+    
+    static func getMonitorMetId(monitorId: String) -> Monitor {
+        var query = PFQuery(className: "Monitor")
+        
+        query.fromLocalDatastore()
+        
+        var object = query.getObjectWithId(monitorId)
+        
+        return getMonitor(object)
+    }
+    
+    static func getVormingIdMetMonitorId(monitorId: String) -> [String] {
+        
+        var query = self.makeQuery("InschrijvingVorming", local: true, queryConstraints: ["monitor": monitorId])
+        
+        var objects = query.findObjects() as [PFObject]
+        
+        var vormingenIds: [String] = []
+        
+        for object in objects {
+            vormingenIds.append(object["vorming"] as String)
+        }
+        
+        return vormingenIds
+    }
+    
+    static func getMonitorsIdMetVormingId(vormingen: [String]) -> [String] {
+        
+        var monitorsId: [String] = []
+        
+        var query = PFQuery(className: "InschrijvingVorming")
+        
+        query.fromLocalDatastore()
+        
+        query.whereKey("vorming", containedIn: vormingen)
+        
+        var objects = query.findObjects() as [PFObject]
+        
+        for object in objects {
+            monitorsId.append(object["monitor"] as String)
+        }
+        
+        return monitorsId
+    }
+    
+    static func getAndereMonitoren(monitors: [Monitor]) -> [Monitor] {
+        
+        var andereMonitoren: [Monitor] = []
+        var monitorenZelfdeVormingIds: [String] = []
+        
+        var huidigeMonitor = self.getMonitorWithEmail(PFUser.currentUser().email)
+        
+        for m in monitors {
+            monitorenZelfdeVormingIds.append(m.id!)
+        }
+        
+        var alleMonitoren = self.getLocalObjects("Monitor")
+    
+        var query = PFQuery(className: "Monitor")
+        
+        query.fromLocalDatastore()
+        query.whereKey("objectId", notContainedIn: monitorenZelfdeVormingIds)
+        query.whereKey("objectId", notEqualTo: huidigeMonitor.id)
+        
+        var objects = query.findObjects() as [PFObject]
+        
+        for object in objects {
+            var monitor = getMonitor(object)
+            andereMonitoren.append(monitor)
+        }
+        
+        return andereMonitoren
+    }
+
+    
 }
 
 

@@ -20,45 +20,50 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
         super.viewDidLoad()
         hideSideMenuView()
         
-        var monitorResponse = MonitorSQL.getMonitorWithEmail(PFUser.currentUser().email)
+        /*var monitorResponse = MonitorSQL.getMonitorWithEmail(PFUser.currentUser().email)
         if monitorResponse.1 == nil {
             ingelogdeMonitor = monitorResponse.0
-        }
+        }*/
         
-        ParseData.deleteInschrijvingVormingTable()
+        self.ingelogdeMonitor = LocalDatastore.getMonitorWithEmail(PFUser.currentUser().email)
+        
+        /*ParseData.deleteInschrijvingVormingTable()
         ParseData.deleteMonitorTable()
         ParseData.vulInschrijvingVormingTableOp()
-        ParseData.vulMonitorTableOp()
-        var gebruikerPF = PFUser.currentUser()
-        var soort: String = gebruikerPF["soort"] as String
+        ParseData.vulMonitorTableOp()*/
+        
+        var user = PFUser.currentUser()
+        var soort = user["soort"] as String
         
         if soort == "monitor" {
-            var monitorResponse = ParseData.getMonitorWithEmail(PFUser.currentUser().email)
+            //var monitorResponse = ParseData.getMonitorWithEmail(PFUser.currentUser().email)
             
-            var monitor = monitorResponse.0
+            //var monitor = monitorResponse.0
+            var monitor = LocalDatastore.getMonitorWithEmail(PFUser.currentUser().email)
             
-            var monitorenZelfdeVormingResponse = ParseData.getMonitorsMetDezelfdeVormingen(monitor.id!)
+            //var monitorenZelfdeVormingResponse = ParseData.getMonitorsMetDezelfdeVormingen(monitor.id!)
+            var monitorenZelfdeVorming = LocalDatastore.getMonitorsMetDezelfdeVormingen(monitor.id!)
             
-            if monitorenZelfdeVormingResponse.1 == nil {
-                self.monitorenZelfdeVorming = monitorenZelfdeVormingResponse.0
-                var monitorenResponse = ParseData.getMonitorsMetAndereVormingen(self.monitorenZelfdeVorming)
+            if monitorenZelfdeVorming.count != 0 {
+                self.monitorenZelfdeVorming = monitorenZelfdeVorming
                 
-                if monitorenResponse.1 == nil {
-                    self.monitoren = monitorenResponse.0
+                var monitorenAndereVormingen = LocalDatastore.getAndereMonitoren(monitorenZelfdeVorming)
+                
+                if monitorenAndereVormingen.count != 0 {
+                    self.monitoren = monitorenAndereVormingen
                     self.monitoren2 = self.monitoren
                     self.monitorenZelfdeVorming2 = self.monitorenZelfdeVorming
                 }
             } else {
-                var monitorsResponse = ParseData.getAlleMonitors()
+                var alleMonitoren = LocalDatastore.getLocalObjects("Monitor") as [Monitor]
                 
-                if monitorsResponse.1 == nil {
-                    for var i = 0; i < monitorsResponse.0.count; i += 1 {
-                        if monitorsResponse.0[i].email == PFUser.currentUser().email {
-                            monitorsResponse.0.removeAtIndex(i)
+                if alleMonitoren.count != 0 {
+                    for var i = 0; i < alleMonitoren.count; i += 1 {
+                        if alleMonitoren[i].email == PFUser.currentUser().email {
+                            alleMonitoren.removeAtIndex(i)
                         }
                     }
-                    self.monitoren = monitorsResponse.0
-                    //self.monitoren2 = self.monitoren
+                    self.monitoren = alleMonitoren
                 }
             }
         } else {
@@ -70,11 +75,11 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
         
         self.monitoren2 = self.monitoren
         
-        
-        /*if soort == "administrator"  {
+        if soort == "administrator" {
             sectionToDelete = 9
             self.tableView.deleteSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.None)
-        }*/
+        }
+        
         
         /* NEW
         if soort == "monitor" {

@@ -38,8 +38,8 @@ class VormingDetailsTableViewController: UITableViewController {
         inbegrepenPrijsLabel.text = String("Inbegrepen in de prijs: \(vorming.inbegrepenPrijs!)")*/
         //tipsLabel.text = vorming.tips
         
-        var gebruikerPF = PFUser.currentUser()
-        var soort: String = gebruikerPF["soort"] as String
+        var user = PFUser.currentUser()
+        var soort = user["soort"] as? String
         
         if soort == "administrator" {
             self.navigationItem.rightBarButtonItem = nil

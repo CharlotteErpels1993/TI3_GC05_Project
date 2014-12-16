@@ -17,7 +17,7 @@ class InschrijvenVakantieSuccesvolViewController : UIViewController {
         //var contactpersoon1Id = LocalDatastore.parseContactpersoonNoodToDatabase(inschrijvingVakantie.contactpersoon1!)
         
         
-        inschrijvingVakantie.deelnemer?.id = deelnemerId
+        //inschrijvingVakantie.deelnemer?.id = deelnemerId
         inschrijvingVakantie.contactpersoon1?.id = contactpersoon1Id
         
         if inschrijvingVakantie.contactpersoon2 != nil {

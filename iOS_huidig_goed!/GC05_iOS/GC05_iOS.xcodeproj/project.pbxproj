@@ -102,7 +102,6 @@
 		A5A158341A1A6A7600FEF51D /* ProfielenTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A158331A1A6A7600FEF51D /* ProfielenTableViewController.swift */; };
 		A5A158361A1A6AAB00FEF51D /* ProfielDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A158351A1A6AAB00FEF51D /* ProfielDetailsTableViewController.swift */; };
 		A5A809DA1A40340B00DDCE69 /* ParseToDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A809D91A40340B00DDCE69 /* ParseToDatabase.swift */; };
-		A5A809DE1A40390A00DDCE69 /* joetzVakantie.png in Resources */ = {isa = PBXBuildFile; fileRef = A5A809DD1A40390A00DDCE69 /* joetzVakantie.png */; };
 		A5B4C7641A31A5CD002A6F00 /* ValidatieMethodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B4C7631A31A5CD002A6F00 /* ValidatieMethodes.swift */; };
 		A5C6C41F1A2F9483004F5648 /* MonitorRegistratie1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C6C41E1A2F9483004F5648 /* MonitorRegistratie1ViewController.swift */; };
 		A5C6C4211A2F97BC004F5648 /* MonitorRegistratie2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C6C4201A2F97BC004F5648 /* MonitorRegistratie2ViewController.swift */; };
@@ -242,7 +241,6 @@
 		A5A158331A1A6A7600FEF51D /* ProfielenTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfielenTableViewController.swift; sourceTree = "<group>"; };
 		A5A158351A1A6AAB00FEF51D /* ProfielDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfielDetailsTableViewController.swift; sourceTree = "<group>"; };
 		A5A809D91A40340B00DDCE69 /* ParseToDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseToDatabase.swift; sourceTree = "<group>"; };
-		A5A809DD1A40390A00DDCE69 /* joetzVakantie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = joetzVakantie.png; path = Images.xcassets/joetzVakantie.png; sourceTree = "<group>"; };
 		A5B4C7631A31A5CD002A6F00 /* ValidatieMethodes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidatieMethodes.swift; sourceTree = "<group>"; };
 		A5C6C41E1A2F9483004F5648 /* MonitorRegistratie1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitorRegistratie1ViewController.swift; sourceTree = "<group>"; };
 		A5C6C4201A2F97BC004F5648 /* MonitorRegistratie2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitorRegistratie2ViewController.swift; sourceTree = "<group>"; };
@@ -528,7 +526,6 @@
 		A52976CD1A1A094900420FEE /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				A5A809DD1A40390A00DDCE69 /* joetzVakantie.png */,
 				A5FE779A1A3C69F900C91B62 /* facebook_button.png */,
 				A502AAC81A38AA9E004CF227 /* mail.png */,
 				A502AAC61A38AA82004CF227 /* menu.png */,
@@ -628,7 +625,6 @@
 				A5E5B9831A2370DC0054960C /* LaunchScreen.xib in Resources */,
 				A599185B1A2F79150055AAF1 /* Heart_Empty.png in Resources */,
 				A502AAC91A38AA9E004CF227 /* mail.png in Resources */,
-				A5A809DE1A40390A00DDCE69 /* joetzVakantie.png in Resources */,
 				A5CB1FF51A35B80300A4178A /* feedback.png in Resources */,
 				0FA80B0D1A01350E008DB343 /* Main.storyboard in Resources */,
 				A5FE779B1A3C69F900C91B62 /* facebook_button.png in Resources */,

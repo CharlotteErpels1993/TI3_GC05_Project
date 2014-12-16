@@ -118,6 +118,8 @@ class InloggenViewController: UIViewController, UITextFieldDelegate {
                 
                 if type == "monitor" {
                     //var monitor = ParseData.getMonitorWithEmail(txtEmail.text)
+                    LocalDatastore.getTableReady("Vorming")
+                    LocalDatastore.getTableReady("InschrijvingVorming")
                     performSegueWithIdentifier("overzichtMonitor", sender: self)
                 } else if type == "ouder" {
                     //var ouder = ParseData.getOuderWithEmail(txtEmail.text)
