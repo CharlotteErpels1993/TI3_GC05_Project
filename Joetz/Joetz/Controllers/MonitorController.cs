@@ -23,28 +23,22 @@ namespace Joetz.Controllers
             this.monitorRepository = monitorRepository;
         }
 
-        /*public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index()
         {
             var monitorenTask = monitorRepository.FindAll();
             IEnumerable<Monitor> monitoren = await monitorenTask;
             return View(monitoren);
-        }*/
-
-        public async Task<ActionResult> Index()
-        {
-            var monitorTask = monitorRepository.FindAll();
-            IEnumerable<Monitor> monitoren = await monitorTask;
-            return View(monitoren);
         }
 
-        public ActionResult Add()
+        public ActionResult Create()
         {
             return View();
         }
 
+
         //onderstaande methode dient voor de fileupload
         [HttpPost]
-        public async Task<ActionResult> Add(HttpPostedFileBase file)
+        public async Task<ActionResult> Create(HttpPostedFileBase file)
         {
             // Zeker zijn dat gebruiker bestand heeft geselecteerd
             if (file != null && file.ContentLength > 0)
@@ -83,56 +77,9 @@ namespace Joetz.Controllers
                             
                             await monitorRepository.Add(m);
                         }
-                    } // the using */
-/*
-                    using (var package = new ExcelPackage(fileBase.InputStream))
-                    {
-                        // get the first worksheet in the workbook
-                        ExcelWorksheet worksheet = package.Workbook.Worksheets[1];
-                        int col = 1;
-                        for (int row = 1; worksheet.Cells[row, col].Value != null; row++)
-                        {
-                            // do something with worksheet.Cells[row, col].Value                    
-                        }
-                    } // the using */
-                    // redirect back to the index action to show the form once again
-                return RedirectToAction("Index");
+                    } return RedirectToAction("Index");
                 }
             return View();
-        }
-
-        //public ActionResult Create()
-        //{
-        //    return View(new Monitor());
-        //}
-
-        //[HttpPost]
-        //public ActionResult Create(Monitor monitor)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        monitorRepository.Add(monitor);
-        //        TempData["Info"] = "Monitor " + monitor.Voornaam + " " + monitor.Naam + " is toegevoegd";
-        //        return RedirectToAction("Index");    
-        //    }
-        //    return View(monitor);
-        //}
-
-        public async Task<ActionResult> Edit(string id)
-        {
-            var monitorTask = monitorRepository.FindBy(id);
-            Monitor monitor = await monitorTask;
-            return View(monitor);
-        }
-
-        [HttpPost]
-        public async Task<ActionResult> Edit(string id, FormCollection formValues)
-        {
-            var monitorTask = monitorRepository.FindBy(id);
-            Monitor monitor = await monitorTask;
-            UpdateModel(monitor, formValues.ToValueProvider());
-            monitorRepository.Update(monitor);
-            return RedirectToAction("Index");
         }
 
         public async Task<ActionResult> Delete(string id)
@@ -147,8 +94,15 @@ namespace Joetz.Controllers
         {
             var monitorTask = monitorRepository.FindBy(id);
             Monitor monitor = await monitorTask;
-            monitorRepository.Delete(monitor);
+            await monitorRepository.Delete(monitor);
             return RedirectToAction("Index");
+        }
+
+        public async Task<ActionResult> Details(string id)
+        {
+            var monitorTask = monitorRepository.FindBy(id);
+            Monitor monitor = await monitorTask;
+            return View("Details", monitor);
         }
 
     }

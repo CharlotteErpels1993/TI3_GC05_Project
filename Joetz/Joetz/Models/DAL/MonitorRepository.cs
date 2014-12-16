@@ -13,18 +13,46 @@ namespace Joetz.Models.DAL
             Monitor monitor = new Monitor();
 
             monitor.Id = monitorObject.ObjectId;
-            monitor.Email = monitorObject.Get<string>("Email");
+            monitor.Email = monitorObject.Get<string>("email");
             monitor.Rijksregisternummer = monitorObject.Get<string>("rijksregisterNr");
-            monitor.Aansluitingsnummer = monitorObject.Get<int>("aansluitingsNr");
-            monitor.CodeGerechtigde = monitorObject.Get<int>("codeGerechtigde");
+           /* if (monitorObject.Get<int>("aansluitingsNr") == null)
+            {
+                monitor.Aansluitingsnummer = 0;
+            }
+            else
+            {
+                monitor.Aansluitingsnummer = monitorObject.Get<int>("aansluitingsNr");
+            }
+            if (monitorObject.Get<int>("codeGerechtigde") == null)
+            {
+                monitor.CodeGerechtigde = 0;
+            }
+            else
+            {
+                monitor.CodeGerechtigde = monitorObject.Get<int>("codeGerechtigde");
+            }
+            if (monitorObject.Get<string>("bus") == null)
+            {
+                monitor.Bus = "";
+            }
+            else
+            {
+                monitor.Bus = monitorObject.Get<string>("bus");
+            }
+            if (monitorObject.Get<string>("telefoon") == null)
+            {
+                monitor.Telefoon = "";
+            } else {
+                
+            monitor.Telefoon = monitorObject.Get<string>("telefoon");
+            }*/
             monitor.Voornaam = monitorObject.Get<string>("voornaam");
             monitor.Naam = monitorObject.Get<string>("naam");
             monitor.Straat = monitorObject.Get<string>("straat");
             monitor.Nummer = monitorObject.Get<int>("nummer");
-            monitor.Bus = monitorObject.Get<string>("bus");
+            
             monitor.Postcode = monitorObject.Get<int>("postcode");
             monitor.Gemeente = monitorObject.Get<string>("gemeente");
-            monitor.Telefoon = monitorObject.Get<string>("telefoon");
             monitor.Gsm = monitorObject.Get<string>("gsm");
             monitor.Lidnummer = monitorObject.Get<string>("lidnummer");
 
@@ -84,17 +112,13 @@ namespace Joetz.Models.DAL
             return true;
         }
 
-        public async void Delete(Monitor monitor)
+        public async Task<bool> Delete(Monitor monitor)
         {
             var query = ParseObject.GetQuery("Monitor").WhereEqualTo("objectId", monitor.Id);
             ParseObject monitorObject = await query.FirstAsync();
 
             await monitorObject.DeleteAsync();
-        }
-
-        public void Update(Monitor monitor)
-        {
-            throw new NotImplementedException();
+            return true;
         }
     }
 }
