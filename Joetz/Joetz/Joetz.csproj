@@ -238,6 +238,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\FeedbackController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MaakMonitorAanController.cs" />
@@ -249,13 +250,16 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\DAL\AdminRepository.cs" />
     <Compile Include="Models\DAL\FeedbackRepository.cs" />
     <Compile Include="Models\DAL\MonitorRepository.cs" />
     <Compile Include="Models\DAL\VakantieRepository.cs" />
     <Compile Include="Models\DAL\VormingRepository.cs" />
     <Compile Include="Models\Domain\Activiteit.cs" />
+    <Compile Include="Models\Domain\Admin.cs" />
     <Compile Include="Models\Domain\Feedback.cs" />
     <Compile Include="Models\Domain\FileUploadModel.cs" />
+    <Compile Include="Models\Domain\IAdminRepository.cs" />
     <Compile Include="Models\Domain\IFeedbackRepository.cs" />
     <Compile Include="Models\Domain\IMonitorRepository.cs" />
     <Compile Include="Models\Domain\IVakantieRepository.cs" />
@@ -440,6 +444,9 @@
     <Content Include="Views\Monitor\Details.cshtml" />
     <Content Include="Views\Monitor\Create.cshtml" />
     <Content Include="Views\Monitor\Delete.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\Create.cshtml" />
+    <Content Include="Views\Admin\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\uploads\" />

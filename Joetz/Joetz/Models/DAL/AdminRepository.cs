@@ -3,6 +3,7 @@ using Parse;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -10,7 +11,7 @@ namespace Joetz.Models.DAL
 {
     public class AdminRepository : IAdminRepository
     {
-        public Vorming GetAdmin(ParseObject adminObject)
+        public Admin GetAdmin(ParseObject adminObject)
         {
             Admin admin = new Admin();
 
@@ -20,22 +21,21 @@ namespace Joetz.Models.DAL
             return admin;
         }
 
-        public async Task<Vorming> FindBy(string adminId)
+        public async Task<Admin> FindBy(string adminId)
         {
-            var query = ParseUser.WhereEqualTo("objectId", adminId);
-            ParseObject adminObject = await query.FirstAsync();
-
-            var admin = GetAdmin(adminObject);
+            IEnumerable<ParseUser> adminObject = await ParseUser.Query.WhereEqualTo("objectId", adminId).FindAsync();
+            ParseUser adminObj = adminObject.FirstOrDefault();
+            var admin = GetAdmin(adminObj);
             return admin;
         }
 
-        public async Task<ICollection<Vorming>> FindAll()
+        public async Task<ICollection<Admin>> FindAll()
         {
-            var query = from u in ParseUser where u.Get<string>("soort").Equals("administrator")
-                        orderby u.Get<string>("email") ascending
-                        select u;
 
-            IEnumerable<ParseObject> objects = await query.FindAsync();
+            IEnumerable<ParseObject> objects = await (from user in ParseUser.Query
+                               where user.Get<string>("soort") == "administrator"
+                               select user).FindAsync();
+
 
             ICollection<Admin> admins = new List<Admin>();
             Admin admin;
@@ -51,38 +51,42 @@ namespace Joetz.Models.DAL
 
         public async Task<bool> Add(Admin admin)
         {
-            ParseObject adminObject = new ParseUser
+            
+            ParseUser current = ParseUser.CurrentUser;
 
-            adminObject["email"] = admin.Email;
-            adminObject["password"] = admin.Wachtwoord;
-            adminObject["soort"] = "administrator";
+            var user = new ParseUser()
+            {
+                Username = admin.Email,
+                Password = admin.Wachtwoord,
+                Email = admin.Email
+            };
 
-            await adminObject.SaveAsync();
+            user["soort"] = "administrator";
+
+            await user.SignUpAsync();
+            Parse.ParseUser.LogOut();
+            await Parse.ParseUser.LogInAsync(current);
 
             return true;
         }
 
         public async Task<bool> Delete(Admin admin)
         {
-            var query = ParseUser.WhereEqualTo("objectId", admin.Id);
-            ParseObject adminObject = await query.FirstAsync();
+            IEnumerable<ParseUser> adminObject = await ParseUser.Query.WhereEqualTo("objectId", admin.Id).FindAsync();
 
-            await adminObject.DeleteAsync();
-            return true;
-        }
-
-        public async Task<bool> Update(Admin admin)
-        {
-            var query = ParseUser.WhereEqualTo("objectId", admin.Id);
-            ParseObject adminObject = await query.FirstAsync();
-
-            adminObject["email"] = admin.Email;
-            adminObject["password"] = admin.Wachtwoord;
+            ParseObject adminObj = adminObject.FirstOrDefault();
+            try
+            {
+                await adminObj.DeleteAsync();
+            }
+            catch (ParseException pa)
+            {
+                adminObj.DeleteAsync();
+            }
             
-            await adminObject.SaveAsync();
-
             return true;
         }
+
 
     }
 }

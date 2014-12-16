@@ -29,11 +29,14 @@
             {
                 <tr>
                     <td>@Html.DisplayFor(modelItem => item.Email)</td>
-                    <td>
-                        <!--GLYPHICONS!!!!-->
-                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                        @Html.ActionLink("Verwijderen", "Delete", new { id = item.Id })
-                    </td>
+                    @if (item.Email.Equals(Parse.ParseUser.CurrentUser.Email))
+                    {
+                        <td>
+                            <!--GLYPHICONS!!!!-->
+                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                           @Html.ActionLink("Verwijderen", "Delete", new { id = item.Id })
+                        </td>
+                    }
                 </tr>
             }
         </tbody>

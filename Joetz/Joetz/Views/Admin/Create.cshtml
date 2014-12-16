@@ -1,0 +1,47 @@
+﻿@model Joetz.Models.Domain.Admin
+
+@{
+    ViewBag.Title = "Nieuwe administrator";
+}
+
+@using (Html.BeginForm("Create", "Admin", FormMethod.Post, new { role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <div class="page-header">
+        <br />
+        <h1>@ViewBag.Title</h1>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">Algemeen</div>
+        <div class="container">
+            <br />
+            <div class="form-group">
+                <label for="inputTitel">@Html.LabelFor(model => model.Email)</label>
+                @Html.TextBoxFor(model => model.Email, new { @class = "form-control", id = "inputEmail", style = "width: 97%" })
+                @Html.ValidationMessageFor(model => model.Email)
+            </div>
+            <div class="form-group">
+                <label for="inputKorteBeschrijving">@Html.LabelFor(model => model.Wachtwoord)</label>
+                @Html.TextAreaFor(model => model.Wachtwoord, new { @class = "form-control", id = "inputWachtwoord", style = "width: 97%" })
+                @Html.ValidationMessageFor(model => model.Wachtwoord)
+            </div>
+    </div>
+</div>
+
+    <div class="container">
+        <button type="submit" class="btn btn-default">
+            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+            Toevoegen
+        </button><br /><br />
+    </div>
+}
+<div class="container">
+    <br />
+    @Html.ActionLink("Terug naar overzicht administratoren", "Index", "Admin")<br /><br />
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

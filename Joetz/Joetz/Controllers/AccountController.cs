@@ -58,7 +58,11 @@ namespace Joetz.Controllers
         {
             try
             {
-                if(model.Email.Equals("joetz-west@joetz.be"))
+                IEnumerable<ParseUser> adminObject = await ParseUser.Query.WhereEqualTo("email", model.Email).FindAsync();
+
+                ParseUser adminObj = adminObject.FirstOrDefault();
+                //if(model.Email.Equals("joetz-west@joetz.be"))
+                if(adminObj.Get<string>("soort").Equals("administrator"))
                 {
                     ParseUser user = await ParseUser.LogInAsync(model.Email, model.Wachtwoord);
                     // Login was successful.

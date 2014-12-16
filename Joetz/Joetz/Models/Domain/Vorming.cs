@@ -55,15 +55,11 @@ namespace Joetz.Models.Domain
         [DataType(DataType.Url)]
         public string WebsiteLocatie { get; set; }
 
-        [Display(Name = "Locatie")]
-        [Required(ErrorMessage = "{0} is verplicht")]
-        public string Locatie { get; set; }
 
         public Vorming() : base()
         {
             Betalingswijze = "";
             CriteriaDeelnemers = "";
-            Locatie = "";
             InbegrepenPrijs = "";
             Periodes = new List<String>();
             Prijs = 0.0;

@@ -3,6 +3,7 @@ using Joetz.Models.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -12,12 +13,12 @@ namespace Joetz.Controllers
     {
        private IAdminRepository adminRepository;
 
-        public VormingController()
+        public AdminController()
         {
             this.adminRepository = new AdminRepository();
         }
 
-        public VormingController(IAdminRepository adminRepository)
+        public AdminController(IAdminRepository adminRepository)
         {
             this.adminRepository = adminRepository;
         }
@@ -38,56 +39,39 @@ namespace Joetz.Controllers
 
         public ActionResult Create()
         {
-            return View(new Vorming());
+            return View(new Admin());
         }
 
         [HttpPost]
-        public async Task<ActionResult> Create(Vorming vorming)
+        public async Task<ActionResult> Create(Admin admin)
         {
             if (ModelState.IsValid)
             {
-                await vormingRepository.Add(vorming);
-                TempData["Info"] = "Vorming " + vorming.Titel + " is toegevoegd";
-                return RedirectToAction("Index");
+                await adminRepository.Add(admin);
+                TempData["Info"] = "Administrator " + admin.Email + " is toegevoegd";
+                return RedirectToAction("Login", "Account", null);
             }
-            return View(vorming);
+            return View(admin);
         }
 
-        public async Task<ActionResult> Edit(string id)
-        {
-            var vormingTask = vormingRepository.FindBy(id);
-            Vorming vorming = await vormingTask;
-            return View(vorming);
-        }
-
-        [HttpPost]
-        public async Task<ActionResult> Edit(Vorming v)
-        {
-            await vormingRepository.Update(v);
-            return RedirectToAction("Index");
-        }
-
+       
         public async Task<ActionResult> Delete(string id)
         {
-            var vormingTask = vormingRepository.FindBy(id);
-            Vorming vorming = await vormingTask;
-            return View(vorming);
+            var adminTask = adminRepository.FindBy(id);
+            Admin admin = await adminTask;
+            return View(admin);
         }
 
         [HttpPost, ActionName("Delete")]
         public async Task<ActionResult> DeleteConfirmed(string id)
         {
-            var vormingTask = vormingRepository.FindBy(id);
-            Vorming vorming = await vormingTask;
-            await vormingRepository.Delete(vorming);
+            var adminTask = adminRepository.FindBy(id);
+            Admin admin = await adminTask;
+            await adminRepository.Delete(admin);
+            Parse.ParseUser.LogOut();
             return RedirectToAction("Index");
         }
 
-        public async Task<ActionResult> Details(string id)
-        {
-            var vormingTask = vormingRepository.FindBy(id);
-            Vorming vorming = await vormingTask;
-            return View("Details", vorming);
-        }
+       
     }
 }
