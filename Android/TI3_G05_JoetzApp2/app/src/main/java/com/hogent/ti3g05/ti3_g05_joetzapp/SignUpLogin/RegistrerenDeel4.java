@@ -13,6 +13,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import java.util.List;
 
@@ -75,6 +76,17 @@ public class RegistrerenDeel4 extends Activity{
                 createAccount();
             } else
                 signUpMsg(getString(R.string.error_no_internet));
+            }
+        });
+        //signupEmailLabel
+        TextView tvOpvullen = (TextView) findViewById(R.id.signupEmailLabel);
+        tvOpvullen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mEmailEditText.setText("albert.bosman@gmail.com");
+                mPasswordEditText.setText("abc123");
+                mConfirmPasswordEditText.setText("abc123");
+
             }
         });
 	}

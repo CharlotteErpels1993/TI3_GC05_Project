@@ -43,7 +43,7 @@
             android:textColor="@color/Rood"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/ExtraInformatie"
+            android:layout_below="@id/ExtraInformatieIns"
             android:layout_marginTop="25dp"
             android:text="@string/volgende" />
 

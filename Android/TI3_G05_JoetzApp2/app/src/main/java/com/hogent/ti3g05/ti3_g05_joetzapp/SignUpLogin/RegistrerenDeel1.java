@@ -104,6 +104,14 @@ public class RegistrerenDeel1 extends Activity{
             }
         });
 
+        TextView tvOpvullen = (TextView) findViewById(R.id.signupRijksRegisterNummerLabel);
+        tvOpvullen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                et_rijksregisterNr.setText("94112419767");
+
+            }
+        });
 
     }
 

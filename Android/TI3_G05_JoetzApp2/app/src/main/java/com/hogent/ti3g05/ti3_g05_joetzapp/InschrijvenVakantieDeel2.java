@@ -12,6 +12,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
@@ -91,6 +92,17 @@ public class InschrijvenVakantieDeel2 extends Activity {
             }
         });
 
+        TextView tvOpvullen = (TextView) findViewById(R.id.AlgemeneUitleg);
+        tvOpvullen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                txtVoornaam.setText("Albert");
+                txtNaam.setText("Bosman");
+                txtGSM.setText("0485263265");
+                txtTelefoon.setText("082356895");
+
+            }
+        });
     }
 
 

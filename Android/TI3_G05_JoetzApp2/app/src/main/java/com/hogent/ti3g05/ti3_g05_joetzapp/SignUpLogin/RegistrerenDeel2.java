@@ -13,6 +13,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
@@ -59,6 +60,17 @@ public class RegistrerenDeel2 extends Activity{
                     Toast.makeText(getApplicationContext(), getString(R.string.error_no_internet), Toast.LENGTH_SHORT).show();
             }
         });
+
+        TextView tvOpvullen = (TextView) findViewById(R.id.signupAansluitingsnummerLabel);
+        tvOpvullen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                et_aansluitingsnummer.setText("9638524561");
+                et_codeGerechtigde.setText("12563258");
+
+            }
+        });
+
     }
 
     //controleren of de ingegeven waarden correct zijn (en ingevuld), zoja sla de gegevens op

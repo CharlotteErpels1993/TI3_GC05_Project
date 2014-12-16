@@ -13,6 +13,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import java.util.List;
 
@@ -76,6 +77,21 @@ public class RegistrerenDeel3 extends Activity{
                 else{
                     Toast.makeText(getApplicationContext(), getString(R.string.error_no_internet), Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+        TextView tvOpvullen = (TextView) findViewById(R.id.signupVoornaamLabel);
+        tvOpvullen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                voornaamText.setText("Albert");
+                naamText.setText("Bosman");
+                straatText.setText("Mandellaan");
+                huisnrText.setText("85");
+                gemeenteText.setText("Roesselare");
+                postcodeText.setText("8800");
+                telefoonText.setText("081568465");
+                gsmText.setText("0412385269");
+
             }
         });
 	}

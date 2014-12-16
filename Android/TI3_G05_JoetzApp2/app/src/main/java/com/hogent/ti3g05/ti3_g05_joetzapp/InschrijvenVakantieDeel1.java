@@ -89,6 +89,26 @@ public class InschrijvenVakantieDeel1 extends FragmentActivity {
             }
         });
 
+        TextView tvOpvullen = (TextView) findViewById(R.id.AlgemeneUitleg);
+        tvOpvullen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                txtVoornaam.setText("Peter");
+                txtNaam.setText("Bosman");
+                txtStraat.setText("Mandellaan");
+                txtHuisnr.setText("85");
+                txtGemeente.setText("Roesselare");
+                txtPostcode.setText("8800");
+                gebDatum.setText("Nov 24, 1998");
+                maandI = "Nov 24, 1998";
+                tv_maand.setText("Nov 24, 1998");
+                TextView dag = (TextView) findViewById(R.id.dagIns);
+                TextView jaar = (TextView) findViewById(R.id.jaarIns);
+                dag.setText("24");
+                jaar.setText("1998");
+
+            }
+        });
     }
 
 
