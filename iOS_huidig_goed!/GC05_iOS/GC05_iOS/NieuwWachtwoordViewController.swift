@@ -3,11 +3,32 @@ import UIKit
 class NieuwWachtwoordViewController: UIViewController {
     @IBOutlet weak var emailAdresTxt: UITextField!
     
+    //
+    //Naam: viewDidLoad
+    //
+    //Werking: - zorgt ervoor dat het text field emailadres in het begin leeg is
+    //
+    //Parameters:
+    //
+    //Return:
+    //
     override func viewDidLoad() {
         super.viewDidLoad()
         emailAdresTxt.text = ""
     }
     
+    //
+    //Naam: prepareForSegue
+    //
+    //Werking: - maakt de volgende view met opgegeven identifier (stelt soms attributen van de volgende view op)
+    //         - controleert ook eerste de ingevulde velden op geldigheid, door middel van de methode nieuwWachtwoord()
+    //
+    //Parameters:
+    //  - segue: UIStoryboardSegue
+    //  - sender: AnyObject?
+    //
+    //Return:
+    //
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "nieuwWachtwoord2" {
             nieuwWachtwoord()
@@ -16,6 +37,16 @@ class NieuwWachtwoordViewController: UIViewController {
         }
     }
     
+    //
+    //Naam: nieuwWachtwoord
+    //
+    //Werking: - zorgt ervoor wanneer de gebruiker geen internet heeft, er een melding getoond wordt
+    //         - controleert ook eerste email text field op geldigheid, zonee wordt er een foutmelding gegeven
+    //
+    //Parameters:
+    //
+    //Return:
+    //
     func nieuwWachtwoord() {
         var email = emailAdresTxt.text
         
@@ -41,7 +72,7 @@ class NieuwWachtwoordViewController: UIViewController {
             
         }
         
-        if (email != nil && isValidEmail(email) && isValidEmailInDatabase(email)) {
+        if (email != nil && checkPatternEmail(email) && isValidEmailInDatabase(email)) {
             PFUser.requestPasswordResetForEmail(email)
         } else {
             giveUITextFieldRedBorder(self.emailAdresTxt)
@@ -53,34 +84,18 @@ class NieuwWachtwoordViewController: UIViewController {
         }
     }
     
-    func isValidEmail(testStr:String) -> Bool {
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
-        let range = testStr.rangeOfString(emailRegEx, options:.RegularExpressionSearch)
-        let result = range != nil ? true : false
-        return result
-    }
-    
+    //
+    //Naam: isValidEmailInDatabase
+    //
+    //Werking: - bekijkt in de databank of er een email is geregistreerd
+    //
+    //Parameters:
+    //  - email: String
+    //
+    //Return: een bool true als het email geregistreerd is in de database, anders false
+    //
     func isValidEmailInDatabase(email: String) -> Bool {
-        
         return LocalDatastore.isEmailAlGeregistreerd(email)
-        
-        
-        /*var monitorResponse = ParseData.getMonitorWithEmail(email)
-        var monitor: Monitor = Monitor(id: "id")
-        
-        if monitorResponse.1 == nil {
-            var monitor = monitorResponse.0
-        }
-        
-        var ouderResponse = ParseData.getOuderWithEmail(email)
-        
-        var ouder = ouderResponse.0
-        
-        if ouder.id == "test" && monitor.id == "test" {
-            return false
-        }
-        
-        return true*/
     }
     
 }

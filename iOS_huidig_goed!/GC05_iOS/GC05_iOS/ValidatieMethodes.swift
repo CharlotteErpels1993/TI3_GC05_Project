@@ -152,6 +152,16 @@ func wachtwoordenMatch(wachtwoord: String, herhaalWachtwoord: String) -> Bool {
     }
 }
 
+//
+//Naam: checkPatternEmail
+//
+//Werking: - bekijkt of het ingevulde emailadres voldoet aan de regex
+//
+//Parameters:
+//  - email: String
+//
+//Return: een bool die true is als het email voldoet aan de regex, anders false
+//
 func checkPatternEmail(email: String) -> Bool {
     if countElements(email) == 0 {
         return false

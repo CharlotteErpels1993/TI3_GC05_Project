@@ -125,25 +125,6 @@ class InloggenViewController: UIViewController, UITextFieldDelegate {
     }
     
     //
-    //Naam: checkPatternEmail
-    //
-    //Werking: - bekijkt of het ingevulde emailadres voldoet aan de regex
-    //
-    //Parameters:
-    //  - email: String
-    //
-    //Return: een bool die true is als het email voldoet aan de regex, anders false
-    //
-    func checkPatternEmail(email: String) -> Bool {
-        if countElements(email) == 0 {
-            return false
-        } else if Regex(p: "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}").test(email) {
-            return true
-        }
-        return false
-    }
-    
-    //
     //Naam: setStatusTextFields
     //
     //Werking: - zet de status van de text fields in
