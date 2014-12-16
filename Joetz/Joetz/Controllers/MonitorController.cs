@@ -30,14 +30,21 @@ namespace Joetz.Controllers
             return View(monitoren);
         }*/
 
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
+        {
+            var monitorTask = monitorRepository.FindAll();
+            IEnumerable<Monitor> monitoren = await monitorTask;
+            return View(monitoren);
+        }
+
+        public ActionResult Add()
         {
             return View();
         }
 
         //onderstaande methode dient voor de fileupload
         [HttpPost]
-        public async Task<ActionResult> Index(HttpPostedFileBase file)
+        public async Task<ActionResult> Add(HttpPostedFileBase file)
         {
             // Zeker zijn dat gebruiker bestand heeft geselecteerd
             if (file != null && file.ContentLength > 0)

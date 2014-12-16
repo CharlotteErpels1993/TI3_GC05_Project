@@ -326,7 +326,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Models\DAL\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Images\Joetz\Carousel\Act aug 1 %28900 x 604%29.jpg" />
     <Content Include="Images\Joetz\Carousel\bos1 %28900 x 675%29.jpg" />
@@ -360,9 +360,9 @@
     <Content Include="Resources\Collapse_h.jpg" />
     <Content Include="Resources\Expand.jpg" />
     <Content Include="Resources\Expand_h.jpg" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Models\DAL\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Models\DAL\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Models\DAL\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <None Include="Scripts\jquery-1.9.0.intellisense.js" />

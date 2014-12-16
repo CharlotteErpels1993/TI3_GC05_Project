@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<Joetz.Models.Domain.Monitor>
+
+@{
     ViewBag.Title = "Monitoren";
 }
 
@@ -9,16 +11,65 @@
     </div>
     <div class="container">
         <h6>
-            U kan een Excel bestand uploaden om meerdere monitoren toe te voegen aan uw databank. 
-            <br /><br />
-            @using (Html.BeginForm("Index", "Monitor", FormMethod.Post, new { enctype = "multipart/form-data" }))
-            {
-                <input type="file" name="file" value="Bestand kiezen" 
-                       accept="application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" />
-                <br />
-                <input type="submit" value="Bevestigen" />
-            }
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            @Html.ActionLink("Voeg monitoren toe", "Add", "Monitor")<br /><br />
         </h6>
     </div>
-    
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Titel)
+                </th>
+                <th></th>
+                <th>Acties</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Naam)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Voornaam)</td>
+                    <td>
+                        <!--GLYPHICONS!!!!-->
+                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                        @Html.ActionLink("Bewerken", "Edit", new { id = item.Id }) |
+                        <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                        @Html.ActionLink("Verwijderen", "Delete", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
+
+@*<h2>@ViewBag.Title</h2>
+
+    <p>
+        @Html.ActionLink("Voeg een nieuwe vakantie toe", "Create")
+    </p>
+    <table>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Titel)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Titel)
+            </td>
+            <td>
+                @Html.ActionLink("Bewerken", "Edit", new { id=item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+                @Html.ActionLink("Verwijderen", "Delete", new { id=item.Id })
+            </td>
+        </tr>
+    }
+
+    </table>*@
