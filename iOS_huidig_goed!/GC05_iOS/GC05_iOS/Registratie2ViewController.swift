@@ -18,14 +18,46 @@ class Registratie2ViewController: UITableViewController {
     var redColor: UIColor = UIColor.redColor()
     var gsmAlGeregistreerd: Bool = false
     
+    //
+    //Naam: gaTerugNaarInloggen
+    //
+    //Werking: - zorgt voor een unwind segue
+    //         - geeft ook een melding bij het verlaten van het scherm (of de gebruiker dit effectief wilt)
+    //
+    //Parameters:
+    //  - sender: AnyObject
+    //
+    //Return:
+    //
     @IBAction func gaTerugNaarInloggen(sender: AnyObject) {
         annuleerControllerRegistratie(self)
     }
     
+    //
+    //Naam: viewDidLoad
+    //
+    //Werking:
+    //
+    //Parameters:
+    //
+    //Return:
+    //
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
+    //
+    //Naam: prepareForSegue
+    //
+    //Werking: - maakt de volgende view met opgegeven identifier (stelt soms attributen van de volgende view op)
+    //         - controleert ook eerste de ingevulde velden op geldigheid, zonee wordt er een foutmelding gegeven
+    //
+    //Parameters:
+    //  - segue: UIStoryboardSegue
+    //  - sender: AnyObject?
+    //
+    //Return:
+    //
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "volgende" {
             let registratie3ViewController = segue.destinationViewController as Registratie3ViewController
@@ -51,25 +83,34 @@ class Registratie2ViewController: UITableViewController {
         }
     }
     
+    //
+    //Naam: setStatusTextFields
+    //
+    //Werking: - zet de status van de text fields in
+    //              * controleert of de velden leeg zijn
+    //              * controleert of andere validatiemethoden geldig zijn
+    //              * wanneer een text field ongeldig is krijgt deze de status "leeg" of "ongeldig"
+    //
+    //Parameters:
+    //
+    //Return:
+    //
     func setStatusTextFields() {
         if txtVoornaam.text.isEmpty {
             statusTextFields["voornaam"] = "leeg"
         } else {
-            //TO DO: checken op pattern?
             statusTextFields["voornaam"] = "ingevuld"
         }
         
         if txtNaam.text.isEmpty {
             statusTextFields["naam"] = "leeg"
         } else {
-            //TO DO: checken op pattern?
             statusTextFields["naam"] = "ingevuld"
         }
         
         if txtStraat.text.isEmpty {
             statusTextFields["straat"] = "leeg"
         } else {
-            //TO DO: checken op pattern?
             statusTextFields["straat"] = "ingevuld"
         }
         
@@ -140,6 +181,16 @@ class Registratie2ViewController: UITableViewController {
         }
     }
     
+    //
+    //Naam: pasLayoutVeldenAan
+    //
+    //Werking: - zorgt ervoor dat de text field, wanneer status "ongeldig" of "leeg" is, een rode border krijgt
+    //         - als deze status niet "leeg" of "ongeldig" is wordt deze border terug op default gezet
+    //
+    //Parameters:
+    //
+    //Return:
+    //
     func pasLayoutVeldenAan() {
         if statusTextFields["voornaam"] == "leeg" {
             giveUITextFieldRedBorder(txtVoornaam)
@@ -196,6 +247,15 @@ class Registratie2ViewController: UITableViewController {
         }
     }
     
+    //
+    //Naam: controleerRodeBordersAanwezig
+    //
+    //Werking: - bekijkt of de text field borders een rode border hebben
+    //
+    //Parameters:
+    //
+    //Return: een bool true als er een rode border aanwezig is, anders false
+    //
     func controleerRodeBordersAanwezig() -> Bool {
         if CGColorEqualToColor(txtVoornaam.layer.borderColor, redColor.CGColor) {
             return true
@@ -220,6 +280,15 @@ class Registratie2ViewController: UITableViewController {
         }
     }
     
+    //
+    //Naam: settenVerplichteGegevens
+    //
+    //Werking: - afhankelijk van de status van de verplichte velden, worden de gegevens van de ouder ingesteld
+    //
+    //Parameters:
+    //
+    //Return:
+    //
     func settenVerplichteGegevens() {
         ouder.voornaam = txtVoornaam.text
         ouder.naam = txtNaam.text
@@ -230,6 +299,15 @@ class Registratie2ViewController: UITableViewController {
         ouder.gsm = txtGsm.text
     }
     
+    //
+    //Naam: settenOptioneleGegevens
+    //
+    //Werking: - afhankelijk van de status van de niet verplichte velden, worden de gegevens van de ouder ingesteld
+    //
+    //Parameters:
+    //
+    //Return:
+    //
     func settenOptioneleGegevens() {
         if statusTextFields["bus"] != "leeg" {
             ouder.bus = txtBus.text
@@ -240,6 +318,15 @@ class Registratie2ViewController: UITableViewController {
         }
     }
     
+    //
+    //Naam: controleerGSMAlGeregistreerd
+    //
+    //Werking: - bekijkt in de databank of er al een ouder zich ingeschreven heeft met die gsm-nummer
+    //
+    //Parameters:
+    //
+    //Return: een bool true als het gsm-nummer al geregistreerd is, anders false
+    //
     func controleerGSMAlGeregisteerd() -> Bool {
         return LocalDatastore.isGsmAlGeregistreerd(self.txtGsm.text)
     }
