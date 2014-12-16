@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-class InschrijvenVakantie2ViewController : /*ResponsiveTextFieldViewController*/ UIViewController {
+class InschrijvenVakantie2ViewController : UIViewController {
     
     var inschrijvingVakantie: InschrijvingVakantie!
     var redColor: UIColor = UIColor.redColor()
@@ -10,14 +10,44 @@ class InschrijvenVakantie2ViewController : /*ResponsiveTextFieldViewController*/
     
     @IBOutlet weak var dpGeboortedatum: UIDatePicker!
     
+    //
+    //Naam: controleerRijksregisterNummerAlGeregistreerd
+    //
+    //Werking: - bekijkt in de databank of er al een ouder zich ingeschreven heeft met dat rijksregisternummer
+    //
+    //Parameters:
+    //
+    //Return: een bool true als het rijksregisternummer al geregistreerd is, anders false
+    //
     @IBAction func annuleer(sender: AnyObject) {
        annuleerControllerInschrijvenVakantieVorming(self)
     }
     
+    //
+    //Naam: viewDidLoad
+    //
+    //Werking:
+    //
+    //Parameters:
+    //
+    //Return:
+    //
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
+    //
+    //Naam: prepareForSegue
+    //
+    //Werking: - maakt de volgende view met opgegeven identifier (stelt soms attributen van de volgende view op)
+    //         - controleert ook eerste de ingevulde velden op geldigheid, zonee wordt er een foutmelding gegeven
+    //
+    //Parameters:
+    //  - segue: UIStoryboardSegue
+    //  - sender: AnyObject?
+    //
+    //Return:
+    //
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "volgende" {
             self.leeftijd = calculateAge(dpGeboortedatum.date) as Int
@@ -42,8 +72,17 @@ class InschrijvenVakantie2ViewController : /*ResponsiveTextFieldViewController*/
         }
     }
     
+    //
+    //Naam: calculateAge
+    //
+    //Werking: - berekent de leeftijd aan de hand van de geboortedatum
+    //
+    //Parameters:
+    //  - birthday: NSDate
+    //
+    //Return:
+    //
     func calculateAge (birthday: NSDate) -> NSInteger {
-        
         var userAge : NSInteger = 0
         var calendar : NSCalendar = NSCalendar.currentCalendar()
         var unitFlags : NSCalendarUnit = NSCalendarUnit.CalendarUnitYear | NSCalendarUnit.CalendarUnitMonth | NSCalendarUnit.CalendarUnitDay
