@@ -2,12 +2,11 @@ import UIKit
 import Foundation
 
 class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, UISearchDisplayDelegate {
-    
     var vakanties: [Vakantie] = []
     var vakanties2: [Vakantie] = []
     var redColor: UIColor = UIColor(red: CGFloat(232/255.0), green: CGFloat(33/255.0), blue: CGFloat(35/255.0), alpha: CGFloat(1.0))
-    var favoriet: Bool = false
-    var score: [Double] = []
+    var isFavoriet: Bool = false
+    var feedbackScores: [Double] = []
     
     @IBOutlet weak var zoekbar: UISearchBar!
     
@@ -16,63 +15,58 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         toggleSideMenuView()
     }
     
+    @IBAction func gaTerugNaarOverzichtVakanties(segue: UIStoryboardSegue) {}
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setNeedsStatusBarAppearanceUpdate()
         self.navigationController!.toolbarHidden = true
         
-        //Parse LocalDatastore
-        var tableName: String = ""
-        
-        if self.favoriet == true {
-            //favoriete vakanties
-            tableName = "Favoriet"
-            self.navigationItem.title = "Favorieten"
-        } else {
-            tableName = "Vakantie"
-            self.navigationItem.title = "Vakanties"
+        if PFUser.currentUser() != nil {
+            self.navigationItem.setHidesBackButton(true, animated: true)
+            self.navigationItem.rightBarButtonItem = nil
         }
         
         if Reachability.isConnectedToNetwork() == false {
-            //er is geen internet
-            
-            if LocalDatastore.isEmptyInLocalDatastore(tableName) {
-                //table is leeg
-                //melding tonen
-                if tableName == "Favoriet" {
-                    foutBoxOproepen("Geen favoriete vakanties", "Er zijn nog geen vakanties als favoriet geselecteerd!", self)
-                    //self.tableView.reloadData()
-                } else {
-                    foutBoxOproepen("Geen vakanties", "Verbind met het internet om alle vakanties te bekijken!", self)
-                    //self.tableView.reloadData()
+            var alert = UIAlertController(title: "Oeps..", message: "Je hebt geen internet verbinding. Ga naar instellingen om dit aan te passen.", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: { action in
+                exit(0)
+            }))
+            alert.addAction(UIAlertAction(title: "Ga naar instellingen", style: .Default, handler: { action in
+                switch action.style{
+                default:
+                    UIApplication.sharedApplication().openURL(NSURL(string:UIApplicationOpenSettingsURLString)!);
                 }
-            } else {
-                //table is opgevuld
-                //opvullen
-                self.vakanties = LocalDatastore.getLocalObjects(tableName) as [Vakantie]
-                self.vakanties2 = self.vakanties
-                self.tableView.reloadData()
-            }
-        } else {
-            self.vakanties = LocalDatastore.getLocalObjects(tableName) as [Vakantie]
-            self.vakanties2 = self.vakanties
-            self.tableView.reloadData()
+                
+            }))
+            presentViewController(alert, animated: true, completion: nil)
         }
         
+        if isFavoriet == true && PFUser.currentUser() != nil {
+            self.navigationItem.title = "Favorieten"
+            self.vakanties = LocalDatastore.getLocalObjects("Favoriet") as [Vakantie]
+            
+            foutBoxOproepen("Oeps...", "Er zijn geen vakanties geselecteerd als favorieten. Ga naar vakanties en selecteer een vakantie als favoriet door middel van op het hartje te klikken.", self)
+        } else {
+            self.navigationItem.title = "Vakanties"
+            self.vakanties = LocalDatastore.getLocalObjects("Vakantie") as [Vakantie]
+            
+            if vakanties.count == 0 && Reachability.isConnectedToNetwork() == false {
+                foutBoxOproepen("Oeps...", "Er zijn geen vakanties gevonden. Verbind met het internet om de nieuwste vakanties te bekijken.", self)
+            } else if vakanties.count == 0 {
+                foutBoxOproepen("Oeps...", "Sorry, er zijn momenteel geen vakanties in onze databank.", self)
+            }
+        }
         
+        self.vakanties2 = vakanties
+        self.tableView.reloadData()
+
         self.vakanties2.sort({ $0.minLeeftijd < $1.minLeeftijd })
         self.vakanties.sort({ $0.minLeeftijd < $1.minLeeftijd})
     
         hideSideMenuView()
         zoekbar.showsScopeBar = true
         zoekbar.delegate = self
-        
-        if PFUser.currentUser() != nil {
-            self.navigationItem.setHidesBackButton(true, animated: true)
-            self.navigationItem.rightBarButtonItem = nil
-        }
-
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -82,41 +76,21 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
     }
     
     func gemiddeldeFeedback(vakantie: Vakantie) -> Double {
-        
-        //Local Datastore
-        var scores: [Int] = []
+        var feedbackScores: [Int] = []
         var sum = 0
         
-        var feedbacks = LocalDatastore.getLocalObjects("Feedback") as [Feedback]
+        var arrayFeedback = LocalDatastore.getLocalObjectsWithColumnConstraints("Feedback", queryConstraints: ["vakantie": vakantie.id]) as [Feedback]
         
-        for feed in feedbacks {
-            scores.append(feed.score!)
+        for feedback in arrayFeedback {
+            feedbackScores.append(feedback.score!)
         }
         
-        for score in scores {
-            sum += score
+        for feedbackScore in feedbackScores {
+            sum += feedbackScore
         }
         
-        var gemiddelde: Double = Double(sum) / Double(scores.count)
+        var gemiddelde: Double = Double(sum) / Double(feedbackScores.count)
         return ceil(gemiddelde)
-        
-        //WERKEND
-        /*var feedbackResponse = ParseData.getFeedbackFromVakantie(vakantie)
-        var scores: [Int] = []
-        var sum = 0
-        
-        if feedbackResponse.1 == nil {
-            for feed in feedbackResponse.0 {
-                scores.append(feed.score!)
-            }
-        }
-        
-        for score in scores {
-            sum += score
-        }
-        
-        var gemiddelde: Double = Double(sum) / Double(scores.count)
-        return ceil(gemiddelde)*/
     }
     
     func zetAantalSterrenGemiddeldeFeedback(vakantie: Vakantie, ster1: UIImageView, ster2: UIImageView, ster3: UIImageView, ster4: UIImageView, ster5: UIImageView) {
@@ -124,7 +98,13 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         var starGevuld: UIImage = UIImage(named: "star")!
         var starLeeg: UIImage = UIImage(named: "star2")!
         
-        if gemiddeldeFeedbackScore == 1 {
+        if gemiddeldeFeedbackScore == 0 {
+            ster1.image = starLeeg
+            ster2.image = starLeeg
+            ster3.image = starLeeg
+            ster4.image = starLeeg
+            ster5.image = starLeeg
+        } else if gemiddeldeFeedbackScore == 1 {
             ster1.image = starGevuld
             ster2.image = starLeeg
             ster3.image = starLeeg
@@ -156,24 +136,7 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
             ster5.image = starGevuld
         }
         
-        score.append(gemiddeldeFeedbackScore)
-    }
-    
-    func checkConnectie() {
-        if !(Reachability.isConnectedToNetwork()) {
-            var alert = UIAlertController(title: "Oeps..", message: "Je hebt geen internet verbinding. Ga naar instellingen om dit aan te passen.", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: { action in
-                exit(0)
-            }))
-            alert.addAction(UIAlertAction(title: "Ga naar instellingen", style: .Default, handler: { action in
-                switch action.style{
-                default:
-                    UIApplication.sharedApplication().openURL(NSURL(string:UIApplicationOpenSettingsURLString)!);
-                }
-                
-            }))
-            presentViewController(alert, animated: true, completion: nil)
-        }
+        feedbackScores.append(gemiddeldeFeedbackScore)
     }
     
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
@@ -215,16 +178,12 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         self.tableView.reloadData()
     }
     
-    @IBAction func gaTerugNaarOverzichtVakanties(segue: UIStoryboardSegue) {
-    }
-    
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "toonVakantie" {
             let vakantieDetailsController = segue.destinationViewController as VakantieDetailsTableViewController
             let selectedVakantie = vakanties[tableView.indexPathForSelectedRow()!.row]
             vakantieDetailsController.vakantie = selectedVakantie as Vakantie
-            vakantieDetailsController.score = self.score[tableView.indexPathForSelectedRow()!.row]
+            vakantieDetailsController.feedbackScore = self.feedbackScores[tableView.indexPathForSelectedRow()!.row]
             vakantieDetailsController.hidesBottomBarWhenPushed = true
         } else if segue.identifier == "inloggen" {
             let inloggenViewController = segue.destinationViewController as InloggenViewController
@@ -261,7 +220,7 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
     }
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if favoriet == true {
+        if isFavoriet == true {
             if editingStyle == UITableViewCellEditingStyle.Delete {
                 vakanties2.removeAtIndex(indexPath.row)
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
@@ -286,7 +245,7 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
     }
     
     override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
-        if favoriet == true {
+        if isFavoriet == true {
             return .Delete
         } else {
             return .None
@@ -294,7 +253,7 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
     }
     
     @IBAction func refresh(sender: UIRefreshControl) {
-        
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         LocalDatastore.getTableReady("Vakantie")
         LocalDatastore.getTableReady("Afbeelding")
         LocalDatastore.getTableReady("Feedback")
@@ -302,6 +261,7 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         LocalDatastore.getTableReady("Favoriet")
         
         self.refreshControl?.endRefreshing()
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
         viewDidLoad()
     }
 }

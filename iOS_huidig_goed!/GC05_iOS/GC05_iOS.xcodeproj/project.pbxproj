@@ -85,13 +85,12 @@
 		A52494261A251FC00055DEFF /* AnnuleerButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52494251A251FC00055DEFF /* AnnuleerButtons.swift */; };
 		A524D7FE1A3875ED005157D4 /* GeefFeedback1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A524D7FD1A3875ED005157D4 /* GeefFeedback1ViewController.swift */; };
 		A52976D11A1A0A5E00420FEE /* Klevertje.png in Resources */ = {isa = PBXBuildFile; fileRef = A52976D01A1A0A5E00420FEE /* Klevertje.png */; };
+		A52F18301A40758E00A66431 /* joetzVakantie.png in Resources */ = {isa = PBXBuildFile; fileRef = A52F182F1A40758E00A66431 /* joetzVakantie.png */; };
 		A54E1B9E1A125E7C00C6BB95 /* ExtraTekstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54E1B9D1A125E7C00C6BB95 /* ExtraTekstViewController.swift */; };
 		A55321DF1A1C8258005146F8 /* SuccesvolNieuwWachtwoordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55321DE1A1C8258005146F8 /* SuccesvolNieuwWachtwoordViewController.swift */; };
 		A57415CA1A3ADAED0029678D /* WatIsJoetzViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57415C91A3ADAED0029678D /* WatIsJoetzViewController.swift */; };
 		A575A0691A1633E500F6735A /* ENSideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575A0671A1633E500F6735A /* ENSideMenu.swift */; };
 		A575A06A1A1633E500F6735A /* ENSideMenuNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575A0681A1633E500F6735A /* ENSideMenuNavigationController.swift */; };
-		A58126321A305B4300176187 /* facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = A58126301A305B4300176187 /* facebook.png */; };
-		A58126331A305B4300176187 /* twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = A58126311A305B4300176187 /* twitter.png */; };
 		A599185B1A2F79150055AAF1 /* Heart_Empty.png in Resources */ = {isa = PBXBuildFile; fileRef = A59918591A2F79150055AAF1 /* Heart_Empty.png */; };
 		A599185C1A2F79150055AAF1 /* Heart_Full.png in Resources */ = {isa = PBXBuildFile; fileRef = A599185A1A2F79150055AAF1 /* Heart_Full.png */; };
 		A59F1A8E1A16B29700A17D09 /* AfbeeldingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59F1A8D1A16B29700A17D09 /* AfbeeldingDetailViewController.swift */; };
@@ -218,13 +217,12 @@
 		A52494251A251FC00055DEFF /* AnnuleerButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnuleerButtons.swift; sourceTree = "<group>"; };
 		A524D7FD1A3875ED005157D4 /* GeefFeedback1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeefFeedback1ViewController.swift; sourceTree = "<group>"; };
 		A52976D01A1A0A5E00420FEE /* Klevertje.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Klevertje.png; path = Images.xcassets/Klevertje.png; sourceTree = "<group>"; };
+		A52F182F1A40758E00A66431 /* joetzVakantie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = joetzVakantie.png; path = Images.xcassets/joetzVakantie.png; sourceTree = "<group>"; };
 		A54E1B9D1A125E7C00C6BB95 /* ExtraTekstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtraTekstViewController.swift; sourceTree = "<group>"; };
 		A55321DE1A1C8258005146F8 /* SuccesvolNieuwWachtwoordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuccesvolNieuwWachtwoordViewController.swift; sourceTree = "<group>"; };
 		A57415C91A3ADAED0029678D /* WatIsJoetzViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatIsJoetzViewController.swift; sourceTree = "<group>"; };
 		A575A0671A1633E500F6735A /* ENSideMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENSideMenu.swift; sourceTree = "<group>"; };
 		A575A0681A1633E500F6735A /* ENSideMenuNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENSideMenuNavigationController.swift; sourceTree = "<group>"; };
-		A58126301A305B4300176187 /* facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = facebook.png; path = Images.xcassets/facebook.png; sourceTree = "<group>"; };
-		A58126311A305B4300176187 /* twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = twitter.png; path = Images.xcassets/twitter.png; sourceTree = "<group>"; };
 		A59918591A2F79150055AAF1 /* Heart_Empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Heart_Empty.png; path = Images.xcassets/Heart_Empty.png; sourceTree = "<group>"; };
 		A599185A1A2F79150055AAF1 /* Heart_Full.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Heart_Full.png; path = Images.xcassets/Heart_Full.png; sourceTree = "<group>"; };
 		A59F1A8D1A16B29700A17D09 /* AfbeeldingDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AfbeeldingDetailViewController.swift; sourceTree = "<group>"; };
@@ -508,6 +506,7 @@
 		A52976CD1A1A094900420FEE /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				A52F182F1A40758E00A66431 /* joetzVakantie.png */,
 				A5FE779A1A3C69F900C91B62 /* facebook_button.png */,
 				A502AAC81A38AA9E004CF227 /* mail.png */,
 				A502AAC61A38AA82004CF227 /* menu.png */,
@@ -516,8 +515,6 @@
 				A599185A1A2F79150055AAF1 /* Heart_Full.png */,
 				A5E5B9841A23712B0054960C /* joetz.png */,
 				A52976D01A1A0A5E00420FEE /* Klevertje.png */,
-				A58126301A305B4300176187 /* facebook.png */,
-				A58126311A305B4300176187 /* twitter.png */,
 				A5D15CB21A39F28400B11206 /* star.png */,
 				A5D15CB31A39F28400B11206 /* star2.png */,
 			);
@@ -607,14 +604,13 @@
 				A5E5B9831A2370DC0054960C /* LaunchScreen.xib in Resources */,
 				A599185B1A2F79150055AAF1 /* Heart_Empty.png in Resources */,
 				A502AAC91A38AA9E004CF227 /* mail.png in Resources */,
+				A52F18301A40758E00A66431 /* joetzVakantie.png in Resources */,
 				A5CB1FF51A35B80300A4178A /* feedback.png in Resources */,
 				0FA80B0D1A01350E008DB343 /* Main.storyboard in Resources */,
 				A5FE779B1A3C69F900C91B62 /* facebook_button.png in Resources */,
 				0FA80B0F1A01350E008DB343 /* Images.xcassets in Resources */,
-				A58126321A305B4300176187 /* facebook.png in Resources */,
 				A52976D11A1A0A5E00420FEE /* Klevertje.png in Resources */,
 				A5D15CB51A39F28400B11206 /* star2.png in Resources */,
-				A58126331A305B4300176187 /* twitter.png in Resources */,
 				A5D15CB41A39F28400B11206 /* star.png in Resources */,
 				A502AAC71A38AA82004CF227 /* menu.png in Resources */,
 				A5E5B9851A23712B0054960C /* joetz.png in Resources */,

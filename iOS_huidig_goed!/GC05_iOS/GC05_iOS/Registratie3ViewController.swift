@@ -1,7 +1,7 @@
 import UIKit
 import QuartzCore
 
-class Registratie3ViewController: /*ResponsiveTextFieldViewController*/ UITableViewController {
+class Registratie3ViewController: UITableViewController {
     
     @IBOutlet weak var txtEmail: UITextField!
     @IBOutlet weak var txtWachtwoord: UITextField!
@@ -12,7 +12,7 @@ class Registratie3ViewController: /*ResponsiveTextFieldViewController*/ UITableV
     var statusTextFields: [String: String] = [:]
     var redColor: UIColor = UIColor.redColor()
     var emailAlGeregistreerd: Bool = false
-    var ww: String = ""
+    var wachtwoordOuder: String = ""
     
     @IBAction func gaTerugNaarInloggen(sender: AnyObject) {
         annuleerControllerRegistratie(self)
@@ -70,7 +70,7 @@ class Registratie3ViewController: /*ResponsiveTextFieldViewController*/ UITableV
                 if wachtwoordenMatch(txtWachtwoord.text, txtBevestigWachtwoord.text) == true {
                     settenGegevens()
                     registratieSuccesvolViewController.ouder = ouder
-                    registratieSuccesvolViewController.ww = self.ww
+                    registratieSuccesvolViewController.wachtwoordOuder = self.wachtwoordOuder
                 } else {
                     giveUITextFieldDefaultBorder(txtEmail)
                     giveUITextFieldRedBorder(txtWachtwoord)
@@ -89,11 +89,9 @@ class Registratie3ViewController: /*ResponsiveTextFieldViewController*/ UITableV
             if !checkPatternEmail(txtEmail.text) {
                 statusTextFields["email"] = "ongeldig"
                 emailAlGeregistreerd = false
-                //txtEmail.text = ""
             } else if controleerEmailAlGeregisteerd() == true {
                 statusTextFields["email"] = "al geregistreerd"
                 emailAlGeregistreerd = true
-                //txtEmail.text = ""
             } else {
                 statusTextFields["email"] = "geldig"
                 emailAlGeregistreerd = false
@@ -103,14 +101,12 @@ class Registratie3ViewController: /*ResponsiveTextFieldViewController*/ UITableV
         if txtWachtwoord.text.isEmpty {
             statusTextFields["wachtwoord"] = "leeg"
         } else {
-            //TO DO: checken op pattern?
             statusTextFields["wachtwoord"] = "ingevuld"
         }
         
         if txtBevestigWachtwoord.text.isEmpty {
             statusTextFields["bevestigWachtwoord"] = "leeg"
         } else {
-            //TO DO: checken op pattern?
             statusTextFields["bevestigWachtwoord"] = "ingevuld"
         }
     }
@@ -150,7 +146,7 @@ class Registratie3ViewController: /*ResponsiveTextFieldViewController*/ UITableV
     
     func settenGegevens() {
         ouder.email = txtEmail.text
-        self.ww = txtWachtwoord.text
+        self.wachtwoordOuder = txtWachtwoord.text
     }
     
     func controleerEmailAlGeregisteerd() -> Bool {
