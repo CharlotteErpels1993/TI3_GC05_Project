@@ -109,4 +109,11 @@ class VormingenTableViewController: UITableViewController, UISearchBarDelegate, 
         cell.detailTextLabel!.text = "Meer informatie"
         return cell
     }
+    
+    @IBAction func refresh(sender: UIRefreshControl) {
+        LocalDatastore.getTableReady("Vorming")
+        
+        self.refreshControl?.endRefreshing()
+        viewDidLoad()
+    }
 }

@@ -2712,7 +2712,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Vormingen" id="3ip-p1-dgO">
-                        <barButtonItem key="backBarButtonItem" title="Vormingen" id="OGh-iC-dDQ"/>
+                        <barButtonItem key="backBarButtonItem" title="Terug" id="OGh-iC-dDQ"/>
                         <barButtonItem key="leftBarButtonItem" image="menu.png" width="55" id="Rxr-gt-tAC">
                             <inset key="imageInsets" minX="-4" minY="25" maxX="46" maxY="19"/>
                             <connections>
@@ -2721,6 +2721,12 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                         </barButtonItem>
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="ha6-hB-6iT">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <action selector="refresh:" destination="YS9-9D-Eok" eventType="valueChanged" id="1HT-Fk-Tgl"/>
+                        </connections>
+                    </refreshControl>
                     <connections>
                         <outlet property="zoekbar" destination="Cis-Fw-Ccu" id="5EL-bh-fCN"/>
                     </connections>
