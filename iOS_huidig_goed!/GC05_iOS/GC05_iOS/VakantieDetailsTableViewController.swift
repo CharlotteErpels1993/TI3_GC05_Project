@@ -51,7 +51,6 @@ class VakantieDetailsTableViewController: UITableViewController {
         if PFUser.currentUser() != nil {
             var user: PFUser = PFUser.currentUser()
             var soort = user["soort"] as? String
-            //LocalDatastore.getTableReady("Favoriet")
             var favorieteVakantie: Favoriet = Favoriet(id: "test")
             
             if soort == "ouder" {

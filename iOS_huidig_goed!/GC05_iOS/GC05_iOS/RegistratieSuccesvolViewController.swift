@@ -15,7 +15,8 @@ class RegistratieSuccesvolViewController: UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         //ParseData.parseOuderToDatabase(ouder, wachtwoord: ww)
-        LocalDatastore.pinOuder(ouder, wachtwoord: ww)
+        //LocalDatastore.pinOuder(ouder, wachtwoord: ww)
+        ParseToDatabase.parseOuderToDatabase(ouder, wachtwoord: ww)
         
         self.navigationItem.setHidesBackButton(true, animated: true)
     }
