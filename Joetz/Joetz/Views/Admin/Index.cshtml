@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Joetz.Models.Domain.Admin>
+
+@{
+    ViewBag.Title = "Administrators";
+}
+
+<div class="container">
+    <br /><br />
+    <div class="page-header">
+        <h1><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> @ViewBag.Title</h1>
+    </div>
+    <div class="container">
+        <h6>
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            @Html.ActionLink("Voeg een nieuwe administrator toe", "Create", "Admin")<br /><br />
+        </h6>
+    </div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>
+                    Email
+                </th>
+                <th>Acties</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                    <td>
+                        <!--GLYPHICONS!!!!-->
+                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                        @Html.ActionLink("Verwijderen", "Delete", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
