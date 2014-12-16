@@ -1,14 +1,10 @@
 package com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite;
 
-import android.content.ContentValues;
 import android.content.Context;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.util.Log;
 
-import com.hogent.ti3g05.ti3_g05_joetzapp.FavorieteVakanties;
-import com.hogent.ti3g05.ti3_g05_joetzapp.domein.FavorieteVakantie;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Feedback;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Monitor;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vakantie;
@@ -17,7 +13,10 @@ import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vorming;
 import java.util.List;
 
 import static com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.Constants.TABLE_VAKANTIE;
-//Laag tussen databasehandler en de klassen die de locale database gebruiken
+
+//Naam: fetchLocalObjects
+//
+//Werking: Laag tussen databasehandler en de klassen die de locale database gebruiken
 public class SqliteDatabase {
 
     protected DBHandler db;
