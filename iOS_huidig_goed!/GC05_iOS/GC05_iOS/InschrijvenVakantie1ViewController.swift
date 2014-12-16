@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 import QuartzCore
 
-class InschrijvenVakantie1ViewController : /*ResponsiveTextFieldViewController*/ UITableViewController {
+class InschrijvenVakantie1ViewController : UITableViewController {
     
     @IBOutlet weak var txtVoornaam: UITextField!
     @IBOutlet weak var txtNaam: UITextField!
@@ -19,6 +19,31 @@ class InschrijvenVakantie1ViewController : /*ResponsiveTextFieldViewController*/
     var statusTextFields: [String: String] = [:]
     var inschrijvingVakantie: InschrijvingVakantie! = InschrijvingVakantie(id: "test")
     
+    //
+    //Naam: annuleer
+    //
+    //Werking: - zorgt ervoor wanneer de gebruiker op annuleer drukt, er een melding komt of de gebruiker zeker is van zijn beslissing
+    //
+    //Parameters:
+    //  - sender: AnyObject
+    //
+    //Return:
+    //
+    @IBAction func annuleer(sender: AnyObject) {
+        annuleerControllerInschrijvenVakantieVorming(self)
+    }
+    
+    //
+    //Naam: viewDidLoad
+    //
+    //Werking: - zorgt ervoor dat de side bar menu verborgen is
+    //         - bekijkt of de gebruiker internet heeft, zoniet geeft hij een gepaste melding
+    //         - laadt de tables in
+    //
+    //Parameters:
+    //
+    //Return:
+    //
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setNeedsStatusBarAppearanceUpdate()
@@ -44,17 +69,24 @@ class InschrijvenVakantie1ViewController : /*ResponsiveTextFieldViewController*/
             txtBus.resignFirstResponder()
         }
         
-        /*ParseData.deleteInschrijvingVakantieTable()
-        ParseData.vulInschrijvingVakantieTableOp()*/
-        
         LocalDatastore.getTableReady(Constanten.TABLE_INSCHRIJVINGVAKANTIE)
         LocalDatastore.getTableReady(Constanten.TABLE_DEELNEMER)
     }
-
-    @IBAction func annuleer(sender: AnyObject) {
-        annuleerControllerInschrijvenVakantieVorming(self)
-    }
     
+    //
+    //Naam: prepareForSegue
+    //
+    //Werking: - maakt de volgende view met opgegeven identifier (stelt soms attributen van de volgende view op)
+    //         - controleert ook eerste de ingevulde velden op geldigheid, zonee wordt er een foutmelding gegeven
+    //         - controleert ook of de gebruiker al is ingeschreven (controle: ouder, deelnemer naam, deelnemer voornaam en vakantie)
+    //
+    //Parameters:
+    //  - segue: UIStoryboardSegue
+    //  - sender: AnyObject?
+    //
+    //Return:
+    //
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "volgende" {
         let inschrijvenVakantie2ViewController = segue.destinationViewController as InschrijvenVakantie2ViewController
@@ -99,25 +131,34 @@ class InschrijvenVakantie1ViewController : /*ResponsiveTextFieldViewController*/
         
     }
     
+    //
+    //Naam: setStatusTextFields
+    //
+    //Werking: - zet de status van de text fields in
+    //              * controleert of de velden leeg zijn
+    //              * controleert of andere validatiemethoden geldig zijn
+    //              * wanneer een text field ongeldig is krijgt deze de status "leeg" of "ongeldig"
+    //
+    //Parameters:
+    //
+    //Return:
+    //
     func setStatusTextFields() {
         if txtVoornaam.text.isEmpty {
             statusTextFields["voornaam"] = "leeg"
         } else {
-            //TO DO: checken op pattern?
             statusTextFields["voornaam"] = "ingevuld"
         }
         
         if txtNaam.text.isEmpty {
             statusTextFields["naam"] = "leeg"
         } else {
-            //TO DO: checken op pattern?
             statusTextFields["naam"] = "ingevuld"
         }
         
         if txtStraat.text.isEmpty {
             statusTextFields["straat"] = "leeg"
         } else {
-            //TO DO: checken op pattern?
             statusTextFields["straat"] = "ingevuld"
         }
         
@@ -136,14 +177,12 @@ class InschrijvenVakantie1ViewController : /*ResponsiveTextFieldViewController*/
         if txtBus.text.isEmpty {
             statusTextFields["bus"] = "leeg"
         } else {
-            //TO DO: checken op pattern?
             statusTextFields["bus"] = "ingevuld"
         }
         
         if txtGemeente.text.isEmpty {
             statusTextFields["gemeente"] = "leeg"
         } else {
-            //TO DO: checken op pattern?
             statusTextFields["gemeente"] = "ingevuld"
         }
         
@@ -160,6 +199,16 @@ class InschrijvenVakantie1ViewController : /*ResponsiveTextFieldViewController*/
         }
     }
     
+    //
+    //Naam: pasLayoutVeldenAan
+    //
+    //Werking: - zorgt ervoor dat de text field, wanneer status "ongeldig" of "leeg" is, een rode border krijgt
+    //         - als deze status niet "leeg" of "ongeldig" is wordt deze border terug op default gezet
+    //
+    //Parameters:
+    //
+    //Return:
+    //
     func pasLayoutVeldenAan() {
         if statusTextFields["voornaam"] == "leeg" {
             giveUITextFieldRedBorder(txtVoornaam)
@@ -204,6 +253,15 @@ class InschrijvenVakantie1ViewController : /*ResponsiveTextFieldViewController*/
         }
     }
     
+    //
+    //Naam: controleerRodeBordersAanwezig
+    //
+    //Werking: - bekijkt of de text field borders een rode border hebben
+    //
+    //Parameters:
+    //
+    //Return: een bool true als er een rode border aanwezig is, anders false
+    //
     func controleerRodeBordersAanwezig() -> Bool {
         if CGColorEqualToColor(txtVoornaam.layer.borderColor, redColor.CGColor) {
             return true
@@ -224,6 +282,15 @@ class InschrijvenVakantie1ViewController : /*ResponsiveTextFieldViewController*/
         }
     }
     
+    //
+    //Naam: settenVerplichteGegevens
+    //
+    //Werking: - afhankelijk van de status van de verplichte velden, worden de gegevens van de deelnemer ingesteld
+    //
+    //Parameters:
+    //
+    //Return:
+    //
     func settenVerplichteGegevens() {
         self.deelnemer.voornaam = txtVoornaam.text
         self.deelnemer.naam = txtNaam.text
@@ -246,6 +313,15 @@ class InschrijvenVakantie1ViewController : /*ResponsiveTextFieldViewController*/
         }*/
     }
     
+    //
+    //Naam: controleerKindAlIngeschreven
+    //
+    //Werking: - bekijkt in de databank of er al een inschrijving bestaat (controle: voornaam en naam deelnemer, ouder en vakantie)
+    //
+    //Parameters:
+    //
+    //Return: een bool true als de inschrijving al bestaat, anders false 
+    //
     func controleerKindAlIngeschreven() -> Bool {
         return LocalDatastore.bestaatInschrijvingVakantieAl(self.inschrijvingVakantie)
         /*var inschrijvingen: [InschrijvingVakantie] = []
