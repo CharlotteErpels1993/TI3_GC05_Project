@@ -101,6 +101,8 @@
 		A5A158321A1A65E900FEF51D /* IndienenVoorkeurSuccesvolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A158311A1A65E900FEF51D /* IndienenVoorkeurSuccesvolViewController.swift */; };
 		A5A158341A1A6A7600FEF51D /* ProfielenTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A158331A1A6A7600FEF51D /* ProfielenTableViewController.swift */; };
 		A5A158361A1A6AAB00FEF51D /* ProfielDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A158351A1A6AAB00FEF51D /* ProfielDetailsTableViewController.swift */; };
+		A5A809DA1A40340B00DDCE69 /* ParseToDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A809D91A40340B00DDCE69 /* ParseToDatabase.swift */; };
+		A5A809DC1A40355300DDCE69 /* joetzVakantie.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A5A809DB1A40355300DDCE69 /* joetzVakantie.jpg */; };
 		A5B4C7641A31A5CD002A6F00 /* ValidatieMethodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B4C7631A31A5CD002A6F00 /* ValidatieMethodes.swift */; };
 		A5C6C41F1A2F9483004F5648 /* MonitorRegistratie1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C6C41E1A2F9483004F5648 /* MonitorRegistratie1ViewController.swift */; };
 		A5C6C4211A2F97BC004F5648 /* MonitorRegistratie2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C6C4201A2F97BC004F5648 /* MonitorRegistratie2ViewController.swift */; };
@@ -239,6 +241,8 @@
 		A5A158311A1A65E900FEF51D /* IndienenVoorkeurSuccesvolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndienenVoorkeurSuccesvolViewController.swift; sourceTree = "<group>"; };
 		A5A158331A1A6A7600FEF51D /* ProfielenTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfielenTableViewController.swift; sourceTree = "<group>"; };
 		A5A158351A1A6AAB00FEF51D /* ProfielDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfielDetailsTableViewController.swift; sourceTree = "<group>"; };
+		A5A809D91A40340B00DDCE69 /* ParseToDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseToDatabase.swift; sourceTree = "<group>"; };
+		A5A809DB1A40355300DDCE69 /* joetzVakantie.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = joetzVakantie.jpg; path = Images.xcassets/joetzVakantie.jpg; sourceTree = "<group>"; };
 		A5B4C7631A31A5CD002A6F00 /* ValidatieMethodes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidatieMethodes.swift; sourceTree = "<group>"; };
 		A5C6C41E1A2F9483004F5648 /* MonitorRegistratie1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitorRegistratie1ViewController.swift; sourceTree = "<group>"; };
 		A5C6C4201A2F97BC004F5648 /* MonitorRegistratie2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitorRegistratie2ViewController.swift; sourceTree = "<group>"; };
@@ -498,6 +502,7 @@
 				0FD0A1011A3DD67600CB8689 /* SQLite.swift */,
 				0FD0A1031A3DDE7800CB8689 /* Constanten.swift */,
 				0FD0A1051A3E11E900CB8689 /* LocalDatastore.swift */,
+				A5A809D91A40340B00DDCE69 /* ParseToDatabase.swift */,
 			);
 			name = Hulp;
 			sourceTree = "<group>";
@@ -523,6 +528,7 @@
 		A52976CD1A1A094900420FEE /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				A5A809DB1A40355300DDCE69 /* joetzVakantie.jpg */,
 				A5FE779A1A3C69F900C91B62 /* facebook_button.png */,
 				A502AAC81A38AA9E004CF227 /* mail.png */,
 				A502AAC61A38AA82004CF227 /* menu.png */,
@@ -634,6 +640,7 @@
 				A502AAC71A38AA82004CF227 /* menu.png in Resources */,
 				A5E5B9851A23712B0054960C /* joetz.png in Resources */,
 				A599185C1A2F79150055AAF1 /* Heart_Full.png in Resources */,
+				A5A809DC1A40355300DDCE69 /* joetzVakantie.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -704,6 +711,7 @@
 				1BDDB9511A02D86F0007623D /* Voorkeur.swift in Sources */,
 				0FD07EC31A234F46006A4E60 /* InschrijvingVakantieSQL.swift in Sources */,
 				0F92E30F1A13697B0005C86C /* InschrijvenVakantie2ViewController.swift in Sources */,
+				A5A809DA1A40340B00DDCE69 /* ParseToDatabase.swift in Sources */,
 				A54E1B9E1A125E7C00C6BB95 /* ExtraTekstViewController.swift in Sources */,
 				1B10A3BD1A02622C008E225F /* VakantiesTableViewController.swift in Sources */,
 				A503E0EC1A1A7778000A9908 /* ProfielBewerkenViewController.swift in Sources */,
