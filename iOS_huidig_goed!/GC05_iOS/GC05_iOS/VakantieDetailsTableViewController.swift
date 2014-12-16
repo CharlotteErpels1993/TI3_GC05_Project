@@ -40,8 +40,22 @@ class VakantieDetailsTableViewController: UITableViewController {
     var imageHeartEmpty = UIImage(named: "Heart_Empty.png")
     var feedbackScore: Double!
     
+    //
+    //Naam: viewDidLoad
+    //
+    //Werking: - zorgt ervoor dat de toolbar verschijnt (share mogelijkheden)
+    //         - zoekt welke gebruiker er op dit moment is ingelogd/niet ingelogd en naargelang de gebruiker functies af/aan zetten
+    //         - zorgt ervoor dat de side bar menu wordt verborgen
+    //         - zet 1, 2 of 3 afbeeldingen in het detail venster 
+    //         - zet alle details van de vakantie in de juiste velden (naargelang de ingelogde gebruiker worden sections verwijerd)
+    //
+    //Parameters:
+    //
+    //Return:
+    //
     override func viewDidLoad() {
         super.viewDidLoad()
+        hideSideMenuView()
         self.setNeedsStatusBarAppearanceUpdate()
         self.navigationController!.toolbarHidden = false
         
@@ -71,8 +85,6 @@ class VakantieDetailsTableViewController: UITableViewController {
         }
         
         self.images = LocalDatastore.getAfbeeldingenMetVakantie(vakantie.id)
-        
-        hideSideMenuView()
         
         if self.images.count >= 3 {
             self.afbeelding1.image = self.images[0]
@@ -147,34 +159,29 @@ class VakantieDetailsTableViewController: UITableViewController {
         }
     }
     
-    override func viewWillAppear(animated: Bool) {
-        self.setNeedsStatusBarAppearanceUpdate()
-        self.navigationController!.toolbarHidden = false
+    //
+    //Naam: viewDidAppear
+    //
+    //Werking: - zorgt ervoor dat de tab bar terug verschijnt (share mogelijkheden)
+    //
+    //Parameters:
+    //  - animated: Bool
+    //
+    //Return:
+    //
+    override func viewDidAppear(animated: Bool) {
+        self.navigationController?.toolbarHidden = false
     }
     
-    func gemiddeldeFeedback() -> Double {
-        
-        var scores: [Int] = []
-        var sum = 0
-        
-        var feedback = LocalDatastore.getLocalObjectsWithColumnConstraints("Feedback", queryConstraints: ["vakantie": self.vakantie.id]) as [Feedback]
-        
-        if feedback.count == 0 {
-            return 0.0
-        } else {
-            for feed in feedback {
-                scores.append(feed.score!)
-            }
-            
-            for score in scores {
-                sum += score
-            }
-            
-            var gemiddelde: Double = Double(sum) / Double(scores.count)
-            return ceil(gemiddelde)
-        }
-    }
-    
+    //
+    //Naam: zetAantalSterrenGemiddeldeFeedback
+    //
+    //Werking: - vul alle sterren zodaning op naar gelang de gemiddelde feedback van een gekozen vakantie
+    //
+    //Parameters:
+    //
+    //Return:
+    //
     func zetAantalSterrenGemiddeldeFeedback() {
         var starGevuld: UIImage = UIImage(named: "star")!
         var starLeeg: UIImage = UIImage(named: "star2")!
@@ -212,12 +219,33 @@ class VakantieDetailsTableViewController: UITableViewController {
         }
     }
     
+    //
+    //Naam: openShareMenu
+    //
+    //Werking: - zet een vaste tekst voor het delen
+    //         - zorgt ervoor dat er wanneer er op de action button wordt geklikt de geïnstalleerde apps worden getoond om te delen
+    //
+    //Parameters:
+    //  - sender: AnyObject
+    //
+    //Return:
+    //
     @IBAction func openShareMenu(sender: AnyObject) {
         var shareText = "Bekijk zeker en vast deze vakantie! \n \(vakantie.link!) \n -gedeeld via Joetz app"
         let activityViewController = UIActivityViewController(activityItems: [shareText], applicationActivities: nil)
         presentViewController(activityViewController, animated: true, completion: nil)
     }
     
+    //
+    //Naam: numbersOfSectionsInTableView
+    //
+    //Werking: - zorgt dat het aantal sections zich aanpast naargelang er een section wordt verwijderd
+    //
+    //Parameters:
+    //  - tableView: UITableView
+    //
+    //Return: een int met de hoeveelheid sections
+    //
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         if sectionToDelete == -1 {
             return 7
@@ -226,7 +254,19 @@ class VakantieDetailsTableViewController: UITableViewController {
         }
     }
     
-    
+    //
+    //Naam: switchHear
+    //
+    //Werking: - zorgt ervoor wanneer een ingelogde gebruiker op het hartje (wordt rood hartje) klikt, deze in de favorieten komt
+    //         - zorgt ervoor wanneer een ingelogde gebruiker op het hartje (wordt wit hartje) klikt, deze uit de favorieten wordt
+    //           verwijderd
+    //         - schrijft de gekozen niet favoriete/favoriete vakantie ook naar de database
+    //
+    //Parameters:
+    //  - sender: AnyObject
+    //
+    //Return:
+    //
     @IBAction func switchHeart(sender: AnyObject) {
         var favorieteVakantie: Favoriet = Favoriet(id: "test")
         var user = PFUser.currentUser()
@@ -251,6 +291,17 @@ class VakantieDetailsTableViewController: UITableViewController {
         }
     }
     
+    //
+    //Naam: tableView
+    //
+    //Werking: - zorgt dat het aantal rijen in een section aangepast wordt naargelang er een section wordt verwijderd
+    //
+    //Parameters:
+    //  - tableView: UITableView
+    //  - numbersOfRowsInSection section: Int
+    //
+    //Return: een int met de hoeveelheid rijen per section
+    //
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 4 {
             return 3
@@ -269,6 +320,17 @@ class VakantieDetailsTableViewController: UITableViewController {
         }
     }
     
+    //
+    //Naam: prepareForSegue
+    //
+    //Werking: - maakt de volgende view met opgegeven identifier (stelt soms attributen van de volgende view op)
+    //
+    //Parameters:
+    //  - segue: UIStoryboardSegue
+    //  - sender: AnyObject?
+    //
+    //Return:
+    //
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "afbeeldingen" {
             let bekijkAfbeeldingViewController = segue.destinationViewController as AfbeeldingenViewController

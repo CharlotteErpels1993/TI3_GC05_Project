@@ -988,8 +988,8 @@ De smaak te pakken? Wacht dan niet te lang en boek een onvergetelijke JOETZ-vaka
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="korteBeschrijving" destination="79b-9q-gfh" id="Zcj-Sl-fCa"/>
-                        <outlet property="vakantieNaamLabel" destination="O5I-62-WYd" id="IEr-CZ-fng"/>
+                        <outlet property="naamLabel" destination="O5I-62-WYd" id="jwM-EK-P2k"/>
+                        <outlet property="tekstView" destination="79b-9q-gfh" id="UUe-cJ-l4h"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="co8-ZL-mIf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -5029,8 +5029,8 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
     <inferredMetricsTieBreakers>
         <segue reference="WzF-72-HCe"/>
         <segue reference="xe1-I8-Pkw"/>
+        <segue reference="3fb-Mq-kJr"/>
         <segue reference="xfp-UK-L9d"/>
-        <segue reference="c6P-Fb-s9M"/>
         <segue reference="7j1-hF-0E4"/>
     </inferredMetricsTieBreakers>
 </document>
