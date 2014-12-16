@@ -12,10 +12,4 @@ class InschrijvingVakantie {
     init(id: String) {
         self.id = id
     }
-    
-    init(id: String, extraInfo: String, vakantie: Vakantie) {
-        self.id = id
-        self.extraInfo = extraInfo
-        self.vakantie = vakantie
-    }
 }

@@ -9,11 +9,4 @@ class Activiteit {
     init(id: String) {
         self.id = id
     }
-    
-    init(id: String, titel: String, locatie: String, korteBeschrijving: String) {
-        self.id = id
-        self.titel = titel
-        self.locatie = locatie
-        self.korteBeschrijving = korteBeschrijving
-    }
 }

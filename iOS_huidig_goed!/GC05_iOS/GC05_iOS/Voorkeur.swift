@@ -9,11 +9,4 @@ class Voorkeur {
     init(id: String) {
         self.id = id
     }
-    
-    init(id: String, data: String, monitor: Monitor, vakantie: Vakantie) {
-        self.id = id
-        self.data = data
-        self.monitor = monitor
-        self.vakantie = vakantie
-    }
 }

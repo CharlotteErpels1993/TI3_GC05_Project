@@ -19,7 +19,6 @@
 		0F88A6C31A1F3B840094D457 /* SwiftData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F88A6C21A1F3B840094D457 /* SwiftData.swift */; };
 		0F88A6C51A1F3BF20094D457 /* ParseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F88A6C41A1F3BF20094D457 /* ParseData.swift */; };
 		0F8FE2931A31B16100FDDA30 /* NieuweMonitorSQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8FE2921A31B16100FDDA30 /* NieuweMonitorSQL.swift */; };
-		0F8FE2951A31B42F00FDDA30 /* NieuweMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8FE2941A31B42F00FDDA30 /* NieuweMonitor.swift */; };
 		0F92E30D1A1368A10005C86C /* InschrijvenVakantie1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F92E30C1A1368A10005C86C /* InschrijvenVakantie1ViewController.swift */; };
 		0F92E30F1A13697B0005C86C /* InschrijvenVakantie2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F92E30E1A13697B0005C86C /* InschrijvenVakantie2ViewController.swift */; };
 		0F92E3111A136B240005C86C /* InschrijvenVakantie3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F92E3101A136B240005C86C /* InschrijvenVakantie3ViewController.swift */; };
@@ -148,7 +147,6 @@
 		0F88A6C21A1F3B840094D457 /* SwiftData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftData.swift; sourceTree = "<group>"; };
 		0F88A6C41A1F3BF20094D457 /* ParseData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseData.swift; sourceTree = "<group>"; };
 		0F8FE2921A31B16100FDDA30 /* NieuweMonitorSQL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NieuweMonitorSQL.swift; sourceTree = "<group>"; };
-		0F8FE2941A31B42F00FDDA30 /* NieuweMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NieuweMonitor.swift; sourceTree = "<group>"; };
 		0F92E30C1A1368A10005C86C /* InschrijvenVakantie1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InschrijvenVakantie1ViewController.swift; sourceTree = "<group>"; };
 		0F92E30E1A13697B0005C86C /* InschrijvenVakantie2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InschrijvenVakantie2ViewController.swift; sourceTree = "<group>"; };
 		0F92E3101A136B240005C86C /* InschrijvenVakantie3ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InschrijvenVakantie3ViewController.swift; sourceTree = "<group>"; };
@@ -454,7 +452,6 @@
 				1BDDB9541A02D87F0007623D /* ContactpersoonNood.swift */,
 				1BDDB9561A02DD1E0007623D /* Gebruiker.swift */,
 				0F1E19DC1A2F9AF70035DB96 /* Favoriet.swift */,
-				0F8FE2941A31B42F00FDDA30 /* NieuweMonitor.swift */,
 				A5CB1FFC1A35D01200A4178A /* Feedback.swift */,
 			);
 			name = Model;
@@ -660,7 +657,6 @@
 				1BDDB94B1A02D8380007623D /* InschrijvingVakantie.swift in Sources */,
 				1BDDB94F1A02D8630007623D /* Ouder.swift in Sources */,
 				A58D764F1A4084E600EA6426 /* EnumConstraints.swift in Sources */,
-				0F8FE2951A31B42F00FDDA30 /* NieuweMonitor.swift in Sources */,
 				1B4D78511A02897500E823E2 /* Registratie3ViewController.swift in Sources */,
 				1BDDB94D1A02D84B0007623D /* Monitor.swift in Sources */,
 				A5049CAD1A2334510012D990 /* Reachability.swift in Sources */,

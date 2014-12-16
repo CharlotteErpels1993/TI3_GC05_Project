@@ -9,11 +9,4 @@ class InschrijvingVorming {
     init(id: String) {
         self.id = id
     }
-    
-    init(id: String, periode: String, monitor: Monitor, vorming: Vorming) {
-        self.id = id
-        self.periode = periode
-        self.monitor = monitor
-        self.vorming = vorming
-    }
 }
