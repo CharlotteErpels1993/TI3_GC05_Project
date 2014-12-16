@@ -3,7 +3,11 @@ package com.hogent.ti3g05.ti3_g05_joetzapp.Services;
 import java.io.File;
 import android.content.Context;
 
-//Dient om de images tijdelijk te cachen zodat deze niet moeten herladen bij bijvoorbeeld scrollen
+/*
+    Naam: FileCache
+
+    Werking: Dient om de images tijdelijk te cachen zodat deze niet moeten herladen bij bijvoorbeeld scrollen
+    */
 public class FileCache {
 
     private File cacheDir;

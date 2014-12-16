@@ -136,6 +136,17 @@ public class Gebruiker {
 
     }
 
+    /*
+    Naam: isDitEenGeldigRijksregisternummer
+
+    Werking: Controleert of een opgegeven rijksregisternummer (RRN) geldig is of niet. Deze methode werkt voor geboortejaren voor en na het jaar 2000
+
+    Parameters:
+     - objRijksregisternummer: String - opgegeven rijksregisternummer.
+
+    Return: true -> geldig RRN
+            false -> ongeldig RRN
+    */
     public static boolean isDitEenGeldigRijksregisternummer(String objRijksregisternummer){
         if (objRijksregisternummer.startsWith("0") || objRijksregisternummer.startsWith("1") || objRijksregisternummer.startsWith("2")){
             objRijksregisternummer = "2" + objRijksregisternummer;

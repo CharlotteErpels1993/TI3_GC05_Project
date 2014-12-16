@@ -19,7 +19,11 @@ import com.hogent.ti3g05.ti3_g05_joetzapp.R;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Monitor;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vorming;
 
-//Deze klasse zal de profielen in de lijst goed weergeven en de juiste gegevens doorgeven naar profieldetail
+/*
+Naam: ProfielAdapter klasse
+
+Werking: Deze klasse zal de profielen in de lijst goed weergeven en de juiste gegevens doorgeven naar profieldetail
+*/
 public class ProfielAdapter extends ArrayAdapter<Vorming> implements Filterable {
 
     private Context context;
@@ -27,8 +31,7 @@ public class ProfielAdapter extends ArrayAdapter<Vorming> implements Filterable 
     private List<Monitor> profielen = null;
     private ArrayList<Monitor> profielenArrayList;
 
-    public ProfielAdapter(Context context,
-                          List<Monitor> profielen) {
+    public ProfielAdapter(Context context, List<Monitor> profielen) {
         super(context, R.layout.profiel_listview_item);
         this.context = context;
         this.profielen = profielen;
@@ -44,20 +47,37 @@ public class ProfielAdapter extends ArrayAdapter<Vorming> implements Filterable 
         TextView tv_header;
     }
 
-    //geeft het aantal monitoren terug
+    /*
+    Naam: getCount
+    Werking: deze methode geeft het aantal elementen in de lijst terug
+    Return: aantal elementen van de profiel lijst
+    */
     @Override
     public int getCount() {
         return profielen.size();
     }
 
-    //Geeft de juiste gegevens terug op basis van de meegegeven positie
+    /*
+    Naam: getItemId
+    Werking: Geeft het juiste item terug op basis van de positie
+    Return: ID van het profielItem, nl. hetzelfde als de position
+    */
     @Override
     public long getItemId(int position) {
         return position;
     }
 
-    //Maakt een holder aan voor de view, zodat er minder overhead komt en de view niet steeds herladen moet worden, Hier wordt alles ingevuld op de juiste plaats
-    //De juiste gegevens worden opgehaald door de positie, de view wordt ingevuld
+    /*
+    Naam: getView
+    Werking: Maakt een holder aan voor de view, zodat er minder overhead komt en de view niet steeds herladen moet worden,
+    Hier wordt alles ingevuld op de juiste plaats. De juiste gegevens worden opgehaald door de positie, de view wordt ingevuld
+
+    Parameters:
+     - position: int - positie van het te constructeren item
+     - view: View - de view die uiteindelijk zal geretourneerd worden.
+     - parent: ViewGroup - de viewgroup waar het element in zit
+    Return: De view die de gebruiker te zien krijgt, ingevuld met de juiste info op de juiste plek
+    */
     public View getView(final int position, View view, ViewGroup parent) {
         final ViewHolder holder;
         if (view == null) {
@@ -113,7 +133,13 @@ public class ProfielAdapter extends ArrayAdapter<Vorming> implements Filterable 
     }
 
 
-    //Filtert de lijst van profielen door gebruik te maken van de meegegeven zoekcharacters
+    /*
+    Naam: filter
+    Werking: Filtert de lijst van profielen door gebruik te maken van de meegegeven zoekcharacters
+    Parameters:
+     - charText: String - Het stuk tekst waar de gebruiker op wilt filteren.
+    Return: niets. Lijst met profielen wordt auto. aangepast
+    */
     public void filter(String charText) {
         charText = charText.toLowerCase(Locale.getDefault());
         profielen.clear();

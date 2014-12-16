@@ -18,7 +18,12 @@ import com.hogent.ti3g05.ti3_g05_joetzapp.ImageLoader;
 import com.hogent.ti3g05.ti3_g05_joetzapp.R;
 import com.hogent.ti3g05.ti3_g05_joetzapp.VormingDetail;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vorming;
-//Deze klasse zal de juiste gegevens weergeven in het vormingoverzicht en de juiste gegevens doorgeven naar het vormingdetail
+
+/*
+Naam: VormingAdapter klasse
+
+Werking: Deze klasse zal de juiste gegevens weergeven in het vormingoverzicht en de juiste gegevens doorgeven naar het vormingdetail
+*/
 public class VormingAdapter extends ArrayAdapter<Vorming> implements Filterable {
 
     private Context context;
@@ -50,21 +55,38 @@ public class VormingAdapter extends ArrayAdapter<Vorming> implements Filterable 
         TextView tv_websiteLocatie;
     }
 
-    //geeft het aantal vormingen terug
+    /*
+    Naam: getCount
+    Werking: Geeft het aantal vormingen terug
+    Return: aantal elementen van de vorming lijst
+    */
     @Override
     public int getCount() {
         return vormingen.size();
     }
 
 
-    //Geeft het juiste item weer doormiddel van de meegegeven positie
+    /*
+    Naam: getItemId
+    Werking: Geeft het juiste item terug op basis van de positie
+    Return: ID van het vormingItem, nl. hetzelfde als de position
+    */
     @Override
     public long getItemId(int position) {
         return position;
     }
 
-    //Maakt een holder aan voor de view, zodat er minder overhead komt en de view niet steeds herladen moet worden, Hier wordt alles ingevuld op de juiste plaats
-    //De juiste gegevens worden opgehaald door de positie, de view wordt ingevuld
+    /*
+    Naam: getView
+    Werking: Maakt een holder aan voor de view, zodat er minder overhead komt en de view niet steeds herladen moet worden,
+    Hier wordt alles ingevuld op de juiste plaats. De juiste gegevens worden opgehaald door de positie, de view wordt ingevuld
+
+    Parameters:
+     - position: int - positie van het te constructeren item
+     - view: View - de view die uiteindelijk zal geretourneerd worden.
+     - parent: ViewGroup - de viewgroup waar het element in zit
+    Return: De view die de gebruiker te zien krijgt, ingevuld met de juiste info op de juiste plek
+    */
     public View getView(final int position, View view, ViewGroup parent) {
         final ViewHolder holder;
         if (view == null) {
@@ -113,7 +135,13 @@ public class VormingAdapter extends ArrayAdapter<Vorming> implements Filterable 
     }
 
 
-    //Filtert de lijst van vormingen door gebruik te maken van de meegegeven zoekcharacters
+    /*
+    Naam: filter
+    Werking: Filtert de lijst van vormingen door gebruik te maken van de meegegeven zoekcharacters
+    Parameters:
+     - charText: String - Het stuk tekst waar de gebruiker op wilt filteren.
+    Return: niets. Lijst met vormingen wordt auto. aangepast
+    */
     public void filter(String charText) {
         charText = charText.toLowerCase(Locale.getDefault());
         vormingen.clear();

@@ -22,7 +22,11 @@ import com.hogent.ti3g05.ti3_g05_joetzapp.R;
 import com.hogent.ti3g05.ti3_g05_joetzapp.VakantieDetail;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vakantie;
 
-//Deze klasse zal de vakantie gegevens op de juiste plaats zetten en de juiste gegevens weergeven en doorgeven
+/*
+Naam: VakantieAdapter klasse
+
+Werking: Deze klasse zal de vakantie gegevens op de juiste plaats zetten en de juiste gegevens weergeven en doorgeven
+*/
 public class VakantieAdapter extends ArrayAdapter<Vakantie> implements Filterable {
 
     private Context context;
@@ -47,8 +51,6 @@ public class VakantieAdapter extends ArrayAdapter<Vakantie> implements Filterabl
     }
 
 
-
-
     public class ViewHolder {
         TextView et_naamVakantie;
         TextView et_locatie;
@@ -58,21 +60,38 @@ public class VakantieAdapter extends ArrayAdapter<Vakantie> implements Filterabl
     }
 
 
-    //Geeft het aantal vakanties terug
+    /*
+    Naam: getCount
+    Werking: Geeft het aantal vakanties terug
+    Return: aantal elementen van de vakantie lijst
+    */
     @Override
     public int getCount() {
         return vakanties.size();
     }
 
 
-    //Geeft het juiste item terug op basis van de positie
+    /*
+    Naam: getItemId
+    Werking: Geeft het juiste item terug op basis van de positie
+    Return: ID van het vakantieItem, nl. hetzelfde als de position
+    */
     @Override
     public long getItemId(int position) {
         return position;
     }
 
-    //Maakt een holder aan voor de view, zodat er minder overhead komt en de view niet steeds herladen moet worden, Hier wordt alles ingevuld op de juiste plaats
-    //De juiste gegevens worden opgehaald door de positie, de view wordt ingevuld
+    /*
+    Naam: getView
+    Werking: Maakt een holder aan voor de view, zodat er minder overhead komt en de view niet steeds herladen moet worden,
+    Hier wordt alles ingevuld op de juiste plaats. De juiste gegevens worden opgehaald door de positie, de view wordt ingevuld
+
+    Parameters:
+     - position: int - positie van het te constructeren item
+     - view: View - de view die uiteindelijk zal geretourneerd worden.
+     - parent: ViewGroup - de viewgroup waar het element in zit
+    Return: De view die de gebruiker te zien krijgt, ingevuld met de juiste info op de juiste plek
+    */
     public View getView(final int position, View view, ViewGroup parent) {
         final ViewHolder holder;
         if (view == null) {
@@ -148,7 +167,13 @@ public class VakantieAdapter extends ArrayAdapter<Vakantie> implements Filterabl
     }
 
 
-    //Filtert de lijst van vakanties door gebruik te maken van de meegegeven zoekcharacters
+    /*
+    Naam: filter
+    Werking: Filtert de lijst van vakanties door gebruik te maken van de meegegeven zoekcharacters
+    Parameters:
+     - charText: String - Het stuk tekst waar de gebruiker op wilt filteren.
+    Return: niets. Lijst met vakanties wordt auto. aangepast
+    */
     public void filter(String charText) {
         charText = charText.toLowerCase(Locale.getDefault());
         vakanties.clear();

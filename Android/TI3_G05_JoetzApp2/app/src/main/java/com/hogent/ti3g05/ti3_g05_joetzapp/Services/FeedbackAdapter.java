@@ -17,7 +17,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-//Deze klasse zal ervoor zorgen dat alle gegevens van feedback op de juiste plaatsen worden getoond en omgezet zullen worden naar de juiste formaten.
+/*
+Naam: FeedbackAdapter klasse
+
+Werking: Deze klasse zal ervoor zorgen dat alle gegevens van feedback op de juiste plaatsen worden getoond en omgezet zullen worden naar de juiste formaten.
+*/
 public class FeedbackAdapter extends ArrayAdapter<Vakantie> implements Filterable {
 
     private Context context;
@@ -50,21 +54,38 @@ public class FeedbackAdapter extends ArrayAdapter<Vakantie> implements Filterabl
         //TextView tv_gebruiker;
     }
 
-    //deze methode geeft het aantal elementen in de lijst terug
+    /*
+    Naam: getCount
+    Werking: deze methode geeft het aantal elementen in de lijst terug
+    Return: aantal elementen van de feedback lijst
+    */
     @Override
     public int getCount() {
         return feedbackLijst.size();
     }
 
 
-    //Hiermee kan je de overeenkomstige id van het item vinden door middel van de parameter positie
+    /*
+    Naam: getItemId
+    Werking: Geeft het juiste item terug op basis van de positie
+    Return: ID van het feedbackItem, nl. hetzelfde als de position
+    */
     @Override
     public long getItemId(int position) {
         return position;
     }
 
-    //Maakt een holder aan voor de view, zodat er minder overhead komt en de view niet steeds herladen moet worden, Hier wordt alles ingevuld op de juiste plaats
-    //De juiste gegevens worden opgehaald door de positie, de view wordt ingevuld
+    /*
+    Naam: getView
+    Werking: Maakt een holder aan voor de view, zodat er minder overhead komt en de view niet steeds herladen moet worden.
+     Hier wordt alles ingevuld op de juiste plaats. De juiste gegevens worden opgehaald aan de hand van de positie, de view wordt ingevuld
+
+    Parameters:
+     - position: int - positie van het te constructeren item
+     - view: View - de view die uiteindelijk zal geretourneerd worden.
+     - parent: ViewGroup - de viewgroup waar het element in zit
+    Return: De view die de gebruiker te zien krijgt, ingevuld met de juiste info op de juiste plek
+    */
     public View getView(final int position, View view, ViewGroup parent) {
         final ViewHolder holder;
         if (view == null) {
@@ -86,7 +107,13 @@ public class FeedbackAdapter extends ArrayAdapter<Vakantie> implements Filterabl
     }
 
 
-    //Filtert de lijst van feedback door gebruik te maken van de meegegeven zoekcharacters
+    /*
+    Naam: filter
+    Werking: Filtert de lijst van feedback door gebruik te maken van de meegegeven zoekcharacters
+    Parameters:
+     - charText: String - Het stuk tekst waar de gebruiker op wilt filteren.
+    Return: niets. Lijst met feedback wordt auto. aangepast
+    */
     public void filter(String charText) {
         charText = charText.toLowerCase(Locale.getDefault());
         feedbackLijst.clear();
