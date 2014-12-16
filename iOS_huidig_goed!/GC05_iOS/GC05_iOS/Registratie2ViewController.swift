@@ -1,7 +1,7 @@
 import UIKit
 import QuartzCore
 
-class Registratie2ViewController: /*ResponsiveTextFieldViewController*/ UITableViewController {
+class Registratie2ViewController: UITableViewController {
     @IBOutlet weak var txtVoornaam: UITextField!
     @IBOutlet weak var txtNaam: UITextField!
     @IBOutlet weak var txtStraat: UITextField!
@@ -90,14 +90,12 @@ class Registratie2ViewController: /*ResponsiveTextFieldViewController*/ UITableV
         if txtBus.text.isEmpty {
             statusTextFields["bus"] = "leeg"
         } else {
-            //TO DO: checken op pattern?
             statusTextFields["bus"] = "ingevuld"
         }
         
         if txtGemeente.text.isEmpty {
             statusTextFields["gemeente"] = "leeg"
         } else {
-            //TO DO: checken op pattern?
             statusTextFields["gemeente"] = "ingevuld"
         }
         
@@ -133,10 +131,8 @@ class Registratie2ViewController: /*ResponsiveTextFieldViewController*/ UITableV
             if !checkPatternGsm(txtGsm.text) {
                 statusTextFields["gsm"] = "ongeldig"
                 gsmAlGeregistreerd = false
-                //txtGsm.text = ""
             } else if controleerGSMAlGeregisteerd() == true {
                 statusTextFields["gsm"] = "al geregistreerd"
-                //txtGsm.text = ""
                 gsmAlGeregistreerd = true
             } else {
                 statusTextFields["gsm"] = "geldig"
@@ -245,7 +241,6 @@ class Registratie2ViewController: /*ResponsiveTextFieldViewController*/ UITableV
     }
     
     func controleerGSMAlGeregisteerd() -> Bool {
-        //return ParseData.getGSM(self.txtGsm.text)
         return LocalDatastore.isGsmAlGeregistreerd(self.txtGsm.text)
     }
 }

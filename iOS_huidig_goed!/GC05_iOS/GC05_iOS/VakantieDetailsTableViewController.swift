@@ -34,27 +34,23 @@ class VakantieDetailsTableViewController: UITableViewController {
     
     var vakantie: Vakantie!
     var images: [UIImage] = []
-    var query = PFQuery(className: "Vakantie")
-    var beschrijving: String!
     var sectionToDelete = -1
-    var favoriet: Bool = false
+    var isFavoriet: Bool = false
     var imageHeartFull = UIImage(named: "Heart_Full.png")
     var imageHeartEmpty = UIImage(named: "Heart_Empty.png")
-    var score: Double!
+    var feedbackScore: Double!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setNeedsStatusBarAppearanceUpdate()
         self.navigationController!.toolbarHidden = false
         
-        //Parse Local Datastore Charlotte
         if PFUser.currentUser() != nil {
             var user: PFUser = PFUser.currentUser()
             var soort = user["soort"] as? String
             var favorieteVakantie: Favoriet = Favoriet(id: "test")
             
             if soort == "ouder" {
-                //LocalDatastore.getTableReady("Ouder")
                 var ouder = LocalDatastore.getGebruikerWithEmail(PFUser.currentUser().email, tableName: "Ouder")
                 favorieteVakantie.gebruiker = ouder
             } else if soort == "monitor" {
@@ -67,10 +63,10 @@ class VakantieDetailsTableViewController: UITableViewController {
             
             if LocalDatastore.isFavorieteVakantie(favorieteVakantie) == true {
                 heartButton.setImage(self.imageHeartFull, forState: UIControlState.Normal)
-                self.favoriet = true
+                self.isFavoriet = true
             } else {
                 heartButton.setImage(self.imageHeartEmpty, forState: UIControlState.Normal)
-                self.favoriet = false
+                self.isFavoriet = false
             }
         }
         
@@ -88,56 +84,6 @@ class VakantieDetailsTableViewController: UITableViewController {
         } else if self.images.count == 1 {
             self.afbeelding1.image = self.images[0]
         }
-        
-        //WERKEND STEFANIE
-        /*if PFUser.currentUser() != nil {
-        var ouderResponse = ParseData.getOuderWithEmail(PFUser.currentUser().email)
-        var monitorResponse = ParseData.getMonitorWithEmail(PFUser.currentUser().email)
-        var favorieteVakantie: Favoriet = Favoriet(id: "test")
-        
-        if ouderResponse.1 == nil {
-        favorieteVakantie.gebruiker = ouderResponse.0
-        /*favorieteVakantie.vakantie = self.vakantie
-        
-        if ParseData.isFavorieteVakantie(favorieteVakantie) == true {
-        heartButton.setImage(self.imageHeartFull, forState: UIControlState.Normal)
-        self.favoriet = true
-        } else {
-        heartButton.setImage(self.imageHeartEmpty, forState: UIControlState.Normal)
-        self.favoriet = false
-        }*/
-        } else {
-        favorieteVakantie.gebruiker = monitorResponse.0
-        }
-        favorieteVakantie.vakantie = self.vakantie
-        
-        if ParseData.isFavorieteVakantie(favorieteVakantie) == true {
-        heartButton.setImage(self.imageHeartFull, forState: UIControlState.Normal)
-        self.favoriet = true
-        } else {
-        heartButton.setImage(self.imageHeartEmpty, forState: UIControlState.Normal)
-        self.favoriet = false
-        }
-        }
-        
-        var responseImages: ([UIImage], Int?)
-        responseImages = ParseData.getAfbeeldingenMetVakantieId(vakantie.id)
-        
-        hideSideMenuView()
-        
-        if responseImages.1 == nil {
-        self.images = responseImages.0
-        if self.images.count >= 3 {
-        self.afbeelding1.image = self.images[0]
-        self.afbeelding2.image = self.images[1]
-        self.afbeelding3.image = self.images[2]
-        } else if self.images.count == 2 {
-        self.afbeelding1.image = self.images[0]
-        self.afbeelding2.image = self.images[1]
-        } else if self.images.count == 1 {
-        self.afbeelding1.image = self.images[0]
-        }
-        }*/
         
         var beginDatum: String? = vakantie.vertrekdatum?.toS("dd/MM/yyyy")
         var terugkeerDatum: String? = vakantie.terugkeerdatum?.toS("dd/MM/yyyy")
@@ -208,14 +154,8 @@ class VakantieDetailsTableViewController: UITableViewController {
     
     func gemiddeldeFeedback() -> Double {
         
-        //Parse LocalDatastore Charlotte
-        //LocalDatastore.getTableReady("Feedback")
-        
         var scores: [Int] = []
         var sum = 0
-        
-        //var feedback = LocalDatastore.getFeedbackMetVakantie(self.vakantie)
-        //var feedback = LocalDatastore.getLocalObjectsWithColumnConstraints("Feedback", column: "vakantie", columnId: self.vakantie.id) as [Feedback]
         
         var feedback = LocalDatastore.getLocalObjectsWithColumnConstraints("Feedback", queryConstraints: ["vakantie": self.vakantie.id]) as [Feedback]
         
@@ -233,59 +173,37 @@ class VakantieDetailsTableViewController: UITableViewController {
             var gemiddelde: Double = Double(sum) / Double(scores.count)
             return ceil(gemiddelde)
         }
-        
-        
-        //WERKEND Stefanie
-        /*ParseData.deleteFeedbackTable()
-        ParseData.vulFeedbackTableOp()
-        var feedbackResponse = ParseData.getFeedbackFromVakantie(self.vakantie)
-        var scores: [Int] = []
-        var sum = 0
-        
-        if feedbackResponse.1 == nil {
-        for feed in feedbackResponse.0 {
-        scores.append(feed.score!)
-        }
-        }
-        
-        for score in scores {
-        sum += score
-        }
-        
-        var gemiddelde: Double = Double(sum) / Double(scores.count)
-        return ceil(gemiddelde)*/
     }
     
     func zetAantalSterrenGemiddeldeFeedback() {
-        //var gemiddeldeFeedbackScore: Double = gemiddeldeFeedback()
         var starGevuld: UIImage = UIImage(named: "star")!
         var starLeeg: UIImage = UIImage(named: "star2")!
         
-        if self.score == 1 {
+        if self.feedbackScore == 1 {
             ster1.image = starGevuld
             ster2.image = starLeeg
             ster3.image = starLeeg
             ster4.image = starLeeg
             ster5.image = starLeeg
-        } else if self.score == 2 {
+        } else if self.feedbackScore == 2 {
             ster1.image = starGevuld
             ster2.image = starGevuld
             ster3.image = starLeeg
             ster4.image = starLeeg
             ster5.image = starLeeg
-        } else if self.score == 3 {
+        } else if self.feedbackScore == 3 {
             ster1.image = starGevuld
             ster2.image = starGevuld
             ster3.image = starGevuld
             ster4.image = starLeeg
             ster5.image = starLeeg
-        } else if self.score == 4 {
+        } else if self.feedbackScore == 4 {
             ster1.image = starGevuld
             ster2.image = starGevuld
             ster3.image = starGevuld
             ster4.image = starGevuld
             ster5.image = starLeeg
-        } else if self.score == 5 {
+        } else if self.feedbackScore == 5 {
             ster1.image = starGevuld
             ster2.image = starGevuld
             ster3.image = starGevuld
@@ -300,24 +218,6 @@ class VakantieDetailsTableViewController: UITableViewController {
         presentViewController(activityViewController, animated: true, completion: nil)
     }
     
-    /*@IBAction func shareToTwitter(sender: AnyObject) {
-    var shareToTwitter : SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
-    shareToTwitter.setInitialText("Bekijk zeker en vast deze vakantie! \n \(vakantie.link!) \n -gedeeld via Joetz app")
-    self.presentViewController(shareToTwitter, animated: true, completion: nil)
-    }
-    
-    @IBAction func shareToFacebook(sender: AnyObject) {
-    var shareToFacebook : SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
-    shareToFacebook.setInitialText("Bekijk zeker en vast deze vakantie! \n \(vakantie.link!) \n -gedeeld via Joetz app")
-    self.presentViewController(shareToFacebook, animated: true, completion: nil)
-    }*/
-    
-    override func viewDidAppear(animated: Bool) {
-        if PFUser.currentUser() == nil {
-            self.tableView.reloadData()
-        }
-    }
-    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         if sectionToDelete == -1 {
             return 7
@@ -326,65 +226,29 @@ class VakantieDetailsTableViewController: UITableViewController {
         }
     }
     
-    /*@IBAction func toonEnGeefFeedback(sender: AnyObject) {
-    let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-    var destViewController: FeedbackTableViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Feedback") as FeedbackTableViewController
-    destViewController.vakantieId = self.vakantie.id
-    sideMenuController()?.setContentViewController(destViewController)
-    hideSideMenuView()
-    }*/
-    
     
     @IBAction func switchHeart(sender: AnyObject) {
-        
-        //Parse Local Datastore Charlotte
         var favorieteVakantie: Favoriet = Favoriet(id: "test")
         var user = PFUser.currentUser()
         var soort = user["soort"] as? String
         
         if soort == "ouder" {
-            //LocalDatastore.getTableReady("Ouder")
             favorieteVakantie.gebruiker = LocalDatastore.getGebruikerWithEmail(user.email, tableName: "Ouder")
         } else if soort == "monitor" {
-            //LocalDatastore.getTableReady("Monitor")
             favorieteVakantie.gebruiker = LocalDatastore.getGebruikerWithEmail(user.email, tableName: "Monitor")
         }
         
         favorieteVakantie.vakantie = self.vakantie
         
-        if self.favoriet == false {
-            self.favoriet = true
+        if self.isFavoriet == false {
+            self.isFavoriet = true
             heartButton.setImage(self.imageHeartFull, forState: UIControlState.Normal)
             LocalDatastore.parseLocalObject(favorieteVakantie, tableName: "Favoriet")
         } else {
-            self.favoriet = false
+            self.isFavoriet = false
             heartButton.setImage(self.imageHeartEmpty, forState: UIControlState.Normal)
             ParseData.deleteFavorieteVakantie(favorieteVakantie)
         }
-        
-        
-        //WERKEND Stefanie
-        /*var favorieteVakantie: Favoriet = Favoriet(id: "test")
-        var ouderResponse = ParseData.getOuderWithEmail(PFUser.currentUser().email)
-        var monitorResponse = ParseData.getMonitorWithEmail(PFUser.currentUser().email)
-        
-        if ouderResponse.1 == nil {
-        favorieteVakantie.gebruiker = ouderResponse.0
-        } else {
-        favorieteVakantie.gebruiker = monitorResponse.0
-        }
-        
-        favorieteVakantie.vakantie = self.vakantie
-        
-        if favoriet == false {
-        favoriet = true
-        heartButton.setImage(self.imageHeartFull, forState: UIControlState.Normal)
-        ParseData.parseFavorietToDatabase(favorieteVakantie)
-        } else {
-        favoriet = false
-        heartButton.setImage(self.imageHeartEmpty, forState: UIControlState.Normal)
-        ParseData.deleteFavorieteVakantie(favorieteVakantie)
-        }*/
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -433,6 +297,4 @@ class VakantieDetailsTableViewController: UITableViewController {
             geefFeedback2TableViewController.titel = "Geef Feedback"
         }
     }
-    
-    
 }

@@ -1,20 +1,19 @@
 import UIKit
 import QuartzCore
 
-class Registratie1ViewController: /*ResponsiveTextFieldViewController*/ UITableViewController, UITextFieldDelegate {
-    var ouder: Ouder! = Ouder(id: "test")
-    var gebruikerIsLid: Bool? = true
-    var foutBox: FoutBox? = nil
-    var redColor: UIColor = UIColor.redColor()
-    var statusTextFields: [String: String] = [:]
-    var rijksregisterNrAlGeregistreerd: Bool = false
-    
+class Registratie1ViewController: UITableViewController, UITextFieldDelegate {
     @IBOutlet weak var isLid: UISwitch!
     @IBOutlet weak var txtAansluitingsNr: UITextField!
     @IBOutlet weak var txtCodeGerechtigde: UITextField!
     @IBOutlet weak var txtRijksregisterNr: UITextField!
     @IBOutlet weak var txtAansluitingsNrTweedeOuder: UITextField!
     @IBOutlet weak var buttonNummers: UIButton!
+    
+    var ouder: Ouder! = Ouder(id: "test")
+    var gebruikerIsLid: Bool? = true
+    var redColor: UIColor = UIColor.redColor()
+    var statusTextFields: [String: String] = [:]
+    var rijksregisterNrAlGeregistreerd: Bool = false
     
     @IBAction func toggle(sender: AnyObject) {
         txtAansluitingsNr.resignFirstResponder()
@@ -153,12 +152,10 @@ class Registratie1ViewController: /*ResponsiveTextFieldViewController*/ UITableV
             if !checkPatternRijksregisterNr(txtRijksregisterNr.text) {
                 statusTextFields["rijksregisterNr"] = "ongeldig"
                 self.rijksregisterNrAlGeregistreerd = false
-                //txtRijksregisterNr.text = ""
             } else {
                 if controleerRijksregisterNummerAlGeregisteerd() == true {
                     statusTextFields["rijksregisterNr"] = "al geregistreerd"
                     self.rijksregisterNrAlGeregistreerd = true
-                    //txtRijksregisterNr.text = ""
                 } else {
                     statusTextFields["rijksregisterNr"] = "geldig"
                     self.rijksregisterNrAlGeregistreerd = false
@@ -230,7 +227,6 @@ class Registratie1ViewController: /*ResponsiveTextFieldViewController*/ UITableV
     }
     
     func settenOptioneleGegevens() {
-        
         if gebruikerIsLid == true {
             ouder.aansluitingsNr = txtAansluitingsNr.text.toInt()!
             ouder.codeGerechtigde = txtCodeGerechtigde.text.toInt()!
