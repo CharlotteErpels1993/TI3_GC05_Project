@@ -1815,6 +1815,12 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="Cqv-ym-8Jy">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <action selector="refresh:" destination="n8h-Pf-gLH" eventType="valueChanged" id="QCL-1b-0PR"/>
+                        </connections>
+                    </refreshControl>
                     <connections>
                         <outlet property="zoekbar" destination="0uH-GI-Rdb" id="d4H-rb-4gV"/>
                     </connections>

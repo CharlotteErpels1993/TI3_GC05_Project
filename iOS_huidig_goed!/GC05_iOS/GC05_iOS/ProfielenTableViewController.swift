@@ -325,4 +325,12 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
         monitorDetailsController.monitor = selectedMonitor! as Monitor
     }
     
+    @IBAction func refresh(sender: UIRefreshControl) {
+        
+        LocalDatastore.getTableReady("Monitor")
+        
+        self.refreshControl?.endRefreshing()
+        viewDidLoad()
+    }
+    
 }
