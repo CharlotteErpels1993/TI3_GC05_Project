@@ -54,4 +54,54 @@ struct ParseToDatabase {
     static private func logIn(ouder: Ouder, wachtwoord: String) {
         PFUser.logInWithUsername(ouder.email, password: wachtwoord)
     }
+    
+    // schrijf een nieuwe deelnemer weg naar de database
+    static func parseDeelnemerToDatabase(deelnemer: Deelnemer) -> String {
+        var deelnemerJSON = PFObject(className: "Deelnemer")
+        
+        deelnemerJSON.setValue(deelnemer.voornaam, forKey: "voornaam")
+        deelnemerJSON.setValue(deelnemer.naam, forKey: "naam")
+        deelnemerJSON.setValue(deelnemer.geboortedatum, forKey: "geboortedatum")
+        deelnemerJSON.setValue(deelnemer.straat, forKey: "straat")
+        deelnemerJSON.setValue(deelnemer.nummer, forKey: "nummer")
+        deelnemerJSON.setValue(deelnemer.gemeente, forKey: "gemeente")
+        deelnemerJSON.setValue(deelnemer.postcode, forKey: "postcode")
+        
+        if deelnemer.bus != nil {
+            deelnemerJSON.setValue(deelnemer.bus, forKey: "bus")
+        }
+        
+        deelnemerJSON.save()
+        deelnemerJSON.fetch()
+        
+        return deelnemerJSON.objectId
+    }
+    
+    // schrijf een nieuwe contactpersoon in geval van nood weg naar de database
+    static func parseContactpersoonNoodToDatabase(contactpersoon: ContactpersoonNood) -> String {
+        var contactpersoonJSON = PFObject(className: "ContactpersoonNood")
+        
+        contactpersoonJSON.setValue(contactpersoon.voornaam, forKey: "voornaam")
+        contactpersoonJSON.setValue(contactpersoon.naam, forKey: "naam")
+        contactpersoonJSON.setValue(contactpersoon.gsm, forKey: "gsm")
+        
+        if contactpersoon.telefoon != nil {
+            contactpersoonJSON.setValue(contactpersoon.telefoon, forKey: "telefoon")
+        }
+        
+        contactpersoonJSON.save()
+        contactpersoonJSON.fetch()
+        
+        return contactpersoonJSON.objectId
+    }
+    
+    // schrijf een nieuwe vakantie inschrijving weg naar de database
+    static func parseInschrijvingVormingToDatabase(inschrijving: InschrijvingVorming) {
+        var inschrijvingJSON = PFObject(className: "InschrijvingVorming")
+        
+        inschrijvingJSON.setValue(inschrijving.monitor?.id, forKey: "monitor")
+        inschrijvingJSON.setValue(inschrijving.vorming?.id, forKey: "vorming")
+        
+        inschrijvingJSON.save()
+    }
 }
