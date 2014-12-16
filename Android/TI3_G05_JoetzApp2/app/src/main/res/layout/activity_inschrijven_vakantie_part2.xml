@@ -24,7 +24,7 @@
             android:textSize="20sp"
             android:layout_below="@id/AlgemeneUitleg"
             android:layout_marginTop="25dp"
-            android:text="@string/naamHint" />
+            android:text="@string/naamHintMetSter" />
 
 
         <EditText
@@ -42,7 +42,7 @@
             android:textSize="20sp"
             android:layout_below="@id/VoornaamContactPersoonIns"
             android:layout_marginTop="25dp"
-            android:text="@string/famnaamHint" />
+            android:text="@string/famnaamHintMetSter" />
 
         <EditText
             android:id="@+id/NaamContactPersoon"
@@ -78,7 +78,7 @@
             android:textSize="20sp"
             android:layout_below="@id/TelefoonContactPersoon"
             android:layout_marginTop="25dp"
-            android:text="@string/gsmHint" />
+            android:text="@string/gsmHintMetSter" />
 
         <EditText
             android:id="@+id/GsmContactPersoon"
@@ -115,7 +115,7 @@
                     android:textSize="20sp"
                     android:layout_marginTop="15dp"
                     android:layout_alignParentTop="true"
-                    android:text="@string/naamHint" />
+                    android:text="@string/naamHintMetSter" />
 
                 <EditText
                     android:id="@+id/VoornaamContactPersoonInsExtra"
@@ -132,7 +132,7 @@
                     android:textSize="20sp"
                     android:layout_marginTop="20dp"
                     android:layout_below="@+id/VoornaamContactPersoonInsExtra"
-                    android:text="@string/famnaamHint" />
+                    android:text="@string/famnaamHintMetSter" />
 
                 <EditText
                     android:id="@+id/NaamContactPersoonExtra"
@@ -168,7 +168,7 @@
                     android:textSize="20sp"
                     android:layout_marginTop="20dp"
                     android:layout_below="@+id/TelefoonContactPersoonExtra"
-                    android:text="@string/gsmHint" />
+                    android:text="@string/gsmHintMetSter" />
 
                 <EditText
                     android:id="@+id/GsmContactPersoonExtra"

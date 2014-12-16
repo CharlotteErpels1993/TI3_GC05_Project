@@ -13,7 +13,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="@string/naamHint"
+        android:text="@string/naamHintMetSter"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_alignParentTop="true"
         />
@@ -31,7 +31,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="@string/famnaamHint"
+        android:text="@string/famnaamHintMetSter"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_below="@+id/VoornaamSignu"
         />
@@ -49,7 +49,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="@string/straatHint"
+        android:text="@string/straatHintMetSter"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_below="@+id/NaamSignu"
         />
@@ -67,7 +67,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="@string/huisnrHint"
+        android:text="@string/huisnrHintMetSter"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_below="@+id/StraatSignu"
         />
@@ -162,7 +162,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="@string/gsmHint"
+        android:text="@string/gsmHintMetSter"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_below="@+id/TelefoonSignu"
         />

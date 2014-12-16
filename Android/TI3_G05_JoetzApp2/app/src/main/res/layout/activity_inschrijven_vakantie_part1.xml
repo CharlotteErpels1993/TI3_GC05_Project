@@ -24,7 +24,7 @@
             android:layout_below="@id/AlgemeneUitleg"
             android:layout_marginTop="25dp"
             android:textSize="20sp"
-            android:text="@string/famnaamHint" />
+            android:text="@string/famnaamHintMetSter" />
 
 
         <EditText
@@ -41,7 +41,7 @@
             android:textSize="20sp"
             android:layout_below="@id/NaamIns"
             android:layout_marginTop="15dp"
-            android:text="@string/naamHint" />
+            android:text="@string/naamHintMetSter" />
 
         <EditText
             android:id="@+id/VoornaamIns"
@@ -101,7 +101,7 @@
             android:textSize="20sp"
             android:layout_below="@id/ErrorDate"
             android:layout_marginTop="15dp"
-            android:text="@string/straatHint" />
+            android:text="@string/straatHintMetSter" />
 
         <EditText
             android:id="@+id/Straat"
@@ -118,7 +118,7 @@
             android:textSize="20sp"
             android:layout_below="@id/Straat"
             android:layout_marginTop="15dp"
-            android:text="@string/huisnrHint" />
+            android:text="@string/huisnrHintMetSter" />
 
         <EditText
             android:id="@+id/Huisnr"
