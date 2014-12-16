@@ -40,7 +40,7 @@ public class ProfielDetail extends Activity {
             intent1.putExtra("naarfrag", "profiel");
             intent1.putExtra("herladen", "nee");
             intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            Toast.makeText(getApplicationContext(),"Er is iets foutgelopen, onze excuses voor het ongemak.",Toast.LENGTH_SHORT);
+            Toast.makeText(getApplicationContext(),getString(R.string.error_generalException),Toast.LENGTH_SHORT);
             startActivity(intent1);
 
             overridePendingTransition(R.anim.left_in, R.anim.right_out);
@@ -52,7 +52,7 @@ public class ProfielDetail extends Activity {
             intent1.putExtra("naarfrag", "profiel");
             intent1.putExtra("herladen", "nee");
             intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            Toast.makeText(getApplicationContext(),"Er is iets foutgelopen, onze excuses voor het ongemak.",Toast.LENGTH_SHORT);
+            Toast.makeText(getApplicationContext(),getString(R.string.error_generalException),Toast.LENGTH_SHORT);
             startActivity(intent1);
 
             overridePendingTransition(R.anim.left_in, R.anim.right_out);

@@ -8,7 +8,7 @@ namespace Joetz.Models.Domain
     {
         Task<Monitor> FindBy(string monitorId);
         Task<ICollection<Monitor>> FindAll();
-        void Add(Monitor monitor);
+        Task<bool> Add(Monitor monitor);
         void Delete(Monitor monitor);
         Monitor GetMonitor(ParseObject monitorObject);
         void Update(Monitor monitor);

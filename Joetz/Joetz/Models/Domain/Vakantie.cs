@@ -7,6 +7,7 @@ namespace Joetz.Models.Domain
 {
     public class Vakantie: Activiteit
     {
+
         [Display(Name = "Vertrek")]
         [Required(ErrorMessage = "{0} is verplicht")]
         [DataType(DataType.Date)]
@@ -97,7 +98,7 @@ namespace Joetz.Models.Domain
             InbegrepenPrijs = "";
             MinLeeftijd = 0;
             MaxLeeftijd = 0;
-            MaxAantalDeelnemers = 0;
+            MaxAantalDeelnemers = 0; 
         }
     }
 }

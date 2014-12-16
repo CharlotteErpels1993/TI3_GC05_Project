@@ -23,8 +23,32 @@ class InschrijvenVakantie1ViewController : /*ResponsiveTextFieldViewController*/
         super.viewDidLoad()
         self.setNeedsStatusBarAppearanceUpdate()
         self.navigationController!.toolbarHidden = true
-        ParseData.deleteInschrijvingVakantieTable()
-        ParseData.vulInschrijvingVakantieTableOp()
+        
+        if Reachability.isConnectedToNetwork() == false {
+            var alert = UIAlertController(title: "Oeps.. U heeft geen internet", message: "U heeft internet nodig voor u in te schrijven. Ga naar instellingen om dit aan te passen.", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Annuleer", style: UIAlertActionStyle.Default, handler: nil))
+            alert.addAction(UIAlertAction(title: "Ga naar instellingen", style: .Default, handler: { action in
+                switch action.style{
+                default:
+                    UIApplication.sharedApplication().openURL(NSURL(string:UIApplicationOpenSettingsURLString)!);
+                }
+                
+            }))
+            presentViewController(alert, animated: true, completion: nil)
+            txtVoornaam.resignFirstResponder()
+            txtStraat.resignFirstResponder()
+            txtPostcode.resignFirstResponder()
+            txtNummer.resignFirstResponder()
+            txtNaam.resignFirstResponder()
+            txtGemeente.resignFirstResponder()
+            txtBus.resignFirstResponder()
+        }
+        
+        /*ParseData.deleteInschrijvingVakantieTable()
+        ParseData.vulInschrijvingVakantieTableOp()*/
+        
+        LocalDatastore.getTableReady("InschrijvingVakantie")
+        LocalDatastore.getTableReady("Deelnemer")
     }
 
     @IBAction func annuleer(sender: AnyObject) {
@@ -35,8 +59,8 @@ class InschrijvenVakantie1ViewController : /*ResponsiveTextFieldViewController*/
         if segue.identifier == "volgende" {
         let inschrijvenVakantie2ViewController = segue.destinationViewController as InschrijvenVakantie2ViewController
             
-            ParseData.deleteDeelnemerTable()
-            ParseData.vulDeelnemerTableOp()
+            /*ParseData.deleteDeelnemerTable()
+            ParseData.vulDeelnemerTableOp()*/
         
         setStatusTextFields()
         pasLayoutVeldenAan()
@@ -209,22 +233,27 @@ class InschrijvenVakantie1ViewController : /*ResponsiveTextFieldViewController*/
         self.deelnemer.gemeente = txtGemeente.text
         self.inschrijvingVakantie.vakantie = self.vakantie
     
-        var ouderResponse = ParseData.getOuderWithEmail(PFUser.currentUser().email)
+        var ouder = LocalDatastore.getOuderWithEmail(PFUser.currentUser().email)
+    
+        self.inschrijvingVakantie.ouder = ouder
+        
+        /*var ouderResponse = ParseData.getOuderWithEmail(PFUser.currentUser().email)
         
         if ouderResponse.1 == nil {
             self.inschrijvingVakantie.ouder = ouderResponse.0
         } else {
             println("ERROR: er is geen ouder teruggevonden in de database (Class: InschrijvenVakantie1ViewController)")
-        }
+        }*/
     }
     
     func controleerKindAlIngeschreven() -> Bool {
-        var inschrijvingen: [InschrijvingVakantie] = []
+        return LocalDatastore.bestaatInschrijvingVakantieAl(self.inschrijvingVakantie)
+        /*var inschrijvingen: [InschrijvingVakantie] = []
         var inschrijvingenResponse = ParseData.getInschrijvingenVakantie(self.inschrijvingVakantie)
         
         if inschrijvingenResponse.1 != nil {
            return false
         }
-        return true
+        return true*/
     }
 }

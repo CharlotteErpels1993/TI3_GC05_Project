@@ -1,6 +1,6 @@
 import UIKit
 
-class SidebarTableViewController: UITableViewController {
+class SidebarTableViewController: UITableViewController, UITextFieldDelegate {
     var selectedMenuItem : Int = 0
     var arrayKind: [String] = ["Vakanties","Inloggen", "Registreren", "Fun factor", "Wat is JOETZ?"]
     var arrayOuder: [String] = ["Uitloggen", "Vakanties", "Favorieten", "Fun factor", "Wat is JOETZ?"]
@@ -120,10 +120,11 @@ class SidebarTableViewController: UITableViewController {
             }
             sideMenuController()?.setContentViewController(destViewController)
         } else {
+            
             var gebruikerPF = PFUser.currentUser()
             var soort: String = gebruikerPF["soort"] as String
             if soort == "monitor" {
-                self.tableView.reloadData()
+                //self.tableView.reloadData()
                 switch indexPath.row {
                 case 0:
                     hideSideMenuView()
@@ -269,6 +270,4 @@ class SidebarTableViewController: UITableViewController {
             }
         }
     }
-
-    
 }

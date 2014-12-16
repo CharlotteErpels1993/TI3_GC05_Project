@@ -19,7 +19,7 @@ public class Over extends Activity {
         // Get the view from listview_main.xml
         setContentView(R.layout.activity_about);
 
-        setTitle("Over Joetz");
+        setTitle(getString(R.string.title_About));
 
         ImageView naarAanbod = (ImageView)findViewById(R.id.aanbod);
 

@@ -44,7 +44,7 @@ public class VormingenOverzichtFragment extends Fragment  {
         super.onCreate(savedInstanceState);
         rootView = inflater.inflate(R.layout.vorming_overzicht, container, false);
 
-        getActivity().getActionBar().setTitle("Vormingen");
+        getActivity().getActionBar().setTitle(getString(R.string.mainTitlePart4));
 
         listview = (ListView) rootView.findViewById(R.id.listViewv);
         et_filtertext = (EditText) rootView.findViewById(R.id.filtertextv);
@@ -99,9 +99,9 @@ public class VormingenOverzichtFragment extends Fragment  {
             super.onPreExecute();
             mProgressDialog = new ProgressDialog(getActivity());
 
-            mProgressDialog.setTitle("Ophalen van vormingen.");
+            mProgressDialog.setTitle(getString(R.string.loadingMSG_vormingen));
 
-            mProgressDialog.setMessage("Aan het laden...");
+            mProgressDialog.setMessage(getString(R.string.loading_message));
             try{
                 mProgressDialog.setIndeterminate(true);
                 mProgressDialog.setIndeterminateDrawable(rootView.getResources().getDrawable(R.drawable.my_animation));

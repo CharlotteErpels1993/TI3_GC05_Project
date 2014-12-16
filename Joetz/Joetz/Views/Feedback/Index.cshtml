@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Joetz.Models.Domain.Feedback>
+
+@{
+    ViewBag.Title = "Feedback";
+}
+
+<div class="container">
+    <br /><br />
+    <div class="page-header">
+        <h1><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> @ViewBag.Title</h1>
+    </div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Titel)
+                </th>
+                <th>Score</th>
+                <th>vakantie</th>
+                <th>Acties</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Waardering)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Score)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.VakantieNaam)
+                        </td>
+                    
+                        <!--GLYPHICONS!!!!-->
+                        @if (item.Goedgekeurd)
+                        {
+                            <td>
+                                <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+                                @Html.ActionLink("Details", "Details", new { id = item.Id }) | 
+                                <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+                                @Html.ActionLink("Verwijderen", "Delete", new { id = item.Id })
+                            </td>
+                        }
+                        @if(!item.Goedgekeurd){
+                    <td>
+                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                        @Html.ActionLink("Goedkeuren", "Edit", new { id = item.Id }) |
+                        <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                        <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+                        @Html.ActionLink("Verwijderen", "Delete", new { id = item.Id })
+                       
+                    </td>
+                    }
+                                
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

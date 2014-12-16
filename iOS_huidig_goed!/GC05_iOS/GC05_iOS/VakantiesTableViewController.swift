@@ -12,6 +12,9 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
     @IBOutlet weak var zoekbar: UISearchBar!
     
     @IBAction func toggle(sender: AnyObject) {
+        //searchBarCancelButtonClicked(zoekbar)
+        zoekbar.resignFirstResponder()
+        zoekbar.showsCancelButton = true
         toggleSideMenuView()
     }
     
@@ -20,52 +23,48 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         super.viewDidLoad()
         self.setNeedsStatusBarAppearanceUpdate()
         self.navigationController!.toolbarHidden = true
-        checkConnectie()
-        ParseData.deleteFavorietTable()
-        ParseData.vulFavorietTableOp()
-        ParseData.deleteFeedbackTable()
-        ParseData.vulFeedbackTableOp()
         
-        var responseVakanties: ([Vakantie], Int?)
-        if PFUser.currentUser() != nil {
-            var ouderResponse = ParseData.getOuderWithEmail(PFUser.currentUser().email)
-            var monitorResponse = ParseData.getMonitorWithEmail(PFUser.currentUser().email)
-            if ouderResponse.1 == nil {
-                if favoriet == false {
-                    responseVakanties = ParseData.getAlleVakanties()
-                } else  {
-                    responseVakanties = ParseData.getFavorieteVakanties(ouderResponse.0)
-                    self.navigationItem.title = "Favorieten"
-                }
-            } else if monitorResponse.1 == nil {
-                if favoriet == false {
-                    responseVakanties = ParseData.getAlleVakanties()
-                } else  {
-                    responseVakanties = ParseData.getFavorieteVakanties(monitorResponse.0)
-                    self.navigationItem.title = "Favorieten"
-                }
-            } else {
-                responseVakanties = ParseData.getAlleVakanties()
-                self.navigationItem.title = "Vakanties"
-            }
+        //Parse LocalDatastore
+        var tableName: String = ""
+        
+        if self.favoriet == true {
+            //favoriete vakanties
+            tableName = "Favoriet"
+            self.navigationItem.title = "Favorieten"
         } else {
-            responseVakanties = ParseData.getAlleVakanties()
+            tableName = "Vakantie"
             self.navigationItem.title = "Vakanties"
         }
         
-        if responseVakanties.1 == nil {
-            self.vakanties = responseVakanties.0
+        if Reachability.isConnectedToNetwork() == false {
+            //er is geen internet
+            
+            if LocalDatastore.isEmptyInLocalDatastore(tableName) {
+                //table is leeg
+                //melding tonen
+                if tableName == "Favoriet" {
+                    foutBoxOproepen("Geen favoriete vakanties", "Er zijn nog geen vakanties als favoriet geselecteerd!", self)
+                    //self.tableView.reloadData()
+                } else {
+                    foutBoxOproepen("Geen vakanties", "Verbind met het internet om alle vakanties te bekijken!", self)
+                    //self.tableView.reloadData()
+                }
+            } else {
+                //table is opgevuld
+                //opvullen
+                self.vakanties = LocalDatastore.getLocalObjects(tableName) as [Vakantie]
+                self.vakanties2 = self.vakanties
+                self.tableView.reloadData()
+            }
+        } else {
+            self.vakanties = LocalDatastore.getLocalObjects(tableName) as [Vakantie]
             self.vakanties2 = self.vakanties
             self.tableView.reloadData()
-        } else {
-            foutBoxOproepen("Oeps", "Er zijn geen vakanties als favoriet geselecteerd.", self)
-            vakanties2 = []
-            vakanties = []
-            self.tableView.reloadData()
         }
-    
-        self.vakanties2.sort({ (String($0.minLeeftijd)) < $1.titel})
-        self.vakanties.sort({ (String($0.minLeeftijd)) < $1.titel})
+        
+        
+        self.vakanties2.sort({ $0.minLeeftijd < $1.minLeeftijd })
+        self.vakanties.sort({ $0.minLeeftijd < $1.minLeeftijd})
     
         hideSideMenuView()
         zoekbar.showsScopeBar = true
@@ -73,19 +72,38 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         
         if PFUser.currentUser() != nil {
             self.navigationItem.setHidesBackButton(true, animated: true)
-            self.navigationItem.rightBarButtonItem = nil   
+            self.navigationItem.rightBarButtonItem = nil
         }
+
     }
     
     override func viewWillAppear(animated: Bool) {
         self.setNeedsStatusBarAppearanceUpdate()
         self.navigationController!.toolbarHidden = true
-        refresh(self.refreshControl!)
         self.tableView.reloadData()
     }
     
     func gemiddeldeFeedback(vakantie: Vakantie) -> Double {
-        var feedbackResponse = ParseData.getFeedbackFromVakantie(vakantie)
+        
+        //Local Datastore
+        var scores: [Int] = []
+        var sum = 0
+        
+        var feedbacks = LocalDatastore.getLocalObjects("Feedback") as [Feedback]
+        
+        for feed in feedbacks {
+            scores.append(feed.score!)
+        }
+        
+        for score in scores {
+            sum += score
+        }
+        
+        var gemiddelde: Double = Double(sum) / Double(scores.count)
+        return ceil(gemiddelde)
+        
+        //WERKEND
+        /*var feedbackResponse = ParseData.getFeedbackFromVakantie(vakantie)
         var scores: [Int] = []
         var sum = 0
         
@@ -100,7 +118,7 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         }
         
         var gemiddelde: Double = Double(sum) / Double(scores.count)
-        return ceil(gemiddelde)
+        return ceil(gemiddelde)*/
     }
     
     func zetAantalSterrenGemiddeldeFeedback(vakantie: Vakantie, ster1: UIImageView, ster2: UIImageView, ster3: UIImageView, ster4: UIImageView, ster5: UIImageView) {
@@ -161,6 +179,7 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
     }
     
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        hideSideMenuView()
         setTitleCancelButton(searchBar)
         zoekGefilterdeVakanties(searchBar.text)
     }
@@ -184,6 +203,7 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        hideSideMenuView()
         searchBar.showsCancelButton = true
         setTitleCancelButton(searchBar)
         zoekGefilterdeVakanties(searchText.lowercaseString)
@@ -225,7 +245,12 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("vakantieCell", forIndexPath: indexPath) as VakantieCell
         let vakantie = vakanties2[indexPath.row]
-        var image = ParseData.getAfbeeldingMetVakantieId(vakantie.id)
+        
+        //Local Datastore
+        var image = LocalDatastore.getAfbeelding(vakantie.id)
+        
+        //WERKEND
+        //var image = ParseData.getAfbeeldingMetVakantieId(vakantie.id)
         cell.afbeelding.image = image
         cell.locatieLabel.text = vakantie.locatie
         cell.doelgroepLabel.layer.borderColor = self.redColor.CGColor
@@ -242,17 +267,22 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
             if editingStyle == UITableViewCellEditingStyle.Delete {
                 vakanties2.removeAtIndex(indexPath.row)
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
-                var ouderResponse = ParseData.getOuderWithEmail(PFUser.currentUser().email)
-                var monitorResponse = ParseData.getOuderWithEmail(PFUser.currentUser().email)
+                
+                //Parse Local Datastore
                 var favorieteVakantie: Favoriet = Favoriet(id: "test")
-                if ouderResponse.1 == nil {
+                var user = PFUser.currentUser()
+                var soort = user["soort"] as? String
+                
+                if soort == "ouder" {
                     favorieteVakantie.vakantie = vakanties[indexPath.row]
-                    favorieteVakantie.gebruiker = ouderResponse.0
-                } else if monitorResponse.1 == nil {
+                    var ouder = LocalDatastore.getGebruikerWithEmail(PFUser.currentUser().email, tableName: "Ouder")
+                    favorieteVakantie.gebruiker = ouder
+                } else if soort == "monitor" {
                     favorieteVakantie.vakantie = vakanties[indexPath.row]
-                    favorieteVakantie.gebruiker = monitorResponse.0
+                    var monitor = LocalDatastore.getGebruikerWithEmail(PFUser.currentUser().email, tableName: "Monitor")
+                    favorieteVakantie.gebruiker = monitor
                 }
-                ParseData.deleteFavorieteVakantie(favorieteVakantie)
+                LocalDatastore.deleteFavorieteVakantie(favorieteVakantie)
             }
         }
     }
@@ -266,9 +296,13 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
     }
     
     @IBAction func refresh(sender: UIRefreshControl) {
-        var parseData = ParseData()
-        ParseData.deleteAllTables()
-        ParseData.createDatabase()
+        
+        LocalDatastore.getTableReady("Vakantie")
+        LocalDatastore.getTableReady("Afbeelding")
+        LocalDatastore.getTableReady("Feedback")
+        LocalDatastore.getTableReady("Ouder")
+        LocalDatastore.getTableReady("Favoriet")
+        
         self.refreshControl?.endRefreshing()
         viewDidLoad()
     }

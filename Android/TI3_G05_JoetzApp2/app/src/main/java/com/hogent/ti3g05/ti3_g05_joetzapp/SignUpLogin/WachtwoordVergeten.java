@@ -30,7 +30,7 @@ public class WachtwoordVergeten extends Activity{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.forgetpassword);
-        getActionBar().setTitle("Wachtwoord vergeten");
+        getActionBar().setTitle(getString(R.string.menu_forgot_password));
 		
 		et_forgetpassword = (EditText) findViewById(R.id.et_forgetpassword);
 		btn_submitforgetpassword = (Button) findViewById(R.id.btn_submitforgetpassword);

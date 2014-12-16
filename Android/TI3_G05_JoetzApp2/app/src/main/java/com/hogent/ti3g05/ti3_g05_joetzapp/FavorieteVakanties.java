@@ -60,7 +60,7 @@ public class FavorieteVakanties extends Fragment{
             listview = (ListView) rootView.findViewById(R.id.listViewFav);
             filtertext = (EditText) rootView.findViewById(R.id.filtertextFav);
 
-            getActivity().getActionBar().setTitle("Favoriete vakanties");
+            getActivity().getActionBar().setTitle(getString(R.string.title_Fav_vakanties));
 
 
             cd = new ConnectionDetector(rootView.getContext());
@@ -105,9 +105,9 @@ public class FavorieteVakanties extends Fragment{
                 super.onPreExecute();
                 mProgressDialog = new ProgressDialog(getActivity());
 
-                mProgressDialog.setTitle("Ophalen van vakanties.");
+                mProgressDialog.setTitle(getString(R.string.loadingMSG_vakanties));
 
-                mProgressDialog.setMessage("Aan het laden...");
+                mProgressDialog.setMessage(getString(R.string.loading_message));
                 try{
                     mProgressDialog.setIndeterminate(true);
                     mProgressDialog.setIndeterminateDrawable(rootView.getResources().getDrawable(R.drawable.my_animation));

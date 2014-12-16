@@ -1,7 +1,8 @@
 import UIKit
 import QuartzCore
 
-class InloggenViewController: UIViewController {
+class InloggenViewController: UIViewController, UITextFieldDelegate {
+    
     @IBOutlet weak var txtEmail: UITextField!
     @IBOutlet weak var txtWachtwoord: UITextField!
     
@@ -9,6 +10,8 @@ class InloggenViewController: UIViewController {
     var redColor: UIColor = UIColor.redColor()
     
     @IBAction func toggle(sender: AnyObject) {
+        txtEmail.resignFirstResponder()
+        txtWachtwoord.resignFirstResponder()
         toggleSideMenuView()
     }
     
@@ -19,6 +22,24 @@ class InloggenViewController: UIViewController {
         self.navigationController!.toolbarHidden = true
         txtEmail.autocorrectionType = UITextAutocorrectionType.No
         txtWachtwoord.autocorrectionType = UITextAutocorrectionType.No
+        
+        txtEmail.delegate = self
+        txtWachtwoord.delegate = self
+        
+        if Reachability.isConnectedToNetwork() == false {
+            var alert = UIAlertController(title: "Oeps.. U heeft geen internet", message: "U heeft internet nodig voor u in te loggen. Ga naar instellingen om dit aan te passen.", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Annuleer", style: UIAlertActionStyle.Default, handler: nil))
+            alert.addAction(UIAlertAction(title: "Ga naar instellingen", style: .Default, handler: { action in
+                switch action.style{
+                default:
+                    UIApplication.sharedApplication().openURL(NSURL(string:UIApplicationOpenSettingsURLString)!);
+                }
+                
+            }))
+            presentViewController(alert, animated: true, completion: nil)
+            txtEmail.resignFirstResponder()
+            txtWachtwoord.resignFirstResponder()
+        }
     }
     
     func checkPatternEmail(email: String) -> Bool {
@@ -96,10 +117,10 @@ class InloggenViewController: UIViewController {
                 var type: String = user["soort"] as String
                 
                 if type == "monitor" {
-                    var monitor = ParseData.getMonitorWithEmail(txtEmail.text)
+                    //var monitor = ParseData.getMonitorWithEmail(txtEmail.text)
                     performSegueWithIdentifier("overzichtMonitor", sender: self)
                 } else if type == "ouder" {
-                    var ouder = ParseData.getOuderWithEmail(txtEmail.text)
+                    //var ouder = ParseData.getOuderWithEmail(txtEmail.text)
                     performSegueWithIdentifier("ouderOverzicht", sender: self)
                 } else if type == "administrator" {
                     performSegueWithIdentifier("administratorOverzicht", sender: self)
@@ -140,5 +161,15 @@ class InloggenViewController: UIViewController {
         } else {
             return false
         }
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        if textField == txtEmail {
+            txtWachtwoord.becomeFirstResponder()
+        } else if textField == txtWachtwoord {
+            inloggen(self)
+            txtWachtwoord.resignFirstResponder()
+        }
+        return true
     }
 }

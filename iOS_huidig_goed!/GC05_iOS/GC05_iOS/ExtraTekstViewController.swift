@@ -34,7 +34,7 @@ class ExtraTekstViewController: UIViewController {
             self.vakantieNaamLabel!.hidden = true
             break
         case 5:
-            self.navigationItem.title = "Periodes"
+            self.navigationItem.title = "Tips"
             self.vakantieNaamLabel!.hidden = true
             break
         default:

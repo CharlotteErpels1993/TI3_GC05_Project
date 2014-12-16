@@ -138,9 +138,6 @@ struct VakantieSQL {
             {
                 //no error, the row was inserted successfully
             }
-            
-            teller += 1
-            
         }
     }
     

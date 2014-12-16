@@ -5,6 +5,7 @@ using System.Web;
 using System.IO;
 using Joetz.Models.DAL;
 using Joetz.Models.Domain;
+using Excel;
 
 namespace Joetz.Controllers
 {
@@ -36,7 +37,7 @@ namespace Joetz.Controllers
 
         //onderstaande methode dient voor de fileupload
         [HttpPost]
-        public ActionResult Index(HttpPostedFileBase file)
+        public async Task<ActionResult> Index(HttpPostedFileBase file)
         {
             // Zeker zijn dat gebruiker bestand heeft geselecteerd
             if (file != null && file.ContentLength > 0)
@@ -48,11 +49,48 @@ namespace Joetz.Controllers
                     // store the file inside ~/App_Data/uploads folder
                     var path = Path.Combine(Server.MapPath("~/App_Data/uploads/"), fileName);
                     file.SaveAs(path);
-                    
+                    Monitor m = new Monitor();
+                    IList<Monitor> monitorern = new List<Monitor>();
+
+                    IExcelDataReader reader = ExcelReaderFactory.CreateOpenXmlReader(file.InputStream);
+
+                    reader.Read();
+
+                        while(reader.Read()) //14 kolommen +-
+                        {
+                            m.Aansluitingsnummer = reader.GetInt32(0);
+                            m.Bus = reader.GetString(1);
+                            m.CodeGerechtigde = reader.GetInt32(2);
+                            m.Email = reader.GetString(3);
+                            m.Gemeente = reader.GetString(4);
+                            m.Gsm = reader.GetString(5);
+                            m.Lidnummer = reader.GetString(6);
+                                m.Naam = reader.GetString(7);
+                            m.Nummer = reader.GetInt32(8);
+                            m.Postcode =reader.GetInt32(9);
+                            m.Rijksregisternummer = reader.GetString(10);
+                            m.Straat = reader.GetString(11);
+                            m.Telefoon = reader.GetString(12);
+                            m.Voornaam = reader.GetString(13);
+
+                            
+                            await monitorRepository.Add(m);
+                        }
+                    } // the using */
+/*
+                    using (var package = new ExcelPackage(fileBase.InputStream))
+                    {
+                        // get the first worksheet in the workbook
+                        ExcelWorksheet worksheet = package.Workbook.Worksheets[1];
+                        int col = 1;
+                        for (int row = 1; worksheet.Cells[row, col].Value != null; row++)
+                        {
+                            // do something with worksheet.Cells[row, col].Value                    
+                        }
+                    } // the using */
                     // redirect back to the index action to show the form once again
-                    return RedirectToAction("Index");
+                return RedirectToAction("Index");
                 }
-            }
             return View();
         }
 

@@ -60,7 +60,7 @@ namespace Joetz.Models.DAL
             return monitor;
         }
 
-        public async void Add(Monitor monitor)
+        public async Task<bool> Add(Monitor monitor)
         {
             ParseObject monitorObject = new ParseObject("Monitor");
 
@@ -80,6 +80,8 @@ namespace Joetz.Models.DAL
             monitorObject["lidnummer"] = monitor.Lidnummer;
             
             await monitorObject.SaveAsync();
+
+            return true;
         }
 
         public async void Delete(Monitor monitor)

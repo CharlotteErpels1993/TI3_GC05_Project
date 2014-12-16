@@ -113,9 +113,9 @@ public class ProfielenOverzicht_fragment extends Fragment /* implements SwipeRef
             super.onPreExecute();
             mProgressDialog = new ProgressDialog(getActivity());
 
-            mProgressDialog.setTitle("Ophalen van profielen.");
+            mProgressDialog.setTitle(getString(R.string.loadingMSG_profielen));
 
-            mProgressDialog.setMessage("Aan het laden...");
+            mProgressDialog.setMessage(getString(R.string.loading_message));
             try {
                 mProgressDialog.setIndeterminate(true);
                 mProgressDialog.setIndeterminateDrawable(getResources().getDrawable(R.drawable.my_animation));
@@ -233,7 +233,7 @@ public class ProfielenOverzicht_fragment extends Fragment /* implements SwipeRef
                         Monitor eigenHeader = new Monitor();
                         eigenHeader.setNaam("");
                         eigenHeader.setVoornaam("");
-                        eigenHeader.setMonitorId("Eigen profiel");
+                        eigenHeader.setMonitorId(getString(R.string.profielHeaderEen));
                         profielenSamen.add(eigenHeader);
 
                         profielenSamen.add(ingelogdeMonitor);
@@ -241,7 +241,7 @@ public class ProfielenOverzicht_fragment extends Fragment /* implements SwipeRef
                         Monitor eersteHeader = new Monitor();
                         eersteHeader.setNaam("");
                         eersteHeader.setVoornaam("");
-                        eersteHeader.setMonitorId("Monitoren met dezelfde vorming");
+                        eersteHeader.setMonitorId(getString(R.string.profielHeaderTwee));
                         profielenSamen.add(eersteHeader);
 
                         profielenSamen.addAll(profielenMetZelfdeVorming);
@@ -249,7 +249,7 @@ public class ProfielenOverzicht_fragment extends Fragment /* implements SwipeRef
                         Monitor tweedeHeader = new Monitor();
                         tweedeHeader.setNaam("");
                         tweedeHeader.setVoornaam("");
-                        tweedeHeader.setMonitorId("Resterende monitoren");
+                        tweedeHeader.setMonitorId(getString(R.string.profielHeaderDrie));
                         profielenSamen.add(tweedeHeader);
 
                         // profielenSamen.addAll(profielenMetZelfdeVorming.size(),profielenAndere);
@@ -257,7 +257,7 @@ public class ProfielenOverzicht_fragment extends Fragment /* implements SwipeRef
 
 
                     } catch (ParseException e) {
-                        Toast.makeText(getActivity(), "Fout bij ophalen vormingen", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), getString(R.string.error_generalException), Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     profielenSamen = alleProfielenUitParse;

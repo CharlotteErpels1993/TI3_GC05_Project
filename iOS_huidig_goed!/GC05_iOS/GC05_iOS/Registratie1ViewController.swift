@@ -1,7 +1,7 @@
 import UIKit
 import QuartzCore
 
-class Registratie1ViewController: /*ResponsiveTextFieldViewController*/ UITableViewController {
+class Registratie1ViewController: /*ResponsiveTextFieldViewController*/ UITableViewController, UITextFieldDelegate {
     var ouder: Ouder! = Ouder(id: "test")
     var gebruikerIsLid: Bool? = true
     var foutBox: FoutBox? = nil
@@ -17,6 +17,10 @@ class Registratie1ViewController: /*ResponsiveTextFieldViewController*/ UITableV
     @IBOutlet weak var buttonNummers: UIButton!
     
     @IBAction func toggle(sender: AnyObject) {
+        txtAansluitingsNr.resignFirstResponder()
+        txtCodeGerechtigde.resignFirstResponder()
+        txtRijksregisterNr.resignFirstResponder()
+        txtAansluitingsNrTweedeOuder.resignFirstResponder()
         toggleSideMenuView()
     }
     @IBAction func gaTerugNaarInloggen(sender: AnyObject) {
@@ -26,16 +30,29 @@ class Registratie1ViewController: /*ResponsiveTextFieldViewController*/ UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         hideSideMenuView()
-        /*self.txtRijksregisterNr.text = ""
-        self.txtCodeGerechtigde.text = ""
-        self.txtAansluitingsNr.text = ""
-        self.txtAansluitingsNrTweedeOuder.text = ""*/
         self.navigationItem.setHidesBackButton(true, animated: true)
         
-        ParseData.deleteOuderTable()
-        ParseData.vulOuderTableOp()
-        ParseData.deleteMonitorTable()
-        ParseData.vulMonitorTableOp()
+        if Reachability.isConnectedToNetwork() == false {
+            var alert = UIAlertController(title: "Oeps.. U heeft geen internet", message: "U heeft internet nodig voor u te registeren. Ga naar instellingen om dit aan te passen.", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Annuleer", style: UIAlertActionStyle.Default, handler: nil))
+            alert.addAction(UIAlertAction(title: "Ga naar instellingen", style: .Default, handler: { action in
+                switch action.style{
+                default:
+                    UIApplication.sharedApplication().openURL(NSURL(string:UIApplicationOpenSettingsURLString)!);
+                }
+                
+            }))
+            presentViewController(alert, animated: true, completion: nil)
+            txtAansluitingsNr.resignFirstResponder()
+            txtAansluitingsNrTweedeOuder.resignFirstResponder()
+            txtCodeGerechtigde.resignFirstResponder()
+            txtRijksregisterNr.resignFirstResponder()
+        }
+        
+        txtAansluitingsNr.delegate = self
+        txtCodeGerechtigde.delegate = self
+        txtRijksregisterNr.delegate = self
+        txtAansluitingsNrTweedeOuder.delegate = self
     }
     
     @IBAction func switched(sender: UISwitch) {
@@ -49,7 +66,6 @@ class Registratie1ViewController: /*ResponsiveTextFieldViewController*/ UITableV
             self.tableView.deleteSections(NSIndexSet(index: 1), withRowAnimation: UITableViewRowAnimation.None)
             buttonNummers.hidden = true
         }
-        
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -79,7 +95,6 @@ class Registratie1ViewController: /*ResponsiveTextFieldViewController*/ UITableV
         return 0
     }
     
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "volgende" {
             let registratie2ViewController = segue.destinationViewController as Registratie2ViewController
@@ -88,7 +103,7 @@ class Registratie1ViewController: /*ResponsiveTextFieldViewController*/ UITableV
             
             if controleerRodeBordersAanwezig() == true {
                 if rijksregisterNrAlGeregistreerd == true {
-                    foutBoxOproepen("Fout", "Dit rijksregisternummer (\(self.txtRijksregisterNr.text)) is al geregistreerd!", self)
+                    foutBoxOproepen("Fout", "Dit rijksregisternummer (\(self.txtRijksregisterNr.text!)) is al geregistreerd!", self)
                     self.txtRijksregisterNr.text = ""
                 } else {
                     foutBoxOproepen("Fout", "Gelieve de velden correct in te vullen!", self)
@@ -224,11 +239,14 @@ class Registratie1ViewController: /*ResponsiveTextFieldViewController*/ UITableV
                 ouder.aansluitingsNrTweedeOuder = txtAansluitingsNrTweedeOuder.text.toInt()!
             }
         }
-        
     }
     
     func controleerRijksregisterNummerAlGeregisteerd() -> Bool {
-        return ParseData.getRijksregisterNummers(self.txtRijksregisterNr.text)
+        return LocalDatastore.isRijksregisternummerAlGeregistreerd(self.txtRijksregisterNr.text)
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
-

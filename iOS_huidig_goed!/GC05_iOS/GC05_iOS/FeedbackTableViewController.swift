@@ -10,6 +10,7 @@ class FeedbackTableViewController: UITableViewController, UISearchBarDelegate, U
     //var vakantieId: String?
     
     @IBAction func toggle(sender: AnyObject) {
+        searchBarCancelButtonClicked(zoekbar)
         toggleSideMenuView()
     }
     
@@ -52,6 +53,7 @@ class FeedbackTableViewController: UITableViewController, UISearchBarDelegate, U
     }
     
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        hideSideMenuView()
         setTitleCancelButton(searchBar)
         zoekGefilterdeFeedback(searchBar.text)
     }
@@ -75,6 +77,7 @@ class FeedbackTableViewController: UITableViewController, UISearchBarDelegate, U
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        hideSideMenuView()
         searchBar.showsCancelButton = true
         setTitleCancelButton(searchBar)
         zoekGefilterdeFeedback(searchText.lowercaseString)

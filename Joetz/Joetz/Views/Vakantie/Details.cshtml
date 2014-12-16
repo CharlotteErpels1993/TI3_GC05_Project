@@ -1,0 +1,135 @@
+﻿@model Joetz.Models.Domain.Vakantie
+
+@{
+    ViewBag.Title = "Detail";
+}
+
+@using (Html.BeginForm("Details", "Vakantie", FormMethod.Post, new {role = "form"}))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <div class="page-header">
+        <br/>
+        <h1>@ViewBag.Title</h1>
+    </div>
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">Algemeen</div>
+        <div class="container">
+            <br/>
+            <div class="form-group">
+                <label for="inputTitel">@Html.LabelFor(model => model.Titel)</label>
+                <br />
+                @Html.DisplayFor(model => model.Titel)
+            </div>
+            <div class="form-group">
+                <label for="inputKorteBeschrijving">@Html.LabelFor(model => model.KorteBeschrijving)</label>
+                <br />
+                @Html.DisplayFor(model => model.KorteBeschrijving)
+                
+            </div>
+            <div class="form-group">
+                <label for="inputVervoerwijze">@Html.LabelFor(model => model.Vervoerwijze)</label>
+                <br />
+                @Html.DisplayFor(model => model.Vervoerwijze)
+                
+            </div>
+            <div class="form-group">
+                <label for="inputFormule">@Html.LabelFor(model => model.Formule)</label>
+                <br />
+                @Html.DisplayFor(model => model.Formule)
+            </div>
+            <div class="form-group">
+                <label for="inputMinLeeftijd">@Html.LabelFor(model => model.MinLeeftijd)</label>
+                <br />
+                @Html.DisplayFor(model => model.MinLeeftijd)
+            </div>
+            <div class="form-group">
+                <label for="inputMaxLeeftijd">@Html.LabelFor(model => model.MaxLeeftijd)</label>
+                <br />
+                @Html.DisplayFor(model => model.MaxLeeftijd)
+            </div>
+            <div class="form-group">
+                <label for="inputMaxAantalDeelnemers">@Html.LabelFor(model => model.MaxAantalDeelnemers)
+                </label>
+                <br />
+                @Html.DisplayFor(model => model.MaxAantalDeelnemers)
+            </div>
+            <div class="form-group">
+                <label for="inputLocatie">@Html.LabelFor(model => model.Locatie)</label>
+                <br />
+                @Html.DisplayFor(model => model.Locatie)
+            </div>
+            <div class="form-group">
+                <label for="inputLinkWebsite">@Html.LabelFor(model => model.Link)</label>
+                <br />
+                @Html.DisplayFor(model => model.Link)
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">Data</div>
+        <div class="container">
+            <br/>
+            <div class="form-group">
+                <label for="inputVertrekdatum">@Html.LabelFor(model => model.VertrekDatum)</label>
+                <br />
+                @Html.DisplayFor(model => model.VertrekDatum)
+            </div>
+            <div class="form-group">
+                <label for="inputTerugkeerdatum">@Html.LabelFor(model => model.TerugkeerDatum)</label>
+                <br />
+                @Html.DisplayFor(model => model.TerugkeerDatum)
+            </div>
+            <div class="form-group">
+                <label for="inputAantalDagenNachten">@Html.LabelFor(model => model.AantalDagenNachten)</label>
+                <br />
+                @Html.DisplayFor(model => model.AantalDagenNachten)
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">Prijzen</div>
+        <div class="container">
+            <br/>
+            <div class="form-group">
+                <label for="inputBasisprijs">@Html.LabelFor(model => model.BasisPrijs)</label>
+                <br />
+                @Html.DisplayFor(model => model.BasisPrijs)
+            </div>
+            <div class="form-group">
+                <label for="inputBondMoysonLedenPrijs">
+                    @Html.LabelFor(model => model.BondMoysonLedenPrijs)
+                </label>
+                <br />
+                @Html.DisplayFor(model => model.BondMoysonLedenPrijs)
+            </div>
+            <div class="form-group">
+                <label for="inputSterprijs1ouder">@Html.LabelFor(model => model.SterPrijs1Ouder)</label>
+                <br />
+                @Html.DisplayFor(model => model.SterPrijs1Ouder)
+            </div>
+            <div class="form-group">
+                <label for="inputSterprijs2ouders">@Html.LabelFor(model => model.SterPrijs2Ouders)</label>
+                <br />
+                @Html.DisplayFor(model => model.SterPrijs2Ouders)
+            </div>
+            <div class="form-group">
+                <label for="inputInbegrepenPrijs">@Html.LabelFor(model => model.InbegrepenPrijs)</label>
+                <br />
+                @Html.DisplayFor(model => model.KorteBeschrijving)
+            </div>
+        </div>
+    </div>
+    
+}
+<div class="container">
+    <br/>
+    @Html.ActionLink("Terug naar overzicht vakanties", "Index", "Vakantie")<br/><br/>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

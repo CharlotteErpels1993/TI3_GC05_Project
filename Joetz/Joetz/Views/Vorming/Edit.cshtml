@@ -1,0 +1,85 @@
+﻿@model Joetz.Models.Domain.Vorming
+
+@{
+    ViewBag.Title = "Vorming bewerken";
+}
+
+@using (Html.BeginForm("Edit", "Vorming", FormMethod.Post, new { role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <div class="page-header">
+        <br />
+        <h1>@ViewBag.Title</h1>
+    </div>
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">Algemeen</div>
+        <div class="container">
+            <br />
+            <div class="form-group">
+                <label for="inputTitel">@Html.LabelFor(model => model.Titel)</label>
+                @Html.TextBoxFor(model => model.Titel, new { @class = "form-control", id = "inputTitel", style = "width: 97%" })
+                @Html.ValidationMessageFor(model => model.Titel)
+            </div>
+            <div class="form-group">
+                <label for="inputKorteBeschrijving">@Html.LabelFor(model => model.KorteBeschrijving)</label>
+                @Html.TextAreaFor(model => model.KorteBeschrijving, new { @class = "form-control", id = "inputKorteBeschrijving", style = "width: 97%" })
+                @Html.ValidationMessageFor(model => model.KorteBeschrijving)
+            </div>
+            <div class="form-group">
+                <label for="inputCriteriaDeelnemers">
+                    @Html.LabelFor(model => model.CriteriaDeelnemers)
+                </label>
+                @Html.TextAreaFor(model => model.CriteriaDeelnemers, new { @class = "form-control", id = "inputCriteriaDeelnemers", style = "width: 97%" })
+                @Html.ValidationMessageFor(model => model.CriteriaDeelnemers)
+            </div>
+            <div class="form-group">
+                <label for="inputPeriodes">@Html.LabelFor(model => model.Periodes)</label>
+                @Html.TextAreaFor(model => model.Periodes, new { @class = "form-control", id = "inputPeriodes", style = "width: 97%" })
+                @Html.ValidationMessageFor(model => model.Periodes)
+            </div>
+            <div class="form-group">
+                <label for="inputLocatie">@Html.LabelFor(model => model.Locatie)</label>
+                @Html.TextBoxFor(model => model.Locatie, new { @class = "form-control", id = "inputLocatie", style = "width: 97%" })
+                @Html.ValidationMessageFor(model => model.Locatie)
+            </div>
+            <div class="form-group">
+                <label for="inputTips">@Html.LabelFor(model => model.Tips)</label>
+                @Html.TextBoxFor(model => model.Tips, new { @class = "form-control", id = "inputTips", style = "width: 97%" })
+                @Html.ValidationMessageFor(model => model.Tips)
+            </div>
+            <div class="form-group">
+                <label for="inputPrijs">
+                    @Html.LabelFor(model => model.Prijs)
+            </label>
+            @Html.TextBoxFor(model => model.Prijs, new { @class = "form-control", id = "inputPrijs", style = "width: 97%" })
+            @Html.ValidationMessageFor(model => model.Prijs)
+        </div>
+        <div class="form-group">
+            <label for="inputInbegrepenPrijs">@Html.LabelFor(model => model.InbegrepenPrijs)</label>
+            @Html.TextBoxFor(model => model.InbegrepenPrijs, new { @class = "form-control", id = "inputInbegrepenPrijs", style = "width: 97%" })
+            @Html.ValidationMessageFor(model => model.InbegrepenPrijs)
+        </div>
+        <div class="form-group">
+            <label for="inputBetalingswijze">@Html.LabelFor(model => model.Betalingswijze)</label>
+            @Html.TextAreaFor(model => model.Betalingswijze, new { @class = "form-control", id = "inputBetalingswijze", style = "width: 97%" })
+            @Html.ValidationMessageFor(model => model.Betalingswijze)
+        </div>
+        </div>
+    </div>
+    <div class="container">
+        <button type="submit" class="btn btn-default">
+            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+            Bewerken
+        </button><br /><br />
+    </div>
+}
+<div class="container">
+    <br />
+    @Html.ActionLink("Terug naar overzicht vormingen", "Index", "Vorming")<br /><br />
+</div>
+
+
+
+

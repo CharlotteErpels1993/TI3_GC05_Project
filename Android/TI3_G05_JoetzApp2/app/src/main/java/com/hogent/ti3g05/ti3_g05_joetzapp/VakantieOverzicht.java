@@ -58,7 +58,7 @@ public class VakantieOverzicht extends Fragment {
         listview = (ListView) rootView.findViewById(R.id.listView);
         filtertext = (EditText) rootView.findViewById(R.id.filtertext);
 
-        getActivity().getActionBar().setTitle("Vakanties");
+        getActivity().getActionBar().setTitle(getString(R.string.mainTitlePart1));
 
 
         cd = new ConnectionDetector(rootView.getContext());
@@ -116,10 +116,10 @@ public class VakantieOverzicht extends Fragment {
             mProgressDialog = new ProgressDialog(getActivity());
             
             // Set progressdialog title
-            mProgressDialog.setTitle("Ophalen van vakanties.");
+            mProgressDialog.setTitle(getString(R.string.loadingMSG_vakanties));
 
             // Set progressdialog message
-            mProgressDialog.setMessage("Aan het laden...");
+            mProgressDialog.setMessage(getString(R.string.loading_message));
             try {
                 mProgressDialog.setIndeterminate(true);
                 mProgressDialog.setIndeterminateDrawable(rootView.getResources().getDrawable(R.drawable.my_animation));

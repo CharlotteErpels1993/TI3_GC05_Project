@@ -4,7 +4,6 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -13,6 +12,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Parse.setApplicationId("a3jgklEb2rHZYcgqDezLfqSP6i1C2u4eVV8R03YS", clientKey:
             "3ZguW3kx5J6PuieccT7ypJ5ZvYhwX08ESKL8cDNX")
+        
+        //Moet eigenlijk aangeroepen worden voor setApplicationId()
+        //Bug van Parse
+        //Er is een fix die samen met de volgende SDK release zal uitkomen
+        Parse.enableLocalDatastore()
+        
+        
+        LocalDatastore.getTableReady("Vakantie")
+        LocalDatastore.getTableReady("Afbeelding")
+        LocalDatastore.getTableReady("Feedback")
+        LocalDatastore.getTableReady("Ouder")
+        LocalDatastore.getTableReady("Favoriet")
+        LocalDatastore.getTableReady("Monitor")
+        
+        
+        /*if Reachability.isConnectedToNetwork() {
+            //er is internet
+            if isEmptyInLocalDataStore("Vakantie") == true {
+                fillTableInLocalDatastore("Vakantie")
+            } else {
+                updateObjectsInLocalDataStoreFromParse("Vakantie")
+            }
+        }*/
         
         
         /*if !Reachability.isConnectedToNetwork() {
@@ -30,10 +52,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             PFUser.logOut()
         }
         
-        ParseData.deleteAllTables()
-        if Reachability.isConnectedToNetwork() {
+        //ParseData.deleteAllTables()
+        /*if Reachability.isConnectedToNetwork() {
             ParseData.createDatabase()
-        }
+        }*/
 
         
         // Connectie check

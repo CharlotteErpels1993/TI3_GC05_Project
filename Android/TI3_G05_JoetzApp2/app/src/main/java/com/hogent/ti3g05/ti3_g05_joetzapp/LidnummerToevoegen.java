@@ -44,7 +44,7 @@ public class LidnummerToevoegen extends Activity {
         // creating connection detector class instance
         cd = new ConnectionDetector(getApplicationContext());
 
-        getActionBar().setTitle("Lidnummer toevoegen");
+        getActionBar().setTitle(getString(R.string.label_add_lidnr));
 
 
         et_email = (EditText) findViewById(R.id.etEmailLidnummerToevoegen);
@@ -234,7 +234,7 @@ public class LidnummerToevoegen extends Activity {
 
         nieuweMonitor.saveInBackground();
 
-        signUpMsg("Lidnummer toegevoegd.");
+        signUpMsg(getString(R.string.dialog_Lidnr_Toegevoegd));
 
 
         Intent in = new Intent(getApplicationContext(), navBarMainScreen.class);

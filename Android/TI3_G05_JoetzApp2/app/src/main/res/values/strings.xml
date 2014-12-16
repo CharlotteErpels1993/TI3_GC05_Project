@@ -9,7 +9,7 @@
     <string name="cancel">Annuleren</string>
     <string name="orText">of</string>
     <string name="createAccount">Registreer</string>
-    <string name="emailHint">Email</string>
+    <string name="emailHint">E-mail</string>
     <string name="passwordHint">Wachtwoord</string>
     <string name="confirmPasswordHint">Bevestig wachtwoord</string>
     <string name="title_activity_launcher">LauncherActivity</string>
@@ -17,9 +17,10 @@
     <string name="title_activity_create_account">Registreer</string>
     <string name="menu_settings">opties</string>
     <string name="title_activity_main">Activiteiten</string>
-    <string name="emailingeven">Geef uw email in</string>
+    <string name="emailingeven">Geef uw e-mail in</string>
     <string name="back">Terug</string>
     <string name="button_logout">Uitloggen</string>
+    <string name="confirmationSignup">Account aangemaakt.</string>
 
 
     <!-- Strings related to Main screen -->
@@ -27,13 +28,13 @@
     <string name="title_activity_Login">Inloggen</string>
     <string name="title_activity_Register">Registreren</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_inschrijven">InschrijvenActivity</string>
+    <string name="title_activity_inschrijven">Inschrijven vakantie</string>
     <string name="title_activity_activiteit_detail">activiteit_detail</string>
     <string name="title_activity_activiteit_overzicht">activiteit_overzicht</string>
     <string name="title_activity_profiel_detail">profiel_detail</string>
     <string name="title_activity_profiel_edit">profiel_edit</string>
     <string name="updatingReport">U bent ingelogd</string>
-    <string name="confirm_registry">Email is niet gevonden. Wilt u een nieuwe gebruiker aanmaken?</string>
+    <string name="confirm_registry">E-mail is niet gevonden. Wilt u een nieuwe gebruiker aanmaken?</string>
     <string name="nee">Nee</string>
     <string name="ja">Ja</string>
     <string name="menu_forgot_password">Wachtwoord vergeten</string>
@@ -61,6 +62,8 @@
     <string name="error_incorrect_rijksregnr">Rijksregisternummer is niet geldig (11 cijfers, geen spaties of speciale tekens)</string>
     <string name="error_incorrect_rijksregisternummer">Ongeldig rijksregisternummer</string>
     <string name="error_occupied_rijksregnr">Dit rijksregisternummer is reeds in gebruik.</string>
+    <string name="error_occupied_gsm">Dit gsm-nummer is reeds in gebruik.</string>
+    <string name="error_occupied_email">Dit e-mail adres is reeds in gebruik.</string>
     <string name="error_incorrect_huisnr">Huisnummer is niet geldig (moet numeriek zijn)</string>
     <string name="signup_melding_monitor">U schrijft zich momenteel in als ouder/voogd. Wilt u zich inschrijven als monitor?
 Mail Joetz met uw voornaam, naam, e-mailadres, rijksregisternummer, adresgegevens, gsm en eventueel uw telefoonnummer.
@@ -73,7 +76,7 @@ Mail Joetz met uw voornaam, naam, e-mailadres, rijksregisternummer, adresgegeven
     <string name="error_invalid_email">Ongeldig e-mailadres</string>
     <string name="error_incorrect_aansluitingsnr">Ongeldig aansluitingsnummer (precies 10 cijfers, geen spaties of speciale tekens)</string>
     <string name="error_incorrect_lidnr">Ongeldig lidnummer</string>
-    <string name="error_incorrectLogin">Email of wachtwoord is ongeldig</string>
+    <string name="error_incorrectLogin">E-mail of wachtwoord is ongeldig</string>
     <string name="error_generalException">Er is iets fout gelopen. Onze excuses voor het ongemak.</string>
     <string name="passwordForgottenEmailSent">Er werd een mail gestuurd om uw wachtwoord opnieuw in te stellen.</string>
     <string name="passwordForgottenEmailFailed">Ons systeem kon geen mail sturen. Onze excuses voor het ongemak.</string>
@@ -83,9 +86,18 @@ Mail Joetz met uw voornaam, naam, e-mailadres, rijksregisternummer, adresgegeven
     <string name="error_invalid_password">wachtwoord is te kort</string>
     <string name="error_invalid_confirm_password">wachtwoorden komen niet overeen</string>
     <string name="dialog_ingeschreven_melding">U heeft zich succesvol ingeschreven.</string>
+    <string name="dialog_Lidnr_Toegevoegd">Lidnummer toegevoegd</string>
+    <string name="dialog_voorkeur_complete">Uw voorkeur werd succesvol doorgegeven.</string>
+    <string name="dialog_voorkeur_occupied">U heeft al een voorkeur ingediend voor deze vakantie.</string>
     <string name="btnCPtoevoegen">Extra contactpersoon toevoegen</string>
     <string name="btnCPVerwijderen">Extra contactpersoon verwijderen</string>
     <string name="extra_Informatie">Extra Informatie</string>
+
+    <string name="mainTitlePart1">Vakanties</string>
+    <string name="mainTitlePart2">JOETZ Funfactor</string>
+    <string name="mainTitlePart3">Monitoren</string>
+    <string name="mainTitlePart4">Vormingen</string>
+    <string name="mainTitlePart5">Favoriete vakanties</string>
 
     <string-array name="items">
         <item>Vakanties</item>
@@ -110,11 +122,13 @@ Mail Joetz met uw voornaam, naam, e-mailadres, rijksregisternummer, adresgegeven
     </string-array>
 
 
+    <string name="title_About">Over JOETZ</string>
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
     <string name="title_activity_tester_list_item">TesterListItem</string>
     <string name="meerInfo">Meer info</string>
     <string name="minderInfo">Minder info</string>
+    <string name="mainTitle_Funfactor">JOETZ funfactor</string>
     <string name="vakantieDetailTitel">Vakantie</string>
     <string name="label_geboorteDatum">Geboortedatum</string>
     <string name="inschrijvenVak1_AlgemeneUitleg">Gelieve de gegevens van de deelnemer in te voeren.</string>
@@ -146,6 +160,7 @@ Mail Joetz met uw voornaam, naam, e-mailadres, rijksregisternummer, adresgegeven
     <string name="sterPrijsOuder1">De sterprijs voor 1 ouder</string>
     <string name="sterPrijs2Ouders">De sterprijs voor 2 ouders</string>
     <string name="forgetPass">Wachtwoord vergeten</string>
+    <string name="error_occupied_inschrVak">U heeft zich al ingeschreven voor deze vakantie.</string>
     <string name="joetzAbout">Verlang je ook al naar de vakantie? Dan presenteren we je graag de <b>kinder- en jongerenvakanties 2014</b> van JOETZ.
 Dankzij onze selectie van de <b>uiterst verzorgde verblijfplaatsen en de begeleiding door ervaren monitoren</b> die allemaal een opleiding hebben genoten die erkend wordt door de Vlaamse overheid, kan JOETZ opnieuw duizenden kinderen en jongeren de vakantie van hun leven bieden.
 Een kindervakantie is in de eerste plaats <b>natuurlijk ambiance, vriendschap en plezier.</b> Daarom gaat er bij JOETZ heel veel aandacht naar <b>spel, animatie, sport en daguitstappen.</b> Samen met <b>gezonde maaltijden en hygiëne</b> zijn dat voor ons essentiële ingrediënten om onbezorgde, kwaliteitsvolle vakanties te garanderen.
@@ -168,18 +183,41 @@ De smaak te pakken? Wacht dan niet te lang en boek een onvergetelijke JOETZ-vaka
     <string name="lidnummerja">Ik heb een lidnummer</string>
     <string name="lidnummer">Geef uw lidnummer in</string>
     <string name="lidnummerBeheerder">Geef het lidnummer in</string>
+    <string name="error_incorrecte_leeftijd">De leeftijd valt niet binnen de doelgroep"</string>
     <string name="voegLidnrToe">Voeg lidnummer toe</string>
-    <string name="emailToegvoegenLidnr">Geef het email van de monitor in</string>
+    <string name="emailToegvoegenLidnr">Geef het e-mail van de monitor in</string>
     <string name="rijksregnrToevoegenLidnr">Geef het rijksregisternummer in</string>
+    <string name="label_add_lidnr">Lidnummer toevoegen</string>
     <string name="error_lidnr_used">Lidnummer bestaat reeds</string>
-    <string name="error_email_used">Dit email adres is reeds toegevoegd</string>
+    <string name="error_email_used">Dit e-mail adres is reeds toegevoegd</string>
     <string name="error_invalid_lidnummer">Ongeldig lidnummer</string>
-    <string name="emailSturen">Stuur email</string>
-    <string name="ingeven">Feedback ingeven</string>
+    <string name="emailSturen">Stuur e-mail</string>
+    <string name="ingeven">JOETZ-Funfactor ingeven</string>
     <string name="feedback">Waardering</string>
     <string name="score">Punten op 5</string>
     <string name="vakantie">Vakantie</string>
-    <string name="error_incorrect_feedback">De feedback mag maar 300 characters lang zijn</string>
+    <string name="title_Fav_vakanties">Favoriete vakanties</string>
+    <string name="error_incorrect_feedback">De recensie mag maar 300 characters lang zijn</string>
     <string name="error_incorrect_score">Geef een score van 1 tot 5</string>
+    <string name="loadingMSG_vakanties">Vakanties ophalen</string>
+    <string name="message_no_feedback">Nog geen funfactor gegeven.</string>
+    <string name="loadingMSG_feedback">Funfactoren ophalen</string>
+    <string name="loadingMSG_profielen">Profielen ophalen</string>
+    <string name="loadingMSG_vormingen">Vormingen ophalen</string>
+    <string name="label_Vakantie_Kiezen">Kies een vakantie</string>
+    <string name="lblAccess_denied">U heeft niet de juiste bevoegdheid om dit te bekijken.</string>
+    <string name="lblCancelDoubleCheck">Bent u zeker dat u de app wilt afsluiten?</string>
+    <string name="profielHeaderEen">Eigen profiel</string>
+    <string name="profielHeaderTwee">Monitoren met dezelfde vorming</string>
+    <string name="profielHeaderDrie">Resterende monitoren</string>
+    <string name="vakantieAantalPersonen"> personen</string>
+    <string name="vakantieAantalJaar"> jaar</string>
+    <string name="FaveConfirmed">Favoriet toegevoegd</string>
+    <string name="FaveAlreadydone">U heeft deze vakantie reeds toegevoegd</string>
+    <string name="FaveUndone">U heeft deze vakantie verwijderd uit uw favorieten</string>
+    <string name="vak_labelBM">Prijs voor leden van Bond Moyson: €</string>
+    <string name="vak_labelSter1Ouder">Prijs voor leden waarvan 1 ouder deel is van BM: €</string>
+    <string name="vak_labelSter2Ouders">Prijs voor leden waarvan 2 ouders deel zijn van BM: €</string>
+
 
 </resources>
