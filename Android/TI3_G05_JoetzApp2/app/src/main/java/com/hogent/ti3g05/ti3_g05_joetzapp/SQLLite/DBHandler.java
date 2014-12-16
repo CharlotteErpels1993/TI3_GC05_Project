@@ -24,10 +24,11 @@ import static com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.Constants.TABLE_PROFIEL
 import static com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.Constants.TABLE_VAKANTIE;
 import static com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.Constants.TABLE_VORMINGEN;
 
-//Maakt de locale database aan en doet hier de bewerkingen op
+/*
+    Naam: DBHandler
+    Werking: Maakt de locale database aan en doet hier de bewerkingen op
+    */
 public class DBHandler extends SQLiteOpenHelper {
-
-
 
     public DBHandler(Context context)
     {
@@ -35,7 +36,12 @@ public class DBHandler extends SQLiteOpenHelper {
 
     }
 
-    //creëert de vakantietabel in de locale database
+    /*
+    Naam: onCreateVakantie
+    Werking: creëert de vakantietabel in de locale database
+    Parameters:
+     - sqLiteDatabase: SQLiteDatabase - de DB waar mee gewerkt wordt
+    */
     public void onCreateVakantie(SQLiteDatabase sqLiteDatabase) {
         String CREATE_VAKANTIE_TABLE = "CREATE TABLE " + TABLE_VAKANTIE + "(" +Constants.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +Constants.COLUMN_VAKANTIENAAM + " TEXT," + Constants.COLUMN_LOCATIE + " TEXT," + Constants.COLUMN_VERTREKDATUM + " TEXT," +
                 Constants.COLUMN_TERUGDATUM + " TEXT," + Constants.COLUMN_PRIJS + " NUMERIC," + Constants.COLUMN_AFBEELDING1 + " TEXT," +Constants.COLUMN_AFBEELDING2 + " TEXT," +Constants.COLUMN_AFBEELDING3 + " TEXT," +
@@ -47,7 +53,13 @@ public class DBHandler extends SQLiteOpenHelper {
 
     }
 
-    //Creëert de profielentabel in de locale database
+
+    /*
+    Naam: onCreateProfielen
+    Werking: Creëert de profielentabel in de locale database
+    Parameters:
+     - sqLiteDatabase: SQLiteDatabase - de DB waar mee gewerkt wordt
+    */
     public void onCreateProfielen(SQLiteDatabase sqLiteDatabase) {
 
         String CREATE_PROFIELEN_TABLE = "CREATE TABLE " + TABLE_PROFIELEN + "(" +Constants.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +Constants.COLUMN_AANSLUITINGSNUMMER + " NUMERIC," + Constants.COLUMN_BUS + " TEXT," + Constants.COLUMN_CODEGERECHTIGDE + " NUMERIC," +
@@ -58,9 +70,13 @@ public class DBHandler extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(CREATE_PROFIELEN_TABLE);
     }
 
-    //Creëert de favorietentabel in de locale database
+    /*
+    Naam: onCreateFavorieten
+    Werking: Creëert de favorietentabel in de locale database
+    Parameters:
+     - sqLiteDatabase: SQLiteDatabase - de DB waar mee gewerkt wordt
+    */
     public void onCreateFavorieten(SQLiteDatabase sqLiteDatabase) {
-
         String CREATE_FAVORIETEN_TABLE = "CREATE TABLE " + TABLE_FAVORIETEN + "(" +Constants.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +Constants.COLUMN_VAKANTIENAAM + " TEXT," + Constants.COLUMN_LOCATIE + " TEXT," + Constants.COLUMN_VERTREKDATUM + " TEXT," +
                 Constants.COLUMN_TERUGDATUM + " TEXT," + Constants.COLUMN_PRIJS + " NUMERIC," + Constants.COLUMN_AFBEELDING1 + " TEXT," +Constants.COLUMN_AFBEELDING2 + " TEXT," +Constants.COLUMN_AFBEELDING3 + " TEXT," +
                 Constants.COLUMN_MAXDOELGROEP + " TEXT," + Constants.COLUMN_MINDOELGROEP + " TEXT," + Constants.COLUMN_BESCHRIJVING + " TEXT," + Constants.COLUMN_PERIODE + " TEXT," + Constants.COLUMN_VERVOER + " TEXT," +
@@ -70,9 +86,13 @@ public class DBHandler extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(CREATE_FAVORIETEN_TABLE);
     }
 
-    //Creëert de vormingentabel in de locale database
+    /*
+    Naam: onCreateVormingen
+    Werking: Creëert de vormingentabel in de locale database
+    Parameters:
+     - sqLiteDatabase: SQLiteDatabase - de DB waar mee gewerkt wordt
+    */
     public void onCreateVormingen(SQLiteDatabase sqLiteDatabase) {
-
         String CREATE_VORMINGEN_TABLE = "CREATE TABLE " + TABLE_VORMINGEN + "(" +Constants.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +Constants.COLUMN_BETALINGSWIJZE + " TEXT," + Constants.COLUMN_CRITERIADEELNEMER + " TEXT," + Constants.COLUMN_INBEGREPENINPRIJSV + " TEXT," +
                 Constants.COLUMN_KORTEBESCHRIJVING + " TEXT," + Constants.COLUMN_LOCATIEV + " TEXT," + Constants.COLUMN_PERIODES + " TEXT," +Constants.COLUMN_PRIJSV + " NUMERIC," +Constants.COLUMN_TIPS + " TEXT," +
                 Constants.COLUMN_TITEL + " TEXT," + Constants.COLUMN_WEBSITELOCATIE + " TEXT" + ")";
@@ -80,8 +100,12 @@ public class DBHandler extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(CREATE_VORMINGEN_TABLE);
     }
 
-
-    //Creëert de feedbacktabel in de locale database
+    /*
+    Naam: onCreateFeedback
+    Werking: Creëert de feedbacktabel in de locale database
+    Parameters:
+     - sqLiteDatabase: SQLiteDatabase - de DB waar mee gewerkt wordt
+    */
     public void onCreateFeedback(SQLiteDatabase sqLiteDatabase) {
 
         String CREATE_FEEDBACK_TABLE = "CREATE TABLE " + TABLE_FEEDBACK + "(" +Constants.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +Constants.COLUMN_FEEDBACK + " TEXT," + Constants.COLUMN_SCORE + " NUMERIC," + Constants.COLUMN_VAKANTIENAAMF + " TEXT," +
@@ -108,28 +132,48 @@ public class DBHandler extends SQLiteOpenHelper {
 
     }
 
-    //Verwijderd de volledige vakantietabel en maakt deze opnieuw aan
+    /*
+    Naam: dropVakanties
+    Werking: Verwijderd de volledige vakantietabel en maakt deze opnieuw aan
+    Parameters:
+     - sqLiteDatabase: SQLiteDatabase - de DB waar mee gewerkt wordt
+    */
     public void dropVakanties(SQLiteDatabase db)
     {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_VAKANTIE);
         onCreateVakantie(db);
     }
 
-    //Verwijderd de volledige feedbacktabel en maakt deze opnieuw aan
+    /*
+    Naam: dropFeedback
+    Werking: Verwijderd de volledige feedbacktabel en maakt deze opnieuw aan
+    Parameters:
+     - sqLiteDatabase: SQLiteDatabase - de DB waar mee gewerkt wordt
+    */
     public void dropFeedback(SQLiteDatabase db)
     {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_FEEDBACK);
         onCreateFeedback(db);
     }
 
-    //Verwijderd de volledige vormingentabel en maakt deze opnieuw aan
+    /*
+    Naam: dropVormingen
+    Werking: Verwijderd de volledige vormingentabel en maakt deze opnieuw aan
+    Parameters:
+     - sqLiteDatabase: SQLiteDatabase - de DB waar mee gewerkt wordt
+    */
     public void dropVormingen(SQLiteDatabase db)
     {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_VORMINGEN);
         onCreateVormingen(db);
     }
 
-    //Verwijderd de volledige profielentabel en maakt deze opnieuw aan
+    /*
+    Naam: dropProfielen
+    Werking: Verwijderd de volledige profielentabel en maakt deze opnieuw aan
+    Parameters:
+     - sqLiteDatabase: SQLiteDatabase - de DB waar mee gewerkt wordt
+    */
     public void dropProfielen(SQLiteDatabase db)
     {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_PROFIELEN);
@@ -137,15 +181,27 @@ public class DBHandler extends SQLiteOpenHelper {
 
     }
 
-    //Verwijderd de volledige favorietentabel en maakt deze opnieuw aan
+    /*
+    Naam: dropFavorieten
+    Werking: Verwijderd de volledige favorietentabel en maakt deze opnieuw aan
+    Parameters:
+     - sqLiteDatabase: SQLiteDatabase - de DB waar mee gewerkt wordt
+    */
     public void dropFavorieten(SQLiteDatabase db)
     {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_FAVORIETEN);
         onCreateFavorieten(db);
 
     }
+
     //Logica voor vakantietabel
-    //Voegt de gegevens van de doorgegeven vakantie toe aan de vakantietabel
+
+    /*
+    Naam: toevoegenGegevensVakantie
+    Werking: Voegt de gegevens van de doorgegeven vakantie toe aan de vakantietabel
+    Parameters:
+     - vakantie: Vakantie - het Vakantie object dat moet toegevoegd worden
+    */
     public Long toevoegenGegevensVakantie(Vakantie vakantie)
     {
         ContentValues values = new ContentValues();
@@ -187,10 +243,13 @@ public class DBHandler extends SQLiteOpenHelper {
         db.close();
 
         return id;
-
     }
 
-    //Haalt alle vakanties op uit de vakantietabel
+    /*
+    Naam: krijgAlleVakanties
+    Werking: Haalt alle vakanties op uit de vakantietabel
+    Return: lijst van alle Vakantie objecten
+    */
     public List<Vakantie> krijgAlleVakanties()
     {
         List<Vakantie> vakanties = new ArrayList<Vakantie>();
@@ -209,7 +268,13 @@ public class DBHandler extends SQLiteOpenHelper {
         return vakanties;
     }
 
-    //Haalt een bepaalde vakantie op uit de vakantietabel
+    /*
+    Naam: krijgVakanties
+    Werking: Haalt een bepaalde vakantie op uit de vakantietabel
+    Parameters:
+    vakantienaam: String - de naam van de Vakantie, die we zoeken
+    Return: het juist Vakantie object dat overeen komt met de opgegeven naam
+    */
     public Vakantie krijgVakanties(String vakantienaam)
     {
         String query = "Select * FROM " + TABLE_VAKANTIE + " WHERE " + Constants.COLUMN_VAKANTIENAAM + " = \"" + vakantienaam + "\"";
@@ -253,7 +318,13 @@ public class DBHandler extends SQLiteOpenHelper {
     }
 
     //Logica voor profielentabel
-    //Voegt de gegevens van de doorgegeven monitor toe aan de profielentabel
+
+    /*
+    Naam: toevoegenGegevensMonitor
+    Werking: Voegt de gegevens van de doorgegeven monitor toe aan de profielentabel
+    Parameters:
+     - monitor: Monitor - het Monitor opbject dat moet toegevoegd worden
+    */
     public Long toevoegenGegevensMonitor(Monitor monitor)
     {
         ContentValues values = new ContentValues();
@@ -284,10 +355,13 @@ public class DBHandler extends SQLiteOpenHelper {
         db.close();
 
         return id;
-
     }
 
-    //Haalt een lijst van profielen op uit de profielentabel
+    /*
+    Naam: krijgProfielen
+    Werking: Haalt een lijst van profielen op uit de profielentabel
+    Return: lijst van alle profielen in de DB
+    */
     public List<Monitor> krijgProfielen()
     {
         List<Monitor> profielen = new ArrayList<Monitor>();
@@ -306,7 +380,14 @@ public class DBHandler extends SQLiteOpenHelper {
         return profielen;
     }
 
-    //Haalt een bepaalde monitor op uit de profielentabel
+
+    /*
+    Naam: krijgProfielen
+    Werking: Haalt een bepaalde monitor op uit de profielentabel
+    Parameters:
+    - profielNaam: String - de naam van het profiel, die we zoeken
+    Return: het juiste Monitor object dat overeen komt met de opgegeven naam
+    */
     public Monitor krijgProfielen(String profielnaam)
     {
         String query = "Select * FROM " + TABLE_PROFIELEN + " WHERE " + Constants.COLUMN_NAAM + " = \"" + profielnaam + "\"";
@@ -345,7 +426,13 @@ public class DBHandler extends SQLiteOpenHelper {
     }
 
     //Logica voor vormingtabel
-    //Voegt de gegevens van de doorgegeven vorming toe aan de vormingentabel
+
+    /*
+    Naam: toevoegenGegevensVorming
+    Werking: Voegt de gegevens van de doorgegeven vorming toe aan de vormingentabel
+    Parameters:
+      vorming - Vorming: het Vorming object dat moet toegevoegd worden
+    */
     public Long toevoegenGegevensVorming(Vorming vorming)
     {
         String periodesStr = "";
@@ -380,7 +467,11 @@ public class DBHandler extends SQLiteOpenHelper {
 
     }
 
-    //Haalt een lijst van vormingen op uit de vormingentabel
+    /*
+    Naam: krijgVormingen
+    Werking: Haalt een lijst van vormingen op uit de vormingentabel
+    Return: lijst van alle Vorming objecten
+    */
     public List<Vorming> krijgVormingen()
     {
         List<Vorming> vormingen = new ArrayList<Vorming>();
@@ -400,6 +491,12 @@ public class DBHandler extends SQLiteOpenHelper {
     }
 
     //Haalt een bepaalde vorming op uit de vormingentabel
+    /*
+    Naam: krijgVormingen
+    Werking: Creëert de feedbacktabel in de locale database
+    Parameters:
+     - sqLiteDatabase: SQLiteDatabase - de DB waar mee gewerkt wordt
+    */
     public Vorming krijgVormingen(String vormingTitel)
     {
         String query = "Select * FROM " + TABLE_VORMINGEN + " WHERE " + Constants.COLUMN_TITEL + " = \"" + vormingTitel + "\"";
@@ -440,6 +537,12 @@ public class DBHandler extends SQLiteOpenHelper {
 
     //Logica voor favorietentabel
     //Voegt de gegevens van de doorgegeven vakantie toe aan de favorietentabel
+    /*
+    Naam: toevoegenGegevensFavoriet
+    Werking: Creëert de feedbacktabel in de locale database
+    Parameters:
+     - sqLiteDatabase: SQLiteDatabase - de DB waar mee gewerkt wordt
+    */
     public Long toevoegenGegevensFavoriet(Vakantie favorieteVakantie)
     {
         ContentValues values = new ContentValues();
@@ -487,6 +590,12 @@ public class DBHandler extends SQLiteOpenHelper {
     }
 
     //Haalt een lijst van favorieten op uit de favorietentabel
+    /*
+    Naam: krijgFavorieten
+    Werking: Creëert de feedbacktabel in de locale database
+    Parameters:
+     - sqLiteDatabase: SQLiteDatabase - de DB waar mee gewerkt wordt
+    */
     public List<Vakantie> krijgFavorieten()
     {
         List<Vakantie> favorieten = new ArrayList<Vakantie>();
@@ -565,7 +674,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
         if(feedback.getGoedgekeurd())
             values.put(Constants.COLUMN_GOEDGEKEURD, 1);
-       else values.put(Constants.COLUMN_GOEDGEKEURD, 0);
+        else values.put(Constants.COLUMN_GOEDGEKEURD, 0);
 
 
 
@@ -588,7 +697,7 @@ public class DBHandler extends SQLiteOpenHelper {
         c.moveToFirst();
         while(!c.isAfterLast())
         {
-        //overloop de feedbacktabel en haal alle juiste gegevens op van die feedback
+            //overloop de feedbacktabel en haal alle juiste gegevens op van die feedback
             Feedback f = krijgFeedback(c.getString(3));
             feedback.add(f);
             c.moveToNext();

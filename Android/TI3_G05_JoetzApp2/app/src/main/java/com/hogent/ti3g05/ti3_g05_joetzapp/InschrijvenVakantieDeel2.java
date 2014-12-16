@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
+import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Activiteit;
 
 
 //Stap 2 van het inschrijven
@@ -136,23 +137,28 @@ public class InschrijvenVakantieDeel2 extends Activity {
             }
         }
 
-
         if (!TextUtils.isEmpty(telefoon) && (!telefoon.matches("[0-9]+") || telefoon.length() != 9)){
-
             txtTelefoon.setError(getString(R.string.error_incorrect_tel));
             focusView = txtTelefoon;
             cancel = true;
         }
 
-
         if (TextUtils.isEmpty(naam)) {
             txtNaam.setError(getString(R.string.error_field_required));
+            focusView = txtNaam;
+            cancel = true;
+        }else if (Activiteit.containsNumbers(naam)){
+            txtNaam.setError(getString(R.string.error_noNumbers));
             focusView = txtNaam;
             cancel = true;
         }
 
         if (TextUtils.isEmpty(voornaam)) {
             txtVoornaam.setError(getString(R.string.error_field_required));
+            focusView = txtVoornaam;
+            cancel = true;
+        }else if (Activiteit.containsNumbers(voornaam)){
+            txtVoornaam.setError(getString(R.string.error_noNumbers));
             focusView = txtVoornaam;
             cancel = true;
         }
@@ -190,7 +196,6 @@ public class InschrijvenVakantieDeel2 extends Activity {
             in.putExtra("postcode", postcode);
             in.putExtra("objectId", objectId);
             in.putExtra("datum", datum);
-
         }
 
         in.putExtra("voornaamCP", voornaam);
@@ -233,10 +238,18 @@ public class InschrijvenVakantieDeel2 extends Activity {
             txtNaamExtra.setError(getString(R.string.error_field_required));
             focusView = txtNaamExtra;
             cancel = true;
+        }else if (Activiteit.containsNumbers(naamExtra)){
+            txtNaamExtra.setError(getString(R.string.error_noNumbers));
+            focusView = txtNaamExtra;
+            cancel = true;
         }
 
         if (TextUtils.isEmpty(voornaamExtra)) {
             txtVoornaamExtra.setError(getString(R.string.error_field_required));
+            focusView = txtVoornaamExtra;
+            cancel = true;
+        }else if (Activiteit.containsNumbers(voornaamExtra)){
+            txtVoornaamExtra.setError(getString(R.string.error_noNumbers));
             focusView = txtVoornaamExtra;
             cancel = true;
         }

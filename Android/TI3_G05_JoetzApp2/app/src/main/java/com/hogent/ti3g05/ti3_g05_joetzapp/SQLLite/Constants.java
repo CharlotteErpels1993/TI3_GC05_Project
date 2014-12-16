@@ -1,7 +1,10 @@
 package com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite;
 
 
-//Alle constante namen die gebruikt zullen worden in de locale database
+/*
+    Naam: Constants
+    Werking: Alle constante namen die gebruikt zullen worden in de locale database
+    */
 public class Constants {
 
     public static final int DATABASE_VERSION = 2;
@@ -75,11 +78,9 @@ public class Constants {
     public static final String COLUMN_FEEDBACK = "feedback";
     public static final String COLUMN_SCORE = "score";
     public static final String COLUMN_VAKANTIENAAMF = "vakantienaam";
-    
+
     public static final String COLUMN_GEBRUIKERID = "gebruikerId";
     public static final String COLUMN_GEBRUIKER = "gebruiker";
     public static final String COLUMN_GOEDGEKEURD = "goedgekeurd";
-
-
 
 }

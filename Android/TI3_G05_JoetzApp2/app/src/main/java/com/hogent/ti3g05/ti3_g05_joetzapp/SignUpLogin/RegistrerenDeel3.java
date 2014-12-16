@@ -19,6 +19,7 @@ import java.util.List;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
 import com.hogent.ti3g05.ti3_g05_joetzapp.R;
+import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Activiteit;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
@@ -26,9 +27,9 @@ import com.parse.ParseQuery;
 //stap 3 van registreren
 public class RegistrerenDeel3 extends Activity{
 
-	private EditText voornaamText;
-	private EditText naamText;
-	private EditText straatText;
+    private EditText voornaamText;
+    private EditText naamText;
+    private EditText straatText;
     private EditText huisnrText;
     private EditText gemeenteText;
     private EditText postcodeText;
@@ -41,20 +42,20 @@ public class RegistrerenDeel3 extends Activity{
 
     private Boolean isInternetPresent = false;
     private ConnectionDetector cd;
-	
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_signup_deel3);
+        setContentView(R.layout.activity_signup_deel3);
 
         getActionBar().setTitle(getString(R.string.title_activity_Register));
 
-		cd = new ConnectionDetector(getApplicationContext());
+        cd = new ConnectionDetector(getApplicationContext());
         final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.alpha);
 
         voornaamText = (EditText) findViewById(R.id.VoornaamSignu);
-		naamText = (EditText) findViewById(R.id.NaamSignu);
-		straatText = (EditText) findViewById(R.id.StraatSignu);
+        naamText = (EditText) findViewById(R.id.NaamSignu);
+        straatText = (EditText) findViewById(R.id.StraatSignu);
         huisnrText = (EditText) findViewById(R.id.HuisnrSignu);
         gemeenteText = (EditText) findViewById(R.id.GemeenteSignu);
         postcodeText = (EditText) findViewById(R.id.PostcodeSignu);
@@ -63,7 +64,7 @@ public class RegistrerenDeel3 extends Activity{
         busText = (EditText) findViewById(R.id.BusSignu);
 
         final Button volgendeButton = (Button) findViewById(R.id.btnNaarDeel4);
-		volgendeButton.setOnClickListener(new OnClickListener() {
+        volgendeButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -94,13 +95,13 @@ public class RegistrerenDeel3 extends Activity{
 
             }
         });
-	}
+    }
     //De ingevulde gegevens worden gecontroleerd, als deze ingevuld zijn en correct sla de gegevens op
-	private void controleerGegevens(){
-		clearErrors();
+    private void controleerGegevens(){
+        clearErrors();
         cancel = false;
 
-		// Store values at the time of the onClick event.
+        // Store values at the time of the onClick event.
         String voornaam = voornaamText.getText().toString().toLowerCase();
         String naam = naamText.getText().toString().toLowerCase();
         String straat = straatText.getText().toString();
@@ -112,12 +113,6 @@ public class RegistrerenDeel3 extends Activity{
         String gsm = gsmText.getText().toString();
 
         //hieronder wordt gecontroleerd of alles ingevuld is en in het juiste formaat
-        if (TextUtils.isEmpty(gsm)) {
-            gsmText.setError(getString(R.string.error_field_required));
-            focusView = gsmText;
-            cancel = true;
-        }
-
         if (!TextUtils.isEmpty(telefoon) && (!telefoon.matches("[0-9]+") || telefoon.length() != 9)){
             telefoonText.setError(getString(R.string.error_incorrect_tel));
             focusView = telefoonText;
@@ -135,15 +130,14 @@ public class RegistrerenDeel3 extends Activity{
                 focusView = postcodeText;
                 cancel = true;
             }
-            if (!postcode.matches("[0-9]+")){
-                postcodeText.setError(getString(R.string.error_incorrect_postcode));
-                focusView = postcodeText;
-                cancel = true;
-            }
         }
 
         if (TextUtils.isEmpty(gemeente)) {
             gemeenteText.setError(getString(R.string.error_field_required));
+            focusView = gemeenteText;
+            cancel = true;
+        }else if (Activiteit.containsNumbers(gemeente)){
+            gemeenteText.setError(getString(R.string.error_noNumbers));
             focusView = gemeenteText;
             cancel = true;
         }
@@ -152,8 +146,7 @@ public class RegistrerenDeel3 extends Activity{
             huisnrText.setError(getString(R.string.error_field_required));
             focusView = huisnrText;
             cancel = true;
-        }
-        if (!huisnr.matches("[0-9]+") && huisnr.length() >= 1){
+        }else if (!huisnr.matches("[0-9]+") && huisnr.length() >= 1){
             huisnrText.setError(getString(R.string.error_incorrect_huisnr));
             focusView = huisnrText;
             cancel = true;
@@ -163,57 +156,84 @@ public class RegistrerenDeel3 extends Activity{
             straatText.setError(getString(R.string.error_field_required));
             focusView = straatText;
             cancel = true;
+        }else if (Activiteit.containsNumbers(straat)){
+            straatText.setError(getString(R.string.error_noNumbers));
+            focusView = straatText;
+            cancel = true;
         }
-		if (TextUtils.isEmpty(naam)) {
-			naamText.setError(getString(R.string.error_field_required));
-			focusView = naamText;
-			cancel = true;
-		}
+
+        if (TextUtils.isEmpty(naam)) {
+            naamText.setError(getString(R.string.error_field_required));
+            focusView = naamText;
+            cancel = true;
+        }else if (Activiteit.containsNumbers(naam)){
+            naamText.setError(getString(R.string.error_noNumbers));
+            focusView = naamText;
+            cancel = true;
+        }
 
         if (TextUtils.isEmpty(voornaam)) {
             voornaamText.setError(getString(R.string.error_field_required));
             focusView = voornaamText;
             cancel = true;
         }
-
-        //Haal de gegevens op en kijk of dit nummer uniek is het gsm nummer moet uniek zijn
-        ParseQuery<ParseObject> queryOuder = ParseQuery.getQuery("Ouder");
-        queryOuder.whereEqualTo("gsm", gsm);
-        try{
-            List<ParseObject> ouders = queryOuder.find();
-            if (ouders.size() > 0){
-                gsmText.setError(getString(R.string.error_occupied_gsm));
-                focusView = gsmText;
-                cancel = true;
-            }
-        }
-        catch(ParseException e){
-            Toast.makeText(RegistrerenDeel3.this,getString(R.string.error_generalException), Toast.LENGTH_SHORT).show();
-            cancel = true;
-        }
-        ParseQuery<ParseObject> queryMonitoren = ParseQuery.getQuery("Monitor");
-        queryMonitoren.whereEqualTo("gsm", gsm);
-        try{
-            List<ParseObject> monitoren = queryMonitoren.find();
-            if (monitoren.size() > 0){
-                gsmText.setError(getString(R.string.error_occupied_gsm));
-                focusView = gsmText;
-                cancel = true;
-            }
-        }
-        catch(ParseException e){
-            Toast.makeText(RegistrerenDeel3.this,getString(R.string.error_generalException), Toast.LENGTH_SHORT).show();
+        else if (Activiteit.containsNumbers(voornaam)){
+            voornaamText.setError(getString(R.string.error_noNumbers));
+            focusView = voornaamText;
             cancel = true;
         }
 
-		if (cancel) {
-			focusView.requestFocus();
-		} else {
+
+        if (TextUtils.isEmpty(gsm)) {
+            gsmText.setError(getString(R.string.error_field_required));
+            focusView = gsmText;
+            cancel = true;
+        } else if (!gsm.matches("[0-9]+") || gsm.length() != 10){
+            gsmText.setError(getString(R.string.error_incorrect_gsm));
+            focusView = gsmText;
+            cancel = true;
+        } else{
+            //Haal de gegevens op en kijk of dit gsm nummer uniek
+            //Maak enkel een connectie met de DB als de resterende gegevens goed zijn -> voorkomt onnodig DB verkeer
+            ParseQuery<ParseObject> queryOuder = ParseQuery.getQuery("Ouder");
+            queryOuder.whereEqualTo("gsm", gsm);
+            try{
+                List<ParseObject> ouders = queryOuder.find();
+                if (ouders.size() > 0){
+                    gsmText.setError(getString(R.string.error_occupied_gsm));
+                    focusView = gsmText;
+                    cancel = true;
+                }
+            }
+            catch(ParseException e){
+                Toast.makeText(RegistrerenDeel3.this,getString(R.string.error_generalException), Toast.LENGTH_SHORT).show();
+                cancel = true;
+            }
+            ParseQuery<ParseObject> queryMonitoren = ParseQuery.getQuery("Monitor");
+            queryMonitoren.whereEqualTo("gsm", gsm);
+            try{
+                List<ParseObject> monitoren = queryMonitoren.find();
+                if (monitoren.size() > 0){
+                    gsmText.setError(getString(R.string.error_occupied_gsm));
+                    focusView = gsmText;
+                    cancel = true;
+                }
+            }
+            catch(ParseException e){
+                Toast.makeText(RegistrerenDeel3.this,getString(R.string.error_generalException), Toast.LENGTH_SHORT).show();
+                cancel = true;
+            }
+        }
+
+
+        if (cancel) {
+            focusView.requestFocus();
+        } else {
             opslaan(voornaam ,naam, straat, huisnr, gemeente, postcode, telefoon, gsm, bus);
 
-		}
+        }
 
-	}
+    }
 
     //Geeft alle gegevens door naar de juiste pagina
     private void opslaan(String voornaam,String naam, String straat, String huisnr, String gemeente, String postcode, String telefoon, String gsm, String bus) {
@@ -252,9 +272,9 @@ public class RegistrerenDeel3 extends Activity{
 
 
     //error verbergen, wordt opgeroepen elke keer de gebruiker opnieuw verder probeert te gaan
-	private void clearErrors(){ 
-		voornaamText.setError(null);
-		naamText.setError(null);
+    private void clearErrors(){
+        voornaamText.setError(null);
+        naamText.setError(null);
         straatText.setError(null);
         huisnrText.setError(null);
         gemeenteText.setError(null);
@@ -262,7 +282,7 @@ public class RegistrerenDeel3 extends Activity{
         busText.setError(null);
         telefoonText.setError(null);
         gsmText.setError(null);
-	}
+    }
 
 
     @Override
@@ -283,5 +303,4 @@ public class RegistrerenDeel3 extends Activity{
         return super.onOptionsItemSelected(item);
     }
 
-	
 }

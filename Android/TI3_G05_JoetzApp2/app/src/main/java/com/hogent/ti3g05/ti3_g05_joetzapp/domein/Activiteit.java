@@ -49,4 +49,19 @@ public class Activiteit {
     public void setKorteBeschrijving(String korteBeschrijving) {
         this.korteBeschrijving = korteBeschrijving;
     }
+
+    /*
+    Naam: containsNumbers
+    Werking: controleert of een opgegeven String nummers bevat of niet
+
+    Parameters:
+     - objTekst: String - tekst die je wilt controleren
+
+    Return: true -> tekst bevat één of meerdere getallen
+            false -> tekst bevat geen getallen
+    */
+    public static boolean containsNumbers(String objTekst){
+        return objTekst.matches(".*\\d.*");
+    }
+
 }

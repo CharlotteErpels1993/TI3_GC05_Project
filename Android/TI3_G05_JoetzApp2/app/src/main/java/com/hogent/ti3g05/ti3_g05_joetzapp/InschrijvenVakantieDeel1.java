@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
+import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Activiteit;
 
 import org.w3c.dom.Text;
 
@@ -157,15 +158,14 @@ public class InschrijvenVakantieDeel1 extends FragmentActivity {
                 focusView = txtPostcode;
                 cancel = true;
             }
-            if (!postcode.matches("[0-9]+")){
-                txtPostcode.setError(getString(R.string.error_incorrect_postcode));
-                focusView = txtPostcode;
-                cancel = true;
-            }
         }
 
         if (TextUtils.isEmpty(gemeente)) {
             txtGemeente.setError(getString(R.string.error_field_required));
+            focusView = txtGemeente;
+            cancel = true;
+        }else if (Activiteit.containsNumbers(gemeente)){
+            txtGemeente.setError(getString(R.string.error_noNumbers));
             focusView = txtGemeente;
             cancel = true;
         }
@@ -186,6 +186,11 @@ public class InschrijvenVakantieDeel1 extends FragmentActivity {
                 date = formatter.parse(maandI);
 
             } catch (ParseException e) {
+                gebDatum.setError(getString(R.string.error_generalException));
+                focusView = gebDatum;
+                tv_errorDate.setText(getString(R.string.error_generalException));
+                tv_errorDate.setVisibility(View.VISIBLE);
+                cancel = true;
                 Toast.makeText(InschrijvenVakantieDeel1.this, getString(R.string.error_generalException),Toast.LENGTH_SHORT).show();
             }
 
@@ -214,7 +219,7 @@ public class InschrijvenVakantieDeel1 extends FragmentActivity {
             cancel = true;
         }
         else{
-            if (!huisnr.matches("[0-9]+") && huisnr.length() >= 1){
+            if (huisnr.length() >= 1){
                 txtHuisnr.setError(getString(R.string.error_incorrect_huisnr));
                 focusView = txtHuisnr;
                 cancel = true;
@@ -226,10 +231,18 @@ public class InschrijvenVakantieDeel1 extends FragmentActivity {
             txtStraat.setError(getString(R.string.error_field_required));
             focusView = txtStraat;
             cancel = true;
+        } else if (Activiteit.containsNumbers(straat)){
+            txtStraat.setError(getString(R.string.error_noNumbers));
+            focusView = txtStraat;
+            cancel = true;
         }
 
         if (TextUtils.isEmpty(voornaam)) {
             txtVoornaam.setError(getString(R.string.error_field_required));
+            focusView = txtVoornaam;
+            cancel = true;
+        }else if (Activiteit.containsNumbers(voornaam)){
+            txtVoornaam.setError(getString(R.string.error_noNumbers));
             focusView = txtVoornaam;
             cancel = true;
         }
@@ -238,12 +251,15 @@ public class InschrijvenVakantieDeel1 extends FragmentActivity {
             txtNaam.setError(getString(R.string.error_field_required));
             focusView = txtNaam;
             cancel = true;
+        }else if (Activiteit.containsNumbers(naam)){
+            txtNaam.setError(getString(R.string.error_noNumbers));
+            focusView = txtNaam;
+            cancel = true;
         }
 
-        if (cancel) {
+        if (cancel){
             focusView.requestFocus();
         } else {
-
             opslaan(voornaam ,naam, straat, huisnr, bus, gemeente, postcode);
 
         }

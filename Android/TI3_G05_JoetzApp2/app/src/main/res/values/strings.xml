@@ -85,6 +85,7 @@ Mail Joetz met uw voornaam, naam, e-mailadres, rijksregisternummer, adresgegeven
     <string name="passwordForgottenEmailSent">Er werd een mail gestuurd om uw wachtwoord opnieuw in te stellen.</string>
     <string name="passwordForgottenEmailFailed">Ons systeem kon geen mail sturen. Onze excuses voor het ongemak.</string>
 
+    <string name="error_noNumbers">Dit veld mag geen cijfers bevatten</string>
     <string name="error_duplicate_email">Dit e-mailadres is al in gebruik</string>
     <string name="error_incorrect_password">Fout wachtwoord</string>
     <string name="error_invalid_password">wachtwoord is te kort</string>
