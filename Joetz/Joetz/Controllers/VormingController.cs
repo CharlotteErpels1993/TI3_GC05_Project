@@ -22,9 +22,16 @@ namespace Joetz.Controllers
 
         public async Task<ActionResult> Index()
         {
-            var vormingenTask = vormingRepository.FindAll();
-            IEnumerable<Vorming> vormingen = await vormingenTask;
-            return View(vormingen);
+            if(Parse.ParseUser.CurrentUser != null)
+            {
+                var vormingenTask = vormingRepository.FindAll();
+                IEnumerable<Vorming> vormingen = await vormingenTask;
+                return View(vormingen);
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account", null);
+            }
         }
 
         public ActionResult Create()

@@ -25,9 +25,17 @@ namespace Joetz.Controllers
 
         public async Task<ActionResult> Index()
         {
-            var monitorenTask = monitorRepository.FindAll();
-            IEnumerable<Monitor> monitoren = await monitorenTask;
-            return View(monitoren);
+            if(Parse.ParseUser.CurrentUser != null)
+            {
+                var monitorenTask = monitorRepository.FindAll();
+                IEnumerable<Monitor> monitoren = await monitorenTask;
+                return View(monitoren);
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account", null);
+            }
+           
         }
 
         public ActionResult Create()

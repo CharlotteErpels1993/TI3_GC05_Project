@@ -22,9 +22,16 @@ namespace Joetz.Controllers
 
         public async Task<ActionResult> Index()
         {
-            var vakantiesTask = vakantieRepository.FindAll();
-            IEnumerable<Vakantie> vakanties = await vakantiesTask;
-            return View(vakanties);
+            if(Parse.ParseUser.CurrentUser != null)
+            { 
+                var vakantiesTask = vakantieRepository.FindAll();
+                IEnumerable<Vakantie> vakanties = await vakantiesTask;
+                return View(vakanties);
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account", null);
+            }
         }
 
         public ActionResult Create()
