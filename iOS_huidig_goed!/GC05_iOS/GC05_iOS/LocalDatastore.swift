@@ -253,7 +253,7 @@ struct LocalDatastore {
         var gebruikerId: String = object[Constanten.COLUMN_GEBRUIKER] as String
         var monitor: Gebruiker = Gebruiker(id: gebruikerId)
         
-        feedback.vakantie = self.getLocalObjectWithColumnConstraints(Constanten.TABLE_VAKANTIE, soortConstraints: [Constanten.COLUMN_VAKANTIE: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_VAKANTIE: vakantieId]) as? Vakantie
+        feedback.vakantie = self.getLocalObjectWithColumnConstraints(Constanten.TABLE_VAKANTIE, soortConstraints: [Constanten.COLUMN_OBJECTID: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_OBJECTID: vakantieId]) as? Vakantie
         
         var bestaatOuder = self.bestaatLocalObjectWithConstraints(Constanten.TABLE_OUDER, soortConstraints: [Constanten.COLUMN_OBJECTID: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_OBJECTID: gebruikerId])
         
