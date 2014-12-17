@@ -2668,9 +2668,6 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Voorkeur succesvol ingediend" id="sfj-ta-wgL"/>
-                    <connections>
-                        <outlet property="activityIndicatorView" destination="Y3D-b9-iCG" id="puS-am-tgC"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lka-Ce-wuB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -3018,9 +3015,6 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Inschrijving succesvol" id="04K-dE-ZTa"/>
-                    <connections>
-                        <outlet property="activityIndicatorView" destination="R5M-SR-7ia" id="xOx-RK-8p6"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bb5-ba-jow" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

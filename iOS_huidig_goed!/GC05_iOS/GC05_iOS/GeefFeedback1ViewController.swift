@@ -26,11 +26,7 @@ class GeefFeedback1ViewController: UIViewController, UIPickerViewDataSource, UIP
         self.navigationController!.toolbarHidden = true
         
         controleerInternet()
-        
-        //var vakantiesResponse = ParseData.getAlleVakanties()
-        //if vakantiesResponse.1 == nil {
-        //    self.vakanties = vakantiesResponse.0
-        //}
+        self.vakanties = LocalDatastore.getLocalObjects(Constanten.TABLE_VAKANTIE) as [Vakantie]
         
         vakantiePickerView.delegate = self
         vakantiePickerView.dataSource = self
