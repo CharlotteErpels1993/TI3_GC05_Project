@@ -46,13 +46,11 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
         
         self.ingelogdeMonitor = LocalDatastore.getLocalObjectWithColumnConstraints(Constanten.TABLE_MONITOR, soortConstraints: [Constanten.COLUMN_EMAIL: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_EMAIL: PFUser.currentUser().email]) as Monitor
         
-        
         var soort = LocalDatastore.getCurrentUserSoort()
         
         if soort == "monitor" {
             var monitor = LocalDatastore.getLocalObjectWithColumnConstraints(Constanten.TABLE_MONITOR, soortConstraints: [Constanten.COLUMN_EMAIL: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_EMAIL: PFUser.currentUser().email]) as Monitor
             
-            //var monitorenZelfdeVorming = LocalDatastore.getMonitorsMetDezelfdeVormingen(monitor.id!)
             var monitorenZelfdeVorming = LocalDatastore.getMonitorenMetDezelfdeVormingen(monitor.id!)
             
             if monitorenZelfdeVorming.count != 0 {
@@ -80,10 +78,6 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
         } else {
             var alleMonitoren = LocalDatastore.getLocalObjects(Constanten.TABLE_MONITOR) as [Monitor]
             self.monitoren = alleMonitoren
-            //var alleMonitorsReponse = ParseData.getAlleMonitors()
-            /*if alleMonitorsReponse.1 == nil {
-                self.monitoren = alleMonitorsReponse.0
-            }*/
         }
         
         self.monitoren2 = self.monitoren
@@ -116,21 +110,6 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
         
         zoekbar.showsScopeBar = true
         zoekbar.delegate = self
-    }
-    
-    //
-    //Naam: viewDidAppear
-    //
-    //Werking: - herladen van de data
-    //
-    //Parameters:
-    //  - animated: Bool
-    //
-    //Return:
-    //
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        self.tableView.reloadData()
     }
     
     //

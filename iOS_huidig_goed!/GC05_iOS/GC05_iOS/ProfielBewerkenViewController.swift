@@ -378,7 +378,6 @@ class ProfielBewerkenViewController: UITableViewController {
                 } else {
                     settenVerplichteGegevens()
                     settenOptioneleGegevens()
-                    //ParseData.updateMonitor(self.monitor!)
                     LocalDatastore.updateMonitor(self.monitor!)
                     profielDetailsViewController.monitor = self.monitor
                     profielDetailsViewController.eigenProfiel = true

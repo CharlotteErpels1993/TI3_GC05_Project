@@ -47,20 +47,6 @@ class ProfielDetailsTableViewController: UITableViewController, MFMailComposeVie
         hideSideMenuView()
         self.navigationItem.title = (" \(monitor.voornaam!) \(monitor.naam!)")
         
-        
-        var huidigeMonitor = LocalDatastore.getLocalObjectWithColumnConstraints(Constanten.TABLE_MONITOR, soortConstraints: [Constanten.COLUMN_EMAIL: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_EMAIL: PFUser.currentUser().email]) as Monitor
-        
-        if monitor.id == huidigeMonitor.id {
-            
-            var query = PFQuery(className: Constanten.TABLE_MONITOR)
-            query.whereKey(Constanten.COLUMN_OBJECTID, equalTo: self.monitor.id)
-            query.fromLocalDatastore()
-            
-            var object = query.getFirstObject()
-            
-            self.monitor = LocalDatastore.getMonitor(object)
-        }
-        
         voornaamLabel.text = monitor.voornaam!
         naamLabel.text = monitor.naam!
         emailLabel.text = monitor.email!
@@ -90,6 +76,21 @@ class ProfielDetailsTableViewController: UITableViewController, MFMailComposeVie
             var rightItem: UIBarButtonItem = UIBarButtonItem(image: rightImage, style: UIBarButtonItemStyle.Plain, target: self, action: "verstuurMail")
             self.navigationItem.rightBarButtonItem = rightItem
         }
+    }
+    
+    //
+    //Naam: viewDidAppear
+    //
+    //Werking: - herladen van de data
+    //
+    //Parameters:
+    //  - animated: Bool
+    //
+    //Return:
+    //
+    override func viewWillAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        viewDidLoad()
     }
     
     //
