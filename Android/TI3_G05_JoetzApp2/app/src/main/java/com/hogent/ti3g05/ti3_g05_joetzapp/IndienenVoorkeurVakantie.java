@@ -1,7 +1,6 @@
 package com.hogent.ti3g05.ti3_g05_joetzapp;
 
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -11,7 +10,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -28,10 +26,12 @@ import com.parse.ParseUser;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
-//Geeft de monitor de gelegenheid om een voorkeur in te dienen
+/*Naam: IndienenVoorkeurVakantie
+
+    Werking: Geeft de monitor de gelegenheid om een voorkeur in te dienen
+    */
 public class IndienenVoorkeurVakantie extends Activity implements AdapterView.OnItemSelectedListener {
 
     private ArrayList<String> vakantienamen = null;
@@ -93,10 +93,13 @@ public class IndienenVoorkeurVakantie extends Activity implements AdapterView.On
 
     }
 
-   //Plaatst de juiste periode van de vakantie in de textview
+    /*Naam: onItemSelected
+
+    Werking: Plaatst de juiste periode van de vakantie in de textview
+    */
     @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        periodeVakantie.setText(vakanties.get(i).getPeriode());
+    public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+        periodeVakantie.setText(vakanties.get(position).getPeriode());
     }
 
     @Override
@@ -105,7 +108,10 @@ public class IndienenVoorkeurVakantie extends Activity implements AdapterView.On
     }
 
 
-    // Asynchrone taak om vakanties op te halen
+    /*Naam: RemoteDataTask
+
+    Werking:  Asynchrone taak om vakanties op te halen
+    */
     private class RemoteDataTask extends AsyncTask<Void, Void, Void> {
         @Override
         protected void onPreExecute() {
@@ -208,10 +214,10 @@ public class IndienenVoorkeurVakantie extends Activity implements AdapterView.On
         return super.onOptionsItemSelected(item);
     }
 
-    //Haal de geselecteerde waarde uit de spinner en sla deze op
+    /*Naam: indienenVoorkeur
+    Werking: Haal de geselecteerde waarde uit de spinner en sla deze op
+    */
     public void indienenVoorkeur(){
-        String periodes;
-        periodes = periodeVakantie.getText().toString();
         Vakantie vakantie = new Vakantie();
          for(Vakantie vak : vakanties)
          {
@@ -223,7 +229,7 @@ public class IndienenVoorkeurVakantie extends Activity implements AdapterView.On
          }
         Intent in = new Intent(getApplicationContext(),navBarMainScreen.class);
 
-        if (opslaanVoorkeur(vakantie ,periodes)){
+        if (opslaanVoorkeur(vakantie)){
 
             startActivity(in);
             overridePendingTransition(R.anim.right_in, R.anim.left_out);
@@ -234,9 +240,18 @@ public class IndienenVoorkeurVakantie extends Activity implements AdapterView.On
     }
 
 
+    /*Naam: opslaanVoorkeur
+    Werking:
     //Sla de voorkeur op met de bijhorende monitorId
     //Controleer ook of deze gebruiker nog geen voorkeur heeft doorgegeven voor deze vakantie
-    public boolean opslaanVoorkeur(Vakantie vakantie, String periodes)
+
+    Parameters:
+     - vakantie: Vakantie - vakantie object dat wordt opgeslagen
+
+    Return: true -> opslaan is succesvol gebeurd
+            false -> er is een fout gebeurd
+    */
+    public boolean opslaanVoorkeur(Vakantie vakantie)
     {
         String monitorId = null;
         try{

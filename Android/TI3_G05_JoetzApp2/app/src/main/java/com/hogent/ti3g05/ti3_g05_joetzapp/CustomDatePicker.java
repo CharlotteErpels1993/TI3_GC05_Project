@@ -11,7 +11,10 @@ import android.widget.TextView;
 import java.util.Calendar;
 import java.util.Date;
 
-//Geeft een dialoog weer om een datum te kiezen
+/*Naam: CustomDatePicker
+
+    Werking: Geeft een dialoog weer om een datum te kiezen
+    */
 public class CustomDatePicker extends DialogFragment
         implements DatePickerDialog.OnDateSetListener {
 
@@ -44,7 +47,11 @@ public class CustomDatePicker extends DialogFragment
         return dialog;
     }
 
-    //Haalt de datum op die de gebruiker heeft geselecteerd
+    /*Naam: onDateSet
+    Werking: Haalt de datum op die de gebruiker heeft geselecteerd
+    Parameters:
+     - year, month & day: int - geselecteerde waarden van gebruiker
+    */
     public void onDateSet(DatePicker view, int year, int month, int day) {
         mYear=year;
         mMonth=month;
@@ -54,8 +61,12 @@ public class CustomDatePicker extends DialogFragment
 
     }
 
-    //Laat de geselecteerde datum zien in een textview
-    private void onPopulateSet(int year, int i, int dayOfMonth) {
+    /*Naam: fetchLocalObjects
+    Werking: Laat de geselecteerde datum zien in een textview
+    Parameters:
+     - year, objMonth & dayOfMonth: int - geselcteerd jaar, maand en dag
+    */
+    private void onPopulateSet(int year, int objMonth, int dayOfMonth) {
         TextView et_setDate;
         TextView datum;
         String maandStr = null;
@@ -65,7 +76,7 @@ public class CustomDatePicker extends DialogFragment
         datum = (TextView) getActivity().findViewById(R.id.maandIns);
         dag = (TextView) getActivity().findViewById(R.id.dagIns);
         jaar = (TextView) getActivity().findViewById(R.id.jaarIns);
-        switch (i)
+        switch (objMonth)
         {
             case 1: maandStr = "Jan"; break;
             case 2: maandStr = "Feb"; break;

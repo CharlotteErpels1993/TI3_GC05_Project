@@ -23,7 +23,10 @@ import com.parse.ParseUser;
 import java.util.Date;
 import java.util.List;
 
-//Geeft de ingelogde gebruiker de mogelijkheid om feedback toe te voegen over een vakantie
+/*Naam: FeedbackGeven
+
+    Werking: Geeft de ingelogde gebruiker de mogelijkheid om feedback toe te voegen over een vakantie
+    */
 public class FeedbackGeven extends Activity {
 
     private String vakantie;
@@ -130,7 +133,12 @@ public class FeedbackGeven extends Activity {
 
     }
 
-    //valideer de waarden
+    /*Naam: valideerGegevens
+    Werking: Valideert de waarden
+    Parameters:
+     - feedback: String - tekst v d feedback
+     - score: String - score op 5
+    */
     public void valideerGegevens(String feedback, String score)
     {
         clearErrors();
@@ -170,7 +178,13 @@ public class FeedbackGeven extends Activity {
         }
     }
 
-    //Sla de feedback op in de tabel in parse en stuur de gebruiker met de juiste melding door naar het vakantieoverzicht
+    /*Naam: opslaan
+    Werking: Sla de feedback op in de tabel in parse en stuur de gebruiker met de juiste melding door naar het vakantieoverzicht
+
+    Parameters:
+     - feedback: String - tekst v d feedback, gevalideerd
+     - score: String - score op 5, gevalideerd
+    */
     public  void opslaan(String feedback, String score)
     {
         Date dateVandaag = new Date();

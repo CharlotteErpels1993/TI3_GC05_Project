@@ -106,8 +106,9 @@ public class InschrijvenVakantieDeel2 extends Activity {
         });
     }
 
-
-    //controleer de ingegeven waarden en indien geen fout sla deze op
+    /*Naam: controlerenOpfouten
+    Werking: controleer de ingegeven waarden en indien geen fout sla deze op
+    */
     public void controlerenOpfouten(){
         clearErrors();
         cancel = false;
@@ -171,7 +172,9 @@ public class InschrijvenVakantieDeel2 extends Activity {
         }
     }
 
-    //Sla de gegevens op en stuur deze door naar de volgende stap
+    /*Naam: opslaan
+    Werking: Sla de gegevens op en stuur deze door naar de volgende stap
+    */
     private void opslaan() {
         Toast.makeText(getApplicationContext(), getString(R.string.loading_message), Toast.LENGTH_SHORT).show();
         Intent in = new Intent(getApplicationContext(),InschrijvenVakantieDeel3.class);
@@ -214,7 +217,10 @@ public class InschrijvenVakantieDeel2 extends Activity {
         overridePendingTransition(R.anim.right_in, R.anim.left_out);
     }
 
-    //Indien de extracontactpersoon is aangeklikt controleer of deze correct zijn
+    /*Naam: checkOfExtraVeldenZijnIngevuld
+
+    Werking: Indien de optie extracontactpersoon is aangeklikt controleer of deze correct zijn
+    */
     public void checkOfExtraVeldenZijnIngevuld(){
         if (TextUtils.isEmpty(gsmExtra)) {
             txtGSMExtra.setError(getString(R.string.error_field_required));

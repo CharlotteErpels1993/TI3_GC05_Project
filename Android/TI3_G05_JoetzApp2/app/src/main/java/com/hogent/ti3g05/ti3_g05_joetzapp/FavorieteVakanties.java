@@ -29,7 +29,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-//Haalt de favoriete vakanties van de gebruiker op engeeft deze weer
+/*Naam: FavorieteVakanties
+
+    Werking: Haalt de favoriete vakanties van de gebruiker op engeeft deze weer
+    */
 public class FavorieteVakanties extends Fragment{
 
     private ListView listview;
@@ -98,7 +101,10 @@ public class FavorieteVakanties extends Fragment{
         }
 
 
-        // Asnynchrone taak om favorieten op te halen
+    /*Naam: RemoteDataTask
+
+    Werking: Asnynchrone taak om favorieten op te halen
+    */
         private class RemoteDataTask extends AsyncTask<Void, Void, Void> {
             @Override
             protected void onPreExecute() {
@@ -121,7 +127,10 @@ public class FavorieteVakanties extends Fragment{
 
             }
 
-            //Haal de gegevens op en stop deze in de locale database Doorgeven aan de adapter om weer te geven.
+
+            /*Naam: fetchLocalObjects
+            Werking: Haal de gegevens op en stop deze in de locale database Doorgeven aan de adapter om weer te geven.
+            */
             @Override
             protected Void doInBackground(Void... params) {
                 vakanties = new ArrayList<Vakantie>();

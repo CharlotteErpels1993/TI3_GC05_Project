@@ -25,7 +25,9 @@ import com.hogent.ti3g05.ti3_g05_joetzapp.Services.FileCache;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.MemoryCache;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.Utils;
 
-//Om de afbeeldingen weer te geven
+/*Naam: ImageLoader
+    Werking: Om de afbeeldingen weer te geven
+    */
 public class ImageLoader {
 
     MemoryCache memoryCache = new MemoryCache();
@@ -42,7 +44,13 @@ public class ImageLoader {
     }
 
 
-    //Dit geeft de images weer door de url en geeft deze weer in de imageview
+    /*Naam: DisplayImage
+    Werking: Dit geeft de images weer door de url en geeft deze weer in de imageview
+
+    Parameters:
+     - url: String - de url van de afbeeldign die getoond moet worden
+     - imageview: ImageView - de view die gebruikt wordt
+    */
     public void DisplayImage(String url, ImageView imageView) {
         imageViews.put(imageView, url);
         Bitmap bitmap = memoryCache.get(url);
@@ -53,13 +61,27 @@ public class ImageLoader {
         }
     }
 
-    //Plaatst de foto even in een wachtrij
+    /*Naam: queuePhoto
+    Werking: Plaatst de foto even in een wachtrij
+
+    Parameters:
+     - url: String - de url van de afbeeldign die getoond moet worden
+     - imageview: ImageView - de view die gebruikt wordt
+    */
     private void queuePhoto(String url, ImageView imageView) {
         PhotoToLoad p = new PhotoToLoad(url, imageView);
         executorService.submit(new PhotosLoader(p));
     }
 
-    //Url omzetten en afbeelding weergeven
+    /*Naam: fetchLocalObjects
+
+    Werking: Url omzetten en afbeelding weergeven
+
+    Parameters:
+     - url: String - de url van de afbeeldign die getoond moet worden
+
+    Return: Juiste Bitmap object
+    */
     private Bitmap getBitmap(String url) {
         File f = fileCache.getFile(url);
 
@@ -91,7 +113,14 @@ public class ImageLoader {
         }
     }
 
-    // Decodes de afbeelding en schaalt het om geheugen verbruik te verkleinen
+    /*Naam: decodeFile
+    Werking: Decodes de afbeelding en schaalt het om geheugen verbruik te verkleinen
+
+    Parameters:
+     - f: File - het bestand dat gebruikt wordt
+
+    Return: Juiste Bitmap object
+    */
     private Bitmap decodeFile(File f) {
         try {
             // Decode image size
@@ -128,7 +157,10 @@ public class ImageLoader {
         return null;
     }
 
-    // Taak voor in de wachtrij
+    /*Naam: PhotoToLoad
+
+    Werking: Taak voor in de wachtrij
+    */
     private class PhotoToLoad {
         public String url;
         public ImageView imageView;

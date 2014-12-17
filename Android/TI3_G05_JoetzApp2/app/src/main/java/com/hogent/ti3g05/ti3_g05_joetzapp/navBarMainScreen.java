@@ -216,7 +216,12 @@ public class navBarMainScreen extends Activity {
         });
     }
 
-    //Het juiste fragment of de juiste handelingen uitvoeren bij selectie van een item
+    /*Naam: getUrl
+    Werking: Het juiste fragment of de juiste handelingen uitvoeren bij selectie van een item
+
+    Parameters:
+     - position: Int - huidige positie in de hierarchie v menu opties
+    */
     protected void getUrl(int position) {
         isInternetPresent = cd.isConnectingToInternet();
 

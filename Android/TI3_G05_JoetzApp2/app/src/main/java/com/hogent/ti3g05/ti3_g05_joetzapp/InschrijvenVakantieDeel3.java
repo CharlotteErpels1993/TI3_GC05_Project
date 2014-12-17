@@ -59,7 +59,10 @@ public class InschrijvenVakantieDeel3 extends Activity {
 
     }
 
-    //Haal de gegevens op uit de vorige stappen
+    /*Naam: slaGegevensOp
+
+    Werking: Haal de gegevens op uit de vorige stappen
+    */
     public void slaGegevensOp(){
         Toast.makeText(getApplicationContext(), getString(R.string.loading_message), Toast.LENGTH_SHORT).show();
 
@@ -95,8 +98,14 @@ public class InschrijvenVakantieDeel3 extends Activity {
 
     }
 
-    //Sla de gegevens op in de database
-    //Controleer ook of deze gebruiker nog niet is ingeschreven voor deze vakantie
+    /*Naam: fetchLocalObjects
+
+    Werking: Sla de gegevens op in de database
+    Controleer ook of deze gebruiker nog niet is ingeschreven voor deze vakantie
+
+    Parameters:
+     - verschillende gegevens: String - alle gegevens van de vorige velden, wordt gebruikt bij het opslaan
+    */
     public void inschrijvingOpslaan(String activiteitID, String voornaam, String naam, String straat, String huisnr, String bus, String gemeente, String postcode,
                                     String voornaamCP, String naamCP, String telefoonCP, String gsmCP,
                                     String voornaamCPextra, String naamCPextra, String telefoonCPextra, String gsmCPextra, String extraInfo,  String datum){
@@ -230,7 +239,10 @@ public class InschrijvenVakantieDeel3 extends Activity {
 
     }
 
-    //haal de id op van de ouder
+    /*Naam: idVanOuderOphalen
+    Werking: haal de id op van de ouder
+    Return: objectID van de DB van de ouder
+    */
     public String idVanOuderOphalen(){
         String emailToLookFor = ParseUser.getCurrentUser().getEmail();
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Ouder");

@@ -90,7 +90,9 @@ public class FeedbackOverzicht extends Fragment {
         return rootView;
     }
 
-    // Asynchrone taak om feedbacks op te halen
+    /*Naam: RemoteDataTask
+    Werking: Asynchrone taak om feedbacks op te halen
+    */
     private class RemoteDataTask extends AsyncTask<Void, Void, Void> {
         @Override
         protected void onPreExecute() {
@@ -114,7 +116,9 @@ public class FeedbackOverzicht extends Fragment {
         }
 
 
-        //Haal de gegevens op en stop deze in de locale database Doorgeven aan de adapter om weer te geven.
+        /*Naam: fetchLocalObjects
+        Werking: Haal de gegevens op en stop deze in de locale database Doorgeven aan de adapter om weer te geven.
+        */
         @Override
         protected Void doInBackground(Void... params) {
             feedbackList = new ArrayList<Feedback>();

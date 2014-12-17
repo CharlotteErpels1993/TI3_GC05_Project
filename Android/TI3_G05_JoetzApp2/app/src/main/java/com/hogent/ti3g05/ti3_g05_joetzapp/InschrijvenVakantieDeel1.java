@@ -25,8 +25,9 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-//Biedt de ouder de mogelijkheid tot inschrijven in een vakantie,
-// stap 1
+/*Naam: InschrijvenVakantieDeel1
+    Werking: //Biedt de ouder de mogelijkheid tot inschrijven in een vakantie. stap 1
+    */
 public class InschrijvenVakantieDeel1 extends FragmentActivity {
 
     private EditText txtVoornaam, txtNaam, txtStraat, txtHuisnr, txtBus, txtGemeente, txtPostcode;
@@ -125,13 +126,20 @@ public class InschrijvenVakantieDeel1 extends FragmentActivity {
 
 
 
-    //Toon de datepicker dialoog
+    /*Naam: showDataPickerDialog
+    Werking: Toon de datepicker dialoog
+
+    Parameters:
+     - v: view- de view uit de xml v datepicker
+    */
     public void showDatePickerDialog(View v) {
         DialogFragment newFragment = new CustomDatePicker();
         newFragment.show(getSupportFragmentManager(), "datePicker");
     }
 
-    //Controleer de ingegeven waarden en sla deze op indien juist
+    /*Naam: controlerenOpfouten
+    Werking: Controleer de ingegeven waarden en sla deze op indien juist
+    */
     public void controlerenOpfouten(){
         clearErrors();
         cancel = false;
@@ -270,7 +278,10 @@ public class InschrijvenVakantieDeel1 extends FragmentActivity {
         }
     }
 
-    //Sla de gegevens op en stuur deze door naar de volgende stap
+    //naam: opslaan
+    // werking: Sla de gegevens op en stuur deze door naar de volgende stap
+    //parameters:
+    //alle ingevulde elementen uit de .xml file, reeds gevalideerd
     private void opslaan(String voornaam,String naam, String straat, String huisnr, String bus, String gemeente, String postcode) {
         Toast.makeText(getApplicationContext(), getString(R.string.loading_message), Toast.LENGTH_SHORT).show();
 
@@ -305,7 +316,13 @@ public class InschrijvenVakantieDeel1 extends FragmentActivity {
         tv_errorDate.setVisibility(View.GONE);
     }
 
-    //Controle of de leeftijd binnen de doelgroep valt
+    /*Naam: getAge
+        Werking: Controle of de leeftijd binnen de doelgroep valt
+    Parameters:
+     - DOByear, DOBmonth, DOBday: int - geselecteerde waarden
+
+    Return: leeftijd v de datum
+    */
     public int getAge(int DOByear, int DOBmonth, int DOBday) {
 
         int age;

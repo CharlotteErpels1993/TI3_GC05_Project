@@ -25,7 +25,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-//Indien de gebruiker vanuit het feedbackoverzicht feedback wenst toe te voegen moet deze eerst een vakantie kiezen
+/*Naam: FeedbackGevenVakantieKiezen
+
+    Werking: Indien de gebruiker vanuit het feedbackoverzicht feedback wenst toe te voegen moet deze eerst een vakantie kiezen
+    */
 public class FeedbackGevenVakantieKiezen extends Activity {
 
     private Spinner spinner;
@@ -42,9 +45,9 @@ public class FeedbackGevenVakantieKiezen extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.feedback_geven_vakantie_kiezen);
 
-        spinner = (Spinner) findViewById( R.id.spinnerFeedbackVakanties );
+        spinner = (Spinner) findViewById(R.id.spinnerFeedbackVakanties);
         final Button btnVolgende = (Button) findViewById(R.id.KiesVakantie);
-        cd= new ConnectionDetector(this);
+        cd = new ConnectionDetector(this);
 
         final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.alpha);
 
@@ -64,14 +67,17 @@ public class FeedbackGevenVakantieKiezen extends Activity {
             }
         });
 
-        if(isInternetPresent) {
+        if (isInternetPresent) {
             new RemoteDataTask().execute();
-        }else {
+        } else {
             Toast.makeText(getApplicationContext(), getString(R.string.error_no_internet), Toast.LENGTH_SHORT).show();
 
         }
     }
-    //Haal de vakanties op
+
+    /*Naam: fetchLocalObjects
+    Werking: Haal de vakanties op
+    */
     public void gaVerder(){
 
         Vakantie vakantie = new Vakantie();
@@ -95,7 +101,9 @@ public class FeedbackGevenVakantieKiezen extends Activity {
     }
 
 
-    // Asynchrone taak om vakanties op te halen
+    /*Naam: fetchLocalObjects
+    Werking: Asynchrone taak om vakanties op te halen
+    */
     private class RemoteDataTask extends AsyncTask<Void, Void, Void> {
         @Override
         protected void onPreExecute() {

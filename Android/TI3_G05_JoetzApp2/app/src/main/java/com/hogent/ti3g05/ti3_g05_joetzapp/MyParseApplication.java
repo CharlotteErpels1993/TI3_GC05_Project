@@ -4,7 +4,7 @@ import android.app.Application;
 import com.parse.Parse;
 import com.parse.ParseUser;
 
-//Initialiseert de database connectie
+//Initialiseert de database connectie. Dit gebeurt voor elke applicatie, wat ook nodig is om Parse te kunnen gebruiken
 public class MyParseApplication extends Application {
     @Override
     public void onCreate() {
@@ -17,10 +17,6 @@ public class MyParseApplication extends Application {
             ParseUser.logOut();
         }
         //Parse.enableLocalDatastore(this);
-
-        //ParseObject testObject = new ParseObject("TestObject");
-        //testObject.put("foo", "bar");
-        //testObject.saveInBackground();
     }
 
 

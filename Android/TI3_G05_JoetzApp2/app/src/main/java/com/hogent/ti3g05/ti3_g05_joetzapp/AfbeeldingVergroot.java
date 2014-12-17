@@ -9,7 +9,11 @@ import android.widget.ImageView;
 
 import java.util.ArrayList;
 
-//geeft de geselecteerde afbeelding vergroot weer
+//
+/*Naam: AfbeeldingVergroot
+
+    Werking: geeft de geselecteerde afbeelding vergroot weer
+    */
 public class AfbeeldingVergroot extends Activity {
     private String naam, locatie, vertrekdatum, terugdatum, formule, maxDeeln, periode, vervoer, prijs, beschrijving;
     private String maxDoelgroep, minDoelgroep, afbeelding1, afbeelding2, afbeelding3, bmLedenPrijs, sterPrijs1Ouder, sterPrijs2Ouders;
@@ -87,7 +91,10 @@ public class AfbeeldingVergroot extends Activity {
         terugNaarDetail();
     }
 
-    //Stuurt de gebruiker terig naar detailscherm en geeft juiste gegevens mee
+    /*Naam: terugNaarDetail
+
+    Werking: Stuurt de gebruiker terig naar detailscherm en geeft juiste gegevens mee
+    */
     public void terugNaarDetail()
     {
         Intent intent1 = new Intent(this, VakantieDetail.class);
