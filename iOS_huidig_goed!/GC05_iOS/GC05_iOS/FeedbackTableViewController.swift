@@ -25,6 +25,18 @@ class FeedbackTableViewController: UITableViewController, UISearchBarDelegate, U
     }
     
     //
+    //Naam: gaTerugNaarFeedback
+    //
+    //Werking: - zorgt voor een unwind segue
+    //
+    //Parameters:
+    //  - sender: AnyObject
+    //
+    //Return:
+    //
+    @IBAction func gaTerugNaarFeedback(segue: UIStoryboardSegue) {}
+    
+    //
     //Naam: viewDidLoad
     //
     //Werking: - zorgt ervoor dat de side bar menu verborgen is
@@ -231,6 +243,7 @@ class FeedbackTableViewController: UITableViewController, UISearchBarDelegate, U
     //Naam: refresh
     //
     //Werking: - zorgt ervoor wanneer de gebruiker naar beneden scrolt de data opnieuw wordt herladen
+    //         - kijkt of er internet aanwezig is, zo nee melding tonen
     //
     //Parameters:
     //  - sender: UIRefreshControl
@@ -238,6 +251,9 @@ class FeedbackTableViewController: UITableViewController, UISearchBarDelegate, U
     //Return:
     //
     @IBAction func refresh(sender: UIRefreshControl) {
+        if Reachability.isConnectedToNetwork() == false {
+            toonFoutBoxMetKeuzeNaarInstellingen("Verbind met het internet om uw nieuwste feedback te bekijken of ga naar instellingen.", self)
+        }
         var parseData = ParseData()
         ParseData.deleteAllTables()
         ParseData.createDatabase()

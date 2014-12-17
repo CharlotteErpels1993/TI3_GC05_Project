@@ -1288,9 +1288,11 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                     </navigationItem>
                     <connections>
                         <outlet property="vakantiePickerView" destination="9Wk-sF-YB3" id="UCp-bH-OAJ"/>
+                        <segue destination="Qb6-0k-fyL" kind="unwind" identifier="gaTerug" unwindAction="gaTerugNaarFeedback:" id="JGU-hr-7QT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d8C-yo-ZeK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Qb6-0k-fyL" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="5477" y="371"/>
         </scene>
@@ -1483,9 +1485,11 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                         <outlet property="ster4" destination="WKY-b4-P8w" id="sSV-HK-0sR"/>
                         <outlet property="ster5" destination="OKx-ct-rzl" id="X46-Bb-ekQ"/>
                         <outlet property="txtFeedback" destination="TnP-J6-6lj" id="yu6-LT-0FQ"/>
+                        <segue destination="15e-vu-02u" kind="unwind" identifier="gaTerug" unwindAction="gaTerugNaarOverzichtVakanties:" id="kmK-C6-7DJ"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZDn-pG-Z2N" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="15e-vu-02u" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="6125" y="369"/>
         </scene>
@@ -5027,10 +5031,10 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
         <image name="star2.png" width="1125" height="1125"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="WzF-72-HCe"/>
-        <segue reference="xe1-I8-Pkw"/>
-        <segue reference="3fb-Mq-kJr"/>
-        <segue reference="xfp-UK-L9d"/>
         <segue reference="7j1-hF-0E4"/>
+        <segue reference="xe1-I8-Pkw"/>
+        <segue reference="WzF-72-HCe"/>
+        <segue reference="3fb-Mq-kJr"/>
+        <segue reference="8Ie-OP-chB"/>
     </inferredMetricsTieBreakers>
 </document>

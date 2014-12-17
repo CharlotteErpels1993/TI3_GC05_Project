@@ -25,18 +25,7 @@ class GeefFeedback1ViewController: UIViewController, UIPickerViewDataSource, UIP
         self.setNeedsStatusBarAppearanceUpdate()
         self.navigationController!.toolbarHidden = true
         
-        if Reachability.isConnectedToNetwork() == false {
-            var alert = UIAlertController(title: "Oeps.. U heeft geen internet", message: "U heeft internet nodig om feedback te geven. Ga naar instellingen om dit aan te passen.", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "Annuleer", style: UIAlertActionStyle.Default, handler: nil))
-            alert.addAction(UIAlertAction(title: "Ga naar instellingen", style: .Default, handler: { action in
-                switch action.style{
-                default:
-                    UIApplication.sharedApplication().openURL(NSURL(string:UIApplicationOpenSettingsURLString)!);
-                }
-                
-            }))
-            presentViewController(alert, animated: true, completion: nil)
-        }
+        controleerInternet()
         
         //var vakantiesResponse = ParseData.getAlleVakanties()
         //if vakantiesResponse.1 == nil {
@@ -61,6 +50,35 @@ class GeefFeedback1ViewController: UIViewController, UIPickerViewDataSource, UIP
     override func viewDidAppear(animated: Bool) {
         self.setNeedsStatusBarAppearanceUpdate()
         self.navigationController!.toolbarHidden = true
+    }
+    
+    //
+    //Naam: controleerInternet
+    //
+    //Werking: - bekijkt of de gebruiker internet heeft, zoniet geeft hij een gepaste melding
+    //
+    //Parameters:
+    //
+    //Return:
+    //
+    func controleerInternet() {
+        if Reachability.isConnectedToNetwork() == false {
+            var alert = UIAlertController(title: "Oeps.. U heeft geen internet", message: "U heeft internet nodig voor feedback toe te voegen. Ga naar instellingen om dit aan te passen.", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Ga terug naar Feedback", style: UIAlertActionStyle.Default, handler: { action in
+                switch action.style {
+                default:
+                    self.performSegueWithIdentifier("gaTerug", sender: self)
+                }
+            }))
+            alert.addAction(UIAlertAction(title: "Ga naar instellingen", style: .Default, handler: { action in
+                switch action.style{
+                default:
+                    UIApplication.sharedApplication().openURL(NSURL(string:UIApplicationOpenSettingsURLString)!);
+                }
+                
+            }))
+            presentViewController(alert, animated: true, completion: nil)
+        }
     }
     
     //
@@ -145,6 +163,8 @@ class GeefFeedback1ViewController: UIViewController, UIPickerViewDataSource, UIP
             
             geefFeedback2ViewController.vakantie = self.vakantie
             geefFeedback2ViewController.feedback = self.feedback
+        } else if segue.identifier == "gaTerug" {
+            let feedbackTableViewController = segue.destinationViewController as FeedbackTableViewController
         }
     }
 }

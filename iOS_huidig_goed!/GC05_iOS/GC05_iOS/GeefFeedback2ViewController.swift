@@ -34,10 +34,28 @@ class GeefFeedback2ViewController: UITableViewController {
         self.setNeedsStatusBarAppearanceUpdate()
         self.navigationController!.toolbarHidden = true
         self.navigationItem.title = self.titel
-        
+        controleerInternet()
+        giveUITextViewDefaultBorder(txtFeedback)
+    }
+    
+    //
+    //Naam: controleerInternet
+    //
+    //Werking: - bekijkt of de gebruiker internet heeft, zoniet geeft hij een gepaste melding
+    //
+    //Parameters:
+    //
+    //Return:
+    //
+    func controleerInternet() {
         if Reachability.isConnectedToNetwork() == false {
-            var alert = UIAlertController(title: "Oeps.. U heeft geen internet", message: "U heeft internet nodig om feedback te geven. Ga naar instellingen om dit aan te passen.", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "Annuleer", style: UIAlertActionStyle.Default, handler: nil))
+            var alert = UIAlertController(title: "Oeps.. U heeft geen internet", message: "U heeft internet nodig voor feedback toe te voegen. Ga naar instellingen om dit aan te passen.", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Ga terug naar Feedback", style: UIAlertActionStyle.Default, handler: { action in
+                switch action.style {
+                default:
+                    self.performSegueWithIdentifier("gaTerug", sender: self)
+                }
+            }))
             alert.addAction(UIAlertAction(title: "Ga naar instellingen", style: .Default, handler: { action in
                 switch action.style{
                 default:
@@ -47,8 +65,6 @@ class GeefFeedback2ViewController: UITableViewController {
             }))
             presentViewController(alert, animated: true, completion: nil)
         }
-        
-        giveUITextViewDefaultBorder(txtFeedback)
     }
 
     //
@@ -188,29 +204,33 @@ class GeefFeedback2ViewController: UITableViewController {
     //Return:
     //
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let geefFeedbackSuccesvolViewController = segue.destinationViewController as GeefFeedbackSuccesvolViewController
-        var gebruiker = getGebruiker(PFUser.currentUser().email)
-        feedback = Feedback(id: "test")
+        if segue.identifier == "indienen" {
+            let geefFeedbackSuccesvolViewController = segue.destinationViewController as GeefFeedbackSuccesvolViewController
+            var gebruiker = getGebruiker(PFUser.currentUser().email)
+            feedback = Feedback(id: "test")
         
-        setStatusTextFields()
-        pasLayoutVeldenAan()
+            setStatusTextFields()
+            pasLayoutVeldenAan()
         
-        if self.score == 0 {
-            foutBoxOproepen("Fout", "Gelieve een geldige score te geven! (1 t.e.m. 5)", self)
-            self.viewDidLoad()
-        } else {
-            if controleerRodeBordersAanwezig() == true {
-                foutBoxOproepen("Fout", "Gelieve het veld feedback in te vullen!", self)
+            if self.score == 0 {
+                foutBoxOproepen("Fout", "Gelieve een geldige score te geven! (1 t.e.m. 5)", self)
                 self.viewDidLoad()
             } else {
-                feedback.datum = NSDate()
-                feedback.gebruiker = gebruiker
-                feedback.vakantie = self.vakantie
-                feedback.score = self.score
+                if controleerRodeBordersAanwezig() == true {
+                    foutBoxOproepen("Fout", "Gelieve het veld feedback in te vullen!", self)
+                    self.viewDidLoad()
+                } else {
+                    feedback.datum = NSDate()
+                    feedback.gebruiker = gebruiker
+                    feedback.vakantie = self.vakantie
+                        feedback.score = self.score
                 feedback.waardering = self.txtFeedback.text
-                feedback.goedgekeurd = false
-                geefFeedbackSuccesvolViewController.feedback = self.feedback
+                    feedback.goedgekeurd = false
+                    geefFeedbackSuccesvolViewController.feedback = self.feedback
+                    }
             }
+        } else if segue.identifier == "gaTerug" {
+            let vakantiesTableViewController = segue.destinationViewController as VakantiesTableViewController
         }
     }
     
@@ -291,5 +311,4 @@ class GeefFeedback2ViewController: UITableViewController {
             return false
         }
     }
-    
 }

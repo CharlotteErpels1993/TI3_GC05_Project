@@ -60,16 +60,7 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         self.navigationController!.toolbarHidden = true
         
         if Reachability.isConnectedToNetwork() == false {
-            var alert = UIAlertController(title: "Oeps..", message: "Je hebt geen internet verbinding. Ga naar instellingen om dit aan te passen.", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil))
-            alert.addAction(UIAlertAction(title: "Ga naar instellingen", style: .Default, handler: { action in
-                switch action.style{
-                default:
-                    UIApplication.sharedApplication().openURL(NSURL(string:UIApplicationOpenSettingsURLString)!);
-                }
-                
-            }))
-            presentViewController(alert, animated: true, completion: nil)
+            toonFoutBoxMetKeuzeNaarInstellingen("Je hebt geen internet verbinding. Ga naar instellingen om dit aan te passen of ga verder.", self)
         }
         
         if isFavoriet == true && PFUser.currentUser() != nil {
@@ -113,6 +104,45 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         self.setNeedsStatusBarAppearanceUpdate()
         self.navigationController!.toolbarHidden = true
         self.tableView.reloadData()
+    }
+    
+    //
+    //Naam: controleerInternet
+    //
+    //Werking: - bekijkt of de gebruiker internet heeft, zoniet geeft hij een gepaste melding
+    //
+    //Parameters:
+    //
+    //Return:
+    //
+    func controleerInternet() {
+        if Reachability.isConnectedToNetwork() == false {
+            var alert = UIAlertController(title: "Oeps.. U heeft geen internet", message: "U heeft internet nodig voor u te registeren. Ga naar instellingen om dit aan te passen.", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Ga terug naar vakanties", style: UIAlertActionStyle.Default, handler: { action in
+                switch action.style {
+                default:
+                    let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    var destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
+                    self.sideMenuController()?.setContentViewController(destViewController)
+                    self.hideSideMenuView()
+                }
+            }))
+            alert.addAction(UIAlertAction(title: "Ga naar instellingen", style: .Default, handler: { action in
+                switch action.style{
+                default:
+                    UIApplication.sharedApplication().openURL(NSURL(string:UIApplicationOpenSettingsURLString)!);
+                }
+                
+            }))
+            presentViewController(alert, animated: true, completion: nil)
+            txtVoornaam.resignFirstResponder()
+            txtStraat.resignFirstResponder()
+            txtPostcode.resignFirstResponder()
+            txtNummer.resignFirstResponder()
+            txtNaam.resignFirstResponder()
+            txtGemeente.resignFirstResponder()
+            txtBus.resignFirstResponder()
+        }
     }
     
     //
@@ -423,6 +453,7 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
     //Naam: refresh
     //
     //Werking: - zorgt ervoor wanneer de gebruiker naar beneden scrolt de data opnieuw wordt herladen
+    //         - kijk of er internet aanwezig is, zo nee melding tonen (afhankelijk van isFavoriet)
     //
     //Parameters:
     //  - sender: UIRefreshControl
@@ -432,9 +463,9 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
     @IBAction func refresh(sender: UIRefreshControl) {
         if Reachability.isConnectedToNetwork() == false {
             if isFavoriet == true {
-                toonFoutBoxMetKeuzeNaarInstellingen("Verbind met het internet om uw nieuwste favorieten te bekijken.", self)
+                toonFoutBoxMetKeuzeNaarInstellingen("Verbind met het internet om uw nieuwste favorieten te bekijken of ga naar instellingen.", self)
             } else {
-                toonFoutBoxMetKeuzeNaarInstellingen("Verbind met het internet om de nieuwste vakanties te bekijken.", self)
+                toonFoutBoxMetKeuzeNaarInstellingen("Verbind met het internet om de nieuwste vakanties te bekijken of ga naar instellingen.", self)
             }
         }
         

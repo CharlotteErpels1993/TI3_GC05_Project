@@ -18,7 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Er is een fix die samen met de volgende SDK release zal uitkomen
         Parse.enableLocalDatastore()
         
-        
         LocalDatastore.getTableReady(Constanten.TABLE_VAKANTIE)
         LocalDatastore.getTableReady(Constanten.TABLE_AFBEELDING)
         LocalDatastore.getTableReady(Constanten.TABLE_FEEDBACK)
