@@ -56,7 +56,6 @@ class ProfielBewerkenViewController: UITableViewController {
         telefoonTxt.text = monitor.telefoon
         gsmTxt.text = monitor.gsm
 
-        //self.navigationItem.leftItemsSupplementBackButton = true
         var barBack = UIBarButtonItem(title: "Terug", style: UIBarButtonItemStyle.Plain, target: self, action: "terug")
         self.navigationItem.leftBarButtonItem = barBack
     }
