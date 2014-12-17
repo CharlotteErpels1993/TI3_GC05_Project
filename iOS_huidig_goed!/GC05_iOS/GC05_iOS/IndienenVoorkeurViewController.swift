@@ -49,17 +49,14 @@ class IndienenVoorkeurViewController: UIViewController, UIPickerViewDataSource, 
         //var vakantiesResponse = ParseData.getAlleVakanties()
         var vakanties = LocalDatastore.getLocalObjects(Constanten.TABLE_VAKANTIE) as [Vakantie]
         
-        /*if vakantiesResponse.1 == nil {
-            self.vakanties = vakantiesResponse.0
-        }*/
-        
-        for vakantie in vakanties {
-            pickerData.append(vakantie.titel!)
+        for v in vakanties {
+            pickerData.append(v.titel!)
         }
         
-        var vakantie = self.vakanties.first
-        vertrekdatumStr = vakantie!.vertrekdatum.toS("dd/MM/yyyy")
-        terugkeerdatumStr = vakantie!.terugkeerdatum.toS("dd/MM/yyyy")
+        //var vakantie = self.vakanties.first!
+        var vakantie = vakanties[0]
+        vertrekdatumStr = vakantie.vertrekdatum.toS("dd/MM/yyyy")
+        terugkeerdatumStr = vakantie.terugkeerdatum.toS("dd/MM/yyyy")
         periodeLabel.text = ("\(vertrekdatumStr!) - \(terugkeerdatumStr!)")
         
         pickerView.delegate = self

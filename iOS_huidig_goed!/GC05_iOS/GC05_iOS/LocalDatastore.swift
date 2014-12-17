@@ -160,7 +160,7 @@ struct LocalDatastore {
     
     static func bestaatLocalObjectWithConstraints(tableName: String, soortConstraints: [String: String], equalToConstraints: [String: String] = [:], notContainedInConstraints: [String: [AnyObject]] = [:], notEqualToConstraints: [String: String] = [:], containedInConstraints: [String: [AnyObject]] = [:]) -> Bool {
         
-        var query = self.makeQuery(tableName, local: true, soortConstraints: soortConstraints, equalTo: equalToConstraints, notContainedIn: notContainedInConstraints)
+        var query = self.makeQuery(tableName, local: true, soortConstraints: soortConstraints, equalTo: equalToConstraints, notContainedIn: notContainedInConstraints, notEqualTo: notEqualToConstraints, containedIn: containedInConstraints)
         
         var count = query.countObjects()
         
