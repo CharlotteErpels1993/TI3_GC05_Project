@@ -107,45 +107,6 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
     }
     
     //
-    //Naam: controleerInternet
-    //
-    //Werking: - bekijkt of de gebruiker internet heeft, zoniet geeft hij een gepaste melding
-    //
-    //Parameters:
-    //
-    //Return:
-    //
-    func controleerInternet() {
-        if Reachability.isConnectedToNetwork() == false {
-            var alert = UIAlertController(title: "Oeps.. U heeft geen internet", message: "U heeft internet nodig voor u te registeren. Ga naar instellingen om dit aan te passen.", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "Ga terug naar vakanties", style: UIAlertActionStyle.Default, handler: { action in
-                switch action.style {
-                default:
-                    let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                    var destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
-                    self.sideMenuController()?.setContentViewController(destViewController)
-                    self.hideSideMenuView()
-                }
-            }))
-            alert.addAction(UIAlertAction(title: "Ga naar instellingen", style: .Default, handler: { action in
-                switch action.style{
-                default:
-                    UIApplication.sharedApplication().openURL(NSURL(string:UIApplicationOpenSettingsURLString)!);
-                }
-                
-            }))
-            presentViewController(alert, animated: true, completion: nil)
-            txtVoornaam.resignFirstResponder()
-            txtStraat.resignFirstResponder()
-            txtPostcode.resignFirstResponder()
-            txtNummer.resignFirstResponder()
-            txtNaam.resignFirstResponder()
-            txtGemeente.resignFirstResponder()
-            txtBus.resignFirstResponder()
-        }
-    }
-    
-    //
     //Naam: gemiddeldeFeedback
     //
     //Werking: - haalt de feedback op van de meegegeven vakantie
