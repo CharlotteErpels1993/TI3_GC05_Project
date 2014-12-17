@@ -17,6 +17,7 @@ import com.hogent.ti3g05.ti3_g05_joetzapp.SQLLite.SqliteDatabase;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.VakantieAdapter;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.FavorieteVakantie;
+import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Feedback;
 import com.hogent.ti3g05.ti3_g05_joetzapp.domein.Vakantie;
 import com.parse.ParseException;
 import com.parse.ParseFile;
@@ -136,6 +137,8 @@ public class FavorieteVakanties extends Fragment{
                 vakanties = new ArrayList<Vakantie>();
                 vakantiesAllemaal = new ArrayList<Vakantie>();
                 String ingelogdeGebruiker = "";
+
+
                 //Haal de favoriete vakanties op van de ingelogde gebruiker
                 try {
 
@@ -170,6 +173,13 @@ public class FavorieteVakanties extends Fragment{
                         }
                     }
 
+                    ParseQuery<ParseObject> queryFeedback = new ParseQuery<ParseObject>(
+                            "Feedback");
+                    queryFeedback.orderByAscending("vakantie");
+
+
+                    List<ParseObject> lijstFeedback = queryFeedback.find();
+
                     //favorieten ophalen
                     List<FavorieteVakantie> favorieten = new ArrayList<FavorieteVakantie>();
                     FavorieteVakantie fav;
@@ -203,6 +213,29 @@ public class FavorieteVakanties extends Fragment{
                     List<ParseObject> qryLijstVakanties = query.find();
                     for (ParseObject v : qryLijstVakanties) {
                         vakantie = new Vakantie();
+                        int totaalScore = 0 ;
+                        int aantal = 0;
+                        int gemiddeldeScore = 0;
+
+                        for(ParseObject f: lijstFeedback)
+                        {
+                            Feedback feedback = new Feedback();
+                            feedback.setVakantieId((String) f.get("vakantie"));
+                            feedback.setFeedback((String) f.get("waardering"));
+                            feedback.setGebruikerId((String) f.get("gebruiker"));
+                            feedback.setGoedgekeurd((Boolean) f.get("goedgekeurd"));
+
+                            if(f.get("vakantie").equals(v.getObjectId()) && feedback.getGoedgekeurd())
+                            {
+                                aantal += 1;
+                                totaalScore += (Integer)f.get("score");
+                            }
+                        }
+                        if(aantal!=0)
+                        {
+
+                            gemiddeldeScore = totaalScore/aantal;
+                        }
 
                         vakantie.setNaamVakantie((String) v.get("titel"));
                         vakantie.setVakantieID(v.getObjectId());
@@ -235,6 +268,8 @@ public class FavorieteVakanties extends Fragment{
                             }
                         }
                         vakantie.setFotos(afbeeldingenLijst);
+
+                        vakantie.setGemiddeldeRating((gemiddeldeScore));
 
                         vakantiesAllemaal.add(vakantie);
 
