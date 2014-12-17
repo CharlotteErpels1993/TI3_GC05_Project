@@ -54,7 +54,7 @@ class Registratie1ViewController: UITableViewController {
     //
     //Werking: - zorgt ervoor dat de side bar menu verborgen is
     //         - zorgt ervoor dat de back bar button niet aanwezig is
-    //         - bekijkt of de gebruiker internet heeft, zoniet geeft hij een gepaste melding
+    //         - bekijkt of de gebruiker internet heeft, zoniet geeft hij een gepaste melding (methode controleerInternet)
     //
     //Parameters:
     //
@@ -64,10 +64,30 @@ class Registratie1ViewController: UITableViewController {
         super.viewDidLoad()
         hideSideMenuView()
         self.navigationItem.setHidesBackButton(true, animated: true)
-        
+        controleerInternet()
+    }
+    
+    //
+    //Naam: controleerInternet
+    //
+    //Werking: - bekijkt of de gebruiker internet heeft, zoniet geeft hij een gepaste melding
+    //
+    //Parameters:
+    //
+    //Return:
+    //
+    func controleerInternet() {
         if Reachability.isConnectedToNetwork() == false {
             var alert = UIAlertController(title: "Oeps.. U heeft geen internet", message: "U heeft internet nodig voor u te registeren. Ga naar instellingen om dit aan te passen.", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "Annuleer", style: UIAlertActionStyle.Default, handler: nil))
+            alert.addAction(UIAlertAction(title: "Ga terug naar vakanties", style: UIAlertActionStyle.Default, handler: { action in
+                switch action.style {
+                default:
+                    let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    var destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
+                    self.sideMenuController()?.setContentViewController(destViewController)
+                    self.hideSideMenuView()
+                }
+            }))
             alert.addAction(UIAlertAction(title: "Ga naar instellingen", style: .Default, handler: { action in
                 switch action.style{
                 default:

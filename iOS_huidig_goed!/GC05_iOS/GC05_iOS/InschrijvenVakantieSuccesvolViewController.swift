@@ -17,18 +17,18 @@ class InschrijvenVakantieSuccesvolViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var deelnemerId = ParseToDatabase.parseDeelnemerToDatabase(inschrijvingVakantie.deelnemer!)
+        var deelnemerId = ParseToDatabase.parseDeelnemer(inschrijvingVakantie.deelnemer!)
         
-        var contactpersoon1Id = ParseToDatabase.parseContactpersoonNoodToDatabase(inschrijvingVakantie.contactpersoon1!)
+        var contactpersoon1Id = ParseToDatabase.parseContactpersoonNood(inschrijvingVakantie.contactpersoon1!)
         
         inschrijvingVakantie.contactpersoon1?.id = contactpersoon1Id
         
         if inschrijvingVakantie.contactpersoon2 != nil {
-            var contactpersoon2Id = LocalDatastore.parseContactpersoonNoodToDatabase(inschrijvingVakantie.contactpersoon2!)
+            var contactpersoon2Id = ParseToDatabase.parseContactpersoonNood(inschrijvingVakantie.contactpersoon2!)
             inschrijvingVakantie.contactpersoon2?.id = contactpersoon2Id
         }
         
-        ParseToDatabase.parseInschrijvingVakantieToDatabase(inschrijvingVakantie)
+        ParseToDatabase.parseInschrijvingVakantie(inschrijvingVakantie)
         self.navigationItem.setHidesBackButton(true, animated: true)
     }
 }

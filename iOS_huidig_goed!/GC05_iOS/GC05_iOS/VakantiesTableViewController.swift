@@ -430,6 +430,14 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
     //Return:
     //
     @IBAction func refresh(sender: UIRefreshControl) {
+        if Reachability.isConnectedToNetwork() == false {
+            if isFavoriet == true {
+                toonFoutBoxMetKeuzeNaarInstellingen("Verbind met het internet om uw nieuwste favorieten te bekijken.", self)
+            } else {
+                toonFoutBoxMetKeuzeNaarInstellingen("Verbind met het internet om de nieuwste vakanties te bekijken.", self)
+            }
+        }
+        
         LocalDatastore.getTableReady(Constanten.TABLE_VAKANTIE)
         LocalDatastore.getTableReady(Constanten.TABLE_AFBEELDING)
         LocalDatastore.getTableReady(Constanten.TABLE_FEEDBACK)

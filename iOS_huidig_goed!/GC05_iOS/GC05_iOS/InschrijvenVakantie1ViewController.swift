@@ -48,10 +48,32 @@ class InschrijvenVakantie1ViewController : UITableViewController {
         super.viewDidLoad()
         self.setNeedsStatusBarAppearanceUpdate()
         self.navigationController!.toolbarHidden = true
-        
+        controleerInternet()
+        LocalDatastore.getTableReady(Constanten.TABLE_INSCHRIJVINGVAKANTIE)
+        LocalDatastore.getTableReady(Constanten.TABLE_DEELNEMER)
+    }
+    
+    //
+    //Naam: controleerInternet
+    //
+    //Werking: - bekijkt of de gebruiker internet heeft, zoniet geeft hij een gepaste melding
+    //
+    //Parameters:
+    //
+    //Return:
+    //
+    func controleerInternet() {
         if Reachability.isConnectedToNetwork() == false {
-            var alert = UIAlertController(title: "Oeps.. U heeft geen internet", message: "U heeft internet nodig voor u in te schrijven. Ga naar instellingen om dit aan te passen.", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "Annuleer", style: UIAlertActionStyle.Default, handler: nil))
+            var alert = UIAlertController(title: "Oeps.. U heeft geen internet", message: "U heeft internet nodig voor u te registeren. Ga naar instellingen om dit aan te passen.", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Ga terug naar vakanties", style: UIAlertActionStyle.Default, handler: { action in
+                switch action.style {
+                default:
+                    let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    var destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
+                    self.sideMenuController()?.setContentViewController(destViewController)
+                    self.hideSideMenuView()
+                }
+            }))
             alert.addAction(UIAlertAction(title: "Ga naar instellingen", style: .Default, handler: { action in
                 switch action.style{
                 default:
@@ -68,9 +90,6 @@ class InschrijvenVakantie1ViewController : UITableViewController {
             txtGemeente.resignFirstResponder()
             txtBus.resignFirstResponder()
         }
-        
-        LocalDatastore.getTableReady(Constanten.TABLE_INSCHRIJVINGVAKANTIE)
-        LocalDatastore.getTableReady(Constanten.TABLE_DEELNEMER)
     }
     
     //
