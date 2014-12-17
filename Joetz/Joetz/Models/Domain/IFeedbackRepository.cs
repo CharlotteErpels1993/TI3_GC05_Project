@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace Joetz.Models.Domain
 {
+    //Repository interface
     public interface IFeedbackRepository
     {
         Task<Feedback> FindBy(string feedbackId);

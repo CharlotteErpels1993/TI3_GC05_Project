@@ -7,11 +7,12 @@ using Joetz.Models.DAL;
 using Joetz.Models.Domain;
 using Excel;
 using Parse;
-
+//Geeft de gebruiker om monitoren toe te voegen via een excel bestand
 namespace Joetz.Controllers
 {
     public class MonitorController : Controller
     {
+        //Repository
         private IMonitorRepository monitorRepository;
 
         public MonitorController()
@@ -23,7 +24,14 @@ namespace Joetz.Controllers
         {
             this.monitorRepository = monitorRepository;
         }
-
+        //
+        //Naam: Index
+        //
+        //Werking: Stuurt de gebruiker naar een overzicht van monitoren
+        //
+        //
+        //Return: De actie naar login indien de gebruiker niet ingelogged is of de view met de monitoren
+        //
         public async Task<ActionResult> Index()
         {
             if(Parse.ParseUser.CurrentUser != null)
@@ -38,14 +46,29 @@ namespace Joetz.Controllers
             }
            
         }
-
+        //
+        //Naam: Create
+        //
+        //Werking: Stuurt de gebruiker naar een view om nieuwe monitoren aan te maken
+        //
+        //
+        //Return: De view om nieuwe monitoren toe te voegen
+        //
         public ActionResult Create()
         {
             return View();
         }
 
-
-        //onderstaande methode dient voor de fileupload
+        //
+        //Naam: Create
+        //
+        //Werking: Maakt de monitoren aan -door deze uit een excel bestand te lezen- en voegt deze toe aan de database
+        //
+        //Parameters:
+        // - Het opgegeven excelbestand
+        //
+        //Return: de view indien fouten, stuurt de gebruiker door naar index
+        //
         [HttpPost]
         public async Task<ActionResult> Create(HttpPostedFileBase file)
         {
@@ -106,7 +129,16 @@ namespace Joetz.Controllers
                 }
             return View();
         }
-
+        //
+        //Naam: Delete
+        //
+        //Werking: Stuurt de gebruiker door naar de pagina om delete te bevestigen
+        //
+        //Parameters:
+        // - id van de te verwijderen monitor
+        //
+        //Return: de view om delete te bevestigen
+        //
         public async Task<ActionResult> Delete(string id)
         {
             var monitorTask = monitorRepository.FindBy(id);
@@ -114,6 +146,15 @@ namespace Joetz.Controllers
             return View(monitor);
         }
 
+        //Naam: Delete
+        //
+        //Werking: Verwijdert de monitor uit de database
+        //
+        //Parameters:
+        // - id van de te verwijderen monitor
+        //
+        //Return: de gebruiker wordt naar de index teruggestuurd
+        //
         [HttpPost, ActionName("Delete")]
         public async Task<ActionResult> DeleteConfirmed(string id)
         {
@@ -123,6 +164,15 @@ namespace Joetz.Controllers
             return RedirectToAction("Index");
         }
 
+        //Naam: Details
+        //
+        //Werking: Stuurt de gebruiker naar de detailpagina van een monitor
+        //
+        //Parameters:
+        // - id van de te bekijken monitor
+        //
+        //Return: De detailview
+        //    
         public async Task<ActionResult> Details(string id)
         {
             var monitorTask = monitorRepository.FindBy(id);

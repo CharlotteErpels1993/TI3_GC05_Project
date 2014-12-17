@@ -1,0 +1,30 @@
+﻿@model Joetz.Models.Domain.Monitor
+
+@{
+    ViewBag.Title = "Uitloggen";
+}
+@using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <div class="container">
+        <div class="well">
+            <br />
+            <h2>@ViewBag.Title</h2>
+            <h4>Weet je zeker dat je wil uitloggen?</h4>
+        </div>
+
+        <form role="form">
+            <div class="container">
+                <br />
+                <button type="submit" class="btn btn-default">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    Verwijderen
+                </button>
+                <br /><br />
+                @Html.ActionLink("Terug naar index", "Index", "Home")
+            </div>
+        </form>
+
+    </div>
+}

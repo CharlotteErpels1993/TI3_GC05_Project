@@ -3,11 +3,21 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Joetz.Models.Domain;
 using Parse;
-
+//Repository om gegevens van vormingen uit de database te halen en te bewerken
 namespace Joetz.Models.DAL
 {
     public class VormingRepository: IVormingRepository
     {
+        //
+        //Naam: GetVorming
+        //
+        //Werking: Haalt de vorming op uit de database
+        //
+        //Parameters:
+        // - Het object om op te zoeken
+        //
+        //Return: de opgezochte vorming
+        //
         public Vorming GetVorming(ParseObject vormingObject)
         {
             Vorming vorming = new Vorming();
@@ -31,6 +41,16 @@ namespace Joetz.Models.DAL
             return vorming;
         }
 
+        //
+        //Naam: FindBy
+        //
+        //Werking: Zoekt de vorming op basis van de id
+        //
+        //Parameters:
+        // - id om op te zoeken
+        //
+        //Return: de gevonden vorming
+        //
         public async Task<Vorming> FindBy(string vormingId)
         {
             var query = ParseObject.GetQuery("Vorming").WhereEqualTo("objectId", vormingId);
@@ -40,6 +60,14 @@ namespace Joetz.Models.DAL
             return vorming;
         }
 
+        //
+        //Naam: FindAll
+        //
+        //Werking: Haalt alle vormingen op uit de database en vult de objecten 1 voor 1 op
+        //
+        //
+        //Return: de lijst van vormingen
+        //
         public async Task<ICollection<Vorming>> FindAll()
         {
             var query = from v in ParseObject.GetQuery("Vorming")
@@ -59,7 +87,16 @@ namespace Joetz.Models.DAL
 
             return vormingen;
         }
-
+        //
+        //Naam: Add
+        //
+        //Werking: Voegt een vorming toe aan de database
+        //
+        //Parameters:
+        // - De vorming om toe te voegen
+        //
+        //Return: bool om aan te geven dat het gedaan is
+        //
         public async Task<bool> Add(Vorming vorming)
         {
             ParseObject vormingObject = new ParseObject("Vorming");
@@ -80,7 +117,16 @@ namespace Joetz.Models.DAL
 
             return true;
         }
-
+        //
+        //Naam: Delete
+        //
+        //Werking: Verwijdert de vorming uit de database
+        //
+        //Parameters:
+        // - De vorming om te verwijderen
+        //
+        //Return: boolean om aan te geven dat het verwijderen gedaan is
+        //
         public async Task<bool> Delete(Vorming vorming)
         {
             var query = ParseObject.GetQuery("Vorming").WhereEqualTo("objectId", vorming.Id);
@@ -90,6 +136,16 @@ namespace Joetz.Models.DAL
             return true;
         }
 
+        //
+        //Naam: Update
+        //
+        //Werking: Verandert de vorming in de database
+        //
+        //Parameters:
+        // - De vorming om te aan te passen
+        //
+        //Return: boolean om aan te geven dat het aanpassen gedaan is
+        //
         public async Task<bool> Update(Vorming vorming)
         {
             var query = ParseObject.GetQuery("Vorming").WhereEqualTo("objectId", vorming.Id);

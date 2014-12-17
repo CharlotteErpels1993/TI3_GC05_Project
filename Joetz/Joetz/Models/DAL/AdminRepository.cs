@@ -6,11 +6,21 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-
+//Repository om gegevens van administratoren uit de database te halen en te bewerken
 namespace Joetz.Models.DAL
 {
     public class AdminRepository : IAdminRepository
     {
+        //
+        //Naam: GetAdmin
+        //
+        //Werking: Haalt de gebruiker op uit de database
+        //
+        //Parameters:
+        // - Het object om op te zoeken
+        //
+        //Return: de opgezochte administrator
+        //
         public Admin GetAdmin(ParseObject adminObject)
         {
             Admin admin = new Admin();
@@ -21,6 +31,16 @@ namespace Joetz.Models.DAL
             return admin;
         }
 
+        //
+        //Naam: FindBy
+        //
+        //Werking: Zoekt een administrator op basis van de id
+        //
+        //Parameters:
+        // - id om op te zoeken
+        //
+        //Return: de gevonden administrator
+        //
         public async Task<Admin> FindBy(string adminId)
         {
             IEnumerable<ParseUser> adminObject = await ParseUser.Query.WhereEqualTo("objectId", adminId).FindAsync();
@@ -29,6 +49,14 @@ namespace Joetz.Models.DAL
             return admin;
         }
 
+        //
+        //Naam: FindAll
+        //
+        //Werking: Haalt alle admins op uit de database en vult de objecten 1 voor 1 op
+        //
+        //
+        //Return: de lijst van administrators
+        //
         public async Task<ICollection<Admin>> FindAll()
         {
 
@@ -49,6 +77,16 @@ namespace Joetz.Models.DAL
             return admins;
         }
 
+        //
+        //Naam: Add
+        //
+        //Werking: Voegt een administrator toe aan de database
+        //
+        //Parameters:
+        // - De administrator om toe te voegen
+        //
+        //Return: bool om aan te geven dat het gedaan is
+        //
         public async Task<bool> Add(Admin admin)
         {
             
@@ -69,6 +107,16 @@ namespace Joetz.Models.DAL
             return true;
         }
 
+        //
+        //Naam: Delete
+        //
+        //Werking: Verwijdert de administrator uit de database, kan enkel door de gebruiker zelf
+        //
+        //Parameters:
+        // - De administrator om te verwijderen
+        //
+        //Return: boolean om aan te geven dat het verwijderen gedaan is
+        //
         public async Task<bool> Delete(Admin admin)
         {
             IEnumerable<ParseUser> adminObject = await ParseUser.Query.WhereEqualTo("objectId", admin.Id).FindAsync();

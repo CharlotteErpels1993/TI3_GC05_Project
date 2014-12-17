@@ -3,11 +3,22 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Joetz.Models.Domain;
 using Parse;
-
+//Repository om gegevens van monitoren uit de database te halen en te bewerken
 namespace Joetz.Models.DAL
 {
     public class MonitorRepository : IMonitorRepository
     {
+
+        //
+        //Naam: GetMonitor
+        //
+        //Werking: Haalt de monitor op uit de database
+        //
+        //Parameters:
+        // - Het object om op te zoeken
+        //
+        //Return: de opgezochte monitor
+        //
         public Monitor GetMonitor(ParseObject monitorObject)
         {
             Monitor monitor = new Monitor();
@@ -29,6 +40,14 @@ namespace Joetz.Models.DAL
             return monitor;
         }
 
+        //
+        //Naam: FindAll
+        //
+        //Werking: Haalt alle monitoren op uit de database en vult de objecten 1 voor 1 op
+        //
+        //
+        //Return: de lijst van monitoren
+        //
         public async Task<ICollection<Monitor>> FindAll()
         {
             var query = from m in ParseObject.GetQuery("Monitor")
@@ -49,6 +68,16 @@ namespace Joetz.Models.DAL
             return monitoren;
         }
 
+        //
+        //Naam: FindBy
+        //
+        //Werking: Zoekt de monitor op basis van de id
+        //
+        //Parameters:
+        // - id om op te zoeken
+        //
+        //Return: de gevonden monitor
+        //
         public async Task<Monitor> FindBy(string monitorId)
         {
             var query = ParseObject.GetQuery("Monitor").WhereEqualTo("objectId", monitorId);
@@ -58,6 +87,16 @@ namespace Joetz.Models.DAL
             return monitor;
         }
 
+        //
+        //Naam: Add
+        //
+        //Werking: Voegt een monitor toe aan de database
+        //
+        //Parameters:
+        // - De monitor om toe te voegen
+        //
+        //Return: bool om aan te geven dat het gedaan is
+        //
         public async Task<bool> Add(Monitor monitor)
         {
             ParseObject monitorObject = new ParseObject("Monitor");
@@ -84,6 +123,16 @@ namespace Joetz.Models.DAL
             return true;
         }
 
+        //
+        //Naam: Delete
+        //
+        //Werking: Verwijdert de monitor uit de database
+        //
+        //Parameters:
+        // - De monitor om te verwijderen
+        //
+        //Return: boolean om aan te geven dat het verwijderen gedaan is
+        //
         public async Task<bool> Delete(Monitor monitor)
         {
             var query = ParseObject.GetQuery("Monitor").WhereEqualTo("objectId", monitor.Id);

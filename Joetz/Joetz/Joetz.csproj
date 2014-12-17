@@ -241,7 +241,6 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\FeedbackController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\MaakMonitorAanController.cs" />
     <Compile Include="Controllers\MonitorController.cs" />
     <Compile Include="Controllers\VakantieController.cs" />
     <Compile Include="Controllers\VormingController.cs" />
@@ -264,7 +263,6 @@
     <Compile Include="Models\Domain\IMonitorRepository.cs" />
     <Compile Include="Models\Domain\IVakantieRepository.cs" />
     <Compile Include="Models\Domain\IVormingRepository.cs" />
-    <Compile Include="Models\Domain\MaakMonitorenAanModel.cs" />
     <Compile Include="Models\Domain\Monitor.cs" />
     <Compile Include="Models\Domain\Vakantie.cs" />
     <Compile Include="Models\Domain\Vorming.cs" />
@@ -426,7 +424,6 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
-    <Content Include="Views\MaakMonitorAan\Index.cshtml" />
     <Content Include="Views\Vakantie\Index.cshtml" />
     <Content Include="Views\Vakantie\Create.cshtml" />
     <Content Include="Views\Vakantie\Delete.cshtml" />
@@ -447,6 +444,7 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\Create.cshtml" />
     <Content Include="Views\Admin\Delete.cshtml" />
+    <Content Include="Views\Account\LogOff.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\uploads\" />

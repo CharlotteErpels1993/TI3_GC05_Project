@@ -3,11 +3,21 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Joetz.Models.Domain;
 using Parse;
-
+//Repository om gegevens van vakanties uit de database te halen en te bewerken
 namespace Joetz.Models.DAL
 {
     public class VakantieRepository: IVakantieRepository
     {
+        //
+        //Naam: GetVakantie
+        //
+        //Werking: Haalt de vakantie op uit de database
+        //
+        //Parameters:
+        // - Het object om op te zoeken
+        //
+        //Return: de opgezochte vakantie
+        //
         public Vakantie GetVakantie(ParseObject vakantieObject)
         {
             Vakantie vakantie = new Vakantie();
@@ -34,7 +44,14 @@ namespace Joetz.Models.DAL
             return vakantie;
 
         }
-
+        //
+        //Naam: FindAll
+        //
+        //Werking: Haalt alle vakanties op uit de database en vult de objecten 1 voor 1 op
+        //
+        //
+        //Return: de lijst van vakanties
+        //
         public async Task<ICollection<Vakantie>> FindAll()
         {
             var query = from v in ParseObject.GetQuery("Vakantie")
@@ -54,7 +71,16 @@ namespace Joetz.Models.DAL
 
             return vakanties;
         }
-
+        //
+        //Naam: FindBy
+        //
+        //Werking: Zoekt de vakantie op basis van de id
+        //
+        //Parameters:
+        // - id om op te zoeken
+        //
+        //Return: de gevonden vakantie
+        //
         public async Task<Vakantie> FindBy(string vakantieId)
         {
             var query = ParseObject.GetQuery("Vakantie").WhereEqualTo("objectId", vakantieId);
@@ -64,6 +90,16 @@ namespace Joetz.Models.DAL
             return vakantie;
         }
 
+        //
+        //Naam: Add
+        //
+        //Werking: Voegt een vakantie toe aan de database
+        //
+        //Parameters:
+        // - De vakantie om toe te voegen
+        //
+        //Return: bool om aan te geven dat het gedaan is
+        //
         public async Task<bool> Add(Vakantie vakantie)
         {
             ParseObject vakantieObject = new ParseObject("Vakantie");
@@ -90,7 +126,16 @@ namespace Joetz.Models.DAL
 
             return true;
         }
-
+        //
+        //Naam: Delete
+        //
+        //Werking: Verwijdert de vakantie uit de database
+        //
+        //Parameters:
+        // - De vakantie om te verwijderen
+        //
+        //Return: boolean om aan te geven dat het verwijderen gedaan is
+        //
         public async Task<bool> Delete(Vakantie vakantie)
         {
             var query = ParseObject.GetQuery("Vakantie").WhereEqualTo("objectId", vakantie.Id);
@@ -101,6 +146,16 @@ namespace Joetz.Models.DAL
             return true;
         }
 
+        //
+        //Naam: Update
+        //
+        //Werking: Verandert de vakantie in de database
+        //
+        //Parameters:
+        // - De vakantie om te aan te passen
+        //
+        //Return: boolean om aan te geven dat het aanpassen gedaan is
+        //
         public async Task<bool> Update(Vakantie vakantie)
         {
             var query = ParseObject.GetQuery("Vakantie").WhereEqualTo("objectId", vakantie.Id);

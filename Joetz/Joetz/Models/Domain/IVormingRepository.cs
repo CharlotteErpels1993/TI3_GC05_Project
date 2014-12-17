@@ -4,6 +4,7 @@ using Parse;
 
 namespace Joetz.Models.Domain
 {
+    //Repository interface
     public interface IVormingRepository
     {
         Vorming GetVorming(ParseObject vormingObject);

@@ -3,12 +3,23 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Joetz.Models.Domain;
 using Parse;
-
+//Repository om gegevens van administratoren uit de database te halen en te bewerken
 namespace Joetz.Models.DAL
 {
     public class FeedbackRepository: IFeedbackRepository
     {
         private IVakantieRepository vakantieRepository = new VakantieRepository();
+
+        //
+        //Naam: GetFeedback
+        //
+        //Werking: Haalt de feedback op uit de database
+        //
+        //Parameters:
+        // - Het object om op te zoeken
+        //
+        //Return: de opgezochte feedback
+        //
         public async Task<Feedback> GetFeedback(ParseObject feedbackObject)
         {
             
@@ -28,6 +39,16 @@ namespace Joetz.Models.DAL
             return feedback;
 
         }
+        //
+        //Naam: FindByVakantie
+        //
+        //Werking: Zoekt de bijhorende vakantienaam op van de feedback op basis van de id
+        //
+        //Parameters:
+        // - id om op te zoeken
+        //
+        //Return: de gevonden vakantie
+        //
         public async Task<Vakantie> FindByVakantie(string vakantieId)
         {
             var query = ParseObject.GetQuery("Vakantie").WhereEqualTo("objectId", vakantieId);
@@ -36,7 +57,14 @@ namespace Joetz.Models.DAL
             return vakantieRepository.GetVakantie(vakantieObject);
         }
 
-
+        //
+        //Naam: FindAll
+        //
+        //Werking: Haalt alle feedback op uit de database en vult de objecten 1 voor 1 op
+        //
+        //
+        //Return: de lijst van feedback
+        //
         public async Task<ICollection<Feedback>> FindAll()
         {
             var query = from f in ParseObject.GetQuery("Feedback")
@@ -57,6 +85,16 @@ namespace Joetz.Models.DAL
             return feedbackLijst;
         }
 
+        //
+        //Naam: FindBy
+        //
+        //Werking: Zoekt de feedback op basis van de id
+        //
+        //Parameters:
+        // - id om op te zoeken
+        //
+        //Return: de gevonden feedback
+        //
         public async Task<Feedback> FindBy(string feedbackId)
         {
             var query = ParseObject.GetQuery("Feedback").WhereEqualTo("objectId", feedbackId);
@@ -65,32 +103,16 @@ namespace Joetz.Models.DAL
             var feedback = await GetFeedback(feedbackObject);
             return feedback;
         }
-/*
-        public async void Add(Feedback vakantie)
-        {
-            ParseObject vakantieObject = new ParseObject("Feedback");
-
-            vakantieObject["goedgekeurd"] = vakantie.Titel;
-            vakantieObject["locatie"] = vakantie.Locatie;
-            vakantieObject["korteBeschrijving"] = vakantie.KorteBeschrijving;
-            vakantieObject["aantalDagenNachten"] = vakantie.AantalDagenNachten;
-            vakantieObject["basisPrijs"] = vakantie.BasisPrijs;
-            vakantieObject["bondMoysonLedenPrijs"] = vakantie.BondMoysonLedenPrijs;
-            vakantieObject["formule"] = vakantie.Formule;
-            vakantieObject["link"] = vakantie.Link;
-            vakantieObject["inbegrepenPrijs"] = vakantie.InbegrepenPrijs;
-            vakantieObject["maxAantalDeelnemers"] = vakantie.MaxAantalDeelnemers;
-            vakantieObject["minLeeftijd"] = vakantie.MinLeeftijd;
-            vakantieObject["maxLeeftijd"] = vakantie.MaxLeeftijd;
-            vakantieObject["sterPrijs1ouder"] = vakantie.SterPrijs1Ouder;
-            vakantieObject["sterPrijs2ouders"] = vakantie.SterPrijs2Ouders;
-            vakantieObject["terugkeerdatum"] = vakantie.TerugkeerDatum;
-            vakantieObject["vertrekdatum"] = vakantie.VertrekDatum;
-            vakantieObject["vervoerwijze"] = vakantie.Vervoerwijze;
-
-            await vakantieObject.SaveAsync();
-        }
-        */
+        //
+        //Naam: Delete
+        //
+        //Werking: Verwijdert de feedback uit de database
+        //
+        //Parameters:
+        // - De feedback om te verwijderen
+        //
+        //Return: boolean om aan te geven dat het verwijderen gedaan is
+        //
         public async Task<bool> Delete(Feedback feedback)
         {
             var query = ParseObject.GetQuery("Feedback").WhereEqualTo("objectId", feedback.Id);
@@ -100,6 +122,16 @@ namespace Joetz.Models.DAL
             return true;
         }
 
+        //
+        //Naam: Update
+        //
+        //Werking: verandert de status van feedback van afgekeurd naar goedgekeurd
+        //
+        //Parameters:
+        // - De feedback om goed te keuren
+        //
+        //Return: boolean om aan te geven dat het updaten gedaan is
+        //
         public async Task<Boolean> Update(Feedback feedback)
         {
             var query = ParseObject.GetQuery("Feedback").WhereEqualTo("objectId", feedback.Id);

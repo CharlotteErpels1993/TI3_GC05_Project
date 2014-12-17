@@ -4,6 +4,7 @@ using Parse;
 
 namespace Joetz.Models.Domain
 {
+    //Repository interface
     public interface IVakantieRepository
     {
         Task<Vakantie> FindBy(string vakantieId);
