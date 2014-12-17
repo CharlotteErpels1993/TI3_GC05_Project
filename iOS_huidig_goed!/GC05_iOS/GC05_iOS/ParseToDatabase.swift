@@ -122,6 +122,7 @@ struct ParseToDatabase {
         
         inschrijvingJSON.setValue(inschrijving.monitor?.id, forKey: Constanten.COLUMN_MONITOR)
         inschrijvingJSON.setValue(inschrijving.vorming?.id, forKey: Constanten.COLUMN_VORMING)
+        inschrijvingJSON.setValue(inschrijving.periode, forKey: Constanten.COLUMN_PERIODE)
         
         inschrijvingJSON.save()
     }
