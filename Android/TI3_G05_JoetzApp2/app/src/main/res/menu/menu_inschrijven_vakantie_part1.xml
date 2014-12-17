@@ -4,7 +4,7 @@
     <item
         android:id="@+id/menu_voegFeedbackToe"
         android:showAsAction="always"
-        android:title="add"/>
+        android:icon="@drawable/plusteken"/>
     <item
         android:id="@+id/menu_loadVak"
         android:icon="@android:drawable/ic_menu_rotate"
