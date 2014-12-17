@@ -129,9 +129,10 @@ class VakantieDetailsTableViewController: UITableViewController {
         
         var euroSymbol: String = "€"
         
-        var soort = LocalDatastore.getCurrentUserSoort()
+        //var soort = LocalDatastore.getCurrentUserSoort()
         
         if PFUser.currentUser() != nil {
+            var soort = LocalDatastore.getCurrentUserSoort()
             if soort == "ouder" || soort == "administrator" {
                 self.sectionToDelete = -1
                 self.heartButton.hidden = false

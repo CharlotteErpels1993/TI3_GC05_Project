@@ -123,16 +123,29 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         
         var arrayFeedback = LocalDatastore.getLocalObjectsWithColumnConstraints(Constanten.TABLE_FEEDBACK, soortConstraints: [Constanten.COLUMN_VAKANTIE: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_VAKANTIE: vakantie.id]) as [Feedback]
         
-        for feedback in arrayFeedback {
-            feedbackScores.append(feedback.score!)
+        for var i = 0; i < arrayFeedback.count; i += 1 {
+            var f = arrayFeedback[i]
+            
+            if f.goedgekeurd == false {
+                arrayFeedback.removeAtIndex(i)
+            }
         }
         
-        for feedbackScore in feedbackScores {
-            sum += feedbackScore
+        if arrayFeedback.count == 0 {
+            return 0.0
+        } else {
+            for feedback in arrayFeedback {
+                feedbackScores.append(feedback.score!)
+            }
+            
+            for feedbackScore in feedbackScores {
+                sum += feedbackScore
+            }
+            
+            var gemiddelde: Double = Double(sum) / Double(feedbackScores.count)
+            return ceil(gemiddelde)
+
         }
-        
-        var gemiddelde: Double = Double(sum) / Double(feedbackScores.count)
-        return ceil(gemiddelde)
     }
     
     //
