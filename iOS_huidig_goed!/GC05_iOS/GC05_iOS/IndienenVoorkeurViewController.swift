@@ -47,7 +47,7 @@ class IndienenVoorkeurViewController: UIViewController, UIPickerViewDataSource, 
         hideSideMenuView()
         
         //var vakantiesResponse = ParseData.getAlleVakanties()
-        var vakanties = LocalDatastore.getLocalObjects(Constanten.TABLE_VAKANTIE) as [Vakantie]
+        self.vakanties = LocalDatastore.getLocalObjects(Constanten.TABLE_VAKANTIE) as [Vakantie]
         
         for v in vakanties {
             pickerData.append(v.titel!)
@@ -159,7 +159,7 @@ class IndienenVoorkeurViewController: UIViewController, UIPickerViewDataSource, 
         
         var vakantie: Vakantie = Vakantie(id: "test")
         
-        for v in vakanties {
+        for v in self.vakanties {
             if v.titel == vakantieNaam {
                 vakantie = v
             }

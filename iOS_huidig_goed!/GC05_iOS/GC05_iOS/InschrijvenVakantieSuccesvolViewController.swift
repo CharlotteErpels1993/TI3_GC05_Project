@@ -18,9 +18,9 @@ class InschrijvenVakantieSuccesvolViewController : UIViewController {
         super.viewDidLoad()
         
         var deelnemerId = ParseToDatabase.parseDeelnemer(inschrijvingVakantie.deelnemer!)
+        inschrijvingVakantie.deelnemer?.id = deelnemerId
         
         var contactpersoon1Id = ParseToDatabase.parseContactpersoonNood(inschrijvingVakantie.contactpersoon1!)
-        
         inschrijvingVakantie.contactpersoon1?.id = contactpersoon1Id
         
         if inschrijvingVakantie.contactpersoon2 != nil {
