@@ -65,7 +65,6 @@ namespace Joetz.Models.DAL
 
             await user.SignUpAsync();
             Parse.ParseUser.LogOut();
-            await Parse.ParseUser.LogInAsync(current);
 
             return true;
         }

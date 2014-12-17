@@ -6,6 +6,7 @@ using System.IO;
 using Joetz.Models.DAL;
 using Joetz.Models.Domain;
 using Excel;
+using Parse;
 
 namespace Joetz.Controllers
 {
@@ -67,23 +68,39 @@ namespace Joetz.Controllers
 
                         while(reader.Read()) //14 kolommen +-
                         {
-                            m.Aansluitingsnummer = reader.GetInt32(0);
-                            m.Bus = reader.GetString(1);
-                            m.CodeGerechtigde = reader.GetInt32(2);
-                            m.Email = reader.GetString(3);
-                            m.Gemeente = reader.GetString(4);
-                            m.Gsm = reader.GetString(5);
-                            m.Lidnummer = reader.GetString(6);
-                                m.Naam = reader.GetString(7);
-                            m.Nummer = reader.GetInt32(8);
-                            m.Postcode =reader.GetInt32(9);
+                            ParseUser current = ParseUser.CurrentUser;
+
+                            var user = new ParseUser()
+                            {
+                                Username = reader.GetString(2),
+                                Password = "admin",
+                                Email = reader.GetString(2)
+                            };
+
+                            user["soort"] = "monitor";
+
+                            await user.SignUpAsync();
+                            Parse.ParseUser.LogOut();
+                            m.Naam = reader.GetString(0);
+                            m.Voornaam = reader.GetString(1);
+                            m.Email = reader.GetString(2);
+                            m.Straat = reader.GetString(3);
+                            m.Nummer = reader.GetInt32(4);
+                            m.Bus = reader.GetString(5);
+                            m.Gemeente = reader.GetString(6);
+                            m.Postcode = reader.GetInt32(7);
+                            m.Telefoon = reader.GetString(8);
+                            m.Gsm = reader.GetString(9);
                             m.Rijksregisternummer = reader.GetString(10);
-                            m.Straat = reader.GetString(11);
-                            m.Telefoon = reader.GetString(12);
-                            m.Voornaam = reader.GetString(13);
+                            m.Aansluitingsnummer = reader.GetInt32(11);
+                            m.CodeGerechtigde = reader.GetInt32(12);
+                            m.Lidnummer = reader.GetString(13);
 
                             
                             await monitorRepository.Add(m);
+
+                            
+                            
                         }
                     } return RedirectToAction("Index");
                 }

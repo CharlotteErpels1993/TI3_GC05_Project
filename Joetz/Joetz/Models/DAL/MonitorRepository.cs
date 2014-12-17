@@ -15,37 +15,7 @@ namespace Joetz.Models.DAL
             monitor.Id = monitorObject.ObjectId;
             monitor.Email = monitorObject.Get<string>("email");
             monitor.Rijksregisternummer = monitorObject.Get<string>("rijksregisterNr");
-           /* if (monitorObject.Get<int>("aansluitingsNr") == null)
-            {
-                monitor.Aansluitingsnummer = 0;
-            }
-            else
-            {
-                monitor.Aansluitingsnummer = monitorObject.Get<int>("aansluitingsNr");
-            }
-            if (monitorObject.Get<int>("codeGerechtigde") == null)
-            {
-                monitor.CodeGerechtigde = 0;
-            }
-            else
-            {
-                monitor.CodeGerechtigde = monitorObject.Get<int>("codeGerechtigde");
-            }
-            if (monitorObject.Get<string>("bus") == null)
-            {
-                monitor.Bus = "";
-            }
-            else
-            {
-                monitor.Bus = monitorObject.Get<string>("bus");
-            }
-            if (monitorObject.Get<string>("telefoon") == null)
-            {
-                monitor.Telefoon = "";
-            } else {
-                
-            monitor.Telefoon = monitorObject.Get<string>("telefoon");
-            }*/
+           
             monitor.Voornaam = monitorObject.Get<string>("voornaam");
             monitor.Naam = monitorObject.Get<string>("naam");
             monitor.Straat = monitorObject.Get<string>("straat");
@@ -108,6 +78,8 @@ namespace Joetz.Models.DAL
             monitorObject["lidnummer"] = monitor.Lidnummer;
             
             await monitorObject.SaveAsync();
+
+            
 
             return true;
         }
