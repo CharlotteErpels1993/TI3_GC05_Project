@@ -119,6 +119,21 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
     }
     
     //
+    //Naam: viewDidAppear
+    //
+    //Werking: - herladen van de data
+    //
+    //Parameters:
+    //  - animated: Bool
+    //
+    //Return:
+    //
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.tableView.reloadData()
+    }
+    
+    //
     //Naam: searchBarTextDidBeginEditing
     //
     //Werking: - zorgt ervoor dat de side bar menu wordt verborgen bij het klikken op de search bar
