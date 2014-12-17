@@ -98,6 +98,9 @@ struct LocalDatastore {
             } else if tableName == Constanten.TABLE_DEELNEMER {
                 var deelnemer = self.getDeelnemer(object)
                 objecten.append(deelnemer)
+            } else if tableName == Constanten.TABLE_INSCHRIJVINGVORMING {
+                var inschrijvingVorming = self.getInschrijvingVorming(object)
+                objecten.append(inschrijvingVorming)
             }
         }
         
@@ -118,8 +121,10 @@ struct LocalDatastore {
             return self.getOuder(object)
         } else if tableName == Constanten.TABLE_MONITOR {
             return self.getMonitor(object)
-        } else if tableName == Constanten.TABLE_DEELNEMER{
+        } else if tableName == Constanten.TABLE_DEELNEMER {
             return self.getDeelnemer(object)
+        } else if tableName == Constanten.TABLE_INSCHRIJVINGVORMING {
+            return self.getInschrijvingVorming(object)
         } else {
             //RANDOM GEKOZEN!!!!!
             return self.getVorming(object)
@@ -167,7 +172,7 @@ struct LocalDatastore {
     
     static func bestaanLocalObjectsWithConstraints(tableName: String, soortConstraints: [String: String], equalToConstraints: [String: String] = [:], notContainedInConstraints: [String: [AnyObject]] = [:], notEqualToConstraints: [String: String] = [:], containedInConstraints: [String: [AnyObject]] = [:]) -> Bool {
         
-        var query = self.makeQuery(tableName, local: true, soortConstraints: soortConstraints, equalTo: equalToConstraints, notContainedIn: notContainedInConstraints)
+        var query = self.makeQuery(tableName, local: true, soortConstraints: soortConstraints, equalTo: equalToConstraints, notContainedIn: notContainedInConstraints, notEqualTo: notEqualToConstraints, containedIn: containedInConstraints)
         
         var count = query.countObjects()
         
@@ -313,6 +318,20 @@ struct LocalDatastore {
         return gebruiker
     }
     
+    static private func getInschrijvingVorming(object: PFObject) -> InschrijvingVorming {
+        
+        var inschrijving: InschrijvingVorming = InschrijvingVorming(id: object.objectId)
+        
+        var vormingId: String = object[Constanten.COLUMN_VORMING] as String
+        var monitorId: String = object[Constanten.COLUMN_MONITOR] as String
+        
+        inschrijving.vorming = self.getLocalObjectWithColumnConstraints(Constanten.TABLE_VORMING, soortConstraints: [Constanten.COLUMN_OBJECTID: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_OBJECTID: vormingId]) as? Vorming
+        
+        inschrijving.monitor = self.getLocalObjectWithColumnConstraints(Constanten.TABLE_MONITOR, soortConstraints: [Constanten.COLUMN_OBJECTID: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_OBJECTID: monitorId]) as? Monitor
+        
+        return inschrijving
+    }
+    
     static private func getMonitor(object: PFObject) -> Monitor {
         
         var monitor: Monitor = Monitor(id: object.objectId)
@@ -444,7 +463,6 @@ struct LocalDatastore {
         vorming.periodes = object[Constanten.COLUMN_PERIODES] as? Array
         vorming.prijs = object[Constanten.COLUMN_PRIJS] as? Double
         vorming.criteriaDeelnemers = object[Constanten.COLUMN_CRITERIADEELNEMERS] as? String
-        //vorming.websiteLocatie = object[Constanten.COLUMN_WEBSITELOCATIE] as? String
         
         if object[Constanten.COLUMN_WEBSITELOCATIE] != nil {
             vorming.websiteLocatie = object[Constanten.COLUMN_WEBSITELOCATIE] as? String
@@ -660,7 +678,14 @@ struct LocalDatastore {
         
         if heeftMonitorVormingen == true {
             
-            var vormingenMonitor = self.getLocalObjectWithColumnConstraints(Constanten.TABLE_INSCHRIJVINGVORMING, soortConstraints: [Constanten.COLUMN_MONITOR: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_MONITOR: monitorId]) as [Vorming]
+            var inschrijvingenVorming = self.getLocalObjectsWithColumnConstraints(Constanten.TABLE_INSCHRIJVINGVORMING, soortConstraints: [Constanten.COLUMN_MONITOR: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_MONITOR: monitorId]) as [InschrijvingVorming]
+
+            var vormingenMonitor: [Vorming] = []
+            
+            for inschrijving in inschrijvingenVorming {
+                vormingenMonitor.append(inschrijving.vorming!)
+            }
+            
             
             var soortConstraintsAndereMonitoren: [String: String] = [:]
             soortConstraintsAndereMonitoren[Constanten.COLUMN_VORMING] = Constanten.CONSTRAINT_CONTAINEDIN
@@ -678,11 +703,15 @@ struct LocalDatastore {
             var notEqualToConstraintsAndereMonitoren: [String: String] = [:]
             notEqualToConstraintsAndereMonitoren[Constanten.COLUMN_MONITOR] = monitorId
             
-            var bestaanAndereMonitorenMetDezelfdeVormingen = self.bestaanLocalObjectsWithConstraints(Constanten.TABLE_INSCHRIJVINGVORMING, soortConstraints: soortConstraintsAndereMonitoren, equalToConstraints: notEqualToConstraintsAndereMonitoren, containedInConstraints: containedInConstraintsAndereMonitoren)
+            var bestaanAndereMonitorenMetDezelfdeVormingen = self.bestaanLocalObjectsWithConstraints(Constanten.TABLE_INSCHRIJVINGVORMING, soortConstraints: soortConstraintsAndereMonitoren, notEqualToConstraints: notEqualToConstraintsAndereMonitoren, containedInConstraints: containedInConstraintsAndereMonitoren)
             
             
             if bestaanAndereMonitorenMetDezelfdeVormingen == true {
-                monitoren = self.getLocalObjectsWithColumnConstraints(Constanten.TABLE_INSCHRIJVINGVORMING, soortConstraints: soortConstraintsAndereMonitoren, equalToConstraints: notEqualToConstraintsAndereMonitoren, containedInConstraints: containedInConstraintsAndereMonitoren) as [Monitor]
+                var inschrijvingenAndereMonitoren = self.getLocalObjectsWithColumnConstraints(Constanten.TABLE_INSCHRIJVINGVORMING, soortConstraints: soortConstraintsAndereMonitoren, notEqualToConstraints: notEqualToConstraintsAndereMonitoren, containedInConstraints: containedInConstraintsAndereMonitoren) as [InschrijvingVorming]
+                
+                for inschrijving in inschrijvingenAndereMonitoren {
+                    monitoren.append(inschrijving.monitor!)
+                }
                 
             }
         }
@@ -708,11 +737,11 @@ struct LocalDatastore {
         
         
     
-        var bestaanAndereMonitoren = self.bestaanLocalObjectsWithConstraints(Constanten.TABLE_INSCHRIJVINGVORMING, soortConstraints: [Constanten.COLUMN_MONITOR: Constanten.CONSTRAINT_NOTCONTAINEDIN], notContainedInConstraints: [Constanten.COLUMN_MONITOR: zelfdeMonitorenIds])
+        var bestaanAndereMonitoren = self.bestaanLocalObjectsWithConstraints(Constanten.TABLE_MONITOR, soortConstraints: [Constanten.COLUMN_OBJECTID: Constanten.CONSTRAINT_NOTCONTAINEDIN], notContainedInConstraints: [Constanten.COLUMN_OBJECTID: zelfdeMonitorenIds])
         
         
         if bestaanAndereMonitoren == true {
-            andereMonitoren = self.getLocalObjectsWithColumnConstraints(Constanten.TABLE_INSCHRIJVINGVORMING, soortConstraints: [Constanten.COLUMN_MONITOR: Constanten.CONSTRAINT_NOTCONTAINEDIN], notContainedInConstraints: [Constanten.COLUMN_MONITOR: zelfdeMonitorenIds]) as [Monitor]
+            andereMonitoren = self.getLocalObjectsWithColumnConstraints(Constanten.TABLE_MONITOR, soortConstraints: [Constanten.COLUMN_OBJECTID: Constanten.CONSTRAINT_NOTCONTAINEDIN], notContainedInConstraints: [Constanten.COLUMN_OBJECTID: zelfdeMonitorenIds]) as [Monitor]
         }
 
         
