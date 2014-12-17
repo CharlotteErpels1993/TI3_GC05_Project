@@ -332,7 +332,7 @@ struct LocalDatastore {
         return inschrijving
     }
     
-    static private func getMonitor(object: PFObject) -> Monitor {
+    static func getMonitor(object: PFObject) -> Monitor {
         
         var monitor: Monitor = Monitor(id: object.objectId)
         
@@ -443,7 +443,7 @@ struct LocalDatastore {
         vakantie.formule = object[Constanten.COLUMN_FORMULE] as? String
         vakantie.link = object[Constanten.COLUMN_LINK] as? String
         vakantie.basisprijs = object[Constanten.COLUMN_BASISPRIJS] as? Double
-        vakantie.bondMoysonLedenPrijs = object[Constanten.COLUMN_LINK] as? Double
+        vakantie.bondMoysonLedenPrijs = object[Constanten.COLUMN_BONDMOYSONLEDENPRIJS] as? Double
         vakantie.sterPrijs1ouder = object[Constanten.COLUMN_STERPRIJS1OUDER] as? Double
         vakantie.sterPrijs2ouders = object[Constanten.COLUMN_STERPRIJS2OUDERS] as? Double
         vakantie.inbegrepenPrijs = object[Constanten.COLUMN_INBEGREPENPRIJS] as? String
@@ -790,6 +790,73 @@ struct LocalDatastore {
             return true
         }
         return false
+    }
+    
+    static func updateMonitor(monitor: Monitor) {
+        
+        var query = PFQuery(className: Constanten.TABLE_MONITOR)
+        query.whereKey(Constanten.COLUMN_OBJECTID, equalTo: monitor.id)
+        query.fromLocalDatastore()
+        
+        var object = query.getFirstObject()
+        
+        var voornaam = object[Constanten.COLUMN_VOORNAAM] as? String
+        var naam = object[Constanten.COLUMN_NAAM] as? String
+        var straat = object[Constanten.COLUMN_STRAAT] as? String
+        var nummer = object[Constanten.COLUMN_NUMMER] as? Int
+        var bus = object[Constanten.COLUMN_BUS] as? String
+        var gemeente = object[Constanten.COLUMN_GEMEENTE] as? String
+        var postcode = object[Constanten.COLUMN_POSTCODE] as? Int
+        var telefoon = object[Constanten.COLUMN_TELEFOON] as? String
+        var gsm = object[Constanten.COLUMN_GSM] as? String
+        
+        if bus == nil {
+            bus = ""
+        }
+        
+        if telefoon == nil {
+            telefoon = ""
+        }
+        
+        
+        if voornaam != monitor.voornaam {
+            object.setValue(voornaam, forKey: Constanten.COLUMN_VOORNAAM)
+        }
+        
+        if naam != monitor.naam {
+            object.setValue(naam, forKey: Constanten.COLUMN_NAAM)
+        }
+        
+        if straat != monitor.straat {
+           object.setValue(straat, forKey: Constanten.COLUMN_STRAAT)
+        }
+        
+        if nummer != monitor.nummer {
+            object.setValue(nummer, forKey: Constanten.COLUMN_NUMMER)
+        }
+        
+        if bus != monitor.bus {
+            object.setValue(bus, forKey: Constanten.COLUMN_BUS)
+        }
+        
+        if gemeente != monitor.gemeente {
+            object.setValue(gemeente, forKey: Constanten.COLUMN_GEMEENTE)
+        }
+        
+        if postcode != monitor.postcode {
+            object.setValue(postcode, forKey: Constanten.COLUMN_POSTCODE)
+        }
+        
+        if telefoon != monitor.telefoon {
+            object.setValue(telefoon, forKey: Constanten.COLUMN_TELEFOON)
+        }
+        
+        if gsm != monitor.gsm {
+            object.setValue(gsm, forKey: Constanten.COLUMN_GSM)
+        }
+        
+        object.fetchFromLocalDatastore()
+        self.getTableReady(Constanten.TABLE_MONITOR)
     }
     
     /*static func getVakantieFromFeedback(vakantieId: String) -> Vakantie {
