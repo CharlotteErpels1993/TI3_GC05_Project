@@ -339,14 +339,7 @@ class ProfielBewerkenViewController: UITableViewController {
                 profielDetailsViewController.monitor = self.monitor
                 profielDetailsViewController.eigenProfiel = true
             } else {
-                //ParseData.deleteMonitorTable()
-                //ParseData.vulMonitorTableOp()
-                
-                /*var monitorResponse = ParseData.getMonitorWithEmail(PFUser.currentUser().email)
-                if monitorResponse.1 == nil {
-                    monitor = monitorResponse.0
-                }*/
-                monitor = LocalDatastore.getMonitorWithEmail(PFUser.currentUser().email)
+                monitor = LocalDatastore.getLocalObjectWithColumnConstraints(Constanten.TABLE_MONITOR, soortConstraints: [Constanten.COLUMN_EMAIL: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_EMAIL: PFUser.currentUser().email]) as Monitor
                 
                 setStatusTextFields()
                 pasLayoutVeldenAan()

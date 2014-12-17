@@ -217,6 +217,8 @@ class InloggenViewController: UIViewController, UITextFieldDelegate {
         } else if segue.identifier == "ouderOverzicht" {
             let ouderOverzichtController = segue.destinationViewController as VakantiesTableViewController
         } else if segue.identifier == "overzichtMonitor" {
+            LocalDatastore.getTableReady(Constanten.TABLE_INSCHRIJVINGVORMING)
+            LocalDatastore.getTableReady(Constanten.TABLE_VOORKEUR)
             let vormingenTableViewController = segue.destinationViewController as VormingenTableViewController
         } else if segue.identifier == "administratorOverzicht" {
             let overzichtAdministrator = segue.destinationViewController as VakantiesTableViewController

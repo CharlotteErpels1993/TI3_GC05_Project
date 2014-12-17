@@ -40,7 +40,7 @@ class VormingDetailsTableViewController: UITableViewController {
         
         navigationItem.title = vorming.titel
         
-        var soort = LocalDatastore.getCurrentUserSoort
+        var soort = LocalDatastore.getCurrentUserSoort()
         
         if soort == "administrator" {
             self.navigationItem.rightBarButtonItem = nil

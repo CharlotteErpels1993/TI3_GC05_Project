@@ -44,19 +44,16 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
         super.viewDidLoad()
         hideSideMenuView()
         
-        self.ingelogdeMonitor = LocalDatastore.getMonitorWithEmail(PFUser.currentUser().email)
+        self.ingelogdeMonitor = LocalDatastore.getLocalObjectWithColumnConstraints(Constanten.TABLE_MONITOR, soortConstraints: [Constanten.COLUMN_EMAIL: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_EMAIL: PFUser.currentUser().email]) as Monitor
         
-        /*ParseData.deleteInschrijvingVormingTable()
-        ParseData.deleteMonitorTable()
-        ParseData.vulInschrijvingVormingTableOp()
-        ParseData.vulMonitorTableOp()*/
         
-        var user = PFUser.currentUser()
-        var soort = user["soort"] as String
+        var soort = LocalDatastore.getCurrentUserSoort()
         
         if soort == "monitor" {
-            var monitor = LocalDatastore.getMonitorWithEmail(PFUser.currentUser().email)
-            var monitorenZelfdeVorming = LocalDatastore.getMonitorsMetDezelfdeVormingen(monitor.id!)
+            var monitor = LocalDatastore.getLocalObjectWithColumnConstraints(Constanten.TABLE_MONITOR, soortConstraints: [Constanten.COLUMN_EMAIL: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_EMAIL: PFUser.currentUser().email]) as Monitor
+            
+            //var monitorenZelfdeVorming = LocalDatastore.getMonitorsMetDezelfdeVormingen(monitor.id!)
+            var monitorenZelfdeVorming = LocalDatastore.getMonitorenMetDezelfdeVormingen(monitor.id!)
             
             if monitorenZelfdeVorming.count != 0 {
                 self.monitorenZelfdeVorming = monitorenZelfdeVorming
@@ -81,10 +78,12 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
                 }
             }
         } else {
-            var alleMonitorsReponse = ParseData.getAlleMonitors()
-            if alleMonitorsReponse.1 == nil {
+            var alleMonitoren = LocalDatastore.getLocalObjects(Constanten.TABLE_MONITOR) as [Monitor]
+            self.monitoren = alleMonitoren
+            //var alleMonitorsReponse = ParseData.getAlleMonitors()
+            /*if alleMonitorsReponse.1 == nil {
                 self.monitoren = alleMonitorsReponse.0
-            }
+            }*/
         }
         
         self.monitoren2 = self.monitoren
