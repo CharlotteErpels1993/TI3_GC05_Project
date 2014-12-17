@@ -2286,7 +2286,6 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                     <navigationItem key="navigationItem" title="MonitorNaam" id="N5t-hT-km8">
                         <barButtonItem key="rightBarButtonItem" title="Bewerken" id="fFK-j0-OyY">
                             <connections>
-                                <action selector="rightBarButtonItem:" destination="dHm-iF-4PQ" id="RAd-Cr-6tX"/>
                                 <segue destination="AxN-qg-UWy" kind="show" identifier="bewerkProfiel" id="lbc-WL-g8a"/>
                             </connections>
                         </barButtonItem>
@@ -5034,7 +5033,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
         <segue reference="7j1-hF-0E4"/>
         <segue reference="xe1-I8-Pkw"/>
         <segue reference="WzF-72-HCe"/>
-        <segue reference="3fb-Mq-kJr"/>
+        <segue reference="ua9-8c-Y8i"/>
         <segue reference="8Ie-OP-chB"/>
     </inferredMetricsTieBreakers>
 </document>

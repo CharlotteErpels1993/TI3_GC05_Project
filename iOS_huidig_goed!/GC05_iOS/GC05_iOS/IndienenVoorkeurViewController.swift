@@ -57,9 +57,9 @@ class IndienenVoorkeurViewController: UIViewController, UIPickerViewDataSource, 
             pickerData.append(vakantie.titel!)
         }
         
-        var vakantie = self.vakanties[0]
-        vertrekdatumStr = vakantie.vertrekdatum.toS("dd/MM/yyyy")
-        terugkeerdatumStr = vakantie.terugkeerdatum.toS("dd/MM/yyyy")
+        var vakantie = self.vakanties.first
+        vertrekdatumStr = vakantie!.vertrekdatum.toS("dd/MM/yyyy")
+        terugkeerdatumStr = vakantie!.terugkeerdatum.toS("dd/MM/yyyy")
         periodeLabel.text = ("\(vertrekdatumStr!) - \(terugkeerdatumStr!)")
         
         pickerView.delegate = self
