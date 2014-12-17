@@ -315,11 +315,9 @@ struct LocalDatastore {
     
     static private func getMonitor(object: PFObject) -> Monitor {
         
-        var monitor = self.getGebruiker(object) as Monitor
+        var monitor: Monitor = Monitor(id: object.objectId)
         
-        //var monitor: Monitor = Monitor(id: object.objectId)
-        
-        /*monitor.rijksregisterNr = object[Constanten.COLUMN_RIJKSREGISTERNUMMER] as? String
+        monitor.rijksregisterNr = object[Constanten.COLUMN_RIJKSREGISTERNUMMER] as? String
         monitor.email = object[Constanten.COLUMN_EMAIL] as? String
         monitor.voornaam = object[Constanten.COLUMN_VOORNAAM] as? String
         monitor.naam = object[Constanten.COLUMN_NAAM] as? String
@@ -353,7 +351,7 @@ struct LocalDatastore {
             monitor.codeGerechtigde = object[Constanten.COLUMN_CODEGERECHTIGDE] as? Int
         } else {
             monitor.codeGerechtigde = 0
-        }*/
+        }
         
         if object[Constanten.COLUMN_LIDNUMMER] != nil {
             monitor.lidNr = object[Constanten.COLUMN_LIDNUMMER] as? String
@@ -366,9 +364,7 @@ struct LocalDatastore {
     
     static private func getOuder(object: PFObject) -> Ouder {
         
-        var ouder = self.getGebruiker(object) as Ouder
-        
-        /*var ouder: Ouder = Ouder(id: object.objectId)
+        var ouder: Ouder = Ouder(id: object.objectId)
         
         ouder.rijksregisterNr = object[Constanten.COLUMN_RIJKSREGISTERNUMMER] as? String
         ouder.email = object[Constanten.COLUMN_EMAIL] as? String
@@ -404,7 +400,7 @@ struct LocalDatastore {
             ouder.codeGerechtigde = object[Constanten.COLUMN_CODEGERECHTIGDE] as? Int
         } else {
             ouder.codeGerechtigde = 0
-        }*/
+        }
         
         if object[Constanten.COLUMN_AANSLUITINGSNUMMERTWEEDEOUDER] != nil {
             ouder.aansluitingsNrTweedeOuder = object[Constanten.COLUMN_AANSLUITINGSNUMMERTWEEDEOUDER] as? Int
