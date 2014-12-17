@@ -223,7 +223,6 @@ public class FavorieteVakanties extends Fragment{
                             vakantie.setSterPrijs1Ouder((Number) v.get("sterPrijs1ouder"));
                         if (v.get("sterPrijs2ouders") != null)
                             vakantie.setSterPrijs2Ouder((Number) v.get("sterPrijs2ouders"));
-                        //TODO gegevens contactpersoon vakantie
                         vakantie.setMaxDoelgroep((Integer)v.get("maxLeeftijd"));
                         vakantie.setMinDoelgroep((Integer)v.get("minLeeftijd"));
 

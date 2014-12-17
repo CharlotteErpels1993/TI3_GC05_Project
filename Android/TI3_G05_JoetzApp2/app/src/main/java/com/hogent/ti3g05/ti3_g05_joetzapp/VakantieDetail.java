@@ -29,10 +29,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
 
-//ouder:      titel, korte beschr, periode, locatie, inbegrepen in prijs, doelgroep (met geboortejaren), max aantal deelnemers,
-//                          vervoerswijze, formule, prijs (basisprijs, BM prijs & sterprijs) kortingen, gegevens contactpersoon inschrijving & algemene voorwaarden
-//kind en monitor: titel, korte beschr, periode, locatie, inbegrepen in prijs, doelgroep (met geboortejaren), max aantal deelnemers
-
 //Geeft een detailscherm van de vakantie met de juiste informatie per gebruiker
 public class VakantieDetail extends Activity {
 
@@ -56,9 +52,6 @@ public class VakantieDetail extends Activity {
     Boolean isInternetPresent = false;
     ConnectionDetector cd;
 
-
-    //TODO bij doelgroepen moet er volgens de UC ook nog de geboortejaren bij komen -> methode voor maken om dat te berekenen
-    //TODO algemene voorwaarden onderaan bijzetten -> string resource, kopieren van JOETZ
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -477,6 +470,7 @@ public class VakantieDetail extends Activity {
         }
 
     }
+
     //geeft de parameters mee om van afbeeldingactivity naar detail terug te gaan
     public void setIntentParameters(Intent intent1)
     {

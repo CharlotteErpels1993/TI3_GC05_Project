@@ -80,7 +80,9 @@ public class ProfielEdit extends Activity {
         txtGSM.setText(initieleGsm);
     }
 
-    //Controleer de waarden, indien geen fouten sla de gegevens op
+    /*Naam: controleIngevuld
+    Werking: Controleer de waarden, indien geen fouten sla de gegevens op
+    */
     public void controleIngevuld(){
         clearErrors();
         boolean cancel = false;
@@ -125,7 +127,9 @@ public class ProfielEdit extends Activity {
         }
     }
 
-    //eerst kijken of de gebruiker iets heeft gewijzigd, zo ja, sla alles op, zo niet, stuur direct door
+    //naam: Opslaan
+    //eerst kijken of de gebruiker iets heeft gewijzigd, zo ja, sla alles op, zo niet, stuur direct terug naar ProfielDetail
+    //parameters: gegevens van het profiel die gewijzigd werden
     public void opslaan(String objnaam, String objvoornaam, String objemail, String objGSM){
 
         if (isErIetsGewijzigd(objnaam, objvoornaam, objemail, objGSM)){
@@ -172,7 +176,7 @@ public class ProfielEdit extends Activity {
         txtEmail.setError(null);
     }
 
-    //Stuurt de gebruiker terug naar de detailpagina
+    //Deze methode stuurt de gebruiker terug naar de detailpagina
     public void terugSturenNaarProfielDetail(String objnaam, String objvoornaam, String objemail, String objGSM){
         Intent inte = new Intent(getApplicationContext(), ProfielDetail.class);
         inte.putExtra("naam", objnaam);
@@ -182,7 +186,15 @@ public class ProfielEdit extends Activity {
         startActivity(inte);
     }
 
-    //Kijkt of er gegevens gewijzigd werden
+    /*Naam: isErIetsGewijzigd
+    Werking: Kijkt of er gegevens gewijzigd werden
+
+    Parameters:
+     - gegevens van het profiel die gewijzigd werden. Deze worden vergeleken met de oorspronkelijke waarden
+
+    Return: true -> er is minstens één iets gewijzigd.
+            false -> niets is gewijzigd.
+    */
     public boolean isErIetsGewijzigd(String nieuweNaam, String nieuweVoornaam, String nieuweEmail, String nieuweGSM){
         if (!nieuweNaam.equals(initieleNaam))
             return true;

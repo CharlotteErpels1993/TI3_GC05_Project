@@ -82,7 +82,9 @@ public class ProfielenOverzicht_fragment extends Fragment /* implements SwipeRef
         return rootView;
     }
 
-    //Haal de profielen op uit de locale database
+    /*Naam: getProfielen
+    Werking: Haal de profielen op uit de locale database
+    */
     public void getProfielen()
     {
         alleProfielenUitParse = sqliteDatabase.getProfielen();

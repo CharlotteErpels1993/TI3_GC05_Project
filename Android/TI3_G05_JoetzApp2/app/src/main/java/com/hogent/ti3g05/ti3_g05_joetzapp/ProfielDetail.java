@@ -16,7 +16,7 @@ import android.widget.Toast;
 import com.hogent.ti3g05.ti3_g05_joetzapp.Services.ConnectionDetector;
 import com.parse.ParseUser;
 
-//Geeft een detail van een aangeklikte monitor
+//Geeft een detail van de aangeklikte monitor
 public class ProfielDetail extends Activity {
     String naam;
     String voornaam;

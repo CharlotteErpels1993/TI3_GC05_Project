@@ -82,7 +82,11 @@ public class VakantieOverzicht extends Fragment {
 
         return rootView;
     }
-    //Haalt de vakanties op uit de locale database
+
+    /*Naam: getVakanties
+    Werking: Haalt de vakanties op uit de locale database
+    */
+
      public void getVakanties()
      {
          //Toast.makeText(getActivity(), "geen internet", Toast.LENGTH_SHORT).show();
