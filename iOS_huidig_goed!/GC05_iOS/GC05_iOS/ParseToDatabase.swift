@@ -2,7 +2,17 @@ import Foundation
 
 struct ParseToDatabase {
     
-    // schrijf een nieuwe ouder bij het registeren weg naar de database
+    //
+    //Naam: parseOuder
+    //
+    //Werking: - schrijft een nieuwe ouder bij het registreren weg naar de database
+    //
+    //Parameters:
+    //  - ouder: Ouder
+    //  - wachtwoord: String
+    //
+    //Return:
+    //
     static func parseOuder(ouder: Ouder, wachtwoord: String) {
         var ouderJSON = PFObject(className: Constanten.TABLE_OUDER)
         
@@ -39,7 +49,17 @@ struct ParseToDatabase {
         logIn(ouder, wachtwoord: wachtwoord)
     }
     
-    // maak een nieuwe PFUser (Parse)
+    //
+    //Naam: createPFUser
+    //
+    //Werking: - maakt een nieuwe ouder in Parse table User
+    //
+    //Parameters:
+    //  - ouder: Ouder
+    //  - wachtwoord: String
+    //
+    //Return:
+    //
     static private func createPFUser(ouder: Ouder, wachtwoord: String) {
         var user = PFUser()
         user.username = ouder.email
@@ -50,12 +70,31 @@ struct ParseToDatabase {
         user.signUp()
     }
     
-    // log de geregistreerde ouder direct in
+    //
+    //Naam: logIn
+    //
+    //Werking: - logt de geregistreerde ouder direct in
+    //
+    //Parameters:
+    //  - ouder: Ouder
+    //  - wachtwoord: String
+    //
+    //Return:
+    //
     static private func logIn(ouder: Ouder, wachtwoord: String) {
         PFUser.logInWithUsername(ouder.email, password: wachtwoord)
     }
     
-    // schrijf een nieuwe deelnemer weg naar de database
+    //
+    //Naam: parseDeelnemer
+    //
+    //Werking: - schrijft een nieuwe deelnemer weg naar de database
+    //
+    //Parameters:
+    //  - deelnemer: Deelnemer
+    //
+    //Return: het objectId van de deelnemer
+    //
     static func parseDeelnemer(deelnemer: Deelnemer) -> String {
         var deelnemerJSON = PFObject(className: Constanten.TABLE_DEELNEMER)
         
@@ -77,7 +116,16 @@ struct ParseToDatabase {
         return deelnemerJSON.objectId
     }
     
-    // schrijf een nieuwe contactpersoon in geval van nood weg naar de database
+    //
+    //Naam: parseContactpersoonNood
+    //
+    //Werking: - schrijft een nieuwe contactpersoon in geval van nood weg naar de database
+    //
+    //Parameters:
+    //  - contactpersoon: ContactpersoonNood
+    //
+    //Return: het objectId van de contactpersoon
+    //
     static func parseContactpersoonNood(contactpersoon: ContactpersoonNood) -> String {
         var contactpersoonJSON = PFObject(className: Constanten.TABLE_CONTACTPERSOON)
         
@@ -95,7 +143,16 @@ struct ParseToDatabase {
         return contactpersoonJSON.objectId
     }
     
-    // schrijf een nieuwe vakantie inschrijving weg naar de database
+    //
+    //Naam: parseInschrijvingVakantie
+    //
+    //Werking: - schrijft een nieuwe vakantie inschrijving weg naar de database
+    //
+    //Parameters:
+    //  - inschrijving: InschrijvingVakantie
+    //
+    //Return:
+    //
     static func parseInschrijvingVakantie(inschrijving: InschrijvingVakantie) {
         var inschrijvingJSON = PFObject(className: Constanten.TABLE_INSCHRIJVINGVAKANTIE)
         
@@ -116,7 +173,16 @@ struct ParseToDatabase {
         inschrijvingJSON.save()
     }
     
-    // schrijf een nieuwe vorming inschrijving weg naar de database
+    //
+    //Naam: parseInschrijvingVorming
+    //
+    //Werking: - schrijft een nieuwe vorming inschrijving weg naar de database
+    //
+    //Parameters:
+    //  - inschrijving: InschrijvingVorming
+    //
+    //Return:
+    //
     static func parseInschrijvingVorming(inschrijving: InschrijvingVorming) {
         var inschrijvingJSON = PFObject(className: Constanten.TABLE_INSCHRIJVINGVORMING)
         
@@ -127,7 +193,16 @@ struct ParseToDatabase {
         inschrijvingJSON.save()
     }
 
-    // schrijf een nieuwe favoriete vakantie weg naar de database
+    //
+    //Naam: parseFavoriet
+    //
+    //Werking: - schrijft een nieuwe favoriete vakantie weg naar de database
+    //
+    //Parameters:
+    //  - favoriet: Favoriet
+    //
+    //Return:
+    //
     static func parseFavoriet(favoriet: Favoriet) {
         var favorietJSON = PFObject(className: Constanten.TABLE_FAVORIET)
         
@@ -137,7 +212,16 @@ struct ParseToDatabase {
         favorietJSON.save()
     }
 
-    // schrijf een nieuwe voorkeur weg naar de database
+    //
+    //Naam: parseVoorkeur
+    //
+    //Werking: - schrijft een nieuwe voorkeur weg naar de database
+    //
+    //Parameters:
+    //  - voorkeur: Voorkeur
+    //
+    //Return:
+    //
     static func parseVoorkeur(voorkeur: Voorkeur) {
         var voorkeurJSON = PFObject(className: Constanten.TABLE_VOORKEUR)
         
@@ -146,8 +230,17 @@ struct ParseToDatabase {
         
         voorkeurJSON.save()
     }
-
-    // schrijf een nieuwe feedback weg naar de database
+    
+    //
+    //Naam: parseFeedback
+    //
+    //Werking: - schrijft een nieuwe feedback weg naar de database
+    //
+    //Parameters:
+    //  - feedback: Feedback
+    //
+    //Return:
+    //
     static func parseFeedback(feedback: Feedback) {
         var feedbackJSON = PFObject(className: Constanten.TABLE_FEEDBACK)
         

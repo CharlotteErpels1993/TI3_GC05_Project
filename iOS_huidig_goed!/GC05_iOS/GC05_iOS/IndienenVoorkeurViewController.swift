@@ -46,14 +46,12 @@ class IndienenVoorkeurViewController: UIViewController, UIPickerViewDataSource, 
         
         hideSideMenuView()
         
-        //var vakantiesResponse = ParseData.getAlleVakanties()
         self.vakanties = LocalDatastore.getLocalObjects(Constanten.TABLE_VAKANTIE) as [Vakantie]
         
         for v in vakanties {
             pickerData.append(v.titel!)
         }
         
-        //var vakantie = self.vakanties.first!
         var vakantie = vakanties[0]
         vertrekdatumStr = vakantie.vertrekdatum.toS("dd/MM/yyyy")
         terugkeerdatumStr = vakantie.terugkeerdatum.toS("dd/MM/yyyy")
