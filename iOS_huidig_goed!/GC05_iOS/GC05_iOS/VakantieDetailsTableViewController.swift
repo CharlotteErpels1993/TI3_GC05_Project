@@ -138,17 +138,17 @@ class VakantieDetailsTableViewController: UITableViewController {
                 self.heartButton.hidden = false
                 basisprijsLabel.text = String("Basisprijs: \(vakantie.basisprijs!) " + euroSymbol)
                 inbegrepenPrijs.text = String("Inbegrepen prijs: \(vakantie.inbegrepenPrijs!) ")
-                if (vakantie.bondMoysonLedenPrijs != 0) {
+                if (vakantie.bondMoysonLedenPrijs != nil || vakantie.bondMoysonLedenPrijs != 0) {
                     bondMoysonPrijsLabel.text = String("Bond moyson prijs: \(vakantie.bondMoysonLedenPrijs!) " + euroSymbol)
                 } else {
                     bondMoysonPrijsLabel.text = String("Bond moyson prijs: /")
                 }
-                if (vakantie.sterPrijs1ouder != 0) {
+                if (vakantie.sterPrijs1ouder != 0 || vakantie.sterPrijs1ouder != nil) {
                     sterprijs1Label.text = String("Ster prijs (1 ouder): \(vakantie.sterPrijs1ouder!) " + euroSymbol)
                 } else {
                     sterprijs1Label.text = String("Ster prijs (1 ouder): /")
                 }
-                if (vakantie.sterPrijs2ouders != 0) {
+                if (vakantie.sterPrijs2ouders != 0 || vakantie.sterPrijs2ouders != nil) {
                     sterPrijs2Label.text = String("Ster prijs (2 ouders): \(vakantie.sterPrijs2ouders!) " + euroSymbol)
                 } else {
                     sterPrijs2Label.text = String("Ster prijs (2 ouders): /")
