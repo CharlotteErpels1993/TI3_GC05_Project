@@ -146,4 +146,18 @@ struct ParseToDatabase {
         voorkeurJSON.save()
     }
 
+    // schrijf een nieuwe feedback weg naar de database
+    static func parseFeedback(feedback: Feedback) {
+        var feedbackJSON = PFObject(className: Constanten.TABLE_FEEDBACK)
+        
+        feedbackJSON.setValue(feedback.datum, forKey: Constanten.COLUMN_DATUM)
+        feedbackJSON.setValue(feedback.goedgekeurd, forKey: Constanten.COLUMN_GOEDGEKEURD)
+        feedbackJSON.setValue(feedback.vakantie?.id, forKey: Constanten.COLUMN_VAKANTIE)
+        feedbackJSON.setValue(feedback.gebruiker?.id, forKey: Constanten.COLUMN_GEBRUIKER)
+        feedbackJSON.setValue(feedback.waardering, forKey: Constanten.COLUMN_WAARDERING)
+        feedbackJSON.setValue(feedback.score, forKey: Constanten.COLUMN_SCORE)
+        
+        feedbackJSON.save()
+    }
+    
 }

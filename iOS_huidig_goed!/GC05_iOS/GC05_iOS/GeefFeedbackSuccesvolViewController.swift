@@ -37,6 +37,6 @@ class GeefFeedbackSuccesvolViewController: UIViewController {
         self.setNeedsStatusBarAppearanceUpdate()
         self.navigationController!.toolbarHidden = true
         self.navigationItem.setHidesBackButton(true, animated: true)
-        //ParseData.parseFeedbackToDatabase(feedback)
+        ParseToDatabase.parseFeedback(feedback)
     }
 }

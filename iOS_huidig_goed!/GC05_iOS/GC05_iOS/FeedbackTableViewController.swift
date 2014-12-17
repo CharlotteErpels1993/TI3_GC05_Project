@@ -58,19 +58,17 @@ class FeedbackTableViewController: UITableViewController, UISearchBarDelegate, U
         self.setNeedsStatusBarAppearanceUpdate()
         self.navigationController!.toolbarHidden = true
         
-        //ParseData.deleteFeedbackTable()
-        //ParseData.vulFeedbackTableOp()
-        //var feedbackenResponse = ParseData.getAlleFeedback()
+        var isFeedbackTableLeeg = LocalDatastore.isEmpty(Constanten.TABLE_FEEDBACK)
         
-        /*if feedbackenResponse.1 == nil {
-            self.feedbacken = feedbackenResponse.0
+        if isFeedbackTableLeeg == false {
+            self.feedbacken = LocalDatastore.getLocalObjects(Constanten.TABLE_FEEDBACK) as [Feedback]
             self.feedbacken2 = self.feedbacken
+        } else {
+            foutBoxOproepen("Oeps", "Er is nog geen feedback.", self)
             self.tableView.reloadData()
             feedbacken2.sort({ $0.vakantie!.titel < (String($1.score!)) })
             feedbacken2.sort({ $0.vakantie!.titel < (String($1.score!)) })
-        } else {
-            foutBoxOproepen("Oeps", "Er is nog geen feedback.", self)
-        }*/
+        }
         
         if PFUser.currentUser() == nil {
             self.navigationItem.rightBarButtonItem = nil
@@ -254,9 +252,10 @@ class FeedbackTableViewController: UITableViewController, UISearchBarDelegate, U
         if Reachability.isConnectedToNetwork() == false {
             toonFoutBoxMetKeuzeNaarInstellingen("Verbind met het internet om uw nieuwste feedback te bekijken of ga naar instellingen.", self)
         }
-        var parseData = ParseData()
+        /*var parseData = ParseData()
         ParseData.deleteAllTables()
-        ParseData.createDatabase()
+        ParseData.createDatabase()*/
+        LocalDatastore.getTableReady(Constanten.TABLE_FEEDBACK)
         self.refreshControl?.endRefreshing()
         viewDidLoad()
     }

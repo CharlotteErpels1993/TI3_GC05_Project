@@ -206,7 +206,6 @@ class GeefFeedback2ViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "indienen" {
             let geefFeedbackSuccesvolViewController = segue.destinationViewController as GeefFeedbackSuccesvolViewController
-            var gebruiker = getGebruiker(PFUser.currentUser().email)
             feedback = Feedback(id: "test")
         
             setStatusTextFields()
@@ -220,8 +219,18 @@ class GeefFeedback2ViewController: UITableViewController {
                     foutBoxOproepen("Fout", "Gelieve het veld feedback in te vullen!", self)
                     self.viewDidLoad()
                 } else {
+                    
+                    var bestaatOuder = LocalDatastore.bestaatLocalObjectWithConstraints(Constanten.TABLE_OUDER, soortConstraints: [Constanten.COLUMN_EMAIL: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_EMAIL: PFUser.currentUser().email])
+                    
+                    if bestaatOuder == true {
+                        var ouder = LocalDatastore.getLocalObjectWithColumnConstraints(Constanten.TABLE_OUDER, soortConstraints: [Constanten.COLUMN_EMAIL: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_EMAIL: PFUser.currentUser().email]) as Gebruiker
+                        feedback.gebruiker = ouder
+                    } else {
+                        var monitor = LocalDatastore.getLocalObjectWithColumnConstraints(Constanten.TABLE_MONITOR, soortConstraints: [Constanten.COLUMN_EMAIL: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_EMAIL: PFUser.currentUser().email]) as Gebruiker
+                        feedback.gebruiker = monitor
+                    }
+                    
                     feedback.datum = NSDate()
-                    feedback.gebruiker = gebruiker
                     feedback.vakantie = self.vakantie
                         feedback.score = self.score
                 feedback.waardering = self.txtFeedback.text
@@ -233,29 +242,6 @@ class GeefFeedback2ViewController: UITableViewController {
             let vakantiesTableViewController = segue.destinationViewController as VakantiesTableViewController
         }
     }
-    
-    /*func getGebruiker(email: String) -> Gebruiker {
-        ParseData.deleteOuderTable()
-        ParseData.vulOuderTableOp()
-        var gebruiker: Gebruiker!
-        
-        var responseOuder = OuderSQL.getOuderWithEmail(email)
-        
-        if responseOuder.1 != nil {
-            ParseData.deleteMonitorTable()
-            ParseData.vulMonitorTableOp()
-            var responseMonitor = MonitorSQL.getMonitorWithEmail(email)
-            if responseMonitor.1 == nil {
-                gebruiker = MonitorSQL.getGebruiker(responseMonitor.0)
-            } else {
-                println("ERROR: er is geen gebruiker met dit id teruggevonden in FeedbackSQL")
-            }
-        }
-        else {
-            gebruiker = OuderSQL.getGebruiker(responseOuder.0)
-        }
-        return gebruiker
-    }*/
     
     //
     //Naam: setStatusTextFields
