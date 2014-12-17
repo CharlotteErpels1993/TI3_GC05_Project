@@ -130,6 +130,11 @@ public class RegistrerenDeel3 extends Activity{
                 focusView = postcodeText;
                 cancel = true;
             }
+            if (Integer.parseInt(postcode) > 9992) {
+                postcodeText.setError(getString(R.string.error_incorrect_postcode));
+                focusView = postcodeText;
+                cancel = true;
+            }
         }
 
         if (TextUtils.isEmpty(gemeente)) {

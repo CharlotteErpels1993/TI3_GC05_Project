@@ -80,7 +80,7 @@ public class InschrijvenVakantieDeel1 extends FragmentActivity {
         minLeeftijd = (TextView) findViewById(R.id.minLeeftijd);
 
         vakantie.setText(vakantieNaam);
-        minLeeftijd.setText("Doelgroep " +mindoelgroep + " - " + maxdoelgroep);
+        minLeeftijd.setText(getString(R.string.doelgroep) + " " + mindoelgroep + " - " + maxdoelgroep + getString(R.string.vakantieAantalJaar));
 
         getActionBar().setTitle(getString(R.string.title_activity_inschrijven));
         btnVolgende = (Button)findViewById(R.id.btnNaarDeel2Vak);
@@ -158,6 +158,11 @@ public class InschrijvenVakantieDeel1 extends FragmentActivity {
                 focusView = txtPostcode;
                 cancel = true;
             }
+            if (Integer.parseInt(postcode) > 9992) {
+                txtPostcode.setError(getString(R.string.error_incorrect_postcode));
+                focusView = txtPostcode;
+                cancel = true;
+            }
         }
 
         if (TextUtils.isEmpty(gemeente)) {
@@ -219,7 +224,7 @@ public class InschrijvenVakantieDeel1 extends FragmentActivity {
             cancel = true;
         }
         else{
-            if (huisnr.length() >= 1){
+            if (!(huisnr.length() >= 1)){
                 txtHuisnr.setError(getString(R.string.error_incorrect_huisnr));
                 focusView = txtHuisnr;
                 cancel = true;

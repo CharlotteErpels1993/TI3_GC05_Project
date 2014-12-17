@@ -62,7 +62,7 @@
     <string name="gsmHintMetSter">Gsmnummer *</string>
     <string name="EmailHint">E-mailadres</string>
     <string name="EmailHintMetSter">E-mailadres *</string>
-    <string name="error_incorrect_postcode">Postcode is niet geldig (moet numeriek zijn, 4 cijfers)</string>
+    <string name="error_incorrect_postcode">Postcode is niet geldig (moet numeriek zijn, 4 cijfers, max 9992)</string>
     <string name="error_incorrect_rijksregnr">Rijksregisternummer is niet geldig (11 cijfers, geen spaties of speciale tekens)</string>
     <string name="error_incorrect_rijksregisternummer">Ongeldig rijksregisternummer</string>
     <string name="error_occupied_rijksregnr">Dit rijksregisternummer is reeds in gebruik.</string>
