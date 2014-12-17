@@ -214,6 +214,9 @@ class VormingenTableViewController: UITableViewController, UISearchBarDelegate, 
     //Return:
     //
     @IBAction func refresh(sender: UIRefreshControl) {
+        if Reachability.isConnectedToNetwork() == false {
+            toonFoutBoxMetKeuzeNaarInstellingen("Verbind met het internet om uw nieuwste vormingen te bekijken of ga naar instellingen.", self)
+        }
         LocalDatastore.getTableReady(Constanten.TABLE_VORMING)
         self.refreshControl?.endRefreshing()
         viewDidLoad()

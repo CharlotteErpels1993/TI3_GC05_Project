@@ -40,19 +40,7 @@ class IndienenVoorkeurViewController: UIViewController, UIPickerViewDataSource, 
     //
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if Reachability.isConnectedToNetwork() == false {
-            var alert = UIAlertController(title: "Oeps.. U heeft geen internet", message: "U heeft internet nodig voor uw voorkeur op te geven. Ga naar instellingen om dit aan te passen.", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "Annuleer", style: UIAlertActionStyle.Default, handler: nil))
-            alert.addAction(UIAlertAction(title: "Ga naar instellingen", style: .Default, handler: { action in
-                switch action.style{
-                default:
-                    UIApplication.sharedApplication().openURL(NSURL(string:UIApplicationOpenSettingsURLString)!);
-                }
-                
-            }))
-            presentViewController(alert, animated: true, completion: nil)
-        }
+        controleerInternet()
         
         LocalDatastore.getTableReady(Constanten.TABLE_VOORKEUR)
         
@@ -78,6 +66,38 @@ class IndienenVoorkeurViewController: UIViewController, UIPickerViewDataSource, 
         pickerView.dataSource = self
         pickerView.reloadAllComponents()
         
+    }
+    
+    //
+    //Naam: controleerInternet
+    //
+    //Werking: - bekijkt of de gebruiker internet heeft, zoniet geeft hij een gepaste melding
+    //
+    //Parameters:
+    //
+    //Return:
+    //
+    func controleerInternet() {
+        if Reachability.isConnectedToNetwork() == false {
+            var alert = UIAlertController(title: "Oeps.. U heeft geen internet", message: "U heeft internet nodig om uw voorkeur in te dienen. Ga naar instellingen om dit aan te passen.", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Ga terug naar vormingen", style: UIAlertActionStyle.Default, handler: { action in
+                switch action.style {
+                default:
+                    let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    var destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vormingen") as UIViewController
+                    self.sideMenuController()?.setContentViewController(destViewController)
+                    self.hideSideMenuView()
+                }
+            }))
+            alert.addAction(UIAlertAction(title: "Ga naar instellingen", style: .Default, handler: { action in
+                switch action.style{
+                default:
+                    UIApplication.sharedApplication().openURL(NSURL(string:UIApplicationOpenSettingsURLString)!);
+                }
+                
+            }))
+            presentViewController(alert, animated: true, completion: nil)
+        }
     }
     
     //

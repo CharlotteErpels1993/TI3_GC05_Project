@@ -62,6 +62,36 @@ class ProfielBewerkenViewController: UITableViewController {
     }
     
     //
+    //Naam: controleerInternet
+    //
+    //Werking: - bekijkt of de gebruiker internet heeft, zoniet geeft hij een gepaste melding
+    //
+    //Parameters:
+    //
+    //Return:
+    //
+    func controleerInternet() {
+        if Reachability.isConnectedToNetwork() == false {
+            var alert = UIAlertController(title: "Oeps.. U heeft geen internet", message: "U heeft internet nodig voor uw profiel te bewerken. Ga naar instellingen om dit aan te passen.", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Ga terug naar profielen", style: UIAlertActionStyle.Default, handler: { action in
+                switch action.style {
+                default:
+                    self.gaVerder = true
+                    self.performSegueWithIdentifier("opslaan", sender: self)
+                }
+            }))
+            alert.addAction(UIAlertAction(title: "Ga naar instellingen", style: .Default, handler: { action in
+                switch action.style{
+                default:
+                    UIApplication.sharedApplication().openURL(NSURL(string:UIApplicationOpenSettingsURLString)!);
+                }
+                
+            }))
+            presentViewController(alert, animated: true, completion: nil)
+        }
+    }
+    
+    //
     //Naam: terug
     //
     //Werking: - zorgt ervoor wanneer de gebruiker op terug klik er eerst een melding wordt getoond dat er een melding wordt getoond

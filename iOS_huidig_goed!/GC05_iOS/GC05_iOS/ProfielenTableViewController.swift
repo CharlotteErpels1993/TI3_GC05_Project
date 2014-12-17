@@ -399,6 +399,9 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
     //Return:
     //
     @IBAction func refresh(sender: UIRefreshControl) {
+        if Reachability.isConnectedToNetwork() == false {
+            toonFoutBoxMetKeuzeNaarInstellingen("Verbind met het internet om uw nieuwste profielen te bekijken of ga naar instellingen.", self)
+        }
         LocalDatastore.getTableReady(Constanten.TABLE_MONITOR)
         self.refreshControl?.endRefreshing()
         viewDidLoad()
