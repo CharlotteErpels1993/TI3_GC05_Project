@@ -210,6 +210,7 @@ struct ParseToDatabase {
         favorietJSON.setValue(favoriet.gebruiker?.id, forKey: Constanten.COLUMN_GEBRUIKER)
         
         favorietJSON.save()
+        LocalDatastore.getTableReady(Constanten.TABLE_FAVORIET)
     }
 
     //

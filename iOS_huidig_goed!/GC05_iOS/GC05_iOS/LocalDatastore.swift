@@ -101,6 +101,9 @@ struct LocalDatastore {
             } else if tableName == Constanten.TABLE_INSCHRIJVINGVORMING {
                 var inschrijvingVorming = self.getInschrijvingVorming(object)
                 objecten.append(inschrijvingVorming)
+            } else if tableName == Constanten.TABLE_FAVORIET {
+                var favoriet = self.getFavoriet(object)
+                objecten.append(favoriet)
             }
         }
         
@@ -125,6 +128,8 @@ struct LocalDatastore {
             return self.getDeelnemer(object)
         } else if tableName == Constanten.TABLE_INSCHRIJVINGVORMING {
             return self.getInschrijvingVorming(object)
+        } else if tableName == Constanten.TABLE_FAVORIET {
+            return self.getFavoriet(object)
         } else {
             //RANDOM GEKOZEN!!!!!
             return self.getVorming(object)
@@ -220,6 +225,8 @@ struct LocalDatastore {
         objects = query.findObjects() as [PFObject]
         
         PFObject.pinAll(objects)
+        
+        
     }
     
     static private func getAfbeelding(object: PFObject) -> UIImage {
@@ -248,6 +255,27 @@ struct LocalDatastore {
         deelnemer.geboortedatum = object[Constanten.COLUMN_GEBOORTEDATUM] as? NSDate
         
         return deelnemer
+    }
+    
+    static func getFavoriet(object: PFObject) -> Favoriet {
+        
+        var favoriet: Favoriet = Favoriet(id: object.objectId)
+        
+        var vakantieId: String = object[Constanten.COLUMN_VAKANTIE] as String
+        var gebruikerId: String = object[Constanten.COLUMN_GEBRUIKER] as String
+        var monitor: Gebruiker = Gebruiker(id: gebruikerId)
+        
+        favoriet.vakantie = self.getLocalObjectWithColumnConstraints(Constanten.TABLE_VAKANTIE, soortConstraints: [Constanten.COLUMN_OBJECTID: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_OBJECTID: vakantieId]) as? Vakantie
+        
+        var bestaatOuder = self.bestaatLocalObjectWithConstraints(Constanten.TABLE_OUDER, soortConstraints: [Constanten.COLUMN_OBJECTID: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_OBJECTID: gebruikerId])
+        
+        if bestaatOuder == true {
+            favoriet.gebruiker = self.getLocalObjectWithColumnConstraints(Constanten.TABLE_OUDER, soortConstraints: [Constanten.COLUMN_OBJECTID: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_OBJECTID: gebruikerId]) as Ouder
+        } else {
+            favoriet.gebruiker = self.getLocalObjectWithColumnConstraints(Constanten.TABLE_MONITOR, soortConstraints: [Constanten.COLUMN_OBJECTID: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_OBJECTID: gebruikerId]) as Monitor
+        }
+        
+        return favoriet
     }
     
     static private func getFeedback(object: PFObject) -> Feedback {
@@ -613,7 +641,7 @@ struct LocalDatastore {
         
         var equalToConstraints: [String: String] = [:]
         equalToConstraints[Constanten.COLUMN_VAKANTIE] = favoriet.vakantie?.id
-        soortConstraints[Constanten.COLUMN_GEBRUIKER] = favoriet.gebruiker?.id
+        equalToConstraints[Constanten.COLUMN_GEBRUIKER] = favoriet.gebruiker?.id
         
         var query = self.makeQuery(Constanten.TABLE_FAVORIET, local: true, soortConstraints: soortConstraints, equalTo: equalToConstraints)
         
@@ -626,6 +654,7 @@ struct LocalDatastore {
         }
         
         object.unpin()
+        LocalDatastore.getTableReady(Constanten.TABLE_FAVORIET)
     }
     
     static func bestaatInschrijvingVakantieAl(inschrijving: InschrijvingVakantie) -> Bool {

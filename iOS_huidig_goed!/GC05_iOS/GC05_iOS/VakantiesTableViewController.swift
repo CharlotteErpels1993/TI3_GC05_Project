@@ -65,7 +65,35 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         
         if isFavoriet == true && PFUser.currentUser() != nil {
             self.navigationItem.title = "Favorieten"
-            self.vakanties = LocalDatastore.getLocalObjects(Constanten.TABLE_FAVORIET) as [Vakantie]
+            //self.vakanties = LocalDatastore.getLocalObjects(Constanten.TABLE_FAVORIET) as [Vakantie]
+            
+            LocalDatastore.getTableReady(Constanten.TABLE_FAVORIET)
+            
+            var s = LocalDatastore.getCurrentUserSoort()
+            var gebruiker: Gebruiker = Gebruiker(id: "test")
+            
+            if s == "ouder" {
+                gebruiker = LocalDatastore.getLocalObjectWithColumnConstraints(Constanten.TABLE_OUDER, soortConstraints: [Constanten.COLUMN_EMAIL: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_EMAIL: PFUser.currentUser().email]) as Ouder
+            } else if s == "monitor" {
+                gebruiker = LocalDatastore.getLocalObjectWithColumnConstraints(Constanten.TABLE_MONITOR, soortConstraints: [Constanten.COLUMN_EMAIL: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_EMAIL: PFUser.currentUser().email]) as Monitor
+            }
+            
+            var query = PFQuery(className: "Favoriet")
+            query.whereKey("gebruiker", equalTo: gebruiker.id)
+            query.fromLocalDatastore()
+            
+            var objecten = query.findObjects() as [PFObject]
+            var favorieten: [Favoriet] = []
+            
+            for object in objecten {
+                favorieten.append(LocalDatastore.getFavoriet(object) as Favoriet)
+            }
+            
+            
+            for favoriet in favorieten {
+                self.vakanties.append(favoriet.vakantie!)
+            }
+            
             
             foutBoxOproepen("Oeps...", "Er zijn geen vakanties geselecteerd als favorieten. Ga naar vakanties en selecteer een vakantie als favoriet door middel van op het hartje te klikken.", self)
         } else {
