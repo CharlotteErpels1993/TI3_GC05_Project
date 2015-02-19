@@ -13,6 +13,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.setApplicationId("a3jgklEb2rHZYcgqDezLfqSP6i1C2u4eVV8R03YS", clientKey:
             "3ZguW3kx5J6PuieccT7ypJ5ZvYhwX08ESKL8cDNX")
         
+        PFAnalytics.trackAppOpenedWithLaunchOptionsInBackground(launchOptions, block: {
+            (result: Bool!, error: NSError!) -> Void in
+            if error != nil {
+                NSLog("Start PFAnalytics for tracking when app opens failed.")
+            } else {
+                NSLog("Start PFAnalytics for tracking when app opens succeeded.")
+            }
+        })
+        
         //Moet eigenlijk aangeroepen worden voor setApplicationId()
         //Bug van Parse
         //Er is een fix die samen met de volgende SDK release zal uitkomen
