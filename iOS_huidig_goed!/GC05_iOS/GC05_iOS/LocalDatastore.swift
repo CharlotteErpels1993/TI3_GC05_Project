@@ -650,7 +650,8 @@ struct LocalDatastore {
         if Reachability.isConnectedToNetwork() == true {
             object.delete()
         } else {
-            object.deleteEventually()
+            //object.deleteEventually()
+            object.delete()
         }
         
         object.unpin()

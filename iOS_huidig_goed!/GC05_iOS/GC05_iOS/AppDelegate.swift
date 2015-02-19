@@ -8,7 +8,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        //Parse.enableLocalDatastore()
+        Parse.enableLocalDatastore()
         
         Parse.setApplicationId("a3jgklEb2rHZYcgqDezLfqSP6i1C2u4eVV8R03YS", clientKey:
             "3ZguW3kx5J6PuieccT7ypJ5ZvYhwX08ESKL8cDNX")
@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Moet eigenlijk aangeroepen worden voor setApplicationId()
         //Bug van Parse
         //Er is een fix die samen met de volgende SDK release zal uitkomen
-        Parse.enableLocalDatastore()
+        
         
         LocalDatastore.getTableReady(Constanten.TABLE_VAKANTIE)
         LocalDatastore.getTableReady(Constanten.TABLE_AFBEELDING)
