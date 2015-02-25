@@ -4,6 +4,7 @@ import QuartzCore
 
 class InschrijvenVakantie1ViewController : UITableViewController, UIPickerViewDataSource, UIPickerViewDelegate {
 
+    @IBOutlet weak var aantalDagenEnNachten: UILabel!
     @IBOutlet weak var pickerView: UIPickerView!
     
     var vakantie: Vakantie!
@@ -137,6 +138,7 @@ class InschrijvenVakantie1ViewController : UITableViewController, UIPickerViewDa
     //
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         inschrijvingVakantie.periode = pickerData[row]
+        berekenAantalDagen(pickerData[row])
         //self.periode = pickerData[row]
     }
     
@@ -151,5 +153,14 @@ class InschrijvenVakantie1ViewController : UITableViewController, UIPickerViewDa
             inschrijvingVakantie.vakantie = self.vakantie
             inschrijvenVakantie2ViewController.inschrijvingVakantie = inschrijvingVakantie
         }
+    }
+    
+    func berekenAantalDagen(datum: String) {
+        var datumArray = split(datum, {$0=="-"}, allowEmptySlices: true)
+        var vertrekdatum: String = datumArray[0]
+        var terugkeerdatum: String = datumArray[1]
+        
+        
+        
     }
 }

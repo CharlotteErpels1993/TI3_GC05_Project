@@ -4663,13 +4663,13 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Geef uw periode in:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J2z-Oc-foa">
-                                <rect key="frame" x="16" y="72" width="150" height="21"/>
+                                <rect key="frame" x="16" y="72" width="150" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y0O-id-RvI">
-                                <rect key="frame" x="0.0" y="116" width="600" height="162"/>
+                                <rect key="frame" x="0.0" y="115" width="600" height="162"/>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eKL-p9-R6E">
                                 <rect key="frame" x="523" y="562" width="61" height="30"/>
@@ -4682,13 +4682,21 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                                     <action selector="annuleer:" destination="1th-E5-fug" eventType="touchUpInside" id="yvn-k0-TBK"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aantal dagen en nachten" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NJf-Ld-Gkc">
+                                <rect key="frame" x="16" y="285" width="191" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="eKL-p9-R6E" firstAttribute="trailing" secondItem="spH-07-lKv" secondAttribute="trailingMargin" id="4xL-7j-hAz"/>
+                            <constraint firstItem="NJf-Ld-Gkc" firstAttribute="top" secondItem="Y0O-id-RvI" secondAttribute="bottom" constant="8" id="6mO-Zy-Rvg"/>
                             <constraint firstItem="J2z-Oc-foa" firstAttribute="leading" secondItem="spH-07-lKv" secondAttribute="leadingMargin" id="CUM-Uq-6dl"/>
                             <constraint firstItem="J2z-Oc-foa" firstAttribute="top" secondItem="wc8-Ug-dZc" secondAttribute="bottom" constant="8" id="Kvo-L1-xlu"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Y0O-id-RvI" secondAttribute="trailing" constant="-16" id="Nrh-io-xy1"/>
+                            <constraint firstItem="NJf-Ld-Gkc" firstAttribute="leading" secondItem="spH-07-lKv" secondAttribute="leadingMargin" id="Th2-cv-nAq"/>
                             <constraint firstItem="Y0O-id-RvI" firstAttribute="leading" secondItem="spH-07-lKv" secondAttribute="leadingMargin" constant="-16" id="hFH-sf-FED"/>
                             <constraint firstItem="N4c-dC-4eI" firstAttribute="top" secondItem="eKL-p9-R6E" secondAttribute="bottom" constant="8" id="iDo-mh-J8e"/>
                             <constraint firstItem="Y0O-id-RvI" firstAttribute="top" secondItem="J2z-Oc-foa" secondAttribute="bottom" constant="23" id="iqL-li-xO5"/>
@@ -4703,6 +4711,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="aantalDagenEnNachten" destination="NJf-Ld-Gkc" id="rmd-0e-0Jy"/>
                         <outlet property="pickerView" destination="Y0O-id-RvI" id="5U4-qC-jyR"/>
                     </connections>
                 </viewController>
