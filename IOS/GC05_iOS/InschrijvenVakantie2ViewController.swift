@@ -12,11 +12,12 @@ class InschrijvenVakantie2ViewController : UITableViewController {
     @IBOutlet weak var txtGemeente: UITextField!
     @IBOutlet weak var txtPostcode: UITextField!
     
+    var vakantie: Vakantie!
     var deelnemer: Deelnemer = Deelnemer(id: "test")
     var foutBox: FoutBox? = nil
     var redColor: UIColor = UIColor.redColor()
     var statusTextFields: [String: String] = [:]
-    var inschrijvingVakantie: InschrijvingVakantie!
+    var inschrijvingVakantie: InschrijvingVakantie! = InschrijvingVakantie(id: "test")
     
     //
     //Naam: annuleer
@@ -45,11 +46,50 @@ class InschrijvenVakantie2ViewController : UITableViewController {
     //
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.setNeedsStatusBarAppearanceUpdate()
-        //self.navigationController!.toolbarHidden = true
-        //controleerInternet()
-        //LocalDatastore.getTableReady(Constanten.TABLE_INSCHRIJVINGVAKANTIE)
-        //LocalDatastore.getTableReady(Constanten.TABLE_DEELNEMER)
+        self.setNeedsStatusBarAppearanceUpdate()
+        self.navigationController!.toolbarHidden = true
+        controleerInternet()
+        LocalDatastore.getTableReady(Constanten.TABLE_INSCHRIJVINGVAKANTIE)
+        LocalDatastore.getTableReady(Constanten.TABLE_DEELNEMER)
+    }
+    
+    //
+    //Naam: controleerInternet
+    //
+    //Werking: - bekijkt of de gebruiker internet heeft, zoniet geeft hij een gepaste melding
+    //
+    //Parameters:
+    //
+    //Return:
+    //
+    func controleerInternet() {
+        if Reachability.isConnectedToNetwork() == false {
+            var alert = UIAlertController(title: "Oeps.. U heeft geen internet", message: "U heeft internet nodig voor u te registeren. Ga naar instellingen om dit aan te passen.", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Ga terug naar vakanties", style: UIAlertActionStyle.Default, handler: { action in
+                switch action.style {
+                default:
+                    let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    var destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
+                    self.sideMenuController()?.setContentViewController(destViewController)
+                    self.hideSideMenuView()
+                }
+            }))
+            alert.addAction(UIAlertAction(title: "Ga naar instellingen", style: .Default, handler: { action in
+                switch action.style{
+                default:
+                    UIApplication.sharedApplication().openURL(NSURL(string:UIApplicationOpenSettingsURLString)!);
+                }
+                
+            }))
+            presentViewController(alert, animated: true, completion: nil)
+            txtVoornaam.resignFirstResponder()
+            txtStraat.resignFirstResponder()
+            txtPostcode.resignFirstResponder()
+            txtNummer.resignFirstResponder()
+            txtNaam.resignFirstResponder()
+            txtGemeente.resignFirstResponder()
+            txtBus.resignFirstResponder()
+        }
     }
     
     //
@@ -65,43 +105,44 @@ class InschrijvenVakantie2ViewController : UITableViewController {
     //
     //Return:
     //
-
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "volgende" {
-        let inschrijvenVakantie3ViewController = segue.destinationViewController as InschrijvenVakantie3ViewController
+            let inschrijvenVakantie2ViewController = segue.destinationViewController as InschrijvenVakantie3ViewController
             
             /*ParseData.deleteDeelnemerTable()
             ParseData.vulDeelnemerTableOp()*/
-        
-        setStatusTextFields()
-        pasLayoutVeldenAan()
-        
-        if controleerRodeBordersAanwezig() == true {
-            foutBoxOproepen("Fout", "Gelieve de velden correct in te vullen!", self)
-        } else {
-            settenVerplichteGegevens()
             
-            if statusTextFields["bus"] != "leeg" {
-                deelnemer.bus = txtBus.text
-            }
+            setStatusTextFields()
+            pasLayoutVeldenAan()
             
-            inschrijvingVakantie.deelnemer = deelnemer
-            
-            if controleerKindAlIngeschreven() == true {
-                let alertController = UIAlertController(title: "Fout", message: "Je hebt je al ingeschreven voor deze vakantie", preferredStyle: .Alert)
-                let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: {
-                    action in
-                    let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                    let destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
-                    self.sideMenuController()?.setContentViewController(destViewController)
-                    self.hideSideMenuView()
-                })
-                alertController.addAction(okAction)
-                self.presentViewController(alertController, animated: true, completion: nil)
-            }
-            
-            
-            inschrijvenVakantie3ViewController.inschrijvingVakantie = inschrijvingVakantie
+            if controleerRodeBordersAanwezig() == true {
+                foutBoxOproepen("Fout", "Gelieve de velden correct in te vullen!", self)
+            } else {
+                settenVerplichteGegevens()
+                
+                if statusTextFields["bus"] != "leeg" {
+                    deelnemer.bus = txtBus.text
+                }
+                
+                inschrijvingVakantie.vakantie = vakantie
+                inschrijvingVakantie.deelnemer = deelnemer
+                
+                if controleerKindAlIngeschreven() == true {
+                    let alertController = UIAlertController(title: "Fout", message: "Je hebt je al ingeschreven voor deze vakantie", preferredStyle: .Alert)
+                    let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: {
+                        action in
+                        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                        let destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Vakanties") as UIViewController
+                        self.sideMenuController()?.setContentViewController(destViewController)
+                        self.hideSideMenuView()
+                    })
+                    alertController.addAction(okAction)
+                    self.presentViewController(alertController, animated: true, completion: nil)
+                }
+                
+                
+                inschrijvenVakantie2ViewController.inschrijvingVakantie = inschrijvingVakantie
             }
         } else if segue.identifier == "gaTerug" {
             let vakantiesTableViewController = segue.destinationViewController as VakantiesTableViewController
@@ -276,8 +317,8 @@ class InschrijvenVakantie2ViewController : UITableViewController {
         self.deelnemer.nummer = txtNummer.text.toInt()!
         self.deelnemer.postcode = txtPostcode.text.toInt()!
         self.deelnemer.gemeente = txtGemeente.text
-        //self.inschrijvingVakantie.vakantie = self.vakantie
-
+        self.inschrijvingVakantie.vakantie = self.vakantie
+        
         var ouder = LocalDatastore.getLocalObjectWithColumnConstraints(Constanten.TABLE_OUDER, soortConstraints: [Constanten.COLUMN_EMAIL: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_EMAIL: PFUser.currentUser().email]) as Ouder
         
         self.inschrijvingVakantie.ouder = ouder
@@ -290,7 +331,7 @@ class InschrijvenVakantie2ViewController : UITableViewController {
     //
     //Parameters:
     //
-    //Return: een bool true als de inschrijving al bestaat, anders false 
+    //Return: een bool true als de inschrijving al bestaat, anders false
     //
     func controleerKindAlIngeschreven() -> Bool {
         return LocalDatastore.bestaatInschrijvingVakantieAl(self.inschrijvingVakantie)
@@ -298,7 +339,7 @@ class InschrijvenVakantie2ViewController : UITableViewController {
         var inschrijvingenResponse = ParseData.getInschrijvingenVakantie(self.inschrijvingVakantie)
         
         if inschrijvingenResponse.1 != nil {
-           return false
+        return false
         }
         return true*/
     }

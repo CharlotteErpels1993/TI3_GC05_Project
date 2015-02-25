@@ -365,10 +365,10 @@ class VakantieDetailsTableViewController: UITableViewController {
             extraTekstViewController.type = 2
             extraTekstViewController.hidesBottomBarWhenPushed = true
         } else if segue.identifier == "inschrijven" {
-            let inschrijvenVakantie1ViewController = segue.destinationViewController as InschrijvenVakantie1ViewController
-            inschrijvenVakantie1ViewController.vakantie = vakantie
-            inschrijvenVakantie1ViewController.pickerData = vakantie.periodes!
-            inschrijvenVakantie1ViewController.hidesBottomBarWhenPushed = true
+            let inschrijvenVakantie2ViewController = segue.destinationViewController as InschrijvenVakantie2ViewController
+            inschrijvenVakantie2ViewController.vakantie = vakantie
+            //inschrijvenVakantie1ViewController.pickerData = vakantie.periodes!
+            inschrijvenVakantie2ViewController.hidesBottomBarWhenPushed = true
         } else if segue.identifier == "geefFeedback" {
             let geefFeedback2TableViewController = segue.destinationViewController as GeefFeedback2ViewController
             geefFeedback2TableViewController.vakantie = vakantie
