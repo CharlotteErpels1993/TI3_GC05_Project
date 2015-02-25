@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="b2K-U9-3tu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="b2K-U9-3tu">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -802,7 +802,7 @@ De smaak te pakken? Wacht dan niet te lang en boek een onvergetelijke JOETZ-vaka
                         <barButtonItem key="rightBarButtonItem" title="Inschrijven" id="CV8-59-j9a">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <segue destination="1th-E5-fug" kind="show" identifier="inschrijven" id="x3q-p1-7Rn"/>
+                                <segue destination="s9h-JL-YKP" kind="show" identifier="inschrijven" id="aMY-NB-FGs"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -3020,10 +3020,10 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
             </objects>
             <point key="canvasLocation" x="4014" y="3306"/>
         </scene>
-        <!--Inschrijven (2/5)-->
+        <!--Inschrijven (3/6)-->
         <scene sceneID="HhN-zZ-53m">
             <objects>
-                <viewController id="JG9-Yc-TEg" customClass="InschrijvenVakantie2ViewController" customModule="JOETZ" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="JG9-Yc-TEg" customClass="InschrijvenVakantie3ViewController" customModule="JOETZ" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="JeY-4v-Jqr"/>
                         <viewControllerLayoutGuide type="bottom" id="dt4-zN-heL"/>
@@ -3070,7 +3070,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                             <constraint firstItem="XVp-7Y-Xg3" firstAttribute="leading" secondItem="PYG-TA-U3b" secondAttribute="leadingMargin" constant="-16" id="xOF-9f-3Ta"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Inschrijven (2/5)" id="spO-N6-JKi">
+                    <navigationItem key="navigationItem" title="Inschrijven (3/6)" id="spO-N6-JKi">
                         <barButtonItem key="backBarButtonItem" title="Terug" id="93V-XJ-qlN"/>
                         <barButtonItem key="rightBarButtonItem" title="Volgende" id="gRg-tk-md4">
                             <connections>
@@ -3087,10 +3087,10 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
             </objects>
             <point key="canvasLocation" x="273" y="2561"/>
         </scene>
-        <!--Inschrijven (3/5)-->
+        <!--Inschrijven (4/6)-->
         <scene sceneID="cOv-3c-Vbc">
             <objects>
-                <tableViewController id="8Yj-Ve-dEZ" customClass="InschrijvenVakantie3ViewController" customModule="JOETZ" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="8Yj-Ve-dEZ" customClass="InschrijvenVakantie4ViewController" customModule="JOETZ" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="9v1-ek-XEA">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3270,7 +3270,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                             <outlet property="delegate" destination="8Yj-Ve-dEZ" id="EcC-5D-OWz"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Inschrijven (3/5)" id="DPP-eP-0Dc">
+                    <navigationItem key="navigationItem" title="Inschrijven (4/6)" id="DPP-eP-0Dc">
                         <barButtonItem key="backBarButtonItem" title="Terug" id="nJt-GP-RNm"/>
                         <barButtonItem key="rightBarButtonItem" title="Volgende" id="VJ0-7v-ugy">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -3291,10 +3291,10 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
             </objects>
             <point key="canvasLocation" x="969" y="2561"/>
         </scene>
-        <!--Inschrijven (4/5)-->
+        <!--Inschrijven (5/6)-->
         <scene sceneID="Oe1-1x-jzp">
             <objects>
-                <tableViewController id="YqF-di-ama" customClass="InschrijvenVakantie4ViewController" customModule="JOETZ" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="YqF-di-ama" customClass="InschrijvenVakantie5ViewController" customModule="JOETZ" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Xo2-pt-COv">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3480,7 +3480,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                             <outlet property="delegate" destination="YqF-di-ama" id="aT1-hO-26y"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Inschrijven (4/5)" id="NOu-P1-GeD">
+                    <navigationItem key="navigationItem" title="Inschrijven (5/6)" id="NOu-P1-GeD">
                         <barButtonItem key="backBarButtonItem" title="Terug" id="r1Q-Sv-D9w"/>
                         <barButtonItem key="rightBarButtonItem" title="Volgende" id="Gqp-U9-pie">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -3503,10 +3503,10 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
             </objects>
             <point key="canvasLocation" x="1619" y="2558"/>
         </scene>
-        <!--Inschrijven (5/5)-->
+        <!--Inschrijven (6/6)-->
         <scene sceneID="GXT-7M-ciY">
             <objects>
-                <viewController id="C57-CL-LAn" customClass="InschrijvenVakantie5ViewController" customModule="JOETZ" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="C57-CL-LAn" customClass="InschrijvenVakantie6ViewController" customModule="JOETZ" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="oiE-gc-skE"/>
                         <viewControllerLayoutGuide type="bottom" id="zvN-o6-1RE"/>
@@ -3559,7 +3559,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                             <constraint firstItem="iOI-be-7bI" firstAttribute="top" secondItem="oiE-gc-skE" secondAttribute="bottom" constant="33" id="rQ8-se-uuY"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Inschrijven (5/5)" id="tmb-o3-OYi">
+                    <navigationItem key="navigationItem" title="Inschrijven (6/6)" id="tmb-o3-OYi">
                         <barButtonItem key="rightBarButtonItem" title="Inschrijven" id="g69-zQ-NwD">
                             <connections>
                                 <segue destination="XVP-eA-hta" kind="show" identifier="volgende" id="vdn-nt-PEa"/>
@@ -4650,10 +4650,71 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
             </objects>
             <point key="canvasLocation" x="-394" y="1793"/>
         </scene>
-        <!--Inschrijven (1/5)-->
+        <!--Inschrijven (1/6)-->
+        <scene sceneID="Xcp-oM-khm">
+            <objects>
+                <viewController id="s9h-JL-YKP" customClass="InschrijvenVakantie1ViewController" customModule="JOETZ" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kYg-yo-zpO"/>
+                        <viewControllerLayoutGuide type="bottom" id="j4O-dP-n1a"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="NlL-JP-db3">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kies uw periode:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v2Y-CR-hCq">
+                                <rect key="frame" x="16" y="72" width="128" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tqu-nd-Itp">
+                                <rect key="frame" x="0.0" y="126" width="600" height="162"/>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lib-b6-p7h">
+                                <rect key="frame" x="523" y="562" width="61" height="30"/>
+                                <state key="normal" title="Annuleer">
+                                    <color key="titleColor" red="0.90980392160000001" green="0.12941176469999999" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="annuleer:" destination="1th-E5-fug" eventType="touchUpInside" id="iKH-VH-qkR"/>
+                                    <action selector="annuleer:" destination="s9h-JL-YKP" eventType="touchUpInside" id="xa0-EB-g0d"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="v2Y-CR-hCq" firstAttribute="leading" secondItem="NlL-JP-db3" secondAttribute="leadingMargin" id="7Cn-Jy-Iro"/>
+                            <constraint firstItem="j4O-dP-n1a" firstAttribute="top" secondItem="lib-b6-p7h" secondAttribute="bottom" constant="8" id="93L-4O-KFQ"/>
+                            <constraint firstItem="Tqu-nd-Itp" firstAttribute="top" secondItem="kYg-yo-zpO" secondAttribute="bottom" constant="62" id="ENw-Zx-6FN"/>
+                            <constraint firstItem="lib-b6-p7h" firstAttribute="trailing" secondItem="NlL-JP-db3" secondAttribute="trailingMargin" id="fda-b5-oPz"/>
+                            <constraint firstItem="Tqu-nd-Itp" firstAttribute="leading" secondItem="NlL-JP-db3" secondAttribute="leadingMargin" constant="-16" id="hT2-Kh-SjB"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Tqu-nd-Itp" secondAttribute="trailing" constant="-16" id="iJ6-Fs-imO"/>
+                            <constraint firstItem="v2Y-CR-hCq" firstAttribute="top" secondItem="kYg-yo-zpO" secondAttribute="bottom" constant="8" id="oFF-lK-bAZ"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Inschrijven (1/6)" id="0f5-5F-zhX">
+                        <barButtonItem key="rightBarButtonItem" title="Volgende" id="PfI-Mc-Zyu">
+                            <connections>
+                                <segue destination="1th-E5-fug" kind="show" identifier="volgende" id="Mke-gT-QGJ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="pickerView" destination="Tqu-nd-Itp" id="Djc-BI-xh5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SGb-RE-xhX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1080" y="2555"/>
+        </scene>
+        <!--Inschrijven (2/6)-->
         <scene sceneID="4cQ-TD-bhO">
             <objects>
-                <tableViewController id="1th-E5-fug" customClass="InschrijvenVakantie1ViewController" customModule="JOETZ" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="1th-E5-fug" customClass="InschrijvenVakantie2ViewController" customModule="JOETZ" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="kZA-f0-wAJ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -4900,7 +4961,7 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
                             <outlet property="delegate" destination="1th-E5-fug" id="ugI-Td-TID"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Inschrijven (1/5)" id="0Lb-ld-pgw">
+                    <navigationItem key="navigationItem" title="Inschrijven (2/6)" id="0Lb-ld-pgw">
                         <barButtonItem key="backBarButtonItem" title="Terug" id="Dgz-kz-Pxv"/>
                         <barButtonItem key="rightBarButtonItem" title="Volgende" id="qYR-Ms-Wfn">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -5024,10 +5085,10 @@ Mail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm 
         <image name="star2.png" width="1125" height="1125"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="7j1-hF-0E4"/>
         <segue reference="xe1-I8-Pkw"/>
         <segue reference="WzF-72-HCe"/>
-        <segue reference="ua9-8c-Y8i"/>
-        <segue reference="8Ie-OP-chB"/>
+        <segue reference="n6i-tz-46X"/>
+        <segue reference="xfp-UK-L9d"/>
+        <segue reference="7j1-hF-0E4"/>
     </inferredMetricsTieBreakers>
 </document>
