@@ -14,6 +14,5 @@ class Feedback {
         self.vakantie = Vakantie(id: "test")
         self.gebruiker = Gebruiker(id: "test")
         self.datum = NSDate()
-        
     }
 }

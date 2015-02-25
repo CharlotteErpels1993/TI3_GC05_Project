@@ -3,6 +3,167 @@ import Foundation
 struct LocalDatastore {
     
     //
+    //Function: getTableReady
+    //
+    //Deze functie zorgt ervoor dat als er verbinding is met het internet, 
+    //alle lokaal opgeslagen objecten in de local datastore worden verwijderd,
+    //en alle objecten uit de online database lokaal worden opgeslagen in de local datastore.
+    //
+    //Parameters: - tableName: String - naam van de tabel
+    //
+    static func getTableReady(tableName: String) {
+        
+        if Reachability.isConnectedToNetwork() == true {
+            self.unpinLocalObjects(tableName)
+            self.fillTable(tableName)
+        }
+    }
+    
+    //
+    //Function: unpinLocalObjects
+    //
+    //Deze functie zoekt eerst alle lokale objecten in de local datastore voor de opgegeven tabel,
+    //en verwijderd deze lokale objecten, zodat de lokale tabel leeg is.
+    //
+    //Parameters: - tableName: String - naam van de tabel
+    //
+    static private func unpinLocalObjects(tableName: String) {
+        
+        //Alle lokale objecten uit de opgegeven tabel ophalen
+        var query = PFQuery(className: tableName)
+        query.fromLocalDatastore()
+        var objects = query.findObjects() as [PFObject]
+        
+        //Alle gevonden objecten lokaal verwijderden
+        PFObject.unpinAll(objects)
+        
+        /*var query = self.makeQuery(tableName, local: true)
+        var objects = query.findObjects() as [PFObject]
+        PFObject.unpinAll(objects)*/
+    }
+    
+    //
+    //Function: fillTable
+    //
+    //Deze functie haalt alle objecten uit de online database voor de opgegeven tabel op,
+    //en slaat deze lokaal op in de local datastore.
+    //
+    static private func fillTable(tableName: String) {
+        
+        //Alle online objecten ophalen
+        var query = PFQuery(className: tableName)
+        var objects = query.findObjects() as [PFObject]
+        
+        //Alle gevonden objecten lokaal opslaan
+        PFObject.pinAll(objects)
+        
+        /*var query = self.makeQuery(tableName, local: false)
+        var objects: [PFObject] = []
+        objects = query.findObjects() as [PFObject]
+        PFObject.pinAll(objects)*/
+    }
+    
+    //
+    //Function: isResultSetEmpty
+    //
+    //Deze functie controleert of een query resultaten oplevert.
+    //
+    //Parameters: 
+    //      - tableName: String
+    //      - whereArgs: [String : AnyObject]
+    //
+    //Return: true als de query geen resultaten oplevert, false als de query wel resultaten oplevert
+    //
+    static func isResultSetEmpty(tableName: String, whereArgs: [String: AnyObject] = [:]) -> Bool {
+        var query = PFQuery(className: tableName)
+        query.fromLocalDatastore()
+        
+        if !whereArgs.isEmpty {
+            for whereArg in whereArgs {
+                query.whereKey(whereArg.0 , equalTo: whereArg.1)
+            }
+        }
+        
+        if query.countObjects() > 0 {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    //
+    //Function: query
+    //
+    //Deze functie haalt de objecten uit de local datastore met de opgegeven constraints.
+    //
+    //Return: array van AnyObject
+    //
+    static func query(tableName: String, whereArgs: [String : AnyObject] = [:]) -> [AnyObject] {
+            
+        var query = PFQuery(className: tableName)
+        query.fromLocalDatastore()
+        
+        if !whereArgs.isEmpty {
+            for whereArg in whereArgs {
+                query.whereKey(whereArg.0 , equalTo: whereArg.1)
+            }
+        }
+        
+        var objecten = query.findObjects() as [PFObject]
+        
+        return getObjecten(tableName, objecten: objecten)
+    }
+    
+    //
+    //Function: queryFirstObject
+    //
+    //Deze functie haalt het eerste object uit de local datastore met de opgegeven constraints.
+    //
+    //Return: AnyObject
+    //
+    static func queryFirstObject(tableName: String, whereArgs: [String : AnyObject] = [:]) -> AnyObject {
+        
+        var query = PFQuery(className: tableName)
+        query.fromLocalDatastore()
+        
+        if !whereArgs.isEmpty {
+            for whereArg in whereArgs {
+                query.whereKey(whereArg.0 , equalTo: whereArg.1)
+            }
+        }
+        
+        var objecten = query.findObjects() as [PFObject]
+        
+        return getObjecten(tableName, objecten: objecten).first!
+    }
+    
+    //
+    //Function: getObjecten
+    //
+    //Deze functie delegeert de omzetting van de objecten naar de juiste klassen,
+    //en retourneert een array van omgezette objecten.
+    //
+    //Parameters: 
+    //      - tableName: String
+    //      - objecten: [PFObject]
+    //
+    //Return: een array van AnyObject
+    //
+    static private func getObjecten(tableName: String, objecten: [PFObject]) -> [AnyObject] {
+        
+        if tableName == Constanten.TABLE_AFBEELDING {
+            return AfbeeldingLD.getAfbeeldingen(objecten)
+        } else if tableName == Constanten.TABLE_DEELNEMER {
+            return DeelnemerLD.getDeelnemers(objecten)
+        } 
+        
+    }
+    
+    
+    
+    
+    
+    //
     //Function: makeQuery
     //
     //
@@ -201,40 +362,12 @@ struct LocalDatastore {
         return false
     }
     
-    static func getTableReady(tableName: String) {
-        
-        if Reachability.isConnectedToNetwork() == true {
-            self.unpinLocalObjects(tableName)
-            self.fillTable(tableName)
-        }
-    }
-    
-    static private func unpinLocalObjects(tableName: String) {
-        var query = self.makeQuery(tableName, local: true)
-        
-        var objects = query.findObjects() as [PFObject]
-        
-        PFObject.unpinAll(objects)
-    }
-    
-    static private func fillTable(tableName: String) {
-        var query = self.makeQuery(tableName, local: false)
-        
-        var objects: [PFObject] = []
-        
-        objects = query.findObjects() as [PFObject]
-        
-        PFObject.pinAll(objects)
-        
-        
-    }
-    
-    static private func getAfbeelding(object: PFObject) -> UIImage {
+    /*static private func getAfbeelding(object: PFObject) -> UIImage {
         
         var imageFile = object["afbeelding"] as PFFile
         var image = UIImage(data: imageFile.getData())!
         return image
-    }
+    }*/
     
     static private func getDeelnemer(object: PFObject) -> Deelnemer {
         var deelnemer: Deelnemer = Deelnemer(id: object.objectId)
