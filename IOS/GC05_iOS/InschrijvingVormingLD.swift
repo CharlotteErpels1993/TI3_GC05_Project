@@ -38,7 +38,7 @@ struct InschrijvingVormingLD {
         var wArgsMonitor : [String : AnyObject] = [:]
         wArgsMonitor[Constanten.COLUMN_OBJECTID] = object[Constanten.COLUMN_MONITOR] as? String
         
-        inschrijvingVorming.monitor = LocalDatastore.queryFirstObject(Constanten.TABLE_MONITOR, whereArgs: wArgsMonitor) as? Monitor
+        inschrijvingVorming.monitor = LocalDatastore.getFirstObject(Constanten.TABLE_MONITOR, whereArgs: wArgsMonitor) as? Monitor
         
         /*var wArgsVakantie : [String : AnyObject] = [:]
         wArgsVakantie[Constanten.COLUMN_OBJECTID] = object[Constanten.COLUMN_VAKANTIE] as? String
