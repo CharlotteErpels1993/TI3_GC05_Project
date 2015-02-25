@@ -66,24 +66,13 @@ struct LocalDatastore {
     //
     //Function: isResultSetEmpty
     //
-    //Deze functie controleert of een query resultaten oplevert.
+    //Deze functie controleert of een opgegeven query resultaten oplevert.
     //
-    //Parameters: 
-    //      - tableName: String
-    //      - whereArgs: [String : AnyObject]
+    //Parameters: - query: PFQuery - De query waarop gecontroleerd moet worden.
     //
     //Return: true als de query geen resultaten oplevert, false als de query wel resultaten oplevert
     //
-    static func isResultSetEmpty(tableName: String, whereArgs: [String: AnyObject] = [:]) -> Bool {
-        var query = PFQuery(className: tableName)
-        query.fromLocalDatastore()
-        
-        if !whereArgs.isEmpty {
-            for whereArg in whereArgs {
-                query.whereKey(whereArg.0 , equalTo: whereArg.1)
-            }
-        }
-        
+    static func isResultSetEmpty(query: PFQuery) -> Bool {
         if query.countObjects() > 0 {
             return true
         } else {
@@ -94,11 +83,11 @@ struct LocalDatastore {
     //
     //Function: query
     //
-    //Deze functie haalt de objecten uit de local datastore met de opgegeven constraints.
+    //Deze functie maakt een query met de opgegeven constraints.
     //
-    //Return: array van AnyObject
+    //Return: de gemaakte query
     //
-    static func query(tableName: String, whereArgs: [String : AnyObject] = [:]) -> [AnyObject] {
+    static func query(tableName: String, whereArgs: [String : AnyObject] = [:]) -> PFQuery {
             
         var query = PFQuery(className: tableName)
         query.fromLocalDatastore()
@@ -109,9 +98,7 @@ struct LocalDatastore {
             }
         }
         
-        var objecten = query.findObjects() as [PFObject]
-        
-        return getObjecten(tableName, objecten: objecten)
+        return query
     }
     
     //
@@ -121,7 +108,7 @@ struct LocalDatastore {
     //
     //Return: AnyObject
     //
-    static func queryFirstObject(tableName: String, whereArgs: [String : AnyObject] = [:]) -> AnyObject {
+    /*static func queryFirstObject(tableName: String, whereArgs: [String : AnyObject] = [:]) -> AnyObject {
         
         var query = PFQuery(className: tableName)
         query.fromLocalDatastore()
@@ -135,7 +122,7 @@ struct LocalDatastore {
         var objecten = query.findObjects() as [PFObject]
         
         return getObjecten(tableName, objecten: objecten).first!
-    }
+    }*/
     
     //
     //Function: getObjecten
@@ -145,11 +132,13 @@ struct LocalDatastore {
     //
     //Parameters: 
     //      - tableName: String
-    //      - objecten: [PFObject]
+    //      - query: PFQuery
     //
     //Return: een array van AnyObject
     //
-    static private func getObjecten(tableName: String, objecten: [PFObject]) -> [AnyObject] {
+    static private func getObjecten(tableName: String, query: PFQuery) -> [AnyObject] {
+        
+        var objecten = query.findObjects() as [PFObject]
         
         if tableName == Constanten.TABLE_AFBEELDING {
             return AfbeeldingLD.getAfbeeldingen(objecten)
@@ -158,6 +147,11 @@ struct LocalDatastore {
         } 
         
     }
+    
+    
+    
+    
+    
     
     
     
