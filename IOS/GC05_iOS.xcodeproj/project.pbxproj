@@ -45,6 +45,8 @@
 		0FAA5A001A9CBA420023F863 /* FeedbackLD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAA59FF1A9CBA420023F863 /* FeedbackLD.swift */; };
 		0FAA5A021A9CBBAD0023F863 /* InschrijvingVormingLD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAA5A011A9CBBAD0023F863 /* InschrijvingVormingLD.swift */; };
 		0FAA5A041A9CBCAA0023F863 /* MonitorLD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAA5A031A9CBCAA0023F863 /* MonitorLD.swift */; };
+		0FC1EEC41A9DFEF800427CA7 /* OuderLD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC1EEC31A9DFEF800427CA7 /* OuderLD.swift */; };
+		0FC1EEC61A9DFFC900427CA7 /* VormingLD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC1EEC51A9DFFC900427CA7 /* VormingLD.swift */; };
 		0FD07EB51A2348DE006A4E60 /* VakantieSQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD07EB41A2348DE006A4E60 /* VakantieSQL.swift */; };
 		0FD07EB71A234A2E006A4E60 /* MonitorSQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD07EB61A234A2E006A4E60 /* MonitorSQL.swift */; };
 		0FD07EB91A234C41006A4E60 /* VoorkeurSQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD07EB81A234C41006A4E60 /* VoorkeurSQL.swift */; };
@@ -182,6 +184,8 @@
 		0FAA59FF1A9CBA420023F863 /* FeedbackLD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackLD.swift; sourceTree = "<group>"; };
 		0FAA5A011A9CBBAD0023F863 /* InschrijvingVormingLD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InschrijvingVormingLD.swift; sourceTree = "<group>"; };
 		0FAA5A031A9CBCAA0023F863 /* MonitorLD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitorLD.swift; sourceTree = "<group>"; };
+		0FC1EEC31A9DFEF800427CA7 /* OuderLD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OuderLD.swift; sourceTree = "<group>"; };
+		0FC1EEC51A9DFFC900427CA7 /* VormingLD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VormingLD.swift; sourceTree = "<group>"; };
 		0FD07EB41A2348DE006A4E60 /* VakantieSQL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VakantieSQL.swift; sourceTree = "<group>"; };
 		0FD07EB61A234A2E006A4E60 /* MonitorSQL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitorSQL.swift; sourceTree = "<group>"; };
 		0FD07EB81A234C41006A4E60 /* VoorkeurSQL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoorkeurSQL.swift; sourceTree = "<group>"; };
@@ -336,7 +340,9 @@
 				0FAA59FB1A9CB2AA0023F863 /* GebruikerLD.swift */,
 				0FAA5A011A9CBBAD0023F863 /* InschrijvingVormingLD.swift */,
 				0FAA5A031A9CBCAA0023F863 /* MonitorLD.swift */,
+				0FC1EEC31A9DFEF800427CA7 /* OuderLD.swift */,
 				0FAA59FD1A9CB87C0023F863 /* VakantieLD.swift */,
+				0FC1EEC51A9DFFC900427CA7 /* VormingLD.swift */,
 			);
 			name = "Local Datastore";
 			sourceTree = "<group>";
@@ -710,6 +716,8 @@
 				A503E0EC1A1A7778000A9908 /* ProfielBewerkenViewController.swift in Sources */,
 				A575A06A1A1633E500F6735A /* ENSideMenuNavigationController.swift in Sources */,
 				0F92E3151A1373E50005C86C /* InschrijvenVakantie5ViewController.swift in Sources */,
+				0FC1EEC41A9DFEF800427CA7 /* OuderLD.swift in Sources */,
+				0FC1EEC61A9DFFC900427CA7 /* VormingLD.swift in Sources */,
 				A5CB1FFF1A35DAFE00A4178A /* FeedbackCell.swift in Sources */,
 				1BDDB9571A02DD1E0007623D /* Gebruiker.swift in Sources */,
 				A512381D1A16332D002242C6 /* MyNavigationController.swift in Sources */,

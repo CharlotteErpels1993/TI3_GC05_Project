@@ -14,11 +14,11 @@
 		<string>https://github.com/CharlotteErpels1993/TI3_GC05_Project.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>iOS_huidig_goed!/GC05_iOS/GC05_iOS.xcodeproj</string>
+	<string>IOS/GC05_iOS.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>16829AE00FAC6123E9B4E79E8CF5543E49AC0634</key>
-		<string>../../../..</string>
+		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/CharlotteErpels1993/TI3_GC05_Project.git</string>
