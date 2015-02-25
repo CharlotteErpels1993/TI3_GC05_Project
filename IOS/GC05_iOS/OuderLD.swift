@@ -75,4 +75,51 @@ struct OuderLD {
         
         return ouder
     }
+    
+    //
+    //Function: insert
+    //
+    //Deze functie insert een Ouder object in de local datastore en
+    //synct deze verandering dan naar de online database.
+    //
+    //Parameters: - ouder: Ouder
+    //
+    static func insert(ouder: Ouder) {
+        
+        let object = PFObject(className: Constanten.TABLE_OUDER)
+        
+        object[Constanten.COLUMN_RIJKSREGISTERNUMMER] = ouder.rijksregisterNr
+        object[Constanten.COLUMN_EMAIL] = ouder.email
+        object[Constanten.COLUMN_VOORNAAM] = ouder.voornaam
+        object[Constanten.COLUMN_NAAM] = ouder.naam
+        object[Constanten.COLUMN_STRAAT] = ouder.straat
+        object[Constanten.COLUMN_NUMMER] = ouder.nummer
+        object[Constanten.COLUMN_POSTCODE] = ouder.postcode
+        object[Constanten.COLUMN_GEMEENTE] = ouder.gemeente
+        object[Constanten.COLUMN_GSM] = ouder.gsm
+        
+        if ouder.bus != nil {
+            object[Constanten.COLUMN_BUS] = ouder.bus
+        }
+        
+        if ouder.telefoon != nil {
+            object[Constanten.COLUMN_TELEFOON] = ouder.telefoon
+        }
+        
+        if ouder.aansluitingsNr != nil {
+            object[Constanten.COLUMN_AANSLUITINGSNUMMER] = ouder.aansluitingsNr
+        }
+        
+        if ouder.codeGerechtigde != nil {
+            object[Constanten.COLUMN_CODEGERECHTIGDE] = ouder.codeGerechtigde
+        }
+        
+        if ouder.aansluitingsNrTweedeOuder != nil {
+            object[Constanten.COLUMN_AANSLUITINGSNUMMERTWEEDEOUDER] = ouder.aansluitingsNrTweedeOuder
+        }
+        
+        object.pin()
+        object.save()
+    }
+
 }

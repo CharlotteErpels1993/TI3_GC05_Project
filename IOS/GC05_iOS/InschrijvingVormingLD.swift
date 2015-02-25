@@ -51,4 +51,24 @@ struct InschrijvingVormingLD {
         
         return inschrijvingVorming
     }
+    
+    //
+    //Function: insert
+    //
+    //Deze functie insert een InschrijvingVorming object in de local datastore en
+    //synct deze verandering dan naar de online database.
+    //
+    //Parameters: - inschrijvingVorming: InschrijvingVorming
+    //
+    static func insert(inschrijvingVorming: InschrijvingVorming) {
+        
+        let object = PFObject(className: Constanten.TABLE_INSCHRIJVINGVORMING)
+        
+        object[Constanten.COLUMN_PERIODE] = inschrijvingVorming.periode
+        object[Constanten.COLUMN_MONITOR] = inschrijvingVorming.monitor?.id
+        object[Constanten.COLUMN_VORMING] = inschrijvingVorming.vorming?.id
+        
+        object.pin()
+        object.save()
+    }
 }

@@ -62,4 +62,27 @@ struct FeedbackLD {
         
         return feedback
     }
+    
+    //
+    //Function: insert
+    //
+    //Deze functie insert een Feedback object in de local datastore en
+    //synct deze verandering dan naar de online database.
+    //
+    //Parameters: - feedback: Feedback
+    //
+    static func insert(feedback: Feedback) {
+        
+        let object = PFObject(className: Constanten.TABLE_FEEDBACK)
+        
+        object[Constanten.COLUMN_DATUM] = feedback.datum
+        object[Constanten.COLUMN_GOEDGEKEURD] = feedback.goedgekeurd
+        object[Constanten.COLUMN_VAKANTIE] = feedback.vakantie?.id
+        object[Constanten.COLUMN_GEBRUIKER] = feedback.gebruiker?.id
+        object[Constanten.COLUMN_WAARDERING] = feedback.waardering
+        object[Constanten.COLUMN_SCORE] = feedback.score
+        
+        object.pin()
+        object.save()
+    }
 }

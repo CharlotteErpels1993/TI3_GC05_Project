@@ -54,4 +54,23 @@ struct FavorietLD {
         
         return favoriet
     }
+    
+    //
+    //Function: insert
+    //
+    //Deze functie insert een Favoriet object in de local datastore en
+    //synct deze verandering dan naar de online database.
+    //
+    //Parameters: - favoriet: Favoriet
+    //
+    static func insert(favoriet: Favoriet) {
+        
+        let object = PFObject(className: Constanten.TABLE_FAVORIET)
+        
+        object[Constanten.COLUMN_GEBRUIKER] = favoriet.gebruiker?.id
+        object[Constanten.COLUMN_VAKANTIE] = favoriet.vakantie?.id
+        
+        object.pin()
+        object.save()
+    }
 }
