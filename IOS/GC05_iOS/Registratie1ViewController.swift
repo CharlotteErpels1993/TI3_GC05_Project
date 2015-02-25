@@ -381,6 +381,18 @@ class Registratie1ViewController: UITableViewController {
     //Return: een bool true als het rijksregisternummer al geregistreerd is, anders false
     //
     func controleerRijksregisterNummerAlGeregisteerd() -> Bool {
-        return LocalDatastore.isRijksregisternummerAlGeregistreerd(self.txtRijksregisterNr.text)
+        
+        var arguments : [String : AnyObject] = [:]
+        arguments[Constanten.COLUMN_RIJKSREGISTERNUMMER] = self.txtRijksregisterNr.text
+        
+        var query = LocalDatastore.query(Constanten.TABLE_OUDER, whereArgs: arguments)
+        
+        if LocalDatastore.isResultSetEmpty(query) {
+            return false
+        } else {
+            return true
+        }
+        
+        //return LocalDatastore.isRijksregisternummerAlGeregistreerd(self.txtRijksregisterNr.text)
     }
 }

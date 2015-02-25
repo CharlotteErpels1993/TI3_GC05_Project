@@ -328,7 +328,16 @@ class Registratie2ViewController: UITableViewController {
     //Return: een bool true als het gsm-nummer al geregistreerd is, anders false
     //
     func controleerGSMAlGeregisteerd() -> Bool {
-        return LocalDatastore.isGsmAlGeregistreerd(self.txtGsm.text)
+        
+        var arguments : [String : AnyObject] = [:]
+        arguments[Constanten.COLUMN_GSM] = self.txtGsm.text
+        
+        var query = LocalDatastore.query(Constanten.TABLE_OUDER, whereArgs: <#[String : AnyObject]#>)
+        
+        
+        
+        
+        //return LocalDatastore.isGsmAlGeregistreerd(self.txtGsm.text)
     }
 }
 

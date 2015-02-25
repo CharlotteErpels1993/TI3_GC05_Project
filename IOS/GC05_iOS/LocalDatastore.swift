@@ -212,7 +212,7 @@ struct LocalDatastore {
     //
     //Return: een query met de opgegeven parameters
     //
-    static private func makeQuery(tableName: String, local: Bool,
+    /*static private func makeQuery(tableName: String, local: Bool,
         soortConstraints: [String: String] = [:], equalTo: [String: String] = [:],
         notContainedIn: [String: [AnyObject]] = [:], notEqualTo: [String: String] = [:], containedIn: [String: [AnyObject]] = [:]) -> PFQuery
     {
@@ -1053,5 +1053,5 @@ struct LocalDatastore {
         
         object.fetchFromLocalDatastore()
         self.getTableReady(Constanten.TABLE_MONITOR)
-    }
+    }*/
 }
