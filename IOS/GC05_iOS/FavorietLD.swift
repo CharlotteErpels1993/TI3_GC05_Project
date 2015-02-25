@@ -42,19 +42,15 @@ struct FavorietLD {
         var queryOuders = LocalDatastore.query(Constanten.TABLE_OUDER, whereArgs: wArgsGebruiker)
         
         if LocalDatastore.isResultSetEmpty(queryOuders) {
-            
-        }
-        
-        
-        /*if LocalDatastore.isResultSetEmpty(Constanten.TABLE_OUDER, whereArgs: wArgsGebruiker) {
-            favoriet.gebruiker = LocalDatastore.queryFirstObject(Constanten.TABLE_MONITOR, whereArgs: wArgsGebruiker) as? Gebruiker
+            var queryMonitor = LocalDatastore.query(Constanten.TABLE_MONITOR, whereArgs: wArgsGebruiker)
+            favoriet.gebruiker = LocalDatastore.getFirstObject(Constanten.TABLE_MONITOR, query: queryMonitor) as? Gebruiker
         } else {
-            favoriet.gebruiker = LocalDatastore.queryFirstObject(Constanten.TABLE_OUDER, whereArgs: wArgsGebruiker) as? Gebruiker
-        }*/
+            favoriet.gebruiker = LocalDatastore.getFirstObject(Constanten.TABLE_OUDER, query: queryOuders) as? Gebruiker
+        }
+    
+        var queryVakantie = LocalDatastore.query(Constanten.TABLE_VAKANTIE, whereArgs: wArgsVakantie)
         
-        
-        
-        favoriet.vakantie = LocalDatastore.queryFirstObject(Constanten.TABLE_VAKANTIE, whereArgs: wArgsVakantie) as? Vakantie
+        favoriet.vakantie = LocalDatastore.getFirstObject(Constanten.TABLE_VAKANTIE, query: queryVakantie) as? Vakantie
         
         return favoriet
     }

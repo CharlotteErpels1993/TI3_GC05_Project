@@ -30,7 +30,7 @@ struct InschrijvingVormingLD {
     //
     //Return: een InschrijvingVorming
     //
-    /*static func getInschrijvingVorming(object: PFObject) -> InschrijvingVorming {
+    static func getInschrijvingVorming(object: PFObject) -> InschrijvingVorming {
         var inschrijvingVorming: InschrijvingVorming = InschrijvingVorming(id: object.objectId)
         
         inschrijvingVorming.periode = object[Constanten.COLUMN_PERIODE] as? String
@@ -38,13 +38,17 @@ struct InschrijvingVormingLD {
         var wArgsMonitor : [String : AnyObject] = [:]
         wArgsMonitor[Constanten.COLUMN_OBJECTID] = object[Constanten.COLUMN_MONITOR] as? String
         
-        inschrijvingVorming.monitor = LocalDatastore.getFirstObject(Constanten.TABLE_MONITOR, whereArgs: wArgsMonitor) as? Monitor
+        var queryMonitor = LocalDatastore.query(Constanten.TABLE_MONITOR, whereArgs: wArgsMonitor)
         
-        /*var wArgsVakantie : [String : AnyObject] = [:]
-        wArgsVakantie[Constanten.COLUMN_OBJECTID] = object[Constanten.COLUMN_VAKANTIE] as? String
+        inschrijvingVorming.monitor = LocalDatastore.getFirstObject(Constanten.TABLE_MONITOR, query: queryMonitor) as? Monitor
         
-        inschrijvingVorming.vakantie = LocalDatastore.queryFirstObject(Constanten.TABLE_VAKANTIE, whereArgs: wArgsVakantie) as? Vakantie*/
+        var wArgsVorming : [String : AnyObject] = [:]
+        wArgsVorming[Constanten.COLUMN_OBJECTID] = object[Constanten.COLUMN_VORMING] as? String
+        
+        var queryVorming = LocalDatastore.query(Constanten.TABLE_VORMING, whereArgs: wArgsVorming)
+        
+        inschrijvingVorming.vorming = LocalDatastore.getFirstObject(Constanten.TABLE_VORMING, query: queryVorming) as? Vorming
         
         return inschrijvingVorming
-    }*/
+    }
 }
