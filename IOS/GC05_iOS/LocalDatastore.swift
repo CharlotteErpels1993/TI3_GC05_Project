@@ -356,12 +356,12 @@ struct LocalDatastore {
         return false
     }
     
-    /*static private func getAfbeelding(object: PFObject) -> UIImage {
+    static private func getAfbeelding(object: PFObject) -> UIImage {
         
         var imageFile = object["afbeelding"] as PFFile
         var image = UIImage(data: imageFile.getData())!
         return image
-    }*/
+    }
     
     static private func getDeelnemer(object: PFObject) -> Deelnemer {
         var deelnemer: Deelnemer = Deelnemer(id: object.objectId)
