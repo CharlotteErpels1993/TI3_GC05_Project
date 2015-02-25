@@ -30,7 +30,7 @@ struct InschrijvingVormingLD {
     //
     //Return: een InschrijvingVorming
     //
-    static func getInschrijvingVorming(object: PFObject) -> InschrijvingVorming {
+    /*static func getInschrijvingVorming(object: PFObject) -> InschrijvingVorming {
         var inschrijvingVorming: InschrijvingVorming = InschrijvingVorming(id: object.objectId)
         
         inschrijvingVorming.periode = object[Constanten.COLUMN_PERIODE] as? String
@@ -46,5 +46,5 @@ struct InschrijvingVormingLD {
         inschrijvingVorming.vakantie = LocalDatastore.queryFirstObject(Constanten.TABLE_VAKANTIE, whereArgs: wArgsVakantie) as? Vakantie*/
         
         return inschrijvingVorming
-    }
+    }*/
 }
