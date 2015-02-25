@@ -1,0 +1,834 @@
+
+/* Class = "IBUINavigationItem"; title = "Inschrijven (1/5)"; ObjectID = "0Lb-ld-pgw"; */
+"0Lb-ld-pgw.title" = "Inschrijven (1/5)";
+
+/* Class = "IBUIButton"; normalTitle = "Annuleer"; ObjectID = "0Mf-ew-jA5"; */
+"0Mf-ew-jA5.normalTitle" = "Annuleer";
+
+/* Class = "IBUILabel"; text = "Voornaam: *"; ObjectID = "0PK-D3-PT4"; */
+"0PK-D3-PT4.text" = "Voornaam: *";
+
+/* Class = "IBUIButton"; normalTitle = "Annuleer"; ObjectID = "0Qu-NI-7Ru"; */
+"0Qu-NI-7Ru.normalTitle" = "Annuleer";
+
+/* Class = "IBUITextField"; placeholder = "3"; ObjectID = "17N-Pi-u4j"; */
+"17N-Pi-u4j.placeholder" = "3";
+
+/* Class = "IBUITableViewSection"; headerTitle = "Prijs"; ObjectID = "1pG-bL-Q7h"; */
+"1pG-bL-Q7h.headerTitle" = "Prijs";
+
+/* Class = "IBUILabel"; text = "Bevestig wachtwoord: *"; ObjectID = "2DL-kO-bvw"; */
+"2DL-kO-bvw.text" = "Bevestig wachtwoord: *";
+
+/* Class = "IBUINavigationItem"; title = "Wachtwoord vergeten"; ObjectID = "2Ha-qn-9LR"; */
+"2Ha-qn-9LR.title" = "Wachtwoord vergeten";
+
+/* Class = "IBUIBarButtonItem"; title = "Opslaan"; ObjectID = "2Sc-vN-VMg"; */
+"2Sc-vN-VMg.title" = "Opslaan";
+
+/* Class = "IBUILabel"; text = "* verplicht in te vullen"; ObjectID = "3LN-lg-URS"; */
+"3LN-lg-URS.text" = "* verplicht in te vullen";
+
+/* Class = "IBUINavigationItem"; title = "Vormingen"; ObjectID = "3ip-p1-dgO"; */
+"3ip-p1-dgO.title" = "Vormingen";
+
+/* Class = "IBUILabel"; text = "Voornaam: *"; ObjectID = "4S2-ru-706"; */
+"4S2-ru-706.text" = "Voornaam: *";
+
+/* Class = "IBUIBarButtonItem"; title = "Terug"; ObjectID = "4W1-Mx-eUU"; */
+"4W1-Mx-eUU.title" = "Terug";
+
+/* Class = "IBUILabel"; text = "E-mail:"; ObjectID = "4pR-QD-gU1"; */
+"4pR-QD-gU1.text" = "E-mail:";
+
+/* Class = "IBUILabel"; text = "Telefoon:"; ObjectID = "4qM-Qq-4ds"; */
+"4qM-Qq-4ds.text" = "Telefoon:";
+
+/* Class = "IBUIButton"; normalTitle = "Annuleer"; ObjectID = "57o-k9-DmV"; */
+"57o-k9-DmV.normalTitle" = "Annuleer";
+
+/* Class = "IBUIBarButtonItem"; title = "Terug"; ObjectID = "5D9-PA-AtW"; */
+"5D9-PA-AtW.title" = "Terug";
+
+/* Class = "IBUILabel"; text = "VakantieNaam"; ObjectID = "5Rb-IM-edP"; */
+"5Rb-IM-edP.text" = "VakantieNaam";
+
+/* Class = "IBUISearchBar"; placeholder = "Zoek feedback"; ObjectID = "5fv-qC-zQH"; */
+"5fv-qC-zQH.placeholder" = "Zoek feedback";
+
+/* Class = "IBUIButton"; normalTitle = "Annuleer"; ObjectID = "63J-Mo-0Rb"; */
+"63J-Mo-0Rb.normalTitle" = "Annuleer";
+
+/* Class = "IBUITableViewSection"; headerTitle = "Locatie"; ObjectID = "67j-4U-46c"; */
+"67j-4U-46c.headerTitle" = "Locatie";
+
+/* Class = "IBUILabel"; text = "Score"; ObjectID = "6Rf-3f-wSW"; */
+"6Rf-3f-wSW.text" = "Score";
+
+/* Class = "IBUIButton"; normalTitle = "Ga naar inloggen"; ObjectID = "6UF-7q-X34"; */
+"6UF-7q-X34.normalTitle" = "Ga naar inloggen";
+
+/* Class = "IBUILabel"; text = "* verplicht in te vullen"; ObjectID = "6Uy-l8-wkK"; */
+"6Uy-l8-wkK.text" = "* verplicht in te vullen";
+
+/* Class = "IBUILabel"; text = "Formule"; ObjectID = "6av-Pr-Xva"; */
+"6av-Pr-Xva.text" = "Formule";
+
+/* Class = "IBUITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "79b-9q-gfh"; */
+"79b-9q-gfh.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "IBUILabel"; text = "Postcode: *"; ObjectID = "7Ab-cb-5dk"; */
+"7Ab-cb-5dk.text" = "Postcode: *";
+
+/* Class = "IBUILabel"; text = "Gsm:"; ObjectID = "7Uv-YH-GOL"; */
+"7Uv-YH-GOL.text" = "Gsm:";
+
+/* Class = "IBUITextField"; placeholder = "Dupoint"; ObjectID = "7hl-X3-FWy"; */
+"7hl-X3-FWy.placeholder" = "Dupoint";
+
+/* Class = "IBUILabel"; text = "Straat: *"; ObjectID = "7uT-tc-Lxz"; */
+"7uT-tc-Lxz.text" = "Straat: *";
+
+/* Class = "IBUILabel"; text = "Bond moyson prijs"; ObjectID = "7z2-hp-SZc"; */
+"7z2-hp-SZc.text" = "Bond moyson prijs";
+
+/* Class = "IBUILabel"; text = "Telefoon:"; ObjectID = "8GO-F8-s5d"; */
+"8GO-F8-s5d.text" = "Telefoon:";
+
+/* Class = "IBUIBarButtonItem"; title = "Terug"; ObjectID = "93V-XJ-qlN"; */
+"93V-XJ-qlN.title" = "Terug";
+
+/* Class = "IBUILabel"; text = "Volg de stappen om uw wachtwoord opnieuw in te stellen"; ObjectID = "9AP-bJ-lcA"; */
+"9AP-bJ-lcA.text" = "Volg de stappen om uw wachtwoord opnieuw in te stellen";
+
+/* Class = "IBUILabel"; text = "Gemeente: *"; ObjectID = "9Ly-bZ-5r9"; */
+"9Ly-bZ-5r9.text" = "Gemeente: *";
+
+/* Class = "IBUILabel"; text = "Gsm:"; ObjectID = "9Q7-G8-Ytu"; */
+"9Q7-G8-Ytu.text" = "Gsm:";
+
+/* Class = "IBUILabel"; text = "Vul volgende gegevens in:"; ObjectID = "9Xg-3s-QOz"; */
+"9Xg-3s-QOz.text" = "Vul volgende gegevens in:";
+
+/* Class = "IBUIBarButtonItem"; title = "Profielen"; ObjectID = "9aL-Jh-Chx"; */
+"9aL-Jh-Chx.title" = "Profielen";
+
+/* Class = "IBUILabel"; text = "Email monitor:"; ObjectID = "9hm-lh-az6"; */
+"9hm-lh-az6.text" = "Email monitor:";
+
+/* Class = "IBUILabel"; text = "Email:"; ObjectID = "9sg-Sm-m1k"; */
+"9sg-Sm-m1k.text" = "Email:";
+
+/* Class = "IBUILabel"; text = "en wordt goedgekeurd door het Joetz team."; ObjectID = "9yw-K6-H1r"; */
+"9yw-K6-H1r.text" = "en wordt goedgekeurd door het Joetz team.";
+
+/* Class = "IBUILabel"; text = "Score:"; ObjectID = "A0q-eZ-tVt"; */
+"A0q-eZ-tVt.text" = "Score:";
+
+/* Class = "IBUILabel"; text = "Gemeente: *"; ObjectID = "A2Y-se-wHV"; */
+"A2Y-se-wHV.text" = "Gemeente: *";
+
+/* Class = "IBUILabel"; text = "Naam: *"; ObjectID = "Ax4-es-xQe"; */
+"Ax4-es-xQe.text" = "Naam: *";
+
+/* Class = "IBUILabel"; text = "Betalingswijze:"; ObjectID = "B0n-BH-0rG"; */
+"B0n-BH-0rG.text" = "Betalingswijze:";
+
+/* Class = "IBUILabel"; text = "Telefoon:"; ObjectID = "BD0-yr-H33"; */
+"BD0-yr-H33.text" = "Telefoon:";
+
+/* Class = "IBUITextField"; placeholder = "04xxxxxxxx"; ObjectID = "BQd-m4-MY9"; */
+"BQd-m4-MY9.placeholder" = "04xxxxxxxx";
+
+/* Class = "IBUILabel"; text = "* verplicht in te vullen"; ObjectID = "Bj7-QE-4Tk"; */
+"Bj7-QE-4Tk.text" = "* verplicht in te vullen";
+
+/* Class = "IBUILabel"; text = "Detail"; ObjectID = "BkL-rk-9E4"; */
+"BkL-rk-9E4.text" = "Detail";
+
+/* Class = "IBUINavigationItem"; title = "Inschrijven voltooid"; ObjectID = "Bvl-aw-a1o"; */
+"Bvl-aw-a1o.title" = "Inschrijven voltooid";
+
+/* Class = "IBUINavigationItem"; title = "Registreren (2/3)"; ObjectID = "Bwd-07-Ca3"; */
+"Bwd-07-Ca3.title" = "Registreren (2/3)";
+
+/* Class = "IBUIBarButtonItem"; title = "Inschrijven"; ObjectID = "CV8-59-j9a"; */
+"CV8-59-j9a.title" = "Inschrijven";
+
+/* Class = "IBUILabel"; text = "Bevestig wachtwoord: *"; ObjectID = "Cb6-eo-x0I"; */
+"Cb6-eo-x0I.text" = "Bevestig wachtwoord: *";
+
+/* Class = "IBUILabel"; text = "Geen monitoren"; ObjectID = "Cy2-lA-dTi"; */
+"Cy2-lA-dTi.text" = "Geen monitoren";
+
+/* Class = "IBUINavigationItem"; title = "Inschrijven (3/5)"; ObjectID = "DPP-eP-0Dc"; */
+"DPP-eP-0Dc.title" = "Inschrijven (3/5)";
+
+/* Class = "IBUILabel"; text = "Title"; ObjectID = "Db5-rT-kn6"; */
+"Db5-rT-kn6.text" = "Title";
+
+/* Class = "IBUIBarButtonItem"; title = "Ga terug"; ObjectID = "DbE-X8-5pM"; */
+"DbE-X8-5pM.title" = "Ga terug";
+
+/* Class = "IBUIBarButtonItem"; title = "Terug"; ObjectID = "Dgz-kz-Pxv"; */
+"Dgz-kz-Pxv.title" = "Terug";
+
+/* Class = "IBUILabel"; text = "Sterprijs1"; ObjectID = "Dqi-r0-7gm"; */
+"Dqi-r0-7gm.text" = "Sterprijs1";
+
+/* Class = "IBUILabel"; text = "* verplicht in te vullen"; ObjectID = "E1C-QM-Dmc"; */
+"E1C-QM-Dmc.text" = "* verplicht in te vullen";
+
+/* Class = "IBUINavigationItem"; title = "Registreren"; ObjectID = "E6u-uY-1hs"; */
+"E6u-uY-1hs.title" = "Registreren";
+
+/* Class = "IBUITextView"; text = "Geef uw feedback"; ObjectID = "E7l-vk-Drm"; */
+"E7l-vk-Drm.text" = "Geef uw feedback";
+
+/* Class = "IBUILabel"; text = "Rijksregisternummer: *"; ObjectID = "EL1-vY-cel"; */
+"EL1-vY-cel.text" = "Rijksregisternummer: *";
+
+/* Class = "IBUILabel"; text = "Locatie"; ObjectID = "Eae-8F-4Z1"; */
+"Eae-8F-4Z1.text" = "Locatie";
+
+/* Class = "IBUILabel"; text = "Huisnummer: *"; ObjectID = "Ekh-mt-3Rk"; */
+"Ekh-mt-3Rk.text" = "Huisnummer: *";
+
+/* Class = "IBUILabel"; text = "Naam:"; ObjectID = "EnH-Zp-8YU"; */
+"EnH-Zp-8YU.text" = "Naam:";
+
+/* Class = "IBUINavigationItem"; title = "Details"; ObjectID = "EyU-Xm-7Wp"; */
+"EyU-Xm-7Wp.title" = "Details";
+
+/* Class = "IBUIButton"; normalTitle = "Registreren als monitor?"; ObjectID = "FkO-hX-BoA"; */
+"FkO-hX-BoA.normalTitle" = "Registreren als monitor?";
+
+/* Class = "IBUIBarButtonItem"; title = "Terug"; ObjectID = "GMJ-EI-G6j"; */
+"GMJ-EI-G6j.title" = "Terug";
+
+/* Class = "IBUILabel"; text = "Naam:"; ObjectID = "Gci-QN-Ysj"; */
+"Gci-QN-Ysj.text" = "Naam:";
+
+/* Class = "IBUIButton"; normalTitle = "Wachtwoord vergeten?"; ObjectID = "GnE-q7-jzk"; */
+"GnE-q7-jzk.normalTitle" = "Wachtwoord vergeten?";
+
+/* Class = "IBUIBarButtonItem"; title = "Indienen"; ObjectID = "Gpl-bf-AxU"; */
+"Gpl-bf-AxU.title" = "Indienen";
+
+/* Class = "IBUIBarButtonItem"; title = "Volgende"; ObjectID = "Gqp-U9-pie"; */
+"Gqp-U9-pie.title" = "Volgende";
+
+/* Class = "IBUILabel"; text = "Naam: *"; ObjectID = "H3q-t6-gBh"; */
+"H3q-t6-gBh.text" = "Naam: *";
+
+/* Class = "IBUILabel"; text = "Website locatie:"; ObjectID = "HB9-pp-wOC"; */
+"HB9-pp-wOC.text" = "Website locatie:";
+
+/* Class = "IBUITextField"; placeholder = "110110"; ObjectID = "HYs-Qt-D6a"; */
+"HYs-Qt-D6a.placeholder" = "110110";
+
+/* Class = "IBUITextField"; placeholder = "Brugge"; ObjectID = "HqJ-A1-Ybr"; */
+"HqJ-A1-Ybr.placeholder" = "Brugge";
+
+/* Class = "IBUIButton"; normalTitle = "Ik heb een lidnummer"; ObjectID = "I5T-NH-zcj"; */
+"I5T-NH-zcj.normalTitle" = "Ik heb een lidnummer";
+
+/* Class = "IBUILabel"; text = "* verplicht in te vullen"; ObjectID = "IDP-fw-ST9"; */
+"IDP-fw-ST9.text" = "* verplicht in te vullen";
+
+/* Class = "IBUILabel"; text = "Telefoon:"; ObjectID = "IIa-QK-egO"; */
+"IIa-QK-egO.text" = "Telefoon:";
+
+/* Class = "IBUINavigationItem"; title = "Uw profiel bewerken"; ObjectID = "IJZ-eP-hBc"; */
+"IJZ-eP-hBc.title" = "Uw profiel bewerken";
+
+/* Class = "IBUILabel"; text = "Feedback tekst:"; ObjectID = "IPD-eS-FN3"; */
+"IPD-eS-FN3.text" = "Feedback tekst:";
+
+/* Class = "IBUILabel"; text = "Inbegrepen in de prijs"; ObjectID = "IYN-I1-jdf"; */
+"IYN-I1-jdf.text" = "Inbegrepen in de prijs";
+
+/* Class = "IBUILabel"; text = "Postcode: *"; ObjectID = "Ih5-oF-Gmp"; */
+"Ih5-oF-Gmp.text" = "Postcode: *";
+
+/* Class = "IBUILabel"; text = "Inbegrepen prijs"; ObjectID = "J8L-ll-7FX"; */
+"J8L-ll-7FX.text" = "Inbegrepen prijs";
+
+/* Class = "IBUILabel"; text = "Feedback"; ObjectID = "JJw-qN-CGb"; */
+"JJw-qN-CGb.text" = "Feedback";
+
+/* Class = "IBUILabel"; text = "U bent succesvol ingeschreven!"; ObjectID = "JkE-Kt-ngW"; */
+"JkE-Kt-ngW.text" = "U bent succesvol ingeschreven!";
+
+/* Class = "IBUIButton"; normalTitle = "Annuleer"; ObjectID = "Jx5-Mb-9Tl"; */
+"Jx5-Mb-9Tl.normalTitle" = "Annuleer";
+
+/* Class = "IBUILabel"; text = "Vul uw rijksregisternummer in: *"; ObjectID = "JzQ-lG-ks2"; */
+"JzQ-lG-ks2.text" = "Vul uw rijksregisternummer in: *";
+
+/* Class = "IBUINavigationItem"; title = "Registreren (1/3)"; ObjectID = "K0n-xy-vOX"; */
+"K0n-xy-vOX.title" = "Registreren (1/3)";
+
+/* Class = "IBUIBarButtonItem"; title = "Inschrijven"; ObjectID = "KMS-1s-xIQ"; */
+"KMS-1s-xIQ.title" = "Inschrijven";
+
+/* Class = "IBUILabel"; text = "Gsm: *"; ObjectID = "KSp-mq-ram"; */
+"KSp-mq-ram.text" = "Gsm: *";
+
+/* Class = "IBUILabel"; text = "Vervoerwijze"; ObjectID = "Kmg-bE-kDe"; */
+"Kmg-bE-kDe.text" = "Vervoerwijze";
+
+/* Class = "IBUITableViewSection"; headerTitle = "Prijs"; ObjectID = "Kqj-JX-6uj"; */
+"Kqj-JX-6uj.headerTitle" = "Prijs";
+
+/* Class = "IBUILabel"; text = "Periode:"; ObjectID = "L6A-tS-9Pw"; */
+"L6A-tS-9Pw.text" = "Periode:";
+
+/* Class = "IBUILabel"; text = "Vul volgende gegevens in:"; ObjectID = "LMe-Fl-IVH"; */
+"LMe-Fl-IVH.text" = "Vul volgende gegevens in:";
+
+/* Class = "IBUILabel"; text = "Naam:"; ObjectID = "LYC-78-gQG"; */
+"LYC-78-gQG.text" = "Naam:";
+
+/* Class = "IBUILabel"; text = "Aansluitingsnummer: *"; ObjectID = "MAt-PF-McT"; */
+"MAt-PF-McT.text" = "Aansluitingsnummer: *";
+
+/* Class = "IBUITextView"; text = "U  kunt zich inschrijven als ouder/voogd. Om u te registreren als een monitor moet u over een lidnummer beschikken. Wilt u  monitor worden bij ons?\nMail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm en eventueel uw telefoonnummer. Ons e-mail adres is joetz.west@joetz.be en u kan ook terecht op het nummer: 056 27 47 00"; ObjectID = "MNZ-NT-zae"; */
+"MNZ-NT-zae.text" = "U  kunt zich inschrijven als ouder/voogd. Om u te registreren als een monitor moet u over een lidnummer beschikken. Wilt u  monitor worden bij ons?\nMail ons uw voornaam, naam, emailadres, rijksregisternummer, adresgegevens, gsm en eventueel uw telefoonnummer. Ons e-mail adres is joetz.west@joetz.be en u kan ook terecht op het nummer: 056 27 47 00";
+
+/* Class = "IBUIBarButtonItem"; title = "Volgende"; ObjectID = "MYL-B1-F9j"; */
+"MYL-B1-F9j.title" = "Volgende";
+
+/* Class = "IBUILabel"; text = "* verplicht in te vullen"; ObjectID = "MoZ-mH-LTA"; */
+"MoZ-mH-LTA.text" = "* verplicht in te vullen";
+
+/* Class = "IBUILabel"; text = "Sterprijs2"; ObjectID = "Mrx-x2-RlI"; */
+"Mrx-x2-RlI.text" = "Sterprijs2";
+
+/* Class = "IBUINavigationItem"; title = "MonitorNaam"; ObjectID = "N5t-hT-km8"; */
+"N5t-hT-km8.title" = "MonitorNaam";
+
+/* Class = "IBUILabel"; text = "Gsm: *"; ObjectID = "N8k-6h-onB"; */
+"N8k-6h-onB.text" = "Gsm: *";
+
+/* Class = "IBUIButton"; normalTitle = "Annuleer"; ObjectID = "NHY-0G-AKQ"; */
+"NHY-0G-AKQ.normalTitle" = "Annuleer";
+
+/* Class = "IBUINavigationItem"; title = "Inschrijven (4/5)"; ObjectID = "NOu-P1-GeD"; */
+"NOu-P1-GeD.title" = "Inschrijven (4/5)";
+
+/* Class = "IBUILabel"; text = "Uw feedback is succesvol ingediend"; ObjectID = "NbT-yH-G7M"; */
+"NbT-yH-G7M.text" = "Uw feedback is succesvol ingediend";
+
+/* Class = "IBUILabel"; text = "Voornaam: *"; ObjectID = "NoS-EN-7eq"; */
+"NoS-EN-7eq.text" = "Voornaam: *";
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "O5I-62-WYd"; */
+"O5I-62-WYd.text" = "Label";
+
+/* Class = "IBUILabel"; text = "Voornaam: *"; ObjectID = "OFM-q2-v5W"; */
+"OFM-q2-v5W.text" = "Voornaam: *";
+
+/* Class = "IBUIBarButtonItem"; title = "Vormingen"; ObjectID = "OGh-iC-dDQ"; */
+"OGh-iC-dDQ.title" = "Vormingen";
+
+/* Class = "IBUILabel"; text = "Naam: *"; ObjectID = "OHl-yw-Mo7"; */
+"OHl-yw-Mo7.text" = "Naam: *";
+
+/* Class = "IBUILabel"; text = "Code gerechtigde: *"; ObjectID = "Owh-YD-DVG"; */
+"Owh-YD-DVG.text" = "Code gerechtigde: *";
+
+/* Class = "IBUIButton"; normalTitle = "Annuleer"; ObjectID = "Pfz-tf-YeQ"; */
+"Pfz-tf-YeQ.normalTitle" = "Annuleer";
+
+/* Class = "IBUIButton"; normalTitle = "Waar vind ik deze nummers?"; ObjectID = "Q7C-YV-dVD"; */
+"Q7C-YV-dVD.normalTitle" = "Waar vind ik deze nummers?";
+
+/* Class = "IBUILabel"; text = "Geef uw feedback in:"; ObjectID = "QVc-5D-BWt"; */
+"QVc-5D-BWt.text" = "Geef uw feedback in:";
+
+/* Class = "IBUILabel"; text = "Detail"; ObjectID = "QsY-lH-0Zo"; */
+"QsY-lH-0Zo.text" = "Detail";
+
+/* Class = "IBUILabel"; text = "Detail"; ObjectID = "R9e-fJ-SL9"; */
+"R9e-fJ-SL9.text" = "Detail";
+
+/* Class = "IBUIButton"; normalTitle = "Annuleer"; ObjectID = "RW5-c6-iNB"; */
+"RW5-c6-iNB.normalTitle" = "Annuleer";
+
+/* Class = "IBUITableViewSection"; headerTitle = "Criteria"; ObjectID = "Rin-T0-Hxc"; */
+"Rin-T0-Hxc.headerTitle" = "Criteria";
+
+/* Class = "IBUISearchBar"; placeholder = "Zoek vakanties"; ObjectID = "RlW-AC-mYB"; */
+"RlW-AC-mYB.placeholder" = "Zoek vakanties";
+
+/* Class = "IBUIButton"; normalTitle = "Annuleer"; ObjectID = "S0u-5f-SDS"; */
+"S0u-5f-SDS.normalTitle" = "Annuleer";
+
+/* Class = "IBUILabel"; text = "Criteria deelnemers"; ObjectID = "SGa-yW-lPC"; */
+"SGa-yW-lPC.text" = "Criteria deelnemers";
+
+/* Class = "IBUILabel"; text = "Voornaam:"; ObjectID = "SQI-rK-vxb"; */
+"SQI-rK-vxb.text" = "Voornaam:";
+
+/* Class = "IBUILabel"; text = "* verplicht in te vullen"; ObjectID = "SWE-sG-e1h"; */
+"SWE-sG-e1h.text" = "* verplicht in te vullen";
+
+/* Class = "IBUINavigationItem"; title = "Registreren"; ObjectID = "SyE-CT-N3S"; */
+"SyE-CT-N3S.title" = "Registreren";
+
+/* Class = "IBUILabel"; text = "Bus:"; ObjectID = "TCd-se-9a3"; */
+"TCd-se-9a3.text" = "Bus:";
+
+/* Class = "IBUILabel"; text = "Naam:"; ObjectID = "TQ6-IS-xy5"; */
+"TQ6-IS-xy5.text" = "Naam:";
+
+/* Class = "IBUIBarButtonItem"; title = "Volgende"; ObjectID = "TTv-E4-cFQ"; */
+"TTv-E4-cFQ.title" = "Volgende";
+
+/* Class = "IBUILabel"; text = "Tips:"; ObjectID = "Tje-U1-Qb5"; */
+"Tje-U1-Qb5.text" = "Tips:";
+
+/* Class = "IBUILabel"; text = "Email: *"; ObjectID = "Tuf-dq-btN"; */
+"Tuf-dq-btN.text" = "Email: *";
+
+/* Class = "IBUILabel"; text = "* verplicht in te vullen"; ObjectID = "Twg-6y-OP8"; */
+"Twg-6y-OP8.text" = "* verplicht in te vullen";
+
+/* Class = "IBUILabel"; text = "Telefoon:"; ObjectID = "UDN-iK-7PX"; */
+"UDN-iK-7PX.text" = "Telefoon:";
+
+/* Class = "IBUILabel"; text = "Korte beschrijving"; ObjectID = "UIJ-wd-10r"; */
+"UIJ-wd-10r.text" = "Korte beschrijving";
+
+/* Class = "IBUILabel"; text = "Vul volgende gegevens in:"; ObjectID = "URG-Ik-4VW"; */
+"URG-Ik-4VW.text" = "Vul volgende gegevens in:";
+
+/* Class = "IBUILabel"; text = "Email:"; ObjectID = "USH-F1-3RB"; */
+"USH-F1-3RB.text" = "Email:";
+
+/* Class = "IBUIButton"; normalTitle = "Ga terug"; ObjectID = "Uyt-S8-dbi"; */
+"Uyt-S8-dbi.normalTitle" = "Ga terug";
+
+/* Class = "IBUILabel"; text = "Lidnummer:"; ObjectID = "V4a-uV-qSC"; */
+"V4a-uV-qSC.text" = "Lidnummer:";
+
+/* Class = "IBUIBarButtonItem"; title = "Indienen"; ObjectID = "VFO-YT-e5w"; */
+"VFO-YT-e5w.title" = "Indienen";
+
+/* Class = "IBUIBarButtonItem"; title = "Volgende"; ObjectID = "VJ0-7v-ugy"; */
+"VJ0-7v-ugy.title" = "Volgende";
+
+/* Class = "IBUILabel"; text = "Straat: *"; ObjectID = "VOo-c0-9JF"; */
+"VOo-c0-9JF.text" = "Straat: *";
+
+/* Class = "IBUILabel"; text = "VakantieNaam"; ObjectID = "VVm-G1-tfp"; */
+"VVm-G1-tfp.text" = "VakantieNaam";
+
+/* Class = "IBUIBarButtonItem"; title = "Bewerken"; ObjectID = "VwY-5F-Tyx"; */
+"VwY-5F-Tyx.title" = "Bewerken";
+
+/* Class = "IBUITableViewSection"; headerTitle = "Korte beschrijving"; ObjectID = "Vwr-BO-1m2"; */
+"Vwr-BO-1m2.headerTitle" = "Korte beschrijving";
+
+/* Class = "IBUILabel"; text = "Selecteer een datum:"; ObjectID = "WRc-it-Qin"; */
+"WRc-it-Qin.text" = "Selecteer een datum:";
+
+/* Class = "IBUILabel"; text = "U bent succesvol ingeschreven!"; ObjectID = "X2Y-UH-TaC"; */
+"X2Y-UH-TaC.text" = "U bent succesvol ingeschreven!";
+
+/* Class = "IBUILabel"; text = "Postcode: *"; ObjectID = "X5y-G4-CRr"; */
+"X5y-G4-CRr.text" = "Postcode: *";
+
+/* Class = "IBUILabel"; text = "Geef de vakantie waarvoor u geïnteresseerd bent:"; ObjectID = "XWp-wD-jjx"; */
+"XWp-wD-jjx.text" = "Geef de vakantie waarvoor u geïnteresseerd bent:";
+
+/* Class = "IBUILabel"; text = "Doelgroep"; ObjectID = "YGY-Ah-WIL"; */
+"YGY-Ah-WIL.text" = "Doelgroep";
+
+/* Class = "IBUILabel"; text = "Uw profiel bevat volgende gegevens:"; ObjectID = "YWE-jB-1dT"; */
+"YWE-jB-1dT.text" = "Uw profiel bevat volgende gegevens:";
+
+/* Class = "IBUILabel"; text = "Klik voor meer info"; ObjectID = "Ya7-iN-w7k"; */
+"Ya7-iN-w7k.text" = "Klik voor meer info";
+
+/* Class = "IBUILabel"; text = "Aansluitingsnummer tweede ouder (indien van toepassing):"; ObjectID = "Yc3-yy-9XV"; */
+"Yc3-yy-9XV.text" = "Aansluitingsnummer tweede ouder (indien van toepassing):";
+
+/* Class = "IBUIButton"; normalTitle = "Stel wachtwoord opnieuw in"; ObjectID = "Ygf-4H-7Bi"; */
+"Ygf-4H-7Bi.normalTitle" = "Stel wachtwoord opnieuw in";
+
+/* Class = "IBUIBarButtonItem"; title = "Opslaan"; ObjectID = "Z6K-JA-IVb"; */
+"Z6K-JA-IVb.title" = "Opslaan";
+
+/* Class = "IBUITableViewSection"; headerTitle = "Periode"; ObjectID = "a5x-d7-jHK"; */
+"a5x-d7-jHK.headerTitle" = "Periode";
+
+/* Class = "IBUIViewController"; title = "NieuweMonitor"; ObjectID = "aCY-od-DTU"; */
+"aCY-od-DTU.title" = "NieuweMonitor";
+
+/* Class = "IBUILabel"; text = "Basisprijs"; ObjectID = "aGO-yv-kHP"; */
+"aGO-yv-kHP.text" = "Basisprijs";
+
+/* Class = "IBUIButton"; normalTitle = "Terug naar overzicht"; ObjectID = "aKZ-2H-F1N"; */
+"aKZ-2H-F1N.normalTitle" = "Terug naar overzicht";
+
+/* Class = "IBUILabel"; text = "Naam: *"; ObjectID = "aQ1-IJ-lN7"; */
+"aQ1-IJ-lN7.text" = "Naam: *";
+
+/* Class = "IBUINavigationItem"; title = "Wachtwoord vergeten"; ObjectID = "aVl-CL-caF"; */
+"aVl-CL-caF.title" = "Wachtwoord vergeten";
+
+/* Class = "IBUITableViewSection"; headerTitle = "Doelgroep"; ObjectID = "aY9-VA-l76"; */
+"aY9-VA-l76.headerTitle" = "Doelgroep";
+
+/* Class = "IBUILabel"; text = "Naam: *"; ObjectID = "aoi-xE-ylx"; */
+"aoi-xE-ylx.text" = "Naam: *";
+
+/* Class = "IBUILabel"; text = "Vul de volgende gegevens in:"; ObjectID = "arl-t9-BrZ"; */
+"arl-t9-BrZ.text" = "Vul de volgende gegevens in:";
+
+/* Class = "IBUILabel"; text = "Vul volgende gegevens in:"; ObjectID = "axt-Q0-2w9"; */
+"axt-Q0-2w9.text" = "Vul volgende gegevens in:";
+
+/* Class = "IBUIButton"; normalTitle = "Annuleer"; ObjectID = "b4c-q8-lyS"; */
+"b4c-q8-lyS.normalTitle" = "Annuleer";
+
+/* Class = "IBUILabel"; text = "Gsm: *"; ObjectID = "bDT-tv-2XZ"; */
+"bDT-tv-2XZ.text" = "Gsm: *";
+
+/* Class = "IBUILabel"; text = "Title"; ObjectID = "bFs-wr-5cg"; */
+"bFs-wr-5cg.text" = "Title";
+
+/* Class = "IBUIBarButtonItem"; title = "Terug"; ObjectID = "bIu-Nv-dg7"; */
+"bIu-Nv-dg7.title" = "Terug";
+
+/* Class = "IBUILabel"; text = "Gsm: *"; ObjectID = "bYt-Gy-erx"; */
+"bYt-Gy-erx.text" = "Gsm: *";
+
+/* Class = "IBUILabel"; text = "Bewerk u gegevens:"; ObjectID = "bbg-68-a9h"; */
+"bbg-68-a9h.text" = "Bewerk u gegevens:";
+
+/* Class = "IBUILabel"; text = "Korte beschrijving"; ObjectID = "c4b-zC-cDK"; */
+"c4b-zC-cDK.text" = "Korte beschrijving";
+
+/* Class = "IBUIButton"; normalTitle = "Annuleer"; ObjectID = "cLx-Za-Wc7"; */
+"cLx-Za-Wc7.normalTitle" = "Annuleer";
+
+/* Class = "IBUIButton"; normalTitle = "Annuleer"; ObjectID = "ch2-7g-eDb"; */
+"ch2-7g-eDb.normalTitle" = "Annuleer";
+
+/* Class = "IBUILabel"; text = "Geef uw gegevens in:"; ObjectID = "d94-IW-Wd6"; */
+"d94-IW-Wd6.text" = "Geef uw gegevens in:";
+
+/* Class = "IBUINavigationItem"; title = "Feedback succesvol"; ObjectID = "dJO-Cv-VL0"; */
+"dJO-Cv-VL0.title" = "Feedback succesvol";
+
+/* Class = "IBUILabel"; text = "Huisnummer: *"; ObjectID = "ddT-eS-zTu"; */
+"ddT-eS-zTu.text" = "Huisnummer: *";
+
+/* Class = "IBUITextField"; placeholder = "3091234567"; ObjectID = "dvW-bU-hRa"; */
+"dvW-bU-hRa.placeholder" = "3091234567";
+
+/* Class = "IBUIBarButtonItem"; title = "Inschrijven"; ObjectID = "eJ4-gB-mdv"; */
+"eJ4-gB-mdv.title" = "Inschrijven";
+
+/* Class = "IBUINavigationItem"; title = "Geef feedback"; ObjectID = "eLK-Rk-q4O"; */
+"eLK-Rk-q4O.title" = "Geef feedback";
+
+/* Class = "IBUILabel"; text = "Bent u lid van de socialisistiche mutualiteit?"; ObjectID = "eQy-Cb-StI"; */
+"eQy-Cb-StI.text" = "Bent u lid van de socialisistiche mutualiteit?";
+
+/* Class = "IBUILabel"; text = "Er is een mail verstuurd."; ObjectID = "eTC-bJ-1Fs"; */
+"eTC-bJ-1Fs.text" = "Er is een mail verstuurd.";
+
+/* Class = "IBUILabel"; text = "Vul de gegevens van de contactpersoon in nood in:"; ObjectID = "ea4-kP-3su"; */
+"ea4-kP-3su.text" = "Vul de gegevens van de contactpersoon in nood in:";
+
+/* Class = "IBUIBarButtonItem"; title = "Volgende"; ObjectID = "egF-Dw-IME"; */
+"egF-Dw-IME.title" = "Volgende";
+
+/* Class = "IBUILabel"; text = "Wachtwoord: *"; ObjectID = "eqN-l9-KXe"; */
+"eqN-l9-KXe.text" = "Wachtwoord: *";
+
+/* Class = "IBUILabel"; text = "Wachtwoord: *"; ObjectID = "f8m-hJ-zNz"; */
+"f8m-hJ-zNz.text" = "Wachtwoord: *";
+
+/* Class = "IBUILabel"; text = "Aansluitingsnummer: *"; ObjectID = "fAg-rg-vsT"; */
+"fAg-rg-vsT.text" = "Aansluitingsnummer: *";
+
+/* Class = "IBUITableViewSection"; headerTitle = "Korte beschrijving"; ObjectID = "fg0-Xd-9js"; */
+"fg0-Xd-9js.headerTitle" = "Korte beschrijving";
+
+/* Class = "IBUILabel"; text = "Voornaam:"; ObjectID = "fhW-K4-5MS"; */
+"fhW-K4-5MS.text" = "Voornaam:";
+
+/* Class = "IBUILabel"; text = "Vul volgende gegevens in:"; ObjectID = "frf-LS-yue"; */
+"frf-LS-yue.text" = "Vul volgende gegevens in:";
+
+/* Class = "IBUITableViewSection"; headerTitle = "Details"; ObjectID = "g4s-HS-JIA"; */
+"g4s-HS-JIA.headerTitle" = "Details";
+
+/* Class = "IBUIBarButtonItem"; title = "Inschrijven"; ObjectID = "g69-zQ-NwD"; */
+"g69-zQ-NwD.title" = "Inschrijven";
+
+/* Class = "IBUILabel"; text = "Prijs:"; ObjectID = "g6Q-up-fkH"; */
+"g6Q-up-fkH.text" = "Prijs:";
+
+/* Class = "IBUILabel"; text = "Voornaam: *"; ObjectID = "gPD-Zl-KEd"; */
+"gPD-Zl-KEd.text" = "Voornaam: *";
+
+/* Class = "IBUILabel"; text = "Locatie"; ObjectID = "gQQ-Ww-DKf"; */
+"gQQ-Ww-DKf.text" = "Locatie";
+
+/* Class = "IBUIBarButtonItem"; title = "Volgende"; ObjectID = "gRg-tk-md4"; */
+"gRg-tk-md4.title" = "Volgende";
+
+/* Class = "IBUILabel"; text = "Gsm:"; ObjectID = "gW2-a4-w4X"; */
+"gW2-a4-w4X.text" = "Gsm:";
+
+/* Class = "IBUILabel"; text = "Email:"; ObjectID = "gj3-Q6-SOS"; */
+"gj3-Q6-SOS.text" = "Email:";
+
+/* Class = "IBUIButton"; normalTitle = "Verstuur een mail naar deze monitor"; ObjectID = "gyN-rW-0Lu"; */
+"gyN-rW-0Lu.normalTitle" = "Verstuur een mail naar deze monitor";
+
+/* Class = "IBUILabel"; text = "Locatie:"; ObjectID = "hCk-Oc-L8l"; */
+"hCk-Oc-L8l.text" = "Locatie:";
+
+/* Class = "IBUIButton"; normalTitle = "Inloggen"; ObjectID = "hZK-bN-dtd"; */
+"hZK-bN-dtd.normalTitle" = "Inloggen";
+
+/* Class = "IBUITextField"; placeholder = "Mieke"; ObjectID = "he8-V7-Uft"; */
+"he8-V7-Uft.placeholder" = "Mieke";
+
+/* Class = "IBUILabel"; text = "Telefoon:"; ObjectID = "hng-LB-VCB"; */
+"hng-LB-VCB.text" = "Telefoon:";
+
+/* Class = "IBUILabel"; text = "Vul volgende gegevens in:"; ObjectID = "htz-H9-gCh"; */
+"htz-H9-gCh.text" = "Vul volgende gegevens in:";
+
+/* Class = "IBUILabel"; text = "Periodes: klik voor alle periodes te zien"; ObjectID = "hyk-dK-1fD"; */
+"hyk-dK-1fD.text" = "Periodes: klik voor alle periodes te zien";
+
+/* Class = "IBUIBarButtonItem"; title = "Terug"; ObjectID = "i0r-4n-3rh"; */
+"i0r-4n-3rh.title" = "Terug";
+
+/* Class = "IBUILabel"; text = "Wilt u extra informatie meegeven?"; ObjectID = "iOI-be-7bI"; */
+"iOI-be-7bI.text" = "Wilt u extra informatie meegeven?";
+
+/* Class = "IBUILabel"; text = "Straat: *"; ObjectID = "if9-Sh-K5V"; */
+"if9-Sh-K5V.text" = "Straat: *";
+
+/* Class = "IBUILabel"; text = "Bus:"; ObjectID = "ipx-nM-5OB"; */
+"ipx-nM-5OB.text" = "Bus:";
+
+/* Class = "IBUILabel"; text = "Bus:"; ObjectID = "it1-kb-shg"; */
+"it1-kb-shg.text" = "Bus:";
+
+/* Class = "IBUILabel"; text = "Email: *"; ObjectID = "j2a-Sv-0eE"; */
+"j2a-Sv-0eE.text" = "Email: *";
+
+/* Class = "IBUILabel"; text = "Telefoon:"; ObjectID = "j5V-JT-Faw"; */
+"j5V-JT-Faw.text" = "Telefoon:";
+
+/* Class = "IBUILabel"; text = "Aantal dagen/nachten"; ObjectID = "jKE-X1-m7i"; */
+"jKE-X1-m7i.text" = "Aantal dagen/nachten";
+
+/* Class = "IBUIButton"; normalTitle = "Ga naar vakanties"; ObjectID = "jQV-Y3-Kti"; */
+"jQV-Y3-Kti.normalTitle" = "Ga naar vakanties";
+
+/* Class = "IBUINavigationItem"; title = "Vakanties"; ObjectID = "jTS-Lj-o5t"; */
+"jTS-Lj-o5t.title" = "Vakanties";
+
+/* Class = "IBUILabel"; text = "Aankomstdatum"; ObjectID = "jZG-yo-KzI"; */
+"jZG-yo-KzI.text" = "Aankomstdatum";
+
+/* Class = "IBUITableViewSection"; headerTitle = "Periodes"; ObjectID = "jtS-eT-w17"; */
+"jtS-eT-w17.headerTitle" = "Periodes";
+
+/* Class = "IBUILabel"; text = "Telefoon:"; ObjectID = "jvT-n4-v2E"; */
+"jvT-n4-v2E.text" = "Telefoon:";
+
+/* Class = "IBUILabel"; text = "Voornaam"; ObjectID = "kDB-Wi-30I"; */
+"kDB-Wi-30I.text" = "Voornaam";
+
+/* Class = "IBUILabel"; text = "U heeft succesvol uw voorkeur ingediend!"; ObjectID = "kDW-hq-QtZ"; */
+"kDW-hq-QtZ.text" = "U heeft succesvol uw voorkeur ingediend!";
+
+/* Class = "IBUILabel"; text = "Telefoon:"; ObjectID = "kGV-0c-JMc"; */
+"kGV-0c-JMc.text" = "Telefoon:";
+
+/* Class = "IBUIBarButtonItem"; title = "Voltooi"; ObjectID = "kNW-3g-EzB"; */
+"kNW-3g-EzB.title" = "Voltooi";
+
+/* Class = "IBUIButton"; normalTitle = "Ga terug naar overzicht"; ObjectID = "l6E-2Y-xhm"; */
+"l6E-2Y-xhm.normalTitle" = "Ga terug naar overzicht";
+
+/* Class = "IBUIBarButtonItem"; title = "Terug"; ObjectID = "m0M-u4-OnI"; */
+"m0M-u4-OnI.title" = "Terug";
+
+/* Class = "IBUILabel"; text = "Huisnummer: *"; ObjectID = "m8T-EX-P54"; */
+"m8T-EX-P54.text" = "Huisnummer: *";
+
+/* Class = "IBUILabel"; text = "Voornaam: *"; ObjectID = "mvk-GT-IyG"; */
+"mvk-GT-IyG.text" = "Voornaam: *";
+
+/* Class = "IBUIBarButtonItem"; title = "Terug"; ObjectID = "n7j-GN-MJI"; */
+"n7j-GN-MJI.title" = "Terug";
+
+/* Class = "IBUITextField"; placeholder = "8000"; ObjectID = "n8L-Nk-K2r"; */
+"n8L-Nk-K2r.placeholder" = "8000";
+
+/* Class = "IBUIBarButtonItem"; title = "Terug"; ObjectID = "nJt-GP-RNm"; */
+"nJt-GP-RNm.title" = "Terug";
+
+/* Class = "IBUINavigationItem"; title = "Welkom"; ObjectID = "nZa-AM-chs"; */
+"nZa-AM-chs.title" = "Welkom";
+
+/* Class = "IBUIBarButtonItem"; title = "Vakanties"; ObjectID = "njL-6A-xXv"; */
+"njL-6A-xXv.title" = "Vakanties";
+
+/* Class = "IBUITextField"; placeholder = "Stationstraat"; ObjectID = "nse-Xz-4Xy"; */
+"nse-Xz-4Xy.placeholder" = "Stationstraat";
+
+/* Class = "IBUINavigationItem"; title = "Nieuwe monitor"; ObjectID = "oAx-gd-RhW"; */
+"oAx-gd-RhW.title" = "Nieuwe monitor";
+
+/* Class = "IBUINavigationItem"; title = "Inloggen"; ObjectID = "oE9-F4-VPK"; */
+"oE9-F4-VPK.title" = "Inloggen";
+
+/* Class = "IBUIButton"; normalTitle = "Terug naar overzicht"; ObjectID = "ojS-E6-A5l"; */
+"ojS-E6-A5l.normalTitle" = "Terug naar overzicht";
+
+/* Class = "IBUILabel"; text = "Naam: *"; ObjectID = "p9w-6P-dnS"; */
+"p9w-6P-dnS.text" = "Naam: *";
+
+/* Class = "IBUILabel"; text = "Code gerechtigde: *"; ObjectID = "pXz-Ko-ieC"; */
+"pXz-Ko-ieC.text" = "Code gerechtigde: *";
+
+/* Class = "IBUILabel"; text = "* verplicht in te vullen"; ObjectID = "pjR-1i-mXI"; */
+"pjR-1i-mXI.text" = "* verplicht in te vullen";
+
+/* Class = "IBUILabel"; text = "VakantieNaam"; ObjectID = "q1S-ad-fX9"; */
+"q1S-ad-fX9.text" = "VakantieNaam";
+
+/* Class = "IBUITableViewController"; title = "Vakantie"; ObjectID = "q35-qh-mtC"; */
+"q35-qh-mtC.title" = "Vakantie";
+
+/* Class = "IBUILabel"; text = "Maximum aantal deelnemers"; ObjectID = "q5p-DG-HWl"; */
+"q5p-DG-HWl.text" = "Maximum aantal deelnemers";
+
+/* Class = "IBUIBarButtonItem"; title = "Volgende"; ObjectID = "qYR-Ms-Wfn"; */
+"qYR-Ms-Wfn.title" = "Volgende";
+
+/* Class = "IBUILabel"; text = "Rijksregisternummer monitor:"; ObjectID = "qmc-n7-FqH"; */
+"qmc-n7-FqH.text" = "Rijksregisternummer monitor:";
+
+/* Class = "IBUINavigationItem"; title = "Registreren"; ObjectID = "qrD-0n-dtb"; */
+"qrD-0n-dtb.title" = "Registreren";
+
+/* Class = "IBUILabel"; text = "Email:"; ObjectID = "qrG-fC-0at"; */
+"qrG-fC-0at.text" = "Email:";
+
+/* Class = "IBUIBarButtonItem"; title = "Volgende"; ObjectID = "qtf-WF-xoy"; */
+"qtf-WF-xoy.title" = "Volgende";
+
+/* Class = "IBUIBarButtonItem"; title = "Terug"; ObjectID = "r1Q-Sv-D9w"; */
+"r1Q-Sv-D9w.title" = "Terug";
+
+/* Class = "IBUIButton"; normalTitle = "Terug naar inloggen"; ObjectID = "rAR-ya-agS"; */
+"rAR-ya-agS.normalTitle" = "Terug naar inloggen";
+
+/* Class = "IBUIButton"; normalTitle = "Terug naar overzicht"; ObjectID = "rJd-H7-4j2"; */
+"rJd-H7-4j2.normalTitle" = "Terug naar overzicht";
+
+/* Class = "IBUIBarButtonItem"; title = "Voltooi"; ObjectID = "rMI-GU-rkV"; */
+"rMI-GU-rkV.title" = "Voltooi";
+
+/* Class = "IBUILabel"; text = "Nieuwe monitor is toegevoegd en er is een mail gestuurd."; ObjectID = "rPC-N8-oUi"; */
+"rPC-N8-oUi.text" = "Nieuwe monitor is toegevoegd en er is een mail gestuurd.";
+
+/* Class = "IBUINavigationItem"; title = "Indienen voorkeur"; ObjectID = "rYZ-3l-4iL"; */
+"rYZ-3l-4iL.title" = "Indienen voorkeur";
+
+/* Class = "IBUILabel"; text = "Gsm: *"; ObjectID = "ri7-rV-lXf"; */
+"ri7-rV-lXf.text" = "Gsm: *";
+
+/* Class = "IBUILabel"; text = "Gsm:"; ObjectID = "rjP-uy-cUh"; */
+"rjP-uy-cUh.text" = "Gsm:";
+
+/* Class = "IBUINavigationItem"; title = "Registreren (3/3)"; ObjectID = "roE-OJ-0l7"; */
+"roE-OJ-0l7.title" = "Registreren (3/3)";
+
+/* Class = "IBUILabel"; text = "* verplicht in te vullen"; ObjectID = "rti-W1-XHi"; */
+"rti-W1-XHi.text" = "* verplicht in te vullen";
+
+/* Class = "IBUILabel"; text = "_periode"; ObjectID = "sE9-QE-zgl"; */
+"sE9-QE-zgl.text" = "_periode";
+
+/* Class = "IBUINavigationItem"; title = "Profielen"; ObjectID = "sWn-EZ-BI4"; */
+"sWn-EZ-BI4.title" = "Profielen";
+
+/* Class = "IBUILabel"; text = "Vul uw email adres in:"; ObjectID = "sYB-Vw-WfL"; */
+"sYB-Vw-WfL.text" = "Vul uw email adres in:";
+
+/* Class = "IBUILabel"; text = "Voornaam:"; ObjectID = "slu-Bz-2nZ"; */
+"slu-Bz-2nZ.text" = "Voornaam:";
+
+/* Class = "IBUINavigationItem"; title = "Inschrijven (2/5)"; ObjectID = "spO-N6-JKi"; */
+"spO-N6-JKi.title" = "Inschrijven (2/5)";
+
+/* Class = "IBUIButton"; normalTitle = "Annuleer"; ObjectID = "tAQ-ng-oiQ"; */
+"tAQ-ng-oiQ.normalTitle" = "Annuleer";
+
+/* Class = "IBUILabel"; text = "Vertrekdatum"; ObjectID = "taw-Bm-ocr"; */
+"taw-Bm-ocr.text" = "Vertrekdatum";
+
+/* Class = "IBUINavigationItem"; title = "Inschrijven (5/5)"; ObjectID = "tmb-o3-OYi"; */
+"tmb-o3-OYi.title" = "Inschrijven (5/5)";
+
+/* Class = "IBUINavigationItem"; title = "Vorming"; ObjectID = "ujr-s1-KPf"; */
+"ujr-s1-KPf.title" = "Vorming";
+
+/* Class = "IBUILabel"; text = "Doelgroep"; ObjectID = "ukk-ej-Mho"; */
+"ukk-ej-Mho.text" = "Doelgroep";
+
+/* Class = "IBUINavigationItem"; title = "Joetz Fun Factor"; ObjectID = "umm-Ve-FKJ"; */
+"umm-Ve-FKJ.title" = "Joetz Fun Factor";
+
+/* Class = "IBUINavigationItem"; title = "Registreren"; ObjectID = "ur6-ro-dhk"; */
+"ur6-ro-dhk.title" = "Registreren";
+
+/* Class = "IBUIBarButtonItem"; title = "Terug"; ObjectID = "usK-IT-B53"; */
+"usK-IT-B53.title" = "Terug";
+
+/* Class = "IBUILabel"; text = "Gemeente: *"; ObjectID = "vDz-bw-RA1"; */
+"vDz-bw-RA1.text" = "Gemeente: *";
+
+/* Class = "IBUILabel"; text = "Title"; ObjectID = "vYR-gn-HM6"; */
+"vYR-gn-HM6.text" = "Title";
+
+/* Class = "IBUINavigationItem"; title = "Registratie voltooid"; ObjectID = "vbh-wi-0lX"; */
+"vbh-wi-0lX.title" = "Registratie voltooid";
+
+/* Class = "IBUILabel"; text = "Wachtwoord:"; ObjectID = "vgN-OB-IWF"; */
+"vgN-OB-IWF.text" = "Wachtwoord:";
+
+/* Class = "IBUILabel"; text = "U bent succesvol geregistreerd en ingelogd"; ObjectID = "wbY-JV-y5y"; */
+"wbY-JV-y5y.text" = "U bent succesvol geregistreerd en ingelogd";
+
+/* Class = "IBUILabel"; text = "Wilt u een tweede contactpersoon in nood toevoegen?"; ObjectID = "yIZ-hn-dcJ"; */
+"yIZ-hn-dcJ.text" = "Wilt u een tweede contactpersoon in nood toevoegen?";
+
+/* Class = "IBUILabel"; text = "Lidnummer: *"; ObjectID = "yRu-HR-dW9"; */
+"yRu-HR-dW9.text" = "Lidnummer: *";
+
+/* Class = "IBUILabel"; text = "Vul de deelnemer zijn/haar geboortedatum in:"; ObjectID = "yXh-3O-ZzA"; */
+"yXh-3O-ZzA.text" = "Vul de deelnemer zijn/haar geboortedatum in:";
+
+/* Class = "IBUILabel"; text = "U bent succesvol geregistreerd en ingelogd!"; ObjectID = "zN8-iL-ksi"; */
+"zN8-iL-ksi.text" = "U bent succesvol geregistreerd en ingelogd!";
+
+/* Class = "IBUITableViewSection"; headerTitle = "Tips"; ObjectID = "zwM-AS-ker"; */
+"zwM-AS-ker.headerTitle" = "Tips";
