@@ -30,7 +30,7 @@ struct FeedbackLD {
     //
     //Return: een Feedback
     //
-    static private func getFeedback(object: PFObject) -> Feedback {
+    static func getFeedback(object: PFObject) -> Feedback {
         var feedback: Feedback = Feedback(id: object.objectId)
         
         feedback.datum = object[Constanten.COLUMN_DATUM] as? NSDate

@@ -30,7 +30,7 @@ struct DeelnemerLD {
     //
     //Return: een Deelnemer
     //
-    static private func getDeelnemer(object: PFObject) -> Deelnemer {
+    static func getDeelnemer(object: PFObject) -> Deelnemer {
         var deelnemer: Deelnemer = Deelnemer(id: object.objectId)
         
         deelnemer.voornaam = object[Constanten.COLUMN_VOORNAAM] as? String
@@ -49,4 +49,33 @@ struct DeelnemerLD {
         
         return deelnemer
     }
+    
+    //
+    //Function: insert
+    //
+    //Deze functie insert een Deelnemer object in de local datastore en
+    //synct deze verandering dan naar de online database.
+    //
+    //Parameters: - deelnemer: Deelnemer
+    //
+    static func getDeelnemer(deelnemer: Deelnemer) {
+        
+        let object = PFObject(className: Constanten.TABLE_DEELNEMER)
+        
+        object[Constanten.COLUMN_VOORNAAM] = deelnemer.voornaam
+        object[Constanten.COLUMN_NAAM] = deelnemer.naam
+        object[Constanten.COLUMN_GEBOORTEDATUM] = deelnemer.geboortedatum
+        object[Constanten.COLUMN_STRAAT] = deelnemer.straat
+        object[Constanten.COLUMN_NUMMER] = deelnemer.nummer
+        object[Constanten.COLUMN_POSTCODE] = deelnemer.postcode
+        object[Constanten.COLUMN_GEMEENTE] = deelnemer.gemeente
+    
+        if deelnemer.bus != nil {
+            object[Constanten.COLUMN_BUS] = deelnemer.bus
+        }
+
+        object.pin()
+        object.save()
+    }
+
 }

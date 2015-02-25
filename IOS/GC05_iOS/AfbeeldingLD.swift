@@ -30,7 +30,7 @@ struct AfbeeldingLD {
     //
     //Return: een UIImage
     //
-    static private func getAfbeelding(object: PFObject) -> UIImage {
+    static func getAfbeelding(object: PFObject) -> UIImage {
         var imageFile = object["afbeelding"] as PFFile
         var image = UIImage(data: imageFile.getData())!
         return image

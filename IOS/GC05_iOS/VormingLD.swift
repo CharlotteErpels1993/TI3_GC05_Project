@@ -11,7 +11,7 @@ struct VormingLD {
     //
     //Return: een array van Vorming
     //
-    static func getVorming(objecten: [PFObject]) -> [Vorming] {
+    static func getVormingen(objecten: [PFObject]) -> [Vorming] {
         var vormingen: [Vorming] = []
         
         for object in objecten {
@@ -30,7 +30,7 @@ struct VormingLD {
     //
     //Return: een Vorming
     //
-    static private func getVorming(object: PFObject) -> Vorming {
+    static func getVorming(object: PFObject) -> Vorming {
         var vorming: Vorming = Vorming(id: object.objectId)
         
         vorming.titel = object[Constanten.COLUMN_TITEL] as? String

@@ -30,7 +30,7 @@ struct MonitorLD {
     //
     //Return: een Monitor
     //
-    static private func getMonitor(object: PFObject) -> Monitor {
+    static func getMonitor(object: PFObject) -> Monitor {
         var monitor: Monitor = Monitor(id: object.objectId)
         
         monitor.rijksregisterNr = object[Constanten.COLUMN_RIJKSREGISTERNUMMER] as? String

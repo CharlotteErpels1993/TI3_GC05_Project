@@ -102,27 +102,38 @@ struct LocalDatastore {
     }
     
     //
-    //Function: queryFirstObject
+    //Function: getFirstObject
     //
-    //Deze functie haalt het eerste object uit de local datastore met de opgegeven constraints.
+    //Deze functie haalt het eerste object van de query op en zet het om naar de juiste klasse.
     //
-    //Return: AnyObject
+    //Parameters: - query: PFQuery - De query waaruit het eerste object gehaald moet worden.
     //
-    /*static func queryFirstObject(tableName: String, whereArgs: [String : AnyObject] = [:]) -> AnyObject {
+    //Return: een AnyObject
+    //
+    static func getFirstObject(tableName: String, query: PFQuery) -> AnyObject {
         
-        var query = PFQuery(className: tableName)
-        query.fromLocalDatastore()
+        var first = query.getFirstObject() as PFObject
         
-        if !whereArgs.isEmpty {
-            for whereArg in whereArgs {
-                query.whereKey(whereArg.0 , equalTo: whereArg.1)
-            }
+        if tableName == Constanten.TABLE_AFBEELDING {
+            return AfbeeldingLD.getAfbeelding(first)
+        } else if tableName == Constanten.TABLE_DEELNEMER {
+            return DeelnemerLD.getDeelnemer(first)
+        } else if tableName == Constanten.TABLE_FAVORIET {
+            return FavorietLD.getFavoriet(first)
+        } else if tableName == Constanten.TABLE_FEEDBACK {
+            return FeedbackLD.getFeedback(first)
+        } else if tableName == Constanten.TABLE_INSCHRIJVINGVORMING {
+            return InschrijvingVormingLD.getInschrijvingVorming(first)
+        } else if tableName == Constanten.TABLE_MONITOR {
+            return MonitorLD.getMonitor(first)
+        } else if tableName == Constanten.TABLE_OUDER {
+            return OuderLD.getOuder(first)
+        } else if tableName == Constanten.TABLE_VAKANTIE {
+            return VakantieLD.getVakantie(first)
+        } else {
+            return VormingLD.getVorming(first)
         }
-        
-        var objecten = query.findObjects() as [PFObject]
-        
-        return getObjecten(tableName, objecten: objecten).first!
-    }*/
+    }
     
     //
     //Function: getObjecten
@@ -144,10 +155,42 @@ struct LocalDatastore {
             return AfbeeldingLD.getAfbeeldingen(objecten)
         } else if tableName == Constanten.TABLE_DEELNEMER {
             return DeelnemerLD.getDeelnemers(objecten)
-        } 
-        
+        } else if tableName == Constanten.TABLE_FAVORIET {
+            return FavorietLD.getFavorieten(objecten)
+        } else if tableName == Constanten.TABLE_FEEDBACK {
+            return FeedbackLD.getFeedbacks(objecten)
+        } else if tableName == Constanten.TABLE_INSCHRIJVINGVORMING {
+            return InschrijvingVormingLD.getInschrijvingVormingen(objecten)
+        } else if tableName == Constanten.TABLE_MONITOR {
+            return MonitorLD.getMonitoren(objecten)
+        } else if tableName == Constanten.TABLE_OUDER {
+            return OuderLD.getOuders(objecten)
+        } else if tableName == Constanten.TABLE_VAKANTIE {
+            return VakantieLD.getVakanties(objecten)
+        } else {
+            return VormingLD.getVormingen(objecten)
+        }
     }
     
+    /*static func insert(tableName: String, object: PFObject) {
+        if tableName == Constanten.TABLE_DEELNEMER {
+            DeelnemerLD.getDeelnemers(objecten)
+        } else if tableName == Constanten.TABLE_FAVORIET {
+            return FavorietLD.getFavorieten(objecten)
+        } else if tableName == Constanten.TABLE_FEEDBACK {
+            return FeedbackLD.getFeedbacks(objecten)
+        } else if tableName == Constanten.TABLE_INSCHRIJVINGVORMING {
+            return InschrijvingVormingLD.getInschrijvingVormingen(objecten)
+        } else if tableName == Constanten.TABLE_MONITOR {
+            return MonitorLD.getMonitoren(objecten)
+        } else if tableName == Constanten.TABLE_OUDER {
+            return OuderLD.getOuders(objecten)
+        } else if tableName == Constanten.TABLE_VAKANTIE {
+            return VakantieLD.getVakanties(objecten)
+        } else {
+            return VormingLD.getVormingen(objecten)
+        }
+    }*/
     
     
     

@@ -30,7 +30,7 @@ struct GebruikerLD {
     //
     //Return: een Gebruiker
     //
-    static private func getGebruiker(object: PFObject) -> Gebruiker {
+    static func getGebruiker(object: PFObject) -> Gebruiker {
         var gebruiker: Gebruiker = Gebruiker(id: object.objectId)
         
         gebruiker.rijksregisterNr = object[Constanten.COLUMN_RIJKSREGISTERNUMMER] as? String

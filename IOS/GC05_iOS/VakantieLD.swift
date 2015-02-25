@@ -30,7 +30,7 @@ struct VakantieLD {
     //
     //Return: een Vakantie
     //
-    static private func getVakantie(object: PFObject) -> Vakantie {
+    static func getVakantie(object: PFObject) -> Vakantie {
         var vakantie: Vakantie = Vakantie(id: object.objectId)
         
         vakantie.titel = object[Constanten.COLUMN_TITEL] as? String
