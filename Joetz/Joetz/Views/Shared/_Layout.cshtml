@@ -52,9 +52,13 @@
                     }
                     else
                     {
-                        <li><p class="navbar-text navbar-right">Ingelogd als @ParseUser.CurrentUser.Email </p></li>
+                        <p class="navbar-text navbar-right">Ingelogd als @ParseUser.CurrentUser.Email </p>
+                        
+                    <li>
+                            @Html.ActionLink("Afmelden  ", "Logout", "Account")
+                        </li>
                     }
-                }
+}
                 @*@Html.Partial("_LoginPartial")*@
             </ul>
         </div>
