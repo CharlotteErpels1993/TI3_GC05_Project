@@ -83,7 +83,7 @@ public class RegistrerenDeel4 extends Activity{
         tvOpvullen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mEmailEditText.setText("albert.bosman@gmail.com");
+                mEmailEditText.setText("gilles.devylder@gmail.com");
                 mPasswordEditText.setText("abc123");
                 mConfirmPasswordEditText.setText("abc123");
 
