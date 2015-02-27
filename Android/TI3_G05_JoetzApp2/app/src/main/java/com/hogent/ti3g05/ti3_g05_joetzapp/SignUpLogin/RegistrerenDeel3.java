@@ -84,13 +84,13 @@ public class RegistrerenDeel3 extends Activity{
         tvOpvullen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                voornaamText.setText("Albert");
-                naamText.setText("Bosman");
-                straatText.setText("Mandellaan");
-                huisnrText.setText("85");
-                gemeenteText.setText("Roesselare");
-                postcodeText.setText("8800");
-                telefoonText.setText("081568465");
+                voornaamText.setText("Gilles");
+                naamText.setText("De Vylder");
+                straatText.setText("Schependreef");
+                huisnrText.setText("9");
+                gemeenteText.setText("Eeklo");
+                postcodeText.setText("9900");
+                telefoonText.setText("091568465");
                 gsmText.setText("0412385269");
 
             }
