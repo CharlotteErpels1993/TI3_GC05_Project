@@ -229,13 +229,13 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put(Constants.COLUMN_INBEGREPENINPRIJS, vakantie.getInbegrepenInPrijs());
         values.put(Constants.COLUMN_BMLEDENPRIJS,(Integer) vakantie.getBondMoysonLedenPrijs());
 
-        if((Double)vakantie.getSterPrijs1Ouder()<0)
+        if((Integer)vakantie.getSterPrijs1Ouder()<0)
             vakantie.setSterPrijs1Ouder(0);
-        if((Double)vakantie.getSterPrijs2Ouder()<0)
+        if((Integer)vakantie.getSterPrijs2Ouder()<0)
             vakantie.setSterPrijs2Ouder(0);
 
-        values.put(Constants.COLUMN_STERPRIJSOUDER1,(Double) vakantie.getSterPrijs1Ouder());
-        values.put(Constants.COLUMN_STERPRIJS2OUDERS,(Double) vakantie.getSterPrijs2Ouder());
+        values.put(Constants.COLUMN_STERPRIJSOUDER1,(Integer) vakantie.getSterPrijs1Ouder());
+        values.put(Constants.COLUMN_STERPRIJS2OUDERS,(Integer) vakantie.getSterPrijs2Ouder());
         values.put(Constants.COLUMN_GEMIDDELDERATING, vakantie.getGemiddeldeRating());
         SQLiteDatabase db = this.getWritableDatabase();
 
