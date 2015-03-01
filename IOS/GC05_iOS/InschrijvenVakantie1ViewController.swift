@@ -1,4 +1,4 @@
-/*import Foundation
+import Foundation
 import UIKit
 import QuartzCore
 
@@ -159,8 +159,5 @@ class InschrijvenVakantie1ViewController : UITableViewController, UIPickerViewDa
         var datumArray = split(datum, {$0=="-"}, allowEmptySlices: true)
         var vertrekdatum: String = datumArray[0]
         var terugkeerdatum: String = datumArray[1]
-        
-        
-        
     }
-}*/
+}

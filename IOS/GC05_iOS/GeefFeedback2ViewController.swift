@@ -220,14 +220,27 @@ class GeefFeedback2ViewController: UITableViewController {
                     self.viewDidLoad()
                 } else {
                     
-                    var bestaatOuder = LocalDatastore.bestaatLocalObjectWithConstraints(Constanten.TABLE_OUDER, soortConstraints: [Constanten.COLUMN_EMAIL: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_EMAIL: PFUser.currentUser().email])
+                    //var bestaatOuder = LocalDatastore.bestaatLocalObjectWithConstraints(Constanten.TABLE_OUDER, soortConstraints: [Constanten.COLUMN_EMAIL: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_EMAIL: PFUser.currentUser().email])
+                    var qOuder = Query(tableName: Constanten.TABLE_OUDER)
+                    qOuder.addWhereEqualTo(Constanten.COLUMN_EMAIL, value: PFUser.currentUser().email)
                     
-                    if bestaatOuder == true {
+                    
+                    /*if bestaatOuder == true {
                         var ouder = LocalDatastore.getLocalObjectWithColumnConstraints(Constanten.TABLE_OUDER, soortConstraints: [Constanten.COLUMN_EMAIL: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_EMAIL: PFUser.currentUser().email]) as Gebruiker
                         feedback.gebruiker = ouder
                     } else {
                         var monitor = LocalDatastore.getLocalObjectWithColumnConstraints(Constanten.TABLE_MONITOR, soortConstraints: [Constanten.COLUMN_EMAIL: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_EMAIL: PFUser.currentUser().email]) as Gebruiker
                         feedback.gebruiker = monitor
+                    }*/
+                    
+                    if !qOuder.isEmpty() {
+                        //var ouder = LocalDatastore.getLocalObjectWithColumnConstraints(Constanten.TABLE_OUDER, soortConstraints: [Constanten.COLUMN_EMAIL: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_EMAIL: PFUser.currentUser().email]) as Gebruiker
+                        feedback.gebruiker = qOuder.getFirstObject() as? Gebruiker
+                    } else {
+                        //var monitor = LocalDatastore.getLocalObjectWithColumnConstraints(Constanten.TABLE_MONITOR, soortConstraints: [Constanten.COLUMN_EMAIL: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_EMAIL: PFUser.currentUser().email]) as Gebruiker
+                        var qMonitor = Query(tableName: Constanten.TABLE_MONITOR)
+                        qMonitor.addWhereEqualTo(Constanten.COLUMN_EMAIL, value: PFUser.currentUser().email)
+                        feedback.gebruiker = qMonitor.getFirstObject() as? Gebruiker
                     }
                     
                     feedback.datum = NSDate()

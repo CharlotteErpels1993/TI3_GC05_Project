@@ -65,19 +65,30 @@ class VakantieDetailsTableViewController: UITableViewController {
             
             var favorieteVakantie: Favoriet = Favoriet(id: "test")
             
+            var queryGebruiker = Query()
+            /*queryGebruiker.addWhere(Constanten.COLUMN_EMAIL, value: PFUser.currentUser().email)
+            
             if soort == "ouder" {
-                var ouder = LocalDatastore.getLocalObjectWithColumnConstraints(Constanten.TABLE_OUDER, soortConstraints: [Constanten.COLUMN_EMAIL: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_EMAIL: PFUser.currentUser().email]) as Ouder
-                favorieteVakantie.gebruiker = ouder
+                /*var ouder = LocalDatastore.getLocalObjectWithColumnConstraints(Constanten.TABLE_OUDER, soortConstraints: [Constanten.COLUMN_EMAIL: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_EMAIL: PFUser.currentUser().email]) as Ouder
+                favorieteVakantie.gebruiker = ouder*/
+                
+                queryGebruiker.setTableName(Constanten.TABLE_OUDER)
+                
             } else if soort == "monitor" {
-                var monitor = LocalDatastore.getLocalObjectWithColumnConstraints(Constanten.TABLE_MONITOR, soortConstraints: [Constanten.COLUMN_EMAIL: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_EMAIL: PFUser.currentUser().email]) as Monitor
-                favorieteVakantie.gebruiker = monitor
-            }
+                /*var monitor = LocalDatastore.getLocalObjectWithColumnConstraints(Constanten.TABLE_MONITOR, soortConstraints: [Constanten.COLUMN_EMAIL: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_EMAIL: PFUser.currentUser().email]) as Monitor
+                favorieteVakantie.gebruiker = monitor*/
+                
+                queryGebruiker.setTableName(Constanten.TABLE_MONITOR)
+            }*/
+            
+            //favorieteVakantie.gebruiker = queryGebruiker.getFirstObject() as? Gebruiker
+            favorieteVakantie.gebruiker = queryGebruiker.getGebruiker(soort)
             
             favorieteVakantie.vakantie = self.vakantie
             
             //if LocalDatastore.isFavorieteVakantie(favorieteVakantie) == true {
             
-            var soortConstraints: [String: String] = [:]
+            /*var soortConstraints: [String: String] = [:]
             soortConstraints[Constanten.COLUMN_VAKANTIE] = Constanten.CONSTRAINT_EQUALTO
             soortConstraints[Constanten.COLUMN_GEBRUIKER] = Constanten.CONSTRAINT_EQUALTO
             
@@ -85,9 +96,20 @@ class VakantieDetailsTableViewController: UITableViewController {
             equalToConstraints[Constanten.COLUMN_VAKANTIE] = favorieteVakantie.vakantie?.id
             soortConstraints[Constanten.COLUMN_GEBRUIKER] = favorieteVakantie.gebruiker?.id
             
-            var isDezeVakantieFavoriet = LocalDatastore.bestaatLocalObjectWithConstraints(Constanten.TABLE_FAVORIET, soortConstraints: soortConstraints, equalToConstraints: equalToConstraints)
+            var isDezeVakantieFavoriet = LocalDatastore.bestaatLocalObjectWithConstraints(Constanten.TABLE_FAVORIET, soortConstraints: soortConstraints, equalToConstraints: equalToConstraints)*/
+            var queryFavoriet = Query(tableName: Constanten.TABLE_FAVORIET)
+            queryFavoriet.addWhereEqualTo(Constanten.COLUMN_VAKANTIE, value: favorieteVakantie.vakantie?.id)
+            queryFavoriet.addWhereEqualTo(Constanten.COLUMN_GEBRUIKER, value: favorieteVakantie.gebruiker?.id)
             
-            if isDezeVakantieFavoriet == true {
+            /*if isDezeVakantieFavoriet == true {
+                heartButton.setImage(self.imageHeartFull, forState: UIControlState.Normal)
+                self.isFavoriet = true
+            } else {
+                heartButton.setImage(self.imageHeartEmpty, forState: UIControlState.Normal)
+                self.isFavoriet = false
+            }*/
+            
+            if !queryFavoriet.isEmpty() {
                 heartButton.setImage(self.imageHeartFull, forState: UIControlState.Normal)
                 self.isFavoriet = true
             } else {
@@ -96,7 +118,10 @@ class VakantieDetailsTableViewController: UITableViewController {
             }
         }
         
-        self.images = LocalDatastore.getLocalObjectsWithColumnConstraints(Constanten.TABLE_AFBEELDING, soortConstraints: [Constanten.COLUMN_VAKANTIE: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_VAKANTIE: vakantie.id]) as [UIImage]
+        /*self.images = LocalDatastore.getLocalObjectsWithColumnConstraints(Constanten.TABLE_AFBEELDING, soortConstraints: [Constanten.COLUMN_VAKANTIE: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_VAKANTIE: vakantie.id]) as [UIImage]*/
+        var queryImages = Query(tableName: Constanten.TABLE_AFBEELDING)
+        queryImages.addWhereEqualTo(Constanten.COLUMN_VAKANTIE, value: vakantie.id)
+        self.images = queryImages.getObjects() as [UIImage]
         
         if self.images.count >= 3 {
             self.afbeelding1.image = self.images[0]
@@ -285,13 +310,18 @@ class VakantieDetailsTableViewController: UITableViewController {
         var user = PFUser.currentUser()
         var soort = user["soort"] as? String
         
-        if soort == "ouder" {
+        
+        
+        /*if soort == "ouder" {
             var ouder = LocalDatastore.getLocalObjectWithColumnConstraints(Constanten.TABLE_OUDER, soortConstraints: [Constanten.COLUMN_EMAIL: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_EMAIL: PFUser.currentUser().email]) as Ouder
             favorieteVakantie.gebruiker = ouder
         } else if soort == "monitor" {
             var monitor = LocalDatastore.getLocalObjectWithColumnConstraints(Constanten.TABLE_MONITOR, soortConstraints: [Constanten.COLUMN_EMAIL: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_EMAIL: PFUser.currentUser().email]) as Monitor
             favorieteVakantie.gebruiker = monitor
-        }
+        }*/
+        
+        var queryGebruiker = Query()
+        favorieteVakantie.gebruiker = queryGebruiker.getGebruiker(soort!)
         
         favorieteVakantie.vakantie = self.vakantie
         
@@ -302,7 +332,11 @@ class VakantieDetailsTableViewController: UITableViewController {
         } else {
             self.isFavoriet = false
             heartButton.setImage(self.imageHeartEmpty, forState: UIControlState.Normal)
-            LocalDatastore.deleteFavorieteVakantie(favorieteVakantie)
+            //LocalDatastore.deleteFavorieteVakantie(favorieteVakantie)
+            var queryFavoriet = Query(tableName: Constanten.TABLE_FAVORIET)
+            queryFavoriet.addWhereEqualTo(Constanten.COLUMN_VAKANTIE, value: favorieteVakantie.vakantie?.id)
+            queryFavoriet.addWhereEqualTo(Constanten.COLUMN_GEBRUIKER, value: favorieteVakantie.gebruiker?.id)
+            queryFavoriet.deleteObjects()
         }
     }
     

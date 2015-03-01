@@ -382,7 +382,16 @@ class Registratie1ViewController: UITableViewController {
     //
     func controleerRijksregisterNummerAlGeregisteerd() -> Bool {
         
-        var arguments : [String : AnyObject] = [:]
+        var query = Query(tableName: Constanten.TABLE_OUDER)
+        query.addWhereEqualTo(Constanten.COLUMN_RIJKSREGISTERNUMMER, value: txtRijksregisterNr.text)
+        
+        if query.isEmpty() {
+            return false
+        } else {
+            return true
+        }
+        
+        /*var arguments : [String : AnyObject] = [:]
         arguments[Constanten.COLUMN_RIJKSREGISTERNUMMER] = self.txtRijksregisterNr.text
         
         var query = LocalDatastore.query(Constanten.TABLE_OUDER, whereArgs: arguments)
@@ -391,7 +400,7 @@ class Registratie1ViewController: UITableViewController {
             return false
         } else {
             return true
-        }
+        }*/
         
         //return LocalDatastore.isRijksregisternummerAlGeregistreerd(self.txtRijksregisterNr.text)
     }

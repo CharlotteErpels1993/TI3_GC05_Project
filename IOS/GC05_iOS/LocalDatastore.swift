@@ -72,13 +72,13 @@ struct LocalDatastore {
     //
     //Return: true als de query geen resultaten oplevert, false als de query wel resultaten oplevert
     //
-    static func isResultSetEmpty(query: PFQuery) -> Bool {
+    /*static func isResultSetEmpty(query: PFQuery) -> Bool {
         if query.countObjects() > 0 {
             return true
         } else {
             return false
         }
-    }
+    }*/
     
     //
     //Function: query
@@ -87,7 +87,7 @@ struct LocalDatastore {
     //
     //Return: de gemaakte query
     //
-    static func query(tableName: String, whereArgs: [String : AnyObject] = [:]) -> PFQuery {
+    /*static func query(tableName: String, whereArgs: [String : AnyObject] = [:]) -> PFQuery {
             
         var query = PFQuery(className: tableName)
         query.fromLocalDatastore()
@@ -99,7 +99,7 @@ struct LocalDatastore {
         }
         
         return query
-    }
+    }*/
     
     //
     //Function: getFirstObject
@@ -110,7 +110,7 @@ struct LocalDatastore {
     //
     //Return: een AnyObject
     //
-    static func getFirstObject(tableName: String, query: PFQuery) -> AnyObject {
+    /*static func getFirstObject(tableName: String, query: PFQuery) -> AnyObject {
         
         var first = query.getFirstObject() as PFObject
         
@@ -122,8 +122,10 @@ struct LocalDatastore {
             return FavorietLD.getFavoriet(first)
         } else if tableName == Constanten.TABLE_FEEDBACK {
             return FeedbackLD.getFeedback(first)
+        } else if tableName == Constanten.TABLE_INSCHRIJVINGVAKANTIE {
+            return InschrijvingVakantieLD.getInschrijving(first)
         } else if tableName == Constanten.TABLE_INSCHRIJVINGVORMING {
-            return InschrijvingVormingLD.getInschrijvingVorming(first)
+            return InschrijvingVormingLD.getInschrijving(first)
         } else if tableName == Constanten.TABLE_MONITOR {
             return MonitorLD.getMonitor(first)
         } else if tableName == Constanten.TABLE_OUDER {
@@ -133,7 +135,7 @@ struct LocalDatastore {
         } else {
             return VormingLD.getVorming(first)
         }
-    }
+    }*/
     
     //
     //Function: getObjecten
@@ -147,7 +149,7 @@ struct LocalDatastore {
     //
     //Return: een array van AnyObject
     //
-    static private func getObjecten(tableName: String, query: PFQuery) -> [AnyObject] {
+    /*static func getObjecten(tableName: String, query: PFQuery) -> [AnyObject] {
         
         var objecten = query.findObjects() as [PFObject]
         
@@ -160,7 +162,7 @@ struct LocalDatastore {
         } else if tableName == Constanten.TABLE_FEEDBACK {
             return FeedbackLD.getFeedbacks(objecten)
         } else if tableName == Constanten.TABLE_INSCHRIJVINGVORMING {
-            return InschrijvingVormingLD.getInschrijvingVormingen(objecten)
+            return InschrijvingVormingLD.getInschrijvingen(objecten)
         } else if tableName == Constanten.TABLE_MONITOR {
             return MonitorLD.getMonitoren(objecten)
         } else if tableName == Constanten.TABLE_OUDER {
@@ -170,9 +172,9 @@ struct LocalDatastore {
         } else {
             return VormingLD.getVormingen(objecten)
         }
-    }
+    }*/
     
-    static func insert(tableName: String, object: AnyObject) {
+    /*static func insert(tableName: String, object: AnyObject) {
         if tableName == Constanten.TABLE_DEELNEMER {
             DeelnemerLD.insert(object as Deelnemer)
         } else if tableName == Constanten.TABLE_FAVORIET {
@@ -186,14 +188,18 @@ struct LocalDatastore {
         } else {
             OuderLD.insert(object as Ouder)
         }
+    }*/
+    
+    static func getCurrentUserSoort() -> String {
+        var currentUser = PFUser.currentUser()
+        var soort = currentUser["soort"] as? String
+        return soort!
     }
     
-    
-    
-    
-    
-    
-    
+    /*static func getAll(tableName: String) -> [AnyObject] {
+        var query = self.query(tableName)
+        return getObjecten(tableName, query: query)
+    }*/
     
     
     //
@@ -942,12 +948,6 @@ struct LocalDatastore {
 
         
         return andereMonitoren
-    }
-    
-    static func getCurrentUserSoort() -> String {
-        var currentUser = PFUser.currentUser()
-        var soort = currentUser["soort"] as? String
-        return soort!
     }
 
     static func bestaatInschrijvingVormingAl(inschrijving: InschrijvingVorming) -> Bool {

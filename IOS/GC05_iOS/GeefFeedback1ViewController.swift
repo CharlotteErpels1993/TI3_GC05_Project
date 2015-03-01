@@ -26,7 +26,9 @@ class GeefFeedback1ViewController: UIViewController, UIPickerViewDataSource, UIP
         self.navigationController!.toolbarHidden = true
         
         controleerInternet()
-        self.vakanties = LocalDatastore.getLocalObjects(Constanten.TABLE_VAKANTIE) as [Vakantie]
+        var queryVakanties = Query(tableName: Constanten.TABLE_VAKANTIE)
+        self.vakanties = queryVakanties.getObjects() as [Vakantie]
+        //self.vakanties = LocalDatastore.getLocalObjects(Constanten.TABLE_VAKANTIE) as [Vakantie]
         
         vakantiePickerView.delegate = self
         vakantiePickerView.dataSource = self

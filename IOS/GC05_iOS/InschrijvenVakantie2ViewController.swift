@@ -319,7 +319,19 @@ class InschrijvenVakantie2ViewController : UITableViewController {
         self.deelnemer.gemeente = txtGemeente.text
         self.inschrijvingVakantie.vakantie = self.vakantie
         
-        var ouder = LocalDatastore.getLocalObjectWithColumnConstraints(Constanten.TABLE_OUDER, soortConstraints: [Constanten.COLUMN_EMAIL: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_EMAIL: PFUser.currentUser().email]) as Ouder
+        /*var whereOuder : [String : AnyObject] = [:]
+        whereOuder[Constanten.COLUMN_EMAIL] = PFUser.currentUser().email
+        
+        var queryOuder = LocalDatastore.query(Constanten.TABLE_OUDER, whereArgs: whereOuder)
+        var ouder = LocalDatastore.getFirstObject(Constanten.TABLE_OUDER, query: queryOuder) as Ouder*/
+        
+        var queryOuder = Query(tableName: Constanten.TABLE_OUDER)
+        queryOuder.addWhereEqualTo(Constanten.COLUMN_EMAIL, value: PFUser.currentUser().email)
+        var ouder = queryOuder.getFirstObject() as Ouder
+        
+        
+        
+        /*var ouder = LocalDatastore.getLocalObjectWithColumnConstraints(Constanten.TABLE_OUDER, soortConstraints: [Constanten.COLUMN_EMAIL: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_EMAIL: PFUser.currentUser().email]) as Ouder*/
         
         self.inschrijvingVakantie.ouder = ouder
     }
@@ -334,7 +346,60 @@ class InschrijvenVakantie2ViewController : UITableViewController {
     //Return: een bool true als de inschrijving al bestaat, anders false
     //
     func controleerKindAlIngeschreven() -> Bool {
-        return LocalDatastore.bestaatInschrijvingVakantieAl(self.inschrijvingVakantie)
+        
+        var queryDeelnemer = Query(tableName: Constanten.TABLE_DEELNEMER)
+        queryDeelnemer.addWhereEqualTo(Constanten.COLUMN_VOORNAAM, value: txtVoornaam.text)
+        queryDeelnemer.addWhereEqualTo(Constanten.COLUMN_VOORNAAM, value: txtNaam.text)
+        
+        if !queryDeelnemer.isEmpty() {
+            
+            var kind = queryDeelnemer.getFirstObject() as Deelnemer
+            
+            var queryInschrijving = Query(tableName: Constanten.TABLE_INSCHRIJVINGVAKANTIE)
+            queryInschrijving.addWhereEqualTo(Constanten.COLUMN_DEELNEMER, value: kind.id)
+            queryInschrijving.addWhereEqualTo(Constanten.COLUMN_OUDER, value: inschrijvingVakantie.ouder?.id)
+            queryInschrijving.addWhereEqualTo(Constanten.COLUMN_VAKANTIE, value: inschrijvingVakantie.vakantie?.id)
+            
+            if queryInschrijving.isEmpty() {
+                return false
+            } else {
+                return true
+            }
+            
+        } else {
+            return false
+        }
+        
+        
+        /*var whereDeelnemer : [String : AnyObject] = [:]
+        whereDeelnemer[Constanten.COLUMN_VOORNAAM] = txtVoornaam.text
+        whereDeelnemer[Constanten.COLUMN_NAAM] = txtNaam.text
+        
+        var queryDeelnemer = LocalDatastore.query(Constanten.TABLE_DEELNEMER, whereArgs: whereDeelnemer)
+        
+        if LocalDatastore.isResultSetEmpty(queryDeelnemer) {
+            return false
+        } else {
+            var kind = LocalDatastore.getFirstObject(Constanten.TABLE_DEELNEMER, query: queryDeelnemer) as Deelnemer
+            
+            var whereInschrijving : [String : AnyObject] = [:]
+            whereInschrijving[Constanten.COLUMN_DEELNEMER] = kind.id
+            whereInschrijving[Constanten.COLUMN_OUDER] = inschrijvingVakantie.ouder?.id
+            whereInschrijving[Constanten.COLUMN_VAKANTIE] = inschrijvingVakantie.vakantie?.id
+            
+            var queryInschrijving = LocalDatastore.query(Constanten.TABLE_INSCHRIJVINGVAKANTIE, whereArgs: whereInschrijving)
+            
+            if LocalDatastore.isResultSetEmpty(queryInschrijving) {
+                return false
+            } else {
+                return true
+            }
+        }*/
+        
+        
+        //return LocalDatastore.bestaatInschrijvingVakantieAl(self.inschrijvingVakantie)
+        
+        
         /*var inschrijvingen: [InschrijvingVakantie] = []
         var inschrijvingenResponse = ParseData.getInschrijvingenVakantie(self.inschrijvingVakantie)
         

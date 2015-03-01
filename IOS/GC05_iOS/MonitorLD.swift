@@ -116,4 +116,41 @@ struct MonitorLD {
         object.pin()
         object.save()
     }
+    
+    static func update(object: PFObject, monitor: Monitor) -> Monitor {
+        
+        object[Constanten.COLUMN_RIJKSREGISTERNUMMER] = monitor.rijksregisterNr
+        object[Constanten.COLUMN_EMAIL] = monitor.email
+        object[Constanten.COLUMN_VOORNAAM] = monitor.voornaam
+        object[Constanten.COLUMN_NAAM] = monitor.naam
+        object[Constanten.COLUMN_STRAAT] = monitor.straat
+        object[Constanten.COLUMN_NUMMER] = monitor.nummer
+        object[Constanten.COLUMN_POSTCODE] = monitor.postcode
+        object[Constanten.COLUMN_GEMEENTE] = monitor.gemeente
+        object[Constanten.COLUMN_GSM] = monitor.gsm
+        
+        if monitor.bus != nil {
+            object[Constanten.COLUMN_BUS] = monitor.bus
+        }
+        
+        if monitor.telefoon != nil {
+            object[Constanten.COLUMN_TELEFOON] = monitor.telefoon
+        }
+        
+        if monitor.aansluitingsNr != nil {
+            object[Constanten.COLUMN_AANSLUITINGSNUMMER] = monitor.aansluitingsNr
+        }
+        
+        if monitor.codeGerechtigde != nil {
+            object[Constanten.COLUMN_CODEGERECHTIGDE] = monitor.codeGerechtigde
+        }
+        
+        if monitor.lidNr != nil {
+            object[Constanten.COLUMN_LIDNUMMER] = monitor.lidNr
+        }
+        
+        object.save()
+        
+        return getMonitor(object)
+    }
 }

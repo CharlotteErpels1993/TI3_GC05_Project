@@ -96,7 +96,22 @@ class NieuwWachtwoordViewController: UIViewController {
     //Return: een bool true als het email geregistreerd is in de database, anders false
     //
     func isValidEmailInDatabase(email: String) -> Bool {
-        return LocalDatastore.isEmailAlGeregistreerd(email)
+        //return LocalDatastore.isEmailAlGeregistreerd(email)
+        
+        var qOuder = Query(tableName: Constanten.TABLE_OUDER)
+        qOuder.addWhereEqualTo(Constanten.COLUMN_EMAIL, value: email)
+        
+        var qMonitor = Query(tableName: Constanten.TABLE_MONITOR)
+        qMonitor.addWhereEqualTo(Constanten.COLUMN_EMAIL, value: email)
+        
+        var qAdmin = Query(tableName: Constanten.TABLE_USER)
+        qAdmin.addWhereEqualTo(Constanten.COLUMN_EMAIL, value: email)
+        
+        if !qOuder.isEmpty() || !qMonitor.isEmpty() || !qAdmin.isEmpty() {
+            return true
+        } else {
+            return false
+        }
     }
     
 }

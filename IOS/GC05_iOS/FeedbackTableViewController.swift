@@ -58,7 +58,7 @@ class FeedbackTableViewController: UITableViewController, UISearchBarDelegate, U
         self.setNeedsStatusBarAppearanceUpdate()
         self.navigationController!.toolbarHidden = true
         
-        var isFeedbackTableLeeg = LocalDatastore.isEmpty(Constanten.TABLE_FEEDBACK)
+        /*var isFeedbackTableLeeg = LocalDatastore.isEmpty(Constanten.TABLE_FEEDBACK)
         
         if isFeedbackTableLeeg == false {
             self.feedbacken = LocalDatastore.getLocalObjects(Constanten.TABLE_FEEDBACK) as [Feedback]
@@ -68,7 +68,20 @@ class FeedbackTableViewController: UITableViewController, UISearchBarDelegate, U
             self.tableView.reloadData()
             feedbacken2.sort({ $0.vakantie!.titel < (String($1.score!)) })
             feedbacken2.sort({ $0.vakantie!.titel < (String($1.score!)) })
+        }*/
+        
+        var queryFeedback = Query(tableName: Constanten.TABLE_FEEDBACK)
+        
+        if !queryFeedback.isEmpty() {
+            //self.feedbacken = LocalDatastore.getLocalObjects(Constanten.TABLE_FEEDBACK) as [Feedback]
+            self.feedbacken = queryFeedback.getObjects() as [Feedback]
+            self.feedbacken2 = self.feedbacken
+        } else {
+            foutBoxOproepen("Oeps", "Er is nog geen feedback.", self)
+            self.tableView.reloadData()
+            feedbacken2.sort({ $0.vakantie!.titel < (String($1.score!)) })
         }
+        
         
         if PFUser.currentUser() == nil {
             self.navigationItem.rightBarButtonItem = nil

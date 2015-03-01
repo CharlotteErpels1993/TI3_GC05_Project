@@ -3,7 +3,7 @@ import Foundation
 struct InschrijvingVormingLD {
     
     //
-    //Function: getInschrijvingVormingen
+    //Function: getInschrijvingen
     //
     //Deze functie zet een array van PFObject om naar een array van InschrijvingVorming.
     //
@@ -11,18 +11,18 @@ struct InschrijvingVormingLD {
     //
     //Return: een array van InschrijvingVorming
     //
-    static func getInschrijvingVormingen(objecten: [PFObject]) -> [InschrijvingVorming] {
-        var inschrijvingVormingen: [InschrijvingVorming] = []
+    static func getInschrijvingen(objecten: [PFObject]) -> [InschrijvingVorming] {
+        var inschrijvingen: [InschrijvingVorming] = []
         
         for object in objecten {
-            inschrijvingVormingen.append(getInschrijvingVorming(object))
+            inschrijvingen.append(getInschrijving(object))
         }
         
-        return inschrijvingVormingen
+        return inschrijvingen
     }
     
     //
-    //Function: getInschrijvingVorming
+    //Function: getInschrijving
     //
     //Deze functie zet een  PFObject om naar een InschrijvingVorming.
     //
@@ -30,26 +30,33 @@ struct InschrijvingVormingLD {
     //
     //Return: een InschrijvingVorming
     //
-    static func getInschrijvingVorming(object: PFObject) -> InschrijvingVorming {
-        var inschrijvingVorming: InschrijvingVorming = InschrijvingVorming(id: object.objectId)
+    static func getInschrijving(object: PFObject) -> InschrijvingVorming {
+        var inschrijving: InschrijvingVorming = InschrijvingVorming(id: object.objectId)
         
-        inschrijvingVorming.periode = object[Constanten.COLUMN_PERIODE] as? String
+        var queryMonitor = Query(tableName: Constanten.TABLE_MONITOR)
+        queryMonitor.addWhereEqualTo(Constanten.COLUMN_OBJECTID, value: object[Constanten.COLUMN_MONITOR])
+        inschrijving.monitor = queryMonitor.getFirstObject() as? Monitor
         
-        var wArgsMonitor : [String : AnyObject] = [:]
-        wArgsMonitor[Constanten.COLUMN_OBJECTID] = object[Constanten.COLUMN_MONITOR] as? String
+        var queryVorming = Query(tableName: Constanten.TABLE_VORMING)
+        queryVorming.addWhereEqualTo(Constanten.COLUMN_OBJECTID, value: object[Constanten.COLUMN_VORMING])
+        inschrijving.vorming = queryVorming.getFirstObject() as? Vorming
         
-        var queryMonitor = LocalDatastore.query(Constanten.TABLE_MONITOR, whereArgs: wArgsMonitor)
+        /*var whereMonitor : [String : AnyObject] = [:]
+        var whereVorming : [String : AnyObject] = [:]
         
-        inschrijvingVorming.monitor = LocalDatastore.getFirstObject(Constanten.TABLE_MONITOR, query: queryMonitor) as? Monitor
+        whereMonitor[Constanten.COLUMN_OBJECTID] = object[Constanten.COLUMN_MONITOR] as? String
+        whereVorming[Constanten.COLUMN_OBJECTID] = object[Constanten.COLUMN_VORMING] as? String
         
-        var wArgsVorming : [String : AnyObject] = [:]
-        wArgsVorming[Constanten.COLUMN_OBJECTID] = object[Constanten.COLUMN_VORMING] as? String
+        var queryMonitor = LocalDatastore.query(Constanten.TABLE_MONITOR, whereArgs: whereMonitor)
+        var queryVorming = LocalDatastore.query(Constanten.TABLE_VORMING, whereArgs: whereVorming)
         
-        var queryVorming = LocalDatastore.query(Constanten.TABLE_VORMING, whereArgs: wArgsVorming)
+        inschrijving.monitor = LocalDatastore.getFirstObject(Constanten.TABLE_MONITOR, query: queryMonitor) as? Monitor
         
-        inschrijvingVorming.vorming = LocalDatastore.getFirstObject(Constanten.TABLE_VORMING, query: queryVorming) as? Vorming
+        inschrijving.vorming = LocalDatastore.getFirstObject(Constanten.TABLE_VORMING, query: queryVorming) as? Vorming*/
         
-        return inschrijvingVorming
+        inschrijving.periode = object[Constanten.COLUMN_PERIODE] as? String
+        
+        return inschrijving
     }
     
     //
@@ -58,15 +65,15 @@ struct InschrijvingVormingLD {
     //Deze functie insert een InschrijvingVorming object in de local datastore en
     //synct deze verandering dan naar de online database.
     //
-    //Parameters: - inschrijvingVorming: InschrijvingVorming
+    //Parameters: - inschrijving: InschrijvingVorming
     //
-    static func insert(inschrijvingVorming: InschrijvingVorming) {
+    static func insert(inschrijving: InschrijvingVorming) {
         
         let object = PFObject(className: Constanten.TABLE_INSCHRIJVINGVORMING)
         
-        object[Constanten.COLUMN_PERIODE] = inschrijvingVorming.periode
-        object[Constanten.COLUMN_MONITOR] = inschrijvingVorming.monitor?.id
-        object[Constanten.COLUMN_VORMING] = inschrijvingVorming.vorming?.id
+        object[Constanten.COLUMN_PERIODE] = inschrijving.periode
+        object[Constanten.COLUMN_MONITOR] = inschrijving.monitor?.id
+        object[Constanten.COLUMN_VORMING] = inschrijving.vorming?.id
         
         object.pin()
         object.save()

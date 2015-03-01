@@ -49,7 +49,10 @@ class VormingenTableViewController: UITableViewController, UISearchBarDelegate, 
         super.viewDidLoad()
         hideSideMenuView()
         
-        self.vormingen = LocalDatastore.getLocalObjects(Constanten.TABLE_VORMING) as [Vorming]
+        //self.vormingen = LocalDatastore.getLocalObjects(Constanten.TABLE_VORMING) as [Vorming]
+        var qVormingen = Query(tableName: Constanten.TABLE_VORMING)
+        self.vormingen = qVormingen.getObjects() as [Vorming]
+        
         self.vormingen2 = self.vormingen
         self.tableView.reloadData()
         

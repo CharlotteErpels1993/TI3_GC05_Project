@@ -44,19 +44,60 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
         super.viewDidLoad()
         hideSideMenuView()
         
-        self.ingelogdeMonitor = LocalDatastore.getLocalObjectWithColumnConstraints(Constanten.TABLE_MONITOR, soortConstraints: [Constanten.COLUMN_EMAIL: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_EMAIL: PFUser.currentUser().email]) as Monitor
+        /*self.ingelogdeMonitor = LocalDatastore.getLocalObjectWithColumnConstraints(Constanten.TABLE_MONITOR, soortConstraints: [Constanten.COLUMN_EMAIL: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_EMAIL: PFUser.currentUser().email]) as Monitor*/
+        var queryMonitor = Query(tableName: Constanten.TABLE_MONITOR)
+        queryMonitor.addWhereEqualTo(Constanten.COLUMN_EMAIL, value: PFUser.currentUser().email)
+        self.ingelogdeMonitor = queryMonitor.getFirstObject() as Monitor
         
         var soort = LocalDatastore.getCurrentUserSoort()
         
         if soort == "monitor" {
-            var monitor = LocalDatastore.getLocalObjectWithColumnConstraints(Constanten.TABLE_MONITOR, soortConstraints: [Constanten.COLUMN_EMAIL: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_EMAIL: PFUser.currentUser().email]) as Monitor
+            //var monitor = LocalDatastore.getLocalObjectWithColumnConstraints(Constanten.TABLE_MONITOR, soortConstraints: [Constanten.COLUMN_EMAIL: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_EMAIL: PFUser.currentUser().email]) as Monitor
             
-            var monitorenZelfdeVorming = LocalDatastore.getMonitorenMetDezelfdeVormingen(monitor.id!)
+            var qInschrijvingenIngelogdeMonitor = Query(tableName: Constanten.TABLE_INSCHRIJVINGVORMING)
+            qInschrijvingenIngelogdeMonitor.addWhereEqualTo(Constanten.COLUMN_MONITOR, value: ingelogdeMonitor.id)
+            var inschrijvingenIngelogdeMonitor = qInschrijvingenIngelogdeMonitor.getObjects() as [InschrijvingVorming]
+            
+            var keysVormingen : [String] = []
+            
+            for inschrijving in inschrijvingenIngelogdeMonitor {
+                var id = inschrijving.vorming?.id
+                keysVormingen.append(id!)
+            }
+            
+            var qInschrijvingenVanVormingen = Query(tableName: Constanten.TABLE_INSCHRIJVINGVORMING)
+            qInschrijvingenVanVormingen.addWhereContainedIn(Constanten.COLUMN_VORMING, objects: keysVormingen)
+            
+            var inschrijvingenVormingen = qInschrijvingenVanVormingen.getObjects() as [InschrijvingVorming]
+            
+            for var i=0; i<inschrijvingenVormingen.count; i++ {
+                if inschrijvingenVormingen[i].monitor?.id == ingelogdeMonitor.id {
+                    inschrijvingenVormingen.removeAtIndex(i)
+                }
+            }
+            
+            var monitorenIds: [String] = []
+            
+            for inschrijvingVorming in inschrijvingenVormingen {
+                var monitorId = inschrijvingVorming.monitor?.id
+                monitorenIds.append(monitorId!)
+            }
+            
+            var qMonitorenZelfdeVorming = Query(tableName: Constanten.TABLE_MONITOR)
+            qMonitorenZelfdeVorming.addWhereContainedIn(Constanten.COLUMN_OBJECTID, objects:monitorenIds)
+            
+            //var monitorenZelfdeVorming = LocalDatastore.getMonitorenMetDezelfdeVormingen(monitor.id!)
+            var monitorenZelfdeVorming = qMonitorenZelfdeVorming.getObjects() as [Monitor]
             
             if monitorenZelfdeVorming.count != 0 {
                 self.monitorenZelfdeVorming = monitorenZelfdeVorming
                 
-                var monitorenAndereVormingen = LocalDatastore.getAndereMonitoren(monitorenZelfdeVorming)
+                //var monitorenAndereVormingen = LocalDatastore.getAndereMonitoren(monitorenZelfdeVorming)
+                
+                var qMonitorenAndereVormingen = Query(tableName: Constanten.TABLE_MONITOR)
+                qMonitorenAndereVormingen.addWhereNotContainedIn(Constanten.COLUMN_OBJECTID, objects: monitorenIds)
+                
+                var monitorenAndereVormingen = qMonitorenAndereVormingen.getObjects() as [Monitor]
                 
                 if monitorenAndereVormingen.count != 0 {
                     self.monitoren = monitorenAndereVormingen
@@ -64,7 +105,10 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
                     self.monitorenZelfdeVorming2 = self.monitorenZelfdeVorming
                 }
             } else {
-                var alleMonitoren = LocalDatastore.getLocalObjects(Constanten.TABLE_MONITOR) as [Monitor]
+                //var alleMonitoren = LocalDatastore.getLocalObjects(Constanten.TABLE_MONITOR) as [Monitor]
+                
+                var qAlleMonitoren = Query(tableName: Constanten.TABLE_MONITOR)
+                var alleMonitoren = qAlleMonitoren.getObjects() as [Monitor]
                 
                 if alleMonitoren.count != 0 {
                     for var i = 0; i < alleMonitoren.count; i += 1 {
@@ -76,7 +120,9 @@ class ProfielenTableViewController: UITableViewController, UISearchBarDelegate, 
                 }
             }
         } else {
-            var alleMonitoren = LocalDatastore.getLocalObjects(Constanten.TABLE_MONITOR) as [Monitor]
+            //var alleMonitoren = LocalDatastore.getLocalObjects(Constanten.TABLE_MONITOR) as [Monitor]
+            var qAlleMonitoren = Query(tableName: Constanten.TABLE_MONITOR)
+            var alleMonitoren = qAlleMonitoren.getObjects() as [Monitor]
             self.monitoren = alleMonitoren
         }
         

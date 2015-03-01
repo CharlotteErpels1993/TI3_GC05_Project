@@ -151,9 +151,14 @@ class InschrijvenVormingViewController: UIViewController, UIPickerViewDataSource
         if segue.identifier == "inschrijven" {
             let inschrijvenVormingSuccesvolViewController = segue.destinationViewController as InschrijvenVormingSuccesvolViewController
 
-            var monitor = LocalDatastore.getLocalObjectWithColumnConstraints(Constanten.TABLE_MONITOR, soortConstraints: [Constanten.COLUMN_EMAIL: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_EMAIL: PFUser.currentUser().email]) as Monitor
+            //var monitor = LocalDatastore.getLocalObjectWithColumnConstraints(Constanten.TABLE_MONITOR, soortConstraints: [Constanten.COLUMN_EMAIL: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_EMAIL: PFUser.currentUser().email]) as Monitor
             
-            inschrijvingVorming.monitor = monitor
+            var queryMonitor = Query(tableName: Constanten.TABLE_MONITOR)
+            queryMonitor.addWhereEqualTo(Constanten.COLUMN_EMAIL, value: PFUser.currentUser().email)
+            
+            //inschrijvingVorming.monitor = monitor
+            inschrijvingVorming.monitor = queryMonitor.getFirstObject() as? Monitor
+            
             inschrijvingVorming.vorming = vorming
             
             if inschrijvingVorming.periode == nil {
@@ -193,7 +198,20 @@ class InschrijvenVormingViewController: UIViewController, UIPickerViewDataSource
     //
     func controleerAlIngeschreven() -> Bool {
         
-        return LocalDatastore.bestaatInschrijvingVormingAl(inschrijvingVorming)
+        //return LocalDatastore.bestaatInschrijvingVormingAl(inschrijvingVorming)
+        
+        var query = Query(tableName: Constanten.TABLE_INSCHRIJVINGVORMING)
+        query.addWhereEqualTo(Constanten.COLUMN_MONITOR, value: inschrijvingVorming.monitor?.id)
+        query.addWhereEqualTo(Constanten.COLUMN_VORMING, value: inschrijvingVorming.vorming?.id)
+        query.addWhereEqualTo(Constanten.COLUMN_PERIODE, value: inschrijvingVorming.periode)
+        
+        if query.isEmpty() {
+            return false
+        } else {
+            return true
+        }
+        
+        
         /*var inschrijvingen: [InschrijvingVorming] = []
         inschrijvingen = ParseData.getInschrijvingenVorming(inschrijvingVorming)
         if inschrijvingen.count > 0 {

@@ -368,7 +368,10 @@ class ProfielBewerkenViewController: UITableViewController {
                 profielDetailsViewController.monitor = self.monitor
                 profielDetailsViewController.eigenProfiel = true
             } else {
-                monitor = LocalDatastore.getLocalObjectWithColumnConstraints(Constanten.TABLE_MONITOR, soortConstraints: [Constanten.COLUMN_EMAIL: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_EMAIL: PFUser.currentUser().email]) as Monitor
+                //monitor = LocalDatastore.getLocalObjectWithColumnConstraints(Constanten.TABLE_MONITOR, soortConstraints: [Constanten.COLUMN_EMAIL: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_EMAIL: PFUser.currentUser().email]) as Monitor
+                var qMonitor = Query(tableName: Constanten.TABLE_MONITOR)
+                qMonitor.addWhereEqualTo(Constanten.COLUMN_EMAIL, value: PFUser.currentUser().email)
+                monitor = qMonitor.getFirstObject() as Monitor
                 
                 setStatusTextFields()
                 pasLayoutVeldenAan()
@@ -378,7 +381,12 @@ class ProfielBewerkenViewController: UITableViewController {
                 } else {
                     settenVerplichteGegevens()
                     settenOptioneleGegevens()
-                    LocalDatastore.updateMonitor(self.monitor!)
+                    
+                    //LocalDatastore.updateMonitor(self.monitor!)
+                    var qUpdateMonitor = Query(tableName: Constanten.TABLE_MONITOR)
+                    qUpdateMonitor.updateObject(self.monitor!, id: self.monitor.id!)
+                    
+                    
                     profielDetailsViewController.monitor = self.monitor
                     profielDetailsViewController.eigenProfiel = true
                 }

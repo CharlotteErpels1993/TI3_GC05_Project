@@ -46,7 +46,9 @@ class IndienenVoorkeurViewController: UIViewController, UIPickerViewDataSource, 
         
         hideSideMenuView()
         
-        self.vakanties = LocalDatastore.getLocalObjects(Constanten.TABLE_VAKANTIE) as [Vakantie]
+        //self.vakanties = LocalDatastore.getLocalObjects(Constanten.TABLE_VAKANTIE) as [Vakantie]
+        var qVakanties = Query(tableName: Constanten.TABLE_VAKANTIE)
+        self.vakanties = qVakanties.getObjects() as [Vakantie]
         
         for v in vakanties {
             pickerData.append(v.titel!)
@@ -234,7 +236,18 @@ class IndienenVoorkeurViewController: UIViewController, UIPickerViewDataSource, 
     //
     func controleerAlIngeschreven() -> Bool {
         
-        return LocalDatastore.bestaatVoorkeurAl(voorkeur)
+        //return LocalDatastore.bestaatVoorkeurAl(voorkeur)
+        
+        var qInschrijvingen = Query(tableName: Constanten.TABLE_INSCHRIJVINGVORMING)
+        qInschrijvingen.addWhereEqualTo(Constanten.COLUMN_MONITOR, value: voorkeur.monitor?.id)
+        qInschrijvingen.addWhereEqualTo(Constanten.COLUMN_VAKANTIE, value: voorkeur.vakantie?.id)
+        
+        if qInschrijvingen.isEmpty() {
+            return false
+        } else {
+            return true
+        }
+        
         
         /*var voorkeuren: [Voorkeur] = []
         var voorkeurenResponse = ParseData.getVoorkeurenVakantie(self.voorkeur)
