@@ -84,9 +84,9 @@ namespace Joetz.Controllers
         //
         //Return: de actie, terug naar de homepage
         //
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult LogOff()
+
+        [AllowAnonymous]
+        public ActionResult Logout()
         {
             ParseUser.LogOut();
 
