@@ -194,11 +194,16 @@ class IndienenVoorkeurViewController: UIViewController, UIPickerViewDataSource, 
     //
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let indienenVoorkeurSuccesvolViewController = segue.destinationViewController as IndienenVoorkeurSuccesvolViewController
-            var monitorResponse = ParseData.getMonitorWithEmail(PFUser.currentUser().email)
-            var monitor: Monitor = Monitor(id: "test")
+            //var monitorResponse = ParseData.getMonitorWithEmail(PFUser.currentUser().email)
+        
+            var qMonitor = Query(tableName: Constanten.TABLE_MONITOR)
+            qMonitor.addWhereEqualTo(Constanten.COLUMN_EMAIL, value: PFUser.currentUser().email)
+            var monitor = qMonitor.getFirstObject() as Monitor
+        
+            /*var monitor: Monitor = Monitor(id: "test")
             if monitorResponse.1 == nil {
                 monitor = monitorResponse.0
-            }
+            }*/
         
             self.voorkeur.monitor = monitor
             
