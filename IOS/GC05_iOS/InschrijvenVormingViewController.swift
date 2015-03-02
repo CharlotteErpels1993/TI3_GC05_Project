@@ -37,7 +37,7 @@ class InschrijvenVormingViewController: UIViewController, UIPickerViewDataSource
     override func viewDidLoad() {
         super.viewDidLoad()
         controleerInternet()
-        LocalDatastore.getTableReady(Constanten.TABLE_VAKANTIE)
+        LocalDatastore.getTableReady(Constanten.TABLE_INSCHRIJVINGVORMING)
         
         pickerView.delegate = self
         pickerView.dataSource = self
