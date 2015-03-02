@@ -75,13 +75,14 @@ class FeedbackTableViewController: UITableViewController, UISearchBarDelegate, U
         if !queryFeedback.isEmpty() {
             //self.feedbacken = LocalDatastore.getLocalObjects(Constanten.TABLE_FEEDBACK) as [Feedback]
             self.feedbacken = queryFeedback.getObjects() as [Feedback]
-            self.feedbacken2 = self.feedbacken
+            //self.feedbacken2 = self.feedbacken
         } else {
             foutBoxOproepen("Oeps", "Er is nog geen feedback.", self)
             self.tableView.reloadData()
             feedbacken2.sort({ $0.vakantie!.titel < (String($1.score!)) })
         }
         
+        self.feedbacken2 = self.feedbacken
         
         if PFUser.currentUser() == nil {
             self.navigationItem.rightBarButtonItem = nil
