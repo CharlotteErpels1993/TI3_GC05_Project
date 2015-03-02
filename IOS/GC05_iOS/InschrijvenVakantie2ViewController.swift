@@ -349,7 +349,7 @@ class InschrijvenVakantie2ViewController : UITableViewController {
         
         var queryDeelnemer = Query(tableName: Constanten.TABLE_DEELNEMER)
         queryDeelnemer.addWhereEqualTo(Constanten.COLUMN_VOORNAAM, value: txtVoornaam.text)
-        queryDeelnemer.addWhereEqualTo(Constanten.COLUMN_VOORNAAM, value: txtNaam.text)
+        queryDeelnemer.addWhereEqualTo(Constanten.COLUMN_NAAM, value: txtNaam.text)
         
         if !queryDeelnemer.isEmpty() {
             
