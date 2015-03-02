@@ -139,7 +139,6 @@ class InschrijvenVakantie1ViewController : UITableViewController, UIPickerViewDa
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         inschrijvingVakantie.periode = pickerData[row]
         berekenAantalDagen(pickerData[row])
-        //self.periode = pickerData[row]
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

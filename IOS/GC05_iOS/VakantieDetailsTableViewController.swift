@@ -67,7 +67,6 @@ class VakantieDetailsTableViewController: UITableViewController {
             
             var queryGebruiker = Query()
             
-            //favorieteVakantie.gebruiker = queryGebruiker.getFirstObject() as? Gebruiker
             favorieteVakantie.gebruiker = queryGebruiker.getGebruiker(soort)
             
             favorieteVakantie.vakantie = self.vakantie
@@ -85,7 +84,6 @@ class VakantieDetailsTableViewController: UITableViewController {
             }
         }
         
-        /*self.images = LocalDatastore.getLocalObjectsWithColumnConstraints(Constanten.TABLE_AFBEELDING, soortConstraints: [Constanten.COLUMN_VAKANTIE: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_VAKANTIE: vakantie.id]) as [UIImage]*/
         var queryImages = Query(tableName: Constanten.TABLE_AFBEELDING)
         queryImages.addWhereEqualTo(Constanten.COLUMN_VAKANTIE, value: vakantie.id)
         self.images = queryImages.getObjects() as [UIImage]
@@ -122,7 +120,6 @@ class VakantieDetailsTableViewController: UITableViewController {
         
         var euroSymbol: String = "€"
         
-        //var soort = LocalDatastore.getCurrentUserSoort()
         
         if PFUser.currentUser() != nil {
             var soort = LocalDatastore.getCurrentUserSoort()
@@ -132,25 +129,19 @@ class VakantieDetailsTableViewController: UITableViewController {
                 basisprijsLabel.text = String("Basisprijs: \(vakantie.basisprijs!) " + euroSymbol)
                 inbegrepenPrijs.text = String("Inbegrepen prijs: \(vakantie.inbegrepenPrijs!) ")
                 if (vakantie.bondMoysonLedenPrijs == nil || vakantie.bondMoysonLedenPrijs == 0) {
-                    //bondMoysonPrijsLabel.text = String("Bond moyson prijs: \(vakantie.bondMoysonLedenPrijs!) " + euroSymbol)
                     bondMoysonPrijsLabel.text = String("Bond moyson prijs: /")
                 } else {
-                    //bondMoysonPrijsLabel.text = String("Bond moyson prijs: /")
                     bondMoysonPrijsLabel.text = String("Bond moyson prijs: \(vakantie.bondMoysonLedenPrijs!) " + euroSymbol)
                 }
                 if (vakantie.sterPrijs1ouder == 0 || vakantie.sterPrijs1ouder == nil) {
-                    //sterprijs1Label.text = String("Ster prijs (1 ouder): \(vakantie.sterPrijs1ouder!) " + euroSymbol)
                     sterprijs1Label.text = String("Ster prijs (1 ouder): /")
                 } else {
-                    //sterprijs1Label.text = String("Ster prijs (1 ouder): /")
                     sterprijs1Label.text = String("Ster prijs (1 ouder): \(vakantie.sterPrijs1ouder!) " + euroSymbol)
                 }
                 if (vakantie.sterPrijs2ouders == 0 || vakantie.sterPrijs2ouders == nil) {
-                    //sterPrijs2Label.text = String("Ster prijs (2 ouders): \(vakantie.sterPrijs2ouders!) " + euroSymbol)
                     sterPrijs2Label.text = String("Ster prijs (2 ouders): /")
                 } else {
                     sterPrijs2Label.text = String("Ster prijs (2 ouders): \(vakantie.sterPrijs2ouders!) " + euroSymbol)
-                    //sterPrijs2Label.text = String("Ster prijs (2 ouders): /")
                 }
                 if soort == "administrator" {
                     self.navigationItem.rightBarButtonItem = nil
@@ -289,16 +280,6 @@ class VakantieDetailsTableViewController: UITableViewController {
         var user = PFUser.currentUser()
         var soort = user["soort"] as? String
         
-        
-        
-        /*if soort == "ouder" {
-            var ouder = LocalDatastore.getLocalObjectWithColumnConstraints(Constanten.TABLE_OUDER, soortConstraints: [Constanten.COLUMN_EMAIL: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_EMAIL: PFUser.currentUser().email]) as Ouder
-            favorieteVakantie.gebruiker = ouder
-        } else if soort == "monitor" {
-            var monitor = LocalDatastore.getLocalObjectWithColumnConstraints(Constanten.TABLE_MONITOR, soortConstraints: [Constanten.COLUMN_EMAIL: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_EMAIL: PFUser.currentUser().email]) as Monitor
-            favorieteVakantie.gebruiker = monitor
-        }*/
-        
         var queryGebruiker = Query()
         favorieteVakantie.gebruiker = queryGebruiker.getGebruiker(soort!)
         
@@ -311,7 +292,6 @@ class VakantieDetailsTableViewController: UITableViewController {
         } else {
             self.isFavoriet = false
             heartButton.setImage(self.imageHeartEmpty, forState: UIControlState.Normal)
-            //LocalDatastore.deleteFavorieteVakantie(favorieteVakantie)
             var queryFavoriet = Query(tableName: Constanten.TABLE_FAVORIET)
             queryFavoriet.addWhereEqualTo(Constanten.COLUMN_VAKANTIE, value: favorieteVakantie.vakantie?.id)
             queryFavoriet.addWhereEqualTo(Constanten.COLUMN_GEBRUIKER, value: favorieteVakantie.gebruiker?.id)
@@ -380,7 +360,6 @@ class VakantieDetailsTableViewController: UITableViewController {
         } else if segue.identifier == "inschrijven" {
             let inschrijvenVakantie2ViewController = segue.destinationViewController as InschrijvenVakantie2ViewController
             inschrijvenVakantie2ViewController.vakantie = vakantie
-            //inschrijvenVakantie1ViewController.pickerData = vakantie.periodes!
             inschrijvenVakantie2ViewController.hidesBottomBarWhenPushed = true
         } else if segue.identifier == "geefFeedback" {
             let geefFeedback2TableViewController = segue.destinationViewController as GeefFeedback2ViewController

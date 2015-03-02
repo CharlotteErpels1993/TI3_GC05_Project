@@ -83,71 +83,31 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
                 queryGebruiker.addWhereEqualTo(Constanten.COLUMN_EMAIL, value: PFUser.currentUser().email)
                 
                 if s == "ouder" {
-                    
                     queryGebruiker.setTableName(Constanten.TABLE_OUDER)
-                    
-                    /*var queryOuder = LocalDatastore.query(Constanten.TABLE_OUDER, whereArgs: whereGebruiker)
-                    gebruiker = LocalDatastore.getFirstObject(Constanten.TABLE_OUDER, query: queryOuder) as Ouder*/
-                    
-                    
-                    //gebruiker = LocalDatastore.getLocalObjectWithColumnConstraints(Constanten.TABLE_OUDER, soortConstraints: [Constanten.COLUMN_EMAIL: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_EMAIL: PFUser.currentUser().email]) as Ouder
                 } else if s == "monitor" {
                     
                     queryGebruiker.setTableName(Constanten.TABLE_MONITOR)
-                    
-                    /*var queryMonitor = LocalDatastore.query(Constanten.TABLE_MONITOR, whereArgs: whereGebruiker)
-                    gebruiker = LocalDatastore.getFirstObject(Constanten.TABLE_MONITOR, query: queryMonitor) as Monitor*/
-                    
-                    //gebruiker = LocalDatastore.getLocalObjectWithColumnConstraints(Constanten.TABLE_MONITOR, soortConstraints: [Constanten.COLUMN_EMAIL: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_EMAIL: PFUser.currentUser().email]) as Monitor
-                    
                 }
                 
                 gebruiker = queryGebruiker.getFirstObject() as Gebruiker
             }
             
-            /*var whereFavorieten : [String : AnyObject] = [:]
-            whereFavorieten[Constanten.COLUMN_GEBRUIKER] = gebruiker.id
-            
-            var queryFavorieten = LocalDatastore.query(Constanten.TABLE_FAVORIET, whereArgs: whereFavorieten)
-            
-            var favorieten = LocalDatastore.getObjecten(Constanten.TABLE_FAVORIET, query: queryFavorieten) as [Favoriet]*/
-            
             var queryFavorieten = Query(tableName: Constanten.TABLE_FAVORIET)
             queryFavorieten.addWhereEqualTo(Constanten.COLUMN_GEBRUIKER, value: gebruiker.id)
             var favorieten = queryFavorieten.getObjects() as [Favoriet]
-            
-            
-            
-            /*var query = PFQuery(className: "Favoriet")
-            query.whereKey("gebruiker", equalTo: gebruiker.id)
-            query.fromLocalDatastore()
-            
-            var objecten = query.findObjects() as [PFObject]*/
-            //var favorieten: [Favoriet] = []
-            
-            /*for object in objecten {
-                
-                //favorieten.append(LocalDatastore.getFavoriet(object) as Favoriet)
-            }*/
             
             if favorieten.isEmpty {
                 foutBoxOproepen("Oeps...", "Er zijn geen vakanties geselecteerd als favorieten. Ga naar vakanties en selecteer een vakantie als favoriet door middel van op het hartje te klikken.", self)
             }
             
-            
             for favoriet in favorieten {
                 self.vakanties.append(favoriet.vakantie!)
             }
-            
-            
-            //foutBoxOproepen("Oeps...", "Er zijn geen vakanties geselecteerd als favorieten. Ga naar vakanties en selecteer een vakantie als favoriet door middel van op het hartje te klikken.", self)
         } else {
             self.navigationItem.title = "Vakanties"
             
             var queryVakanties = Query(tableName: Constanten.TABLE_VAKANTIE)
             self.vakanties = queryVakanties.getObjects() as [Vakantie]
-            //self.vakanties = LocalDatastore.getAll(Constanten.TABLE_VAKANTIE) as [Vakantie]
-            //self.vakanties = LocalDatastore.getLocalObjects(Constanten.TABLE_VAKANTIE) as [Vakantie]
             
             if vakanties.count == 0 && Reachability.isConnectedToNetwork() == false {
                 foutBoxOproepen("Oeps...", "Er zijn geen vakanties gevonden. Verbind met het internet om de nieuwste vakanties te bekijken.", self)
@@ -198,18 +158,10 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         var feedbackScores: [Int] = []
         var sum = 0
         
-        /*var whereFeedbacks : [String : AnyObject] = [:]
-        whereFeedbacks[Constanten.COLUMN_VAKANTIE] = vakantie.id
-        
-        var queryFeedbacks = LocalDatastore.query(Constanten.TABLE_FEEDBACK, whereArgs: whereFeedbacks)
-        var feedbacks = LocalDatastore.getObjecten(Constanten.TABLE_FEEDBACK, query: queryFeedbacks) as [Feedback]*/
-        
         var queryFeedback = Query(tableName: Constanten.TABLE_FEEDBACK)
         queryFeedback.addWhereEqualTo(Constanten.COLUMN_VAKANTIE, value: vakantie.id)
         var feedbacks = queryFeedback.getObjects() as [Feedback]
-        
-        /*var arrayFeedback = LocalDatastore.getLocalObjectsWithColumnConstraints(Constanten.TABLE_FEEDBACK, soortConstraints: [Constanten.COLUMN_VAKANTIE: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_VAKANTIE: vakantie.id]) as [Feedback]*/
-        
+    
         for var i = 0; i < feedbacks.count; i += 1 {
             var f = feedbacks[i]
             
@@ -438,8 +390,7 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("vakantieCell", forIndexPath: indexPath) as VakantieCell
         let vakantie = vakanties2[indexPath.row]
-        
-        //var image = LocalDatastore.getHoofdAfbeelding(vakantie.id)
+
         var queryImage = Query(tableName: Constanten.TABLE_AFBEELDING)
         queryImage.addWhereEqualTo(Constanten.COLUMN_VAKANTIE, value: vakantie.id)
         var image = queryImage.getFirstObject() as UIImage
@@ -477,39 +428,15 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
                 
                 var favorieteVakantie: Favoriet = Favoriet(id: "test")
-                //var user = PFUser.currentUser()
                 var soort = PFUser.currentUser()["soort"] as? String
                 
-                /*if soort == "ouder" || soort == "monitor" {
-                    
-                    var queryGebruiker = Query()
-                    queryGebruiker.addWhere(Constanten.COLUMN_EMAIL, value: PFUser.currentUser().email)
-                    
-                    if soort == "ouder" {
-                        favorieteVakantie.vakantie = vakanties[indexPath.row]
-                        queryGebruiker.setTableName(Constanten.TABLE_OUDER)
-                        /*var ouder = LocalDatastore.getLocalObjectWithColumnConstraints(Constanten.TABLE_OUDER, soortConstraints: [Constanten.COLUMN_EMAIL: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_EMAIL: PFUser.currentUser().email]) as Ouder
-                        favorieteVakantie.gebruiker = ouder*/
-                    } else if soort == "monitor" {
-                        favorieteVakantie.vakantie = vakanties[indexPath.row]
-                        queryGebruiker.setTableName(Constanten.TABLE_MONITOR)
-                        /*var monitor = LocalDatastore.getLocalObjectWithColumnConstraints(Constanten.TABLE_MONITOR, soortConstraints: [Constanten.COLUMN_EMAIL: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_EMAIL: PFUser.currentUser().email]) as Monitor
-                        favorieteVakantie.gebruiker = monitor*/
-                    }*/
+                var queryGebruiker = Query()
+                favorieteVakantie.gebruiker = queryGebruiker.getGebruiker(soort!)
                 
-                    var queryGebruiker = Query()
-                    //favorieteVakantie.gebruiker = queryGebruiker.getFirstObject() as? Gebruiker
-                    favorieteVakantie.gebruiker = queryGebruiker.getGebruiker(soort!)
-                
-                
-                    //LocalDatastore.deleteFavorieteVakantie(favorieteVakantie)
-                    var queryFavoVakantie = Query(tableName: Constanten.TABLE_FAVORIET)
-                    queryFavoVakantie.addWhereEqualTo(Constanten.COLUMN_VAKANTIE, value: favorieteVakantie.vakantie?.id)
-                    queryFavoVakantie.addWhereEqualTo(Constanten.COLUMN_GEBRUIKER, value: favorieteVakantie.gebruiker?.id)
-                    queryFavoVakantie.deleteObjects()
-                //}
-                
-                
+                var queryFavoVakantie = Query(tableName: Constanten.TABLE_FAVORIET)
+                queryFavoVakantie.addWhereEqualTo(Constanten.COLUMN_VAKANTIE, value: favorieteVakantie.vakantie?.id)
+                queryFavoVakantie.addWhereEqualTo(Constanten.COLUMN_GEBRUIKER, value: favorieteVakantie.gebruiker?.id)
+                queryFavoVakantie.deleteObjects()
             }
         }
     }

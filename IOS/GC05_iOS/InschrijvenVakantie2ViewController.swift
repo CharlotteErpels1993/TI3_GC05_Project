@@ -110,9 +110,6 @@ class InschrijvenVakantie2ViewController : UITableViewController {
         if segue.identifier == "volgende" {
             let inschrijvenVakantie2ViewController = segue.destinationViewController as InschrijvenVakantie3ViewController
             
-            /*ParseData.deleteDeelnemerTable()
-            ParseData.vulDeelnemerTableOp()*/
-            
             setStatusTextFields()
             pasLayoutVeldenAan()
             
@@ -319,19 +316,9 @@ class InschrijvenVakantie2ViewController : UITableViewController {
         self.deelnemer.gemeente = txtGemeente.text
         self.inschrijvingVakantie.vakantie = self.vakantie
         
-        /*var whereOuder : [String : AnyObject] = [:]
-        whereOuder[Constanten.COLUMN_EMAIL] = PFUser.currentUser().email
-        
-        var queryOuder = LocalDatastore.query(Constanten.TABLE_OUDER, whereArgs: whereOuder)
-        var ouder = LocalDatastore.getFirstObject(Constanten.TABLE_OUDER, query: queryOuder) as Ouder*/
-        
         var queryOuder = Query(tableName: Constanten.TABLE_OUDER)
         queryOuder.addWhereEqualTo(Constanten.COLUMN_EMAIL, value: PFUser.currentUser().email)
         var ouder = queryOuder.getFirstObject() as Ouder
-        
-        
-        
-        /*var ouder = LocalDatastore.getLocalObjectWithColumnConstraints(Constanten.TABLE_OUDER, soortConstraints: [Constanten.COLUMN_EMAIL: Constanten.CONSTRAINT_EQUALTO], equalToConstraints: [Constanten.COLUMN_EMAIL: PFUser.currentUser().email]) as Ouder*/
         
         self.inschrijvingVakantie.ouder = ouder
     }
@@ -369,43 +356,5 @@ class InschrijvenVakantie2ViewController : UITableViewController {
         } else {
             return false
         }
-        
-        
-        /*var whereDeelnemer : [String : AnyObject] = [:]
-        whereDeelnemer[Constanten.COLUMN_VOORNAAM] = txtVoornaam.text
-        whereDeelnemer[Constanten.COLUMN_NAAM] = txtNaam.text
-        
-        var queryDeelnemer = LocalDatastore.query(Constanten.TABLE_DEELNEMER, whereArgs: whereDeelnemer)
-        
-        if LocalDatastore.isResultSetEmpty(queryDeelnemer) {
-            return false
-        } else {
-            var kind = LocalDatastore.getFirstObject(Constanten.TABLE_DEELNEMER, query: queryDeelnemer) as Deelnemer
-            
-            var whereInschrijving : [String : AnyObject] = [:]
-            whereInschrijving[Constanten.COLUMN_DEELNEMER] = kind.id
-            whereInschrijving[Constanten.COLUMN_OUDER] = inschrijvingVakantie.ouder?.id
-            whereInschrijving[Constanten.COLUMN_VAKANTIE] = inschrijvingVakantie.vakantie?.id
-            
-            var queryInschrijving = LocalDatastore.query(Constanten.TABLE_INSCHRIJVINGVAKANTIE, whereArgs: whereInschrijving)
-            
-            if LocalDatastore.isResultSetEmpty(queryInschrijving) {
-                return false
-            } else {
-                return true
-            }
-        }*/
-        
-        
-        //return LocalDatastore.bestaatInschrijvingVakantieAl(self.inschrijvingVakantie)
-        
-        
-        /*var inschrijvingen: [InschrijvingVakantie] = []
-        var inschrijvingenResponse = ParseData.getInschrijvingenVakantie(self.inschrijvingVakantie)
-        
-        if inschrijvingenResponse.1 != nil {
-        return false
-        }
-        return true*/
     }
 }

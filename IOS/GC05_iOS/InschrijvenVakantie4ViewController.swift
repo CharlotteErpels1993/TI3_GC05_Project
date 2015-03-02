@@ -80,14 +80,12 @@ class InschrijvenVakantie4ViewController : UITableViewController {
         if txtVoornaam.text.isEmpty {
             statusTextFields["voornaam"] = "leeg"
         } else {
-            //TO DO: checken op pattern?
             statusTextFields["voornaam"] = "ingevuld"
         }
         
         if txtNaam.text.isEmpty {
             statusTextFields["naam"] = "leeg"
         } else {
-            //TO DO: checken op pattern?
             statusTextFields["naam"] = "ingevuld"
         }
         

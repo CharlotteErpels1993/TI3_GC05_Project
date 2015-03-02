@@ -271,5 +271,4 @@ class InschrijvenVakantie5ViewController : UITableViewController {
         contactpersoon2.naam = txtNaam.text
         contactpersoon2.gsm = txtGsm.text
     }
-    
 }
