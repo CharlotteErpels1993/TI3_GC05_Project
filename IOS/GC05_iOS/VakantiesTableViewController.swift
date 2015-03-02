@@ -7,6 +7,7 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
     var redColor: UIColor = UIColor(red: CGFloat(232/255.0), green: CGFloat(33/255.0), blue: CGFloat(35/255.0), alpha: CGFloat(1.0))
     var isFavoriet: Bool = false
     var feedbackScores: [Double] = []
+    var gemiddeldeFeedbackScores: [Double] = []
     
     @IBOutlet weak var zoekbar: UISearchBar!
     
@@ -58,6 +59,7 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
         hideSideMenuView()
         self.setNeedsStatusBarAppearanceUpdate()
         self.navigationController!.toolbarHidden = true
+        self.gemiddeldeFeedbackScores.removeAll(keepCapacity: true)
         
         if Reachability.isConnectedToNetwork() == false {
             toonFoutBoxMetKeuzeNaarInstellingen("Je hebt geen internet verbinding. Ga naar instellingen om dit aan te passen of ga verder.", self)
@@ -292,7 +294,7 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
             ster5.image = starGevuld
         }
         
-        feedbackScores.append(gemiddeldeFeedbackScore)
+        gemiddeldeFeedbackScores.append(gemiddeldeFeedbackScore)
     }
     
     //
@@ -386,7 +388,7 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
             let vakantieDetailsController = segue.destinationViewController as VakantieDetailsTableViewController
             let selectedVakantie = vakanties[tableView.indexPathForSelectedRow()!.row]
             vakantieDetailsController.vakantie = selectedVakantie as Vakantie
-            vakantieDetailsController.feedbackScore = self.feedbackScores[tableView.indexPathForSelectedRow()!.row]
+            vakantieDetailsController.feedbackScore = self.gemiddeldeFeedbackScores[tableView.indexPathForSelectedRow()!.row]
             vakantieDetailsController.hidesBottomBarWhenPushed = true
         } else if segue.identifier == "inloggen" {
             let inloggenViewController = segue.destinationViewController as InloggenViewController
