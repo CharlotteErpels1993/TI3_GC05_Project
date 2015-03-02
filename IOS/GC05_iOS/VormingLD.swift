@@ -42,7 +42,7 @@ struct VormingLD {
         vorming.websiteLocatie = object[Constanten.COLUMN_WEBSITELOCATIE] as? String
         vorming.tips = object[Constanten.COLUMN_TIPS] as? String
         vorming.betalingWijze = object[Constanten.COLUMN_BETALINGSWIJZE] as? String
-        vorming.inbegrepenPrijs = object[Constanten.COLUMN_INBEGREPENPRIJS] as? String
+        vorming.inbegrepenPrijs = object[Constanten.COLUMN_INBEGREPENINPRIJS] as? String
         
         return vorming
     }
