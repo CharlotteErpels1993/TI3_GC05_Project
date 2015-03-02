@@ -128,13 +128,17 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
                 //favorieten.append(LocalDatastore.getFavoriet(object) as Favoriet)
             }*/
             
+            if favorieten.isEmpty {
+                foutBoxOproepen("Oeps...", "Er zijn geen vakanties geselecteerd als favorieten. Ga naar vakanties en selecteer een vakantie als favoriet door middel van op het hartje te klikken.", self)
+            }
+            
             
             for favoriet in favorieten {
                 self.vakanties.append(favoriet.vakantie!)
             }
             
             
-            foutBoxOproepen("Oeps...", "Er zijn geen vakanties geselecteerd als favorieten. Ga naar vakanties en selecteer een vakantie als favoriet door middel van op het hartje te klikken.", self)
+            //foutBoxOproepen("Oeps...", "Er zijn geen vakanties geselecteerd als favorieten. Ga naar vakanties en selecteer een vakantie als favoriet door middel van op het hartje te klikken.", self)
         } else {
             self.navigationItem.title = "Vakanties"
             
