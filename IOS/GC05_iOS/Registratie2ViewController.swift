@@ -329,17 +329,6 @@ class Registratie2ViewController: UITableViewController {
     //
     func controleerGSMAlGeregisteerd() -> Bool {
         
-        /*var arguments : [String : AnyObject] = [:]
-        arguments[Constanten.COLUMN_GSM] = self.txtGsm.text
-        
-        var query = LocalDatastore.query(Constanten.TABLE_OUDER, whereArgs: arguments)
-
-        if LocalDatastore.isResultSetEmpty(query) {
-            return false
-        } else {
-            return true
-        }*/
-        
         var query = Query(tableName: Constanten.TABLE_OUDER)
         query.addWhereEqualTo(Constanten.COLUMN_GSM, value: txtGsm.text)
         
@@ -348,8 +337,5 @@ class Registratie2ViewController: UITableViewController {
         } else {
             return true
         }
-        
-        
-        //return LocalDatastore.isGsmAlGeregistreerd(self.txtGsm.text)
     }
 }

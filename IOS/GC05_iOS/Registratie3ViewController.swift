@@ -205,7 +205,6 @@ class Registratie3ViewController: UITableViewController {
     //Return: een bool true als het emailadres al geregistreerd is, anders false
     //
     func controleerEmailAlGeregisteerd() -> Bool {
-        //return LocalDatastore.isEmailAlGeregistreerd(self.txtEmail.text)
         
         var qOuder = Query(tableName: Constanten.TABLE_OUDER)
         qOuder.addWhereEqualTo(Constanten.COLUMN_EMAIL, value: txtEmail.text)

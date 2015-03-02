@@ -390,18 +390,5 @@ class Registratie1ViewController: UITableViewController {
         } else {
             return true
         }
-        
-        /*var arguments : [String : AnyObject] = [:]
-        arguments[Constanten.COLUMN_RIJKSREGISTERNUMMER] = self.txtRijksregisterNr.text
-        
-        var query = LocalDatastore.query(Constanten.TABLE_OUDER, whereArgs: arguments)
-        
-        if LocalDatastore.isResultSetEmpty(query) {
-            return false
-        } else {
-            return true
-        }*/
-        
-        //return LocalDatastore.isRijksregisternummerAlGeregistreerd(self.txtRijksregisterNr.text)
     }
 }
