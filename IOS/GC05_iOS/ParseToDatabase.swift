@@ -13,7 +13,7 @@ struct ParseToDatabase {
     //
     //Return:
     //
-    static func parseOuder(ouder: Ouder, wachtwoord: String) {
+    /*static func parseOuder(ouder: Ouder, wachtwoord: String) {
         var ouderJSON = PFObject(className: Constanten.TABLE_OUDER)
         
         ouderJSON.setValue(ouder.email, forKey: Constanten.COLUMN_EMAIL)
@@ -47,7 +47,7 @@ struct ParseToDatabase {
         
         createPFUser(ouder, wachtwoord: wachtwoord)
         logIn(ouder, wachtwoord: wachtwoord)
-    }
+    }*/
     
     //
     //Naam: createPFUser
@@ -60,7 +60,7 @@ struct ParseToDatabase {
     //
     //Return:
     //
-    static private func createPFUser(ouder: Ouder, wachtwoord: String) {
+    /*static private func createPFUser(ouder: Ouder, wachtwoord: String) {
         var user = PFUser()
         user.username = ouder.email
         user.password = wachtwoord
@@ -68,7 +68,7 @@ struct ParseToDatabase {
         user["soort"] = "ouder"
         
         user.signUp()
-    }
+    }*/
     
     //
     //Naam: logIn
@@ -95,7 +95,7 @@ struct ParseToDatabase {
     //
     //Return: het objectId van de deelnemer
     //
-    static func parseDeelnemer(deelnemer: Deelnemer) -> String {
+    /*static func parseDeelnemer(deelnemer: Deelnemer) -> String {
         var deelnemerJSON = PFObject(className: Constanten.TABLE_DEELNEMER)
         
         deelnemerJSON.setValue(deelnemer.voornaam, forKey: Constanten.COLUMN_VOORNAAM)
@@ -253,6 +253,6 @@ struct ParseToDatabase {
         feedbackJSON.setValue(feedback.score, forKey: Constanten.COLUMN_SCORE)
         
         feedbackJSON.save()
-    }
+    }*/
     
 }

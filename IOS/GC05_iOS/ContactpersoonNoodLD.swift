@@ -54,41 +54,21 @@ struct ContactpersoonNoodLD {
     //
     //Parameters: - ouder: Ouder
     //
-    /*static func insert(ouder: Ouder) {
+    static func insert(contactpersoon: ContactpersoonNood) -> String {
         
-        let object = PFObject(className: Constanten.TABLE_OUDER)
+        let object = PFObject(className: Constanten.TABLE_CONTACTPERSOON)
         
-        object[Constanten.COLUMN_RIJKSREGISTERNUMMER] = ouder.rijksregisterNr
-        object[Constanten.COLUMN_EMAIL] = ouder.email
-        object[Constanten.COLUMN_VOORNAAM] = ouder.voornaam
-        object[Constanten.COLUMN_NAAM] = ouder.naam
-        object[Constanten.COLUMN_STRAAT] = ouder.straat
-        object[Constanten.COLUMN_NUMMER] = ouder.nummer
-        object[Constanten.COLUMN_POSTCODE] = ouder.postcode
-        object[Constanten.COLUMN_GEMEENTE] = ouder.gemeente
-        object[Constanten.COLUMN_GSM] = ouder.gsm
+        object[Constanten.COLUMN_VOORNAAM] = contactpersoon.voornaam
+        object[Constanten.COLUMN_NAAM] = contactpersoon.naam
+        object[Constanten.COLUMN_GSM] = contactpersoon.gsm
         
-        if ouder.bus != nil {
-            object[Constanten.COLUMN_BUS] = ouder.bus
-        }
-        
-        if ouder.telefoon != nil {
-            object[Constanten.COLUMN_TELEFOON] = ouder.telefoon
-        }
-        
-        if ouder.aansluitingsNr != nil {
-            object[Constanten.COLUMN_AANSLUITINGSNUMMER] = ouder.aansluitingsNr
-        }
-        
-        if ouder.codeGerechtigde != nil {
-            object[Constanten.COLUMN_CODEGERECHTIGDE] = ouder.codeGerechtigde
-        }
-        
-        if ouder.aansluitingsNrTweedeOuder != nil {
-            object[Constanten.COLUMN_AANSLUITINGSNUMMERTWEEDEOUDER] = ouder.aansluitingsNrTweedeOuder
+        if contactpersoon.telefoon != nil {
+            object[Constanten.COLUMN_TELEFOON] = contactpersoon.telefoon
         }
         
         object.pin()
         object.save()
-    }*/    
+        
+        return object.objectId
+    }
 }

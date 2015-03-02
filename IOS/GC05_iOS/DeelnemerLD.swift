@@ -58,7 +58,7 @@ struct DeelnemerLD {
     //
     //Parameters: - deelnemer: Deelnemer
     //
-    static func insert(deelnemer: Deelnemer) {
+    static func insert(deelnemer: Deelnemer) -> String {
         
         let object = PFObject(className: Constanten.TABLE_DEELNEMER)
         
@@ -76,6 +76,8 @@ struct DeelnemerLD {
 
         object.pin()
         object.save()
+        
+        return object.objectId
     }
 
 }

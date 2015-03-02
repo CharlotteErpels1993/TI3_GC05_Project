@@ -84,7 +84,7 @@ struct OuderLD {
     //
     //Parameters: - ouder: Ouder
     //
-    static func insert(ouder: Ouder) {
+    static func insert(ouder: Ouder, wachtwoord: String) {
         
         let object = PFObject(className: Constanten.TABLE_OUDER)
         
@@ -120,6 +120,17 @@ struct OuderLD {
         
         object.pin()
         object.save()
+        createPFUser(ouder, wachtwoord: wachtwoord)
     }
 
+    static private func createPFUser(ouder: Ouder, wachtwoord: String) {
+        var user = PFUser()
+        user.username = ouder.email
+        user.password = wachtwoord
+        user.email = ouder.email
+        user["soort"] = "ouder"
+        
+        user.signUp()
+    }
+    
 }

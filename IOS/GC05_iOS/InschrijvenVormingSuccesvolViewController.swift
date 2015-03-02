@@ -34,7 +34,8 @@ class InschrijvenVormingSuccesvolViewController: UIViewController {
     //
     override func viewDidLoad() {
         super.viewDidLoad()
-        ParseToDatabase.parseInschrijvingVorming(inschrijvingVorming)
+        //ParseToDatabase.parseInschrijvingVorming(inschrijvingVorming)
+        InschrijvingVormingLD.insert(inschrijvingVorming)
         self.navigationItem.setHidesBackButton(true, animated: true)
     }
 }

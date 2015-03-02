@@ -35,6 +35,7 @@ class IndienenVoorkeurSuccesvolViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.setHidesBackButton(true, animated: true)
-        ParseToDatabase.parseVoorkeur(voorkeur)
+        //ParseToDatabase.parseVoorkeur(voorkeur)
+        VoorkeurLD.insert(voorkeur)
     }
 }

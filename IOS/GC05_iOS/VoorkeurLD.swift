@@ -47,4 +47,15 @@ struct VoorkeurLD {
         
         return voorkeur
     }
+    
+    static func insert(voorkeur: Voorkeur) {
+        
+        let object = PFObject(className: Constanten.TABLE_VOORKEUR)
+        
+        object[Constanten.COLUMN_VAKANTIE] = voorkeur.vakantie?.id
+        object[Constanten.COLUMN_MONITOR] = voorkeur.monitor?.id
+        
+        object.pin()
+        object.save()
+    }
 }

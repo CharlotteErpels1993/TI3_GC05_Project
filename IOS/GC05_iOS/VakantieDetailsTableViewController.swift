@@ -288,7 +288,9 @@ class VakantieDetailsTableViewController: UITableViewController {
         if self.isFavoriet == false {
             self.isFavoriet = true
             heartButton.setImage(self.imageHeartFull, forState: UIControlState.Normal)
-            ParseToDatabase.parseFavoriet(favorieteVakantie)
+            //ParseToDatabase.parseFavoriet(favorieteVakantie)
+            FavorietLD.insert(favorieteVakantie)
+            
         } else {
             self.isFavoriet = false
             heartButton.setImage(self.imageHeartEmpty, forState: UIControlState.Normal)
