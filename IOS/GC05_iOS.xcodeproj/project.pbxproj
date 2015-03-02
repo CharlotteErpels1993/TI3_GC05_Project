@@ -75,6 +75,11 @@
 		A524D7FE1A3875ED005157D4 /* GeefFeedback1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A524D7FD1A3875ED005157D4 /* GeefFeedback1ViewController.swift */; };
 		A52976D11A1A0A5E00420FEE /* Klevertje.png in Resources */ = {isa = PBXBuildFile; fileRef = A52976D01A1A0A5E00420FEE /* Klevertje.png */; };
 		A52F18301A40758E00A66431 /* joetzVakantie.png in Resources */ = {isa = PBXBuildFile; fileRef = A52F182F1A40758E00A66431 /* joetzVakantie.png */; };
+		A5431BB01AA4980900238697 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5431BAB1AA4980900238697 /* Bolts.framework */; };
+		A5431BB11AA4980900238697 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5431BAC1AA4980900238697 /* Parse.framework */; };
+		A5431BB21AA4980900238697 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5431BAD1AA4980900238697 /* ParseCrashReporting.framework */; };
+		A5431BB31AA4980900238697 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5431BAE1AA4980900238697 /* ParseFacebookUtils.framework */; };
+		A5431BB41AA4980900238697 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5431BAF1AA4980900238697 /* ParseUI.framework */; };
 		A54E1B9E1A125E7C00C6BB95 /* ExtraTekstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54E1B9D1A125E7C00C6BB95 /* ExtraTekstViewController.swift */; };
 		A55321DF1A1C8258005146F8 /* SuccesvolNieuwWachtwoordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55321DE1A1C8258005146F8 /* SuccesvolNieuwWachtwoordViewController.swift */; };
 		A57415CA1A3ADAED0029678D /* WatIsJoetzViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57415C91A3ADAED0029678D /* WatIsJoetzViewController.swift */; };
@@ -106,11 +111,6 @@
 		A5DBCD661A9E032000097871 /* InschrijvenVakantie4ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DBCD601A9E032000097871 /* InschrijvenVakantie4ViewController.swift */; };
 		A5DBCD671A9E032000097871 /* InschrijvenVakantie5ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DBCD611A9E032000097871 /* InschrijvenVakantie5ViewController.swift */; };
 		A5DBCD681A9E032000097871 /* InschrijvenVakantie6ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DBCD621A9E032000097871 /* InschrijvenVakantie6ViewController.swift */; };
-		A5E050721A3EDDEB00C1FA0E /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5E0506D1A3EDDEB00C1FA0E /* Bolts.framework */; };
-		A5E050731A3EDDEB00C1FA0E /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5E0506E1A3EDDEB00C1FA0E /* Parse.framework */; };
-		A5E050741A3EDDEB00C1FA0E /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5E0506F1A3EDDEB00C1FA0E /* ParseCrashReporting.framework */; };
-		A5E050751A3EDDEB00C1FA0E /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5E050701A3EDDEB00C1FA0E /* ParseFacebookUtils.framework */; };
-		A5E050761A3EDDEB00C1FA0E /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5E050711A3EDDEB00C1FA0E /* ParseUI.framework */; };
 		A5E5B9831A2370DC0054960C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5E5B9811A2370DC0054960C /* LaunchScreen.xib */; };
 		A5E5B9851A23712B0054960C /* joetz.png in Resources */ = {isa = PBXBuildFile; fileRef = A5E5B9841A23712B0054960C /* joetz.png */; };
 		A5E8A6871A13AE1400DA861A /* InschrijvenVormingSuccesvolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E8A6861A13AE1400DA861A /* InschrijvenVormingSuccesvolViewController.swift */; };
@@ -202,6 +202,11 @@
 		A524D7FD1A3875ED005157D4 /* GeefFeedback1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeefFeedback1ViewController.swift; sourceTree = "<group>"; };
 		A52976D01A1A0A5E00420FEE /* Klevertje.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Klevertje.png; path = Images.xcassets/Klevertje.png; sourceTree = "<group>"; };
 		A52F182F1A40758E00A66431 /* joetzVakantie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = joetzVakantie.png; path = Images.xcassets/joetzVakantie.png; sourceTree = "<group>"; };
+		A5431BAB1AA4980900238697 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "parse-library-1.6.3/Bolts.framework"; sourceTree = "<group>"; };
+		A5431BAC1AA4980900238697 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "parse-library-1.6.3/Parse.framework"; sourceTree = "<group>"; };
+		A5431BAD1AA4980900238697 /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseCrashReporting.framework; path = "parse-library-1.6.3/ParseCrashReporting.framework"; sourceTree = "<group>"; };
+		A5431BAE1AA4980900238697 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseFacebookUtils.framework; path = "parse-library-1.6.3/ParseFacebookUtils.framework"; sourceTree = "<group>"; };
+		A5431BAF1AA4980900238697 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseUI.framework; path = "parse-library-1.6.3/ParseUI.framework"; sourceTree = "<group>"; };
 		A54E1B9D1A125E7C00C6BB95 /* ExtraTekstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtraTekstViewController.swift; sourceTree = "<group>"; };
 		A55321DE1A1C8258005146F8 /* SuccesvolNieuwWachtwoordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuccesvolNieuwWachtwoordViewController.swift; sourceTree = "<group>"; };
 		A57415C91A3ADAED0029678D /* WatIsJoetzViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatIsJoetzViewController.swift; sourceTree = "<group>"; };
@@ -235,11 +240,6 @@
 		A5DBCD601A9E032000097871 /* InschrijvenVakantie4ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InschrijvenVakantie4ViewController.swift; sourceTree = "<group>"; };
 		A5DBCD611A9E032000097871 /* InschrijvenVakantie5ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InschrijvenVakantie5ViewController.swift; sourceTree = "<group>"; };
 		A5DBCD621A9E032000097871 /* InschrijvenVakantie6ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InschrijvenVakantie6ViewController.swift; sourceTree = "<group>"; };
-		A5E0506D1A3EDDEB00C1FA0E /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "parse-library-1/Bolts.framework"; sourceTree = "<group>"; };
-		A5E0506E1A3EDDEB00C1FA0E /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "parse-library-1/Parse.framework"; sourceTree = "<group>"; };
-		A5E0506F1A3EDDEB00C1FA0E /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseCrashReporting.framework; path = "parse-library-1/ParseCrashReporting.framework"; sourceTree = "<group>"; };
-		A5E050701A3EDDEB00C1FA0E /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseFacebookUtils.framework; path = "parse-library-1/ParseFacebookUtils.framework"; sourceTree = "<group>"; };
-		A5E050711A3EDDEB00C1FA0E /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseUI.framework; path = "parse-library-1/ParseUI.framework"; sourceTree = "<group>"; };
 		A5E5B9821A2370DC0054960C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		A5E5B9841A23712B0054960C /* joetz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = joetz.png; path = Images.xcassets/joetz.png; sourceTree = "<group>"; };
 		A5E8A6861A13AE1400DA861A /* InschrijvenVormingSuccesvolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InschrijvenVormingSuccesvolViewController.swift; sourceTree = "<group>"; };
@@ -253,21 +253,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				A51AB06C1A31C57800D012F7 /* MessageUI.framework in Frameworks */,
-				A5E050741A3EDDEB00C1FA0E /* ParseCrashReporting.framework in Frameworks */,
+				A5431BB21AA4980900238697 /* ParseCrashReporting.framework in Frameworks */,
 				0FA80B3A1A0135B1008DB343 /* SystemConfiguration.framework in Frameworks */,
 				0F88A6C01A1F37C30094D457 /* libsqlite3.dylib in Frameworks */,
 				0FA80B381A0135A8008DB343 /* StoreKit.framework in Frameworks */,
 				0FA80B361A01359F008DB343 /* Security.framework in Frameworks */,
 				0FA80B341A013595008DB343 /* QuartzCore.framework in Frameworks */,
 				0FA80B321A01358B008DB343 /* MobileCoreServices.framework in Frameworks */,
-				A5E050721A3EDDEB00C1FA0E /* Bolts.framework in Frameworks */,
-				A5E050761A3EDDEB00C1FA0E /* ParseUI.framework in Frameworks */,
+				A5431BB01AA4980900238697 /* Bolts.framework in Frameworks */,
+				A5431BB41AA4980900238697 /* ParseUI.framework in Frameworks */,
 				0FA80B301A013557008DB343 /* libz.dylib in Frameworks */,
 				0FA80B2E1A01354A008DB343 /* CoreLocation.framework in Frameworks */,
-				A5E050731A3EDDEB00C1FA0E /* Parse.framework in Frameworks */,
+				A5431BB11AA4980900238697 /* Parse.framework in Frameworks */,
 				0FA80B2C1A01353E008DB343 /* CoreGraphics.framework in Frameworks */,
 				0FA80B2A1A013533008DB343 /* CFNetwork.framework in Frameworks */,
-				A5E050751A3EDDEB00C1FA0E /* ParseFacebookUtils.framework in Frameworks */,
+				A5431BB31AA4980900238697 /* ParseFacebookUtils.framework in Frameworks */,
 				0FA80B281A01352B008DB343 /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -306,11 +306,11 @@
 		0FA80AF91A01350E008DB343 = {
 			isa = PBXGroup;
 			children = (
-				A5E0506D1A3EDDEB00C1FA0E /* Bolts.framework */,
-				A5E0506E1A3EDDEB00C1FA0E /* Parse.framework */,
-				A5E0506F1A3EDDEB00C1FA0E /* ParseCrashReporting.framework */,
-				A5E050701A3EDDEB00C1FA0E /* ParseFacebookUtils.framework */,
-				A5E050711A3EDDEB00C1FA0E /* ParseUI.framework */,
+				A5431BAB1AA4980900238697 /* Bolts.framework */,
+				A5431BAC1AA4980900238697 /* Parse.framework */,
+				A5431BAD1AA4980900238697 /* ParseCrashReporting.framework */,
+				A5431BAE1AA4980900238697 /* ParseFacebookUtils.framework */,
+				A5431BAF1AA4980900238697 /* ParseUI.framework */,
 				A51AB06B1A31C57800D012F7 /* MessageUI.framework */,
 				0F88A6BF1A1F37C30094D457 /* libsqlite3.dylib */,
 				0FA80B391A0135B1008DB343 /* SystemConfiguration.framework */,
@@ -819,6 +819,7 @@
 					"/Volumes/HDD/Documenten/TI3_GC05_Project/iOS_huidig_goed!/GC05_iOS/parse-library-1",
 					"/Users/charlotteerpels/TI3_GC05_Project/iOS_huidig_goed!/GC05_iOS/parse-library-1",
 					"$(PROJECT_DIR)/parse-library-1",
+					"$(PROJECT_DIR)/parse-library-1.6.3",
 				);
 				INFOPLIST_FILE = GC05_iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
@@ -843,6 +844,7 @@
 					"/Volumes/HDD/Documenten/TI3_GC05_Project/iOS_huidig_goed!/GC05_iOS/parse-library-1",
 					"/Users/charlotteerpels/TI3_GC05_Project/iOS_huidig_goed!/GC05_iOS/parse-library-1",
 					"$(PROJECT_DIR)/parse-library-1",
+					"$(PROJECT_DIR)/parse-library-1.6.3",
 				);
 				INFOPLIST_FILE = GC05_iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
