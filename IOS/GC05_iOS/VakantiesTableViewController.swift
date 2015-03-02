@@ -553,6 +553,8 @@ class VakantiesTableViewController: UITableViewController, UISearchBarDelegate, 
                 toonFoutBoxMetKeuzeNaarInstellingen("Verbind met het internet om de nieuwste vakanties te bekijken of ga naar instellingen.", self)
             }
         }
+        self.vakanties.removeAll(keepCapacity: true)
+        self.vakanties2.removeAll(keepCapacity: true)
         
         LocalDatastore.getTableReady(Constanten.TABLE_VAKANTIE)
         LocalDatastore.getTableReady(Constanten.TABLE_AFBEELDING)
