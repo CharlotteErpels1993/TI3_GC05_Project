@@ -56,6 +56,8 @@ class Query {
             return OuderLD.getOuder(first)
         } else if table == Constanten.TABLE_VAKANTIE {
             return VakantieLD.getVakantie(first)
+        } else if table == Constanten.TABLE_VOORKEUR {
+            return VoorkeurLD.getVoorkeur(first)
         } else {
             return VormingLD.getVorming(first)
         }
@@ -80,6 +82,8 @@ class Query {
             return OuderLD.getOuders(objects)
         } else if table == Constanten.TABLE_VAKANTIE {
             return VakantieLD.getVakanties(objects)
+        } else if table == Constanten.TABLE_VOORKEUR {
+            return VoorkeurLD.getVoorkeuren(objects)
         } else {
             return VormingLD.getVormingen(objects)
         }

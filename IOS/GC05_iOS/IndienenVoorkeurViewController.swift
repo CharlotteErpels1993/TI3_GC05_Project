@@ -243,7 +243,7 @@ class IndienenVoorkeurViewController: UIViewController, UIPickerViewDataSource, 
         
         //return LocalDatastore.bestaatVoorkeurAl(voorkeur)
         
-        var qInschrijvingen = Query(tableName: Constanten.TABLE_INSCHRIJVINGVORMING)
+        var qInschrijvingen = Query(tableName: Constanten.TABLE_VOORKEUR)
         qInschrijvingen.addWhereEqualTo(Constanten.COLUMN_MONITOR, value: voorkeur.monitor?.id)
         qInschrijvingen.addWhereEqualTo(Constanten.COLUMN_VAKANTIE, value: voorkeur.vakantie?.id)
         

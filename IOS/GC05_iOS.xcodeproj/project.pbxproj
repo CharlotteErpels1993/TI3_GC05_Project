@@ -42,6 +42,7 @@
 		0FCC89951A9F13E300631F61 /* Query.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCC89941A9F13E300631F61 /* Query.swift */; };
 		0FCF46A51AA332770029F77D /* ContactpersoonNoodLD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCF46A41AA332770029F77D /* ContactpersoonNoodLD.swift */; };
 		0FD0A1061A3E11E900CB8689 /* LocalDatastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD0A1051A3E11E900CB8689 /* LocalDatastore.swift */; };
+		0FD695E31AA4A80C00861620 /* VoorkeurLD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD695E21AA4A80C00861620 /* VoorkeurLD.swift */; };
 		1B10A3BD1A02622C008E225F /* VakantiesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B10A3BC1A02622C008E225F /* VakantiesTableViewController.swift */; };
 		1B1792851A0272D300C4F82B /* VakantieDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1792841A0272D300C4F82B /* VakantieDetailsTableViewController.swift */; };
 		1B39CF731A077C8F008DEC49 /* InloggenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B39CF721A077C8F008DEC49 /* InloggenViewController.swift */; };
@@ -169,6 +170,7 @@
 		0FCC89941A9F13E300631F61 /* Query.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Query.swift; sourceTree = "<group>"; };
 		0FCF46A41AA332770029F77D /* ContactpersoonNoodLD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactpersoonNoodLD.swift; sourceTree = "<group>"; };
 		0FD0A1051A3E11E900CB8689 /* LocalDatastore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalDatastore.swift; sourceTree = "<group>"; };
+		0FD695E21AA4A80C00861620 /* VoorkeurLD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoorkeurLD.swift; sourceTree = "<group>"; };
 		1B10A3BC1A02622C008E225F /* VakantiesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VakantiesTableViewController.swift; sourceTree = "<group>"; };
 		1B1792841A0272D300C4F82B /* VakantieDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VakantieDetailsTableViewController.swift; sourceTree = "<group>"; };
 		1B39CF721A077C8F008DEC49 /* InloggenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InloggenViewController.swift; sourceTree = "<group>"; };
@@ -299,6 +301,7 @@
 				0FC1EEC51A9DFFC900427CA7 /* VormingLD.swift */,
 				0FCC89941A9F13E300631F61 /* Query.swift */,
 				0FCF46A41AA332770029F77D /* ContactpersoonNoodLD.swift */,
+				0FD695E21AA4A80C00861620 /* VoorkeurLD.swift */,
 			);
 			name = "Local Datastore";
 			sourceTree = "<group>";
@@ -633,6 +636,7 @@
 				A5049CAD1A2334510012D990 /* Reachability.swift in Sources */,
 				A5DBCD651A9E032000097871 /* InschrijvenVakantie3ViewController.swift in Sources */,
 				A5CB1FF71A35CCB300A4178A /* FeedbackTableViewController.swift in Sources */,
+				0FD695E31AA4A80C00861620 /* VoorkeurLD.swift in Sources */,
 				A5CEA07D1A1399CA00E14103 /* VormingDetailsTableViewController.swift in Sources */,
 				0FA80B081A01350E008DB343 /* AppDelegate.swift in Sources */,
 				1BDDB9551A02D87F0007623D /* ContactpersoonNood.swift in Sources */,
